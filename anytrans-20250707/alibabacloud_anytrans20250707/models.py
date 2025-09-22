@@ -543,6 +543,192 @@ class BatchTranslateResponse(TeaModel):
         return self
 
 
+class GetDocTranslateTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class GetDocTranslateTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        characters_count: int = None,
+        page_count: int = None,
+        status: str = None,
+        task_id: str = None,
+        translate_file_url: str = None,
+    ):
+        self.characters_count = characters_count
+        self.page_count = page_count
+        self.status = status
+        self.task_id = task_id
+        self.translate_file_url = translate_file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.characters_count is not None:
+            result['charactersCount'] = self.characters_count
+        if self.page_count is not None:
+            result['pageCount'] = self.page_count
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.translate_file_url is not None:
+            result['translateFileUrl'] = self.translate_file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('charactersCount') is not None:
+            self.characters_count = m.get('charactersCount')
+        if m.get('pageCount') is not None:
+            self.page_count = m.get('pageCount')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('translateFileUrl') is not None:
+            self.translate_file_url = m.get('translateFileUrl')
+        return self
+
+
+class GetDocTranslateTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDocTranslateTaskResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetDocTranslateTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetDocTranslateTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocTranslateTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocTranslateTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetHtmlTranslateTaskRequest(TeaModel):
     def __init__(
         self,
@@ -1598,6 +1784,451 @@ class GetLongTextTranslateTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLongTextTranslateTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDocTranslateTaskRequestExtExamples(TeaModel):
+    def __init__(
+        self,
+        src: str = None,
+        tgt: str = None,
+    ):
+        self.src = src
+        self.tgt = tgt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.src is not None:
+            result['src'] = self.src
+        if self.tgt is not None:
+            result['tgt'] = self.tgt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('src') is not None:
+            self.src = m.get('src')
+        if m.get('tgt') is not None:
+            self.tgt = m.get('tgt')
+        return self
+
+
+class SubmitDocTranslateTaskRequestExtTerminologies(TeaModel):
+    def __init__(
+        self,
+        src: str = None,
+        tgt: str = None,
+    ):
+        self.src = src
+        self.tgt = tgt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.src is not None:
+            result['src'] = self.src
+        if self.tgt is not None:
+            result['tgt'] = self.tgt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('src') is not None:
+            self.src = m.get('src')
+        if m.get('tgt') is not None:
+            self.tgt = m.get('tgt')
+        return self
+
+
+class SubmitDocTranslateTaskRequestExtTextTransform(TeaModel):
+    def __init__(
+        self,
+        to_lower: bool = None,
+        to_title: bool = None,
+        to_upper: bool = None,
+    ):
+        self.to_lower = to_lower
+        self.to_title = to_title
+        self.to_upper = to_upper
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.to_lower is not None:
+            result['toLower'] = self.to_lower
+        if self.to_title is not None:
+            result['toTitle'] = self.to_title
+        if self.to_upper is not None:
+            result['toUpper'] = self.to_upper
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('toLower') is not None:
+            self.to_lower = m.get('toLower')
+        if m.get('toTitle') is not None:
+            self.to_title = m.get('toTitle')
+        if m.get('toUpper') is not None:
+            self.to_upper = m.get('toUpper')
+        return self
+
+
+class SubmitDocTranslateTaskRequestExt(TeaModel):
+    def __init__(
+        self,
+        domain_hint: str = None,
+        examples: List[SubmitDocTranslateTaskRequestExtExamples] = None,
+        sensitives: List[str] = None,
+        terminologies: List[SubmitDocTranslateTaskRequestExtTerminologies] = None,
+        text_transform: SubmitDocTranslateTaskRequestExtTextTransform = None,
+    ):
+        self.domain_hint = domain_hint
+        self.examples = examples
+        self.sensitives = sensitives
+        self.terminologies = terminologies
+        self.text_transform = text_transform
+
+    def validate(self):
+        if self.examples:
+            for k in self.examples:
+                if k:
+                    k.validate()
+        if self.terminologies:
+            for k in self.terminologies:
+                if k:
+                    k.validate()
+        if self.text_transform:
+            self.text_transform.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_hint is not None:
+            result['domainHint'] = self.domain_hint
+        result['examples'] = []
+        if self.examples is not None:
+            for k in self.examples:
+                result['examples'].append(k.to_map() if k else None)
+        if self.sensitives is not None:
+            result['sensitives'] = self.sensitives
+        result['terminologies'] = []
+        if self.terminologies is not None:
+            for k in self.terminologies:
+                result['terminologies'].append(k.to_map() if k else None)
+        if self.text_transform is not None:
+            result['textTransform'] = self.text_transform.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainHint') is not None:
+            self.domain_hint = m.get('domainHint')
+        self.examples = []
+        if m.get('examples') is not None:
+            for k in m.get('examples'):
+                temp_model = SubmitDocTranslateTaskRequestExtExamples()
+                self.examples.append(temp_model.from_map(k))
+        if m.get('sensitives') is not None:
+            self.sensitives = m.get('sensitives')
+        self.terminologies = []
+        if m.get('terminologies') is not None:
+            for k in m.get('terminologies'):
+                temp_model = SubmitDocTranslateTaskRequestExtTerminologies()
+                self.terminologies.append(temp_model.from_map(k))
+        if m.get('textTransform') is not None:
+            temp_model = SubmitDocTranslateTaskRequestExtTextTransform()
+            self.text_transform = temp_model.from_map(m['textTransform'])
+        return self
+
+
+class SubmitDocTranslateTaskRequest(TeaModel):
+    def __init__(
+        self,
+        ext: SubmitDocTranslateTaskRequestExt = None,
+        format: str = None,
+        scene: str = None,
+        source_language: str = None,
+        target_language: str = None,
+        text: str = None,
+        workspace_id: str = None,
+    ):
+        self.ext = ext
+        self.format = format
+        # This parameter is required.
+        self.scene = scene
+        # This parameter is required.
+        self.source_language = source_language
+        self.target_language = target_language
+        # This parameter is required.
+        self.text = text
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.ext:
+            self.ext.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext is not None:
+            result['ext'] = self.ext.to_map()
+        if self.format is not None:
+            result['format'] = self.format
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.source_language is not None:
+            result['sourceLanguage'] = self.source_language
+        if self.target_language is not None:
+            result['targetLanguage'] = self.target_language
+        if self.text is not None:
+            result['text'] = self.text
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ext') is not None:
+            temp_model = SubmitDocTranslateTaskRequestExt()
+            self.ext = temp_model.from_map(m['ext'])
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('sourceLanguage') is not None:
+            self.source_language = m.get('sourceLanguage')
+        if m.get('targetLanguage') is not None:
+            self.target_language = m.get('targetLanguage')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class SubmitDocTranslateTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ext_shrink: str = None,
+        format: str = None,
+        scene: str = None,
+        source_language: str = None,
+        target_language: str = None,
+        text: str = None,
+        workspace_id: str = None,
+    ):
+        self.ext_shrink = ext_shrink
+        self.format = format
+        # This parameter is required.
+        self.scene = scene
+        # This parameter is required.
+        self.source_language = source_language
+        self.target_language = target_language
+        # This parameter is required.
+        self.text = text
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_shrink is not None:
+            result['ext'] = self.ext_shrink
+        if self.format is not None:
+            result['format'] = self.format
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.source_language is not None:
+            result['sourceLanguage'] = self.source_language
+        if self.target_language is not None:
+            result['targetLanguage'] = self.target_language
+        if self.text is not None:
+            result['text'] = self.text
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ext') is not None:
+            self.ext_shrink = m.get('ext')
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('sourceLanguage') is not None:
+            self.source_language = m.get('sourceLanguage')
+        if m.get('targetLanguage') is not None:
+            self.target_language = m.get('targetLanguage')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class SubmitDocTranslateTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitDocTranslateTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitDocTranslateTaskResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = SubmitDocTranslateTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class SubmitDocTranslateTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDocTranslateTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDocTranslateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -181,6 +181,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_translate_with_options_async(request, headers, runtime)
 
+    def get_doc_translate_task_with_options(
+        self,
+        request: any_trans_20250707_models.GetDocTranslateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.GetDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译获文档翻译任务
+        
+        @param request: GetDocTranslateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocTranslateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocTranslateTask',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/doc/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.GetDocTranslateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_translate_task_with_options_async(
+        self,
+        request: any_trans_20250707_models.GetDocTranslateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.GetDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译获文档翻译任务
+        
+        @param request: GetDocTranslateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocTranslateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocTranslateTask',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/doc/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.GetDocTranslateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_translate_task(
+        self,
+        request: any_trans_20250707_models.GetDocTranslateTaskRequest,
+    ) -> any_trans_20250707_models.GetDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译获文档翻译任务
+        
+        @param request: GetDocTranslateTaskRequest
+        @return: GetDocTranslateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_doc_translate_task_with_options(request, headers, runtime)
+
+    async def get_doc_translate_task_async(
+        self,
+        request: any_trans_20250707_models.GetDocTranslateTaskRequest,
+    ) -> any_trans_20250707_models.GetDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译获文档翻译任务
+        
+        @param request: GetDocTranslateTaskRequest
+        @return: GetDocTranslateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_doc_translate_task_with_options_async(request, headers, runtime)
+
     def get_html_translate_task_with_options(
         self,
         request: any_trans_20250707_models.GetHtmlTranslateTaskRequest,
@@ -504,6 +612,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_long_text_translate_task_with_options_async(request, headers, runtime)
+
+    def submit_doc_translate_task_with_options(
+        self,
+        tmp_req: any_trans_20250707_models.SubmitDocTranslateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.SubmitDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译提交文档翻译任务
+        
+        @param tmp_req: SubmitDocTranslateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocTranslateTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = any_trans_20250707_models.SubmitDocTranslateTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'ext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.format):
+            body['format'] = request.format
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.text):
+            body['text'] = request.text
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocTranslateTask',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/doc/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.SubmitDocTranslateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_doc_translate_task_with_options_async(
+        self,
+        tmp_req: any_trans_20250707_models.SubmitDocTranslateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.SubmitDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译提交文档翻译任务
+        
+        @param tmp_req: SubmitDocTranslateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocTranslateTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = any_trans_20250707_models.SubmitDocTranslateTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'ext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.format):
+            body['format'] = request.format
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.text):
+            body['text'] = request.text
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocTranslateTask',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/doc/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.SubmitDocTranslateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_doc_translate_task(
+        self,
+        request: any_trans_20250707_models.SubmitDocTranslateTaskRequest,
+    ) -> any_trans_20250707_models.SubmitDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译提交文档翻译任务
+        
+        @param request: SubmitDocTranslateTaskRequest
+        @return: SubmitDocTranslateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_doc_translate_task_with_options(request, headers, runtime)
+
+    async def submit_doc_translate_task_async(
+        self,
+        request: any_trans_20250707_models.SubmitDocTranslateTaskRequest,
+    ) -> any_trans_20250707_models.SubmitDocTranslateTaskResponse:
+        """
+        @summary 通义多模态翻译提交文档翻译任务
+        
+        @param request: SubmitDocTranslateTaskRequest
+        @return: SubmitDocTranslateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_doc_translate_task_with_options_async(request, headers, runtime)
 
     def submit_html_translate_task_with_options(
         self,
