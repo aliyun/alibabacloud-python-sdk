@@ -1,3 +1,6 @@
+2025-09-22 Version: 3.12.3
+- Generated python 2022-08-09 for Cloudauth-intl.
+
 2025-09-19 Version: 3.12.2
 - Update API Initialize: add request parameters AutoRegistration.
 - Update API Initialize: add request parameters FaceGroupCodes.

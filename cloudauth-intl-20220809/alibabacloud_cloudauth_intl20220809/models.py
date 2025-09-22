@@ -1717,14 +1717,28 @@ class CredentialRecognitionIntlRequest(TeaModel):
         ocr_area: str = None,
         product_code: str = None,
     ):
+        # Base64 encoded image. If you choose to upload the photo via IdOcrPictureBase64 (photo Base64 encoding), please check the photo size and do not upload overly large photos.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
+        # Image URL, accessible over the public network via HTTP or HTTPS links.
         self.credential_ocr_picture_url = credential_ocr_picture_url
+        # Voucher type.
+        # - Transaction Voucher: 01 (including: water, electricity, gas, credit card, and other types of e-bill images)
+        # 
         # This parameter is required.
         self.doc_type = doc_type
+        # Whether to enable tampering detection
+        # - true: Enable
+        # - false: Disable
+        # 
         # This parameter is required.
         self.fraud_check = fraud_check
+        # Extraction type:
+        # - 0101: E-bill Address & Name Module (extracts address and name modules through intelligent analysis)
+        # 
         # This parameter is required.
         self.ocr_area = ocr_area
+        # The product solution to be integrated. Value: CREDENTIAL_RECOGNITION.
+        # 
         # This parameter is required.
         self.product_code = product_code
 
@@ -1775,8 +1789,13 @@ class CredentialRecognitionIntlResponseBodyResult(TeaModel):
         sub_code: str = None,
         success: str = None,
     ):
+        # Identified key information in JSON format.
         self.ext_id_info = ext_id_info
+        # Authentication result description
         self.sub_code = sub_code
+        # Extraction result. Values:
+        # - S: Success.
+        # - F: Failure.
         self.success = success
 
     def validate(self):
@@ -1815,9 +1834,13 @@ class CredentialRecognitionIntlResponseBody(TeaModel):
         request_id: str = None,
         result: CredentialRecognitionIntlResponseBodyResult = None,
     ):
+        # Return code.
         self.code = code
+        # Response message for the returned information.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result.
         self.result = result
 
     def validate(self):
@@ -4101,9 +4124,17 @@ class FraudResultCallBackRequest(TeaModel):
         result_code: str = None,
         verify_deploy_env: str = None,
     ):
+        # Unique identifier for real-person authentication, corresponding to Ant\\"s verifyId.
         self.certify_id = certify_id
+        # Extended parameters, in JSON string format.
         self.ext_params = ext_params
+        # Whether the anti-fraud check passed
+        # - PASS (Passed)
+        # - REJECT (Rejected)
         self.result_code = result_code
+        # Environment routing parameter
+        # - staging (Staging environment)
+        # - production (Production environment)
         self.verify_deploy_env = verify_deploy_env
 
     def validate(self):
@@ -4146,9 +4177,15 @@ class FraudResultCallBackResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the call was successful.
+        # - **true**: Call succeeded.
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):
