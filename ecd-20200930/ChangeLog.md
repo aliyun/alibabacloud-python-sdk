@@ -1,3 +1,11 @@
+2025-09-22 Version: 4.12.10
+- Update API CreateAutoSnapshotPolicy: add request parameters DiskType.
+- Update API CreateDesktops: add request parameters ChannelCookie.
+- Update API CreateNetworkPackage: add request parameters ChannelCookie.
+- Update API DescribeAutoSnapshotPolicy: add response parameters Body.AutoSnapshotPolicies.$.DiskType.
+- Update API ModifyAutoSnapshotPolicy: add request parameters DiskType.
+
+
 2025-09-15 Version: 4.12.9
 - Update API CreateCenterPolicy: add request parameters AutoReconnect.
 - Update API CreateCenterPolicy: add request parameters ClipboardGraineds.

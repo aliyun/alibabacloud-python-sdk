@@ -3679,6 +3679,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
             query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
         if not UtilClient.is_unset(request.region_id):
@@ -3722,6 +3724,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
             query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
         if not UtilClient.is_unset(request.region_id):
@@ -5939,6 +5943,8 @@ class Client(OpenApiClient):
             query['BundleId'] = request.bundle_id
         if not UtilClient.is_unset(request.bundle_models):
             query['BundleModels'] = request.bundle_models
+        if not UtilClient.is_unset(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.desktop_attachment_shrink):
@@ -6058,6 +6064,8 @@ class Client(OpenApiClient):
             query['BundleId'] = request.bundle_id
         if not UtilClient.is_unset(request.bundle_models):
             query['BundleModels'] = request.bundle_models
+        if not UtilClient.is_unset(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.desktop_attachment_shrink):
@@ -7061,6 +7069,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.office_site_id):
@@ -7116,6 +7126,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.office_site_id):
@@ -23615,6 +23627,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
             query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.policy_id):
             query['PolicyId'] = request.policy_id
         if not UtilClient.is_unset(request.policy_name):
@@ -23658,6 +23672,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
             query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.policy_id):
             query['PolicyId'] = request.policy_id
         if not UtilClient.is_unset(request.policy_name):

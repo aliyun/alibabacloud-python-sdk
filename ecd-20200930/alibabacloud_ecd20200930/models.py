@@ -5465,6 +5465,7 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
     def __init__(
         self,
         cron_expression: str = None,
+        disk_type: str = None,
         policy_name: str = None,
         region_id: str = None,
         retention_days: int = None,
@@ -5473,6 +5474,7 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.cron_expression = cron_expression
+        self.disk_type = disk_type
         # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
         # 
         # This parameter is required.
@@ -5497,6 +5499,8 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         result = dict()
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
         if self.region_id is not None:
@@ -5509,6 +5513,8 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         m = m or dict()
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
         if m.get('RegionId') is not None:
@@ -11021,6 +11027,7 @@ class CreateDesktopsRequest(TeaModel):
         auto_renew: bool = None,
         bundle_id: str = None,
         bundle_models: List[CreateDesktopsRequestBundleModels] = None,
+        channel_cookie: str = None,
         charge_type: str = None,
         desktop_attachment: CreateDesktopsRequestDesktopAttachment = None,
         desktop_member_ip: str = None,
@@ -11064,6 +11071,7 @@ class CreateDesktopsRequest(TeaModel):
         self.bundle_id = bundle_id
         # The cloud computer templates.
         self.bundle_models = bundle_models
+        self.channel_cookie = channel_cookie
         # The billing method of the cloud computers.
         # 
         # Default value: PostPaid. Valid values:
@@ -11256,6 +11264,8 @@ class CreateDesktopsRequest(TeaModel):
         if self.bundle_models is not None:
             for k in self.bundle_models:
                 result['BundleModels'].append(k.to_map() if k else None)
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.desktop_attachment is not None:
@@ -11343,6 +11353,8 @@ class CreateDesktopsRequest(TeaModel):
             for k in m.get('BundleModels'):
                 temp_model = CreateDesktopsRequestBundleModels()
                 self.bundle_models.append(temp_model.from_map(k))
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('DesktopAttachment') is not None:
@@ -11802,6 +11814,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         auto_renew: bool = None,
         bundle_id: str = None,
         bundle_models: List[CreateDesktopsShrinkRequestBundleModels] = None,
+        channel_cookie: str = None,
         charge_type: str = None,
         desktop_attachment_shrink: str = None,
         desktop_member_ip: str = None,
@@ -11845,6 +11858,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         self.bundle_id = bundle_id
         # The cloud computer templates.
         self.bundle_models = bundle_models
+        self.channel_cookie = channel_cookie
         # The billing method of the cloud computers.
         # 
         # Default value: PostPaid. Valid values:
@@ -12035,6 +12049,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
         if self.bundle_models is not None:
             for k in self.bundle_models:
                 result['BundleModels'].append(k.to_map() if k else None)
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.desktop_attachment_shrink is not None:
@@ -12122,6 +12138,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             for k in m.get('BundleModels'):
                 temp_model = CreateDesktopsShrinkRequestBundleModels()
                 self.bundle_models.append(temp_model.from_map(k))
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('DesktopAttachment') is not None:
@@ -13509,6 +13527,7 @@ class CreateNetworkPackageRequest(TeaModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         bandwidth: int = None,
+        channel_cookie: str = None,
         internet_charge_type: str = None,
         office_site_id: str = None,
         pay_type: str = None,
@@ -13570,6 +13589,7 @@ class CreateNetworkPackageRequest(TeaModel):
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
+        self.channel_cookie = channel_cookie
         # The charge type of the premium bandwidth plan.
         # 
         # *   Valid value when the `PayType` parameter is set to `PrePaid`:
@@ -13649,6 +13669,8 @@ class CreateNetworkPackageRequest(TeaModel):
             result['AutoRenew'] = self.auto_renew
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
         if self.office_site_id is not None:
@@ -13675,6 +13697,8 @@ class CreateNetworkPackageRequest(TeaModel):
             self.auto_renew = m.get('AutoRenew')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
         if m.get('OfficeSiteId') is not None:
@@ -20225,6 +20249,7 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(TeaModel):
         creation_time: str = None,
         cron_expression: str = None,
         desktop_num: int = None,
+        disk_type: str = None,
         policy_id: str = None,
         policy_name: str = None,
         region_id: str = None,
@@ -20238,6 +20263,7 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(TeaModel):
         self.cron_expression = cron_expression
         # The number of cloud computers to which the automatic snapshot policy is applied.
         self.desktop_num = desktop_num
+        self.disk_type = disk_type
         # The ID of the automatic snapshot policy.
         self.policy_id = policy_id
         # The name of the automatic snapshot policy.
@@ -20286,6 +20312,8 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(TeaModel):
             result['CronExpression'] = self.cron_expression
         if self.desktop_num is not None:
             result['DesktopNum'] = self.desktop_num
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
         if self.policy_name is not None:
@@ -20308,6 +20336,8 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(TeaModel):
             self.cron_expression = m.get('CronExpression')
         if m.get('DesktopNum') is not None:
             self.desktop_num = m.get('DesktopNum')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
         if m.get('PolicyName') is not None:
@@ -53827,6 +53857,7 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
     def __init__(
         self,
         cron_expression: str = None,
+        disk_type: str = None,
         policy_id: str = None,
         policy_name: str = None,
         region_id: str = None,
@@ -53834,6 +53865,7 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
     ):
         # The CRON expression.
         self.cron_expression = cron_expression
+        self.disk_type = disk_type
         # The ID of the automatic snapshot policy.
         # 
         # This parameter is required.
@@ -53858,6 +53890,8 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         result = dict()
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
         if self.policy_name is not None:
@@ -53872,6 +53906,8 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         m = m or dict()
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
         if m.get('PolicyName') is not None:
