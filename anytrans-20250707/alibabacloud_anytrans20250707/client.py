@@ -1161,6 +1161,258 @@ class Client(OpenApiClient):
         headers = {}
         return await self.submit_long_text_translate_task_with_options_async(request, headers, runtime)
 
+    def term_edit_with_options(
+        self,
+        tmp_req: any_trans_20250707_models.TermEditRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.TermEditResponse:
+        """
+        @summary 通义多模态翻译术语编辑
+        
+        @param tmp_req: TermEditRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TermEditResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = any_trans_20250707_models.TermEditShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'ext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TermEdit',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/intervene/edit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.TermEditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def term_edit_with_options_async(
+        self,
+        tmp_req: any_trans_20250707_models.TermEditRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.TermEditResponse:
+        """
+        @summary 通义多模态翻译术语编辑
+        
+        @param tmp_req: TermEditRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TermEditResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = any_trans_20250707_models.TermEditShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'ext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TermEdit',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/intervene/edit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.TermEditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def term_edit(
+        self,
+        request: any_trans_20250707_models.TermEditRequest,
+    ) -> any_trans_20250707_models.TermEditResponse:
+        """
+        @summary 通义多模态翻译术语编辑
+        
+        @param request: TermEditRequest
+        @return: TermEditResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.term_edit_with_options(request, headers, runtime)
+
+    async def term_edit_async(
+        self,
+        request: any_trans_20250707_models.TermEditRequest,
+    ) -> any_trans_20250707_models.TermEditResponse:
+        """
+        @summary 通义多模态翻译术语编辑
+        
+        @param request: TermEditRequest
+        @return: TermEditResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.term_edit_with_options_async(request, headers, runtime)
+
+    def term_query_with_options(
+        self,
+        request: any_trans_20250707_models.TermQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.TermQueryResponse:
+        """
+        @summary 通义多模态翻译术语查询
+        
+        @param request: TermQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TermQueryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.text):
+            body['text'] = request.text
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TermQuery',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/intervene/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.TermQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def term_query_with_options_async(
+        self,
+        request: any_trans_20250707_models.TermQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.TermQueryResponse:
+        """
+        @summary 通义多模态翻译术语查询
+        
+        @param request: TermQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TermQueryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.text):
+            body['text'] = request.text
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TermQuery',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/intervene/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.TermQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def term_query(
+        self,
+        request: any_trans_20250707_models.TermQueryRequest,
+    ) -> any_trans_20250707_models.TermQueryResponse:
+        """
+        @summary 通义多模态翻译术语查询
+        
+        @param request: TermQueryRequest
+        @return: TermQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.term_query_with_options(request, headers, runtime)
+
+    async def term_query_async(
+        self,
+        request: any_trans_20250707_models.TermQueryRequest,
+    ) -> any_trans_20250707_models.TermQueryResponse:
+        """
+        @summary 通义多模态翻译术语查询
+        
+        @param request: TermQueryRequest
+        @return: TermQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.term_query_with_options_async(request, headers, runtime)
+
     def text_translate_with_options(
         self,
         tmp_req: any_trans_20250707_models.TextTranslateRequest,

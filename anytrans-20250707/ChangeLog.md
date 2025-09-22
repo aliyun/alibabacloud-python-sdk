@@ -1,3 +1,8 @@
+2025-09-22 Version: 1.2.0
+- Support API TermEdit.
+- Support API TermQuery.
+
+
 2025-09-22 Version: 1.1.5
 - Generated python 2025-07-07 for AnyTrans.
 
