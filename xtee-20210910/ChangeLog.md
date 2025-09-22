@@ -1,3 +1,6 @@
+2025-09-22 Version: 2.1.1
+- Generated python 2021-09-10 for xtee.
+
 2025-09-19 Version: 2.1.0
 - Support API DescribeOperationLogMonitoring.
 - Support API DescribeVersionPageList.
