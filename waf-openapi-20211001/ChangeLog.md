@@ -1,3 +1,10 @@
+2025-09-22 Version: 6.5.2
+- Update API DescribeTemplateResourceCount: add response parameters Body.ResourceCount.$.AssetCount.
+- Update API DescribeTemplateResources: add request parameters AssetApi.
+- Update API ModifyTemplateResources: add request parameters BindAssets.
+- Update API ModifyTemplateResources: add request parameters UnbindAssets.
+
+
 2025-09-18 Version: 6.5.1
 - Generated python 2021-10-01 for waf-openapi.
 

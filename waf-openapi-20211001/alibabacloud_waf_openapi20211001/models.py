@@ -34634,10 +34634,12 @@ class DescribeTemplateResourceCountRequest(TeaModel):
 class DescribeTemplateResourceCountResponseBodyResourceCount(TeaModel):
     def __init__(
         self,
+        asset_count: int = None,
         group_count: int = None,
         single_count: int = None,
         template_id: int = None,
     ):
+        self.asset_count = asset_count
         # The number of protected object groups.
         self.group_count = group_count
         # The number of protected objects.
@@ -34654,6 +34656,8 @@ class DescribeTemplateResourceCountResponseBodyResourceCount(TeaModel):
             return _map
 
         result = dict()
+        if self.asset_count is not None:
+            result['AssetCount'] = self.asset_count
         if self.group_count is not None:
             result['GroupCount'] = self.group_count
         if self.single_count is not None:
@@ -34664,6 +34668,8 @@ class DescribeTemplateResourceCountResponseBodyResourceCount(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssetCount') is not None:
+            self.asset_count = m.get('AssetCount')
         if m.get('GroupCount') is not None:
             self.group_count = m.get('GroupCount')
         if m.get('SingleCount') is not None:
@@ -34760,6 +34766,7 @@ class DescribeTemplateResourceCountResponse(TeaModel):
 class DescribeTemplateResourcesRequest(TeaModel):
     def __init__(
         self,
+        asset_api: str = None,
         instance_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -34769,6 +34776,7 @@ class DescribeTemplateResourcesRequest(TeaModel):
         resource_type: str = None,
         template_id: int = None,
     ):
+        self.asset_api = asset_api
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -34806,6 +34814,8 @@ class DescribeTemplateResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.asset_api is not None:
+            result['AssetApi'] = self.asset_api
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.max_results is not None:
@@ -34826,6 +34836,8 @@ class DescribeTemplateResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssetApi') is not None:
+            self.asset_api = m.get('AssetApi')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MaxResults') is not None:
@@ -43504,15 +43516,18 @@ class ModifyResourceLogStatusResponse(TeaModel):
 class ModifyTemplateResourcesRequest(TeaModel):
     def __init__(
         self,
+        bind_assets: List[str] = None,
         bind_resource_groups: List[str] = None,
         bind_resources: List[str] = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
         template_id: int = None,
+        unbind_assets: List[str] = None,
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
+        self.bind_assets = bind_assets
         # The protected object groups that you want to associate with the template. Specify the value in the [**"group1","group2",...**] format.
         self.bind_resource_groups = bind_resource_groups
         # The protected objects that you want to associate with the template. Specify the value in the [**"XX1","XX2",...**] format.
@@ -43534,6 +43549,7 @@ class ModifyTemplateResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_id = template_id
+        self.unbind_assets = unbind_assets
         # The protected object groups that you want to disassociate from the template. Specify the value in the [**"group1","group2",...**] format.
         self.unbind_resource_groups = unbind_resource_groups
         # The protected objects that you want to disassociate from the template. Specify the value in the [**"XX1","XX2",...**] format.
@@ -43548,6 +43564,8 @@ class ModifyTemplateResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bind_assets is not None:
+            result['BindAssets'] = self.bind_assets
         if self.bind_resource_groups is not None:
             result['BindResourceGroups'] = self.bind_resource_groups
         if self.bind_resources is not None:
@@ -43560,6 +43578,8 @@ class ModifyTemplateResourcesRequest(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.unbind_assets is not None:
+            result['UnbindAssets'] = self.unbind_assets
         if self.unbind_resource_groups is not None:
             result['UnbindResourceGroups'] = self.unbind_resource_groups
         if self.unbind_resources is not None:
@@ -43568,6 +43588,8 @@ class ModifyTemplateResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindAssets') is not None:
+            self.bind_assets = m.get('BindAssets')
         if m.get('BindResourceGroups') is not None:
             self.bind_resource_groups = m.get('BindResourceGroups')
         if m.get('BindResources') is not None:
@@ -43580,6 +43602,8 @@ class ModifyTemplateResourcesRequest(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('UnbindAssets') is not None:
+            self.unbind_assets = m.get('UnbindAssets')
         if m.get('UnbindResourceGroups') is not None:
             self.unbind_resource_groups = m.get('UnbindResourceGroups')
         if m.get('UnbindResources') is not None:

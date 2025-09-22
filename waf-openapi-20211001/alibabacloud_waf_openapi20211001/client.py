@@ -16989,6 +16989,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.asset_api):
+            query['AssetApi'] = request.asset_api
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.max_results):
@@ -17038,6 +17040,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.asset_api):
+            query['AssetApi'] = request.asset_api
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.max_results):
@@ -22505,6 +22509,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bind_assets):
+            query['BindAssets'] = request.bind_assets
         if not UtilClient.is_unset(request.bind_resource_groups):
             query['BindResourceGroups'] = request.bind_resource_groups
         if not UtilClient.is_unset(request.bind_resources):
@@ -22517,6 +22523,8 @@ class Client(OpenApiClient):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.unbind_assets):
+            query['UnbindAssets'] = request.unbind_assets
         if not UtilClient.is_unset(request.unbind_resource_groups):
             query['UnbindResourceGroups'] = request.unbind_resource_groups
         if not UtilClient.is_unset(request.unbind_resources):
@@ -22554,6 +22562,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bind_assets):
+            query['BindAssets'] = request.bind_assets
         if not UtilClient.is_unset(request.bind_resource_groups):
             query['BindResourceGroups'] = request.bind_resource_groups
         if not UtilClient.is_unset(request.bind_resources):
@@ -22566,6 +22576,8 @@ class Client(OpenApiClient):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.unbind_assets):
+            query['UnbindAssets'] = request.unbind_assets
         if not UtilClient.is_unset(request.unbind_resource_groups):
             query['UnbindResourceGroups'] = request.unbind_resource_groups
         if not UtilClient.is_unset(request.unbind_resources):
