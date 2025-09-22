@@ -3054,6 +3054,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         includes: str = None,
         src_task_id: str = None,
         task_action: str = None,
+        transfer_file_list_path: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
@@ -3167,6 +3168,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         # 
         # >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
         self.task_action = task_action
+        self.transfer_file_list_path = transfer_file_list_path
 
     def validate(self):
         pass
@@ -3203,6 +3205,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             result['SrcTaskId'] = self.src_task_id
         if self.task_action is not None:
             result['TaskAction'] = self.task_action
+        if self.transfer_file_list_path is not None:
+            result['TransferFileListPath'] = self.transfer_file_list_path
         return result
 
     def from_map(self, m: dict = None):
@@ -3233,6 +3237,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             self.src_task_id = m.get('SrcTaskId')
         if m.get('TaskAction') is not None:
             self.task_action = m.get('TaskAction')
+        if m.get('TransferFileListPath') is not None:
+            self.transfer_file_list_path = m.get('TransferFileListPath')
         return self
 
 
@@ -10218,6 +10224,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         status: str = None,
         task_action: str = None,
         task_id: str = None,
+        transfer_file_list_path: str = None,
     ):
         # The conflict policy for files with the same name. Valid values:
         # 
@@ -10328,6 +10335,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.task_action = task_action
         # The ID of the data flow task.
         self.task_id = task_id
+        self.transfer_file_list_path = transfer_file_list_path
 
     def validate(self):
         if self.progress_stats:
@@ -10385,6 +10393,8 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             result['TaskAction'] = self.task_action
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.transfer_file_list_path is not None:
+            result['TransferFileListPath'] = self.transfer_file_list_path
         return result
 
     def from_map(self, m: dict = None):
@@ -10435,6 +10445,8 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             self.task_action = m.get('TaskAction')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TransferFileListPath') is not None:
+            self.transfer_file_list_path = m.get('TransferFileListPath')
         return self
 
 

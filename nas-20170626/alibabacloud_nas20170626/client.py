@@ -2662,6 +2662,8 @@ class Client(OpenApiClient):
             query['SrcTaskId'] = request.src_task_id
         if not UtilClient.is_unset(request.task_action):
             query['TaskAction'] = request.task_action
+        if not UtilClient.is_unset(request.transfer_file_list_path):
+            query['TransferFileListPath'] = request.transfer_file_list_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2728,6 +2730,8 @@ class Client(OpenApiClient):
             query['SrcTaskId'] = request.src_task_id
         if not UtilClient.is_unset(request.task_action):
             query['TaskAction'] = request.task_action
+        if not UtilClient.is_unset(request.transfer_file_list_path):
+            query['TransferFileListPath'] = request.transfer_file_list_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

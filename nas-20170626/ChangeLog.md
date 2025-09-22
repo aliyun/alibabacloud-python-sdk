@@ -1,3 +1,8 @@
+2025-09-22 Version: 3.1.2
+- Update API CreateDataFlowTask: add request parameters TransferFileListPath.
+- Update API DescribeDataFlowTasks: add response parameters Body.TaskInfo.$.TransferFileListPath.
+
+
 2025-09-16 Version: 3.1.1
 - Generated python 2017-06-26 for NAS.
 
