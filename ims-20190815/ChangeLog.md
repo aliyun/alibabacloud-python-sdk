@@ -1,3 +1,14 @@
+2025-09-22 Version: 3.3.3
+- Update API CreateSAMLProvider: add request parameters AuthnSignAlgo.
+- Update API CreateSAMLProvider: add response parameters Body.SAMLProvider.AuthnSignAlgo.
+- Update API GetSAMLProvider: add response parameters Body.SAMLProvider.AuthnSignAlgo.
+- Update API GetUserSsoSettings: add response parameters Body.UserSsoSettings.AuthnSignAlgo.
+- Update API SetUserSsoSettings: add request parameters AuthnSignAlgo.
+- Update API SetUserSsoSettings: add response parameters Body.UserSsoSettings.AuthnSignAlgo.
+- Update API UpdateSAMLProvider: add request parameters AuthnSignAlgo.
+- Update API UpdateSAMLProvider: add response parameters Body.SAMLProvider.AuthnSignAlgo.
+
+
 2025-08-21 Version: 3.3.2
 - Update API CreateApplication: add request parameters ProtocolVersion.
 - Update API CreateApplication: add response parameters Body.Application.ProtocolVersion.

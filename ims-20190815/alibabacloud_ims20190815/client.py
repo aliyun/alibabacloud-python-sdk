@@ -1279,6 +1279,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authn_sign_algo):
+            query['AuthnSignAlgo'] = request.authn_sign_algo
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.encoded_samlmetadata_document):
@@ -1318,6 +1320,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authn_sign_algo):
+            query['AuthnSignAlgo'] = request.authn_sign_algo
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.encoded_samlmetadata_document):
@@ -8445,6 +8449,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authn_sign_algo):
+            query['AuthnSignAlgo'] = request.authn_sign_algo
         if not UtilClient.is_unset(request.auxiliary_domain):
             query['AuxiliaryDomain'] = request.auxiliary_domain
         if not UtilClient.is_unset(request.metadata_document):
@@ -8486,6 +8492,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authn_sign_algo):
+            query['AuthnSignAlgo'] = request.authn_sign_algo
         if not UtilClient.is_unset(request.auxiliary_domain):
             query['AuxiliaryDomain'] = request.auxiliary_domain
         if not UtilClient.is_unset(request.metadata_document):
@@ -9763,6 +9771,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authn_sign_algo):
+            query['AuthnSignAlgo'] = request.authn_sign_algo
         if not UtilClient.is_unset(request.new_description):
             query['NewDescription'] = request.new_description
         if not UtilClient.is_unset(request.new_encoded_samlmetadata_document):
@@ -9804,6 +9814,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authn_sign_algo):
+            query['AuthnSignAlgo'] = request.authn_sign_algo
         if not UtilClient.is_unset(request.new_description):
             query['NewDescription'] = request.new_description
         if not UtilClient.is_unset(request.new_encoded_samlmetadata_document):

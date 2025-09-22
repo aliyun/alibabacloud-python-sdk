@@ -2226,10 +2226,12 @@ class CreateOIDCProviderResponse(TeaModel):
 class CreateSAMLProviderRequest(TeaModel):
     def __init__(
         self,
+        authn_sign_algo: str = None,
         description: str = None,
         encoded_samlmetadata_document: str = None,
         samlprovider_name: str = None,
     ):
+        self.authn_sign_algo = authn_sign_algo
         # The description.
         self.description = description
         # The metadata file which is Base64-encoded.
@@ -2252,6 +2254,8 @@ class CreateSAMLProviderRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.description is not None:
             result['Description'] = self.description
         if self.encoded_samlmetadata_document is not None:
@@ -2262,6 +2266,8 @@ class CreateSAMLProviderRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('EncodedSAMLMetadataDocument') is not None:
@@ -2275,6 +2281,7 @@ class CreateSAMLProviderResponseBodySAMLProvider(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        authn_sign_algo: str = None,
         create_date: str = None,
         description: str = None,
         samlprovider_name: str = None,
@@ -2282,6 +2289,7 @@ class CreateSAMLProviderResponseBodySAMLProvider(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the IdP.
         self.arn = arn
+        self.authn_sign_algo = authn_sign_algo
         # The creation time. The time is displayed in UTC.
         self.create_date = create_date
         # The description.
@@ -2302,6 +2310,8 @@ class CreateSAMLProviderResponseBodySAMLProvider(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
         if self.description is not None:
@@ -2316,6 +2326,8 @@ class CreateSAMLProviderResponseBodySAMLProvider(TeaModel):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
@@ -8023,6 +8035,7 @@ class GetSAMLProviderResponseBodySAMLProvider(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        authn_sign_algo: str = None,
         create_date: str = None,
         description: str = None,
         encoded_samlmetadata_document: str = None,
@@ -8031,6 +8044,7 @@ class GetSAMLProviderResponseBodySAMLProvider(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the IdP.
         self.arn = arn
+        self.authn_sign_algo = authn_sign_algo
         # The creation time.
         self.create_date = create_date
         # The description.
@@ -8053,6 +8067,8 @@ class GetSAMLProviderResponseBodySAMLProvider(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
         if self.description is not None:
@@ -8069,6 +8085,8 @@ class GetSAMLProviderResponseBodySAMLProvider(TeaModel):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
@@ -9215,11 +9233,13 @@ class GetUserMFAInfoResponse(TeaModel):
 class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
     def __init__(
         self,
+        authn_sign_algo: str = None,
         auxiliary_domain: str = None,
         metadata_document: str = None,
         sso_enabled: bool = None,
         sso_login_with_domain: bool = None,
     ):
+        self.authn_sign_algo = authn_sign_algo
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
         # The metadata file, which is Base64-encoded.
@@ -9243,6 +9263,8 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
             return _map
 
         result = dict()
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.auxiliary_domain is not None:
             result['AuxiliaryDomain'] = self.auxiliary_domain
         if self.metadata_document is not None:
@@ -9255,6 +9277,8 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('AuxiliaryDomain') is not None:
             self.auxiliary_domain = m.get('AuxiliaryDomain')
         if m.get('MetadataDocument') is not None:
@@ -16651,11 +16675,13 @@ class SetSecurityPreferenceResponse(TeaModel):
 class SetUserSsoSettingsRequest(TeaModel):
     def __init__(
         self,
+        authn_sign_algo: str = None,
         auxiliary_domain: str = None,
         metadata_document: str = None,
         sso_enabled: bool = None,
         sso_login_with_domain: bool = None,
     ):
+        self.authn_sign_algo = authn_sign_algo
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
         # The metadata file, which is Base64-encoded.
@@ -16684,6 +16710,8 @@ class SetUserSsoSettingsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.auxiliary_domain is not None:
             result['AuxiliaryDomain'] = self.auxiliary_domain
         if self.metadata_document is not None:
@@ -16696,6 +16724,8 @@ class SetUserSsoSettingsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('AuxiliaryDomain') is not None:
             self.auxiliary_domain = m.get('AuxiliaryDomain')
         if m.get('MetadataDocument') is not None:
@@ -16710,11 +16740,13 @@ class SetUserSsoSettingsRequest(TeaModel):
 class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
     def __init__(
         self,
+        authn_sign_algo: str = None,
         auxiliary_domain: str = None,
         metadata_document: str = None,
         sso_enabled: bool = None,
         sso_login_with_domain: bool = None,
     ):
+        self.authn_sign_algo = authn_sign_algo
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
         # The metadata file, which is Base64-encoded.
@@ -16738,6 +16770,8 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
             return _map
 
         result = dict()
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.auxiliary_domain is not None:
             result['AuxiliaryDomain'] = self.auxiliary_domain
         if self.metadata_document is not None:
@@ -16750,6 +16784,8 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('AuxiliaryDomain') is not None:
             self.auxiliary_domain = m.get('AuxiliaryDomain')
         if m.get('MetadataDocument') is not None:
@@ -18876,10 +18912,12 @@ class UpdatePasskeyResponse(TeaModel):
 class UpdateSAMLProviderRequest(TeaModel):
     def __init__(
         self,
+        authn_sign_algo: str = None,
         new_description: str = None,
         new_encoded_samlmetadata_document: str = None,
         samlprovider_name: str = None,
     ):
+        self.authn_sign_algo = authn_sign_algo
         # The new description.
         # 
         # >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
@@ -18902,6 +18940,8 @@ class UpdateSAMLProviderRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.new_description is not None:
             result['NewDescription'] = self.new_description
         if self.new_encoded_samlmetadata_document is not None:
@@ -18912,6 +18952,8 @@ class UpdateSAMLProviderRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('NewDescription') is not None:
             self.new_description = m.get('NewDescription')
         if m.get('NewEncodedSAMLMetadataDocument') is not None:
@@ -18925,6 +18967,7 @@ class UpdateSAMLProviderResponseBodySAMLProvider(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        authn_sign_algo: str = None,
         create_date: str = None,
         description: str = None,
         samlprovider_name: str = None,
@@ -18932,6 +18975,7 @@ class UpdateSAMLProviderResponseBodySAMLProvider(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the IdP.
         self.arn = arn
+        self.authn_sign_algo = authn_sign_algo
         # The point in time at which the IdP was created. The time is displayed in UTC.
         self.create_date = create_date
         # The description of the IdP.
@@ -18952,6 +18996,8 @@ class UpdateSAMLProviderResponseBodySAMLProvider(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.authn_sign_algo is not None:
+            result['AuthnSignAlgo'] = self.authn_sign_algo
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
         if self.description is not None:
@@ -18966,6 +19012,8 @@ class UpdateSAMLProviderResponseBodySAMLProvider(TeaModel):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('AuthnSignAlgo') is not None:
+            self.authn_sign_algo = m.get('AuthnSignAlgo')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
