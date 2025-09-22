@@ -2,6 +2,10 @@
 - Support API GetDashboard.
 
 
+2025-09-22 Version: 1.6.0
+- Support API GetDashboard.
+
+
 2025-09-15 Version: 1.5.7
 - Update API GetJob: add response parameters Body.RestartRecord.
 
