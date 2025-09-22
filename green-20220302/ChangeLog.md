@@ -1,3 +1,10 @@
+2025-09-22 Version: 3.0.0
+- Update API ImageQueueModeration: add response parameters Body.Data.Frame.
+- Update API ImageQueueModeration: add response parameters Body.Data.FrameNum.
+- Update API ImageQueueModeration: delete response parameters Body.Data.Ext.
+- Update API ImageQueueModeration: delete response parameters Body.Data.ManualTaskId.
+
+
 2025-09-22 Version: 2.23.0
 - Support API ImageQueueModeration.
 
