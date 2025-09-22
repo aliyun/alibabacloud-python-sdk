@@ -1088,17 +1088,21 @@ class CreateClusterRequestNodeGroupsHyperNodes(TeaModel):
 class CreateClusterRequestNodeGroupsNodesDataDisk(TeaModel):
     def __init__(
         self,
+        bursting_enabled: bool = None,
         category: str = None,
         delete_with_node: bool = None,
         performance_level: str = None,
+        provisioned_iops: int = None,
         size: int = None,
     ):
+        self.bursting_enabled = bursting_enabled
         # Type
         self.category = category
         # Whether the data disk is deleted with the node when it is unsubscribed
         self.delete_with_node = delete_with_node
         # Data disk performance level
         self.performance_level = performance_level
+        self.provisioned_iops = provisioned_iops
         # Disk size
         self.size = size
 
@@ -1111,24 +1115,32 @@ class CreateClusterRequestNodeGroupsNodesDataDisk(TeaModel):
             return _map
 
         result = dict()
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
         if self.delete_with_node is not None:
             result['DeleteWithNode'] = self.delete_with_node
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
         if self.size is not None:
             result['Size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeleteWithNode') is not None:
             self.delete_with_node = m.get('DeleteWithNode')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -7650,17 +7662,21 @@ class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
 class ExtendClusterRequestNodeGroupsNodesDataDisk(TeaModel):
     def __init__(
         self,
+        bursting_enabled: bool = None,
         category: str = None,
         delete_with_node: bool = None,
         performance_level: str = None,
+        provisioned_iops: int = None,
         size: int = None,
     ):
+        self.bursting_enabled = bursting_enabled
         # Type
         self.category = category
         # Whether the data disk is deleted with the node
         self.delete_with_node = delete_with_node
         # Data Disk Performance Level
         self.performance_level = performance_level
+        self.provisioned_iops = provisioned_iops
         # Disk Size
         self.size = size
 
@@ -7673,24 +7689,32 @@ class ExtendClusterRequestNodeGroupsNodesDataDisk(TeaModel):
             return _map
 
         result = dict()
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
         if self.delete_with_node is not None:
             result['DeleteWithNode'] = self.delete_with_node
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
         if self.size is not None:
             result['Size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeleteWithNode') is not None:
             self.delete_with_node = m.get('DeleteWithNode')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self

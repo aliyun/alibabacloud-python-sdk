@@ -1,3 +1,10 @@
+2025-09-22 Version: 2.7.6
+- Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.BurstingEnabled.
+- Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.ProvisionedIops.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.BurstingEnabled.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.ProvisionedIops.
+
+
 2025-09-15 Version: 2.7.5
 - Update API DescribeNode: add response parameters Body.HyperNodeId.
 - Update API ListFreeNodes: add response parameters Body.Nodes.$.HyperNodeId.
