@@ -656,6 +656,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
 
+    def get_dashboard_with_options(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetDashboardResponse:
+        """
+        @summary 获取 Dashboard 链接
+        
+        @param request: GetDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDashboardResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_shared):
+            query['isShared'] = request.is_shared
+        if not UtilClient.is_unset(request.token):
+            query['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDashboard',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/dashboard',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetDashboardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dashboard_with_options_async(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetDashboardResponse:
+        """
+        @summary 获取 Dashboard 链接
+        
+        @param request: GetDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDashboardResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_shared):
+            query['isShared'] = request.is_shared
+        if not UtilClient.is_unset(request.token):
+            query['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDashboard',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/dashboard',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dashboard(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetDashboardRequest,
+    ) -> pai_dlc_20201203_models.GetDashboardResponse:
+        """
+        @summary 获取 Dashboard 链接
+        
+        @param request: GetDashboardRequest
+        @return: GetDashboardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dashboard_with_options(job_id, request, headers, runtime)
+
+    async def get_dashboard_async(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetDashboardRequest,
+    ) -> pai_dlc_20201203_models.GetDashboardResponse:
+        """
+        @summary 获取 Dashboard 链接
+        
+        @param request: GetDashboardRequest
+        @return: GetDashboardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dashboard_with_options_async(job_id, request, headers, runtime)
+
     def get_job_with_options(
         self,
         job_id: str,
