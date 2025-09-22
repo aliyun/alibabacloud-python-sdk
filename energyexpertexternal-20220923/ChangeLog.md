@@ -1,3 +1,9 @@
+2025-09-22 Version: 4.2.0
+- Support API AddFolder.
+- Support API DeleteDocument.
+- Support API DeleteFolder.
+
+
 2025-07-10 Version: 4.1.0
 - Support API ChatStream.
 

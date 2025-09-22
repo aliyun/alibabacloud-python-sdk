@@ -122,6 +122,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_folder_with_options(
+        self,
+        request: energy_expert_external_20220923_models.AddFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.AddFolderResponse:
+        """
+        @summary 创建文件夹
+        
+        @param request: AddFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_name):
+            body['folderName'] = request.folder_name
+        if not UtilClient.is_unset(request.parent_folder_id):
+            body['parentFolderId'] = request.parent_folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddFolder',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/folder/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.AddFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_folder_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.AddFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.AddFolderResponse:
+        """
+        @summary 创建文件夹
+        
+        @param request: AddFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_name):
+            body['folderName'] = request.folder_name
+        if not UtilClient.is_unset(request.parent_folder_id):
+            body['parentFolderId'] = request.parent_folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddFolder',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/folder/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.AddFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_folder(
+        self,
+        request: energy_expert_external_20220923_models.AddFolderRequest,
+    ) -> energy_expert_external_20220923_models.AddFolderResponse:
+        """
+        @summary 创建文件夹
+        
+        @param request: AddFolderRequest
+        @return: AddFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_folder_with_options(request, headers, runtime)
+
+    async def add_folder_async(
+        self,
+        request: energy_expert_external_20220923_models.AddFolderRequest,
+    ) -> energy_expert_external_20220923_models.AddFolderResponse:
+        """
+        @summary 创建文件夹
+        
+        @param request: AddFolderRequest
+        @return: AddFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_folder_with_options_async(request, headers, runtime)
+
     def analyze_vl_realtime_with_options(
         self,
         request: energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest,
@@ -1037,6 +1145,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_chat_session_with_options_async(request, headers, runtime)
+
+    def delete_document_with_options(
+        self,
+        request: energy_expert_external_20220923_models.DeleteDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.DeleteDocumentResponse:
+        """
+        @summary 删除解析过的文件
+        
+        @param request: DeleteDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocument',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.DeleteDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_document_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.DeleteDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.DeleteDocumentResponse:
+        """
+        @summary 删除解析过的文件
+        
+        @param request: DeleteDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocument',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.DeleteDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_document(
+        self,
+        request: energy_expert_external_20220923_models.DeleteDocumentRequest,
+    ) -> energy_expert_external_20220923_models.DeleteDocumentResponse:
+        """
+        @summary 删除解析过的文件
+        
+        @param request: DeleteDocumentRequest
+        @return: DeleteDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_document_with_options(request, headers, runtime)
+
+    async def delete_document_async(
+        self,
+        request: energy_expert_external_20220923_models.DeleteDocumentRequest,
+    ) -> energy_expert_external_20220923_models.DeleteDocumentResponse:
+        """
+        @summary 删除解析过的文件
+        
+        @param request: DeleteDocumentRequest
+        @return: DeleteDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_document_with_options_async(request, headers, runtime)
+
+    def delete_folder_with_options(
+        self,
+        request: energy_expert_external_20220923_models.DeleteFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.DeleteFolderResponse:
+        """
+        @summary 删除文件夹
+        
+        @param request: DeleteFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFolder',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/folder/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.DeleteFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_folder_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.DeleteFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.DeleteFolderResponse:
+        """
+        @summary 删除文件夹
+        
+        @param request: DeleteFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFolder',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/folder/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.DeleteFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_folder(
+        self,
+        request: energy_expert_external_20220923_models.DeleteFolderRequest,
+    ) -> energy_expert_external_20220923_models.DeleteFolderResponse:
+        """
+        @summary 删除文件夹
+        
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_folder_with_options(request, headers, runtime)
+
+    async def delete_folder_async(
+        self,
+        request: energy_expert_external_20220923_models.DeleteFolderRequest,
+    ) -> energy_expert_external_20220923_models.DeleteFolderResponse:
+        """
+        @summary 删除文件夹
+        
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_folder_with_options_async(request, headers, runtime)
 
     def edit_prohibited_devices_with_options(
         self,

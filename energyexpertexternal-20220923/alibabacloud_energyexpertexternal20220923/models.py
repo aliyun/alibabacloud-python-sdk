@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, BinaryIO, Dict, Any
+from typing import List, Dict, BinaryIO, Any
 
 
 class CarbonEmissionElecSummaryItem(TeaModel):
@@ -941,6 +941,131 @@ class EpdInventoryConstituteItem(TeaModel):
         return self
 
 
+class FolderItem(TeaModel):
+    def __init__(
+        self,
+        current_level: int = None,
+        doc_count: int = None,
+        folder_default: int = None,
+        folder_id: str = None,
+        folder_name: str = None,
+        folder_num: int = None,
+        oss_domain: str = None,
+        oss_path: str = None,
+        oss_update_by: str = None,
+        parent_folder_id: str = None,
+        resource_path: str = None,
+        storage_type: int = None,
+        sub_folder_list: List['FolderItem'] = None,
+        sync_parsing_status: int = None,
+        sync_status: int = None,
+        task_id: int = None,
+    ):
+        self.current_level = current_level
+        self.doc_count = doc_count
+        self.folder_default = folder_default
+        self.folder_id = folder_id
+        self.folder_name = folder_name
+        self.folder_num = folder_num
+        self.oss_domain = oss_domain
+        self.oss_path = oss_path
+        self.oss_update_by = oss_update_by
+        self.parent_folder_id = parent_folder_id
+        self.resource_path = resource_path
+        self.storage_type = storage_type
+        self.sub_folder_list = sub_folder_list
+        self.sync_parsing_status = sync_parsing_status
+        self.sync_status = sync_status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.sub_folder_list:
+            for k in self.sub_folder_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_level is not None:
+            result['currentLevel'] = self.current_level
+        if self.doc_count is not None:
+            result['docCount'] = self.doc_count
+        if self.folder_default is not None:
+            result['folderDefault'] = self.folder_default
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.folder_name is not None:
+            result['folderName'] = self.folder_name
+        if self.folder_num is not None:
+            result['folderNum'] = self.folder_num
+        if self.oss_domain is not None:
+            result['ossDomain'] = self.oss_domain
+        if self.oss_path is not None:
+            result['ossPath'] = self.oss_path
+        if self.oss_update_by is not None:
+            result['ossUpdateBy'] = self.oss_update_by
+        if self.parent_folder_id is not None:
+            result['parentFolderId'] = self.parent_folder_id
+        if self.resource_path is not None:
+            result['resourcePath'] = self.resource_path
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+        result['subFolderList'] = []
+        if self.sub_folder_list is not None:
+            for k in self.sub_folder_list:
+                result['subFolderList'].append(k.to_map() if k else None)
+        if self.sync_parsing_status is not None:
+            result['syncParsingStatus'] = self.sync_parsing_status
+        if self.sync_status is not None:
+            result['syncStatus'] = self.sync_status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentLevel') is not None:
+            self.current_level = m.get('currentLevel')
+        if m.get('docCount') is not None:
+            self.doc_count = m.get('docCount')
+        if m.get('folderDefault') is not None:
+            self.folder_default = m.get('folderDefault')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('folderName') is not None:
+            self.folder_name = m.get('folderName')
+        if m.get('folderNum') is not None:
+            self.folder_num = m.get('folderNum')
+        if m.get('ossDomain') is not None:
+            self.oss_domain = m.get('ossDomain')
+        if m.get('ossPath') is not None:
+            self.oss_path = m.get('ossPath')
+        if m.get('ossUpdateBy') is not None:
+            self.oss_update_by = m.get('ossUpdateBy')
+        if m.get('parentFolderId') is not None:
+            self.parent_folder_id = m.get('parentFolderId')
+        if m.get('resourcePath') is not None:
+            self.resource_path = m.get('resourcePath')
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
+        self.sub_folder_list = []
+        if m.get('subFolderList') is not None:
+            for k in m.get('subFolderList'):
+                temp_model = FolderItem()
+                self.sub_folder_list.append(temp_model.from_map(k))
+        if m.get('syncParsingStatus') is not None:
+            self.sync_parsing_status = m.get('syncParsingStatus')
+        if m.get('syncStatus') is not None:
+            self.sync_status = m.get('syncStatus')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
 class GwpResourceConstitute(TeaModel):
     def __init__(
         self,
@@ -1206,6 +1331,117 @@ class OrgEmission(TeaModel):
             self.weighting_proportion = m.get('weightingProportion')
         if m.get('weightingRatio') is not None:
             self.weighting_ratio = m.get('weightingRatio')
+        return self
+
+
+class AddFolderRequest(TeaModel):
+    def __init__(
+        self,
+        folder_name: str = None,
+        parent_folder_id: str = None,
+    ):
+        # This parameter is required.
+        self.folder_name = folder_name
+        # This parameter is required.
+        self.parent_folder_id = parent_folder_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_name is not None:
+            result['folderName'] = self.folder_name
+        if self.parent_folder_id is not None:
+            result['parentFolderId'] = self.parent_folder_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('folderName') is not None:
+            self.folder_name = m.get('folderName')
+        if m.get('parentFolderId') is not None:
+            self.parent_folder_id = m.get('parentFolderId')
+        return self
+
+
+class AddFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: FolderItem = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = FolderItem()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class AddFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddFolderResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -2256,6 +2492,210 @@ class CreateChatSessionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateChatSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class DeleteDocumentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        # Returns true on success, false otherwise
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDocumentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFolderRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+    ):
+        self.folder_id = folder_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        return self
+
+
+class DeleteFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFolderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5293,7 +5733,7 @@ class GetDocExtractionResultResponseBodyData(TeaModel):
         self,
         kv_list_info: List[GetDocExtractionResultResponseBodyDataKvListInfo] = None,
     ):
-        # Details of document parsing results
+        # Details of document extraction results
         self.kv_list_info = kv_list_info
 
     def validate(self):
@@ -11583,7 +12023,7 @@ class SubmitDocExtractionTaskRequest(TeaModel):
         folder_id: str = None,
         template_id: str = None,
     ):
-        # Document parsing type:
+        # Document extraction type:
         # Supports rag and long text understanding types, default is rag.
         self.extract_type = extract_type
         # The filename must include the file type extension.
@@ -11596,15 +12036,15 @@ class SubmitDocExtractionTaskRequest(TeaModel):
         # 
         # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages, 100 MB in size)
         # 
-        # > The relationship between file parsing methods and supported document types
-        # > - Long text RAG: Supports pdf, doc/docx, up to 1000 pages
-        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp
-        # > - Long text understanding: Supports pdf, doc/docx, xls/xlsx
+        # > The relationship between file extraction methods and supported document types
+        # > - Long text RAG: Supports pdf, doc/docx, xlsx, csv, txt, up to 1000 pages
+        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp, jpe, tif, tiff, webp, heic
+        # > - Long text understanding: Supports doc/docx, xlsx, pdf, csv, txt
         self.file_url = file_url
         # - A unique knowledge base folder ID, used when you need to categorize documents and control the scope of documents for online Q&A queries.
         # - The folder ID needs to be obtained by logging into the intelligent document console.
         self.folder_id = folder_id
-        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+        # A unique extraction template ID used to specify the content to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
@@ -11654,7 +12094,7 @@ class SubmitDocExtractionTaskAdvanceRequest(TeaModel):
         folder_id: str = None,
         template_id: str = None,
     ):
-        # Document parsing type:
+        # Document extraction type:
         # Supports rag and long text understanding types, default is rag.
         self.extract_type = extract_type
         # The filename must include the file type extension.
@@ -11667,15 +12107,15 @@ class SubmitDocExtractionTaskAdvanceRequest(TeaModel):
         # 
         # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages, 100 MB in size)
         # 
-        # > The relationship between file parsing methods and supported document types
-        # > - Long text RAG: Supports pdf, doc/docx, up to 1000 pages
-        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp
-        # > - Long text understanding: Supports pdf, doc/docx, xls/xlsx
+        # > The relationship between file extraction methods and supported document types
+        # > - Long text RAG: Supports pdf, doc/docx, xlsx, csv, txt, up to 1000 pages
+        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp, jpe, tif, tiff, webp, heic
+        # > - Long text understanding: Supports doc/docx, xlsx, pdf, csv, txt
         self.file_url_object = file_url_object
         # - A unique knowledge base folder ID, used when you need to categorize documents and control the scope of documents for online Q&A queries.
         # - The folder ID needs to be obtained by logging into the intelligent document console.
         self.folder_id = folder_id
-        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+        # A unique extraction template ID used to specify the content to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
