@@ -1,3 +1,6 @@
+2025-09-22 Version: 1.1.4
+- Generated python 2025-07-07 for AnyTrans.
+
 2025-09-22 Version: 1.1.3
 - Generated python 2025-07-07 for AnyTrans.
 
