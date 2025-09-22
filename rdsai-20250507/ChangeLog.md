@@ -1,3 +1,13 @@
+2025-09-22 Version: 1.2.0
+- Support API DescribeInstanceStorageConfig.
+- Support API ModifyInstanceAuthConfig.
+- Support API ModifyInstanceStorageConfig.
+- Support API ResetInstancePassword.
+- Support API RestartInstance.
+- Support API StartInstance.
+- Support API StopInstance.
+
+
 2025-09-11 Version: 1.1.2
 - Update API DescribeInstanceAuthInfo: add response parameters Body.ConfigList.
 - Update API DescribeInstanceAuthInfo: add response parameters Body.InstanceName.
