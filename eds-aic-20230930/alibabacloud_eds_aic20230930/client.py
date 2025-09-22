@@ -5213,6 +5213,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.expand_data_volume_with_options_async(request, runtime)
 
+    def expand_phone_data_volume_with_options(
+        self,
+        request: eds_aic_20230930_models.ExpandPhoneDataVolumeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ExpandPhoneDataVolumeResponse:
+        """
+        @summary 扩容实例的独立机身存储
+        
+        @param request: ExpandPhoneDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExpandPhoneDataVolumeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExpandPhoneDataVolume',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ExpandPhoneDataVolumeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def expand_phone_data_volume_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ExpandPhoneDataVolumeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ExpandPhoneDataVolumeResponse:
+        """
+        @summary 扩容实例的独立机身存储
+        
+        @param request: ExpandPhoneDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExpandPhoneDataVolumeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExpandPhoneDataVolume',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ExpandPhoneDataVolumeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def expand_phone_data_volume(
+        self,
+        request: eds_aic_20230930_models.ExpandPhoneDataVolumeRequest,
+    ) -> eds_aic_20230930_models.ExpandPhoneDataVolumeResponse:
+        """
+        @summary 扩容实例的独立机身存储
+        
+        @param request: ExpandPhoneDataVolumeRequest
+        @return: ExpandPhoneDataVolumeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.expand_phone_data_volume_with_options(request, runtime)
+
+    async def expand_phone_data_volume_async(
+        self,
+        request: eds_aic_20230930_models.ExpandPhoneDataVolumeRequest,
+    ) -> eds_aic_20230930_models.ExpandPhoneDataVolumeResponse:
+        """
+        @summary 扩容实例的独立机身存储
+        
+        @param request: ExpandPhoneDataVolumeRequest
+        @return: ExpandPhoneDataVolumeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.expand_phone_data_volume_with_options_async(request, runtime)
+
     def fetch_file_with_options(
         self,
         request: eds_aic_20230930_models.FetchFileRequest,

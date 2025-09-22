@@ -11492,6 +11492,131 @@ class ExpandDataVolumeResponse(TeaModel):
         return self
 
 
+class ExpandPhoneDataVolumeRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        biz_region_id: str = None,
+        instance_ids: List[str] = None,
+        phone_data_volume: int = None,
+        promotion_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.biz_region_id = biz_region_id
+        self.instance_ids = instance_ids
+        self.phone_data_volume = phone_data_volume
+        self.promotion_id = promotion_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        return self
+
+
+class ExpandPhoneDataVolumeResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExpandPhoneDataVolumeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExpandPhoneDataVolumeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExpandPhoneDataVolumeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FetchFileRequest(TeaModel):
     def __init__(
         self,
@@ -15751,19 +15876,57 @@ class RunCommandRequest(TeaModel):
         return self
 
 
+class RunCommandResponseBodyRunCommandInfos(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        invoke_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.invoke_id = invoke_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.invoke_id is not None:
+            result['InvokeId'] = self.invoke_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InvokeId') is not None:
+            self.invoke_id = m.get('InvokeId')
+        return self
+
+
 class RunCommandResponseBody(TeaModel):
     def __init__(
         self,
         invoke_id: str = None,
         request_id: str = None,
+        run_command_infos: List[RunCommandResponseBodyRunCommandInfos] = None,
     ):
         # The ID of the command execution. You can use the command execution ID to query the output of a command.
         self.invoke_id = invoke_id
         # The ID of the request.
         self.request_id = request_id
+        self.run_command_infos = run_command_infos
 
     def validate(self):
-        pass
+        if self.run_command_infos:
+            for k in self.run_command_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15775,6 +15938,10 @@ class RunCommandResponseBody(TeaModel):
             result['InvokeId'] = self.invoke_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['RunCommandInfos'] = []
+        if self.run_command_infos is not None:
+            for k in self.run_command_infos:
+                result['RunCommandInfos'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15783,6 +15950,11 @@ class RunCommandResponseBody(TeaModel):
             self.invoke_id = m.get('InvokeId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.run_command_infos = []
+        if m.get('RunCommandInfos') is not None:
+            for k in m.get('RunCommandInfos'):
+                temp_model = RunCommandResponseBodyRunCommandInfos()
+                self.run_command_infos.append(temp_model.from_map(k))
         return self
 
 

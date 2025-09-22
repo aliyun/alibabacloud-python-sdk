@@ -1,3 +1,8 @@
+2025-09-22 Version: 4.13.0
+- Support API ExpandPhoneDataVolume.
+- Update API RunCommand: add response parameters Body.RunCommandInfos.
+
+
 2025-09-12 Version: 4.12.6
 - Update API ChangeCloudPhoneNode: add request parameters DisplayConfig.
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.InternetStatus.
