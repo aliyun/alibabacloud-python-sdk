@@ -1,3 +1,7 @@
+2025-09-23 Version: 2.0.4
+- Update API ConfigLayer4RuleAttribute: add request parameters Module.
+
+
 2025-04-10 Version: 2.0.3
 - Update API ConfigLayer4Rule: add request parameters UsTimeout.
 - Update API CreateLayer4Rule: add request parameters UsTimeout.
