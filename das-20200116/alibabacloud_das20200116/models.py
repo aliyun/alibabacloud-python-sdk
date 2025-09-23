@@ -9371,8 +9371,11 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
         application_name: str = None,
         cputime: float = None,
         cputime_seconds: float = None,
+        client_ip: str = None,
+        cmd: str = None,
         command: str = None,
         dbname: str = None,
+        db_id: str = None,
         db_instance_name: str = None,
         docs_examined: str = None,
         frows: int = None,
@@ -9385,18 +9388,23 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
         lock_time_seconds: float = None,
         logical_ioreads: int = None,
         namespace: str = None,
+        node_id: str = None,
+        origin_time: str = None,
         physical_ioreads: int = None,
         psql: str = None,
         query_id: str = None,
         query_start_time: str = None,
         query_time: int = None,
         query_time_seconds: float = None,
+        request_size: int = None,
+        response_size: int = None,
         return_item_numbers: str = None,
         return_num: str = None,
         rows: int = None,
         rows_count_affected: int = None,
         rows_examined: int = None,
         rows_sent: int = None,
+        rt: int = None,
         sqltext: str = None,
         scheme: str = None,
         scnt: int = None,
@@ -9414,8 +9422,11 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
         self.application_name = application_name
         self.cputime = cputime
         self.cputime_seconds = cputime_seconds
+        self.client_ip = client_ip
+        self.cmd = cmd
         self.command = command
         self.dbname = dbname
+        self.db_id = db_id
         self.db_instance_name = db_instance_name
         self.docs_examined = docs_examined
         self.frows = frows
@@ -9428,18 +9439,23 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
         self.lock_time_seconds = lock_time_seconds
         self.logical_ioreads = logical_ioreads
         self.namespace = namespace
+        self.node_id = node_id
+        self.origin_time = origin_time
         self.physical_ioreads = physical_ioreads
         self.psql = psql
         self.query_id = query_id
         self.query_start_time = query_start_time
         self.query_time = query_time
         self.query_time_seconds = query_time_seconds
+        self.request_size = request_size
+        self.response_size = response_size
         self.return_item_numbers = return_item_numbers
         self.return_num = return_num
         self.rows = rows
         self.rows_count_affected = rows_count_affected
         self.rows_examined = rows_examined
         self.rows_sent = rows_sent
+        self.rt = rt
         self.sqltext = sqltext
         self.scheme = scheme
         self.scnt = scnt
@@ -9471,10 +9487,16 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             result['CPUTime'] = self.cputime
         if self.cputime_seconds is not None:
             result['CPUTimeSeconds'] = self.cputime_seconds
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.cmd is not None:
+            result['Cmd'] = self.cmd
         if self.command is not None:
             result['Command'] = self.command
         if self.dbname is not None:
             result['DBName'] = self.dbname
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
         if self.db_instance_name is not None:
             result['DbInstanceName'] = self.db_instance_name
         if self.docs_examined is not None:
@@ -9499,6 +9521,10 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             result['LogicalIOReads'] = self.logical_ioreads
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.origin_time is not None:
+            result['OriginTime'] = self.origin_time
         if self.physical_ioreads is not None:
             result['PhysicalIOReads'] = self.physical_ioreads
         if self.psql is not None:
@@ -9511,6 +9537,10 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             result['QueryTime'] = self.query_time
         if self.query_time_seconds is not None:
             result['QueryTimeSeconds'] = self.query_time_seconds
+        if self.request_size is not None:
+            result['RequestSize'] = self.request_size
+        if self.response_size is not None:
+            result['ResponseSize'] = self.response_size
         if self.return_item_numbers is not None:
             result['ReturnItemNumbers'] = self.return_item_numbers
         if self.return_num is not None:
@@ -9523,6 +9553,8 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             result['RowsExamined'] = self.rows_examined
         if self.rows_sent is not None:
             result['RowsSent'] = self.rows_sent
+        if self.rt is not None:
+            result['Rt'] = self.rt
         if self.sqltext is not None:
             result['SQLText'] = self.sqltext
         if self.scheme is not None:
@@ -9559,10 +9591,16 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             self.cputime = m.get('CPUTime')
         if m.get('CPUTimeSeconds') is not None:
             self.cputime_seconds = m.get('CPUTimeSeconds')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('Cmd') is not None:
+            self.cmd = m.get('Cmd')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('DBName') is not None:
             self.dbname = m.get('DBName')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
         if m.get('DbInstanceName') is not None:
             self.db_instance_name = m.get('DbInstanceName')
         if m.get('DocsExamined') is not None:
@@ -9587,6 +9625,10 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             self.logical_ioreads = m.get('LogicalIOReads')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('OriginTime') is not None:
+            self.origin_time = m.get('OriginTime')
         if m.get('PhysicalIOReads') is not None:
             self.physical_ioreads = m.get('PhysicalIOReads')
         if m.get('Psql') is not None:
@@ -9599,6 +9641,10 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             self.query_time = m.get('QueryTime')
         if m.get('QueryTimeSeconds') is not None:
             self.query_time_seconds = m.get('QueryTimeSeconds')
+        if m.get('RequestSize') is not None:
+            self.request_size = m.get('RequestSize')
+        if m.get('ResponseSize') is not None:
+            self.response_size = m.get('ResponseSize')
         if m.get('ReturnItemNumbers') is not None:
             self.return_item_numbers = m.get('ReturnItemNumbers')
         if m.get('ReturnNum') is not None:
@@ -9611,6 +9657,8 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             self.rows_examined = m.get('RowsExamined')
         if m.get('RowsSent') is not None:
             self.rows_sent = m.get('RowsSent')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
         if m.get('SQLText') is not None:
             self.sqltext = m.get('SQLText')
         if m.get('Scheme') is not None:
@@ -10208,19 +10256,25 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         avg_physical_ioreads: float = None,
         avg_query_time: float = None,
         avg_query_time_seconds: float = None,
+        avg_request_size: float = None,
+        avg_response_size: float = None,
         avg_return_num: float = None,
         avg_rows: float = None,
         avg_rows_count_affected: float = None,
         avg_rows_examined: float = None,
         avg_rows_sent: float = None,
+        avg_rt: float = None,
         avg_scnt: float = None,
         cputime: float = None,
         cputime_seconds: float = None,
+        client_ip: str = None,
+        cmd: str = None,
         command: str = None,
         count: int = None,
         count_rate: float = None,
         dbname: str = None,
         database: str = None,
+        db_id: str = None,
         db_instance_name: str = None,
         doc_examined: int = None,
         docs_examined: int = None,
@@ -10249,11 +10303,14 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         max_physical_ioreads: int = None,
         max_query_time: float = None,
         max_query_time_seconds: float = None,
+        max_request_size: float = None,
+        max_response_size: float = None,
         max_return_num: int = None,
         max_rows: int = None,
         max_rows_count_affected: int = None,
         max_rows_examined: int = None,
         max_rows_sent: int = None,
+        max_rt: float = None,
         max_scnt: int = None,
         namespace: str = None,
         node_type: str = None,
@@ -10283,6 +10340,7 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         table_name: str = None,
         thread_id: str = None,
         timestamp: int = None,
+        total_count: int = None,
         trend: List[DescribeSlowLogStatisticResponseBodyDataDataLogsTrend] = None,
         user: str = None,
     ):
@@ -10300,19 +10358,25 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         self.avg_physical_ioreads = avg_physical_ioreads
         self.avg_query_time = avg_query_time
         self.avg_query_time_seconds = avg_query_time_seconds
+        self.avg_request_size = avg_request_size
+        self.avg_response_size = avg_response_size
         self.avg_return_num = avg_return_num
         self.avg_rows = avg_rows
         self.avg_rows_count_affected = avg_rows_count_affected
         self.avg_rows_examined = avg_rows_examined
         self.avg_rows_sent = avg_rows_sent
+        self.avg_rt = avg_rt
         self.avg_scnt = avg_scnt
         self.cputime = cputime
         self.cputime_seconds = cputime_seconds
+        self.client_ip = client_ip
+        self.cmd = cmd
         self.command = command
         self.count = count
         self.count_rate = count_rate
         self.dbname = dbname
         self.database = database
+        self.db_id = db_id
         self.db_instance_name = db_instance_name
         self.doc_examined = doc_examined
         self.docs_examined = docs_examined
@@ -10341,11 +10405,14 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         self.max_physical_ioreads = max_physical_ioreads
         self.max_query_time = max_query_time
         self.max_query_time_seconds = max_query_time_seconds
+        self.max_request_size = max_request_size
+        self.max_response_size = max_response_size
         self.max_return_num = max_return_num
         self.max_rows = max_rows
         self.max_rows_count_affected = max_rows_count_affected
         self.max_rows_examined = max_rows_examined
         self.max_rows_sent = max_rows_sent
+        self.max_rt = max_rt
         self.max_scnt = max_scnt
         self.namespace = namespace
         self.node_type = node_type
@@ -10376,6 +10443,7 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         self.table_name = table_name
         self.thread_id = thread_id
         self.timestamp = timestamp
+        self.total_count = total_count
         self.trend = trend
         self.user = user
 
@@ -10423,6 +10491,10 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['AvgQueryTime'] = self.avg_query_time
         if self.avg_query_time_seconds is not None:
             result['AvgQueryTimeSeconds'] = self.avg_query_time_seconds
+        if self.avg_request_size is not None:
+            result['AvgRequestSize'] = self.avg_request_size
+        if self.avg_response_size is not None:
+            result['AvgResponseSize'] = self.avg_response_size
         if self.avg_return_num is not None:
             result['AvgReturnNum'] = self.avg_return_num
         if self.avg_rows is not None:
@@ -10433,12 +10505,18 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['AvgRowsExamined'] = self.avg_rows_examined
         if self.avg_rows_sent is not None:
             result['AvgRowsSent'] = self.avg_rows_sent
+        if self.avg_rt is not None:
+            result['AvgRt'] = self.avg_rt
         if self.avg_scnt is not None:
             result['AvgScnt'] = self.avg_scnt
         if self.cputime is not None:
             result['CPUTime'] = self.cputime
         if self.cputime_seconds is not None:
             result['CPUTimeSeconds'] = self.cputime_seconds
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.cmd is not None:
+            result['Cmd'] = self.cmd
         if self.command is not None:
             result['Command'] = self.command
         if self.count is not None:
@@ -10449,6 +10527,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['DBName'] = self.dbname
         if self.database is not None:
             result['Database'] = self.database
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
         if self.db_instance_name is not None:
             result['DbInstanceName'] = self.db_instance_name
         if self.doc_examined is not None:
@@ -10505,6 +10585,10 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['MaxQueryTime'] = self.max_query_time
         if self.max_query_time_seconds is not None:
             result['MaxQueryTimeSeconds'] = self.max_query_time_seconds
+        if self.max_request_size is not None:
+            result['MaxRequestSize'] = self.max_request_size
+        if self.max_response_size is not None:
+            result['MaxResponseSize'] = self.max_response_size
         if self.max_return_num is not None:
             result['MaxReturnNum'] = self.max_return_num
         if self.max_rows is not None:
@@ -10515,6 +10599,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['MaxRowsExamined'] = self.max_rows_examined
         if self.max_rows_sent is not None:
             result['MaxRowsSent'] = self.max_rows_sent
+        if self.max_rt is not None:
+            result['MaxRt'] = self.max_rt
         if self.max_scnt is not None:
             result['MaxScnt'] = self.max_scnt
         if self.namespace is not None:
@@ -10573,6 +10659,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['ThreadId'] = self.thread_id
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Trend'] = []
         if self.trend is not None:
             for k in self.trend:
@@ -10611,6 +10699,10 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.avg_query_time = m.get('AvgQueryTime')
         if m.get('AvgQueryTimeSeconds') is not None:
             self.avg_query_time_seconds = m.get('AvgQueryTimeSeconds')
+        if m.get('AvgRequestSize') is not None:
+            self.avg_request_size = m.get('AvgRequestSize')
+        if m.get('AvgResponseSize') is not None:
+            self.avg_response_size = m.get('AvgResponseSize')
         if m.get('AvgReturnNum') is not None:
             self.avg_return_num = m.get('AvgReturnNum')
         if m.get('AvgRows') is not None:
@@ -10621,12 +10713,18 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.avg_rows_examined = m.get('AvgRowsExamined')
         if m.get('AvgRowsSent') is not None:
             self.avg_rows_sent = m.get('AvgRowsSent')
+        if m.get('AvgRt') is not None:
+            self.avg_rt = m.get('AvgRt')
         if m.get('AvgScnt') is not None:
             self.avg_scnt = m.get('AvgScnt')
         if m.get('CPUTime') is not None:
             self.cputime = m.get('CPUTime')
         if m.get('CPUTimeSeconds') is not None:
             self.cputime_seconds = m.get('CPUTimeSeconds')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('Cmd') is not None:
+            self.cmd = m.get('Cmd')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('Count') is not None:
@@ -10637,6 +10735,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('Database') is not None:
             self.database = m.get('Database')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
         if m.get('DbInstanceName') is not None:
             self.db_instance_name = m.get('DbInstanceName')
         if m.get('DocExamined') is not None:
@@ -10694,6 +10794,10 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.max_query_time = m.get('MaxQueryTime')
         if m.get('MaxQueryTimeSeconds') is not None:
             self.max_query_time_seconds = m.get('MaxQueryTimeSeconds')
+        if m.get('MaxRequestSize') is not None:
+            self.max_request_size = m.get('MaxRequestSize')
+        if m.get('MaxResponseSize') is not None:
+            self.max_response_size = m.get('MaxResponseSize')
         if m.get('MaxReturnNum') is not None:
             self.max_return_num = m.get('MaxReturnNum')
         if m.get('MaxRows') is not None:
@@ -10704,6 +10808,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.max_rows_examined = m.get('MaxRowsExamined')
         if m.get('MaxRowsSent') is not None:
             self.max_rows_sent = m.get('MaxRowsSent')
+        if m.get('MaxRt') is not None:
+            self.max_rt = m.get('MaxRt')
         if m.get('MaxScnt') is not None:
             self.max_scnt = m.get('MaxScnt')
         if m.get('Namespace') is not None:
@@ -10763,6 +10869,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.thread_id = m.get('ThreadId')
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.trend = []
         if m.get('Trend') is not None:
             for k in m.get('Trend'):

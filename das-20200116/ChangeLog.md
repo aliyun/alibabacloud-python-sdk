@@ -1,3 +1,24 @@
+2025-09-23 Version: 2.8.3
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.ClientIp.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Cmd.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.DbId.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.NodeId.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.OriginTime.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.RequestSize.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.ResponseSize.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Rt.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.AvgRequestSize.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.AvgResponseSize.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.AvgRt.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.ClientIp.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.Cmd.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.DbId.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.MaxRequestSize.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.MaxResponseSize.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.MaxRt.
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.TotalCount.
+
+
 2025-09-09 Version: 2.8.2
 - Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.TableName.
 - Update API ModifySqlLogConfig: add response parameters Body.Data.SqlLogSource.
