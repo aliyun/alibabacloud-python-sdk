@@ -1,3 +1,6 @@
+2025-09-23 Version: 4.1.1
+- Generated python 2022-08-01 for RocketMQ.
+
 2025-09-23 Version: 4.1.0
 - Support API ExecuteMigrationOperation.
 - Support API FinishMigrationStage.
