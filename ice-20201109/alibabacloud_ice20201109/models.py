@@ -63062,6 +63062,7 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
         support_sample_rate: str = None,
         tag: str = None,
         voice: str = None,
+        voice_source: str = None,
         voice_type: str = None,
         voice_url: str = None,
     ):
@@ -63076,6 +63077,7 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
         self.tag = tag
         # The speaker ID.
         self.voice = voice
+        self.voice_source = voice_source
         # The speaker type.
         # 
         # Valid values:
@@ -63109,6 +63111,8 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
             result['Tag'] = self.tag
         if self.voice is not None:
             result['Voice'] = self.voice
+        if self.voice_source is not None:
+            result['VoiceSource'] = self.voice_source
         if self.voice_type is not None:
             result['VoiceType'] = self.voice_type
         if self.voice_url is not None:
@@ -63129,6 +63133,8 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
             self.tag = m.get('Tag')
         if m.get('Voice') is not None:
             self.voice = m.get('Voice')
+        if m.get('VoiceSource') is not None:
+            self.voice_source = m.get('VoiceSource')
         if m.get('VoiceType') is not None:
             self.voice_type = m.get('VoiceType')
         if m.get('VoiceUrl') is not None:

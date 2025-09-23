@@ -1,3 +1,7 @@
+2025-09-23 Version: 6.6.1
+- Update API ListSmartVoiceGroups: add response parameters Body.VoiceGroups.$.VoiceList.$.VoiceSource.
+
+
 2025-09-18 Version: 6.6.0
 - Support API AddStreamTagToSearchLib.
 - Support API CloseStreamToSearchLib.
