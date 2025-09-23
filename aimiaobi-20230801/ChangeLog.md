@@ -1,3 +1,13 @@
+2025-09-23 Version: 1.36.0
+- Support API AsyncUploadTenderDoc.
+- Support API AsyncWritingBiddingDoc.
+- Support API DownloadBiddingDoc.
+- Support API EditBiddingDoc.
+- Support API GetBiddingDocInfo.
+- Support API GetBiddingRemainLimitNum.
+- Support API ListBiddingDoc.
+
+
 2025-09-10 Version: 1.35.1
 - Generated python 2023-08-01 for AiMiaoBi.
 

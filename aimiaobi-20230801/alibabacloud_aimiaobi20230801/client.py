@@ -649,6 +649,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.async_edit_timeline_with_options_async(request, runtime)
 
+    def async_upload_tender_doc_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncUploadTenderDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadTenderDocResponse:
+        """
+        @summary 上传招标书文件
+        
+        @param request: AsyncUploadTenderDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncUploadTenderDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.tender_doc_name):
+            body['TenderDocName'] = request.tender_doc_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncUploadTenderDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncUploadTenderDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_upload_tender_doc_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncUploadTenderDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadTenderDocResponse:
+        """
+        @summary 上传招标书文件
+        
+        @param request: AsyncUploadTenderDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncUploadTenderDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.tender_doc_name):
+            body['TenderDocName'] = request.tender_doc_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncUploadTenderDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncUploadTenderDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_upload_tender_doc(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncUploadTenderDocRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadTenderDocResponse:
+        """
+        @summary 上传招标书文件
+        
+        @param request: AsyncUploadTenderDocRequest
+        @return: AsyncUploadTenderDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.async_upload_tender_doc_with_options(request, runtime)
+
+    async def async_upload_tender_doc_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncUploadTenderDocRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadTenderDocResponse:
+        """
+        @summary 上传招标书文件
+        
+        @param request: AsyncUploadTenderDocRequest
+        @return: AsyncUploadTenderDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.async_upload_tender_doc_with_options_async(request, runtime)
+
     def async_upload_video_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.AsyncUploadVideoRequest,
@@ -772,6 +876,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.async_upload_video_with_options_async(request, runtime)
+
+    def async_writing_bidding_doc_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncWritingBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncWritingBiddingDocResponse:
+        """
+        @summary 标书写作接口
+        
+        @param request: AsyncWritingBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncWritingBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.company_keyword):
+            body['CompanyKeyword'] = request.company_keyword
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncWritingBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncWritingBiddingDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_writing_bidding_doc_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncWritingBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncWritingBiddingDocResponse:
+        """
+        @summary 标书写作接口
+        
+        @param request: AsyncWritingBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncWritingBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.company_keyword):
+            body['CompanyKeyword'] = request.company_keyword
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncWritingBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncWritingBiddingDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_writing_bidding_doc(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncWritingBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncWritingBiddingDocResponse:
+        """
+        @summary 标书写作接口
+        
+        @param request: AsyncWritingBiddingDocRequest
+        @return: AsyncWritingBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.async_writing_bidding_doc_with_options(request, runtime)
+
+    async def async_writing_bidding_doc_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncWritingBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncWritingBiddingDocResponse:
+        """
+        @summary 标书写作接口
+        
+        @param request: AsyncWritingBiddingDocRequest
+        @return: AsyncWritingBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.async_writing_bidding_doc_with_options_async(request, runtime)
 
     def cancel_async_task_with_options(
         self,
@@ -3221,6 +3433,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.download_audit_note_with_options_async(request, runtime)
 
+    def download_bidding_doc_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DownloadBiddingDocResponse:
+        """
+        @summary 标书下载接口
+        
+        @param request: DownloadBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DownloadBiddingDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_bidding_doc_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DownloadBiddingDocResponse:
+        """
+        @summary 标书下载接口
+        
+        @param request: DownloadBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DownloadBiddingDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_bidding_doc(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.DownloadBiddingDocResponse:
+        """
+        @summary 标书下载接口
+        
+        @param request: DownloadBiddingDocRequest
+        @return: DownloadBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_bidding_doc_with_options(request, runtime)
+
+    async def download_bidding_doc_async(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.DownloadBiddingDocResponse:
+        """
+        @summary 标书下载接口
+        
+        @param request: DownloadBiddingDocRequest
+        @return: DownloadBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_bidding_doc_with_options_async(request, runtime)
+
     def edit_audit_terms_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.EditAuditTermsRequest,
@@ -3344,6 +3656,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.edit_audit_terms_with_options_async(request, runtime)
+
+    def edit_bidding_doc_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.EditBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.EditBiddingDocResponse:
+        """
+        @summary 编辑标书内容接口
+        
+        @param request: EditBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_format):
+            body['ContentFormat'] = request.content_format
+        if not UtilClient.is_unset(request.content_type):
+            body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.EditBiddingDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_bidding_doc_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.EditBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.EditBiddingDocResponse:
+        """
+        @summary 编辑标书内容接口
+        
+        @param request: EditBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_format):
+            body['ContentFormat'] = request.content_format
+        if not UtilClient.is_unset(request.content_type):
+            body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.EditBiddingDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_bidding_doc(
+        self,
+        request: ai_miao_bi_20230801_models.EditBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.EditBiddingDocResponse:
+        """
+        @summary 编辑标书内容接口
+        
+        @param request: EditBiddingDocRequest
+        @return: EditBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.edit_bidding_doc_with_options(request, runtime)
+
+    async def edit_bidding_doc_async(
+        self,
+        request: ai_miao_bi_20230801_models.EditBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.EditBiddingDocResponse:
+        """
+        @summary 编辑标书内容接口
+        
+        @param request: EditBiddingDocRequest
+        @return: EditBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_bidding_doc_with_options_async(request, runtime)
 
     def export_analysis_tag_detail_by_task_id_with_options(
         self,
@@ -5500,6 +5924,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_available_audit_notes_with_options_async(request, runtime)
+
+    def get_bidding_doc_info_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingDocInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetBiddingDocInfoResponse:
+        """
+        @summary 获得标书写作结果接口
+        
+        @param request: GetBiddingDocInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBiddingDocInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBiddingDocInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetBiddingDocInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bidding_doc_info_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingDocInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetBiddingDocInfoResponse:
+        """
+        @summary 获得标书写作结果接口
+        
+        @param request: GetBiddingDocInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBiddingDocInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBiddingDocInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetBiddingDocInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bidding_doc_info(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingDocInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetBiddingDocInfoResponse:
+        """
+        @summary 获得标书写作结果接口
+        
+        @param request: GetBiddingDocInfoRequest
+        @return: GetBiddingDocInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_bidding_doc_info_with_options(request, runtime)
+
+    async def get_bidding_doc_info_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingDocInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetBiddingDocInfoResponse:
+        """
+        @summary 获得标书写作结果接口
+        
+        @param request: GetBiddingDocInfoRequest
+        @return: GetBiddingDocInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bidding_doc_info_with_options_async(request, runtime)
+
+    def get_bidding_remain_limit_num_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingRemainLimitNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetBiddingRemainLimitNumResponse:
+        """
+        @summary 获得标书功能剩余额度
+        
+        @param request: GetBiddingRemainLimitNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBiddingRemainLimitNumResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_name):
+            body['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBiddingRemainLimitNum',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetBiddingRemainLimitNumResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bidding_remain_limit_num_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingRemainLimitNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetBiddingRemainLimitNumResponse:
+        """
+        @summary 获得标书功能剩余额度
+        
+        @param request: GetBiddingRemainLimitNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBiddingRemainLimitNumResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_name):
+            body['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBiddingRemainLimitNum',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetBiddingRemainLimitNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bidding_remain_limit_num(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingRemainLimitNumRequest,
+    ) -> ai_miao_bi_20230801_models.GetBiddingRemainLimitNumResponse:
+        """
+        @summary 获得标书功能剩余额度
+        
+        @param request: GetBiddingRemainLimitNumRequest
+        @return: GetBiddingRemainLimitNumResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_bidding_remain_limit_num_with_options(request, runtime)
+
+    async def get_bidding_remain_limit_num_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetBiddingRemainLimitNumRequest,
+    ) -> ai_miao_bi_20230801_models.GetBiddingRemainLimitNumResponse:
+        """
+        @summary 获得标书功能剩余额度
+        
+        @param request: GetBiddingRemainLimitNumRequest
+        @return: GetBiddingRemainLimitNumResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bidding_remain_limit_num_with_options_async(request, runtime)
 
     def get_categories_by_task_id_with_options(
         self,
@@ -9356,6 +9980,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_audit_terms_with_options_async(request, runtime)
+
+    def list_bidding_doc_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListBiddingDocResponse:
+        """
+        @summary 获得标书写作任务列表
+        
+        @param request: ListBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.task_name):
+            body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.task_status):
+            body['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListBiddingDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_bidding_doc_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListBiddingDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListBiddingDocResponse:
+        """
+        @summary 获得标书写作任务列表
+        
+        @param request: ListBiddingDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBiddingDocResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.task_name):
+            body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.task_status):
+            body['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBiddingDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListBiddingDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_bidding_doc(
+        self,
+        request: ai_miao_bi_20230801_models.ListBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.ListBiddingDocResponse:
+        """
+        @summary 获得标书写作任务列表
+        
+        @param request: ListBiddingDocRequest
+        @return: ListBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_bidding_doc_with_options(request, runtime)
+
+    async def list_bidding_doc_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListBiddingDocRequest,
+    ) -> ai_miao_bi_20230801_models.ListBiddingDocResponse:
+        """
+        @summary 获得标书写作任务列表
+        
+        @param request: ListBiddingDocRequest
+        @return: ListBiddingDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_bidding_doc_with_options_async(request, runtime)
 
     def list_build_configs_with_options(
         self,
