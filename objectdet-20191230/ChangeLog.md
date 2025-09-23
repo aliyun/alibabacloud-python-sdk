@@ -1,3 +1,12 @@
+2025-09-23 Version: 4.0.0
+- Delete API ClassifyVehicleInsurance.
+- Delete API DetectTransparentImage.
+- Delete API DetectVehicle.
+- Delete API RecognizeVehicleDamage.
+- Delete API RecognizeVehicleDashboard.
+- Delete API RecognizeVehicleParts.
+
+
 2023-01-11 Version: 3.0.9
 - Update sdk.
 

@@ -102,218 +102,12 @@ class DetectObjectFrame(TeaModel):
         return self
 
 
-class ClassifyVehicleInsuranceRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class ClassifyVehicleInsuranceAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class ClassifyVehicleInsuranceResponseBodyDataLabels(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        score: float = None,
-    ):
-        self.name = name
-        self.score = score
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.score is not None:
-            result['Score'] = self.score
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Score') is not None:
-            self.score = m.get('Score')
-        return self
-
-
-class ClassifyVehicleInsuranceResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        labels: List[ClassifyVehicleInsuranceResponseBodyDataLabels] = None,
-        threshold: float = None,
-    ):
-        self.labels = labels
-        self.threshold = threshold
-
-    def validate(self):
-        if self.labels:
-            for k in self.labels:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Labels'] = []
-        if self.labels is not None:
-            for k in self.labels:
-                result['Labels'].append(k.to_map() if k else None)
-        if self.threshold is not None:
-            result['Threshold'] = self.threshold
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.labels = []
-        if m.get('Labels') is not None:
-            for k in m.get('Labels'):
-                temp_model = ClassifyVehicleInsuranceResponseBodyDataLabels()
-                self.labels.append(temp_model.from_map(k))
-        if m.get('Threshold') is not None:
-            self.threshold = m.get('Threshold')
-        return self
-
-
-class ClassifyVehicleInsuranceResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: ClassifyVehicleInsuranceResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = ClassifyVehicleInsuranceResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ClassifyVehicleInsuranceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ClassifyVehicleInsuranceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ClassifyVehicleInsuranceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DetectIPCObjectRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -341,6 +135,7 @@ class DetectIPCObjectAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -502,9 +297,6 @@ class DetectIPCObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -540,7 +332,9 @@ class DetectKitchenAnimalsRequest(TeaModel):
         image_urla: str = None,
         image_urlb: str = None,
     ):
+        # This parameter is required.
         self.image_urla = image_urla
+        # This parameter is required.
         self.image_urlb = image_urlb
 
     def validate(self):
@@ -573,7 +367,9 @@ class DetectKitchenAnimalsAdvanceRequest(TeaModel):
         image_urlaobject: BinaryIO = None,
         image_urlbobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlaobject = image_urlaobject
+        # This parameter is required.
         self.image_urlbobject = image_urlbobject
 
     def validate(self):
@@ -768,9 +564,6 @@ class DetectKitchenAnimalsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -805,6 +598,7 @@ class DetectMainBodyRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -832,6 +626,7 @@ class DetectMainBodyAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -975,9 +770,6 @@ class DetectMainBodyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1012,6 +804,7 @@ class DetectObjectRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -1039,6 +832,7 @@ class DetectObjectAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -1194,9 +988,6 @@ class DetectObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1222,426 +1013,6 @@ class DetectObjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectObjectResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DetectTransparentImageRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class DetectTransparentImageAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class DetectTransparentImageResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        transparent_image: int = None,
-    ):
-        self.transparent_image = transparent_image
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.transparent_image is not None:
-            result['TransparentImage'] = self.transparent_image
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TransparentImage') is not None:
-            self.transparent_image = m.get('TransparentImage')
-        return self
-
-
-class DetectTransparentImageResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[DetectTransparentImageResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = DetectTransparentImageResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class DetectTransparentImageResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: DetectTransparentImageResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = DetectTransparentImageResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DetectTransparentImageResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DetectTransparentImageResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DetectTransparentImageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DetectVehicleRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class DetectVehicleAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class DetectVehicleResponseBodyDataDetectObjectInfoList(TeaModel):
-    def __init__(
-        self,
-        boxes: List[int] = None,
-        id: int = None,
-        score: float = None,
-        type: str = None,
-    ):
-        self.boxes = boxes
-        self.id = id
-        self.score = score
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.boxes is not None:
-            result['Boxes'] = self.boxes
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.score is not None:
-            result['Score'] = self.score
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Boxes') is not None:
-            self.boxes = m.get('Boxes')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Score') is not None:
-            self.score = m.get('Score')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class DetectVehicleResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        detect_object_info_list: List[DetectVehicleResponseBodyDataDetectObjectInfoList] = None,
-        height: int = None,
-        width: int = None,
-    ):
-        self.detect_object_info_list = detect_object_info_list
-        self.height = height
-        self.width = width
-
-    def validate(self):
-        if self.detect_object_info_list:
-            for k in self.detect_object_info_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DetectObjectInfoList'] = []
-        if self.detect_object_info_list is not None:
-            for k in self.detect_object_info_list:
-                result['DetectObjectInfoList'].append(k.to_map() if k else None)
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.detect_object_info_list = []
-        if m.get('DetectObjectInfoList') is not None:
-            for k in m.get('DetectObjectInfoList'):
-                temp_model = DetectVehicleResponseBodyDataDetectObjectInfoList()
-                self.detect_object_info_list.append(temp_model.from_map(k))
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class DetectVehicleResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: DetectVehicleResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = DetectVehicleResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DetectVehicleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DetectVehicleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DetectVehicleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1679,7 +1050,9 @@ class DetectVehicleICongestionRequestRoadRegionsRoadRegionPoint(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # This parameter is required.
         self.x = x
+        # This parameter is required.
         self.y = y
 
     def validate(self):
@@ -1711,6 +1084,7 @@ class DetectVehicleICongestionRequestRoadRegionsRoadRegion(TeaModel):
         self,
         point: DetectVehicleICongestionRequestRoadRegionsRoadRegionPoint = None,
     ):
+        # This parameter is required.
         self.point = point
 
     def validate(self):
@@ -1740,6 +1114,7 @@ class DetectVehicleICongestionRequestRoadRegions(TeaModel):
         self,
         road_region: List[DetectVehicleICongestionRequestRoadRegionsRoadRegion] = None,
     ):
+        # This parameter is required.
         self.road_region = road_region
 
     def validate(self):
@@ -1777,8 +1152,10 @@ class DetectVehicleICongestionRequest(TeaModel):
         pre_region_intersect_features: List[DetectVehicleICongestionRequestPreRegionIntersectFeatures] = None,
         road_regions: List[DetectVehicleICongestionRequestRoadRegions] = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.pre_region_intersect_features = pre_region_intersect_features
+        # This parameter is required.
         self.road_regions = road_regions
 
     def validate(self):
@@ -1859,7 +1236,9 @@ class DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint(TeaModel)
         x: int = None,
         y: int = None,
     ):
+        # This parameter is required.
         self.x = x
+        # This parameter is required.
         self.y = y
 
     def validate(self):
@@ -1891,6 +1270,7 @@ class DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion(TeaModel):
         self,
         point: DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint = None,
     ):
+        # This parameter is required.
         self.point = point
 
     def validate(self):
@@ -1920,6 +1300,7 @@ class DetectVehicleICongestionAdvanceRequestRoadRegions(TeaModel):
         self,
         road_region: List[DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion] = None,
     ):
+        # This parameter is required.
         self.road_region = road_region
 
     def validate(self):
@@ -1957,8 +1338,10 @@ class DetectVehicleICongestionAdvanceRequest(TeaModel):
         pre_region_intersect_features: List[DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures] = None,
         road_regions: List[DetectVehicleICongestionAdvanceRequestRoadRegions] = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.pre_region_intersect_features = pre_region_intersect_features
+        # This parameter is required.
         self.road_regions = road_regions
 
     def validate(self):
@@ -2013,8 +1396,10 @@ class DetectVehicleICongestionShrinkRequest(TeaModel):
         pre_region_intersect_features_shrink: str = None,
         road_regions_shrink: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.pre_region_intersect_features_shrink = pre_region_intersect_features_shrink
+        # This parameter is required.
         self.road_regions_shrink = road_regions_shrink
 
     def validate(self):
@@ -2351,9 +1736,6 @@ class DetectVehicleICongestionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2389,7 +1771,9 @@ class DetectVehicleIllegalParkingRequestRoadRegionsRoadRegionPoint(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # This parameter is required.
         self.x = x
+        # This parameter is required.
         self.y = y
 
     def validate(self):
@@ -2421,6 +1805,7 @@ class DetectVehicleIllegalParkingRequestRoadRegionsRoadRegion(TeaModel):
         self,
         point: DetectVehicleIllegalParkingRequestRoadRegionsRoadRegionPoint = None,
     ):
+        # This parameter is required.
         self.point = point
 
     def validate(self):
@@ -2450,6 +1835,7 @@ class DetectVehicleIllegalParkingRequestRoadRegions(TeaModel):
         self,
         road_region: List[DetectVehicleIllegalParkingRequestRoadRegionsRoadRegion] = None,
     ):
+        # This parameter is required.
         self.road_region = road_region
 
     def validate(self):
@@ -2486,7 +1872,9 @@ class DetectVehicleIllegalParkingRequest(TeaModel):
         image_url: str = None,
         road_regions: List[DetectVehicleIllegalParkingRequestRoadRegions] = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.road_regions = road_regions
 
     def validate(self):
@@ -2527,7 +1915,9 @@ class DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint(TeaMod
         x: int = None,
         y: int = None,
     ):
+        # This parameter is required.
         self.x = x
+        # This parameter is required.
         self.y = y
 
     def validate(self):
@@ -2559,6 +1949,7 @@ class DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion(TeaModel):
         self,
         point: DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint = None,
     ):
+        # This parameter is required.
         self.point = point
 
     def validate(self):
@@ -2588,6 +1979,7 @@ class DetectVehicleIllegalParkingAdvanceRequestRoadRegions(TeaModel):
         self,
         road_region: List[DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion] = None,
     ):
+        # This parameter is required.
         self.road_region = road_region
 
     def validate(self):
@@ -2624,7 +2016,9 @@ class DetectVehicleIllegalParkingAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         road_regions: List[DetectVehicleIllegalParkingAdvanceRequestRoadRegions] = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.road_regions = road_regions
 
     def validate(self):
@@ -2665,7 +2059,9 @@ class DetectVehicleIllegalParkingShrinkRequest(TeaModel):
         image_url: str = None,
         road_regions_shrink: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.road_regions_shrink = road_regions_shrink
 
     def validate(self):
@@ -2914,9 +2310,6 @@ class DetectVehicleIllegalParkingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2955,6 +2348,7 @@ class DetectVideoIPCObjectRequest(TeaModel):
     ):
         self.callback_only_has_object = callback_only_has_object
         self.start_timestamp = start_timestamp
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -2994,6 +2388,7 @@ class DetectVideoIPCObjectAdvanceRequest(TeaModel):
     ):
         self.callback_only_has_object = callback_only_has_object
         self.start_timestamp = start_timestamp
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -3228,9 +2623,6 @@ class DetectVideoIPCObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3265,6 +2657,7 @@ class DetectWhiteBaseImageRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -3292,6 +2685,7 @@ class DetectWhiteBaseImageAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -3423,9 +2817,6 @@ class DetectWhiteBaseImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3908,9 +3299,6 @@ class DetectWorkwearResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3945,6 +3333,7 @@ class GetAsyncJobResultRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -4065,9 +3454,6 @@ class GetAsyncJobResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4093,649 +3479,6 @@ class GetAsyncJobResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAsyncJobResultResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeVehicleDamageRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeVehicleDamageAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class RecognizeVehicleDamageResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        boxes: List[int] = None,
-        score: float = None,
-        scores: List[float] = None,
-        type: str = None,
-    ):
-        # 1
-        self.boxes = boxes
-        self.score = score
-        # 1
-        self.scores = scores
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.boxes is not None:
-            result['Boxes'] = self.boxes
-        if self.score is not None:
-            result['Score'] = self.score
-        if self.scores is not None:
-            result['Scores'] = self.scores
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Boxes') is not None:
-            self.boxes = m.get('Boxes')
-        if m.get('Score') is not None:
-            self.score = m.get('Score')
-        if m.get('Scores') is not None:
-            self.scores = m.get('Scores')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class RecognizeVehicleDamageResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[RecognizeVehicleDamageResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = RecognizeVehicleDamageResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class RecognizeVehicleDamageResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: RecognizeVehicleDamageResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = RecognizeVehicleDamageResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RecognizeVehicleDamageResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RecognizeVehicleDamageResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RecognizeVehicleDamageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeVehicleDashboardRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeVehicleDashboardAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class RecognizeVehicleDashboardResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        boxes: List[float] = None,
-        class_name: str = None,
-        label: str = None,
-        score: float = None,
-    ):
-        self.boxes = boxes
-        self.class_name = class_name
-        self.label = label
-        self.score = score
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.boxes is not None:
-            result['Boxes'] = self.boxes
-        if self.class_name is not None:
-            result['ClassName'] = self.class_name
-        if self.label is not None:
-            result['Label'] = self.label
-        if self.score is not None:
-            result['Score'] = self.score
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Boxes') is not None:
-            self.boxes = m.get('Boxes')
-        if m.get('ClassName') is not None:
-            self.class_name = m.get('ClassName')
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
-        if m.get('Score') is not None:
-            self.score = m.get('Score')
-        return self
-
-
-class RecognizeVehicleDashboardResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[RecognizeVehicleDashboardResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = RecognizeVehicleDashboardResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class RecognizeVehicleDashboardResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: RecognizeVehicleDashboardResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = RecognizeVehicleDashboardResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RecognizeVehicleDashboardResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RecognizeVehicleDashboardResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RecognizeVehicleDashboardResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeVehiclePartsRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeVehiclePartsAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class RecognizeVehiclePartsResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        boxes: List[int] = None,
-        score: float = None,
-        type: str = None,
-    ):
-        # 1
-        self.boxes = boxes
-        self.score = score
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.boxes is not None:
-            result['Boxes'] = self.boxes
-        if self.score is not None:
-            result['Score'] = self.score
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Boxes') is not None:
-            self.boxes = m.get('Boxes')
-        if m.get('Score') is not None:
-            self.score = m.get('Score')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class RecognizeVehiclePartsResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[RecognizeVehiclePartsResponseBodyDataElements] = None,
-        origin_shapes: List[int] = None,
-    ):
-        self.elements = elements
-        # 1
-        self.origin_shapes = origin_shapes
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        if self.origin_shapes is not None:
-            result['OriginShapes'] = self.origin_shapes
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = RecognizeVehiclePartsResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        if m.get('OriginShapes') is not None:
-            self.origin_shapes = m.get('OriginShapes')
-        return self
-
-
-class RecognizeVehiclePartsResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: RecognizeVehiclePartsResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = RecognizeVehiclePartsResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RecognizeVehiclePartsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RecognizeVehiclePartsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RecognizeVehiclePartsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
