@@ -10,7 +10,13 @@ class RevokeFeedbackRequest(TeaModel):
         sample_type: str = None,
         value: str = None,
     ):
+        # Sample type. For phone number type samples, input PHONE; for email type samples, input EMAIL; for account type samples, input ACCOUNT.
+        # 
+        # This parameter is required.
         self.sample_type = sample_type
+        # Sample value.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -44,8 +50,11 @@ class RevokeFeedbackResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Interface status or POP error code. Value explanations are as follows: 2xx: Success. 3xx: Redirect. 4xx: Request error. 5xx: Server error.
         self.code = code
+        # Return message.
         self.message = message
+        # Public parameter, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -88,9 +97,6 @@ class RevokeFeedbackResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -123,12 +129,21 @@ class RevokeFeedbackResponse(TeaModel):
 class SendFeedbackRequest(TeaModel):
     def __init__(
         self,
+        reason: str = None,
         risk_label: str = None,
         sample_type: str = None,
         value: str = None,
     ):
+        self.reason = reason
+        # Sample labels. User-defined, separated by commas.
         self.risk_label = risk_label
+        # Sample type. For phone number type samples, input PHONE; for email type samples, input EMAIL; for account type samples, input ACCOUNT.
+        # 
+        # This parameter is required.
         self.sample_type = sample_type
+        # Sample value.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -140,6 +155,8 @@ class SendFeedbackRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.risk_label is not None:
             result['RiskLabel'] = self.risk_label
         if self.sample_type is not None:
@@ -150,6 +167,8 @@ class SendFeedbackRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('RiskLabel') is not None:
             self.risk_label = m.get('RiskLabel')
         if m.get('SampleType') is not None:
@@ -166,8 +185,11 @@ class SendFeedbackResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Interface status or POP error code. The values are as follows: 2xx: Success. 3xx: Redirect. 4xx: Request error. 5xx: Server error.
         self.code = code
+        # Return message.
         self.message = message
+        # Public parameter, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -210,9 +232,6 @@ class SendFeedbackResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -250,9 +269,41 @@ class UploadSampleApiRequest(TeaModel):
         sample_type: str = None,
         service: str = None,
     ):
+        # The data type of the sample
+        # 
+        # - Phone number: mobile
+        # - MD5 of phone number: mobileMd5
+        # - IP: ip
+        # - Unique device ID: umid
+        # - Account ID: accountId
+        # - IMEI: imei
+        # - MD5 of IMEI: imeiMd5
+        # - OAID: oaid
+        # - MD5 of OAID: oaidMd5
+        # - Android ID: androidId
+        # - MD5 of Android ID: androidIdMd5
+        # 
+        # This parameter is required.
         self.data_type = data_type
+        # Specific value of the sample, to be passed in JSON format. Do not exceed 1000 entries at a time.
+        # 
+        # This parameter is required.
         self.data_value = data_value
+        # The type of the sample
+        # 
+        # - Blacklist: block
+        # 
+        # - Whitelist: pass
+        # 
+        # This parameter is required.
         self.sample_type = sample_type
+        # List of effective services, separate multiple services with commas
+        # 
+        # - Basic/Enhanced Registration Risk Identification: account_abuse
+        # - Basic/Enhanced Marketing Risk Identification: coupon_abuse
+        # - Basic/Enhanced Login Risk Identification: account_takeover
+        # 
+        # This parameter is required.
         self.service = service
 
     def validate(self):
@@ -295,10 +346,13 @@ class UploadSampleApiResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Request code returned
         self.code = code
+        # Error message returned
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Indicator of whether the access was successful
         self.success = success
 
     def validate(self):
@@ -345,9 +399,6 @@ class UploadSampleApiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

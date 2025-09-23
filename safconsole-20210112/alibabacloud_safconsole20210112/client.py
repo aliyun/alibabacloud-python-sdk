@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: safconsole_20210112_models.RevokeFeedbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> safconsole_20210112_models.RevokeFeedbackResponse:
+        """
+        @summary Used for external deletion of community samples in risk identification services.
+        
+        @param request: RevokeFeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeFeedbackResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sample_type):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: safconsole_20210112_models.RevokeFeedbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> safconsole_20210112_models.RevokeFeedbackResponse:
+        """
+        @summary Used for external deletion of community samples in risk identification services.
+        
+        @param request: RevokeFeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeFeedbackResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sample_type):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: safconsole_20210112_models.RevokeFeedbackRequest,
     ) -> safconsole_20210112_models.RevokeFeedbackResponse:
+        """
+        @summary Used for external deletion of community samples in risk identification services.
+        
+        @param request: RevokeFeedbackRequest
+        @return: RevokeFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_feedback_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: safconsole_20210112_models.RevokeFeedbackRequest,
     ) -> safconsole_20210112_models.RevokeFeedbackResponse:
+        """
+        @summary Used for external deletion of community samples in risk identification services.
+        
+        @param request: RevokeFeedbackRequest
+        @return: RevokeFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_feedback_with_options_async(request, runtime)
 
@@ -120,8 +146,17 @@ class Client(OpenApiClient):
         request: safconsole_20210112_models.SendFeedbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> safconsole_20210112_models.SendFeedbackResponse:
+        """
+        @summary Used for the external creation of community samples in risk identification services.
+        
+        @param request: SendFeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
         if not UtilClient.is_unset(request.risk_label):
             query['RiskLabel'] = request.risk_label
         if not UtilClient.is_unset(request.sample_type):
@@ -152,8 +187,17 @@ class Client(OpenApiClient):
         request: safconsole_20210112_models.SendFeedbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> safconsole_20210112_models.SendFeedbackResponse:
+        """
+        @summary Used for the external creation of community samples in risk identification services.
+        
+        @param request: SendFeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
         if not UtilClient.is_unset(request.risk_label):
             query['RiskLabel'] = request.risk_label
         if not UtilClient.is_unset(request.sample_type):
@@ -183,6 +227,12 @@ class Client(OpenApiClient):
         self,
         request: safconsole_20210112_models.SendFeedbackRequest,
     ) -> safconsole_20210112_models.SendFeedbackResponse:
+        """
+        @summary Used for the external creation of community samples in risk identification services.
+        
+        @param request: SendFeedbackRequest
+        @return: SendFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_feedback_with_options(request, runtime)
 
@@ -190,6 +240,12 @@ class Client(OpenApiClient):
         self,
         request: safconsole_20210112_models.SendFeedbackRequest,
     ) -> safconsole_20210112_models.SendFeedbackResponse:
+        """
+        @summary Used for the external creation of community samples in risk identification services.
+        
+        @param request: SendFeedbackRequest
+        @return: SendFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_feedback_with_options_async(request, runtime)
 
@@ -198,6 +254,13 @@ class Client(OpenApiClient):
         request: safconsole_20210112_models.UploadSampleApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> safconsole_20210112_models.UploadSampleApiResponse:
+        """
+        @summary Single User API for Sample Creation
+        
+        @param request: UploadSampleApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadSampleApiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_type):
@@ -232,6 +295,13 @@ class Client(OpenApiClient):
         request: safconsole_20210112_models.UploadSampleApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> safconsole_20210112_models.UploadSampleApiResponse:
+        """
+        @summary Single User API for Sample Creation
+        
+        @param request: UploadSampleApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadSampleApiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_type):
@@ -265,6 +335,12 @@ class Client(OpenApiClient):
         self,
         request: safconsole_20210112_models.UploadSampleApiRequest,
     ) -> safconsole_20210112_models.UploadSampleApiResponse:
+        """
+        @summary Single User API for Sample Creation
+        
+        @param request: UploadSampleApiRequest
+        @return: UploadSampleApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_sample_api_with_options(request, runtime)
 
@@ -272,5 +348,11 @@ class Client(OpenApiClient):
         self,
         request: safconsole_20210112_models.UploadSampleApiRequest,
     ) -> safconsole_20210112_models.UploadSampleApiResponse:
+        """
+        @summary Single User API for Sample Creation
+        
+        @param request: UploadSampleApiRequest
+        @return: UploadSampleApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_sample_api_with_options_async(request, runtime)
