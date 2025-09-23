@@ -1,3 +1,46 @@
+2025-09-23 Version: 8.0.0
+- Update API ChangeResourceGroup: update response parameters Body.Code' type has changed.
+- Update API ChangeResourceGroup: update response parameters Body.Code' format has changed.
+- Update API CreateApplication: update response parameters Body.Code' type has changed.
+- Update API CreateApplication: update response parameters Body.Code' format has changed.
+- Update API CreateTask: update response parameters Body.Code' type has changed.
+- Update API CreateTask: update response parameters Body.Code' format has changed.
+- Update API DeleteApplication: update response parameters Body.Code' type has changed.
+- Update API DeleteApplication: update response parameters Body.Code' format has changed.
+- Update API DeployApplication: update response parameters Body.Code' type has changed.
+- Update API DeployApplication: update response parameters Body.Code' format has changed.
+- Update API ExecuteOperationASync: update response parameters Body.Code' type has changed.
+- Update API ExecuteOperationASync: update response parameters Body.Code' format has changed.
+- Update API ExecuteOperationSync: update response parameters Body.Code' type has changed.
+- Update API ExecuteOperationSync: update response parameters Body.Code' format has changed.
+- Update API ExecuteTask: update response parameters Body.Code' type has changed.
+- Update API ExecuteTask: update response parameters Body.Code' format has changed.
+- Update API GetApplicationVariables: update response parameters Body.Code' type has changed.
+- Update API GetApplicationVariables: update response parameters Body.Code' format has changed.
+- Update API GetApplicationVariables4Fail: update response parameters Body.Code' type has changed.
+- Update API GetApplicationVariables4Fail: update response parameters Body.Code' format has changed.
+- Update API GetExecuteOperationResult: update response parameters Body.Code' type has changed.
+- Update API GetExecuteOperationResult: update response parameters Body.Code' format has changed.
+- Update API GetTask: update response parameters Body.Code' type has changed.
+- Update API GetTask: update response parameters Body.Code' format has changed.
+- Update API GetTemplate: update response parameters Body.Code' type has changed.
+- Update API GetTemplate: update response parameters Body.Code' format has changed.
+- Update API GetToken: update response parameters Body.Code' type has changed.
+- Update API GetToken: update response parameters Body.Code' format has changed.
+- Update API ListApplication: update response parameters Body.Code' type has changed.
+- Update API ListApplication: update response parameters Body.Code' format has changed.
+- Update API ListTemplate: update response parameters Body.Code' type has changed.
+- Update API ListTemplate: update response parameters Body.Code' format has changed.
+- Update API ReConfigApplication: update response parameters Body.Code' type has changed.
+- Update API ReConfigApplication: update response parameters Body.Code' format has changed.
+- Update API ReleaseApplication: update response parameters Body.Code' type has changed.
+- Update API ReleaseApplication: update response parameters Body.Code' format has changed.
+- Update API ValidateApplication: update response parameters Body.Code' type has changed.
+- Update API ValidateApplication: update response parameters Body.Code' format has changed.
+- Update API ValuateApplication: update response parameters Body.Code' type has changed.
+- Update API ValuateApplication: update response parameters Body.Code' format has changed.
+
+
 2025-09-16 Version: 7.2.0
 - Support API CreateTask.
 - Support API ExecuteTask.

@@ -298,7 +298,7 @@ class ChangeResourceGroupRequest(TeaModel):
 class ChangeResourceGroupResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: str = None,
         message: str = None,
         request_id: str = None,
@@ -630,7 +630,7 @@ class CreateApplicationShrinkRequest(TeaModel):
 class CreateApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: str = None,
         message: str = None,
         request_id: str = None,
@@ -816,7 +816,7 @@ class CreateTaskShrinkRequest(TeaModel):
 class CreateTaskResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: int = None,
         message: str = None,
         request_id: str = None,
@@ -940,7 +940,7 @@ class DeleteApplicationRequest(TeaModel):
 class DeleteApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -1067,7 +1067,7 @@ class DeployApplicationRequest(TeaModel):
 class DeployApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: int = None,
         message: str = None,
         request_id: str = None,
@@ -1347,7 +1347,7 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
 class ExecuteOperationASyncResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: str = None,
         message: str = None,
         request_id: str = None,
@@ -1600,7 +1600,7 @@ class ExecuteOperationSyncResponseBodyData(TeaModel):
 class ExecuteOperationSyncResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: ExecuteOperationSyncResponseBodyData = None,
         message: str = None,
         request_id: str = None,
@@ -1760,7 +1760,7 @@ class ExecuteTaskResponseBodyData(TeaModel):
 class ExecuteTaskResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: ExecuteTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
@@ -2585,7 +2585,7 @@ class GetApplicationVariablesResponseBodyData(TeaModel):
 class GetApplicationVariablesResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: List[GetApplicationVariablesResponseBodyData] = None,
         message: str = None,
         request_id: str = None,
@@ -2764,7 +2764,7 @@ class GetApplicationVariables4FailResponseBodyData(TeaModel):
 class GetApplicationVariables4FailResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: List[GetApplicationVariables4FailResponseBodyData] = None,
         message: str = None,
         request_id: str = None,
@@ -2945,7 +2945,7 @@ class GetExecuteOperationResultResponseBodyData(TeaModel):
 class GetExecuteOperationResultResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: GetExecuteOperationResultResponseBodyData = None,
         message: str = None,
         request_id: str = None,
@@ -4145,7 +4145,7 @@ class GetTaskResponseBodyData(TeaModel):
 class GetTaskResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: GetTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
@@ -4417,7 +4417,7 @@ class GetTemplateResponseBodyData(TeaModel):
 class GetTemplateResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: GetTemplateResponseBodyData = None,
         message: str = None,
         request_id: str = None,
@@ -4600,7 +4600,7 @@ class GetTokenResponseBodyData(TeaModel):
 class GetTokenResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: GetTokenResponseBodyData = None,
         message: str = None,
         request_id: str = None,
@@ -4960,7 +4960,7 @@ class ListApplicationResponseBodyData(TeaModel):
 class ListApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: List[ListApplicationResponseBodyData] = None,
         message: str = None,
         next_token: int = None,
@@ -5831,7 +5831,7 @@ class ListTemplateResponseBodyData(TeaModel):
 class ListTemplateResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: List[ListTemplateResponseBodyData] = None,
         message: str = None,
         next_token: int = None,
@@ -6644,7 +6644,7 @@ class ReConfigApplicationRequest(TeaModel):
 class ReConfigApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -6769,7 +6769,7 @@ class ReleaseApplicationRequest(TeaModel):
 class ReleaseApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: int = None,
         message: str = None,
         request_id: str = None,
@@ -6903,7 +6903,7 @@ class ValidateApplicationRequest(TeaModel):
 class ValidateApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: str = None,
         message: str = None,
         request_id: str = None,
@@ -7037,7 +7037,7 @@ class ValuateApplicationRequest(TeaModel):
 class ValuateApplicationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         data: int = None,
         message: str = None,
         request_id: str = None,
