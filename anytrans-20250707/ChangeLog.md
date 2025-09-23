@@ -1,3 +1,14 @@
+2025-09-23 Version: 2.0.0
+- Update API BatchTranslate: add request parameters appName.
+- Update API BatchTranslate: add request parameters ext.config.
+- Update API SubmitDocTranslateTask: delete request parameters ext.examples.
+- Update API SubmitDocTranslateTask: delete request parameters ext.sensitives.
+- Update API SubmitDocTranslateTask: delete request parameters ext.textTransform.
+- Update API SubmitHtmlTranslateTask: add request parameters ext.config.
+- Update API SubmitLongTextTranslateTask: add request parameters ext.config.
+- Update API TextTranslate: add request parameters ext.config.
+
+
 2025-09-22 Version: 1.2.0
 - Support API TermEdit.
 - Support API TermQuery.

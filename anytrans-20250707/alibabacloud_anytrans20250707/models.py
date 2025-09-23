@@ -4,6 +4,33 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class BatchTranslateRequestExtConfig(TeaModel):
+    def __init__(
+        self,
+        skip_csi_check: bool = None,
+    ):
+        self.skip_csi_check = skip_csi_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.skip_csi_check is not None:
+            result['skipCsiCheck'] = self.skip_csi_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('skipCsiCheck') is not None:
+            self.skip_csi_check = m.get('skipCsiCheck')
+        return self
+
+
 class BatchTranslateRequestExtExamples(TeaModel):
     def __init__(
         self,
@@ -112,12 +139,14 @@ class BatchTranslateRequestExtTextTransform(TeaModel):
 class BatchTranslateRequestExt(TeaModel):
     def __init__(
         self,
+        config: BatchTranslateRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[BatchTranslateRequestExtExamples] = None,
         sensitives: List[str] = None,
         terminologies: List[BatchTranslateRequestExtTerminologies] = None,
         text_transform: BatchTranslateRequestExtTextTransform = None,
     ):
+        self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
         self.sensitives = sensitives
@@ -125,6 +154,8 @@ class BatchTranslateRequestExt(TeaModel):
         self.text_transform = text_transform
 
     def validate(self):
+        if self.config:
+            self.config.validate()
         if self.examples:
             for k in self.examples:
                 if k:
@@ -142,6 +173,8 @@ class BatchTranslateRequestExt(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.domain_hint is not None:
             result['domainHint'] = self.domain_hint
         result['examples'] = []
@@ -160,6 +193,9 @@ class BatchTranslateRequestExt(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = BatchTranslateRequestExtConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('domainHint') is not None:
             self.domain_hint = m.get('domainHint')
         self.examples = []
@@ -183,6 +219,7 @@ class BatchTranslateRequestExt(TeaModel):
 class BatchTranslateRequest(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         ext: BatchTranslateRequestExt = None,
         format: str = None,
         scene: str = None,
@@ -191,6 +228,7 @@ class BatchTranslateRequest(TeaModel):
         text: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        self.app_name = app_name
         self.ext = ext
         self.format = format
         self.scene = scene
@@ -213,6 +251,8 @@ class BatchTranslateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['appName'] = self.app_name
         if self.ext is not None:
             result['ext'] = self.ext.to_map()
         if self.format is not None:
@@ -231,6 +271,8 @@ class BatchTranslateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appName') is not None:
+            self.app_name = m.get('appName')
         if m.get('ext') is not None:
             temp_model = BatchTranslateRequestExt()
             self.ext = temp_model.from_map(m['ext'])
@@ -252,6 +294,7 @@ class BatchTranslateRequest(TeaModel):
 class BatchTranslateShrinkRequest(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         ext_shrink: str = None,
         format: str = None,
         scene: str = None,
@@ -260,6 +303,7 @@ class BatchTranslateShrinkRequest(TeaModel):
         text_shrink: str = None,
         workspace_id: str = None,
     ):
+        self.app_name = app_name
         self.ext_shrink = ext_shrink
         self.format = format
         self.scene = scene
@@ -281,6 +325,8 @@ class BatchTranslateShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['appName'] = self.app_name
         if self.ext_shrink is not None:
             result['ext'] = self.ext_shrink
         if self.format is not None:
@@ -299,6 +345,8 @@ class BatchTranslateShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appName') is not None:
+            self.app_name = m.get('appName')
         if m.get('ext') is not None:
             self.ext_shrink = m.get('ext')
         if m.get('format') is not None:
@@ -1788,39 +1836,6 @@ class GetLongTextTranslateTaskResponse(TeaModel):
         return self
 
 
-class SubmitDocTranslateTaskRequestExtExamples(TeaModel):
-    def __init__(
-        self,
-        src: str = None,
-        tgt: str = None,
-    ):
-        self.src = src
-        self.tgt = tgt
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.src is not None:
-            result['src'] = self.src
-        if self.tgt is not None:
-            result['tgt'] = self.tgt
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('src') is not None:
-            self.src = m.get('src')
-        if m.get('tgt') is not None:
-            self.tgt = m.get('tgt')
-        return self
-
-
 class SubmitDocTranslateTaskRequestExtTerminologies(TeaModel):
     def __init__(
         self,
@@ -1854,71 +1869,20 @@ class SubmitDocTranslateTaskRequestExtTerminologies(TeaModel):
         return self
 
 
-class SubmitDocTranslateTaskRequestExtTextTransform(TeaModel):
-    def __init__(
-        self,
-        to_lower: bool = None,
-        to_title: bool = None,
-        to_upper: bool = None,
-    ):
-        self.to_lower = to_lower
-        self.to_title = to_title
-        self.to_upper = to_upper
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.to_lower is not None:
-            result['toLower'] = self.to_lower
-        if self.to_title is not None:
-            result['toTitle'] = self.to_title
-        if self.to_upper is not None:
-            result['toUpper'] = self.to_upper
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('toLower') is not None:
-            self.to_lower = m.get('toLower')
-        if m.get('toTitle') is not None:
-            self.to_title = m.get('toTitle')
-        if m.get('toUpper') is not None:
-            self.to_upper = m.get('toUpper')
-        return self
-
-
 class SubmitDocTranslateTaskRequestExt(TeaModel):
     def __init__(
         self,
         domain_hint: str = None,
-        examples: List[SubmitDocTranslateTaskRequestExtExamples] = None,
-        sensitives: List[str] = None,
         terminologies: List[SubmitDocTranslateTaskRequestExtTerminologies] = None,
-        text_transform: SubmitDocTranslateTaskRequestExtTextTransform = None,
     ):
         self.domain_hint = domain_hint
-        self.examples = examples
-        self.sensitives = sensitives
         self.terminologies = terminologies
-        self.text_transform = text_transform
 
     def validate(self):
-        if self.examples:
-            for k in self.examples:
-                if k:
-                    k.validate()
         if self.terminologies:
             for k in self.terminologies:
                 if k:
                     k.validate()
-        if self.text_transform:
-            self.text_transform.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1928,39 +1892,21 @@ class SubmitDocTranslateTaskRequestExt(TeaModel):
         result = dict()
         if self.domain_hint is not None:
             result['domainHint'] = self.domain_hint
-        result['examples'] = []
-        if self.examples is not None:
-            for k in self.examples:
-                result['examples'].append(k.to_map() if k else None)
-        if self.sensitives is not None:
-            result['sensitives'] = self.sensitives
         result['terminologies'] = []
         if self.terminologies is not None:
             for k in self.terminologies:
                 result['terminologies'].append(k.to_map() if k else None)
-        if self.text_transform is not None:
-            result['textTransform'] = self.text_transform.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('domainHint') is not None:
             self.domain_hint = m.get('domainHint')
-        self.examples = []
-        if m.get('examples') is not None:
-            for k in m.get('examples'):
-                temp_model = SubmitDocTranslateTaskRequestExtExamples()
-                self.examples.append(temp_model.from_map(k))
-        if m.get('sensitives') is not None:
-            self.sensitives = m.get('sensitives')
         self.terminologies = []
         if m.get('terminologies') is not None:
             for k in m.get('terminologies'):
                 temp_model = SubmitDocTranslateTaskRequestExtTerminologies()
                 self.terminologies.append(temp_model.from_map(k))
-        if m.get('textTransform') is not None:
-            temp_model = SubmitDocTranslateTaskRequestExtTextTransform()
-            self.text_transform = temp_model.from_map(m['textTransform'])
         return self
 
 
@@ -2233,6 +2179,33 @@ class SubmitDocTranslateTaskResponse(TeaModel):
         return self
 
 
+class SubmitHtmlTranslateTaskRequestExtConfig(TeaModel):
+    def __init__(
+        self,
+        skip_csi_check: bool = None,
+    ):
+        self.skip_csi_check = skip_csi_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.skip_csi_check is not None:
+            result['skipCsiCheck'] = self.skip_csi_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('skipCsiCheck') is not None:
+            self.skip_csi_check = m.get('skipCsiCheck')
+        return self
+
+
 class SubmitHtmlTranslateTaskRequestExtExamples(TeaModel):
     def __init__(
         self,
@@ -2341,12 +2314,14 @@ class SubmitHtmlTranslateTaskRequestExtTextTransform(TeaModel):
 class SubmitHtmlTranslateTaskRequestExt(TeaModel):
     def __init__(
         self,
+        config: SubmitHtmlTranslateTaskRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[SubmitHtmlTranslateTaskRequestExtExamples] = None,
         sensitives: List[str] = None,
         terminologies: List[SubmitHtmlTranslateTaskRequestExtTerminologies] = None,
         text_transform: SubmitHtmlTranslateTaskRequestExtTextTransform = None,
     ):
+        self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
         self.sensitives = sensitives
@@ -2354,6 +2329,8 @@ class SubmitHtmlTranslateTaskRequestExt(TeaModel):
         self.text_transform = text_transform
 
     def validate(self):
+        if self.config:
+            self.config.validate()
         if self.examples:
             for k in self.examples:
                 if k:
@@ -2371,6 +2348,8 @@ class SubmitHtmlTranslateTaskRequestExt(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.domain_hint is not None:
             result['domainHint'] = self.domain_hint
         result['examples'] = []
@@ -2389,6 +2368,9 @@ class SubmitHtmlTranslateTaskRequestExt(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = SubmitHtmlTranslateTaskRequestExtConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('domainHint') is not None:
             self.domain_hint = m.get('domainHint')
         self.examples = []
@@ -3119,6 +3101,33 @@ class SubmitImageTranslateTaskResponse(TeaModel):
         return self
 
 
+class SubmitLongTextTranslateTaskRequestExtConfig(TeaModel):
+    def __init__(
+        self,
+        skip_csi_check: bool = None,
+    ):
+        self.skip_csi_check = skip_csi_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.skip_csi_check is not None:
+            result['skipCsiCheck'] = self.skip_csi_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('skipCsiCheck') is not None:
+            self.skip_csi_check = m.get('skipCsiCheck')
+        return self
+
+
 class SubmitLongTextTranslateTaskRequestExtExamples(TeaModel):
     def __init__(
         self,
@@ -3227,12 +3236,14 @@ class SubmitLongTextTranslateTaskRequestExtTextTransform(TeaModel):
 class SubmitLongTextTranslateTaskRequestExt(TeaModel):
     def __init__(
         self,
+        config: SubmitLongTextTranslateTaskRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[SubmitLongTextTranslateTaskRequestExtExamples] = None,
         sensitives: List[str] = None,
         terminologies: List[SubmitLongTextTranslateTaskRequestExtTerminologies] = None,
         text_transform: SubmitLongTextTranslateTaskRequestExtTextTransform = None,
     ):
+        self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
         self.sensitives = sensitives
@@ -3240,6 +3251,8 @@ class SubmitLongTextTranslateTaskRequestExt(TeaModel):
         self.text_transform = text_transform
 
     def validate(self):
+        if self.config:
+            self.config.validate()
         if self.examples:
             for k in self.examples:
                 if k:
@@ -3257,6 +3270,8 @@ class SubmitLongTextTranslateTaskRequestExt(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.domain_hint is not None:
             result['domainHint'] = self.domain_hint
         result['examples'] = []
@@ -3275,6 +3290,9 @@ class SubmitLongTextTranslateTaskRequestExt(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = SubmitLongTextTranslateTaskRequestExtConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('domainHint') is not None:
             self.domain_hint = m.get('domainHint')
         self.examples = []
@@ -4179,6 +4197,33 @@ class TermQueryResponse(TeaModel):
         return self
 
 
+class TextTranslateRequestExtConfig(TeaModel):
+    def __init__(
+        self,
+        skip_csi_check: bool = None,
+    ):
+        self.skip_csi_check = skip_csi_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.skip_csi_check is not None:
+            result['skipCsiCheck'] = self.skip_csi_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('skipCsiCheck') is not None:
+            self.skip_csi_check = m.get('skipCsiCheck')
+        return self
+
+
 class TextTranslateRequestExtExamples(TeaModel):
     def __init__(
         self,
@@ -4287,12 +4332,14 @@ class TextTranslateRequestExtTextTransform(TeaModel):
 class TextTranslateRequestExt(TeaModel):
     def __init__(
         self,
+        config: TextTranslateRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[TextTranslateRequestExtExamples] = None,
         sensitives: List[str] = None,
         terminologies: List[TextTranslateRequestExtTerminologies] = None,
         text_transform: TextTranslateRequestExtTextTransform = None,
     ):
+        self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
         self.sensitives = sensitives
@@ -4300,6 +4347,8 @@ class TextTranslateRequestExt(TeaModel):
         self.text_transform = text_transform
 
     def validate(self):
+        if self.config:
+            self.config.validate()
         if self.examples:
             for k in self.examples:
                 if k:
@@ -4317,6 +4366,8 @@ class TextTranslateRequestExt(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.domain_hint is not None:
             result['domainHint'] = self.domain_hint
         result['examples'] = []
@@ -4335,6 +4386,9 @@ class TextTranslateRequestExt(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = TextTranslateRequestExtConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('domainHint') is not None:
             self.domain_hint = m.get('domainHint')
         self.examples = []

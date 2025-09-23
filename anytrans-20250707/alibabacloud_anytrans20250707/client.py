@@ -63,6 +63,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.text):
             request.text_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text, 'text', 'json')
         body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['appName'] = request.app_name
         if not UtilClient.is_unset(request.ext_shrink):
             body['ext'] = request.ext_shrink
         if not UtilClient.is_unset(request.format):
@@ -119,6 +121,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.text):
             request.text_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text, 'text', 'json')
         body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['appName'] = request.app_name
         if not UtilClient.is_unset(request.ext_shrink):
             body['ext'] = request.ext_shrink
         if not UtilClient.is_unset(request.format):
