@@ -2141,10 +2141,13 @@ class OpenStructMvDetailModel(TeaModel):
         self,
         base_table_infos: List[OpenStructMvDetailModelBaseTableInfos] = None,
         base_table_names: List[List[str]] = None,
+        enable_delay_alert: int = None,
+        enable_failure_alert: int = None,
         explicit_hit: int = None,
         first_refresh_time: str = None,
         implicit_hit: int = None,
         is_inactive: bool = None,
+        latency_tolerance: int = None,
         local_size: int = None,
         query_rewrite_enabled: bool = None,
         refresh_interval: str = None,
@@ -2156,10 +2159,13 @@ class OpenStructMvDetailModel(TeaModel):
     ):
         self.base_table_infos = base_table_infos
         self.base_table_names = base_table_names
+        self.enable_delay_alert = enable_delay_alert
+        self.enable_failure_alert = enable_failure_alert
         self.explicit_hit = explicit_hit
         self.first_refresh_time = first_refresh_time
         self.implicit_hit = implicit_hit
         self.is_inactive = is_inactive
+        self.latency_tolerance = latency_tolerance
         self.local_size = local_size
         self.query_rewrite_enabled = query_rewrite_enabled
         self.refresh_interval = refresh_interval
@@ -2187,6 +2193,10 @@ class OpenStructMvDetailModel(TeaModel):
                 result['BaseTableInfos'].append(k.to_map() if k else None)
         if self.base_table_names is not None:
             result['BaseTableNames'] = self.base_table_names
+        if self.enable_delay_alert is not None:
+            result['EnableDelayAlert'] = self.enable_delay_alert
+        if self.enable_failure_alert is not None:
+            result['EnableFailureAlert'] = self.enable_failure_alert
         if self.explicit_hit is not None:
             result['ExplicitHit'] = self.explicit_hit
         if self.first_refresh_time is not None:
@@ -2195,6 +2205,8 @@ class OpenStructMvDetailModel(TeaModel):
             result['ImplicitHit'] = self.implicit_hit
         if self.is_inactive is not None:
             result['IsInactive'] = self.is_inactive
+        if self.latency_tolerance is not None:
+            result['LatencyTolerance'] = self.latency_tolerance
         if self.local_size is not None:
             result['LocalSize'] = self.local_size
         if self.query_rewrite_enabled is not None:
@@ -2222,6 +2234,10 @@ class OpenStructMvDetailModel(TeaModel):
                 self.base_table_infos.append(temp_model.from_map(k))
         if m.get('BaseTableNames') is not None:
             self.base_table_names = m.get('BaseTableNames')
+        if m.get('EnableDelayAlert') is not None:
+            self.enable_delay_alert = m.get('EnableDelayAlert')
+        if m.get('EnableFailureAlert') is not None:
+            self.enable_failure_alert = m.get('EnableFailureAlert')
         if m.get('ExplicitHit') is not None:
             self.explicit_hit = m.get('ExplicitHit')
         if m.get('FirstRefreshTime') is not None:
@@ -2230,6 +2246,8 @@ class OpenStructMvDetailModel(TeaModel):
             self.implicit_hit = m.get('ImplicitHit')
         if m.get('IsInactive') is not None:
             self.is_inactive = m.get('IsInactive')
+        if m.get('LatencyTolerance') is not None:
+            self.latency_tolerance = m.get('LatencyTolerance')
         if m.get('LocalSize') is not None:
             self.local_size = m.get('LocalSize')
         if m.get('QueryRewriteEnabled') is not None:
@@ -2446,14 +2464,20 @@ class OpenStructMvRecommendSubTaskModel(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        min_rewrite_query_count: int = None,
+        min_rewrite_query_pattern: int = None,
         scan_queries_count: int = None,
+        slow_query_threshold: int = None,
         start_time: str = None,
         status: str = None,
         sub_queries_count: int = None,
         subtask_id: int = None,
     ):
         self.end_time = end_time
+        self.min_rewrite_query_count = min_rewrite_query_count
+        self.min_rewrite_query_pattern = min_rewrite_query_pattern
         self.scan_queries_count = scan_queries_count
+        self.slow_query_threshold = slow_query_threshold
         self.start_time = start_time
         self.status = status
         self.sub_queries_count = sub_queries_count
@@ -2470,8 +2494,14 @@ class OpenStructMvRecommendSubTaskModel(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.min_rewrite_query_count is not None:
+            result['MinRewriteQueryCount'] = self.min_rewrite_query_count
+        if self.min_rewrite_query_pattern is not None:
+            result['MinRewriteQueryPattern'] = self.min_rewrite_query_pattern
         if self.scan_queries_count is not None:
             result['ScanQueriesCount'] = self.scan_queries_count
+        if self.slow_query_threshold is not None:
+            result['SlowQueryThreshold'] = self.slow_query_threshold
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -2486,8 +2516,14 @@ class OpenStructMvRecommendSubTaskModel(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('MinRewriteQueryCount') is not None:
+            self.min_rewrite_query_count = m.get('MinRewriteQueryCount')
+        if m.get('MinRewriteQueryPattern') is not None:
+            self.min_rewrite_query_pattern = m.get('MinRewriteQueryPattern')
         if m.get('ScanQueriesCount') is not None:
             self.scan_queries_count = m.get('ScanQueriesCount')
+        if m.get('SlowQueryThreshold') is not None:
+            self.slow_query_threshold = m.get('SlowQueryThreshold')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -2505,15 +2541,21 @@ class OpenStructMvRecommendTaskModel(TeaModel):
         created_time: str = None,
         description: str = None,
         last_run_at: str = None,
+        min_rewrite_query_count: int = None,
+        min_rewrite_query_pattern: int = None,
         scan_queries_range: int = None,
         scheduling_settings: str = None,
+        slow_query_threshold: int = None,
         task_name: str = None,
     ):
         self.created_time = created_time
         self.description = description
         self.last_run_at = last_run_at
+        self.min_rewrite_query_count = min_rewrite_query_count
+        self.min_rewrite_query_pattern = min_rewrite_query_pattern
         self.scan_queries_range = scan_queries_range
         self.scheduling_settings = scheduling_settings
+        self.slow_query_threshold = slow_query_threshold
         self.task_name = task_name
 
     def validate(self):
@@ -2531,10 +2573,16 @@ class OpenStructMvRecommendTaskModel(TeaModel):
             result['Description'] = self.description
         if self.last_run_at is not None:
             result['LastRunAt'] = self.last_run_at
+        if self.min_rewrite_query_count is not None:
+            result['MinRewriteQueryCount'] = self.min_rewrite_query_count
+        if self.min_rewrite_query_pattern is not None:
+            result['MinRewriteQueryPattern'] = self.min_rewrite_query_pattern
         if self.scan_queries_range is not None:
             result['ScanQueriesRange'] = self.scan_queries_range
         if self.scheduling_settings is not None:
             result['SchedulingSettings'] = self.scheduling_settings
+        if self.slow_query_threshold is not None:
+            result['SlowQueryThreshold'] = self.slow_query_threshold
         if self.task_name is not None:
             result['TaskName'] = self.task_name
         return result
@@ -2547,10 +2595,16 @@ class OpenStructMvRecommendTaskModel(TeaModel):
             self.description = m.get('Description')
         if m.get('LastRunAt') is not None:
             self.last_run_at = m.get('LastRunAt')
+        if m.get('MinRewriteQueryCount') is not None:
+            self.min_rewrite_query_count = m.get('MinRewriteQueryCount')
+        if m.get('MinRewriteQueryPattern') is not None:
+            self.min_rewrite_query_pattern = m.get('MinRewriteQueryPattern')
         if m.get('ScanQueriesRange') is not None:
             self.scan_queries_range = m.get('ScanQueriesRange')
         if m.get('SchedulingSettings') is not None:
             self.scheduling_settings = m.get('SchedulingSettings')
+        if m.get('SlowQueryThreshold') is not None:
+            self.slow_query_threshold = m.get('SlowQueryThreshold')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
         return self
@@ -3937,6 +3991,417 @@ class CheckSampleDataSetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckSampleDataSetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConfigureResultExportRequestOssInfo(TeaModel):
+    def __init__(
+        self,
+        export_base_path: str = None,
+        resource_group: str = None,
+        result_file_ttl: int = None,
+    ):
+        self.export_base_path = export_base_path
+        self.resource_group = resource_group
+        self.result_file_ttl = result_file_ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_base_path is not None:
+            result['ExportBasePath'] = self.export_base_path
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.result_file_ttl is not None:
+            result['ResultFileTtl'] = self.result_file_ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportBasePath') is not None:
+            self.export_base_path = m.get('ExportBasePath')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('ResultFileTtl') is not None:
+            self.result_file_ttl = m.get('ResultFileTtl')
+        return self
+
+
+class ConfigureResultExportRequestSlsInfo(TeaModel):
+    def __init__(
+        self,
+        logstore_ttl: int = None,
+        resource_group: str = None,
+        sls_project: str = None,
+    ):
+        self.logstore_ttl = logstore_ttl
+        self.resource_group = resource_group
+        self.sls_project = sls_project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore_ttl is not None:
+            result['LogstoreTtl'] = self.logstore_ttl
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.sls_project is not None:
+            result['SlsProject'] = self.sls_project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogstoreTtl') is not None:
+            self.logstore_ttl = m.get('LogstoreTtl')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SlsProject') is not None:
+            self.sls_project = m.get('SlsProject')
+        return self
+
+
+class ConfigureResultExportRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        export_type: str = None,
+        oss_info: ConfigureResultExportRequestOssInfo = None,
+        region_id: str = None,
+        sls_info: ConfigureResultExportRequestSlsInfo = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.export_type = export_type
+        self.oss_info = oss_info
+        # This parameter is required.
+        self.region_id = region_id
+        self.sls_info = sls_info
+
+    def validate(self):
+        if self.oss_info:
+            self.oss_info.validate()
+        if self.sls_info:
+            self.sls_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.oss_info is not None:
+            result['OssInfo'] = self.oss_info.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sls_info is not None:
+            result['SlsInfo'] = self.sls_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('OssInfo') is not None:
+            temp_model = ConfigureResultExportRequestOssInfo()
+            self.oss_info = temp_model.from_map(m['OssInfo'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SlsInfo') is not None:
+            temp_model = ConfigureResultExportRequestSlsInfo()
+            self.sls_info = temp_model.from_map(m['SlsInfo'])
+        return self
+
+
+class ConfigureResultExportShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        export_type: str = None,
+        oss_info_shrink: str = None,
+        region_id: str = None,
+        sls_info_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.export_type = export_type
+        self.oss_info_shrink = oss_info_shrink
+        # This parameter is required.
+        self.region_id = region_id
+        self.sls_info_shrink = sls_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.oss_info_shrink is not None:
+            result['OssInfo'] = self.oss_info_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sls_info_shrink is not None:
+            result['SlsInfo'] = self.sls_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('OssInfo') is not None:
+            self.oss_info_shrink = m.get('OssInfo')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SlsInfo') is not None:
+            self.sls_info_shrink = m.get('SlsInfo')
+        return self
+
+
+class ConfigureResultExportResponseBodyDataOssInfo(TeaModel):
+    def __init__(
+        self,
+        export_base_path: str = None,
+        resource_group: str = None,
+        result_file_ttl: int = None,
+    ):
+        self.export_base_path = export_base_path
+        self.resource_group = resource_group
+        self.result_file_ttl = result_file_ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_base_path is not None:
+            result['ExportBasePath'] = self.export_base_path
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.result_file_ttl is not None:
+            result['ResultFileTtl'] = self.result_file_ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportBasePath') is not None:
+            self.export_base_path = m.get('ExportBasePath')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('ResultFileTtl') is not None:
+            self.result_file_ttl = m.get('ResultFileTtl')
+        return self
+
+
+class ConfigureResultExportResponseBodyDataSlsInfo(TeaModel):
+    def __init__(
+        self,
+        logstore_ttl: int = None,
+        resource_group: str = None,
+        sls_project: str = None,
+    ):
+        self.logstore_ttl = logstore_ttl
+        self.resource_group = resource_group
+        self.sls_project = sls_project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore_ttl is not None:
+            result['LogstoreTtl'] = self.logstore_ttl
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.sls_project is not None:
+            result['SlsProject'] = self.sls_project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogstoreTtl') is not None:
+            self.logstore_ttl = m.get('LogstoreTtl')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SlsProject') is not None:
+            self.sls_project = m.get('SlsProject')
+        return self
+
+
+class ConfigureResultExportResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        export_type: str = None,
+        oss_info: ConfigureResultExportResponseBodyDataOssInfo = None,
+        sls_info: ConfigureResultExportResponseBodyDataSlsInfo = None,
+    ):
+        self.export_type = export_type
+        self.oss_info = oss_info
+        self.sls_info = sls_info
+
+    def validate(self):
+        if self.oss_info:
+            self.oss_info.validate()
+        if self.sls_info:
+            self.sls_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.oss_info is not None:
+            result['OssInfo'] = self.oss_info.to_map()
+        if self.sls_info is not None:
+            result['SlsInfo'] = self.sls_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('OssInfo') is not None:
+            temp_model = ConfigureResultExportResponseBodyDataOssInfo()
+            self.oss_info = temp_model.from_map(m['OssInfo'])
+        if m.get('SlsInfo') is not None:
+            temp_model = ConfigureResultExportResponseBodyDataSlsInfo()
+            self.sls_info = temp_model.from_map(m['SlsInfo'])
+        return self
+
+
+class ConfigureResultExportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ConfigureResultExportResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ConfigureResultExportResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConfigureResultExportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigureResultExportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigureResultExportResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6781,6 +7246,133 @@ class CreateApsSlsADBJobResponse(TeaModel):
         return self
 
 
+class CreateBackupRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateBackupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBackupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBackupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBackupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDBClusterRequestTag(TeaModel):
     def __init__(
         self,
@@ -6831,6 +7423,7 @@ class CreateDBClusterRequest(TeaModel):
         dbcluster_version: str = None,
         disk_encryption: bool = None,
         enable_default_resource_pool: bool = None,
+        enable_ssl: bool = None,
         kms_id: str = None,
         pay_type: str = None,
         period: str = None,
@@ -6882,6 +7475,7 @@ class CreateDBClusterRequest(TeaModel):
         # *   **true** (default)
         # *   **false**\
         self.enable_default_resource_pool = enable_default_resource_pool
+        self.enable_ssl = enable_ssl
         # The ID of the key that is used to encrypt disk data.
         # 
         # >  This parameter must be specified only when disk encryption is enabled.
@@ -7003,6 +7597,8 @@ class CreateDBClusterRequest(TeaModel):
             result['DiskEncryption'] = self.disk_encryption
         if self.enable_default_resource_pool is not None:
             result['EnableDefaultResourcePool'] = self.enable_default_resource_pool
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
         if self.kms_id is not None:
             result['KmsId'] = self.kms_id
         if self.pay_type is not None:
@@ -7065,6 +7661,8 @@ class CreateDBClusterRequest(TeaModel):
             self.disk_encryption = m.get('DiskEncryption')
         if m.get('EnableDefaultResourcePool') is not None:
             self.enable_default_resource_pool = m.get('EnableDefaultResourcePool')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
         if m.get('KmsId') is not None:
             self.kms_id = m.get('KmsId')
         if m.get('PayType') is not None:
@@ -31893,6 +32491,269 @@ class DescribeResourceGroupSpecResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeResourceGroupSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResultExportConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        export_type: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.export_type = export_type
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeResultExportConfigResponseBodyDataOssInfo(TeaModel):
+    def __init__(
+        self,
+        export_base_path: str = None,
+        resource_group: str = None,
+        result_file_ttl: int = None,
+    ):
+        self.export_base_path = export_base_path
+        self.resource_group = resource_group
+        self.result_file_ttl = result_file_ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_base_path is not None:
+            result['ExportBasePath'] = self.export_base_path
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.result_file_ttl is not None:
+            result['ResultFileTtl'] = self.result_file_ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportBasePath') is not None:
+            self.export_base_path = m.get('ExportBasePath')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('ResultFileTtl') is not None:
+            self.result_file_ttl = m.get('ResultFileTtl')
+        return self
+
+
+class DescribeResultExportConfigResponseBodyDataSlsInfo(TeaModel):
+    def __init__(
+        self,
+        logstore_ttl: int = None,
+        resource_group: str = None,
+        sls_project: str = None,
+    ):
+        self.logstore_ttl = logstore_ttl
+        self.resource_group = resource_group
+        self.sls_project = sls_project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore_ttl is not None:
+            result['LogstoreTtl'] = self.logstore_ttl
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.sls_project is not None:
+            result['SlsProject'] = self.sls_project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogstoreTtl') is not None:
+            self.logstore_ttl = m.get('LogstoreTtl')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SlsProject') is not None:
+            self.sls_project = m.get('SlsProject')
+        return self
+
+
+class DescribeResultExportConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        export_type: str = None,
+        oss_info: DescribeResultExportConfigResponseBodyDataOssInfo = None,
+        sls_info: DescribeResultExportConfigResponseBodyDataSlsInfo = None,
+    ):
+        self.export_type = export_type
+        self.oss_info = oss_info
+        self.sls_info = sls_info
+
+    def validate(self):
+        if self.oss_info:
+            self.oss_info.validate()
+        if self.sls_info:
+            self.sls_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.oss_info is not None:
+            result['OssInfo'] = self.oss_info.to_map()
+        if self.sls_info is not None:
+            result['SlsInfo'] = self.sls_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('OssInfo') is not None:
+            temp_model = DescribeResultExportConfigResponseBodyDataOssInfo()
+            self.oss_info = temp_model.from_map(m['OssInfo'])
+        if m.get('SlsInfo') is not None:
+            temp_model = DescribeResultExportConfigResponseBodyDataSlsInfo()
+            self.sls_info = temp_model.from_map(m['SlsInfo'])
+        return self
+
+
+class DescribeResultExportConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeResultExportConfigResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeResultExportConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeResultExportConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResultExportConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResultExportConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

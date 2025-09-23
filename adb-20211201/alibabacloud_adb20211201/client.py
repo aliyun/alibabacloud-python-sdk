@@ -1179,6 +1179,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_sample_data_set_with_options_async(request, runtime)
 
+    def configure_result_export_with_options(
+        self,
+        tmp_req: adb_20211201_models.ConfigureResultExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ConfigureResultExportResponse:
+        """
+        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        
+        @param tmp_req: ConfigureResultExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureResultExportResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ConfigureResultExportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.oss_info):
+            request.oss_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.oss_info, 'OssInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_info):
+            request.sls_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_info, 'SlsInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.oss_info_shrink):
+            body['OssInfo'] = request.oss_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sls_info_shrink):
+            body['SlsInfo'] = request.sls_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureResultExport',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ConfigureResultExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def configure_result_export_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.ConfigureResultExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ConfigureResultExportResponse:
+        """
+        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        
+        @param tmp_req: ConfigureResultExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureResultExportResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ConfigureResultExportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.oss_info):
+            request.oss_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.oss_info, 'OssInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_info):
+            request.sls_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_info, 'SlsInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.oss_info_shrink):
+            body['OssInfo'] = request.oss_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sls_info_shrink):
+            body['SlsInfo'] = request.sls_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureResultExport',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ConfigureResultExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def configure_result_export(
+        self,
+        request: adb_20211201_models.ConfigureResultExportRequest,
+    ) -> adb_20211201_models.ConfigureResultExportResponse:
+        """
+        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        
+        @param request: ConfigureResultExportRequest
+        @return: ConfigureResultExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.configure_result_export_with_options(request, runtime)
+
+    async def configure_result_export_async(
+        self,
+        request: adb_20211201_models.ConfigureResultExportRequest,
+    ) -> adb_20211201_models.ConfigureResultExportResponse:
+        """
+        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        
+        @param request: ConfigureResultExportRequest
+        @return: ConfigureResultExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.configure_result_export_with_options_async(request, runtime)
+
     def create_apsjob_with_options(
         self,
         request: adb_20211201_models.CreateAPSJobRequest,
@@ -2359,6 +2483,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_aps_sls_adbjob_with_options_async(request, runtime)
 
+    def create_backup_with_options(
+        self,
+        request: adb_20211201_models.CreateBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateBackupResponse:
+        """
+        @summary 手动创建备份集
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backup_with_options_async(
+        self,
+        request: adb_20211201_models.CreateBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateBackupResponse:
+        """
+        @summary 手动创建备份集
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backup(
+        self,
+        request: adb_20211201_models.CreateBackupRequest,
+    ) -> adb_20211201_models.CreateBackupResponse:
+        """
+        @summary 手动创建备份集
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_backup_with_options(request, runtime)
+
+    async def create_backup_async(
+        self,
+        request: adb_20211201_models.CreateBackupRequest,
+    ) -> adb_20211201_models.CreateBackupResponse:
+        """
+        @summary 手动创建备份集
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backup_with_options_async(request, runtime)
+
     def create_dbcluster_with_options(
         self,
         request: adb_20211201_models.CreateDBClusterRequest,
@@ -2391,6 +2631,8 @@ class Client(OpenApiClient):
             query['DiskEncryption'] = request.disk_encryption
         if not UtilClient.is_unset(request.enable_default_resource_pool):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
+        if not UtilClient.is_unset(request.enable_ssl):
+            query['EnableSSL'] = request.enable_ssl
         if not UtilClient.is_unset(request.kms_id):
             query['KmsId'] = request.kms_id
         if not UtilClient.is_unset(request.pay_type):
@@ -2482,6 +2724,8 @@ class Client(OpenApiClient):
             query['DiskEncryption'] = request.disk_encryption
         if not UtilClient.is_unset(request.enable_default_resource_pool):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
+        if not UtilClient.is_unset(request.enable_ssl):
+            query['EnableSSL'] = request.enable_ssl
         if not UtilClient.is_unset(request.kms_id):
             query['KmsId'] = request.kms_id
         if not UtilClient.is_unset(request.pay_type):
@@ -13350,6 +13594,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_group_spec_with_options_async(request, runtime)
+
+    def describe_result_export_config_with_options(
+        self,
+        request: adb_20211201_models.DescribeResultExportConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeResultExportConfigResponse:
+        """
+        @summary 获取用户配置的导出信息
+        
+        @param request: DescribeResultExportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResultExportConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.export_type):
+            query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResultExportConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeResultExportConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_result_export_config_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeResultExportConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeResultExportConfigResponse:
+        """
+        @summary 获取用户配置的导出信息
+        
+        @param request: DescribeResultExportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResultExportConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.export_type):
+            query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResultExportConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeResultExportConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_result_export_config(
+        self,
+        request: adb_20211201_models.DescribeResultExportConfigRequest,
+    ) -> adb_20211201_models.DescribeResultExportConfigResponse:
+        """
+        @summary 获取用户配置的导出信息
+        
+        @param request: DescribeResultExportConfigRequest
+        @return: DescribeResultExportConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_result_export_config_with_options(request, runtime)
+
+    async def describe_result_export_config_async(
+        self,
+        request: adb_20211201_models.DescribeResultExportConfigRequest,
+    ) -> adb_20211201_models.DescribeResultExportConfigResponse:
+        """
+        @summary 获取用户配置的导出信息
+        
+        @param request: DescribeResultExportConfigRequest
+        @return: DescribeResultExportConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_result_export_config_with_options_async(request, runtime)
 
     def describe_sqlpatterns_with_options(
         self,

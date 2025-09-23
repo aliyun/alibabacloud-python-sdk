@@ -1,3 +1,10 @@
+2025-09-23 Version: 3.3.0
+- Support API ConfigureResultExport.
+- Support API CreateBackup.
+- Support API DescribeResultExportConfig.
+- Update API CreateDBCluster: add request parameters EnableSSL.
+
+
 2025-09-18 Version: 3.2.5
 - Generated python 2021-12-01 for adb.
 
