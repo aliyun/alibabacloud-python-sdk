@@ -137,6 +137,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_ainode_with_options(
+        self,
+        request: gpdb_20160503_models.AddAINodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.AddAINodeResponse:
+        """
+        @summary 添加AI节点
+        
+        @param request: AddAINodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAINodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ainode_pool_id):
+            query['AINodePoolId'] = request.ainode_pool_id
+        if not UtilClient.is_unset(request.ainode_spec_infos):
+            query['AINodeSpecInfos'] = request.ainode_spec_infos
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAINode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.AddAINodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_ainode_with_options_async(
+        self,
+        request: gpdb_20160503_models.AddAINodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.AddAINodeResponse:
+        """
+        @summary 添加AI节点
+        
+        @param request: AddAINodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAINodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ainode_pool_id):
+            query['AINodePoolId'] = request.ainode_pool_id
+        if not UtilClient.is_unset(request.ainode_spec_infos):
+            query['AINodeSpecInfos'] = request.ainode_spec_infos
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAINode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.AddAINodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_ainode(
+        self,
+        request: gpdb_20160503_models.AddAINodeRequest,
+    ) -> gpdb_20160503_models.AddAINodeResponse:
+        """
+        @summary 添加AI节点
+        
+        @param request: AddAINodeRequest
+        @return: AddAINodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_ainode_with_options(request, runtime)
+
+    async def add_ainode_async(
+        self,
+        request: gpdb_20160503_models.AddAINodeRequest,
+    ) -> gpdb_20160503_models.AddAINodeResponse:
+        """
+        @summary 添加AI节点
+        
+        @param request: AddAINodeRequest
+        @return: AddAINodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_ainode_with_options_async(request, runtime)
+
     def allocate_instance_public_connection_with_options(
         self,
         request: gpdb_20160503_models.AllocateInstancePublicConnectionRequest,
@@ -3081,6 +3185,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_jdbcdata_source_with_options_async(request, runtime)
 
+    def create_model_service_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.CreateModelServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateModelServiceResponse:
+        """
+        @summary 创建模型服务
+        
+        @param tmp_req: CreateModelServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelServiceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateModelServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ai_nodes):
+            request.ai_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ai_nodes, 'AiNodes', 'json')
+        if not UtilClient.is_unset(tmp_req.model_params):
+            request.model_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ai_nodes_shrink):
+            query['AiNodes'] = request.ai_nodes_shrink
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_public_connection):
+            query['EnablePublicConnection'] = request.enable_public_connection
+        if not UtilClient.is_unset(request.inference_engine):
+            query['InferenceEngine'] = request.inference_engine
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateModelServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_service_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.CreateModelServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateModelServiceResponse:
+        """
+        @summary 创建模型服务
+        
+        @param tmp_req: CreateModelServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelServiceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateModelServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ai_nodes):
+            request.ai_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ai_nodes, 'AiNodes', 'json')
+        if not UtilClient.is_unset(tmp_req.model_params):
+            request.model_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ai_nodes_shrink):
+            query['AiNodes'] = request.ai_nodes_shrink
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_public_connection):
+            query['EnablePublicConnection'] = request.enable_public_connection
+        if not UtilClient.is_unset(request.inference_engine):
+            query['InferenceEngine'] = request.inference_engine
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateModelServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_service(
+        self,
+        request: gpdb_20160503_models.CreateModelServiceRequest,
+    ) -> gpdb_20160503_models.CreateModelServiceResponse:
+        """
+        @summary 创建模型服务
+        
+        @param request: CreateModelServiceRequest
+        @return: CreateModelServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_model_service_with_options(request, runtime)
+
+    async def create_model_service_async(
+        self,
+        request: gpdb_20160503_models.CreateModelServiceRequest,
+    ) -> gpdb_20160503_models.CreateModelServiceResponse:
+        """
+        @summary 创建模型服务
+        
+        @param request: CreateModelServiceRequest
+        @return: CreateModelServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_model_service_with_options_async(request, runtime)
+
     def create_namespace_with_options(
         self,
         request: gpdb_20160503_models.CreateNamespaceRequest,
@@ -4396,6 +4652,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_vector_index_with_options_async(request, runtime)
+
+    def delete_ainode_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteAINodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteAINodeResponse:
+        """
+        @summary 删除AI节点
+        
+        @param request: DeleteAINodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAINodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ainode_num):
+            query['AINodeNum'] = request.ainode_num
+        if not UtilClient.is_unset(request.ainode_pool_id):
+            query['AINodePoolId'] = request.ainode_pool_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_names):
+            query['NodeNames'] = request.node_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAINode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteAINodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ainode_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteAINodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteAINodeResponse:
+        """
+        @summary 删除AI节点
+        
+        @param request: DeleteAINodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAINodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ainode_num):
+            query['AINodeNum'] = request.ainode_num
+        if not UtilClient.is_unset(request.ainode_pool_id):
+            query['AINodePoolId'] = request.ainode_pool_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_names):
+            query['NodeNames'] = request.node_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAINode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteAINodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ainode(
+        self,
+        request: gpdb_20160503_models.DeleteAINodeRequest,
+    ) -> gpdb_20160503_models.DeleteAINodeResponse:
+        """
+        @summary 删除AI节点
+        
+        @param request: DeleteAINodeRequest
+        @return: DeleteAINodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ainode_with_options(request, runtime)
+
+    async def delete_ainode_async(
+        self,
+        request: gpdb_20160503_models.DeleteAINodeRequest,
+    ) -> gpdb_20160503_models.DeleteAINodeResponse:
+        """
+        @summary 删除AI节点
+        
+        @param request: DeleteAINodeRequest
+        @return: DeleteAINodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ainode_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
@@ -5976,6 +6340,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_jdbcdata_source_with_options_async(request, runtime)
+
+    def delete_model_service_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteModelServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteModelServiceResponse:
+        """
+        @summary 删除模型服务
+        
+        @param request: DeleteModelServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteModelService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteModelServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteModelServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteModelServiceResponse:
+        """
+        @summary 删除模型服务
+        
+        @param request: DeleteModelServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteModelService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteModelServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_service(
+        self,
+        request: gpdb_20160503_models.DeleteModelServiceRequest,
+    ) -> gpdb_20160503_models.DeleteModelServiceResponse:
+        """
+        @summary 删除模型服务
+        
+        @param request: DeleteModelServiceRequest
+        @return: DeleteModelServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_model_service_with_options(request, runtime)
+
+    async def delete_model_service_async(
+        self,
+        request: gpdb_20160503_models.DeleteModelServiceRequest,
+    ) -> gpdb_20160503_models.DeleteModelServiceResponse:
+        """
+        @summary 删除模型服务
+        
+        @param request: DeleteModelServiceRequest
+        @return: DeleteModelServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_model_service_with_options_async(request, runtime)
 
     def delete_namespace_with_options(
         self,
@@ -12161,6 +12625,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_backups_with_options_async(request, runtime)
 
+    def describe_model_service_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeModelServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeModelServiceResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: DescribeModelServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModelServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModelService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeModelServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeModelServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeModelServiceResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: DescribeModelServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModelServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.model_service_id):
+            query['ModelServiceId'] = request.model_service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModelService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeModelServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_service(
+        self,
+        request: gpdb_20160503_models.DescribeModelServiceRequest,
+    ) -> gpdb_20160503_models.DescribeModelServiceResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: DescribeModelServiceRequest
+        @return: DescribeModelServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_model_service_with_options(request, runtime)
+
+    async def describe_model_service_async(
+        self,
+        request: gpdb_20160503_models.DescribeModelServiceRequest,
+    ) -> gpdb_20160503_models.DescribeModelServiceResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: DescribeModelServiceRequest
+        @return: DescribeModelServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_model_service_with_options_async(request, runtime)
+
     def describe_modify_parameter_log_with_options(
         self,
         request: gpdb_20160503_models.DescribeModifyParameterLogRequest,
@@ -16841,6 +17405,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.init_vector_database_with_options_async(request, runtime)
 
+    def list_ainode_pools_with_options(
+        self,
+        request: gpdb_20160503_models.ListAINodePoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListAINodePoolsResponse:
+        """
+        @summary 列举AI节点池
+        
+        @param request: ListAINodePoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAINodePoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAINodePools',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListAINodePoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ainode_pools_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListAINodePoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListAINodePoolsResponse:
+        """
+        @summary 列举AI节点池
+        
+        @param request: ListAINodePoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAINodePoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAINodePools',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListAINodePoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ainode_pools(
+        self,
+        request: gpdb_20160503_models.ListAINodePoolsRequest,
+    ) -> gpdb_20160503_models.ListAINodePoolsResponse:
+        """
+        @summary 列举AI节点池
+        
+        @param request: ListAINodePoolsRequest
+        @return: ListAINodePoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ainode_pools_with_options(request, runtime)
+
+    async def list_ainode_pools_async(
+        self,
+        request: gpdb_20160503_models.ListAINodePoolsRequest,
+    ) -> gpdb_20160503_models.ListAINodePoolsResponse:
+        """
+        @summary 列举AI节点池
+        
+        @param request: ListAINodePoolsRequest
+        @return: ListAINodePoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ainode_pools_with_options_async(request, runtime)
+
     def list_backup_jobs_with_options(
         self,
         request: gpdb_20160503_models.ListBackupJobsRequest,
@@ -17865,6 +18529,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_extensions_with_options_async(request, runtime)
 
+    def list_model_services_with_options(
+        self,
+        request: gpdb_20160503_models.ListModelServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListModelServicesResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: ListModelServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModelServices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListModelServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_services_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListModelServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListModelServicesResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: ListModelServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModelServices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListModelServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_services(
+        self,
+        request: gpdb_20160503_models.ListModelServicesRequest,
+    ) -> gpdb_20160503_models.ListModelServicesResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: ListModelServicesRequest
+        @return: ListModelServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_model_services_with_options(request, runtime)
+
+    async def list_model_services_async(
+        self,
+        request: gpdb_20160503_models.ListModelServicesRequest,
+    ) -> gpdb_20160503_models.ListModelServicesResponse:
+        """
+        @summary 查询模型服务
+        
+        @param request: ListModelServicesRequest
+        @return: ListModelServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_model_services_with_options_async(request, runtime)
+
     def list_namespaces_with_options(
         self,
         request: gpdb_20160503_models.ListNamespacesRequest,
@@ -18744,6 +19516,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_supabase_projects_with_options_async(request, runtime)
+
+    def list_support_models_with_options(
+        self,
+        request: gpdb_20160503_models.ListSupportModelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListSupportModelsResponse:
+        """
+        @summary 获取支持的模型列表
+        
+        @param request: ListSupportModelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSupportModelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSupportModels',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListSupportModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_support_models_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListSupportModelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListSupportModelsResponse:
+        """
+        @summary 获取支持的模型列表
+        
+        @param request: ListSupportModelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSupportModelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSupportModels',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListSupportModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_support_models(
+        self,
+        request: gpdb_20160503_models.ListSupportModelsRequest,
+    ) -> gpdb_20160503_models.ListSupportModelsResponse:
+        """
+        @summary 获取支持的模型列表
+        
+        @param request: ListSupportModelsRequest
+        @return: ListSupportModelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_support_models_with_options(request, runtime)
+
+    async def list_support_models_async(
+        self,
+        request: gpdb_20160503_models.ListSupportModelsRequest,
+    ) -> gpdb_20160503_models.ListSupportModelsResponse:
+        """
+        @summary 获取支持的模型列表
+        
+        @param request: ListSupportModelsRequest
+        @return: ListSupportModelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_support_models_with_options_async(request, runtime)
 
     def list_tables_with_options(
         self,

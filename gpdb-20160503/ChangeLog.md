@@ -1,3 +1,14 @@
+2025-09-23 Version: 4.12.0
+- Support API AddAINode.
+- Support API CreateModelService.
+- Support API DeleteAINode.
+- Support API DeleteModelService.
+- Support API DescribeModelService.
+- Support API ListAINodePools.
+- Support API ListModelServices.
+- Support API ListSupportModels.
+
+
 2025-09-12 Version: 4.11.0
 - Support API EnableCollectionGraphRAG.
 - Support API GetGraphRAGJob.
