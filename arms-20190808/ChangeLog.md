@@ -1,3 +1,8 @@
+2025-09-23 Version: 10.0.3
+- Update API QueryAppMetadata: add request parameters EndTimeMs.
+- Update API QueryAppMetadata: add request parameters StartTimeMs.
+
+
 2025-09-16 Version: 10.0.2
 - Update API GetRumAppInfo: add response parameters Body.Data.WebSDKConfigJson.
 - Update API UpdateRumApp: add request parameters WebSDKConfigJson.

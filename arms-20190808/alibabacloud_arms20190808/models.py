@@ -56470,11 +56470,14 @@ class OpenXtraceDefaultSLRResponse(TeaModel):
 class QueryAppMetadataRequest(TeaModel):
     def __init__(
         self,
+        end_time_ms: int = None,
         meta_ids: str = None,
         meta_type: str = None,
         pid: str = None,
         region_id: str = None,
+        start_time_ms: int = None,
     ):
+        self.end_time_ms = end_time_ms
         # The metadata IDs. Separate multiple IDs with commas (,).
         # 
         # You can obtain the exception ID on the **Exception Analysis** page of your application in the ARMS console.
@@ -56496,6 +56499,7 @@ class QueryAppMetadataRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.start_time_ms = start_time_ms
 
     def validate(self):
         pass
@@ -56506,6 +56510,8 @@ class QueryAppMetadataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time_ms is not None:
+            result['EndTimeMs'] = self.end_time_ms
         if self.meta_ids is not None:
             result['MetaIds'] = self.meta_ids
         if self.meta_type is not None:
@@ -56514,10 +56520,14 @@ class QueryAppMetadataRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.start_time_ms is not None:
+            result['StartTimeMs'] = self.start_time_ms
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTimeMs') is not None:
+            self.end_time_ms = m.get('EndTimeMs')
         if m.get('MetaIds') is not None:
             self.meta_ids = m.get('MetaIds')
         if m.get('MetaType') is not None:
@@ -56526,6 +56536,8 @@ class QueryAppMetadataRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StartTimeMs') is not None:
+            self.start_time_ms = m.get('StartTimeMs')
         return self
 
 
