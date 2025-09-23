@@ -1,3 +1,8 @@
+2025-09-23 Version: 4.0.0
+- Delete API SegmentGreenScreenVideo.
+- Delete API SegmentHalfBody.
+
+
 2023-03-10 Version: 3.0.3
 - Update videoseg.
 
