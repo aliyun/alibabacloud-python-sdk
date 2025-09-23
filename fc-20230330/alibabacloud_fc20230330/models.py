@@ -2068,6 +2068,7 @@ class CreateFunctionInput(TeaModel):
         function_name: str = None,
         gpu_config: GPUConfig = None,
         handler: str = None,
+        idle_timeout: int = None,
         instance_concurrency: int = None,
         instance_isolation_mode: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
@@ -2102,6 +2103,7 @@ class CreateFunctionInput(TeaModel):
         self.gpu_config = gpu_config
         # This parameter is required.
         self.handler = handler
+        self.idle_timeout = idle_timeout
         self.instance_concurrency = instance_concurrency
         self.instance_isolation_mode = instance_isolation_mode
         self.instance_lifecycle_config = instance_lifecycle_config
@@ -2182,6 +2184,8 @@ class CreateFunctionInput(TeaModel):
             result['gpuConfig'] = self.gpu_config.to_map()
         if self.handler is not None:
             result['handler'] = self.handler
+        if self.idle_timeout is not None:
+            result['idleTimeout'] = self.idle_timeout
         if self.instance_concurrency is not None:
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_isolation_mode is not None:
@@ -2255,6 +2259,8 @@ class CreateFunctionInput(TeaModel):
             self.gpu_config = temp_model.from_map(m['gpuConfig'])
         if m.get('handler') is not None:
             self.handler = m.get('handler')
+        if m.get('idleTimeout') is not None:
+            self.idle_timeout = m.get('idleTimeout')
         if m.get('instanceConcurrency') is not None:
             self.instance_concurrency = m.get('instanceConcurrency')
         if m.get('instanceIsolationMode') is not None:
@@ -3825,6 +3831,7 @@ class Function(TeaModel):
         function_name: str = None,
         gpu_config: GPUConfig = None,
         handler: str = None,
+        idle_timeout: int = None,
         instance_concurrency: int = None,
         instance_isolation_mode: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
@@ -3869,6 +3876,7 @@ class Function(TeaModel):
         self.function_name = function_name
         self.gpu_config = gpu_config
         self.handler = handler
+        self.idle_timeout = idle_timeout
         self.instance_concurrency = instance_concurrency
         self.instance_isolation_mode = instance_isolation_mode
         self.instance_lifecycle_config = instance_lifecycle_config
@@ -3968,6 +3976,8 @@ class Function(TeaModel):
             result['gpuConfig'] = self.gpu_config.to_map()
         if self.handler is not None:
             result['handler'] = self.handler
+        if self.idle_timeout is not None:
+            result['idleTimeout'] = self.idle_timeout
         if self.instance_concurrency is not None:
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_isolation_mode is not None:
@@ -4066,6 +4076,8 @@ class Function(TeaModel):
             self.gpu_config = temp_model.from_map(m['gpuConfig'])
         if m.get('handler') is not None:
             self.handler = m.get('handler')
+        if m.get('idleTimeout') is not None:
+            self.idle_timeout = m.get('idleTimeout')
         if m.get('instanceConcurrency') is not None:
             self.instance_concurrency = m.get('instanceConcurrency')
         if m.get('instanceIsolationMode') is not None:
@@ -7247,6 +7259,7 @@ class UpdateFunctionInput(TeaModel):
         environment_variables: Dict[str, str] = None,
         gpu_config: GPUConfig = None,
         handler: str = None,
+        idle_timeout: int = None,
         instance_concurrency: int = None,
         instance_isolation_mode: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
@@ -7276,6 +7289,7 @@ class UpdateFunctionInput(TeaModel):
         self.environment_variables = environment_variables
         self.gpu_config = gpu_config
         self.handler = handler
+        self.idle_timeout = idle_timeout
         self.instance_concurrency = instance_concurrency
         self.instance_isolation_mode = instance_isolation_mode
         self.instance_lifecycle_config = instance_lifecycle_config
@@ -7347,6 +7361,8 @@ class UpdateFunctionInput(TeaModel):
             result['gpuConfig'] = self.gpu_config.to_map()
         if self.handler is not None:
             result['handler'] = self.handler
+        if self.idle_timeout is not None:
+            result['idleTimeout'] = self.idle_timeout
         if self.instance_concurrency is not None:
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_isolation_mode is not None:
@@ -7412,6 +7428,8 @@ class UpdateFunctionInput(TeaModel):
             self.gpu_config = temp_model.from_map(m['gpuConfig'])
         if m.get('handler') is not None:
             self.handler = m.get('handler')
+        if m.get('idleTimeout') is not None:
+            self.idle_timeout = m.get('idleTimeout')
         if m.get('instanceConcurrency') is not None:
             self.instance_concurrency = m.get('instanceConcurrency')
         if m.get('instanceIsolationMode') is not None:
