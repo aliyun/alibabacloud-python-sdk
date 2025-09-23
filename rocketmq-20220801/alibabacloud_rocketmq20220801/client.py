@@ -2129,6 +2129,242 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_topic_with_options_async(instance_id, topic_name, headers, runtime)
 
+    def execute_migration_operation_with_options(
+        self,
+        migration_id: str,
+        stage_type: str,
+        operation_id: str,
+        request: rocket_mq20220801_models.ExecuteMigrationOperationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ExecuteMigrationOperationResponse:
+        """
+        @summary 执行迁移操作
+        
+        @param request: ExecuteMigrationOperationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteMigrationOperationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        body = {}
+        if not UtilClient.is_unset(request.operation_param):
+            body['operationParam'] = request.operation_param
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteMigrationOperation',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations/{OpenApiUtilClient.get_encode_param(migration_id)}/stages/{OpenApiUtilClient.get_encode_param(stage_type)}/operations/{OpenApiUtilClient.get_encode_param(operation_id)}/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ExecuteMigrationOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_migration_operation_with_options_async(
+        self,
+        migration_id: str,
+        stage_type: str,
+        operation_id: str,
+        request: rocket_mq20220801_models.ExecuteMigrationOperationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ExecuteMigrationOperationResponse:
+        """
+        @summary 执行迁移操作
+        
+        @param request: ExecuteMigrationOperationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteMigrationOperationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        body = {}
+        if not UtilClient.is_unset(request.operation_param):
+            body['operationParam'] = request.operation_param
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteMigrationOperation',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations/{OpenApiUtilClient.get_encode_param(migration_id)}/stages/{OpenApiUtilClient.get_encode_param(stage_type)}/operations/{OpenApiUtilClient.get_encode_param(operation_id)}/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ExecuteMigrationOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_migration_operation(
+        self,
+        migration_id: str,
+        stage_type: str,
+        operation_id: str,
+        request: rocket_mq20220801_models.ExecuteMigrationOperationRequest,
+    ) -> rocket_mq20220801_models.ExecuteMigrationOperationResponse:
+        """
+        @summary 执行迁移操作
+        
+        @param request: ExecuteMigrationOperationRequest
+        @return: ExecuteMigrationOperationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_migration_operation_with_options(migration_id, stage_type, operation_id, request, headers, runtime)
+
+    async def execute_migration_operation_async(
+        self,
+        migration_id: str,
+        stage_type: str,
+        operation_id: str,
+        request: rocket_mq20220801_models.ExecuteMigrationOperationRequest,
+    ) -> rocket_mq20220801_models.ExecuteMigrationOperationResponse:
+        """
+        @summary 执行迁移操作
+        
+        @param request: ExecuteMigrationOperationRequest
+        @return: ExecuteMigrationOperationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_migration_operation_with_options_async(migration_id, stage_type, operation_id, request, headers, runtime)
+
+    def finish_migration_stage_with_options(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.FinishMigrationStageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.FinishMigrationStageResponse:
+        """
+        @summary 完成当前迁移阶段
+        
+        @param request: FinishMigrationStageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishMigrationStageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FinishMigrationStage',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations/{OpenApiUtilClient.get_encode_param(migration_id)}/stages/{OpenApiUtilClient.get_encode_param(stage_type)}/finish',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.FinishMigrationStageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def finish_migration_stage_with_options_async(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.FinishMigrationStageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.FinishMigrationStageResponse:
+        """
+        @summary 完成当前迁移阶段
+        
+        @param request: FinishMigrationStageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishMigrationStageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FinishMigrationStage',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations/{OpenApiUtilClient.get_encode_param(migration_id)}/stages/{OpenApiUtilClient.get_encode_param(stage_type)}/finish',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.FinishMigrationStageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def finish_migration_stage(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.FinishMigrationStageRequest,
+    ) -> rocket_mq20220801_models.FinishMigrationStageResponse:
+        """
+        @summary 完成当前迁移阶段
+        
+        @param request: FinishMigrationStageRequest
+        @return: FinishMigrationStageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.finish_migration_stage_with_options(migration_id, stage_type, request, headers, runtime)
+
+    async def finish_migration_stage_async(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.FinishMigrationStageRequest,
+    ) -> rocket_mq20220801_models.FinishMigrationStageResponse:
+        """
+        @summary 完成当前迁移阶段
+        
+        @param request: FinishMigrationStageRequest
+        @return: FinishMigrationStageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.finish_migration_stage_with_options_async(migration_id, stage_type, request, headers, runtime)
+
     def get_consumer_group_with_options(
         self,
         instance_id: str,
@@ -5002,6 +5238,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_metric_meta_with_options_async(request, headers, runtime)
+
+    def list_migration_operations_with_options(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.ListMigrationOperationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMigrationOperationsResponse:
+        """
+        @summary 查询迁移操作列表
+        
+        @param request: ListMigrationOperationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationOperationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation_type):
+            query['operationType'] = request.operation_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMigrationOperations',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations/{OpenApiUtilClient.get_encode_param(migration_id)}/stages/{OpenApiUtilClient.get_encode_param(stage_type)}/operations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMigrationOperationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_migration_operations_with_options_async(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.ListMigrationOperationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMigrationOperationsResponse:
+        """
+        @summary 查询迁移操作列表
+        
+        @param request: ListMigrationOperationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationOperationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation_type):
+            query['operationType'] = request.operation_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMigrationOperations',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations/{OpenApiUtilClient.get_encode_param(migration_id)}/stages/{OpenApiUtilClient.get_encode_param(stage_type)}/operations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMigrationOperationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_migration_operations(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.ListMigrationOperationsRequest,
+    ) -> rocket_mq20220801_models.ListMigrationOperationsResponse:
+        """
+        @summary 查询迁移操作列表
+        
+        @param request: ListMigrationOperationsRequest
+        @return: ListMigrationOperationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_migration_operations_with_options(migration_id, stage_type, request, headers, runtime)
+
+    async def list_migration_operations_async(
+        self,
+        migration_id: str,
+        stage_type: str,
+        request: rocket_mq20220801_models.ListMigrationOperationsRequest,
+    ) -> rocket_mq20220801_models.ListMigrationOperationsResponse:
+        """
+        @summary 查询迁移操作列表
+        
+        @param request: ListMigrationOperationsRequest
+        @return: ListMigrationOperationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_migration_operations_with_options_async(migration_id, stage_type, request, headers, runtime)
 
     def list_regions_with_options(
         self,

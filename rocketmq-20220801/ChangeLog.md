@@ -1,3 +1,9 @@
+2025-09-23 Version: 4.1.0
+- Support API ExecuteMigrationOperation.
+- Support API FinishMigrationStage.
+- Support API ListMigrationOperations.
+
+
 2025-08-15 Version: 4.0.0
 - Update API GetTrace: add request parameters endTime.
 - Update API GetTrace: add request parameters startTime.
