@@ -175,6 +175,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.permission_names):
             query['PermissionNames'] = request.permission_names
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_share_id):
             query['ResourceShareId'] = request.resource_share_id
         if not UtilClient.is_unset(request.resources):
@@ -220,6 +222,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.permission_names):
             query['PermissionNames'] = request.permission_names
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_share_id):
             query['ResourceShareId'] = request.resource_share_id
         if not UtilClient.is_unset(request.resources):
@@ -588,6 +592,8 @@ class Client(OpenApiClient):
             query['AllowExternalTargets'] = request.allow_external_targets
         if not UtilClient.is_unset(request.permission_names):
             query['PermissionNames'] = request.permission_names
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_share_name):
@@ -640,6 +646,8 @@ class Client(OpenApiClient):
             query['AllowExternalTargets'] = request.allow_external_targets
         if not UtilClient.is_unset(request.permission_names):
             query['PermissionNames'] = request.permission_names
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_share_name):
@@ -709,7 +717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        @summary 调用DeleteResourceShare删除共享单元。
+        @summary Deletes a resource share.
         
         @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
@@ -748,7 +756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        @summary 调用DeleteResourceShare删除共享单元。
+        @summary Deletes a resource share.
         
         @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
@@ -786,7 +794,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DeleteResourceShareRequest,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        @summary 调用DeleteResourceShare删除共享单元。
+        @summary Deletes a resource share.
         
         @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
@@ -803,7 +811,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DeleteResourceShareRequest,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        @summary 调用DeleteResourceShare删除共享单元。
+        @summary Deletes a resource share.
         
         @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
@@ -929,6 +937,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_owner):
             query['ResourceOwner'] = request.resource_owner
         if not UtilClient.is_unset(request.resource_share_id):
@@ -974,6 +984,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_owner):
             query['ResourceOwner'] = request.resource_owner
         if not UtilClient.is_unset(request.resource_share_id):
@@ -1587,6 +1599,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_arn):
+            query['ResourceArn'] = request.resource_arn
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_share_ids):
@@ -1638,6 +1652,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_arn):
+            query['ResourceArn'] = request.resource_arn
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_share_ids):
@@ -1941,7 +1957,7 @@ class Client(OpenApiClient):
         """
         @summary Queries resource shares.
         
-        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created within the account `151266687691***`:
         `rs-hX9wC5jO****`, which is in the `Deleted` state
         `rs-PqysnzIj****`, which is in the `Active` state
         
@@ -1996,7 +2012,7 @@ class Client(OpenApiClient):
         """
         @summary Queries resource shares.
         
-        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created within the account `151266687691***`:
         `rs-hX9wC5jO****`, which is in the `Deleted` state
         `rs-PqysnzIj****`, which is in the `Active` state
         
@@ -2050,7 +2066,7 @@ class Client(OpenApiClient):
         """
         @summary Queries resource shares.
         
-        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created within the account `151266687691***`:
         `rs-hX9wC5jO****`, which is in the `Deleted` state
         `rs-PqysnzIj****`, which is in the `Active` state
         
@@ -2067,7 +2083,7 @@ class Client(OpenApiClient):
         """
         @summary Queries resource shares.
         
-        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created within the account `151266687691***`:
         `rs-hX9wC5jO****`, which is in the `Deleted` state
         `rs-PqysnzIj****`, which is in the `Active` state
         
@@ -2097,6 +2113,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_owner):
@@ -2146,6 +2164,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_arns):
+            query['ResourceArns'] = request.resource_arns
         if not UtilClient.is_unset(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_owner):
@@ -2226,6 +2246,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_arn):
+            query['ResourceArn'] = request.resource_arn
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_owner):
@@ -2276,6 +2298,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_arn):
+            query['ResourceArn'] = request.resource_arn
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_owner):
@@ -2343,7 +2367,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Queries the tags that are added to resource shares.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2386,7 +2410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Queries the tags that are added to resource shares.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2428,7 +2452,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListTagResourcesRequest,
     ) -> resource_sharing_20200110_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Queries the tags that are added to resource shares.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2441,7 +2465,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListTagResourcesRequest,
     ) -> resource_sharing_20200110_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Queries the tags that are added to resource shares.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2559,7 +2583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Adds tags to a resource share.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2600,7 +2624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Adds tags to a resource share.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2640,7 +2664,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.TagResourcesRequest,
     ) -> resource_sharing_20200110_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Adds tags to a resource share.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -2653,7 +2677,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.TagResourcesRequest,
     ) -> resource_sharing_20200110_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Adds tags to a resource share.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -2667,7 +2691,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Removes tags from resource shares.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2710,7 +2734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Removes tags from resource shares.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2752,7 +2776,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.UntagResourcesRequest,
     ) -> resource_sharing_20200110_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Removes tags from resource shares.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -2765,7 +2789,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.UntagResourcesRequest,
     ) -> resource_sharing_20200110_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Removes tags from resource shares.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

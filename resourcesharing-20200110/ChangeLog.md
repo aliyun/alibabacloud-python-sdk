@@ -1,3 +1,19 @@
+2025-09-24 Version: 2.2.1
+- Update API AcceptResourceShareInvitation: add response parameters Body.ResourceShareInvitation.AcceptInvitationFailedDetails.$.ResourceArn.
+- Update API AssociateResourceShare: add request parameters ResourceArns.
+- Update API AssociateResourceShare: add response parameters Body.ResourceShareAssociations.$.ResourceArn.
+- Update API CreateResourceShare: add request parameters ResourceArns.
+- Update API DisassociateResourceShare: add request parameters ResourceArns.
+- Update API DisassociateResourceShare: add response parameters Body.ResourceShareAssociations.$.ResourceArn.
+- Update API ListResourceShareAssociations: add request parameters ResourceArn.
+- Update API ListResourceShareAssociations: add response parameters Body.ResourceShareAssociations.$.ResourceArn.
+- Update API ListResourceShareAssociations: add response parameters Body.ResourceShareAssociations.$.AssociationFailedDetails.$.ResourceArn.
+- Update API ListResourceShareInvitations: add response parameters Body.ResourceShareInvitations.$.InvitationFailedDetails.$.ResourceArn.
+- Update API ListSharedResources: add request parameters ResourceArns.
+- Update API ListSharedResources: add response parameters Body.SharedResources.$.ResourceArn.
+- Update API ListSharedTargets: add request parameters ResourceArn.
+
+
 2024-11-19 Version: 2.2.0
 - Support API ListTagResources.
 - Support API TagResources.

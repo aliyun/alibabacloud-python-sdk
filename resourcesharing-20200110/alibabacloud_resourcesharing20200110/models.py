@@ -43,6 +43,7 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         failure_description: str = None,
         failure_reason: str = None,
         operation_type: str = None,
+        resource_arn: str = None,
         resource_id: str = None,
         resource_type: str = None,
         status: str = None,
@@ -63,6 +64,7 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         # 
         # *   Associate
         self.operation_type = operation_type
+        self.resource_arn = resource_arn
         # The ID of the shared resource.
         self.resource_id = resource_id
         # The type of the shared resource.
@@ -91,6 +93,8 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
             result['FailureReason'] = self.failure_reason
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -111,6 +115,8 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
             self.failure_reason = m.get('FailureReason')
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -397,6 +403,7 @@ class AssociateResourceShareRequest(TeaModel):
     def __init__(
         self,
         permission_names: List[str] = None,
+        resource_arns: List[str] = None,
         resource_share_id: str = None,
         resources: List[AssociateResourceShareRequestResources] = None,
         target_properties: List[AssociateResourceShareRequestTargetProperties] = None,
@@ -404,6 +411,7 @@ class AssociateResourceShareRequest(TeaModel):
     ):
         # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
         self.permission_names = permission_names
+        self.resource_arns = resource_arns
         # The ID of the resource share.
         # 
         # This parameter is required.
@@ -435,6 +443,8 @@ class AssociateResourceShareRequest(TeaModel):
         result = dict()
         if self.permission_names is not None:
             result['PermissionNames'] = self.permission_names
+        if self.resource_arns is not None:
+            result['ResourceArns'] = self.resource_arns
         if self.resource_share_id is not None:
             result['ResourceShareId'] = self.resource_share_id
         result['Resources'] = []
@@ -453,6 +463,8 @@ class AssociateResourceShareRequest(TeaModel):
         m = m or dict()
         if m.get('PermissionNames') is not None:
             self.permission_names = m.get('PermissionNames')
+        if m.get('ResourceArns') is not None:
+            self.resource_arns = m.get('ResourceArns')
         if m.get('ResourceShareId') is not None:
             self.resource_share_id = m.get('ResourceShareId')
         self.resources = []
@@ -479,6 +491,7 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         create_time: str = None,
         entity_id: str = None,
         entity_type: str = None,
+        resource_arn: str = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
         target_property: str = None,
@@ -516,6 +529,7 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         # *   If the value of AssociationType is Resource, the value of this parameter is the type of the shared resource. For information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # *   If the value of AssociationType is Target, the value of this parameter is `Account`.
         self.entity_type = entity_type
+        self.resource_arn = resource_arn
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
@@ -551,6 +565,8 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             result['EntityId'] = self.entity_id
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_share_id is not None:
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
@@ -575,6 +591,8 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             self.entity_id = m.get('EntityId')
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceShareId') is not None:
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
@@ -1035,7 +1053,13 @@ class CreateResourceShareRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # >  The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value.
+        # 
+        # >  The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1109,6 +1133,7 @@ class CreateResourceShareRequest(TeaModel):
         self,
         allow_external_targets: bool = None,
         permission_names: List[str] = None,
+        resource_arns: List[str] = None,
         resource_group_id: str = None,
         resource_share_name: str = None,
         resources: List[CreateResourceShareRequestResources] = None,
@@ -1123,6 +1148,8 @@ class CreateResourceShareRequest(TeaModel):
         self.allow_external_targets = allow_external_targets
         # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
         self.permission_names = permission_names
+        self.resource_arns = resource_arns
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The name of the resource share.
         # 
@@ -1134,6 +1161,7 @@ class CreateResourceShareRequest(TeaModel):
         self.resource_share_name = resource_share_name
         # The information about the shared resources.
         self.resources = resources
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
         # The properties of the principal.
         # 
@@ -1166,6 +1194,8 @@ class CreateResourceShareRequest(TeaModel):
             result['AllowExternalTargets'] = self.allow_external_targets
         if self.permission_names is not None:
             result['PermissionNames'] = self.permission_names
+        if self.resource_arns is not None:
+            result['ResourceArns'] = self.resource_arns
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_share_name is not None:
@@ -1192,6 +1222,8 @@ class CreateResourceShareRequest(TeaModel):
             self.allow_external_targets = m.get('AllowExternalTargets')
         if m.get('PermissionNames') is not None:
             self.permission_names = m.get('PermissionNames')
+        if m.get('ResourceArns') is not None:
+            self.resource_arns = m.get('ResourceArns')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceShareName') is not None:
@@ -1409,7 +1441,7 @@ class DeleteResourceShareResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1678,11 +1710,13 @@ class DisassociateResourceShareRequestResources(TeaModel):
 class DisassociateResourceShareRequest(TeaModel):
     def __init__(
         self,
+        resource_arns: List[str] = None,
         resource_owner: str = None,
         resource_share_id: str = None,
         resources: List[DisassociateResourceShareRequestResources] = None,
         targets: List[str] = None,
     ):
+        self.resource_arns = resource_arns
         # The owner of the resource share. Valid values:
         # 
         # *   Self: The resource share belongs to the current account. This is the default value. For resource sharing within a resource directory, if you are a resource owner and you want to disassociate resources or principals from a resource share, set this parameter to Self.
@@ -1709,6 +1743,8 @@ class DisassociateResourceShareRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.resource_arns is not None:
+            result['ResourceArns'] = self.resource_arns
         if self.resource_owner is not None:
             result['ResourceOwner'] = self.resource_owner
         if self.resource_share_id is not None:
@@ -1723,6 +1759,8 @@ class DisassociateResourceShareRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResourceArns') is not None:
+            self.resource_arns = m.get('ResourceArns')
         if m.get('ResourceOwner') is not None:
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ResourceShareId') is not None:
@@ -1746,6 +1784,7 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         create_time: str = None,
         entity_id: str = None,
         entity_type: str = None,
+        resource_arn: str = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
         target_property: str = None,
@@ -1783,6 +1822,7 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # *   If the value of AssociationType is Target, the value of this parameter is Account.
         self.entity_type = entity_type
+        self.resource_arn = resource_arn
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
@@ -1818,6 +1858,8 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             result['EntityId'] = self.entity_id
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_share_id is not None:
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
@@ -1842,6 +1884,8 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             self.entity_id = m.get('EntityId')
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceShareId') is not None:
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
@@ -2751,6 +2795,7 @@ class ListResourceShareAssociationsRequest(TeaModel):
         association_type: str = None,
         max_results: int = None,
         next_token: str = None,
+        resource_arn: str = None,
         resource_id: str = None,
         resource_share_ids: List[str] = None,
         target: str = None,
@@ -2778,6 +2823,7 @@ class ListResourceShareAssociationsRequest(TeaModel):
         self.max_results = max_results
         # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
+        self.resource_arn = resource_arn
         # The ID of the resource.
         # 
         # >  This parameter is unavailable if you set the `AssociationType` parameter to `Target`.
@@ -2808,6 +2854,8 @@ class ListResourceShareAssociationsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_share_ids is not None:
@@ -2826,6 +2874,8 @@ class ListResourceShareAssociationsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceShareIds') is not None:
@@ -2844,6 +2894,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
         failure_description: str = None,
         failure_reason: str = None,
         operation_type: str = None,
+        resource_arn: str = None,
         status: str = None,
         status_message: str = None,
     ):
@@ -2874,6 +2925,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
         # *   Associate
         # *   Disassociate
         self.operation_type = operation_type
+        self.resource_arn = resource_arn
         # This parameter is deprecated. The FailureReason parameter is used instead.
         self.status = status
         # This parameter is deprecated. The FailureDescription parameter is used instead.
@@ -2900,6 +2952,8 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
             result['FailureReason'] = self.failure_reason
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.status is not None:
             result['Status'] = self.status
         if self.status_message is not None:
@@ -2920,6 +2974,8 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
             self.failure_reason = m.get('FailureReason')
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusMessage') is not None:
@@ -2938,6 +2994,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         entity_id: str = None,
         entity_type: str = None,
         external: bool = None,
+        resource_arn: str = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
         target_property: str = None,
@@ -2982,6 +3039,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         # *   true
         # *   false
         self.external = external
+        self.resource_arn = resource_arn
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
@@ -3029,6 +3087,8 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
             result['EntityType'] = self.entity_type
         if self.external is not None:
             result['External'] = self.external
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_share_id is not None:
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
@@ -3060,6 +3120,8 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
             self.entity_type = m.get('EntityType')
         if m.get('External') is not None:
             self.external = m.get('External')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceShareId') is not None:
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
@@ -3220,6 +3282,7 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         failure_description: str = None,
         failure_reason: str = None,
         operation_type: str = None,
+        resource_arn: str = None,
         resource_id: str = None,
         resource_type: str = None,
         status: str = None,
@@ -3242,6 +3305,7 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         # *   Associate
         # *   Disassociate
         self.operation_type = operation_type
+        self.resource_arn = resource_arn
         # The ID of the shared resource.
         self.resource_id = resource_id
         # The type of the shared resource.
@@ -3270,6 +3334,8 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
             result['FailureReason'] = self.failure_reason
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -3290,6 +3356,8 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
             self.failure_reason = m.get('FailureReason')
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -3717,7 +3785,13 @@ class ListResourceSharesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # >  The tag key can be 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value.
+        # 
+        # >  The tag value can be 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -3761,10 +3835,11 @@ class ListResourceSharesRequest(TeaModel):
         # 
         # Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
-        # The name of the permission. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
+        # The information about the permissions. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
         self.permission_name = permission_name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The owner of the resource shares. Valid values:
         # 
@@ -3773,19 +3848,22 @@ class ListResourceSharesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_owner = resource_owner
-        # The ID of a resource share.
+        # The IDs of the resource shares.
+        # 
+        # Valid values of N: 1 to 5. This indicates that a maximum of five resource shares can be specified at a time.
         self.resource_share_ids = resource_share_ids
         # The name of the resource share.
         self.resource_share_name = resource_share_name
-        # The status of the resource share. Valid values:
+        # The status of the resource shares. Valid values:
         # 
-        # *   Active: The resource share is enabled.
-        # *   Pending: The resource share is associated with one or more resource sharing invitations that are waiting for confirmation.
-        # *   Deleting: The resource share is being deleted.
-        # *   Deleted: The resource share is deleted.
+        # *   Active
+        # *   Pending
+        # *   Deleting
+        # *   Deleted
         # 
-        # >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+        # >  The system automatically deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
         self.resource_share_status = resource_share_status
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -3854,7 +3932,9 @@ class ListResourceSharesResponseBodyResourceSharesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3901,6 +3981,7 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
         self.allow_external_targets = allow_external_targets
         # The time when the resource share was created.
         self.create_time = create_time
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
@@ -3910,13 +3991,14 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
         self.resource_share_owner = resource_share_owner
         # The status of the resource share. Valid values:
         # 
-        # *   Active: The resource share is enabled.
-        # *   Pending: The resource share is associated with one or more resource sharing invitations that are waiting for confirmation.
-        # *   Deleting: The resource share is being deleted.
-        # *   Deleted: The resource share is deleted.
+        # *   Active
+        # *   Pending
+        # *   Deleting
+        # *   Deleted
         # 
-        # >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+        # >  The system automatically deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
         self.resource_share_status = resource_share_status
+        # The tags.
         self.tags = tags
         # The time when the resource share was updated.
         self.update_time = update_time
@@ -3988,11 +4070,11 @@ class ListResourceSharesResponseBody(TeaModel):
         request_id: str = None,
         resource_shares: List[ListResourceSharesResponseBodyResourceShares] = None,
     ):
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource shares.
+        # The information about the resource shares.
         self.resource_shares = resource_shares
 
     def validate(self):
@@ -4077,6 +4159,7 @@ class ListSharedResourcesRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        resource_arns: List[str] = None,
         resource_ids: List[str] = None,
         resource_owner: str = None,
         resource_share_ids: List[str] = None,
@@ -4089,6 +4172,7 @@ class ListSharedResourcesRequest(TeaModel):
         self.max_results = max_results
         # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
+        self.resource_arns = resource_arns
         # The ID of a shared resource.
         self.resource_ids = resource_ids
         # The owner of the resource shares. Valid values:
@@ -4123,6 +4207,8 @@ class ListSharedResourcesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_arns is not None:
+            result['ResourceArns'] = self.resource_arns
         if self.resource_ids is not None:
             result['ResourceIds'] = self.resource_ids
         if self.resource_owner is not None:
@@ -4141,6 +4227,8 @@ class ListSharedResourcesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceArns') is not None:
+            self.resource_arns = m.get('ResourceArns')
         if m.get('ResourceIds') is not None:
             self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceOwner') is not None:
@@ -4158,6 +4246,7 @@ class ListSharedResourcesResponseBodySharedResources(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        resource_arn: str = None,
         resource_id: str = None,
         resource_share_id: str = None,
         resource_status: str = None,
@@ -4167,6 +4256,7 @@ class ListSharedResourcesResponseBodySharedResources(TeaModel):
     ):
         # The time when the shared resource was associated with the resource share.
         self.create_time = create_time
+        self.resource_arn = resource_arn
         # The ID of the shared resource.
         self.resource_id = resource_id
         # The ID of the resource share.
@@ -4200,6 +4290,8 @@ class ListSharedResourcesResponseBodySharedResources(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_share_id is not None:
@@ -4218,6 +4310,8 @@ class ListSharedResourcesResponseBodySharedResources(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceShareId') is not None:
@@ -4329,6 +4423,7 @@ class ListSharedTargetsRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        resource_arn: str = None,
         resource_id: str = None,
         resource_owner: str = None,
         resource_share_ids: List[str] = None,
@@ -4341,6 +4436,7 @@ class ListSharedTargetsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
+        self.resource_arn = resource_arn
         # The ID of the shared resource.
         self.resource_id = resource_id
         # The owner of the resource share.
@@ -4374,6 +4470,8 @@ class ListSharedTargetsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner is not None:
@@ -4392,6 +4490,8 @@ class ListSharedTargetsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwner') is not None:
@@ -4573,7 +4673,13 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # >  The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value.
+        # 
+        # >  The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4609,12 +4715,25 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
+        # The region ID of the resource shares.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource share.
+        # 
+        # You can specify up to 20 resource shares.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # Set the value to `ResourceShare`.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags.
+        # 
+        # This parameter specifies a filter condition for the query. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -4669,9 +4788,15 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource share.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # The value can be only `ResourceShare`.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -4748,8 +4873,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -5029,7 +5157,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # >  The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value.
+        # 
+        # >  The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5064,12 +5198,24 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The region ID of the resource share.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource share.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # Set the value to `ResourceShare`.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags.
+        # 
+        # You can specify up to 20 tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -5118,6 +5264,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5190,12 +5337,30 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.all = all
+        # The region ID of the resource shares.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource share.
+        # 
+        # You can specify up to 20 resource shares.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # Set the value to `ResourceShare`.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag key.
+        # 
+        # You can specify up to 20 tag keys.
+        # 
+        # >  If you set the `All` parameter to `true`, you do not need to configure this parameter.
         self.tag_key = tag_key
 
     def validate(self):
@@ -5239,6 +5404,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
