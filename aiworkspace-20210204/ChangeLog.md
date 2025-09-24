@@ -1,3 +1,36 @@
+2025-09-24 Version: 7.0.0
+- Support API ListFeatures.
+- Update API CreateConnection: add request parameters body.ResourceMeta.Extra.
+- Update API CreateDatasetJobConfig: add request parameters body.DatasetVersion.
+- Update API CreateModel: add request parameters body.ParameterSize.
+- Update API CreateModelVersion: add request parameters body.DistillationSpec.
+- Update API CreateProductOrders: add response parameters Body.ProductIds.
+- Update API GetConnection: add response parameters Body.ResourceMeta.Extra.
+- Update API GetDataset: add response parameters Body.IsShared.
+- Update API GetDataset: add response parameters Body.SharedFrom.
+- Update API GetDataset: add response parameters Body.SharingConfig.
+- Update API GetModel: add response parameters Body.GmtLatestVersionModifiedTime.
+- Update API GetModel: add response parameters Body.ParameterSize.
+- Update API GetModelVersion: add response parameters Body.DistillationSpec.
+- Update API ListConnections: add request parameters Creator.
+- Update API ListDatasetFileMetas: add request parameters QueryContentTypeIncludeAny.
+- Update API ListDatasetFileMetas: add request parameters QueryExpression.
+- Update API ListDatasetJobConfigs: add request parameters DatasetVersion.
+- Update API ListDatasetJobs: add request parameters Order.
+- Update API ListDatasetJobs: add request parameters SortBy.
+- Update API ListDatasetJobs: add request parameters Status.
+- Update API ListDatasets: add request parameters Accessibility.
+- Update API ListDatasets: add request parameters Edition.
+- Update API ListDatasets: add request parameters ShareScope.
+- Update API ListModels: add request parameters Conditions.
+- Update API ListProducts: add response parameters Body.Products.$.ProductId.
+- Update API ListProducts: delete response parameters Body.Products.$.ProductInstanceId.
+- Update API ListWorkspaceUsers: add request parameters UserId.
+- Update API UpdateDataset: add request parameters body.SharingConfig.
+- Update API UpdateModel: add request parameters body.ParameterSize.
+- Update API UpdateModelVersion: add request parameters body.DistillationSpec.
+
+
 2025-06-05 Version: 6.4.3
 - Update API GetConfig: add response parameters Body.GmtCreateTime.
 - Update API GetConfig: add response parameters Body.GmtModifiedTime.

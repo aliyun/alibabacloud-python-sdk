@@ -208,9 +208,11 @@ class ConnectionModels(TeaModel):
 class ConnectionResourceMeta(TeaModel):
     def __init__(
         self,
+        extra: str = None,
         instance_id: str = None,
         instance_name: str = None,
     ):
+        self.extra = extra
         self.instance_id = instance_id
         self.instance_name = instance_name
 
@@ -223,6 +225,8 @@ class ConnectionResourceMeta(TeaModel):
             return _map
 
         result = dict()
+        if self.extra is not None:
+            result['Extra'] = self.extra
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -231,6 +235,8 @@ class ConnectionResourceMeta(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -345,6 +351,116 @@ class Connection(TeaModel):
             self.secrets = m.get('Secrets')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DatasetShareRelationship(TeaModel):
+    def __init__(
+        self,
+        allowed_mount_access_levels: List[str] = None,
+        expires_at: str = None,
+        is_secure_mode: bool = None,
+        shared_at: str = None,
+        source_tenant_id: str = None,
+        source_workspace_id: str = None,
+        status: str = None,
+        tenant_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.allowed_mount_access_levels = allowed_mount_access_levels
+        self.expires_at = expires_at
+        self.is_secure_mode = is_secure_mode
+        self.shared_at = shared_at
+        self.source_tenant_id = source_tenant_id
+        self.source_workspace_id = source_workspace_id
+        self.status = status
+        self.tenant_id = tenant_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allowed_mount_access_levels is not None:
+            result['AllowedMountAccessLevels'] = self.allowed_mount_access_levels
+        if self.expires_at is not None:
+            result['ExpiresAt'] = self.expires_at
+        if self.is_secure_mode is not None:
+            result['IsSecureMode'] = self.is_secure_mode
+        if self.shared_at is not None:
+            result['SharedAt'] = self.shared_at
+        if self.source_tenant_id is not None:
+            result['SourceTenantId'] = self.source_tenant_id
+        if self.source_workspace_id is not None:
+            result['SourceWorkspaceId'] = self.source_workspace_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedMountAccessLevels') is not None:
+            self.allowed_mount_access_levels = m.get('AllowedMountAccessLevels')
+        if m.get('ExpiresAt') is not None:
+            self.expires_at = m.get('ExpiresAt')
+        if m.get('IsSecureMode') is not None:
+            self.is_secure_mode = m.get('IsSecureMode')
+        if m.get('SharedAt') is not None:
+            self.shared_at = m.get('SharedAt')
+        if m.get('SourceTenantId') is not None:
+            self.source_tenant_id = m.get('SourceTenantId')
+        if m.get('SourceWorkspaceId') is not None:
+            self.source_workspace_id = m.get('SourceWorkspaceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DatasetSharingConfig(TeaModel):
+    def __init__(
+        self,
+        shared_to: List[DatasetShareRelationship] = None,
+    ):
+        self.shared_to = shared_to
+
+    def validate(self):
+        if self.shared_to:
+            for k in self.shared_to:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SharedTo'] = []
+        if self.shared_to is not None:
+            for k in self.shared_to:
+                result['SharedTo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.shared_to = []
+        if m.get('SharedTo') is not None:
+            for k in m.get('SharedTo'):
+                temp_model = DatasetShareRelationship()
+                self.shared_to.append(temp_model.from_map(k))
         return self
 
 
@@ -512,6 +628,7 @@ class Dataset(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         import_info: str = None,
+        is_shared: bool = None,
         labels: List[Label] = None,
         latest_version: DatasetVersion = None,
         mount_access: str = None,
@@ -521,6 +638,8 @@ class Dataset(TeaModel):
         owner_id: str = None,
         property: str = None,
         provider_type: str = None,
+        shared_from: DatasetShareRelationship = None,
+        sharing_config: DatasetSharingConfig = None,
         source_dataset_id: str = None,
         source_dataset_version: str = None,
         source_id: str = None,
@@ -539,6 +658,7 @@ class Dataset(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.import_info = import_info
+        self.is_shared = is_shared
         self.labels = labels
         self.latest_version = latest_version
         self.mount_access = mount_access
@@ -548,6 +668,8 @@ class Dataset(TeaModel):
         self.owner_id = owner_id
         self.property = property
         self.provider_type = provider_type
+        self.shared_from = shared_from
+        self.sharing_config = sharing_config
         self.source_dataset_id = source_dataset_id
         self.source_dataset_version = source_dataset_version
         self.source_id = source_id
@@ -564,6 +686,10 @@ class Dataset(TeaModel):
                     k.validate()
         if self.latest_version:
             self.latest_version.validate()
+        if self.shared_from:
+            self.shared_from.validate()
+        if self.sharing_config:
+            self.sharing_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -589,6 +715,8 @@ class Dataset(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.import_info is not None:
             result['ImportInfo'] = self.import_info
+        if self.is_shared is not None:
+            result['IsShared'] = self.is_shared
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -609,6 +737,10 @@ class Dataset(TeaModel):
             result['Property'] = self.property
         if self.provider_type is not None:
             result['ProviderType'] = self.provider_type
+        if self.shared_from is not None:
+            result['SharedFrom'] = self.shared_from.to_map()
+        if self.sharing_config is not None:
+            result['SharingConfig'] = self.sharing_config.to_map()
         if self.source_dataset_id is not None:
             result['SourceDatasetId'] = self.source_dataset_id
         if self.source_dataset_version is not None:
@@ -647,6 +779,8 @@ class Dataset(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('ImportInfo') is not None:
             self.import_info = m.get('ImportInfo')
+        if m.get('IsShared') is not None:
+            self.is_shared = m.get('IsShared')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -669,6 +803,12 @@ class Dataset(TeaModel):
             self.property = m.get('Property')
         if m.get('ProviderType') is not None:
             self.provider_type = m.get('ProviderType')
+        if m.get('SharedFrom') is not None:
+            temp_model = DatasetShareRelationship()
+            self.shared_from = temp_model.from_map(m['SharedFrom'])
+        if m.get('SharingConfig') is not None:
+            temp_model = DatasetSharingConfig()
+            self.sharing_config = temp_model.from_map(m['SharingConfig'])
         if m.get('SourceDatasetId') is not None:
             self.source_dataset_id = m.get('SourceDatasetId')
         if m.get('SourceDatasetVersion') is not None:
@@ -1313,6 +1453,7 @@ class DatasetJobConfig(TeaModel):
         config_type: str = None,
         create_time: str = None,
         dataset_job_config_id: str = None,
+        dataset_version: str = None,
         modify_time: str = None,
         workspace_id: str = None,
     ):
@@ -1320,6 +1461,7 @@ class DatasetJobConfig(TeaModel):
         self.config_type = config_type
         self.create_time = create_time
         self.dataset_job_config_id = dataset_job_config_id
+        self.dataset_version = dataset_version
         self.modify_time = modify_time
         self.workspace_id = workspace_id
 
@@ -1340,6 +1482,8 @@ class DatasetJobConfig(TeaModel):
             result['CreateTime'] = self.create_time
         if self.dataset_job_config_id is not None:
             result['DatasetJobConfigId'] = self.dataset_job_config_id
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
         if self.workspace_id is not None:
@@ -1356,6 +1500,8 @@ class DatasetJobConfig(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('DatasetJobConfigId') is not None:
             self.dataset_job_config_id = m.get('DatasetJobConfigId')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
         if m.get('WorkspaceId') is not None:
@@ -1946,11 +2092,45 @@ class LineageRelation(TeaModel):
         return self
 
 
+class ModelVersionLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ModelVersion(TeaModel):
     def __init__(
         self,
         approval_status: str = None,
         compression_spec: Dict[str, Any] = None,
+        distillation_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         format_type: str = None,
@@ -1958,7 +2138,7 @@ class ModelVersion(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         inference_spec: Dict[str, Any] = None,
-        labels: List[Label] = None,
+        labels: List[ModelVersionLabels] = None,
         metrics: Dict[str, Any] = None,
         options: str = None,
         owner_id: str = None,
@@ -1972,6 +2152,7 @@ class ModelVersion(TeaModel):
     ):
         self.approval_status = approval_status
         self.compression_spec = compression_spec
+        self.distillation_spec = distillation_spec
         self.evaluation_spec = evaluation_spec
         self.extra_info = extra_info
         self.format_type = format_type
@@ -2007,6 +2188,8 @@ class ModelVersion(TeaModel):
             result['ApprovalStatus'] = self.approval_status
         if self.compression_spec is not None:
             result['CompressionSpec'] = self.compression_spec
+        if self.distillation_spec is not None:
+            result['DistillationSpec'] = self.distillation_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -2053,6 +2236,8 @@ class ModelVersion(TeaModel):
             self.approval_status = m.get('ApprovalStatus')
         if m.get('CompressionSpec') is not None:
             self.compression_spec = m.get('CompressionSpec')
+        if m.get('DistillationSpec') is not None:
+            self.distillation_spec = m.get('DistillationSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
@@ -2070,7 +2255,7 @@ class ModelVersion(TeaModel):
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
-                temp_model = Label()
+                temp_model = ModelVersionLabels()
                 self.labels.append(temp_model.from_map(k))
         if m.get('Metrics') is not None:
             self.metrics = m.get('Metrics')
@@ -2102,6 +2287,7 @@ class Model(TeaModel):
         domain: str = None,
         extra_info: Dict[str, Any] = None,
         gmt_create_time: str = None,
+        gmt_latest_version_modified_time: str = None,
         gmt_modified_time: str = None,
         labels: List[Label] = None,
         latest_version: ModelVersion = None,
@@ -2113,6 +2299,7 @@ class Model(TeaModel):
         order_number: int = None,
         origin: str = None,
         owner_id: str = None,
+        parameter_size: int = None,
         provider: str = None,
         tags: List[Label] = None,
         task: str = None,
@@ -2123,6 +2310,7 @@ class Model(TeaModel):
         self.domain = domain
         self.extra_info = extra_info
         self.gmt_create_time = gmt_create_time
+        self.gmt_latest_version_modified_time = gmt_latest_version_modified_time
         self.gmt_modified_time = gmt_modified_time
         self.labels = labels
         self.latest_version = latest_version
@@ -2134,6 +2322,7 @@ class Model(TeaModel):
         self.order_number = order_number
         self.origin = origin
         self.owner_id = owner_id
+        self.parameter_size = parameter_size
         self.provider = provider
         self.tags = tags
         self.task = task
@@ -2166,6 +2355,8 @@ class Model(TeaModel):
             result['ExtraInfo'] = self.extra_info
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_latest_version_modified_time is not None:
+            result['GmtLatestVersionModifiedTime'] = self.gmt_latest_version_modified_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
         result['Labels'] = []
@@ -2190,6 +2381,8 @@ class Model(TeaModel):
             result['Origin'] = self.origin
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.parameter_size is not None:
+            result['ParameterSize'] = self.parameter_size
         if self.provider is not None:
             result['Provider'] = self.provider
         result['Tags'] = []
@@ -2214,6 +2407,8 @@ class Model(TeaModel):
             self.extra_info = m.get('ExtraInfo')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtLatestVersionModifiedTime') is not None:
+            self.gmt_latest_version_modified_time = m.get('GmtLatestVersionModifiedTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
         self.labels = []
@@ -2240,6 +2435,8 @@ class Model(TeaModel):
             self.origin = m.get('Origin')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ParameterSize') is not None:
+            self.parameter_size = m.get('ParameterSize')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
         self.tags = []
@@ -3470,9 +3667,11 @@ class CreateConnectionRequestModels(TeaModel):
 class CreateConnectionRequestResourceMeta(TeaModel):
     def __init__(
         self,
+        extra: str = None,
         instance_id: str = None,
         instance_name: str = None,
     ):
+        self.extra = extra
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
@@ -3487,6 +3686,8 @@ class CreateConnectionRequestResourceMeta(TeaModel):
             return _map
 
         result = dict()
+        if self.extra is not None:
+            result['Extra'] = self.extra
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -3495,6 +3696,8 @@ class CreateConnectionRequestResourceMeta(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -4386,6 +4589,7 @@ class CreateDatasetJobConfigRequest(TeaModel):
         self,
         config: str = None,
         config_type: str = None,
+        dataset_version: str = None,
         workspace_id: str = None,
     ):
         # The configuration content. Format:
@@ -4409,6 +4613,7 @@ class CreateDatasetJobConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_type = config_type
+        self.dataset_version = dataset_version
         # The workspace ID.
         # 
         # This parameter is required.
@@ -4427,6 +4632,8 @@ class CreateDatasetJobConfigRequest(TeaModel):
             result['Config'] = self.config
         if self.config_type is not None:
             result['ConfigType'] = self.config_type
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -4437,6 +4644,8 @@ class CreateDatasetJobConfigRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('ConfigType') is not None:
             self.config_type = m.get('ConfigType')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -5355,6 +5564,7 @@ class CreateModelRequest(TeaModel):
         model_type: str = None,
         order_number: int = None,
         origin: str = None,
+        parameter_size: int = None,
         tag: List[Label] = None,
         task: str = None,
         workspace_id: str = None,
@@ -5384,6 +5594,7 @@ class CreateModelRequest(TeaModel):
         self.order_number = order_number
         # The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         self.origin = origin
+        self.parameter_size = parameter_size
         # The tags.
         self.tag = tag
         # The task of the model. Describes the specific problem that the model solves. Example: text-classification.
@@ -5429,6 +5640,8 @@ class CreateModelRequest(TeaModel):
             result['OrderNumber'] = self.order_number
         if self.origin is not None:
             result['Origin'] = self.origin
+        if self.parameter_size is not None:
+            result['ParameterSize'] = self.parameter_size
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -5464,6 +5677,8 @@ class CreateModelRequest(TeaModel):
             self.order_number = m.get('OrderNumber')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        if m.get('ParameterSize') is not None:
+            self.parameter_size = m.get('ParameterSize')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -5662,6 +5877,7 @@ class CreateModelVersionRequest(TeaModel):
         self,
         approval_status: str = None,
         compression_spec: Dict[str, Any] = None,
+        distillation_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         format_type: str = None,
@@ -5685,6 +5901,7 @@ class CreateModelVersionRequest(TeaModel):
         self.approval_status = approval_status
         # The compression configuration.
         self.compression_spec = compression_spec
+        self.distillation_spec = distillation_spec
         # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
         # The additional information.
@@ -5772,6 +5989,8 @@ class CreateModelVersionRequest(TeaModel):
             result['ApprovalStatus'] = self.approval_status
         if self.compression_spec is not None:
             result['CompressionSpec'] = self.compression_spec
+        if self.distillation_spec is not None:
+            result['DistillationSpec'] = self.distillation_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -5810,6 +6029,8 @@ class CreateModelVersionRequest(TeaModel):
             self.approval_status = m.get('ApprovalStatus')
         if m.get('CompressionSpec') is not None:
             self.compression_spec = m.get('CompressionSpec')
+        if m.get('DistillationSpec') is not None:
+            self.distillation_spec = m.get('DistillationSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
@@ -6214,6 +6435,7 @@ class CreateProductOrdersResponseBody(TeaModel):
         buy_product_request_id: str = None,
         message: str = None,
         order_id: str = None,
+        product_ids: List[str] = None,
         request_id: str = None,
     ):
         # The ID of the product purchase request.
@@ -6222,6 +6444,7 @@ class CreateProductOrdersResponseBody(TeaModel):
         self.message = message
         # The purchase order ID.
         self.order_id = order_id
+        self.product_ids = product_ids
         # The request ID.
         self.request_id = request_id
 
@@ -6240,6 +6463,8 @@ class CreateProductOrdersResponseBody(TeaModel):
             result['Message'] = self.message
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.product_ids is not None:
+            result['ProductIds'] = self.product_ids
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -6252,6 +6477,8 @@ class CreateProductOrdersResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('ProductIds') is not None:
+            self.product_ids = m.get('ProductIds')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -9388,9 +9615,11 @@ class GetConnectionResponseBodyModels(TeaModel):
 class GetConnectionResponseBodyResourceMeta(TeaModel):
     def __init__(
         self,
+        extra: str = None,
         instance_id: str = None,
         instance_name: str = None,
     ):
+        self.extra = extra
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
@@ -9405,6 +9634,8 @@ class GetConnectionResponseBodyResourceMeta(TeaModel):
             return _map
 
         result = dict()
+        if self.extra is not None:
+            result['Extra'] = self.extra
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -9413,6 +9644,8 @@ class GetConnectionResponseBodyResourceMeta(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -9604,6 +9837,41 @@ class GetConnectionResponse(TeaModel):
         return self
 
 
+class GetDatasetResponseBodySharingConfig(TeaModel):
+    def __init__(
+        self,
+        shared_to: List[DatasetShareRelationship] = None,
+    ):
+        self.shared_to = shared_to
+
+    def validate(self):
+        if self.shared_to:
+            for k in self.shared_to:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SharedTo'] = []
+        if self.shared_to is not None:
+            for k in self.shared_to:
+                result['SharedTo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.shared_to = []
+        if m.get('SharedTo') is not None:
+            for k in m.get('SharedTo'):
+                temp_model = DatasetShareRelationship()
+                self.shared_to.append(temp_model.from_map(k))
+        return self
+
+
 class GetDatasetResponseBody(TeaModel):
     def __init__(
         self,
@@ -9616,6 +9884,7 @@ class GetDatasetResponseBody(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         import_info: str = None,
+        is_shared: bool = None,
         labels: List[Label] = None,
         latest_version: DatasetVersion = None,
         mount_access: str = None,
@@ -9627,6 +9896,8 @@ class GetDatasetResponseBody(TeaModel):
         provider: str = None,
         provider_type: str = None,
         request_id: str = None,
+        shared_from: DatasetShareRelationship = None,
+        sharing_config: GetDatasetResponseBodySharingConfig = None,
         source_dataset_id: str = None,
         source_dataset_version: str = None,
         source_id: str = None,
@@ -9705,6 +9976,7 @@ class GetDatasetResponseBody(TeaModel):
         # "isVpcMount": boolean, // Whether the mount point is a VPC mount point, CPFS for Lingjun only\\
         # }\\
         self.import_info = import_info
+        self.is_shared = is_shared
         # The tags.
         self.labels = labels
         # The latest version of the dataset.
@@ -9736,6 +10008,8 @@ class GetDatasetResponseBody(TeaModel):
         self.provider_type = provider_type
         # The request ID.
         self.request_id = request_id
+        self.shared_from = shared_from
+        self.sharing_config = sharing_config
         # The ID of the source dataset generated from a labeling job of iTAG.
         self.source_dataset_id = source_dataset_id
         # The version of the source dataset generated from a labeling job of iTAG.
@@ -9771,6 +10045,10 @@ class GetDatasetResponseBody(TeaModel):
                     k.validate()
         if self.latest_version:
             self.latest_version.validate()
+        if self.shared_from:
+            self.shared_from.validate()
+        if self.sharing_config:
+            self.sharing_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9796,6 +10074,8 @@ class GetDatasetResponseBody(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.import_info is not None:
             result['ImportInfo'] = self.import_info
+        if self.is_shared is not None:
+            result['IsShared'] = self.is_shared
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -9820,6 +10100,10 @@ class GetDatasetResponseBody(TeaModel):
             result['ProviderType'] = self.provider_type
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.shared_from is not None:
+            result['SharedFrom'] = self.shared_from.to_map()
+        if self.sharing_config is not None:
+            result['SharingConfig'] = self.sharing_config.to_map()
         if self.source_dataset_id is not None:
             result['SourceDatasetId'] = self.source_dataset_id
         if self.source_dataset_version is not None:
@@ -9858,6 +10142,8 @@ class GetDatasetResponseBody(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('ImportInfo') is not None:
             self.import_info = m.get('ImportInfo')
+        if m.get('IsShared') is not None:
+            self.is_shared = m.get('IsShared')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -9884,6 +10170,12 @@ class GetDatasetResponseBody(TeaModel):
             self.provider_type = m.get('ProviderType')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SharedFrom') is not None:
+            temp_model = DatasetShareRelationship()
+            self.shared_from = temp_model.from_map(m['SharedFrom'])
+        if m.get('SharingConfig') is not None:
+            temp_model = GetDatasetResponseBodySharingConfig()
+            self.sharing_config = temp_model.from_map(m['SharingConfig'])
         if m.get('SourceDatasetId') is not None:
             self.source_dataset_id = m.get('SourceDatasetId')
         if m.get('SourceDatasetVersion') is not None:
@@ -11543,6 +11835,7 @@ class GetModelResponseBody(TeaModel):
         domain: str = None,
         extra_info: Dict[str, Any] = None,
         gmt_create_time: str = None,
+        gmt_latest_version_modified_time: str = None,
         gmt_modified_time: str = None,
         labels: List[Label] = None,
         latest_version: ModelVersion = None,
@@ -11554,6 +11847,7 @@ class GetModelResponseBody(TeaModel):
         order_number: int = None,
         origin: str = None,
         owner_id: str = None,
+        parameter_size: int = None,
         provider: str = None,
         request_id: str = None,
         task: str = None,
@@ -11571,6 +11865,7 @@ class GetModelResponseBody(TeaModel):
         self.extra_info = extra_info
         # The time when the model is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        self.gmt_latest_version_modified_time = gmt_latest_version_modified_time
         # The time when the model is last modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
         # The model tags.
@@ -11593,6 +11888,7 @@ class GetModelResponseBody(TeaModel):
         self.origin = origin
         # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        self.parameter_size = parameter_size
         # The provider.
         self.provider = provider
         # The request ID.
@@ -11626,6 +11922,8 @@ class GetModelResponseBody(TeaModel):
             result['ExtraInfo'] = self.extra_info
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_latest_version_modified_time is not None:
+            result['GmtLatestVersionModifiedTime'] = self.gmt_latest_version_modified_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
         result['Labels'] = []
@@ -11650,6 +11948,8 @@ class GetModelResponseBody(TeaModel):
             result['Origin'] = self.origin
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.parameter_size is not None:
+            result['ParameterSize'] = self.parameter_size
         if self.provider is not None:
             result['Provider'] = self.provider
         if self.request_id is not None:
@@ -11672,6 +11972,8 @@ class GetModelResponseBody(TeaModel):
             self.extra_info = m.get('ExtraInfo')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtLatestVersionModifiedTime') is not None:
+            self.gmt_latest_version_modified_time = m.get('GmtLatestVersionModifiedTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
         self.labels = []
@@ -11698,6 +12000,8 @@ class GetModelResponseBody(TeaModel):
             self.origin = m.get('Origin')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ParameterSize') is not None:
+            self.parameter_size = m.get('ParameterSize')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
         if m.get('RequestId') is not None:
@@ -11757,6 +12061,7 @@ class GetModelVersionResponseBody(TeaModel):
         self,
         approval_status: str = None,
         compression_spec: Dict[str, Any] = None,
+        distillation_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         format_type: str = None,
@@ -11785,6 +12090,7 @@ class GetModelVersionResponseBody(TeaModel):
         self.approval_status = approval_status
         # The compression configuration.
         self.compression_spec = compression_spec
+        self.distillation_spec = distillation_spec
         # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
         # The additional information.
@@ -11879,6 +12185,8 @@ class GetModelVersionResponseBody(TeaModel):
             result['ApprovalStatus'] = self.approval_status
         if self.compression_spec is not None:
             result['CompressionSpec'] = self.compression_spec
+        if self.distillation_spec is not None:
+            result['DistillationSpec'] = self.distillation_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -11927,6 +12235,8 @@ class GetModelVersionResponseBody(TeaModel):
             self.approval_status = m.get('ApprovalStatus')
         if m.get('CompressionSpec') is not None:
             self.compression_spec = m.get('CompressionSpec')
+        if m.get('DistillationSpec') is not None:
+            self.distillation_spec = m.get('DistillationSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
@@ -13025,6 +13335,7 @@ class ListConnectionsRequest(TeaModel):
         connection_ids: List[str] = None,
         connection_name: str = None,
         connection_types: List[str] = None,
+        creator: str = None,
         encrypt_option: str = None,
         max_results: int = None,
         model: str = None,
@@ -13041,6 +13352,7 @@ class ListConnectionsRequest(TeaModel):
         self.connection_name = connection_name
         # The list of connection types.
         self.connection_types = connection_types
+        self.creator = creator
         # The encryption settings. Valid values:
         # 
         # *   PlainText
@@ -13086,6 +13398,8 @@ class ListConnectionsRequest(TeaModel):
             result['ConnectionName'] = self.connection_name
         if self.connection_types is not None:
             result['ConnectionTypes'] = self.connection_types
+        if self.creator is not None:
+            result['Creator'] = self.creator
         if self.encrypt_option is not None:
             result['EncryptOption'] = self.encrypt_option
         if self.max_results is not None:
@@ -13114,6 +13428,8 @@ class ListConnectionsRequest(TeaModel):
             self.connection_name = m.get('ConnectionName')
         if m.get('ConnectionTypes') is not None:
             self.connection_types = m.get('ConnectionTypes')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
         if m.get('EncryptOption') is not None:
             self.encrypt_option = m.get('EncryptOption')
         if m.get('MaxResults') is not None:
@@ -13141,6 +13457,7 @@ class ListConnectionsShrinkRequest(TeaModel):
         connection_ids_shrink: str = None,
         connection_name: str = None,
         connection_types_shrink: str = None,
+        creator: str = None,
         encrypt_option: str = None,
         max_results: int = None,
         model: str = None,
@@ -13157,6 +13474,7 @@ class ListConnectionsShrinkRequest(TeaModel):
         self.connection_name = connection_name
         # The list of connection types.
         self.connection_types_shrink = connection_types_shrink
+        self.creator = creator
         # The encryption settings. Valid values:
         # 
         # *   PlainText
@@ -13202,6 +13520,8 @@ class ListConnectionsShrinkRequest(TeaModel):
             result['ConnectionName'] = self.connection_name
         if self.connection_types_shrink is not None:
             result['ConnectionTypes'] = self.connection_types_shrink
+        if self.creator is not None:
+            result['Creator'] = self.creator
         if self.encrypt_option is not None:
             result['EncryptOption'] = self.encrypt_option
         if self.max_results is not None:
@@ -13230,6 +13550,8 @@ class ListConnectionsShrinkRequest(TeaModel):
             self.connection_name = m.get('ConnectionName')
         if m.get('ConnectionTypes') is not None:
             self.connection_types_shrink = m.get('ConnectionTypes')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
         if m.get('EncryptOption') is not None:
             self.encrypt_option = m.get('EncryptOption')
         if m.get('MaxResults') is not None:
@@ -13366,6 +13688,8 @@ class ListDatasetFileMetasRequest(TeaModel):
         next_token: str = None,
         order: str = None,
         page_size: int = None,
+        query_content_type_include_any: List[str] = None,
+        query_expression: str = None,
         query_file_dir: str = None,
         query_file_name: str = None,
         query_file_type_include_any: List[str] = None,
@@ -13405,6 +13729,8 @@ class ListDatasetFileMetasRequest(TeaModel):
         self.order = order
         # The number of entries per page. Default value: 10. Maximum value: 1000.
         self.page_size = page_size
+        self.query_content_type_include_any = query_content_type_include_any
+        self.query_expression = query_expression
         self.query_file_dir = query_file_dir
         self.query_file_name = query_file_name
         self.query_file_type_include_any = query_file_type_include_any
@@ -13463,6 +13789,10 @@ class ListDatasetFileMetasRequest(TeaModel):
             result['Order'] = self.order
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_content_type_include_any is not None:
+            result['QueryContentTypeIncludeAny'] = self.query_content_type_include_any
+        if self.query_expression is not None:
+            result['QueryExpression'] = self.query_expression
         if self.query_file_dir is not None:
             result['QueryFileDir'] = self.query_file_dir
         if self.query_file_name is not None:
@@ -13513,6 +13843,10 @@ class ListDatasetFileMetasRequest(TeaModel):
             self.order = m.get('Order')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryContentTypeIncludeAny') is not None:
+            self.query_content_type_include_any = m.get('QueryContentTypeIncludeAny')
+        if m.get('QueryExpression') is not None:
+            self.query_expression = m.get('QueryExpression')
         if m.get('QueryFileDir') is not None:
             self.query_file_dir = m.get('QueryFileDir')
         if m.get('QueryFileName') is not None:
@@ -13558,6 +13892,8 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         next_token: str = None,
         order: str = None,
         page_size: int = None,
+        query_content_type_include_any_shrink: str = None,
+        query_expression: str = None,
         query_file_dir: str = None,
         query_file_name: str = None,
         query_file_type_include_any_shrink: str = None,
@@ -13597,6 +13933,8 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         self.order = order
         # The number of entries per page. Default value: 10. Maximum value: 1000.
         self.page_size = page_size
+        self.query_content_type_include_any_shrink = query_content_type_include_any_shrink
+        self.query_expression = query_expression
         self.query_file_dir = query_file_dir
         self.query_file_name = query_file_name
         self.query_file_type_include_any_shrink = query_file_type_include_any_shrink
@@ -13655,6 +13993,10 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
             result['Order'] = self.order
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_content_type_include_any_shrink is not None:
+            result['QueryContentTypeIncludeAny'] = self.query_content_type_include_any_shrink
+        if self.query_expression is not None:
+            result['QueryExpression'] = self.query_expression
         if self.query_file_dir is not None:
             result['QueryFileDir'] = self.query_file_dir
         if self.query_file_name is not None:
@@ -13705,6 +14047,10 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
             self.order = m.get('Order')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryContentTypeIncludeAny') is not None:
+            self.query_content_type_include_any_shrink = m.get('QueryContentTypeIncludeAny')
+        if m.get('QueryExpression') is not None:
+            self.query_expression = m.get('QueryExpression')
         if m.get('QueryFileDir') is not None:
             self.query_file_dir = m.get('QueryFileDir')
         if m.get('QueryFileName') is not None:
@@ -13869,6 +14215,7 @@ class ListDatasetJobConfigsRequest(TeaModel):
     def __init__(
         self,
         config_type: str = None,
+        dataset_version: str = None,
         page_number: str = None,
         page_size: str = None,
         workspace_id: str = None,
@@ -13878,6 +14225,7 @@ class ListDatasetJobConfigsRequest(TeaModel):
         # *   MultimodalIntelligentTag
         # *   MultimodalSemanticIndex
         self.config_type = config_type
+        self.dataset_version = dataset_version
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
@@ -13896,6 +14244,8 @@ class ListDatasetJobConfigsRequest(TeaModel):
         result = dict()
         if self.config_type is not None:
             result['ConfigType'] = self.config_type
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -13908,6 +14258,8 @@ class ListDatasetJobConfigsRequest(TeaModel):
         m = m or dict()
         if m.get('ConfigType') is not None:
             self.config_type = m.get('ConfigType')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -14013,18 +14365,24 @@ class ListDatasetJobsRequest(TeaModel):
         self,
         dataset_version: str = None,
         job_action: str = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
+        sort_by: str = None,
+        status: str = None,
         workspace_id: str = None,
     ):
         # The dataset version name.
         self.dataset_version = dataset_version
         # The action to be performed on the job.
         self.job_action = job_action
+        self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        self.sort_by = sort_by
+        self.status = status
         # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
@@ -14041,10 +14399,16 @@ class ListDatasetJobsRequest(TeaModel):
             result['DatasetVersion'] = self.dataset_version
         if self.job_action is not None:
             result['JobAction'] = self.job_action
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -14055,10 +14419,16 @@ class ListDatasetJobsRequest(TeaModel):
             self.dataset_version = m.get('DatasetVersion')
         if m.get('JobAction') is not None:
             self.job_action = m.get('JobAction')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -14375,8 +14745,10 @@ class ListDatasetVersionsResponse(TeaModel):
 class ListDatasetsRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         data_source_types: str = None,
         data_types: str = None,
+        edition: str = None,
         label: str = None,
         name: str = None,
         order: str = None,
@@ -14384,12 +14756,14 @@ class ListDatasetsRequest(TeaModel):
         page_size: int = None,
         properties: str = None,
         provider: str = None,
+        share_scope: str = None,
         sort_by: str = None,
         source_dataset_id: str = None,
         source_id: str = None,
         source_types: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         # The storage types of the data source. Multiple data source types are separated by commas (,). Valid values:
         # 
         # *   NAS: File Storage NAS (NAS).
@@ -14403,6 +14777,7 @@ class ListDatasetsRequest(TeaModel):
         # *   PIC: picture
         # *   AUDIO: audio
         self.data_types = data_types
+        self.edition = edition
         # The dataset tag, which is used to filter datasets. Datasets whose tag key or tag value contains a specified string are filtered.
         self.label = label
         # The dataset name. Fuzzy search based on the dataset name is supported.
@@ -14423,6 +14798,7 @@ class ListDatasetsRequest(TeaModel):
         self.properties = properties
         # The dataset provider. If the value pai is returned, the dataset is a public dataset provided by PAI.
         self.provider = provider
+        self.share_scope = share_scope
         # The field used for sorting.
         self.sort_by = sort_by
         # The ID of the iTAG labeled dataset that is used as the source dataset.
@@ -14451,10 +14827,14 @@ class ListDatasetsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.data_source_types is not None:
             result['DataSourceTypes'] = self.data_source_types
         if self.data_types is not None:
             result['DataTypes'] = self.data_types
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.label is not None:
             result['Label'] = self.label
         if self.name is not None:
@@ -14469,6 +14849,8 @@ class ListDatasetsRequest(TeaModel):
             result['Properties'] = self.properties
         if self.provider is not None:
             result['Provider'] = self.provider
+        if self.share_scope is not None:
+            result['ShareScope'] = self.share_scope
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.source_dataset_id is not None:
@@ -14483,10 +14865,14 @@ class ListDatasetsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('DataSourceTypes') is not None:
             self.data_source_types = m.get('DataSourceTypes')
         if m.get('DataTypes') is not None:
             self.data_types = m.get('DataTypes')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         if m.get('Name') is not None:
@@ -14501,6 +14887,8 @@ class ListDatasetsRequest(TeaModel):
             self.properties = m.get('Properties')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        if m.get('ShareScope') is not None:
+            self.share_scope = m.get('ShareScope')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SourceDatasetId') is not None:
@@ -14949,6 +15337,113 @@ class ListExperimentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListExperimentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFeaturesRequest(TeaModel):
+    def __init__(
+        self,
+        names: str = None,
+    ):
+        self.names = names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.names is not None:
+            result['Names'] = self.names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        return self
+
+
+class ListFeaturesResponseBody(TeaModel):
+    def __init__(
+        self,
+        features: List[str] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.features = features
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFeaturesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFeaturesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFeaturesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15971,6 +16466,45 @@ class ListModelVersionsResponse(TeaModel):
         return self
 
 
+class ListModelsRequestConditions(TeaModel):
+    def __init__(
+        self,
+        column: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.column = column
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListModelsRequestTag(TeaModel):
     def __init__(
         self,
@@ -16010,6 +16544,7 @@ class ListModelsRequest(TeaModel):
     def __init__(
         self,
         collections: str = None,
+        conditions: List[ListModelsRequestConditions] = None,
         domain: str = None,
         label: str = None,
         model_name: str = None,
@@ -16027,6 +16562,7 @@ class ListModelsRequest(TeaModel):
     ):
         # The collection where the model is located. You can specify multiple collections and separate them with commas (,).
         self.collections = collections
+        self.conditions = conditions
         # The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
         self.domain = domain
         # The label. Models whose label key or label value contains a specific label are filtered.
@@ -16060,6 +16596,10 @@ class ListModelsRequest(TeaModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -16073,6 +16613,10 @@ class ListModelsRequest(TeaModel):
         result = dict()
         if self.collections is not None:
             result['Collections'] = self.collections
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.label is not None:
@@ -16109,6 +16653,11 @@ class ListModelsRequest(TeaModel):
         m = m or dict()
         if m.get('Collections') is not None:
             self.collections = m.get('Collections')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = ListModelsRequestConditions()
+                self.conditions.append(temp_model.from_map(k))
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('Label') is not None:
@@ -16147,6 +16696,7 @@ class ListModelsShrinkRequest(TeaModel):
     def __init__(
         self,
         collections: str = None,
+        conditions_shrink: str = None,
         domain: str = None,
         label: str = None,
         model_name: str = None,
@@ -16164,6 +16714,7 @@ class ListModelsShrinkRequest(TeaModel):
     ):
         # The collection where the model is located. You can specify multiple collections and separate them with commas (,).
         self.collections = collections
+        self.conditions_shrink = conditions_shrink
         # The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
         self.domain = domain
         # The label. Models whose label key or label value contains a specific label are filtered.
@@ -16207,6 +16758,8 @@ class ListModelsShrinkRequest(TeaModel):
         result = dict()
         if self.collections is not None:
             result['Collections'] = self.collections
+        if self.conditions_shrink is not None:
+            result['Conditions'] = self.conditions_shrink
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.label is not None:
@@ -16241,6 +16794,8 @@ class ListModelsShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Collections') is not None:
             self.collections = m.get('Collections')
+        if m.get('Conditions') is not None:
+            self.conditions_shrink = m.get('Conditions')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('Label') is not None:
@@ -16584,13 +17139,13 @@ class ListProductsResponseBodyProducts(TeaModel):
         has_permission_to_purchase: bool = None,
         is_purchased: bool = None,
         product_code: str = None,
-        product_instance_id: str = None,
+        product_id: str = None,
         purchase_url: str = None,
     ):
         self.has_permission_to_purchase = has_permission_to_purchase
         self.is_purchased = is_purchased
         self.product_code = product_code
-        self.product_instance_id = product_instance_id
+        self.product_id = product_id
         self.purchase_url = purchase_url
 
     def validate(self):
@@ -16608,8 +17163,8 @@ class ListProductsResponseBodyProducts(TeaModel):
             result['IsPurchased'] = self.is_purchased
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
-        if self.product_instance_id is not None:
-            result['ProductInstanceId'] = self.product_instance_id
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.purchase_url is not None:
             result['PurchaseUrl'] = self.purchase_url
         return result
@@ -16622,8 +17177,8 @@ class ListProductsResponseBodyProducts(TeaModel):
             self.is_purchased = m.get('IsPurchased')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
-        if m.get('ProductInstanceId') is not None:
-            self.product_instance_id = m.get('ProductInstanceId')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('PurchaseUrl') is not None:
             self.purchase_url = m.get('PurchaseUrl')
         return self
@@ -18180,8 +18735,10 @@ class ListUserConfigsResponse(TeaModel):
 class ListWorkspaceUsersRequest(TeaModel):
     def __init__(
         self,
+        user_id: str = None,
         user_name: str = None,
     ):
+        self.user_id = user_id
         # The display names of users who can be added to the workspace as members.
         self.user_name = user_name
 
@@ -18194,12 +18751,16 @@ class ListWorkspaceUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         if self.user_name is not None:
             result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
         return self
@@ -20291,6 +20852,41 @@ class UpdateConnectionResponse(TeaModel):
         return self
 
 
+class UpdateDatasetRequestSharingConfig(TeaModel):
+    def __init__(
+        self,
+        shared_to: List[DatasetShareRelationship] = None,
+    ):
+        self.shared_to = shared_to
+
+    def validate(self):
+        if self.shared_to:
+            for k in self.shared_to:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SharedTo'] = []
+        if self.shared_to is not None:
+            for k in self.shared_to:
+                result['SharedTo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.shared_to = []
+        if m.get('SharedTo') is not None:
+            for k in m.get('SharedTo'):
+                temp_model = DatasetShareRelationship()
+                self.shared_to.append(temp_model.from_map(k))
+        return self
+
+
 class UpdateDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -20299,6 +20895,7 @@ class UpdateDatasetRequest(TeaModel):
         mount_access_read_write_role_id_list: List[str] = None,
         name: str = None,
         options: str = None,
+        sharing_config: UpdateDatasetRequestSharingConfig = None,
     ):
         # The description of the dataset.
         self.description = description
@@ -20313,9 +20910,11 @@ class UpdateDatasetRequest(TeaModel):
         self.name = name
         # The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can set mountPath to specify the default mount path of the dataset.
         self.options = options
+        self.sharing_config = sharing_config
 
     def validate(self):
-        pass
+        if self.sharing_config:
+            self.sharing_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20333,6 +20932,8 @@ class UpdateDatasetRequest(TeaModel):
             result['Name'] = self.name
         if self.options is not None:
             result['Options'] = self.options
+        if self.sharing_config is not None:
+            result['SharingConfig'] = self.sharing_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -20347,6 +20948,9 @@ class UpdateDatasetRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('SharingConfig') is not None:
+            temp_model = UpdateDatasetRequestSharingConfig()
+            self.sharing_config = temp_model.from_map(m['SharingConfig'])
         return self
 
 
@@ -21136,6 +21740,7 @@ class UpdateModelRequest(TeaModel):
         model_type: str = None,
         order_number: int = None,
         origin: str = None,
+        parameter_size: int = None,
         task: str = None,
     ):
         # The visibility of the model in the workspace. Valid values:
@@ -21159,6 +21764,7 @@ class UpdateModelRequest(TeaModel):
         self.order_number = order_number
         # The source of the model. This parameter describes the community or organization to which the source model belongs. Valid values: ModelScope and HuggingFace.
         self.origin = origin
+        self.parameter_size = parameter_size
         # The task. This parameter specifies the specific issue that the model resolves. Example: text-classification.
         self.task = task
 
@@ -21189,6 +21795,8 @@ class UpdateModelRequest(TeaModel):
             result['OrderNumber'] = self.order_number
         if self.origin is not None:
             result['Origin'] = self.origin
+        if self.parameter_size is not None:
+            result['ParameterSize'] = self.parameter_size
         if self.task is not None:
             result['Task'] = self.task
         return result
@@ -21213,6 +21821,8 @@ class UpdateModelRequest(TeaModel):
             self.order_number = m.get('OrderNumber')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        if m.get('ParameterSize') is not None:
+            self.parameter_size = m.get('ParameterSize')
         if m.get('Task') is not None:
             self.task = m.get('Task')
         return self
@@ -21292,6 +21902,7 @@ class UpdateModelVersionRequest(TeaModel):
         self,
         approval_status: str = None,
         compression_spec: Dict[str, Any] = None,
+        distillation_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         inference_spec: Dict[str, Any] = None,
@@ -21310,6 +21921,7 @@ class UpdateModelVersionRequest(TeaModel):
         self.approval_status = approval_status
         # The compression configuration.
         self.compression_spec = compression_spec
+        self.distillation_spec = distillation_spec
         # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
         # The additional information.
@@ -21360,6 +21972,8 @@ class UpdateModelVersionRequest(TeaModel):
             result['ApprovalStatus'] = self.approval_status
         if self.compression_spec is not None:
             result['CompressionSpec'] = self.compression_spec
+        if self.distillation_spec is not None:
+            result['DistillationSpec'] = self.distillation_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -21386,6 +22000,8 @@ class UpdateModelVersionRequest(TeaModel):
             self.approval_status = m.get('ApprovalStatus')
         if m.get('CompressionSpec') is not None:
             self.compression_spec = m.get('CompressionSpec')
+        if m.get('DistillationSpec') is not None:
+            self.distillation_spec = m.get('DistillationSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
