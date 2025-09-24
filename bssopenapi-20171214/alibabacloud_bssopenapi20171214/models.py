@@ -521,6 +521,7 @@ class ApplyInvoiceRequest(TeaModel):
         process_way: int = None,
         selected_ids: List[int] = None,
         user_remark: str = None,
+        emails: str = None,
     ):
         # The ID of the address to which the invoice is delivered. This parameter is required if the invoice is a paper invoice. Set the ID to the value of the AddressId parameter returned by calling the QueryCustomerAddressList operation.
         # 
@@ -554,6 +555,7 @@ class ApplyInvoiceRequest(TeaModel):
         self.selected_ids = selected_ids
         # The remarks made by the user.
         self.user_remark = user_remark
+        self.emails = emails
 
     def validate(self):
         pass
@@ -584,6 +586,8 @@ class ApplyInvoiceRequest(TeaModel):
             result['SelectedIds'] = self.selected_ids
         if self.user_remark is not None:
             result['UserRemark'] = self.user_remark
+        if self.emails is not None:
+            result['emails'] = self.emails
         return result
 
     def from_map(self, m: dict = None):
@@ -608,6 +612,8 @@ class ApplyInvoiceRequest(TeaModel):
             self.selected_ids = m.get('SelectedIds')
         if m.get('UserRemark') is not None:
             self.user_remark = m.get('UserRemark')
+        if m.get('emails') is not None:
+            self.emails = m.get('emails')
         return self
 
 
@@ -2076,6 +2082,13 @@ class CreateInstanceRequest(TeaModel):
         # 
         # >  This parameter is required if you create a subscription instance.
         self.period = period
+        # The cycle type of the prepaid period
+        # - PricingCycle=1 indicates that the unit of the prepaid period is in years; 
+        # - PricingCycle=2 indicates that the unit of the prepaid period is in months; 
+        # - PricingCycle=3 indicates that the unit of the prepaid period is in days;
+        # - Default value: PricingCycle=2
+        # 
+        # Applicable only to certain product types (ProductType being ddos_originpre_public_cn, ddosDip, ddoscoo, ddos_originpre_public_intl, ddosDip_intl, ddoscoo_intl)
         self.pricing_cycle = pricing_cycle
         # The code of the service to which the instance belongs. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud Services**.
         # 
@@ -2455,31 +2468,23 @@ class CreateResourcePackageRequest(TeaModel):
         product_code: str = None,
         specification: str = None,
     ):
-        # The validity period of the resource plan.
+        # The ID of the resource plan.
         # 
         # This parameter is required.
         self.duration = duration
-        # The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The data returned.
         self.effective_date = effective_date
         self.owner_id = owner_id
-        # The type of the resource plan. Set this parameter to the code of the **resource plan** returned by calling the **DescribeResourcePackageProduct** operation.
+        # The ID of the order.
         # 
         # This parameter is required.
         self.package_type = package_type
-        # The unit of the validity period of the resource plan. Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # 
-        # Default value: Month.
         self.pricing_cycle = pricing_cycle
-        # The code of the service. You can query the code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud services**.
+        # Indicates whether the request is successful.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The specifications of the resource plan. Set this parameter to the value of the **specifications** returned by calling the **DescribeResourcePackageProduct** operation.
+        # The ID of the order.
         # 
         # This parameter is required.
         self.specification = specification
@@ -2534,9 +2539,7 @@ class CreateResourcePackageResponseBodyData(TeaModel):
         instance_id: str = None,
         order_id: int = None,
     ):
-        # The ID of the resource plan.
         self.instance_id = instance_id
-        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -2573,17 +2576,11 @@ class CreateResourcePackageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -2672,6 +2669,7 @@ class CreateResourcePackageResponse(TeaModel):
 class CreateSavingsPlansInstanceRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         commodity_code: str = None,
         duration: str = None,
         effective_date: str = None,
@@ -2684,6 +2682,7 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
         specification: str = None,
         type: str = None,
     ):
+        self.auto_pay = auto_pay
         # The code of the service.
         # 
         # This parameter is required.
@@ -2742,6 +2741,8 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
         if self.duration is not None:
@@ -2768,6 +2769,8 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
         if m.get('Duration') is not None:
@@ -2796,6 +2799,7 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
 class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         commodity_code: str = None,
         duration: str = None,
         effective_date: str = None,
@@ -2808,6 +2812,7 @@ class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
         specification: str = None,
         type: str = None,
     ):
+        self.auto_pay = auto_pay
         # The code of the service.
         # 
         # This parameter is required.
@@ -2866,6 +2871,8 @@ class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
         if self.duration is not None:
@@ -2892,6 +2899,8 @@ class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
         if m.get('Duration') is not None:
@@ -12423,13 +12432,13 @@ class GetAccountRelationResponseBodyData(TeaModel):
         self.start_time = start_time
         # The status of the financial relationship between the management account and the member.
         # 
-        # - RELATED 【Association established】
-        # - CONFIRMING 【To be confirmed by the other party】
-        # - REJECTED 【Refused by the other party】
-        # - CONNECTION_CANCELED 【Financial sub-account cancel request】
-        # - CONNECTION_MASTER_CANCEL 【Financial master account cancel invitation】
-        # - CHANGE_CONFIRMING 【Relationship change to be confirmed】
-        # - INITIAL 【Initial new relationship status】
+        # - RELATED [Association established]
+        # - CONFIRMING [To be confirmed by the other party]
+        # - REJECTED [Refused by the other party]
+        # - CONNECTION_CANCELED [Financial sub-account cancel request]
+        # - CONNECTION_MASTER_CANCEL [Financial master account cancel invitation]
+        # - CHANGE_CONFIRMING [Relationship change to be confirmed]
+        # - INITIAL [Initial new relationship status]
         self.status = status
         # The type of the financial relationship.
         self.type = type
@@ -15924,6 +15933,207 @@ class ModifyInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PayOrderRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class PayOrderRequest(TeaModel):
+    def __init__(
+        self,
+        buyer_id: int = None,
+        ec_id_account_ids: List[PayOrderRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        order_id: int = None,
+        pay_submit_uid: int = None,
+        payer_id: int = None,
+        token: str = None,
+    ):
+        # This parameter is required.
+        self.buyer_id = buyer_id
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        # This parameter is required.
+        self.order_id = order_id
+        # This parameter is required.
+        self.pay_submit_uid = pay_submit_uid
+        # This parameter is required.
+        self.payer_id = payer_id
+        # This parameter is required.
+        self.token = token
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buyer_id is not None:
+            result['BuyerId'] = self.buyer_id
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.pay_submit_uid is not None:
+            result['PaySubmitUid'] = self.pay_submit_uid
+        if self.payer_id is not None:
+            result['PayerId'] = self.payer_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuyerId') is not None:
+            self.buyer_id = m.get('BuyerId')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = PayOrderRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PaySubmitUid') is not None:
+            self.pay_submit_uid = m.get('PaySubmitUid')
+        if m.get('PayerId') is not None:
+            self.payer_id = m.get('PayerId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class PayOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        metadata: Any = None,
+        order_id: int = None,
+        pay_status: int = None,
+        payer_id: int = None,
+        request_id: str = None,
+    ):
+        self.metadata = metadata
+        self.order_id = order_id
+        self.pay_status = pay_status
+        self.payer_id = payer_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.pay_status is not None:
+            result['PayStatus'] = self.pay_status
+        if self.payer_id is not None:
+            result['PayerId'] = self.payer_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PayStatus') is not None:
+            self.pay_status = m.get('PayStatus')
+        if m.get('PayerId') is not None:
+            self.payer_id = m.get('PayerId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PayOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PayOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PayOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

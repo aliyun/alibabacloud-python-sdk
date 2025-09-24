@@ -379,6 +379,8 @@ class Client(OpenApiClient):
             query['SelectedIds'] = request.selected_ids
         if not UtilClient.is_unset(request.user_remark):
             query['UserRemark'] = request.user_remark
+        if not UtilClient.is_unset(request.emails):
+            query['emails'] = request.emails
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -432,6 +434,8 @@ class Client(OpenApiClient):
             query['SelectedIds'] = request.selected_ids
         if not UtilClient.is_unset(request.user_remark):
             query['UserRemark'] = request.user_remark
+        if not UtilClient.is_unset(request.emails):
+            query['emails'] = request.emails
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1551,6 +1555,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.extend_map):
             request.extend_map_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_map, 'ExtendMap', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.duration):
@@ -1610,6 +1616,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.extend_map):
             request.extend_map_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_map, 'ExtendMap', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.duration):
@@ -4993,7 +5001,7 @@ class Client(OpenApiClient):
         
         @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5038,7 +5046,7 @@ class Client(OpenApiClient):
         
         @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5082,7 +5090,7 @@ class Client(OpenApiClient):
         
         @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @return: InquiryPriceRefundInstanceResponse
@@ -5099,7 +5107,7 @@ class Client(OpenApiClient):
         
         @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @return: InquiryPriceRefundInstanceResponse
@@ -5454,6 +5462,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_with_options_async(request, runtime)
+
+    def pay_order_with_options(
+        self,
+        request: bss_open_api_20171214_models.PayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PayOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buyer_id):
+            query['BuyerId'] = request.buyer_id
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.pay_submit_uid):
+            query['PaySubmitUid'] = request.pay_submit_uid
+        if not UtilClient.is_unset(request.payer_id):
+            query['PayerId'] = request.payer_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PayOrder',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.PayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pay_order_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.PayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PayOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buyer_id):
+            query['BuyerId'] = request.buyer_id
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.pay_submit_uid):
+            query['PaySubmitUid'] = request.pay_submit_uid
+        if not UtilClient.is_unset(request.payer_id):
+            query['PayerId'] = request.payer_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PayOrder',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.PayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pay_order(
+        self,
+        request: bss_open_api_20171214_models.PayOrderRequest,
+    ) -> bss_open_api_20171214_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @return: PayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pay_order_with_options(request, runtime)
+
+    async def pay_order_async(
+        self,
+        request: bss_open_api_20171214_models.PayOrderRequest,
+    ) -> bss_open_api_20171214_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @return: PayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pay_order_with_options_async(request, runtime)
 
     def query_account_balance_with_options(
         self,
@@ -9841,7 +9969,7 @@ class Client(OpenApiClient):
         
         @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/refund-rules).
         
         @param request: RefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9888,7 +10016,7 @@ class Client(OpenApiClient):
         
         @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/refund-rules).
         
         @param request: RefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9934,7 +10062,7 @@ class Client(OpenApiClient):
         
         @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/refund-rules).
         
         @param request: RefundInstanceRequest
         @return: RefundInstanceResponse
@@ -9951,7 +10079,7 @@ class Client(OpenApiClient):
         
         @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/refund-rules).
         
         @param request: RefundInstanceRequest
         @return: RefundInstanceResponse

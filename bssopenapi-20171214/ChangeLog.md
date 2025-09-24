@@ -1,3 +1,9 @@
+2025-09-24 Version: 5.1.0
+- Support API PayOrder.
+- Update API ApplyInvoice: add request parameters emails.
+- Update API CreateSavingsPlansInstance: add request parameters AutoPay.
+
+
 2025-01-15 Version: 5.0.0
 - Update API DescribeInstanceAmortizedCostByAmortizationPeriod: update response param.
 - Update API DescribeInstanceAmortizedCostByConsumePeriod: update response param.
