@@ -4,6 +4,575 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class AbortDBClusterMigrationRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class AbortDBClusterMigrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AbortDBClusterMigrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AbortDBClusterMigrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AbortDBClusterMigrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddEncryptionDBRolePrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        role_privilege_config: str = None,
+        role_privilege_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.role_privilege_config = role_privilege_config
+        self.role_privilege_name = role_privilege_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.role_privilege_config is not None:
+            result['RolePrivilegeConfig'] = self.role_privilege_config
+        if self.role_privilege_name is not None:
+            result['RolePrivilegeName'] = self.role_privilege_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RolePrivilegeConfig') is not None:
+            self.role_privilege_config = m.get('RolePrivilegeConfig')
+        if m.get('RolePrivilegeName') is not None:
+            self.role_privilege_name = m.get('RolePrivilegeName')
+        return self
+
+
+class AddEncryptionDBRolePrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddEncryptionDBRolePrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddEncryptionDBRolePrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddEncryptionDBRolePrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddFirewallRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_config = rule_config
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class AddFirewallRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddFirewallRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddFirewallRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddFirewallRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddSQLRateLimitingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_config = rule_config
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class AddSQLRateLimitingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddSQLRateLimitingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSQLRateLimitingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSQLRateLimitingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelActiveOperationTasksRequest(TeaModel):
     def __init__(
         self,
@@ -151,6 +720,138 @@ class CancelActiveOperationTasksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelCronJobPolicyServerlessRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        job_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.job_id = job_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CancelCronJobPolicyServerlessResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelCronJobPolicyServerlessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelCronJobPolicyServerlessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelCronJobPolicyServerlessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -436,6 +1137,133 @@ class CheckAccountNameResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckAccountNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckConnectionStringRequest(TeaModel):
+    def __init__(
+        self,
+        connection_string_prefix: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.connection_string_prefix = connection_string_prefix
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string_prefix is not None:
+            result['ConnectionStringPrefix'] = self.connection_string_prefix
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionStringPrefix') is not None:
+            self.connection_string_prefix = m.get('ConnectionStringPrefix')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CheckConnectionStringResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckConnectionStringResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckConnectionStringResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckConnectionStringResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1139,6 +1967,150 @@ class CloseDBClusterMigrationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CloseDBClusterMigrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ContinueDBClusterMigrationRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        force_switch: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.force_switch = force_switch
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.force_switch is not None:
+            result['ForceSwitch'] = self.force_switch
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ForceSwitch') is not None:
+            self.force_switch = m.get('ForceSwitch')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ContinueDBClusterMigrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ContinueDBClusterMigrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ContinueDBClusterMigrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ContinueDBClusterMigrationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1883,6 +2855,268 @@ class CreateColdStorageInstanceResponse(TeaModel):
         return self
 
 
+class CreateCronJobPolicyServerlessRequest(TeaModel):
+    def __init__(
+        self,
+        allow_shut_down: str = None,
+        cron_expression: str = None,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_ap_ro_num_max: str = None,
+        scale_ap_ro_num_min: str = None,
+        scale_max: str = None,
+        scale_min: str = None,
+        scale_ro_num_max: str = None,
+        scale_ro_num_min: str = None,
+        seconds_until_auto_pause: str = None,
+        serverless_rule_cpu_enlarge_threshold: str = None,
+        serverless_rule_cpu_shrink_threshold: str = None,
+        serverless_rule_mode: str = None,
+        start_time: str = None,
+    ):
+        self.allow_shut_down = allow_shut_down
+        # This parameter is required.
+        self.cron_expression = cron_expression
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_ap_ro_num_max = scale_ap_ro_num_max
+        self.scale_ap_ro_num_min = scale_ap_ro_num_min
+        self.scale_max = scale_max
+        self.scale_min = scale_min
+        self.scale_ro_num_max = scale_ro_num_max
+        self.scale_ro_num_min = scale_ro_num_min
+        self.seconds_until_auto_pause = seconds_until_auto_pause
+        self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        self.serverless_rule_mode = serverless_rule_mode
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_shut_down is not None:
+            result['AllowShutDown'] = self.allow_shut_down
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_ap_ro_num_max is not None:
+            result['ScaleApRoNumMax'] = self.scale_ap_ro_num_max
+        if self.scale_ap_ro_num_min is not None:
+            result['ScaleApRoNumMin'] = self.scale_ap_ro_num_min
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
+        if self.scale_ro_num_max is not None:
+            result['ScaleRoNumMax'] = self.scale_ro_num_max
+        if self.scale_ro_num_min is not None:
+            result['ScaleRoNumMin'] = self.scale_ro_num_min
+        if self.seconds_until_auto_pause is not None:
+            result['SecondsUntilAutoPause'] = self.seconds_until_auto_pause
+        if self.serverless_rule_cpu_enlarge_threshold is not None:
+            result['ServerlessRuleCpuEnlargeThreshold'] = self.serverless_rule_cpu_enlarge_threshold
+        if self.serverless_rule_cpu_shrink_threshold is not None:
+            result['ServerlessRuleCpuShrinkThreshold'] = self.serverless_rule_cpu_shrink_threshold
+        if self.serverless_rule_mode is not None:
+            result['ServerlessRuleMode'] = self.serverless_rule_mode
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowShutDown') is not None:
+            self.allow_shut_down = m.get('AllowShutDown')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleApRoNumMax') is not None:
+            self.scale_ap_ro_num_max = m.get('ScaleApRoNumMax')
+        if m.get('ScaleApRoNumMin') is not None:
+            self.scale_ap_ro_num_min = m.get('ScaleApRoNumMin')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
+        if m.get('ScaleRoNumMax') is not None:
+            self.scale_ro_num_max = m.get('ScaleRoNumMax')
+        if m.get('ScaleRoNumMin') is not None:
+            self.scale_ro_num_min = m.get('ScaleRoNumMin')
+        if m.get('SecondsUntilAutoPause') is not None:
+            self.seconds_until_auto_pause = m.get('SecondsUntilAutoPause')
+        if m.get('ServerlessRuleCpuEnlargeThreshold') is not None:
+            self.serverless_rule_cpu_enlarge_threshold = m.get('ServerlessRuleCpuEnlargeThreshold')
+        if m.get('ServerlessRuleCpuShrinkThreshold') is not None:
+            self.serverless_rule_cpu_shrink_threshold = m.get('ServerlessRuleCpuShrinkThreshold')
+        if m.get('ServerlessRuleMode') is not None:
+            self.serverless_rule_mode = m.get('ServerlessRuleMode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class CreateCronJobPolicyServerlessResponseBody(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        cron_expression: str = None,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        job_id: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.action = action
+        self.cron_expression = cron_expression
+        self.dbcluster_id = dbcluster_id
+        self.end_time = end_time
+        self.job_id = job_id
+        self.region_id = region_id
+        # Id of the request
+        self.request_id = request_id
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateCronJobPolicyServerlessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCronJobPolicyServerlessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCronJobPolicyServerlessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDBClusterRequestTag(TeaModel):
     def __init__(
         self,
@@ -1967,6 +3201,7 @@ class CreateDBClusterRequest(TeaModel):
         security_iplist: str = None,
         serverless_type: str = None,
         source_resource_id: str = None,
+        source_uid: int = None,
         standby_az: str = None,
         storage_auto_scale: str = None,
         storage_encryption: bool = None,
@@ -2242,6 +3477,7 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # * If **CreationOption** is **RecoverFromRecyclebin**, you need to input the released source PolarDB cluster ID. The DBType of the cluster being recovered from the recycle bin must match the source cluster. For example, if the source cluster was MySQL 8.0, the recovered cluster must also have **DBType** set to **MySQL** and **DBVersion** to **8.0**.
         self.source_resource_id = source_resource_id
+        self.source_uid = source_uid
         # The availability zone where the hot standby cluster is stored. Applicable to the standard edition 3AZ scenario.
         # 
         # > This parameter takes effect only when multi-zone data strong consistency is enabled.
@@ -2425,6 +3661,8 @@ class CreateDBClusterRequest(TeaModel):
             result['ServerlessType'] = self.serverless_type
         if self.source_resource_id is not None:
             result['SourceResourceId'] = self.source_resource_id
+        if self.source_uid is not None:
+            result['SourceUid'] = self.source_uid
         if self.standby_az is not None:
             result['StandbyAZ'] = self.standby_az
         if self.storage_auto_scale is not None:
@@ -2547,6 +3785,8 @@ class CreateDBClusterRequest(TeaModel):
             self.serverless_type = m.get('ServerlessType')
         if m.get('SourceResourceId') is not None:
             self.source_resource_id = m.get('SourceResourceId')
+        if m.get('SourceUid') is not None:
+            self.source_uid = m.get('SourceUid')
         if m.get('StandbyAZ') is not None:
             self.standby_az = m.get('StandbyAZ')
         if m.get('StorageAutoScale') is not None:
@@ -3898,6 +5138,183 @@ class CreateDatabaseResponse(TeaModel):
         return self
 
 
+class CreateExtensionsRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        dbnames: str = None,
+        extensions: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        source_dbname: str = None,
+        version: str = None,
+        vpc_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_name = account_name
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbnames = dbnames
+        self.extensions = extensions
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.source_dbname = source_dbname
+        self.version = version
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnames is not None:
+            result['DBNames'] = self.dbnames
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.source_dbname is not None:
+            result['SourceDBName'] = self.source_dbname
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNames') is not None:
+            self.dbnames = m.get('DBNames')
+        if m.get('Extensions') is not None:
+            self.extensions = m.get('Extensions')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SourceDBName') is not None:
+            self.source_dbname = m.get('SourceDBName')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateExtensionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateExtensionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateExtensionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateExtensionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateGlobalDataNetworkRequest(TeaModel):
     def __init__(
         self,
@@ -4454,6 +5871,182 @@ class CreateGlobalSecurityIPGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateGlobalSecurityIPGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateNetworkChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        notes: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        target_dbcluster_id: str = None,
+        target_ip: str = None,
+        target_port: str = None,
+        vpc_id: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.notes = notes
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.target_dbcluster_id = target_dbcluster_id
+        self.target_ip = target_ip
+        self.target_port = target_port
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.notes is not None:
+            result['Notes'] = self.notes
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.target_dbcluster_id is not None:
+            result['TargetDBClusterId'] = self.target_dbcluster_id
+        if self.target_ip is not None:
+            result['TargetIp'] = self.target_ip
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Notes') is not None:
+            self.notes = m.get('Notes')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TargetDBClusterId') is not None:
+            self.target_dbcluster_id = m.get('TargetDBClusterId')
+        if m.get('TargetIp') is not None:
+            self.target_ip = m.get('TargetIp')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateNetworkChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNetworkChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetworkChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetworkChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6363,6 +7956,450 @@ class DeleteDatabaseResponse(TeaModel):
         return self
 
 
+class DeleteEncryptionDBRolePrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        role_privilege_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.role_privilege_name_list = role_privilege_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.role_privilege_name_list is not None:
+            result['RolePrivilegeNameList'] = self.role_privilege_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RolePrivilegeNameList') is not None:
+            self.role_privilege_name_list = m.get('RolePrivilegeNameList')
+        return self
+
+
+class DeleteEncryptionDBRolePrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteEncryptionDBRolePrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEncryptionDBRolePrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEncryptionDBRolePrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteExtensionsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        dbnames: str = None,
+        extensions: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        vpc_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbnames = dbnames
+        # This parameter is required.
+        self.extensions = extensions
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnames is not None:
+            result['DBNames'] = self.dbnames
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNames') is not None:
+            self.dbnames = m.get('DBNames')
+        if m.get('Extensions') is not None:
+            self.extensions = m.get('Extensions')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DeleteExtensionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteExtensionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteExtensionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteExtensionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFirewallRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_name_list = rule_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name_list is not None:
+            result['RuleNameList'] = self.rule_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleNameList') is not None:
+            self.rule_name_list = m.get('RuleNameList')
+        return self
+
+
+class DeleteFirewallRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteFirewallRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFirewallRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFirewallRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteGlobalDataNetworkRequest(TeaModel):
     def __init__(
         self,
@@ -6968,6 +9005,158 @@ class DeleteMaskingRulesResponse(TeaModel):
         return self
 
 
+class DeleteNetworkChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        vpc_id: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DeleteNetworkChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNetworkChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNetworkChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNetworkChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteParameterGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7108,6 +9297,720 @@ class DeleteParameterGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSQLRateLimitingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_name_list = rule_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name_list is not None:
+            result['RuleNameList'] = self.rule_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleNameList') is not None:
+            self.rule_name_list = m.get('RuleNameList')
+        return self
+
+
+class DeleteSQLRateLimitingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSQLRateLimitingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSQLRateLimitingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSQLRateLimitingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAIDBClusterAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        name: str = None,
+        size_gb: str = None,
+        storage_category: str = None,
+        storage_type: str = None,
+    ):
+        self.mount_path = mount_path
+        self.name = name
+        self.size_gb = size_gb
+        self.storage_category = storage_category
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.size_gb is not None:
+            result['SizeGB'] = self.size_gb
+        if self.storage_category is not None:
+            result['StorageCategory'] = self.storage_category
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SizeGB') is not None:
+            self.size_gb = m.get('SizeGB')
+        if m.get('StorageCategory') is not None:
+            self.storage_category = m.get('StorageCategory')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
+    def __init__(
+        self,
+        cpu_cores: str = None,
+        dbnode_class: str = None,
+        dbnode_description: str = None,
+        dbnode_id: str = None,
+        dbnode_status: str = None,
+        gpu: str = None,
+        link_ip: str = None,
+        memory_size: str = None,
+        vnode_id: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+        volumes: List[DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes] = None,
+        zone_id: str = None,
+    ):
+        self.cpu_cores = cpu_cores
+        self.dbnode_class = dbnode_class
+        self.dbnode_description = dbnode_description
+        self.dbnode_id = dbnode_id
+        self.dbnode_status = dbnode_status
+        self.gpu = gpu
+        self.link_ip = link_ip
+        self.memory_size = memory_size
+        self.vnode_id = vnode_id
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+        self.volumes = volumes
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.volumes:
+            for k in self.volumes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_cores is not None:
+            result['CpuCores'] = self.cpu_cores
+        if self.dbnode_class is not None:
+            result['DBNodeClass'] = self.dbnode_class
+        if self.dbnode_description is not None:
+            result['DBNodeDescription'] = self.dbnode_description
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.dbnode_status is not None:
+            result['DBNodeStatus'] = self.dbnode_status
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.link_ip is not None:
+            result['LinkIP'] = self.link_ip
+        if self.memory_size is not None:
+            result['MemorySize'] = self.memory_size
+        if self.vnode_id is not None:
+            result['VNodeId'] = self.vnode_id
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        result['Volumes'] = []
+        if self.volumes is not None:
+            for k in self.volumes:
+                result['Volumes'].append(k.to_map() if k else None)
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuCores') is not None:
+            self.cpu_cores = m.get('CpuCores')
+        if m.get('DBNodeClass') is not None:
+            self.dbnode_class = m.get('DBNodeClass')
+        if m.get('DBNodeDescription') is not None:
+            self.dbnode_description = m.get('DBNodeDescription')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('DBNodeStatus') is not None:
+            self.dbnode_status = m.get('DBNodeStatus')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('LinkIP') is not None:
+            self.link_ip = m.get('LinkIP')
+        if m.get('MemorySize') is not None:
+            self.memory_size = m.get('MemorySize')
+        if m.get('VNodeId') is not None:
+            self.vnode_id = m.get('VNodeId')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        self.volumes = []
+        if m.get('Volumes') is not None:
+            for k in m.get('Volumes'):
+                temp_model = DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes()
+                self.volumes.append(temp_model.from_map(k))
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        net_type: str = None,
+        port: str = None,
+    ):
+        self.connection_string = connection_string
+        self.net_type = net_type
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class DescribeAIDBClusterAttributeResponseBodyEndpointList(TeaModel):
+    def __init__(
+        self,
+        net_info_items: List[DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems] = None,
+    ):
+        self.net_info_items = net_info_items
+
+    def validate(self):
+        if self.net_info_items:
+            for k in self.net_info_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetInfoItems'] = []
+        if self.net_info_items is not None:
+            for k in self.net_info_items:
+                result['NetInfoItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.net_info_items = []
+        if m.get('NetInfoItems') is not None:
+            for k in m.get('NetInfoItems'):
+                temp_model = DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems()
+                self.net_info_items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAIDBClusterAttributeResponseBodyVolumes(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        name: str = None,
+        size_gb: str = None,
+        storage_category: str = None,
+        storage_type: str = None,
+    ):
+        self.mount_path = mount_path
+        self.name = name
+        self.size_gb = size_gb
+        self.storage_category = storage_category
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.size_gb is not None:
+            result['SizeGB'] = self.size_gb
+        if self.storage_category is not None:
+            result['StorageCategory'] = self.storage_category
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SizeGB') is not None:
+            self.size_gb = m.get('SizeGB')
+        if m.get('StorageCategory') is not None:
+            self.storage_category = m.get('StorageCategory')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class DescribeAIDBClusterAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        ai_node_type: str = None,
+        creation_time: str = None,
+        dbcluster_description: str = None,
+        dbcluster_id: str = None,
+        dbcluster_status: str = None,
+        dbnodes: List[DescribeAIDBClusterAttributeResponseBodyDBNodes] = None,
+        dbversion: str = None,
+        endpoint_list: List[DescribeAIDBClusterAttributeResponseBodyEndpointList] = None,
+        expire_time: str = None,
+        expired: bool = None,
+        internal_ip: str = None,
+        kube_cluster_id: str = None,
+        lock_mode: str = None,
+        max_qpm: str = None,
+        model_name: str = None,
+        pay_type: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        run_type: str = None,
+        storage_type: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+        volumes: List[DescribeAIDBClusterAttributeResponseBodyVolumes] = None,
+        zone_id: str = None,
+        zone_ids: str = None,
+    ):
+        self.ai_node_type = ai_node_type
+        self.creation_time = creation_time
+        self.dbcluster_description = dbcluster_description
+        self.dbcluster_id = dbcluster_id
+        self.dbcluster_status = dbcluster_status
+        self.dbnodes = dbnodes
+        self.dbversion = dbversion
+        self.endpoint_list = endpoint_list
+        self.expire_time = expire_time
+        self.expired = expired
+        self.internal_ip = internal_ip
+        self.kube_cluster_id = kube_cluster_id
+        self.lock_mode = lock_mode
+        self.max_qpm = max_qpm
+        self.model_name = model_name
+        self.pay_type = pay_type
+        self.region_id = region_id
+        # Id of the request
+        self.request_id = request_id
+        self.run_type = run_type
+        self.storage_type = storage_type
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+        self.volumes = volumes
+        self.zone_id = zone_id
+        self.zone_ids = zone_ids
+
+    def validate(self):
+        if self.dbnodes:
+            for k in self.dbnodes:
+                if k:
+                    k.validate()
+        if self.endpoint_list:
+            for k in self.endpoint_list:
+                if k:
+                    k.validate()
+        if self.volumes:
+            for k in self.volumes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_node_type is not None:
+            result['AiNodeType'] = self.ai_node_type
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.dbcluster_description is not None:
+            result['DBClusterDescription'] = self.dbcluster_description
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbcluster_status is not None:
+            result['DBClusterStatus'] = self.dbcluster_status
+        result['DBNodes'] = []
+        if self.dbnodes is not None:
+            for k in self.dbnodes:
+                result['DBNodes'].append(k.to_map() if k else None)
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        result['EndpointList'] = []
+        if self.endpoint_list is not None:
+            for k in self.endpoint_list:
+                result['EndpointList'].append(k.to_map() if k else None)
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.expired is not None:
+            result['Expired'] = self.expired
+        if self.internal_ip is not None:
+            result['InternalIp'] = self.internal_ip
+        if self.kube_cluster_id is not None:
+            result['KubeClusterId'] = self.kube_cluster_id
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.max_qpm is not None:
+            result['MaxQPM'] = self.max_qpm
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.run_type is not None:
+            result['RunType'] = self.run_type
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        result['Volumes'] = []
+        if self.volumes is not None:
+            for k in self.volumes:
+                result['Volumes'].append(k.to_map() if k else None)
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_ids is not None:
+            result['ZoneIds'] = self.zone_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiNodeType') is not None:
+            self.ai_node_type = m.get('AiNodeType')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DBClusterDescription') is not None:
+            self.dbcluster_description = m.get('DBClusterDescription')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBClusterStatus') is not None:
+            self.dbcluster_status = m.get('DBClusterStatus')
+        self.dbnodes = []
+        if m.get('DBNodes') is not None:
+            for k in m.get('DBNodes'):
+                temp_model = DescribeAIDBClusterAttributeResponseBodyDBNodes()
+                self.dbnodes.append(temp_model.from_map(k))
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        self.endpoint_list = []
+        if m.get('EndpointList') is not None:
+            for k in m.get('EndpointList'):
+                temp_model = DescribeAIDBClusterAttributeResponseBodyEndpointList()
+                self.endpoint_list.append(temp_model.from_map(k))
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Expired') is not None:
+            self.expired = m.get('Expired')
+        if m.get('InternalIp') is not None:
+            self.internal_ip = m.get('InternalIp')
+        if m.get('KubeClusterId') is not None:
+            self.kube_cluster_id = m.get('KubeClusterId')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('MaxQPM') is not None:
+            self.max_qpm = m.get('MaxQPM')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RunType') is not None:
+            self.run_type = m.get('RunType')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        self.volumes = []
+        if m.get('Volumes') is not None:
+            for k in m.get('Volumes'):
+                temp_model = DescribeAIDBClusterAttributeResponseBodyVolumes()
+                self.volumes.append(temp_model.from_map(k))
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneIds') is not None:
+            self.zone_ids = m.get('ZoneIds')
+        return self
+
+
+class DescribeAIDBClusterAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAIDBClusterAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAIDBClusterAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7373,6 +10276,488 @@ class DescribeAIDBClusterPerformanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAIDBClusterPerformanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAIDBClustersRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeAIDBClustersRequest(TeaModel):
+    def __init__(
+        self,
+        ai_node_type: str = None,
+        dbcluster_description: str = None,
+        dbcluster_ids: str = None,
+        dbcluster_status: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        pay_type: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tag: List[DescribeAIDBClustersRequestTag] = None,
+    ):
+        self.ai_node_type = ai_node_type
+        self.dbcluster_description = dbcluster_description
+        self.dbcluster_ids = dbcluster_ids
+        self.dbcluster_status = dbcluster_status
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.pay_type = pay_type
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_node_type is not None:
+            result['AiNodeType'] = self.ai_node_type
+        if self.dbcluster_description is not None:
+            result['DBClusterDescription'] = self.dbcluster_description
+        if self.dbcluster_ids is not None:
+            result['DBClusterIds'] = self.dbcluster_ids
+        if self.dbcluster_status is not None:
+            result['DBClusterStatus'] = self.dbcluster_status
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiNodeType') is not None:
+            self.ai_node_type = m.get('AiNodeType')
+        if m.get('DBClusterDescription') is not None:
+            self.dbcluster_description = m.get('DBClusterDescription')
+        if m.get('DBClusterIds') is not None:
+            self.dbcluster_ids = m.get('DBClusterIds')
+        if m.get('DBClusterStatus') is not None:
+            self.dbcluster_status = m.get('DBClusterStatus')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeAIDBClustersRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAIDBClustersResponseBodyItemsDBClusterTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeAIDBClustersResponseBodyItemsDBClusterTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeAIDBClustersResponseBodyItemsDBClusterTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeAIDBClustersResponseBodyItemsDBClusterTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAIDBClustersResponseBodyItemsDBCluster(TeaModel):
+    def __init__(
+        self,
+        ai_node_type: str = None,
+        create_time: str = None,
+        dbcluster_description: str = None,
+        dbcluster_id: str = None,
+        dbcluster_status: str = None,
+        dbnode_class: str = None,
+        dbtype: str = None,
+        expire_time: str = None,
+        expired: bool = None,
+        kube_cluster_id: str = None,
+        lock_mode: str = None,
+        pay_type: str = None,
+        region_id: str = None,
+        run_type: str = None,
+        storage_space: int = None,
+        storage_type: str = None,
+        tags: DescribeAIDBClustersResponseBodyItemsDBClusterTags = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.ai_node_type = ai_node_type
+        self.create_time = create_time
+        self.dbcluster_description = dbcluster_description
+        self.dbcluster_id = dbcluster_id
+        self.dbcluster_status = dbcluster_status
+        self.dbnode_class = dbnode_class
+        self.dbtype = dbtype
+        self.expire_time = expire_time
+        self.expired = expired
+        self.kube_cluster_id = kube_cluster_id
+        self.lock_mode = lock_mode
+        self.pay_type = pay_type
+        self.region_id = region_id
+        self.run_type = run_type
+        self.storage_space = storage_space
+        self.storage_type = storage_type
+        self.tags = tags
+        self.vpc_id = vpc_id
+        self.vswitch_id = vswitch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            self.tags.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_node_type is not None:
+            result['AiNodeType'] = self.ai_node_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dbcluster_description is not None:
+            result['DBClusterDescription'] = self.dbcluster_description
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbcluster_status is not None:
+            result['DBClusterStatus'] = self.dbcluster_status
+        if self.dbnode_class is not None:
+            result['DBNodeClass'] = self.dbnode_class
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.expired is not None:
+            result['Expired'] = self.expired
+        if self.kube_cluster_id is not None:
+            result['KubeClusterId'] = self.kube_cluster_id
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.run_type is not None:
+            result['RunType'] = self.run_type
+        if self.storage_space is not None:
+            result['StorageSpace'] = self.storage_space
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiNodeType') is not None:
+            self.ai_node_type = m.get('AiNodeType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DBClusterDescription') is not None:
+            self.dbcluster_description = m.get('DBClusterDescription')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBClusterStatus') is not None:
+            self.dbcluster_status = m.get('DBClusterStatus')
+        if m.get('DBNodeClass') is not None:
+            self.dbnode_class = m.get('DBNodeClass')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Expired') is not None:
+            self.expired = m.get('Expired')
+        if m.get('KubeClusterId') is not None:
+            self.kube_cluster_id = m.get('KubeClusterId')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RunType') is not None:
+            self.run_type = m.get('RunType')
+        if m.get('StorageSpace') is not None:
+            self.storage_space = m.get('StorageSpace')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('Tags') is not None:
+            temp_model = DescribeAIDBClustersResponseBodyItemsDBClusterTags()
+            self.tags = temp_model.from_map(m['Tags'])
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeAIDBClustersResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        dbcluster: List[DescribeAIDBClustersResponseBodyItemsDBCluster] = None,
+    ):
+        self.dbcluster = dbcluster
+
+    def validate(self):
+        if self.dbcluster:
+            for k in self.dbcluster:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DBCluster'] = []
+        if self.dbcluster is not None:
+            for k in self.dbcluster:
+                result['DBCluster'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbcluster = []
+        if m.get('DBCluster') is not None:
+            for k in m.get('DBCluster'):
+                temp_model = DescribeAIDBClustersResponseBodyItemsDBCluster()
+                self.dbcluster.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAIDBClustersResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: DescribeAIDBClustersResponseBodyItems = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        # Id of the request
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            self.items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.items is not None:
+            result['Items'] = self.items.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Items') is not None:
+            temp_model = DescribeAIDBClustersResponseBodyItems()
+            self.items = temp_model.from_map(m['Items'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeAIDBClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAIDBClustersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAIDBClustersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8319,6 +11704,215 @@ class DescribeActivationCodesResponse(TeaModel):
         return self
 
 
+class DescribeActiveOperationMaintainConfRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeActiveOperationMaintainConfResponseBodyConfig(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        cycle_time: str = None,
+        cycle_type: int = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
+        modified_time: str = None,
+        status: int = None,
+    ):
+        self.created_time = created_time
+        self.cycle_time = cycle_time
+        self.cycle_type = cycle_type
+        self.maintain_end_time = maintain_end_time
+        self.maintain_start_time = maintain_start_time
+        self.modified_time = modified_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.cycle_time is not None:
+            result['CycleTime'] = self.cycle_time
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CycleTime') is not None:
+            self.cycle_time = m.get('CycleTime')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeActiveOperationMaintainConfResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: DescribeActiveOperationMaintainConfResponseBodyConfig = None,
+        has_config: int = None,
+        request_id: str = None,
+    ):
+        self.config = config
+        self.has_config = has_config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.has_config is not None:
+            result['HasConfig'] = self.has_config
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = DescribeActiveOperationMaintainConfResponseBodyConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('HasConfig') is not None:
+            self.has_config = m.get('HasConfig')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeActiveOperationMaintainConfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationMaintainConfResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationMaintainConfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeActiveOperationTasksRequest(TeaModel):
     def __init__(
         self,
@@ -9013,6 +12607,132 @@ class DescribeAutoRenewAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAutoRenewAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAvailableCrossRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeAvailableCrossRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[str] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAvailableCrossRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAvailableCrossRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAvailableCrossRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9772,6 +13492,131 @@ class DescribeBackupPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBackupPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBackupRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeBackupRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[str] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeBackupRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBackupRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBackupRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10991,6 +14836,1302 @@ class DescribeClassListResponse(TeaModel):
         return self
 
 
+class DescribeColdStorageInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbname: str = None,
+        engine_type: str = None,
+        expire_time: int = None,
+        max_results: int = None,
+        next_token: str = None,
+        object_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        table_name: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.dbname = dbname
+        self.engine_type = engine_type
+        self.expire_time = expire_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.object_type = object_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeColdStorageInstanceResponseBodyOssClusterInfoList(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        oss_cluster_id: str = None,
+        region: str = None,
+        size: str = None,
+    ):
+        self.created_time = created_time
+        self.oss_cluster_id = oss_cluster_id
+        self.region = region
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.oss_cluster_id is not None:
+            result['OssClusterId'] = self.oss_cluster_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('OssClusterId') is not None:
+            self.oss_cluster_id = m.get('OssClusterId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeColdStorageInstanceResponseBodyTablesChildObjects(TeaModel):
+    def __init__(
+        self,
+        object_name: str = None,
+        object_type: str = None,
+        size: str = None,
+        status: str = None,
+    ):
+        self.object_name = object_name
+        self.object_type = object_type
+        self.size = size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_name is not None:
+            result['ObjectName'] = self.object_name
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectName') is not None:
+            self.object_name = m.get('ObjectName')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeColdStorageInstanceResponseBodyTables(TeaModel):
+    def __init__(
+        self,
+        child_objects: List[DescribeColdStorageInstanceResponseBodyTablesChildObjects] = None,
+        db: str = None,
+        dbname: str = None,
+        field_name: str = None,
+        oss_cluster_id: str = None,
+        partion: str = None,
+        size: str = None,
+        status: str = None,
+        table: str = None,
+        table_name: str = None,
+    ):
+        self.child_objects = child_objects
+        self.db = db
+        self.dbname = dbname
+        self.field_name = field_name
+        self.oss_cluster_id = oss_cluster_id
+        self.partion = partion
+        self.size = size
+        self.status = status
+        self.table = table
+        self.table_name = table_name
+
+    def validate(self):
+        if self.child_objects:
+            for k in self.child_objects:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ChildObjects'] = []
+        if self.child_objects is not None:
+            for k in self.child_objects:
+                result['ChildObjects'].append(k.to_map() if k else None)
+        if self.db is not None:
+            result['DB'] = self.db
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        if self.oss_cluster_id is not None:
+            result['OssClusterId'] = self.oss_cluster_id
+        if self.partion is not None:
+            result['Partion'] = self.partion
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.child_objects = []
+        if m.get('ChildObjects') is not None:
+            for k in m.get('ChildObjects'):
+                temp_model = DescribeColdStorageInstanceResponseBodyTablesChildObjects()
+                self.child_objects.append(temp_model.from_map(k))
+        if m.get('DB') is not None:
+            self.db = m.get('DB')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        if m.get('OssClusterId') is not None:
+            self.oss_cluster_id = m.get('OssClusterId')
+        if m.get('Partion') is not None:
+            self.partion = m.get('Partion')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeColdStorageInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        object_type: str = None,
+        oss_cluster_enabled: str = None,
+        oss_cluster_info_list: List[DescribeColdStorageInstanceResponseBodyOssClusterInfoList] = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        support_oss_cluster: str = None,
+        tables: List[DescribeColdStorageInstanceResponseBodyTables] = None,
+        total_record: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.object_type = object_type
+        self.oss_cluster_enabled = oss_cluster_enabled
+        self.oss_cluster_info_list = oss_cluster_info_list
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        self.page_size = page_size
+        self.request_id = request_id
+        self.support_oss_cluster = support_oss_cluster
+        self.tables = tables
+        self.total_record = total_record
+
+    def validate(self):
+        if self.oss_cluster_info_list:
+            for k in self.oss_cluster_info_list:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.oss_cluster_enabled is not None:
+            result['OssClusterEnabled'] = self.oss_cluster_enabled
+        result['OssClusterInfoList'] = []
+        if self.oss_cluster_info_list is not None:
+            for k in self.oss_cluster_info_list:
+                result['OssClusterInfoList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.support_oss_cluster is not None:
+            result['SupportOssCluster'] = self.support_oss_cluster
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.total_record is not None:
+            result['TotalRecord'] = self.total_record
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('OssClusterEnabled') is not None:
+            self.oss_cluster_enabled = m.get('OssClusterEnabled')
+        self.oss_cluster_info_list = []
+        if m.get('OssClusterInfoList') is not None:
+            for k in m.get('OssClusterInfoList'):
+                temp_model = DescribeColdStorageInstanceResponseBodyOssClusterInfoList()
+                self.oss_cluster_info_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SupportOssCluster') is not None:
+            self.support_oss_cluster = m.get('SupportOssCluster')
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = DescribeColdStorageInstanceResponseBodyTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TotalRecord') is not None:
+            self.total_record = m.get('TotalRecord')
+        return self
+
+
+class DescribeColdStorageInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeColdStorageInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeColdStorageInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCronJobPolicyServerlessRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        job_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.job_id = job_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeCronJobPolicyServerlessResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        allow_shut_down: str = None,
+        cron_expression: str = None,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        job_id: str = None,
+        order_id: str = None,
+        region_id: str = None,
+        scale_ap_ro_num_max: str = None,
+        scale_ap_ro_num_min: str = None,
+        scale_max: str = None,
+        scale_min: str = None,
+        scale_ro_num_max: str = None,
+        scale_ro_num_min: str = None,
+        seconds_until_auto_pause: str = None,
+        serverless_rule_cpu_enlarge_threshold: str = None,
+        serverless_rule_cpu_shrink_threshold: str = None,
+        serverless_rule_mode: str = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.action = action
+        self.allow_shut_down = allow_shut_down
+        self.cron_expression = cron_expression
+        self.dbcluster_id = dbcluster_id
+        self.end_time = end_time
+        self.job_id = job_id
+        self.order_id = order_id
+        self.region_id = region_id
+        self.scale_ap_ro_num_max = scale_ap_ro_num_max
+        self.scale_ap_ro_num_min = scale_ap_ro_num_min
+        self.scale_max = scale_max
+        self.scale_min = scale_min
+        self.scale_ro_num_max = scale_ro_num_max
+        self.scale_ro_num_min = scale_ro_num_min
+        self.seconds_until_auto_pause = seconds_until_auto_pause
+        self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        self.serverless_rule_mode = serverless_rule_mode
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.allow_shut_down is not None:
+            result['AllowShutDown'] = self.allow_shut_down
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scale_ap_ro_num_max is not None:
+            result['ScaleApRoNumMax'] = self.scale_ap_ro_num_max
+        if self.scale_ap_ro_num_min is not None:
+            result['ScaleApRoNumMin'] = self.scale_ap_ro_num_min
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
+        if self.scale_ro_num_max is not None:
+            result['ScaleRoNumMax'] = self.scale_ro_num_max
+        if self.scale_ro_num_min is not None:
+            result['ScaleRoNumMin'] = self.scale_ro_num_min
+        if self.seconds_until_auto_pause is not None:
+            result['SecondsUntilAutoPause'] = self.seconds_until_auto_pause
+        if self.serverless_rule_cpu_enlarge_threshold is not None:
+            result['ServerlessRuleCpuEnlargeThreshold'] = self.serverless_rule_cpu_enlarge_threshold
+        if self.serverless_rule_cpu_shrink_threshold is not None:
+            result['ServerlessRuleCpuShrinkThreshold'] = self.serverless_rule_cpu_shrink_threshold
+        if self.serverless_rule_mode is not None:
+            result['ServerlessRuleMode'] = self.serverless_rule_mode
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('AllowShutDown') is not None:
+            self.allow_shut_down = m.get('AllowShutDown')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScaleApRoNumMax') is not None:
+            self.scale_ap_ro_num_max = m.get('ScaleApRoNumMax')
+        if m.get('ScaleApRoNumMin') is not None:
+            self.scale_ap_ro_num_min = m.get('ScaleApRoNumMin')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
+        if m.get('ScaleRoNumMax') is not None:
+            self.scale_ro_num_max = m.get('ScaleRoNumMax')
+        if m.get('ScaleRoNumMin') is not None:
+            self.scale_ro_num_min = m.get('ScaleRoNumMin')
+        if m.get('SecondsUntilAutoPause') is not None:
+            self.seconds_until_auto_pause = m.get('SecondsUntilAutoPause')
+        if m.get('ServerlessRuleCpuEnlargeThreshold') is not None:
+            self.serverless_rule_cpu_enlarge_threshold = m.get('ServerlessRuleCpuEnlargeThreshold')
+        if m.get('ServerlessRuleCpuShrinkThreshold') is not None:
+            self.serverless_rule_cpu_shrink_threshold = m.get('ServerlessRuleCpuShrinkThreshold')
+        if m.get('ServerlessRuleMode') is not None:
+            self.serverless_rule_mode = m.get('ServerlessRuleMode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCronJobPolicyServerlessResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeCronJobPolicyServerlessResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeCronJobPolicyServerlessResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeCronJobPolicyServerlessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCronJobPolicyServerlessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCronJobPolicyServerlessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCrossCloudLevelsRequest(TeaModel):
+    def __init__(
+        self,
+        dbtype: str = None,
+        dbversion: str = None,
+        project_id: str = None,
+        storage_type: str = None,
+    ):
+        # This parameter is required.
+        self.dbtype = dbtype
+        self.dbversion = dbversion
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList(TeaModel):
+    def __init__(
+        self,
+        dbtype: str = None,
+        level_code: str = None,
+        level_name: str = None,
+    ):
+        self.dbtype = dbtype
+        self.level_code = level_code
+        self.level_name = level_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.level_code is not None:
+            result['LevelCode'] = self.level_code
+        if self.level_name is not None:
+            result['LevelName'] = self.level_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('LevelCode') is not None:
+            self.level_code = m.get('LevelCode')
+        if m.get('LevelName') is not None:
+            self.level_name = m.get('LevelName')
+        return self
+
+
+class DescribeCrossCloudLevelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        cross_cloud_level_list: List[DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList] = None,
+        request_id: str = None,
+    ):
+        self.cross_cloud_level_list = cross_cloud_level_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cross_cloud_level_list:
+            for k in self.cross_cloud_level_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CrossCloudLevelList'] = []
+        if self.cross_cloud_level_list is not None:
+            for k in self.cross_cloud_level_list:
+                result['CrossCloudLevelList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cross_cloud_level_list = []
+        if m.get('CrossCloudLevelList') is not None:
+            for k in m.get('CrossCloudLevelList'):
+                temp_model = DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList()
+                self.cross_cloud_level_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCrossCloudLevelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCrossCloudLevelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCrossCloudLevelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCrossCloudRegionRequest(TeaModel):
+    def __init__(
+        self,
+        cloud_provider: str = None,
+        cross_cloud_region_id: str = None,
+        dbtype: str = None,
+    ):
+        self.cloud_provider = cloud_provider
+        self.cross_cloud_region_id = cross_cloud_region_id
+        self.dbtype = dbtype
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cloud_provider is not None:
+            result['CloudProvider'] = self.cloud_provider
+        if self.cross_cloud_region_id is not None:
+            result['CrossCloudRegionId'] = self.cross_cloud_region_id
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CloudProvider') is not None:
+            self.cloud_provider = m.get('CloudProvider')
+        if m.get('CrossCloudRegionId') is not None:
+            self.cross_cloud_region_id = m.get('CrossCloudRegionId')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        return self
+
+
+class DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList(TeaModel):
+    def __init__(
+        self,
+        cross_cloud_zone_id: str = None,
+        cross_cloud_zone_name: str = None,
+    ):
+        self.cross_cloud_zone_id = cross_cloud_zone_id
+        self.cross_cloud_zone_name = cross_cloud_zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_cloud_zone_id is not None:
+            result['CrossCloudZoneId'] = self.cross_cloud_zone_id
+        if self.cross_cloud_zone_name is not None:
+            result['CrossCloudZoneName'] = self.cross_cloud_zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossCloudZoneId') is not None:
+            self.cross_cloud_zone_id = m.get('CrossCloudZoneId')
+        if m.get('CrossCloudZoneName') is not None:
+            self.cross_cloud_zone_name = m.get('CrossCloudZoneName')
+        return self
+
+
+class DescribeCrossCloudRegionResponseBodyCrossCloudRegionList(TeaModel):
+    def __init__(
+        self,
+        cross_cloud_region_id: str = None,
+        cross_cloud_region_name: str = None,
+        cross_cloud_zone_list: List[DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList] = None,
+        project_id: str = None,
+    ):
+        self.cross_cloud_region_id = cross_cloud_region_id
+        self.cross_cloud_region_name = cross_cloud_region_name
+        self.cross_cloud_zone_list = cross_cloud_zone_list
+        self.project_id = project_id
+
+    def validate(self):
+        if self.cross_cloud_zone_list:
+            for k in self.cross_cloud_zone_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_cloud_region_id is not None:
+            result['CrossCloudRegionId'] = self.cross_cloud_region_id
+        if self.cross_cloud_region_name is not None:
+            result['CrossCloudRegionName'] = self.cross_cloud_region_name
+        result['CrossCloudZoneList'] = []
+        if self.cross_cloud_zone_list is not None:
+            for k in self.cross_cloud_zone_list:
+                result['CrossCloudZoneList'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossCloudRegionId') is not None:
+            self.cross_cloud_region_id = m.get('CrossCloudRegionId')
+        if m.get('CrossCloudRegionName') is not None:
+            self.cross_cloud_region_name = m.get('CrossCloudRegionName')
+        self.cross_cloud_zone_list = []
+        if m.get('CrossCloudZoneList') is not None:
+            for k in m.get('CrossCloudZoneList'):
+                temp_model = DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList()
+                self.cross_cloud_zone_list.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class DescribeCrossCloudRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        cross_cloud_region_list: List[DescribeCrossCloudRegionResponseBodyCrossCloudRegionList] = None,
+        request_id: str = None,
+    ):
+        self.cross_cloud_region_list = cross_cloud_region_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cross_cloud_region_list:
+            for k in self.cross_cloud_region_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CrossCloudRegionList'] = []
+        if self.cross_cloud_region_list is not None:
+            for k in self.cross_cloud_region_list:
+                result['CrossCloudRegionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cross_cloud_region_list = []
+        if m.get('CrossCloudRegionList') is not None:
+            for k in m.get('CrossCloudRegionList'):
+                temp_model = DescribeCrossCloudRegionResponseBodyCrossCloudRegionList()
+                self.cross_cloud_region_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCrossCloudRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCrossCloudRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCrossCloudRegionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCrossCloudRegionMappingToAliyunRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_region_id: str = None,
+        cloud_provider: str = None,
+        cross_cloud_region_id: str = None,
+    ):
+        self.aliyun_region_id = aliyun_region_id
+        self.cloud_provider = cloud_provider
+        self.cross_cloud_region_id = cross_cloud_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_region_id is not None:
+            result['AliyunRegionId'] = self.aliyun_region_id
+        if self.cloud_provider is not None:
+            result['CloudProvider'] = self.cloud_provider
+        if self.cross_cloud_region_id is not None:
+            result['CrossCloudRegionId'] = self.cross_cloud_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunRegionId') is not None:
+            self.aliyun_region_id = m.get('AliyunRegionId')
+        if m.get('CloudProvider') is not None:
+            self.cloud_provider = m.get('CloudProvider')
+        if m.get('CrossCloudRegionId') is not None:
+            self.cross_cloud_region_id = m.get('CrossCloudRegionId')
+        return self
+
+
+class DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList(TeaModel):
+    def __init__(
+        self,
+        aliyun_region_id: str = None,
+        cloud_provider: str = None,
+        cross_cloud_region_id: str = None,
+    ):
+        self.aliyun_region_id = aliyun_region_id
+        self.cloud_provider = cloud_provider
+        self.cross_cloud_region_id = cross_cloud_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_region_id is not None:
+            result['AliyunRegionId'] = self.aliyun_region_id
+        if self.cloud_provider is not None:
+            result['CloudProvider'] = self.cloud_provider
+        if self.cross_cloud_region_id is not None:
+            result['CrossCloudRegionId'] = self.cross_cloud_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunRegionId') is not None:
+            self.aliyun_region_id = m.get('AliyunRegionId')
+        if m.get('CloudProvider') is not None:
+            self.cloud_provider = m.get('CloudProvider')
+        if m.get('CrossCloudRegionId') is not None:
+            self.cross_cloud_region_id = m.get('CrossCloudRegionId')
+        return self
+
+
+class DescribeCrossCloudRegionMappingToAliyunResponseBody(TeaModel):
+    def __init__(
+        self,
+        cross_cloud_region_mapping_list: List[DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList] = None,
+        request_id: str = None,
+    ):
+        self.cross_cloud_region_mapping_list = cross_cloud_region_mapping_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cross_cloud_region_mapping_list:
+            for k in self.cross_cloud_region_mapping_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CrossCloudRegionMappingList'] = []
+        if self.cross_cloud_region_mapping_list is not None:
+            for k in self.cross_cloud_region_mapping_list:
+                result['CrossCloudRegionMappingList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cross_cloud_region_mapping_list = []
+        if m.get('CrossCloudRegionMappingList') is not None:
+            for k in m.get('CrossCloudRegionMappingList'):
+                temp_model = DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList()
+                self.cross_cloud_region_mapping_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCrossCloudRegionMappingToAliyunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCrossCloudRegionMappingToAliyunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCrossCloudRegionMappingToAliyunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterAccessWhitelistRequest(TeaModel):
     def __init__(
         self,
@@ -11363,6 +16504,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         added_cpu_cores: str = None,
         cpu_cores: str = None,
         creation_time: str = None,
+        dbnode_cxlremote_memory: str = None,
         dbnode_class: str = None,
         dbnode_description: str = None,
         dbnode_id: str = None,
@@ -11393,6 +16535,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         self.cpu_cores = cpu_cores
         # Node creation time.
         self.creation_time = creation_time
+        self.dbnode_cxlremote_memory = dbnode_cxlremote_memory
         # Node specification.
         self.dbnode_class = dbnode_class
         self.dbnode_description = dbnode_description
@@ -11491,6 +16634,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['CpuCores'] = self.cpu_cores
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.dbnode_cxlremote_memory is not None:
+            result['DBNodeCXLRemoteMemory'] = self.dbnode_cxlremote_memory
         if self.dbnode_class is not None:
             result['DBNodeClass'] = self.dbnode_class
         if self.dbnode_description is not None:
@@ -11547,6 +16692,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.cpu_cores = m.get('CpuCores')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DBNodeCXLRemoteMemory') is not None:
+            self.dbnode_cxlremote_memory = m.get('DBNodeCXLRemoteMemory')
         if m.get('DBNodeClass') is not None:
             self.dbnode_class = m.get('DBNodeClass')
         if m.get('DBNodeDescription') is not None:
@@ -12910,6 +18057,208 @@ class DescribeDBClusterConnectivityResponse(TeaModel):
         return self
 
 
+class DescribeDBClusterEncryptionKeyRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbcluster_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        creator: str = None,
+        delete_date: str = None,
+        description: str = None,
+        encryption_key: str = None,
+        encryption_key_status: str = None,
+        key_type: str = None,
+        key_usage: str = None,
+        material_expire_time: str = None,
+        origin: str = None,
+        used_by: str = None,
+    ):
+        self.alias_name = alias_name
+        self.creator = creator
+        self.delete_date = delete_date
+        self.description = description
+        self.encryption_key = encryption_key
+        self.encryption_key_status = encryption_key_status
+        self.key_type = key_type
+        self.key_usage = key_usage
+        self.material_expire_time = material_expire_time
+        self.origin = origin
+        self.used_by = used_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.delete_date is not None:
+            result['DeleteDate'] = self.delete_date
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
+        if self.encryption_key_status is not None:
+            result['EncryptionKeyStatus'] = self.encryption_key_status
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        if self.key_usage is not None:
+            result['KeyUsage'] = self.key_usage
+        if self.material_expire_time is not None:
+            result['MaterialExpireTime'] = self.material_expire_time
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.used_by is not None:
+            result['UsedBy'] = self.used_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('DeleteDate') is not None:
+            self.delete_date = m.get('DeleteDate')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
+        if m.get('EncryptionKeyStatus') is not None:
+            self.encryption_key_status = m.get('EncryptionKeyStatus')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        if m.get('KeyUsage') is not None:
+            self.key_usage = m.get('KeyUsage')
+        if m.get('MaterialExpireTime') is not None:
+            self.material_expire_time = m.get('MaterialExpireTime')
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('UsedBy') is not None:
+            self.used_by = m.get('UsedBy')
+        return self
+
+
+class DescribeDBClusterEncryptionKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        encryption_key_list: List[DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList] = None,
+        request_id: str = None,
+    ):
+        self.encryption_key_list = encryption_key_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.encryption_key_list:
+            for k in self.encryption_key_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EncryptionKeyList'] = []
+        if self.encryption_key_list is not None:
+            for k in self.encryption_key_list:
+                result['EncryptionKeyList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.encryption_key_list = []
+        if m.get('EncryptionKeyList') is not None:
+            for k in m.get('EncryptionKeyList'):
+                temp_model = DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList()
+                self.encryption_key_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterEncryptionKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterEncryptionKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterEncryptionKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterEndpointsRequest(TeaModel):
     def __init__(
         self,
@@ -13979,6 +19328,421 @@ class DescribeDBClusterMonitorResponse(TeaModel):
         return self
 
 
+class DescribeDBClusterNetInfoRequest(TeaModel):
+    def __init__(
+        self,
+        connection_string_type: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.connection_string_type = connection_string_type
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string_type is not None:
+            result['ConnectionStringType'] = self.connection_string_type
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionStringType') is not None:
+            self.connection_string_type = m.get('ConnectionStringType')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBodyDBClusterNetInfosDBClusterNetInfo(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        connection_string_type: str = None,
+        ipaddress: str = None,
+        iptype: str = None,
+        port: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+    ):
+        self.connection_string = connection_string
+        self.connection_string_type = connection_string_type
+        self.ipaddress = ipaddress
+        self.iptype = iptype
+        self.port = port
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.connection_string_type is not None:
+            result['ConnectionStringType'] = self.connection_string_type
+        if self.ipaddress is not None:
+            result['IPAddress'] = self.ipaddress
+        if self.iptype is not None:
+            result['IPType'] = self.iptype
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('ConnectionStringType') is not None:
+            self.connection_string_type = m.get('ConnectionStringType')
+        if m.get('IPAddress') is not None:
+            self.ipaddress = m.get('IPAddress')
+        if m.get('IPType') is not None:
+            self.iptype = m.get('IPType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos(TeaModel):
+    def __init__(
+        self,
+        dbcluster_net_info: List[DescribeDBClusterNetInfoResponseBodyDBClusterNetInfosDBClusterNetInfo] = None,
+    ):
+        self.dbcluster_net_info = dbcluster_net_info
+
+    def validate(self):
+        if self.dbcluster_net_info:
+            for k in self.dbcluster_net_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DBClusterNetInfo'] = []
+        if self.dbcluster_net_info is not None:
+            for k in self.dbcluster_net_info:
+                result['DBClusterNetInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbcluster_net_info = []
+        if m.get('DBClusterNetInfo') is not None:
+            for k in m.get('DBClusterNetInfo'):
+                temp_model = DescribeDBClusterNetInfoResponseBodyDBClusterNetInfosDBClusterNetInfo()
+                self.dbcluster_net_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfosNetInfo(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        ipaddress: str = None,
+        iptype: str = None,
+        port: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+    ):
+        self.connection_string = connection_string
+        self.ipaddress = ipaddress
+        self.iptype = iptype
+        self.port = port
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.ipaddress is not None:
+            result['IPAddress'] = self.ipaddress
+        if self.iptype is not None:
+            result['IPType'] = self.iptype
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('IPAddress') is not None:
+            self.ipaddress = m.get('IPAddress')
+        if m.get('IPType') is not None:
+            self.iptype = m.get('IPType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos(TeaModel):
+    def __init__(
+        self,
+        net_info: List[DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfosNetInfo] = None,
+    ):
+        self.net_info = net_info
+
+    def validate(self):
+        if self.net_info:
+            for k in self.net_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetInfo'] = []
+        if self.net_info is not None:
+            for k in self.net_info:
+                result['NetInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.net_info = []
+        if m.get('NetInfo') is not None:
+            for k in m.get('NetInfo'):
+                temp_model = DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfosNetInfo()
+                self.net_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        dbnode_role: str = None,
+        net_infos: DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.dbnode_role = dbnode_role
+        self.net_infos = net_infos
+
+    def validate(self):
+        if self.net_infos:
+            self.net_infos.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbnode_role is not None:
+            result['DBNodeRole'] = self.dbnode_role
+        if self.net_infos is not None:
+            result['NetInfos'] = self.net_infos.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBNodeRole') is not None:
+            self.dbnode_role = m.get('DBNodeRole')
+        if m.get('NetInfos') is not None:
+            temp_model = DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos()
+            self.net_infos = temp_model.from_map(m['NetInfos'])
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos(TeaModel):
+    def __init__(
+        self,
+        dbnode_net_info: List[DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo] = None,
+    ):
+        self.dbnode_net_info = dbnode_net_info
+
+    def validate(self):
+        if self.dbnode_net_info:
+            for k in self.dbnode_net_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DBNodeNetInfo'] = []
+        if self.dbnode_net_info is not None:
+            for k in self.dbnode_net_info:
+                result['DBNodeNetInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbnode_net_info = []
+        if m.get('DBNodeNetInfo') is not None:
+            for k in m.get('DBNodeNetInfo'):
+                temp_model = DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo()
+                self.dbnode_net_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClusterNetInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_network_type: str = None,
+        dbcluster_net_infos: DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos = None,
+        dbnode_net_infos: DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos = None,
+        request_id: str = None,
+    ):
+        self.cluster_network_type = cluster_network_type
+        self.dbcluster_net_infos = dbcluster_net_infos
+        self.dbnode_net_infos = dbnode_net_infos
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dbcluster_net_infos:
+            self.dbcluster_net_infos.validate()
+        if self.dbnode_net_infos:
+            self.dbnode_net_infos.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_network_type is not None:
+            result['ClusterNetworkType'] = self.cluster_network_type
+        if self.dbcluster_net_infos is not None:
+            result['DBClusterNetInfos'] = self.dbcluster_net_infos.to_map()
+        if self.dbnode_net_infos is not None:
+            result['DBNodeNetInfos'] = self.dbnode_net_infos.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterNetworkType') is not None:
+            self.cluster_network_type = m.get('ClusterNetworkType')
+        if m.get('DBClusterNetInfos') is not None:
+            temp_model = DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos()
+            self.dbcluster_net_infos = temp_model.from_map(m['DBClusterNetInfos'])
+        if m.get('DBNodeNetInfos') is not None:
+            temp_model = DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos()
+            self.dbnode_net_infos = temp_model.from_map(m['DBNodeNetInfos'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterNetInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterNetInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterNetInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterParametersRequest(TeaModel):
     def __init__(
         self,
@@ -14840,6 +20604,227 @@ class DescribeDBClusterPerformanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDBClusterPerformanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBClusterProxyRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBClusterProxyResponseBodyChildInstances(TeaModel):
+    def __init__(
+        self,
+        dbnode_class: str = None,
+        dbnode_ip: str = None,
+        dbnode_id: str = None,
+        dbnode_port: str = None,
+        dbnode_status: str = None,
+        host_name: str = None,
+    ):
+        self.dbnode_class = dbnode_class
+        self.dbnode_ip = dbnode_ip
+        self.dbnode_id = dbnode_id
+        self.dbnode_port = dbnode_port
+        self.dbnode_status = dbnode_status
+        self.host_name = host_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbnode_class is not None:
+            result['DBNodeClass'] = self.dbnode_class
+        if self.dbnode_ip is not None:
+            result['DBNodeIP'] = self.dbnode_ip
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.dbnode_port is not None:
+            result['DBNodePort'] = self.dbnode_port
+        if self.dbnode_status is not None:
+            result['DBNodeStatus'] = self.dbnode_status
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBNodeClass') is not None:
+            self.dbnode_class = m.get('DBNodeClass')
+        if m.get('DBNodeIP') is not None:
+            self.dbnode_ip = m.get('DBNodeIP')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('DBNodePort') is not None:
+            self.dbnode_port = m.get('DBNodePort')
+        if m.get('DBNodeStatus') is not None:
+            self.dbnode_status = m.get('DBNodeStatus')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        return self
+
+
+class DescribeDBClusterProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        child_instances: List[DescribeDBClusterProxyResponseBodyChildInstances] = None,
+        dbproxy_cluster_id: str = None,
+        dbproxy_cluster_num: int = None,
+        dbproxy_cluster_status: str = None,
+        request_id: str = None,
+    ):
+        self.child_instances = child_instances
+        self.dbproxy_cluster_id = dbproxy_cluster_id
+        self.dbproxy_cluster_num = dbproxy_cluster_num
+        self.dbproxy_cluster_status = dbproxy_cluster_status
+        self.request_id = request_id
+
+    def validate(self):
+        if self.child_instances:
+            for k in self.child_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ChildInstances'] = []
+        if self.child_instances is not None:
+            for k in self.child_instances:
+                result['ChildInstances'].append(k.to_map() if k else None)
+        if self.dbproxy_cluster_id is not None:
+            result['DBProxyClusterId'] = self.dbproxy_cluster_id
+        if self.dbproxy_cluster_num is not None:
+            result['DBProxyClusterNum'] = self.dbproxy_cluster_num
+        if self.dbproxy_cluster_status is not None:
+            result['DBProxyClusterStatus'] = self.dbproxy_cluster_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.child_instances = []
+        if m.get('ChildInstances') is not None:
+            for k in m.get('ChildInstances'):
+                temp_model = DescribeDBClusterProxyResponseBodyChildInstances()
+                self.child_instances.append(temp_model.from_map(k))
+        if m.get('DBProxyClusterId') is not None:
+            self.dbproxy_cluster_id = m.get('DBProxyClusterId')
+        if m.get('DBProxyClusterNum') is not None:
+            self.dbproxy_cluster_num = m.get('DBProxyClusterNum')
+        if m.get('DBProxyClusterStatus') is not None:
+            self.dbproxy_cluster_status = m.get('DBProxyClusterStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17445,6 +23430,334 @@ class DescribeDBInitializeVariableResponse(TeaModel):
         return self
 
 
+class DescribeDBInstancePerformanceRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        end_time: str = None,
+        key: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.key = key
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue(TeaModel):
+    def __init__(
+        self,
+        timestamp: int = None,
+        value: str = None,
+    ):
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPoints(TeaModel):
+    def __init__(
+        self,
+        performance_item_value: List[DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue] = None,
+    ):
+        self.performance_item_value = performance_item_value
+
+    def validate(self):
+        if self.performance_item_value:
+            for k in self.performance_item_value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PerformanceItemValue'] = []
+        if self.performance_item_value is not None:
+            for k in self.performance_item_value:
+                result['PerformanceItemValue'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.performance_item_value = []
+        if m.get('PerformanceItemValue') is not None:
+            for k in m.get('PerformanceItemValue'):
+                temp_model = DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue()
+                self.performance_item_value.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItem(TeaModel):
+    def __init__(
+        self,
+        measurement: str = None,
+        metric_name: str = None,
+        points: DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPoints = None,
+    ):
+        self.measurement = measurement
+        self.metric_name = metric_name
+        self.points = points
+
+    def validate(self):
+        if self.points:
+            self.points.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.measurement is not None:
+            result['Measurement'] = self.measurement
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.points is not None:
+            result['Points'] = self.points.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Measurement') is not None:
+            self.measurement = m.get('Measurement')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Points') is not None:
+            temp_model = DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPoints()
+            self.points = temp_model.from_map(m['Points'])
+        return self
+
+
+class DescribeDBInstancePerformanceResponseBodyPerformanceKeys(TeaModel):
+    def __init__(
+        self,
+        performance_item: List[DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItem] = None,
+    ):
+        self.performance_item = performance_item
+
+    def validate(self):
+        if self.performance_item:
+            for k in self.performance_item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PerformanceItem'] = []
+        if self.performance_item is not None:
+            for k in self.performance_item:
+                result['PerformanceItem'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.performance_item = []
+        if m.get('PerformanceItem') is not None:
+            for k in m.get('PerformanceItem'):
+                temp_model = DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItem()
+                self.performance_item.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBInstancePerformanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        dbtype: str = None,
+        dbversion: str = None,
+        end_time: str = None,
+        engine: str = None,
+        performance_keys: DescribeDBInstancePerformanceResponseBodyPerformanceKeys = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.dbtype = dbtype
+        self.dbversion = dbversion
+        self.end_time = end_time
+        self.engine = engine
+        self.performance_keys = performance_keys
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.performance_keys:
+            self.performance_keys.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.performance_keys is not None:
+            result['PerformanceKeys'] = self.performance_keys.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('PerformanceKeys') is not None:
+            temp_model = DescribeDBInstancePerformanceResponseBodyPerformanceKeys()
+            self.performance_keys = temp_model.from_map(m['PerformanceKeys'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDBInstancePerformanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBInstancePerformanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstancePerformanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBLinksRequest(TeaModel):
     def __init__(
         self,
@@ -17660,6 +23973,1011 @@ class DescribeDBLinksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDBLinksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBLogFilesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbnode_id: str = None,
+        describe_simulate_switch_mode: str = None,
+        end_time: str = None,
+        log_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        simulate_list_id: str = None,
+        simulate_mode_list: str = None,
+        simulate_status_list: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.dbnode_id = dbnode_id
+        self.describe_simulate_switch_mode = describe_simulate_switch_mode
+        self.end_time = end_time
+        # The log type. Valid values:
+        # 
+        # *   **HaSwitchLogList**: failover logs.
+        # 
+        # This parameter is required.
+        self.log_type = log_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.simulate_list_id = simulate_list_id
+        self.simulate_mode_list = simulate_mode_list
+        self.simulate_status_list = simulate_status_list
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.describe_simulate_switch_mode is not None:
+            result['DescribeSimulateSwitchMode'] = self.describe_simulate_switch_mode
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.log_type is not None:
+            result['LogType'] = self.log_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.simulate_list_id is not None:
+            result['SimulateListId'] = self.simulate_list_id
+        if self.simulate_mode_list is not None:
+            result['SimulateModeList'] = self.simulate_mode_list
+        if self.simulate_status_list is not None:
+            result['SimulateStatusList'] = self.simulate_status_list
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('DescribeSimulateSwitchMode') is not None:
+            self.describe_simulate_switch_mode = m.get('DescribeSimulateSwitchMode')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('LogType') is not None:
+            self.log_type = m.get('LogType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SimulateListId') is not None:
+            self.simulate_list_id = m.get('SimulateListId')
+        if m.get('SimulateModeList') is not None:
+            self.simulate_mode_list = m.get('SimulateModeList')
+        if m.get('SimulateStatusList') is not None:
+            self.simulate_status_list = m.get('SimulateStatusList')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDBLogFilesResponseBodyHaLogItems(TeaModel):
+    def __init__(
+        self,
+        affected_sessions: int = None,
+        from_dbtype: str = None,
+        switch_cause_code: str = None,
+        switch_cause_detail: str = None,
+        switch_finish_time: str = None,
+        switch_id: str = None,
+        switch_start_time: str = None,
+        switch_type: int = None,
+        total_sessions: int = None,
+    ):
+        self.affected_sessions = affected_sessions
+        self.from_dbtype = from_dbtype
+        self.switch_cause_code = switch_cause_code
+        self.switch_cause_detail = switch_cause_detail
+        self.switch_finish_time = switch_finish_time
+        self.switch_id = switch_id
+        self.switch_start_time = switch_start_time
+        self.switch_type = switch_type
+        self.total_sessions = total_sessions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.affected_sessions is not None:
+            result['AffectedSessions'] = self.affected_sessions
+        if self.from_dbtype is not None:
+            result['FromDBType'] = self.from_dbtype
+        if self.switch_cause_code is not None:
+            result['SwitchCauseCode'] = self.switch_cause_code
+        if self.switch_cause_detail is not None:
+            result['SwitchCauseDetail'] = self.switch_cause_detail
+        if self.switch_finish_time is not None:
+            result['SwitchFinishTime'] = self.switch_finish_time
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
+        if self.switch_start_time is not None:
+            result['SwitchStartTime'] = self.switch_start_time
+        if self.switch_type is not None:
+            result['SwitchType'] = self.switch_type
+        if self.total_sessions is not None:
+            result['TotalSessions'] = self.total_sessions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AffectedSessions') is not None:
+            self.affected_sessions = m.get('AffectedSessions')
+        if m.get('FromDBType') is not None:
+            self.from_dbtype = m.get('FromDBType')
+        if m.get('SwitchCauseCode') is not None:
+            self.switch_cause_code = m.get('SwitchCauseCode')
+        if m.get('SwitchCauseDetail') is not None:
+            self.switch_cause_detail = m.get('SwitchCauseDetail')
+        if m.get('SwitchFinishTime') is not None:
+            self.switch_finish_time = m.get('SwitchFinishTime')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
+        if m.get('SwitchStartTime') is not None:
+            self.switch_start_time = m.get('SwitchStartTime')
+        if m.get('SwitchType') is not None:
+            self.switch_type = m.get('SwitchType')
+        if m.get('TotalSessions') is not None:
+            self.total_sessions = m.get('TotalSessions')
+        return self
+
+
+class DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        is_success: str = None,
+        simulate_phase: str = None,
+        start_time: str = None,
+        step_name: str = None,
+        time_cost: str = None,
+    ):
+        self.end_time = end_time
+        self.is_success = is_success
+        self.simulate_phase = simulate_phase
+        self.start_time = start_time
+        self.step_name = step_name
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.simulate_phase is not None:
+            result['SimulatePhase'] = self.simulate_phase
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('SimulatePhase') is not None:
+            self.simulate_phase = m.get('SimulatePhase')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        dst_db_type: str = None,
+        event_finish_time: str = None,
+        event_start_time: str = None,
+        simulate_list_id: str = None,
+        simulate_log_id: str = None,
+        simulate_status: str = None,
+        src_db_type: str = None,
+        switch_step_items: List[DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems] = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.dst_db_type = dst_db_type
+        self.event_finish_time = event_finish_time
+        self.event_start_time = event_start_time
+        self.simulate_list_id = simulate_list_id
+        self.simulate_log_id = simulate_log_id
+        self.simulate_status = simulate_status
+        self.src_db_type = src_db_type
+        self.switch_step_items = switch_step_items
+
+    def validate(self):
+        if self.switch_step_items:
+            for k in self.switch_step_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dst_db_type is not None:
+            result['DstDbType'] = self.dst_db_type
+        if self.event_finish_time is not None:
+            result['EventFinishTime'] = self.event_finish_time
+        if self.event_start_time is not None:
+            result['EventStartTime'] = self.event_start_time
+        if self.simulate_list_id is not None:
+            result['SimulateListId'] = self.simulate_list_id
+        if self.simulate_log_id is not None:
+            result['SimulateLogId'] = self.simulate_log_id
+        if self.simulate_status is not None:
+            result['SimulateStatus'] = self.simulate_status
+        if self.src_db_type is not None:
+            result['SrcDbType'] = self.src_db_type
+        result['SwitchStepItems'] = []
+        if self.switch_step_items is not None:
+            for k in self.switch_step_items:
+                result['SwitchStepItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DstDbType') is not None:
+            self.dst_db_type = m.get('DstDbType')
+        if m.get('EventFinishTime') is not None:
+            self.event_finish_time = m.get('EventFinishTime')
+        if m.get('EventStartTime') is not None:
+            self.event_start_time = m.get('EventStartTime')
+        if m.get('SimulateListId') is not None:
+            self.simulate_list_id = m.get('SimulateListId')
+        if m.get('SimulateLogId') is not None:
+            self.simulate_log_id = m.get('SimulateLogId')
+        if m.get('SimulateStatus') is not None:
+            self.simulate_status = m.get('SimulateStatus')
+        if m.get('SrcDbType') is not None:
+            self.src_db_type = m.get('SrcDbType')
+        self.switch_step_items = []
+        if m.get('SwitchStepItems') is not None:
+            for k in m.get('SwitchStepItems'):
+                temp_model = DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems()
+                self.switch_step_items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems(TeaModel):
+    def __init__(
+        self,
+        dbnode_id: str = None,
+        end_time: str = None,
+        is_success: str = None,
+        simulate_phase: str = None,
+        start_time: str = None,
+        step_name: str = None,
+        time_cost: str = None,
+    ):
+        self.dbnode_id = dbnode_id
+        self.end_time = end_time
+        self.is_success = is_success
+        self.simulate_phase = simulate_phase
+        self.start_time = start_time
+        self.step_name = step_name
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.simulate_phase is not None:
+            result['SimulatePhase'] = self.simulate_phase
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('SimulatePhase') is not None:
+            self.simulate_phase = m.get('SimulatePhase')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class DescribeDBLogFilesResponseBodySwitchListItems(TeaModel):
+    def __init__(
+        self,
+        dbnode_crash_list: List[str] = None,
+        end_time: str = None,
+        event_finish_time: str = None,
+        event_start_time: str = None,
+        fault_injection_type: str = None,
+        simulate_list_id: str = None,
+        simulate_mode: str = None,
+        simulate_status: str = None,
+        simulate_task_id: str = None,
+        start_time: str = None,
+        switch_log_items: List[DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems] = None,
+        switch_step_items: List[DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems] = None,
+    ):
+        self.dbnode_crash_list = dbnode_crash_list
+        self.end_time = end_time
+        self.event_finish_time = event_finish_time
+        self.event_start_time = event_start_time
+        self.fault_injection_type = fault_injection_type
+        self.simulate_list_id = simulate_list_id
+        self.simulate_mode = simulate_mode
+        self.simulate_status = simulate_status
+        self.simulate_task_id = simulate_task_id
+        self.start_time = start_time
+        self.switch_log_items = switch_log_items
+        self.switch_step_items = switch_step_items
+
+    def validate(self):
+        if self.switch_log_items:
+            for k in self.switch_log_items:
+                if k:
+                    k.validate()
+        if self.switch_step_items:
+            for k in self.switch_step_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbnode_crash_list is not None:
+            result['DBNodeCrashList'] = self.dbnode_crash_list
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_finish_time is not None:
+            result['EventFinishTime'] = self.event_finish_time
+        if self.event_start_time is not None:
+            result['EventStartTime'] = self.event_start_time
+        if self.fault_injection_type is not None:
+            result['FaultInjectionType'] = self.fault_injection_type
+        if self.simulate_list_id is not None:
+            result['SimulateListId'] = self.simulate_list_id
+        if self.simulate_mode is not None:
+            result['SimulateMode'] = self.simulate_mode
+        if self.simulate_status is not None:
+            result['SimulateStatus'] = self.simulate_status
+        if self.simulate_task_id is not None:
+            result['SimulateTaskId'] = self.simulate_task_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['SwitchLogItems'] = []
+        if self.switch_log_items is not None:
+            for k in self.switch_log_items:
+                result['SwitchLogItems'].append(k.to_map() if k else None)
+        result['SwitchStepItems'] = []
+        if self.switch_step_items is not None:
+            for k in self.switch_step_items:
+                result['SwitchStepItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBNodeCrashList') is not None:
+            self.dbnode_crash_list = m.get('DBNodeCrashList')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventFinishTime') is not None:
+            self.event_finish_time = m.get('EventFinishTime')
+        if m.get('EventStartTime') is not None:
+            self.event_start_time = m.get('EventStartTime')
+        if m.get('FaultInjectionType') is not None:
+            self.fault_injection_type = m.get('FaultInjectionType')
+        if m.get('SimulateListId') is not None:
+            self.simulate_list_id = m.get('SimulateListId')
+        if m.get('SimulateMode') is not None:
+            self.simulate_mode = m.get('SimulateMode')
+        if m.get('SimulateStatus') is not None:
+            self.simulate_status = m.get('SimulateStatus')
+        if m.get('SimulateTaskId') is not None:
+            self.simulate_task_id = m.get('SimulateTaskId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.switch_log_items = []
+        if m.get('SwitchLogItems') is not None:
+            for k in m.get('SwitchLogItems'):
+                temp_model = DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems()
+                self.switch_log_items.append(temp_model.from_map(k))
+        self.switch_step_items = []
+        if m.get('SwitchStepItems') is not None:
+            for k in m.get('SwitchStepItems'):
+                temp_model = DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems()
+                self.switch_step_items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems(TeaModel):
+    def __init__(
+        self,
+        dbnode_id: str = None,
+        end_time: str = None,
+        is_success: str = None,
+        simulate_phase: str = None,
+        start_time: str = None,
+        step_msg: str = None,
+        step_name: str = None,
+        time_cost: str = None,
+    ):
+        self.dbnode_id = dbnode_id
+        self.end_time = end_time
+        self.is_success = is_success
+        self.simulate_phase = simulate_phase
+        self.start_time = start_time
+        self.step_msg = step_msg
+        self.step_name = step_name
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.simulate_phase is not None:
+            result['SimulatePhase'] = self.simulate_phase
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_msg is not None:
+            result['StepMsg'] = self.step_msg
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('SimulatePhase') is not None:
+            self.simulate_phase = m.get('SimulatePhase')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepMsg') is not None:
+            self.step_msg = m.get('StepMsg')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class DescribeDBLogFilesResponseBodySwitchLogItems(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        dst_db_type: str = None,
+        event_finish_time: str = None,
+        event_start_time: str = None,
+        simulate_list_id: str = None,
+        simulate_status: str = None,
+        simulatecode: str = None,
+        src_db_type: str = None,
+        switch_step_items: List[DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems] = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.dst_db_type = dst_db_type
+        self.event_finish_time = event_finish_time
+        self.event_start_time = event_start_time
+        self.simulate_list_id = simulate_list_id
+        self.simulate_status = simulate_status
+        self.simulatecode = simulatecode
+        self.src_db_type = src_db_type
+        self.switch_step_items = switch_step_items
+
+    def validate(self):
+        if self.switch_step_items:
+            for k in self.switch_step_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dst_db_type is not None:
+            result['DstDbType'] = self.dst_db_type
+        if self.event_finish_time is not None:
+            result['EventFinishTime'] = self.event_finish_time
+        if self.event_start_time is not None:
+            result['EventStartTime'] = self.event_start_time
+        if self.simulate_list_id is not None:
+            result['SimulateListId'] = self.simulate_list_id
+        if self.simulate_status is not None:
+            result['SimulateStatus'] = self.simulate_status
+        if self.simulatecode is not None:
+            result['Simulatecode'] = self.simulatecode
+        if self.src_db_type is not None:
+            result['SrcDbType'] = self.src_db_type
+        result['SwitchStepItems'] = []
+        if self.switch_step_items is not None:
+            for k in self.switch_step_items:
+                result['SwitchStepItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DstDbType') is not None:
+            self.dst_db_type = m.get('DstDbType')
+        if m.get('EventFinishTime') is not None:
+            self.event_finish_time = m.get('EventFinishTime')
+        if m.get('EventStartTime') is not None:
+            self.event_start_time = m.get('EventStartTime')
+        if m.get('SimulateListId') is not None:
+            self.simulate_list_id = m.get('SimulateListId')
+        if m.get('SimulateStatus') is not None:
+            self.simulate_status = m.get('SimulateStatus')
+        if m.get('Simulatecode') is not None:
+            self.simulatecode = m.get('Simulatecode')
+        if m.get('SrcDbType') is not None:
+            self.src_db_type = m.get('SrcDbType')
+        self.switch_step_items = []
+        if m.get('SwitchStepItems') is not None:
+            for k in m.get('SwitchStepItems'):
+                temp_model = DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems()
+                self.switch_step_items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBLogFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        dbinstance_type: str = None,
+        ha_log_items: List[DescribeDBLogFilesResponseBodyHaLogItems] = None,
+        ha_status: int = None,
+        items_numbers: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        switch_list_items: List[DescribeDBLogFilesResponseBodySwitchListItems] = None,
+        switch_log_items: List[DescribeDBLogFilesResponseBodySwitchLogItems] = None,
+        total_records: int = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.dbinstance_type = dbinstance_type
+        self.ha_log_items = ha_log_items
+        self.ha_status = ha_status
+        self.items_numbers = items_numbers
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.switch_list_items = switch_list_items
+        self.switch_log_items = switch_log_items
+        self.total_records = total_records
+
+    def validate(self):
+        if self.ha_log_items:
+            for k in self.ha_log_items:
+                if k:
+                    k.validate()
+        if self.switch_list_items:
+            for k in self.switch_list_items:
+                if k:
+                    k.validate()
+        if self.switch_log_items:
+            for k in self.switch_log_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.dbinstance_type is not None:
+            result['DBInstanceType'] = self.dbinstance_type
+        result['HaLogItems'] = []
+        if self.ha_log_items is not None:
+            for k in self.ha_log_items:
+                result['HaLogItems'].append(k.to_map() if k else None)
+        if self.ha_status is not None:
+            result['HaStatus'] = self.ha_status
+        if self.items_numbers is not None:
+            result['ItemsNumbers'] = self.items_numbers
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SwitchListItems'] = []
+        if self.switch_list_items is not None:
+            for k in self.switch_list_items:
+                result['SwitchListItems'].append(k.to_map() if k else None)
+        result['SwitchLogItems'] = []
+        if self.switch_log_items is not None:
+            for k in self.switch_log_items:
+                result['SwitchLogItems'].append(k.to_map() if k else None)
+        if self.total_records is not None:
+            result['TotalRecords'] = self.total_records
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBInstanceType') is not None:
+            self.dbinstance_type = m.get('DBInstanceType')
+        self.ha_log_items = []
+        if m.get('HaLogItems') is not None:
+            for k in m.get('HaLogItems'):
+                temp_model = DescribeDBLogFilesResponseBodyHaLogItems()
+                self.ha_log_items.append(temp_model.from_map(k))
+        if m.get('HaStatus') is not None:
+            self.ha_status = m.get('HaStatus')
+        if m.get('ItemsNumbers') is not None:
+            self.items_numbers = m.get('ItemsNumbers')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.switch_list_items = []
+        if m.get('SwitchListItems') is not None:
+            for k in m.get('SwitchListItems'):
+                temp_model = DescribeDBLogFilesResponseBodySwitchListItems()
+                self.switch_list_items.append(temp_model.from_map(k))
+        self.switch_log_items = []
+        if m.get('SwitchLogItems') is not None:
+            for k in m.get('SwitchLogItems'):
+                temp_model = DescribeDBLogFilesResponseBodySwitchLogItems()
+                self.switch_log_items.append(temp_model.from_map(k))
+        if m.get('TotalRecords') is not None:
+            self.total_records = m.get('TotalRecords')
+        return self
+
+
+class DescribeDBLogFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBLogFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBLogFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBMiniEngineVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        architecture: str = None,
+        creation_category: str = None,
+        dbminor_version: str = None,
+        dbtype: str = None,
+        dbversion: str = None,
+        region_id: str = None,
+        zone_id: str = None,
+    ):
+        self.architecture = architecture
+        self.creation_category = creation_category
+        self.dbminor_version = dbminor_version
+        # This parameter is required.
+        self.dbtype = dbtype
+        # This parameter is required.
+        self.dbversion = dbversion
+        # This parameter is required.
+        self.region_id = region_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
+        if self.creation_category is not None:
+            result['CreationCategory'] = self.creation_category
+        if self.dbminor_version is not None:
+            result['DBMinorVersion'] = self.dbminor_version
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
+        if m.get('CreationCategory') is not None:
+            self.creation_category = m.get('CreationCategory')
+        if m.get('DBMinorVersion') is not None:
+            self.dbminor_version = m.get('DBMinorVersion')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList(TeaModel):
+    def __init__(
+        self,
+        release_note: str = None,
+        release_type: str = None,
+        revision_version_code: str = None,
+        revision_version_name: str = None,
+    ):
+        self.release_note = release_note
+        self.release_type = release_type
+        self.revision_version_code = revision_version_code
+        self.revision_version_name = revision_version_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release_note is not None:
+            result['ReleaseNote'] = self.release_note
+        if self.release_type is not None:
+            result['ReleaseType'] = self.release_type
+        if self.revision_version_code is not None:
+            result['RevisionVersionCode'] = self.revision_version_code
+        if self.revision_version_name is not None:
+            result['RevisionVersionName'] = self.revision_version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReleaseNote') is not None:
+            self.release_note = m.get('ReleaseNote')
+        if m.get('ReleaseType') is not None:
+            self.release_type = m.get('ReleaseType')
+        if m.get('RevisionVersionCode') is not None:
+            self.revision_version_code = m.get('RevisionVersionCode')
+        if m.get('RevisionVersionName') is not None:
+            self.revision_version_name = m.get('RevisionVersionName')
+        return self
+
+
+class DescribeDBMiniEngineVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbrevision_version_list: List[DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList] = None,
+        request_id: str = None,
+    ):
+        self.dbrevision_version_list = dbrevision_version_list
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dbrevision_version_list:
+            for k in self.dbrevision_version_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DBRevisionVersionList'] = []
+        if self.dbrevision_version_list is not None:
+            for k in self.dbrevision_version_list:
+                result['DBRevisionVersionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbrevision_version_list = []
+        if m.get('DBRevisionVersionList') is not None:
+            for k in m.get('DBRevisionVersionList'):
+                temp_model = DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList()
+                self.dbrevision_version_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBMiniEngineVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBMiniEngineVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBMiniEngineVersionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19627,6 +26945,858 @@ class DescribeDetachedBackupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDetachedBackupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeEncryptionDBRolePrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        role_privilege_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.role_privilege_name_list = role_privilege_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.role_privilege_name_list is not None:
+            result['RolePrivilegeNameList'] = self.role_privilege_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RolePrivilegeNameList') is not None:
+            self.role_privilege_name_list = m.get('RolePrivilegeNameList')
+        return self
+
+
+class DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList(TeaModel):
+    def __init__(
+        self,
+        encryption: str = None,
+        negation: str = None,
+        not_encryption: str = None,
+        role_privilege_name: str = None,
+    ):
+        self.encryption = encryption
+        self.negation = negation
+        self.not_encryption = not_encryption
+        self.role_privilege_name = role_privilege_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encryption is not None:
+            result['Encryption'] = self.encryption
+        if self.negation is not None:
+            result['Negation'] = self.negation
+        if self.not_encryption is not None:
+            result['NotEncryption'] = self.not_encryption
+        if self.role_privilege_name is not None:
+            result['RolePrivilegeName'] = self.role_privilege_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Encryption') is not None:
+            self.encryption = m.get('Encryption')
+        if m.get('Negation') is not None:
+            self.negation = m.get('Negation')
+        if m.get('NotEncryption') is not None:
+            self.not_encryption = m.get('NotEncryption')
+        if m.get('RolePrivilegeName') is not None:
+            self.role_privilege_name = m.get('RolePrivilegeName')
+        return self
+
+
+class DescribeEncryptionDBRolePrivilegeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        role_privilege_list: List[DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList] = None,
+    ):
+        self.role_privilege_list = role_privilege_list
+
+    def validate(self):
+        if self.role_privilege_list:
+            for k in self.role_privilege_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RolePrivilegeList'] = []
+        if self.role_privilege_list is not None:
+            for k in self.role_privilege_list:
+                result['RolePrivilegeList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.role_privilege_list = []
+        if m.get('RolePrivilegeList') is not None:
+            for k in m.get('RolePrivilegeList'):
+                temp_model = DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList()
+                self.role_privilege_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeEncryptionDBRolePrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        data: DescribeEncryptionDBRolePrivilegeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Data') is not None:
+            temp_model = DescribeEncryptionDBRolePrivilegeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeEncryptionDBRolePrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEncryptionDBRolePrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEncryptionDBRolePrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeEncryptionDBSecretRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class DescribeEncryptionDBSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        encryption_dbregion: str = None,
+        encryption_dbstatus: str = None,
+        encryption_key: str = None,
+        encryption_key_status: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.encryption_dbregion = encryption_dbregion
+        self.encryption_dbstatus = encryption_dbstatus
+        self.encryption_key = encryption_key
+        self.encryption_key_status = encryption_key_status
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.encryption_dbregion is not None:
+            result['EncryptionDBRegion'] = self.encryption_dbregion
+        if self.encryption_dbstatus is not None:
+            result['EncryptionDBStatus'] = self.encryption_dbstatus
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
+        if self.encryption_key_status is not None:
+            result['EncryptionKeyStatus'] = self.encryption_key_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EncryptionDBRegion') is not None:
+            self.encryption_dbregion = m.get('EncryptionDBRegion')
+        if m.get('EncryptionDBStatus') is not None:
+            self.encryption_dbstatus = m.get('EncryptionDBStatus')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
+        if m.get('EncryptionKeyStatus') is not None:
+            self.encryption_key_status = m.get('EncryptionKeyStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeEncryptionDBSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEncryptionDBSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEncryptionDBSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeExtensionsRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbname: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbname = dbname
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeExtensionsResponseBodyInstalledExtensions(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        comment: str = None,
+        default_version: str = None,
+        installed_version: str = None,
+        name: str = None,
+        owner: str = None,
+        priority: str = None,
+        requires: str = None,
+        restart: str = None,
+    ):
+        self.category = category
+        self.comment = comment
+        self.default_version = default_version
+        self.installed_version = installed_version
+        self.name = name
+        self.owner = owner
+        self.priority = priority
+        self.requires = requires
+        self.restart = restart
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.default_version is not None:
+            result['DefaultVersion'] = self.default_version
+        if self.installed_version is not None:
+            result['InstalledVersion'] = self.installed_version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.requires is not None:
+            result['Requires'] = self.requires
+        if self.restart is not None:
+            result['Restart'] = self.restart
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('DefaultVersion') is not None:
+            self.default_version = m.get('DefaultVersion')
+        if m.get('InstalledVersion') is not None:
+            self.installed_version = m.get('InstalledVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Requires') is not None:
+            self.requires = m.get('Requires')
+        if m.get('Restart') is not None:
+            self.restart = m.get('Restart')
+        return self
+
+
+class DescribeExtensionsResponseBodyUninstalledExtensions(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        comment: str = None,
+        default_version: str = None,
+        installed_version: str = None,
+        name: str = None,
+        owner: str = None,
+        priority: str = None,
+        requires: str = None,
+        restart: str = None,
+    ):
+        self.category = category
+        self.comment = comment
+        self.default_version = default_version
+        self.installed_version = installed_version
+        self.name = name
+        self.owner = owner
+        self.priority = priority
+        self.requires = requires
+        self.restart = restart
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.default_version is not None:
+            result['DefaultVersion'] = self.default_version
+        if self.installed_version is not None:
+            result['InstalledVersion'] = self.installed_version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.requires is not None:
+            result['Requires'] = self.requires
+        if self.restart is not None:
+            result['Restart'] = self.restart
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('DefaultVersion') is not None:
+            self.default_version = m.get('DefaultVersion')
+        if m.get('InstalledVersion') is not None:
+            self.installed_version = m.get('InstalledVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Requires') is not None:
+            self.requires = m.get('Requires')
+        if m.get('Restart') is not None:
+            self.restart = m.get('Restart')
+        return self
+
+
+class DescribeExtensionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        installed_extensions: List[DescribeExtensionsResponseBodyInstalledExtensions] = None,
+        overview: str = None,
+        request_id: str = None,
+        uninstalled_extensions: List[DescribeExtensionsResponseBodyUninstalledExtensions] = None,
+    ):
+        self.installed_extensions = installed_extensions
+        self.overview = overview
+        # Id of the request
+        self.request_id = request_id
+        self.uninstalled_extensions = uninstalled_extensions
+
+    def validate(self):
+        if self.installed_extensions:
+            for k in self.installed_extensions:
+                if k:
+                    k.validate()
+        if self.uninstalled_extensions:
+            for k in self.uninstalled_extensions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstalledExtensions'] = []
+        if self.installed_extensions is not None:
+            for k in self.installed_extensions:
+                result['InstalledExtensions'].append(k.to_map() if k else None)
+        if self.overview is not None:
+            result['Overview'] = self.overview
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['UninstalledExtensions'] = []
+        if self.uninstalled_extensions is not None:
+            for k in self.uninstalled_extensions:
+                result['UninstalledExtensions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.installed_extensions = []
+        if m.get('InstalledExtensions') is not None:
+            for k in m.get('InstalledExtensions'):
+                temp_model = DescribeExtensionsResponseBodyInstalledExtensions()
+                self.installed_extensions.append(temp_model.from_map(k))
+        if m.get('Overview') is not None:
+            self.overview = m.get('Overview')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.uninstalled_extensions = []
+        if m.get('UninstalledExtensions') is not None:
+            for k in m.get('UninstalledExtensions'):
+                temp_model = DescribeExtensionsResponseBodyUninstalledExtensions()
+                self.uninstalled_extensions.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeExtensionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExtensionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExtensionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeFirewallRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_name_list = rule_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name_list is not None:
+            result['RuleNameList'] = self.rule_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleNameList') is not None:
+            self.rule_name_list = m.get('RuleNameList')
+        return self
+
+
+class DescribeFirewallRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        rule_list: List[str] = None,
+    ):
+        self.rule_list = rule_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_list is not None:
+            result['RuleList'] = self.rule_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleList') is not None:
+            self.rule_list = m.get('RuleList')
+        return self
+
+
+class DescribeFirewallRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        data: DescribeFirewallRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Data') is not None:
+            temp_model = DescribeFirewallRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeFirewallRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFirewallRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFirewallRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22079,6 +30249,230 @@ class DescribeHistoryTasksResponse(TeaModel):
         return self
 
 
+class DescribeHistoryTasksStatRequest(TeaModel):
+    def __init__(
+        self,
+        from_exec_time: int = None,
+        from_start_time: str = None,
+        instance_id: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: int = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        to_exec_time: int = None,
+        to_start_time: str = None,
+    ):
+        self.from_exec_time = from_exec_time
+        # This parameter is required.
+        self.from_start_time = from_start_time
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.to_exec_time = to_exec_time
+        # This parameter is required.
+        self.to_start_time = to_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_exec_time is not None:
+            result['FromExecTime'] = self.from_exec_time
+        if self.from_start_time is not None:
+            result['FromStartTime'] = self.from_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.to_exec_time is not None:
+            result['ToExecTime'] = self.to_exec_time
+        if self.to_start_time is not None:
+            result['ToStartTime'] = self.to_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromExecTime') is not None:
+            self.from_exec_time = m.get('FromExecTime')
+        if m.get('FromStartTime') is not None:
+            self.from_start_time = m.get('FromStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('ToExecTime') is not None:
+            self.to_exec_time = m.get('ToExecTime')
+        if m.get('ToStartTime') is not None:
+            self.to_start_time = m.get('ToStartTime')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        total_count: int = None,
+    ):
+        self.status = status
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeHistoryTasksStatResponseBodyItems] = None,
+        request_id: str = None,
+    ):
+        self.items = items
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeHistoryTasksStatResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHistoryTasksStatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryTasksStatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryTasksStatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeLicenseOrderDetailsRequest(TeaModel):
     def __init__(
         self,
@@ -22611,6 +31005,150 @@ class DescribeLicenseOrdersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeLicenseOrdersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLocalAvailableRecoveryTimeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeLocalAvailableRecoveryTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        recovery_begin_time: str = None,
+        recovery_end_time: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.recovery_begin_time = recovery_begin_time
+        self.recovery_end_time = recovery_end_time
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.recovery_begin_time is not None:
+            result['RecoveryBeginTime'] = self.recovery_begin_time
+        if self.recovery_end_time is not None:
+            result['RecoveryEndTime'] = self.recovery_end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RecoveryBeginTime') is not None:
+            self.recovery_begin_time = m.get('RecoveryBeginTime')
+        if m.get('RecoveryEndTime') is not None:
+            self.recovery_end_time = m.get('RecoveryEndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeLocalAvailableRecoveryTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLocalAvailableRecoveryTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLocalAvailableRecoveryTimeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23349,6 +31887,458 @@ class DescribeMetaListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetaListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeModifyParameterLogRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeModifyParameterLogResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        modify_time: str = None,
+        new_parameter_value: str = None,
+        old_parameter_value: str = None,
+        parameter_name: str = None,
+        status: str = None,
+    ):
+        self.modify_time = modify_time
+        self.new_parameter_value = new_parameter_value
+        self.old_parameter_value = old_parameter_value
+        self.parameter_name = parameter_name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.new_parameter_value is not None:
+            result['NewParameterValue'] = self.new_parameter_value
+        if self.old_parameter_value is not None:
+            result['OldParameterValue'] = self.old_parameter_value
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('NewParameterValue') is not None:
+            self.new_parameter_value = m.get('NewParameterValue')
+        if m.get('OldParameterValue') is not None:
+            self.old_parameter_value = m.get('OldParameterValue')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeModifyParameterLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        engine_version: str = None,
+        items: List[DescribeModifyParameterLogResponseBodyItems] = None,
+        request_id: str = None,
+    ):
+        self.engine = engine
+        self.engine_version = engine_version
+        self.items = items
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeModifyParameterLogResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeModifyParameterLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeModifyParameterLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeModifyParameterLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNetworkChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        vpc_id: str = None,
+    ):
+        self.channel_name = channel_name
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeNetworkChannelResponseBodyChannelInfos(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        dbcluster_id: str = None,
+        notes: str = None,
+        region_id: str = None,
+        target_dbcluster_id: str = None,
+        target_ip: str = None,
+        target_port: str = None,
+        target_type: str = None,
+        vpc_id: str = None,
+    ):
+        self.channel_name = channel_name
+        self.dbcluster_id = dbcluster_id
+        self.notes = notes
+        self.region_id = region_id
+        self.target_dbcluster_id = target_dbcluster_id
+        self.target_ip = target_ip
+        self.target_port = target_port
+        self.target_type = target_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.notes is not None:
+            result['Notes'] = self.notes
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.target_dbcluster_id is not None:
+            result['TargetDBClusterId'] = self.target_dbcluster_id
+        if self.target_ip is not None:
+            result['TargetIp'] = self.target_ip
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Notes') is not None:
+            self.notes = m.get('Notes')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TargetDBClusterId') is not None:
+            self.target_dbcluster_id = m.get('TargetDBClusterId')
+        if m.get('TargetIp') is not None:
+            self.target_ip = m.get('TargetIp')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeNetworkChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel_infos: List[DescribeNetworkChannelResponseBodyChannelInfos] = None,
+        request_id: str = None,
+    ):
+        self.channel_infos = channel_infos
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.channel_infos:
+            for k in self.channel_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ChannelInfos'] = []
+        if self.channel_infos is not None:
+            for k in self.channel_infos:
+                result['ChannelInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.channel_infos = []
+        if m.get('ChannelInfos') is not None:
+            for k in m.get('ChannelInfos'):
+                temp_model = DescribeNetworkChannelResponseBodyChannelInfos()
+                self.channel_infos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNetworkChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNetworkChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNetworkChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24943,6 +33933,619 @@ class DescribePolarSQLCollectorPolicyResponse(TeaModel):
         return self
 
 
+class DescribeRdsVSwitchsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        bid: str = None,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        region_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.region_no = region_no
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeRdsVSwitchsResponseBodyVSwitches(TeaModel):
+    def __init__(
+        self,
+        v_switch: List[DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch] = None,
+    ):
+        self.v_switch = v_switch
+
+    def validate(self):
+        if self.v_switch:
+            for k in self.v_switch:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VSwitch'] = []
+        if self.v_switch is not None:
+            for k in self.v_switch:
+                result['VSwitch'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.v_switch = []
+        if m.get('VSwitch') is not None:
+            for k in m.get('VSwitch'):
+                temp_model = DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch()
+                self.v_switch.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRdsVSwitchsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        v_switches: DescribeRdsVSwitchsResponseBodyVSwitches = None,
+    ):
+        self.request_id = request_id
+        self.v_switches = v_switches
+
+    def validate(self):
+        if self.v_switches:
+            self.v_switches.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VSwitches') is not None:
+            temp_model = DescribeRdsVSwitchsResponseBodyVSwitches()
+            self.v_switches = temp_model.from_map(m['VSwitches'])
+        return self
+
+
+class DescribeRdsVSwitchsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRdsVSwitchsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRdsVSwitchsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRdsVpcsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeRdsVpcsResponseBodyVpcsVpc(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        bid: str = None,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        region_no: str = None,
+        status: str = None,
+        v_switchs: List[DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs] = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.region_no = region_no
+        self.status = status
+        self.v_switchs = v_switchs
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        if self.v_switchs:
+            for k in self.v_switchs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        result['VSwitchs'] = []
+        if self.v_switchs is not None:
+            for k in self.v_switchs:
+                result['VSwitchs'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.v_switchs = []
+        if m.get('VSwitchs') is not None:
+            for k in m.get('VSwitchs'):
+                temp_model = DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs()
+                self.v_switchs.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class DescribeRdsVpcsResponseBodyVpcs(TeaModel):
+    def __init__(
+        self,
+        vpc: List[DescribeRdsVpcsResponseBodyVpcsVpc] = None,
+    ):
+        self.vpc = vpc
+
+    def validate(self):
+        if self.vpc:
+            for k in self.vpc:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Vpc'] = []
+        if self.vpc is not None:
+            for k in self.vpc:
+                result['Vpc'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.vpc = []
+        if m.get('Vpc') is not None:
+            for k in m.get('Vpc'):
+                temp_model = DescribeRdsVpcsResponseBodyVpcsVpc()
+                self.vpc.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRdsVpcsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vpcs: DescribeRdsVpcsResponseBodyVpcs = None,
+    ):
+        self.request_id = request_id
+        self.vpcs = vpcs
+
+    def validate(self):
+        if self.vpcs:
+            self.vpcs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vpcs is not None:
+            result['Vpcs'] = self.vpcs.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Vpcs') is not None:
+            temp_model = DescribeRdsVpcsResponseBodyVpcs()
+            self.vpcs = temp_model.from_map(m['Vpcs'])
+        return self
+
+
+class DescribeRdsVpcsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRdsVpcsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRdsVpcsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
@@ -25204,6 +34807,451 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuotaList(TeaModel):
+    def __init__(
+        self,
+        allocated_capacity: int = None,
+        project_id: str = None,
+        used_capacity: int = None,
+    ):
+        self.allocated_capacity = allocated_capacity
+        self.project_id = project_id
+        self.used_capacity = used_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocated_capacity is not None:
+            result['AllocatedCapacity'] = self.allocated_capacity
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocatedCapacity') is not None:
+            self.allocated_capacity = m.get('AllocatedCapacity')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
+        return self
+
+
+class DescribeResourcePackagesResponseBodyResourcePackageListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeResourcePackagesResponseBodyResourcePackageList(TeaModel):
+    def __init__(
+        self,
+        auto_quota: bool = None,
+        create_time: int = None,
+        expire_time: int = None,
+        resource_package_id: str = None,
+        resource_package_quota_list: List[DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuotaList] = None,
+        resource_package_type: str = None,
+        status: str = None,
+        tags: List[DescribeResourcePackagesResponseBodyResourcePackageListTags] = None,
+        total_capacity: int = None,
+        used_capacity: int = None,
+    ):
+        self.auto_quota = auto_quota
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.resource_package_id = resource_package_id
+        self.resource_package_quota_list = resource_package_quota_list
+        self.resource_package_type = resource_package_type
+        self.status = status
+        self.tags = tags
+        self.total_capacity = total_capacity
+        self.used_capacity = used_capacity
+
+    def validate(self):
+        if self.resource_package_quota_list:
+            for k in self.resource_package_quota_list:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_quota is not None:
+            result['AutoQuota'] = self.auto_quota
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.resource_package_id is not None:
+            result['ResourcePackageId'] = self.resource_package_id
+        result['ResourcePackageQuotaList'] = []
+        if self.resource_package_quota_list is not None:
+            for k in self.resource_package_quota_list:
+                result['ResourcePackageQuotaList'].append(k.to_map() if k else None)
+        if self.resource_package_type is not None:
+            result['ResourcePackageType'] = self.resource_package_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.total_capacity is not None:
+            result['TotalCapacity'] = self.total_capacity
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoQuota') is not None:
+            self.auto_quota = m.get('AutoQuota')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('ResourcePackageId') is not None:
+            self.resource_package_id = m.get('ResourcePackageId')
+        self.resource_package_quota_list = []
+        if m.get('ResourcePackageQuotaList') is not None:
+            for k in m.get('ResourcePackageQuotaList'):
+                temp_model = DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuotaList()
+                self.resource_package_quota_list.append(temp_model.from_map(k))
+        if m.get('ResourcePackageType') is not None:
+            self.resource_package_type = m.get('ResourcePackageType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeResourcePackagesResponseBodyResourcePackageListTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TotalCapacity') is not None:
+            self.total_capacity = m.get('TotalCapacity')
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
+        return self
+
+
+class DescribeResourcePackagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_package_list: List[DescribeResourcePackagesResponseBodyResourcePackageList] = None,
+    ):
+        self.request_id = request_id
+        self.resource_package_list = resource_package_list
+
+    def validate(self):
+        if self.resource_package_list:
+            for k in self.resource_package_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourcePackageList'] = []
+        if self.resource_package_list is not None:
+            for k in self.resource_package_list:
+                result['ResourcePackageList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_package_list = []
+        if m.get('ResourcePackageList') is not None:
+            for k in m.get('ResourcePackageList'):
+                temp_model = DescribeResourcePackagesResponseBodyResourcePackageList()
+                self.resource_package_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeResourcePackagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResourcePackagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResourcePackagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSQLRateLimitingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_name_list = rule_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name_list is not None:
+            result['RuleNameList'] = self.rule_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleNameList') is not None:
+            self.rule_name_list = m.get('RuleNameList')
+        return self
+
+
+class DescribeSQLRateLimitingRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        rule_list: List[str] = None,
+    ):
+        self.rule_list = rule_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_list is not None:
+            result['RuleList'] = self.rule_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleList') is not None:
+            self.rule_list = m.get('RuleList')
+        return self
+
+
+class DescribeSQLRateLimitingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeSQLRateLimitingRulesResponseBodyData = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.message = message
+        # nextToken
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeSQLRateLimitingRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSQLRateLimitingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSQLRateLimitingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSQLRateLimitingRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26801,6 +36849,389 @@ class DescribeTasksResponse(TeaModel):
         return self
 
 
+class DescribeUpgradeReportRequest(TeaModel):
+    def __init__(
+        self,
+        creation_category: str = None,
+        dbtype: str = None,
+        dbversion: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        source_dbcluster_id: str = None,
+        status: str = None,
+        task_id: str = None,
+        type: str = None,
+    ):
+        self.creation_category = creation_category
+        self.dbtype = dbtype
+        self.dbversion = dbversion
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.source_dbcluster_id = source_dbcluster_id
+        self.status = status
+        self.task_id = task_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_category is not None:
+            result['CreationCategory'] = self.creation_category
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.source_dbcluster_id is not None:
+            result['SourceDBClusterId'] = self.source_dbcluster_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationCategory') is not None:
+            self.creation_category = m.get('CreationCategory')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SourceDBClusterId') is not None:
+            self.source_dbcluster_id = m.get('SourceDBClusterId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeUpgradeReportResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        ddl: str = None,
+        name: str = None,
+        schema: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.ddl = ddl
+        self.name = name
+        self.schema = schema
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddl is not None:
+            result['DDL'] = self.ddl
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DDL') is not None:
+            self.ddl = m.get('DDL')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeUpgradeReportResponseBodyUpgradeReportList(TeaModel):
+    def __init__(
+        self,
+        check_time: str = None,
+        dst_version: str = None,
+        effective_time: str = None,
+        end_time: str = None,
+        result: str = None,
+        src_ins_name: str = None,
+        src_version: str = None,
+        start_time: str = None,
+        task_id: str = None,
+        upgrade_mode: str = None,
+    ):
+        self.check_time = check_time
+        self.dst_version = dst_version
+        self.effective_time = effective_time
+        self.end_time = end_time
+        self.result = result
+        self.src_ins_name = src_ins_name
+        self.src_version = src_version
+        self.start_time = start_time
+        self.task_id = task_id
+        self.upgrade_mode = upgrade_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_time is not None:
+            result['CheckTime'] = self.check_time
+        if self.dst_version is not None:
+            result['DstVersion'] = self.dst_version
+        if self.effective_time is not None:
+            result['EffectiveTime'] = self.effective_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.src_ins_name is not None:
+            result['SrcInsName'] = self.src_ins_name
+        if self.src_version is not None:
+            result['SrcVersion'] = self.src_version
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.upgrade_mode is not None:
+            result['UpgradeMode'] = self.upgrade_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckTime') is not None:
+            self.check_time = m.get('CheckTime')
+        if m.get('DstVersion') is not None:
+            self.dst_version = m.get('DstVersion')
+        if m.get('EffectiveTime') is not None:
+            self.effective_time = m.get('EffectiveTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('SrcInsName') is not None:
+            self.src_ins_name = m.get('SrcInsName')
+        if m.get('SrcVersion') is not None:
+            self.src_version = m.get('SrcVersion')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UpgradeMode') is not None:
+            self.upgrade_mode = m.get('UpgradeMode')
+        return self
+
+
+class DescribeUpgradeReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        details: str = None,
+        dst_dbtype: str = None,
+        items: List[DescribeUpgradeReportResponseBodyItems] = None,
+        items_size: int = None,
+        request_id: str = None,
+        source_dbcluster_id: str = None,
+        src_dbtype: str = None,
+        src_deleted: str = None,
+        total_size: int = None,
+        type: str = None,
+        upgrade_report_list: List[DescribeUpgradeReportResponseBodyUpgradeReportList] = None,
+    ):
+        self.details = details
+        self.dst_dbtype = dst_dbtype
+        self.items = items
+        self.items_size = items_size
+        # Id of the request
+        self.request_id = request_id
+        self.source_dbcluster_id = source_dbcluster_id
+        self.src_dbtype = src_dbtype
+        self.src_deleted = src_deleted
+        self.total_size = total_size
+        self.type = type
+        self.upgrade_report_list = upgrade_report_list
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+        if self.upgrade_report_list:
+            for k in self.upgrade_report_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.details is not None:
+            result['Details'] = self.details
+        if self.dst_dbtype is not None:
+            result['DstDBType'] = self.dst_dbtype
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.items_size is not None:
+            result['ItemsSize'] = self.items_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source_dbcluster_id is not None:
+            result['SourceDBClusterId'] = self.source_dbcluster_id
+        if self.src_dbtype is not None:
+            result['SrcDBType'] = self.src_dbtype
+        if self.src_deleted is not None:
+            result['SrcDeleted'] = self.src_deleted
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        if self.type is not None:
+            result['Type'] = self.type
+        result['UpgradeReportList'] = []
+        if self.upgrade_report_list is not None:
+            for k in self.upgrade_report_list:
+                result['UpgradeReportList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Details') is not None:
+            self.details = m.get('Details')
+        if m.get('DstDBType') is not None:
+            self.dst_dbtype = m.get('DstDBType')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeUpgradeReportResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('ItemsSize') is not None:
+            self.items_size = m.get('ItemsSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SourceDBClusterId') is not None:
+            self.source_dbcluster_id = m.get('SourceDBClusterId')
+        if m.get('SrcDBType') is not None:
+            self.src_dbtype = m.get('SrcDBType')
+        if m.get('SrcDeleted') is not None:
+            self.src_deleted = m.get('SrcDeleted')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        self.upgrade_report_list = []
+        if m.get('UpgradeReportList') is not None:
+            for k in m.get('UpgradeReportList'):
+                temp_model = DescribeUpgradeReportResponseBodyUpgradeReportList()
+                self.upgrade_report_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeUpgradeReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUpgradeReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUpgradeReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUserEncryptionKeyListRequest(TeaModel):
     def __init__(
         self,
@@ -26950,6 +37381,287 @@ class DescribeUserEncryptionKeyListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUserEncryptionKeyListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVSwitchListRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeVSwitchListResponseBodyVSwitchs(TeaModel):
+    def __init__(
+        self,
+        available_ip_address_count: int = None,
+        cidr_block: str = None,
+        description: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        owner_id: str = None,
+        resource_group_id: str = None,
+        share_type: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+        vpc_id: str = None,
+    ):
+        self.available_ip_address_count = available_ip_address_count
+        self.cidr_block = cidr_block
+        self.description = description
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.share_type = share_type
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_address_count is not None:
+            result['AvailableIpAddressCount'] = self.available_ip_address_count
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpAddressCount') is not None:
+            self.available_ip_address_count = m.get('AvailableIpAddressCount')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeVSwitchListResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        v_switchs: List[DescribeVSwitchListResponseBodyVSwitchs] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.v_switchs = v_switchs
+
+    def validate(self):
+        if self.v_switchs:
+            for k in self.v_switchs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['VSwitchs'] = []
+        if self.v_switchs is not None:
+            for k in self.v_switchs:
+                result['VSwitchs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.v_switchs = []
+        if m.get('VSwitchs') is not None:
+            for k in m.get('VSwitchs'):
+                temp_model = DescribeVSwitchListResponseBodyVSwitchs()
+                self.v_switchs.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVSwitchListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVSwitchListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVSwitchListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27246,6 +37958,662 @@ class DescribeVSwitchesResponse(TeaModel):
         return self
 
 
+class DescribeVpcsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        product: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product = product
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeVpcsResponseBodyVpcsVSwitchs(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeVpcsResponseBodyVpcs(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        bid: str = None,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        region_no: str = None,
+        status: str = None,
+        v_switchs: List[DescribeVpcsResponseBodyVpcsVSwitchs] = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.region_no = region_no
+        self.status = status
+        self.v_switchs = v_switchs
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        if self.v_switchs:
+            for k in self.v_switchs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        result['VSwitchs'] = []
+        if self.v_switchs is not None:
+            for k in self.v_switchs:
+                result['VSwitchs'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.v_switchs = []
+        if m.get('VSwitchs') is not None:
+            for k in m.get('VSwitchs'):
+                temp_model = DescribeVpcsResponseBodyVpcsVSwitchs()
+                self.v_switchs.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class DescribeVpcsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        vpcs: List[DescribeVpcsResponseBodyVpcs] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vpcs = vpcs
+
+    def validate(self):
+        if self.vpcs:
+            for k in self.vpcs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Vpcs'] = []
+        if self.vpcs is not None:
+            for k in self.vpcs:
+                result['Vpcs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.vpcs = []
+        if m.get('Vpcs') is not None:
+            for k in m.get('Vpcs'):
+                temp_model = DescribeVpcsResponseBodyVpcs()
+                self.vpcs.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVpcsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVpcsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVpcsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeZonesRequest(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        extra: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.engine = engine
+        self.extra = extra
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeZonesResponseBodyZones(TeaModel):
+    def __init__(
+        self,
+        mode_code: str = None,
+        priority: str = None,
+        status: str = None,
+        zone_id: str = None,
+    ):
+        self.mode_code = mode_code
+        self.priority = priority
+        self.status = status
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode_code is not None:
+            result['ModeCode'] = self.mode_code
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModeCode') is not None:
+            self.mode_code = m.get('ModeCode')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        zones: List[DescribeZonesResponseBodyZones] = None,
+    ):
+        self.request_id = request_id
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            for k in self.zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Zones'] = []
+        if self.zones is not None:
+            for k in self.zones:
+                result['Zones'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.zones = []
+        if m.get('Zones') is not None:
+            for k in m.get('Zones'):
+                temp_model = DescribeZonesResponseBodyZones()
+                self.zones.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableDBClusterOrcaRequest(TeaModel):
+    def __init__(
+        self,
+        clean_data: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.clean_data = clean_data
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clean_data is not None:
+            result['CleanData'] = self.clean_data
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CleanData') is not None:
+            self.clean_data = m.get('CleanData')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DisableDBClusterOrcaResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableDBClusterOrcaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableDBClusterOrcaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableDBClusterOrcaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableDBClusterServerlessRequest(TeaModel):
     def __init__(
         self,
@@ -27372,6 +38740,133 @@ class DisableDBClusterServerlessResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableDBClusterServerlessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableDBClusterOrcaRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class EnableDBClusterOrcaResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableDBClusterOrcaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableDBClusterOrcaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableDBClusterOrcaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27713,6 +39208,153 @@ class EnableFirewallRulesResponse(TeaModel):
         return self
 
 
+class EnableSQLRateLimitingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        enable: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name_list: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.enable = enable
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_name_list = rule_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name_list is not None:
+            result['RuleNameList'] = self.rule_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleNameList') is not None:
+            self.rule_name_list = m.get('RuleNameList')
+        return self
+
+
+class EnableSQLRateLimitingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EnableSQLRateLimitingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableSQLRateLimitingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableSQLRateLimitingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EvaluateRegionResourceRequest(TeaModel):
     def __init__(
         self,
@@ -27985,6 +39627,107 @@ class EvaluateRegionResourceResponse(TeaModel):
         return self
 
 
+class ExecuteCrossCloudOpenAPIRequest(TeaModel):
+    def __init__(
+        self,
+        proxy_info: str = None,
+    ):
+        self.proxy_info = proxy_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_info is not None:
+            result['ProxyInfo'] = self.proxy_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyInfo') is not None:
+            self.proxy_info = m.get('ProxyInfo')
+        return self
+
+
+class ExecuteCrossCloudOpenAPIResponseBody(TeaModel):
+    def __init__(
+        self,
+        proxy_data: str = None,
+        request_id: str = None,
+    ):
+        self.proxy_data = proxy_data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_data is not None:
+            result['ProxyData'] = self.proxy_data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyData') is not None:
+            self.proxy_data = m.get('ProxyData')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteCrossCloudOpenAPIResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteCrossCloudOpenAPIResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteCrossCloudOpenAPIResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FailoverDBClusterRequest(TeaModel):
     def __init__(
         self,
@@ -28145,6 +39888,180 @@ class FailoverDBClusterResponse(TeaModel):
         return self
 
 
+class GenerateUpgradeReportForSyncCloneRequest(TeaModel):
+    def __init__(
+        self,
+        creation_category: str = None,
+        creation_option: str = None,
+        dbname: str = None,
+        dbtype: str = None,
+        dbversion: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        reserve: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        source_dbcluster_id: str = None,
+    ):
+        self.creation_category = creation_category
+        self.creation_option = creation_option
+        self.dbname = dbname
+        self.dbtype = dbtype
+        self.dbversion = dbversion
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.reserve = reserve
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.source_dbcluster_id = source_dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_category is not None:
+            result['CreationCategory'] = self.creation_category
+        if self.creation_option is not None:
+            result['CreationOption'] = self.creation_option
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.reserve is not None:
+            result['Reserve'] = self.reserve
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.source_dbcluster_id is not None:
+            result['SourceDBClusterId'] = self.source_dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationCategory') is not None:
+            self.creation_category = m.get('CreationCategory')
+        if m.get('CreationOption') is not None:
+            self.creation_option = m.get('CreationOption')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Reserve') is not None:
+            self.reserve = m.get('Reserve')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SourceDBClusterId') is not None:
+            self.source_dbcluster_id = m.get('SourceDBClusterId')
+        return self
+
+
+class GenerateUpgradeReportForSyncCloneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source_dbcluster_id: str = None,
+        task_id: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.source_dbcluster_id = source_dbcluster_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source_dbcluster_id is not None:
+            result['SourceDBClusterId'] = self.source_dbcluster_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SourceDBClusterId') is not None:
+            self.source_dbcluster_id = m.get('SourceDBClusterId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GenerateUpgradeReportForSyncCloneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateUpgradeReportForSyncCloneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateUpgradeReportForSyncCloneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GrantAccountPrivilegeRequest(TeaModel):
     def __init__(
         self,
@@ -28299,6 +40216,281 @@ class GrantAccountPrivilegeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GrantAccountPrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOrdersRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order_status: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_code: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.category = category
+        self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order_status = order_status
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product_code = product_code
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListOrdersResponseBodyOrderList(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        charge_type: str = None,
+        commodity_code: str = None,
+        created_time: str = None,
+        instance_id: str = None,
+        order_id: str = None,
+        order_status: str = None,
+        order_type: str = None,
+        produce_code: str = None,
+        region: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.charge_type = charge_type
+        self.commodity_code = commodity_code
+        self.created_time = created_time
+        self.instance_id = instance_id
+        self.order_id = order_id
+        self.order_status = order_status
+        self.order_type = order_type
+        self.produce_code = produce_code
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.produce_code is not None:
+            result['ProduceCode'] = self.produce_code
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('ProduceCode') is not None:
+            self.produce_code = m.get('ProduceCode')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class ListOrdersResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        order_list: List[ListOrdersResponseBodyOrderList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.order_list = order_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.order_list:
+            for k in self.order_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['OrderList'] = []
+        if self.order_list is not None:
+            for k in self.order_list:
+                result['OrderList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.order_list = []
+        if m.get('OrderList') is not None:
+            for k in m.get('OrderList'):
+                temp_model = ListOrdersResponseBodyOrderList()
+                self.order_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListOrdersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOrdersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOrdersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28611,6 +40803,232 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ListTagResourcesForRegionRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ListTagResourcesForRegionResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesForRegionResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesForRegionResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesForRegionResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesForRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesForRegionResponseBodyTagResources = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesForRegionResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesForRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesForRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesForRegionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ManuallyStartDBClusterRequest(TeaModel):
     def __init__(
         self,
@@ -28739,6 +41157,134 @@ class ManuallyStartDBClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ManuallyStartDBClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAIDBClusterDescriptionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_description: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_description = dbcluster_description
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_description is not None:
+            result['DBClusterDescription'] = self.dbcluster_description
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterDescription') is not None:
+            self.dbcluster_description = m.get('DBClusterDescription')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyAIDBClusterDescriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAIDBClusterDescriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAIDBClusterDescriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAIDBClusterDescriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28883,6 +41429,146 @@ class ModifyAccountDescriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAccountDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAccountLockStateRequest(TeaModel):
+    def __init__(
+        self,
+        account_lock_state: str = None,
+        account_name: str = None,
+        account_password_valid_time: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.account_lock_state = account_lock_state
+        # This parameter is required.
+        self.account_name = account_name
+        self.account_password_valid_time = account_password_valid_time
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_lock_state is not None:
+            result['AccountLockState'] = self.account_lock_state
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.account_password_valid_time is not None:
+            result['AccountPasswordValidTime'] = self.account_password_valid_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountLockState') is not None:
+            self.account_lock_state = m.get('AccountLockState')
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AccountPasswordValidTime') is not None:
+            self.account_password_valid_time = m.get('AccountPasswordValidTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyAccountLockStateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAccountLockStateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAccountLockStateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAccountLockStateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29035,6 +41721,180 @@ class ModifyAccountPasswordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAccountPasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyActiveOperationMaintainConfRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        cycle_time: str = None,
+        cycle_type: str = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: int = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.cycle_time = cycle_time
+        # This parameter is required.
+        self.cycle_type = cycle_type
+        # This parameter is required.
+        self.maintain_end_time = maintain_end_time
+        # This parameter is required.
+        self.maintain_start_time = maintain_start_time
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.cycle_time is not None:
+            result['CycleTime'] = self.cycle_time
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('CycleTime') is not None:
+            self.cycle_time = m.get('CycleTime')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyActiveOperationMaintainConfResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyActiveOperationMaintainConfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyActiveOperationMaintainConfResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyActiveOperationMaintainConfResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30034,6 +42894,226 @@ class ModifyBackupPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyBackupPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCronJobPolicyServerlessRequest(TeaModel):
+    def __init__(
+        self,
+        allow_shut_down: str = None,
+        cron_expression: str = None,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        job_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_ap_ro_num_max: str = None,
+        scale_ap_ro_num_min: str = None,
+        scale_max: str = None,
+        scale_min: str = None,
+        scale_ro_num_max: str = None,
+        scale_ro_num_min: str = None,
+        seconds_until_auto_pause: str = None,
+        serverless_rule_cpu_enlarge_threshold: str = None,
+        serverless_rule_cpu_shrink_threshold: str = None,
+        serverless_rule_mode: str = None,
+        start_time: str = None,
+    ):
+        self.allow_shut_down = allow_shut_down
+        # This parameter is required.
+        self.cron_expression = cron_expression
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.job_id = job_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_ap_ro_num_max = scale_ap_ro_num_max
+        self.scale_ap_ro_num_min = scale_ap_ro_num_min
+        self.scale_max = scale_max
+        self.scale_min = scale_min
+        self.scale_ro_num_max = scale_ro_num_max
+        self.scale_ro_num_min = scale_ro_num_min
+        self.seconds_until_auto_pause = seconds_until_auto_pause
+        self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        self.serverless_rule_mode = serverless_rule_mode
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_shut_down is not None:
+            result['AllowShutDown'] = self.allow_shut_down
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_ap_ro_num_max is not None:
+            result['ScaleApRoNumMax'] = self.scale_ap_ro_num_max
+        if self.scale_ap_ro_num_min is not None:
+            result['ScaleApRoNumMin'] = self.scale_ap_ro_num_min
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
+        if self.scale_ro_num_max is not None:
+            result['ScaleRoNumMax'] = self.scale_ro_num_max
+        if self.scale_ro_num_min is not None:
+            result['ScaleRoNumMin'] = self.scale_ro_num_min
+        if self.seconds_until_auto_pause is not None:
+            result['SecondsUntilAutoPause'] = self.seconds_until_auto_pause
+        if self.serverless_rule_cpu_enlarge_threshold is not None:
+            result['ServerlessRuleCpuEnlargeThreshold'] = self.serverless_rule_cpu_enlarge_threshold
+        if self.serverless_rule_cpu_shrink_threshold is not None:
+            result['ServerlessRuleCpuShrinkThreshold'] = self.serverless_rule_cpu_shrink_threshold
+        if self.serverless_rule_mode is not None:
+            result['ServerlessRuleMode'] = self.serverless_rule_mode
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowShutDown') is not None:
+            self.allow_shut_down = m.get('AllowShutDown')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleApRoNumMax') is not None:
+            self.scale_ap_ro_num_max = m.get('ScaleApRoNumMax')
+        if m.get('ScaleApRoNumMin') is not None:
+            self.scale_ap_ro_num_min = m.get('ScaleApRoNumMin')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
+        if m.get('ScaleRoNumMax') is not None:
+            self.scale_ro_num_max = m.get('ScaleRoNumMax')
+        if m.get('ScaleRoNumMin') is not None:
+            self.scale_ro_num_min = m.get('ScaleRoNumMin')
+        if m.get('SecondsUntilAutoPause') is not None:
+            self.seconds_until_auto_pause = m.get('SecondsUntilAutoPause')
+        if m.get('ServerlessRuleCpuEnlargeThreshold') is not None:
+            self.serverless_rule_cpu_enlarge_threshold = m.get('ServerlessRuleCpuEnlargeThreshold')
+        if m.get('ServerlessRuleCpuShrinkThreshold') is not None:
+            self.serverless_rule_cpu_shrink_threshold = m.get('ServerlessRuleCpuShrinkThreshold')
+        if m.get('ServerlessRuleMode') is not None:
+            self.serverless_rule_mode = m.get('ServerlessRuleMode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ModifyCronJobPolicyServerlessResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCronJobPolicyServerlessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCronJobPolicyServerlessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCronJobPolicyServerlessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31814,6 +44894,146 @@ class ModifyDBClusterMigrationResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterMigrationEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        migration_config: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.migration_config = migration_config
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.migration_config is not None:
+            result['MigrationConfig'] = self.migration_config
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('MigrationConfig') is not None:
+            self.migration_config = m.get('MigrationConfig')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBClusterMigrationEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ModifyDBClusterMigrationEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterMigrationEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterMigrationEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBClusterMonitorRequest(TeaModel):
     def __init__(
         self,
@@ -33412,6 +46632,146 @@ class ModifyDBClusterTDEResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterVpcRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        existed_endpoint_switch_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.existed_endpoint_switch_type = existed_endpoint_switch_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.vpcid = vpcid
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.existed_endpoint_switch_type is not None:
+            result['ExistedEndpointSwitchType'] = self.existed_endpoint_switch_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExistedEndpointSwitchType') is not None:
+            self.existed_endpoint_switch_type = m.get('ExistedEndpointSwitchType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class ModifyDBClusterVpcResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterVpcResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterVpcResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBDescriptionRequest(TeaModel):
     def __init__(
         self,
@@ -33960,6 +47320,153 @@ class ModifyDBNodeClassResponse(TeaModel):
         return self
 
 
+class ModifyDBNodeConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        config_value: str = None,
+        dbcluster_id: str = None,
+        dbnode_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.config_name = config_name
+        # This parameter is required.
+        self.config_value = config_value
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbnode_id = dbnode_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ModifyDBNodeConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBNodeConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBNodeConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBNodeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBNodeDescriptionRequest(TeaModel):
     def __init__(
         self,
@@ -34252,6 +47759,142 @@ class ModifyDBNodeHotReplicaModeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBNodeHotReplicaModeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBNodeSccModeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbnode_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scc_mode: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbnode_id = dbnode_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # SCC
+        # 
+        # This parameter is required.
+        self.scc_mode = scc_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scc_mode is not None:
+            result['SccMode'] = self.scc_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SccMode') is not None:
+            self.scc_mode = m.get('SccMode')
+        return self
+
+
+class ModifyDBNodeSccModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBNodeSccModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBNodeSccModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBNodeSccModeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -34668,6 +48311,449 @@ class ModifyDBNodesParametersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBNodesParametersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyEncryptionDBRolePrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        role_privilege_config: str = None,
+        role_privilege_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.role_privilege_config = role_privilege_config
+        self.role_privilege_name = role_privilege_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.role_privilege_config is not None:
+            result['RolePrivilegeConfig'] = self.role_privilege_config
+        if self.role_privilege_name is not None:
+            result['RolePrivilegeName'] = self.role_privilege_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RolePrivilegeConfig') is not None:
+            self.role_privilege_config = m.get('RolePrivilegeConfig')
+        if m.get('RolePrivilegeName') is not None:
+            self.role_privilege_name = m.get('RolePrivilegeName')
+        return self
+
+
+class ModifyEncryptionDBRolePrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyEncryptionDBRolePrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyEncryptionDBRolePrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyEncryptionDBRolePrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyEncryptionDBSecretRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        encryption_dbstatus: str = None,
+        encryption_key: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        role_arn: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.encryption_dbstatus = encryption_dbstatus
+        self.encryption_key = encryption_key
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.role_arn = role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.encryption_dbstatus is not None:
+            result['EncryptionDBStatus'] = self.encryption_dbstatus
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EncryptionDBStatus') is not None:
+            self.encryption_dbstatus = m.get('EncryptionDBStatus')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        return self
+
+
+class ModifyEncryptionDBSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyEncryptionDBSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyEncryptionDBSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyEncryptionDBSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyFirewallRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_config = rule_config
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class ModifyFirewallRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyFirewallRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFirewallRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFirewallRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36054,6 +50140,408 @@ class ModifyPendingMaintenanceActionResponse(TeaModel):
         return self
 
 
+class ModifyResourcePackageRequest(TeaModel):
+    def __init__(
+        self,
+        auto_quota: bool = None,
+        resource_package_id: str = None,
+    ):
+        self.auto_quota = auto_quota
+        # This parameter is required.
+        self.resource_package_id = resource_package_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_quota is not None:
+            result['AutoQuota'] = self.auto_quota
+        if self.resource_package_id is not None:
+            result['ResourcePackageId'] = self.resource_package_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoQuota') is not None:
+            self.auto_quota = m.get('AutoQuota')
+        if m.get('ResourcePackageId') is not None:
+            self.resource_package_id = m.get('ResourcePackageId')
+        return self
+
+
+class ModifyResourcePackageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyResourcePackageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyResourcePackageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyResourcePackageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifySQLRateLimitingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_config = rule_config
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class ModifySQLRateLimitingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifySQLRateLimitingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySQLRateLimitingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySQLRateLimitingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyScheduleTaskRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        planned_end_time: str = None,
+        planned_start_time: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.planned_end_time = planned_end_time
+        # This parameter is required.
+        self.planned_start_time = planned_start_time
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.planned_end_time is not None:
+            result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_start_time is not None:
+            result['PlannedStartTime'] = self.planned_start_time
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlannedEndTime') is not None:
+            self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedStartTime') is not None:
+            self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ModifyScheduleTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyScheduleTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyScheduleTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyScheduleTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OpenAITaskRequest(TeaModel):
     def __init__(
         self,
@@ -36752,6 +51240,140 @@ class ResetAccountResponse(TeaModel):
         return self
 
 
+class ResetAccountPasswordRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        account_password: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.account_name = account_name
+        # This parameter is required.
+        self.account_password = account_password
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.account_password is not None:
+            result['AccountPassword'] = self.account_password
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AccountPassword') is not None:
+            self.account_password = m.get('AccountPassword')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ResetAccountPasswordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResetAccountPasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetAccountPasswordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetAccountPasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResetGlobalDatabaseNetworkRequest(TeaModel):
     def __init__(
         self,
@@ -37048,8 +51670,12 @@ class RestartDBNodeRequest(TeaModel):
     def __init__(
         self,
         dbnode_id: str = None,
+        from_time_service: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        planned_end_time: str = None,
+        planned_start_time: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -37059,8 +51685,12 @@ class RestartDBNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
+        self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.planned_end_time = planned_end_time
+        self.planned_start_time = planned_start_time
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -37075,10 +51705,18 @@ class RestartDBNodeRequest(TeaModel):
         result = dict()
         if self.dbnode_id is not None:
             result['DBNodeId'] = self.dbnode_id
+        if self.from_time_service is not None:
+            result['FromTimeService'] = self.from_time_service
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.planned_end_time is not None:
+            result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_start_time is not None:
+            result['PlannedStartTime'] = self.planned_start_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -37089,10 +51727,18 @@ class RestartDBNodeRequest(TeaModel):
         m = m or dict()
         if m.get('DBNodeId') is not None:
             self.dbnode_id = m.get('DBNodeId')
+        if m.get('FromTimeService') is not None:
+            self.from_time_service = m.get('FromTimeService')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PlannedEndTime') is not None:
+            self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedStartTime') is not None:
+            self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -38445,6 +53091,171 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateExtensionsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        dbnames: str = None,
+        extensions: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        version: str = None,
+        vpc_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbnames = dbnames
+        # This parameter is required.
+        self.extensions = extensions
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.version = version
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnames is not None:
+            result['DBNames'] = self.dbnames
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNames') is not None:
+            self.dbnames = m.get('DBNames')
+        if m.get('Extensions') is not None:
+            self.extensions = m.get('Extensions')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class UpdateExtensionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateExtensionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateExtensionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateExtensionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

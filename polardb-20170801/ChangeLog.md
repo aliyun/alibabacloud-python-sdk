@@ -1,3 +1,80 @@
+2025-09-24 Version: 5.11.0
+- Support API AbortDBClusterMigration.
+- Support API AddEncryptionDBRolePrivilege.
+- Support API AddFirewallRules.
+- Support API AddSQLRateLimitingRules.
+- Support API CancelCronJobPolicyServerless.
+- Support API CheckConnectionString.
+- Support API ContinueDBClusterMigration.
+- Support API CreateCronJobPolicyServerless.
+- Support API CreateExtensions.
+- Support API CreateNetworkChannel.
+- Support API DeleteEncryptionDBRolePrivilege.
+- Support API DeleteExtensions.
+- Support API DeleteFirewallRules.
+- Support API DeleteNetworkChannel.
+- Support API DeleteSQLRateLimitingRules.
+- Support API DescribeAIDBClusterAttribute.
+- Support API DescribeAIDBClusters.
+- Support API DescribeActiveOperationMaintainConf.
+- Support API DescribeAvailableCrossRegions.
+- Support API DescribeColdStorageInstance.
+- Support API DescribeCronJobPolicyServerless.
+- Support API DescribeCrossCloudLevels.
+- Support API DescribeCrossCloudRegion.
+- Support API DescribeCrossCloudRegionMappingToAliyun.
+- Support API DescribeDBClusterEncryptionKey.
+- Support API DescribeDBClusterNetInfo.
+- Support API DescribeDBClusterProxy.
+- Support API DescribeDBInstancePerformance.
+- Support API DescribeDBLogFiles.
+- Support API DescribeDBMiniEngineVersions.
+- Support API DescribeEncryptionDBRolePrivilege.
+- Support API DescribeEncryptionDBSecret.
+- Support API DescribeExtensions.
+- Support API DescribeFirewallRules.
+- Support API DescribeHistoryTasksStat.
+- Support API DescribeLocalAvailableRecoveryTime.
+- Support API DescribeModifyParameterLog.
+- Support API DescribeNetworkChannel.
+- Support API DescribeRdsVSwitchs.
+- Support API DescribeRdsVpcs.
+- Support API DescribeResourcePackages.
+- Support API DescribeSQLRateLimitingRules.
+- Support API DescribeUpgradeReport.
+- Support API DescribeVSwitchList.
+- Support API DescribeVpcs.
+- Support API DescribeZones.
+- Support API DisableDBClusterOrca.
+- Support API EnableDBClusterOrca.
+- Support API EnableSQLRateLimitingRules.
+- Support API ExecuteCrossCloudOpenAPI.
+- Support API GenerateUpgradeReportForSyncClone.
+- Support API ListOrders.
+- Support API ListTagResourcesForRegion.
+- Support API ModifyAIDBClusterDescription.
+- Support API ModifyAccountLockState.
+- Support API ModifyActiveOperationMaintainConf.
+- Support API ModifyCronJobPolicyServerless.
+- Support API ModifyDBClusterMigrationEndpoint.
+- Support API ModifyDBClusterVpc.
+- Support API ModifyDBNodeConfig.
+- Support API ModifyDBNodeSccMode.
+- Support API ModifyEncryptionDBRolePrivilege.
+- Support API ModifyEncryptionDBSecret.
+- Support API ModifyFirewallRules.
+- Support API ModifyResourcePackage.
+- Support API ModifySQLRateLimitingRules.
+- Support API ModifyScheduleTask.
+- Support API ResetAccountPassword.
+- Support API UpdateExtensions.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.DBNodeCXLRemoteMemory.
+- Update API RestartDBNode: add request parameters FromTimeService.
+- Update API RestartDBNode: add request parameters PlannedEndTime.
+- Update API RestartDBNode: add request parameters PlannedStartTime.
+- Update API RestartDBNode: add request parameters RegionId.
+
+
 2025-09-09 Version: 5.10.0
 - Support API ModifyDBNodeDescription.
 - Update API DescribeDBClusterPerformance: add request parameters SubGroupName.
