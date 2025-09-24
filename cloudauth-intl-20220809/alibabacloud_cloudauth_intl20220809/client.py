@@ -1536,6 +1536,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.deepfake_detect_intl_with_options_async(request, runtime)
 
+    def delete_face_group_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceGroupResponse:
+        """
+        @summary Delete Face Group
+        
+        @param request: DeleteFaceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFaceGroup',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeleteFaceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_face_group_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceGroupResponse:
+        """
+        @summary Delete Face Group
+        
+        @param request: DeleteFaceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFaceGroup',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeleteFaceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_face_group(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceGroupRequest,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceGroupResponse:
+        """
+        @summary Delete Face Group
+        
+        @param request: DeleteFaceGroupRequest
+        @return: DeleteFaceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_face_group_with_options(request, runtime)
+
+    async def delete_face_group_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceGroupRequest,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceGroupResponse:
+        """
+        @summary Delete Face Group
+        
+        @param request: DeleteFaceGroupRequest
+        @return: DeleteFaceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_face_group_with_options_async(request, runtime)
+
+    def delete_face_record_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceRecordResponse:
+        """
+        @summary Delete Face
+        
+        @param request: DeleteFaceRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFaceRecord',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeleteFaceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_face_record_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceRecordResponse:
+        """
+        @summary Delete Face
+        
+        @param request: DeleteFaceRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFaceRecord',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeleteFaceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_face_record(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceRecordRequest,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceRecordResponse:
+        """
+        @summary Delete Face
+        
+        @param request: DeleteFaceRecordRequest
+        @return: DeleteFaceRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_face_record_with_options(request, runtime)
+
+    async def delete_face_record_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteFaceRecordRequest,
+    ) -> cloudauth_intl_20220809_models.DeleteFaceRecordResponse:
+        """
+        @summary Delete Face
+        
+        @param request: DeleteFaceRecordRequest
+        @return: DeleteFaceRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_face_record_with_options_async(request, runtime)
+
     def delete_verify_result_with_options(
         self,
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
@@ -2192,6 +2384,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.face_compare_with_options_async(request, runtime)
 
+    def face_duplication_check_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.FaceDuplicationCheckIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceDuplicationCheckIntlResponse:
+        """
+        @summary Face Duplication Detection API
+        
+        @param request: FaceDuplicationCheckIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceDuplicationCheckIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.auto_registration):
+            body['AutoRegistration'] = request.auto_registration
+        if not UtilClient.is_unset(request.face_group_codes):
+            body['FaceGroupCodes'] = request.face_group_codes
+        if not UtilClient.is_unset(request.face_register_group_code):
+            body['FaceRegisterGroupCode'] = request.face_register_group_code
+        if not UtilClient.is_unset(request.face_verify_threshold):
+            body['FaceVerifyThreshold'] = request.face_verify_threshold
+        if not UtilClient.is_unset(request.liveness):
+            body['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            body['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.return_faces):
+            body['ReturnFaces'] = request.return_faces
+        if not UtilClient.is_unset(request.save_face_picture):
+            body['SaveFacePicture'] = request.save_face_picture
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        if not UtilClient.is_unset(request.source_face_picture_url):
+            body['SourceFacePictureUrl'] = request.source_face_picture_url
+        if not UtilClient.is_unset(request.target_face_picture):
+            body['TargetFacePicture'] = request.target_face_picture
+        if not UtilClient.is_unset(request.target_face_picture_url):
+            body['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not UtilClient.is_unset(request.verify_model):
+            body['VerifyModel'] = request.verify_model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FaceDuplicationCheckIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceDuplicationCheckIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def face_duplication_check_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceDuplicationCheckIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceDuplicationCheckIntlResponse:
+        """
+        @summary Face Duplication Detection API
+        
+        @param request: FaceDuplicationCheckIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceDuplicationCheckIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.auto_registration):
+            body['AutoRegistration'] = request.auto_registration
+        if not UtilClient.is_unset(request.face_group_codes):
+            body['FaceGroupCodes'] = request.face_group_codes
+        if not UtilClient.is_unset(request.face_register_group_code):
+            body['FaceRegisterGroupCode'] = request.face_register_group_code
+        if not UtilClient.is_unset(request.face_verify_threshold):
+            body['FaceVerifyThreshold'] = request.face_verify_threshold
+        if not UtilClient.is_unset(request.liveness):
+            body['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            body['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.return_faces):
+            body['ReturnFaces'] = request.return_faces
+        if not UtilClient.is_unset(request.save_face_picture):
+            body['SaveFacePicture'] = request.save_face_picture
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        if not UtilClient.is_unset(request.source_face_picture_url):
+            body['SourceFacePictureUrl'] = request.source_face_picture_url
+        if not UtilClient.is_unset(request.target_face_picture):
+            body['TargetFacePicture'] = request.target_face_picture
+        if not UtilClient.is_unset(request.target_face_picture_url):
+            body['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not UtilClient.is_unset(request.verify_model):
+            body['VerifyModel'] = request.verify_model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FaceDuplicationCheckIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceDuplicationCheckIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def face_duplication_check_intl(
+        self,
+        request: cloudauth_intl_20220809_models.FaceDuplicationCheckIntlRequest,
+    ) -> cloudauth_intl_20220809_models.FaceDuplicationCheckIntlResponse:
+        """
+        @summary Face Duplication Detection API
+        
+        @param request: FaceDuplicationCheckIntlRequest
+        @return: FaceDuplicationCheckIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.face_duplication_check_intl_with_options(request, runtime)
+
+    async def face_duplication_check_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceDuplicationCheckIntlRequest,
+    ) -> cloudauth_intl_20220809_models.FaceDuplicationCheckIntlResponse:
+        """
+        @summary Face Duplication Detection API
+        
+        @param request: FaceDuplicationCheckIntlRequest
+        @return: FaceDuplicationCheckIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.face_duplication_check_intl_with_options_async(request, runtime)
+
     def face_guard_risk_with_options(
         self,
         request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
@@ -2778,7 +3130,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         """
-        @summary 认证初始化
+        @summary Authentication Initialization
         
         @param tmp_req: InitializeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2917,7 +3269,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         """
-        @summary 认证初始化
+        @summary Authentication Initialization
         
         @param tmp_req: InitializeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3055,7 +3407,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.InitializeRequest,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         """
-        @summary 认证初始化
+        @summary Authentication Initialization
         
         @param request: InitializeRequest
         @return: InitializeResponse
@@ -3068,7 +3420,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.InitializeRequest,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         """
-        @summary 认证初始化
+        @summary Authentication Initialization
         
         @param request: InitializeRequest
         @return: InitializeResponse
@@ -3369,3 +3721,543 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.mobile_3meta_verify_intl_with_options_async(request, runtime)
+
+    def modify_face_group_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceGroupResponse:
+        """
+        @summary 修改人脸库
+        
+        @param request: ModifyFaceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFaceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFaceGroup',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.ModifyFaceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_face_group_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceGroupResponse:
+        """
+        @summary 修改人脸库
+        
+        @param request: ModifyFaceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFaceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFaceGroup',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.ModifyFaceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_face_group(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceGroupRequest,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceGroupResponse:
+        """
+        @summary 修改人脸库
+        
+        @param request: ModifyFaceGroupRequest
+        @return: ModifyFaceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_face_group_with_options(request, runtime)
+
+    async def modify_face_group_async(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceGroupRequest,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceGroupResponse:
+        """
+        @summary 修改人脸库
+        
+        @param request: ModifyFaceGroupRequest
+        @return: ModifyFaceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_face_group_with_options_async(request, runtime)
+
+    def modify_face_record_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceRecordResponse:
+        """
+        @summary 新增人脸
+        
+        @param request: ModifyFaceRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFaceRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.face_group_code):
+            body['FaceGroupCode'] = request.face_group_code
+        if not UtilClient.is_unset(request.img_oss_infos):
+            body['ImgOssInfos'] = request.img_oss_infos
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFaceRecord',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.ModifyFaceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_face_record_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceRecordResponse:
+        """
+        @summary 新增人脸
+        
+        @param request: ModifyFaceRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFaceRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.face_group_code):
+            body['FaceGroupCode'] = request.face_group_code
+        if not UtilClient.is_unset(request.img_oss_infos):
+            body['ImgOssInfos'] = request.img_oss_infos
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFaceRecord',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.ModifyFaceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_face_record(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceRecordRequest,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceRecordResponse:
+        """
+        @summary 新增人脸
+        
+        @param request: ModifyFaceRecordRequest
+        @return: ModifyFaceRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_face_record_with_options(request, runtime)
+
+    async def modify_face_record_async(
+        self,
+        request: cloudauth_intl_20220809_models.ModifyFaceRecordRequest,
+    ) -> cloudauth_intl_20220809_models.ModifyFaceRecordResponse:
+        """
+        @summary 新增人脸
+        
+        @param request: ModifyFaceRecordRequest
+        @return: ModifyFaceRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_face_record_with_options_async(request, runtime)
+
+    def query_face_group_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.QueryFaceGroupResponse:
+        """
+        @summary 查询人脸库
+        
+        @param request: QueryFaceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFaceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_code):
+            query['GroupCode'] = request.group_code
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryFaceGroup',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.QueryFaceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_face_group_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.QueryFaceGroupResponse:
+        """
+        @summary 查询人脸库
+        
+        @param request: QueryFaceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFaceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_code):
+            query['GroupCode'] = request.group_code
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryFaceGroup',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.QueryFaceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_face_group(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceGroupRequest,
+    ) -> cloudauth_intl_20220809_models.QueryFaceGroupResponse:
+        """
+        @summary 查询人脸库
+        
+        @param request: QueryFaceGroupRequest
+        @return: QueryFaceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_face_group_with_options(request, runtime)
+
+    async def query_face_group_async(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceGroupRequest,
+    ) -> cloudauth_intl_20220809_models.QueryFaceGroupResponse:
+        """
+        @summary 查询人脸库
+        
+        @param request: QueryFaceGroupRequest
+        @return: QueryFaceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_face_group_with_options_async(request, runtime)
+
+    def query_face_record_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
+        """
+        @summary 查询人脸记录
+        
+        @param request: QueryFaceRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFaceRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.face_group_code):
+            query['FaceGroupCode'] = request.face_group_code
+        if not UtilClient.is_unset(request.face_id):
+            query['FaceId'] = request.face_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.registration_type):
+            query['RegistrationType'] = request.registration_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryFaceRecord',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.QueryFaceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_face_record_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
+        """
+        @summary 查询人脸记录
+        
+        @param request: QueryFaceRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFaceRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.face_group_code):
+            query['FaceGroupCode'] = request.face_group_code
+        if not UtilClient.is_unset(request.face_id):
+            query['FaceId'] = request.face_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.registration_type):
+            query['RegistrationType'] = request.registration_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryFaceRecord',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.QueryFaceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_face_record(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceRecordRequest,
+    ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
+        """
+        @summary 查询人脸记录
+        
+        @param request: QueryFaceRecordRequest
+        @return: QueryFaceRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_face_record_with_options(request, runtime)
+
+    async def query_face_record_async(
+        self,
+        request: cloudauth_intl_20220809_models.QueryFaceRecordRequest,
+    ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
+        """
+        @summary 查询人脸记录
+        
+        @param request: QueryFaceRecordRequest
+        @return: QueryFaceRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_face_record_with_options_async(request, runtime)
+
+    def temp_access_token_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.TempAccessTokenIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
+        """
+        @summary 获取临时token
+        
+        @param request: TempAccessTokenIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TempAccessTokenIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TempAccessTokenIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.TempAccessTokenIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def temp_access_token_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.TempAccessTokenIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
+        """
+        @summary 获取临时token
+        
+        @param request: TempAccessTokenIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TempAccessTokenIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TempAccessTokenIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.TempAccessTokenIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def temp_access_token_intl(
+        self,
+        request: cloudauth_intl_20220809_models.TempAccessTokenIntlRequest,
+    ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
+        """
+        @summary 获取临时token
+        
+        @param request: TempAccessTokenIntlRequest
+        @return: TempAccessTokenIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.temp_access_token_intl_with_options(request, runtime)
+
+    async def temp_access_token_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.TempAccessTokenIntlRequest,
+    ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
+        """
+        @summary 获取临时token
+        
+        @param request: TempAccessTokenIntlRequest
+        @return: TempAccessTokenIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.temp_access_token_intl_with_options_async(request, runtime)

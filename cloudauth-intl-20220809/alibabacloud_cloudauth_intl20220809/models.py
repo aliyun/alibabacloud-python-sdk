@@ -2436,6 +2436,244 @@ class DeepfakeDetectIntlResponse(TeaModel):
         return self
 
 
+class DeleteFaceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # Primary key ID
+        # 
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteFaceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Return code
+        self.code = code
+        # Return result.
+        self.data = data
+        # Return message
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFaceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFaceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFaceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFaceRecordRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # Primary Key ID
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteFaceRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Return code.
+        self.code = code
+        # Return result.
+        self.data = data
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFaceRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFaceRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFaceRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteVerifyResultRequest(TeaModel):
     def __init__(
         self,
@@ -3627,6 +3865,357 @@ class FaceCompareResponse(TeaModel):
         return self
 
 
+class FaceDuplicationCheckIntlRequest(TeaModel):
+    def __init__(
+        self,
+        auto_registration: str = None,
+        face_group_codes: str = None,
+        face_register_group_code: str = None,
+        face_verify_threshold: str = None,
+        liveness: str = None,
+        merchant_biz_id: str = None,
+        merchant_user_id: str = None,
+        product_code: str = None,
+        return_faces: str = None,
+        save_face_picture: str = None,
+        scene_code: str = None,
+        source_face_picture: str = None,
+        source_face_picture_url: str = None,
+        target_face_picture: str = None,
+        target_face_picture_url: str = None,
+        verify_model: str = None,
+    ):
+        # Indicates whether to automatically register the face to the specified face library if no duplicate face is found.
+        # - 0- Auto-register (default)
+        # - 1- Do not register
+        self.auto_registration = auto_registration
+        # The face library code created through the console, supporting up to 10 face libraries simultaneously. When multiple face library codes are passed, they should be separated by commas.
+        self.face_group_codes = face_group_codes
+        # Face registration library.
+        self.face_register_group_code = face_register_group_code
+        # Face matching threshold.
+        self.face_verify_threshold = face_verify_threshold
+        # Whether to enable silent liveness detection
+        # - 0- Disabled
+        # - 1- Enabled
+        self.liveness = liveness
+        # A unique business identifier for troubleshooting purposes. It supports a combination of 32 alphanumeric characters, please ensure its uniqueness.
+        # 
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
+        # Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
+        # 
+        # This parameter is required.
+        self.merchant_user_id = merchant_user_id
+        # Product code
+        # 
+        # This parameter is required.
+        self.product_code = product_code
+        # When there are multiple faces above the matching threshold, you can use this parameter to customize the number of returned faces
+        # - Default returns 1
+        # - Maximum support 5
+        self.return_faces = return_faces
+        # Distinguishes between saving the face image and features
+        # - 0- Face (default)
+        # - 1- Features
+        self.save_face_picture = save_face_picture
+        # Your custom authentication scenario ID.
+        self.scene_code = scene_code
+        # Base64 encoded portrait photo.
+        self.source_face_picture = source_face_picture
+        # Portrait image URL, accessible via public HTTP or HTTPS link.
+        self.source_face_picture_url = source_face_picture_url
+        # Base64 encoded portrait photo.
+        self.target_face_picture = target_face_picture
+        # Portrait image URL, accessible via public HTTP or HTTPS link.
+        self.target_face_picture_url = target_face_picture_url
+        # Verification type
+        # - 0- 1:N (default)
+        # - 1- 1:1
+        # - 2- 1:N + 1:1
+        # 
+        # This parameter is required.
+        self.verify_model = verify_model
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_registration is not None:
+            result['AutoRegistration'] = self.auto_registration
+        if self.face_group_codes is not None:
+            result['FaceGroupCodes'] = self.face_group_codes
+        if self.face_register_group_code is not None:
+            result['FaceRegisterGroupCode'] = self.face_register_group_code
+        if self.face_verify_threshold is not None:
+            result['FaceVerifyThreshold'] = self.face_verify_threshold
+        if self.liveness is not None:
+            result['Liveness'] = self.liveness
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.return_faces is not None:
+            result['ReturnFaces'] = self.return_faces
+        if self.save_face_picture is not None:
+            result['SaveFacePicture'] = self.save_face_picture
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.source_face_picture is not None:
+            result['SourceFacePicture'] = self.source_face_picture
+        if self.source_face_picture_url is not None:
+            result['SourceFacePictureUrl'] = self.source_face_picture_url
+        if self.target_face_picture is not None:
+            result['TargetFacePicture'] = self.target_face_picture
+        if self.target_face_picture_url is not None:
+            result['TargetFacePictureUrl'] = self.target_face_picture_url
+        if self.verify_model is not None:
+            result['VerifyModel'] = self.verify_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRegistration') is not None:
+            self.auto_registration = m.get('AutoRegistration')
+        if m.get('FaceGroupCodes') is not None:
+            self.face_group_codes = m.get('FaceGroupCodes')
+        if m.get('FaceRegisterGroupCode') is not None:
+            self.face_register_group_code = m.get('FaceRegisterGroupCode')
+        if m.get('FaceVerifyThreshold') is not None:
+            self.face_verify_threshold = m.get('FaceVerifyThreshold')
+        if m.get('Liveness') is not None:
+            self.liveness = m.get('Liveness')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ReturnFaces') is not None:
+            self.return_faces = m.get('ReturnFaces')
+        if m.get('SaveFacePicture') is not None:
+            self.save_face_picture = m.get('SaveFacePicture')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('SourceFacePicture') is not None:
+            self.source_face_picture = m.get('SourceFacePicture')
+        if m.get('SourceFacePictureUrl') is not None:
+            self.source_face_picture_url = m.get('SourceFacePictureUrl')
+        if m.get('TargetFacePicture') is not None:
+            self.target_face_picture = m.get('TargetFacePicture')
+        if m.get('TargetFacePictureUrl') is not None:
+            self.target_face_picture_url = m.get('TargetFacePictureUrl')
+        if m.get('VerifyModel') is not None:
+            self.verify_model = m.get('VerifyModel')
+        return self
+
+
+class FaceDuplicationCheckIntlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        duplicate_face: str = None,
+        face_age: str = None,
+        face_attack: str = None,
+        face_attack_score: str = None,
+        face_comparison_score: str = None,
+        face_gender: str = None,
+        face_passed: str = None,
+        face_registration_id: str = None,
+        face_registration_result: int = None,
+        sub_code: str = None,
+        transaction_id: str = None,
+    ):
+        # Returns the face library face ID and UserID when a duplicate face is detected.
+        self.duplicate_face = duplicate_face
+        # The estimated age of the face, which may not be returned if the prediction fails.
+        self.face_age = face_age
+        # Indicates whether the captured face involves a liveness attack, Y for an attack, N for no attack.
+        # Returned when silent liveness detection is enabled.
+        self.face_attack = face_attack
+        # The probability of a liveness attack detected by silent liveness detection. The value range is 0 to 100.
+        # Returned when silent liveness detection is enabled.
+        self.face_attack_score = face_attack_score
+        # When the verification mode is 1 or 2, returns the 1:1 verification comparison score
+        # Comparison score range 0～100.
+        self.face_comparison_score = face_comparison_score
+        # The predicted gender of the face in the image, which may not be returned if the prediction fails.
+        # - M: Male
+        # - F: Female
+        self.face_gender = face_gender
+        # Final authentication result, values:
+        # - Y: Passed
+        # - N: Not passed
+        self.face_passed = face_passed
+        # Returns the corresponding FACEID only when the customer sets auto-registration and the face registration is successful.
+        self.face_registration_id = face_registration_id
+        # Face registration result 
+        # - 0- Failed 
+        # - 1- Succeeded
+        self.face_registration_result = face_registration_result
+        # Description of the authentication result. For more information, see ResultObject.SubCode error code description.
+        self.sub_code = sub_code
+        # Unique identifier of the authentication request.
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duplicate_face is not None:
+            result['DuplicateFace'] = self.duplicate_face
+        if self.face_age is not None:
+            result['FaceAge'] = self.face_age
+        if self.face_attack is not None:
+            result['FaceAttack'] = self.face_attack
+        if self.face_attack_score is not None:
+            result['FaceAttackScore'] = self.face_attack_score
+        if self.face_comparison_score is not None:
+            result['FaceComparisonScore'] = self.face_comparison_score
+        if self.face_gender is not None:
+            result['FaceGender'] = self.face_gender
+        if self.face_passed is not None:
+            result['FacePassed'] = self.face_passed
+        if self.face_registration_id is not None:
+            result['FaceRegistrationId'] = self.face_registration_id
+        if self.face_registration_result is not None:
+            result['FaceRegistrationResult'] = self.face_registration_result
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DuplicateFace') is not None:
+            self.duplicate_face = m.get('DuplicateFace')
+        if m.get('FaceAge') is not None:
+            self.face_age = m.get('FaceAge')
+        if m.get('FaceAttack') is not None:
+            self.face_attack = m.get('FaceAttack')
+        if m.get('FaceAttackScore') is not None:
+            self.face_attack_score = m.get('FaceAttackScore')
+        if m.get('FaceComparisonScore') is not None:
+            self.face_comparison_score = m.get('FaceComparisonScore')
+        if m.get('FaceGender') is not None:
+            self.face_gender = m.get('FaceGender')
+        if m.get('FacePassed') is not None:
+            self.face_passed = m.get('FacePassed')
+        if m.get('FaceRegistrationId') is not None:
+            self.face_registration_id = m.get('FaceRegistrationId')
+        if m.get('FaceRegistrationResult') is not None:
+            self.face_registration_result = m.get('FaceRegistrationResult')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class FaceDuplicationCheckIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: FaceDuplicationCheckIntlResponseBodyResult = None,
+    ):
+        # Return code.
+        self.code = code
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Return result.
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = FaceDuplicationCheckIntlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class FaceDuplicationCheckIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FaceDuplicationCheckIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FaceDuplicationCheckIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FaceGuardRiskRequest(TeaModel):
     def __init__(
         self,
@@ -4731,56 +5320,196 @@ class InitializeRequest(TeaModel):
         use_nfc: str = None,
         verify_model: str = None,
     ):
+        # <warning>This feature is currently not supported by **Web SDK**. Please refer to the App SDK integration if needed.</warning>
+        # 
+        # Whether to enable strict face quality detection:
+        # - Y: Enable (default)
+        # - N: Disable
         self.app_quality_check = app_quality_check
+        # Whether to enable authoritative identity verification, currently applicable only to the second-generation ID card in mainland China. (IDV product input parameter)
         self.authorize = authorize
+        # Whether to enable automatic registration
         self.auto_registration = auto_registration
+        # Security Token, used for preventing duplication and tampering. If this parameter is passed, the CallbackToken field will be displayed in the callback address.
         self.callback_token = callback_token
+        # Callback notification address for authentication results. The default callback request method is GET, and the callback address must start with https. After completing the authentication, the platform will call back this address and automatically add the transactionId, passed, and subcode fields.
         self.callback_url = callback_url
+        # Whether to enable adaptive color-changing window border
+        # - **Y**: Enable
+        # - **N**: Disable
         self.chameleon_frame_enable = chameleon_frame_enable
+        # Whether to crop. (IDV product input parameter)
         self.crop = crop
+        # Date of birth on the document
+        # 
+        # **MRTDInput = 2** is required.
         self.date_of_birth = date_of_birth
+        # Expiration date on the document
+        # 
+        # **MRTDInput = 2** is required.
         self.date_of_expiry = date_of_expiry
+        # User\\"s real name.
         self.doc_name = doc_name
+        # User\\"s document number.
         self.doc_no = doc_no
+        # Customer-defined input to specify whether to collect more pages
         self.doc_page_config = doc_page_config
+        # Document capture mode.
+        # 
+        # - manual: Manual capture.
+        # - auto: Automatic capture (default)
         self.doc_scan_mode = doc_scan_mode
+        # Document type, uniquely identified by an 8-digit combination.
+        # Note: This parameter is required only when ProductCode is KYC_GLOBAL, OCR_GLOBAL, or IDR_GLOBAL.
         self.doc_type = doc_type
+        # Whether to require a video for evidence.
+        # 
+        # - N: Not required (default).
+        # 
+        # - Y: During the authentication process, a 1~2 second video of the user\\"s face will be captured and returned via the query interface.
+        # 
+        # > Due to the large size of the video file, the system may discard it when the network is unstable, prioritizing the transmission of necessary images for authentication.
         self.doc_video = doc_video
+        # Document number
+        # 
+        # **MRTDInput = 2** is required.
         self.document_number = document_number
+        # In the document OCR recognition step, whether the recognition result page is editable:
+        # 
+        # - **0**: Not editable
+        # 
+        # - **1** (default): Editable
         self.edit_ocr_result = edit_ocr_result
+        # Experience code
         self.experience_code = experience_code
+        # Face library to be compared
         self.face_group_codes = face_group_codes
+        # Base64 encoded face image. If you choose to pass the face image via FacePictureBase64, please check the image size and do not upload images larger than 1 MB.
+        # When productCode is FV_GLOBAL, choose one of the parameters between FacePictureBase64 and FacePictureUrl to pass in.
         self.face_picture_base_64 = face_picture_base_64
+        # Face image URL. A publicly accessible HTTP or HTTPS link. When productCode is FV_GLOBAL, choose one of the parameters between FacePictureUrl and FacePictureBase to pass in.
         self.face_picture_url = face_picture_url
+        # Face library for registration.
         self.face_register_group_code = face_register_group_code
+        # Face verification threshold
         self.face_verify_threshold = face_verify_threshold
+        # Face image quality. (IDV product input parameter)
         self.id_face_quality = id_face_quality
+        # Whether to enable certificate anti-counterfeiting detection. (IDV product input parameter)
         self.id_spoof = id_spoof
+        # Custom OCR quality detection threshold mode:
+        # - **0**: Standard mode
+        # - **1**: Strict mode
+        # - **2**: Lenient mode
+        # - **3** (default): Disable quality detection
         self.id_threshold = id_threshold
+        # Language configuration. (IDV product input parameter)
         self.language_config = language_config
+        # Source of MRTD verification parameters. This parameter is required to decrypt information when reading the document chip via NFC.
+        # 
+        # - **0**: User input
+        # 
+        # - **1**: OCR read
+        # 
+        # - **2**: Passed through the API
         self.mrtdinput = mrtdinput
+        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # Your custom user ID or other identifiers that can recognize specific users, such as phone numbers or email addresses. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
         self.merchant_user_id = merchant_user_id
+        # Metainfo environment parameter, which needs to be obtained through the client SDK.
         self.meta_info = meta_info
+        # The type of liveness detection to be performed:
+        # 
+        # - **LIVENESS** (default): Blinking action liveness detection.
+        # 
+        # - **PHOTINUS_LIVENESS**: Blinking action liveness + photinus liveness dual detection.
+        # 
+        # - **PHOTINUS_FAR_NEAR_LIVENESS**:
+        # Blinking action + far/near + photinus liveness detection.
+        # (Only supported by APP SDK or Flutter integration based on APP SDK)
+        # 
+        # > 
+        # > - For supported SDK versions, see [SDK Publishing Record](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
+        # > - PC does not support photinus liveness dual detection.
         self.model = model
-        # OCR。
+        # Whether to enable OCR. (IDV product input parameter)
         self.ocr = ocr
+        # Page configuration for collection, multiple pages are connected using commas. The value range is as follows:
+        # - **01**: Front side of the document
+        # 
+        # - **01,02**: Front and back sides of the document
+        # 
+        # > When this value is 01,02, currently only Chinese and Vietnamese IDs are supported.
         self.pages = pages
+        # When compatibility issues occur with H5-based mobile authentication, whether to allow a fallback handling method.
+        # 
+        # - **url** (default): Support fallback. The page displays the authentication URL, which users can copy and open in another browser to continue the authentication process.
+        # 
+        # - **keep**: Do not support fallback. Directly return the error reason and end the authentication process.
+        # 
+        # 
+        # > 
+        # > - This switch is not supported on PC.
+        # > - If the business scenario involves completing authentication through an embedded web page in an app, it is recommended to set this parameter to `keep` to disallow URL fallback.
         self.procedure_priority = procedure_priority
+        # The product solution to be integrated. The values are as follows:
+        # 
+        # - KYC_GLOBAL (eKYC product solution)
+        # - FV_GLOBAL (Live Face Verification)
+        # - FL_GLOBAL (Liveness Detection)
+        # - IDR_GLOBAL (Single Document Verification)
+        # - OCR_GLOBAL (Single Document OCR)
         self.product_code = product_code
+        # Supports card and face sequential arrangement:
+        # 
+        # - DOC_FACE (default)
+        # - FACE_DOC
+        # 
+        # Note: This parameter is required only when ProductCode is KYC_GLOBAL.
         self.product_flow = product_flow
+        # Number of duplicate faces returned
         self.return_faces = return_faces
+        # Client-side callback address.
         self.return_url = return_url
+        # Whether to save the face image
         self.save_face_picture = save_face_picture
+        # Scene code. (IDV product input parameter)
         self.scene_code = scene_code
+        # Represents different security levels in the authentication process. The available values are as follows:
+        # 
+        # 01: Normal mode (default).
+        # 02: Secure mode, a relatively strict mode, suitable for high-risk scenarios. (IDV product input parameter)
         self.security_level = security_level
+        # In the document OCR recognition step, whether to display the album upload entry:
+        # 
+        # - **1**: Display (default)
+        # 
+        # - **0**: Do not display
         self.show_album_icon = show_album_icon
+        # Switch to control whether to display the guide page:
+        # 
+        # - **1**: Display (default)
+        # 
+        # - **0**: Do not display
         self.show_guide_page = show_guide_page
+        # In the document OCR recognition step, whether to display the recognition result page:
+        # 
+        # - **1**: Display (default)
+        # 
+        # - **0**: Do not display
         self.show_ocr_result = show_ocr_result
+        # Custom UI configuration. Based on the configuration template, convert your custom UI configuration into a JSON string and pass it through this interface. For more information, see [IDV UI Customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
         self.style_config = style_config
+        # Base64 encoding of the portrait photo.
         self.target_face_picture = target_face_picture
+        # Portrait image URL, accessible via public HTTP or HTTPS link.
         self.target_face_picture_url = target_face_picture_url
+        # When **DocType**=01000000 (global passport), you can choose whether to enable NFC verification.
+        # - **Y** (enable)
+        # - **N** (disable)
         self.use_nfc = use_nfc
+        # Type of verification
         self.verify_model = verify_model
 
     def validate(self):
@@ -5053,56 +5782,196 @@ class InitializeShrinkRequest(TeaModel):
         use_nfc: str = None,
         verify_model: str = None,
     ):
+        # <warning>This feature is currently not supported by **Web SDK**. Please refer to the App SDK integration if needed.</warning>
+        # 
+        # Whether to enable strict face quality detection:
+        # - Y: Enable (default)
+        # - N: Disable
         self.app_quality_check = app_quality_check
+        # Whether to enable authoritative identity verification, currently applicable only to the second-generation ID card in mainland China. (IDV product input parameter)
         self.authorize = authorize
+        # Whether to enable automatic registration
         self.auto_registration = auto_registration
+        # Security Token, used for preventing duplication and tampering. If this parameter is passed, the CallbackToken field will be displayed in the callback address.
         self.callback_token = callback_token
+        # Callback notification address for authentication results. The default callback request method is GET, and the callback address must start with https. After completing the authentication, the platform will call back this address and automatically add the transactionId, passed, and subcode fields.
         self.callback_url = callback_url
+        # Whether to enable adaptive color-changing window border
+        # - **Y**: Enable
+        # - **N**: Disable
         self.chameleon_frame_enable = chameleon_frame_enable
+        # Whether to crop. (IDV product input parameter)
         self.crop = crop
+        # Date of birth on the document
+        # 
+        # **MRTDInput = 2** is required.
         self.date_of_birth = date_of_birth
+        # Expiration date on the document
+        # 
+        # **MRTDInput = 2** is required.
         self.date_of_expiry = date_of_expiry
+        # User\\"s real name.
         self.doc_name = doc_name
+        # User\\"s document number.
         self.doc_no = doc_no
+        # Customer-defined input to specify whether to collect more pages
         self.doc_page_config_shrink = doc_page_config_shrink
+        # Document capture mode.
+        # 
+        # - manual: Manual capture.
+        # - auto: Automatic capture (default)
         self.doc_scan_mode = doc_scan_mode
+        # Document type, uniquely identified by an 8-digit combination.
+        # Note: This parameter is required only when ProductCode is KYC_GLOBAL, OCR_GLOBAL, or IDR_GLOBAL.
         self.doc_type = doc_type
+        # Whether to require a video for evidence.
+        # 
+        # - N: Not required (default).
+        # 
+        # - Y: During the authentication process, a 1~2 second video of the user\\"s face will be captured and returned via the query interface.
+        # 
+        # > Due to the large size of the video file, the system may discard it when the network is unstable, prioritizing the transmission of necessary images for authentication.
         self.doc_video = doc_video
+        # Document number
+        # 
+        # **MRTDInput = 2** is required.
         self.document_number = document_number
+        # In the document OCR recognition step, whether the recognition result page is editable:
+        # 
+        # - **0**: Not editable
+        # 
+        # - **1** (default): Editable
         self.edit_ocr_result = edit_ocr_result
+        # Experience code
         self.experience_code = experience_code
+        # Face library to be compared
         self.face_group_codes = face_group_codes
+        # Base64 encoded face image. If you choose to pass the face image via FacePictureBase64, please check the image size and do not upload images larger than 1 MB.
+        # When productCode is FV_GLOBAL, choose one of the parameters between FacePictureBase64 and FacePictureUrl to pass in.
         self.face_picture_base_64 = face_picture_base_64
+        # Face image URL. A publicly accessible HTTP or HTTPS link. When productCode is FV_GLOBAL, choose one of the parameters between FacePictureUrl and FacePictureBase to pass in.
         self.face_picture_url = face_picture_url
+        # Face library for registration.
         self.face_register_group_code = face_register_group_code
+        # Face verification threshold
         self.face_verify_threshold = face_verify_threshold
+        # Face image quality. (IDV product input parameter)
         self.id_face_quality = id_face_quality
+        # Whether to enable certificate anti-counterfeiting detection. (IDV product input parameter)
         self.id_spoof = id_spoof
+        # Custom OCR quality detection threshold mode:
+        # - **0**: Standard mode
+        # - **1**: Strict mode
+        # - **2**: Lenient mode
+        # - **3** (default): Disable quality detection
         self.id_threshold = id_threshold
+        # Language configuration. (IDV product input parameter)
         self.language_config = language_config
+        # Source of MRTD verification parameters. This parameter is required to decrypt information when reading the document chip via NFC.
+        # 
+        # - **0**: User input
+        # 
+        # - **1**: OCR read
+        # 
+        # - **2**: Passed through the API
         self.mrtdinput = mrtdinput
+        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # Your custom user ID or other identifiers that can recognize specific users, such as phone numbers or email addresses. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
         self.merchant_user_id = merchant_user_id
+        # Metainfo environment parameter, which needs to be obtained through the client SDK.
         self.meta_info = meta_info
+        # The type of liveness detection to be performed:
+        # 
+        # - **LIVENESS** (default): Blinking action liveness detection.
+        # 
+        # - **PHOTINUS_LIVENESS**: Blinking action liveness + photinus liveness dual detection.
+        # 
+        # - **PHOTINUS_FAR_NEAR_LIVENESS**:
+        # Blinking action + far/near + photinus liveness detection.
+        # (Only supported by APP SDK or Flutter integration based on APP SDK)
+        # 
+        # > 
+        # > - For supported SDK versions, see [SDK Publishing Record](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
+        # > - PC does not support photinus liveness dual detection.
         self.model = model
-        # OCR。
+        # Whether to enable OCR. (IDV product input parameter)
         self.ocr = ocr
+        # Page configuration for collection, multiple pages are connected using commas. The value range is as follows:
+        # - **01**: Front side of the document
+        # 
+        # - **01,02**: Front and back sides of the document
+        # 
+        # > When this value is 01,02, currently only Chinese and Vietnamese IDs are supported.
         self.pages = pages
+        # When compatibility issues occur with H5-based mobile authentication, whether to allow a fallback handling method.
+        # 
+        # - **url** (default): Support fallback. The page displays the authentication URL, which users can copy and open in another browser to continue the authentication process.
+        # 
+        # - **keep**: Do not support fallback. Directly return the error reason and end the authentication process.
+        # 
+        # 
+        # > 
+        # > - This switch is not supported on PC.
+        # > - If the business scenario involves completing authentication through an embedded web page in an app, it is recommended to set this parameter to `keep` to disallow URL fallback.
         self.procedure_priority = procedure_priority
+        # The product solution to be integrated. The values are as follows:
+        # 
+        # - KYC_GLOBAL (eKYC product solution)
+        # - FV_GLOBAL (Live Face Verification)
+        # - FL_GLOBAL (Liveness Detection)
+        # - IDR_GLOBAL (Single Document Verification)
+        # - OCR_GLOBAL (Single Document OCR)
         self.product_code = product_code
+        # Supports card and face sequential arrangement:
+        # 
+        # - DOC_FACE (default)
+        # - FACE_DOC
+        # 
+        # Note: This parameter is required only when ProductCode is KYC_GLOBAL.
         self.product_flow = product_flow
+        # Number of duplicate faces returned
         self.return_faces = return_faces
+        # Client-side callback address.
         self.return_url = return_url
+        # Whether to save the face image
         self.save_face_picture = save_face_picture
+        # Scene code. (IDV product input parameter)
         self.scene_code = scene_code
+        # Represents different security levels in the authentication process. The available values are as follows:
+        # 
+        # 01: Normal mode (default).
+        # 02: Secure mode, a relatively strict mode, suitable for high-risk scenarios. (IDV product input parameter)
         self.security_level = security_level
+        # In the document OCR recognition step, whether to display the album upload entry:
+        # 
+        # - **1**: Display (default)
+        # 
+        # - **0**: Do not display
         self.show_album_icon = show_album_icon
+        # Switch to control whether to display the guide page:
+        # 
+        # - **1**: Display (default)
+        # 
+        # - **0**: Do not display
         self.show_guide_page = show_guide_page
+        # In the document OCR recognition step, whether to display the recognition result page:
+        # 
+        # - **1**: Display (default)
+        # 
+        # - **0**: Do not display
         self.show_ocr_result = show_ocr_result
+        # Custom UI configuration. Based on the configuration template, convert your custom UI configuration into a JSON string and pass it through this interface. For more information, see [IDV UI Customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
         self.style_config = style_config
+        # Base64 encoding of the portrait photo.
         self.target_face_picture = target_face_picture
+        # Portrait image URL, accessible via public HTTP or HTTPS link.
         self.target_face_picture_url = target_face_picture_url
+        # When **DocType**=01000000 (global passport), you can choose whether to enable NFC verification.
+        # - **Y** (enable)
+        # - **N** (disable)
         self.use_nfc = use_nfc
+        # Type of verification
         self.verify_model = verify_model
 
     def validate(self):
@@ -5329,9 +6198,15 @@ class InitializeResponseBodyResult(TeaModel):
         transaction_id: str = None,
         transaction_url: str = None,
     ):
+        # Client configuration
         self.client_cfg = client_cfg
+        # Standard encryption protocol for authentication.
+        # 
+        # > This field is required when integrating with H5 web pages using iframe embedding.
         self.protocol = protocol
+        # Authentication ID
         self.transaction_id = transaction_id
+        # Web authentication URL
         self.transaction_url = transaction_url
 
     def validate(self):
@@ -5374,10 +6249,13 @@ class InitializeResponseBody(TeaModel):
         request_id: str = None,
         result: InitializeResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -5995,6 +6873,924 @@ class Mobile3MetaVerifyIntlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Mobile3MetaVerifyIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyFaceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.id = id
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ModifyFaceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyFaceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFaceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFaceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyFaceRecordRequest(TeaModel):
+    def __init__(
+        self,
+        face_group_code: str = None,
+        img_oss_infos: str = None,
+    ):
+        # This parameter is required.
+        self.face_group_code = face_group_code
+        # This parameter is required.
+        self.img_oss_infos = img_oss_infos
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_group_code is not None:
+            result['FaceGroupCode'] = self.face_group_code
+        if self.img_oss_infos is not None:
+            result['ImgOssInfos'] = self.img_oss_infos
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceGroupCode') is not None:
+            self.face_group_code = m.get('FaceGroupCode')
+        if m.get('ImgOssInfos') is not None:
+            self.img_oss_infos = m.get('ImgOssInfos')
+        return self
+
+
+class ModifyFaceRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyFaceRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFaceRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFaceRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryFaceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        group_code: str = None,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        self.group_code = group_code
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class QueryFaceGroupResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.description = description
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class QueryFaceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current_page: int = None,
+        items: List[QueryFaceGroupResponseBodyItems] = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.code = code
+        self.current_page = current_page
+        self.items = items
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = QueryFaceGroupResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class QueryFaceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryFaceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryFaceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryFaceRecordRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        face_group_code: str = None,
+        face_id: str = None,
+        max_results: int = None,
+        merchant_user_id: str = None,
+        next_token: str = None,
+        page_size: int = None,
+        registration_type: str = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        # This parameter is required.
+        self.face_group_code = face_group_code
+        self.face_id = face_id
+        self.max_results = max_results
+        self.merchant_user_id = merchant_user_id
+        self.next_token = next_token
+        # This parameter is required.
+        self.page_size = page_size
+        self.registration_type = registration_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.face_group_code is not None:
+            result['FaceGroupCode'] = self.face_group_code
+        if self.face_id is not None:
+            result['FaceId'] = self.face_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.registration_type is not None:
+            result['RegistrationType'] = self.registration_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('FaceGroupCode') is not None:
+            self.face_group_code = m.get('FaceGroupCode')
+        if m.get('FaceId') is not None:
+            self.face_id = m.get('FaceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegistrationType') is not None:
+            self.registration_type = m.get('RegistrationType')
+        return self
+
+
+class QueryFaceRecordResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        face_id: str = None,
+        gmt_create: str = None,
+        id: int = None,
+        img_oss_url: str = None,
+        merchant_user_id: str = None,
+        registration_type: str = None,
+    ):
+        self.face_id = face_id
+        self.gmt_create = gmt_create
+        self.id = id
+        self.img_oss_url = img_oss_url
+        self.merchant_user_id = merchant_user_id
+        self.registration_type = registration_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_id is not None:
+            result['FaceId'] = self.face_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.img_oss_url is not None:
+            result['ImgOssUrl'] = self.img_oss_url
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.registration_type is not None:
+            result['RegistrationType'] = self.registration_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceId') is not None:
+            self.face_id = m.get('FaceId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ImgOssUrl') is not None:
+            self.img_oss_url = m.get('ImgOssUrl')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('RegistrationType') is not None:
+            self.registration_type = m.get('RegistrationType')
+        return self
+
+
+class QueryFaceRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current_page: int = None,
+        items: List[QueryFaceRecordResponseBodyItems] = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.code = code
+        self.current_page = current_page
+        self.items = items
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = QueryFaceRecordResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class QueryFaceRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryFaceRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryFaceRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TempAccessTokenIntlRequest(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class TempAccessTokenIntlResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        bucket_name: str = None,
+        file_name_prefix: str = None,
+        oss_end_point: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.bucket_name = bucket_name
+        self.file_name_prefix = file_name_prefix
+        # OssEndPoint。
+        self.oss_end_point = oss_end_point
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.file_name_prefix is not None:
+            result['FileNamePrefix'] = self.file_name_prefix
+        if self.oss_end_point is not None:
+            result['OssEndPoint'] = self.oss_end_point
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('FileNamePrefix') is not None:
+            self.file_name_prefix = m.get('FileNamePrefix')
+        if m.get('OssEndPoint') is not None:
+            self.oss_end_point = m.get('OssEndPoint')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class TempAccessTokenIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: TempAccessTokenIntlResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = TempAccessTokenIntlResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TempAccessTokenIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TempAccessTokenIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TempAccessTokenIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

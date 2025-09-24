@@ -1,3 +1,14 @@
+2025-09-24 Version: 3.13.0
+- Support API DeleteFaceGroup.
+- Support API DeleteFaceRecord.
+- Support API FaceDuplicationCheckIntl.
+- Support API ModifyFaceGroup.
+- Support API ModifyFaceRecord.
+- Support API QueryFaceGroup.
+- Support API QueryFaceRecord.
+- Support API TempAccessTokenIntl.
+
+
 2025-09-22 Version: 3.12.3
 - Generated python 2022-08-09 for Cloudauth-intl.
 
