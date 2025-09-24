@@ -186,12 +186,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_name):
             body['ClusterName'] = request.cluster_name
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
         if not UtilClient.is_unset(request.engine_type):
             body['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            body['PricingCycle'] = request.pricing_cycle
         if not UtilClient.is_unset(request.v_switches_shrink):
             body['VSwitches'] = request.v_switches_shrink
         if not UtilClient.is_unset(request.vpc_id):
@@ -237,12 +243,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_name):
             body['ClusterName'] = request.cluster_name
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
         if not UtilClient.is_unset(request.engine_type):
             body['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            body['PricingCycle'] = request.pricing_cycle
         if not UtilClient.is_unset(request.v_switches_shrink):
             body['VSwitches'] = request.v_switches_shrink
         if not UtilClient.is_unset(request.vpc_id):

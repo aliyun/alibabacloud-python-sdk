@@ -1,3 +1,14 @@
+2025-09-24 Version: 1.3.2
+- Update API CreateCluster: add request parameters ChargeType.
+- Update API CreateCluster: add request parameters Duration.
+- Update API CreateCluster: add request parameters PricingCycle.
+- Update API GetJobExecutionProgress: add response parameters Body.Data.EndTime.
+- Update API GetJobExecutionProgress: add response parameters Body.Data.StartTime.
+- Update API ListAppNames: add response parameters Body.Data.$.AppType.
+- Update API ListAppNames: add response parameters Body.Data.$.WorkerRegistry.
+- Update API ListApps: add response parameters Body.Data.Records.$.WorkerRegistry.
+
+
 2025-08-22 Version: 1.3.1
 - Update API CreateApp: add request parameters AppType.
 - Update API CreateJob: add request parameters Weight.

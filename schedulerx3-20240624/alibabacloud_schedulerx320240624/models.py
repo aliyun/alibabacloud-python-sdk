@@ -274,19 +274,25 @@ class CreateClusterRequestVSwitches(TeaModel):
 class CreateClusterRequest(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         cluster_name: str = None,
         cluster_spec: str = None,
+        duration: int = None,
         engine_type: str = None,
+        pricing_cycle: str = None,
         tag: List[CreateClusterRequestTag] = None,
         v_switches: List[CreateClusterRequestVSwitches] = None,
         vpc_id: str = None,
     ):
+        self.charge_type = charge_type
         # This parameter is required.
         self.cluster_name = cluster_name
         # This parameter is required.
         self.cluster_spec = cluster_spec
+        self.duration = duration
         # This parameter is required.
         self.engine_type = engine_type
+        self.pricing_cycle = pricing_cycle
         self.tag = tag
         # This parameter is required.
         self.v_switches = v_switches
@@ -311,12 +317,18 @@ class CreateClusterRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -331,12 +343,18 @@ class CreateClusterRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -388,19 +406,25 @@ class CreateClusterShrinkRequestTag(TeaModel):
 class CreateClusterShrinkRequest(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         cluster_name: str = None,
         cluster_spec: str = None,
+        duration: int = None,
         engine_type: str = None,
+        pricing_cycle: str = None,
         tag: List[CreateClusterShrinkRequestTag] = None,
         v_switches_shrink: str = None,
         vpc_id: str = None,
     ):
+        self.charge_type = charge_type
         # This parameter is required.
         self.cluster_name = cluster_name
         # This parameter is required.
         self.cluster_spec = cluster_spec
+        self.duration = duration
         # This parameter is required.
         self.engine_type = engine_type
+        self.pricing_cycle = pricing_cycle
         self.tag = tag
         # This parameter is required.
         self.v_switches_shrink = v_switches_shrink
@@ -421,12 +445,18 @@ class CreateClusterShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -439,12 +469,18 @@ class CreateClusterShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -3052,16 +3088,20 @@ class GetJobExecutionProgressResponseBodyDataWorkerProgress(TeaModel):
 class GetJobExecutionProgressResponseBodyData(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         job_description: str = None,
         root_progress: GetJobExecutionProgressResponseBodyDataRootProgress = None,
         sharding_progress: List[GetJobExecutionProgressResponseBodyDataShardingProgress] = None,
+        start_time: str = None,
         task_progress: List[GetJobExecutionProgressResponseBodyDataTaskProgress] = None,
         total_progress: GetJobExecutionProgressResponseBodyDataTotalProgress = None,
         worker_progress: List[GetJobExecutionProgressResponseBodyDataWorkerProgress] = None,
     ):
+        self.end_time = end_time
         self.job_description = job_description
         self.root_progress = root_progress
         self.sharding_progress = sharding_progress
+        self.start_time = start_time
         self.task_progress = task_progress
         self.total_progress = total_progress
         self.worker_progress = worker_progress
@@ -3090,6 +3130,8 @@ class GetJobExecutionProgressResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.job_description is not None:
             result['JobDescription'] = self.job_description
         if self.root_progress is not None:
@@ -3098,6 +3140,8 @@ class GetJobExecutionProgressResponseBodyData(TeaModel):
         if self.sharding_progress is not None:
             for k in self.sharding_progress:
                 result['ShardingProgress'].append(k.to_map() if k else None)
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         result['TaskProgress'] = []
         if self.task_progress is not None:
             for k in self.task_progress:
@@ -3112,6 +3156,8 @@ class GetJobExecutionProgressResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('JobDescription') is not None:
             self.job_description = m.get('JobDescription')
         if m.get('RootProgress') is not None:
@@ -3122,6 +3168,8 @@ class GetJobExecutionProgressResponseBodyData(TeaModel):
             for k in m.get('ShardingProgress'):
                 temp_model = GetJobExecutionProgressResponseBodyDataShardingProgress()
                 self.sharding_progress.append(temp_model.from_map(k))
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         self.task_progress = []
         if m.get('TaskProgress') is not None:
             for k in m.get('TaskProgress'):
@@ -4500,13 +4548,17 @@ class ListAppNamesResponseBodyData(TeaModel):
         self,
         app_group_id: str = None,
         app_name: str = None,
+        app_type: int = None,
         id: int = None,
         title: str = None,
+        worker_registry: str = None,
     ):
         self.app_group_id = app_group_id
         self.app_name = app_name
+        self.app_type = app_type
         self.id = id
         self.title = title
+        self.worker_registry = worker_registry
 
     def validate(self):
         pass
@@ -4521,10 +4573,14 @@ class ListAppNamesResponseBodyData(TeaModel):
             result['AppGroupId'] = self.app_group_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.id is not None:
             result['Id'] = self.id
         if self.title is not None:
             result['Title'] = self.title
+        if self.worker_registry is not None:
+            result['WorkerRegistry'] = self.worker_registry
         return result
 
     def from_map(self, m: dict = None):
@@ -4533,10 +4589,14 @@ class ListAppNamesResponseBodyData(TeaModel):
             self.app_group_id = m.get('AppGroupId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('WorkerRegistry') is not None:
+            self.worker_registry = m.get('WorkerRegistry')
         return self
 
 
@@ -4710,6 +4770,7 @@ class ListAppsResponseBodyDataRecords(TeaModel):
         max_jobs: int = None,
         title: str = None,
         updater: str = None,
+        worker_registry: str = None,
     ):
         # AccessToken
         self.access_token = access_token
@@ -4726,6 +4787,7 @@ class ListAppsResponseBodyDataRecords(TeaModel):
         self.max_jobs = max_jobs
         self.title = title
         self.updater = updater
+        self.worker_registry = worker_registry
 
     def validate(self):
         pass
@@ -4764,6 +4826,8 @@ class ListAppsResponseBodyDataRecords(TeaModel):
             result['Title'] = self.title
         if self.updater is not None:
             result['Updater'] = self.updater
+        if self.worker_registry is not None:
+            result['WorkerRegistry'] = self.worker_registry
         return result
 
     def from_map(self, m: dict = None):
@@ -4796,6 +4860,8 @@ class ListAppsResponseBodyDataRecords(TeaModel):
             self.title = m.get('Title')
         if m.get('Updater') is not None:
             self.updater = m.get('Updater')
+        if m.get('WorkerRegistry') is not None:
+            self.worker_registry = m.get('WorkerRegistry')
         return self
 
 
