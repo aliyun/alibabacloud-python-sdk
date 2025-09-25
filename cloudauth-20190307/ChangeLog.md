@@ -1,3 +1,7 @@
+2025-09-25 Version: 3.10.0
+- Support API Id3MetaVerify.
+
+
 2025-09-08 Version: 3.9.5
 - Update API InitFaceVerify: add request parameters NeedMultiFaceCheck.
 

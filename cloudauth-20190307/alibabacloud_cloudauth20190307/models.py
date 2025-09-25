@@ -964,24 +964,59 @@ class ContrastFaceVerifyRequest(TeaModel):
         scene_id: int = None,
         user_id: str = None,
     ):
+        # Real name.
         self.cert_name = cert_name
+        # ID number
         self.cert_no = cert_no
+        # Type of identification. Currently, only IDENTITY_CARD is supported and must be provided.
         self.cert_type = cert_type
+        # The CertifyId of a previously passed real-person authentication, with the photo taken during that authentication used as the comparison photo. 
+        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to provide.
         self.certify_id = certify_id
+        # Allow face image cropping:
+        # 
+        # -  **T** – Cropping is allowed.
+        # -  **F** (default) – Cropping is not allowed.
         self.crop = crop
+        # Risk Identification - Device Token
         self.device_token = device_token
+        # Encryption type. Leave it empty if no encryption is required.
+        # 
+        # If you enable encrypted transmission, you must specify the encryption algorithm; currently, only the SM2 (Chinese national standard) algorithm is supported.
+        # 
+        # When an encryption algorithm is specified, encrypt both **CertName** and **CertNo** and submit the resulting ciphertext. For more details on parameter encryption, see the [Parameter Encryption documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.49541a8554cELI#task-2229332).
         self.encrypt_type = encrypt_type
+        # Local video file.
         self.face_contrast_file = face_contrast_file
+        # Base64 encoded photo
         self.face_contrast_picture = face_contrast_picture
+        # OSS photo URL, currently only supports authorized OSS photo URLs.
+        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.face_contrast_picture_url = face_contrast_picture_url
+        # User IP.
         self.ip = ip
+        # User\\"s phone number.
         self.mobile = mobile
+        # Liveness detection type. Possible values:
+        # 
+        # • **NO_LIVENESS** – Liveness detection is disabled.
+        # 
+        # • **FRONT_CAMERA_LIVENESS** (default) – Liveness detection on face images captured with the mobile device’s front camera.
+        # 
+        # • **REAR_CAMERA_LIVENESS** – Liveness detection on face images captured in other scenarios (e.g., via the rear camera).
         self.model = model
+        # Authorized OSS space Bucket name. In the methods of passing images, including FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS, choose one to pass in.
         self.oss_bucket_name = oss_bucket_name
+        # Filename of the authorized OSS space.
+        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.oss_object_name = oss_object_name
+        # A unique identifier for the merchant\\"s request. It is a 32-character alphanumeric combination. The first few characters are a custom abbreviation defined by the merchant, followed by a period, and the latter part can be a random or incrementing sequence.
         self.outer_order_no = outer_order_no
+        # Fixed value: ID_MIN.
         self.product_code = product_code
+        # Authentication scenario ID.
         self.scene_id = scene_id
+        # Custom user ID defined by the customer\\"s business.
         self.user_id = user_id
 
     def validate(self):
@@ -1099,24 +1134,59 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         scene_id: int = None,
         user_id: str = None,
     ):
+        # Real name.
         self.cert_name = cert_name
+        # ID number
         self.cert_no = cert_no
+        # Type of identification. Currently, only IDENTITY_CARD is supported and must be provided.
         self.cert_type = cert_type
+        # The CertifyId of a previously passed real-person authentication, with the photo taken during that authentication used as the comparison photo. 
+        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to provide.
         self.certify_id = certify_id
+        # Allow face image cropping:
+        # 
+        # -  **T** – Cropping is allowed.
+        # -  **F** (default) – Cropping is not allowed.
         self.crop = crop
+        # Risk Identification - Device Token
         self.device_token = device_token
+        # Encryption type. Leave it empty if no encryption is required.
+        # 
+        # If you enable encrypted transmission, you must specify the encryption algorithm; currently, only the SM2 (Chinese national standard) algorithm is supported.
+        # 
+        # When an encryption algorithm is specified, encrypt both **CertName** and **CertNo** and submit the resulting ciphertext. For more details on parameter encryption, see the [Parameter Encryption documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.49541a8554cELI#task-2229332).
         self.encrypt_type = encrypt_type
+        # Local video file.
         self.face_contrast_file_object = face_contrast_file_object
+        # Base64 encoded photo
         self.face_contrast_picture = face_contrast_picture
+        # OSS photo URL, currently only supports authorized OSS photo URLs.
+        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.face_contrast_picture_url = face_contrast_picture_url
+        # User IP.
         self.ip = ip
+        # User\\"s phone number.
         self.mobile = mobile
+        # Liveness detection type. Possible values:
+        # 
+        # • **NO_LIVENESS** – Liveness detection is disabled.
+        # 
+        # • **FRONT_CAMERA_LIVENESS** (default) – Liveness detection on face images captured with the mobile device’s front camera.
+        # 
+        # • **REAR_CAMERA_LIVENESS** – Liveness detection on face images captured in other scenarios (e.g., via the rear camera).
         self.model = model
+        # Authorized OSS space Bucket name. In the methods of passing images, including FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS, choose one to pass in.
         self.oss_bucket_name = oss_bucket_name
+        # Filename of the authorized OSS space.
+        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.oss_object_name = oss_object_name
+        # A unique identifier for the merchant\\"s request. It is a 32-character alphanumeric combination. The first few characters are a custom abbreviation defined by the merchant, followed by a period, and the latter part can be a random or incrementing sequence.
         self.outer_order_no = outer_order_no
+        # Fixed value: ID_MIN.
         self.product_code = product_code
+        # Authentication scenario ID.
         self.scene_id = scene_id
+        # Custom user ID defined by the customer\\"s business.
         self.user_id = user_id
 
     def validate(self):
@@ -1220,10 +1290,15 @@ class ContrastFaceVerifyResponseBodyResultObject(TeaModel):
         passed: str = None,
         sub_code: str = None,
     ):
+        # Unique identifier for the real-person verification request.
         self.certify_id = certify_id
+        # Information about the authenticated entity, which is usually empty in general authentication scenarios.
         self.identity_info = identity_info
+        # Attachment information of the authenticated entity, mainly image materials, in JSON format, as follows.
         self.material_info = material_info
+        # Whether it passed, T for pass, F for fail.
         self.passed = passed
+        # Description of the authentication result. For details, see the SubCode explanation below.
         self.sub_code = sub_code
 
     def validate(self):
@@ -1270,9 +1345,13 @@ class ContrastFaceVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: ContrastFaceVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Request result
         self.result_object = result_object
 
     def validate(self):
@@ -1358,9 +1437,13 @@ class CreateAuthKeyRequest(TeaModel):
         test: bool = None,
         user_device_id: str = None,
     ):
+        # When the Test flag is false or empty, AuthYears is required, in years, with a range of [1,100]. A value of 100 indicates permanent authorization.
         self.auth_years = auth_years
+        # Business type. No more than 64 characters. Can be used to note specific business, such as different face usage scenarios of the access party or the customer identifier to be delivered. It is recommended to pass this parameter.
         self.biz_type = biz_type
+        # Test flag. If true, it indicates using test authorization with a default duration of 30 days; if false, the authorization duration will be based on AuthYears.
         self.test = test
+        # User device ID. No more than 64 characters. Can be used to identify a specific device, and it is suggested to use the physical number of the device. It is recommended to pass this parameter.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -1401,7 +1484,9 @@ class CreateAuthKeyResponseBody(TeaModel):
         auth_key: str = None,
         request_id: str = None,
     ):
+        # The key that can be used for authorization activation. The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
         self.auth_key = auth_key
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -1479,13 +1564,22 @@ class CreateVerifySettingRequest(TeaModel):
         result_step: bool = None,
         solution: str = None,
     ):
+        # Verification scenario name, supporting Chinese, English, numbers, and hyphens (-), with a maximum of 20 characters.
+        # 
         # This parameter is required.
         self.biz_name = biz_name
+        # Verification scenario identifier, supporting English letters, numbers, and hyphens (-), with a maximum of 20 characters.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Whether to use the system\\"s default guide page.
         self.guide_step = guide_step
+        # Whether to use the system\\"s default authorization page.
         self.privacy_step = privacy_step
+        # Whether to use the system\\"s default result page.
         self.result_step = result_step
+        # The name of the authentication solution to use, such as **RPBasic**, **RPBioOnly**, etc. For all supported authentication solutions, see [Authentication Solutions](https://help.aliyun.com/document_detail/127521.html).
+        # 
         # This parameter is required.
         self.solution = solution
 
@@ -1538,10 +1632,15 @@ class CreateVerifySettingResponseBody(TeaModel):
         solution: str = None,
         step_list: List[str] = None,
     ):
+        # Verification scenario name.
         self.biz_name = biz_name
+        # Verification scenario identifier.
         self.biz_type = biz_type
+        # ID of this request.
         self.request_id = request_id
+        # Authentication solution name.
         self.solution = solution
+        # Authentication steps
         self.step_list = step_list
 
     def validate(self):
@@ -1913,7 +2012,11 @@ class CredentialVerifyRequestMerchantDetail(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The private key of the certificate.
+        # 
+        # >  If this parameter is specified, you must also specify **CertName** and **Cert**. If **CertName**, **Cert**, and **Key** are specified, you do not need to specify **CertId**.
         self.key = key
+        # Keyword value.
         self.value = value
 
     def validate(self):
@@ -1958,19 +2061,86 @@ class CredentialVerifyRequest(TeaModel):
         prompt_model: str = None,
         user_name: str = None,
     ):
+        # Relevant certificate number.
         self.cert_num = cert_num
+        # - 01: Personal ID cards
+        #   - **0101**: ID card
+        #   - **0102**: Bank card
+        #   - **0104**: Teacher qualification certificate
+        #   - **0107**: Student ID card
+        # - 02: Business scenario
+        #   - **0201**: Storefront photo
+        #   - **0202**: Counter photo
+        #   - **0203**: Scene photo
+        # - 03: Corporate qualifications
+        #   - **0301**: Business license
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 01: Personal ID cards
+        # - 02: Business scenario
+        # - 03: Corporate qualifications
         self.cred_type = cred_type
+        # ID number:
+        # 
+        # Note
+        # Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
+        # 
+        # - When paramType is normal: enter the plaintext ID number.
+        # 
+        # - When paramType is md5: first 6 digits of the ID number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID number (plaintext).
         self.identify_num = identify_num
+        # Base64 encoded image, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_context = image_context
+        # Image URL, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_url = image_url
+        # Whether to enable authoritative authentication
+        # 
+        # - ****0****: No
+        # - **1**: Yes
         self.is_check = is_check
+        # Whether to enable OCR recognition.
+        # 
+        # - **0**: No
+        # - **1**: Yes
+        # 
+        # > IsOCR can be set to 1 only when **CredType** is 01.
         self.is_ocr = is_ocr
+        # Merchant details:
+        # 
+        # 
+        # > This field is required when PromptModel is set to DEFAULT.
         self.merchant_detail = merchant_detail
+        # Merchant ID. 
+        # 
+        # > This field is required when ****CredName**** is set to **02**.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # 
+        # - **ANTI_FAKE_CHECK**: Image anti-forgery check
+        # 
+        # - **ANTI_FAKE_VL**: Image anti-forgery check and semantic understanding
+        # 
+        # - **IMAGE_VL_COG**: Image semantic understanding
+        # 
+        # Default value: ANTI_FAKE_CHECK
+        # 
+        # > When **CredType** is set to 02, **ProductCode** can only be ANTI_FAKE_VL or IMAGE_VL_COG.
         self.product_code = product_code
+        # Customer-defined prompt content for image semantic understanding.
+        # 
+        # 
+        # > This field is required when PromptModel is set to CUSTOM.
         self.prompt = prompt
+        # Prompt acquisition method for image semantic understanding:
+        # 
+        # - **DEFAULT**: System default
+        # 
+        # - **CUSTOM**: Customer-defined
+        # 
+        # > When **ProductCode** is set to **ANTI_FAKE_VL** or **IMAGE_VL_COG**, this parameter must be provided.
         self.prompt_model = prompt_model
+        # UserName
         self.user_name = user_name
 
     def validate(self):
@@ -2071,19 +2241,86 @@ class CredentialVerifyShrinkRequest(TeaModel):
         prompt_model: str = None,
         user_name: str = None,
     ):
+        # Relevant certificate number.
         self.cert_num = cert_num
+        # - 01: Personal ID cards
+        #   - **0101**: ID card
+        #   - **0102**: Bank card
+        #   - **0104**: Teacher qualification certificate
+        #   - **0107**: Student ID card
+        # - 02: Business scenario
+        #   - **0201**: Storefront photo
+        #   - **0202**: Counter photo
+        #   - **0203**: Scene photo
+        # - 03: Corporate qualifications
+        #   - **0301**: Business license
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 01: Personal ID cards
+        # - 02: Business scenario
+        # - 03: Corporate qualifications
         self.cred_type = cred_type
+        # ID number:
+        # 
+        # Note
+        # Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
+        # 
+        # - When paramType is normal: enter the plaintext ID number.
+        # 
+        # - When paramType is md5: first 6 digits of the ID number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID number (plaintext).
         self.identify_num = identify_num
+        # Base64 encoded image, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_context = image_context
+        # Image URL, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_url = image_url
+        # Whether to enable authoritative authentication
+        # 
+        # - ****0****: No
+        # - **1**: Yes
         self.is_check = is_check
+        # Whether to enable OCR recognition.
+        # 
+        # - **0**: No
+        # - **1**: Yes
+        # 
+        # > IsOCR can be set to 1 only when **CredType** is 01.
         self.is_ocr = is_ocr
+        # Merchant details:
+        # 
+        # 
+        # > This field is required when PromptModel is set to DEFAULT.
         self.merchant_detail_shrink = merchant_detail_shrink
+        # Merchant ID. 
+        # 
+        # > This field is required when ****CredName**** is set to **02**.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # 
+        # - **ANTI_FAKE_CHECK**: Image anti-forgery check
+        # 
+        # - **ANTI_FAKE_VL**: Image anti-forgery check and semantic understanding
+        # 
+        # - **IMAGE_VL_COG**: Image semantic understanding
+        # 
+        # Default value: ANTI_FAKE_CHECK
+        # 
+        # > When **CredType** is set to 02, **ProductCode** can only be ANTI_FAKE_VL or IMAGE_VL_COG.
         self.product_code = product_code
+        # Customer-defined prompt content for image semantic understanding.
+        # 
+        # 
+        # > This field is required when PromptModel is set to CUSTOM.
         self.prompt = prompt
+        # Prompt acquisition method for image semantic understanding:
+        # 
+        # - **DEFAULT**: System default
+        # 
+        # - **CUSTOM**: Customer-defined
+        # 
+        # > When **ProductCode** is set to **ANTI_FAKE_VL** or **IMAGE_VL_COG**, this parameter must be provided.
         self.prompt_model = prompt_model
+        # UserName
         self.user_name = user_name
 
     def validate(self):
@@ -2164,7 +2401,16 @@ class CredentialVerifyResponseBodyResultObjectVlResult(TeaModel):
         success: bool = None,
         vl_content: str = None,
     ):
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
+        # Image understanding result:
+        # 
+        # - When PromptModel is DEFAULT, the output format refers to the example on the right.
+        # 
+        # - When PromptModel is CUSTOM, the output format follows the agreed format of the Prompt.
         self.vl_content = vl_content
 
     def validate(self):
@@ -2203,13 +2449,32 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
         verify_result: str = None,
         vl_result: CredentialVerifyResponseBodyResultObjectVlResult = None,
     ):
+        # Additional information in JSON format.
         self.material_info = material_info
+        # OCR recognition result.
         self.ocr_info = ocr_info
+        # Risk result
+        # 
+        # - **0**: Low risk
+        # - **1**: High risk
+        # - **2**: Suspicious
         self.result = result
+        # Risk score map.
         self.risk_score = risk_score
+        # Risk tags, separated by commas (,), including:
+        # 
+        # - **PS**: Image manipulation.
+        # - **SCREEN_PHOTO**: Screen recapture.
+        # - **SCREENSHOT**: Screenshot.
+        # - **WATERMARK**: Watermark.
+        # - **SAME_BACKGROUND**: Similar background.
+        # - **ORIGINAL_PHOTO**: Not the original image
         self.risk_tag = risk_tag
+        # Authority verification details.
         self.verify_detail = verify_detail
+        # The verification result.
         self.verify_result = verify_result
+        # Qwen interpretation.
         self.vl_result = vl_result
 
     def validate(self):
@@ -2270,9 +2535,13 @@ class CredentialVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: CredentialVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result
         self.result_object = result_object
 
     def validate(self):
@@ -3547,6 +3816,9 @@ class DescribeCardVerifyRequest(TeaModel):
         self,
         certify_id: str = None,
     ):
+        # Authentication request ID.
+        # You must first call the initialization interface InitCardVerify to submit an authentication request in order to get the authentication request ID.
+        # 
         # This parameter is required.
         self.certify_id = certify_id
 
@@ -3579,10 +3851,20 @@ class DescribeCardVerifyResponseBodyResultObject(TeaModel):
         ocr_card_info: str = None,
         picture_info: str = None,
     ):
+        # Identity verification result:
+        # - 1: Consistent
+        # - 2: Inconsistent
+        # - 3: No Record Found
         self.biz_code = biz_code
+        # Submitted ID card information for verification.
         self.card_info = card_info
+        # Image comparison score.
         self.face_detail = face_detail
+        # ID card information read by OCR.
         self.ocr_card_info = ocr_card_info
+        # Returned photo URLs.
+        # - certUrl  Front side
+        # - certNationalUrl  National emblem side
         self.picture_info = picture_info
 
     def validate(self):
@@ -3629,9 +3911,18 @@ class DescribeCardVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeCardVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates success, all others indicate failure.
+        # Important
+        # - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
+        # - Please check the business verification results through the fields in ResultObject.
         self.code = code
+        # Interface call return message.
+        # Important
+        # - This parameter only indicates whether there was an exception with the interface.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Result object.
         self.result_object = result_object
 
     def validate(self):
@@ -3720,12 +4011,19 @@ class DescribeDeviceInfoRequest(TeaModel):
         page_size: int = None,
         user_device_id: str = None,
     ):
+        # Business type. No more than 64 characters.
         self.biz_type = biz_type
+        # The current page number being queried.
         self.current_page = current_page
+        # A unique ID generated by the real-person authentication server for the access party\\"s device. This ID is only generated after the device has been successfully activated and can be obtained through the getLicenseExtraInfo function in the offline facial recognition SDK.
         self.device_id = device_id
+        # The end time of the query, i.e., querying authorizations that will expire between ExpiredStartDay and ExpiredEndDay.
         self.expired_end_day = expired_end_day
+        # The start time of the query, i.e., querying authorizations that will expire between ExpiredStartDay and ExpiredEndDay.
         self.expired_start_day = expired_start_day
+        # Number of items per page in the query.
         self.page_size = page_size
+        # No more than 64 characters, defined by the access party, which can be used to identify a specific device.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -3781,10 +4079,15 @@ class DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo(TeaModel):
         expired_day: str = None,
         user_device_id: str = None,
     ):
+        # Authorization start date.
         self.begin_day = begin_day
+        # Corresponds to the BizType in the request.
         self.biz_type = biz_type
+        # Corresponds to the DeviceId in the request.
         self.device_id = device_id
+        # Authorization expiration date.
         self.expired_day = expired_day
+        # Corresponds to the UserDeviceId in the request.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -3867,10 +4170,15 @@ class DescribeDeviceInfoResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number being queried.
         self.current_page = current_page
+        # Array of device information.
         self.device_info_list = device_info_list
+        # Number of items per page.
         self.page_size = page_size
+        # The ID of this request.
         self.request_id = request_id
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -3960,9 +4268,15 @@ class DescribeFaceGuardRiskRequest(TeaModel):
         outer_order_no: str = None,
         product_code: str = None,
     ):
+        # Authentication ID
         self.biz_id = biz_id
+        # Risk identification - device token.
         self.device_token = device_token
+        # This identifier is used for subsequent troubleshooting, and you need to ensure that this value is unique in your business.
+        # 
+        # Supports the use of English letters (including uppercase and lowercase) and numbers, with a maximum length of 32 characters.
         self.outer_order_no = outer_order_no
+        # Product code, fixed value: FACE_GUARD
         self.product_code = product_code
 
     def validate(self):
@@ -4004,8 +4318,15 @@ class DescribeFaceGuardRiskResponseBodyResultObject(TeaModel):
         risk_extends: str = None,
         risk_tags: str = None,
     ):
+        # Unique real-person authentication identifier.
         self.certify_id = certify_id
+        # Extended information, in JSON format. (Customized return based on tenant requirements)
         self.risk_extends = risk_extends
+        # Device risk tags.
+        # 
+        # - Multiple device risk tags are separated by commas (,). For example, “ROOT,VPN,HOOK”,
+        # 
+        # - For more information about device risk tags and their meanings, please refer to the official documentation on Face Guard Tag Descriptions.
         self.risk_tags = risk_tags
 
     def validate(self):
@@ -4044,10 +4365,13 @@ class DescribeFaceGuardRiskResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeFaceGuardRiskResponseBodyResultObject = None,
     ):
+        # Return code, **200** indicates successful response from the interface.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -4132,8 +4456,11 @@ class DescribeFaceVerifyRequest(TeaModel):
         picture_return_type: str = None,
         scene_id: int = None,
     ):
+        # Unique identifier for real-person authentication.
         self.certify_id = certify_id
+        # Image return type.
         self.picture_return_type = picture_return_type
+        # Authentication scene ID.
         self.scene_id = scene_id
 
     def validate(self):
@@ -4176,13 +4503,27 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
         success: str = None,
         user_info: str = None,
     ):
+        # Device risk label.
         self.device_risk = device_risk
+        # Device token.
         self.device_token = device_token
+        # Information about the authenticated subject, usually empty in general authentication scenarios.
         self.identity_info = identity_info
+        # Attachment information of the authenticated subject, mainly image materials. JSON format, see example below.
         self.material_info = material_info
+        # Whether it passed, T for pass, F for fail.
         self.passed = passed
+        # Description of the authentication result. For details, see the SubCode explanation below.
         self.sub_code = sub_code
+        # Whether the response was successful.
         self.success = success
+        # Records the identity information and corresponding encoding entered by the user under the rare character mode. The returned data is a JSON formatted string, which will be an empty string if there are no rare characters in the name.
+        # 
+        # - name: Refers to the name entered by the user.
+        # 
+        # - verifyName: Refers to the final name encoding after verification. For example, if a rare character is verified through transcoding: “Mr. Wang”, the actual verified name is “Wang Xiansheng”.
+        # 
+        # - number: Refers to the identification number entered by the user.
         self.user_info = user_info
 
     def validate(self):
@@ -4241,9 +4582,13 @@ class DescribeFaceVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeFaceVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates success, other values indicate failure.
         self.code = code
+        # Error message
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -4332,12 +4677,19 @@ class DescribeOssUploadTokenResponseBodyOssUploadToken(TeaModel):
         secret: str = None,
         token: str = None,
     ):
+        # OSS bucket for file storage.
         self.bucket = bucket
+        # Access endpoint.
         self.end_point = end_point
+        # Expiration time.
         self.expired = expired
+        # The Key required for file upload.
         self.key = key
+        # File storage path.
         self.path = path
+        # The Secret required for file upload.
         self.secret = secret
+        # The Token required for file upload.
         self.token = token
 
     def validate(self):
@@ -4390,7 +4742,9 @@ class DescribeOssUploadTokenResponseBody(TeaModel):
         oss_upload_token: DescribeOssUploadTokenResponseBodyOssUploadToken = None,
         request_id: str = None,
     ):
+        # Information about the OSS upload Token.
         self.oss_upload_token = oss_upload_token
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -4470,11 +4824,17 @@ class DescribePageFaceVerifyDataRequest(TeaModel):
         scene_id: int = None,
         start_date: str = None,
     ):
+        # Current page number, default is 1.
         self.current_page = current_page
+        # Required, end time, format is yyyy-MM-dd, default is yyyy-MM-dd 00:00:00, the query interval cannot exceed 90 days.
         self.end_date = end_date
+        # Number of items per page, default is 10.
         self.page_size = page_size
+        # Product code.
         self.product_code = product_code
+        # Scene ID.
         self.scene_id = scene_id
+        # Required, start time, format is yyyy-MM-dd, default is yyyy-MM-dd 00:00:00, the query interval cannot exceed 90 days.
         self.start_date = start_date
 
     def validate(self):
@@ -4527,11 +4887,17 @@ class DescribePageFaceVerifyDataResponseBodyItems(TeaModel):
         success_count: str = None,
         total_count: str = None,
     ):
+        # Date.
         self.date = date
+        # Product scheme code, please refer to the financial-grade real-person help documentation.
         self.product_code = product_code
+        # Scene ID.
         self.scene_id = scene_id
+        # Scene name.
         self.scene_name = scene_name
+        # Number of successful calls.
         self.success_count = success_count
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -4587,14 +4953,23 @@ class DescribePageFaceVerifyDataResponseBody(TeaModel):
         total_count: str = None,
         total_page: str = None,
     ):
+        # Return code
         self.code = code
+        # Current page number.
         self.current_page = current_page
+        # List of returned data.
         self.items = items
+        # Return message.
         self.message = message
+        # Number of items per page.
         self.page_size = page_size
+        # ID of this request.
         self.request_id = request_id
+        # Whether the response was successful.
         self.success = success
+        # Total count.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -4708,15 +5083,26 @@ class DescribeSmartStatisticsPageListRequest(TeaModel):
         service_code: str = None,
         start_date: str = None,
     ):
+        # Current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # End time, using UTC format, in the form of yyyy-MM-ddTHH:mm:ssZ.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # Number of items per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Scene ID.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
+        # ServiceCode for the real person cloud product, only value: **cloudauthst**.
         self.service_code = service_code
+        # Start time, using UTC format, in the form of yyyy-MM-ddTHH:mm:ssZ.
+        # 
         # This parameter is required.
         self.start_date = start_date
 
@@ -4771,12 +5157,19 @@ class DescribeSmartStatisticsPageListResponseBodyItems(TeaModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # Date. Format: <i>month/day</i>
         self.date = date
+        # Pass rate.
         self.pass_rate = pass_rate
+        # Product solution Code, please refer to the Enhanced Real Person Help Documentation.
         self.product_code = product_code
+        # Scene ID.
         self.scene_id = scene_id
+        # Scene name.
         self.scene_name = scene_name
+        # Number of successful calls.
         self.success_count = success_count
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -4833,11 +5226,17 @@ class DescribeSmartStatisticsPageListResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Returned data list.
         self.items = items
+        # Number of items displayed per page.
         self.page_size = page_size
+        # ID of this request.
         self.request_id = request_id
+        # Total count.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -4935,8 +5334,12 @@ class DescribeVerifyResultRequest(TeaModel):
         biz_id: str = None,
         biz_type: str = None,
     ):
+        # Authentication ID. A unique ID that identifies an authentication task, not exceeding 64 characters. For a single authentication task, the system supports an unlimited number of submissions until the final authentication is successful and the task is completed. > You need to use a different BizId for each new authentication task.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Business scenario identifier for real-person authentication service
+        # 
         # This parameter is required.
         self.biz_type = biz_type
 
@@ -4978,15 +5381,27 @@ class DescribeVerifyResultResponseBodyMaterialIdCardInfo(TeaModel):
         number: str = None,
         start_date: str = None,
     ):
+        # Address.
         self.address = address
+        # Issuing authority.
         self.authority = authority
+        # HTTP/HTTPS link to the image of the back side (national emblem side) of the ID card. The link is valid for 5 minutes, and it is recommended to store it for business use to avoid any impact.
+        # > If the HTTP/HTTPS link to the front-facing portrait image expires, you can call DescribeVerifyResult again to get the link.
         self.back_image_url = back_image_url
+        # Date of birth.
         self.birth = birth
+        # The end date of the document\\"s validity period. Format: yyyymmdd.
         self.end_date = end_date
+        # HTTP/HTTPS link to the image of the front side (portrait side) of the ID card. The link is valid for 5 minutes, and it is recommended to store it for business use to avoid any impact.
+        # > If the HTTP/HTTPS link to the front-facing portrait image expires, you can call DescribeVerifyResult again to get the link.
         self.front_image_url = front_image_url
+        # Name.
         self.name = name
+        # Nationality.
         self.nationality = nationality
+        # ID card number.
         self.number = number
+        # Start date of the document\\"s validity. Format: yyyymmdd.
         self.start_date = start_date
 
     def validate(self):
@@ -5057,13 +5472,31 @@ class DescribeVerifyResultResponseBodyMaterial(TeaModel):
         id_card_number: str = None,
         video_urls: List[str] = None,
     ):
+        # The global camera image captured by the real-person authentication SDK.
+        # 
+        # > This parameter will only take effect after configuration. If you need to use this parameter, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
         self.face_global_url = face_global_url
+        # The HTTP or HTTPS link to the frontal face image. The link is valid for 5 minutes, and it is recommended to store it elsewhere to avoid any impact on usage.
+        # > If the HTTP or HTTPS link to the frontal face image expires, you can call [DescribeVerifyResult](https://help.aliyun.com/document_detail/154606.html) again to get the link.
         self.face_image_url = face_image_url
+        # Whether the face is wearing a mask. Values:
+        # - **true**: Wearing a mask
+        # - **false**: Not wearing a mask
         self.face_mask = face_mask
+        # The quality of the frontal face image. Values:
+        # - **UNQUALIFIED**: Poor quality
+        # - **LOW**: Low
+        # - **NORMAL**: Normal
+        # - **HIGH**: High
         self.face_quality = face_quality
+        # OCR results of the ID card information.
+        # > If there is no front and back information of the ID card during the authentication process, the real-person authentication service will not return the OCR results of the ID card. Even if there is front and back information of the ID card during the authentication process, the real-person authentication service does not guarantee to return all the information on the ID card. Due to issues with ID card photography, the OCR may fail to recognize some information, resulting in incomplete OCR information. It is recommended that your business does not strongly rely on the ID card OCR information.
         self.id_card_info = id_card_info
+        # Name.
         self.id_card_name = id_card_name
+        # ID number.
         self.id_card_number = id_card_number
+        # The URL addresses of the recorded videos returned by the historical RPH5BioOnly solution.
         self.video_urls = video_urls
 
     def validate(self):
@@ -5126,11 +5559,35 @@ class DescribeVerifyResultResponseBody(TeaModel):
         request_id: str = None,
         verify_status: int = None,
     ):
+        # The comparison score between the face photo submitted during the authentication process and the authoritative data, with a value range of **0** to **100**.
+        # Confidence threshold references:
+        # - When the false acceptance rate is 0.001%, the corresponding threshold is 95. - When the false acceptance rate is 0.01%, the corresponding threshold is 90. - When the false acceptance rate is 0.1%, the corresponding threshold is 80. - When the false acceptance rate is 1%, the corresponding threshold is 60.
+        # > This field only indicates the comparison result between the face and the authoritative data, for your reference only. It is generally not recommended to use this value alone as the standard for whether the authentication passes. For a comprehensive authentication result, please refer to the **VerifyStatus** field. The **VerifyStatus** result integrates the comparison of the face with the authoritative data and various other strategies, which can enhance security levels.
         self.authority_comparision_score = authority_comparision_score
+        # The comparison score between the face photo submitted during the authentication process and the face in the retained face image. The value range is **0**~**100**.
+        # 
+        # Confidence threshold reference:
+        # 
+        # - When the false recognition rate is 0.001%, the corresponding threshold is 95.
+        # - When the false recognition rate is 0.01%, the corresponding threshold is 90.
+        # - When the false recognition rate is 0.1%, the corresponding threshold is 80.
+        # - When the false recognition rate is 1%, the corresponding threshold is 60.
         self.face_comparison_score = face_comparison_score
+        # The comparison score between the face photo submitted during the authentication process and the face on the ID card\\"s face side. The value range is **0**~**100**.
+        # 
+        # Confidence threshold reference:
+        # 
+        # - When the false recognition rate is 0.001%, the corresponding threshold is 95.
+        # - When the false recognition rate is 0.01%, the corresponding threshold is 90.
+        # - When the false recognition rate is 0.1%, the corresponding threshold is 80.
+        # - When the false recognition rate is 1%, the corresponding threshold is 60.
         self.id_card_face_comparison_score = id_card_face_comparison_score
+        # Authentication materials.
         self.material = material
+        # The ID of this request.
         self.request_id = request_id
+        # Authentication status, values:
+        # - **-1**: Not authenticated - **1**: Authentication passed - **2** to **n**: Authentication failed for various reasons. For detailed descriptions, see the authentication status explanation.
         self.verify_status = verify_status
 
     def validate(self):
@@ -5221,6 +5678,8 @@ class DescribeVerifySDKRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The task ID for generating the SDK.
+        # 
         # This parameter is required.
         self.task_id = task_id
 
@@ -5250,7 +5709,9 @@ class DescribeVerifySDKResponseBody(TeaModel):
         request_id: str = None,
         sdk_url: str = None,
     ):
+        # The ID of this request.
         self.request_id = request_id
+        # The SDK download URL. When not empty, it indicates that the generation is complete.
         self.sdk_url = sdk_url
 
     def validate(self):
@@ -5337,22 +5798,41 @@ class DescribeVerifyTokenRequest(TeaModel):
         user_phone_number: str = None,
         user_regist_time: int = None,
     ):
+        # Verification ID. A unique ID that identifies a verification task, not exceeding 64 characters. For a single verification task, the system supports unlimited submissions until the final verification is passed and the task is completed.
+        # 
+        # > Different BizIds are required for different verification tasks.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Identifier for the business scenario using the real person authentication service. Please refer to [Business Settings](https://help.aliyun.com/document_detail/127885.html) and complete the creation in the console first.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Callback seed.
         self.callback_seed = callback_seed
+        # Callback URL.
         self.callback_url = callback_url
+        # HTTP or HTTPS link to the retained portrait photo.
         self.face_retained_image_url = face_retained_image_url
+        # Redirect URL for failed verification.
         self.failed_redirect_url = failed_redirect_url
+        # HTTP or HTTPS link to the national emblem side of the ID card image.
         self.id_card_back_image_url = id_card_back_image_url
+        # HTTP or HTTPS link to the portrait side of the ID card image.
         self.id_card_front_image_url = id_card_front_image_url
+        # ID card number.
         self.id_card_number = id_card_number
+        # Name.
         self.name = name
+        # Redirect URL upon successful verification.
         self.passed_redirect_url = passed_redirect_url
+        # ID of the end user, such as the account ID of the end user.
         self.user_id = user_id
+        # User IP.
         self.user_ip = user_ip
+        # User phone number.
         self.user_phone_number = user_phone_number
+        # User registration time. Expressed in timestamp format, unit: milliseconds.
         self.user_regist_time = user_regist_time
 
     def validate(self):
@@ -5442,12 +5922,19 @@ class DescribeVerifyTokenResponseBodyOssUploadToken(TeaModel):
         secret: str = None,
         token: str = None,
     ):
+        # OSS file storage bucket.
         self.bucket = bucket
+        # Access endpoint.
         self.end_point = end_point
+        # Expiration time. Expressed in timestamp format, unit: milliseconds.
         self.expired = expired
+        # The key required for file upload.
         self.key = key
+        # File storage path.
         self.path = path
+        # The secret required for file upload.
         self.secret = secret
+        # The token required for file upload.
         self.token = token
 
     def validate(self):
@@ -5502,9 +5989,13 @@ class DescribeVerifyTokenResponseBody(TeaModel):
         verify_page_url: str = None,
         verify_token: str = None,
     ):
+        # OSS upload token information.
         self.oss_upload_token = oss_upload_token
+        # The ID of this request.
         self.request_id = request_id
+        # The entry link for the original H5 verification scheme, which has been discontinued and no longer supports new integrations. If you need to integrate an H5 verification scheme, it is recommended to use the [PC or mobile H5 web integration solution](https://help.aliyun.com/document_detail/173779.html) of financial-grade real-person authentication.
         self.verify_page_url = verify_page_url
+        # The token for this verification, used to link various interfaces in the verification request, valid for 30 minutes.
         self.verify_token = verify_token
 
     def validate(self):
@@ -5588,7 +6079,10 @@ class DetectFaceAttributesRequest(TeaModel):
         biz_type: str = None,
         material_value: str = None,
     ):
+        # Identifier for the business scenario using real-person authentication services.
         self.biz_type = biz_type
+        # The photo to be detected, see the instructions for uploading image addresses for format description. A maximum of 5 faces can be detected in a single image.
+        # 
         # This parameter is required.
         self.material_value = material_value
 
@@ -5623,8 +6117,11 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceA
         roll_angle: float = None,
         yaw_angle: float = None,
     ):
+        # Pitch angle, in degrees.
         self.pitch_angle = pitch_angle
+        # Roll angle, in degrees.
         self.roll_angle = roll_angle
+        # Yaw angle, in degrees.
         self.yaw_angle = yaw_angle
 
     def validate(self):
@@ -5661,7 +6158,9 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceA
         threshold: float = None,
         value: float = None,
     ):
+        # Smile threshold.
         self.threshold = threshold
+        # Smile score.
         self.value = value
 
     def validate(self):
@@ -5700,13 +6199,34 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceA
         respirator: str = None,
         smiling: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling = None,
     ):
+        # Face blur level, with higher values indicating more blurriness. Typically, a value ≥2.0 is considered quite blurry. It is recommended to adjust based on actual business data testing.
         self.blur = blur
+        # A score ranging from 0 to 100. The higher the score, the better the quality. It is recommended to consider a score of 50 or above as acceptable quality.
         self.facequal = facequal
+        # Whether it is a human face. Values:
+        # 
+        # - **None**: Not a human face
+        # - **Face**: Human face
+        # - **Profile**: Profile (head turned left or right by more than 30°)
+        # 
+        # > If no face is detected, the `faceInfos` in the response will be empty; here, `None` means that a face was detected but is considered to be a cartoon, pet, etc.
         self.facetype = facetype
+        # Whether wearing glasses. Values:
+        # 
+        # - **None**: Not wearing glasses
+        # - **Wear**: Wearing regular glasses
+        # - **Sunglass**: Wearing sunglasses
         self.glasses = glasses
+        # Face pose.
         self.headpose = headpose
+        # A score ranging from 0 to 100. The higher the score, the more complete the face. It is recommended to consider a score of 70 or above as acceptable completeness.
         self.integrity = integrity
+        # Whether wearing a mask. Values:
+        # 
+        # - Wear: Wearing a mask.
+        # - None: Not wearing a mask.
         self.respirator = respirator
+        # Whether smiling.
         self.smiling = smiling
 
     def validate(self):
@@ -5770,9 +6290,13 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceR
         top: int = None,
         width: int = None,
     ):
+        # Height of the face rectangle.
         self.height = height
+        # Distance from the top-left corner of the face rectangle to the left edge of the original image, in pixels.
         self.left = left
+        # Distance from the top-left corner of the face rectangle to the top edge of the original image, in pixels.
         self.top = top
+        # Width of the face rectangle.
         self.width = width
 
     def validate(self):
@@ -5813,7 +6337,9 @@ class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo(TeaM
         face_attributes: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes = None,
         face_rect: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect = None,
     ):
+        # Face attributes.
         self.face_attributes = face_attributes
+        # Position of the face in the original image.
         self.face_rect = face_rect
 
     def validate(self):
@@ -5887,8 +6413,11 @@ class DetectFaceAttributesResponseBodyData(TeaModel):
         img_height: int = None,
         img_width: int = None,
     ):
+        # Face detection results.
         self.face_infos = face_infos
+        # Original image height, in pixels.
         self.img_height = img_height
+        # Original image width, in pixels.
         self.img_width = img_width
 
     def validate(self):
@@ -5930,10 +6459,15 @@ class DetectFaceAttributesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # HTTP status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error code.
         self.message = message
+        # ID of this request.
         self.request_id = request_id
+        # Whether the response was successful.
         self.success = success
 
     def validate(self):
@@ -6804,6 +7338,312 @@ class Id2MetaVerifyWithOCRResponse(TeaModel):
         return self
 
 
+class Id3MetaVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        crop: str = None,
+        face_file: str = None,
+        face_url: str = None,
+        identify_num: str = None,
+        param_type: str = None,
+        user_name: str = None,
+    ):
+        # Whether to allow cropping of the face image, default is not allowed.
+        # - T: Allow cropping.
+        # - F: Do not allow cropping.
+        # 
+        # **Note**\
+        # 
+        # If the image you request is not collected from a standard liveness detection SDK, it is recommended to allow cropping of the face image. After enabling this feature, the system will first crop and correct the requested image, then initiate the service request.
+        self.crop = crop
+        # Portrait side of the ID card image input stream.
+        # Choose one between `CertUrl` and `CertFile`.
+        self.face_file = face_file
+        # Portrait side of the ID card image.
+        # Accessible HTTP or HTTPS link on the public network.
+        # Choose one between `CertUrl` and `CertFile`.
+        self.face_url = face_url
+        # ID number:
+        # - When `paramType` is `normal`: enter the plaintext ID number.
+        # - When `paramType` is `md5`:
+        # The first 6 digits (plaintext) + date of birth (ciphertext) + last 4 digits (plaintext).
+        self.identify_num = identify_num
+        # Encryption method:
+        # - normal: plaintext without encryption
+        # - md5: MD5 encryption
+        # 
+        # **Important**\
+        # 
+        # - All encrypted parameters should be in the form of a 32-character lowercase MD5 string.
+        # - The ciphertext generated by different MD5 tools may vary. If the interface works before encryption but not after, try changing the MD5 tool.
+        self.param_type = param_type
+        # Name:
+        # - When `paramType` is `normal`: enter the plaintext name.
+        # - When `paramType` is `md5`: the first character of the name (ciphertext) + the rest of the name (plaintext).
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crop is not None:
+            result['Crop'] = self.crop
+        if self.face_file is not None:
+            result['FaceFile'] = self.face_file
+        if self.face_url is not None:
+            result['FaceUrl'] = self.face_url
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Crop') is not None:
+            self.crop = m.get('Crop')
+        if m.get('FaceFile') is not None:
+            self.face_file = m.get('FaceFile')
+        if m.get('FaceUrl') is not None:
+            self.face_url = m.get('FaceUrl')
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class Id3MetaVerifyAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        crop: str = None,
+        face_file_object: BinaryIO = None,
+        face_url: str = None,
+        identify_num: str = None,
+        param_type: str = None,
+        user_name: str = None,
+    ):
+        # Whether to allow cropping of the face image, default is not allowed.
+        # - T: Allow cropping.
+        # - F: Do not allow cropping.
+        # 
+        # **Note**\
+        # 
+        # If the image you request is not collected from a standard liveness detection SDK, it is recommended to allow cropping of the face image. After enabling this feature, the system will first crop and correct the requested image, then initiate the service request.
+        self.crop = crop
+        # Portrait side of the ID card image input stream.
+        # Choose one between `CertUrl` and `CertFile`.
+        self.face_file_object = face_file_object
+        # Portrait side of the ID card image.
+        # Accessible HTTP or HTTPS link on the public network.
+        # Choose one between `CertUrl` and `CertFile`.
+        self.face_url = face_url
+        # ID number:
+        # - When `paramType` is `normal`: enter the plaintext ID number.
+        # - When `paramType` is `md5`:
+        # The first 6 digits (plaintext) + date of birth (ciphertext) + last 4 digits (plaintext).
+        self.identify_num = identify_num
+        # Encryption method:
+        # - normal: plaintext without encryption
+        # - md5: MD5 encryption
+        # 
+        # **Important**\
+        # 
+        # - All encrypted parameters should be in the form of a 32-character lowercase MD5 string.
+        # - The ciphertext generated by different MD5 tools may vary. If the interface works before encryption but not after, try changing the MD5 tool.
+        self.param_type = param_type
+        # Name:
+        # - When `paramType` is `normal`: enter the plaintext name.
+        # - When `paramType` is `md5`: the first character of the name (ciphertext) + the rest of the name (plaintext).
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crop is not None:
+            result['Crop'] = self.crop
+        if self.face_file_object is not None:
+            result['FaceFile'] = self.face_file_object
+        if self.face_url is not None:
+            result['FaceUrl'] = self.face_url
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Crop') is not None:
+            self.crop = m.get('Crop')
+        if m.get('FaceFile') is not None:
+            self.face_file_object = m.get('FaceFile')
+        if m.get('FaceUrl') is not None:
+            self.face_url = m.get('FaceUrl')
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class Id3MetaVerifyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        face_detail: str = None,
+    ):
+        # Identity verification result:
+        # 
+        # - 1: Consistent
+        # - 2: Inconsistent
+        # - 3: No record found
+        self.biz_code = biz_code
+        # Image comparison score.
+        self.face_detail = face_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.face_detail is not None:
+            result['FaceDetail'] = self.face_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('FaceDetail') is not None:
+            self.face_detail = m.get('FaceDetail')
+        return self
+
+
+class Id3MetaVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: Id3MetaVerifyResponseBodyResultObject = None,
+    ):
+        # Return code: 200 indicates success, others indicate failure.
+        # **Important**\
+        # - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
+        # - Check the business verification result through the fields in `ResultObject`.
+        self.code = code
+        # Interface call return message.
+        # 
+        # **Important**\
+        # 
+        # This parameter only indicates whether there was an exception with the interface.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Result object.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = Id3MetaVerifyResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class Id3MetaVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Id3MetaVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Id3MetaVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitCardVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -7093,43 +7933,222 @@ class InitFaceVerifyRequest(TeaModel):
         video_evidence: str = None,
         voluntary_customized_content: str = None,
     ):
+        # Whether the SDK enables strict face quality detection:
+        # 
+        # - **Y**: Enable
+        # 
+        # - **N** (default): Disable
+        # 
+        # 
+        # > 
+        # > - If this parameter is enabled, the SDK needs to integrate the [strict face quality detection module](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-sdk-package-clipping?spm=a2c4g.11186623.0.0.1a9d35c6ySFUPW). Enabling strict quality detection may decrease the success rate of user face recognition.
+        # > - Only supported in Android SDK version 2.3.24 and above.
         self.app_quality_check = app_quality_check
+        # User authorization ID, with a maximum length of 64 characters.
         self.auth_id = auth_id
+        # Date of birth on the document.
+        # 
+        # This field is required when the document type **CertType** is **PASSPORT** and **Mode** is **3**.
         self.birthday = birthday
+        # Security token, generated by you, used for preventing duplication and tampering.
+        # 
+        # If this value is set, the **CallbackToken** field will be displayed in the callback address.
         self.callback_token = callback_token
+        # Callback notification address for the authentication result, with the default callback request method being GET. The callback address must start with `https`. After completing the authentication, the platform will call back this address and automatically add the `certifyId` and `passed` fields, where the value of the `passed` field is the subcode, for example: `https://www.aliyun.com?callbackToken=1000004826&certifyId=shaxxxx&passed=200`.
+        # 
+        # <notice>
+        # 
+        # - Callbacks are triggered only when the authentication is completed (including both successful and unsuccessful authentications). If the authentication is abandoned, interrupted abnormally, or not performed, no notification will be sent. It is recommended that you retrieve detailed authentication information through a query interface if needed after receiving the callback notification.
+        # - The accessibility of the provided address will be verified before the API call. If the address cannot be accessed over the public network, a 401 error will be returned.
+        # - The callback interface must return an HTTP status code of 200; otherwise, it will trigger a retry, with two callbacks within 3 seconds.
+        # 
+        # </notice>
         self.callback_url = callback_url
+        # Whether to enable the camera selection feature:
+        # 
+        # - **Y**: Enable
+        # 
+        # - **N** (default): Disable
+        # 
+        # > This feature only takes effect in PC integration mode. When enabled, it allows users to select the camera for authentication.
         self.camera_selection = camera_selection
+        # Real name.
         self.cert_name = cert_name
+        # Document number.
         self.cert_no = cert_no
+        # Document type.
+        # Currently, only IDENTITY_CARD (ID card) is supported.
         self.cert_type = cert_type
+        # >Warning: To be deprecated
+        # 
+        # Previously passed CertifyId for real-person authentication, where the photo taken during authentication is used as the comparison photo.
+        # 
+        # > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.certify_id = certify_id
+        # Types of **CertifyUrl** returned, including:
+        # 
+        # - **L**: Original long link
+        # 
+        # - **S** (default): Short link
         self.certify_url_style = certify_url_style
+        # Web SDK device type, with values **WEB** or **H5**.
+        # 
+        # > Only Web SDK device types are supported.
         self.certify_url_type = certify_url_type
+        # Whether to allow cropping of the face image, with the default being not allowed.
+        # 
+        # - T: Indicates allowing cropping.
+        # 
+        # - F: Indicates not allowing cropping.
+        # 
+        # > If the image you are requesting is not from a standard liveness detection SDK, it is recommended to allow face image cropping. When this feature is enabled, the requested image will first undergo face cropping and alignment, and then the service request will be initiated.
         self.crop = crop
+        # Encryption algorithm to be used, currently supporting only the SM2 national encryption algorithm.
+        # 
+        # After enabling encrypted transmission, you need to pass in the encrypted CertName and CertNo. For how to encrypt, please refer to [Parameter Encryption Instructions](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.1a9d566eWdqwy8#task-2229332).
         self.encrypt_type = encrypt_type
+        # Base64 encoded photo.
+        # 
+        # > Choose one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.face_contrast_picture = face_contrast_picture
+        # OSS photo address, currently only supports authorized OSS photo addresses.
+        # 
+        # > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.face_contrast_picture_url = face_contrast_picture_url
+        # Device assistant label type, with the value: **DeviceRisk**.
+        # 
+        # >
+        # > - Choosing to output the device assistant will incur additional costs. For details, see [Paid Value-Added Services](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/face-guard?spm=a2c4g.11186623.0.0.443e5522rbHsR4).
+        # > - If you do not need to output the device assistant label, you can either not pass the parameter or pass an empty value.
         self.face_guard_output = face_guard_output
+        # User\\"s IP address.
         self.ip = ip
+        # Metainfo environment parameter, which needs to be obtained through the client SDK.
         self.meta_info = meta_info
+        # User\\"s phone number.
         self.mobile = mobile
+        # Method to obtain passport NFC verification elements:
+        # 
+        # - **1**: User input, where the end-user manually inputs the document information using the UI interface provided by the Alibaba Cloud SDK.
+        # 
+        # - **3**: External parameter input, where the document information is passed through external parameters.
+        # 
+        # > When decoding the encrypted information from the passport chip using NFC, three elements of the passport need to be obtained, including name, date of birth, and document expiration date.
         self.mode = mode
+        # Liveness detection type, with values:
+        # > Only the following liveness detection types are supported; custom actions or combinations are not supported at this time.
+        # 
+        # Note
+        # Only the following liveness detection types are supported; custom actions or combinations are not supported at this time.
+        # 
+        # - **LIVENESS** (default): Blinking
+        # 
+        # - **PHOTINUS_LIVENESS**: Blinking + Colorful Light
+        # 
+        # - **MULTI_ACTION**: Blinking + Head Shaking (the order of blinking and head shaking is random)
+        # 
+        # - **MOVE_ACTION** (recommended): Moving Closer and Farther + Blinking
+        # 
+        # - **MOVE_PHOTINUS**: Moving Closer and Farther + Colorful Light
+        # 
+        # > 
+        # >- The **default liveness detection type** is supported in the following versions:
+        # >   - Android SDK 1.2.6 and above
+        # >   - iOS SDK 1.2.4 and above
+        # >   - Harmony SDK 1.0.0 and above
+        # >- Other types are supported in the latest SDK versions for Android/iOS/Harmony. It is recommended to integrate the latest version.
         self.model = model
+        # Whether to intercept when multiple faces are detected, with the following values:
+        # 
+        # - **Y**: Intercept, and the client prompts the user to re-scan their face.
+        # 
+        # - **N** (default): Do not intercept, and send the largest face in the scanned image to the server for security checks.
         self.need_multi_face_check = need_multi_face_check
+        # Authorized OSS bucket name.
+        # 
+        # > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.oss_bucket_name = oss_bucket_name
+        # Authorized OSS object name.
+        # 
+        # > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
         self.oss_object_name = oss_object_name
+        # Unique identifier for the merchant\\"s request.
+        # 
+        # The value is a 32-character alphanumeric combination. The first few characters are a custom abbreviation defined by the merchant, followed by a period, and the latter part can be a random or incremental sequence.
         self.outer_order_no = outer_order_no
+        # Degradation configuration for mobile H5 authentication when WebRTC or Webassembly is incompatible.
+        # 
+        # - **keep**: Does not support degradation, returns directly.
+        # 
+        # - **url** (default): Supports degradation, returns an authentication URL. Users can use this URL to open or switch browsers for authentication.
+        # 
+        # - **video**: Supports degradation, uses the system camera to record a 3~5 second blinking video for authentication.
+        # 
+        # 
+        # > 
+        # > When the degradation mode is Video, the following functions will be disabled, and the product security will decrease. It is recommended to configure it only for secure scenarios.
+        # > - Liveness detection type settings will not take effect.
+        # > - The VideoEvidence function is not supported.
         self.procedure_priority = procedure_priority
+        # Fixed value. The parameter value differs based on the product solution:
+        # - APP Authentication Scheme: Fixed value is ID_PRO
+        # - Live Face Verification Scheme: Fixed value is PV_FV
+        # - Liveness Detection Scheme: Fixed value is LR_FR
         self.product_code = product_code
+        # Whether to enable rare character mode:
+        # 
+        # - **Y**: Enable. A message input box will pop up before the user authenticates, requiring the input of the rare character name and ID number. The user must agree to the terms before starting the authentication process.
+        # 
+        # - **N**: Not enabled (default)
         self.rarely_characters = rarely_characters
+        # Whether to read the document photo:
+        # 
+        # - **Y**: Read
+        # 
+        # - **N**: Do not read
+        # 
+        # > If the document face photo is needed in subsequent authentication steps, it is recommended to set this parameter to Y.
         self.read_img = read_img
+        # Target URL for the merchant\\"s business page to redirect to.
         self.return_url = return_url
+        # Authentication Scene ID.
         self.scene_id = scene_id
+        # Aging-friendly configuration parameters that take effect for each authentication request. You can choose different parameters based on your app\\"s business attributes, customer distribution, operational characteristics, etc., for each authentication request. The options include the following, with the default being 0.
+        # 
+        # - **0**: Not enabled, indicating that the current authentication request does not enable aging-friendly mode.
+        # 
+        # - **1**: Enabled, indicating that the current authentication request enables aging-friendly mode.
+        # 
+        # - **2**: User choice.
+        # 
+        # 
+        # Supports end-users in choosing the authentication mode. The product guide page provides two authentication entry points: \\"Enable Authentication\\" and \\"Elderly Authentication Mode\\". When the user selects \\"Elderly Authentication Mode\\", the system enters aging-friendly mode.
+        # > 
+        # > - Aging-friendly parameters are only effective when the liveness detection type **Model** is set to **LIVENESS** or **MULTI_ACTION**.
         self.suitable_type = suitable_type
+        # UI configuration file URL.
+        # 
+        # You can view the complete configuration in the [Web SDK UI Customization Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/web-sdk-ui-custom-configuration-description?spm=a2c4g.11186623.0.0.4c683f5c8K3I9p).
         self.ui_custom_url = ui_custom_url
+        # Custom user ID for the customer\\"s business, please ensure it is unique.
         self.user_id = user_id
+        # Document expiration date.
+        # 
+        # This field is required when the document type **CertType** is **PASSPORT** and **Mode** is **3**.
         self.validity_date = validity_date
+        # Whether to enable video evidence:
+        # 
+        # - **true**: Enable
+        # 
+        # - **false** (default): Disable
+        # 
+        # > Due to the large size of video files, when the network is unstable, the system will discard the video file to prioritize the transmission of necessary images for authentication. It is recommended that your business set a weak dependency on the video.
         self.video_evidence = video_evidence
+        # Customized content. Required when personalized settings are enabled. The format is a JSON String of a String List.
+        # 
+        # - For the follow-reading scenario: It should not exceed 60 Chinese characters (excluding punctuation), and the List contains only one element.
+        # 
+        # - For the Q&A scenario: Up to 3 questions can be set, with each question not exceeding 30 Chinese characters, and each question being an element in the List.
         self.voluntary_customized_content = voluntary_customized_content
 
     def validate(self):
@@ -7306,7 +8325,18 @@ class InitFaceVerifyResponseBodyResultObject(TeaModel):
         certify_id: str = None,
         certify_url: str = None,
     ):
+        # Unique identifier for real-person authentication.
         self.certify_id = certify_id
+        # URL for real-person authentication in a Web browser, which will redirect according to the ReturnUrl parameter after authentication.
+        # 
+        # >Notice: 
+        # 
+        # - The CertifyUrl returned by the initialization interface is valid for **30 minutes and can only be used once**. Please use it within the validity period to avoid reuse.
+        # - This parameter requires the correct input of **MetaInfo** to return a CertifyUrl that matches the client. If you cannot obtain it, please check whether **MetaInfo** and other input parameters are correct.
+        # 
+        # - The domain name of this URL may change with service updates. To ensure normal service availability, it is recommended not to apply access control to this domain name.
+        # 
+        # - When redirecting in the browser, try not to use incognito mode or modify the URL, as this may result in a **signature error**.
         self.certify_url = certify_url
 
     def validate(self):
@@ -7341,9 +8371,13 @@ class InitFaceVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: InitFaceVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates success, other values indicate failure.
         self.code = code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Result object.
         self.result_object = result_object
 
     def validate(self):
@@ -7599,19 +8633,37 @@ class LivenessFaceVerifyRequest(TeaModel):
         scene_id: int = None,
         user_id: str = None,
     ):
+        # Unique identifier for real-person authentication.
         self.certify_id = certify_id
+        # Whether to allow cropping of the face image:
+        # 
+        # - T: Allow cropping
+        # 
+        # - F (default): Do not allow cropping.
         self.crop = crop
+        # Device token, used for risk identification.
         self.device_token = device_token
+        # Base64 encoded photo.
         self.face_contrast_picture = face_contrast_picture
+        # Image URL.
         self.face_contrast_picture_url = face_contrast_picture_url
+        # User\\"s network IP address.
         self.ip = ip
+        # User\\"s mobile phone number.
         self.mobile = mobile
+        # Liveness detection parameters.
         self.model = model
+        # Authorized OSS bucket name.
         self.oss_bucket_name = oss_bucket_name
+        # Authorized OSS file name.
         self.oss_object_name = oss_object_name
+        # A unique business identifier defined by the client side, used for subsequent troubleshooting. The value should be a combination of letters and numbers up to 32 characters long, ensuring uniqueness.
         self.outer_order_no = outer_order_no
+        # Fixed value: LR_FR_MIN.
         self.product_code = product_code
+        # Authentication scenario ID. This ID is automatically generated after creating an authentication scenario in the console.
         self.scene_id = scene_id
+        # Your custom user ID (up to 100 characters), please ensure it is unique.
         self.user_id = user_id
 
     def validate(self):
@@ -7694,9 +8746,17 @@ class LivenessFaceVerifyResponseBodyResultObject(TeaModel):
         passed: str = None,
         sub_code: str = None,
     ):
+        # Unique identifier for the real-person authentication request.
         self.certify_id = certify_id
+        # Attachment information of the face authentication subject, including data such as face quality, face attack, face or OCR image, and intent verification.
         self.material_info = material_info
+        # Authentication result, values:
+        # 
+        # - T: Passed
+        # 
+        # - F: Not passed
         self.passed = passed
+        # Authentication result code.
         self.sub_code = sub_code
 
     def validate(self):
@@ -7739,9 +8799,13 @@ class LivenessFaceVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: LivenessFaceVerifyResponseBodyResultObject = None,
     ):
+        # Return code, **200** indicates successful API response.
         self.code = code
+        # Return message.
         self.message = message
+        # ID of this request.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -11087,18 +12151,33 @@ class VerifyMaterialRequest(TeaModel):
         name: str = None,
         user_id: str = None,
     ):
+        # A unique ID that identifies a single authentication task, not exceeding 64 characters. For a single authentication task, the system supports unlimited submissions until the final authentication is passed and the task is completed.
+        # 
+        # > Different BizIds are required for different authentication tasks.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Identifier for the business scenario using the real-person authentication service. Please refer to [Business Setup](https://help.aliyun.com/document_detail/127885.html) and complete the creation in the console first.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # HTTP or HTTPS link to the frontal face image.
+        # 
         # This parameter is required.
         self.face_image_url = face_image_url
+        # HTTP or HTTPS link to the national emblem side of the ID card.
         self.id_card_back_image_url = id_card_back_image_url
+        # HTTP or HTTPS link to the portrait side of the ID card image.
         self.id_card_front_image_url = id_card_front_image_url
+        # ID number.
+        # 
         # This parameter is required.
         self.id_card_number = id_card_number
+        # Name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the end user, such as the account ID of the end user.
         self.user_id = user_id
 
     def validate(self):
@@ -11163,15 +12242,25 @@ class VerifyMaterialResponseBodyMaterialIdCardInfo(TeaModel):
         number: str = None,
         start_date: str = None,
     ):
+        # Address.
         self.address = address
+        # Issuing authority.
         self.authority = authority
+        # HTTP or HTTPS link to the national emblem side of the ID card. The link is valid for 5 minutes. It is recommended to store it in your business system to avoid any impact on usage.
         self.back_image_url = back_image_url
+        # Date of birth.
         self.birth = birth
+        # End date of the document\\"s validity period. Format: yyyymmdd.
         self.end_date = end_date
+        # HTTP or HTTPS link to the portrait side of the ID card. The link is valid for 5 minutes. It is recommended to store it in your business system to avoid any impact on usage.
         self.front_image_url = front_image_url
+        # Name.
         self.name = name
+        # Nationality.
         self.nationality = nationality
+        # ID number.
         self.number = number
+        # Start date of the document\\"s validity period. Format: yyyymmdd.
         self.start_date = start_date
 
     def validate(self):
@@ -11241,12 +12330,29 @@ class VerifyMaterialResponseBodyMaterial(TeaModel):
         id_card_name: str = None,
         id_card_number: str = None,
     ):
+        # Global camera image captured by the real-person authentication SDK.
+        # 
+        # > This parameter will take effect after configuration. If you need to use this parameter, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
         self.face_global_url = face_global_url
+        # HTTP or HTTPS link to the frontal face image, corresponding to the request parameter **FaceImageUrl**. The link is valid for 5 minutes, and it is recommended to store it in your business to avoid affecting usage.
         self.face_image_url = face_image_url
+        # Whether the face is wearing a mask. Values:
+        # - **true**: Wearing a mask
+        # - **false**: Not wearing a mask
         self.face_mask = face_mask
+        # The quality of the frontal face image. Possible values:
+        # - **UNQUALIFIED**: Poor quality
+        # - **LOW**: Low
+        # - **NORMAL**: Average
+        # - **HIGH**: High
         self.face_quality = face_quality
+        # OCR result of the ID card information.
+        # 
+        # > If there is no front or back of the ID card during the verification process, the OCR result of the ID card information will not be returned. Even if the front and back of the ID card are present during the verification process, it does not guarantee that all the information on the ID card will be returned. Due to issues such as poor ID card photography, the OCR may fail to recognize some information, leading to incomplete OCR results. It is recommended that the business side does not heavily rely on the ID card OCR information.
         self.id_card_info = id_card_info
+        # Name, corresponding to the request parameter **Name**.
         self.id_card_name = id_card_name
+        # ID number, corresponding to the request parameter **IdCardNumber**.
         self.id_card_number = id_card_number
 
     def validate(self):
@@ -11305,11 +12411,34 @@ class VerifyMaterialResponseBody(TeaModel):
         verify_status: int = None,
         verify_token: str = None,
     ):
+        # Comparison score between the facial photo submitted during the authentication process and authoritative data, with a range of **0**~**100**.
+        # 
+        # Confidence threshold references:
+        # - False recognition rate 0.001% corresponds to a threshold of 95.
+        # - False recognition rate 0.01% corresponds to a threshold of 90.
+        # - False recognition rate 0.1% corresponds to a threshold of 80.
+        # - False recognition rate 1% corresponds to a threshold of 60.
+        # 
+        # > This field only indicates the comparison result between the face and authoritative data, serving as a reference score. It is generally not recommended to use this score alone as the pass/fail criterion. For the comprehensive authentication result, please refer to the **VerifyStatus** field. The **VerifyStatus** result integrates the face-to-authoritative data comparison and other various strategies, enhancing security levels.
         self.authority_comparision_score = authority_comparision_score
+        # Comparison score between the facial photo submitted during the authentication process and the face on the portrait side of the ID card image, with a range of **0**~**100**.
+        # 
+        # Confidence threshold references:
+        # - False recognition rate 0.001% corresponds to a threshold of 95.
+        # - False recognition rate 0.01% corresponds to a threshold of 90.
+        # - False recognition rate 0.1% corresponds to a threshold of 80.
+        # - False recognition rate 1% corresponds to a threshold of 60.
         self.id_card_face_comparison_score = id_card_face_comparison_score
+        # Authentication materials.
         self.material = material
+        # Request ID.
         self.request_id = request_id
+        # Authentication status. Values:
+        # 
+        # - **1**: Authentication passed.
+        # - **2**~**n**: Authentication failed due to various reasons. For detailed descriptions, see the **Authentication Status Explanation** below.
         self.verify_status = verify_status
+        # Token for this authentication, used to link various interfaces in the authentication request, valid for 30 minutes.
         self.verify_token = verify_token
 
     def validate(self):
