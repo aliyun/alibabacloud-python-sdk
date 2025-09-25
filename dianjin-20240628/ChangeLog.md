@@ -1,3 +1,9 @@
+2025-09-25 Version: 1.15.0
+- Support API GetDialogLog.
+- Update API RealTimeDialog: add response parameters Body.choices.$.delta.skipCurrentRecognize.
+- Update API RealTimeDialog: add response parameters Body.choices.$.message.skipCurrentRecognize.
+
+
 2025-06-26 Version: 1.14.1
 - Update API RunAgent: add request parameters body.userInputs.
 
