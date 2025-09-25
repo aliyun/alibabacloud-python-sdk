@@ -85,16 +85,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_chat_bot_20241105_models.SseChatResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_chat_bot_20241105_models.SseChatResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_chat_bot_20241105_models.SseChatResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def sse_chat_with_options_async(
         self,
@@ -140,16 +134,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_chat_bot_20241105_models.SseChatResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_chat_bot_20241105_models.SseChatResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_chat_bot_20241105_models.SseChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def sse_chat(
         self,
