@@ -1,3 +1,9 @@
+2025-09-25 Version: 3.4.0
+- Support API DescribeSparkAuditLogRecords.
+- Support API ModifySqlTemplatePosition.
+- Update API DescribeJobResourceUsage: add response parameters Body.Data.JobAcuUsage.$.UseCachePool.
+
+
 2025-09-23 Version: 3.3.0
 - Support API ConfigureResultExport.
 - Support API CreateBackup.

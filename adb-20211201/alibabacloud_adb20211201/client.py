@@ -14275,6 +14275,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_spark_app_type_with_options_async(request, runtime)
 
+    def describe_spark_audit_log_records_with_options(
+        self,
+        request: adb_20211201_models.DescribeSparkAuditLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
+        """
+        @summary 查询Spark审计日志
+        
+        @param request: DescribeSparkAuditLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkAuditLogRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.proxy_user):
+            query['ProxyUser'] = request.proxy_user
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sqltext):
+            query['SQLText'] = request.sqltext
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statement_id):
+            query['StatementId'] = request.statement_id
+        if not UtilClient.is_unset(request.statement_source):
+            query['StatementSource'] = request.statement_source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkAuditLogRecords',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeSparkAuditLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_spark_audit_log_records_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSparkAuditLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
+        """
+        @summary 查询Spark审计日志
+        
+        @param request: DescribeSparkAuditLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkAuditLogRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.proxy_user):
+            query['ProxyUser'] = request.proxy_user
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sqltext):
+            query['SQLText'] = request.sqltext
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statement_id):
+            query['StatementId'] = request.statement_id
+        if not UtilClient.is_unset(request.statement_source):
+            query['StatementSource'] = request.statement_source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkAuditLogRecords',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeSparkAuditLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_spark_audit_log_records(
+        self,
+        request: adb_20211201_models.DescribeSparkAuditLogRecordsRequest,
+    ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
+        """
+        @summary 查询Spark审计日志
+        
+        @param request: DescribeSparkAuditLogRecordsRequest
+        @return: DescribeSparkAuditLogRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_spark_audit_log_records_with_options(request, runtime)
+
+    async def describe_spark_audit_log_records_async(
+        self,
+        request: adb_20211201_models.DescribeSparkAuditLogRecordsRequest,
+    ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
+        """
+        @summary 查询Spark审计日志
+        
+        @param request: DescribeSparkAuditLogRecordsRequest
+        @return: DescribeSparkAuditLogRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_spark_audit_log_records_with_options_async(request, runtime)
+
     def describe_spark_code_log_with_options(
         self,
         request: adb_20211201_models.DescribeSparkCodeLogRequest,
@@ -24962,6 +25138,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_performance_view_with_options_async(request, runtime)
+
+    def modify_sql_template_position_with_options(
+        self,
+        request: adb_20211201_models.ModifySqlTemplatePositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
+        """
+        @summary 修改SQL脚本模板位置
+        
+        @param request: ModifySqlTemplatePositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySqlTemplatePositionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.target_template_group_id):
+            query['TargetTemplateGroupId'] = request.target_template_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySqlTemplatePosition',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifySqlTemplatePositionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sql_template_position_with_options_async(
+        self,
+        request: adb_20211201_models.ModifySqlTemplatePositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
+        """
+        @summary 修改SQL脚本模板位置
+        
+        @param request: ModifySqlTemplatePositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySqlTemplatePositionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.target_template_group_id):
+            query['TargetTemplateGroupId'] = request.target_template_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySqlTemplatePosition',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifySqlTemplatePositionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sql_template_position(
+        self,
+        request: adb_20211201_models.ModifySqlTemplatePositionRequest,
+    ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
+        """
+        @summary 修改SQL脚本模板位置
+        
+        @param request: ModifySqlTemplatePositionRequest
+        @return: ModifySqlTemplatePositionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_sql_template_position_with_options(request, runtime)
+
+    async def modify_sql_template_position_async(
+        self,
+        request: adb_20211201_models.ModifySqlTemplatePositionRequest,
+    ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
+        """
+        @summary 修改SQL脚本模板位置
+        
+        @param request: ModifySqlTemplatePositionRequest
+        @return: ModifySqlTemplatePositionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_sql_template_position_with_options_async(request, runtime)
 
     def modify_user_eni_vswitch_options_with_options(
         self,

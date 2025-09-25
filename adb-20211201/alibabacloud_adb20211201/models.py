@@ -29584,6 +29584,7 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(TeaModel):
         job_id: str = None,
         job_start_time: str = None,
         resource_group_name: str = None,
+        use_cache_pool: bool = None,
     ):
         # The ACU usage.
         self.acu_usage_detail = acu_usage_detail
@@ -29595,6 +29596,7 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(TeaModel):
         self.job_start_time = job_start_time
         # The name of the job resource group.
         self.resource_group_name = resource_group_name
+        self.use_cache_pool = use_cache_pool
 
     def validate(self):
         if self.acu_usage_detail:
@@ -29616,6 +29618,8 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(TeaModel):
             result['JobStartTime'] = self.job_start_time
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
+        if self.use_cache_pool is not None:
+            result['UseCachePool'] = self.use_cache_pool
         return result
 
     def from_map(self, m: dict = None):
@@ -29631,6 +29635,8 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(TeaModel):
             self.job_start_time = m.get('JobStartTime')
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('UseCachePool') is not None:
+            self.use_cache_pool = m.get('UseCachePool')
         return self
 
 
@@ -33935,6 +33941,380 @@ class DescribeSparkAppTypeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSparkAppTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSparkAuditLogRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        order: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        process_id: str = None,
+        proxy_user: str = None,
+        region_id: str = None,
+        resource_group_name: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sqltext: str = None,
+        start_time: str = None,
+        statement_id: str = None,
+        statement_source: str = None,
+        status: str = None,
+        total_time: str = None,
+        user: str = None,
+    ):
+        self.client_ip = client_ip
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.end_time = end_time
+        self.order = order
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.process_id = process_id
+        self.proxy_user = proxy_user
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_name = resource_group_name
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.sqltext = sqltext
+        self.start_time = start_time
+        # Statement ID。
+        self.statement_id = statement_id
+        self.statement_source = statement_source
+        self.status = status
+        self.total_time = total_time
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.proxy_user is not None:
+            result['ProxyUser'] = self.proxy_user
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sqltext is not None:
+            result['SQLText'] = self.sqltext
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        if self.statement_source is not None:
+            result['StatementSource'] = self.statement_source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_time is not None:
+            result['TotalTime'] = self.total_time
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('ProxyUser') is not None:
+            self.proxy_user = m.get('ProxyUser')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SQLText') is not None:
+            self.sqltext = m.get('SQLText')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        if m.get('StatementSource') is not None:
+            self.statement_source = m.get('StatementSource')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalTime') is not None:
+            self.total_time = m.get('TotalTime')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class DescribeSparkAuditLogRecordsResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_ip: str = None,
+        error_msg: str = None,
+        error_trace: str = None,
+        execute_time: str = None,
+        inner_query_id: str = None,
+        is_diagnosable: bool = None,
+        process_id: str = None,
+        resource_group_name: str = None,
+        sqltext: str = None,
+        statement_id: str = None,
+        statement_source: str = None,
+        status: str = None,
+        total_time: int = None,
+        user: str = None,
+    ):
+        self.app_id = app_id
+        self.client_ip = client_ip
+        self.error_msg = error_msg
+        self.error_trace = error_trace
+        self.execute_time = execute_time
+        self.inner_query_id = inner_query_id
+        self.is_diagnosable = is_diagnosable
+        self.process_id = process_id
+        self.resource_group_name = resource_group_name
+        self.sqltext = sqltext
+        # Statement ID。
+        self.statement_id = statement_id
+        self.statement_source = statement_source
+        self.status = status
+        self.total_time = total_time
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.error_trace is not None:
+            result['ErrorTrace'] = self.error_trace
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.inner_query_id is not None:
+            result['InnerQueryId'] = self.inner_query_id
+        if self.is_diagnosable is not None:
+            result['IsDiagnosable'] = self.is_diagnosable
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.sqltext is not None:
+            result['SQLText'] = self.sqltext
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        if self.statement_source is not None:
+            result['StatementSource'] = self.statement_source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_time is not None:
+            result['TotalTime'] = self.total_time
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('ErrorTrace') is not None:
+            self.error_trace = m.get('ErrorTrace')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('InnerQueryId') is not None:
+            self.inner_query_id = m.get('InnerQueryId')
+        if m.get('IsDiagnosable') is not None:
+            self.is_diagnosable = m.get('IsDiagnosable')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('SQLText') is not None:
+            self.sqltext = m.get('SQLText')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        if m.get('StatementSource') is not None:
+            self.statement_source = m.get('StatementSource')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalTime') is not None:
+            self.total_time = m.get('TotalTime')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class DescribeSparkAuditLogRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        dbcluster_id: str = None,
+        items: List[DescribeSparkAuditLogRecordsResponseBodyItems] = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.dbcluster_id = dbcluster_id
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeSparkAuditLogRecordsResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSparkAuditLogRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSparkAuditLogRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSparkAuditLogRecordsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -52887,6 +53267,135 @@ class ModifyPerformanceViewResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyPerformanceViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifySqlTemplatePositionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+        target_template_group_id: int = None,
+        template_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.target_template_group_id = target_template_group_id
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.target_template_group_id is not None:
+            result['TargetTemplateGroupId'] = self.target_template_group_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TargetTemplateGroupId') is not None:
+            self.target_template_group_id = m.get('TargetTemplateGroupId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifySqlTemplatePositionResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifySqlTemplatePositionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySqlTemplatePositionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySqlTemplatePositionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
