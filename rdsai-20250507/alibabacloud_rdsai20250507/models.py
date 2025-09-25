@@ -1372,6 +1372,299 @@ class DescribeInstanceIpWhitelistResponse(TeaModel):
         return self
 
 
+class DescribeInstanceRAGConfigRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstanceRAGConfigResponseBodyConfigList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeInstanceRAGConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_list: List[DescribeInstanceRAGConfigResponseBodyConfigList] = None,
+        instance_name: str = None,
+        request_id: str = None,
+        status: bool = None,
+    ):
+        self.config_list = config_list
+        self.instance_name = instance_name
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.config_list:
+            for k in self.config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConfigList'] = []
+        if self.config_list is not None:
+            for k in self.config_list:
+                result['ConfigList'].append(k.to_map() if k else None)
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.config_list = []
+        if m.get('ConfigList') is not None:
+            for k in m.get('ConfigList'):
+                temp_model = DescribeInstanceRAGConfigResponseBodyConfigList()
+                self.config_list.append(temp_model.from_map(k))
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeInstanceRAGConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceRAGConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceRAGConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceSSLRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstanceSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        catype: str = None,
+        instance_name: str = None,
+        request_id: str = None,
+        sslenabled: str = None,
+        server_cert: str = None,
+        server_key: str = None,
+    ):
+        self.catype = catype
+        self.instance_name = instance_name
+        self.request_id = request_id
+        self.sslenabled = sslenabled
+        self.server_cert = server_cert
+        self.server_key = server_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catype is not None:
+            result['CAType'] = self.catype
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sslenabled is not None:
+            result['SSLEnabled'] = self.sslenabled
+        if self.server_cert is not None:
+            result['ServerCert'] = self.server_cert
+        if self.server_key is not None:
+            result['ServerKey'] = self.server_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CAType') is not None:
+            self.catype = m.get('CAType')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SSLEnabled') is not None:
+            self.sslenabled = m.get('SSLEnabled')
+        if m.get('ServerCert') is not None:
+            self.server_cert = m.get('ServerCert')
+        if m.get('ServerKey') is not None:
+            self.server_key = m.get('ServerKey')
+        return self
+
+
+class DescribeInstanceSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceStorageConfigRequest(TeaModel):
     def __init__(
         self,
@@ -1847,6 +2140,364 @@ class ModifyInstanceIpWhitelistResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceIpWhitelistResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceRAGConfigRequestConfigList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyInstanceRAGConfigRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        config_list: List[ModifyInstanceRAGConfigRequestConfigList] = None,
+        instance_name: str = None,
+        region_id: str = None,
+        status: bool = None,
+    ):
+        self.client_token = client_token
+        self.config_list = config_list
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.region_id = region_id
+        self.status = status
+
+    def validate(self):
+        if self.config_list:
+            for k in self.config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['ConfigList'] = []
+        if self.config_list is not None:
+            for k in self.config_list:
+                result['ConfigList'].append(k.to_map() if k else None)
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.config_list = []
+        if m.get('ConfigList') is not None:
+            for k in m.get('ConfigList'):
+                temp_model = ModifyInstanceRAGConfigRequestConfigList()
+                self.config_list.append(temp_model.from_map(k))
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyInstanceRAGConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        config_list_shrink: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+        status: bool = None,
+    ):
+        self.client_token = client_token
+        self.config_list_shrink = config_list_shrink
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.region_id = region_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_list_shrink is not None:
+            result['ConfigList'] = self.config_list_shrink
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigList') is not None:
+            self.config_list_shrink = m.get('ConfigList')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyInstanceRAGConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.instance_name = instance_name
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyInstanceRAGConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceRAGConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceRAGConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceSSLRequest(TeaModel):
+    def __init__(
+        self,
+        catype: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+        sslenabled: int = None,
+        server_cert: str = None,
+        server_key: str = None,
+    ):
+        self.catype = catype
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.region_id = region_id
+        # This parameter is required.
+        self.sslenabled = sslenabled
+        self.server_cert = server_cert
+        self.server_key = server_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catype is not None:
+            result['CAType'] = self.catype
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sslenabled is not None:
+            result['SSLEnabled'] = self.sslenabled
+        if self.server_cert is not None:
+            result['ServerCert'] = self.server_cert
+        if self.server_key is not None:
+            result['ServerKey'] = self.server_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CAType') is not None:
+            self.catype = m.get('CAType')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SSLEnabled') is not None:
+            self.sslenabled = m.get('SSLEnabled')
+        if m.get('ServerCert') is not None:
+            self.server_cert = m.get('ServerCert')
+        if m.get('ServerKey') is not None:
+            self.server_key = m.get('ServerKey')
+        return self
+
+
+class ModifyInstanceSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        request_id: str = None,
+    ):
+        self.instance_name = instance_name
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceSSLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

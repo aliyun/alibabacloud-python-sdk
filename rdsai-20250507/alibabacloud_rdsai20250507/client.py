@@ -809,6 +809,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_ip_whitelist_with_options_async(request, runtime)
 
+    def describe_instance_ragconfig_with_options(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceRAGConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeInstanceRAGConfigResponse:
+        """
+        @summary 查看实例RAG配置
+        
+        @param request: DescribeInstanceRAGConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceRAGConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceRAGConfig',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeInstanceRAGConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_ragconfig_with_options_async(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceRAGConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeInstanceRAGConfigResponse:
+        """
+        @summary 查看实例RAG配置
+        
+        @param request: DescribeInstanceRAGConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceRAGConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceRAGConfig',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeInstanceRAGConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_ragconfig(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceRAGConfigRequest,
+    ) -> rds_ai_20250507_models.DescribeInstanceRAGConfigResponse:
+        """
+        @summary 查看实例RAG配置
+        
+        @param request: DescribeInstanceRAGConfigRequest
+        @return: DescribeInstanceRAGConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_ragconfig_with_options(request, runtime)
+
+    async def describe_instance_ragconfig_async(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceRAGConfigRequest,
+    ) -> rds_ai_20250507_models.DescribeInstanceRAGConfigResponse:
+        """
+        @summary 查看实例RAG配置
+        
+        @param request: DescribeInstanceRAGConfigRequest
+        @return: DescribeInstanceRAGConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_ragconfig_with_options_async(request, runtime)
+
+    def describe_instance_sslwith_options(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查看实例SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSSL',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_sslwith_options_async(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查看实例SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSSL',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_ssl(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceSSLRequest,
+    ) -> rds_ai_20250507_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查看实例SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @return: DescribeInstanceSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_sslwith_options(request, runtime)
+
+    async def describe_instance_ssl_async(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceSSLRequest,
+    ) -> rds_ai_20250507_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查看实例SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @return: DescribeInstanceSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_sslwith_options_async(request, runtime)
+
     def describe_instance_storage_config_with_options(
         self,
         request: rds_ai_20250507_models.DescribeInstanceStorageConfigRequest,
@@ -1136,6 +1336,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_ip_whitelist_with_options_async(request, runtime)
+
+    def modify_instance_ragconfig_with_options(
+        self,
+        tmp_req: rds_ai_20250507_models.ModifyInstanceRAGConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyInstanceRAGConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param tmp_req: ModifyInstanceRAGConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceRAGConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.ModifyInstanceRAGConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config_list):
+            request.config_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_list_shrink):
+            query['ConfigList'] = request.config_list_shrink
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceRAGConfig',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyInstanceRAGConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_ragconfig_with_options_async(
+        self,
+        tmp_req: rds_ai_20250507_models.ModifyInstanceRAGConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyInstanceRAGConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param tmp_req: ModifyInstanceRAGConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceRAGConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.ModifyInstanceRAGConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config_list):
+            request.config_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_list_shrink):
+            query['ConfigList'] = request.config_list_shrink
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceRAGConfig',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyInstanceRAGConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_ragconfig(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceRAGConfigRequest,
+    ) -> rds_ai_20250507_models.ModifyInstanceRAGConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param request: ModifyInstanceRAGConfigRequest
+        @return: ModifyInstanceRAGConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_ragconfig_with_options(request, runtime)
+
+    async def modify_instance_ragconfig_async(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceRAGConfigRequest,
+    ) -> rds_ai_20250507_models.ModifyInstanceRAGConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param request: ModifyInstanceRAGConfigRequest
+        @return: ModifyInstanceRAGConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_ragconfig_with_options_async(request, runtime)
+
+    def modify_instance_sslwith_options(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyInstanceSSLResponse:
+        """
+        @summary 修改实例SSL配置
+        
+        @param request: ModifyInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catype):
+            query['CAType'] = request.catype
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
+        if not UtilClient.is_unset(request.server_cert):
+            query['ServerCert'] = request.server_cert
+        if not UtilClient.is_unset(request.server_key):
+            query['ServerKey'] = request.server_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceSSL',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_sslwith_options_async(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyInstanceSSLResponse:
+        """
+        @summary 修改实例SSL配置
+        
+        @param request: ModifyInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catype):
+            query['CAType'] = request.catype
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
+        if not UtilClient.is_unset(request.server_cert):
+            query['ServerCert'] = request.server_cert
+        if not UtilClient.is_unset(request.server_key):
+            query['ServerKey'] = request.server_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceSSL',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_ssl(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceSSLRequest,
+    ) -> rds_ai_20250507_models.ModifyInstanceSSLResponse:
+        """
+        @summary 修改实例SSL配置
+        
+        @param request: ModifyInstanceSSLRequest
+        @return: ModifyInstanceSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_sslwith_options(request, runtime)
+
+    async def modify_instance_ssl_async(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceSSLRequest,
+    ) -> rds_ai_20250507_models.ModifyInstanceSSLResponse:
+        """
+        @summary 修改实例SSL配置
+        
+        @param request: ModifyInstanceSSLRequest
+        @return: ModifyInstanceSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_sslwith_options_async(request, runtime)
 
     def modify_instance_storage_config_with_options(
         self,

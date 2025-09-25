@@ -1,3 +1,10 @@
+2025-09-25 Version: 1.3.0
+- Support API DescribeInstanceRAGConfig.
+- Support API DescribeInstanceSSL.
+- Support API ModifyInstanceRAGConfig.
+- Support API ModifyInstanceSSL.
+
+
 2025-09-22 Version: 1.2.0
 - Support API DescribeInstanceStorageConfig.
 - Support API ModifyInstanceAuthConfig.
