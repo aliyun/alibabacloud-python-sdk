@@ -1,3 +1,8 @@
+2025-09-26 Version: 1.76.1
+- Update API GetPermApplyOrderDetail: add response parameters Body.PermApplyOrderDetail.Resources.$.RowInfo.
+- Update API GetPermApplyOrderDetail: add response parameters Body.PermApplyOrderDetail.Resources.$.RowValueInfo.
+
+
 2025-09-19 Version: 1.76.0
 - Support API AnswerSqlSyntaxByMetaAgent.
 - Support API FixSqlByMetaAgent.

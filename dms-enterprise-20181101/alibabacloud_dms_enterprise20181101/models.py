@@ -33754,6 +33754,96 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceIn
         return self
 
 
+class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        db_id: int = None,
+        logic: bool = None,
+        match_mode: str = None,
+        row_group_id: int = None,
+        schema_name: str = None,
+        table_name: str = None,
+    ):
+        self.column_name = column_name
+        self.db_id = db_id
+        self.logic = logic
+        self.match_mode = match_mode
+        self.row_group_id = row_group_id
+        self.schema_name = schema_name
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.row_group_id is not None:
+            result['RowGroupId'] = self.row_group_id
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('RowGroupId') is not None:
+            self.row_group_id = m.get('RowGroupId')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo(TeaModel):
+    def __init__(
+        self,
+        row_value: str = None,
+    ):
+        self.row_value = row_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row_value is not None:
+            result['RowValue'] = self.row_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RowValue') is not None:
+            self.row_value = m.get('RowValue')
+        return self
+
+
 class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo(TeaModel):
     def __init__(
         self,
@@ -33788,6 +33878,8 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
         column_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo = None,
         database_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo = None,
         instance_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo = None,
+        row_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo = None,
+        row_value_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo = None,
         table_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo = None,
     ):
         # The information about the column.
@@ -33796,6 +33888,8 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
         self.database_info = database_info
         # The information about the instance.
         self.instance_info = instance_info
+        self.row_info = row_info
+        self.row_value_info = row_value_info
         # The information about the table.
         self.table_info = table_info
 
@@ -33806,6 +33900,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
             self.database_info.validate()
         if self.instance_info:
             self.instance_info.validate()
+        if self.row_info:
+            self.row_info.validate()
+        if self.row_value_info:
+            self.row_value_info.validate()
         if self.table_info:
             self.table_info.validate()
 
@@ -33821,6 +33919,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
             result['DatabaseInfo'] = self.database_info.to_map()
         if self.instance_info is not None:
             result['InstanceInfo'] = self.instance_info.to_map()
+        if self.row_info is not None:
+            result['RowInfo'] = self.row_info.to_map()
+        if self.row_value_info is not None:
+            result['RowValueInfo'] = self.row_value_info.to_map()
         if self.table_info is not None:
             result['TableInfo'] = self.table_info.to_map()
         return result
@@ -33836,6 +33938,12 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
         if m.get('InstanceInfo') is not None:
             temp_model = GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo()
             self.instance_info = temp_model.from_map(m['InstanceInfo'])
+        if m.get('RowInfo') is not None:
+            temp_model = GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo()
+            self.row_info = temp_model.from_map(m['RowInfo'])
+        if m.get('RowValueInfo') is not None:
+            temp_model = GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo()
+            self.row_value_info = temp_model.from_map(m['RowValueInfo'])
         if m.get('TableInfo') is not None:
             temp_model = GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo()
             self.table_info = temp_model.from_map(m['TableInfo'])
