@@ -10530,9 +10530,11 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(TeaModel
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -10546,6 +10548,8 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(TeaModel
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -10554,6 +10558,8 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(TeaModel
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -10616,9 +10622,11 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap(Te
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -10632,6 +10640,8 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap(Te
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -10640,6 +10650,8 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap(Te
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -10702,9 +10714,11 @@ class GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(TeaModel):
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -10718,6 +10732,8 @@ class GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(TeaModel):
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -10726,6 +10742,8 @@ class GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(TeaModel):
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -10788,9 +10806,11 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(TeaMo
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -10804,6 +10824,8 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(TeaMo
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -10812,6 +10834,8 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(TeaMo
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -10874,9 +10898,11 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(TeaMo
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -10890,6 +10916,8 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(TeaMo
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -10898,6 +10926,8 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(TeaMo
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -10960,9 +10990,11 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(Tea
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -10976,6 +11008,8 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(Tea
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -10984,6 +11018,8 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(Tea
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -11046,9 +11082,11 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap(TeaMo
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -11062,6 +11100,8 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap(TeaMo
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -11070,6 +11110,8 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap(TeaMo
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -11165,9 +11207,11 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(TeaMode
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -11181,6 +11225,8 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(TeaMode
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -11189,6 +11235,8 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(TeaMode
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -11251,9 +11299,11 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(Tea
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -11267,6 +11317,8 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(Tea
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -11275,6 +11327,8 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(Tea
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26408,9 +26462,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFiel
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26424,6 +26480,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFiel
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26432,6 +26490,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFiel
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26488,9 +26548,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConf
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26504,6 +26566,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConf
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26512,6 +26576,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConf
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26568,9 +26634,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap(
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26584,6 +26652,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap(
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26592,6 +26662,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap(
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26648,9 +26720,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigF
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26664,6 +26738,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigF
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26672,6 +26748,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigF
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26728,9 +26806,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigF
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26744,6 +26824,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigF
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26752,6 +26834,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigF
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26808,9 +26892,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfi
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26824,6 +26910,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfi
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26832,6 +26920,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfi
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26888,9 +26978,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigF
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26904,6 +26996,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigF
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26912,6 +27006,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigF
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -26968,9 +27064,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFie
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -26984,6 +27082,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFie
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -26992,6 +27092,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFie
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self
@@ -27048,9 +27150,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfi
     def __init__(
         self,
         display_field: str = None,
+        display_field_value: str = None,
         system_field: str = None,
     ):
         self.display_field = display_field
+        self.display_field_value = display_field_value
         self.system_field = system_field
 
     def validate(self):
@@ -27064,6 +27168,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfi
         result = dict()
         if self.display_field is not None:
             result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
         if self.system_field is not None:
             result['SystemField'] = self.system_field
         return result
@@ -27072,6 +27178,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfi
         m = m or dict()
         if m.get('DisplayField') is not None:
             self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
         if m.get('SystemField') is not None:
             self.system_field = m.get('SystemField')
         return self

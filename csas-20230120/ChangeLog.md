@@ -1,3 +1,24 @@
+2025-09-26 Version: 1.10.14
+- Update API GetApprovalProcess: add response parameters Body.Process.AppUninstallPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.DeviceRegistrationPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.DlpSendPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.DomainBlacklistPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.DomainWhitelistPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.PeripheralBlockPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareBlockPolicies.FieldMap.$.DisplayFieldValue.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.AppUninstallSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.DeviceRegistrationSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.DlpSendSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.DomainBlacklistSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.DomainWhitelistSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.EndpointHardeningSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.PeripheralBlockSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.SoftwareBlockSchemaConfig.FieldMap.$.DisplayFieldValue.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.SoftwareHardeningSchemaConfig.FieldMap.$.DisplayFieldValue.
+
+
 2025-09-17 Version: 1.10.13
 - Generated python 2023-01-20 for csas.
 
