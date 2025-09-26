@@ -1,3 +1,16 @@
+2025-09-26 Version: 5.0.1
+- Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.VendorUid.
+- Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.VendorUserName.
+- Update API DescribeCloudVendorAccountAKList: add response parameters Body.CloudVendorAccountAKs.$.VendorUid.
+- Update API DescribeCloudVendorAccountAKList: add response parameters Body.CloudVendorAccountAKs.$.VendorUserName.
+- Update API GetCloudAssetDetail: add response parameters Body.Instances.$.OriginalAssetInfo.
+- Update API GetCloudAssetDetail: add response parameters Body.Instances.$.VendorUid.
+- Update API GetCloudAssetDetail: add response parameters Body.Instances.$.VendorUserName.
+- Update API ListCheckInstanceResult: add response parameters Body.BasicData.$.VendorUserName.
+- Update API ListCloudAssetInstances: add response parameters Body.Instances.$.VendorUid.
+- Update API ListCloudAssetInstances: add response parameters Body.Instances.$.VendorUserName.
+
+
 2025-09-19 Version: 5.0.0
 - Support API CreateAttackPathSensitiveAssetConfig.
 - Support API CreateAttackPathWhitelist.
