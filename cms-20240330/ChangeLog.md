@@ -1,3 +1,8 @@
+2025-09-28 Version: 3.2.0
+- Support API ListIntegrationPolicies.
+- Support API ListIntegrationPolicyDashboards.
+
+
 2025-09-24 Version: 3.1.1
 - Generated python 2024-03-30 for Cms.
 

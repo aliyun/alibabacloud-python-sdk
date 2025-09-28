@@ -3879,6 +3879,166 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
 
+    def list_integration_policies_with_options(
+        self,
+        tmp_req: cms_20240330_models.ListIntegrationPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
+        """
+        @summary 查询接入中心策略列表信息
+        
+        @param tmp_req: ListIntegrationPoliciesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPoliciesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cms_20240330_models.ListIntegrationPoliciesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.entity_group_ids):
+            query['entityGroupIds'] = request.entity_group_ids
+        if not UtilClient.is_unset(request.filter_region_ids):
+            query['filterRegionIds'] = request.filter_region_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_id):
+            query['policyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['policyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['policyType'] = request.policy_type
+        if not UtilClient.is_unset(request.prometheus_instance_id):
+            query['prometheusInstanceId'] = request.prometheus_instance_id
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicies',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_integration_policies_with_options_async(
+        self,
+        tmp_req: cms_20240330_models.ListIntegrationPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
+        """
+        @summary 查询接入中心策略列表信息
+        
+        @param tmp_req: ListIntegrationPoliciesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPoliciesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cms_20240330_models.ListIntegrationPoliciesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.entity_group_ids):
+            query['entityGroupIds'] = request.entity_group_ids
+        if not UtilClient.is_unset(request.filter_region_ids):
+            query['filterRegionIds'] = request.filter_region_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_id):
+            query['policyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['policyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['policyType'] = request.policy_type
+        if not UtilClient.is_unset(request.prometheus_instance_id):
+            query['prometheusInstanceId'] = request.prometheus_instance_id
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicies',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_integration_policies(
+        self,
+        request: cms_20240330_models.ListIntegrationPoliciesRequest,
+    ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
+        """
+        @summary 查询接入中心策略列表信息
+        
+        @param request: ListIntegrationPoliciesRequest
+        @return: ListIntegrationPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_integration_policies_with_options(request, headers, runtime)
+
+    async def list_integration_policies_async(
+        self,
+        request: cms_20240330_models.ListIntegrationPoliciesRequest,
+    ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
+        """
+        @summary 查询接入中心策略列表信息
+        
+        @param request: ListIntegrationPoliciesRequest
+        @return: ListIntegrationPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_integration_policies_with_options_async(request, headers, runtime)
+
     def list_integration_policy_custom_scrape_job_rules_with_options(
         self,
         policy_id: str,
@@ -3994,6 +4154,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_integration_policy_custom_scrape_job_rules_with_options_async(policy_id, request, headers, runtime)
+
+    def list_integration_policy_dashboards_with_options(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyDashboardsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
+        """
+        @summary 策略大盘列表
+        
+        @param request: ListIntegrationPolicyDashboardsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyDashboardsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.scene):
+            query['scene'] = request.scene
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyDashboards',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/dashboards',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyDashboardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_integration_policy_dashboards_with_options_async(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyDashboardsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
+        """
+        @summary 策略大盘列表
+        
+        @param request: ListIntegrationPolicyDashboardsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyDashboardsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.scene):
+            query['scene'] = request.scene
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyDashboards',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/dashboards',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyDashboardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_integration_policy_dashboards(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyDashboardsRequest,
+    ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
+        """
+        @summary 策略大盘列表
+        
+        @param request: ListIntegrationPolicyDashboardsRequest
+        @return: ListIntegrationPolicyDashboardsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_integration_policy_dashboards_with_options(policy_id, request, headers, runtime)
+
+    async def list_integration_policy_dashboards_async(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyDashboardsRequest,
+    ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
+        """
+        @summary 策略大盘列表
+        
+        @param request: ListIntegrationPolicyDashboardsRequest
+        @return: ListIntegrationPolicyDashboardsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_integration_policy_dashboards_with_options_async(policy_id, request, headers, runtime)
 
     def list_integration_policy_pod_monitors_with_options(
         self,
