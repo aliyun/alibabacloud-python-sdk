@@ -1,3 +1,9 @@
+2025-09-28 Version: 5.0.2
+- Update API DescribeMonitorAccounts: add response parameters Body.AccountIdInfos.
+- Update API GetAuthSummary: add response parameters Body.ClusterNodeCheck.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.PostBasicService.
+
+
 2025-09-26 Version: 5.0.1
 - Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.VendorUid.
 - Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.VendorUserName.
