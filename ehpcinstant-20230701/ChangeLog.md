@@ -1,3 +1,12 @@
+2025-09-28 Version: 3.2.1
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.Resource.EnableHT.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.Resource.HostNamePrefix.
+- Update API GetJob: add response parameters Body.JobInfo.Tasks.$.TaskSpec.Resource.EnableHT.
+- Update API GetJob: add response parameters Body.JobInfo.Tasks.$.TaskSpec.Resource.HostNamePrefix.
+- Update API ListExecutors: add response parameters Body.Executors.$.AllocationSpec.
+- Update API ListJobExecutors: add response parameters Body.Executors.$.AllocationSpec.
+
+
 2025-08-21 Version: 3.2.0
 - Support API CreateActionPlan.
 - Support API DeleteActionPlan.

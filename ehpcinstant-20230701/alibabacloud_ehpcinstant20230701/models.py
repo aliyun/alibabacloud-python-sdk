@@ -1027,11 +1027,15 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
         self,
         cores: float = None,
         disks: List[CreateJobRequestTasksTaskSpecResourceDisks] = None,
+        enable_ht: bool = None,
+        host_name_prefix: str = None,
         instance_types: List[str] = None,
         memory: float = None,
     ):
         self.cores = cores
         self.disks = disks
+        self.enable_ht = enable_ht
+        self.host_name_prefix = host_name_prefix
         self.instance_types = instance_types
         self.memory = memory
 
@@ -1053,6 +1057,10 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.enable_ht is not None:
+            result['EnableHT'] = self.enable_ht
+        if self.host_name_prefix is not None:
+            result['HostNamePrefix'] = self.host_name_prefix
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types
         if self.memory is not None:
@@ -1068,6 +1076,10 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
             for k in m.get('Disks'):
                 temp_model = CreateJobRequestTasksTaskSpecResourceDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('EnableHT') is not None:
+            self.enable_ht = m.get('EnableHT')
+        if m.get('HostNamePrefix') is not None:
+            self.host_name_prefix = m.get('HostNamePrefix')
         if m.get('InstanceTypes') is not None:
             self.instance_types = m.get('InstanceTypes')
         if m.get('Memory') is not None:
@@ -4113,11 +4125,15 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
         self,
         cores: float = None,
         disks: List[GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks] = None,
+        enable_ht: bool = None,
+        host_name_prefix: str = None,
         instance_types: List[str] = None,
         memory: int = None,
     ):
         self.cores = cores
         self.disks = disks
+        self.enable_ht = enable_ht
+        self.host_name_prefix = host_name_prefix
         self.instance_types = instance_types
         self.memory = memory
 
@@ -4139,6 +4155,10 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.enable_ht is not None:
+            result['EnableHT'] = self.enable_ht
+        if self.host_name_prefix is not None:
+            result['HostNamePrefix'] = self.host_name_prefix
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types
         if self.memory is not None:
@@ -4154,6 +4174,10 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
             for k in m.get('Disks'):
                 temp_model = GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('EnableHT') is not None:
+            self.enable_ht = m.get('EnableHT')
+        if m.get('HostNamePrefix') is not None:
+            self.host_name_prefix = m.get('HostNamePrefix')
         if m.get('InstanceTypes') is not None:
             self.instance_types = m.get('InstanceTypes')
         if m.get('Memory') is not None:
@@ -5535,6 +5559,7 @@ class ListExecutorsResponseBodyExecutorsTags(TeaModel):
 class ListExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
+        allocation_spec: str = None,
         app_name: str = None,
         array_index: int = None,
         block_duration: int = None,
@@ -5559,6 +5584,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         task_sustainable: bool = None,
         vswitch_id: str = None,
     ):
+        self.allocation_spec = allocation_spec
         self.app_name = app_name
         self.array_index = array_index
         self.block_duration = block_duration
@@ -5597,6 +5623,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             return _map
 
         result = dict()
+        if self.allocation_spec is not None:
+            result['AllocationSpec'] = self.allocation_spec
         if self.app_name is not None:
             result['AppName'] = self.app_name
         if self.array_index is not None:
@@ -5649,6 +5677,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllocationSpec') is not None:
+            self.allocation_spec = m.get('AllocationSpec')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         if m.get('ArrayIndex') is not None:
@@ -6280,6 +6310,7 @@ class ListJobExecutorsResponseBodyExecutorsTags(TeaModel):
 class ListJobExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
+        allocation_spec: str = None,
         array_index: int = None,
         block_duration: int = None,
         create_time: str = None,
@@ -6295,6 +6326,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         status_reason: str = None,
         tags: List[ListJobExecutorsResponseBodyExecutorsTags] = None,
     ):
+        self.allocation_spec = allocation_spec
         self.array_index = array_index
         self.block_duration = block_duration
         self.create_time = create_time
@@ -6322,6 +6354,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             return _map
 
         result = dict()
+        if self.allocation_spec is not None:
+            result['AllocationSpec'] = self.allocation_spec
         if self.array_index is not None:
             result['ArrayIndex'] = self.array_index
         if self.block_duration is not None:
@@ -6356,6 +6390,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllocationSpec') is not None:
+            self.allocation_spec = m.get('AllocationSpec')
         if m.get('ArrayIndex') is not None:
             self.array_index = m.get('ArrayIndex')
         if m.get('BlockDuration') is not None:
