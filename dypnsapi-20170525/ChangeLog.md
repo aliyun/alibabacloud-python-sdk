@@ -1,3 +1,10 @@
+2025-09-28 Version: 2.0.0
+- Delete API JyCreateVerifyScheme.
+- Delete API JyQueryAppInfoBySceneCode.
+- Update API SendSmsVerifyCode: add request parameters AutoRetry.
+- Update API SendSmsVerifyCode: add response parameters Body.RequestId.
+
+
 2024-10-24 Version: 1.2.2
 - Update API CreateVerifyScheme: add param HmAppIdentifier.
 - Update API CreateVerifyScheme: add param HmPackageName.

@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('dypnsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1590,278 +1589,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_sms_auth_tokens_with_options_async(request, runtime)
 
-    def jy_create_verify_scheme_with_options(
-        self,
-        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
-        """
-        @deprecated OpenAPI JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
-        
-        @summary 创建方案号（为极意临时定制）
-        
-        @param request: JyCreateVerifySchemeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JyCreateVerifySchemeResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.bundle_id):
-            query['BundleId'] = request.bundle_id
-        if not UtilClient.is_unset(request.cm_api_code):
-            query['CmApiCode'] = request.cm_api_code
-        if not UtilClient.is_unset(request.ct_api_code):
-            query['CtApiCode'] = request.ct_api_code
-        if not UtilClient.is_unset(request.cu_api_code):
-            query['CuApiCode'] = request.cu_api_code
-        if not UtilClient.is_unset(request.os_type):
-            query['OsType'] = request.os_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pack_name):
-            query['PackName'] = request.pack_name
-        if not UtilClient.is_unset(request.pack_sign):
-            query['PackSign'] = request.pack_sign
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scheme_name):
-            query['SchemeName'] = request.scheme_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='JyCreateVerifyScheme',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.JyCreateVerifySchemeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def jy_create_verify_scheme_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
-        """
-        @deprecated OpenAPI JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
-        
-        @summary 创建方案号（为极意临时定制）
-        
-        @param request: JyCreateVerifySchemeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JyCreateVerifySchemeResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.bundle_id):
-            query['BundleId'] = request.bundle_id
-        if not UtilClient.is_unset(request.cm_api_code):
-            query['CmApiCode'] = request.cm_api_code
-        if not UtilClient.is_unset(request.ct_api_code):
-            query['CtApiCode'] = request.ct_api_code
-        if not UtilClient.is_unset(request.cu_api_code):
-            query['CuApiCode'] = request.cu_api_code
-        if not UtilClient.is_unset(request.os_type):
-            query['OsType'] = request.os_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pack_name):
-            query['PackName'] = request.pack_name
-        if not UtilClient.is_unset(request.pack_sign):
-            query['PackSign'] = request.pack_sign
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scheme_name):
-            query['SchemeName'] = request.scheme_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='JyCreateVerifyScheme',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.JyCreateVerifySchemeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def jy_create_verify_scheme(
-        self,
-        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
-        """
-        @deprecated OpenAPI JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
-        
-        @summary 创建方案号（为极意临时定制）
-        
-        @param request: JyCreateVerifySchemeRequest
-        @return: JyCreateVerifySchemeResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.jy_create_verify_scheme_with_options(request, runtime)
-
-    async def jy_create_verify_scheme_async(
-        self,
-        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
-        """
-        @deprecated OpenAPI JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
-        
-        @summary 创建方案号（为极意临时定制）
-        
-        @param request: JyCreateVerifySchemeRequest
-        @return: JyCreateVerifySchemeResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.jy_create_verify_scheme_with_options_async(request, runtime)
-
-    def jy_query_app_info_by_scene_code_with_options(
-        self,
-        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
-        """
-        @deprecated OpenAPI JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
-        
-        @summary 根据方案号查询运营商APP信（为极意临时定制）
-        
-        @param request: JyQueryAppInfoBySceneCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JyQueryAppInfoBySceneCodeResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scene_code):
-            query['SceneCode'] = request.scene_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='JyQueryAppInfoBySceneCode',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def jy_query_app_info_by_scene_code_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
-        """
-        @deprecated OpenAPI JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
-        
-        @summary 根据方案号查询运营商APP信（为极意临时定制）
-        
-        @param request: JyQueryAppInfoBySceneCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JyQueryAppInfoBySceneCodeResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scene_code):
-            query['SceneCode'] = request.scene_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='JyQueryAppInfoBySceneCode',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def jy_query_app_info_by_scene_code(
-        self,
-        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
-    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
-        """
-        @deprecated OpenAPI JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
-        
-        @summary 根据方案号查询运营商APP信（为极意临时定制）
-        
-        @param request: JyQueryAppInfoBySceneCodeRequest
-        @return: JyQueryAppInfoBySceneCodeResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.jy_query_app_info_by_scene_code_with_options(request, runtime)
-
-    async def jy_query_app_info_by_scene_code_async(
-        self,
-        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
-    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
-        """
-        @deprecated OpenAPI JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
-        
-        @summary 根据方案号查询运营商APP信（为极意临时定制）
-        
-        @param request: JyQueryAppInfoBySceneCodeRequest
-        @return: JyQueryAppInfoBySceneCodeResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.jy_query_app_info_by_scene_code_with_options_async(request, runtime)
-
     def query_gate_verify_billing_public_with_options(
         self,
         request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
@@ -2264,6 +1991,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_retry):
+            query['AutoRetry'] = request.auto_retry
         if not UtilClient.is_unset(request.code_length):
             query['CodeLength'] = request.code_length
         if not UtilClient.is_unset(request.code_type):
@@ -2331,6 +2060,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_retry):
+            query['AutoRetry'] = request.auto_retry
         if not UtilClient.is_unset(request.code_length):
             query['CodeLength'] = request.code_length
         if not UtilClient.is_unset(request.code_type):

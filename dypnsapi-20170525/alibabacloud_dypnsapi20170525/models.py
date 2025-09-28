@@ -2314,396 +2314,6 @@ class GetSmsAuthTokensResponse(TeaModel):
         return self
 
 
-class JyCreateVerifySchemeRequest(TeaModel):
-    def __init__(
-        self,
-        app_name: str = None,
-        bundle_id: str = None,
-        cm_api_code: int = None,
-        ct_api_code: int = None,
-        cu_api_code: int = None,
-        os_type: str = None,
-        owner_id: int = None,
-        pack_name: str = None,
-        pack_sign: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        scheme_name: str = None,
-    ):
-        # This parameter is required.
-        self.app_name = app_name
-        self.bundle_id = bundle_id
-        self.cm_api_code = cm_api_code
-        self.ct_api_code = ct_api_code
-        self.cu_api_code = cu_api_code
-        # This parameter is required.
-        self.os_type = os_type
-        self.owner_id = owner_id
-        self.pack_name = pack_name
-        self.pack_sign = pack_sign
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # This parameter is required.
-        self.scheme_name = scheme_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
-        if self.bundle_id is not None:
-            result['BundleId'] = self.bundle_id
-        if self.cm_api_code is not None:
-            result['CmApiCode'] = self.cm_api_code
-        if self.ct_api_code is not None:
-            result['CtApiCode'] = self.ct_api_code
-        if self.cu_api_code is not None:
-            result['CuApiCode'] = self.cu_api_code
-        if self.os_type is not None:
-            result['OsType'] = self.os_type
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.pack_name is not None:
-            result['PackName'] = self.pack_name
-        if self.pack_sign is not None:
-            result['PackSign'] = self.pack_sign
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.scheme_name is not None:
-            result['SchemeName'] = self.scheme_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
-        if m.get('BundleId') is not None:
-            self.bundle_id = m.get('BundleId')
-        if m.get('CmApiCode') is not None:
-            self.cm_api_code = m.get('CmApiCode')
-        if m.get('CtApiCode') is not None:
-            self.ct_api_code = m.get('CtApiCode')
-        if m.get('CuApiCode') is not None:
-            self.cu_api_code = m.get('CuApiCode')
-        if m.get('OsType') is not None:
-            self.os_type = m.get('OsType')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PackName') is not None:
-            self.pack_name = m.get('PackName')
-        if m.get('PackSign') is not None:
-            self.pack_sign = m.get('PackSign')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SchemeName') is not None:
-            self.scheme_name = m.get('SchemeName')
-        return self
-
-
-class JyCreateVerifySchemeResponseBodyGateVerifySchemeData(TeaModel):
-    def __init__(
-        self,
-        scheme_code: str = None,
-    ):
-        self.scheme_code = scheme_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.scheme_code is not None:
-            result['SchemeCode'] = self.scheme_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('SchemeCode') is not None:
-            self.scheme_code = m.get('SchemeCode')
-        return self
-
-
-class JyCreateVerifySchemeResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        gate_verify_scheme_data: JyCreateVerifySchemeResponseBodyGateVerifySchemeData = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.gate_verify_scheme_data = gate_verify_scheme_data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        if self.gate_verify_scheme_data:
-            self.gate_verify_scheme_data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.gate_verify_scheme_data is not None:
-            result['GateVerifySchemeData'] = self.gate_verify_scheme_data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('GateVerifySchemeData') is not None:
-            temp_model = JyCreateVerifySchemeResponseBodyGateVerifySchemeData()
-            self.gate_verify_scheme_data = temp_model.from_map(m['GateVerifySchemeData'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class JyCreateVerifySchemeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: JyCreateVerifySchemeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = JyCreateVerifySchemeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class JyQueryAppInfoBySceneCodeRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        scene_code: str = None,
-    ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # This parameter is required.
-        self.scene_code = scene_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.scene_code is not None:
-            result['SceneCode'] = self.scene_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SceneCode') is not None:
-            self.scene_code = m.get('SceneCode')
-        return self
-
-
-class JyQueryAppInfoBySceneCodeResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        cm_app_id: str = None,
-        cm_app_key: str = None,
-        ct_app_id: str = None,
-        ct_app_key: str = None,
-    ):
-        self.cm_app_id = cm_app_id
-        self.cm_app_key = cm_app_key
-        self.ct_app_id = ct_app_id
-        self.ct_app_key = ct_app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cm_app_id is not None:
-            result['CmAppId'] = self.cm_app_id
-        if self.cm_app_key is not None:
-            result['CmAppKey'] = self.cm_app_key
-        if self.ct_app_id is not None:
-            result['CtAppId'] = self.ct_app_id
-        if self.ct_app_key is not None:
-            result['CtAppKey'] = self.ct_app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CmAppId') is not None:
-            self.cm_app_id = m.get('CmAppId')
-        if m.get('CmAppKey') is not None:
-            self.cm_app_key = m.get('CmAppKey')
-        if m.get('CtAppId') is not None:
-            self.ct_app_id = m.get('CtAppId')
-        if m.get('CtAppKey') is not None:
-            self.ct_app_key = m.get('CtAppKey')
-        return self
-
-
-class JyQueryAppInfoBySceneCodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: JyQueryAppInfoBySceneCodeResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = JyQueryAppInfoBySceneCodeResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class JyQueryAppInfoBySceneCodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: JyQueryAppInfoBySceneCodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = JyQueryAppInfoBySceneCodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class QueryGateVerifyBillingPublicRequest(TeaModel):
     def __init__(
         self,
@@ -3553,6 +3163,7 @@ class QuerySendDetailsResponse(TeaModel):
 class SendSmsVerifyCodeRequest(TeaModel):
     def __init__(
         self,
+        auto_retry: int = None,
         code_length: int = None,
         code_type: int = None,
         country_code: str = None,
@@ -3571,6 +3182,7 @@ class SendSmsVerifyCodeRequest(TeaModel):
         template_param: str = None,
         valid_time: int = None,
     ):
+        self.auto_retry = auto_retry
         # The length of the verification code. Default value: 4. Valid values: 4 to 8.
         self.code_length = code_length
         # The type of the generated verification code. Default value: 1. Valid values:
@@ -3650,6 +3262,8 @@ class SendSmsVerifyCodeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_retry is not None:
+            result['AutoRetry'] = self.auto_retry
         if self.code_length is not None:
             result['CodeLength'] = self.code_length
         if self.code_type is not None:
@@ -3688,6 +3302,8 @@ class SendSmsVerifyCodeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRetry') is not None:
+            self.auto_retry = m.get('AutoRetry')
         if m.get('CodeLength') is not None:
             self.code_length = m.get('CodeLength')
         if m.get('CodeType') is not None:
@@ -3781,6 +3397,7 @@ class SendSmsVerifyCodeResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         model: SendSmsVerifyCodeResponseBodyModel = None,
+        request_id: str = None,
         success: bool = None,
     ):
         # The details about the access denial.
@@ -3791,6 +3408,7 @@ class SendSmsVerifyCodeResponseBody(TeaModel):
         self.message = message
         # The returned data.
         self.model = model
+        self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
         # *   **true**\
@@ -3815,6 +3433,8 @@ class SendSmsVerifyCodeResponseBody(TeaModel):
             result['Message'] = self.message
         if self.model is not None:
             result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -3830,6 +3450,8 @@ class SendSmsVerifyCodeResponseBody(TeaModel):
         if m.get('Model') is not None:
             temp_model = SendSmsVerifyCodeResponseBodyModel()
             self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
