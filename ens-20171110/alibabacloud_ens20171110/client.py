@@ -1557,6 +1557,350 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.authorize_security_group_egress_with_options_async(request, runtime)
 
+    def batch_event_migrate_instance_with_options(
+        self,
+        tmp_req: ens_20171110_models.BatchEventMigrateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
+        """
+        @summary 因底层升级批量迁移
+        
+        @param tmp_req: BatchEventMigrateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEventMigrateInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.BatchEventMigrateInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_infos):
+            request.event_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_infos, 'EventInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_infos_shrink):
+            query['EventInfos'] = request.event_infos_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEventMigrateInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.BatchEventMigrateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_event_migrate_instance_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.BatchEventMigrateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
+        """
+        @summary 因底层升级批量迁移
+        
+        @param tmp_req: BatchEventMigrateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEventMigrateInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.BatchEventMigrateInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_infos):
+            request.event_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_infos, 'EventInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_infos_shrink):
+            query['EventInfos'] = request.event_infos_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEventMigrateInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.BatchEventMigrateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_event_migrate_instance(
+        self,
+        request: ens_20171110_models.BatchEventMigrateInstanceRequest,
+    ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
+        """
+        @summary 因底层升级批量迁移
+        
+        @param request: BatchEventMigrateInstanceRequest
+        @return: BatchEventMigrateInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_event_migrate_instance_with_options(request, runtime)
+
+    async def batch_event_migrate_instance_async(
+        self,
+        request: ens_20171110_models.BatchEventMigrateInstanceRequest,
+    ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
+        """
+        @summary 因底层升级批量迁移
+        
+        @param request: BatchEventMigrateInstanceRequest
+        @return: BatchEventMigrateInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_event_migrate_instance_with_options_async(request, runtime)
+
+    def batch_event_reboot_instance_with_options(
+        self,
+        tmp_req: ens_20171110_models.BatchEventRebootInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
+        """
+        @summary 批量因系统维护实例重启
+        
+        @description ## 请求说明
+        - `Action` 参数固定为 `BatchEventRebootInstance`。
+        - `Version` 参数固定为 `2017-11-10`。
+        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
+        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
+        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
+        - 错误情况下，返回相应的错误代码和消息。
+        
+        @param tmp_req: BatchEventRebootInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEventRebootInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.BatchEventRebootInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_infos):
+            request.event_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_infos, 'EventInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_infos_shrink):
+            query['EventInfos'] = request.event_infos_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEventRebootInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.BatchEventRebootInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_event_reboot_instance_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.BatchEventRebootInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
+        """
+        @summary 批量因系统维护实例重启
+        
+        @description ## 请求说明
+        - `Action` 参数固定为 `BatchEventRebootInstance`。
+        - `Version` 参数固定为 `2017-11-10`。
+        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
+        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
+        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
+        - 错误情况下，返回相应的错误代码和消息。
+        
+        @param tmp_req: BatchEventRebootInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEventRebootInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.BatchEventRebootInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_infos):
+            request.event_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_infos, 'EventInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_infos_shrink):
+            query['EventInfos'] = request.event_infos_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEventRebootInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.BatchEventRebootInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_event_reboot_instance(
+        self,
+        request: ens_20171110_models.BatchEventRebootInstanceRequest,
+    ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
+        """
+        @summary 批量因系统维护实例重启
+        
+        @description ## 请求说明
+        - `Action` 参数固定为 `BatchEventRebootInstance`。
+        - `Version` 参数固定为 `2017-11-10`。
+        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
+        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
+        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
+        - 错误情况下，返回相应的错误代码和消息。
+        
+        @param request: BatchEventRebootInstanceRequest
+        @return: BatchEventRebootInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_event_reboot_instance_with_options(request, runtime)
+
+    async def batch_event_reboot_instance_async(
+        self,
+        request: ens_20171110_models.BatchEventRebootInstanceRequest,
+    ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
+        """
+        @summary 批量因系统维护实例重启
+        
+        @description ## 请求说明
+        - `Action` 参数固定为 `BatchEventRebootInstance`。
+        - `Version` 参数固定为 `2017-11-10`。
+        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
+        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
+        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
+        - 错误情况下，返回相应的错误代码和消息。
+        
+        @param request: BatchEventRebootInstanceRequest
+        @return: BatchEventRebootInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_event_reboot_instance_with_options_async(request, runtime)
+
+    def batch_event_redeploy_instance_with_options(
+        self,
+        tmp_req: ens_20171110_models.BatchEventRedeployInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
+        """
+        @summary 批量操作重新部署
+        
+        @param tmp_req: BatchEventRedeployInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEventRedeployInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.BatchEventRedeployInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_infos):
+            request.event_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_infos, 'EventInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_infos_shrink):
+            query['EventInfos'] = request.event_infos_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEventRedeployInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.BatchEventRedeployInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_event_redeploy_instance_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.BatchEventRedeployInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
+        """
+        @summary 批量操作重新部署
+        
+        @param tmp_req: BatchEventRedeployInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEventRedeployInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.BatchEventRedeployInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_infos):
+            request.event_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_infos, 'EventInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_infos_shrink):
+            query['EventInfos'] = request.event_infos_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEventRedeployInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.BatchEventRedeployInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_event_redeploy_instance(
+        self,
+        request: ens_20171110_models.BatchEventRedeployInstanceRequest,
+    ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
+        """
+        @summary 批量操作重新部署
+        
+        @param request: BatchEventRedeployInstanceRequest
+        @return: BatchEventRedeployInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_event_redeploy_instance_with_options(request, runtime)
+
+    async def batch_event_redeploy_instance_async(
+        self,
+        request: ens_20171110_models.BatchEventRedeployInstanceRequest,
+    ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
+        """
+        @summary 批量操作重新部署
+        
+        @param request: BatchEventRedeployInstanceRequest
+        @return: BatchEventRedeployInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_event_redeploy_instance_with_options_async(request, runtime)
+
     def clean_dist_data_with_options(
         self,
         request: ens_20171110_models.CleanDistDataRequest,
@@ -11903,6 +12247,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.net_district_code):
             query['NetDistrictCode'] = request.net_district_code
+        if not UtilClient.is_unset(request.net_district_code_node):
+            query['NetDistrictCodeNode'] = request.net_district_code_node
         if not UtilClient.is_unset(request.net_level_code):
             query['NetLevelCode'] = request.net_level_code
         req = open_api_models.OpenApiRequest(
@@ -11940,6 +12286,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.net_district_code):
             query['NetDistrictCode'] = request.net_district_code
+        if not UtilClient.is_unset(request.net_district_code_node):
+            query['NetDistrictCodeNode'] = request.net_district_code_node
         if not UtilClient.is_unset(request.net_level_code):
             query['NetLevelCode'] = request.net_level_code
         req = open_api_models.OpenApiRequest(
@@ -14228,6 +14576,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ha_vips_with_options_async(request, runtime)
+
+    def describe_history_events_with_options(
+        self,
+        tmp_req: ens_20171110_models.DescribeHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeHistoryEventsResponse:
+        """
+        @summary 查询事件列表
+        
+        @param tmp_req: DescribeHistoryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeHistoryEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_levels):
+            request.event_levels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_levels, 'EventLevels', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_status):
+            request.event_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_status, 'EventStatus', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_types):
+            request.event_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_types, 'EventTypes', 'simple')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.event_levels_shrink):
+            query['EventLevels'] = request.event_levels_shrink
+        if not UtilClient.is_unset(request.event_status_shrink):
+            query['EventStatus'] = request.event_status_shrink
+        if not UtilClient.is_unset(request.event_types_shrink):
+            query['EventTypes'] = request.event_types_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEvents',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DescribeHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeHistoryEventsResponse:
+        """
+        @summary 查询事件列表
+        
+        @param tmp_req: DescribeHistoryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeHistoryEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_levels):
+            request.event_levels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_levels, 'EventLevels', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_status):
+            request.event_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_status, 'EventStatus', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_types):
+            request.event_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_types, 'EventTypes', 'simple')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.event_levels_shrink):
+            query['EventLevels'] = request.event_levels_shrink
+        if not UtilClient.is_unset(request.event_status_shrink):
+            query['EventStatus'] = request.event_status_shrink
+        if not UtilClient.is_unset(request.event_types_shrink):
+            query['EventTypes'] = request.event_types_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEvents',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeHistoryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events(
+        self,
+        request: ens_20171110_models.DescribeHistoryEventsRequest,
+    ) -> ens_20171110_models.DescribeHistoryEventsResponse:
+        """
+        @summary 查询事件列表
+        
+        @param request: DescribeHistoryEventsRequest
+        @return: DescribeHistoryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_events_with_options(request, runtime)
+
+    async def describe_history_events_async(
+        self,
+        request: ens_20171110_models.DescribeHistoryEventsRequest,
+    ) -> ens_20171110_models.DescribeHistoryEventsResponse:
+        """
+        @summary 查询事件列表
+        
+        @param request: DescribeHistoryEventsRequest
+        @return: DescribeHistoryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_events_with_options_async(request, runtime)
 
     def describe_image_infos_with_options(
         self,
@@ -20576,6 +21060,362 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.dist_application_data_with_options_async(request, runtime)
+
+    def event_migrate_instance_with_options(
+        self,
+        request: ens_20171110_models.EventMigrateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.EventMigrateInstanceResponse:
+        """
+        @summary 因底层升级需要迁移
+        
+        @param request: EventMigrateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventMigrateInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_policy):
+            query['DataPolicy'] = request.data_policy
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.ops_type):
+            query['OpsType'] = request.ops_type
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EventMigrateInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.EventMigrateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_migrate_instance_with_options_async(
+        self,
+        request: ens_20171110_models.EventMigrateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.EventMigrateInstanceResponse:
+        """
+        @summary 因底层升级需要迁移
+        
+        @param request: EventMigrateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventMigrateInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_policy):
+            query['DataPolicy'] = request.data_policy
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.ops_type):
+            query['OpsType'] = request.ops_type
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EventMigrateInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.EventMigrateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_migrate_instance(
+        self,
+        request: ens_20171110_models.EventMigrateInstanceRequest,
+    ) -> ens_20171110_models.EventMigrateInstanceResponse:
+        """
+        @summary 因底层升级需要迁移
+        
+        @param request: EventMigrateInstanceRequest
+        @return: EventMigrateInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_migrate_instance_with_options(request, runtime)
+
+    async def event_migrate_instance_async(
+        self,
+        request: ens_20171110_models.EventMigrateInstanceRequest,
+    ) -> ens_20171110_models.EventMigrateInstanceResponse:
+        """
+        @summary 因底层升级需要迁移
+        
+        @param request: EventMigrateInstanceRequest
+        @return: EventMigrateInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_migrate_instance_with_options_async(request, runtime)
+
+    def event_reboot_instance_with_options(
+        self,
+        request: ens_20171110_models.EventRebootInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.EventRebootInstanceResponse:
+        """
+        @summary 因系统维护实例重启
+        
+        @description ## 请求说明
+        - 该API用于触发一个实例的重启事件。
+        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
+        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
+        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        
+        @param request: EventRebootInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventRebootInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.ops_type):
+            query['OpsType'] = request.ops_type
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EventRebootInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.EventRebootInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_reboot_instance_with_options_async(
+        self,
+        request: ens_20171110_models.EventRebootInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.EventRebootInstanceResponse:
+        """
+        @summary 因系统维护实例重启
+        
+        @description ## 请求说明
+        - 该API用于触发一个实例的重启事件。
+        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
+        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
+        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        
+        @param request: EventRebootInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventRebootInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.ops_type):
+            query['OpsType'] = request.ops_type
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EventRebootInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.EventRebootInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_reboot_instance(
+        self,
+        request: ens_20171110_models.EventRebootInstanceRequest,
+    ) -> ens_20171110_models.EventRebootInstanceResponse:
+        """
+        @summary 因系统维护实例重启
+        
+        @description ## 请求说明
+        - 该API用于触发一个实例的重启事件。
+        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
+        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
+        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        
+        @param request: EventRebootInstanceRequest
+        @return: EventRebootInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_reboot_instance_with_options(request, runtime)
+
+    async def event_reboot_instance_async(
+        self,
+        request: ens_20171110_models.EventRebootInstanceRequest,
+    ) -> ens_20171110_models.EventRebootInstanceResponse:
+        """
+        @summary 因系统维护实例重启
+        
+        @description ## 请求说明
+        - 该API用于触发一个实例的重启事件。
+        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
+        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
+        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        
+        @param request: EventRebootInstanceRequest
+        @return: EventRebootInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_reboot_instance_with_options_async(request, runtime)
+
+    def event_redeploy_instance_with_options(
+        self,
+        request: ens_20171110_models.EventRedeployInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.EventRedeployInstanceResponse:
+        """
+        @summary 节点内迁移
+        
+        @param request: EventRedeployInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventRedeployInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.ops_type):
+            query['OpsType'] = request.ops_type
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EventRedeployInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.EventRedeployInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_redeploy_instance_with_options_async(
+        self,
+        request: ens_20171110_models.EventRedeployInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.EventRedeployInstanceResponse:
+        """
+        @summary 节点内迁移
+        
+        @param request: EventRedeployInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventRedeployInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.ops_type):
+            query['OpsType'] = request.ops_type
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EventRedeployInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.EventRedeployInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_redeploy_instance(
+        self,
+        request: ens_20171110_models.EventRedeployInstanceRequest,
+    ) -> ens_20171110_models.EventRedeployInstanceResponse:
+        """
+        @summary 节点内迁移
+        
+        @param request: EventRedeployInstanceRequest
+        @return: EventRedeployInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_redeploy_instance_with_options(request, runtime)
+
+    async def event_redeploy_instance_async(
+        self,
+        request: ens_20171110_models.EventRedeployInstanceRequest,
+    ) -> ens_20171110_models.EventRedeployInstanceResponse:
+        """
+        @summary 节点内迁移
+        
+        @param request: EventRedeployInstanceRequest
+        @return: EventRedeployInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_redeploy_instance_with_options_async(request, runtime)
 
     def export_bill_detail_data_with_options(
         self,

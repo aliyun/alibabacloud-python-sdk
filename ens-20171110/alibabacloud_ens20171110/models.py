@@ -2816,6 +2816,724 @@ class AuthorizeSecurityGroupEgressResponse(TeaModel):
         return self
 
 
+class BatchEventMigrateInstanceRequestEventInfos(TeaModel):
+    def __init__(
+        self,
+        data_policy: str = None,
+        event_id: str = None,
+        ops_type: str = None,
+        password: str = None,
+        plan_time: int = None,
+        resource_id: str = None,
+    ):
+        self.data_policy = data_policy
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.ops_type = ops_type
+        self.password = password
+        self.plan_time = plan_time
+        # This parameter is required.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_policy is not None:
+            result['DataPolicy'] = self.data_policy
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.ops_type is not None:
+            result['OpsType'] = self.ops_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataPolicy') is not None:
+            self.data_policy = m.get('DataPolicy')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('OpsType') is not None:
+            self.ops_type = m.get('OpsType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class BatchEventMigrateInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        event_infos: List[BatchEventMigrateInstanceRequestEventInfos] = None,
+    ):
+        self.event_infos = event_infos
+
+    def validate(self):
+        if self.event_infos:
+            for k in self.event_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EventInfos'] = []
+        if self.event_infos is not None:
+            for k in self.event_infos:
+                result['EventInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.event_infos = []
+        if m.get('EventInfos') is not None:
+            for k in m.get('EventInfos'):
+                temp_model = BatchEventMigrateInstanceRequestEventInfos()
+                self.event_infos.append(temp_model.from_map(k))
+        return self
+
+
+class BatchEventMigrateInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        event_infos_shrink: str = None,
+    ):
+        self.event_infos_shrink = event_infos_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_infos_shrink is not None:
+            result['EventInfos'] = self.event_infos_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventInfos') is not None:
+            self.event_infos_shrink = m.get('EventInfos')
+        return self
+
+
+class BatchEventMigrateInstanceResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        event_id: str = None,
+        message: str = None,
+        resource_id: str = None,
+    ):
+        self.code = code
+        self.event_id = event_id
+        self.message = message
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class BatchEventMigrateInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        results: List[BatchEventMigrateInstanceResponseBodyResults] = None,
+    ):
+        self.request_id = request_id
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = BatchEventMigrateInstanceResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class BatchEventMigrateInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchEventMigrateInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchEventMigrateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchEventRebootInstanceRequestEventInfos(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        ops_type: str = None,
+        plan_time: int = None,
+        resource_id: str = None,
+    ):
+        self.event_id = event_id
+        self.ops_type = ops_type
+        self.plan_time = plan_time
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.ops_type is not None:
+            result['OpsType'] = self.ops_type
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('OpsType') is not None:
+            self.ops_type = m.get('OpsType')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class BatchEventRebootInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        event_infos: List[BatchEventRebootInstanceRequestEventInfos] = None,
+    ):
+        self.event_infos = event_infos
+
+    def validate(self):
+        if self.event_infos:
+            for k in self.event_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EventInfos'] = []
+        if self.event_infos is not None:
+            for k in self.event_infos:
+                result['EventInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.event_infos = []
+        if m.get('EventInfos') is not None:
+            for k in m.get('EventInfos'):
+                temp_model = BatchEventRebootInstanceRequestEventInfos()
+                self.event_infos.append(temp_model.from_map(k))
+        return self
+
+
+class BatchEventRebootInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        event_infos_shrink: str = None,
+    ):
+        self.event_infos_shrink = event_infos_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_infos_shrink is not None:
+            result['EventInfos'] = self.event_infos_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventInfos') is not None:
+            self.event_infos_shrink = m.get('EventInfos')
+        return self
+
+
+class BatchEventRebootInstanceResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        event_id: str = None,
+        message: str = None,
+        resource_id: str = None,
+    ):
+        self.code = code
+        self.event_id = event_id
+        self.message = message
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class BatchEventRebootInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        results: List[BatchEventRebootInstanceResponseBodyResults] = None,
+    ):
+        # Id of the request。
+        self.request_id = request_id
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = BatchEventRebootInstanceResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class BatchEventRebootInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchEventRebootInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchEventRebootInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchEventRedeployInstanceRequestEventInfos(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        ops_type: str = None,
+        plan_time: int = None,
+        resource_id: str = None,
+    ):
+        self.event_id = event_id
+        self.ops_type = ops_type
+        self.plan_time = plan_time
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.ops_type is not None:
+            result['OpsType'] = self.ops_type
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('OpsType') is not None:
+            self.ops_type = m.get('OpsType')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class BatchEventRedeployInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        event_infos: List[BatchEventRedeployInstanceRequestEventInfos] = None,
+    ):
+        self.event_infos = event_infos
+
+    def validate(self):
+        if self.event_infos:
+            for k in self.event_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EventInfos'] = []
+        if self.event_infos is not None:
+            for k in self.event_infos:
+                result['EventInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.event_infos = []
+        if m.get('EventInfos') is not None:
+            for k in m.get('EventInfos'):
+                temp_model = BatchEventRedeployInstanceRequestEventInfos()
+                self.event_infos.append(temp_model.from_map(k))
+        return self
+
+
+class BatchEventRedeployInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        event_infos_shrink: str = None,
+    ):
+        self.event_infos_shrink = event_infos_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_infos_shrink is not None:
+            result['EventInfos'] = self.event_infos_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventInfos') is not None:
+            self.event_infos_shrink = m.get('EventInfos')
+        return self
+
+
+class BatchEventRedeployInstanceResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        event_id: str = None,
+        message: str = None,
+        resource_id: str = None,
+    ):
+        self.code = code
+        self.event_id = event_id
+        self.message = message
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class BatchEventRedeployInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        results: List[BatchEventRedeployInstanceResponseBodyResults] = None,
+    ):
+        self.request_id = request_id
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = BatchEventRedeployInstanceResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class BatchEventRedeployInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchEventRedeployInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchEventRedeployInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CleanDistDataRequest(TeaModel):
     def __init__(
         self,
@@ -21474,6 +22192,7 @@ class DescribeEnsNetDistrictRequest(TeaModel):
     def __init__(
         self,
         net_district_code: str = None,
+        net_district_code_node: bool = None,
         net_level_code: str = None,
     ):
         # The code of the region.
@@ -21482,6 +22201,7 @@ class DescribeEnsNetDistrictRequest(TeaModel):
         # 
         # If you specify this parameter, only nodes in the regions of the level that is specified by this parameter are queried.
         self.net_district_code = net_district_code
+        self.net_district_code_node = net_district_code_node
         # The level of the region.
         # 
         # *   **Big**: area
@@ -21502,6 +22222,8 @@ class DescribeEnsNetDistrictRequest(TeaModel):
         result = dict()
         if self.net_district_code is not None:
             result['NetDistrictCode'] = self.net_district_code
+        if self.net_district_code_node is not None:
+            result['NetDistrictCodeNode'] = self.net_district_code_node
         if self.net_level_code is not None:
             result['NetLevelCode'] = self.net_level_code
         return result
@@ -21510,6 +22232,8 @@ class DescribeEnsNetDistrictRequest(TeaModel):
         m = m or dict()
         if m.get('NetDistrictCode') is not None:
             self.net_district_code = m.get('NetDistrictCode')
+        if m.get('NetDistrictCodeNode') is not None:
+            self.net_district_code_node = m.get('NetDistrictCodeNode')
         if m.get('NetLevelCode') is not None:
             self.net_level_code = m.get('NetLevelCode')
         return self
@@ -27801,6 +28525,297 @@ class DescribeHaVipsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHaVipsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHistoryEventsRequest(TeaModel):
+    def __init__(
+        self,
+        event_levels: List[str] = None,
+        event_status: List[str] = None,
+        event_types: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_ids: List[str] = None,
+    ):
+        self.event_levels = event_levels
+        self.event_status = event_status
+        # This parameter is required.
+        self.event_types = event_types
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_ids = resource_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_levels is not None:
+            result['EventLevels'] = self.event_levels
+        if self.event_status is not None:
+            result['EventStatus'] = self.event_status
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventLevels') is not None:
+            self.event_levels = m.get('EventLevels')
+        if m.get('EventStatus') is not None:
+            self.event_status = m.get('EventStatus')
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        return self
+
+
+class DescribeHistoryEventsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        event_levels_shrink: str = None,
+        event_status_shrink: str = None,
+        event_types_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_ids_shrink: str = None,
+    ):
+        self.event_levels_shrink = event_levels_shrink
+        self.event_status_shrink = event_status_shrink
+        # This parameter is required.
+        self.event_types_shrink = event_types_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_ids_shrink = resource_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_levels_shrink is not None:
+            result['EventLevels'] = self.event_levels_shrink
+        if self.event_status_shrink is not None:
+            result['EventStatus'] = self.event_status_shrink
+        if self.event_types_shrink is not None:
+            result['EventTypes'] = self.event_types_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_ids_shrink is not None:
+            result['ResourceIds'] = self.resource_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventLevels') is not None:
+            self.event_levels_shrink = m.get('EventLevels')
+        if m.get('EventStatus') is not None:
+            self.event_status_shrink = m.get('EventStatus')
+        if m.get('EventTypes') is not None:
+            self.event_types_shrink = m.get('EventTypes')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids_shrink = m.get('ResourceIds')
+        return self
+
+
+class DescribeHistoryEventsResponseBodyEvents(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        event_level: str = None,
+        event_status: str = None,
+        event_type: str = None,
+        extended_attribute: str = None,
+        not_before: int = None,
+        publish_time: int = None,
+        reason: str = None,
+        resource_id: str = None,
+    ):
+        self.event_id = event_id
+        self.event_level = event_level
+        self.event_status = event_status
+        self.event_type = event_type
+        self.extended_attribute = extended_attribute
+        self.not_before = not_before
+        self.publish_time = publish_time
+        self.reason = reason
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
+        if self.event_status is not None:
+            result['EventStatus'] = self.event_status
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.extended_attribute is not None:
+            result['ExtendedAttribute'] = self.extended_attribute
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.publish_time is not None:
+            result['PublishTime'] = self.publish_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
+        if m.get('EventStatus') is not None:
+            self.event_status = m.get('EventStatus')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('ExtendedAttribute') is not None:
+            self.extended_attribute = m.get('ExtendedAttribute')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PublishTime') is not None:
+            self.publish_time = m.get('PublishTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class DescribeHistoryEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        events: List[DescribeHistoryEventsResponseBodyEvents] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.events = events
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['Events'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('Events') is not None:
+            for k in m.get('Events'):
+                temp_model = DescribeHistoryEventsResponseBodyEvents()
+                self.events.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryEventsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -49098,6 +50113,368 @@ class DistApplicationDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DistApplicationDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EventMigrateInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_policy: str = None,
+        event_id: str = None,
+        ops_type: str = None,
+        password: str = None,
+        plan_time: int = None,
+        resource_id: str = None,
+    ):
+        self.data_policy = data_policy
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.ops_type = ops_type
+        self.password = password
+        self.plan_time = plan_time
+        # This parameter is required.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_policy is not None:
+            result['DataPolicy'] = self.data_policy
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.ops_type is not None:
+            result['OpsType'] = self.ops_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataPolicy') is not None:
+            self.data_policy = m.get('DataPolicy')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('OpsType') is not None:
+            self.ops_type = m.get('OpsType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class EventMigrateInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EventMigrateInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventMigrateInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventMigrateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EventRebootInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        ops_type: str = None,
+        plan_time: int = None,
+        resource_id: str = None,
+    ):
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.ops_type = ops_type
+        self.plan_time = plan_time
+        # This parameter is required.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.ops_type is not None:
+            result['OpsType'] = self.ops_type
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('OpsType') is not None:
+            self.ops_type = m.get('OpsType')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class EventRebootInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EventRebootInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventRebootInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventRebootInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EventRedeployInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        ops_type: str = None,
+        plan_time: int = None,
+        resource_id: str = None,
+    ):
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.ops_type = ops_type
+        self.plan_time = plan_time
+        # This parameter is required.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.ops_type is not None:
+            result['OpsType'] = self.ops_type
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('OpsType') is not None:
+            self.ops_type = m.get('OpsType')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class EventRedeployInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # RequestId。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EventRedeployInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventRedeployInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventRedeployInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

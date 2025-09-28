@@ -1,3 +1,14 @@
+2025-09-28 Version: 9.3.0
+- Support API BatchEventMigrateInstance.
+- Support API BatchEventRebootInstance.
+- Support API BatchEventRedeployInstance.
+- Support API DescribeHistoryEvents.
+- Support API EventMigrateInstance.
+- Support API EventRebootInstance.
+- Support API EventRedeployInstance.
+- Update API DescribeEnsNetDistrict: add request parameters NetDistrictCodeNode.
+
+
 2025-09-18 Version: 9.2.3
 - Update API CreateFileSystem: add response parameters Body.AllocationIds.
 
