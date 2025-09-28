@@ -1,3 +1,6 @@
+2025-09-28 Version: 3.0.3
+- Generated python 2020-04-07 for cas.
+
 2025-09-15 Version: 3.0.2
 - Update API GetUserCertificateDetail: add response parameters Body.Tags.
 
