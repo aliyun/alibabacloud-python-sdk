@@ -1,3 +1,8 @@
+2025-09-29 Version: 4.12.1
+- Update API QueryCollectionData: add request parameters IncludeSparseValues.
+- Update API QueryCollectionData: add response parameters Body.Matches.$.SparseValues.
+
+
 2025-09-23 Version: 4.12.0
 - Support API AddAINode.
 - Support API CreateModelService.

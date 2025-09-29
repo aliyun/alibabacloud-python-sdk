@@ -41714,6 +41714,7 @@ class QueryCollectionDataRequest(TeaModel):
         hybrid_search: str = None,
         hybrid_search_args: Dict[str, dict] = None,
         include_metadata_fields: str = None,
+        include_sparse_values: bool = None,
         include_values: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -41775,6 +41776,7 @@ class QueryCollectionDataRequest(TeaModel):
         self.hybrid_search_args = hybrid_search_args
         # Defaults to empty, indicating the metadata fields to return. Multiple fields should be separated by commas.
         self.include_metadata_fields = include_metadata_fields
+        self.include_sparse_values = include_sparse_values
         # Whether to return vector data. Value descriptions:
         # - **true**: Return vector data.
         # - **false**: Do not return vector data, used for full-text search scenarios.
@@ -41854,6 +41856,8 @@ class QueryCollectionDataRequest(TeaModel):
             result['HybridSearchArgs'] = self.hybrid_search_args
         if self.include_metadata_fields is not None:
             result['IncludeMetadataFields'] = self.include_metadata_fields
+        if self.include_sparse_values is not None:
+            result['IncludeSparseValues'] = self.include_sparse_values
         if self.include_values is not None:
             result['IncludeValues'] = self.include_values
         if self.metrics is not None:
@@ -41898,6 +41902,8 @@ class QueryCollectionDataRequest(TeaModel):
             self.hybrid_search_args = m.get('HybridSearchArgs')
         if m.get('IncludeMetadataFields') is not None:
             self.include_metadata_fields = m.get('IncludeMetadataFields')
+        if m.get('IncludeSparseValues') is not None:
+            self.include_sparse_values = m.get('IncludeSparseValues')
         if m.get('IncludeValues') is not None:
             self.include_values = m.get('IncludeValues')
         if m.get('Metrics') is not None:
@@ -41939,6 +41945,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         hybrid_search: str = None,
         hybrid_search_args_shrink: str = None,
         include_metadata_fields: str = None,
+        include_sparse_values: bool = None,
         include_values: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -42000,6 +42007,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         self.hybrid_search_args_shrink = hybrid_search_args_shrink
         # Defaults to empty, indicating the metadata fields to return. Multiple fields should be separated by commas.
         self.include_metadata_fields = include_metadata_fields
+        self.include_sparse_values = include_sparse_values
         # Whether to return vector data. Value descriptions:
         # - **true**: Return vector data.
         # - **false**: Do not return vector data, used for full-text search scenarios.
@@ -42076,6 +42084,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             result['HybridSearchArgs'] = self.hybrid_search_args_shrink
         if self.include_metadata_fields is not None:
             result['IncludeMetadataFields'] = self.include_metadata_fields
+        if self.include_sparse_values is not None:
+            result['IncludeSparseValues'] = self.include_sparse_values
         if self.include_values is not None:
             result['IncludeValues'] = self.include_values
         if self.metrics is not None:
@@ -42120,6 +42130,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.hybrid_search_args_shrink = m.get('HybridSearchArgs')
         if m.get('IncludeMetadataFields') is not None:
             self.include_metadata_fields = m.get('IncludeMetadataFields')
+        if m.get('IncludeSparseValues') is not None:
+            self.include_sparse_values = m.get('IncludeSparseValues')
         if m.get('IncludeValues') is not None:
             self.include_values = m.get('IncludeValues')
         if m.get('Metrics') is not None:
@@ -42146,6 +42158,98 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.vector_shrink = m.get('Vector')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices(TeaModel):
+    def __init__(
+        self,
+        indice: List[int] = None,
+    ):
+        self.indice = indice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.indice is not None:
+            result['Indice'] = self.indice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Indice') is not None:
+            self.indice = m.get('Indice')
+        return self
+
+
+class QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues(TeaModel):
+    def __init__(
+        self,
+        value: List[float] = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryCollectionDataResponseBodyMatchesMatchSparseValues(TeaModel):
+    def __init__(
+        self,
+        indices: QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices = None,
+        values: QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues = None,
+    ):
+        self.indices = indices
+        self.values = values
+
+    def validate(self):
+        if self.indices:
+            self.indices.validate()
+        if self.values:
+            self.values.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.indices is not None:
+            result['Indices'] = self.indices.to_map()
+        if self.values is not None:
+            result['Values'] = self.values.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Indices') is not None:
+            temp_model = QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices()
+            self.indices = temp_model.from_map(m['Indices'])
+        if m.get('Values') is not None:
+            temp_model = QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues()
+            self.values = temp_model.from_map(m['Values'])
         return self
 
 
@@ -42183,6 +42287,7 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
         metadata: Dict[str, str] = None,
         metadata_v2: Dict[str, Any] = None,
         score: float = None,
+        sparse_values: QueryCollectionDataResponseBodyMatchesMatchSparseValues = None,
         values: QueryCollectionDataResponseBodyMatchesMatchValues = None,
     ):
         # The unique ID of the vector data.
@@ -42192,10 +42297,13 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
         self.metadata_v2 = metadata_v2
         # The similarity score of this data, which is related to the algorithm `(l2/ip/cosine)` specified when creating the index.
         self.score = score
+        self.sparse_values = sparse_values
         # List of vector data.
         self.values = values
 
     def validate(self):
+        if self.sparse_values:
+            self.sparse_values.validate()
         if self.values:
             self.values.validate()
 
@@ -42213,6 +42321,8 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
             result['MetadataV2'] = self.metadata_v2
         if self.score is not None:
             result['Score'] = self.score
+        if self.sparse_values is not None:
+            result['SparseValues'] = self.sparse_values.to_map()
         if self.values is not None:
             result['Values'] = self.values.to_map()
         return result
@@ -42227,6 +42337,9 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
             self.metadata_v2 = m.get('MetadataV2')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('SparseValues') is not None:
+            temp_model = QueryCollectionDataResponseBodyMatchesMatchSparseValues()
+            self.sparse_values = temp_model.from_map(m['SparseValues'])
         if m.get('Values') is not None:
             temp_model = QueryCollectionDataResponseBodyMatchesMatchValues()
             self.values = temp_model.from_map(m['Values'])

@@ -23245,6 +23245,8 @@ class Client(OpenApiClient):
             query['HybridSearchArgs'] = request.hybrid_search_args_shrink
         if not UtilClient.is_unset(request.include_metadata_fields):
             query['IncludeMetadataFields'] = request.include_metadata_fields
+        if not UtilClient.is_unset(request.include_sparse_values):
+            query['IncludeSparseValues'] = request.include_sparse_values
         if not UtilClient.is_unset(request.include_values):
             query['IncludeValues'] = request.include_values
         if not UtilClient.is_unset(request.metrics):
@@ -23330,6 +23332,8 @@ class Client(OpenApiClient):
             query['HybridSearchArgs'] = request.hybrid_search_args_shrink
         if not UtilClient.is_unset(request.include_metadata_fields):
             query['IncludeMetadataFields'] = request.include_metadata_fields
+        if not UtilClient.is_unset(request.include_sparse_values):
+            query['IncludeSparseValues'] = request.include_sparse_values
         if not UtilClient.is_unset(request.include_values):
             query['IncludeValues'] = request.include_values
         if not UtilClient.is_unset(request.metrics):
