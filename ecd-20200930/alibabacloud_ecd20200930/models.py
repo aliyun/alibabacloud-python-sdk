@@ -29082,6 +29082,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         progress: str = None,
         protocol_type: str = None,
         resource_groups: List[DescribeDesktopsResponseBodyDesktopsResourceGroups] = None,
+        serial_number: str = None,
         session_type: str = None,
         sessions: List[DescribeDesktopsResponseBodyDesktopsSessions] = None,
         snapshot_policy_id: str = None,
@@ -29258,6 +29259,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.protocol_type = protocol_type
         # The information about the enterprise resource groups.
         self.resource_groups = resource_groups
+        self.serial_number = serial_number
         # The type of the session.
         # 
         # Valid values:
@@ -29445,6 +29447,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         if self.resource_groups is not None:
             for k in self.resource_groups:
                 result['ResourceGroups'].append(k.to_map() if k else None)
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
         if self.session_type is not None:
             result['SessionType'] = self.session_type
         result['Sessions'] = []
@@ -29594,6 +29598,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             for k in m.get('ResourceGroups'):
                 temp_model = DescribeDesktopsResponseBodyDesktopsResourceGroups()
                 self.resource_groups.append(temp_model.from_map(k))
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
         self.sessions = []
