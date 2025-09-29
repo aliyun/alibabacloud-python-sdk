@@ -3620,8 +3620,10 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         catalog: str = None,
         database: str = None,
         endpoint: str = None,
+        format: str = None,
         oss_path: str = None,
         partition: str = None,
+        path: str = None,
         project: str = None,
         table: str = None,
         table_format: str = None,
@@ -3637,10 +3639,12 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
+        self.format = format
         # The Object Storage Service (OSS) path.
         self.oss_path = oss_path
         # The partition in the MaxCompute table. This parameter is required if type is set to odps.
         self.partition = partition
+        self.path = path
         # The name of the MaxCompute project that is used as the data source.
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
@@ -3669,10 +3673,14 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
         if self.oss_path is not None:
             result['ossPath'] = self.oss_path
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.path is not None:
+            result['path'] = self.path
         if self.project is not None:
             result['project'] = self.project
         if self.table is not None:
@@ -3697,10 +3705,14 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
         if m.get('ossPath') is not None:
             self.oss_path = m.get('ossPath')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('path') is not None:
+            self.path = m.get('path')
         if m.get('project') is not None:
             self.project = m.get('project')
         if m.get('table') is not None:
@@ -21516,8 +21528,10 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         catalog: str = None,
         database: str = None,
         endpoint: str = None,
+        format: str = None,
         oss_path: str = None,
         partition: str = None,
+        path: str = None,
         project: str = None,
         table: str = None,
         table_format: str = None,
@@ -21533,10 +21547,12 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
+        self.format = format
         # The path of the Object Storage Service (OSS) object.
         self.oss_path = oss_path
         # The partition in the MaxCompute table.
         self.partition = partition
+        self.path = path
         # The name of the MaxCompute project that is used as the data source.
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
@@ -21565,10 +21581,14 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
         if self.oss_path is not None:
             result['ossPath'] = self.oss_path
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.path is not None:
+            result['path'] = self.path
         if self.project is not None:
             result['project'] = self.project
         if self.table is not None:
@@ -21593,10 +21613,14 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
         if m.get('ossPath') is not None:
             self.oss_path = m.get('ossPath')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('path') is not None:
+            self.path = m.get('path')
         if m.get('project') is not None:
             self.project = m.get('project')
         if m.get('table') is not None:

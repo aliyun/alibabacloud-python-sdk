@@ -1,3 +1,10 @@
+2025-09-29 Version: 5.2.3
+- Update API CreateTable: add request parameters body.dataSource.config.format.
+- Update API CreateTable: add request parameters body.dataSource.config.path.
+- Update API ModifyTable: add request parameters body.dataSource.config.format.
+- Update API ModifyTable: add request parameters body.dataSource.config.path.
+
+
 2025-09-16 Version: 5.2.2
 - Update API BuildIndex: add request parameters body.path.
 - Update API CreateIndex: add request parameters body.dataSourceInfo.config.tableFormat.
