@@ -990,6 +990,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_verify_log_with_options_async(request, runtime)
 
+    def credential_get_result_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialGetResultIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
+        """
+        @summary 凭证识别查询
+        
+        @param request: CredentialGetResultIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialGetResultIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.transaction_id):
+            query['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CredentialGetResultIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialGetResultIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def credential_get_result_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialGetResultIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
+        """
+        @summary 凭证识别查询
+        
+        @param request: CredentialGetResultIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialGetResultIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.transaction_id):
+            query['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CredentialGetResultIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialGetResultIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def credential_get_result_intl(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialGetResultIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
+        """
+        @summary 凭证识别查询
+        
+        @param request: CredentialGetResultIntlRequest
+        @return: CredentialGetResultIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.credential_get_result_intl_with_options(request, runtime)
+
+    async def credential_get_result_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialGetResultIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
+        """
+        @summary 凭证识别查询
+        
+        @param request: CredentialGetResultIntlRequest
+        @return: CredentialGetResultIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.credential_get_result_intl_with_options_async(request, runtime)
+
     def credential_recognition_intl_with_options(
         self,
         request: cloudauth_intl_20220809_models.CredentialRecognitionIntlRequest,
@@ -1117,6 +1213,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.credential_recognition_intl_with_options_async(request, runtime)
+
+    def credential_submit_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialSubmitIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
+        """
+        @summary 凭证识别提交
+        
+        @param request: CredentialSubmitIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialSubmitIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.fraud_check):
+            query['FraudCheck'] = request.fraud_check
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.ocr_area):
+            query['OcrArea'] = request.ocr_area
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        body = {}
+        if not UtilClient.is_unset(request.credential_ocr_picture_base_64):
+            body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
+        if not UtilClient.is_unset(request.credential_ocr_picture_url):
+            body['CredentialOcrPictureUrl'] = request.credential_ocr_picture_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialSubmitIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialSubmitIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def credential_submit_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialSubmitIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
+        """
+        @summary 凭证识别提交
+        
+        @param request: CredentialSubmitIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialSubmitIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.fraud_check):
+            query['FraudCheck'] = request.fraud_check
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.ocr_area):
+            query['OcrArea'] = request.ocr_area
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        body = {}
+        if not UtilClient.is_unset(request.credential_ocr_picture_base_64):
+            body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
+        if not UtilClient.is_unset(request.credential_ocr_picture_url):
+            body['CredentialOcrPictureUrl'] = request.credential_ocr_picture_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialSubmitIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialSubmitIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def credential_submit_intl(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialSubmitIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
+        """
+        @summary 凭证识别提交
+        
+        @param request: CredentialSubmitIntlRequest
+        @return: CredentialSubmitIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.credential_submit_intl_with_options(request, runtime)
+
+    async def credential_submit_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialSubmitIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
+        """
+        @summary 凭证识别提交
+        
+        @param request: CredentialSubmitIntlRequest
+        @return: CredentialSubmitIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.credential_submit_intl_with_options_async(request, runtime)
 
     def credential_verify_intl_with_options(
         self,
@@ -2383,6 +2607,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.face_compare_with_options_async(request, runtime)
+
+    def face_cross_compare_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.FaceCrossCompareIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
+        """
+        @summary 人脸交叉比对
+        
+        @param request: FaceCrossCompareIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceCrossCompareIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.compare_model):
+            query['CompareModel'] = request.compare_model
+        if not UtilClient.is_unset(request.face_verify_threshold):
+            query['FaceVerifyThreshold'] = request.face_verify_threshold
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.source_aface_picture):
+            query['SourceAFacePicture'] = request.source_aface_picture
+        if not UtilClient.is_unset(request.source_aface_picture_url):
+            query['SourceAFacePictureUrl'] = request.source_aface_picture_url
+        if not UtilClient.is_unset(request.source_bface_picture):
+            query['SourceBFacePicture'] = request.source_bface_picture
+        if not UtilClient.is_unset(request.source_bface_picture_url):
+            query['SourceBFacePictureUrl'] = request.source_bface_picture_url
+        if not UtilClient.is_unset(request.source_cface_picture):
+            query['SourceCFacePicture'] = request.source_cface_picture
+        if not UtilClient.is_unset(request.source_cface_picture_url):
+            query['SourceCFacePictureUrl'] = request.source_cface_picture_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FaceCrossCompareIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def face_cross_compare_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceCrossCompareIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
+        """
+        @summary 人脸交叉比对
+        
+        @param request: FaceCrossCompareIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceCrossCompareIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.compare_model):
+            query['CompareModel'] = request.compare_model
+        if not UtilClient.is_unset(request.face_verify_threshold):
+            query['FaceVerifyThreshold'] = request.face_verify_threshold
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.source_aface_picture):
+            query['SourceAFacePicture'] = request.source_aface_picture
+        if not UtilClient.is_unset(request.source_aface_picture_url):
+            query['SourceAFacePictureUrl'] = request.source_aface_picture_url
+        if not UtilClient.is_unset(request.source_bface_picture):
+            query['SourceBFacePicture'] = request.source_bface_picture
+        if not UtilClient.is_unset(request.source_bface_picture_url):
+            query['SourceBFacePictureUrl'] = request.source_bface_picture_url
+        if not UtilClient.is_unset(request.source_cface_picture):
+            query['SourceCFacePicture'] = request.source_cface_picture
+        if not UtilClient.is_unset(request.source_cface_picture_url):
+            query['SourceCFacePictureUrl'] = request.source_cface_picture_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FaceCrossCompareIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def face_cross_compare_intl(
+        self,
+        request: cloudauth_intl_20220809_models.FaceCrossCompareIntlRequest,
+    ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
+        """
+        @summary 人脸交叉比对
+        
+        @param request: FaceCrossCompareIntlRequest
+        @return: FaceCrossCompareIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.face_cross_compare_intl_with_options(request, runtime)
+
+    async def face_cross_compare_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceCrossCompareIntlRequest,
+    ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
+        """
+        @summary 人脸交叉比对
+        
+        @param request: FaceCrossCompareIntlRequest
+        @return: FaceCrossCompareIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.face_cross_compare_intl_with_options_async(request, runtime)
 
     def face_duplication_check_intl_with_options(
         self,
@@ -4261,3 +4621,99 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.temp_access_token_intl_with_options_async(request, runtime)
+
+    def temp_oss_url_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.TempOssUrlIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
+        """
+        @summary 获取文件临时地址
+        
+        @param request: TempOssUrlIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TempOssUrlIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.object_name):
+            body['ObjectName'] = request.object_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TempOssUrlIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.TempOssUrlIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def temp_oss_url_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.TempOssUrlIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
+        """
+        @summary 获取文件临时地址
+        
+        @param request: TempOssUrlIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TempOssUrlIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.object_name):
+            body['ObjectName'] = request.object_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TempOssUrlIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.TempOssUrlIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def temp_oss_url_intl(
+        self,
+        request: cloudauth_intl_20220809_models.TempOssUrlIntlRequest,
+    ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
+        """
+        @summary 获取文件临时地址
+        
+        @param request: TempOssUrlIntlRequest
+        @return: TempOssUrlIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.temp_oss_url_intl_with_options(request, runtime)
+
+    async def temp_oss_url_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.TempOssUrlIntlRequest,
+    ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
+        """
+        @summary 获取文件临时地址
+        
+        @param request: TempOssUrlIntlRequest
+        @return: TempOssUrlIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.temp_oss_url_intl_with_options_async(request, runtime)

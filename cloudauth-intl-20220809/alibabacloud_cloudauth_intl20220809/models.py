@@ -1707,6 +1707,162 @@ class CheckVerifyLogResponse(TeaModel):
         return self
 
 
+class CredentialGetResultIntlRequest(TeaModel):
+    def __init__(
+        self,
+        transaction_id: str = None,
+    ):
+        # This parameter is required.
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class CredentialGetResultIntlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ext_id_info: str = None,
+        status: str = None,
+        sub_code: str = None,
+    ):
+        self.ext_id_info = ext_id_info
+        self.status = status
+        self.sub_code = sub_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_id_info is not None:
+            result['ExtIdInfo'] = self.ext_id_info
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtIdInfo') is not None:
+            self.ext_id_info = m.get('ExtIdInfo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        return self
+
+
+class CredentialGetResultIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: CredentialGetResultIntlResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = CredentialGetResultIntlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CredentialGetResultIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CredentialGetResultIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CredentialGetResultIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CredentialRecognitionIntlRequest(TeaModel):
     def __init__(
         self,
@@ -1914,6 +2070,197 @@ class CredentialRecognitionIntlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CredentialRecognitionIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CredentialSubmitIntlRequest(TeaModel):
+    def __init__(
+        self,
+        credential_ocr_picture_base_64: str = None,
+        credential_ocr_picture_url: str = None,
+        doc_type: str = None,
+        fraud_check: str = None,
+        merchant_biz_id: str = None,
+        ocr_area: str = None,
+        product_code: str = None,
+        scene_code: str = None,
+    ):
+        self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
+        self.credential_ocr_picture_url = credential_ocr_picture_url
+        # This parameter is required.
+        self.doc_type = doc_type
+        # This parameter is required.
+        self.fraud_check = fraud_check
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
+        # This parameter is required.
+        self.ocr_area = ocr_area
+        # This parameter is required.
+        self.product_code = product_code
+        # This parameter is required.
+        self.scene_code = scene_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_ocr_picture_base_64 is not None:
+            result['CredentialOcrPictureBase64'] = self.credential_ocr_picture_base_64
+        if self.credential_ocr_picture_url is not None:
+            result['CredentialOcrPictureUrl'] = self.credential_ocr_picture_url
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        if self.fraud_check is not None:
+            result['FraudCheck'] = self.fraud_check
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.ocr_area is not None:
+            result['OcrArea'] = self.ocr_area
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialOcrPictureBase64') is not None:
+            self.credential_ocr_picture_base_64 = m.get('CredentialOcrPictureBase64')
+        if m.get('CredentialOcrPictureUrl') is not None:
+            self.credential_ocr_picture_url = m.get('CredentialOcrPictureUrl')
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        if m.get('FraudCheck') is not None:
+            self.fraud_check = m.get('FraudCheck')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('OcrArea') is not None:
+            self.ocr_area = m.get('OcrArea')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        return self
+
+
+class CredentialSubmitIntlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        transaction_id: str = None,
+    ):
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class CredentialSubmitIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: CredentialSubmitIntlResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = CredentialSubmitIntlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CredentialSubmitIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CredentialSubmitIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CredentialSubmitIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3861,6 +4208,235 @@ class FaceCompareResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FaceCompareResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FaceCrossCompareIntlRequest(TeaModel):
+    def __init__(
+        self,
+        compare_model: str = None,
+        face_verify_threshold: str = None,
+        merchant_biz_id: str = None,
+        product_code: str = None,
+        scene_code: str = None,
+        source_aface_picture: str = None,
+        source_aface_picture_url: str = None,
+        source_bface_picture: str = None,
+        source_bface_picture_url: str = None,
+        source_cface_picture: str = None,
+        source_cface_picture_url: str = None,
+    ):
+        self.compare_model = compare_model
+        self.face_verify_threshold = face_verify_threshold
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
+        # This parameter is required.
+        self.product_code = product_code
+        self.scene_code = scene_code
+        self.source_aface_picture = source_aface_picture
+        self.source_aface_picture_url = source_aface_picture_url
+        self.source_bface_picture = source_bface_picture
+        self.source_bface_picture_url = source_bface_picture_url
+        self.source_cface_picture = source_cface_picture
+        self.source_cface_picture_url = source_cface_picture_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compare_model is not None:
+            result['CompareModel'] = self.compare_model
+        if self.face_verify_threshold is not None:
+            result['FaceVerifyThreshold'] = self.face_verify_threshold
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.source_aface_picture is not None:
+            result['SourceAFacePicture'] = self.source_aface_picture
+        if self.source_aface_picture_url is not None:
+            result['SourceAFacePictureUrl'] = self.source_aface_picture_url
+        if self.source_bface_picture is not None:
+            result['SourceBFacePicture'] = self.source_bface_picture
+        if self.source_bface_picture_url is not None:
+            result['SourceBFacePictureUrl'] = self.source_bface_picture_url
+        if self.source_cface_picture is not None:
+            result['SourceCFacePicture'] = self.source_cface_picture
+        if self.source_cface_picture_url is not None:
+            result['SourceCFacePictureUrl'] = self.source_cface_picture_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompareModel') is not None:
+            self.compare_model = m.get('CompareModel')
+        if m.get('FaceVerifyThreshold') is not None:
+            self.face_verify_threshold = m.get('FaceVerifyThreshold')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('SourceAFacePicture') is not None:
+            self.source_aface_picture = m.get('SourceAFacePicture')
+        if m.get('SourceAFacePictureUrl') is not None:
+            self.source_aface_picture_url = m.get('SourceAFacePictureUrl')
+        if m.get('SourceBFacePicture') is not None:
+            self.source_bface_picture = m.get('SourceBFacePicture')
+        if m.get('SourceBFacePictureUrl') is not None:
+            self.source_bface_picture_url = m.get('SourceBFacePictureUrl')
+        if m.get('SourceCFacePicture') is not None:
+            self.source_cface_picture = m.get('SourceCFacePicture')
+        if m.get('SourceCFacePictureUrl') is not None:
+            self.source_cface_picture_url = m.get('SourceCFacePictureUrl')
+        return self
+
+
+class FaceCrossCompareIntlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        face_comparison_score_a2b: float = None,
+        face_comparison_score_b2c: float = None,
+        face_comparison_score_c2a: float = None,
+        face_passed: str = None,
+        transaction_id: str = None,
+    ):
+        self.face_comparison_score_a2b = face_comparison_score_a2b
+        self.face_comparison_score_b2c = face_comparison_score_b2c
+        self.face_comparison_score_c2a = face_comparison_score_c2a
+        self.face_passed = face_passed
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_comparison_score_a2b is not None:
+            result['FaceComparisonScoreA2B'] = self.face_comparison_score_a2b
+        if self.face_comparison_score_b2c is not None:
+            result['FaceComparisonScoreB2C'] = self.face_comparison_score_b2c
+        if self.face_comparison_score_c2a is not None:
+            result['FaceComparisonScoreC2A'] = self.face_comparison_score_c2a
+        if self.face_passed is not None:
+            result['FacePassed'] = self.face_passed
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceComparisonScoreA2B') is not None:
+            self.face_comparison_score_a2b = m.get('FaceComparisonScoreA2B')
+        if m.get('FaceComparisonScoreB2C') is not None:
+            self.face_comparison_score_b2c = m.get('FaceComparisonScoreB2C')
+        if m.get('FaceComparisonScoreC2A') is not None:
+            self.face_comparison_score_c2a = m.get('FaceComparisonScoreC2A')
+        if m.get('FacePassed') is not None:
+            self.face_passed = m.get('FacePassed')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class FaceCrossCompareIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: FaceCrossCompareIntlResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = FaceCrossCompareIntlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class FaceCrossCompareIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FaceCrossCompareIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FaceCrossCompareIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7791,6 +8367,150 @@ class TempAccessTokenIntlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TempAccessTokenIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TempOssUrlIntlRequest(TeaModel):
+    def __init__(
+        self,
+        object_name: str = None,
+    ):
+        # This parameter is required.
+        self.object_name = object_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_name is not None:
+            result['ObjectName'] = self.object_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectName') is not None:
+            self.object_name = m.get('ObjectName')
+        return self
+
+
+class TempOssUrlIntlResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class TempOssUrlIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: TempOssUrlIntlResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = TempOssUrlIntlResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TempOssUrlIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TempOssUrlIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TempOssUrlIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

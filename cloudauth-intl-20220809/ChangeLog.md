@@ -1,3 +1,10 @@
+2025-09-29 Version: 3.14.0
+- Support API CredentialGetResultIntl.
+- Support API CredentialSubmitIntl.
+- Support API FaceCrossCompareIntl.
+- Support API TempOssUrlIntl.
+
+
 2025-09-24 Version: 3.13.0
 - Support API DeleteFaceGroup.
 - Support API DeleteFaceRecord.
