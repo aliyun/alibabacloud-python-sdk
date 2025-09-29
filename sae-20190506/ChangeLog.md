@@ -1,3 +1,7 @@
+2025-09-29 Version: 2.7.1
+- Update API DescribeApplicationConfig: add response parameters Body.Data.DeploymentName.
+
+
 2025-09-18 Version: 2.7.0
 - Support API QueryArmsEnable.
 - Update API CreateApplication: add request parameters EmptyDirDesc.

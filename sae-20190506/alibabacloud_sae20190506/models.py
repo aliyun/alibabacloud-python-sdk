@@ -22742,6 +22742,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         cpu: int = None,
         custom_host_alias: str = None,
         custom_image_network_type: str = None,
+        deployment_name: str = None,
         disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
@@ -22888,6 +22889,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # 
         # - intranet: private network image.
         self.custom_image_network_type = custom_image_network_type
+        self.deployment_name = deployment_name
         # The disk size. Unit: GB.
         self.disk_size = disk_size
         # The version of .NET.
@@ -23292,6 +23294,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.custom_image_network_type is not None:
             result['CustomImageNetworkType'] = self.custom_image_network_type
+        if self.deployment_name is not None:
+            result['DeploymentName'] = self.deployment_name
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
         if self.dotnet is not None:
@@ -23497,6 +23501,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('CustomImageNetworkType') is not None:
             self.custom_image_network_type = m.get('CustomImageNetworkType')
+        if m.get('DeploymentName') is not None:
+            self.deployment_name = m.get('DeploymentName')
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
         if m.get('Dotnet') is not None:
