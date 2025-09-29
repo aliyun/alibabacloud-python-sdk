@@ -1,3 +1,16 @@
+2025-09-29 Version: 1.36.1
+- Update API ListSearchTaskDialogueDatas: add response parameters Body.Audios.
+- Update API RunSearchGeneration: add request parameters FileUrl.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.Messages.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.$.AudioSearchResult.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.ImageSearchResult.SearchResult.$.TraceabilityId.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult.GenerateTraceability.Coordinates.$.NewsCoordinate.MediaType.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult.SearchResult.$.TraceabilityId.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult.GenerateTraceability.Coordinates.$.NewsCoordinate.MediaType.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.VideoSearchResult.SearchResult.$.TraceabilityId.
+
+
 2025-09-23 Version: 1.36.0
 - Support API AsyncUploadTenderDoc.
 - Support API AsyncWritingBiddingDoc.

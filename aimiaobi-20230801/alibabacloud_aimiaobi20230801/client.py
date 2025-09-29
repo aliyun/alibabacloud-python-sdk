@@ -16377,6 +16377,8 @@ class Client(OpenApiClient):
             body['AgentContext'] = request.agent_context_shrink
         if not UtilClient.is_unset(request.chat_config_shrink):
             body['ChatConfig'] = request.chat_config_shrink
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.model_id):
             body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.original_session_id):
@@ -16430,6 +16432,8 @@ class Client(OpenApiClient):
             body['AgentContext'] = request.agent_context_shrink
         if not UtilClient.is_unset(request.chat_config_shrink):
             body['ChatConfig'] = request.chat_config_shrink
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.model_id):
             body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.original_session_id):
