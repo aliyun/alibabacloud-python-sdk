@@ -295,6 +295,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_source_file_path_list):
+            query['ExcludeSourceFilePathList'] = request.exclude_source_file_path_list
         if not UtilClient.is_unset(request.source_app_list):
             query['SourceAppList'] = request.source_app_list
         if not UtilClient.is_unset(request.source_file_path_list):
@@ -348,6 +350,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_source_file_path_list):
+            query['ExcludeSourceFilePathList'] = request.exclude_source_file_path_list
         if not UtilClient.is_unset(request.source_app_list):
             query['SourceAppList'] = request.source_app_list
         if not UtilClient.is_unset(request.source_file_path_list):

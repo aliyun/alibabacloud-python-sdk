@@ -330,6 +330,7 @@ class BackupFileRequest(TeaModel):
         backup_file_name: str = None,
         backup_file_path: str = None,
         description: str = None,
+        exclude_source_file_path_list: List[str] = None,
         source_app_list: List[str] = None,
         source_file_path_list: List[str] = None,
         upload_endpoint: str = None,
@@ -351,6 +352,7 @@ class BackupFileRequest(TeaModel):
         self.backup_file_path = backup_file_path
         # The description of the backup file.
         self.description = description
+        self.exclude_source_file_path_list = exclude_source_file_path_list
         # The names of the application packages that you want to back up.
         self.source_app_list = source_app_list
         # The paths to the source files.
@@ -385,6 +387,8 @@ class BackupFileRequest(TeaModel):
             result['BackupFilePath'] = self.backup_file_path
         if self.description is not None:
             result['Description'] = self.description
+        if self.exclude_source_file_path_list is not None:
+            result['ExcludeSourceFilePathList'] = self.exclude_source_file_path_list
         if self.source_app_list is not None:
             result['SourceAppList'] = self.source_app_list
         if self.source_file_path_list is not None:
@@ -407,6 +411,8 @@ class BackupFileRequest(TeaModel):
             self.backup_file_path = m.get('BackupFilePath')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExcludeSourceFilePathList') is not None:
+            self.exclude_source_file_path_list = m.get('ExcludeSourceFilePathList')
         if m.get('SourceAppList') is not None:
             self.source_app_list = m.get('SourceAppList')
         if m.get('SourceFilePathList') is not None:
@@ -5728,6 +5734,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         gmt_expired: str = None,
         gmt_modified: str = None,
         image_id: str = None,
+        image_version: str = None,
         installed_app_list: str = None,
         instance_group_id: str = None,
         instance_group_name: str = None,
@@ -5777,6 +5784,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.gmt_modified = gmt_modified
         # The ID of the image.
         self.image_id = image_id
+        self.image_version = image_version
         # The list of installed applications.
         self.installed_app_list = installed_app_list
         # The ID of the instance group.
@@ -5869,6 +5877,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
         if self.installed_app_list is not None:
             result['InstalledAppList'] = self.installed_app_list
         if self.instance_group_id is not None:
@@ -5948,6 +5958,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
         if m.get('InstalledAppList') is not None:
             self.installed_app_list = m.get('InstalledAppList')
         if m.get('InstanceGroupId') is not None:

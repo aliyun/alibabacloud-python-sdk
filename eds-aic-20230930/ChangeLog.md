@@ -1,3 +1,8 @@
+2025-09-29 Version: 4.13.1
+- Update API BackupFile: add request parameters ExcludeSourceFilePathList.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.ImageVersion.
+
+
 2025-09-22 Version: 4.13.0
 - Support API ExpandPhoneDataVolume.
 - Update API RunCommand: add response parameters Body.RunCommandInfos.
