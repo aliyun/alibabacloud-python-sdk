@@ -1,3 +1,6 @@
+2025-09-30 Version: 1.36.2
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2025-09-29 Version: 1.36.1
 - Update API ListSearchTaskDialogueDatas: add response parameters Body.Audios.
 - Update API RunSearchGeneration: add request parameters FileUrl.
