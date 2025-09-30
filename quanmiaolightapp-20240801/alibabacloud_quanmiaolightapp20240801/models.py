@@ -13929,3 +13929,225 @@ class UpdateVideoAnalysisTaskResponse(TeaModel):
         return self
 
 
+class UpdateVideoAnalysisTasksRequest(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[str] = None,
+        task_status: str = None,
+    ):
+        # This parameter is required.
+        self.task_ids = task_ids
+        # This parameter is required.
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['taskIds'] = self.task_ids
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskIds') is not None:
+            self.task_ids = m.get('taskIds')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        return self
+
+
+class UpdateVideoAnalysisTasksShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        task_ids_shrink: str = None,
+        task_status: str = None,
+    ):
+        # This parameter is required.
+        self.task_ids_shrink = task_ids_shrink
+        # This parameter is required.
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids_shrink is not None:
+            result['taskIds'] = self.task_ids_shrink
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskIds') is not None:
+            self.task_ids_shrink = m.get('taskIds')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        return self
+
+
+class UpdateVideoAnalysisTasksResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_error_code: str = None,
+        task_error_message: str = None,
+        task_id: str = None,
+        task_status: str = None,
+    ):
+        self.task_error_code = task_error_code
+        self.task_error_message = task_error_message
+        self.task_id = task_id
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_error_code is not None:
+            result['taskErrorCode'] = self.task_error_code
+        if self.task_error_message is not None:
+            result['taskErrorMessage'] = self.task_error_message
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskErrorCode') is not None:
+            self.task_error_code = m.get('taskErrorCode')
+        if m.get('taskErrorMessage') is not None:
+            self.task_error_message = m.get('taskErrorMessage')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        return self
+
+
+class UpdateVideoAnalysisTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[UpdateVideoAnalysisTasksResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = UpdateVideoAnalysisTasksResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateVideoAnalysisTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateVideoAnalysisTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateVideoAnalysisTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
