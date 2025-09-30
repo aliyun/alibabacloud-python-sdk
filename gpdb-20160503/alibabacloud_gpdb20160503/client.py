@@ -893,6 +893,278 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_upsert_collection_data_job_with_options_async(request, runtime)
 
+    def chat_with_knowledge_base_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.ChatWithKnowledgeBaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param tmp_req: ChatWithKnowledgeBaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithKnowledgeBaseResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ChatWithKnowledgeBaseShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.knowledge_params):
+            request.knowledge_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.knowledge_params, 'KnowledgeParams', 'json')
+        if not UtilClient.is_unset(tmp_req.model_params):
+            request.model_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.include_knowledge_base_results):
+            query['IncludeKnowledgeBaseResults'] = request.include_knowledge_base_results
+        if not UtilClient.is_unset(request.knowledge_params_shrink):
+            query['KnowledgeParams'] = request.knowledge_params_shrink
+        if not UtilClient.is_unset(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prompt_params):
+            query['PromptParams'] = request.prompt_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatWithKnowledgeBase',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ChatWithKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_with_knowledge_base_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.ChatWithKnowledgeBaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param tmp_req: ChatWithKnowledgeBaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithKnowledgeBaseResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ChatWithKnowledgeBaseShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.knowledge_params):
+            request.knowledge_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.knowledge_params, 'KnowledgeParams', 'json')
+        if not UtilClient.is_unset(tmp_req.model_params):
+            request.model_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.include_knowledge_base_results):
+            query['IncludeKnowledgeBaseResults'] = request.include_knowledge_base_results
+        if not UtilClient.is_unset(request.knowledge_params_shrink):
+            query['KnowledgeParams'] = request.knowledge_params_shrink
+        if not UtilClient.is_unset(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prompt_params):
+            query['PromptParams'] = request.prompt_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatWithKnowledgeBase',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ChatWithKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_with_knowledge_base(
+        self,
+        request: gpdb_20160503_models.ChatWithKnowledgeBaseRequest,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param request: ChatWithKnowledgeBaseRequest
+        @return: ChatWithKnowledgeBaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_with_knowledge_base_with_options(request, runtime)
+
+    async def chat_with_knowledge_base_async(
+        self,
+        request: gpdb_20160503_models.ChatWithKnowledgeBaseRequest,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param request: ChatWithKnowledgeBaseRequest
+        @return: ChatWithKnowledgeBaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_with_knowledge_base_with_options_async(request, runtime)
+
+    def chat_with_knowledge_base_stream_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.ChatWithKnowledgeBaseStreamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseStreamResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param tmp_req: ChatWithKnowledgeBaseStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithKnowledgeBaseStreamResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ChatWithKnowledgeBaseStreamShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.knowledge_params):
+            request.knowledge_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.knowledge_params, 'KnowledgeParams', 'json')
+        if not UtilClient.is_unset(tmp_req.model_params):
+            request.model_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.include_knowledge_base_results):
+            query['IncludeKnowledgeBaseResults'] = request.include_knowledge_base_results
+        if not UtilClient.is_unset(request.knowledge_params_shrink):
+            query['KnowledgeParams'] = request.knowledge_params_shrink
+        if not UtilClient.is_unset(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prompt_params):
+            query['PromptParams'] = request.prompt_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatWithKnowledgeBaseStream',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ChatWithKnowledgeBaseStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_with_knowledge_base_stream_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.ChatWithKnowledgeBaseStreamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseStreamResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param tmp_req: ChatWithKnowledgeBaseStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithKnowledgeBaseStreamResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ChatWithKnowledgeBaseStreamShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.knowledge_params):
+            request.knowledge_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.knowledge_params, 'KnowledgeParams', 'json')
+        if not UtilClient.is_unset(tmp_req.model_params):
+            request.model_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.include_knowledge_base_results):
+            query['IncludeKnowledgeBaseResults'] = request.include_knowledge_base_results
+        if not UtilClient.is_unset(request.knowledge_params_shrink):
+            query['KnowledgeParams'] = request.knowledge_params_shrink
+        if not UtilClient.is_unset(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prompt_params):
+            query['PromptParams'] = request.prompt_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatWithKnowledgeBaseStream',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ChatWithKnowledgeBaseStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_with_knowledge_base_stream(
+        self,
+        request: gpdb_20160503_models.ChatWithKnowledgeBaseStreamRequest,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseStreamResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param request: ChatWithKnowledgeBaseStreamRequest
+        @return: ChatWithKnowledgeBaseStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_with_knowledge_base_stream_with_options(request, runtime)
+
+    async def chat_with_knowledge_base_stream_async(
+        self,
+        request: gpdb_20160503_models.ChatWithKnowledgeBaseStreamRequest,
+    ) -> gpdb_20160503_models.ChatWithKnowledgeBaseStreamResponse:
+        """
+        @summary 通过结合知识库和大模型，提供智能问答服务。
+        
+        @description 通过结合知识库和大模型，提供智能问答服务。
+        
+        @param request: ChatWithKnowledgeBaseStreamRequest
+        @return: ChatWithKnowledgeBaseStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_with_knowledge_base_stream_with_options_async(request, runtime)
+
     def check_hadoop_data_source_with_options(
         self,
         request: gpdb_20160503_models.CheckHadoopDataSourceRequest,

@@ -1244,6 +1244,2496 @@ class CancelUpsertCollectionDataJobResponse(TeaModel):
         return self
 
 
+class ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf(TeaModel):
+    def __init__(
+        self,
+        k: int = None,
+    ):
+        self.k = k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.k is not None:
+            result['K'] = self.k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('K') is not None:
+            self.k = m.get('K')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight(TeaModel):
+    def __init__(
+        self,
+        weights: List[float] = None,
+    ):
+        self.weights = weights
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weights is not None:
+            result['Weights'] = self.weights
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Weights') is not None:
+            self.weights = m.get('Weights')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs(TeaModel):
+    def __init__(
+        self,
+        rrf: ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf = None,
+        weight: ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight = None,
+    ):
+        self.rrf = rrf
+        self.weight = weight
+
+    def validate(self):
+        if self.rrf:
+            self.rrf.validate()
+        if self.weight:
+            self.weight.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rrf is not None:
+            result['Rrf'] = self.rrf.to_map()
+        if self.weight is not None:
+            result['Weight'] = self.weight.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rrf') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf()
+            self.rrf = temp_model.from_map(m['Rrf'])
+        if m.get('Weight') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight()
+            self.weight = temp_model.from_map(m['Weight'])
+        return self
+
+
+class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs(TeaModel):
+    def __init__(
+        self,
+        graph_top_k: int = None,
+    ):
+        self.graph_top_k = graph_top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.graph_top_k is not None:
+            result['GraphTopK'] = self.graph_top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GraphTopK') is not None:
+            self.graph_top_k = m.get('GraphTopK')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        graph_enhance: bool = None,
+        graph_search_args: ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs = None,
+        hybrid_search: str = None,
+        hybrid_search_args: Dict[str, Any] = None,
+        metrics: str = None,
+        recall_window: List[int] = None,
+        rerank_factor: float = None,
+        top_k: int = None,
+        use_full_text_retrieval: bool = None,
+    ):
+        self.filter = filter
+        self.graph_enhance = graph_enhance
+        self.graph_search_args = graph_search_args
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args = hybrid_search_args
+        self.metrics = metrics
+        self.recall_window = recall_window
+        self.rerank_factor = rerank_factor
+        self.top_k = top_k
+        self.use_full_text_retrieval = use_full_text_retrieval
+
+    def validate(self):
+        if self.graph_search_args:
+            self.graph_search_args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.graph_enhance is not None:
+            result['GraphEnhance'] = self.graph_enhance
+        if self.graph_search_args is not None:
+            result['GraphSearchArgs'] = self.graph_search_args.to_map()
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.recall_window is not None:
+            result['RecallWindow'] = self.recall_window
+        if self.rerank_factor is not None:
+            result['RerankFactor'] = self.rerank_factor
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        if self.use_full_text_retrieval is not None:
+            result['UseFullTextRetrieval'] = self.use_full_text_retrieval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('GraphEnhance') is not None:
+            self.graph_enhance = m.get('GraphEnhance')
+        if m.get('GraphSearchArgs') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs()
+            self.graph_search_args = temp_model.from_map(m['GraphSearchArgs'])
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args = m.get('HybridSearchArgs')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('RecallWindow') is not None:
+            self.recall_window = m.get('RecallWindow')
+        if m.get('RerankFactor') is not None:
+            self.rerank_factor = m.get('RerankFactor')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        if m.get('UseFullTextRetrieval') is not None:
+            self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        query_params: ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.query_params = query_params
+
+    def validate(self):
+        if self.query_params:
+            self.query_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.query_params is not None:
+            result['QueryParams'] = self.query_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('QueryParams') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams()
+            self.query_params = temp_model.from_map(m['QueryParams'])
+        return self
+
+
+class ChatWithKnowledgeBaseRequestKnowledgeParams(TeaModel):
+    def __init__(
+        self,
+        merge_method: str = None,
+        merge_method_args: ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs = None,
+        rerank_factor: float = None,
+        source_collection: List[ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection] = None,
+        top_k: int = None,
+    ):
+        self.merge_method = merge_method
+        self.merge_method_args = merge_method_args
+        self.rerank_factor = rerank_factor
+        # This parameter is required.
+        self.source_collection = source_collection
+        self.top_k = top_k
+
+    def validate(self):
+        if self.merge_method_args:
+            self.merge_method_args.validate()
+        if self.source_collection:
+            for k in self.source_collection:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.merge_method is not None:
+            result['MergeMethod'] = self.merge_method
+        if self.merge_method_args is not None:
+            result['MergeMethodArgs'] = self.merge_method_args.to_map()
+        if self.rerank_factor is not None:
+            result['RerankFactor'] = self.rerank_factor
+        result['SourceCollection'] = []
+        if self.source_collection is not None:
+            for k in self.source_collection:
+                result['SourceCollection'].append(k.to_map() if k else None)
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MergeMethod') is not None:
+            self.merge_method = m.get('MergeMethod')
+        if m.get('MergeMethodArgs') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs()
+            self.merge_method_args = temp_model.from_map(m['MergeMethodArgs'])
+        if m.get('RerankFactor') is not None:
+            self.rerank_factor = m.get('RerankFactor')
+        self.source_collection = []
+        if m.get('SourceCollection') is not None:
+            for k in m.get('SourceCollection'):
+                temp_model = ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection()
+                self.source_collection.append(temp_model.from_map(k))
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestModelParamsMessages(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestModelParamsToolsFunction(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        parameters: Any = None,
+    ):
+        self.description = description
+        self.name = name
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class ChatWithKnowledgeBaseRequestModelParamsTools(TeaModel):
+    def __init__(
+        self,
+        function: ChatWithKnowledgeBaseRequestModelParamsToolsFunction = None,
+    ):
+        self.function = function
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Function') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestModelParamsToolsFunction()
+            self.function = temp_model.from_map(m['Function'])
+        return self
+
+
+class ChatWithKnowledgeBaseRequestModelParams(TeaModel):
+    def __init__(
+        self,
+        max_tokens: int = None,
+        messages: List[ChatWithKnowledgeBaseRequestModelParamsMessages] = None,
+        model: str = None,
+        n: int = None,
+        presence_penalty: float = None,
+        seed: int = None,
+        stop: List[str] = None,
+        temperature: float = None,
+        tools: List[ChatWithKnowledgeBaseRequestModelParamsTools] = None,
+        top_p: float = None,
+    ):
+        self.max_tokens = max_tokens
+        # This parameter is required.
+        self.messages = messages
+        # This parameter is required.
+        self.model = model
+        self.n = n
+        self.presence_penalty = presence_penalty
+        self.seed = seed
+        self.stop = stop
+        self.temperature = temperature
+        self.tools = tools
+        self.top_p = top_p
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.n is not None:
+            result['N'] = self.n
+        if self.presence_penalty is not None:
+            result['PresencePenalty'] = self.presence_penalty
+        if self.seed is not None:
+            result['Seed'] = self.seed
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        result['Tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['Tools'].append(k.to_map() if k else None)
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = ChatWithKnowledgeBaseRequestModelParamsMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('N') is not None:
+            self.n = m.get('N')
+        if m.get('PresencePenalty') is not None:
+            self.presence_penalty = m.get('PresencePenalty')
+        if m.get('Seed') is not None:
+            self.seed = m.get('Seed')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        self.tools = []
+        if m.get('Tools') is not None:
+            for k in m.get('Tools'):
+                temp_model = ChatWithKnowledgeBaseRequestModelParamsTools()
+                self.tools.append(temp_model.from_map(k))
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        return self
+
+
+class ChatWithKnowledgeBaseRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        include_knowledge_base_results: bool = None,
+        knowledge_params: ChatWithKnowledgeBaseRequestKnowledgeParams = None,
+        model_params: ChatWithKnowledgeBaseRequestModelParams = None,
+        owner_id: int = None,
+        prompt_params: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.include_knowledge_base_results = include_knowledge_base_results
+        self.knowledge_params = knowledge_params
+        # This parameter is required.
+        self.model_params = model_params
+        self.owner_id = owner_id
+        self.prompt_params = prompt_params
+
+    def validate(self):
+        if self.knowledge_params:
+            self.knowledge_params.validate()
+        if self.model_params:
+            self.model_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.include_knowledge_base_results is not None:
+            result['IncludeKnowledgeBaseResults'] = self.include_knowledge_base_results
+        if self.knowledge_params is not None:
+            result['KnowledgeParams'] = self.knowledge_params.to_map()
+        if self.model_params is not None:
+            result['ModelParams'] = self.model_params.to_map()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.prompt_params is not None:
+            result['PromptParams'] = self.prompt_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IncludeKnowledgeBaseResults') is not None:
+            self.include_knowledge_base_results = m.get('IncludeKnowledgeBaseResults')
+        if m.get('KnowledgeParams') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestKnowledgeParams()
+            self.knowledge_params = temp_model.from_map(m['KnowledgeParams'])
+        if m.get('ModelParams') is not None:
+            temp_model = ChatWithKnowledgeBaseRequestModelParams()
+            self.model_params = temp_model.from_map(m['ModelParams'])
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PromptParams') is not None:
+            self.prompt_params = m.get('PromptParams')
+        return self
+
+
+class ChatWithKnowledgeBaseShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        include_knowledge_base_results: bool = None,
+        knowledge_params_shrink: str = None,
+        model_params_shrink: str = None,
+        owner_id: int = None,
+        prompt_params: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.include_knowledge_base_results = include_knowledge_base_results
+        self.knowledge_params_shrink = knowledge_params_shrink
+        # This parameter is required.
+        self.model_params_shrink = model_params_shrink
+        self.owner_id = owner_id
+        self.prompt_params = prompt_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.include_knowledge_base_results is not None:
+            result['IncludeKnowledgeBaseResults'] = self.include_knowledge_base_results
+        if self.knowledge_params_shrink is not None:
+            result['KnowledgeParams'] = self.knowledge_params_shrink
+        if self.model_params_shrink is not None:
+            result['ModelParams'] = self.model_params_shrink
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.prompt_params is not None:
+            result['PromptParams'] = self.prompt_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IncludeKnowledgeBaseResults') is not None:
+            self.include_knowledge_base_results = m.get('IncludeKnowledgeBaseResults')
+        if m.get('KnowledgeParams') is not None:
+            self.knowledge_params_shrink = m.get('KnowledgeParams')
+        if m.get('ModelParams') is not None:
+            self.model_params_shrink = m.get('ModelParams')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PromptParams') is not None:
+            self.prompt_params = m.get('PromptParams')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunction(TeaModel):
+    def __init__(
+        self,
+        arguments: str = None,
+        name: str = None,
+    ):
+        self.arguments = arguments
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arguments is not None:
+            result['Arguments'] = self.arguments
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arguments') is not None:
+            self.arguments = m.get('Arguments')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls(TeaModel):
+    def __init__(
+        self,
+        function: ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunction = None,
+        id: str = None,
+        index: int = None,
+    ):
+        self.function = function
+        # ID
+        self.id = id
+        self.index = index
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.index is not None:
+            result['Index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Function') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunction()
+            self.function = temp_model.from_map(m['Function'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+        tool_calls: List[ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls] = None,
+    ):
+        self.content = content
+        self.role = role
+        self.tool_calls = tool_calls
+
+    def validate(self):
+        if self.tool_calls:
+            for k in self.tool_calls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        result['ToolCalls'] = []
+        if self.tool_calls is not None:
+            for k in self.tool_calls:
+                result['ToolCalls'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        self.tool_calls = []
+        if m.get('ToolCalls') is not None:
+            for k in m.get('ToolCalls'):
+                temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls()
+                self.tool_calls.append(temp_model.from_map(k))
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletionChoices(TeaModel):
+    def __init__(
+        self,
+        finish_reason: str = None,
+        index: int = None,
+        message: ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage = None,
+    ):
+        self.finish_reason = finish_reason
+        self.index = index
+        self.message = message
+
+    def validate(self):
+        if self.message:
+            self.message.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finish_reason is not None:
+            result['FinishReason'] = self.finish_reason
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.message is not None:
+            result['Message'] = self.message.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FinishReason') is not None:
+            self.finish_reason = m.get('FinishReason')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Message') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage()
+            self.message = temp_model.from_map(m['Message'])
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails(TeaModel):
+    def __init__(
+        self,
+        cached_tokens: int = None,
+    ):
+        self.cached_tokens = cached_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cached_tokens is not None:
+            result['CachedTokens'] = self.cached_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CachedTokens') is not None:
+            self.cached_tokens = m.get('CachedTokens')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletionUsage(TeaModel):
+    def __init__(
+        self,
+        completion_tokens: int = None,
+        prompt_tokens: int = None,
+        prompt_tokens_details: ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails = None,
+        total_tokens: int = None,
+    ):
+        self.completion_tokens = completion_tokens
+        self.prompt_tokens = prompt_tokens
+        self.prompt_tokens_details = prompt_tokens_details
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        if self.prompt_tokens_details:
+            self.prompt_tokens_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completion_tokens is not None:
+            result['CompletionTokens'] = self.completion_tokens
+        if self.prompt_tokens is not None:
+            result['PromptTokens'] = self.prompt_tokens
+        if self.prompt_tokens_details is not None:
+            result['PromptTokensDetails'] = self.prompt_tokens_details.to_map()
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletionTokens') is not None:
+            self.completion_tokens = m.get('CompletionTokens')
+        if m.get('PromptTokens') is not None:
+            self.prompt_tokens = m.get('PromptTokens')
+        if m.get('PromptTokensDetails') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails()
+            self.prompt_tokens_details = temp_model.from_map(m['PromptTokensDetails'])
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyChatCompletion(TeaModel):
+    def __init__(
+        self,
+        choices: List[ChatWithKnowledgeBaseResponseBodyChatCompletionChoices] = None,
+        created: int = None,
+        id: str = None,
+        model: str = None,
+        usage: ChatWithKnowledgeBaseResponseBodyChatCompletionUsage = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.id = id
+        self.model = model
+        self.usage = usage
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['Choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('Choices') is not None:
+            for k in m.get('Choices'):
+                temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletionChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Usage') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletionUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata(TeaModel):
+    def __init__(
+        self,
+        source: int = None,
+    ):
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_name: str = None,
+        file_url: str = None,
+        id: str = None,
+        loader_metadata: Any = None,
+        metadata: ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata = None,
+        rerank_score: float = None,
+        retrieval_source: int = None,
+        score: float = None,
+        vector: List[float] = None,
+    ):
+        self.content = content
+        self.file_name = file_name
+        self.file_url = file_url
+        self.id = id
+        self.loader_metadata = loader_metadata
+        self.metadata = metadata
+        self.rerank_score = rerank_score
+        self.retrieval_source = retrieval_source
+        self.score = score
+        self.vector = vector
+
+    def validate(self):
+        if self.metadata:
+            self.metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.loader_metadata is not None:
+            result['LoaderMetadata'] = self.loader_metadata
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata.to_map()
+        if self.rerank_score is not None:
+            result['RerankScore'] = self.rerank_score
+        if self.retrieval_source is not None:
+            result['RetrievalSource'] = self.retrieval_source
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.vector is not None:
+            result['Vector'] = self.vector
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LoaderMetadata') is not None:
+            self.loader_metadata = m.get('LoaderMetadata')
+        if m.get('Metadata') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata()
+            self.metadata = temp_model.from_map(m['Metadata'])
+        if m.get('RerankScore') is not None:
+            self.rerank_score = m.get('RerankScore')
+        if m.get('RetrievalSource') is not None:
+            self.retrieval_source = m.get('RetrievalSource')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Vector') is not None:
+            self.vector = m.get('Vector')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage(TeaModel):
+    def __init__(
+        self,
+        embedding_tokens: int = None,
+    ):
+        self.embedding_tokens = embedding_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embedding_tokens is not None:
+            result['EmbeddingTokens'] = self.embedding_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbeddingTokens') is not None:
+            self.embedding_tokens = m.get('EmbeddingTokens')
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult(TeaModel):
+    def __init__(
+        self,
+        entities: List[str] = None,
+        matches: List[ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches] = None,
+        relations: List[str] = None,
+        request_id: str = None,
+        status: str = None,
+        tokens: int = None,
+        usage: ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage = None,
+    ):
+        self.entities = entities
+        self.matches = matches
+        self.relations = relations
+        self.request_id = request_id
+        self.status = status
+        self.tokens = tokens
+        self.usage = usage
+
+    def validate(self):
+        if self.matches:
+            for k in self.matches:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entities is not None:
+            result['Entities'] = self.entities
+        result['Matches'] = []
+        if self.matches is not None:
+            for k in self.matches:
+                result['Matches'].append(k.to_map() if k else None)
+        if self.relations is not None:
+            result['Relations'] = self.relations
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tokens is not None:
+            result['Tokens'] = self.tokens
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Entities') is not None:
+            self.entities = m.get('Entities')
+        self.matches = []
+        if m.get('Matches') is not None:
+            for k in m.get('Matches'):
+                temp_model = ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches()
+                self.matches.append(temp_model.from_map(k))
+        if m.get('Relations') is not None:
+            self.relations = m.get('Relations')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tokens') is not None:
+            self.tokens = m.get('Tokens')
+        if m.get('Usage') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class ChatWithKnowledgeBaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        chat_completion: ChatWithKnowledgeBaseResponseBodyChatCompletion = None,
+        message: str = None,
+        multi_collection_recall_result: ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.chat_completion = chat_completion
+        self.message = message
+        self.multi_collection_recall_result = multi_collection_recall_result
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.chat_completion:
+            self.chat_completion.validate()
+        if self.multi_collection_recall_result:
+            self.multi_collection_recall_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chat_completion is not None:
+            result['ChatCompletion'] = self.chat_completion.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.multi_collection_recall_result is not None:
+            result['MultiCollectionRecallResult'] = self.multi_collection_recall_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChatCompletion') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyChatCompletion()
+            self.chat_completion = temp_model.from_map(m['ChatCompletion'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MultiCollectionRecallResult') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult()
+            self.multi_collection_recall_result = temp_model.from_map(m['MultiCollectionRecallResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ChatWithKnowledgeBaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChatWithKnowledgeBaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChatWithKnowledgeBaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsRrf(TeaModel):
+    def __init__(
+        self,
+        k: int = None,
+    ):
+        self.k = k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.k is not None:
+            result['K'] = self.k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('K') is not None:
+            self.k = m.get('K')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight(TeaModel):
+    def __init__(
+        self,
+        weights: List[float] = None,
+    ):
+        self.weights = weights
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weights is not None:
+            result['Weights'] = self.weights
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Weights') is not None:
+            self.weights = m.get('Weights')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs(TeaModel):
+    def __init__(
+        self,
+        rrf: ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsRrf = None,
+        weight: ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight = None,
+    ):
+        self.rrf = rrf
+        self.weight = weight
+
+    def validate(self):
+        if self.rrf:
+            self.rrf.validate()
+        if self.weight:
+            self.weight.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rrf is not None:
+            result['Rrf'] = self.rrf.to_map()
+        if self.weight is not None:
+            result['Weight'] = self.weight.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rrf') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsRrf()
+            self.rrf = temp_model.from_map(m['Rrf'])
+        if m.get('Weight') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight()
+            self.weight = temp_model.from_map(m['Weight'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs(TeaModel):
+    def __init__(
+        self,
+        graph_top_k: int = None,
+    ):
+        self.graph_top_k = graph_top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.graph_top_k is not None:
+            result['GraphTopK'] = self.graph_top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GraphTopK') is not None:
+            self.graph_top_k = m.get('GraphTopK')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        graph_enhance: bool = None,
+        graph_search_args: ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs = None,
+        hybrid_search: str = None,
+        hybrid_search_args: Dict[str, Any] = None,
+        metrics: str = None,
+        recall_window: List[int] = None,
+        rerank_factor: float = None,
+        top_k: int = None,
+        use_full_text_retrieval: bool = None,
+    ):
+        self.filter = filter
+        self.graph_enhance = graph_enhance
+        self.graph_search_args = graph_search_args
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args = hybrid_search_args
+        self.metrics = metrics
+        self.recall_window = recall_window
+        self.rerank_factor = rerank_factor
+        self.top_k = top_k
+        self.use_full_text_retrieval = use_full_text_retrieval
+
+    def validate(self):
+        if self.graph_search_args:
+            self.graph_search_args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.graph_enhance is not None:
+            result['GraphEnhance'] = self.graph_enhance
+        if self.graph_search_args is not None:
+            result['GraphSearchArgs'] = self.graph_search_args.to_map()
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.recall_window is not None:
+            result['RecallWindow'] = self.recall_window
+        if self.rerank_factor is not None:
+            result['RerankFactor'] = self.rerank_factor
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        if self.use_full_text_retrieval is not None:
+            result['UseFullTextRetrieval'] = self.use_full_text_retrieval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('GraphEnhance') is not None:
+            self.graph_enhance = m.get('GraphEnhance')
+        if m.get('GraphSearchArgs') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs()
+            self.graph_search_args = temp_model.from_map(m['GraphSearchArgs'])
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args = m.get('HybridSearchArgs')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('RecallWindow') is not None:
+            self.recall_window = m.get('RecallWindow')
+        if m.get('RerankFactor') is not None:
+            self.rerank_factor = m.get('RerankFactor')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        if m.get('UseFullTextRetrieval') is not None:
+            self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        query_params: ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.query_params = query_params
+
+    def validate(self):
+        if self.query_params:
+            self.query_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.query_params is not None:
+            result['QueryParams'] = self.query_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('QueryParams') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams()
+            self.query_params = temp_model.from_map(m['QueryParams'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestKnowledgeParams(TeaModel):
+    def __init__(
+        self,
+        merge_method: str = None,
+        merge_method_args: ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs = None,
+        rerank_factor: float = None,
+        source_collection: List[ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection] = None,
+        top_k: int = None,
+    ):
+        self.merge_method = merge_method
+        self.merge_method_args = merge_method_args
+        self.rerank_factor = rerank_factor
+        # This parameter is required.
+        self.source_collection = source_collection
+        self.top_k = top_k
+
+    def validate(self):
+        if self.merge_method_args:
+            self.merge_method_args.validate()
+        if self.source_collection:
+            for k in self.source_collection:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.merge_method is not None:
+            result['MergeMethod'] = self.merge_method
+        if self.merge_method_args is not None:
+            result['MergeMethodArgs'] = self.merge_method_args.to_map()
+        if self.rerank_factor is not None:
+            result['RerankFactor'] = self.rerank_factor
+        result['SourceCollection'] = []
+        if self.source_collection is not None:
+            for k in self.source_collection:
+                result['SourceCollection'].append(k.to_map() if k else None)
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MergeMethod') is not None:
+            self.merge_method = m.get('MergeMethod')
+        if m.get('MergeMethodArgs') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs()
+            self.merge_method_args = temp_model.from_map(m['MergeMethodArgs'])
+        if m.get('RerankFactor') is not None:
+            self.rerank_factor = m.get('RerankFactor')
+        self.source_collection = []
+        if m.get('SourceCollection') is not None:
+            for k in m.get('SourceCollection'):
+                temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection()
+                self.source_collection.append(temp_model.from_map(k))
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestModelParamsMessages(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestModelParamsToolsFunction(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        parameters: Any = None,
+    ):
+        self.description = description
+        self.name = name
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestModelParamsTools(TeaModel):
+    def __init__(
+        self,
+        function: ChatWithKnowledgeBaseStreamRequestModelParamsToolsFunction = None,
+    ):
+        self.function = function
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Function') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestModelParamsToolsFunction()
+            self.function = temp_model.from_map(m['Function'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequestModelParams(TeaModel):
+    def __init__(
+        self,
+        max_tokens: int = None,
+        messages: List[ChatWithKnowledgeBaseStreamRequestModelParamsMessages] = None,
+        model: str = None,
+        n: int = None,
+        presence_penalty: float = None,
+        seed: int = None,
+        stop: List[str] = None,
+        temperature: float = None,
+        tools: List[ChatWithKnowledgeBaseStreamRequestModelParamsTools] = None,
+        top_p: float = None,
+    ):
+        self.max_tokens = max_tokens
+        # This parameter is required.
+        self.messages = messages
+        # This parameter is required.
+        self.model = model
+        self.n = n
+        self.presence_penalty = presence_penalty
+        self.seed = seed
+        self.stop = stop
+        self.temperature = temperature
+        self.tools = tools
+        self.top_p = top_p
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.n is not None:
+            result['N'] = self.n
+        if self.presence_penalty is not None:
+            result['PresencePenalty'] = self.presence_penalty
+        if self.seed is not None:
+            result['Seed'] = self.seed
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        result['Tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['Tools'].append(k.to_map() if k else None)
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = ChatWithKnowledgeBaseStreamRequestModelParamsMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('N') is not None:
+            self.n = m.get('N')
+        if m.get('PresencePenalty') is not None:
+            self.presence_penalty = m.get('PresencePenalty')
+        if m.get('Seed') is not None:
+            self.seed = m.get('Seed')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        self.tools = []
+        if m.get('Tools') is not None:
+            for k in m.get('Tools'):
+                temp_model = ChatWithKnowledgeBaseStreamRequestModelParamsTools()
+                self.tools.append(temp_model.from_map(k))
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        include_knowledge_base_results: bool = None,
+        knowledge_params: ChatWithKnowledgeBaseStreamRequestKnowledgeParams = None,
+        model_params: ChatWithKnowledgeBaseStreamRequestModelParams = None,
+        owner_id: int = None,
+        prompt_params: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.include_knowledge_base_results = include_knowledge_base_results
+        self.knowledge_params = knowledge_params
+        # This parameter is required.
+        self.model_params = model_params
+        self.owner_id = owner_id
+        self.prompt_params = prompt_params
+
+    def validate(self):
+        if self.knowledge_params:
+            self.knowledge_params.validate()
+        if self.model_params:
+            self.model_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.include_knowledge_base_results is not None:
+            result['IncludeKnowledgeBaseResults'] = self.include_knowledge_base_results
+        if self.knowledge_params is not None:
+            result['KnowledgeParams'] = self.knowledge_params.to_map()
+        if self.model_params is not None:
+            result['ModelParams'] = self.model_params.to_map()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.prompt_params is not None:
+            result['PromptParams'] = self.prompt_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IncludeKnowledgeBaseResults') is not None:
+            self.include_knowledge_base_results = m.get('IncludeKnowledgeBaseResults')
+        if m.get('KnowledgeParams') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestKnowledgeParams()
+            self.knowledge_params = temp_model.from_map(m['KnowledgeParams'])
+        if m.get('ModelParams') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamRequestModelParams()
+            self.model_params = temp_model.from_map(m['ModelParams'])
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PromptParams') is not None:
+            self.prompt_params = m.get('PromptParams')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        include_knowledge_base_results: bool = None,
+        knowledge_params_shrink: str = None,
+        model_params_shrink: str = None,
+        owner_id: int = None,
+        prompt_params: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.include_knowledge_base_results = include_knowledge_base_results
+        self.knowledge_params_shrink = knowledge_params_shrink
+        # This parameter is required.
+        self.model_params_shrink = model_params_shrink
+        self.owner_id = owner_id
+        self.prompt_params = prompt_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.include_knowledge_base_results is not None:
+            result['IncludeKnowledgeBaseResults'] = self.include_knowledge_base_results
+        if self.knowledge_params_shrink is not None:
+            result['KnowledgeParams'] = self.knowledge_params_shrink
+        if self.model_params_shrink is not None:
+            result['ModelParams'] = self.model_params_shrink
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.prompt_params is not None:
+            result['PromptParams'] = self.prompt_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IncludeKnowledgeBaseResults') is not None:
+            self.include_knowledge_base_results = m.get('IncludeKnowledgeBaseResults')
+        if m.get('KnowledgeParams') is not None:
+            self.knowledge_params_shrink = m.get('KnowledgeParams')
+        if m.get('ModelParams') is not None:
+            self.model_params_shrink = m.get('ModelParams')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PromptParams') is not None:
+            self.prompt_params = m.get('PromptParams')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCallsFunction(TeaModel):
+    def __init__(
+        self,
+        arguments: str = None,
+        name: str = None,
+    ):
+        self.arguments = arguments
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arguments is not None:
+            result['Arguments'] = self.arguments
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arguments') is not None:
+            self.arguments = m.get('Arguments')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls(TeaModel):
+    def __init__(
+        self,
+        function: ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCallsFunction = None,
+        id: str = None,
+        index: int = None,
+    ):
+        self.function = function
+        # ID
+        self.id = id
+        self.index = index
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.index is not None:
+            result['Index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Function') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCallsFunction()
+            self.function = temp_model.from_map(m['Function'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+        tool_calls: List[ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls] = None,
+    ):
+        self.content = content
+        self.role = role
+        self.tool_calls = tool_calls
+
+    def validate(self):
+        if self.tool_calls:
+            for k in self.tool_calls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        result['ToolCalls'] = []
+        if self.tool_calls is not None:
+            for k in self.tool_calls:
+                result['ToolCalls'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        self.tool_calls = []
+        if m.get('ToolCalls') is not None:
+            for k in m.get('ToolCalls'):
+                temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls()
+                self.tool_calls.append(temp_model.from_map(k))
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices(TeaModel):
+    def __init__(
+        self,
+        finish_reason: str = None,
+        index: int = None,
+        message: ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage = None,
+    ):
+        self.finish_reason = finish_reason
+        self.index = index
+        self.message = message
+
+    def validate(self):
+        if self.message:
+            self.message.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finish_reason is not None:
+            result['FinishReason'] = self.finish_reason
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.message is not None:
+            result['Message'] = self.message.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FinishReason') is not None:
+            self.finish_reason = m.get('FinishReason')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Message') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage()
+            self.message = temp_model.from_map(m['Message'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensDetails(TeaModel):
+    def __init__(
+        self,
+        cached_tokens: int = None,
+    ):
+        self.cached_tokens = cached_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cached_tokens is not None:
+            result['CachedTokens'] = self.cached_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CachedTokens') is not None:
+            self.cached_tokens = m.get('CachedTokens')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage(TeaModel):
+    def __init__(
+        self,
+        completion_tokens: int = None,
+        prompt_tokens: int = None,
+        prompt_tokens_details: ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensDetails = None,
+        total_tokens: int = None,
+    ):
+        self.completion_tokens = completion_tokens
+        self.prompt_tokens = prompt_tokens
+        self.prompt_tokens_details = prompt_tokens_details
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        if self.prompt_tokens_details:
+            self.prompt_tokens_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completion_tokens is not None:
+            result['CompletionTokens'] = self.completion_tokens
+        if self.prompt_tokens is not None:
+            result['PromptTokens'] = self.prompt_tokens
+        if self.prompt_tokens_details is not None:
+            result['PromptTokensDetails'] = self.prompt_tokens_details.to_map()
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletionTokens') is not None:
+            self.completion_tokens = m.get('CompletionTokens')
+        if m.get('PromptTokens') is not None:
+            self.prompt_tokens = m.get('PromptTokens')
+        if m.get('PromptTokensDetails') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensDetails()
+            self.prompt_tokens_details = temp_model.from_map(m['PromptTokensDetails'])
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyChatCompletion(TeaModel):
+    def __init__(
+        self,
+        choices: List[ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices] = None,
+        created: int = None,
+        id: str = None,
+        model: str = None,
+        usage: ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.id = id
+        self.model = model
+        self.usage = usage
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['Choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('Choices') is not None:
+            for k in m.get('Choices'):
+                temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Usage') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata(TeaModel):
+    def __init__(
+        self,
+        source: int = None,
+    ):
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_name: str = None,
+        file_url: str = None,
+        id: str = None,
+        loader_metadata: Any = None,
+        metadata: ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata = None,
+        rerank_score: float = None,
+        retrieval_source: int = None,
+        score: float = None,
+        vector: List[float] = None,
+    ):
+        self.content = content
+        self.file_name = file_name
+        self.file_url = file_url
+        self.id = id
+        self.loader_metadata = loader_metadata
+        self.metadata = metadata
+        self.rerank_score = rerank_score
+        self.retrieval_source = retrieval_source
+        self.score = score
+        self.vector = vector
+
+    def validate(self):
+        if self.metadata:
+            self.metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.loader_metadata is not None:
+            result['LoaderMetadata'] = self.loader_metadata
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata.to_map()
+        if self.rerank_score is not None:
+            result['RerankScore'] = self.rerank_score
+        if self.retrieval_source is not None:
+            result['RetrievalSource'] = self.retrieval_source
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.vector is not None:
+            result['Vector'] = self.vector
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LoaderMetadata') is not None:
+            self.loader_metadata = m.get('LoaderMetadata')
+        if m.get('Metadata') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata()
+            self.metadata = temp_model.from_map(m['Metadata'])
+        if m.get('RerankScore') is not None:
+            self.rerank_score = m.get('RerankScore')
+        if m.get('RetrievalSource') is not None:
+            self.retrieval_source = m.get('RetrievalSource')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Vector') is not None:
+            self.vector = m.get('Vector')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage(TeaModel):
+    def __init__(
+        self,
+        embedding_tokens: int = None,
+    ):
+        self.embedding_tokens = embedding_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embedding_tokens is not None:
+            result['EmbeddingTokens'] = self.embedding_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbeddingTokens') is not None:
+            self.embedding_tokens = m.get('EmbeddingTokens')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult(TeaModel):
+    def __init__(
+        self,
+        entities: List[str] = None,
+        matches: List[ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches] = None,
+        relations: List[str] = None,
+        request_id: str = None,
+        status: str = None,
+        tokens: int = None,
+        usage: ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage = None,
+    ):
+        self.entities = entities
+        self.matches = matches
+        self.relations = relations
+        self.request_id = request_id
+        self.status = status
+        self.tokens = tokens
+        self.usage = usage
+
+    def validate(self):
+        if self.matches:
+            for k in self.matches:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entities is not None:
+            result['Entities'] = self.entities
+        result['Matches'] = []
+        if self.matches is not None:
+            for k in self.matches:
+                result['Matches'].append(k.to_map() if k else None)
+        if self.relations is not None:
+            result['Relations'] = self.relations
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tokens is not None:
+            result['Tokens'] = self.tokens
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Entities') is not None:
+            self.entities = m.get('Entities')
+        self.matches = []
+        if m.get('Matches') is not None:
+            for k in m.get('Matches'):
+                temp_model = ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches()
+                self.matches.append(temp_model.from_map(k))
+        if m.get('Relations') is not None:
+            self.relations = m.get('Relations')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tokens') is not None:
+            self.tokens = m.get('Tokens')
+        if m.get('Usage') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponseBody(TeaModel):
+    def __init__(
+        self,
+        chat_completion: ChatWithKnowledgeBaseStreamResponseBodyChatCompletion = None,
+        message: str = None,
+        multi_collection_recall_result: ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.chat_completion = chat_completion
+        self.message = message
+        self.multi_collection_recall_result = multi_collection_recall_result
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.chat_completion:
+            self.chat_completion.validate()
+        if self.multi_collection_recall_result:
+            self.multi_collection_recall_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chat_completion is not None:
+            result['ChatCompletion'] = self.chat_completion.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.multi_collection_recall_result is not None:
+            result['MultiCollectionRecallResult'] = self.multi_collection_recall_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChatCompletion') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyChatCompletion()
+            self.chat_completion = temp_model.from_map(m['ChatCompletion'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MultiCollectionRecallResult') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult()
+            self.multi_collection_recall_result = temp_model.from_map(m['MultiCollectionRecallResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ChatWithKnowledgeBaseStreamResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChatWithKnowledgeBaseStreamResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChatWithKnowledgeBaseStreamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckHadoopDataSourceRequest(TeaModel):
     def __init__(
         self,
