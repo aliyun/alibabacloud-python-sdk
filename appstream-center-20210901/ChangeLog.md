@@ -1,3 +1,8 @@
+2025-10-04 Version: 4.2.0
+- Support API DeleteWuyingServer.
+- Update API CreateWuyingServer: add request parameters IdempotenceToken.
+
+
 2025-08-29 Version: 4.1.1
 - Update API CreateWuyingServer: add request parameters VirtualNodePoolId.
 - Update API ListWuyingServer: add request parameters AddVirtualNodePoolStatusList.

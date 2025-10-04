@@ -666,6 +666,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.data_disk):
             body_flat['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.idempotence_token):
+            body['IdempotenceToken'] = request.idempotence_token
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.office_site_id):
@@ -740,6 +742,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.data_disk):
             body_flat['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.idempotence_token):
+            body['IdempotenceToken'] = request.idempotence_token
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.office_site_id):
@@ -1032,6 +1036,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instances_with_options_async(request, runtime)
+
+    def delete_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.DeleteWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DeleteWuyingServerResponse:
+        """
+        @summary 删除工作站
+        
+        @param request: DeleteWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DeleteWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.DeleteWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DeleteWuyingServerResponse:
+        """
+        @summary 删除工作站
+        
+        @param request: DeleteWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DeleteWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_wuying_server(
+        self,
+        request: appstream_center_20210901_models.DeleteWuyingServerRequest,
+    ) -> appstream_center_20210901_models.DeleteWuyingServerResponse:
+        """
+        @summary 删除工作站
+        
+        @param request: DeleteWuyingServerRequest
+        @return: DeleteWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_wuying_server_with_options(request, runtime)
+
+    async def delete_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.DeleteWuyingServerRequest,
+    ) -> appstream_center_20210901_models.DeleteWuyingServerResponse:
+        """
+        @summary 删除工作站
+        
+        @param request: DeleteWuyingServerRequest
+        @return: DeleteWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_wuying_server_with_options_async(request, runtime)
 
     def get_app_instance_group_with_options(
         self,
