@@ -11782,6 +11782,7 @@ class CreateNacosMcpServerRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        encrypt_tool_spec: bool = None,
         endpoint_specification: str = None,
         instance_id: str = None,
         namespace_id: str = None,
@@ -11791,6 +11792,7 @@ class CreateNacosMcpServerRequest(TeaModel):
         yaml_config: str = None,
     ):
         self.accept_language = accept_language
+        self.encrypt_tool_spec = encrypt_tool_spec
         self.endpoint_specification = endpoint_specification
         self.instance_id = instance_id
         self.namespace_id = namespace_id
@@ -11810,6 +11812,8 @@ class CreateNacosMcpServerRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.encrypt_tool_spec is not None:
+            result['EncryptToolSpec'] = self.encrypt_tool_spec
         if self.endpoint_specification is not None:
             result['EndpointSpecification'] = self.endpoint_specification
         if self.instance_id is not None:
@@ -11830,6 +11834,8 @@ class CreateNacosMcpServerRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('EncryptToolSpec') is not None:
+            self.encrypt_tool_spec = m.get('EncryptToolSpec')
         if m.get('EndpointSpecification') is not None:
             self.endpoint_specification = m.get('EndpointSpecification')
         if m.get('InstanceId') is not None:
@@ -31118,9 +31124,13 @@ class GetNacosMcpServerResponseBodyDataToolSpecTools(TeaModel):
 class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
     def __init__(
         self,
+        security_schemes: Any = None,
+        specification_type: str = None,
         tools: List[GetNacosMcpServerResponseBodyDataToolSpecTools] = None,
         tools_meta: Dict[str, DataToolSpecToolsMetaValue] = None,
     ):
+        self.security_schemes = security_schemes
+        self.specification_type = specification_type
         self.tools = tools
         self.tools_meta = tools_meta
 
@@ -31140,6 +31150,10 @@ class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
             return _map
 
         result = dict()
+        if self.security_schemes is not None:
+            result['SecuritySchemes'] = self.security_schemes
+        if self.specification_type is not None:
+            result['SpecificationType'] = self.specification_type
         result['Tools'] = []
         if self.tools is not None:
             for k in self.tools:
@@ -31152,6 +31166,10 @@ class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SecuritySchemes') is not None:
+            self.security_schemes = m.get('SecuritySchemes')
+        if m.get('SpecificationType') is not None:
+            self.specification_type = m.get('SpecificationType')
         self.tools = []
         if m.get('Tools') is not None:
             for k in m.get('Tools'):
