@@ -7384,6 +7384,7 @@ class GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList(TeaModel)
 class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList(TeaModel):
     def __init__(
         self,
+        accumulate: int = None,
         broker_offset: int = None,
         client_id: str = None,
         client_ip: str = None,
@@ -7392,6 +7393,7 @@ class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetLis
         member_id: str = None,
         partition: int = None,
     ):
+        self.accumulate = accumulate
         # The latest offset in the partition of the topic.
         self.broker_offset = broker_offset
         # Client ID of the application.
@@ -7416,6 +7418,8 @@ class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetLis
             return _map
 
         result = dict()
+        if self.accumulate is not None:
+            result['Accumulate'] = self.accumulate
         if self.broker_offset is not None:
             result['BrokerOffset'] = self.broker_offset
         if self.client_id is not None:
@@ -7434,6 +7438,8 @@ class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetLis
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accumulate') is not None:
+            self.accumulate = m.get('Accumulate')
         if m.get('BrokerOffset') is not None:
             self.broker_offset = m.get('BrokerOffset')
         if m.get('ClientId') is not None:
