@@ -1,3 +1,6 @@
+2025-10-09 Version: 1.6.1
+- Generated python 2020-12-03 for pai-dlc.
+
 2025-09-22 Version: 1.6.0
 - Support API GetDashboard.
 

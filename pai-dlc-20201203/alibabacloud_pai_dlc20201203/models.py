@@ -2363,6 +2363,7 @@ class PodItem(TeaModel):
         ip: str = None,
         node_name: str = None,
         pod_id: str = None,
+        pod_ip: str = None,
         pod_uid: str = None,
         status: str = None,
         sub_status: str = None,
@@ -2375,6 +2376,7 @@ class PodItem(TeaModel):
         self.ip = ip
         self.node_name = node_name
         self.pod_id = pod_id
+        self.pod_ip = pod_ip
         self.pod_uid = pod_uid
         self.status = status
         self.sub_status = sub_status
@@ -2408,6 +2410,8 @@ class PodItem(TeaModel):
             result['NodeName'] = self.node_name
         if self.pod_id is not None:
             result['PodId'] = self.pod_id
+        if self.pod_ip is not None:
+            result['PodIp'] = self.pod_ip
         if self.pod_uid is not None:
             result['PodUid'] = self.pod_uid
         if self.status is not None:
@@ -2437,6 +2441,8 @@ class PodItem(TeaModel):
             self.node_name = m.get('NodeName')
         if m.get('PodId') is not None:
             self.pod_id = m.get('PodId')
+        if m.get('PodIp') is not None:
+            self.pod_ip = m.get('PodIp')
         if m.get('PodUid') is not None:
             self.pod_uid = m.get('PodUid')
         if m.get('Status') is not None:
@@ -2445,6 +2451,33 @@ class PodItem(TeaModel):
             self.sub_status = m.get('SubStatus')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        return self
+
+
+class ModelConfig(TeaModel):
+    def __init__(
+        self,
+        model_name: str = None,
+    ):
+        self.model_name = model_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         return self
 
 
@@ -2468,6 +2501,7 @@ class JobSettings(TeaModel):
         error_monitoring_args: str = None,
         job_reserved_minutes: int = None,
         job_reserved_policy: str = None,
+        model_config: ModelConfig = None,
         oversold_type: str = None,
         pipeline_id: str = None,
         sanity_check_args: str = None,
@@ -2490,6 +2524,7 @@ class JobSettings(TeaModel):
         self.error_monitoring_args = error_monitoring_args
         self.job_reserved_minutes = job_reserved_minutes
         self.job_reserved_policy = job_reserved_policy
+        self.model_config = model_config
         self.oversold_type = oversold_type
         self.pipeline_id = pipeline_id
         self.sanity_check_args = sanity_check_args
@@ -2498,6 +2533,8 @@ class JobSettings(TeaModel):
     def validate(self):
         if self.data_juicer_config:
             self.data_juicer_config.validate()
+        if self.model_config:
+            self.model_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2539,6 +2576,8 @@ class JobSettings(TeaModel):
             result['JobReservedMinutes'] = self.job_reserved_minutes
         if self.job_reserved_policy is not None:
             result['JobReservedPolicy'] = self.job_reserved_policy
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config.to_map()
         if self.oversold_type is not None:
             result['OversoldType'] = self.oversold_type
         if self.pipeline_id is not None:
@@ -2586,6 +2625,9 @@ class JobSettings(TeaModel):
             self.job_reserved_minutes = m.get('JobReservedMinutes')
         if m.get('JobReservedPolicy') is not None:
             self.job_reserved_policy = m.get('JobReservedPolicy')
+        if m.get('ModelConfig') is not None:
+            temp_model = ModelConfig()
+            self.model_config = temp_model.from_map(m['ModelConfig'])
         if m.get('OversoldType') is not None:
             self.oversold_type = m.get('OversoldType')
         if m.get('PipelineId') is not None:
