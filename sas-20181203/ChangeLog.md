@@ -1,3 +1,10 @@
+2025-10-09 Version: 5.0.3
+- Update API DescribeNsasSuspEventType: add request parameters SupportOperateCodeList.
+- Update API DescribeSuspEventDetail: add response parameters Body.AlarmUniqueInfo.
+- Update API DescribeSuspEvents: add request parameters SupportOperateCodeList.
+- Update API DescribeSuspEvents: add response parameters Body.SuspEvents.$.SupportOperateCode.
+
+
 2025-09-28 Version: 5.0.2
 - Update API DescribeMonitorAccounts: add response parameters Body.AccountIdInfos.
 - Update API GetAuthSummary: add response parameters Body.ClusterNodeCheck.

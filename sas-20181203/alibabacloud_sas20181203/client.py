@@ -35504,6 +35504,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.support_operate_code_list):
+            query['SupportOperateCodeList'] = request.support_operate_code_list
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -35555,6 +35557,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.support_operate_code_list):
+            query['SupportOperateCodeList'] = request.support_operate_code_list
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -43246,6 +43250,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.strict_mode):
             query['StrictMode'] = request.strict_mode
+        if not UtilClient.is_unset(request.support_operate_code_list):
+            query['SupportOperateCodeList'] = request.support_operate_code_list
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.time_end):
@@ -43355,6 +43361,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.strict_mode):
             query['StrictMode'] = request.strict_mode
+        if not UtilClient.is_unset(request.support_operate_code_list):
+            query['SupportOperateCodeList'] = request.support_operate_code_list
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.time_end):
