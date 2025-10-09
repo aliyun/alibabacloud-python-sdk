@@ -1,3 +1,15 @@
+2025-10-09 Version: 7.4.0
+- Support API CreateComponent.
+- Support API DeleteComponent.
+- Support API GetComponent.
+- Support API ListComponents.
+- Support API UpdateComponent.
+- Update API GetWorkflowInstance: add response parameters Body.WorkflowInstance.Tags.
+- Update API ListWorkflowInstances: add response parameters Body.PagingInfo.WorkflowInstances.$.Tags.
+- Update API ListWorkflows: add response parameters Body.PagingInfo.Workflows.$.Tags.
+- Update API UpdateTask: add request parameters Trigger.CycleType.
+
+
 2025-07-31 Version: 7.3.0
 - Support API CreateDataQualityAlertRule.
 - Support API CreateDataQualityScan.

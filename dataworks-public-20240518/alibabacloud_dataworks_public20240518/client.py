@@ -1044,6 +1044,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_business_with_options_async(request, runtime)
 
+    def create_component_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateComponentResponse:
+        """
+        @summary 创建组件
+        
+        @param request: CreateComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComponentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_component_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateComponentResponse:
+        """
+        @summary 创建组件
+        
+        @param request: CreateComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComponentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_component(
+        self,
+        request: dataworks_public_20240518_models.CreateComponentRequest,
+    ) -> dataworks_public_20240518_models.CreateComponentResponse:
+        """
+        @summary 创建组件
+        
+        @param request: CreateComponentRequest
+        @return: CreateComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_component_with_options(request, runtime)
+
+    async def create_component_async(
+        self,
+        request: dataworks_public_20240518_models.CreateComponentRequest,
+    ) -> dataworks_public_20240518_models.CreateComponentResponse:
+        """
+        @summary 创建组件
+        
+        @param request: CreateComponentRequest
+        @return: CreateComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_component_with_options_async(request, runtime)
+
     def create_dialarm_rule_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
@@ -1478,7 +1582,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
         """
-        @summary 创建数据质量告警规则
+        @summary Creates a data quality monitoring alert rule in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1525,7 +1631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
         """
-        @summary 创建数据质量告警规则
+        @summary Creates a data quality monitoring alert rule in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1571,7 +1679,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
         """
-        @summary 创建数据质量告警规则
+        @summary Creates a data quality monitoring alert rule in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityAlertRuleRequest
         @return: CreateDataQualityAlertRuleResponse
@@ -1584,7 +1694,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
         """
-        @summary 创建数据质量告警规则
+        @summary Creates a data quality monitoring alert rule in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityAlertRuleRequest
         @return: CreateDataQualityAlertRuleResponse
@@ -2158,7 +2270,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
         """
-        @summary 创建数据质量监控
+        @summary Creates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2225,7 +2339,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
         """
-        @summary 创建数据质量监控
+        @summary Creates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2291,7 +2407,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
         """
-        @summary 创建数据质量监控
+        @summary Creates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityScanRequest
         @return: CreateDataQualityScanResponse
@@ -2304,7 +2422,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
         """
-        @summary 创建数据质量监控
+        @summary Creates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityScanRequest
         @return: CreateDataQualityScanResponse
@@ -2318,7 +2438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Triggers a data quality monitoring task and returns the run instance ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateDataQualityScanRunRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2365,7 +2487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Triggers a data quality monitoring task and returns the run instance ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateDataQualityScanRunRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2411,7 +2535,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityScanRunRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Triggers a data quality monitoring task and returns the run instance ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityScanRunRequest
         @return: CreateDataQualityScanRunResponse
@@ -2424,7 +2550,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityScanRunRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Triggers a data quality monitoring task and returns the run instance ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityScanRunRequest
         @return: CreateDataQualityScanRunResponse
@@ -2438,7 +2566,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
         """
-        @summary 创建数据质量模板
+        @summary Creates a data quality template.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2477,7 +2607,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
         """
-        @summary 创建数据质量模板
+        @summary Creates a data quality template.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2515,7 +2647,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
         """
-        @summary 创建数据质量模板
+        @summary Creates a data quality template.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityTemplateRequest
         @return: CreateDataQualityTemplateResponse
@@ -2528,7 +2662,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
         """
-        @summary 创建数据质量模板
+        @summary Creates a data quality template.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateDataQualityTemplateRequest
         @return: CreateDataQualityTemplateResponse
@@ -5616,6 +5752,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_certificate_with_options_async(request, runtime)
 
+    def delete_component_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteComponentResponse:
+        """
+        @summary Deletes a component.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+        
+        @param request: DeleteComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComponentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.component_id):
+            body['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_component_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteComponentResponse:
+        """
+        @summary Deletes a component.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+        
+        @param request: DeleteComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComponentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.component_id):
+            body['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_component(
+        self,
+        request: dataworks_public_20240518_models.DeleteComponentRequest,
+    ) -> dataworks_public_20240518_models.DeleteComponentResponse:
+        """
+        @summary Deletes a component.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+        
+        @param request: DeleteComponentRequest
+        @return: DeleteComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_component_with_options(request, runtime)
+
+    async def delete_component_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteComponentRequest,
+    ) -> dataworks_public_20240518_models.DeleteComponentResponse:
+        """
+        @summary Deletes a component.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+        
+        @param request: DeleteComponentRequest
+        @return: DeleteComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_component_with_options_async(request, runtime)
+
     def delete_dialarm_rule_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
@@ -5930,7 +6174,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
         """
-        @summary 删除数据质量告警规则
+        @summary Deletes a data quality alert rule by ID.
+        
+        @description Subscribe to DataWorks Basic Edition or a higher version to use this API.
         
         @param request: DeleteDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5965,7 +6211,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
         """
-        @summary 删除数据质量告警规则
+        @summary Deletes a data quality alert rule by ID.
+        
+        @description Subscribe to DataWorks Basic Edition or a higher version to use this API.
         
         @param request: DeleteDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5999,7 +6247,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
         """
-        @summary 删除数据质量告警规则
+        @summary Deletes a data quality alert rule by ID.
+        
+        @description Subscribe to DataWorks Basic Edition or a higher version to use this API.
         
         @param request: DeleteDataQualityAlertRuleRequest
         @return: DeleteDataQualityAlertRuleResponse
@@ -6012,7 +6262,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
         """
-        @summary 删除数据质量告警规则
+        @summary Deletes a data quality alert rule by ID.
+        
+        @description Subscribe to DataWorks Basic Edition or a higher version to use this API.
         
         @param request: DeleteDataQualityAlertRuleRequest
         @return: DeleteDataQualityAlertRuleResponse
@@ -6326,7 +6578,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
         """
-        @summary 删除数据质量监控
+        @summary Deletes a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6363,7 +6617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
         """
-        @summary 删除数据质量监控
+        @summary Deletes a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6399,7 +6655,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
         """
-        @summary 删除数据质量监控
+        @summary Deletes a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteDataQualityScanRequest
         @return: DeleteDataQualityScanResponse
@@ -6412,7 +6670,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
         """
-        @summary 删除数据质量监控
+        @summary Deletes a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteDataQualityScanRequest
         @return: DeleteDataQualityScanResponse
@@ -6426,7 +6686,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
         """
-        @summary 删除数据质量模板
+        @summary Deletes a data quality rule template by ID.
+        
+        @description ## [](#)Request description
+        **Id**: the unique identifier of the user-defined rule template, in the format `USER_DEFINED:<template_id>`.
+        **ProjectId**: The ID of the DataWorks project to which the rule template belongs.
+        This API is used to remove data quality rule templates that are no longer needed from the system. Make sure the provided `Id` and `ProjectId` are correct when calling this API operation; otherwise, the deletion may fail or lead to unexpected data loss. Use this function with caution and verify the exact information of the template before performing the operation.
         
         @param request: DeleteDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6461,7 +6726,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
         """
-        @summary 删除数据质量模板
+        @summary Deletes a data quality rule template by ID.
+        
+        @description ## [](#)Request description
+        **Id**: the unique identifier of the user-defined rule template, in the format `USER_DEFINED:<template_id>`.
+        **ProjectId**: The ID of the DataWorks project to which the rule template belongs.
+        This API is used to remove data quality rule templates that are no longer needed from the system. Make sure the provided `Id` and `ProjectId` are correct when calling this API operation; otherwise, the deletion may fail or lead to unexpected data loss. Use this function with caution and verify the exact information of the template before performing the operation.
         
         @param request: DeleteDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6495,7 +6765,12 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
         """
-        @summary 删除数据质量模板
+        @summary Deletes a data quality rule template by ID.
+        
+        @description ## [](#)Request description
+        **Id**: the unique identifier of the user-defined rule template, in the format `USER_DEFINED:<template_id>`.
+        **ProjectId**: The ID of the DataWorks project to which the rule template belongs.
+        This API is used to remove data quality rule templates that are no longer needed from the system. Make sure the provided `Id` and `ProjectId` are correct when calling this API operation; otherwise, the deletion may fail or lead to unexpected data loss. Use this function with caution and verify the exact information of the template before performing the operation.
         
         @param request: DeleteDataQualityTemplateRequest
         @return: DeleteDataQualityTemplateResponse
@@ -6508,7 +6783,12 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
         """
-        @summary 删除数据质量模板
+        @summary Deletes a data quality rule template by ID.
+        
+        @description ## [](#)Request description
+        **Id**: the unique identifier of the user-defined rule template, in the format `USER_DEFINED:<template_id>`.
+        **ProjectId**: The ID of the DataWorks project to which the rule template belongs.
+        This API is used to remove data quality rule templates that are no longer needed from the system. Make sure the provided `Id` and `ProjectId` are correct when calling this API operation; otherwise, the deletion may fail or lead to unexpected data loss. Use this function with caution and verify the exact information of the template before performing the operation.
         
         @param request: DeleteDataQualityTemplateRequest
         @return: DeleteDataQualityTemplateResponse
@@ -9468,6 +9748,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_column_with_options_async(request, runtime)
 
+    def get_component_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetComponentResponse:
+        """
+        @summary 获取组件信息
+        
+        @param request: GetComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComponentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_component_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetComponentResponse:
+        """
+        @summary 获取组件信息
+        
+        @param request: GetComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComponentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_component(
+        self,
+        request: dataworks_public_20240518_models.GetComponentRequest,
+    ) -> dataworks_public_20240518_models.GetComponentResponse:
+        """
+        @summary 获取组件信息
+        
+        @param request: GetComponentRequest
+        @return: GetComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_component_with_options(request, runtime)
+
+    async def get_component_async(
+        self,
+        request: dataworks_public_20240518_models.GetComponentRequest,
+    ) -> dataworks_public_20240518_models.GetComponentResponse:
+        """
+        @summary 获取组件信息
+        
+        @param request: GetComponentRequest
+        @return: GetComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_component_with_options_async(request, runtime)
+
     def get_create_workflow_instances_result_with_options(
         self,
         request: dataworks_public_20240518_models.GetCreateWorkflowInstancesResultRequest,
@@ -9774,7 +10154,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
         """
-        @summary 查询数据质量告警规则详情
+        @summary Queries the details of a data quality monitoring and alerting rule by alert rule ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9809,7 +10191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
         """
-        @summary 查询数据质量告警规则详情
+        @summary Queries the details of a data quality monitoring and alerting rule by alert rule ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9843,7 +10227,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
         """
-        @summary 查询数据质量告警规则详情
+        @summary Queries the details of a data quality monitoring and alerting rule by alert rule ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityAlertRuleRequest
         @return: GetDataQualityAlertRuleResponse
@@ -9856,7 +10242,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
         """
-        @summary 查询数据质量告警规则详情
+        @summary Queries the details of a data quality monitoring and alerting rule by alert rule ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityAlertRuleRequest
         @return: GetDataQualityAlertRuleResponse
@@ -10254,7 +10642,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Gets data quality monitoring details.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10289,7 +10679,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Gets data quality monitoring details.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10323,7 +10715,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Gets data quality monitoring details.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRequest
         @return: GetDataQualityScanResponse
@@ -10336,7 +10730,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Gets data quality monitoring details.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRequest
         @return: GetDataQualityScanResponse
@@ -10350,7 +10746,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Creates a data quality monitoring run instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10385,7 +10783,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Creates a data quality monitoring run instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10419,7 +10819,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityScanRunRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Creates a data quality monitoring run instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunRequest
         @return: GetDataQualityScanRunResponse
@@ -10432,7 +10834,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityScanRunRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Creates a data quality monitoring run instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunRequest
         @return: GetDataQualityScanRunResponse
@@ -10446,7 +10850,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Queries the log of a specific task instance that monitors data quality.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10483,7 +10889,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Queries the log of a specific task instance that monitors data quality.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10519,7 +10927,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityScanRunLogRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Queries the log of a specific task instance that monitors data quality.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunLogRequest
         @return: GetDataQualityScanRunLogResponse
@@ -10532,7 +10942,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityScanRunLogRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
         """
-        @summary 创建数据质量监控运行实例
+        @summary Queries the log of a specific task instance that monitors data quality.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityScanRunLogRequest
         @return: GetDataQualityScanRunLogResponse
@@ -10546,7 +10958,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the details of a data quality rule template by ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10581,7 +10995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the details of a data quality rule template by ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10615,7 +11031,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the details of a data quality rule template by ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityTemplateRequest
         @return: GetDataQualityTemplateResponse
@@ -10628,7 +11046,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the details of a data quality rule template by ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDataQualityTemplateRequest
         @return: GetDataQualityTemplateResponse
@@ -14618,6 +15038,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_columns_with_options_async(request, runtime)
 
+    def list_components_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListComponentsResponse:
+        """
+        @summary 获取组件列表
+        
+        @param request: ListComponentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComponentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListComponents',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListComponentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_components_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListComponentsResponse:
+        """
+        @summary 获取组件列表
+        
+        @param request: ListComponentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComponentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListComponents',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListComponentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_components(
+        self,
+        request: dataworks_public_20240518_models.ListComponentsRequest,
+    ) -> dataworks_public_20240518_models.ListComponentsResponse:
+        """
+        @summary 获取组件列表
+        
+        @param request: ListComponentsRequest
+        @return: ListComponentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_components_with_options(request, runtime)
+
+    async def list_components_async(
+        self,
+        request: dataworks_public_20240518_models.ListComponentsRequest,
+    ) -> dataworks_public_20240518_models.ListComponentsResponse:
+        """
+        @summary 获取组件列表
+        
+        @param request: ListComponentsRequest
+        @return: ListComponentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_components_with_options_async(request, runtime)
+
     def list_crawler_types_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -15410,7 +15938,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
         """
-        @summary 查询数据质量告警规则列表
+        @summary Queries the list of data quality alert rules in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15453,7 +15983,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
         """
-        @summary 查询数据质量告警规则列表
+        @summary Queries the list of data quality alert rules in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15495,7 +16027,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityAlertRulesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
         """
-        @summary 查询数据质量告警规则列表
+        @summary Queries the list of data quality alert rules in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityAlertRulesRequest
         @return: ListDataQualityAlertRulesResponse
@@ -15508,7 +16042,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityAlertRulesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
         """
-        @summary 查询数据质量告警规则列表
+        @summary Queries the list of data quality alert rules in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityAlertRulesRequest
         @return: ListDataQualityAlertRulesResponse
@@ -16006,7 +16542,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
         """
-        @summary 查询数据质量监控运行实例列表
+        @summary Queries the execution records of data quality scans in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScanRunsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16055,7 +16593,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
         """
-        @summary 查询数据质量监控运行实例列表
+        @summary Queries the execution records of data quality scans in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScanRunsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16103,7 +16643,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
         """
-        @summary 查询数据质量监控运行实例列表
+        @summary Queries the execution records of data quality scans in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScanRunsRequest
         @return: ListDataQualityScanRunsResponse
@@ -16116,7 +16658,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
         """
-        @summary 查询数据质量监控运行实例列表
+        @summary Queries the execution records of data quality scans in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScanRunsRequest
         @return: ListDataQualityScanRunsResponse
@@ -16130,7 +16674,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Queries the list of data quality scan tasks in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16175,7 +16721,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Queries the list of data quality scan tasks in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16219,7 +16767,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityScansRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Queries the list of data quality scan tasks in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScansRequest
         @return: ListDataQualityScansResponse
@@ -16232,7 +16782,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityScansRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
         """
-        @summary 获取数据质量监控详情
+        @summary Queries the list of data quality scan tasks in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityScansRequest
         @return: ListDataQualityScansResponse
@@ -16246,7 +16798,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the list of data quality rule templates in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16289,7 +16843,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the list of data quality rule templates in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16331,7 +16887,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityTemplatesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the list of data quality rule templates in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityTemplatesRequest
         @return: ListDataQualityTemplatesResponse
@@ -16344,7 +16902,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityTemplatesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
         """
-        @summary 查询数据质量模板详情
+        @summary Queries the list of data quality rule templates in a project.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityTemplatesRequest
         @return: ListDataQualityTemplatesResponse
@@ -23852,6 +24412,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_column_business_metadata_with_options_async(request, runtime)
 
+    def update_component_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateComponentResponse:
+        """
+        @summary Updates components.
+        
+        @description This operation is currently in beta. To join the beta testing, please submit a request. You can call this operation after we add you to the beta program.
+        
+        @param request: UpdateComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComponentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.component_id):
+            body['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_component_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateComponentResponse:
+        """
+        @summary Updates components.
+        
+        @description This operation is currently in beta. To join the beta testing, please submit a request. You can call this operation after we add you to the beta program.
+        
+        @param request: UpdateComponentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComponentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.component_id):
+            body['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComponent',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_component(
+        self,
+        request: dataworks_public_20240518_models.UpdateComponentRequest,
+    ) -> dataworks_public_20240518_models.UpdateComponentResponse:
+        """
+        @summary Updates components.
+        
+        @description This operation is currently in beta. To join the beta testing, please submit a request. You can call this operation after we add you to the beta program.
+        
+        @param request: UpdateComponentRequest
+        @return: UpdateComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_component_with_options(request, runtime)
+
+    async def update_component_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateComponentRequest,
+    ) -> dataworks_public_20240518_models.UpdateComponentResponse:
+        """
+        @summary Updates components.
+        
+        @description This operation is currently in beta. To join the beta testing, please submit a request. You can call this operation after we add you to the beta program.
+        
+        @param request: UpdateComponentRequest
+        @return: UpdateComponentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_component_with_options_async(request, runtime)
+
     def update_dialarm_rule_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
@@ -24246,7 +24922,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
         """
-        @summary 更新数据质量告警规则
+        @summary Updates a specified data quality monitoring alert rule.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: UpdateDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24295,7 +24973,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
         """
-        @summary 更新数据质量告警规则
+        @summary Updates a specified data quality monitoring alert rule.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: UpdateDataQualityAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24343,7 +25023,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
         """
-        @summary 更新数据质量告警规则
+        @summary Updates a specified data quality monitoring alert rule.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityAlertRuleRequest
         @return: UpdateDataQualityAlertRuleResponse
@@ -24356,7 +25038,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityAlertRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
         """
-        @summary 更新数据质量告警规则
+        @summary Updates a specified data quality monitoring alert rule.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityAlertRuleRequest
         @return: UpdateDataQualityAlertRuleResponse
@@ -24822,7 +25506,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
         """
-        @summary 更新数据质量监控
+        @summary Updates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: UpdateDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24889,7 +25575,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
         """
-        @summary 更新数据质量监控
+        @summary Updates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: UpdateDataQualityScanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24955,7 +25643,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
         """
-        @summary 更新数据质量监控
+        @summary Updates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityScanRequest
         @return: UpdateDataQualityScanResponse
@@ -24968,7 +25658,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityScanRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
         """
-        @summary 更新数据质量监控
+        @summary Updates a data quality monitor.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityScanRequest
         @return: UpdateDataQualityScanResponse
@@ -24982,7 +25674,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
         """
-        @summary 更新数据质量模板
+        @summary Updates a data quality rule template in a project
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25025,7 +25719,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
         """
-        @summary 更新数据质量模板
+        @summary Updates a data quality rule template in a project
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25067,7 +25763,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
         """
-        @summary 更新数据质量模板
+        @summary Updates a data quality rule template in a project
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityTemplateRequest
         @return: UpdateDataQualityTemplateResponse
@@ -25080,7 +25778,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityTemplateRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
         """
-        @summary 更新数据质量模板
+        @summary Updates a data quality rule template in a project
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateDataQualityTemplateRequest
         @return: UpdateDataQualityTemplateResponse
@@ -26688,7 +27388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
-        @summary Updates a specified task in full update mode.
+        @summary Update a task. The changes are synchronized to Data Studio, which creates a new saved version.
         
         @param tmp_req: UpdateTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26777,7 +27477,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
-        @summary Updates a specified task in full update mode.
+        @summary Update a task. The changes are synchronized to Data Studio, which creates a new saved version.
         
         @param tmp_req: UpdateTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26865,7 +27565,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTaskRequest,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
-        @summary Updates a specified task in full update mode.
+        @summary Update a task. The changes are synchronized to Data Studio, which creates a new saved version.
         
         @param request: UpdateTaskRequest
         @return: UpdateTaskResponse
@@ -26878,7 +27578,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTaskRequest,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
-        @summary Updates a specified task in full update mode.
+        @summary Update a task. The changes are synchronized to Data Studio, which creates a new saved version.
         
         @param request: UpdateTaskRequest
         @return: UpdateTaskResponse
