@@ -484,6 +484,8 @@ class GetErrorResponseBodyModel(TeaModel):
         in_main_process: int = None,
         install_sd_card: int = None,
         is_back_trace: int = None,
+        is_jailbroken: int = None,
+        is_simulator: int = None,
         is_speed_version: int = None,
         isp: str = None,
         js_backtrace: str = None,
@@ -633,6 +635,8 @@ class GetErrorResponseBodyModel(TeaModel):
         self.in_main_process = in_main_process
         self.install_sd_card = install_sd_card
         self.is_back_trace = is_back_trace
+        self.is_jailbroken = is_jailbroken
+        self.is_simulator = is_simulator
         self.is_speed_version = is_speed_version
         # ISP
         self.isp = isp
@@ -870,6 +874,10 @@ class GetErrorResponseBodyModel(TeaModel):
             result['InstallSdCard'] = self.install_sd_card
         if self.is_back_trace is not None:
             result['IsBackTrace'] = self.is_back_trace
+        if self.is_jailbroken is not None:
+            result['IsJailbroken'] = self.is_jailbroken
+        if self.is_simulator is not None:
+            result['IsSimulator'] = self.is_simulator
         if self.is_speed_version is not None:
             result['IsSpeedVersion'] = self.is_speed_version
         if self.isp is not None:
@@ -1158,6 +1166,10 @@ class GetErrorResponseBodyModel(TeaModel):
             self.install_sd_card = m.get('InstallSdCard')
         if m.get('IsBackTrace') is not None:
             self.is_back_trace = m.get('IsBackTrace')
+        if m.get('IsJailbroken') is not None:
+            self.is_jailbroken = m.get('IsJailbroken')
+        if m.get('IsSimulator') is not None:
+            self.is_simulator = m.get('IsSimulator')
         if m.get('IsSpeedVersion') is not None:
             self.is_speed_version = m.get('IsSpeedVersion')
         if m.get('Isp') is not None:

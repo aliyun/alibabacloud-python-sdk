@@ -1,3 +1,8 @@
+2025-10-09 Version: 1.2.3
+- Update API GetError: add response parameters Body.Model.IsJailbroken.
+- Update API GetError: add response parameters Body.Model.IsSimulator.
+
+
 2025-08-07 Version: 1.2.2
 - Update API GetError: add request parameters DigestHash.
 - Update API GetError: add response parameters Body.Model.StructuredStack.

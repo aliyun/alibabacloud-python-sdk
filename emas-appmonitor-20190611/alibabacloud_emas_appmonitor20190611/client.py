@@ -733,6 +733,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
         """
+        @summary RequestUploadToken
+        
         @param request: RequestUploadTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RequestUploadTokenResponse
@@ -768,6 +770,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
         """
+        @summary RequestUploadToken
+        
         @param request: RequestUploadTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RequestUploadTokenResponse
@@ -802,6 +806,8 @@ class Client(OpenApiClient):
         request: emas_appmonitor_20190611_models.RequestUploadTokenRequest,
     ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
         """
+        @summary RequestUploadToken
+        
         @param request: RequestUploadTokenRequest
         @return: RequestUploadTokenResponse
         """
@@ -813,6 +819,8 @@ class Client(OpenApiClient):
         request: emas_appmonitor_20190611_models.RequestUploadTokenRequest,
     ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
         """
+        @summary RequestUploadToken
+        
         @param request: RequestUploadTokenRequest
         @return: RequestUploadTokenResponse
         """
@@ -825,6 +833,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
         """
+        @summary SubmitSymbolic
+        
         @param request: SubmitSymbolicRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSymbolicResponse
@@ -872,6 +882,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
         """
+        @summary SubmitSymbolic
+        
         @param request: SubmitSymbolicRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSymbolicResponse
@@ -918,6 +930,8 @@ class Client(OpenApiClient):
         request: emas_appmonitor_20190611_models.SubmitSymbolicRequest,
     ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
         """
+        @summary SubmitSymbolic
+        
         @param request: SubmitSymbolicRequest
         @return: SubmitSymbolicResponse
         """
@@ -929,6 +943,8 @@ class Client(OpenApiClient):
         request: emas_appmonitor_20190611_models.SubmitSymbolicRequest,
     ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
         """
+        @summary SubmitSymbolic
+        
         @param request: SubmitSymbolicRequest
         @return: SubmitSymbolicResponse
         """
