@@ -1,3 +1,19 @@
+2025-10-10 Version: 5.2.4
+- Update API CreateAppAgentTemplate: add request parameters AmbientSoundConfig.
+- Update API CreateAppAgentTemplate: add request parameters BackChannelConfig.
+- Update API CreateAppAgentTemplate: add request parameters InterruptConfig.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.AmbientSoundConfig.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.BackChannelConfig.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.InterruptConfig.
+- Update API ModifyAppAgentTemplate: add request parameters AmbientSoundConfig.
+- Update API ModifyAppAgentTemplate: add request parameters BackChannelConfig.
+- Update API ModifyAppAgentTemplate: add request parameters InterruptConfig.
+- Update API NotifyAgent: add request parameters BackgroundMusic.
+- Update API StartAgent: add request parameters VoiceChatConfig.AmbientSoundConfig.
+- Update API StartAgent: add request parameters VoiceChatConfig.BackChannelConfig.
+- Update API StartAgent: add request parameters VoiceChatConfig.InterruptConfig.
+
+
 2025-08-04 Version: 5.2.3
 - Update API CreateAppAgentTemplate: add request parameters AgentSilenceConfig.
 - Update API CreateAppAgentTemplate: add request parameters AsrConfig.VadConfig.

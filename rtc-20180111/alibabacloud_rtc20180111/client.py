@@ -218,8 +218,14 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.agent_silence_config):
             request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.ambient_sound_config):
+            request.ambient_sound_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ambient_sound_config, 'AmbientSoundConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.back_channel_config):
+            request.back_channel_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.back_channel_config, 'BackChannelConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.interrupt_config):
+            request.interrupt_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.interrupt_config, 'InterruptConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
             request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tts_config):
@@ -227,14 +233,20 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_silence_config_shrink):
             query['AgentSilenceConfig'] = request.agent_silence_config_shrink
+        if not UtilClient.is_unset(request.ambient_sound_config_shrink):
+            query['AmbientSoundConfig'] = request.ambient_sound_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
             query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.back_channel_config_shrink):
+            query['BackChannelConfig'] = request.back_channel_config_shrink
         if not UtilClient.is_unset(request.chat_mode):
             query['ChatMode'] = request.chat_mode
         if not UtilClient.is_unset(request.greeting):
             query['Greeting'] = request.greeting
+        if not UtilClient.is_unset(request.interrupt_config_shrink):
+            query['InterruptConfig'] = request.interrupt_config_shrink
         if not UtilClient.is_unset(request.interrupt_mode):
             query['InterruptMode'] = request.interrupt_mode
         if not UtilClient.is_unset(request.llm_config_shrink):
@@ -281,8 +293,14 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.agent_silence_config):
             request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.ambient_sound_config):
+            request.ambient_sound_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ambient_sound_config, 'AmbientSoundConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.back_channel_config):
+            request.back_channel_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.back_channel_config, 'BackChannelConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.interrupt_config):
+            request.interrupt_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.interrupt_config, 'InterruptConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
             request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tts_config):
@@ -290,14 +308,20 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_silence_config_shrink):
             query['AgentSilenceConfig'] = request.agent_silence_config_shrink
+        if not UtilClient.is_unset(request.ambient_sound_config_shrink):
+            query['AmbientSoundConfig'] = request.ambient_sound_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
             query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.back_channel_config_shrink):
+            query['BackChannelConfig'] = request.back_channel_config_shrink
         if not UtilClient.is_unset(request.chat_mode):
             query['ChatMode'] = request.chat_mode
         if not UtilClient.is_unset(request.greeting):
             query['Greeting'] = request.greeting
+        if not UtilClient.is_unset(request.interrupt_config_shrink):
+            query['InterruptConfig'] = request.interrupt_config_shrink
         if not UtilClient.is_unset(request.interrupt_mode):
             query['InterruptMode'] = request.interrupt_mode
         if not UtilClient.is_unset(request.llm_config_shrink):
@@ -8908,8 +8932,14 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.agent_silence_config):
             request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.ambient_sound_config):
+            request.ambient_sound_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ambient_sound_config, 'AmbientSoundConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.back_channel_config):
+            request.back_channel_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.back_channel_config, 'BackChannelConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.interrupt_config):
+            request.interrupt_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.interrupt_config, 'InterruptConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
             request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tts_config):
@@ -8917,16 +8947,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_silence_config_shrink):
             query['AgentSilenceConfig'] = request.agent_silence_config_shrink
+        if not UtilClient.is_unset(request.ambient_sound_config_shrink):
+            query['AmbientSoundConfig'] = request.ambient_sound_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
             query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.back_channel_config_shrink):
+            query['BackChannelConfig'] = request.back_channel_config_shrink
         if not UtilClient.is_unset(request.chat_mode):
             query['ChatMode'] = request.chat_mode
         if not UtilClient.is_unset(request.greeting):
             query['Greeting'] = request.greeting
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.interrupt_config_shrink):
+            query['InterruptConfig'] = request.interrupt_config_shrink
         if not UtilClient.is_unset(request.interrupt_mode):
             query['InterruptMode'] = request.interrupt_mode
         if not UtilClient.is_unset(request.llm_config_shrink):
@@ -8973,8 +9009,14 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.agent_silence_config):
             request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.ambient_sound_config):
+            request.ambient_sound_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ambient_sound_config, 'AmbientSoundConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.back_channel_config):
+            request.back_channel_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.back_channel_config, 'BackChannelConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.interrupt_config):
+            request.interrupt_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.interrupt_config, 'InterruptConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
             request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tts_config):
@@ -8982,16 +9024,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_silence_config_shrink):
             query['AgentSilenceConfig'] = request.agent_silence_config_shrink
+        if not UtilClient.is_unset(request.ambient_sound_config_shrink):
+            query['AmbientSoundConfig'] = request.ambient_sound_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
             query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.back_channel_config_shrink):
+            query['BackChannelConfig'] = request.back_channel_config_shrink
         if not UtilClient.is_unset(request.chat_mode):
             query['ChatMode'] = request.chat_mode
         if not UtilClient.is_unset(request.greeting):
             query['Greeting'] = request.greeting
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.interrupt_config_shrink):
+            query['InterruptConfig'] = request.interrupt_config_shrink
         if not UtilClient.is_unset(request.interrupt_mode):
             query['InterruptMode'] = request.interrupt_mode
         if not UtilClient.is_unset(request.llm_config_shrink):
@@ -10005,20 +10053,26 @@ class Client(OpenApiClient):
 
     def notify_agent_with_options(
         self,
-        request: rtc_20180111_models.NotifyAgentRequest,
+        tmp_req: rtc_20180111_models.NotifyAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.NotifyAgentResponse:
         """
         @summary NotifyAgent
         
-        @param request: NotifyAgentRequest
+        @param tmp_req: NotifyAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: NotifyAgentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.NotifyAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.background_music):
+            request.background_music_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.background_music, 'BackgroundMusic', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.background_music_shrink):
+            query['BackgroundMusic'] = request.background_music_shrink
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.custom_attribute):
@@ -10052,20 +10106,26 @@ class Client(OpenApiClient):
 
     async def notify_agent_with_options_async(
         self,
-        request: rtc_20180111_models.NotifyAgentRequest,
+        tmp_req: rtc_20180111_models.NotifyAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.NotifyAgentResponse:
         """
         @summary NotifyAgent
         
-        @param request: NotifyAgentRequest
+        @param tmp_req: NotifyAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: NotifyAgentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.NotifyAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.background_music):
+            request.background_music_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.background_music, 'BackgroundMusic', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.background_music_shrink):
+            query['BackgroundMusic'] = request.background_music_shrink
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.custom_attribute):

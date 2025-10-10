@@ -482,6 +482,39 @@ class CreateAppAgentTemplateRequestAgentSilenceConfig(TeaModel):
         return self
 
 
+class CreateAppAgentTemplateRequestAmbientSoundConfig(TeaModel):
+    def __init__(
+        self,
+        sound_id: str = None,
+        volume: int = None,
+    ):
+        self.sound_id = sound_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sound_id is not None:
+            result['SoundId'] = self.sound_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SoundId') is not None:
+            self.sound_id = m.get('SoundId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
 class CreateAppAgentTemplateRequestAsrConfigVadConfig(TeaModel):
     def __init__(
         self,
@@ -604,6 +637,60 @@ class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
             for k in m.get('WordWeights'):
                 temp_model = CreateAppAgentTemplateRequestAsrConfigWordWeights()
                 self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class CreateAppAgentTemplateRequestBackChannelConfig(TeaModel):
+    def __init__(
+        self,
+        user_turn_end: bool = None,
+    ):
+        self.user_turn_end = user_turn_end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_turn_end is not None:
+            result['UserTurnEnd'] = self.user_turn_end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserTurnEnd') is not None:
+            self.user_turn_end = m.get('UserTurnEnd')
+        return self
+
+
+class CreateAppAgentTemplateRequestInterruptConfig(TeaModel):
+    def __init__(
+        self,
+        semantics_interrupt: bool = None,
+    ):
+        self.semantics_interrupt = semantics_interrupt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.semantics_interrupt is not None:
+            result['SemanticsInterrupt'] = self.semantics_interrupt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SemanticsInterrupt') is not None:
+            self.semantics_interrupt = m.get('SemanticsInterrupt')
         return self
 
 
@@ -766,10 +853,13 @@ class CreateAppAgentTemplateRequest(TeaModel):
     def __init__(
         self,
         agent_silence_config: CreateAppAgentTemplateRequestAgentSilenceConfig = None,
+        ambient_sound_config: CreateAppAgentTemplateRequestAmbientSoundConfig = None,
         app_id: str = None,
         asr_config: CreateAppAgentTemplateRequestAsrConfig = None,
+        back_channel_config: CreateAppAgentTemplateRequestBackChannelConfig = None,
         chat_mode: int = None,
         greeting: str = None,
+        interrupt_config: CreateAppAgentTemplateRequestInterruptConfig = None,
         interrupt_mode: int = None,
         llm_config: CreateAppAgentTemplateRequestLlmConfig = None,
         name: str = None,
@@ -777,11 +867,14 @@ class CreateAppAgentTemplateRequest(TeaModel):
         type: int = None,
     ):
         self.agent_silence_config = agent_silence_config
+        self.ambient_sound_config = ambient_sound_config
         # This parameter is required.
         self.app_id = app_id
         self.asr_config = asr_config
+        self.back_channel_config = back_channel_config
         self.chat_mode = chat_mode
         self.greeting = greeting
+        self.interrupt_config = interrupt_config
         self.interrupt_mode = interrupt_mode
         self.llm_config = llm_config
         # This parameter is required.
@@ -792,8 +885,14 @@ class CreateAppAgentTemplateRequest(TeaModel):
     def validate(self):
         if self.agent_silence_config:
             self.agent_silence_config.validate()
+        if self.ambient_sound_config:
+            self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
+        if self.back_channel_config:
+            self.back_channel_config.validate()
+        if self.interrupt_config:
+            self.interrupt_config.validate()
         if self.llm_config:
             self.llm_config.validate()
         if self.tts_config:
@@ -807,14 +906,20 @@ class CreateAppAgentTemplateRequest(TeaModel):
         result = dict()
         if self.agent_silence_config is not None:
             result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
+        if self.ambient_sound_config is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
+        if self.back_channel_config is not None:
+            result['BackChannelConfig'] = self.back_channel_config.to_map()
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.interrupt_config is not None:
+            result['InterruptConfig'] = self.interrupt_config.to_map()
         if self.interrupt_mode is not None:
             result['InterruptMode'] = self.interrupt_mode
         if self.llm_config is not None:
@@ -832,15 +937,24 @@ class CreateAppAgentTemplateRequest(TeaModel):
         if m.get('AgentSilenceConfig') is not None:
             temp_model = CreateAppAgentTemplateRequestAgentSilenceConfig()
             self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
+        if m.get('AmbientSoundConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestAmbientSoundConfig()
+            self.ambient_sound_config = temp_model.from_map(m['AmbientSoundConfig'])
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
             temp_model = CreateAppAgentTemplateRequestAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('BackChannelConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestBackChannelConfig()
+            self.back_channel_config = temp_model.from_map(m['BackChannelConfig'])
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('InterruptConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestInterruptConfig()
+            self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
         if m.get('InterruptMode') is not None:
             self.interrupt_mode = m.get('InterruptMode')
         if m.get('LlmConfig') is not None:
@@ -860,10 +974,13 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         agent_silence_config_shrink: str = None,
+        ambient_sound_config_shrink: str = None,
         app_id: str = None,
         asr_config_shrink: str = None,
+        back_channel_config_shrink: str = None,
         chat_mode: int = None,
         greeting: str = None,
+        interrupt_config_shrink: str = None,
         interrupt_mode: int = None,
         llm_config_shrink: str = None,
         name: str = None,
@@ -871,11 +988,14 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
         type: int = None,
     ):
         self.agent_silence_config_shrink = agent_silence_config_shrink
+        self.ambient_sound_config_shrink = ambient_sound_config_shrink
         # This parameter is required.
         self.app_id = app_id
         self.asr_config_shrink = asr_config_shrink
+        self.back_channel_config_shrink = back_channel_config_shrink
         self.chat_mode = chat_mode
         self.greeting = greeting
+        self.interrupt_config_shrink = interrupt_config_shrink
         self.interrupt_mode = interrupt_mode
         self.llm_config_shrink = llm_config_shrink
         # This parameter is required.
@@ -894,14 +1014,20 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.agent_silence_config_shrink is not None:
             result['AgentSilenceConfig'] = self.agent_silence_config_shrink
+        if self.ambient_sound_config_shrink is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config_shrink
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config_shrink is not None:
             result['AsrConfig'] = self.asr_config_shrink
+        if self.back_channel_config_shrink is not None:
+            result['BackChannelConfig'] = self.back_channel_config_shrink
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.interrupt_config_shrink is not None:
+            result['InterruptConfig'] = self.interrupt_config_shrink
         if self.interrupt_mode is not None:
             result['InterruptMode'] = self.interrupt_mode
         if self.llm_config_shrink is not None:
@@ -918,14 +1044,20 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AgentSilenceConfig') is not None:
             self.agent_silence_config_shrink = m.get('AgentSilenceConfig')
+        if m.get('AmbientSoundConfig') is not None:
+            self.ambient_sound_config_shrink = m.get('AmbientSoundConfig')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
             self.asr_config_shrink = m.get('AsrConfig')
+        if m.get('BackChannelConfig') is not None:
+            self.back_channel_config_shrink = m.get('BackChannelConfig')
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('InterruptConfig') is not None:
+            self.interrupt_config_shrink = m.get('InterruptConfig')
         if m.get('InterruptMode') is not None:
             self.interrupt_mode = m.get('InterruptMode')
         if m.get('LlmConfig') is not None:
@@ -4146,6 +4278,39 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig(TeaModel)
         return self
 
 
+class DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig(TeaModel):
+    def __init__(
+        self,
+        sound_id: str = None,
+        volume: int = None,
+    ):
+        self.sound_id = sound_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sound_id is not None:
+            result['SoundId'] = self.sound_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SoundId') is not None:
+            self.sound_id = m.get('SoundId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
 class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig(TeaModel):
     def __init__(
         self,
@@ -4271,6 +4436,60 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig(TeaModel):
             for k in m.get('WordWeights'):
                 temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights()
                 self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig(TeaModel):
+    def __init__(
+        self,
+        user_turn_end: bool = None,
+    ):
+        self.user_turn_end = user_turn_end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_turn_end is not None:
+            result['UserTurnEnd'] = self.user_turn_end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserTurnEnd') is not None:
+            self.user_turn_end = m.get('UserTurnEnd')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig(TeaModel):
+    def __init__(
+        self,
+        semantics_interrupt: bool = None,
+    ):
+        self.semantics_interrupt = semantics_interrupt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.semantics_interrupt is not None:
+            result['SemanticsInterrupt'] = self.semantics_interrupt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SemanticsInterrupt') is not None:
+            self.semantics_interrupt = m.get('SemanticsInterrupt')
         return self
 
 
@@ -4440,11 +4659,14 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
         agent_silence_config: DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig = None,
+        ambient_sound_config: DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig = None,
         asr_config: DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig = None,
+        back_channel_config: DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig = None,
         chat_mode: int = None,
         create_time: str = None,
         greeting: str = None,
         id: str = None,
+        interrupt_config: DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig = None,
         interrupt_mode: int = None,
         llm_config: DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig = None,
         name: str = None,
@@ -4452,11 +4674,14 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
         type: int = None,
     ):
         self.agent_silence_config = agent_silence_config
+        self.ambient_sound_config = ambient_sound_config
         self.asr_config = asr_config
+        self.back_channel_config = back_channel_config
         self.chat_mode = chat_mode
         self.create_time = create_time
         self.greeting = greeting
         self.id = id
+        self.interrupt_config = interrupt_config
         self.interrupt_mode = interrupt_mode
         self.llm_config = llm_config
         self.name = name
@@ -4466,8 +4691,14 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
     def validate(self):
         if self.agent_silence_config:
             self.agent_silence_config.validate()
+        if self.ambient_sound_config:
+            self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
+        if self.back_channel_config:
+            self.back_channel_config.validate()
+        if self.interrupt_config:
+            self.interrupt_config.validate()
         if self.llm_config:
             self.llm_config.validate()
         if self.tts_config:
@@ -4481,8 +4712,12 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
         result = dict()
         if self.agent_silence_config is not None:
             result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
+        if self.ambient_sound_config is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
+        if self.back_channel_config is not None:
+            result['BackChannelConfig'] = self.back_channel_config.to_map()
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.create_time is not None:
@@ -4491,6 +4726,8 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
             result['Greeting'] = self.greeting
         if self.id is not None:
             result['Id'] = self.id
+        if self.interrupt_config is not None:
+            result['InterruptConfig'] = self.interrupt_config.to_map()
         if self.interrupt_mode is not None:
             result['InterruptMode'] = self.interrupt_mode
         if self.llm_config is not None:
@@ -4508,9 +4745,15 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
         if m.get('AgentSilenceConfig') is not None:
             temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig()
             self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
+        if m.get('AmbientSoundConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig()
+            self.ambient_sound_config = temp_model.from_map(m['AmbientSoundConfig'])
         if m.get('AsrConfig') is not None:
             temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('BackChannelConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig()
+            self.back_channel_config = temp_model.from_map(m['BackChannelConfig'])
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('CreateTime') is not None:
@@ -4519,6 +4762,9 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
             self.greeting = m.get('Greeting')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InterruptConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig()
+            self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
         if m.get('InterruptMode') is not None:
             self.interrupt_mode = m.get('InterruptMode')
         if m.get('LlmConfig') is not None:
@@ -18747,6 +18993,39 @@ class ModifyAppAgentTemplateRequestAgentSilenceConfig(TeaModel):
         return self
 
 
+class ModifyAppAgentTemplateRequestAmbientSoundConfig(TeaModel):
+    def __init__(
+        self,
+        sound_id: str = None,
+        volume: int = None,
+    ):
+        self.sound_id = sound_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sound_id is not None:
+            result['SoundId'] = self.sound_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SoundId') is not None:
+            self.sound_id = m.get('SoundId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
 class ModifyAppAgentTemplateRequestAsrConfigVadConfig(TeaModel):
     def __init__(
         self,
@@ -18875,6 +19154,60 @@ class ModifyAppAgentTemplateRequestAsrConfig(TeaModel):
             for k in m.get('WordWeights'):
                 temp_model = ModifyAppAgentTemplateRequestAsrConfigWordWeights()
                 self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyAppAgentTemplateRequestBackChannelConfig(TeaModel):
+    def __init__(
+        self,
+        user_turn_end: bool = None,
+    ):
+        self.user_turn_end = user_turn_end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_turn_end is not None:
+            result['UserTurnEnd'] = self.user_turn_end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserTurnEnd') is not None:
+            self.user_turn_end = m.get('UserTurnEnd')
+        return self
+
+
+class ModifyAppAgentTemplateRequestInterruptConfig(TeaModel):
+    def __init__(
+        self,
+        semantics_interrupt: bool = None,
+    ):
+        self.semantics_interrupt = semantics_interrupt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.semantics_interrupt is not None:
+            result['SemanticsInterrupt'] = self.semantics_interrupt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SemanticsInterrupt') is not None:
+            self.semantics_interrupt = m.get('SemanticsInterrupt')
         return self
 
 
@@ -19037,11 +19370,14 @@ class ModifyAppAgentTemplateRequest(TeaModel):
     def __init__(
         self,
         agent_silence_config: ModifyAppAgentTemplateRequestAgentSilenceConfig = None,
+        ambient_sound_config: ModifyAppAgentTemplateRequestAmbientSoundConfig = None,
         app_id: str = None,
         asr_config: ModifyAppAgentTemplateRequestAsrConfig = None,
+        back_channel_config: ModifyAppAgentTemplateRequestBackChannelConfig = None,
         chat_mode: int = None,
         greeting: str = None,
         id: str = None,
+        interrupt_config: ModifyAppAgentTemplateRequestInterruptConfig = None,
         interrupt_mode: int = None,
         llm_config: ModifyAppAgentTemplateRequestLlmConfig = None,
         name: str = None,
@@ -19049,13 +19385,16 @@ class ModifyAppAgentTemplateRequest(TeaModel):
         type: int = None,
     ):
         self.agent_silence_config = agent_silence_config
+        self.ambient_sound_config = ambient_sound_config
         # This parameter is required.
         self.app_id = app_id
         self.asr_config = asr_config
+        self.back_channel_config = back_channel_config
         self.chat_mode = chat_mode
         self.greeting = greeting
         # This parameter is required.
         self.id = id
+        self.interrupt_config = interrupt_config
         self.interrupt_mode = interrupt_mode
         self.llm_config = llm_config
         # This parameter is required.
@@ -19066,8 +19405,14 @@ class ModifyAppAgentTemplateRequest(TeaModel):
     def validate(self):
         if self.agent_silence_config:
             self.agent_silence_config.validate()
+        if self.ambient_sound_config:
+            self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
+        if self.back_channel_config:
+            self.back_channel_config.validate()
+        if self.interrupt_config:
+            self.interrupt_config.validate()
         if self.llm_config:
             self.llm_config.validate()
         if self.tts_config:
@@ -19081,16 +19426,22 @@ class ModifyAppAgentTemplateRequest(TeaModel):
         result = dict()
         if self.agent_silence_config is not None:
             result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
+        if self.ambient_sound_config is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
+        if self.back_channel_config is not None:
+            result['BackChannelConfig'] = self.back_channel_config.to_map()
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.greeting is not None:
             result['Greeting'] = self.greeting
         if self.id is not None:
             result['Id'] = self.id
+        if self.interrupt_config is not None:
+            result['InterruptConfig'] = self.interrupt_config.to_map()
         if self.interrupt_mode is not None:
             result['InterruptMode'] = self.interrupt_mode
         if self.llm_config is not None:
@@ -19108,17 +19459,26 @@ class ModifyAppAgentTemplateRequest(TeaModel):
         if m.get('AgentSilenceConfig') is not None:
             temp_model = ModifyAppAgentTemplateRequestAgentSilenceConfig()
             self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
+        if m.get('AmbientSoundConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestAmbientSoundConfig()
+            self.ambient_sound_config = temp_model.from_map(m['AmbientSoundConfig'])
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
             temp_model = ModifyAppAgentTemplateRequestAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('BackChannelConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestBackChannelConfig()
+            self.back_channel_config = temp_model.from_map(m['BackChannelConfig'])
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InterruptConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestInterruptConfig()
+            self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
         if m.get('InterruptMode') is not None:
             self.interrupt_mode = m.get('InterruptMode')
         if m.get('LlmConfig') is not None:
@@ -19138,11 +19498,14 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         agent_silence_config_shrink: str = None,
+        ambient_sound_config_shrink: str = None,
         app_id: str = None,
         asr_config_shrink: str = None,
+        back_channel_config_shrink: str = None,
         chat_mode: int = None,
         greeting: str = None,
         id: str = None,
+        interrupt_config_shrink: str = None,
         interrupt_mode: int = None,
         llm_config_shrink: str = None,
         name: str = None,
@@ -19150,13 +19513,16 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
         type: int = None,
     ):
         self.agent_silence_config_shrink = agent_silence_config_shrink
+        self.ambient_sound_config_shrink = ambient_sound_config_shrink
         # This parameter is required.
         self.app_id = app_id
         self.asr_config_shrink = asr_config_shrink
+        self.back_channel_config_shrink = back_channel_config_shrink
         self.chat_mode = chat_mode
         self.greeting = greeting
         # This parameter is required.
         self.id = id
+        self.interrupt_config_shrink = interrupt_config_shrink
         self.interrupt_mode = interrupt_mode
         self.llm_config_shrink = llm_config_shrink
         # This parameter is required.
@@ -19175,16 +19541,22 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.agent_silence_config_shrink is not None:
             result['AgentSilenceConfig'] = self.agent_silence_config_shrink
+        if self.ambient_sound_config_shrink is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config_shrink
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config_shrink is not None:
             result['AsrConfig'] = self.asr_config_shrink
+        if self.back_channel_config_shrink is not None:
+            result['BackChannelConfig'] = self.back_channel_config_shrink
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.greeting is not None:
             result['Greeting'] = self.greeting
         if self.id is not None:
             result['Id'] = self.id
+        if self.interrupt_config_shrink is not None:
+            result['InterruptConfig'] = self.interrupt_config_shrink
         if self.interrupt_mode is not None:
             result['InterruptMode'] = self.interrupt_mode
         if self.llm_config_shrink is not None:
@@ -19201,16 +19573,22 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AgentSilenceConfig') is not None:
             self.agent_silence_config_shrink = m.get('AgentSilenceConfig')
+        if m.get('AmbientSoundConfig') is not None:
+            self.ambient_sound_config_shrink = m.get('AmbientSoundConfig')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
             self.asr_config_shrink = m.get('AsrConfig')
+        if m.get('BackChannelConfig') is not None:
+            self.back_channel_config_shrink = m.get('BackChannelConfig')
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InterruptConfig') is not None:
+            self.interrupt_config_shrink = m.get('InterruptConfig')
         if m.get('InterruptMode') is not None:
             self.interrupt_mode = m.get('InterruptMode')
         if m.get('LlmConfig') is not None:
@@ -20950,24 +21328,14 @@ class ModifyMPULayoutResponse(TeaModel):
         return self
 
 
-class NotifyAgentRequest(TeaModel):
+class NotifyAgentRequestBackgroundMusic(TeaModel):
     def __init__(
         self,
-        app_id: str = None,
-        channel_id: str = None,
-        custom_attribute: str = None,
-        interruptable: bool = None,
-        message: str = None,
-        priority: int = None,
-        task_id: str = None,
+        format: str = None,
+        url: str = None,
     ):
-        self.app_id = app_id
-        self.channel_id = channel_id
-        self.custom_attribute = custom_attribute
-        self.interruptable = interruptable
-        self.message = message
-        self.priority = priority
-        self.task_id = task_id
+        self.format = format
+        self.url = url
 
     def validate(self):
         pass
@@ -20978,8 +21346,56 @@ class NotifyAgentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.format is not None:
+            result['format'] = self.format
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class NotifyAgentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        background_music: NotifyAgentRequestBackgroundMusic = None,
+        channel_id: str = None,
+        custom_attribute: str = None,
+        interruptable: bool = None,
+        message: str = None,
+        priority: int = None,
+        task_id: str = None,
+    ):
+        self.app_id = app_id
+        self.background_music = background_music
+        self.channel_id = channel_id
+        self.custom_attribute = custom_attribute
+        self.interruptable = interruptable
+        self.message = message
+        self.priority = priority
+        self.task_id = task_id
+
+    def validate(self):
+        if self.background_music:
+            self.background_music.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.background_music is not None:
+            result['BackgroundMusic'] = self.background_music.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         if self.custom_attribute is not None:
@@ -20998,6 +21414,78 @@ class NotifyAgentRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('BackgroundMusic') is not None:
+            temp_model = NotifyAgentRequestBackgroundMusic()
+            self.background_music = temp_model.from_map(m['BackgroundMusic'])
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CustomAttribute') is not None:
+            self.custom_attribute = m.get('CustomAttribute')
+        if m.get('Interruptable') is not None:
+            self.interruptable = m.get('Interruptable')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class NotifyAgentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        background_music_shrink: str = None,
+        channel_id: str = None,
+        custom_attribute: str = None,
+        interruptable: bool = None,
+        message: str = None,
+        priority: int = None,
+        task_id: str = None,
+    ):
+        self.app_id = app_id
+        self.background_music_shrink = background_music_shrink
+        self.channel_id = channel_id
+        self.custom_attribute = custom_attribute
+        self.interruptable = interruptable
+        self.message = message
+        self.priority = priority
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.background_music_shrink is not None:
+            result['BackgroundMusic'] = self.background_music_shrink
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.custom_attribute is not None:
+            result['CustomAttribute'] = self.custom_attribute
+        if self.interruptable is not None:
+            result['Interruptable'] = self.interruptable
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BackgroundMusic') is not None:
+            self.background_music_shrink = m.get('BackgroundMusic')
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         if m.get('CustomAttribute') is not None:
@@ -21656,6 +22144,93 @@ class StartAgentRequestVoiceChatConfigAgentSilenceConfig(TeaModel):
         return self
 
 
+class StartAgentRequestVoiceChatConfigAmbientSoundConfig(TeaModel):
+    def __init__(
+        self,
+        sound_id: str = None,
+        volume: int = None,
+    ):
+        self.sound_id = sound_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sound_id is not None:
+            result['SoundId'] = self.sound_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SoundId') is not None:
+            self.sound_id = m.get('SoundId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigBackChannelConfig(TeaModel):
+    def __init__(
+        self,
+        user_turn_end: bool = None,
+    ):
+        self.user_turn_end = user_turn_end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_turn_end is not None:
+            result['UserTurnEnd'] = self.user_turn_end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserTurnEnd') is not None:
+            self.user_turn_end = m.get('UserTurnEnd')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigInterruptConfig(TeaModel):
+    def __init__(
+        self,
+        semantics_interrupt: bool = None,
+    ):
+        self.semantics_interrupt = semantics_interrupt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.semantics_interrupt is not None:
+            result['SemanticsInterrupt'] = self.semantics_interrupt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SemanticsInterrupt') is not None:
+            self.semantics_interrupt = m.get('SemanticsInterrupt')
+        return self
+
+
 class StartAgentRequestVoiceChatConfigLLMConfig(TeaModel):
     def __init__(
         self,
@@ -21817,16 +22392,22 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
         self,
         asrconfig: StartAgentRequestVoiceChatConfigASRConfig = None,
         agent_silence_config: StartAgentRequestVoiceChatConfigAgentSilenceConfig = None,
+        ambient_sound_config: StartAgentRequestVoiceChatConfigAmbientSoundConfig = None,
+        back_channel_config: StartAgentRequestVoiceChatConfigBackChannelConfig = None,
         chat_mode: int = None,
         greeting: str = None,
+        interrupt_config: StartAgentRequestVoiceChatConfigInterruptConfig = None,
         interrupt_mode: int = None,
         llmconfig: StartAgentRequestVoiceChatConfigLLMConfig = None,
         ttsconfig: StartAgentRequestVoiceChatConfigTTSConfig = None,
     ):
         self.asrconfig = asrconfig
         self.agent_silence_config = agent_silence_config
+        self.ambient_sound_config = ambient_sound_config
+        self.back_channel_config = back_channel_config
         self.chat_mode = chat_mode
         self.greeting = greeting
+        self.interrupt_config = interrupt_config
         self.interrupt_mode = interrupt_mode
         self.llmconfig = llmconfig
         self.ttsconfig = ttsconfig
@@ -21836,6 +22417,12 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
             self.asrconfig.validate()
         if self.agent_silence_config:
             self.agent_silence_config.validate()
+        if self.ambient_sound_config:
+            self.ambient_sound_config.validate()
+        if self.back_channel_config:
+            self.back_channel_config.validate()
+        if self.interrupt_config:
+            self.interrupt_config.validate()
         if self.llmconfig:
             self.llmconfig.validate()
         if self.ttsconfig:
@@ -21851,10 +22438,16 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
             result['ASRConfig'] = self.asrconfig.to_map()
         if self.agent_silence_config is not None:
             result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
+        if self.ambient_sound_config is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
+        if self.back_channel_config is not None:
+            result['BackChannelConfig'] = self.back_channel_config.to_map()
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.interrupt_config is not None:
+            result['InterruptConfig'] = self.interrupt_config.to_map()
         if self.interrupt_mode is not None:
             result['InterruptMode'] = self.interrupt_mode
         if self.llmconfig is not None:
@@ -21871,10 +22464,19 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
         if m.get('AgentSilenceConfig') is not None:
             temp_model = StartAgentRequestVoiceChatConfigAgentSilenceConfig()
             self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
+        if m.get('AmbientSoundConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigAmbientSoundConfig()
+            self.ambient_sound_config = temp_model.from_map(m['AmbientSoundConfig'])
+        if m.get('BackChannelConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigBackChannelConfig()
+            self.back_channel_config = temp_model.from_map(m['BackChannelConfig'])
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('InterruptConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigInterruptConfig()
+            self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
         if m.get('InterruptMode') is not None:
             self.interrupt_mode = m.get('InterruptMode')
         if m.get('LLMConfig') is not None:
