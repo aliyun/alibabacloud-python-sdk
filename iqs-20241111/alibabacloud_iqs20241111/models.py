@@ -1351,6 +1351,7 @@ class UnifiedPageItem(TeaModel):
         markdown_text: str = None,
         published_time: str = None,
         rerank_score: float = None,
+        rich_main_body: str = None,
         snippet: str = None,
         summary: str = None,
         title: str = None,
@@ -1364,6 +1365,7 @@ class UnifiedPageItem(TeaModel):
         self.markdown_text = markdown_text
         self.published_time = published_time
         self.rerank_score = rerank_score
+        self.rich_main_body = rich_main_body
         self.snippet = snippet
         self.summary = summary
         self.title = title
@@ -1395,6 +1397,8 @@ class UnifiedPageItem(TeaModel):
             result['publishedTime'] = self.published_time
         if self.rerank_score is not None:
             result['rerankScore'] = self.rerank_score
+        if self.rich_main_body is not None:
+            result['richMainBody'] = self.rich_main_body
         if self.snippet is not None:
             result['snippet'] = self.snippet
         if self.summary is not None:
@@ -1423,6 +1427,8 @@ class UnifiedPageItem(TeaModel):
             self.published_time = m.get('publishedTime')
         if m.get('rerankScore') is not None:
             self.rerank_score = m.get('rerankScore')
+        if m.get('richMainBody') is not None:
+            self.rich_main_body = m.get('richMainBody')
         if m.get('snippet') is not None:
             self.snippet = m.get('snippet')
         if m.get('summary') is not None:
