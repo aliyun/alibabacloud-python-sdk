@@ -253,6 +253,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.abort_change_order_with_options_async(request, headers, runtime)
 
+    def batch_restart_applications_with_options(
+        self,
+        request: sae_20190506_models.BatchRestartApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.BatchRestartApplicationsResponse:
+        """
+        @summary 批量重启应用
+        
+        @param request: BatchRestartApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRestartApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRestartApplications',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/batchRestartApplications',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.BatchRestartApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_restart_applications_with_options_async(
+        self,
+        request: sae_20190506_models.BatchRestartApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.BatchRestartApplicationsResponse:
+        """
+        @summary 批量重启应用
+        
+        @param request: BatchRestartApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRestartApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRestartApplications',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/batchRestartApplications',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.BatchRestartApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_restart_applications(
+        self,
+        request: sae_20190506_models.BatchRestartApplicationsRequest,
+    ) -> sae_20190506_models.BatchRestartApplicationsResponse:
+        """
+        @summary 批量重启应用
+        
+        @param request: BatchRestartApplicationsRequest
+        @return: BatchRestartApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_restart_applications_with_options(request, headers, runtime)
+
+    async def batch_restart_applications_async(
+        self,
+        request: sae_20190506_models.BatchRestartApplicationsRequest,
+    ) -> sae_20190506_models.BatchRestartApplicationsResponse:
+        """
+        @summary 批量重启应用
+        
+        @param request: BatchRestartApplicationsRequest
+        @return: BatchRestartApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_restart_applications_with_options_async(request, headers, runtime)
+
     def batch_start_applications_with_options(
         self,
         request: sae_20190506_models.BatchStartApplicationsRequest,

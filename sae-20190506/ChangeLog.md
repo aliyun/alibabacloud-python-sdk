@@ -1,3 +1,7 @@
+2025-10-10 Version: 2.8.0
+- Support API BatchRestartApplications.
+
+
 2025-09-29 Version: 2.7.1
 - Update API DescribeApplicationConfig: add response parameters Body.Data.DeploymentName.
 
