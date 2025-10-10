@@ -129,6 +129,7 @@ class ScorePageItem(TeaModel):
         mime: str = None,
         page_map: Dict[str, str] = None,
         publish_time: int = None,
+        rich_main_body: str = None,
         score: float = None,
         site_label: str = None,
         snippet: str = None,
@@ -155,6 +156,7 @@ class ScorePageItem(TeaModel):
         self.page_map = page_map
         # This parameter is required.
         self.publish_time = publish_time
+        self.rich_main_body = rich_main_body
         self.score = score
         self.site_label = site_label
         self.snippet = snippet
@@ -204,6 +206,8 @@ class ScorePageItem(TeaModel):
             result['pageMap'] = self.page_map
         if self.publish_time is not None:
             result['publishTime'] = self.publish_time
+        if self.rich_main_body is not None:
+            result['richMainBody'] = self.rich_main_body
         if self.score is not None:
             result['score'] = self.score
         if self.site_label is not None:
@@ -249,6 +253,8 @@ class ScorePageItem(TeaModel):
             self.page_map = m.get('pageMap')
         if m.get('publishTime') is not None:
             self.publish_time = m.get('publishTime')
+        if m.get('richMainBody') is not None:
+            self.rich_main_body = m.get('richMainBody')
         if m.get('score') is not None:
             self.score = m.get('score')
         if m.get('siteLabel') is not None:
