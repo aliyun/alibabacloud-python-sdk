@@ -1,3 +1,11 @@
+2025-10-10 Version: 4.1.2
+- Update API CreateInstance: add request parameters body.productInfo.capacityType.
+- Update API CreateInstance: add request parameters body.productInfo.provisionedCapacity.
+- Update API GetInstance: add response parameters Body.data.productInfo.capacityType.
+- Update API GetInstance: add response parameters Body.data.productInfo.provisionedCapacity.
+- Update API ListInstances: add response parameters Body.data.list.$.productInfo.capacityType.
+
+
 2025-09-23 Version: 4.1.1
 - Generated python 2022-08-01 for RocketMQ.
 

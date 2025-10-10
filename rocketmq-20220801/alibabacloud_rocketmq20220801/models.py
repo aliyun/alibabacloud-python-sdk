@@ -1306,8 +1306,10 @@ class CreateInstanceRequestProductInfo(TeaModel):
     def __init__(
         self,
         auto_scaling: bool = None,
+        capacity_type: str = None,
         message_retention_time: int = None,
         msg_process_spec: str = None,
+        provisioned_capacity: int = None,
         send_receive_ratio: float = None,
         storage_encryption: bool = None,
         storage_secret_key: str = None,
@@ -1323,6 +1325,7 @@ class CreateInstanceRequestProductInfo(TeaModel):
         # 
         # >  The elastic TPS feature is supported only by instances of specific editions. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
         self.auto_scaling = auto_scaling
+        self.capacity_type = capacity_type
         # The retention period of messages. Unit: hours.
         # 
         # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
@@ -1331,6 +1334,7 @@ class CreateInstanceRequestProductInfo(TeaModel):
         self.message_retention_time = message_retention_time
         # The computing specification that specifies the messaging transactions per second (TPS) of the instance. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
+        self.provisioned_capacity = provisioned_capacity
         # The ratio of the message sending TPS to the messaging TPS of the instance.
         # 
         # For example, if the maximum messaging TPS of an instance is 1,000 and the ratio of the message sending TPS to the messaging TPS of the instance is 0.8, the maximum message sending TPS of the instance is 800 and the maximum message receiving TPS is 200.
@@ -1353,10 +1357,14 @@ class CreateInstanceRequestProductInfo(TeaModel):
         result = dict()
         if self.auto_scaling is not None:
             result['autoScaling'] = self.auto_scaling
+        if self.capacity_type is not None:
+            result['capacityType'] = self.capacity_type
         if self.message_retention_time is not None:
             result['messageRetentionTime'] = self.message_retention_time
         if self.msg_process_spec is not None:
             result['msgProcessSpec'] = self.msg_process_spec
+        if self.provisioned_capacity is not None:
+            result['provisionedCapacity'] = self.provisioned_capacity
         if self.send_receive_ratio is not None:
             result['sendReceiveRatio'] = self.send_receive_ratio
         if self.storage_encryption is not None:
@@ -1369,10 +1377,14 @@ class CreateInstanceRequestProductInfo(TeaModel):
         m = m or dict()
         if m.get('autoScaling') is not None:
             self.auto_scaling = m.get('autoScaling')
+        if m.get('capacityType') is not None:
+            self.capacity_type = m.get('capacityType')
         if m.get('messageRetentionTime') is not None:
             self.message_retention_time = m.get('messageRetentionTime')
         if m.get('msgProcessSpec') is not None:
             self.msg_process_spec = m.get('msgProcessSpec')
+        if m.get('provisionedCapacity') is not None:
+            self.provisioned_capacity = m.get('provisionedCapacity')
         if m.get('sendReceiveRatio') is not None:
             self.send_receive_ratio = m.get('sendReceiveRatio')
         if m.get('storageEncryption') is not None:
@@ -6480,8 +6492,10 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
     def __init__(
         self,
         auto_scaling: bool = None,
+        capacity_type: str = None,
         message_retention_time: int = None,
         msg_process_spec: str = None,
+        provisioned_capacity: int = None,
         send_receive_ratio: float = None,
         storage_encryption: bool = None,
         storage_secret_key: str = None,
@@ -6497,6 +6511,7 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         # 
         # This parameter is valid only when the supportAutoScaling parameter is set to enable.
         self.auto_scaling = auto_scaling
+        self.capacity_type = capacity_type
         # The retention period of messages. Unit: hours.
         # 
         # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
@@ -6505,6 +6520,7 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         self.message_retention_time = message_retention_time
         # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
+        self.provisioned_capacity = provisioned_capacity
         # The ratio between sent messages and received messages in the instance.
         self.send_receive_ratio = send_receive_ratio
         # Indicates whether storage encryption is enabled.
@@ -6541,10 +6557,14 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         result = dict()
         if self.auto_scaling is not None:
             result['autoScaling'] = self.auto_scaling
+        if self.capacity_type is not None:
+            result['capacityType'] = self.capacity_type
         if self.message_retention_time is not None:
             result['messageRetentionTime'] = self.message_retention_time
         if self.msg_process_spec is not None:
             result['msgProcessSpec'] = self.msg_process_spec
+        if self.provisioned_capacity is not None:
+            result['provisionedCapacity'] = self.provisioned_capacity
         if self.send_receive_ratio is not None:
             result['sendReceiveRatio'] = self.send_receive_ratio
         if self.storage_encryption is not None:
@@ -6561,10 +6581,14 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         m = m or dict()
         if m.get('autoScaling') is not None:
             self.auto_scaling = m.get('autoScaling')
+        if m.get('capacityType') is not None:
+            self.capacity_type = m.get('capacityType')
         if m.get('messageRetentionTime') is not None:
             self.message_retention_time = m.get('messageRetentionTime')
         if m.get('msgProcessSpec') is not None:
             self.msg_process_spec = m.get('msgProcessSpec')
+        if m.get('provisionedCapacity') is not None:
+            self.provisioned_capacity = m.get('provisionedCapacity')
         if m.get('sendReceiveRatio') is not None:
             self.send_receive_ratio = m.get('sendReceiveRatio')
         if m.get('storageEncryption') is not None:
@@ -12395,8 +12419,10 @@ class ListInstancesShrinkRequest(TeaModel):
 class ListInstancesResponseBodyDataListProductInfo(TeaModel):
     def __init__(
         self,
+        capacity_type: str = None,
         trace_on: bool = None,
     ):
+        self.capacity_type = capacity_type
         # Indicates whether the message trace feature is enabled. Valid values:
         # 
         # *   true
@@ -12414,12 +12440,16 @@ class ListInstancesResponseBodyDataListProductInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.capacity_type is not None:
+            result['capacityType'] = self.capacity_type
         if self.trace_on is not None:
             result['traceOn'] = self.trace_on
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('capacityType') is not None:
+            self.capacity_type = m.get('capacityType')
         if m.get('traceOn') is not None:
             self.trace_on = m.get('traceOn')
         return self
