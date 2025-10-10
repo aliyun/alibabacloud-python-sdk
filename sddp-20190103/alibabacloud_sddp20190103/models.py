@@ -1303,6 +1303,7 @@ class DescribeAuditLogsRequest(TeaModel):
         ip_type: str = None,
         lang: str = None,
         load_white_list: bool = None,
+        log_source: str = None,
         member_account: str = None,
         message: str = None,
         operate_type: str = None,
@@ -1310,6 +1311,7 @@ class DescribeAuditLogsRequest(TeaModel):
         page_size: int = None,
         product_code: str = None,
         product_id: int = None,
+        rule_agg_query: bool = None,
         rule_category: str = None,
         rule_id: str = None,
         rule_name: str = None,
@@ -1329,6 +1331,7 @@ class DescribeAuditLogsRequest(TeaModel):
         self.ip_type = ip_type
         self.lang = lang
         self.load_white_list = load_white_list
+        self.log_source = log_source
         self.member_account = member_account
         self.message = message
         self.operate_type = operate_type
@@ -1336,6 +1339,7 @@ class DescribeAuditLogsRequest(TeaModel):
         self.page_size = page_size
         self.product_code = product_code
         self.product_id = product_id
+        self.rule_agg_query = rule_agg_query
         self.rule_category = rule_category
         self.rule_id = rule_id
         self.rule_name = rule_name
@@ -1376,6 +1380,8 @@ class DescribeAuditLogsRequest(TeaModel):
             result['Lang'] = self.lang
         if self.load_white_list is not None:
             result['LoadWhiteList'] = self.load_white_list
+        if self.log_source is not None:
+            result['LogSource'] = self.log_source
         if self.member_account is not None:
             result['MemberAccount'] = self.member_account
         if self.message is not None:
@@ -1390,6 +1396,8 @@ class DescribeAuditLogsRequest(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.rule_agg_query is not None:
+            result['RuleAggQuery'] = self.rule_agg_query
         if self.rule_category is not None:
             result['RuleCategory'] = self.rule_category
         if self.rule_id is not None:
@@ -1430,6 +1438,8 @@ class DescribeAuditLogsRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('LoadWhiteList') is not None:
             self.load_white_list = m.get('LoadWhiteList')
+        if m.get('LogSource') is not None:
+            self.log_source = m.get('LogSource')
         if m.get('MemberAccount') is not None:
             self.member_account = m.get('MemberAccount')
         if m.get('Message') is not None:
@@ -1444,6 +1454,8 @@ class DescribeAuditLogsRequest(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('RuleAggQuery') is not None:
+            self.rule_agg_query = m.get('RuleAggQuery')
         if m.get('RuleCategory') is not None:
             self.rule_category = m.get('RuleCategory')
         if m.get('RuleID') is not None:
@@ -1469,13 +1481,16 @@ class DescribeAuditLogsResponseBodyItems(TeaModel):
         creation_time: int = None,
         data_set: str = None,
         database_name: str = None,
+        db_type: str = None,
         effect_row: int = None,
         execute_status: int = None,
         execute_time: int = None,
         in_white_list: bool = None,
+        instance_audit_status: str = None,
         instance_description: str = None,
         instance_name: str = None,
         ip_type: str = None,
+        log_source: str = None,
         log_time: int = None,
         member_account: str = None,
         message: str = None,
@@ -1502,13 +1517,16 @@ class DescribeAuditLogsResponseBodyItems(TeaModel):
         self.creation_time = creation_time
         self.data_set = data_set
         self.database_name = database_name
+        self.db_type = db_type
         self.effect_row = effect_row
         self.execute_status = execute_status
         self.execute_time = execute_time
         self.in_white_list = in_white_list
+        self.instance_audit_status = instance_audit_status
         self.instance_description = instance_description
         self.instance_name = instance_name
         self.ip_type = ip_type
+        self.log_source = log_source
         self.log_time = log_time
         self.member_account = member_account
         self.message = message
@@ -1551,6 +1569,8 @@ class DescribeAuditLogsResponseBodyItems(TeaModel):
             result['DataSet'] = self.data_set
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
         if self.effect_row is not None:
             result['EffectRow'] = self.effect_row
         if self.execute_status is not None:
@@ -1559,12 +1579,16 @@ class DescribeAuditLogsResponseBodyItems(TeaModel):
             result['ExecuteTime'] = self.execute_time
         if self.in_white_list is not None:
             result['InWhiteList'] = self.in_white_list
+        if self.instance_audit_status is not None:
+            result['InstanceAuditStatus'] = self.instance_audit_status
         if self.instance_description is not None:
             result['InstanceDescription'] = self.instance_description
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
+        if self.log_source is not None:
+            result['LogSource'] = self.log_source
         if self.log_time is not None:
             result['LogTime'] = self.log_time
         if self.member_account is not None:
@@ -1619,6 +1643,8 @@ class DescribeAuditLogsResponseBodyItems(TeaModel):
             self.data_set = m.get('DataSet')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
         if m.get('EffectRow') is not None:
             self.effect_row = m.get('EffectRow')
         if m.get('ExecuteStatus') is not None:
@@ -1627,12 +1653,16 @@ class DescribeAuditLogsResponseBodyItems(TeaModel):
             self.execute_time = m.get('ExecuteTime')
         if m.get('InWhiteList') is not None:
             self.in_white_list = m.get('InWhiteList')
+        if m.get('InstanceAuditStatus') is not None:
+            self.instance_audit_status = m.get('InstanceAuditStatus')
         if m.get('InstanceDescription') is not None:
             self.instance_description = m.get('InstanceDescription')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
+        if m.get('LogSource') is not None:
+            self.log_source = m.get('LogSource')
         if m.get('LogTime') is not None:
             self.log_time = m.get('LogTime')
         if m.get('MemberAccount') is not None:

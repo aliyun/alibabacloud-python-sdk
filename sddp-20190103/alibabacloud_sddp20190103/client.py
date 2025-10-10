@@ -1070,6 +1070,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.load_white_list):
             query['LoadWhiteList'] = request.load_white_list
+        if not UtilClient.is_unset(request.log_source):
+            query['LogSource'] = request.log_source
         if not UtilClient.is_unset(request.member_account):
             query['MemberAccount'] = request.member_account
         if not UtilClient.is_unset(request.message):
@@ -1084,6 +1086,8 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_id):
             query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.rule_agg_query):
+            query['RuleAggQuery'] = request.rule_agg_query
         if not UtilClient.is_unset(request.rule_category):
             query['RuleCategory'] = request.rule_category
         if not UtilClient.is_unset(request.rule_id):
@@ -1153,6 +1157,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.load_white_list):
             query['LoadWhiteList'] = request.load_white_list
+        if not UtilClient.is_unset(request.log_source):
+            query['LogSource'] = request.log_source
         if not UtilClient.is_unset(request.member_account):
             query['MemberAccount'] = request.member_account
         if not UtilClient.is_unset(request.message):
@@ -1167,6 +1173,8 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_id):
             query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.rule_agg_query):
+            query['RuleAggQuery'] = request.rule_agg_query
         if not UtilClient.is_unset(request.rule_category):
             query['RuleCategory'] = request.rule_category
         if not UtilClient.is_unset(request.rule_id):

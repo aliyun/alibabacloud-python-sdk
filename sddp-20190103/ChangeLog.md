@@ -1,3 +1,10 @@
+2025-10-10 Version: 1.5.2
+- Update API DescribeAuditLogs: add request parameters LogSource.
+- Update API DescribeAuditLogs: add request parameters RuleAggQuery.
+- Update API DescribeAuditLogs: add response parameters Body.Items.$.InstanceAuditStatus.
+- Update API DescribeAuditLogs: add response parameters Body.Items.$.LogSource.
+
+
 2025-09-09 Version: 1.5.0
 - Support API DescribeAuditLogs.
 
