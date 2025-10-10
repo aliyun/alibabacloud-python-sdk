@@ -719,6 +719,7 @@ class ListAppsResponseBodyAppInfosAppInfo(TeaModel):
     def __init__(
         self,
         app_key: str = None,
+        app_name: str = None,
         bundle_id: str = None,
         encoded_icon: str = None,
         industry_id: int = None,
@@ -728,6 +729,7 @@ class ListAppsResponseBodyAppInfosAppInfo(TeaModel):
         type: int = None,
     ):
         self.app_key = app_key
+        self.app_name = app_name
         self.bundle_id = bundle_id
         self.encoded_icon = encoded_icon
         self.industry_id = industry_id
@@ -747,6 +749,8 @@ class ListAppsResponseBodyAppInfosAppInfo(TeaModel):
         result = dict()
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.bundle_id is not None:
             result['BundleId'] = self.bundle_id
         if self.encoded_icon is not None:
@@ -767,6 +771,8 @@ class ListAppsResponseBodyAppInfosAppInfo(TeaModel):
         m = m or dict()
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('BundleId') is not None:
             self.bundle_id = m.get('BundleId')
         if m.get('EncodedIcon') is not None:
@@ -911,12 +917,18 @@ class ListProductsRequest(TeaModel):
     def __init__(
         self,
         offset: int = None,
+        page_num: int = None,
+        page_size: int = None,
         product_name: str = None,
+        search_key_word: str = None,
         simple: bool = None,
         size: int = None,
     ):
         self.offset = offset
+        self.page_num = page_num
+        self.page_size = page_size
         self.product_name = product_name
+        self.search_key_word = search_key_word
         self.simple = simple
         self.size = size
 
@@ -931,8 +943,14 @@ class ListProductsRequest(TeaModel):
         result = dict()
         if self.offset is not None:
             result['Offset'] = self.offset
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.product_name is not None:
             result['ProductName'] = self.product_name
+        if self.search_key_word is not None:
+            result['SearchKeyWord'] = self.search_key_word
         if self.simple is not None:
             result['Simple'] = self.simple
         if self.size is not None:
@@ -943,8 +961,14 @@ class ListProductsRequest(TeaModel):
         m = m or dict()
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('ProductName') is not None:
             self.product_name = m.get('ProductName')
+        if m.get('SearchKeyWord') is not None:
+            self.search_key_word = m.get('SearchKeyWord')
         if m.get('Simple') is not None:
             self.simple = m.get('Simple')
         if m.get('Size') is not None:
@@ -1898,16 +1922,24 @@ class QueryProductInfoRequest(TeaModel):
 class QueryProductInfoResponseBodyProductInfo(TeaModel):
     def __init__(
         self,
+        create_time: str = None,
+        description: str = None,
         encoded_icon: str = None,
         icon_name: str = None,
         industry_id: int = None,
         name: str = None,
+        platforms: str = None,
+        product_id: int = None,
         readonly: bool = None,
     ):
+        self.create_time = create_time
+        self.description = description
         self.encoded_icon = encoded_icon
         self.icon_name = icon_name
         self.industry_id = industry_id
         self.name = name
+        self.platforms = platforms
+        self.product_id = product_id
         self.readonly = readonly
 
     def validate(self):
@@ -1919,6 +1951,10 @@ class QueryProductInfoResponseBodyProductInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
         if self.encoded_icon is not None:
             result['EncodedIcon'] = self.encoded_icon
         if self.icon_name is not None:
@@ -1927,12 +1963,20 @@ class QueryProductInfoResponseBodyProductInfo(TeaModel):
             result['IndustryId'] = self.industry_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.readonly is not None:
             result['Readonly'] = self.readonly
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('EncodedIcon') is not None:
             self.encoded_icon = m.get('EncodedIcon')
         if m.get('IconName') is not None:
@@ -1941,6 +1985,10 @@ class QueryProductInfoResponseBodyProductInfo(TeaModel):
             self.industry_id = m.get('IndustryId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('Readonly') is not None:
             self.readonly = m.get('Readonly')
         return self

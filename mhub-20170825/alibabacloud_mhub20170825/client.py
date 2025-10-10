@@ -81,16 +81,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.CreateAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_app_with_options_async(
         self,
@@ -132,16 +126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.CreateAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_app(
         self,
@@ -195,16 +183,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.CreateProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_product_with_options_async(
         self,
@@ -236,16 +218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.CreateProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.CreateProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_product(
         self,
@@ -297,16 +273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.DeleteAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_app_with_options_async(
         self,
@@ -336,16 +306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.DeleteAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_app(
         self,
@@ -397,16 +361,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.DeleteProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_product_with_options_async(
         self,
@@ -436,16 +394,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.DeleteProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.DeleteProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_product(
         self,
@@ -513,16 +465,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.DescribeDashboardResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.DescribeDashboardResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.DescribeDashboardResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dashboard_with_options_async(
         self,
@@ -568,16 +514,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.DescribeDashboardResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.DescribeDashboardResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.DescribeDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dashboard(
         self,
@@ -641,16 +581,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ListAppsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ListAppsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ListAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_apps_with_options_async(
         self,
@@ -688,16 +622,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ListAppsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ListAppsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ListAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_apps(
         self,
@@ -731,6 +659,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mhub_20170825_models.ListProductsResponse:
         """
+        @summary 分页获取产品(在基座中表达为项目)列表
+        
         @param request: ListProductsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProductsResponse
@@ -739,8 +669,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.offset):
             query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_name):
             query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.search_key_word):
+            query['SearchKeyWord'] = request.search_key_word
         if not UtilClient.is_unset(request.simple):
             query['Simple'] = request.simple
         if not UtilClient.is_unset(request.size):
@@ -759,16 +695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ListProductsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ListProductsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ListProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_products_with_options_async(
         self,
@@ -776,6 +706,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mhub_20170825_models.ListProductsResponse:
         """
+        @summary 分页获取产品(在基座中表达为项目)列表
+        
         @param request: ListProductsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProductsResponse
@@ -784,8 +716,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.offset):
             query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_name):
             query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.search_key_word):
+            query['SearchKeyWord'] = request.search_key_word
         if not UtilClient.is_unset(request.simple):
             query['Simple'] = request.simple
         if not UtilClient.is_unset(request.size):
@@ -804,22 +742,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ListProductsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ListProductsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ListProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_products(
         self,
         request: mhub_20170825_models.ListProductsRequest,
     ) -> mhub_20170825_models.ListProductsResponse:
         """
+        @summary 分页获取产品(在基座中表达为项目)列表
+        
         @param request: ListProductsRequest
         @return: ListProductsResponse
         """
@@ -831,6 +765,8 @@ class Client(OpenApiClient):
         request: mhub_20170825_models.ListProductsRequest,
     ) -> mhub_20170825_models.ListProductsResponse:
         """
+        @summary 分页获取产品(在基座中表达为项目)列表
+        
         @param request: ListProductsRequest
         @return: ListProductsResponse
         """
@@ -875,16 +811,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ModifyAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_app_with_options_async(
         self,
@@ -924,16 +854,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ModifyAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_app(
         self,
@@ -989,16 +913,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ModifyProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_product_with_options_async(
         self,
@@ -1032,16 +950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.ModifyProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.ModifyProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_product(
         self,
@@ -1093,16 +1005,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.OpenEmasServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.OpenEmasServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.OpenEmasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_emas_service_with_options_async(
         self,
@@ -1132,16 +1038,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.OpenEmasServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.OpenEmasServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.OpenEmasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_emas_service(
         self,
@@ -1193,16 +1093,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.QueryAppInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_app_info_with_options_async(
         self,
@@ -1232,16 +1126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.QueryAppInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_app_info(
         self,
@@ -1295,16 +1183,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppSecurityInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppSecurityInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.QueryAppSecurityInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_app_security_info_with_options_async(
         self,
@@ -1336,16 +1218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppSecurityInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryAppSecurityInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.QueryAppSecurityInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_app_security_info(
         self,
@@ -1379,6 +1255,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mhub_20170825_models.QueryProductInfoResponse:
         """
+        @summary 查询基座的Product信息
+        
         @param request: QueryProductInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryProductInfoResponse
@@ -1401,16 +1279,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryProductInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryProductInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.QueryProductInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_product_info_with_options_async(
         self,
@@ -1418,6 +1290,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mhub_20170825_models.QueryProductInfoResponse:
         """
+        @summary 查询基座的Product信息
+        
         @param request: QueryProductInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryProductInfoResponse
@@ -1440,22 +1314,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryProductInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mhub_20170825_models.QueryProductInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mhub_20170825_models.QueryProductInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_product_info(
         self,
         request: mhub_20170825_models.QueryProductInfoRequest,
     ) -> mhub_20170825_models.QueryProductInfoResponse:
         """
+        @summary 查询基座的Product信息
+        
         @param request: QueryProductInfoRequest
         @return: QueryProductInfoResponse
         """
@@ -1467,6 +1337,8 @@ class Client(OpenApiClient):
         request: mhub_20170825_models.QueryProductInfoRequest,
     ) -> mhub_20170825_models.QueryProductInfoResponse:
         """
+        @summary 查询基座的Product信息
+        
         @param request: QueryProductInfoRequest
         @return: QueryProductInfoResponse
         """
