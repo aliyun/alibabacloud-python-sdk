@@ -1,3 +1,6 @@
+2025-10-10 Version: 1.2.10
+- Generated python 2020-06-16 for Alb.
+
 2025-06-13 Version: 1.2.9
 - Update API CreateAScripts: add request parameters AScripts.$.Position.
 - Update API ListLoadBalancers: add response parameters Body.LoadBalancers.$.SecurityGroupIds.

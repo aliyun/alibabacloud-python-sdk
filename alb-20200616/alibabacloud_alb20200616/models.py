@@ -216,8 +216,6 @@ class AddServersToServerGroupRequestServers(TeaModel):
         # *   If the server group is of the **Instance** type, set ServerId to the ID of a resource of the **Ecs**, **Eni**, or **Eci** type.
         # *   If the server group is of the **Ip** type, set this parameter to IP addresses.
         # *   If the server group is of the **Fc** type, set ServerId to an Alibaba Cloud Resource Name (ARN).
-        # 
-        # This parameter is required.
         self.server_id = server_id
         # The IP address of the backend server. You can specify at most 200 servers in each call.
         # 
@@ -1215,11 +1213,11 @@ class CreateAScriptsRequestAScriptsExtAttributes(TeaModel):
         attribute_key: str = None,
         attribute_value: str = None,
     ):
-        # The attribute name.
+        # The key of the extended attribute.
         # 
-        # Set the value to **EsDebug**, which specifies that if requests carry the _es_dbg parameter and the value is the specified key, the debugging header is enabled to output the execution result.
+        # You can only set the key to **EsDebug**. This extended attribute adds a debug response header to record the execution of the AScript rule if the client request includes the _es_dbg parameter and its value matches the specified value of the extended attribute.
         self.attribute_key = attribute_key
-        # The attribute value, which must be 1 to 128 characters in length, and can contain letters or digits.
+        # The value of the extended attribute, which can contain a maximum of 128 characters, including letters and digits.
         self.attribute_value = attribute_value
 
     def validate(self):
@@ -1258,29 +1256,27 @@ class CreateAScriptsRequestAScripts(TeaModel):
     ):
         # The name of the AScript rule.
         # 
-        # The name must be 2 to 128 character in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The length must be between 2 and 128 characters. This name must start with a letter and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.ascript_name = ascript_name
-        # Specifies whether to enable the AScript rule. Valid values:
+        # Enables the AScript rule. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.enabled = enabled
-        # Specifies whether to enable the extended attributes of the AScript rule. Valid values:
+        # Enables the extended attribute of the Ascript rule. Valid values:
         # 
         # *   true
         # *   false (default)
         self.ext_attribute_enabled = ext_attribute_enabled
-        # The extended attributes.
+        # The extended attribute of the AScript rule.
         self.ext_attributes = ext_attributes
-        # 可编程脚本执行位置
+        # The position where the Ascript rule is evaluated. Valid values are:
         # 
-        # - RequestHead（默认值）：请求方向规则执行前
-        # 
-        # - RequestFoot：请求方向规则执行后
-        # 
-        # - ResponseHead：响应方向规则执行前
+        # *   RequestHead (default): before inbound rules are evaluated
+        # *   RequestFoot: after inbound rules are evaluated
+        # *   ResponseHead: before outbound rules are evaluated
         self.position = position
         # The content of the AScript rule.
         # 
@@ -3580,11 +3576,8 @@ class CreateRuleRequestRuleActionsRedirectConfig(TeaModel):
         # *   **HTTP**\
         # *   **HTTPS**\
         # 
-        # > 
-        # 
-        # *   HTTPS listeners support only HTTPS redirection.
-        # 
-        # *   HTTP listeners support HTTP and HTTPS redirection.
+        # > *   HTTPS listeners support only HTTPS redirection.
+        # >*   HTTP listeners support HTTP and HTTPS redirection.
         self.protocol = protocol
         # The query string to which requests are redirected.
         # 
@@ -15419,7 +15412,7 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
     ):
         # The billing method. Valid value:
         # 
-        # Only **PostPay** may be returned, which indicates the pay-as-you-go billing method.
+        # **PostPay**: You are charged for the ALB instance on a pay-as-you-go basis.
         self.pay_type = pay_type
 
     def validate(self):
@@ -27475,8 +27468,6 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
         # *   Specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance if you set **ServerType** to **Ecs**, **Eni**, or **Eci**.
         # *   Specify an IP address if you set **ServerType** to **Ip**.
         # *   Specify the Alibaba Cloud Resource Name (ARN) of a Function Compute function if you set **ServerType** to **Fc**.
-        # 
-        # This parameter is required.
         self.server_id = server_id
         # The IP address of the backend server.
         self.server_ip = server_ip
