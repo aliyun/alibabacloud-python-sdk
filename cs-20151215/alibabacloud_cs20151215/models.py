@@ -4,6 +4,63 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class Hugepage(TeaModel):
+    def __init__(
+        self,
+        khugepaged_alloc_sleep_millisecs: int = None,
+        khugepaged_defrag: int = None,
+        khugepaged_pages_to_scan: int = None,
+        khugepaged_scan_sleep_millisecs: int = None,
+        transparent_defrag: str = None,
+        transparent_enabled: str = None,
+    ):
+        self.khugepaged_alloc_sleep_millisecs = khugepaged_alloc_sleep_millisecs
+        self.khugepaged_defrag = khugepaged_defrag
+        self.khugepaged_pages_to_scan = khugepaged_pages_to_scan
+        self.khugepaged_scan_sleep_millisecs = khugepaged_scan_sleep_millisecs
+        self.transparent_defrag = transparent_defrag
+        self.transparent_enabled = transparent_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.khugepaged_alloc_sleep_millisecs is not None:
+            result['khugepagedAllocSleepMillisecs'] = self.khugepaged_alloc_sleep_millisecs
+        if self.khugepaged_defrag is not None:
+            result['khugepagedDefrag'] = self.khugepaged_defrag
+        if self.khugepaged_pages_to_scan is not None:
+            result['khugepagedPagesToScan'] = self.khugepaged_pages_to_scan
+        if self.khugepaged_scan_sleep_millisecs is not None:
+            result['khugepagedScanSleepMillisecs'] = self.khugepaged_scan_sleep_millisecs
+        if self.transparent_defrag is not None:
+            result['transparentDefrag'] = self.transparent_defrag
+        if self.transparent_enabled is not None:
+            result['transparentEnabled'] = self.transparent_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('khugepagedAllocSleepMillisecs') is not None:
+            self.khugepaged_alloc_sleep_millisecs = m.get('khugepagedAllocSleepMillisecs')
+        if m.get('khugepagedDefrag') is not None:
+            self.khugepaged_defrag = m.get('khugepagedDefrag')
+        if m.get('khugepagedPagesToScan') is not None:
+            self.khugepaged_pages_to_scan = m.get('khugepagedPagesToScan')
+        if m.get('khugepagedScanSleepMillisecs') is not None:
+            self.khugepaged_scan_sleep_millisecs = m.get('khugepagedScanSleepMillisecs')
+        if m.get('transparentDefrag') is not None:
+            self.transparent_defrag = m.get('transparentDefrag')
+        if m.get('transparentEnabled') is not None:
+            self.transparent_enabled = m.get('transparentEnabled')
+        return self
+
+
 class InstanceMetadataOptions(TeaModel):
     def __init__(
         self,
@@ -1281,6 +1338,39 @@ class NodepoolScalingGroupPrivatePoolOptions(TeaModel):
         return self
 
 
+class NodepoolScalingGroupResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['private_pool_ids'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('private_pool_ids') is not None:
+            self.private_pool_ids = m.get('private_pool_ids')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
 class NodepoolScalingGroupSpotPriceLimit(TeaModel):
     def __init__(
         self,
@@ -1375,6 +1465,7 @@ class NodepoolScalingGroup(TeaModel):
         private_pool_options: NodepoolScalingGroupPrivatePoolOptions = None,
         ram_role_name: str = None,
         rds_instances: List[str] = None,
+        resource_pool_options: NodepoolScalingGroupResourcePoolOptions = None,
         scaling_policy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
@@ -1421,6 +1512,7 @@ class NodepoolScalingGroup(TeaModel):
         self.private_pool_options = private_pool_options
         self.ram_role_name = ram_role_name
         self.rds_instances = rds_instances
+        self.resource_pool_options = resource_pool_options
         self.scaling_policy = scaling_policy
         self.security_group_id = security_group_id
         self.security_group_ids = security_group_ids
@@ -1450,6 +1542,8 @@ class NodepoolScalingGroup(TeaModel):
             self.instance_metadata_options.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.spot_price_limit:
             for k in self.spot_price_limit:
                 if k:
@@ -1517,6 +1611,8 @@ class NodepoolScalingGroup(TeaModel):
             result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
+        if self.resource_pool_options is not None:
+            result['resource_pool_options'] = self.resource_pool_options.to_map()
         if self.scaling_policy is not None:
             result['scaling_policy'] = self.scaling_policy
         if self.security_group_id is not None:
@@ -1616,6 +1712,9 @@ class NodepoolScalingGroup(TeaModel):
             self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
+        if m.get('resource_pool_options') is not None:
+            temp_model = NodepoolScalingGroupResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['resource_pool_options'])
         if m.get('scaling_policy') is not None:
             self.scaling_policy = m.get('scaling_policy')
         if m.get('security_group_id') is not None:
@@ -6063,6 +6162,39 @@ class CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions(TeaModel):
         return self
 
 
+class CreateClusterNodePoolRequestScalingGroupResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['private_pool_ids'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('private_pool_ids') is not None:
+            self.private_pool_ids = m.get('private_pool_ids')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
 class CreateClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
     def __init__(
         self,
@@ -6163,6 +6295,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         private_pool_options: CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions = None,
         ram_role_name: str = None,
         rds_instances: List[str] = None,
+        resource_pool_options: CreateClusterNodePoolRequestScalingGroupResourcePoolOptions = None,
         scaling_policy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
@@ -6309,6 +6442,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.ram_role_name = ram_role_name
         # The IDs of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
+        self.resource_pool_options = resource_pool_options
         # The scaling mode of the scaling group. Valid values:
         # 
         # *   `release`: the standard mode. ECS instances are created and released based on resource usage.
@@ -6420,6 +6554,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                     k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.spot_price_limit:
             for k in self.spot_price_limit:
                 if k:
@@ -6493,6 +6629,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
+        if self.resource_pool_options is not None:
+            result['resource_pool_options'] = self.resource_pool_options.to_map()
         if self.scaling_policy is not None:
             result['scaling_policy'] = self.scaling_policy
         if self.security_group_id is not None:
@@ -6603,6 +6741,9 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
+        if m.get('resource_pool_options') is not None:
+            temp_model = CreateClusterNodePoolRequestScalingGroupResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['resource_pool_options'])
         if m.get('scaling_policy') is not None:
             self.scaling_policy = m.get('scaling_policy')
         if m.get('security_group_id') is not None:
@@ -6927,132 +7068,6 @@ class CreateClusterNodePoolResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateClusterNodePoolResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateEdgeMachineRequest(TeaModel):
-    def __init__(
-        self,
-        hostname: str = None,
-        model: str = None,
-        sn: str = None,
-    ):
-        # The `hostname` of the cloud-native box.
-        # 
-        # >  After the cloud-native box is activated, the `hostname` is automatically modified. The `hostname` is prefixed with the model and the prefix is followed by a random string.
-        # 
-        # This parameter is required.
-        self.hostname = hostname
-        # The model of the cloud-native box.
-        # 
-        # This parameter is required.
-        self.model = model
-        # The serial number of the cloud-native box.
-        # 
-        # This parameter is required.
-        self.sn = sn
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hostname is not None:
-            result['hostname'] = self.hostname
-        if self.model is not None:
-            result['model'] = self.model
-        if self.sn is not None:
-            result['sn'] = self.sn
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('hostname') is not None:
-            self.hostname = m.get('hostname')
-        if m.get('model') is not None:
-            self.model = m.get('model')
-        if m.get('sn') is not None:
-            self.sn = m.get('sn')
-        return self
-
-
-class CreateEdgeMachineResponseBody(TeaModel):
-    def __init__(
-        self,
-        edge_machine_id: str = None,
-        request_id: str = None,
-    ):
-        # The ID of the cloud-native box.
-        self.edge_machine_id = edge_machine_id
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.edge_machine_id is not None:
-            result['edge_machine_id'] = self.edge_machine_id
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('edge_machine_id') is not None:
-            self.edge_machine_id = m.get('edge_machine_id')
-        if m.get('request_id') is not None:
-            self.request_id = m.get('request_id')
-        return self
-
-
-class CreateEdgeMachineResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateEdgeMachineResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateEdgeMachineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8421,72 +8436,6 @@ class DeleteClusterNodesResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DeleteClusterNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteEdgeMachineRequest(TeaModel):
-    def __init__(
-        self,
-        force: str = None,
-    ):
-        # Specifies whether to forcefully delete the cloud-native box. Valid values:
-        # 
-        # *   `true`: forcefully deletes the cloud-native box.
-        # *   `false`: does not forcefully delete the cloud-native box.
-        # 
-        # Default value: `false`.
-        self.force = force
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.force is not None:
-            result['force'] = self.force
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('force') is not None:
-            self.force = m.get('force')
-        return self
-
-
-class DeleteEdgeMachineResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
         return self
 
 
@@ -11533,17 +11482,50 @@ class DescribeClusterNodePoolDetailResponseBodyManagement(TeaModel):
         return self
 
 
+class DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig(TeaModel):
+    def __init__(
+        self,
+        hugepage: Hugepage = None,
+    ):
+        self.hugepage = hugepage
+
+    def validate(self):
+        if self.hugepage:
+            self.hugepage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hugepage is not None:
+            result['hugepage'] = self.hugepage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hugepage') is not None:
+            temp_model = Hugepage()
+            self.hugepage = temp_model.from_map(m['hugepage'])
+        return self
+
+
 class DescribeClusterNodePoolDetailResponseBodyNodeConfig(TeaModel):
     def __init__(
         self,
         kubelet_configuration: KubeletConfig = None,
+        node_os_config: DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig = None,
     ):
         # The configurations of the kubelet.
         self.kubelet_configuration = kubelet_configuration
+        self.node_os_config = node_os_config
 
     def validate(self):
         if self.kubelet_configuration:
             self.kubelet_configuration.validate()
+        if self.node_os_config:
+            self.node_os_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11553,6 +11535,8 @@ class DescribeClusterNodePoolDetailResponseBodyNodeConfig(TeaModel):
         result = dict()
         if self.kubelet_configuration is not None:
             result['kubelet_configuration'] = self.kubelet_configuration.to_map()
+        if self.node_os_config is not None:
+            result['node_os_config'] = self.node_os_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -11560,6 +11544,9 @@ class DescribeClusterNodePoolDetailResponseBodyNodeConfig(TeaModel):
         if m.get('kubelet_configuration') is not None:
             temp_model = KubeletConfig()
             self.kubelet_configuration = temp_model.from_map(m['kubelet_configuration'])
+        if m.get('node_os_config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig()
+            self.node_os_config = temp_model.from_map(m['node_os_config'])
         return self
 
 
@@ -11681,6 +11668,39 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions(Te
         return self
 
 
+class DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['private_pool_ids'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('private_pool_ids') is not None:
+            self.private_pool_ids = m.get('private_pool_ids')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
 class DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit(TeaModel):
     def __init__(
         self,
@@ -11749,6 +11769,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         ram_policy: str = None,
         ram_role_name: str = None,
         rds_instances: List[str] = None,
+        resource_pool_options: DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions = None,
         scaling_group_id: str = None,
         scaling_policy: str = None,
         security_group_id: str = None,
@@ -11860,6 +11881,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.ram_role_name = ram_role_name
         # After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
         self.rds_instances = rds_instances
+        self.resource_pool_options = resource_pool_options
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
         # The scaling mode of the scaling group. Valid values:
@@ -11964,6 +11986,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
                     k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.spot_price_limit:
             for k in self.spot_price_limit:
                 if k:
@@ -12039,6 +12063,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
+        if self.resource_pool_options is not None:
+            result['resource_pool_options'] = self.resource_pool_options.to_map()
         if self.scaling_group_id is not None:
             result['scaling_group_id'] = self.scaling_group_id
         if self.scaling_policy is not None:
@@ -12153,6 +12179,9 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
+        if m.get('resource_pool_options') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['resource_pool_options'])
         if m.get('scaling_group_id') is not None:
             self.scaling_group_id = m.get('scaling_group_id')
         if m.get('scaling_policy') is not None:
@@ -13129,17 +13158,50 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagement(TeaModel):
         return self
 
 
+class DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig(TeaModel):
+    def __init__(
+        self,
+        hugepage: Hugepage = None,
+    ):
+        self.hugepage = hugepage
+
+    def validate(self):
+        if self.hugepage:
+            self.hugepage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hugepage is not None:
+            result['hugepage'] = self.hugepage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hugepage') is not None:
+            temp_model = Hugepage()
+            self.hugepage = temp_model.from_map(m['hugepage'])
+        return self
+
+
 class DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig(TeaModel):
     def __init__(
         self,
         kubelet_configuration: KubeletConfig = None,
+        node_os_config: DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig = None,
     ):
         # The parameter settings of the kubelet.
         self.kubelet_configuration = kubelet_configuration
+        self.node_os_config = node_os_config
 
     def validate(self):
         if self.kubelet_configuration:
             self.kubelet_configuration.validate()
+        if self.node_os_config:
+            self.node_os_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13149,6 +13211,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig(TeaModel):
         result = dict()
         if self.kubelet_configuration is not None:
             result['kubelet_configuration'] = self.kubelet_configuration.to_map()
+        if self.node_os_config is not None:
+            result['node_os_config'] = self.node_os_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -13156,6 +13220,9 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig(TeaModel):
         if m.get('kubelet_configuration') is not None:
             temp_model = KubeletConfig()
             self.kubelet_configuration = temp_model.from_map(m['kubelet_configuration'])
+        if m.get('node_os_config') is not None:
+            temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig()
+            self.node_os_config = temp_model.from_map(m['node_os_config'])
         return self
 
 
@@ -13282,6 +13349,39 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOption
         return self
 
 
+class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['private_pool_ids'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('private_pool_ids') is not None:
+            self.private_pool_ids = m.get('private_pool_ids')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
 class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit(TeaModel):
     def __init__(
         self,
@@ -13349,6 +13449,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         ram_policy: str = None,
         ram_role_name: str = None,
         rds_instances: List[str] = None,
+        resource_pool_options: DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions = None,
         scaling_group_id: str = None,
         scaling_policy: str = None,
         security_group_id: str = None,
@@ -13483,6 +13584,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.ram_role_name = ram_role_name
         # The ApsaraDB RDS instances. If you specify the list of ApsaraDB RDS instances, ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
         self.rds_instances = rds_instances
+        self.resource_pool_options = resource_pool_options
         # The scaling group ID.
         self.scaling_group_id = scaling_group_id
         # The scaling mode of the scaling group. Valid values:
@@ -13577,6 +13679,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
                     k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.spot_price_limit:
             for k in self.spot_price_limit:
                 if k:
@@ -13650,6 +13754,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
+        if self.resource_pool_options is not None:
+            result['resource_pool_options'] = self.resource_pool_options.to_map()
         if self.scaling_group_id is not None:
             result['scaling_group_id'] = self.scaling_group_id
         if self.scaling_policy is not None:
@@ -13761,6 +13867,9 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
+        if m.get('resource_pool_options') is not None:
+            temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['resource_pool_options'])
         if m.get('scaling_group_id') is not None:
             self.scaling_group_id = m.get('scaling_group_id')
         if m.get('scaling_policy') is not None:
@@ -16900,658 +17009,6 @@ class DescribeClustersV1Response(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeClustersV1ResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeEdgeMachineActiveProcessResponseBody(TeaModel):
-    def __init__(
-        self,
-        logs: str = None,
-        progress: int = None,
-        request_id: str = None,
-        state: str = None,
-        step: str = None,
-    ):
-        # The activation progress list.
-        self.logs = logs
-        # The activation progress.
-        self.progress = progress
-        # The request ID.
-        self.request_id = request_id
-        # The activation status.
-        self.state = state
-        # The activation step.
-        self.step = step
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logs is not None:
-            result['logs'] = self.logs
-        if self.progress is not None:
-            result['progress'] = self.progress
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
-        if self.state is not None:
-            result['state'] = self.state
-        if self.step is not None:
-            result['step'] = self.step
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('logs') is not None:
-            self.logs = m.get('logs')
-        if m.get('progress') is not None:
-            self.progress = m.get('progress')
-        if m.get('request_id') is not None:
-            self.request_id = m.get('request_id')
-        if m.get('state') is not None:
-            self.state = m.get('state')
-        if m.get('step') is not None:
-            self.step = m.get('step')
-        return self
-
-
-class DescribeEdgeMachineActiveProcessResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeEdgeMachineActiveProcessResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeEdgeMachineActiveProcessResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeEdgeMachineModelsResponseBodyModels(TeaModel):
-    def __init__(
-        self,
-        cpu: int = None,
-        cpu_arch: str = None,
-        created: str = None,
-        description: str = None,
-        manage_runtime: int = None,
-        memory: int = None,
-        model: str = None,
-        model_id: str = None,
-    ):
-        # The number of vCores.
-        self.cpu = cpu
-        # The CPU architecture.
-        self.cpu_arch = cpu_arch
-        # The time when the cloud-native box was created.
-        self.created = created
-        # The description of the cloud-native box.
-        self.description = description
-        # Indicates whether the cloud-native box model manages the Docker runtime.
-        self.manage_runtime = manage_runtime
-        # The memory. Unit: GB.
-        self.memory = memory
-        # The model of the cloud-native box.
-        self.model = model
-        # The ID of the cloud-native box.
-        self.model_id = model_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cpu is not None:
-            result['cpu'] = self.cpu
-        if self.cpu_arch is not None:
-            result['cpu_arch'] = self.cpu_arch
-        if self.created is not None:
-            result['created'] = self.created
-        if self.description is not None:
-            result['description'] = self.description
-        if self.manage_runtime is not None:
-            result['manage_runtime'] = self.manage_runtime
-        if self.memory is not None:
-            result['memory'] = self.memory
-        if self.model is not None:
-            result['model'] = self.model
-        if self.model_id is not None:
-            result['model_id'] = self.model_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cpu') is not None:
-            self.cpu = m.get('cpu')
-        if m.get('cpu_arch') is not None:
-            self.cpu_arch = m.get('cpu_arch')
-        if m.get('created') is not None:
-            self.created = m.get('created')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('manage_runtime') is not None:
-            self.manage_runtime = m.get('manage_runtime')
-        if m.get('memory') is not None:
-            self.memory = m.get('memory')
-        if m.get('model') is not None:
-            self.model = m.get('model')
-        if m.get('model_id') is not None:
-            self.model_id = m.get('model_id')
-        return self
-
-
-class DescribeEdgeMachineModelsResponseBody(TeaModel):
-    def __init__(
-        self,
-        models: List[DescribeEdgeMachineModelsResponseBodyModels] = None,
-    ):
-        # The cloud-native box models.
-        self.models = models
-
-    def validate(self):
-        if self.models:
-            for k in self.models:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['models'] = []
-        if self.models is not None:
-            for k in self.models:
-                result['models'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.models = []
-        if m.get('models') is not None:
-            for k in m.get('models'):
-                temp_model = DescribeEdgeMachineModelsResponseBodyModels()
-                self.models.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeEdgeMachineModelsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeEdgeMachineModelsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeEdgeMachineModelsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeEdgeMachineTunnelConfigDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        device_name: str = None,
-        model: str = None,
-        product_key: str = None,
-        request_id: str = None,
-        sn: str = None,
-        token: str = None,
-        tunnel_endpoint: str = None,
-    ):
-        # The device name.
-        self.device_name = device_name
-        # The model of the cloud-native box.
-        self.model = model
-        # Product Key
-        self.product_key = product_key
-        # Request ID
-        self.request_id = request_id
-        # The serial number of the cloud-native box.
-        self.sn = sn
-        # Token
-        self.token = token
-        # The tunnel endpoint.
-        self.tunnel_endpoint = tunnel_endpoint
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_name is not None:
-            result['device_name'] = self.device_name
-        if self.model is not None:
-            result['model'] = self.model
-        if self.product_key is not None:
-            result['product_key'] = self.product_key
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
-        if self.sn is not None:
-            result['sn'] = self.sn
-        if self.token is not None:
-            result['token'] = self.token
-        if self.tunnel_endpoint is not None:
-            result['tunnel_endpoint'] = self.tunnel_endpoint
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('device_name') is not None:
-            self.device_name = m.get('device_name')
-        if m.get('model') is not None:
-            self.model = m.get('model')
-        if m.get('product_key') is not None:
-            self.product_key = m.get('product_key')
-        if m.get('request_id') is not None:
-            self.request_id = m.get('request_id')
-        if m.get('sn') is not None:
-            self.sn = m.get('sn')
-        if m.get('token') is not None:
-            self.token = m.get('token')
-        if m.get('tunnel_endpoint') is not None:
-            self.tunnel_endpoint = m.get('tunnel_endpoint')
-        return self
-
-
-class DescribeEdgeMachineTunnelConfigDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeEdgeMachineTunnelConfigDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeEdgeMachineTunnelConfigDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeEdgeMachinesRequest(TeaModel):
-    def __init__(
-        self,
-        hostname: str = None,
-        life_state: str = None,
-        model: str = None,
-        online_state: str = None,
-        page_number: int = None,
-        page_size: int = None,
-    ):
-        # The `hostname` of the cloud-native box.
-        self.hostname = hostname
-        # The lifecycle status.
-        self.life_state = life_state
-        # The type of cloud-native box.
-        self.model = model
-        # The status of the cloud-native box. Valid values:
-        # 
-        # *   `offline`
-        # *   `online`
-        self.online_state = online_state
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hostname is not None:
-            result['hostname'] = self.hostname
-        if self.life_state is not None:
-            result['life_state'] = self.life_state
-        if self.model is not None:
-            result['model'] = self.model
-        if self.online_state is not None:
-            result['online_state'] = self.online_state
-        if self.page_number is not None:
-            result['page_number'] = self.page_number
-        if self.page_size is not None:
-            result['page_size'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('hostname') is not None:
-            self.hostname = m.get('hostname')
-        if m.get('life_state') is not None:
-            self.life_state = m.get('life_state')
-        if m.get('model') is not None:
-            self.model = m.get('model')
-        if m.get('online_state') is not None:
-            self.online_state = m.get('online_state')
-        if m.get('page_number') is not None:
-            self.page_number = m.get('page_number')
-        if m.get('page_size') is not None:
-            self.page_size = m.get('page_size')
-        return self
-
-
-class DescribeEdgeMachinesResponseBodyEdgeMachines(TeaModel):
-    def __init__(
-        self,
-        active_time: str = None,
-        created: str = None,
-        edge_machine_id: str = None,
-        hostname: str = None,
-        life_state: str = None,
-        model: str = None,
-        name: str = None,
-        online_state: str = None,
-        sn: str = None,
-        updated: str = None,
-    ):
-        # The time when the cloud-native box was activated.
-        self.active_time = active_time
-        # The time when the cloud-native box was created.
-        self.created = created
-        # The device ID.
-        self.edge_machine_id = edge_machine_id
-        # The `hostname` of the cloud-native box.
-        self.hostname = hostname
-        # The lifecycle of the cloud-native box.
-        self.life_state = life_state
-        # The model of the cloud-native box.
-        self.model = model
-        # The machine name.
-        self.name = name
-        # The status of the cloud-native box.
-        self.online_state = online_state
-        # The serial number.
-        self.sn = sn
-        # The time when the cloud-native box was last updated.
-        self.updated = updated
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.active_time is not None:
-            result['active_time'] = self.active_time
-        if self.created is not None:
-            result['created'] = self.created
-        if self.edge_machine_id is not None:
-            result['edge_machine_id'] = self.edge_machine_id
-        if self.hostname is not None:
-            result['hostname'] = self.hostname
-        if self.life_state is not None:
-            result['life_state'] = self.life_state
-        if self.model is not None:
-            result['model'] = self.model
-        if self.name is not None:
-            result['name'] = self.name
-        if self.online_state is not None:
-            result['online_state'] = self.online_state
-        if self.sn is not None:
-            result['sn'] = self.sn
-        if self.updated is not None:
-            result['updated'] = self.updated
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('active_time') is not None:
-            self.active_time = m.get('active_time')
-        if m.get('created') is not None:
-            self.created = m.get('created')
-        if m.get('edge_machine_id') is not None:
-            self.edge_machine_id = m.get('edge_machine_id')
-        if m.get('hostname') is not None:
-            self.hostname = m.get('hostname')
-        if m.get('life_state') is not None:
-            self.life_state = m.get('life_state')
-        if m.get('model') is not None:
-            self.model = m.get('model')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('online_state') is not None:
-            self.online_state = m.get('online_state')
-        if m.get('sn') is not None:
-            self.sn = m.get('sn')
-        if m.get('updated') is not None:
-            self.updated = m.get('updated')
-        return self
-
-
-class DescribeEdgeMachinesResponseBodyPageInfo(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        # The page number.
-        # 
-        # Default value: 1.
-        self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # Default value: 10.
-        self.page_size = page_size
-        # The total number of pages returned.
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['page_number'] = self.page_number
-        if self.page_size is not None:
-            result['page_size'] = self.page_size
-        if self.total_count is not None:
-            result['total_count'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('page_number') is not None:
-            self.page_number = m.get('page_number')
-        if m.get('page_size') is not None:
-            self.page_size = m.get('page_size')
-        if m.get('total_count') is not None:
-            self.total_count = m.get('total_count')
-        return self
-
-
-class DescribeEdgeMachinesResponseBody(TeaModel):
-    def __init__(
-        self,
-        edge_machines: List[DescribeEdgeMachinesResponseBodyEdgeMachines] = None,
-        page_info: DescribeEdgeMachinesResponseBodyPageInfo = None,
-    ):
-        # The list of cloud-native boxes.
-        self.edge_machines = edge_machines
-        # The paging information.
-        self.page_info = page_info
-
-    def validate(self):
-        if self.edge_machines:
-            for k in self.edge_machines:
-                if k:
-                    k.validate()
-        if self.page_info:
-            self.page_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['edge_machines'] = []
-        if self.edge_machines is not None:
-            for k in self.edge_machines:
-                result['edge_machines'].append(k.to_map() if k else None)
-        if self.page_info is not None:
-            result['page_info'] = self.page_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.edge_machines = []
-        if m.get('edge_machines') is not None:
-            for k in m.get('edge_machines'):
-                temp_model = DescribeEdgeMachinesResponseBodyEdgeMachines()
-                self.edge_machines.append(temp_model.from_map(k))
-        if m.get('page_info') is not None:
-            temp_model = DescribeEdgeMachinesResponseBodyPageInfo()
-            self.page_info = temp_model.from_map(m['page_info'])
-        return self
-
-
-class DescribeEdgeMachinesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeEdgeMachinesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeEdgeMachinesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21607,126 +21064,6 @@ class DescribeUserQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUserQuotaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EdgeClusterAddEdgeMachineRequest(TeaModel):
-    def __init__(
-        self,
-        expired: int = None,
-        nodepool_id: str = None,
-        options: str = None,
-    ):
-        # The timeout period of sessions. Unit: seconds.
-        self.expired = expired
-        # The node pool ID.
-        # 
-        # This parameter is required.
-        self.nodepool_id = nodepool_id
-        # The options that you want to configure.
-        self.options = options
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.expired is not None:
-            result['expired'] = self.expired
-        if self.nodepool_id is not None:
-            result['nodepool_id'] = self.nodepool_id
-        if self.options is not None:
-            result['options'] = self.options
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('expired') is not None:
-            self.expired = m.get('expired')
-        if m.get('nodepool_id') is not None:
-            self.nodepool_id = m.get('nodepool_id')
-        if m.get('options') is not None:
-            self.options = m.get('options')
-        return self
-
-
-class EdgeClusterAddEdgeMachineResponseBody(TeaModel):
-    def __init__(
-        self,
-        edge_machine_id: str = None,
-        request_id: str = None,
-    ):
-        # The ID of the cloud-native box.
-        self.edge_machine_id = edge_machine_id
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.edge_machine_id is not None:
-            result['edge_machine_id'] = self.edge_machine_id
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('edge_machine_id') is not None:
-            self.edge_machine_id = m.get('edge_machine_id')
-        if m.get('request_id') is not None:
-            self.request_id = m.get('request_id')
-        return self
-
-
-class EdgeClusterAddEdgeMachineResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: EdgeClusterAddEdgeMachineResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = EdgeClusterAddEdgeMachineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26366,153 +25703,6 @@ class ModifyClusterAddonResponse(TeaModel):
         return self
 
 
-class ModifyClusterConfigurationRequestCustomizeConfigConfigs(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # The name of the configuration item.
-        self.key = key
-        # The value of the configuration item.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class ModifyClusterConfigurationRequestCustomizeConfig(TeaModel):
-    def __init__(
-        self,
-        configs: List[ModifyClusterConfigurationRequestCustomizeConfigConfigs] = None,
-        name: str = None,
-    ):
-        # The custom configurations.
-        self.configs = configs
-        # The name of the component.
-        self.name = name
-
-    def validate(self):
-        if self.configs:
-            for k in self.configs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['configs'] = []
-        if self.configs is not None:
-            for k in self.configs:
-                result['configs'].append(k.to_map() if k else None)
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.configs = []
-        if m.get('configs') is not None:
-            for k in m.get('configs'):
-                temp_model = ModifyClusterConfigurationRequestCustomizeConfigConfigs()
-                self.configs.append(temp_model.from_map(k))
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        return self
-
-
-class ModifyClusterConfigurationRequest(TeaModel):
-    def __init__(
-        self,
-        customize_config: List[ModifyClusterConfigurationRequestCustomizeConfig] = None,
-    ):
-        # The custom configurations.
-        self.customize_config = customize_config
-
-    def validate(self):
-        if self.customize_config:
-            for k in self.customize_config:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['customize_config'] = []
-        if self.customize_config is not None:
-            for k in self.customize_config:
-                result['customize_config'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.customize_config = []
-        if m.get('customize_config') is not None:
-            for k in m.get('customize_config'):
-                temp_model = ModifyClusterConfigurationRequestCustomizeConfig()
-                self.customize_config.append(temp_model.from_map(k))
-        return self
-
-
-class ModifyClusterConfigurationResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class ModifyClusterNodePoolRequestAutoScaling(TeaModel):
     def __init__(
         self,
@@ -27142,6 +26332,39 @@ class ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions(TeaModel):
         return self
 
 
+class ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['private_pool_ids'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('private_pool_ids') is not None:
+            self.private_pool_ids = m.get('private_pool_ids')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
 class ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
     def __init__(
         self,
@@ -27205,6 +26428,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         platform: str = None,
         private_pool_options: ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions = None,
         rds_instances: List[str] = None,
+        resource_pool_options: ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions = None,
         scaling_policy: str = None,
         security_group_ids: List[str] = None,
         spot_instance_pools: int = None,
@@ -27333,6 +26557,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         self.private_pool_options = private_pool_options
         # The IDs of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
+        self.resource_pool_options = resource_pool_options
         # The scaling mode of the scaling group. Valid values:
         # 
         # *   `release`: the standard mode. ECS instances are created and released based on resource usage.
@@ -27425,6 +26650,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
                     k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.spot_price_limit:
             for k in self.spot_price_limit:
                 if k:
@@ -27490,6 +26717,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             result['private_pool_options'] = self.private_pool_options.to_map()
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
+        if self.resource_pool_options is not None:
+            result['resource_pool_options'] = self.resource_pool_options.to_map()
         if self.scaling_policy is not None:
             result['scaling_policy'] = self.scaling_policy
         if self.security_group_ids is not None:
@@ -27585,6 +26814,9 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             self.private_pool_options = temp_model.from_map(m['private_pool_options'])
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
+        if m.get('resource_pool_options') is not None:
+            temp_model = ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['resource_pool_options'])
         if m.get('scaling_policy') is not None:
             self.scaling_policy = m.get('scaling_policy')
         if m.get('security_group_ids') is not None:
@@ -27910,13 +27142,16 @@ class ModifyClusterTagsResponse(TeaModel):
 class ModifyNodePoolNodeConfigRequestOsConfig(TeaModel):
     def __init__(
         self,
+        hugepage: Hugepage = None,
         sysctl: Dict[str, Any] = None,
     ):
+        self.hugepage = hugepage
         # The sysctl configuration.
         self.sysctl = sysctl
 
     def validate(self):
-        pass
+        if self.hugepage:
+            self.hugepage.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27924,12 +27159,17 @@ class ModifyNodePoolNodeConfigRequestOsConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.hugepage is not None:
+            result['hugepage'] = self.hugepage.to_map()
         if self.sysctl is not None:
             result['sysctl'] = self.sysctl
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('hugepage') is not None:
+            temp_model = Hugepage()
+            self.hugepage = temp_model.from_map(m['hugepage'])
         if m.get('sysctl') is not None:
             self.sysctl = m.get('sysctl')
         return self
@@ -29279,352 +28519,6 @@ class RunClusterInspectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunClusterInspectResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ScaleClusterRequestTags(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-    ):
-        self.key = key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        return self
-
-
-class ScaleClusterRequestTaints(TeaModel):
-    def __init__(
-        self,
-        effect: str = None,
-        key: str = None,
-        value: str = None,
-    ):
-        self.effect = effect
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.effect is not None:
-            result['effect'] = self.effect
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('effect') is not None:
-            self.effect = m.get('effect')
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class ScaleClusterRequestWorkerDataDisks(TeaModel):
-    def __init__(
-        self,
-        category: str = None,
-        encrypted: str = None,
-        size: str = None,
-    ):
-        self.category = category
-        self.encrypted = encrypted
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.category is not None:
-            result['category'] = self.category
-        if self.encrypted is not None:
-            result['encrypted'] = self.encrypted
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('category') is not None:
-            self.category = m.get('category')
-        if m.get('encrypted') is not None:
-            self.encrypted = m.get('encrypted')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        return self
-
-
-class ScaleClusterRequest(TeaModel):
-    def __init__(
-        self,
-        cloud_monitor_flags: bool = None,
-        count: int = None,
-        cpu_policy: str = None,
-        disable_rollback: bool = None,
-        key_pair: str = None,
-        login_password: str = None,
-        tags: List[ScaleClusterRequestTags] = None,
-        taints: List[ScaleClusterRequestTaints] = None,
-        vswitch_ids: List[str] = None,
-        worker_auto_renew: bool = None,
-        worker_auto_renew_period: int = None,
-        worker_data_disk: bool = None,
-        worker_data_disks: List[ScaleClusterRequestWorkerDataDisks] = None,
-        worker_instance_charge_type: str = None,
-        worker_instance_types: List[str] = None,
-        worker_period: int = None,
-        worker_period_unit: str = None,
-        worker_system_disk_category: str = None,
-        worker_system_disk_size: int = None,
-    ):
-        self.cloud_monitor_flags = cloud_monitor_flags
-        self.count = count
-        self.cpu_policy = cpu_policy
-        self.disable_rollback = disable_rollback
-        self.key_pair = key_pair
-        self.login_password = login_password
-        self.tags = tags
-        self.taints = taints
-        self.vswitch_ids = vswitch_ids
-        self.worker_auto_renew = worker_auto_renew
-        self.worker_auto_renew_period = worker_auto_renew_period
-        self.worker_data_disk = worker_data_disk
-        self.worker_data_disks = worker_data_disks
-        self.worker_instance_charge_type = worker_instance_charge_type
-        self.worker_instance_types = worker_instance_types
-        self.worker_period = worker_period
-        self.worker_period_unit = worker_period_unit
-        self.worker_system_disk_category = worker_system_disk_category
-        self.worker_system_disk_size = worker_system_disk_size
-
-    def validate(self):
-        if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
-        if self.taints:
-            for k in self.taints:
-                if k:
-                    k.validate()
-        if self.worker_data_disks:
-            for k in self.worker_data_disks:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cloud_monitor_flags is not None:
-            result['cloud_monitor_flags'] = self.cloud_monitor_flags
-        if self.count is not None:
-            result['count'] = self.count
-        if self.cpu_policy is not None:
-            result['cpu_policy'] = self.cpu_policy
-        if self.disable_rollback is not None:
-            result['disable_rollback'] = self.disable_rollback
-        if self.key_pair is not None:
-            result['key_pair'] = self.key_pair
-        if self.login_password is not None:
-            result['login_password'] = self.login_password
-        result['tags'] = []
-        if self.tags is not None:
-            for k in self.tags:
-                result['tags'].append(k.to_map() if k else None)
-        result['taints'] = []
-        if self.taints is not None:
-            for k in self.taints:
-                result['taints'].append(k.to_map() if k else None)
-        if self.vswitch_ids is not None:
-            result['vswitch_ids'] = self.vswitch_ids
-        if self.worker_auto_renew is not None:
-            result['worker_auto_renew'] = self.worker_auto_renew
-        if self.worker_auto_renew_period is not None:
-            result['worker_auto_renew_period'] = self.worker_auto_renew_period
-        if self.worker_data_disk is not None:
-            result['worker_data_disk'] = self.worker_data_disk
-        result['worker_data_disks'] = []
-        if self.worker_data_disks is not None:
-            for k in self.worker_data_disks:
-                result['worker_data_disks'].append(k.to_map() if k else None)
-        if self.worker_instance_charge_type is not None:
-            result['worker_instance_charge_type'] = self.worker_instance_charge_type
-        if self.worker_instance_types is not None:
-            result['worker_instance_types'] = self.worker_instance_types
-        if self.worker_period is not None:
-            result['worker_period'] = self.worker_period
-        if self.worker_period_unit is not None:
-            result['worker_period_unit'] = self.worker_period_unit
-        if self.worker_system_disk_category is not None:
-            result['worker_system_disk_category'] = self.worker_system_disk_category
-        if self.worker_system_disk_size is not None:
-            result['worker_system_disk_size'] = self.worker_system_disk_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cloud_monitor_flags') is not None:
-            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('cpu_policy') is not None:
-            self.cpu_policy = m.get('cpu_policy')
-        if m.get('disable_rollback') is not None:
-            self.disable_rollback = m.get('disable_rollback')
-        if m.get('key_pair') is not None:
-            self.key_pair = m.get('key_pair')
-        if m.get('login_password') is not None:
-            self.login_password = m.get('login_password')
-        self.tags = []
-        if m.get('tags') is not None:
-            for k in m.get('tags'):
-                temp_model = ScaleClusterRequestTags()
-                self.tags.append(temp_model.from_map(k))
-        self.taints = []
-        if m.get('taints') is not None:
-            for k in m.get('taints'):
-                temp_model = ScaleClusterRequestTaints()
-                self.taints.append(temp_model.from_map(k))
-        if m.get('vswitch_ids') is not None:
-            self.vswitch_ids = m.get('vswitch_ids')
-        if m.get('worker_auto_renew') is not None:
-            self.worker_auto_renew = m.get('worker_auto_renew')
-        if m.get('worker_auto_renew_period') is not None:
-            self.worker_auto_renew_period = m.get('worker_auto_renew_period')
-        if m.get('worker_data_disk') is not None:
-            self.worker_data_disk = m.get('worker_data_disk')
-        self.worker_data_disks = []
-        if m.get('worker_data_disks') is not None:
-            for k in m.get('worker_data_disks'):
-                temp_model = ScaleClusterRequestWorkerDataDisks()
-                self.worker_data_disks.append(temp_model.from_map(k))
-        if m.get('worker_instance_charge_type') is not None:
-            self.worker_instance_charge_type = m.get('worker_instance_charge_type')
-        if m.get('worker_instance_types') is not None:
-            self.worker_instance_types = m.get('worker_instance_types')
-        if m.get('worker_period') is not None:
-            self.worker_period = m.get('worker_period')
-        if m.get('worker_period_unit') is not None:
-            self.worker_period_unit = m.get('worker_period_unit')
-        if m.get('worker_system_disk_category') is not None:
-            self.worker_system_disk_category = m.get('worker_system_disk_category')
-        if m.get('worker_system_disk_size') is not None:
-            self.worker_system_disk_size = m.get('worker_system_disk_size')
-        return self
-
-
-class ScaleClusterResponseBody(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        request_id: str = None,
-        task_id: str = None,
-    ):
-        self.cluster_id = cluster_id
-        self.request_id = request_id
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['cluster_id'] = self.cluster_id
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
-        if self.task_id is not None:
-            result['task_id'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cluster_id') is not None:
-            self.cluster_id = m.get('cluster_id')
-        if m.get('request_id') is not None:
-            self.request_id = m.get('request_id')
-        if m.get('task_id') is not None:
-            self.task_id = m.get('task_id')
-        return self
-
-
-class ScaleClusterResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ScaleClusterResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ScaleClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

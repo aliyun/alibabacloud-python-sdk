@@ -1,3 +1,22 @@
+2025-10-10 Version: 5.0.0
+- Delete API CreateEdgeMachine.
+- Delete API DeleteEdgeMachine.
+- Delete API DescribeEdgeMachineActiveProcess.
+- Delete API DescribeEdgeMachineModels.
+- Delete API DescribeEdgeMachineTunnelConfigDetail.
+- Delete API DescribeEdgeMachines.
+- Delete API EdgeClusterAddEdgeMachine.
+- Delete API ModifyClusterConfiguration.
+- Delete API ScaleCluster.
+- Update API CreateClusterNodePool: add request parameters body.scaling_group.resource_pool_options.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.node_config.node_os_config.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.scaling_group.resource_pool_options.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.node_config.node_os_config.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.scaling_group.resource_pool_options.
+- Update API ModifyClusterNodePool: add request parameters body.scaling_group.resource_pool_options.
+- Update API ModifyNodePoolNodeConfig: add request parameters body.os_config.hugepage.
+
+
 2025-09-11 Version: 4.9.8
 - Generated python 2015-12-15 for CS.
 
