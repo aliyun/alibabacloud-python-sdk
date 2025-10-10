@@ -3,6 +3,11 @@
 - Update API DescribeManagedInstances: add request parameters MachineId.
 
 
+2025-10-10 Version: 7.2.3
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.CpuOptions.
+- Update API DescribeManagedInstances: add request parameters MachineId.
+
+
 2025-09-18 Version: 7.2.2
 - Update API CreateLaunchTemplate: add request parameters SecurityOptions.
 - Update API CreateLaunchTemplateVersion: add request parameters SecurityOptions.
