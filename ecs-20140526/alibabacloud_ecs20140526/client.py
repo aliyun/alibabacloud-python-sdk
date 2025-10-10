@@ -27674,6 +27674,8 @@ class Client(OpenApiClient):
             query['InstanceIp'] = request.instance_ip
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.machine_id):
+            query['MachineId'] = request.machine_id
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -27743,6 +27745,8 @@ class Client(OpenApiClient):
             query['InstanceIp'] = request.instance_ip
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.machine_id):
+            query['MachineId'] = request.machine_id
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -53634,15 +53638,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
-        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
-        If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
-        If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
+        If you want to resize the disk online, the ECS instances must be in the **Running** state.``
+        If you want to resize the disk offline, the ECS instances must be in the **Running** or **Stopped** state.````
         The cloud disk that you want to resize must meet the following requirements:
-        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
+        The disk is in the In Use (`In Use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -53695,15 +53699,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
-        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
-        If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
-        If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
+        If you want to resize the disk online, the ECS instances must be in the **Running** state.``
+        If you want to resize the disk offline, the ECS instances must be in the **Running** or **Stopped** state.````
         The cloud disk that you want to resize must meet the following requirements:
-        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
+        The disk is in the In Use (`In Use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -53755,15 +53759,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
-        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
-        If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
-        If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
+        If you want to resize the disk online, the ECS instances must be in the **Running** state.``
+        If you want to resize the disk offline, the ECS instances must be in the **Running** or **Stopped** state.````
         The cloud disk that you want to resize must meet the following requirements:
-        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
+        The disk is in the In Use (`In Use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -53780,15 +53784,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
-        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
-        If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
-        If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
+        If you want to resize the disk online, the ECS instances must be in the **Running** state.``
+        If you want to resize the disk offline, the ECS instances must be in the **Running** or **Stopped** state.````
         The cloud disk that you want to resize must meet the following requirements:
-        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
+        The disk is in the In Use (`In Use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
