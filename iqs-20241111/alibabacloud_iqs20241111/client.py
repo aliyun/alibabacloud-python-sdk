@@ -305,6 +305,8 @@ class Client(OpenApiClient):
             query['returnMainText'] = request.return_main_text
         if not UtilClient.is_unset(request.return_markdown_text):
             query['returnMarkdownText'] = request.return_markdown_text
+        if not UtilClient.is_unset(request.return_rich_main_body):
+            query['returnRichMainBody'] = request.return_rich_main_body
         if not UtilClient.is_unset(request.return_summary):
             query['returnSummary'] = request.return_summary
         if not UtilClient.is_unset(request.session_id):
@@ -359,6 +361,8 @@ class Client(OpenApiClient):
             query['returnMainText'] = request.return_main_text
         if not UtilClient.is_unset(request.return_markdown_text):
             query['returnMarkdownText'] = request.return_markdown_text
+        if not UtilClient.is_unset(request.return_rich_main_body):
+            query['returnRichMainBody'] = request.return_rich_main_body
         if not UtilClient.is_unset(request.return_summary):
             query['returnSummary'] = request.return_summary
         if not UtilClient.is_unset(request.session_id):
@@ -636,6 +640,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.global_search_with_options_async(request, headers, runtime)
+
+    def read_page_basic_with_options(
+        self,
+        request: iqs20241111_models.ReadPageBasicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.ReadPageBasicResponse:
+        """
+        @summary 页面读取
+        
+        @param request: ReadPageBasicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadPageBasicResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ReadPageBasic',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.ReadPageBasicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_page_basic_with_options_async(
+        self,
+        request: iqs20241111_models.ReadPageBasicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.ReadPageBasicResponse:
+        """
+        @summary 页面读取
+        
+        @param request: ReadPageBasicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadPageBasicResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ReadPageBasic',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.ReadPageBasicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_page_basic(
+        self,
+        request: iqs20241111_models.ReadPageBasicRequest,
+    ) -> iqs20241111_models.ReadPageBasicResponse:
+        """
+        @summary 页面读取
+        
+        @param request: ReadPageBasicRequest
+        @return: ReadPageBasicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.read_page_basic_with_options(request, headers, runtime)
+
+    async def read_page_basic_async(
+        self,
+        request: iqs20241111_models.ReadPageBasicRequest,
+    ) -> iqs20241111_models.ReadPageBasicResponse:
+        """
+        @summary 页面读取
+        
+        @param request: ReadPageBasicRequest
+        @return: ReadPageBasicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.read_page_basic_with_options_async(request, headers, runtime)
 
     def unified_search_with_options(
         self,

@@ -977,17 +977,187 @@ class GlobalSearchResult(TeaModel):
         return self
 
 
+class ReadPageBodyReadability(TeaModel):
+    def __init__(
+        self,
+        exclude_all_images: bool = None,
+        exclude_all_links: bool = None,
+        excluded_tags: List[str] = None,
+        readability_mode: str = None,
+    ):
+        self.exclude_all_images = exclude_all_images
+        self.exclude_all_links = exclude_all_links
+        self.excluded_tags = excluded_tags
+        self.readability_mode = readability_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_all_images is not None:
+            result['excludeAllImages'] = self.exclude_all_images
+        if self.exclude_all_links is not None:
+            result['excludeAllLinks'] = self.exclude_all_links
+        if self.excluded_tags is not None:
+            result['excludedTags'] = self.excluded_tags
+        if self.readability_mode is not None:
+            result['readabilityMode'] = self.readability_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('excludeAllImages') is not None:
+            self.exclude_all_images = m.get('excludeAllImages')
+        if m.get('excludeAllLinks') is not None:
+            self.exclude_all_links = m.get('excludeAllLinks')
+        if m.get('excludedTags') is not None:
+            self.excluded_tags = m.get('excludedTags')
+        if m.get('readabilityMode') is not None:
+            self.readability_mode = m.get('readabilityMode')
+        return self
+
+
+class ReadPageBody(TeaModel):
+    def __init__(
+        self,
+        formats: List[str] = None,
+        location: str = None,
+        max_age: int = None,
+        page_timeout: int = None,
+        readability: ReadPageBodyReadability = None,
+        timeout: int = None,
+        url: str = None,
+    ):
+        self.formats = formats
+        self.location = location
+        self.max_age = max_age
+        self.page_timeout = page_timeout
+        self.readability = readability
+        self.timeout = timeout
+        # This parameter is required.
+        self.url = url
+
+    def validate(self):
+        if self.readability:
+            self.readability.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.formats is not None:
+            result['formats'] = self.formats
+        if self.location is not None:
+            result['location'] = self.location
+        if self.max_age is not None:
+            result['maxAge'] = self.max_age
+        if self.page_timeout is not None:
+            result['pageTimeout'] = self.page_timeout
+        if self.readability is not None:
+            result['readability'] = self.readability.to_map()
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('formats') is not None:
+            self.formats = m.get('formats')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('maxAge') is not None:
+            self.max_age = m.get('maxAge')
+        if m.get('pageTimeout') is not None:
+            self.page_timeout = m.get('pageTimeout')
+        if m.get('readability') is not None:
+            temp_model = ReadPageBodyReadability()
+            self.readability = temp_model.from_map(m['readability'])
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ReadPageItem(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        html: str = None,
+        markdown: str = None,
+        raw_html: str = None,
+        status_code: int = None,
+        text: str = None,
+    ):
+        self.error_message = error_message
+        self.html = html
+        self.markdown = markdown
+        self.raw_html = raw_html
+        self.status_code = status_code
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.html is not None:
+            result['html'] = self.html
+        if self.markdown is not None:
+            result['markdown'] = self.markdown
+        if self.raw_html is not None:
+            result['rawHtml'] = self.raw_html
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('html') is not None:
+            self.html = m.get('html')
+        if m.get('markdown') is not None:
+            self.markdown = m.get('markdown')
+        if m.get('rawHtml') is not None:
+            self.raw_html = m.get('rawHtml')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
 class RequestContents(TeaModel):
     def __init__(
         self,
         main_text: bool = None,
         markdown_text: bool = None,
         rerank_score: bool = None,
+        rich_main_body: bool = None,
         summary: bool = None,
     ):
         self.main_text = main_text
         self.markdown_text = markdown_text
         self.rerank_score = rerank_score
+        self.rich_main_body = rich_main_body
         self.summary = summary
 
     def validate(self):
@@ -1005,6 +1175,8 @@ class RequestContents(TeaModel):
             result['markdownText'] = self.markdown_text
         if self.rerank_score is not None:
             result['rerankScore'] = self.rerank_score
+        if self.rich_main_body is not None:
+            result['richMainBody'] = self.rich_main_body
         if self.summary is not None:
             result['summary'] = self.summary
         return result
@@ -1017,6 +1189,8 @@ class RequestContents(TeaModel):
             self.markdown_text = m.get('markdownText')
         if m.get('rerankScore') is not None:
             self.rerank_score = m.get('rerankScore')
+        if m.get('richMainBody') is not None:
+            self.rich_main_body = m.get('richMainBody')
         if m.get('summary') is not None:
             self.summary = m.get('summary')
         return self
@@ -1931,6 +2105,7 @@ class GenericSearchRequest(TeaModel):
         query: str = None,
         return_main_text: bool = None,
         return_markdown_text: bool = None,
+        return_rich_main_body: bool = None,
         return_summary: bool = None,
         session_id: str = None,
         time_range: str = None,
@@ -1942,6 +2117,7 @@ class GenericSearchRequest(TeaModel):
         self.query = query
         self.return_main_text = return_main_text
         self.return_markdown_text = return_markdown_text
+        self.return_rich_main_body = return_rich_main_body
         self.return_summary = return_summary
         self.session_id = session_id
         self.time_range = time_range
@@ -1967,6 +2143,8 @@ class GenericSearchRequest(TeaModel):
             result['returnMainText'] = self.return_main_text
         if self.return_markdown_text is not None:
             result['returnMarkdownText'] = self.return_markdown_text
+        if self.return_rich_main_body is not None:
+            result['returnRichMainBody'] = self.return_rich_main_body
         if self.return_summary is not None:
             result['returnSummary'] = self.return_summary
         if self.session_id is not None:
@@ -1989,6 +2167,8 @@ class GenericSearchRequest(TeaModel):
             self.return_main_text = m.get('returnMainText')
         if m.get('returnMarkdownText') is not None:
             self.return_markdown_text = m.get('returnMarkdownText')
+        if m.get('returnRichMainBody') is not None:
+            self.return_rich_main_body = m.get('returnRichMainBody')
         if m.get('returnSummary') is not None:
             self.return_summary = m.get('returnSummary')
         if m.get('sessionId') is not None:
@@ -2196,6 +2376,124 @@ class GlobalSearchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GlobalSearchResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadPageBasicRequest(TeaModel):
+    def __init__(
+        self,
+        body: ReadPageBody = None,
+    ):
+        # post body
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ReadPageBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadPageBasicResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ReadPageItem = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ReadPageItem()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ReadPageBasicResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadPageBasicResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadPageBasicResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
