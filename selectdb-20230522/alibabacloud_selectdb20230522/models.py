@@ -150,6 +150,122 @@ class AllocateInstancePublicConnectionResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckCreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -366,6 +482,158 @@ class CheckCreateDBInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckCreateDBInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckIpExistsInSecurityIpListRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        ip: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.ip = ip
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CheckIpExistsInSecurityIpListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ip_exists: bool = None,
+    ):
+        self.ip_exists = ip_exists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_exists is not None:
+            result['IpExists'] = self.ip_exists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpExists') is not None:
+            self.ip_exists = m.get('IpExists')
+        return self
+
+
+class CheckIpExistsInSecurityIpListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CheckIpExistsInSecurityIpListResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CheckIpExistsInSecurityIpListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckIpExistsInSecurityIpListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckIpExistsInSecurityIpListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckIpExistsInSecurityIpListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3222,6 +3490,240 @@ class DescribeDBClusterConfigChangeLogsResponse(TeaModel):
         return self
 
 
+class DescribeDBClusterStorageLimitationRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbinstance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList(TeaModel):
+    def __init__(
+        self,
+        class_code: str = None,
+        cpu_cores: int = None,
+        default_storage_in_gb: int = None,
+        max_storage_in_gb: int = None,
+        memory_in_gb: int = None,
+        min_storage_in_gb: int = None,
+        step_storage_in_gb: int = None,
+    ):
+        self.class_code = class_code
+        self.cpu_cores = cpu_cores
+        self.default_storage_in_gb = default_storage_in_gb
+        self.max_storage_in_gb = max_storage_in_gb
+        self.memory_in_gb = memory_in_gb
+        self.min_storage_in_gb = min_storage_in_gb
+        self.step_storage_in_gb = step_storage_in_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_code is not None:
+            result['ClassCode'] = self.class_code
+        if self.cpu_cores is not None:
+            result['CpuCores'] = self.cpu_cores
+        if self.default_storage_in_gb is not None:
+            result['DefaultStorageInGB'] = self.default_storage_in_gb
+        if self.max_storage_in_gb is not None:
+            result['MaxStorageInGB'] = self.max_storage_in_gb
+        if self.memory_in_gb is not None:
+            result['MemoryInGB'] = self.memory_in_gb
+        if self.min_storage_in_gb is not None:
+            result['MinStorageInGB'] = self.min_storage_in_gb
+        if self.step_storage_in_gb is not None:
+            result['StepStorageInGB'] = self.step_storage_in_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassCode') is not None:
+            self.class_code = m.get('ClassCode')
+        if m.get('CpuCores') is not None:
+            self.cpu_cores = m.get('CpuCores')
+        if m.get('DefaultStorageInGB') is not None:
+            self.default_storage_in_gb = m.get('DefaultStorageInGB')
+        if m.get('MaxStorageInGB') is not None:
+            self.max_storage_in_gb = m.get('MaxStorageInGB')
+        if m.get('MemoryInGB') is not None:
+            self.memory_in_gb = m.get('MemoryInGB')
+        if m.get('MinStorageInGB') is not None:
+            self.min_storage_in_gb = m.get('MinStorageInGB')
+        if m.get('StepStorageInGB') is not None:
+            self.step_storage_in_gb = m.get('StepStorageInGB')
+        return self
+
+
+class DescribeDBClusterStorageLimitationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        class_code_list: List[DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList] = None,
+    ):
+        self.class_code_list = class_code_list
+
+    def validate(self):
+        if self.class_code_list:
+            for k in self.class_code_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClassCodeList'] = []
+        if self.class_code_list is not None:
+            for k in self.class_code_list:
+                result['ClassCodeList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.class_code_list = []
+        if m.get('ClassCodeList') is not None:
+            for k in m.get('ClassCodeList'):
+                temp_model = DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList()
+                self.class_code_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClusterStorageLimitationResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: DescribeDBClusterStorageLimitationResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            temp_model = DescribeDBClusterStorageLimitationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterStorageLimitationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterStorageLimitationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterStorageLimitationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -3563,6 +4065,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         request_id: str = None,
         resource_cpu: int = None,
         resource_group_id: str = None,
+        sec_group_conn_valid: str = None,
         serverless: bool = None,
         status: str = None,
         storage_size: int = None,
@@ -3617,6 +4120,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.resource_cpu = resource_cpu
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        self.sec_group_conn_valid = sec_group_conn_valid
         self.serverless = serverless
         # The state of the instance. Valid values:
         # 
@@ -3707,6 +4211,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             result['ResourceCpu'] = self.resource_cpu
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.sec_group_conn_valid is not None:
+            result['SecGroupConnValid'] = self.sec_group_conn_valid
         if self.serverless is not None:
             result['Serverless'] = self.serverless
         if self.status is not None:
@@ -3779,6 +4285,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             self.resource_cpu = m.get('ResourceCpu')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecGroupConnValid') is not None:
+            self.sec_group_conn_valid = m.get('SecGroupConnValid')
         if m.get('Serverless') is not None:
             self.serverless = m.get('Serverless')
         if m.get('Status') is not None:
@@ -5885,6 +6393,7 @@ class GetCreateBEClusterInquiryRequest(TeaModel):
         pre_cache_size: int = None,
         pre_compute_size: int = None,
         pricing_cycle: str = None,
+        promotion_option_no: str = None,
         quantity: int = None,
         region_id: str = None,
         resource_owner_id: int = None,
@@ -5931,6 +6440,7 @@ class GetCreateBEClusterInquiryRequest(TeaModel):
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_option_no = promotion_option_no
         # The number of clusters to be created.
         # 
         # This parameter is required.
@@ -5966,6 +6476,8 @@ class GetCreateBEClusterInquiryRequest(TeaModel):
             result['PreComputeSize'] = self.pre_compute_size
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_option_no is not None:
+            result['PromotionOptionNo'] = self.promotion_option_no
         if self.quantity is not None:
             result['Quantity'] = self.quantity
         if self.region_id is not None:
@@ -5992,6 +6504,8 @@ class GetCreateBEClusterInquiryRequest(TeaModel):
             self.pre_compute_size = m.get('PreComputeSize')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionOptionNo') is not None:
+            self.promotion_option_no = m.get('PromotionOptionNo')
         if m.get('Quantity') is not None:
             self.quantity = m.get('Quantity')
         if m.get('RegionId') is not None:
@@ -6001,18 +6515,20 @@ class GetCreateBEClusterInquiryRequest(TeaModel):
         return self
 
 
-class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
+class GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions(TeaModel):
     def __init__(
         self,
-        currency: str = None,
-        pricing_rules: Dict[str, str] = None,
-        trade_amount: str = None,
+        can_prom_fee: str = None,
+        option_code: str = None,
+        promotion_desc: str = None,
+        promotion_name: str = None,
+        promotion_option_no: str = None,
     ):
-        # The currency.
-        self.currency = currency
-        self.pricing_rules = pricing_rules
-        # The amount of money.
-        self.trade_amount = trade_amount
+        self.can_prom_fee = can_prom_fee
+        self.option_code = option_code
+        self.promotion_desc = promotion_desc
+        self.promotion_name = promotion_name
+        self.promotion_option_no = promotion_option_no
 
     def validate(self):
         pass
@@ -6023,8 +6539,66 @@ class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.can_prom_fee is not None:
+            result['CanPromFee'] = self.can_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.promotion_option_no is not None:
+            result['PromotionOptionNo'] = self.promotion_option_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanPromFee') is not None:
+            self.can_prom_fee = m.get('CanPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('PromotionOptionNo') is not None:
+            self.promotion_option_no = m.get('PromotionOptionNo')
+        return self
+
+
+class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        optional_promotions: List[GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions] = None,
+        pricing_rules: Dict[str, str] = None,
+        trade_amount: str = None,
+    ):
+        # The currency.
+        self.currency = currency
+        self.optional_promotions = optional_promotions
+        self.pricing_rules = pricing_rules
+        # The amount of money.
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        if self.optional_promotions:
+            for k in self.optional_promotions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.currency is not None:
             result['Currency'] = self.currency
+        result['OptionalPromotions'] = []
+        if self.optional_promotions is not None:
+            for k in self.optional_promotions:
+                result['OptionalPromotions'].append(k.to_map() if k else None)
         if self.pricing_rules is not None:
             result['PricingRules'] = self.pricing_rules
         if self.trade_amount is not None:
@@ -6035,6 +6609,11 @@ class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        self.optional_promotions = []
+        if m.get('OptionalPromotions') is not None:
+            for k in m.get('OptionalPromotions'):
+                temp_model = GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions()
+                self.optional_promotions.append(temp_model.from_map(k))
         if m.get('PricingRules') is not None:
             self.pricing_rules = m.get('PricingRules')
         if m.get('TradeAmount') is not None:
@@ -6133,6 +6712,7 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         pre_cache_size: int = None,
         pre_compute_size: int = None,
         pricing_cycle: str = None,
+        promotion_option_no: str = None,
         quantity: int = None,
         region_id: str = None,
         resource_owner_id: int = None,
@@ -6185,6 +6765,7 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_option_no = promotion_option_no
         # The number of clusters whose specifications are to be changed.
         # 
         # This parameter is required.
@@ -6224,6 +6805,8 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
             result['PreComputeSize'] = self.pre_compute_size
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_option_no is not None:
+            result['PromotionOptionNo'] = self.promotion_option_no
         if self.quantity is not None:
             result['Quantity'] = self.quantity
         if self.region_id is not None:
@@ -6254,6 +6837,8 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
             self.pre_compute_size = m.get('PreComputeSize')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionOptionNo') is not None:
+            self.promotion_option_no = m.get('PromotionOptionNo')
         if m.get('Quantity') is not None:
             self.quantity = m.get('Quantity')
         if m.get('RegionId') is not None:
@@ -6263,21 +6848,20 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         return self
 
 
-class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
+class GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions(TeaModel):
     def __init__(
         self,
-        currency: str = None,
-        pricing_rules: Dict[str, str] = None,
-        refund_amount: str = None,
-        trade_amount: str = None,
+        can_prom_fee: str = None,
+        option_code: str = None,
+        promotion_desc: str = None,
+        promotion_name: str = None,
+        promotion_option_no: str = None,
     ):
-        # The currency.
-        self.currency = currency
-        self.pricing_rules = pricing_rules
-        # The estimated refund amount when the subscription cluster of a subscription instance is changed to a pay-as-you-go cluster.
-        self.refund_amount = refund_amount
-        # The amount of money.
-        self.trade_amount = trade_amount
+        self.can_prom_fee = can_prom_fee
+        self.option_code = option_code
+        self.promotion_desc = promotion_desc
+        self.promotion_name = promotion_name
+        self.promotion_option_no = promotion_option_no
 
     def validate(self):
         pass
@@ -6288,8 +6872,69 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.can_prom_fee is not None:
+            result['CanPromFee'] = self.can_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.promotion_option_no is not None:
+            result['PromotionOptionNo'] = self.promotion_option_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanPromFee') is not None:
+            self.can_prom_fee = m.get('CanPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('PromotionOptionNo') is not None:
+            self.promotion_option_no = m.get('PromotionOptionNo')
+        return self
+
+
+class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        optional_promotions: List[GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions] = None,
+        pricing_rules: Dict[str, str] = None,
+        refund_amount: str = None,
+        trade_amount: str = None,
+    ):
+        # The currency.
+        self.currency = currency
+        self.optional_promotions = optional_promotions
+        self.pricing_rules = pricing_rules
+        # The estimated refund amount when the subscription cluster of a subscription instance is changed to a pay-as-you-go cluster.
+        self.refund_amount = refund_amount
+        # The amount of money.
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        if self.optional_promotions:
+            for k in self.optional_promotions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.currency is not None:
             result['Currency'] = self.currency
+        result['OptionalPromotions'] = []
+        if self.optional_promotions is not None:
+            for k in self.optional_promotions:
+                result['OptionalPromotions'].append(k.to_map() if k else None)
         if self.pricing_rules is not None:
             result['PricingRules'] = self.pricing_rules
         if self.refund_amount is not None:
@@ -6302,6 +6947,11 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        self.optional_promotions = []
+        if m.get('OptionalPromotions') is not None:
+            for k in m.get('OptionalPromotions'):
+                temp_model = GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions()
+                self.optional_promotions.append(temp_model.from_map(k))
         if m.get('PricingRules') is not None:
             self.pricing_rules = m.get('PricingRules')
         if m.get('RefundAmount') is not None:
@@ -8192,6 +8842,285 @@ class StopBEClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopBEClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

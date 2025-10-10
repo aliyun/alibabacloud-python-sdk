@@ -1,3 +1,7 @@
+2025-10-10 Version: 4.3.3
+- Update API DescribeDBInstanceAttribute: add response parameters Body.SecGroupConnValid.
+
+
 2025-07-30 Version: 4.3.1
 - Update API CreateDBCluster: add request parameters ClusterNodeCount.
 - Update API CreateDBCluster: add request parameters ClusterNodeType.

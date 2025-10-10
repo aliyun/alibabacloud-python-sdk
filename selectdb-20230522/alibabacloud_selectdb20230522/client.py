@@ -153,6 +153,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_instance_public_connection_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: selectdb_20230522_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: selectdb_20230522_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: selectdb_20230522_models.ChangeResourceGroupRequest,
+    ) -> selectdb_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: selectdb_20230522_models.ChangeResourceGroupRequest,
+    ) -> selectdb_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def check_create_dbinstance_with_options(
         self,
         request: selectdb_20230522_models.CheckCreateDBInstanceRequest,
@@ -312,6 +420,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_create_dbinstance_with_options_async(request, runtime)
+
+    def check_ip_exists_in_security_ip_list_with_options(
+        self,
+        request: selectdb_20230522_models.CheckIpExistsInSecurityIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.CheckIpExistsInSecurityIpListResponse:
+        """
+        @summary 判断指定 IP 是否已经存在于网络白名单组
+        
+        @param request: CheckIpExistsInSecurityIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckIpExistsInSecurityIpListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckIpExistsInSecurityIpList',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.CheckIpExistsInSecurityIpListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_ip_exists_in_security_ip_list_with_options_async(
+        self,
+        request: selectdb_20230522_models.CheckIpExistsInSecurityIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.CheckIpExistsInSecurityIpListResponse:
+        """
+        @summary 判断指定 IP 是否已经存在于网络白名单组
+        
+        @param request: CheckIpExistsInSecurityIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckIpExistsInSecurityIpListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckIpExistsInSecurityIpList',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.CheckIpExistsInSecurityIpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_ip_exists_in_security_ip_list(
+        self,
+        request: selectdb_20230522_models.CheckIpExistsInSecurityIpListRequest,
+    ) -> selectdb_20230522_models.CheckIpExistsInSecurityIpListResponse:
+        """
+        @summary 判断指定 IP 是否已经存在于网络白名单组
+        
+        @param request: CheckIpExistsInSecurityIpListRequest
+        @return: CheckIpExistsInSecurityIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_ip_exists_in_security_ip_list_with_options(request, runtime)
+
+    async def check_ip_exists_in_security_ip_list_async(
+        self,
+        request: selectdb_20230522_models.CheckIpExistsInSecurityIpListRequest,
+    ) -> selectdb_20230522_models.CheckIpExistsInSecurityIpListResponse:
+        """
+        @summary 判断指定 IP 是否已经存在于网络白名单组
+        
+        @param request: CheckIpExistsInSecurityIpListRequest
+        @return: CheckIpExistsInSecurityIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_ip_exists_in_security_ip_list_with_options_async(request, runtime)
 
     def check_service_linked_role_with_options(
         self,
@@ -1912,6 +2112,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_config_change_logs_with_options_async(request, runtime)
+
+    def describe_dbcluster_storage_limitation_with_options(
+        self,
+        request: selectdb_20230522_models.DescribeDBClusterStorageLimitationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeDBClusterStorageLimitationResponse:
+        """
+        @summary 获取集群的各规格缓存限制
+        
+        @param request: DescribeDBClusterStorageLimitationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterStorageLimitationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterStorageLimitation',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeDBClusterStorageLimitationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_storage_limitation_with_options_async(
+        self,
+        request: selectdb_20230522_models.DescribeDBClusterStorageLimitationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeDBClusterStorageLimitationResponse:
+        """
+        @summary 获取集群的各规格缓存限制
+        
+        @param request: DescribeDBClusterStorageLimitationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterStorageLimitationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterStorageLimitation',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeDBClusterStorageLimitationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_storage_limitation(
+        self,
+        request: selectdb_20230522_models.DescribeDBClusterStorageLimitationRequest,
+    ) -> selectdb_20230522_models.DescribeDBClusterStorageLimitationResponse:
+        """
+        @summary 获取集群的各规格缓存限制
+        
+        @param request: DescribeDBClusterStorageLimitationRequest
+        @return: DescribeDBClusterStorageLimitationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_storage_limitation_with_options(request, runtime)
+
+    async def describe_dbcluster_storage_limitation_async(
+        self,
+        request: selectdb_20230522_models.DescribeDBClusterStorageLimitationRequest,
+    ) -> selectdb_20230522_models.DescribeDBClusterStorageLimitationResponse:
+        """
+        @summary 获取集群的各规格缓存限制
+        
+        @param request: DescribeDBClusterStorageLimitationRequest
+        @return: DescribeDBClusterStorageLimitationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_storage_limitation_with_options_async(request, runtime)
 
     def describe_dbinstance_attribute_with_options(
         self,
@@ -4108,6 +4412,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_becluster_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: selectdb_20230522_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: selectdb_20230522_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: selectdb_20230522_models.TagResourcesRequest,
+    ) -> selectdb_20230522_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: selectdb_20230522_models.TagResourcesRequest,
+    ) -> selectdb_20230522_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: selectdb_20230522_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: selectdb_20230522_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: selectdb_20230522_models.UntagResourcesRequest,
+    ) -> selectdb_20230522_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: selectdb_20230522_models.UntagResourcesRequest,
+    ) -> selectdb_20230522_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def upgrade_dbinstance_engine_version_with_options(
         self,
