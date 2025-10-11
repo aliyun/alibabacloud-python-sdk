@@ -17690,6 +17690,8 @@ class Client(OpenApiClient):
             request.keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keywords, 'Keywords', 'json')
         if not UtilClient.is_unset(tmp_req.mini_docs):
             request.mini_docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mini_docs, 'MiniDocs', 'json')
+        if not UtilClient.is_unset(tmp_req.outline_list):
+            request.outline_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outline_list, 'OutlineList', 'json')
         if not UtilClient.is_unset(tmp_req.outlines):
             request.outlines_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outlines, 'Outlines', 'json')
         if not UtilClient.is_unset(tmp_req.search_sources):
@@ -17713,6 +17715,8 @@ class Client(OpenApiClient):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.mini_docs_shrink):
             body['MiniDocs'] = request.mini_docs_shrink
+        if not UtilClient.is_unset(request.outline_list_shrink):
+            body['OutlineList'] = request.outline_list_shrink
         if not UtilClient.is_unset(request.outlines_shrink):
             body['Outlines'] = request.outlines_shrink
         if not UtilClient.is_unset(request.prompt):
@@ -17723,6 +17727,8 @@ class Client(OpenApiClient):
             body['SearchSources'] = request.search_sources_shrink
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.source_trace_method):
+            body['SourceTraceMethod'] = request.source_trace_method
         if not UtilClient.is_unset(request.step):
             body['Step'] = request.step
         if not UtilClient.is_unset(request.summarization_shrink):
@@ -17779,6 +17785,8 @@ class Client(OpenApiClient):
             request.keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keywords, 'Keywords', 'json')
         if not UtilClient.is_unset(tmp_req.mini_docs):
             request.mini_docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mini_docs, 'MiniDocs', 'json')
+        if not UtilClient.is_unset(tmp_req.outline_list):
+            request.outline_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outline_list, 'OutlineList', 'json')
         if not UtilClient.is_unset(tmp_req.outlines):
             request.outlines_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outlines, 'Outlines', 'json')
         if not UtilClient.is_unset(tmp_req.search_sources):
@@ -17802,6 +17810,8 @@ class Client(OpenApiClient):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.mini_docs_shrink):
             body['MiniDocs'] = request.mini_docs_shrink
+        if not UtilClient.is_unset(request.outline_list_shrink):
+            body['OutlineList'] = request.outline_list_shrink
         if not UtilClient.is_unset(request.outlines_shrink):
             body['Outlines'] = request.outlines_shrink
         if not UtilClient.is_unset(request.prompt):
@@ -17812,6 +17822,8 @@ class Client(OpenApiClient):
             body['SearchSources'] = request.search_sources_shrink
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.source_trace_method):
+            body['SourceTraceMethod'] = request.source_trace_method
         if not UtilClient.is_unset(request.step):
             body['Step'] = request.step
         if not UtilClient.is_unset(request.summarization_shrink):

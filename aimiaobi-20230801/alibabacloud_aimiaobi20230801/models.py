@@ -4,6 +4,386 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class GenerateTraceabilityNews(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        pub_time: str = None,
+        search_source: str = None,
+        search_source_name: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.pub_time = pub_time
+        self.search_source = search_source
+        self.search_source_name = search_source_name
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+        if self.search_source_name is not None:
+            result['SearchSourceName'] = self.search_source_name
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+        if m.get('SearchSourceName') is not None:
+            self.search_source_name = m.get('SearchSourceName')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GenerateTraceability(TeaModel):
+    def __init__(
+        self,
+        news: List[GenerateTraceabilityNews] = None,
+    ):
+        self.news = news
+
+    def validate(self):
+        if self.news:
+            for k in self.news:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['News'] = []
+        if self.news is not None:
+            for k in self.news:
+                result['News'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.news = []
+        if m.get('News') is not None:
+            for k in m.get('News'):
+                temp_model = GenerateTraceabilityNews()
+                self.news.append(temp_model.from_map(k))
+        return self
+
+
+class OutlineWritingArticle(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        outline: str = None,
+        primary_outline: str = None,
+        pub_time: str = None,
+        search_source: str = None,
+        search_source_name: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.outline = outline
+        self.primary_outline = primary_outline
+        self.pub_time = pub_time
+        self.search_source = search_source
+        self.search_source_name = search_source_name
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.primary_outline is not None:
+            result['PrimaryOutline'] = self.primary_outline
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+        if self.search_source_name is not None:
+            result['SearchSourceName'] = self.search_source_name
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('PrimaryOutline') is not None:
+            self.primary_outline = m.get('PrimaryOutline')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+        if m.get('SearchSourceName') is not None:
+            self.search_source_name = m.get('SearchSourceName')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class OutlineSearchResult(TeaModel):
+    def __init__(
+        self,
+        articles: List[OutlineWritingArticle] = None,
+        outline: str = None,
+        outline_id: str = None,
+        primary_outline: str = None,
+        query: str = None,
+    ):
+        self.articles = articles
+        self.outline = outline
+        self.outline_id = outline_id
+        self.primary_outline = primary_outline
+        self.query = query
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.outline_id is not None:
+            result['OutlineId'] = self.outline_id
+        if self.primary_outline is not None:
+            result['PrimaryOutline'] = self.primary_outline
+        if self.query is not None:
+            result['Query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = OutlineWritingArticle()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('OutlineId') is not None:
+            self.outline_id = m.get('OutlineId')
+        if m.get('PrimaryOutline') is not None:
+            self.primary_outline = m.get('PrimaryOutline')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        return self
+
+
+class TopicSelectionOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class TopicSelection(TeaModel):
+    def __init__(
+        self,
+        outlines: List[TopicSelectionOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = TopicSelectionOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class WritingOutline(TeaModel):
+    def __init__(
+        self,
+        articles: List[OutlineWritingArticle] = None,
+        children: List['WritingOutline'] = None,
+        outline: str = None,
+        outline_id: str = None,
+        search_key_word_list: List[str] = None,
+        word_count: str = None,
+        writing_tips: str = None,
+    ):
+        self.articles = articles
+        self.children = children
+        self.outline = outline
+        self.outline_id = outline_id
+        self.search_key_word_list = search_key_word_list
+        self.word_count = word_count
+        self.writing_tips = writing_tips
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+        if self.children:
+            for k in self.children:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        result['Children'] = []
+        if self.children is not None:
+            for k in self.children:
+                result['Children'].append(k.to_map() if k else None)
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.outline_id is not None:
+            result['OutlineId'] = self.outline_id
+        if self.search_key_word_list is not None:
+            result['SearchKeyWordList'] = self.search_key_word_list
+        if self.word_count is not None:
+            result['WordCount'] = self.word_count
+        if self.writing_tips is not None:
+            result['WritingTips'] = self.writing_tips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = OutlineWritingArticle()
+                self.articles.append(temp_model.from_map(k))
+        self.children = []
+        if m.get('Children') is not None:
+            for k in m.get('Children'):
+                temp_model = WritingOutline()
+                self.children.append(temp_model.from_map(k))
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('OutlineId') is not None:
+            self.outline_id = m.get('OutlineId')
+        if m.get('SearchKeyWordList') is not None:
+            self.search_key_word_list = m.get('SearchKeyWordList')
+        if m.get('WordCount') is not None:
+            self.word_count = m.get('WordCount')
+        if m.get('WritingTips') is not None:
+            self.writing_tips = m.get('WritingTips')
+        return self
+
+
 class WritingStyleTemplateDefineExample(TeaModel):
     def __init__(
         self,
@@ -51612,11 +51992,13 @@ class RunWritingV2Request(TeaModel):
         keywords: List[str] = None,
         language: str = None,
         mini_docs: List[RunWritingV2RequestMiniDocs] = None,
+        outline_list: List[WritingOutline] = None,
         outlines: List[RunWritingV2RequestOutlines] = None,
         prompt: str = None,
         prompt_mode: str = None,
         search_sources: List[RunWritingV2RequestSearchSources] = None,
         session_id: str = None,
+        source_trace_method: str = None,
         step: str = None,
         summarization: List[RunWritingV2RequestSummarization] = None,
         task_id: str = None,
@@ -51633,11 +52015,13 @@ class RunWritingV2Request(TeaModel):
         self.keywords = keywords
         self.language = language
         self.mini_docs = mini_docs
+        self.outline_list = outline_list
         self.outlines = outlines
         self.prompt = prompt
         self.prompt_mode = prompt_mode
         self.search_sources = search_sources
         self.session_id = session_id
+        self.source_trace_method = source_trace_method
         self.step = step
         self.summarization = summarization
         self.task_id = task_id
@@ -51655,6 +52039,10 @@ class RunWritingV2Request(TeaModel):
                     k.validate()
         if self.mini_docs:
             for k in self.mini_docs:
+                if k:
+                    k.validate()
+        if self.outline_list:
+            for k in self.outline_list:
                 if k:
                     k.validate()
         if self.outlines:
@@ -51694,6 +52082,10 @@ class RunWritingV2Request(TeaModel):
         if self.mini_docs is not None:
             for k in self.mini_docs:
                 result['MiniDocs'].append(k.to_map() if k else None)
+        result['OutlineList'] = []
+        if self.outline_list is not None:
+            for k in self.outline_list:
+                result['OutlineList'].append(k.to_map() if k else None)
         result['Outlines'] = []
         if self.outlines is not None:
             for k in self.outlines:
@@ -51708,6 +52100,8 @@ class RunWritingV2Request(TeaModel):
                 result['SearchSources'].append(k.to_map() if k else None)
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.source_trace_method is not None:
+            result['SourceTraceMethod'] = self.source_trace_method
         if self.step is not None:
             result['Step'] = self.step
         result['Summarization'] = []
@@ -51750,6 +52144,11 @@ class RunWritingV2Request(TeaModel):
             for k in m.get('MiniDocs'):
                 temp_model = RunWritingV2RequestMiniDocs()
                 self.mini_docs.append(temp_model.from_map(k))
+        self.outline_list = []
+        if m.get('OutlineList') is not None:
+            for k in m.get('OutlineList'):
+                temp_model = WritingOutline()
+                self.outline_list.append(temp_model.from_map(k))
         self.outlines = []
         if m.get('Outlines') is not None:
             for k in m.get('Outlines'):
@@ -51766,6 +52165,8 @@ class RunWritingV2Request(TeaModel):
                 self.search_sources.append(temp_model.from_map(k))
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('SourceTraceMethod') is not None:
+            self.source_trace_method = m.get('SourceTraceMethod')
         if m.get('Step') is not None:
             self.step = m.get('Step')
         self.summarization = []
@@ -51798,11 +52199,13 @@ class RunWritingV2ShrinkRequest(TeaModel):
         keywords_shrink: str = None,
         language: str = None,
         mini_docs_shrink: str = None,
+        outline_list_shrink: str = None,
         outlines_shrink: str = None,
         prompt: str = None,
         prompt_mode: str = None,
         search_sources_shrink: str = None,
         session_id: str = None,
+        source_trace_method: str = None,
         step: str = None,
         summarization_shrink: str = None,
         task_id: str = None,
@@ -51819,11 +52222,13 @@ class RunWritingV2ShrinkRequest(TeaModel):
         self.keywords_shrink = keywords_shrink
         self.language = language
         self.mini_docs_shrink = mini_docs_shrink
+        self.outline_list_shrink = outline_list_shrink
         self.outlines_shrink = outlines_shrink
         self.prompt = prompt
         self.prompt_mode = prompt_mode
         self.search_sources_shrink = search_sources_shrink
         self.session_id = session_id
+        self.source_trace_method = source_trace_method
         self.step = step
         self.summarization_shrink = summarization_shrink
         self.task_id = task_id
@@ -51857,6 +52262,8 @@ class RunWritingV2ShrinkRequest(TeaModel):
             result['Language'] = self.language
         if self.mini_docs_shrink is not None:
             result['MiniDocs'] = self.mini_docs_shrink
+        if self.outline_list_shrink is not None:
+            result['OutlineList'] = self.outline_list_shrink
         if self.outlines_shrink is not None:
             result['Outlines'] = self.outlines_shrink
         if self.prompt is not None:
@@ -51867,6 +52274,8 @@ class RunWritingV2ShrinkRequest(TeaModel):
             result['SearchSources'] = self.search_sources_shrink
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.source_trace_method is not None:
+            result['SourceTraceMethod'] = self.source_trace_method
         if self.step is not None:
             result['Step'] = self.step
         if self.summarization_shrink is not None:
@@ -51901,6 +52310,8 @@ class RunWritingV2ShrinkRequest(TeaModel):
             self.language = m.get('Language')
         if m.get('MiniDocs') is not None:
             self.mini_docs_shrink = m.get('MiniDocs')
+        if m.get('OutlineList') is not None:
+            self.outline_list_shrink = m.get('OutlineList')
         if m.get('Outlines') is not None:
             self.outlines_shrink = m.get('Outlines')
         if m.get('Prompt') is not None:
@@ -51911,6 +52322,8 @@ class RunWritingV2ShrinkRequest(TeaModel):
             self.search_sources_shrink = m.get('SearchSources')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('SourceTraceMethod') is not None:
+            self.source_trace_method = m.get('SourceTraceMethod')
         if m.get('Step') is not None:
             self.step = m.get('Step')
         if m.get('Summarization') is not None:
@@ -52084,20 +52497,36 @@ class RunWritingV2ResponseBodyPayloadOutput(TeaModel):
     def __init__(
         self,
         articles: List[RunWritingV2ResponseBodyPayloadOutputArticles] = None,
+        generate_traceability: GenerateTraceability = None,
         mini_doc: List[str] = None,
+        outlines: List[WritingOutline] = None,
         search_query: str = None,
+        search_result: OutlineSearchResult = None,
         text: str = None,
+        title: str = None,
     ):
         self.articles = articles
+        self.generate_traceability = generate_traceability
         self.mini_doc = mini_doc
+        self.outlines = outlines
         self.search_query = search_query
+        self.search_result = search_result
         self.text = text
+        self.title = title
 
     def validate(self):
         if self.articles:
             for k in self.articles:
                 if k:
                     k.validate()
+        if self.generate_traceability:
+            self.generate_traceability.validate()
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+        if self.search_result:
+            self.search_result.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -52109,12 +52538,22 @@ class RunWritingV2ResponseBodyPayloadOutput(TeaModel):
         if self.articles is not None:
             for k in self.articles:
                 result['Articles'].append(k.to_map() if k else None)
+        if self.generate_traceability is not None:
+            result['GenerateTraceability'] = self.generate_traceability.to_map()
         if self.mini_doc is not None:
             result['MiniDoc'] = self.mini_doc
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
         if self.search_query is not None:
             result['SearchQuery'] = self.search_query
+        if self.search_result is not None:
+            result['SearchResult'] = self.search_result.to_map()
         if self.text is not None:
             result['Text'] = self.text
+        if self.title is not None:
+            result['Title'] = self.title
         return result
 
     def from_map(self, m: dict = None):
@@ -52124,12 +52563,25 @@ class RunWritingV2ResponseBodyPayloadOutput(TeaModel):
             for k in m.get('Articles'):
                 temp_model = RunWritingV2ResponseBodyPayloadOutputArticles()
                 self.articles.append(temp_model.from_map(k))
+        if m.get('GenerateTraceability') is not None:
+            temp_model = GenerateTraceability()
+            self.generate_traceability = temp_model.from_map(m['GenerateTraceability'])
         if m.get('MiniDoc') is not None:
             self.mini_doc = m.get('MiniDoc')
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = WritingOutline()
+                self.outlines.append(temp_model.from_map(k))
         if m.get('SearchQuery') is not None:
             self.search_query = m.get('SearchQuery')
+        if m.get('SearchResult') is not None:
+            temp_model = OutlineSearchResult()
+            self.search_result = temp_model.from_map(m['SearchResult'])
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         return self
 
 

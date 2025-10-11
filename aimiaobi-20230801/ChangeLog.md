@@ -1,3 +1,12 @@
+2025-10-11 Version: 1.36.3
+- Update API RunWritingV2: add request parameters OutlineList.
+- Update API RunWritingV2: add request parameters SourceTraceMethod.
+- Update API RunWritingV2: add response parameters Body.Payload.Output.GenerateTraceability.
+- Update API RunWritingV2: add response parameters Body.Payload.Output.Outlines.
+- Update API RunWritingV2: add response parameters Body.Payload.Output.SearchResult.
+- Update API RunWritingV2: add response parameters Body.Payload.Output.Title.
+
+
 2025-09-30 Version: 1.36.2
 - Generated python 2023-08-01 for AiMiaoBi.
 
