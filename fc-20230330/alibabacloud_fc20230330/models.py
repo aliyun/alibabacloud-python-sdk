@@ -1941,6 +1941,92 @@ class OSSMountConfig(TeaModel):
         return self
 
 
+class PolarFsMountConfig(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mount_dir: str = None,
+        remote_dir: str = None,
+    ):
+        self.instance_id = instance_id
+        self.mount_dir = mount_dir
+        self.remote_dir = remote_dir
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.mount_dir is not None:
+            result['mountDir'] = self.mount_dir
+        if self.remote_dir is not None:
+            result['remoteDir'] = self.remote_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('mountDir') is not None:
+            self.mount_dir = m.get('mountDir')
+        if m.get('remoteDir') is not None:
+            self.remote_dir = m.get('remoteDir')
+        return self
+
+
+class PolarFsConfig(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        mount_points: List[PolarFsMountConfig] = None,
+        user_id: int = None,
+    ):
+        self.group_id = group_id
+        self.mount_points = mount_points
+        self.user_id = user_id
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        result['mountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['mountPoints'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        self.mount_points = []
+        if m.get('mountPoints') is not None:
+            for k in m.get('mountPoints'):
+                temp_model = PolarFsMountConfig()
+                self.mount_points.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
 class Tag(TeaModel):
     def __init__(
         self,
@@ -2061,6 +2147,7 @@ class CreateFunctionInput(TeaModel):
         custom_dns: CustomDNS = None,
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
+        disable_inject_credentials: str = None,
         disable_ondemand: bool = None,
         disk_size: int = None,
         enable_long_living: bool = None,
@@ -2078,6 +2165,7 @@ class CreateFunctionInput(TeaModel):
         memory_size: int = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        polar_fs_config: PolarFsConfig = None,
         resource_group_id: str = None,
         role: str = None,
         runtime: str = None,
@@ -2094,6 +2182,7 @@ class CreateFunctionInput(TeaModel):
         self.custom_dns = custom_dns
         self.custom_runtime_config = custom_runtime_config
         self.description = description
+        self.disable_inject_credentials = disable_inject_credentials
         self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
         self.enable_long_living = enable_long_living
@@ -2113,6 +2202,7 @@ class CreateFunctionInput(TeaModel):
         self.memory_size = memory_size
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.polar_fs_config = polar_fs_config
         self.resource_group_id = resource_group_id
         self.role = role
         # This parameter is required.
@@ -2143,6 +2233,8 @@ class CreateFunctionInput(TeaModel):
             self.nas_config.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
+        if self.polar_fs_config:
+            self.polar_fs_config.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -2170,6 +2262,8 @@ class CreateFunctionInput(TeaModel):
             result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_inject_credentials is not None:
+            result['disableInjectCredentials'] = self.disable_inject_credentials
         if self.disable_ondemand is not None:
             result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
@@ -2204,6 +2298,8 @@ class CreateFunctionInput(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.polar_fs_config is not None:
+            result['polarFsConfig'] = self.polar_fs_config.to_map()
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
         if self.role is not None:
@@ -2244,6 +2340,8 @@ class CreateFunctionInput(TeaModel):
             self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disableInjectCredentials') is not None:
+            self.disable_inject_credentials = m.get('disableInjectCredentials')
         if m.get('disableOndemand') is not None:
             self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
@@ -2283,6 +2381,9 @@ class CreateFunctionInput(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('polarFsConfig') is not None:
+            temp_model = PolarFsConfig()
+            self.polar_fs_config = temp_model.from_map(m['polarFsConfig'])
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('role') is not None:
@@ -2359,14 +2460,17 @@ class CreateLayerVersionInput(TeaModel):
 class CreateSessionInput(TeaModel):
     def __init__(
         self,
+        nas_config: NASConfig = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        self.nas_config = nas_config
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):
-        pass
+        if self.nas_config:
+            self.nas_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2374,6 +2478,8 @@ class CreateSessionInput(TeaModel):
             return _map
 
         result = dict()
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
         if self.session_idle_timeout_in_seconds is not None:
             result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
         if self.session_ttlin_seconds is not None:
@@ -2382,6 +2488,9 @@ class CreateSessionInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('nasConfig') is not None:
+            temp_model = NASConfig()
+            self.nas_config = temp_model.from_map(m['nasConfig'])
         if m.get('sessionIdleTimeoutInSeconds') is not None:
             self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
         if m.get('sessionTTLInSeconds') is not None:
@@ -3822,6 +3931,7 @@ class Function(TeaModel):
         custom_dns: CustomDNS = None,
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
+        disable_inject_credentials: str = None,
         disable_ondemand: bool = None,
         disk_size: int = None,
         enable_long_living: bool = None,
@@ -3846,6 +3956,7 @@ class Function(TeaModel):
         memory_size: int = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        polar_fs_config: PolarFsConfig = None,
         resource_group_id: str = None,
         role: str = None,
         runtime: str = None,
@@ -3867,6 +3978,7 @@ class Function(TeaModel):
         self.custom_dns = custom_dns
         self.custom_runtime_config = custom_runtime_config
         self.description = description
+        self.disable_inject_credentials = disable_inject_credentials
         self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
         self.enable_long_living = enable_long_living
@@ -3891,6 +4003,7 @@ class Function(TeaModel):
         self.memory_size = memory_size
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.polar_fs_config = polar_fs_config
         self.resource_group_id = resource_group_id
         self.role = role
         self.runtime = runtime
@@ -3927,6 +4040,8 @@ class Function(TeaModel):
             self.nas_config.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
+        if self.polar_fs_config:
+            self.polar_fs_config.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -3958,6 +4073,8 @@ class Function(TeaModel):
             result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_inject_credentials is not None:
+            result['disableInjectCredentials'] = self.disable_inject_credentials
         if self.disable_ondemand is not None:
             result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
@@ -4008,6 +4125,8 @@ class Function(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.polar_fs_config is not None:
+            result['polarFsConfig'] = self.polar_fs_config.to_map()
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
         if self.role is not None:
@@ -4057,6 +4176,8 @@ class Function(TeaModel):
             self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disableInjectCredentials') is not None:
+            self.disable_inject_credentials = m.get('disableInjectCredentials')
         if m.get('disableOndemand') is not None:
             self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
@@ -4114,6 +4235,9 @@ class Function(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('polarFsConfig') is not None:
+            temp_model = PolarFsConfig()
+            self.polar_fs_config = temp_model.from_map(m['polarFsConfig'])
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('role') is not None:
@@ -5772,6 +5896,7 @@ class Session(TeaModel):
         created_time: str = None,
         function_name: str = None,
         last_modified_time: str = None,
+        nas_config: NASConfig = None,
         qualifier: str = None,
         session_affinity_type: str = None,
         session_id: str = None,
@@ -5783,6 +5908,7 @@ class Session(TeaModel):
         self.created_time = created_time
         self.function_name = function_name
         self.last_modified_time = last_modified_time
+        self.nas_config = nas_config
         self.qualifier = qualifier
         self.session_affinity_type = session_affinity_type
         self.session_id = session_id
@@ -5791,7 +5917,8 @@ class Session(TeaModel):
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):
-        pass
+        if self.nas_config:
+            self.nas_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5807,6 +5934,8 @@ class Session(TeaModel):
             result['functionName'] = self.function_name
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
         if self.session_affinity_type is not None:
@@ -5831,6 +5960,9 @@ class Session(TeaModel):
             self.function_name = m.get('functionName')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('nasConfig') is not None:
+            temp_model = NASConfig()
+            self.nas_config = temp_model.from_map(m['nasConfig'])
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
         if m.get('sessionAffinityType') is not None:
@@ -7253,6 +7385,7 @@ class UpdateFunctionInput(TeaModel):
         custom_dns: CustomDNS = None,
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
+        disable_inject_credentials: str = None,
         disable_ondemand: bool = None,
         disk_size: int = None,
         enable_long_living: bool = None,
@@ -7269,6 +7402,7 @@ class UpdateFunctionInput(TeaModel):
         memory_size: int = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        polar_fs_config: PolarFsConfig = None,
         role: str = None,
         runtime: str = None,
         session_affinity: str = None,
@@ -7283,6 +7417,7 @@ class UpdateFunctionInput(TeaModel):
         self.custom_dns = custom_dns
         self.custom_runtime_config = custom_runtime_config
         self.description = description
+        self.disable_inject_credentials = disable_inject_credentials
         self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
         self.enable_long_living = enable_long_living
@@ -7299,6 +7434,7 @@ class UpdateFunctionInput(TeaModel):
         self.memory_size = memory_size
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.polar_fs_config = polar_fs_config
         self.role = role
         self.runtime = runtime
         self.session_affinity = session_affinity
@@ -7326,6 +7462,8 @@ class UpdateFunctionInput(TeaModel):
             self.nas_config.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
+        if self.polar_fs_config:
+            self.polar_fs_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
         if self.vpc_config:
@@ -7349,6 +7487,8 @@ class UpdateFunctionInput(TeaModel):
             result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_inject_credentials is not None:
+            result['disableInjectCredentials'] = self.disable_inject_credentials
         if self.disable_ondemand is not None:
             result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
@@ -7381,6 +7521,8 @@ class UpdateFunctionInput(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.polar_fs_config is not None:
+            result['polarFsConfig'] = self.polar_fs_config.to_map()
         if self.role is not None:
             result['role'] = self.role
         if self.runtime is not None:
@@ -7415,6 +7557,8 @@ class UpdateFunctionInput(TeaModel):
             self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disableInjectCredentials') is not None:
+            self.disable_inject_credentials = m.get('disableInjectCredentials')
         if m.get('disableOndemand') is not None:
             self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
@@ -7452,6 +7596,9 @@ class UpdateFunctionInput(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('polarFsConfig') is not None:
+            temp_model = PolarFsConfig()
+            self.polar_fs_config = temp_model.from_map(m['polarFsConfig'])
         if m.get('role') is not None:
             self.role = m.get('role')
         if m.get('runtime') is not None:
