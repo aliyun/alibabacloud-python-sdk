@@ -1760,6 +1760,292 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.deepfake_detect_intl_with_options_async(request, runtime)
 
+    def deepfake_detect_intl_stream_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
+        """
+        @summary deepfake文件流api
+        
+        @param request: DeepfakeDetectIntlStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeepfakeDetectIntlStreamResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.face_base_64):
+            body['FaceBase64'] = request.face_base_64
+        if not UtilClient.is_unset(request.face_file):
+            body['FaceFile'] = request.face_file
+        if not UtilClient.is_unset(request.face_input_type):
+            body['FaceInputType'] = request.face_input_type
+        if not UtilClient.is_unset(request.face_url):
+            body['FaceUrl'] = request.face_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeepfakeDetectIntlStream',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deepfake_detect_intl_stream_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
+        """
+        @summary deepfake文件流api
+        
+        @param request: DeepfakeDetectIntlStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeepfakeDetectIntlStreamResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.face_base_64):
+            body['FaceBase64'] = request.face_base_64
+        if not UtilClient.is_unset(request.face_file):
+            body['FaceFile'] = request.face_file
+        if not UtilClient.is_unset(request.face_input_type):
+            body['FaceInputType'] = request.face_input_type
+        if not UtilClient.is_unset(request.face_url):
+            body['FaceUrl'] = request.face_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeepfakeDetectIntlStream',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deepfake_detect_intl_stream(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
+        """
+        @summary deepfake文件流api
+        
+        @param request: DeepfakeDetectIntlStreamRequest
+        @return: DeepfakeDetectIntlStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deepfake_detect_intl_stream_with_options(request, runtime)
+
+    async def deepfake_detect_intl_stream_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
+        """
+        @summary deepfake文件流api
+        
+        @param request: DeepfakeDetectIntlStreamRequest
+        @return: DeepfakeDetectIntlStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deepfake_detect_intl_stream_with_options_async(request, runtime)
+
+    def deepfake_detect_intl_stream_advance(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
+        # Step 0: init client
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
+        )
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        auth_response = {}
+        file_obj = file_form_models.FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        deepfake_detect_intl_stream_req = cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest()
+        OpenApiUtilClient.convert(request, deepfake_detect_intl_stream_req)
+        if not UtilClient.is_unset(request.face_file_object):
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.face_file_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            deepfake_detect_intl_stream_req.face_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        deepfake_detect_intl_stream_resp = self.deepfake_detect_intl_stream_with_options(deepfake_detect_intl_stream_req, runtime)
+        return deepfake_detect_intl_stream_resp
+
+    async def deepfake_detect_intl_stream_advance_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
+        # Step 0: init client
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
+        )
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        auth_response = {}
+        file_obj = file_form_models.FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        deepfake_detect_intl_stream_req = cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest()
+        OpenApiUtilClient.convert(request, deepfake_detect_intl_stream_req)
+        if not UtilClient.is_unset(request.face_file_object):
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.face_file_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            deepfake_detect_intl_stream_req.face_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        deepfake_detect_intl_stream_resp = await self.deepfake_detect_intl_stream_with_options_async(deepfake_detect_intl_stream_req, runtime)
+        return deepfake_detect_intl_stream_resp
+
     def delete_face_group_with_options(
         self,
         request: cloudauth_intl_20220809_models.DeleteFaceGroupRequest,
