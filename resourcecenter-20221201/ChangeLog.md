@@ -1,3 +1,10 @@
+2025-10-11 Version: 1.5.1
+- Update API GetDeliveryChannel: add response parameters Body.ResourceChangeDelivery.Enabled.
+- Update API GetDeliveryChannel: add response parameters Body.ResourceSnapshotDelivery.Enabled.
+- Update API GetMultiAccountDeliveryChannel: add response parameters Body.ResourceChangeDelivery.Enabled.
+- Update API GetMultiAccountDeliveryChannel: add response parameters Body.ResourceSnapshotDelivery.Enabled.
+
+
 2025-07-04 Version: 1.5.0
 - Support API GetMultiAccountResourceCounts.
 

@@ -2311,10 +2311,12 @@ class GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties(TeaModel
 class GetDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
     def __init__(
         self,
+        enabled: str = None,
         sls_properties: GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties = None,
         target_arn: str = None,
         target_type: str = None,
     ):
+        self.enabled = enabled
         # The Simple Log Service configurations.
         self.sls_properties = sls_properties
         # The ARN of the delivery destination.
@@ -2332,6 +2334,8 @@ class GetDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
             return _map
 
         result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
         if self.sls_properties is not None:
             result['SlsProperties'] = self.sls_properties.to_map()
         if self.target_arn is not None:
@@ -2342,6 +2346,8 @@ class GetDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
         if m.get('SlsProperties') is not None:
             temp_model = GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties()
             self.sls_properties = temp_model.from_map(m['SlsProperties'])
@@ -2385,6 +2391,7 @@ class GetDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
         self,
         custom_expression: str = None,
         delivery_time: str = None,
+        enabled: str = None,
         sls_properties: GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties = None,
         target_arn: str = None,
         target_type: str = None,
@@ -2393,6 +2400,7 @@ class GetDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
         self.custom_expression = custom_expression
         # The delivery time.
         self.delivery_time = delivery_time
+        self.enabled = enabled
         # The Simple Log Service configurations.
         self.sls_properties = sls_properties
         # The ARN of the delivery destination.
@@ -2414,6 +2422,8 @@ class GetDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
             result['CustomExpression'] = self.custom_expression
         if self.delivery_time is not None:
             result['DeliveryTime'] = self.delivery_time
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
         if self.sls_properties is not None:
             result['SlsProperties'] = self.sls_properties.to_map()
         if self.target_arn is not None:
@@ -2428,6 +2438,8 @@ class GetDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
             self.custom_expression = m.get('CustomExpression')
         if m.get('DeliveryTime') is not None:
             self.delivery_time = m.get('DeliveryTime')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
         if m.get('SlsProperties') is not None:
             temp_model = GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties()
             self.sls_properties = temp_model.from_map(m['SlsProperties'])
@@ -2967,10 +2979,12 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsPropert
 class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
     def __init__(
         self,
+        enabled: str = None,
         sls_properties: GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties = None,
         target_arn: str = None,
         target_type: str = None,
     ):
+        self.enabled = enabled
         # The Simple Log Service configurations.
         self.sls_properties = sls_properties
         # The ARN of the delivery destination.
@@ -2988,6 +3002,8 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel)
             return _map
 
         result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
         if self.sls_properties is not None:
             result['SlsProperties'] = self.sls_properties.to_map()
         if self.target_arn is not None:
@@ -2998,6 +3014,8 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
         if m.get('SlsProperties') is not None:
             temp_model = GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties()
             self.sls_properties = temp_model.from_map(m['SlsProperties'])
@@ -3041,6 +3059,7 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaMode
         self,
         custom_expression: str = None,
         delivery_time: str = None,
+        enabled: str = None,
         sls_properties: GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties = None,
         target_arn: str = None,
         target_type: str = None,
@@ -3049,6 +3068,7 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaMode
         self.custom_expression = custom_expression
         # The delivery time.
         self.delivery_time = delivery_time
+        self.enabled = enabled
         # The Simple Log Service configurations.
         self.sls_properties = sls_properties
         # The ARN of the delivery destination.
@@ -3070,6 +3090,8 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaMode
             result['CustomExpression'] = self.custom_expression
         if self.delivery_time is not None:
             result['DeliveryTime'] = self.delivery_time
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
         if self.sls_properties is not None:
             result['SlsProperties'] = self.sls_properties.to_map()
         if self.target_arn is not None:
@@ -3084,6 +3106,8 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaMode
             self.custom_expression = m.get('CustomExpression')
         if m.get('DeliveryTime') is not None:
             self.delivery_time = m.get('DeliveryTime')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
         if m.get('SlsProperties') is not None:
             temp_model = GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties()
             self.sls_properties = temp_model.from_map(m['SlsProperties'])
