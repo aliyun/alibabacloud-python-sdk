@@ -17052,6 +17052,9 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
         self,
         actual_bytes: str = None,
         advanced_retention_type: str = None,
+        archive_error_message: str = None,
+        archive_status: str = None,
+        archive_trigger_time: int = None,
         backup_type: str = None,
         bytes_total: int = None,
         can_be_deleted: bool = None,
@@ -17084,6 +17087,9 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
         # *   **MONTHLY**: monthly backups
         # *   **YEARLY**: yearly backups
         self.advanced_retention_type = advanced_retention_type
+        self.archive_error_message = archive_error_message
+        self.archive_status = archive_status
+        self.archive_trigger_time = archive_trigger_time
         # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
         # The total amount of data. Unit: bytes.
@@ -17153,6 +17159,12 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
             result['ActualBytes'] = self.actual_bytes
         if self.advanced_retention_type is not None:
             result['AdvancedRetentionType'] = self.advanced_retention_type
+        if self.archive_error_message is not None:
+            result['ArchiveErrorMessage'] = self.archive_error_message
+        if self.archive_status is not None:
+            result['ArchiveStatus'] = self.archive_status
+        if self.archive_trigger_time is not None:
+            result['ArchiveTriggerTime'] = self.archive_trigger_time
         if self.backup_type is not None:
             result['BackupType'] = self.backup_type
         if self.bytes_total is not None:
@@ -17207,6 +17219,12 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
             self.actual_bytes = m.get('ActualBytes')
         if m.get('AdvancedRetentionType') is not None:
             self.advanced_retention_type = m.get('AdvancedRetentionType')
+        if m.get('ArchiveErrorMessage') is not None:
+            self.archive_error_message = m.get('ArchiveErrorMessage')
+        if m.get('ArchiveStatus') is not None:
+            self.archive_status = m.get('ArchiveStatus')
+        if m.get('ArchiveTriggerTime') is not None:
+            self.archive_trigger_time = m.get('ArchiveTriggerTime')
         if m.get('BackupType') is not None:
             self.backup_type = m.get('BackupType')
         if m.get('BytesTotal') is not None:

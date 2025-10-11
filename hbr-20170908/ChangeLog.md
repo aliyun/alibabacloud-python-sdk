@@ -1,3 +1,9 @@
+2025-10-11 Version: 2.1.10
+- Update API DescribeUdmSnapshots: add response parameters Body.Snapshots.$.ArchiveErrorMessage.
+- Update API DescribeUdmSnapshots: add response parameters Body.Snapshots.$.ArchiveStatus.
+- Update API DescribeUdmSnapshots: add response parameters Body.Snapshots.$.ArchiveTriggerTime.
+
+
 2025-09-10 Version: 2.1.9
 - Update API CancelBackupJob: add request parameters Edition.
 - Update API CancelRestoreJob: add request parameters Edition.
