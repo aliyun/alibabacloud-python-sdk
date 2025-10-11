@@ -2779,6 +2779,155 @@ class BatchQueryIndividuationTextResponse(TeaModel):
         return self
 
 
+class BuildAICoachScriptRecordRequest(TeaModel):
+    def __init__(
+        self,
+        script_json_url: str = None,
+    ):
+        self.script_json_url = script_json_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.script_json_url is not None:
+            result['scriptJsonUrl'] = self.script_json_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scriptJsonUrl') is not None:
+            self.script_json_url = m.get('scriptJsonUrl')
+        return self
+
+
+class BuildAICoachScriptRecordResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        script_id: str = None,
+    ):
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.script_id is not None:
+            result['scriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scriptId') is not None:
+            self.script_id = m.get('scriptId')
+        return self
+
+
+class BuildAICoachScriptRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: BuildAICoachScriptRecordResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = BuildAICoachScriptRecordResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class BuildAICoachScriptRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BuildAICoachScriptRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BuildAICoachScriptRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckSessionRequest(TeaModel):
     def __init__(
         self,
@@ -3540,6 +3689,150 @@ class CreateAICoachTaskSessionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAICoachTaskSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAgentRequest(TeaModel):
+    def __init__(
+        self,
+        agent_icon_url: str = None,
+        agent_name: str = None,
+        agent_scene: str = None,
+        character_age_stage: str = None,
+        character_gender: str = None,
+        character_name: str = None,
+        extra_description: str = None,
+        industry: str = None,
+    ):
+        self.agent_icon_url = agent_icon_url
+        self.agent_name = agent_name
+        self.agent_scene = agent_scene
+        self.character_age_stage = character_age_stage
+        self.character_gender = character_gender
+        self.character_name = character_name
+        self.extra_description = extra_description
+        self.industry = industry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_icon_url is not None:
+            result['agentIconUrl'] = self.agent_icon_url
+        if self.agent_name is not None:
+            result['agentName'] = self.agent_name
+        if self.agent_scene is not None:
+            result['agentScene'] = self.agent_scene
+        if self.character_age_stage is not None:
+            result['characterAgeStage'] = self.character_age_stage
+        if self.character_gender is not None:
+            result['characterGender'] = self.character_gender
+        if self.character_name is not None:
+            result['characterName'] = self.character_name
+        if self.extra_description is not None:
+            result['extraDescription'] = self.extra_description
+        if self.industry is not None:
+            result['industry'] = self.industry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentIconUrl') is not None:
+            self.agent_icon_url = m.get('agentIconUrl')
+        if m.get('agentName') is not None:
+            self.agent_name = m.get('agentName')
+        if m.get('agentScene') is not None:
+            self.agent_scene = m.get('agentScene')
+        if m.get('characterAgeStage') is not None:
+            self.character_age_stage = m.get('characterAgeStage')
+        if m.get('characterGender') is not None:
+            self.character_gender = m.get('characterGender')
+        if m.get('characterName') is not None:
+            self.character_name = m.get('characterName')
+        if m.get('extraDescription') is not None:
+            self.extra_description = m.get('extraDescription')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        return self
+
+
+class CreateAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        request_id: str = None,
+    ):
+        self.agent_id = agent_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4655,6 +4948,210 @@ class CreateVideoClipTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateVideoClipTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAICoachScriptRequest(TeaModel):
+    def __init__(
+        self,
+        script_id: str = None,
+    ):
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.script_id is not None:
+            result['scriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scriptId') is not None:
+            self.script_id = m.get('scriptId')
+        return self
+
+
+class DeleteAICoachScriptResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class DeleteAICoachScriptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAICoachScriptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAICoachScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAgentRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+    ):
+        self.agent_id = agent_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        return self
+
+
+class DeleteAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class DeleteAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6784,6 +7281,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
 class GetAICoachScriptResponseBody(TeaModel):
     def __init__(
         self,
+        agent_id: str = None,
         append_question_flag: bool = None,
         assessment_scope: str = None,
         check_cheat_config: GetAICoachScriptResponseBodyCheckCheatConfig = None,
@@ -6821,8 +7319,11 @@ class GetAICoachScriptResponseBody(TeaModel):
         student_think_time_flag: bool = None,
         student_think_time_limit: int = None,
         type: int = None,
+        voice_id: str = None,
+        voice_language: str = None,
         weights: GetAICoachScriptResponseBodyWeights = None,
     ):
+        self.agent_id = agent_id
         self.append_question_flag = append_question_flag
         self.assessment_scope = assessment_scope
         self.check_cheat_config = check_cheat_config
@@ -6860,6 +7361,8 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.student_think_time_flag = student_think_time_flag
         self.student_think_time_limit = student_think_time_limit
         self.type = type
+        self.voice_id = voice_id
+        self.voice_language = voice_language
         self.weights = weights
 
     def validate(self):
@@ -6898,6 +7401,8 @@ class GetAICoachScriptResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
         if self.append_question_flag is not None:
             result['appendQuestionFlag'] = self.append_question_flag
         if self.assessment_scope is not None:
@@ -6982,12 +7487,18 @@ class GetAICoachScriptResponseBody(TeaModel):
             result['studentThinkTimeLimit'] = self.student_think_time_limit
         if self.type is not None:
             result['type'] = self.type
+        if self.voice_id is not None:
+            result['voiceId'] = self.voice_id
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
         if self.weights is not None:
             result['weights'] = self.weights.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
         if m.get('appendQuestionFlag') is not None:
             self.append_question_flag = m.get('appendQuestionFlag')
         if m.get('assessmentScope') is not None:
@@ -7080,6 +7591,10 @@ class GetAICoachScriptResponseBody(TeaModel):
             self.student_think_time_limit = m.get('studentThinkTimeLimit')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('voiceId') is not None:
+            self.voice_id = m.get('voiceId')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
         if m.get('weights') is not None:
             temp_model = GetAICoachScriptResponseBodyWeights()
             self.weights = temp_model.from_map(m['weights'])
@@ -10493,6 +11008,108 @@ class ListVoiceModelsResponse(TeaModel):
         return self
 
 
+class OfflineAICoachScriptRequest(TeaModel):
+    def __init__(
+        self,
+        script_id: str = None,
+    ):
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.script_id is not None:
+            result['scriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scriptId') is not None:
+            self.script_id = m.get('scriptId')
+        return self
+
+
+class OfflineAICoachScriptResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class OfflineAICoachScriptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OfflineAICoachScriptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OfflineAICoachScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OperateAvatarProjectRequest(TeaModel):
     def __init__(
         self,
@@ -11715,6 +12332,108 @@ class QueryTextStreamResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryTextStreamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReleaseAgentRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+    ):
+        self.agent_id = agent_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        return self
+
+
+class ReleaseAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ReleaseAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleaseAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleaseAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13989,6 +14708,150 @@ class TransferPortraitStyleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TransferPortraitStyleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAgentRequest(TeaModel):
+    def __init__(
+        self,
+        agent_icon_url: str = None,
+        agent_id: str = None,
+        agent_name: str = None,
+        character_age_stage: str = None,
+        character_gender: str = None,
+        character_name: str = None,
+        extra_description: str = None,
+        industry: str = None,
+    ):
+        self.agent_icon_url = agent_icon_url
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.character_age_stage = character_age_stage
+        self.character_gender = character_gender
+        self.character_name = character_name
+        self.extra_description = extra_description
+        self.industry = industry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_icon_url is not None:
+            result['agentIconUrl'] = self.agent_icon_url
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['agentName'] = self.agent_name
+        if self.character_age_stage is not None:
+            result['characterAgeStage'] = self.character_age_stage
+        if self.character_gender is not None:
+            result['characterGender'] = self.character_gender
+        if self.character_name is not None:
+            result['characterName'] = self.character_name
+        if self.extra_description is not None:
+            result['extraDescription'] = self.extra_description
+        if self.industry is not None:
+            result['industry'] = self.industry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentIconUrl') is not None:
+            self.agent_icon_url = m.get('agentIconUrl')
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('agentName') is not None:
+            self.agent_name = m.get('agentName')
+        if m.get('characterAgeStage') is not None:
+            self.character_age_stage = m.get('characterAgeStage')
+        if m.get('characterGender') is not None:
+            self.character_gender = m.get('characterGender')
+        if m.get('characterName') is not None:
+            self.character_name = m.get('characterName')
+        if m.get('extraDescription') is not None:
+            self.extra_description = m.get('extraDescription')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        return self
+
+
+class UpdateAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class UpdateAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

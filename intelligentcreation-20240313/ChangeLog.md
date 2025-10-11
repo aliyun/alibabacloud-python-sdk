@@ -1,3 +1,16 @@
+2025-10-11 Version: 2.16.0
+- Support API BuildAICoachScriptRecord.
+- Support API CreateAgent.
+- Support API DeleteAICoachScript.
+- Support API DeleteAgent.
+- Support API OfflineAICoachScript.
+- Support API ReleaseAgent.
+- Support API UpdateAgent.
+- Update API GetAICoachScript: add response parameters Body.agentId.
+- Update API GetAICoachScript: add response parameters Body.voiceId.
+- Update API GetAICoachScript: add response parameters Body.voiceLanguage.
+
+
 2025-06-26 Version: 2.15.0
 - Support API GetAICoachTaskSessionResourceUsage.
 - Update API GetAICoachScript: add response parameters Body.customReplyRules.

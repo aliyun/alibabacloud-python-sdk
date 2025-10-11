@@ -829,6 +829,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_query_individuation_text_with_options_async(request, headers, runtime)
 
+    def build_aicoach_script_record_with_options(
+        self,
+        request: intelligent_creation_20240313_models.BuildAICoachScriptRecordRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BuildAICoachScriptRecordResponse:
+        """
+        @summary 快速发布剧本
+        
+        @param request: BuildAICoachScriptRecordRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuildAICoachScriptRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.script_json_url):
+            body['scriptJsonUrl'] = request.script_json_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BuildAICoachScriptRecord',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/buildScriptRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BuildAICoachScriptRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def build_aicoach_script_record_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.BuildAICoachScriptRecordRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BuildAICoachScriptRecordResponse:
+        """
+        @summary 快速发布剧本
+        
+        @param request: BuildAICoachScriptRecordRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuildAICoachScriptRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.script_json_url):
+            body['scriptJsonUrl'] = request.script_json_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BuildAICoachScriptRecord',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/buildScriptRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BuildAICoachScriptRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def build_aicoach_script_record(
+        self,
+        request: intelligent_creation_20240313_models.BuildAICoachScriptRecordRequest,
+    ) -> intelligent_creation_20240313_models.BuildAICoachScriptRecordResponse:
+        """
+        @summary 快速发布剧本
+        
+        @param request: BuildAICoachScriptRecordRequest
+        @return: BuildAICoachScriptRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.build_aicoach_script_record_with_options(request, headers, runtime)
+
+    async def build_aicoach_script_record_async(
+        self,
+        request: intelligent_creation_20240313_models.BuildAICoachScriptRecordRequest,
+    ) -> intelligent_creation_20240313_models.BuildAICoachScriptRecordResponse:
+        """
+        @summary 快速发布剧本
+        
+        @param request: BuildAICoachScriptRecordRequest
+        @return: BuildAICoachScriptRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.build_aicoach_script_record_with_options_async(request, headers, runtime)
+
     def check_session_with_options(
         self,
         request: intelligent_creation_20240313_models.CheckSessionRequest,
@@ -1384,6 +1488,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_aicoach_task_session_with_options_async(request, headers, runtime)
+
+    def create_agent_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateAgentResponse:
+        """
+        @summary CreateAgent
+        
+        @param request: CreateAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_icon_url):
+            body['agentIconUrl'] = request.agent_icon_url
+        if not UtilClient.is_unset(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not UtilClient.is_unset(request.agent_scene):
+            body['agentScene'] = request.agent_scene
+        if not UtilClient.is_unset(request.character_age_stage):
+            body['characterAgeStage'] = request.character_age_stage
+        if not UtilClient.is_unset(request.character_gender):
+            body['characterGender'] = request.character_gender
+        if not UtilClient.is_unset(request.character_name):
+            body['characterName'] = request.character_name
+        if not UtilClient.is_unset(request.extra_description):
+            body['extraDescription'] = request.extra_description
+        if not UtilClient.is_unset(request.industry):
+            body['industry'] = request.industry
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/createAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateAgentResponse:
+        """
+        @summary CreateAgent
+        
+        @param request: CreateAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_icon_url):
+            body['agentIconUrl'] = request.agent_icon_url
+        if not UtilClient.is_unset(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not UtilClient.is_unset(request.agent_scene):
+            body['agentScene'] = request.agent_scene
+        if not UtilClient.is_unset(request.character_age_stage):
+            body['characterAgeStage'] = request.character_age_stage
+        if not UtilClient.is_unset(request.character_gender):
+            body['characterGender'] = request.character_gender
+        if not UtilClient.is_unset(request.character_name):
+            body['characterName'] = request.character_name
+        if not UtilClient.is_unset(request.extra_description):
+            body['extraDescription'] = request.extra_description
+        if not UtilClient.is_unset(request.industry):
+            body['industry'] = request.industry
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/createAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent(
+        self,
+        request: intelligent_creation_20240313_models.CreateAgentRequest,
+    ) -> intelligent_creation_20240313_models.CreateAgentResponse:
+        """
+        @summary CreateAgent
+        
+        @param request: CreateAgentRequest
+        @return: CreateAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_agent_with_options(request, headers, runtime)
+
+    async def create_agent_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateAgentRequest,
+    ) -> intelligent_creation_20240313_models.CreateAgentResponse:
+        """
+        @summary CreateAgent
+        
+        @param request: CreateAgentRequest
+        @return: CreateAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_agent_with_options_async(request, headers, runtime)
 
     def create_anchor_with_options(
         self,
@@ -2476,6 +2712,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_video_clip_task_with_options_async(request, headers, runtime)
+
+    def delete_aicoach_script_with_options(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAICoachScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteAICoachScriptResponse:
+        """
+        @summary DeleteAICoachScript
+        
+        @param request: DeleteAICoachScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAICoachScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.script_id):
+            body['scriptId'] = request.script_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAICoachScript',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/deleteAICoachScript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteAICoachScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aicoach_script_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAICoachScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteAICoachScriptResponse:
+        """
+        @summary DeleteAICoachScript
+        
+        @param request: DeleteAICoachScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAICoachScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.script_id):
+            body['scriptId'] = request.script_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAICoachScript',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/deleteAICoachScript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteAICoachScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aicoach_script(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAICoachScriptRequest,
+    ) -> intelligent_creation_20240313_models.DeleteAICoachScriptResponse:
+        """
+        @summary DeleteAICoachScript
+        
+        @param request: DeleteAICoachScriptRequest
+        @return: DeleteAICoachScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_aicoach_script_with_options(request, headers, runtime)
+
+    async def delete_aicoach_script_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAICoachScriptRequest,
+    ) -> intelligent_creation_20240313_models.DeleteAICoachScriptResponse:
+        """
+        @summary DeleteAICoachScript
+        
+        @param request: DeleteAICoachScriptRequest
+        @return: DeleteAICoachScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_aicoach_script_with_options_async(request, headers, runtime)
+
+    def delete_agent_with_options(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteAgentResponse:
+        """
+        @summary DeleteAgent
+        
+        @param request: DeleteAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/deleteAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteAgentResponse:
+        """
+        @summary DeleteAgent
+        
+        @param request: DeleteAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/deleteAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAgentRequest,
+    ) -> intelligent_creation_20240313_models.DeleteAgentResponse:
+        """
+        @summary DeleteAgent
+        
+        @param request: DeleteAgentRequest
+        @return: DeleteAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_agent_with_options(request, headers, runtime)
+
+    async def delete_agent_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteAgentRequest,
+    ) -> intelligent_creation_20240313_models.DeleteAgentResponse:
+        """
+        @summary DeleteAgent
+        
+        @param request: DeleteAgentRequest
+        @return: DeleteAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_with_options_async(request, headers, runtime)
 
     def delete_individuation_project_with_options(
         self,
@@ -5423,6 +5867,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_voice_models_with_options_async(request, headers, runtime)
 
+    def offline_aicoach_script_with_options(
+        self,
+        request: intelligent_creation_20240313_models.OfflineAICoachScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.OfflineAICoachScriptResponse:
+        """
+        @summary 下线剧本
+        
+        @param request: OfflineAICoachScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineAICoachScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.script_id):
+            body['scriptId'] = request.script_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OfflineAICoachScript',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/offlineAICoachScript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.OfflineAICoachScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_aicoach_script_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.OfflineAICoachScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.OfflineAICoachScriptResponse:
+        """
+        @summary 下线剧本
+        
+        @param request: OfflineAICoachScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineAICoachScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.script_id):
+            body['scriptId'] = request.script_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OfflineAICoachScript',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/offlineAICoachScript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.OfflineAICoachScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_aicoach_script(
+        self,
+        request: intelligent_creation_20240313_models.OfflineAICoachScriptRequest,
+    ) -> intelligent_creation_20240313_models.OfflineAICoachScriptResponse:
+        """
+        @summary 下线剧本
+        
+        @param request: OfflineAICoachScriptRequest
+        @return: OfflineAICoachScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.offline_aicoach_script_with_options(request, headers, runtime)
+
+    async def offline_aicoach_script_async(
+        self,
+        request: intelligent_creation_20240313_models.OfflineAICoachScriptRequest,
+    ) -> intelligent_creation_20240313_models.OfflineAICoachScriptResponse:
+        """
+        @summary 下线剧本
+        
+        @param request: OfflineAICoachScriptRequest
+        @return: OfflineAICoachScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.offline_aicoach_script_with_options_async(request, headers, runtime)
+
     def operate_avatar_project_with_options(
         self,
         request: intelligent_creation_20240313_models.OperateAvatarProjectRequest,
@@ -6168,6 +6716,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_text_stream_with_options_async(text_id, headers, runtime)
+
+    def release_agent_with_options(
+        self,
+        request: intelligent_creation_20240313_models.ReleaseAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ReleaseAgentResponse:
+        """
+        @summary ReleaseAgent
+        
+        @param request: ReleaseAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/releaseAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ReleaseAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_agent_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.ReleaseAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ReleaseAgentResponse:
+        """
+        @summary ReleaseAgent
+        
+        @param request: ReleaseAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/releaseAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ReleaseAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_agent(
+        self,
+        request: intelligent_creation_20240313_models.ReleaseAgentRequest,
+    ) -> intelligent_creation_20240313_models.ReleaseAgentResponse:
+        """
+        @summary ReleaseAgent
+        
+        @param request: ReleaseAgentRequest
+        @return: ReleaseAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.release_agent_with_options(request, headers, runtime)
+
+    async def release_agent_async(
+        self,
+        request: intelligent_creation_20240313_models.ReleaseAgentRequest,
+    ) -> intelligent_creation_20240313_models.ReleaseAgentResponse:
+        """
+        @summary ReleaseAgent
+        
+        @param request: ReleaseAgentRequest
+        @return: ReleaseAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.release_agent_with_options_async(request, headers, runtime)
 
     def save_avatar_project_with_options(
         self,
@@ -7550,3 +8202,135 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.transfer_portrait_style_with_options_async(request, headers, runtime)
+
+    def update_agent_with_options(
+        self,
+        request: intelligent_creation_20240313_models.UpdateAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.UpdateAgentResponse:
+        """
+        @summary UpdateAgent
+        
+        @param request: UpdateAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_icon_url):
+            body['agentIconUrl'] = request.agent_icon_url
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not UtilClient.is_unset(request.character_age_stage):
+            body['characterAgeStage'] = request.character_age_stage
+        if not UtilClient.is_unset(request.character_gender):
+            body['characterGender'] = request.character_gender
+        if not UtilClient.is_unset(request.character_name):
+            body['characterName'] = request.character_name
+        if not UtilClient.is_unset(request.extra_description):
+            body['extraDescription'] = request.extra_description
+        if not UtilClient.is_unset(request.industry):
+            body['industry'] = request.industry
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/updateAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.UpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.UpdateAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.UpdateAgentResponse:
+        """
+        @summary UpdateAgent
+        
+        @param request: UpdateAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_icon_url):
+            body['agentIconUrl'] = request.agent_icon_url
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not UtilClient.is_unset(request.character_age_stage):
+            body['characterAgeStage'] = request.character_age_stage
+        if not UtilClient.is_unset(request.character_gender):
+            body['characterGender'] = request.character_gender
+        if not UtilClient.is_unset(request.character_name):
+            body['characterName'] = request.character_name
+        if not UtilClient.is_unset(request.extra_description):
+            body['extraDescription'] = request.extra_description
+        if not UtilClient.is_unset(request.industry):
+            body['industry'] = request.industry
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAgent',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/updateAgent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.UpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent(
+        self,
+        request: intelligent_creation_20240313_models.UpdateAgentRequest,
+    ) -> intelligent_creation_20240313_models.UpdateAgentResponse:
+        """
+        @summary UpdateAgent
+        
+        @param request: UpdateAgentRequest
+        @return: UpdateAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_agent_with_options(request, headers, runtime)
+
+    async def update_agent_async(
+        self,
+        request: intelligent_creation_20240313_models.UpdateAgentRequest,
+    ) -> intelligent_creation_20240313_models.UpdateAgentResponse:
+        """
+        @summary UpdateAgent
+        
+        @param request: UpdateAgentRequest
+        @return: UpdateAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_agent_with_options_async(request, headers, runtime)
