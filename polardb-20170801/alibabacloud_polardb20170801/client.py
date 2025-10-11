@@ -563,6 +563,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sqlrate_limiting_rules_with_options_async(request, runtime)
 
+    def attach_application_polar_fswith_options(
+        self,
+        request: polardb_20170801_models.AttachApplicationPolarFSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.AttachApplicationPolarFSResponse:
+        """
+        @summary 挂载PolarFS到PolarDB应用
+        
+        @param request: AttachApplicationPolarFSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachApplicationPolarFSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.polar_fsaccess_key_id):
+            query['PolarFSAccessKeyId'] = request.polar_fsaccess_key_id
+        if not UtilClient.is_unset(request.polar_fsaccess_key_secret):
+            query['PolarFSAccessKeySecret'] = request.polar_fsaccess_key_secret
+        if not UtilClient.is_unset(request.polar_fsinstance_id):
+            query['PolarFSInstanceId'] = request.polar_fsinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachApplicationPolarFS',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.AttachApplicationPolarFSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_application_polar_fswith_options_async(
+        self,
+        request: polardb_20170801_models.AttachApplicationPolarFSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.AttachApplicationPolarFSResponse:
+        """
+        @summary 挂载PolarFS到PolarDB应用
+        
+        @param request: AttachApplicationPolarFSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachApplicationPolarFSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.polar_fsaccess_key_id):
+            query['PolarFSAccessKeyId'] = request.polar_fsaccess_key_id
+        if not UtilClient.is_unset(request.polar_fsaccess_key_secret):
+            query['PolarFSAccessKeySecret'] = request.polar_fsaccess_key_secret
+        if not UtilClient.is_unset(request.polar_fsinstance_id):
+            query['PolarFSInstanceId'] = request.polar_fsinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachApplicationPolarFS',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.AttachApplicationPolarFSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_application_polar_fs(
+        self,
+        request: polardb_20170801_models.AttachApplicationPolarFSRequest,
+    ) -> polardb_20170801_models.AttachApplicationPolarFSResponse:
+        """
+        @summary 挂载PolarFS到PolarDB应用
+        
+        @param request: AttachApplicationPolarFSRequest
+        @return: AttachApplicationPolarFSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_application_polar_fswith_options(request, runtime)
+
+    async def attach_application_polar_fs_async(
+        self,
+        request: polardb_20170801_models.AttachApplicationPolarFSRequest,
+    ) -> polardb_20170801_models.AttachApplicationPolarFSResponse:
+        """
+        @summary 挂载PolarFS到PolarDB应用
+        
+        @param request: AttachApplicationPolarFSRequest
+        @return: AttachApplicationPolarFSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_application_polar_fswith_options_async(request, runtime)
+
     def cancel_active_operation_tasks_with_options(
         self,
         request: polardb_20170801_models.CancelActiveOperationTasksRequest,
@@ -2142,6 +2250,278 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_activation_code_with_options_async(request, runtime)
+
+    def create_application_with_options(
+        self,
+        tmp_req: polardb_20170801_models.CreateApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateApplicationResponse:
+        """
+        @summary 创建PolarDB应用
+        
+        @param tmp_req: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.CreateApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.components):
+            request.components_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not UtilClient.is_unset(tmp_req.endpoints):
+            request.endpoints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.architecture):
+            query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.components_shrink):
+            query['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.polar_fsinstance_id):
+            query['PolarFSInstanceId'] = request.polar_fsinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplication',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_with_options_async(
+        self,
+        tmp_req: polardb_20170801_models.CreateApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateApplicationResponse:
+        """
+        @summary 创建PolarDB应用
+        
+        @param tmp_req: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.CreateApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.components):
+            request.components_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not UtilClient.is_unset(tmp_req.endpoints):
+            request.endpoints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.architecture):
+            query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.components_shrink):
+            query['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.polar_fsinstance_id):
+            query['PolarFSInstanceId'] = request.polar_fsinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplication',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application(
+        self,
+        request: polardb_20170801_models.CreateApplicationRequest,
+    ) -> polardb_20170801_models.CreateApplicationResponse:
+        """
+        @summary 创建PolarDB应用
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_with_options(request, runtime)
+
+    async def create_application_async(
+        self,
+        request: polardb_20170801_models.CreateApplicationRequest,
+    ) -> polardb_20170801_models.CreateApplicationResponse:
+        """
+        @summary 创建PolarDB应用
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_with_options_async(request, runtime)
+
+    def create_application_endpoint_address_with_options(
+        self,
+        request: polardb_20170801_models.CreateApplicationEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateApplicationEndpointAddressResponse:
+        """
+        @summary 创建PolarDB应用终端节点地址
+        
+        @param request: CreateApplicationEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationEndpointAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateApplicationEndpointAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_endpoint_address_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateApplicationEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateApplicationEndpointAddressResponse:
+        """
+        @summary 创建PolarDB应用终端节点地址
+        
+        @param request: CreateApplicationEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationEndpointAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateApplicationEndpointAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_endpoint_address(
+        self,
+        request: polardb_20170801_models.CreateApplicationEndpointAddressRequest,
+    ) -> polardb_20170801_models.CreateApplicationEndpointAddressResponse:
+        """
+        @summary 创建PolarDB应用终端节点地址
+        
+        @param request: CreateApplicationEndpointAddressRequest
+        @return: CreateApplicationEndpointAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_endpoint_address_with_options(request, runtime)
+
+    async def create_application_endpoint_address_async(
+        self,
+        request: polardb_20170801_models.CreateApplicationEndpointAddressRequest,
+    ) -> polardb_20170801_models.CreateApplicationEndpointAddressResponse:
+        """
+        @summary 创建PolarDB应用终端节点地址
+        
+        @param request: CreateApplicationEndpointAddressRequest
+        @return: CreateApplicationEndpointAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_endpoint_address_with_options_async(request, runtime)
 
     def create_backup_with_options(
         self,
@@ -4871,6 +5251,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_storage_plan_with_options_async(request, runtime)
 
+    def delete_aidbcluster_with_options(
+        self,
+        request: polardb_20170801_models.DeleteAIDBClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteAIDBClusterResponse:
+        """
+        @summary 删除AI集群实例
+        
+        @param request: DeleteAIDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAIDBClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAIDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteAIDBClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aidbcluster_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteAIDBClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteAIDBClusterResponse:
+        """
+        @summary 删除AI集群实例
+        
+        @param request: DeleteAIDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAIDBClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAIDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteAIDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aidbcluster(
+        self,
+        request: polardb_20170801_models.DeleteAIDBClusterRequest,
+    ) -> polardb_20170801_models.DeleteAIDBClusterResponse:
+        """
+        @summary 删除AI集群实例
+        
+        @param request: DeleteAIDBClusterRequest
+        @return: DeleteAIDBClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aidbcluster_with_options(request, runtime)
+
+    async def delete_aidbcluster_async(
+        self,
+        request: polardb_20170801_models.DeleteAIDBClusterRequest,
+    ) -> polardb_20170801_models.DeleteAIDBClusterResponse:
+        """
+        @summary 删除AI集群实例
+        
+        @param request: DeleteAIDBClusterRequest
+        @return: DeleteAIDBClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aidbcluster_with_options_async(request, runtime)
+
     def delete_account_with_options(
         self,
         request: polardb_20170801_models.DeleteAccountRequest,
@@ -5090,6 +5566,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
+
+    def delete_application_endpoint_address_with_options(
+        self,
+        request: polardb_20170801_models.DeleteApplicationEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteApplicationEndpointAddressResponse:
+        """
+        @summary 删除PolarDB应用终端地址
+        
+        @param request: DeleteApplicationEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationEndpointAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteApplicationEndpointAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_endpoint_address_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteApplicationEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteApplicationEndpointAddressResponse:
+        """
+        @summary 删除PolarDB应用终端地址
+        
+        @param request: DeleteApplicationEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationEndpointAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteApplicationEndpointAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_endpoint_address(
+        self,
+        request: polardb_20170801_models.DeleteApplicationEndpointAddressRequest,
+    ) -> polardb_20170801_models.DeleteApplicationEndpointAddressResponse:
+        """
+        @summary 删除PolarDB应用终端地址
+        
+        @param request: DeleteApplicationEndpointAddressRequest
+        @return: DeleteApplicationEndpointAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_endpoint_address_with_options(request, runtime)
+
+    async def delete_application_endpoint_address_async(
+        self,
+        request: polardb_20170801_models.DeleteApplicationEndpointAddressRequest,
+    ) -> polardb_20170801_models.DeleteApplicationEndpointAddressResponse:
+        """
+        @summary 删除PolarDB应用终端地址
+        
+        @param request: DeleteApplicationEndpointAddressRequest
+        @return: DeleteApplicationEndpointAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_endpoint_address_with_options_async(request, runtime)
 
     def delete_backup_with_options(
         self,
@@ -8270,6 +8850,322 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_tasks_with_options_async(request, runtime)
+
+    def describe_application_attribute_with_options(
+        self,
+        request: polardb_20170801_models.DescribeApplicationAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeApplicationAttributeResponse:
+        """
+        @summary 获取应用详情
+        
+        @param request: DescribeApplicationAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeApplicationAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_attribute_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeApplicationAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeApplicationAttributeResponse:
+        """
+        @summary 获取应用详情
+        
+        @param request: DescribeApplicationAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeApplicationAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_attribute(
+        self,
+        request: polardb_20170801_models.DescribeApplicationAttributeRequest,
+    ) -> polardb_20170801_models.DescribeApplicationAttributeResponse:
+        """
+        @summary 获取应用详情
+        
+        @param request: DescribeApplicationAttributeRequest
+        @return: DescribeApplicationAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_application_attribute_with_options(request, runtime)
+
+    async def describe_application_attribute_async(
+        self,
+        request: polardb_20170801_models.DescribeApplicationAttributeRequest,
+    ) -> polardb_20170801_models.DescribeApplicationAttributeResponse:
+        """
+        @summary 获取应用详情
+        
+        @param request: DescribeApplicationAttributeRequest
+        @return: DescribeApplicationAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_application_attribute_with_options_async(request, runtime)
+
+    def describe_application_parameters_with_options(
+        self,
+        tmp_req: polardb_20170801_models.DescribeApplicationParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeApplicationParametersResponse:
+        """
+        @summary 获取应用组件参数
+        
+        @param tmp_req: DescribeApplicationParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationParametersResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.DescribeApplicationParametersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.component_id_list):
+            request.component_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_id_list, 'ComponentIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.component_id_list_shrink):
+            query['ComponentIdList'] = request.component_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationParameters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeApplicationParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_parameters_with_options_async(
+        self,
+        tmp_req: polardb_20170801_models.DescribeApplicationParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeApplicationParametersResponse:
+        """
+        @summary 获取应用组件参数
+        
+        @param tmp_req: DescribeApplicationParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationParametersResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.DescribeApplicationParametersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.component_id_list):
+            request.component_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_id_list, 'ComponentIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.component_id_list_shrink):
+            query['ComponentIdList'] = request.component_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationParameters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeApplicationParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_parameters(
+        self,
+        request: polardb_20170801_models.DescribeApplicationParametersRequest,
+    ) -> polardb_20170801_models.DescribeApplicationParametersResponse:
+        """
+        @summary 获取应用组件参数
+        
+        @param request: DescribeApplicationParametersRequest
+        @return: DescribeApplicationParametersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_application_parameters_with_options(request, runtime)
+
+    async def describe_application_parameters_async(
+        self,
+        request: polardb_20170801_models.DescribeApplicationParametersRequest,
+    ) -> polardb_20170801_models.DescribeApplicationParametersResponse:
+        """
+        @summary 获取应用组件参数
+        
+        @param request: DescribeApplicationParametersRequest
+        @return: DescribeApplicationParametersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_application_parameters_with_options_async(request, runtime)
+
+    def describe_applications_with_options(
+        self,
+        request: polardb_20170801_models.DescribeApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeApplicationsResponse:
+        """
+        @summary 获取当前地域所有PolarDB实例的应用列表
+        
+        @param request: DescribeApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_ids):
+            query['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplications',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_applications_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeApplicationsResponse:
+        """
+        @summary 获取当前地域所有PolarDB实例的应用列表
+        
+        @param request: DescribeApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_ids):
+            query['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplications',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_applications(
+        self,
+        request: polardb_20170801_models.DescribeApplicationsRequest,
+    ) -> polardb_20170801_models.DescribeApplicationsResponse:
+        """
+        @summary 获取当前地域所有PolarDB实例的应用列表
+        
+        @param request: DescribeApplicationsRequest
+        @return: DescribeApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_applications_with_options(request, runtime)
+
+    async def describe_applications_async(
+        self,
+        request: polardb_20170801_models.DescribeApplicationsRequest,
+    ) -> polardb_20170801_models.DescribeApplicationsResponse:
+        """
+        @summary 获取当前地域所有PolarDB实例的应用列表
+        
+        @param request: DescribeApplicationsRequest
+        @return: DescribeApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_applications_with_options_async(request, runtime)
 
     def describe_auto_renew_attribute_with_options(
         self,
@@ -21476,6 +22372,338 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_active_operation_tasks_with_options_async(request, runtime)
+
+    def modify_application_description_with_options(
+        self,
+        request: polardb_20170801_models.ModifyApplicationDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyApplicationDescriptionResponse:
+        """
+        @summary 修改应用描述
+        
+        @param request: ModifyApplicationDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyApplicationDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_description_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyApplicationDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyApplicationDescriptionResponse:
+        """
+        @summary 修改应用描述
+        
+        @param request: ModifyApplicationDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyApplicationDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_description(
+        self,
+        request: polardb_20170801_models.ModifyApplicationDescriptionRequest,
+    ) -> polardb_20170801_models.ModifyApplicationDescriptionResponse:
+        """
+        @summary 修改应用描述
+        
+        @param request: ModifyApplicationDescriptionRequest
+        @return: ModifyApplicationDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_application_description_with_options(request, runtime)
+
+    async def modify_application_description_async(
+        self,
+        request: polardb_20170801_models.ModifyApplicationDescriptionRequest,
+    ) -> polardb_20170801_models.ModifyApplicationDescriptionResponse:
+        """
+        @summary 修改应用描述
+        
+        @param request: ModifyApplicationDescriptionRequest
+        @return: ModifyApplicationDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_application_description_with_options_async(request, runtime)
+
+    def modify_application_parameter_with_options(
+        self,
+        tmp_req: polardb_20170801_models.ModifyApplicationParameterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyApplicationParameterResponse:
+        """
+        @summary 修改PolarDB应用参数
+        
+        @param tmp_req: ModifyApplicationParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationParameterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.ModifyApplicationParameterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.parameter_name):
+            query['ParameterName'] = request.parameter_name
+        if not UtilClient.is_unset(request.parameter_value):
+            query['ParameterValue'] = request.parameter_value
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationParameter',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyApplicationParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_parameter_with_options_async(
+        self,
+        tmp_req: polardb_20170801_models.ModifyApplicationParameterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyApplicationParameterResponse:
+        """
+        @summary 修改PolarDB应用参数
+        
+        @param tmp_req: ModifyApplicationParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationParameterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.ModifyApplicationParameterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.parameter_name):
+            query['ParameterName'] = request.parameter_name
+        if not UtilClient.is_unset(request.parameter_value):
+            query['ParameterValue'] = request.parameter_value
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationParameter',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyApplicationParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_parameter(
+        self,
+        request: polardb_20170801_models.ModifyApplicationParameterRequest,
+    ) -> polardb_20170801_models.ModifyApplicationParameterResponse:
+        """
+        @summary 修改PolarDB应用参数
+        
+        @param request: ModifyApplicationParameterRequest
+        @return: ModifyApplicationParameterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_application_parameter_with_options(request, runtime)
+
+    async def modify_application_parameter_async(
+        self,
+        request: polardb_20170801_models.ModifyApplicationParameterRequest,
+    ) -> polardb_20170801_models.ModifyApplicationParameterResponse:
+        """
+        @summary 修改PolarDB应用参数
+        
+        @param request: ModifyApplicationParameterRequest
+        @return: ModifyApplicationParameterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_application_parameter_with_options_async(request, runtime)
+
+    def modify_application_whitelist_with_options(
+        self,
+        request: polardb_20170801_models.ModifyApplicationWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyApplicationWhitelistResponse:
+        """
+        @summary 修改应用白名单
+        
+        @param request: ModifyApplicationWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.security_groups):
+            query['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_iparray_name):
+            query['SecurityIPArrayName'] = request.security_iparray_name
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationWhitelist',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyApplicationWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_whitelist_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyApplicationWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyApplicationWhitelistResponse:
+        """
+        @summary 修改应用白名单
+        
+        @param request: ModifyApplicationWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.security_groups):
+            query['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_iparray_name):
+            query['SecurityIPArrayName'] = request.security_iparray_name
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationWhitelist',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyApplicationWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_whitelist(
+        self,
+        request: polardb_20170801_models.ModifyApplicationWhitelistRequest,
+    ) -> polardb_20170801_models.ModifyApplicationWhitelistResponse:
+        """
+        @summary 修改应用白名单
+        
+        @param request: ModifyApplicationWhitelistRequest
+        @return: ModifyApplicationWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_application_whitelist_with_options(request, runtime)
+
+    async def modify_application_whitelist_async(
+        self,
+        request: polardb_20170801_models.ModifyApplicationWhitelistRequest,
+    ) -> polardb_20170801_models.ModifyApplicationWhitelistResponse:
+        """
+        @summary 修改应用白名单
+        
+        @param request: ModifyApplicationWhitelistRequest
+        @return: ModifyApplicationWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_application_whitelist_with_options_async(request, runtime)
 
     def modify_auto_renew_attribute_with_options(
         self,

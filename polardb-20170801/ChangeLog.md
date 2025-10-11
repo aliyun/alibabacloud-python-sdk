@@ -1,3 +1,6 @@
+2025-10-11 Version: 5.13.0
+- Generated python 2017-08-01 for polardb.
+
 2025-09-24 Version: 5.11.0
 - Support API AbortDBClusterMigration.
 - Support API AddEncryptionDBRolePrivilege.
