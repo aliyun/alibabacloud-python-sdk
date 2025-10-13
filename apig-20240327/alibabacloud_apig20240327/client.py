@@ -1183,6 +1183,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.charge_type):
             body['chargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.gateway_edition):
+            body['gatewayEdition'] = request.gateway_edition
         if not UtilClient.is_unset(request.gateway_type):
             body['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.log_config):
@@ -1239,6 +1241,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.charge_type):
             body['chargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.gateway_edition):
+            body['gatewayEdition'] = request.gateway_edition
         if not UtilClient.is_unset(request.gateway_type):
             body['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.log_config):
@@ -1335,6 +1339,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_auth):
             body['enableAuth'] = request.enable_auth
+        if not UtilClient.is_unset(request.first_byte_timeout):
+            body['firstByteTimeout'] = request.first_byte_timeout
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.model_category):
@@ -1401,6 +1407,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_auth):
             body['enableAuth'] = request.enable_auth
+        if not UtilClient.is_unset(request.first_byte_timeout):
+            body['firstByteTimeout'] = request.first_byte_timeout
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.model_category):
@@ -1708,6 +1716,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_http_api_route_with_options_async(http_api_id, request, headers, runtime)
+
+    def create_mcp_server_with_options(
+        self,
+        request: apig20240327_models.CreateMcpServerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateMcpServerResponse:
+        """
+        @summary 创建MCP server
+        
+        @param request: CreateMcpServerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assembled_sources):
+            body['assembledSources'] = request.assembled_sources
+        if not UtilClient.is_unset(request.backend_config):
+            body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_ids):
+            body['domainIds'] = request.domain_ids
+        if not UtilClient.is_unset(request.exposed_uri_path):
+            body['exposedUriPath'] = request.exposed_uri_path
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.match):
+            body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_statistics_enable):
+            body['mcpStatisticsEnable'] = request.mcp_statistics_enable
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mcp_server_with_options_async(
+        self,
+        request: apig20240327_models.CreateMcpServerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateMcpServerResponse:
+        """
+        @summary 创建MCP server
+        
+        @param request: CreateMcpServerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assembled_sources):
+            body['assembledSources'] = request.assembled_sources
+        if not UtilClient.is_unset(request.backend_config):
+            body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_ids):
+            body['domainIds'] = request.domain_ids
+        if not UtilClient.is_unset(request.exposed_uri_path):
+            body['exposedUriPath'] = request.exposed_uri_path
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.match):
+            body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_statistics_enable):
+            body['mcpStatisticsEnable'] = request.mcp_statistics_enable
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mcp_server(
+        self,
+        request: apig20240327_models.CreateMcpServerRequest,
+    ) -> apig20240327_models.CreateMcpServerResponse:
+        """
+        @summary 创建MCP server
+        
+        @param request: CreateMcpServerRequest
+        @return: CreateMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_mcp_server_with_options(request, headers, runtime)
+
+    async def create_mcp_server_async(
+        self,
+        request: apig20240327_models.CreateMcpServerRequest,
+    ) -> apig20240327_models.CreateMcpServerResponse:
+        """
+        @summary 创建MCP server
+        
+        @param request: CreateMcpServerRequest
+        @return: CreateMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_mcp_server_with_options_async(request, headers, runtime)
 
     def create_plugin_attachment_with_options(
         self,
@@ -3053,6 +3205,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_http_api_route_with_options_async(http_api_id, route_id, headers, runtime)
 
+    def delete_mcp_server_with_options(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteMcpServerResponse:
+        """
+        @summary 删除MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mcp_server_with_options_async(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteMcpServerResponse:
+        """
+        @summary 删除MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mcp_server(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.DeleteMcpServerResponse:
+        """
+        @summary 删除MCP server
+        
+        @return: DeleteMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_mcp_server_with_options(mcp_server_id, headers, runtime)
+
+    async def delete_mcp_server_async(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.DeleteMcpServerResponse:
+        """
+        @summary 删除MCP server
+        
+        @return: DeleteMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_mcp_server_with_options_async(mcp_server_id, headers, runtime)
+
     def delete_plugin_attachment_with_options(
         self,
         plugin_attachment_id: str,
@@ -3528,6 +3770,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.deploy_http_api_with_options_async(http_api_id, request, headers, runtime)
+
+    def deploy_mcp_server_with_options(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeployMcpServerResponse:
+        """
+        @summary 发布MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeployMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}/deploy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeployMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_mcp_server_with_options_async(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeployMcpServerResponse:
+        """
+        @summary 发布MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeployMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}/deploy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeployMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_mcp_server(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.DeployMcpServerResponse:
+        """
+        @summary 发布MCP server
+        
+        @return: DeployMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.deploy_mcp_server_with_options(mcp_server_id, headers, runtime)
+
+    async def deploy_mcp_server_async(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.DeployMcpServerResponse:
+        """
+        @summary 发布MCP server
+        
+        @return: DeployMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.deploy_mcp_server_with_options_async(mcp_server_id, headers, runtime)
 
     def export_http_api_with_options(
         self,
@@ -4551,6 +4883,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_http_api_route_with_options_async(http_api_id, route_id, headers, runtime)
 
+    def get_mcp_server_with_options(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetMcpServerResponse:
+        """
+        @summary 获取MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mcp_server_with_options_async(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetMcpServerResponse:
+        """
+        @summary 获取MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mcp_server(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.GetMcpServerResponse:
+        """
+        @summary 获取MCP server
+        
+        @return: GetMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mcp_server_with_options(mcp_server_id, headers, runtime)
+
+    async def get_mcp_server_async(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.GetMcpServerResponse:
+        """
+        @summary 获取MCP server
+        
+        @return: GetMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mcp_server_with_options_async(mcp_server_id, headers, runtime)
+
     def get_plugin_attachment_with_options(
         self,
         plugin_attachment_id: str,
@@ -5145,6 +5567,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.mcp_route_id):
             body['mcpRouteId'] = request.mcp_route_id
         if not UtilClient.is_unset(request.name):
@@ -5205,6 +5629,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.mcp_route_id):
             body['mcpRouteId'] = request.mcp_route_id
         if not UtilClient.is_unset(request.name):
@@ -5270,6 +5696,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.import_http_api_with_options_async(request, headers, runtime)
+
+    def install_plugin_with_options(
+        self,
+        request: apig20240327_models.InstallPluginRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.InstallPluginResponse:
+        """
+        @summary InstallPlugin
+        
+        @param request: InstallPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallPluginResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gateway_ids):
+            body['gatewayIds'] = request.gateway_ids
+        if not UtilClient.is_unset(request.plugin_class_id):
+            body['pluginClassId'] = request.plugin_class_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallPlugin',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugins/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.InstallPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_plugin_with_options_async(
+        self,
+        request: apig20240327_models.InstallPluginRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.InstallPluginResponse:
+        """
+        @summary InstallPlugin
+        
+        @param request: InstallPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallPluginResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gateway_ids):
+            body['gatewayIds'] = request.gateway_ids
+        if not UtilClient.is_unset(request.plugin_class_id):
+            body['pluginClassId'] = request.plugin_class_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallPlugin',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugins/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.InstallPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_plugin(
+        self,
+        request: apig20240327_models.InstallPluginRequest,
+    ) -> apig20240327_models.InstallPluginResponse:
+        """
+        @summary InstallPlugin
+        
+        @param request: InstallPluginRequest
+        @return: InstallPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.install_plugin_with_options(request, headers, runtime)
+
+    async def install_plugin_async(
+        self,
+        request: apig20240327_models.InstallPluginRequest,
+    ) -> apig20240327_models.InstallPluginResponse:
+        """
+        @summary InstallPlugin
+        
+        @param request: InstallPluginRequest
+        @return: InstallPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.install_plugin_with_options_async(request, headers, runtime)
 
     def list_consumers_with_options(
         self,
@@ -5814,6 +6348,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_authorization_rule_id):
             query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
+        if not UtilClient.is_unset(request.enable_auth):
+            query['enableAuth'] = request.enable_auth
         if not UtilClient.is_unset(request.for_deploy):
             query['forDeploy'] = request.for_deploy
         if not UtilClient.is_unset(request.gateway_id):
@@ -5875,6 +6411,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_authorization_rule_id):
             query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
+        if not UtilClient.is_unset(request.enable_auth):
+            query['enableAuth'] = request.enable_auth
         if not UtilClient.is_unset(request.for_deploy):
             query['forDeploy'] = request.for_deploy
         if not UtilClient.is_unset(request.gateway_id):
@@ -6274,6 +6812,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_http_apis_with_options_async(request, headers, runtime)
+
+    def list_mcp_servers_with_options(
+        self,
+        request: apig20240327_models.ListMcpServersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListMcpServersResponse:
+        """
+        @summary 获取MCP server列表
+        
+        @param request: ListMcpServersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcpServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_from_types):
+            query['createFromTypes'] = request.create_from_types
+        if not UtilClient.is_unset(request.deploy_statuses):
+            query['deployStatuses'] = request.deploy_statuses
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.name_like):
+            query['nameLike'] = request.name_like
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMcpServers',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListMcpServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mcp_servers_with_options_async(
+        self,
+        request: apig20240327_models.ListMcpServersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListMcpServersResponse:
+        """
+        @summary 获取MCP server列表
+        
+        @param request: ListMcpServersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcpServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_from_types):
+            query['createFromTypes'] = request.create_from_types
+        if not UtilClient.is_unset(request.deploy_statuses):
+            query['deployStatuses'] = request.deploy_statuses
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.name_like):
+            query['nameLike'] = request.name_like
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMcpServers',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListMcpServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mcp_servers(
+        self,
+        request: apig20240327_models.ListMcpServersRequest,
+    ) -> apig20240327_models.ListMcpServersResponse:
+        """
+        @summary 获取MCP server列表
+        
+        @param request: ListMcpServersRequest
+        @return: ListMcpServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mcp_servers_with_options(request, headers, runtime)
+
+    async def list_mcp_servers_async(
+        self,
+        request: apig20240327_models.ListMcpServersRequest,
+    ) -> apig20240327_models.ListMcpServersResponse:
+        """
+        @summary 获取MCP server列表
+        
+        @param request: ListMcpServersRequest
+        @return: ListMcpServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mcp_servers_with_options_async(request, headers, runtime)
 
     def list_plugin_attachments_with_options(
         self,
@@ -7453,6 +8119,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.restart_gateway_with_options_async(gateway_id, headers, runtime)
 
+    def un_deploy_mcp_server_with_options(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UnDeployMcpServerResponse:
+        """
+        @summary 取消发布MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnDeployMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UnDeployMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}/undeploy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UnDeployMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_deploy_mcp_server_with_options_async(
+        self,
+        mcp_server_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UnDeployMcpServerResponse:
+        """
+        @summary 取消发布MCP server
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnDeployMcpServerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UnDeployMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}/undeploy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UnDeployMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_deploy_mcp_server(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.UnDeployMcpServerResponse:
+        """
+        @summary 取消发布MCP server
+        
+        @return: UnDeployMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.un_deploy_mcp_server_with_options(mcp_server_id, headers, runtime)
+
+    async def un_deploy_mcp_server_async(
+        self,
+        mcp_server_id: str,
+    ) -> apig20240327_models.UnDeployMcpServerResponse:
+        """
+        @summary 取消发布MCP server
+        
+        @return: UnDeployMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.un_deploy_mcp_server_with_options_async(mcp_server_id, headers, runtime)
+
     def undeploy_http_api_with_options(
         self,
         http_api_id: str,
@@ -7572,6 +8328,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.undeploy_http_api_with_options_async(http_api_id, request, headers, runtime)
+
+    def uninstall_plugin_with_options(
+        self,
+        plugin_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UninstallPluginResponse:
+        """
+        @summary UninstallPlugin
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallPluginResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UninstallPlugin',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugins/{OpenApiUtilClient.get_encode_param(plugin_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UninstallPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_plugin_with_options_async(
+        self,
+        plugin_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UninstallPluginResponse:
+        """
+        @summary UninstallPlugin
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallPluginResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UninstallPlugin',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugins/{OpenApiUtilClient.get_encode_param(plugin_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UninstallPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_plugin(
+        self,
+        plugin_id: str,
+    ) -> apig20240327_models.UninstallPluginResponse:
+        """
+        @summary UninstallPlugin
+        
+        @return: UninstallPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.uninstall_plugin_with_options(plugin_id, headers, runtime)
+
+    async def uninstall_plugin_async(
+        self,
+        plugin_id: str,
+    ) -> apig20240327_models.UninstallPluginResponse:
+        """
+        @summary UninstallPlugin
+        
+        @return: UninstallPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.uninstall_plugin_with_options_async(plugin_id, headers, runtime)
 
     def update_and_attach_policy_with_options(
         self,
@@ -8468,6 +9314,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_auth):
             body['enableAuth'] = request.enable_auth
+        if not UtilClient.is_unset(request.first_byte_timeout):
+            body['firstByteTimeout'] = request.first_byte_timeout
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.only_change_config):
@@ -8529,6 +9377,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_auth):
             body['enableAuth'] = request.enable_auth
+        if not UtilClient.is_unset(request.first_byte_timeout):
+            body['firstByteTimeout'] = request.first_byte_timeout
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.only_change_config):
@@ -8840,6 +9690,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_http_api_route_with_options_async(http_api_id, route_id, request, headers, runtime)
+
+    def update_mcp_server_with_options(
+        self,
+        mcp_server_id: str,
+        request: apig20240327_models.UpdateMcpServerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateMcpServerResponse:
+        """
+        @summary 更新MCP server
+        
+        @param request: UpdateMcpServerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assembled_sources):
+            body['assembledSources'] = request.assembled_sources
+        if not UtilClient.is_unset(request.backend_config):
+            body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_ids):
+            body['domainIds'] = request.domain_ids
+        if not UtilClient.is_unset(request.exposed_uri_path):
+            body['exposedUriPath'] = request.exposed_uri_path
+        if not UtilClient.is_unset(request.match):
+            body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_statistics_enable):
+            body['mcpStatisticsEnable'] = request.mcp_statistics_enable
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mcp_server_with_options_async(
+        self,
+        mcp_server_id: str,
+        request: apig20240327_models.UpdateMcpServerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateMcpServerResponse:
+        """
+        @summary 更新MCP server
+        
+        @param request: UpdateMcpServerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assembled_sources):
+            body['assembledSources'] = request.assembled_sources
+        if not UtilClient.is_unset(request.backend_config):
+            body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_ids):
+            body['domainIds'] = request.domain_ids
+        if not UtilClient.is_unset(request.exposed_uri_path):
+            body['exposedUriPath'] = request.exposed_uri_path
+        if not UtilClient.is_unset(request.match):
+            body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_statistics_enable):
+            body['mcpStatisticsEnable'] = request.mcp_statistics_enable
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMcpServer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/mcp-servers/{OpenApiUtilClient.get_encode_param(mcp_server_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mcp_server(
+        self,
+        mcp_server_id: str,
+        request: apig20240327_models.UpdateMcpServerRequest,
+    ) -> apig20240327_models.UpdateMcpServerResponse:
+        """
+        @summary 更新MCP server
+        
+        @param request: UpdateMcpServerRequest
+        @return: UpdateMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_mcp_server_with_options(mcp_server_id, request, headers, runtime)
+
+    async def update_mcp_server_async(
+        self,
+        mcp_server_id: str,
+        request: apig20240327_models.UpdateMcpServerRequest,
+    ) -> apig20240327_models.UpdateMcpServerResponse:
+        """
+        @summary 更新MCP server
+        
+        @param request: UpdateMcpServerRequest
+        @return: UpdateMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_mcp_server_with_options_async(mcp_server_id, request, headers, runtime)
 
     def update_plugin_attachment_with_options(
         self,

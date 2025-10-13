@@ -169,23 +169,114 @@ class AgentServiceConfig(TeaModel):
         return self
 
 
+class AiServiceConfigBedrockServiceConfig(TeaModel):
+    def __init__(
+        self,
+        aws_access_key: str = None,
+        aws_region: str = None,
+        aws_secret_key: str = None,
+    ):
+        self.aws_access_key = aws_access_key
+        self.aws_region = aws_region
+        self.aws_secret_key = aws_secret_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aws_access_key is not None:
+            result['awsAccessKey'] = self.aws_access_key
+        if self.aws_region is not None:
+            result['awsRegion'] = self.aws_region
+        if self.aws_secret_key is not None:
+            result['awsSecretKey'] = self.aws_secret_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('awsAccessKey') is not None:
+            self.aws_access_key = m.get('awsAccessKey')
+        if m.get('awsRegion') is not None:
+            self.aws_region = m.get('awsRegion')
+        if m.get('awsSecretKey') is not None:
+            self.aws_secret_key = m.get('awsSecretKey')
+        return self
+
+
+class AiServiceConfigPaiEASServiceConfig(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        service_id: str = None,
+        service_name: str = None,
+        workspace_id: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.service_id = service_id
+        self.service_name = service_name
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['endpointType'] = self.endpoint_type
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpointType') is not None:
+            self.endpoint_type = m.get('endpointType')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
 class AiServiceConfig(TeaModel):
     def __init__(
         self,
         address: str = None,
         api_keys: List[str] = None,
+        bedrock_service_config: AiServiceConfigBedrockServiceConfig = None,
         enable_health_check: bool = None,
+        pai_easservice_config: AiServiceConfigPaiEASServiceConfig = None,
         protocols: List[str] = None,
         provider: str = None,
     ):
         self.address = address
         self.api_keys = api_keys
+        self.bedrock_service_config = bedrock_service_config
         self.enable_health_check = enable_health_check
+        self.pai_easservice_config = pai_easservice_config
         self.protocols = protocols
         self.provider = provider
 
     def validate(self):
-        pass
+        if self.bedrock_service_config:
+            self.bedrock_service_config.validate()
+        if self.pai_easservice_config:
+            self.pai_easservice_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -197,8 +288,12 @@ class AiServiceConfig(TeaModel):
             result['address'] = self.address
         if self.api_keys is not None:
             result['apiKeys'] = self.api_keys
+        if self.bedrock_service_config is not None:
+            result['bedrockServiceConfig'] = self.bedrock_service_config.to_map()
         if self.enable_health_check is not None:
             result['enableHealthCheck'] = self.enable_health_check
+        if self.pai_easservice_config is not None:
+            result['paiEASServiceConfig'] = self.pai_easservice_config.to_map()
         if self.protocols is not None:
             result['protocols'] = self.protocols
         if self.provider is not None:
@@ -211,8 +306,14 @@ class AiServiceConfig(TeaModel):
             self.address = m.get('address')
         if m.get('apiKeys') is not None:
             self.api_keys = m.get('apiKeys')
+        if m.get('bedrockServiceConfig') is not None:
+            temp_model = AiServiceConfigBedrockServiceConfig()
+            self.bedrock_service_config = temp_model.from_map(m['bedrockServiceConfig'])
         if m.get('enableHealthCheck') is not None:
             self.enable_health_check = m.get('enableHealthCheck')
+        if m.get('paiEASServiceConfig') is not None:
+            temp_model = AiServiceConfigPaiEASServiceConfig()
+            self.pai_easservice_config = temp_model.from_map(m['paiEASServiceConfig'])
         if m.get('protocols') is not None:
             self.protocols = m.get('protocols')
         if m.get('provider') is not None:
@@ -1208,6 +1309,39 @@ class CheckServiceLinkedRoleResult(TeaModel):
         m = m or dict()
         if m.get('existed') is not None:
             self.existed = m.get('existed')
+        return self
+
+
+class ConsumerConfig(TeaModel):
+    def __init__(
+        self,
+        consumer_id: str = None,
+        name: str = None,
+    ):
+        self.consumer_id = consumer_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
@@ -2254,12 +2388,14 @@ class HttpApiDeployConfigCustomDomainInfos(TeaModel):
         return self
 
 
-class HttpApiDeployConfigPolicyConfigsAiFallbackConfig(TeaModel):
+class HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs(TeaModel):
     def __init__(
         self,
-        service_ids: List[str] = None,
+        service_id: str = None,
+        target_model_name: str = None,
     ):
-        self.service_ids = service_ids
+        self.service_id = service_id
+        self.target_model_name = target_model_name
 
     def validate(self):
         pass
@@ -2270,14 +2406,53 @@ class HttpApiDeployConfigPolicyConfigsAiFallbackConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.service_ids is not None:
-            result['serviceIds'] = self.service_ids
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.target_model_name is not None:
+            result['targetModelName'] = self.target_model_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('serviceIds') is not None:
-            self.service_ids = m.get('serviceIds')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('targetModelName') is not None:
+            self.target_model_name = m.get('targetModelName')
+        return self
+
+
+class HttpApiDeployConfigPolicyConfigsAiFallbackConfig(TeaModel):
+    def __init__(
+        self,
+        service_configs: List[HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs] = None,
+    ):
+        self.service_configs = service_configs
+
+    def validate(self):
+        if self.service_configs:
+            for k in self.service_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['serviceConfigs'] = []
+        if self.service_configs is not None:
+            for k in self.service_configs:
+                result['serviceConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.service_configs = []
+        if m.get('serviceConfigs') is not None:
+            for k in m.get('serviceConfigs'):
+                temp_model = HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs()
+                self.service_configs.append(temp_model.from_map(k))
         return self
 
 
@@ -4658,6 +4833,39 @@ class JwtIdentityConfig(TeaModel):
         return self
 
 
+class KMSConfig(TeaModel):
+    def __init__(
+        self,
+        kms_instance_id: str = None,
+        kms_key_id: str = None,
+    ):
+        self.kms_instance_id = kms_instance_id
+        self.kms_key_id = kms_key_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kms_instance_id is not None:
+            result['kmsInstanceId'] = self.kms_instance_id
+        if self.kms_key_id is not None:
+            result['kmsKeyId'] = self.kms_key_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('kmsInstanceId') is not None:
+            self.kms_instance_id = m.get('kmsInstanceId')
+        if m.get('kmsKeyId') is not None:
+            self.kms_key_id = m.get('kmsKeyId')
+        return self
+
+
 class LabelDetail(TeaModel):
     def __init__(
         self,
@@ -4688,6 +4896,26 @@ class LabelDetail(TeaModel):
             self.key = m.get('key')
         if m.get('values') is not None:
             self.values = m.get('values')
+        return self
+
+
+class McpServerConfig(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         return self
 
 
@@ -5292,9 +5520,10 @@ class Service(TeaModel):
         group_name: str = None,
         health_check: ServiceHealthCheck = None,
         health_status: str = None,
-        label_details: LabelDetail = None,
+        label_details: List[LabelDetail] = None,
         name: str = None,
         namespace: str = None,
+        outlier_endpoints: List[str] = None,
         ports: List[ServicePorts] = None,
         protocol: str = None,
         qualifier: str = None,
@@ -5316,6 +5545,7 @@ class Service(TeaModel):
         self.label_details = label_details
         self.name = name
         self.namespace = namespace
+        self.outlier_endpoints = outlier_endpoints
         self.ports = ports
         self.protocol = protocol
         self.qualifier = qualifier
@@ -5333,7 +5563,9 @@ class Service(TeaModel):
         if self.health_check:
             self.health_check.validate()
         if self.label_details:
-            self.label_details.validate()
+            for k in self.label_details:
+                if k:
+                    k.validate()
         if self.ports:
             for k in self.ports:
                 if k:
@@ -5363,12 +5595,16 @@ class Service(TeaModel):
             result['healthCheck'] = self.health_check.to_map()
         if self.health_status is not None:
             result['healthStatus'] = self.health_status
+        result['labelDetails'] = []
         if self.label_details is not None:
-            result['labelDetails'] = self.label_details.to_map()
+            for k in self.label_details:
+                result['labelDetails'].append(k.to_map() if k else None)
         if self.name is not None:
             result['name'] = self.name
         if self.namespace is not None:
             result['namespace'] = self.namespace
+        if self.outlier_endpoints is not None:
+            result['outlierEndpoints'] = self.outlier_endpoints
         result['ports'] = []
         if self.ports is not None:
             for k in self.ports:
@@ -5412,13 +5648,17 @@ class Service(TeaModel):
             self.health_check = temp_model.from_map(m['healthCheck'])
         if m.get('healthStatus') is not None:
             self.health_status = m.get('healthStatus')
+        self.label_details = []
         if m.get('labelDetails') is not None:
-            temp_model = LabelDetail()
-            self.label_details = temp_model.from_map(m['labelDetails'])
+            for k in m.get('labelDetails'):
+                temp_model = LabelDetail()
+                self.label_details.append(temp_model.from_map(k))
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+        if m.get('outlierEndpoints') is not None:
+            self.outlier_endpoints = m.get('outlierEndpoints')
         self.ports = []
         if m.get('ports') is not None:
             for k in m.get('ports'):
@@ -7525,6 +7765,7 @@ class CreateGatewayRequest(TeaModel):
     def __init__(
         self,
         charge_type: str = None,
+        gateway_edition: str = None,
         gateway_type: str = None,
         log_config: CreateGatewayRequestLogConfig = None,
         name: str = None,
@@ -7536,6 +7777,7 @@ class CreateGatewayRequest(TeaModel):
         zone_config: CreateGatewayRequestZoneConfig = None,
     ):
         self.charge_type = charge_type
+        self.gateway_edition = gateway_edition
         self.gateway_type = gateway_type
         self.log_config = log_config
         self.name = name
@@ -7566,6 +7808,8 @@ class CreateGatewayRequest(TeaModel):
         result = dict()
         if self.charge_type is not None:
             result['chargeType'] = self.charge_type
+        if self.gateway_edition is not None:
+            result['gatewayEdition'] = self.gateway_edition
         if self.gateway_type is not None:
             result['gatewayType'] = self.gateway_type
         if self.log_config is not None:
@@ -7592,6 +7836,8 @@ class CreateGatewayRequest(TeaModel):
         m = m or dict()
         if m.get('chargeType') is not None:
             self.charge_type = m.get('chargeType')
+        if m.get('gatewayEdition') is not None:
+            self.gateway_edition = m.get('gatewayEdition')
         if m.get('gatewayType') is not None:
             self.gateway_type = m.get('gatewayType')
         if m.get('logConfig') is not None:
@@ -7807,6 +8053,7 @@ class CreateHttpApiRequest(TeaModel):
         deploy_configs: List[HttpApiDeployConfig] = None,
         description: str = None,
         enable_auth: bool = None,
+        first_byte_timeout: int = None,
         ingress_config: CreateHttpApiRequestIngressConfig = None,
         model_category: str = None,
         name: str = None,
@@ -7831,6 +8078,7 @@ class CreateHttpApiRequest(TeaModel):
         self.description = description
         # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
+        self.first_byte_timeout = first_byte_timeout
         # The HTTP Ingress configurations.
         self.ingress_config = ingress_config
         self.model_category = model_category
@@ -7887,6 +8135,8 @@ class CreateHttpApiRequest(TeaModel):
             result['description'] = self.description
         if self.enable_auth is not None:
             result['enableAuth'] = self.enable_auth
+        if self.first_byte_timeout is not None:
+            result['firstByteTimeout'] = self.first_byte_timeout
         if self.ingress_config is not None:
             result['ingressConfig'] = self.ingress_config.to_map()
         if self.model_category is not None:
@@ -7925,6 +8175,8 @@ class CreateHttpApiRequest(TeaModel):
             self.description = m.get('description')
         if m.get('enableAuth') is not None:
             self.enable_auth = m.get('enableAuth')
+        if m.get('firstByteTimeout') is not None:
+            self.first_byte_timeout = m.get('firstByteTimeout')
         if m.get('ingressConfig') is not None:
             temp_model = CreateHttpApiRequestIngressConfig()
             self.ingress_config = temp_model.from_map(m['ingressConfig'])
@@ -8619,6 +8871,365 @@ class CreateHttpApiRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHttpApiRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMcpServerRequestAssembledSources(TeaModel):
+    def __init__(
+        self,
+        mcp_server_id: str = None,
+        mcp_server_name: str = None,
+        tools: List[str] = None,
+    ):
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_name = mcp_server_name
+        self.tools = tools
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.mcp_server_name is not None:
+            result['mcpServerName'] = self.mcp_server_name
+        if self.tools is not None:
+            result['tools'] = self.tools
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('mcpServerName') is not None:
+            self.mcp_server_name = m.get('mcpServerName')
+        if m.get('tools') is not None:
+            self.tools = m.get('tools')
+        return self
+
+
+class CreateMcpServerRequestBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+        self.service_id = service_id
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class CreateMcpServerRequestBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[CreateMcpServerRequestBackendConfigServices] = None,
+    ):
+        self.scene = scene
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = CreateMcpServerRequestBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMcpServerRequest(TeaModel):
+    def __init__(
+        self,
+        assembled_sources: List[CreateMcpServerRequestAssembledSources] = None,
+        backend_config: CreateMcpServerRequestBackendConfig = None,
+        description: str = None,
+        domain_ids: List[str] = None,
+        exposed_uri_path: str = None,
+        gateway_id: str = None,
+        match: HttpRouteMatch = None,
+        mcp_statistics_enable: bool = None,
+        name: str = None,
+        protocol: str = None,
+        type: str = None,
+    ):
+        self.assembled_sources = assembled_sources
+        self.backend_config = backend_config
+        self.description = description
+        self.domain_ids = domain_ids
+        self.exposed_uri_path = exposed_uri_path
+        # This parameter is required.
+        self.gateway_id = gateway_id
+        self.match = match
+        self.mcp_statistics_enable = mcp_statistics_enable
+        # This parameter is required.
+        self.name = name
+        self.protocol = protocol
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.assembled_sources:
+            for k in self.assembled_sources:
+                if k:
+                    k.validate()
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assembledSources'] = []
+        if self.assembled_sources is not None:
+            for k in self.assembled_sources:
+                result['assembledSources'].append(k.to_map() if k else None)
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_ids is not None:
+            result['domainIds'] = self.domain_ids
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.mcp_statistics_enable is not None:
+            result['mcpStatisticsEnable'] = self.mcp_statistics_enable
+        if self.name is not None:
+            result['name'] = self.name
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assembled_sources = []
+        if m.get('assembledSources') is not None:
+            for k in m.get('assembledSources'):
+                temp_model = CreateMcpServerRequestAssembledSources()
+                self.assembled_sources.append(temp_model.from_map(k))
+        if m.get('backendConfig') is not None:
+            temp_model = CreateMcpServerRequestBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domainIds') is not None:
+            self.domain_ids = m.get('domainIds')
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('mcpStatisticsEnable') is not None:
+            self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateMcpServerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        mcp_server_id: str = None,
+        name: str = None,
+    ):
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateMcpServerResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateMcpServerResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMcpServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10211,6 +10822,87 @@ class DeleteHttpApiRouteResponse(TeaModel):
         return self
 
 
+class DeleteMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMcpServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeletePluginAttachmentResponseBody(TeaModel):
     def __init__(
         self,
@@ -10876,6 +11568,87 @@ class DeployHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeployHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeployMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeployMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeployMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeployMcpServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12528,6 +13301,39 @@ class GetGatewayResponseBodyDataLoadBalancers(TeaModel):
         return self
 
 
+class GetGatewayResponseBodyDataMaintenancePeriod(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
 class GetGatewayResponseBodyDataSecurityGroup(TeaModel):
     def __init__(
         self,
@@ -12755,10 +13561,12 @@ class GetGatewayResponseBodyData(TeaModel):
         create_timestamp: int = None,
         environments: List[GetGatewayResponseBodyDataEnvironments] = None,
         expire_timestamp: int = None,
+        gateway_edition: str = None,
         gateway_id: str = None,
         gateway_type: str = None,
         isp: str = None,
         load_balancers: List[GetGatewayResponseBodyDataLoadBalancers] = None,
+        maintenance_period: GetGatewayResponseBodyDataMaintenancePeriod = None,
         name: str = None,
         replicas: str = None,
         resource_group_id: str = None,
@@ -12788,6 +13596,7 @@ class GetGatewayResponseBodyData(TeaModel):
         self.environments = environments
         # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
+        self.gateway_edition = gateway_edition
         # The instance ID.
         self.gateway_id = gateway_id
         # the gateway type, which is categorized into the following two types:
@@ -12797,6 +13606,7 @@ class GetGatewayResponseBodyData(TeaModel):
         self.isp = isp
         # The ingress addresses of the instance.
         self.load_balancers = load_balancers
+        self.maintenance_period = maintenance_period
         # The instance name.
         self.name = name
         # The node quantity of the instance.
@@ -12845,6 +13655,8 @@ class GetGatewayResponseBodyData(TeaModel):
             for k in self.load_balancers:
                 if k:
                     k.validate()
+        if self.maintenance_period:
+            self.maintenance_period.validate()
         if self.security_group:
             self.security_group.validate()
         if self.tags:
@@ -12878,6 +13690,8 @@ class GetGatewayResponseBodyData(TeaModel):
                 result['environments'].append(k.to_map() if k else None)
         if self.expire_timestamp is not None:
             result['expireTimestamp'] = self.expire_timestamp
+        if self.gateway_edition is not None:
+            result['gatewayEdition'] = self.gateway_edition
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
         if self.gateway_type is not None:
@@ -12888,6 +13702,8 @@ class GetGatewayResponseBodyData(TeaModel):
         if self.load_balancers is not None:
             for k in self.load_balancers:
                 result['loadBalancers'].append(k.to_map() if k else None)
+        if self.maintenance_period is not None:
+            result['maintenancePeriod'] = self.maintenance_period.to_map()
         if self.name is not None:
             result['name'] = self.name
         if self.replicas is not None:
@@ -12935,6 +13751,8 @@ class GetGatewayResponseBodyData(TeaModel):
                 self.environments.append(temp_model.from_map(k))
         if m.get('expireTimestamp') is not None:
             self.expire_timestamp = m.get('expireTimestamp')
+        if m.get('gatewayEdition') is not None:
+            self.gateway_edition = m.get('gatewayEdition')
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
         if m.get('gatewayType') is not None:
@@ -12946,6 +13764,9 @@ class GetGatewayResponseBodyData(TeaModel):
             for k in m.get('loadBalancers'):
                 temp_model = GetGatewayResponseBodyDataLoadBalancers()
                 self.load_balancers.append(temp_model.from_map(k))
+        if m.get('maintenancePeriod') is not None:
+            temp_model = GetGatewayResponseBodyDataMaintenancePeriod()
+            self.maintenance_period = temp_model.from_map(m['maintenancePeriod'])
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('replicas') is not None:
@@ -13348,6 +14169,387 @@ class GetHttpApiRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetHttpApiRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMcpServerResponseBodyDataAssembledSources(TeaModel):
+    def __init__(
+        self,
+        mcp_server_id: str = None,
+        mcp_server_name: str = None,
+        tools: List[str] = None,
+    ):
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_name = mcp_server_name
+        self.tools = tools
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.mcp_server_name is not None:
+            result['mcpServerName'] = self.mcp_server_name
+        if self.tools is not None:
+            result['tools'] = self.tools
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('mcpServerName') is not None:
+            self.mcp_server_name = m.get('mcpServerName')
+        if m.get('tools') is not None:
+            self.tools = m.get('tools')
+        return self
+
+
+class GetMcpServerResponseBodyDataDomainInfos(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        name: str = None,
+        protocol: str = None,
+    ):
+        self.domain_id = domain_id
+        self.name = name
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['domainId'] = self.domain_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainId') is not None:
+            self.domain_id = m.get('domainId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
+class GetMcpServerResponseBodyDataNacosMcpSyncInfo(TeaModel):
+    def __init__(
+        self,
+        import_instance_id: str = None,
+        import_mcp_server_id: str = None,
+        import_namespace: str = None,
+    ):
+        self.import_instance_id = import_instance_id
+        self.import_mcp_server_id = import_mcp_server_id
+        self.import_namespace = import_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.import_instance_id is not None:
+            result['importInstanceId'] = self.import_instance_id
+        if self.import_mcp_server_id is not None:
+            result['importMcpServerId'] = self.import_mcp_server_id
+        if self.import_namespace is not None:
+            result['importNamespace'] = self.import_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('importInstanceId') is not None:
+            self.import_instance_id = m.get('importInstanceId')
+        if m.get('importMcpServerId') is not None:
+            self.import_mcp_server_id = m.get('importMcpServerId')
+        if m.get('importNamespace') is not None:
+            self.import_namespace = m.get('importNamespace')
+        return self
+
+
+class GetMcpServerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        assembled_sources: List[GetMcpServerResponseBodyDataAssembledSources] = None,
+        backend: Backend = None,
+        create_from_type: str = None,
+        deploy_status: str = None,
+        description: str = None,
+        domain_ids: List[str] = None,
+        domain_infos: List[GetMcpServerResponseBodyDataDomainInfos] = None,
+        environment_id: str = None,
+        exposed_uri_path: str = None,
+        gateway_id: str = None,
+        match: HttpRouteMatch = None,
+        mcp_server_config: str = None,
+        mcp_server_config_plugin_attachment_id: str = None,
+        mcp_server_id: str = None,
+        mcp_server_path: str = None,
+        mcp_statistics_enable: bool = None,
+        nacos_mcp_sync_info: GetMcpServerResponseBodyDataNacosMcpSyncInfo = None,
+        name: str = None,
+        protocol: str = None,
+        route_id: str = None,
+        type: str = None,
+    ):
+        self.assembled_sources = assembled_sources
+        self.backend = backend
+        self.create_from_type = create_from_type
+        self.deploy_status = deploy_status
+        self.description = description
+        self.domain_ids = domain_ids
+        self.domain_infos = domain_infos
+        self.environment_id = environment_id
+        self.exposed_uri_path = exposed_uri_path
+        self.gateway_id = gateway_id
+        self.match = match
+        self.mcp_server_config = mcp_server_config
+        self.mcp_server_config_plugin_attachment_id = mcp_server_config_plugin_attachment_id
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_path = mcp_server_path
+        self.mcp_statistics_enable = mcp_statistics_enable
+        self.nacos_mcp_sync_info = nacos_mcp_sync_info
+        self.name = name
+        self.protocol = protocol
+        self.route_id = route_id
+        self.type = type
+
+    def validate(self):
+        if self.assembled_sources:
+            for k in self.assembled_sources:
+                if k:
+                    k.validate()
+        if self.backend:
+            self.backend.validate()
+        if self.domain_infos:
+            for k in self.domain_infos:
+                if k:
+                    k.validate()
+        if self.match:
+            self.match.validate()
+        if self.nacos_mcp_sync_info:
+            self.nacos_mcp_sync_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assembledSources'] = []
+        if self.assembled_sources is not None:
+            for k in self.assembled_sources:
+                result['assembledSources'].append(k.to_map() if k else None)
+        if self.backend is not None:
+            result['backend'] = self.backend.to_map()
+        if self.create_from_type is not None:
+            result['createFromType'] = self.create_from_type
+        if self.deploy_status is not None:
+            result['deployStatus'] = self.deploy_status
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_ids is not None:
+            result['domainIds'] = self.domain_ids
+        result['domainInfos'] = []
+        if self.domain_infos is not None:
+            for k in self.domain_infos:
+                result['domainInfos'].append(k.to_map() if k else None)
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.mcp_server_config is not None:
+            result['mcpServerConfig'] = self.mcp_server_config
+        if self.mcp_server_config_plugin_attachment_id is not None:
+            result['mcpServerConfigPluginAttachmentId'] = self.mcp_server_config_plugin_attachment_id
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.mcp_server_path is not None:
+            result['mcpServerPath'] = self.mcp_server_path
+        if self.mcp_statistics_enable is not None:
+            result['mcpStatisticsEnable'] = self.mcp_statistics_enable
+        if self.nacos_mcp_sync_info is not None:
+            result['nacosMcpSyncInfo'] = self.nacos_mcp_sync_info.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assembled_sources = []
+        if m.get('assembledSources') is not None:
+            for k in m.get('assembledSources'):
+                temp_model = GetMcpServerResponseBodyDataAssembledSources()
+                self.assembled_sources.append(temp_model.from_map(k))
+        if m.get('backend') is not None:
+            temp_model = Backend()
+            self.backend = temp_model.from_map(m['backend'])
+        if m.get('createFromType') is not None:
+            self.create_from_type = m.get('createFromType')
+        if m.get('deployStatus') is not None:
+            self.deploy_status = m.get('deployStatus')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domainIds') is not None:
+            self.domain_ids = m.get('domainIds')
+        self.domain_infos = []
+        if m.get('domainInfos') is not None:
+            for k in m.get('domainInfos'):
+                temp_model = GetMcpServerResponseBodyDataDomainInfos()
+                self.domain_infos.append(temp_model.from_map(k))
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('mcpServerConfig') is not None:
+            self.mcp_server_config = m.get('mcpServerConfig')
+        if m.get('mcpServerConfigPluginAttachmentId') is not None:
+            self.mcp_server_config_plugin_attachment_id = m.get('mcpServerConfigPluginAttachmentId')
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('mcpServerPath') is not None:
+            self.mcp_server_path = m.get('mcpServerPath')
+        if m.get('mcpStatisticsEnable') is not None:
+            self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
+        if m.get('nacosMcpSyncInfo') is not None:
+            temp_model = GetMcpServerResponseBodyDataNacosMcpSyncInfo()
+            self.nacos_mcp_sync_info = temp_model.from_map(m['nacosMcpSyncInfo'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetMcpServerResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetMcpServerResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMcpServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14349,9 +15551,10 @@ class ImportHttpApiRequestSpecOssConfig(TeaModel):
 class ImportHttpApiRequest(TeaModel):
     def __init__(
         self,
-        deploy_configs: HttpApiDeployConfig = None,
+        deploy_configs: List[HttpApiDeployConfig] = None,
         description: str = None,
         dry_run: bool = None,
+        gateway_id: str = None,
         mcp_route_id: str = None,
         name: str = None,
         resource_group_id: str = None,
@@ -14368,6 +15571,7 @@ class ImportHttpApiRequest(TeaModel):
         self.description = description
         # Specifies whether to perform a dry run. If this parameter is set to true, a dry run is performed without importing the file.
         self.dry_run = dry_run
+        self.gateway_id = gateway_id
         # The MCP route ID.
         self.mcp_route_id = mcp_route_id
         # The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
@@ -14393,7 +15597,9 @@ class ImportHttpApiRequest(TeaModel):
 
     def validate(self):
         if self.deploy_configs:
-            self.deploy_configs.validate()
+            for k in self.deploy_configs:
+                if k:
+                    k.validate()
         if self.spec_oss_config:
             self.spec_oss_config.validate()
         if self.version_config:
@@ -14405,12 +15611,16 @@ class ImportHttpApiRequest(TeaModel):
             return _map
 
         result = dict()
+        result['deployConfigs'] = []
         if self.deploy_configs is not None:
-            result['deployConfigs'] = self.deploy_configs.to_map()
+            for k in self.deploy_configs:
+                result['deployConfigs'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
         if self.mcp_route_id is not None:
             result['mcpRouteId'] = self.mcp_route_id
         if self.name is not None:
@@ -14433,13 +15643,17 @@ class ImportHttpApiRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.deploy_configs = []
         if m.get('deployConfigs') is not None:
-            temp_model = HttpApiDeployConfig()
-            self.deploy_configs = temp_model.from_map(m['deployConfigs'])
+            for k in m.get('deployConfigs'):
+                temp_model = HttpApiDeployConfig()
+                self.deploy_configs.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
         if m.get('mcpRouteId') is not None:
             self.mcp_route_id = m.get('mcpRouteId')
         if m.get('name') is not None:
@@ -14870,6 +16084,196 @@ class ImportHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InstallPluginRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_ids: List[str] = None,
+        plugin_class_id: str = None,
+    ):
+        self.gateway_ids = gateway_ids
+        self.plugin_class_id = plugin_class_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_ids is not None:
+            result['gatewayIds'] = self.gateway_ids
+        if self.plugin_class_id is not None:
+            result['pluginClassId'] = self.plugin_class_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayIds') is not None:
+            self.gateway_ids = m.get('gatewayIds')
+        if m.get('pluginClassId') is not None:
+            self.plugin_class_id = m.get('pluginClassId')
+        return self
+
+
+class InstallPluginResponseBodyDataInstallPluginResults(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        plugin_id: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.plugin_id = plugin_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
+        return self
+
+
+class InstallPluginResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        install_plugin_results: List[InstallPluginResponseBodyDataInstallPluginResults] = None,
+    ):
+        self.install_plugin_results = install_plugin_results
+
+    def validate(self):
+        if self.install_plugin_results:
+            for k in self.install_plugin_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['installPluginResults'] = []
+        if self.install_plugin_results is not None:
+            for k in self.install_plugin_results:
+                result['installPluginResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.install_plugin_results = []
+        if m.get('installPluginResults') is not None:
+            for k in m.get('installPluginResults'):
+                temp_model = InstallPluginResponseBodyDataInstallPluginResults()
+                self.install_plugin_results.append(temp_model.from_map(k))
+        return self
+
+
+class InstallPluginResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: InstallPluginResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = InstallPluginResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class InstallPluginResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InstallPluginResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InstallPluginResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16090,6 +17494,7 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         create_from: str = None,
         create_timestamp: int = None,
         expire_timestamp: int = None,
+        gateway_edition: str = None,
         gateway_id: str = None,
         gateway_type: str = None,
         legacy: bool = None,
@@ -16122,6 +17527,7 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         self.create_timestamp = create_timestamp
         # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
+        self.gateway_edition = gateway_edition
         # The instance ID.
         self.gateway_id = gateway_id
         self.gateway_type = gateway_type
@@ -16207,6 +17613,8 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             result['createTimestamp'] = self.create_timestamp
         if self.expire_timestamp is not None:
             result['expireTimestamp'] = self.expire_timestamp
+        if self.gateway_edition is not None:
+            result['gatewayEdition'] = self.gateway_edition
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
         if self.gateway_type is not None:
@@ -16263,6 +17671,8 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             self.create_timestamp = m.get('createTimestamp')
         if m.get('expireTimestamp') is not None:
             self.expire_timestamp = m.get('expireTimestamp')
+        if m.get('gatewayEdition') is not None:
+            self.gateway_edition = m.get('gatewayEdition')
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
         if m.get('gatewayType') is not None:
@@ -16470,6 +17880,7 @@ class ListHttpApiOperationsRequest(TeaModel):
     def __init__(
         self,
         consumer_authorization_rule_id: str = None,
+        enable_auth: bool = None,
         for_deploy: bool = None,
         gateway_id: str = None,
         method: str = None,
@@ -16484,6 +17895,7 @@ class ListHttpApiOperationsRequest(TeaModel):
     ):
         # Filter the operation list based on a specific consumer authorization rule ID, and the interface list in the response only contains authorized operations.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        self.enable_auth = enable_auth
         self.for_deploy = for_deploy
         self.gateway_id = gateway_id
         # List interfaces by Method.
@@ -16516,6 +17928,8 @@ class ListHttpApiOperationsRequest(TeaModel):
         result = dict()
         if self.consumer_authorization_rule_id is not None:
             result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
+        if self.enable_auth is not None:
+            result['enableAuth'] = self.enable_auth
         if self.for_deploy is not None:
             result['forDeploy'] = self.for_deploy
         if self.gateway_id is not None:
@@ -16544,6 +17958,8 @@ class ListHttpApiOperationsRequest(TeaModel):
         m = m or dict()
         if m.get('consumerAuthorizationRuleId') is not None:
             self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
+        if m.get('enableAuth') is not None:
+            self.enable_auth = m.get('enableAuth')
         if m.get('forDeploy') is not None:
             self.for_deploy = m.get('forDeploy')
         if m.get('gatewayId') is not None:
@@ -17282,6 +18698,461 @@ class ListHttpApisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHttpApisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMcpServersRequest(TeaModel):
+    def __init__(
+        self,
+        create_from_types: str = None,
+        deploy_statuses: str = None,
+        gateway_id: str = None,
+        name_like: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        type: str = None,
+    ):
+        self.create_from_types = create_from_types
+        self.deploy_statuses = deploy_statuses
+        # This parameter is required.
+        self.gateway_id = gateway_id
+        self.name_like = name_like
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_from_types is not None:
+            result['createFromTypes'] = self.create_from_types
+        if self.deploy_statuses is not None:
+            result['deployStatuses'] = self.deploy_statuses
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name_like is not None:
+            result['nameLike'] = self.name_like
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createFromTypes') is not None:
+            self.create_from_types = m.get('createFromTypes')
+        if m.get('deployStatuses') is not None:
+            self.deploy_statuses = m.get('deployStatuses')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('nameLike') is not None:
+            self.name_like = m.get('nameLike')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListMcpServersResponseBodyDataItemsAssembledSources(TeaModel):
+    def __init__(
+        self,
+        mcp_server_id: str = None,
+        mcp_server_name: str = None,
+        tools: List[str] = None,
+    ):
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_name = mcp_server_name
+        self.tools = tools
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.mcp_server_name is not None:
+            result['mcpServerName'] = self.mcp_server_name
+        if self.tools is not None:
+            result['tools'] = self.tools
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('mcpServerName') is not None:
+            self.mcp_server_name = m.get('mcpServerName')
+        if m.get('tools') is not None:
+            self.tools = m.get('tools')
+        return self
+
+
+class ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo(TeaModel):
+    def __init__(
+        self,
+        import_instance_id: str = None,
+        import_mcp_server_id: str = None,
+        import_namespace: str = None,
+    ):
+        self.import_instance_id = import_instance_id
+        self.import_mcp_server_id = import_mcp_server_id
+        self.import_namespace = import_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.import_instance_id is not None:
+            result['importInstanceId'] = self.import_instance_id
+        if self.import_mcp_server_id is not None:
+            result['importMcpServerId'] = self.import_mcp_server_id
+        if self.import_namespace is not None:
+            result['importNamespace'] = self.import_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('importInstanceId') is not None:
+            self.import_instance_id = m.get('importInstanceId')
+        if m.get('importMcpServerId') is not None:
+            self.import_mcp_server_id = m.get('importMcpServerId')
+        if m.get('importNamespace') is not None:
+            self.import_namespace = m.get('importNamespace')
+        return self
+
+
+class ListMcpServersResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        assembled_sources: List[ListMcpServersResponseBodyDataItemsAssembledSources] = None,
+        backend: Backend = None,
+        create_from_type: str = None,
+        deploy_status: str = None,
+        description: str = None,
+        domain_ids: List[str] = None,
+        domain_infos: List[HttpApiDomainInfo] = None,
+        environment_id: str = None,
+        exposed_uri_path: str = None,
+        gateway_id: str = None,
+        match: HttpRouteMatch = None,
+        mcp_server_config: str = None,
+        mcp_server_id: str = None,
+        mcp_server_path: str = None,
+        mcp_statistics_enable: bool = None,
+        nacos_mcp_sync_info: ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo = None,
+        name: str = None,
+        protocol: str = None,
+        route_id: str = None,
+        type: str = None,
+    ):
+        self.assembled_sources = assembled_sources
+        self.backend = backend
+        self.create_from_type = create_from_type
+        self.deploy_status = deploy_status
+        self.description = description
+        self.domain_ids = domain_ids
+        self.domain_infos = domain_infos
+        self.environment_id = environment_id
+        self.exposed_uri_path = exposed_uri_path
+        self.gateway_id = gateway_id
+        self.match = match
+        self.mcp_server_config = mcp_server_config
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_path = mcp_server_path
+        self.mcp_statistics_enable = mcp_statistics_enable
+        self.nacos_mcp_sync_info = nacos_mcp_sync_info
+        self.name = name
+        self.protocol = protocol
+        self.route_id = route_id
+        self.type = type
+
+    def validate(self):
+        if self.assembled_sources:
+            for k in self.assembled_sources:
+                if k:
+                    k.validate()
+        if self.backend:
+            self.backend.validate()
+        if self.domain_infos:
+            for k in self.domain_infos:
+                if k:
+                    k.validate()
+        if self.match:
+            self.match.validate()
+        if self.nacos_mcp_sync_info:
+            self.nacos_mcp_sync_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assembledSources'] = []
+        if self.assembled_sources is not None:
+            for k in self.assembled_sources:
+                result['assembledSources'].append(k.to_map() if k else None)
+        if self.backend is not None:
+            result['backend'] = self.backend.to_map()
+        if self.create_from_type is not None:
+            result['createFromType'] = self.create_from_type
+        if self.deploy_status is not None:
+            result['deployStatus'] = self.deploy_status
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_ids is not None:
+            result['domainIds'] = self.domain_ids
+        result['domainInfos'] = []
+        if self.domain_infos is not None:
+            for k in self.domain_infos:
+                result['domainInfos'].append(k.to_map() if k else None)
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.mcp_server_config is not None:
+            result['mcpServerConfig'] = self.mcp_server_config
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.mcp_server_path is not None:
+            result['mcpServerPath'] = self.mcp_server_path
+        if self.mcp_statistics_enable is not None:
+            result['mcpStatisticsEnable'] = self.mcp_statistics_enable
+        if self.nacos_mcp_sync_info is not None:
+            result['nacosMcpSyncInfo'] = self.nacos_mcp_sync_info.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assembled_sources = []
+        if m.get('assembledSources') is not None:
+            for k in m.get('assembledSources'):
+                temp_model = ListMcpServersResponseBodyDataItemsAssembledSources()
+                self.assembled_sources.append(temp_model.from_map(k))
+        if m.get('backend') is not None:
+            temp_model = Backend()
+            self.backend = temp_model.from_map(m['backend'])
+        if m.get('createFromType') is not None:
+            self.create_from_type = m.get('createFromType')
+        if m.get('deployStatus') is not None:
+            self.deploy_status = m.get('deployStatus')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domainIds') is not None:
+            self.domain_ids = m.get('domainIds')
+        self.domain_infos = []
+        if m.get('domainInfos') is not None:
+            for k in m.get('domainInfos'):
+                temp_model = HttpApiDomainInfo()
+                self.domain_infos.append(temp_model.from_map(k))
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('mcpServerConfig') is not None:
+            self.mcp_server_config = m.get('mcpServerConfig')
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('mcpServerPath') is not None:
+            self.mcp_server_path = m.get('mcpServerPath')
+        if m.get('mcpStatisticsEnable') is not None:
+            self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
+        if m.get('nacosMcpSyncInfo') is not None:
+            temp_model = ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo()
+            self.nacos_mcp_sync_info = temp_model.from_map(m['nacosMcpSyncInfo'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListMcpServersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[ListMcpServersResponseBodyDataItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListMcpServersResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListMcpServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListMcpServersResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListMcpServersResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListMcpServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMcpServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMcpServersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19615,6 +21486,87 @@ class RestartGatewayResponse(TeaModel):
         return self
 
 
+class UnDeployMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UnDeployMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnDeployMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnDeployMcpServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UndeployHttpApiRequest(TeaModel):
     def __init__(
         self,
@@ -19741,6 +21693,87 @@ class UndeployHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UndeployHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UninstallPluginResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UninstallPluginResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UninstallPluginResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UninstallPluginResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20797,6 +22830,7 @@ class UpdateHttpApiRequest(TeaModel):
         deploy_configs: List[HttpApiDeployConfig] = None,
         description: str = None,
         enable_auth: bool = None,
+        first_byte_timeout: int = None,
         ingress_config: UpdateHttpApiRequestIngressConfig = None,
         only_change_config: bool = None,
         protocols: List[str] = None,
@@ -20818,6 +22852,7 @@ class UpdateHttpApiRequest(TeaModel):
         self.description = description
         # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
+        self.first_byte_timeout = first_byte_timeout
         # The HTTP Ingress API configurations.
         self.ingress_config = ingress_config
         self.only_change_config = only_change_config
@@ -20861,6 +22896,8 @@ class UpdateHttpApiRequest(TeaModel):
             result['description'] = self.description
         if self.enable_auth is not None:
             result['enableAuth'] = self.enable_auth
+        if self.first_byte_timeout is not None:
+            result['firstByteTimeout'] = self.first_byte_timeout
         if self.ingress_config is not None:
             result['ingressConfig'] = self.ingress_config.to_map()
         if self.only_change_config is not None:
@@ -20893,6 +22930,8 @@ class UpdateHttpApiRequest(TeaModel):
             self.description = m.get('description')
         if m.get('enableAuth') is not None:
             self.enable_auth = m.get('enableAuth')
+        if m.get('firstByteTimeout') is not None:
+            self.first_byte_timeout = m.get('firstByteTimeout')
         if m.get('ingressConfig') is not None:
             temp_model = UpdateHttpApiRequestIngressConfig()
             self.ingress_config = temp_model.from_map(m['ingressConfig'])
@@ -21422,6 +23461,310 @@ class UpdateHttpApiRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateHttpApiRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMcpServerRequestAssembledSources(TeaModel):
+    def __init__(
+        self,
+        mcp_server_id: str = None,
+        mcp_server_name: str = None,
+        tools: List[str] = None,
+    ):
+        # MCP Server ID
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_name = mcp_server_name
+        self.tools = tools
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mcp_server_id is not None:
+            result['mcpServerId'] = self.mcp_server_id
+        if self.mcp_server_name is not None:
+            result['mcpServerName'] = self.mcp_server_name
+        if self.tools is not None:
+            result['tools'] = self.tools
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServerId') is not None:
+            self.mcp_server_id = m.get('mcpServerId')
+        if m.get('mcpServerName') is not None:
+            self.mcp_server_name = m.get('mcpServerName')
+        if m.get('tools') is not None:
+            self.tools = m.get('tools')
+        return self
+
+
+class UpdateMcpServerRequestBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+        self.service_id = service_id
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class UpdateMcpServerRequestBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[UpdateMcpServerRequestBackendConfigServices] = None,
+    ):
+        self.scene = scene
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = UpdateMcpServerRequestBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateMcpServerRequest(TeaModel):
+    def __init__(
+        self,
+        assembled_sources: List[UpdateMcpServerRequestAssembledSources] = None,
+        backend_config: UpdateMcpServerRequestBackendConfig = None,
+        description: str = None,
+        domain_ids: List[str] = None,
+        exposed_uri_path: str = None,
+        match: HttpRouteMatch = None,
+        mcp_statistics_enable: bool = None,
+        protocol: str = None,
+        type: str = None,
+    ):
+        self.assembled_sources = assembled_sources
+        self.backend_config = backend_config
+        self.description = description
+        self.domain_ids = domain_ids
+        self.exposed_uri_path = exposed_uri_path
+        self.match = match
+        self.mcp_statistics_enable = mcp_statistics_enable
+        # This parameter is required.
+        self.protocol = protocol
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.assembled_sources:
+            for k in self.assembled_sources:
+                if k:
+                    k.validate()
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assembledSources'] = []
+        if self.assembled_sources is not None:
+            for k in self.assembled_sources:
+                result['assembledSources'].append(k.to_map() if k else None)
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_ids is not None:
+            result['domainIds'] = self.domain_ids
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.mcp_statistics_enable is not None:
+            result['mcpStatisticsEnable'] = self.mcp_statistics_enable
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assembled_sources = []
+        if m.get('assembledSources') is not None:
+            for k in m.get('assembledSources'):
+                temp_model = UpdateMcpServerRequestAssembledSources()
+                self.assembled_sources.append(temp_model.from_map(k))
+        if m.get('backendConfig') is not None:
+            temp_model = UpdateMcpServerRequestBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domainIds') is not None:
+            self.domain_ids = m.get('domainIds')
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('mcpStatisticsEnable') is not None:
+            self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class UpdateMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMcpServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

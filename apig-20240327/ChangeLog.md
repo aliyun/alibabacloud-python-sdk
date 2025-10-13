@@ -1,3 +1,25 @@
+2025-10-13 Version: 5.0.0
+- Support API CreateMcpServer.
+- Support API DeleteMcpServer.
+- Support API DeployMcpServer.
+- Support API GetMcpServer.
+- Support API InstallPlugin.
+- Support API ListMcpServers.
+- Support API UnDeployMcpServer.
+- Support API UninstallPlugin.
+- Support API UpdateMcpServer.
+- Update API CreateGateway: add request parameters body.gatewayEdition.
+- Update API CreateHttpApi: add request parameters body.firstByteTimeout.
+- Update API GetGateway: add response parameters Body.data.gatewayEdition.
+- Update API GetGateway: add response parameters Body.data.maintenancePeriod.
+- Update API ImportHttpApi: add request parameters body.gatewayId.
+- Update API ImportHttpApi: update request parameters body.deployConfigs' type has changed.
+- Update API ImportHttpApi: update request parameters body.deployConfigs' ref has changed.
+- Update API ListGateways: add response parameters Body.data.items.$.gatewayEdition.
+- Update API ListHttpApiOperations: add request parameters enableAuth.
+- Update API UpdateHttpApi: add request parameters body.firstByteTimeout.
+
+
 2025-08-06 Version: 4.4.1
 - Generated python 2024-03-27 for APIG.
 
