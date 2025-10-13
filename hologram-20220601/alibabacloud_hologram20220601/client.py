@@ -76,16 +76,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -122,16 +116,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -197,16 +185,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.CreateHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_holo_warehouse_with_options_async(
         self,
@@ -244,16 +226,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.CreateHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_holo_warehouse(
         self,
@@ -376,16 +352,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -478,16 +448,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
@@ -591,16 +555,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.DeleteHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_holo_warehouse_with_options_async(
         self,
@@ -636,16 +594,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.DeleteHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_holo_warehouse(
         self,
@@ -715,16 +667,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -764,16 +710,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
@@ -847,16 +787,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.DisableHiveAccessResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.DisableHiveAccessResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.DisableHiveAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_hive_access_with_options_async(
         self,
@@ -892,16 +826,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.DisableHiveAccessResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.DisableHiveAccessResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.DisableHiveAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_hive_access(
         self,
@@ -932,6 +860,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.disable_hive_access_with_options_async(instance_id, request, headers, runtime)
+
+    def disable_sslwith_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.DisableSSLResponse:
+        """
+        @summary 关闭SSL
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSSLResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DisableSSL',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/disableSSL',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.DisableSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_sslwith_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.DisableSSLResponse:
+        """
+        @summary 关闭SSL
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSSLResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DisableSSL',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/disableSSL',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.DisableSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_ssl(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.DisableSSLResponse:
+        """
+        @summary 关闭SSL
+        
+        @return: DisableSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.disable_sslwith_options(instance_id, headers, runtime)
+
+    async def disable_ssl_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.DisableSSLResponse:
+        """
+        @summary 关闭SSL
+        
+        @return: DisableSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.disable_sslwith_options_async(instance_id, headers, runtime)
 
     def enable_hive_access_with_options(
         self,
@@ -967,16 +985,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.EnableHiveAccessResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.EnableHiveAccessResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.EnableHiveAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_hive_access_with_options_async(
         self,
@@ -1012,16 +1024,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.EnableHiveAccessResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.EnableHiveAccessResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.EnableHiveAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_hive_access(
         self,
@@ -1053,6 +1059,186 @@ class Client(OpenApiClient):
         headers = {}
         return await self.enable_hive_access_with_options_async(instance_id, request, headers, runtime)
 
+    def enable_sslwith_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.EnableSSLResponse:
+        """
+        @summary 打开SSL
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSSLResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='EnableSSL',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/enableSSL',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.EnableSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_sslwith_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.EnableSSLResponse:
+        """
+        @summary 打开SSL
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSSLResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='EnableSSL',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/enableSSL',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.EnableSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_ssl(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.EnableSSLResponse:
+        """
+        @summary 打开SSL
+        
+        @return: EnableSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.enable_sslwith_options(instance_id, headers, runtime)
+
+    async def enable_ssl_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.EnableSSLResponse:
+        """
+        @summary 打开SSL
+        
+        @return: EnableSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.enable_sslwith_options_async(instance_id, headers, runtime)
+
+    def get_certificate_attribute_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GetCertificateAttributeResponse:
+        """
+        @summary 获得证书信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateAttributeResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCertificateAttribute',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/certificateAttribute',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetCertificateAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_certificate_attribute_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GetCertificateAttributeResponse:
+        """
+        @summary 获得证书信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateAttributeResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCertificateAttribute',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/certificateAttribute',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetCertificateAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_certificate_attribute(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.GetCertificateAttributeResponse:
+        """
+        @summary 获得证书信息
+        
+        @return: GetCertificateAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_certificate_attribute_with_options(instance_id, headers, runtime)
+
+    async def get_certificate_attribute_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.GetCertificateAttributeResponse:
+        """
+        @summary 获得证书信息
+        
+        @return: GetCertificateAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_certificate_attribute_with_options_async(instance_id, headers, runtime)
+
     def get_instance_with_options(
         self,
         instance_id: str,
@@ -1080,16 +1266,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.GetInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.GetInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_with_options_async(
         self,
@@ -1118,16 +1298,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.GetInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.GetInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance(
         self,
@@ -1154,6 +1328,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
+
+    def get_root_certificate_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GetRootCertificateResponse:
+        """
+        @summary 获得根证书
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRootCertificateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRootCertificate',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/rootCertificate',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetRootCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_root_certificate_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GetRootCertificateResponse:
+        """
+        @summary 获得根证书
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRootCertificateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRootCertificate',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/rootCertificate',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetRootCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_root_certificate(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.GetRootCertificateResponse:
+        """
+        @summary 获得根证书
+        
+        @return: GetRootCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_root_certificate_with_options(instance_id, headers, runtime)
+
+    async def get_root_certificate_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.GetRootCertificateResponse:
+        """
+        @summary 获得根证书
+        
+        @return: GetRootCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_root_certificate_with_options_async(instance_id, headers, runtime)
 
     def get_warehouse_detail_with_options(
         self,
@@ -1182,16 +1446,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.GetWarehouseDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.GetWarehouseDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetWarehouseDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_warehouse_detail_with_options_async(
         self,
@@ -1220,16 +1478,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.GetWarehouseDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.GetWarehouseDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetWarehouseDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_warehouse_detail(
         self,
@@ -1292,16 +1544,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ListBackupDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ListBackupDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListBackupDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_backup_data_with_options_async(
         self,
@@ -1338,16 +1584,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ListBackupDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ListBackupDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListBackupDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_backup_data(
         self,
@@ -1414,16 +1654,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ListInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ListInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instances_with_options_async(
         self,
@@ -1462,16 +1696,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ListInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ListInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instances(
         self,
@@ -1528,16 +1756,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ListWarehousesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ListWarehousesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListWarehousesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_warehouses_with_options_async(
         self,
@@ -1566,16 +1788,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ListWarehousesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ListWarehousesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListWarehousesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_warehouses(
         self,
@@ -1637,16 +1853,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RebalanceHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RebalanceHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RebalanceHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rebalance_holo_warehouse_with_options_async(
         self,
@@ -1682,16 +1892,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RebalanceHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RebalanceHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RebalanceHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rebalance_holo_warehouse(
         self,
@@ -1759,16 +1963,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RenameHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RenameHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenameHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rename_holo_warehouse_with_options_async(
         self,
@@ -1806,16 +2004,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RenameHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RenameHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenameHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rename_holo_warehouse(
         self,
@@ -1888,16 +2080,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RenewInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RenewInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenewInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_instance_with_options_async(
         self,
@@ -1940,16 +2126,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RenewInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RenewInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenewInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_instance(
         self,
@@ -1991,6 +2171,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.renew_instance_with_options_async(instance_id, request, headers, runtime)
 
+    def renew_sslcertificate_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RenewSSLCertificateResponse:
+        """
+        @summary 更新证书
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewSSLCertificateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RenewSSLCertificate',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/renewSSLCertificate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenewSSLCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_sslcertificate_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RenewSSLCertificateResponse:
+        """
+        @summary 更新证书
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewSSLCertificateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RenewSSLCertificate',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/renewSSLCertificate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenewSSLCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_sslcertificate(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.RenewSSLCertificateResponse:
+        """
+        @summary 更新证书
+        
+        @return: RenewSSLCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.renew_sslcertificate_with_options(instance_id, headers, runtime)
+
+    async def renew_sslcertificate_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.RenewSSLCertificateResponse:
+        """
+        @summary 更新证书
+        
+        @return: RenewSSLCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.renew_sslcertificate_with_options_async(instance_id, headers, runtime)
+
     def restart_holo_warehouse_with_options(
         self,
         instance_id: str,
@@ -2025,16 +2295,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RestartHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_holo_warehouse_with_options_async(
         self,
@@ -2070,16 +2334,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RestartHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_holo_warehouse(
         self,
@@ -2138,16 +2396,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RestartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_instance_with_options_async(
         self,
@@ -2176,16 +2428,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.RestartInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.RestartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_instance(
         self,
@@ -2247,16 +2493,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ResumeHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resume_holo_warehouse_with_options_async(
         self,
@@ -2292,16 +2532,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ResumeHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resume_holo_warehouse(
         self,
@@ -2360,16 +2594,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ResumeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resume_instance_with_options_async(
         self,
@@ -2398,16 +2626,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ResumeInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ResumeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resume_instance(
         self,
@@ -2471,16 +2693,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ScaleHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def scale_holo_warehouse_with_options_async(
         self,
@@ -2518,16 +2734,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ScaleHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def scale_holo_warehouse(
         self,
@@ -2607,16 +2817,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ScaleInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def scale_instance_with_options_async(
         self,
@@ -2666,16 +2870,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.ScaleInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.ScaleInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def scale_instance(
         self,
@@ -2742,16 +2940,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.StopInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.StopInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.StopInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_instance_with_options_async(
         self,
@@ -2780,16 +2972,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.StopInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.StopInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.StopInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_instance(
         self,
@@ -2851,16 +3037,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.SuspendHoloWarehouseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.SuspendHoloWarehouseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.SuspendHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def suspend_holo_warehouse_with_options_async(
         self,
@@ -2896,16 +3076,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.SuspendHoloWarehouseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.SuspendHoloWarehouseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.SuspendHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def suspend_holo_warehouse(
         self,
@@ -2971,16 +3145,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.UpdateInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_name_with_options_async(
         self,
@@ -3016,16 +3184,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.UpdateInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_name(
         self,
@@ -3101,16 +3263,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNetworkTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNetworkTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.UpdateInstanceNetworkTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_network_type_with_options_async(
         self,
@@ -3156,16 +3312,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNetworkTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hologram_20220601_models.UpdateInstanceNetworkTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hologram_20220601_models.UpdateInstanceNetworkTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_network_type(
         self,

@@ -1075,6 +1075,104 @@ class DisableHiveAccessResponse(TeaModel):
         return self
 
 
+class DisableSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        success: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.success = success
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DisableSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableHiveAccessRequest(TeaModel):
     def __init__(
         self,
@@ -1221,6 +1319,243 @@ class EnableHiveAccessResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableHiveAccessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        success: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.success = success
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class EnableSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCertificateAttributeResponseBodyCertificateAttributeDto(TeaModel):
+    def __init__(
+        self,
+        enable_ssl: bool = None,
+        expiration_time: int = None,
+        status: str = None,
+    ):
+        self.enable_ssl = enable_ssl
+        self.expiration_time = expiration_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_ssl is not None:
+            result['enableSSL'] = self.enable_ssl
+        if self.expiration_time is not None:
+            result['expirationTime'] = self.expiration_time
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableSSL') is not None:
+            self.enable_ssl = m.get('enableSSL')
+        if m.get('expirationTime') is not None:
+            self.expiration_time = m.get('expirationTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetCertificateAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate_attribute_dto: GetCertificateAttributeResponseBodyCertificateAttributeDto = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        success: bool = None,
+        request_id: str = None,
+    ):
+        self.certificate_attribute_dto = certificate_attribute_dto
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.success = success
+        self.request_id = request_id
+
+    def validate(self):
+        if self.certificate_attribute_dto:
+            self.certificate_attribute_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_attribute_dto is not None:
+            result['CertificateAttributeDto'] = self.certificate_attribute_dto.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateAttributeDto') is not None:
+            temp_model = GetCertificateAttributeResponseBodyCertificateAttributeDto()
+            self.certificate_attribute_dto = temp_model.from_map(m['CertificateAttributeDto'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetCertificateAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCertificateAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCertificateAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2026,6 +2361,104 @@ class GetInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRootCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        success: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.success = success
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetRootCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRootCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRootCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3827,6 +4260,104 @@ class RenewInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RenewInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewSSLCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        success: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.success = success
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RenewSSLCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewSSLCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewSSLCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

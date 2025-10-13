@@ -1,3 +1,11 @@
+2025-10-13 Version: 1.6.0
+- Support API DisableSSL.
+- Support API EnableSSL.
+- Support API GetCertificateAttribute.
+- Support API GetRootCertificate.
+- Support API RenewSSLCertificate.
+
+
 2025-03-18 Version: 1.5.2
 - Update API CreateInstance: update param body.
 
