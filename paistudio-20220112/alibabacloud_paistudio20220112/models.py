@@ -3820,6 +3820,7 @@ class Quota(TeaModel):
         description: str = None,
         gmt_created_time: str = None,
         gmt_modified_time: str = None,
+        hyper_zones: List[str] = None,
         labels: List[Label] = None,
         latest_operation_id: str = None,
         min: ResourceSpec = None,
@@ -3835,6 +3836,7 @@ class Quota(TeaModel):
         resource_type: str = None,
         status: str = None,
         sub_quotas: List[QuotaIdName] = None,
+        version: str = None,
         workspaces: List[WorkspaceIdName] = None,
     ):
         self.allocate_strategy = allocate_strategy
@@ -3842,6 +3844,7 @@ class Quota(TeaModel):
         self.description = description
         self.gmt_created_time = gmt_created_time
         self.gmt_modified_time = gmt_modified_time
+        self.hyper_zones = hyper_zones
         self.labels = labels
         self.latest_operation_id = latest_operation_id
         self.min = min
@@ -3857,6 +3860,7 @@ class Quota(TeaModel):
         self.resource_type = resource_type
         self.status = status
         self.sub_quotas = sub_quotas
+        self.version = version
         self.workspaces = workspaces
 
     def validate(self):
@@ -3895,6 +3899,8 @@ class Quota(TeaModel):
             result['GmtCreatedTime'] = self.gmt_created_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.hyper_zones is not None:
+            result['HyperZones'] = self.hyper_zones
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -3929,6 +3935,8 @@ class Quota(TeaModel):
         if self.sub_quotas is not None:
             for k in self.sub_quotas:
                 result['SubQuotas'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         result['Workspaces'] = []
         if self.workspaces is not None:
             for k in self.workspaces:
@@ -3947,6 +3955,8 @@ class Quota(TeaModel):
             self.gmt_created_time = m.get('GmtCreatedTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('HyperZones') is not None:
+            self.hyper_zones = m.get('HyperZones')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -3986,6 +3996,8 @@ class Quota(TeaModel):
             for k in m.get('SubQuotas'):
                 temp_model = QuotaIdName()
                 self.sub_quotas.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         self.workspaces = []
         if m.get('Workspaces') is not None:
             for k in m.get('Workspaces'):
@@ -4778,6 +4790,7 @@ class ResourceGroup(TeaModel):
         node_count: int = None,
         resource_group_id: str = None,
         user_vpc: UserVpc = None,
+        version: str = None,
         workspace_id: str = None,
     ):
         self.creator_id = creator_id
@@ -4787,6 +4800,7 @@ class ResourceGroup(TeaModel):
         self.node_count = node_count
         self.resource_group_id = resource_group_id
         self.user_vpc = user_vpc
+        self.version = version
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4813,6 +4827,8 @@ class ResourceGroup(TeaModel):
             result['ResourceGroupID'] = self.resource_group_id
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
+        if self.version is not None:
+            result['Version'] = self.version
         if self.workspace_id is not None:
             result['WorkspaceID'] = self.workspace_id
         return result
@@ -4834,6 +4850,8 @@ class ResourceGroup(TeaModel):
         if m.get('UserVpc') is not None:
             temp_model = UserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('WorkspaceID') is not None:
             self.workspace_id = m.get('WorkspaceID')
         return self
@@ -6407,6 +6425,7 @@ class CreateResourceGroupRequest(TeaModel):
         resource_type: str = None,
         tag: List[CreateResourceGroupRequestTag] = None,
         user_vpc: UserVpc = None,
+        version: str = None,
     ):
         self.computing_resource_provider = computing_resource_provider
         self.description = description
@@ -6414,6 +6433,7 @@ class CreateResourceGroupRequest(TeaModel):
         self.resource_type = resource_type
         self.tag = tag
         self.user_vpc = user_vpc
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -6443,6 +6463,8 @@ class CreateResourceGroupRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -6463,6 +6485,8 @@ class CreateResourceGroupRequest(TeaModel):
         if m.get('UserVpc') is not None:
             temp_model = UserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -8433,6 +8457,7 @@ class GetQuotaResponseBody(TeaModel):
         description: str = None,
         gmt_created_time: str = None,
         gmt_modified_time: str = None,
+        hyper_zones: List[str] = None,
         labels: List[Label] = None,
         latest_operation_id: str = None,
         min: ResourceSpec = None,
@@ -8449,6 +8474,7 @@ class GetQuotaResponseBody(TeaModel):
         resource_type: str = None,
         status: str = None,
         sub_quotas: List[QuotaIdName] = None,
+        version: str = None,
         workspaces: List[WorkspaceIdName] = None,
     ):
         self.allocate_strategy = allocate_strategy
@@ -8456,6 +8482,7 @@ class GetQuotaResponseBody(TeaModel):
         self.description = description
         self.gmt_created_time = gmt_created_time
         self.gmt_modified_time = gmt_modified_time
+        self.hyper_zones = hyper_zones
         self.labels = labels
         self.latest_operation_id = latest_operation_id
         self.min = min
@@ -8473,6 +8500,7 @@ class GetQuotaResponseBody(TeaModel):
         self.resource_type = resource_type
         self.status = status
         self.sub_quotas = sub_quotas
+        self.version = version
         self.workspaces = workspaces
 
     def validate(self):
@@ -8511,6 +8539,8 @@ class GetQuotaResponseBody(TeaModel):
             result['GmtCreatedTime'] = self.gmt_created_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.hyper_zones is not None:
+            result['HyperZones'] = self.hyper_zones
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -8547,6 +8577,8 @@ class GetQuotaResponseBody(TeaModel):
         if self.sub_quotas is not None:
             for k in self.sub_quotas:
                 result['SubQuotas'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         result['Workspaces'] = []
         if self.workspaces is not None:
             for k in self.workspaces:
@@ -8565,6 +8597,8 @@ class GetQuotaResponseBody(TeaModel):
             self.gmt_created_time = m.get('GmtCreatedTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('HyperZones') is not None:
+            self.hyper_zones = m.get('HyperZones')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -8606,6 +8640,8 @@ class GetQuotaResponseBody(TeaModel):
             for k in m.get('SubQuotas'):
                 temp_model = QuotaIdName()
                 self.sub_quotas.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         self.workspaces = []
         if m.get('Workspaces') is not None:
             for k in m.get('Workspaces'):
@@ -8811,6 +8847,7 @@ class GetResourceGroupResponseBody(TeaModel):
         support_rdma: bool = None,
         tags: List[GetResourceGroupResponseBodyTags] = None,
         user_vpc: UserVpc = None,
+        version: str = None,
         workspace_id: str = None,
     ):
         self.cluster_id = cluster_id
@@ -8826,6 +8863,7 @@ class GetResourceGroupResponseBody(TeaModel):
         self.support_rdma = support_rdma
         self.tags = tags
         self.user_vpc = user_vpc
+        self.version = version
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8870,6 +8908,8 @@ class GetResourceGroupResponseBody(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
+        if self.version is not None:
+            result['Version'] = self.version
         if self.workspace_id is not None:
             result['WorkspaceID'] = self.workspace_id
         return result
@@ -8906,6 +8946,8 @@ class GetResourceGroupResponseBody(TeaModel):
         if m.get('UserVpc') is not None:
             temp_model = UserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('WorkspaceID') is not None:
             self.workspace_id = m.get('WorkspaceID')
         return self
@@ -11717,15 +11759,18 @@ class ListNodesRequest(TeaModel):
         self,
         accelerator_type: str = None,
         availability_zone: str = None,
+        clique_id: str = None,
         filter_by_quota_id: str = None,
         filter_by_resource_group_ids: str = None,
         gputype: str = None,
+        hyper_node: str = None,
         hyper_zone: str = None,
         machine_group_ids: str = None,
         node_names: str = None,
         node_statuses: str = None,
         node_types: str = None,
         order: str = None,
+        order_instance_ids: str = None,
         order_statuses: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -11738,15 +11783,18 @@ class ListNodesRequest(TeaModel):
     ):
         self.accelerator_type = accelerator_type
         self.availability_zone = availability_zone
+        self.clique_id = clique_id
         self.filter_by_quota_id = filter_by_quota_id
         self.filter_by_resource_group_ids = filter_by_resource_group_ids
         self.gputype = gputype
+        self.hyper_node = hyper_node
         self.hyper_zone = hyper_zone
         self.machine_group_ids = machine_group_ids
         self.node_names = node_names
         self.node_statuses = node_statuses
         self.node_types = node_types
         self.order = order
+        self.order_instance_ids = order_instance_ids
         self.order_statuses = order_statuses
         self.page_number = page_number
         self.page_size = page_size
@@ -11770,12 +11818,16 @@ class ListNodesRequest(TeaModel):
             result['AcceleratorType'] = self.accelerator_type
         if self.availability_zone is not None:
             result['AvailabilityZone'] = self.availability_zone
+        if self.clique_id is not None:
+            result['CliqueID'] = self.clique_id
         if self.filter_by_quota_id is not None:
             result['FilterByQuotaId'] = self.filter_by_quota_id
         if self.filter_by_resource_group_ids is not None:
             result['FilterByResourceGroupIds'] = self.filter_by_resource_group_ids
         if self.gputype is not None:
             result['GPUType'] = self.gputype
+        if self.hyper_node is not None:
+            result['HyperNode'] = self.hyper_node
         if self.hyper_zone is not None:
             result['HyperZone'] = self.hyper_zone
         if self.machine_group_ids is not None:
@@ -11788,6 +11840,8 @@ class ListNodesRequest(TeaModel):
             result['NodeTypes'] = self.node_types
         if self.order is not None:
             result['Order'] = self.order
+        if self.order_instance_ids is not None:
+            result['OrderInstanceIds'] = self.order_instance_ids
         if self.order_statuses is not None:
             result['OrderStatuses'] = self.order_statuses
         if self.page_number is not None:
@@ -11814,12 +11868,16 @@ class ListNodesRequest(TeaModel):
             self.accelerator_type = m.get('AcceleratorType')
         if m.get('AvailabilityZone') is not None:
             self.availability_zone = m.get('AvailabilityZone')
+        if m.get('CliqueID') is not None:
+            self.clique_id = m.get('CliqueID')
         if m.get('FilterByQuotaId') is not None:
             self.filter_by_quota_id = m.get('FilterByQuotaId')
         if m.get('FilterByResourceGroupIds') is not None:
             self.filter_by_resource_group_ids = m.get('FilterByResourceGroupIds')
         if m.get('GPUType') is not None:
             self.gputype = m.get('GPUType')
+        if m.get('HyperNode') is not None:
+            self.hyper_node = m.get('HyperNode')
         if m.get('HyperZone') is not None:
             self.hyper_zone = m.get('HyperZone')
         if m.get('MachineGroupIds') is not None:
@@ -11832,6 +11890,8 @@ class ListNodesRequest(TeaModel):
             self.node_types = m.get('NodeTypes')
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('OrderInstanceIds') is not None:
+            self.order_instance_ids = m.get('OrderInstanceIds')
         if m.get('OrderStatuses') is not None:
             self.order_statuses = m.get('OrderStatuses')
         if m.get('PageNumber') is not None:
@@ -12192,6 +12252,7 @@ class ListQuotasRequest(TeaModel):
         sort_by: str = None,
         statuses: str = None,
         verbose: bool = None,
+        versions: str = None,
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
@@ -12208,6 +12269,7 @@ class ListQuotasRequest(TeaModel):
         self.sort_by = sort_by
         self.statuses = statuses
         self.verbose = verbose
+        self.versions = versions
         self.workspace_ids = workspace_ids
         self.workspace_name = workspace_name
 
@@ -12246,6 +12308,8 @@ class ListQuotasRequest(TeaModel):
             result['Statuses'] = self.statuses
         if self.verbose is not None:
             result['Verbose'] = self.verbose
+        if self.versions is not None:
+            result['Versions'] = self.versions
         if self.workspace_ids is not None:
             result['WorkspaceIds'] = self.workspace_ids
         if self.workspace_name is not None:
@@ -12280,6 +12344,8 @@ class ListQuotasRequest(TeaModel):
             self.statuses = m.get('Statuses')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
         if m.get('WorkspaceIds') is not None:
             self.workspace_ids = m.get('WorkspaceIds')
         if m.get('WorkspaceName') is not None:
@@ -12576,6 +12642,7 @@ class ListResourceGroupsRequest(TeaModel):
         show_all: bool = None,
         sort_by: str = None,
         status: str = None,
+        versions: str = None,
     ):
         self.computing_resource_provider = computing_resource_provider
         self.has_resource = has_resource
@@ -12588,6 +12655,7 @@ class ListResourceGroupsRequest(TeaModel):
         self.show_all = show_all
         self.sort_by = sort_by
         self.status = status
+        self.versions = versions
 
     def validate(self):
         pass
@@ -12620,6 +12688,8 @@ class ListResourceGroupsRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.status is not None:
             result['Status'] = self.status
+        if self.versions is not None:
+            result['Versions'] = self.versions
         return result
 
     def from_map(self, m: dict = None):
@@ -12646,6 +12716,8 @@ class ListResourceGroupsRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
         return self
 
 

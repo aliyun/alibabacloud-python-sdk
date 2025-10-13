@@ -1,3 +1,15 @@
+2025-10-13 Version: 2.1.10
+- Update API CreateResourceGroup: add request parameters body.Version.
+- Update API GetQuota: add response parameters Body.HyperZones.
+- Update API GetQuota: add response parameters Body.Version.
+- Update API GetResourceGroup: add response parameters Body.Version.
+- Update API ListNodes: add request parameters CliqueID.
+- Update API ListNodes: add request parameters HyperNode.
+- Update API ListNodes: add request parameters OrderInstanceIds.
+- Update API ListQuotas: add request parameters Versions.
+- Update API ListResourceGroups: add request parameters Versions.
+
+
 2025-08-22 Version: 2.1.9
 - Update API GetResourceGroupMachineGroup: add response parameters Body.AllocatableCpu.
 - Update API GetResourceGroupMachineGroup: add response parameters Body.AllocatableMemory.

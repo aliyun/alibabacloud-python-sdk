@@ -669,6 +669,8 @@ class Client(OpenApiClient):
             body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_vpc):
             body['UserVpc'] = request.user_vpc
+        if not UtilClient.is_unset(request.version):
+            body['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -717,6 +719,8 @@ class Client(OpenApiClient):
             body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_vpc):
             body['UserVpc'] = request.user_vpc
+        if not UtilClient.is_unset(request.version):
+            body['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3645,12 +3649,16 @@ class Client(OpenApiClient):
             query['AcceleratorType'] = request.accelerator_type
         if not UtilClient.is_unset(request.availability_zone):
             query['AvailabilityZone'] = request.availability_zone
+        if not UtilClient.is_unset(request.clique_id):
+            query['CliqueID'] = request.clique_id
         if not UtilClient.is_unset(request.filter_by_quota_id):
             query['FilterByQuotaId'] = request.filter_by_quota_id
         if not UtilClient.is_unset(request.filter_by_resource_group_ids):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.hyper_node):
+            query['HyperNode'] = request.hyper_node
         if not UtilClient.is_unset(request.hyper_zone):
             query['HyperZone'] = request.hyper_zone
         if not UtilClient.is_unset(request.machine_group_ids):
@@ -3663,6 +3671,8 @@ class Client(OpenApiClient):
             query['NodeTypes'] = request.node_types
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_instance_ids):
+            query['OrderInstanceIds'] = request.order_instance_ids
         if not UtilClient.is_unset(request.order_statuses):
             query['OrderStatuses'] = request.order_statuses
         if not UtilClient.is_unset(request.page_number):
@@ -3721,12 +3731,16 @@ class Client(OpenApiClient):
             query['AcceleratorType'] = request.accelerator_type
         if not UtilClient.is_unset(request.availability_zone):
             query['AvailabilityZone'] = request.availability_zone
+        if not UtilClient.is_unset(request.clique_id):
+            query['CliqueID'] = request.clique_id
         if not UtilClient.is_unset(request.filter_by_quota_id):
             query['FilterByQuotaId'] = request.filter_by_quota_id
         if not UtilClient.is_unset(request.filter_by_resource_group_ids):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.hyper_node):
+            query['HyperNode'] = request.hyper_node
         if not UtilClient.is_unset(request.hyper_zone):
             query['HyperZone'] = request.hyper_zone
         if not UtilClient.is_unset(request.machine_group_ids):
@@ -3739,6 +3753,8 @@ class Client(OpenApiClient):
             query['NodeTypes'] = request.node_types
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_instance_ids):
+            query['OrderInstanceIds'] = request.order_instance_ids
         if not UtilClient.is_unset(request.order_statuses):
             query['OrderStatuses'] = request.order_statuses
         if not UtilClient.is_unset(request.page_number):
@@ -4027,6 +4043,8 @@ class Client(OpenApiClient):
             query['Statuses'] = request.statuses
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         if not UtilClient.is_unset(request.workspace_ids):
             query['WorkspaceIds'] = request.workspace_ids
         if not UtilClient.is_unset(request.workspace_name):
@@ -4093,6 +4111,8 @@ class Client(OpenApiClient):
             query['Statuses'] = request.statuses
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         if not UtilClient.is_unset(request.workspace_ids):
             query['WorkspaceIds'] = request.workspace_ids
         if not UtilClient.is_unset(request.workspace_name):
@@ -4339,6 +4359,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4397,6 +4419,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
