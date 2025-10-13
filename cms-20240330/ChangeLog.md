@@ -1,3 +1,7 @@
+2025-10-13 Version: 3.2.1
+- Update API CreateIntegrationPolicy: add request parameters body.entityGroup.disablePolicyShare.
+
+
 2025-09-28 Version: 3.2.0
 - Support API ListIntegrationPolicies.
 - Support API ListIntegrationPolicyDashboards.

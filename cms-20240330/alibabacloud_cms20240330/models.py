@@ -43,6 +43,39 @@ class AddonMetaDashboards(TeaModel):
         return self
 
 
+class AddonMetaEnvironmentsCommonSchemaRefs(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        version: str = None,
+    ):
+        self.group = group
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class AddonMetaEnvironmentsDependencies(TeaModel):
     def __init__(
         self,
@@ -291,6 +324,7 @@ class AddonMetaEnvironmentsPolicies(TeaModel):
 class AddonMetaEnvironments(TeaModel):
     def __init__(
         self,
+        common_schema_refs: List[AddonMetaEnvironmentsCommonSchemaRefs] = None,
         dependencies: AddonMetaEnvironmentsDependencies = None,
         description: str = None,
         enable: bool = None,
@@ -299,6 +333,7 @@ class AddonMetaEnvironments(TeaModel):
         policies: AddonMetaEnvironmentsPolicies = None,
         policy_type: str = None,
     ):
+        self.common_schema_refs = common_schema_refs
         self.dependencies = dependencies
         self.description = description
         self.enable = enable
@@ -308,6 +343,10 @@ class AddonMetaEnvironments(TeaModel):
         self.policy_type = policy_type
 
     def validate(self):
+        if self.common_schema_refs:
+            for k in self.common_schema_refs:
+                if k:
+                    k.validate()
         if self.dependencies:
             self.dependencies.validate()
         if self.policies:
@@ -319,6 +358,10 @@ class AddonMetaEnvironments(TeaModel):
             return _map
 
         result = dict()
+        result['commonSchemaRefs'] = []
+        if self.common_schema_refs is not None:
+            for k in self.common_schema_refs:
+                result['commonSchemaRefs'].append(k.to_map() if k else None)
         if self.dependencies is not None:
             result['dependencies'] = self.dependencies.to_map()
         if self.description is not None:
@@ -337,6 +380,11 @@ class AddonMetaEnvironments(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.common_schema_refs = []
+        if m.get('commonSchemaRefs') is not None:
+            for k in m.get('commonSchemaRefs'):
+                temp_model = AddonMetaEnvironmentsCommonSchemaRefs()
+                self.common_schema_refs.append(temp_model.from_map(k))
         if m.get('dependencies') is not None:
             temp_model = AddonMetaEnvironmentsDependencies()
             self.dependencies = temp_model.from_map(m['dependencies'])
@@ -6788,11 +6836,13 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
         self,
         cluster_entity_type: str = None,
         cluster_id: str = None,
+        disable_policy_share: bool = None,
         entity_group_id: str = None,
         vpc_id: str = None,
     ):
         self.cluster_entity_type = cluster_entity_type
         self.cluster_id = cluster_id
+        self.disable_policy_share = disable_policy_share
         self.entity_group_id = entity_group_id
         self.vpc_id = vpc_id
 
@@ -6809,6 +6859,8 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
             result['clusterEntityType'] = self.cluster_entity_type
         if self.cluster_id is not None:
             result['clusterId'] = self.cluster_id
+        if self.disable_policy_share is not None:
+            result['disablePolicyShare'] = self.disable_policy_share
         if self.entity_group_id is not None:
             result['entityGroupId'] = self.entity_group_id
         if self.vpc_id is not None:
@@ -6821,6 +6873,8 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
             self.cluster_entity_type = m.get('clusterEntityType')
         if m.get('clusterId') is not None:
             self.cluster_id = m.get('clusterId')
+        if m.get('disablePolicyShare') is not None:
+            self.disable_policy_share = m.get('disablePolicyShare')
         if m.get('entityGroupId') is not None:
             self.entity_group_id = m.get('entityGroupId')
         if m.get('vpcId') is not None:
