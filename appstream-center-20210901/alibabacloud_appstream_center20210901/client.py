@@ -659,6 +659,8 @@ class Client(OpenApiClient):
             body['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -670,6 +672,8 @@ class Client(OpenApiClient):
             body['IdempotenceToken'] = request.idempotence_token
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.network_strategy_type):
+            body['NetworkStrategyType'] = request.network_strategy_type
         if not UtilClient.is_unset(request.office_site_id):
             body['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.password):
@@ -735,6 +739,8 @@ class Client(OpenApiClient):
             body['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -746,6 +752,8 @@ class Client(OpenApiClient):
             body['IdempotenceToken'] = request.idempotence_token
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.network_strategy_type):
+            body['NetworkStrategyType'] = request.network_strategy_type
         if not UtilClient.is_unset(request.office_site_id):
             body['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.password):
@@ -1132,6 +1140,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_wuying_server_with_options_async(request, runtime)
+
+    def describe_wuying_server_eip_info_with_options(
+        self,
+        request: appstream_center_20210901_models.DescribeWuyingServerEipInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
+        """
+        @summary 查询无影工作站EIP信息
+        
+        @param request: DescribeWuyingServerEipInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWuyingServerEipInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.isp):
+            body['Isp'] = request.isp
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWuyingServerEipInfo',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_wuying_server_eip_info_with_options_async(
+        self,
+        request: appstream_center_20210901_models.DescribeWuyingServerEipInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
+        """
+        @summary 查询无影工作站EIP信息
+        
+        @param request: DescribeWuyingServerEipInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWuyingServerEipInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.isp):
+            body['Isp'] = request.isp
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWuyingServerEipInfo',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_wuying_server_eip_info(
+        self,
+        request: appstream_center_20210901_models.DescribeWuyingServerEipInfoRequest,
+    ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
+        """
+        @summary 查询无影工作站EIP信息
+        
+        @param request: DescribeWuyingServerEipInfoRequest
+        @return: DescribeWuyingServerEipInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_wuying_server_eip_info_with_options(request, runtime)
+
+    async def describe_wuying_server_eip_info_async(
+        self,
+        request: appstream_center_20210901_models.DescribeWuyingServerEipInfoRequest,
+    ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
+        """
+        @summary 查询无影工作站EIP信息
+        
+        @param request: DescribeWuyingServerEipInfoRequest
+        @return: DescribeWuyingServerEipInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_wuying_server_eip_info_with_options_async(request, runtime)
 
     def get_app_instance_group_with_options(
         self,

@@ -1737,11 +1737,13 @@ class CreateWuyingServerRequest(TeaModel):
         amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        bandwidth: int = None,
         biz_region_id: str = None,
         charge_type: str = None,
         data_disk: List[CreateWuyingServerRequestDataDisk] = None,
         idempotence_token: str = None,
         image_id: str = None,
+        network_strategy_type: str = None,
         office_site_id: str = None,
         password: str = None,
         period: int = None,
@@ -1758,11 +1760,13 @@ class CreateWuyingServerRequest(TeaModel):
         self.amount = amount
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        self.bandwidth = bandwidth
         self.biz_region_id = biz_region_id
         self.charge_type = charge_type
         self.data_disk = data_disk
         self.idempotence_token = idempotence_token
         self.image_id = image_id
+        self.network_strategy_type = network_strategy_type
         self.office_site_id = office_site_id
         self.password = password
         self.period = period
@@ -1794,6 +1798,8 @@ class CreateWuyingServerRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -1806,6 +1812,8 @@ class CreateWuyingServerRequest(TeaModel):
             result['IdempotenceToken'] = self.idempotence_token
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.network_strategy_type is not None:
+            result['NetworkStrategyType'] = self.network_strategy_type
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
         if self.password is not None:
@@ -1840,6 +1848,8 @@ class CreateWuyingServerRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -1853,6 +1863,8 @@ class CreateWuyingServerRequest(TeaModel):
             self.idempotence_token = m.get('IdempotenceToken')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('NetworkStrategyType') is not None:
+            self.network_strategy_type = m.get('NetworkStrategyType')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('Password') is not None:
@@ -2384,6 +2396,156 @@ class DeleteWuyingServerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWuyingServerEipInfoRequest(TeaModel):
+    def __init__(
+        self,
+        isp: str = None,
+        wuying_server_id: str = None,
+    ):
+        self.isp = isp
+        # This parameter is required.
+        self.wuying_server_id = wuying_server_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.wuying_server_id is not None:
+            result['WuyingServerId'] = self.wuying_server_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('WuyingServerId') is not None:
+            self.wuying_server_id = m.get('WuyingServerId')
+        return self
+
+
+class DescribeWuyingServerEipInfoResponseBodyEipInfoModel(TeaModel):
+    def __init__(
+        self,
+        ip_address: str = None,
+        network_interface_id: str = None,
+        server_port_range: str = None,
+    ):
+        self.ip_address = ip_address
+        self.network_interface_id = network_interface_id
+        self.server_port_range = server_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.server_port_range is not None:
+            result['ServerPortRange'] = self.server_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('ServerPortRange') is not None:
+            self.server_port_range = m.get('ServerPortRange')
+        return self
+
+
+class DescribeWuyingServerEipInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        eip_info_model: DescribeWuyingServerEipInfoResponseBodyEipInfoModel = None,
+        request_id: str = None,
+    ):
+        self.eip_info_model = eip_info_model
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.eip_info_model:
+            self.eip_info_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_info_model is not None:
+            result['EipInfoModel'] = self.eip_info_model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipInfoModel') is not None:
+            temp_model = DescribeWuyingServerEipInfoResponseBodyEipInfoModel()
+            self.eip_info_model = temp_model.from_map(m['EipInfoModel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeWuyingServerEipInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWuyingServerEipInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWuyingServerEipInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

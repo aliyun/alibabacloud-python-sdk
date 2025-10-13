@@ -1,3 +1,9 @@
+2025-10-13 Version: 4.3.0
+- Support API DescribeWuyingServerEipInfo.
+- Update API CreateWuyingServer: add request parameters Bandwidth.
+- Update API CreateWuyingServer: add request parameters NetworkStrategyType.
+
+
 2025-10-04 Version: 4.2.0
 - Support API DeleteWuyingServer.
 - Update API CreateWuyingServer: add request parameters IdempotenceToken.
