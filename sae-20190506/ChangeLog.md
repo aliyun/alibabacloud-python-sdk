@@ -1,3 +1,8 @@
+2025-10-13 Version: 2.8.1
+- Update API DeployApplication: add request parameters AlbIngressReadinessGate.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.AlbIngressReadinessGate.
+
+
 2025-10-10 Version: 2.8.0
 - Support API BatchRestartApplications.
 

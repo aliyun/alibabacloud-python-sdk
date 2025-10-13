@@ -4605,6 +4605,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
+        if not UtilClient.is_unset(request.alb_ingress_readiness_gate):
+            query['AlbIngressReadinessGate'] = request.alb_ingress_readiness_gate
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
@@ -4803,6 +4805,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
+        if not UtilClient.is_unset(request.alb_ingress_readiness_gate):
+            query['AlbIngressReadinessGate'] = request.alb_ingress_readiness_gate
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):

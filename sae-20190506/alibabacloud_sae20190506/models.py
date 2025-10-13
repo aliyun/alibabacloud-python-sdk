@@ -19843,6 +19843,7 @@ class DeployApplicationRequest(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        alb_ingress_readiness_gate: str = None,
         app_id: str = None,
         associate_eip: bool = None,
         auto_enable_application_scaling_rule: bool = None,
@@ -19923,6 +19924,7 @@ class DeployApplicationRequest(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.alb_ingress_readiness_gate = alb_ingress_readiness_gate
         # The ID of the application.
         # 
         # This parameter is required.
@@ -20384,6 +20386,8 @@ class DeployApplicationRequest(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.alb_ingress_readiness_gate is not None:
+            result['AlbIngressReadinessGate'] = self.alb_ingress_readiness_gate
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.associate_eip is not None:
@@ -20546,6 +20550,8 @@ class DeployApplicationRequest(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AlbIngressReadinessGate') is not None:
+            self.alb_ingress_readiness_gate = m.get('AlbIngressReadinessGate')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AssociateEip') is not None:
@@ -20710,6 +20716,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        alb_ingress_readiness_gate: str = None,
         app_id: str = None,
         associate_eip: bool = None,
         auto_enable_application_scaling_rule: bool = None,
@@ -20790,6 +20797,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.alb_ingress_readiness_gate = alb_ingress_readiness_gate
         # The ID of the application.
         # 
         # This parameter is required.
@@ -21244,6 +21252,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.alb_ingress_readiness_gate is not None:
+            result['AlbIngressReadinessGate'] = self.alb_ingress_readiness_gate
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.associate_eip is not None:
@@ -21402,6 +21412,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AlbIngressReadinessGate') is not None:
+            self.alb_ingress_readiness_gate = m.get('AlbIngressReadinessGate')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AssociateEip') is not None:
@@ -22895,6 +22907,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        alb_ingress_readiness_gate: str = None,
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
@@ -22991,6 +23004,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of the Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.alb_ingress_readiness_gate = alb_ingress_readiness_gate
         # The description of the application.
         self.app_description = app_description
         # The ID of the application.
@@ -23430,6 +23444,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.alb_ingress_readiness_gate is not None:
+            result['AlbIngressReadinessGate'] = self.alb_ingress_readiness_gate
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_id is not None:
@@ -23636,6 +23652,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AlbIngressReadinessGate') is not None:
+            self.alb_ingress_readiness_gate = m.get('AlbIngressReadinessGate')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppId') is not None:
