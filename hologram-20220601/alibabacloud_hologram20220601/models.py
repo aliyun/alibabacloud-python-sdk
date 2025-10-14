@@ -136,9 +136,11 @@ class ChangeResourceGroupResponse(TeaModel):
 class CreateHoloWarehouseRequest(TeaModel):
     def __init__(
         self,
+        cluster_count: int = None,
         cpu: str = None,
         name: str = None,
     ):
+        self.cluster_count = cluster_count
         # The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16 CPUs. Minimum value: 16.
         # 
         # This parameter is required.
@@ -157,6 +159,8 @@ class CreateHoloWarehouseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_count is not None:
+            result['clusterCount'] = self.cluster_count
         if self.cpu is not None:
             result['cpu'] = self.cpu
         if self.name is not None:
@@ -165,6 +169,8 @@ class CreateHoloWarehouseRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('clusterCount') is not None:
+            self.cluster_count = m.get('clusterCount')
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
         if m.get('name') is not None:
@@ -2466,22 +2472,34 @@ class GetRootCertificateResponse(TeaModel):
 class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
     def __init__(
         self,
+        auto_scale_type: str = None,
+        cluster_count: str = None,
+        cluster_cpu: str = None,
         cpu: int = None,
         default_warehouse: bool = None,
         elastic_cpu: int = None,
+        elastic_type: str = None,
         id: int = None,
+        init_cluster_count: str = None,
+        max_cluster_count: str = None,
         mem: int = None,
         name: str = None,
         node_count: int = None,
         rebalance_status: str = None,
         status: str = None,
     ):
+        self.auto_scale_type = auto_scale_type
+        self.cluster_count = cluster_count
+        self.cluster_cpu = cluster_cpu
         # The number of CPU cores.
         self.cpu = cpu
         self.default_warehouse = default_warehouse
         self.elastic_cpu = elastic_cpu
+        self.elastic_type = elastic_type
         # The ID.
         self.id = id
+        self.init_cluster_count = init_cluster_count
+        self.max_cluster_count = max_cluster_count
         # The memory capacity.
         self.mem = mem
         # The name of the virtual warehouse instance.
@@ -2543,14 +2561,26 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_scale_type is not None:
+            result['AutoScaleType'] = self.auto_scale_type
+        if self.cluster_count is not None:
+            result['ClusterCount'] = self.cluster_count
+        if self.cluster_cpu is not None:
+            result['ClusterCpu'] = self.cluster_cpu
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.default_warehouse is not None:
             result['DefaultWarehouse'] = self.default_warehouse
         if self.elastic_cpu is not None:
             result['ElasticCpu'] = self.elastic_cpu
+        if self.elastic_type is not None:
+            result['ElasticType'] = self.elastic_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.init_cluster_count is not None:
+            result['InitClusterCount'] = self.init_cluster_count
+        if self.max_cluster_count is not None:
+            result['MaxClusterCount'] = self.max_cluster_count
         if self.mem is not None:
             result['Mem'] = self.mem
         if self.name is not None:
@@ -2565,14 +2595,26 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoScaleType') is not None:
+            self.auto_scale_type = m.get('AutoScaleType')
+        if m.get('ClusterCount') is not None:
+            self.cluster_count = m.get('ClusterCount')
+        if m.get('ClusterCpu') is not None:
+            self.cluster_cpu = m.get('ClusterCpu')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('DefaultWarehouse') is not None:
             self.default_warehouse = m.get('DefaultWarehouse')
         if m.get('ElasticCpu') is not None:
             self.elastic_cpu = m.get('ElasticCpu')
+        if m.get('ElasticType') is not None:
+            self.elastic_type = m.get('ElasticType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InitClusterCount') is not None:
+            self.init_cluster_count = m.get('InitClusterCount')
+        if m.get('MaxClusterCount') is not None:
+            self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
         if m.get('Name') is not None:
@@ -2589,11 +2631,13 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
 class GetWarehouseDetailResponseBodyWarehouseDetail(TeaModel):
     def __init__(
         self,
+        auto_elastic_cpu: str = None,
         remaining_cpu: str = None,
         reserved_cpu: str = None,
         timed_elastic_cpu: str = None,
         warehouse_list: List[GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList] = None,
     ):
+        self.auto_elastic_cpu = auto_elastic_cpu
         # The remaining unallocated computing resources of the virtual warehouse instance.
         self.remaining_cpu = remaining_cpu
         # The reserved computing resources. The amount of computing resources in all running virtual warehouses in an instance cannot exceed the amount of reserved computing resources in the virtual warehouses.
@@ -2614,6 +2658,8 @@ class GetWarehouseDetailResponseBodyWarehouseDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_elastic_cpu is not None:
+            result['AutoElasticCpu'] = self.auto_elastic_cpu
         if self.remaining_cpu is not None:
             result['RemainingCpu'] = self.remaining_cpu
         if self.reserved_cpu is not None:
@@ -2628,6 +2674,8 @@ class GetWarehouseDetailResponseBodyWarehouseDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoElasticCpu') is not None:
+            self.auto_elastic_cpu = m.get('AutoElasticCpu')
         if m.get('RemainingCpu') is not None:
             self.remaining_cpu = m.get('RemainingCpu')
         if m.get('ReservedCpu') is not None:
@@ -4803,9 +4851,11 @@ class ResumeInstanceResponse(TeaModel):
 class ScaleHoloWarehouseRequest(TeaModel):
     def __init__(
         self,
+        cluster_count: int = None,
         cpu: int = None,
         name: str = None,
     ):
+        self.cluster_count = cluster_count
         # The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16.
         # 
         # This parameter is required.
@@ -4824,6 +4874,8 @@ class ScaleHoloWarehouseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_count is not None:
+            result['clusterCount'] = self.cluster_count
         if self.cpu is not None:
             result['cpu'] = self.cpu
         if self.name is not None:
@@ -4832,6 +4884,8 @@ class ScaleHoloWarehouseRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('clusterCount') is not None:
+            self.cluster_count = m.get('clusterCount')
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
         if m.get('name') is not None:

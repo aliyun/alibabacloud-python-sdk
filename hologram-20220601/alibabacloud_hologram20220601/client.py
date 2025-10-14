@@ -166,6 +166,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cluster_count):
+            body['clusterCount'] = request.cluster_count
         if not UtilClient.is_unset(request.cpu):
             body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.name):
@@ -207,6 +209,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cluster_count):
+            body['clusterCount'] = request.cluster_count
         if not UtilClient.is_unset(request.cpu):
             body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.name):
@@ -2674,6 +2678,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cluster_count):
+            body['clusterCount'] = request.cluster_count
         if not UtilClient.is_unset(request.cpu):
             body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.name):
@@ -2715,6 +2721,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cluster_count):
+            body['clusterCount'] = request.cluster_count
         if not UtilClient.is_unset(request.cpu):
             body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.name):

@@ -1,3 +1,15 @@
+2025-10-14 Version: 1.6.1
+- Update API CreateHoloWarehouse: add request parameters body.clusterCount.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.AutoElasticCpu.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.WarehouseList.$.AutoScaleType.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.WarehouseList.$.ClusterCount.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.WarehouseList.$.ClusterCpu.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.WarehouseList.$.ElasticType.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.WarehouseList.$.InitClusterCount.
+- Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.WarehouseList.$.MaxClusterCount.
+- Update API ScaleHoloWarehouse: add request parameters body.clusterCount.
+
+
 2025-10-13 Version: 1.6.0
 - Support API DisableSSL.
 - Support API EnableSSL.
