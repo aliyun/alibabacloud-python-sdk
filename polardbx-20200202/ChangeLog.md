@@ -1,3 +1,70 @@
+2025-10-14 Version: 3.1.0
+- Support API AttachColumnarInstance.
+- Support API CheckSqlAuditSlsStatus.
+- Support API CloseEngineMigration.
+- Support API ConfirmNoConnection.
+- Support API CreateCustomEndpoint.
+- Support API CreateDataImportTask.
+- Support API CreateGdnInstance.
+- Support API CreateRplInspectionTask.
+- Support API CreateSQLEvaluateTask.
+- Support API CreateStoragePool.
+- Support API CreateStructureImportTask.
+- Support API CreateTransformOperation.
+- Support API DeleteCustomEndpoint.
+- Support API DeleteEvaluateAndImportTask.
+- Support API DeleteGdnInstance.
+- Support API DescribeAvailableCrossRegions.
+- Support API DescribeCdcClassList.
+- Support API DescribeCdcVersionList.
+- Support API DescribeColumnarClassList.
+- Support API DescribeColumnarInfo.
+- Support API DescribeColumnarVersionList.
+- Support API DescribeComponentPropeties.
+- Support API DescribeCustomEndpointList.
+- Support API DescribeDataImportTaskInfo.
+- Support API DescribeEnabledCrossRegions.
+- Support API DescribeEvaluateAndImportTask.
+- Support API DescribeEvaluateAndImportTasks.
+- Support API DescribeParameterGroups.
+- Support API DescribePolarxDataNodes.
+- Support API DescribeRdsVpcs.
+- Support API DescribeRdsVswitches.
+- Support API DescribeRplInspectionTask.
+- Support API DescribeShowStorageInfo.
+- Support API DescribeSqlAuditInfo.
+- Support API DescribeSqlFlashbackTaskList.
+- Support API DescribeStoragePoolInfo.
+- Support API DescribeStructureImportTaskInfo.
+- Support API DescribeTransformStatus.
+- Support API DisableSqlAudit.
+- Support API EnableSqlAudit.
+- Support API MigrateDBInstance.
+- Support API ModifyCdcClass.
+- Support API ModifyColumnarClass.
+- Support API ModifyCustomEndpoint.
+- Support API ModifyCustomEndpointNet.
+- Support API ModifyDBInstanceMaintainTime.
+- Support API ModifyDBInstanceVip.
+- Support API ModifyEngineMigration.
+- Support API PreCheckSqlFlashbackTask.
+- Support API RefreshImportMeta.
+- Support API ResetAccountPasswordRestrict.
+- Support API RestartDataImportTask.
+- Support API SkipCurrentStep.
+- Support API StartSwitchDatabase.
+- Support API StopDataImportTask.
+- Support API SubmitSqlFlashbackTask.
+- Support API UpgradeCDCVersion.
+- Support API UpgradeColumnarVersion.
+- Update API DescribeGdnInstances: add response parameters Body.Data.GdnInstanceList.$.GdnMode.
+- Update API DescribeGdnInstances: add response parameters Body.Data.GdnInstanceList.$.RplConflictStrategy.
+- Update API DescribeGdnInstances: add response parameters Body.Data.GdnInstanceList.$.RplDmlStrategy.
+- Update API DescribeGdnInstances: add response parameters Body.Data.GdnInstanceList.$.RplSyncDdl.
+- Update API DescribeGdnInstances: add response parameters Body.Data.GdnInstanceList.$.MemberList.$.DataSyncStatus.
+- Update API DescribeGdnInstances: add response parameters Body.Data.GdnInstanceList.$.MemberList.$.ReadWriteStatus.
+
+
 2025-09-10 Version: 3.0.4
 - Update API DescribeDBInstances: add response parameters Body.DBInstances.$.Nodes.$.Name.
 
