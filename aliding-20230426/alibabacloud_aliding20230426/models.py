@@ -62625,7 +62625,7 @@ class InvokeAssistantResponseBodyMessagesContentDingCard(TeaModel):
 class InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        card_param_map: Dict[str, Any] = None,
+        card_param_map: Any = None,
     ):
         self.card_param_map = card_param_map
 

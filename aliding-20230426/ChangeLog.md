@@ -1,3 +1,6 @@
+2025-10-14 Version: 2.44.4
+- Generated python 2023-04-26 for aliding.
+
 2025-08-20 Version: 2.44.3
 - Update API GetOrgLiveList: add response parameters Body.result.NewLive.LiveList.$.AnchorUnionIdInAlibaba.
 - Update API GetOrgLiveList: add response parameters Body.result.UpdateLive.LiveList.$.AnchorUnionIdInAlibaba.
