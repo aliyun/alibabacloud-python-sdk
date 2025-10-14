@@ -1,3 +1,9 @@
+2025-10-14 Version: 2.1.0
+- Support API DeleteInstances.
+- Support API StopInstances.
+- Update API UpdateInstance: add request parameters body.StartInstance.
+
+
 2025-09-10 Version: 2.0.1
 - Update API CreateInstance: add request parameters body.AssignNodeSpec.
 - Update API CreateInstance: add request parameters body.SpotSpec.

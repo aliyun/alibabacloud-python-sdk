@@ -1073,6 +1073,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
 
+    def delete_instances_with_options(
+        self,
+        request: pai_dsw_20220101_models.DeleteInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.DeleteInstancesResponse:
+        """
+        @summary 批量删除实例
+        
+        @param request: DeleteInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstances',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/batch/instances/delete',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instances_with_options_async(
+        self,
+        request: pai_dsw_20220101_models.DeleteInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.DeleteInstancesResponse:
+        """
+        @summary 批量删除实例
+        
+        @param request: DeleteInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstances',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/batch/instances/delete',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instances(
+        self,
+        request: pai_dsw_20220101_models.DeleteInstancesRequest,
+    ) -> pai_dsw_20220101_models.DeleteInstancesResponse:
+        """
+        @summary 批量删除实例
+        
+        @param request: DeleteInstancesRequest
+        @return: DeleteInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instances_with_options(request, headers, runtime)
+
+    async def delete_instances_async(
+        self,
+        request: pai_dsw_20220101_models.DeleteInstancesRequest,
+    ) -> pai_dsw_20220101_models.DeleteInstancesResponse:
+        """
+        @summary 批量删除实例
+        
+        @param request: DeleteInstancesRequest
+        @return: DeleteInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instances_with_options_async(request, headers, runtime)
+
     def get_idle_instance_culler_with_options(
         self,
         instance_id: str,
@@ -3295,6 +3399,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.stop_instance_with_options_async(instance_id, request, headers, runtime)
 
+    def stop_instances_with_options(
+        self,
+        request: pai_dsw_20220101_models.StopInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.StopInstancesResponse:
+        """
+        @summary 批量停止实例
+        
+        @param request: StopInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopInstances',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/batch/instances/stop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.StopInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_instances_with_options_async(
+        self,
+        request: pai_dsw_20220101_models.StopInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.StopInstancesResponse:
+        """
+        @summary 批量停止实例
+        
+        @param request: StopInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopInstances',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/batch/instances/stop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.StopInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_instances(
+        self,
+        request: pai_dsw_20220101_models.StopInstancesRequest,
+    ) -> pai_dsw_20220101_models.StopInstancesResponse:
+        """
+        @summary 批量停止实例
+        
+        @param request: StopInstancesRequest
+        @return: StopInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_instances_with_options(request, headers, runtime)
+
+    async def stop_instances_async(
+        self,
+        request: pai_dsw_20220101_models.StopInstancesRequest,
+    ) -> pai_dsw_20220101_models.StopInstancesResponse:
+        """
+        @summary 批量停止实例
+        
+        @param request: StopInstancesRequest
+        @return: StopInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_instances_with_options_async(request, headers, runtime)
+
     def update_instance_with_options(
         self,
         instance_id: str,
@@ -3366,6 +3574,8 @@ class Client(OpenApiClient):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.spot_spec):
             body['SpotSpec'] = request.spot_spec
+        if not UtilClient.is_unset(request.start_instance):
+            body['StartInstance'] = request.start_instance
         if not UtilClient.is_unset(request.user_command):
             body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
@@ -3465,6 +3675,8 @@ class Client(OpenApiClient):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.spot_spec):
             body['SpotSpec'] = request.spot_spec
+        if not UtilClient.is_unset(request.start_instance):
+            body['StartInstance'] = request.start_instance
         if not UtilClient.is_unset(request.user_command):
             body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):

@@ -2696,6 +2696,138 @@ class DeleteInstanceSnapshotResponse(TeaModel):
         return self
 
 
+class DeleteInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class DeleteInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: Dict[str, Any] = None,
+        code: str = None,
+        http_status_code: int = None,
+        instance_ids: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.http_status_code = http_status_code
+        self.instance_ids = instance_ids
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetIdleInstanceCullerResponseBody(TeaModel):
     def __init__(
         self,
@@ -8967,6 +9099,139 @@ class StopInstanceResponse(TeaModel):
         return self
 
 
+class StopInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class StopInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: Dict[str, str] = None,
+        code: str = None,
+        http_status_code: int = None,
+        instance_ids: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.http_status_code = http_status_code
+        self.instance_ids = instance_ids
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StopInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateInstanceRequestAffinityCPU(TeaModel):
     def __init__(
         self,
@@ -9477,6 +9742,7 @@ class UpdateInstanceRequest(TeaModel):
         priority: int = None,
         requested_resource: UpdateInstanceRequestRequestedResource = None,
         spot_spec: UpdateInstanceRequestSpotSpec = None,
+        start_instance: bool = None,
         user_command: UpdateInstanceRequestUserCommand = None,
         user_id: str = None,
         user_vpc: UpdateInstanceRequestUserVpc = None,
@@ -9542,6 +9808,7 @@ class UpdateInstanceRequest(TeaModel):
         # The resource configurations.
         self.requested_resource = requested_resource
         self.spot_spec = spot_spec
+        self.start_instance = start_instance
         self.user_command = user_command
         # the User ID of the instance.
         self.user_id = user_id
@@ -9652,6 +9919,8 @@ class UpdateInstanceRequest(TeaModel):
             result['RequestedResource'] = self.requested_resource.to_map()
         if self.spot_spec is not None:
             result['SpotSpec'] = self.spot_spec.to_map()
+        if self.start_instance is not None:
+            result['StartInstance'] = self.start_instance
         if self.user_command is not None:
             result['UserCommand'] = self.user_command.to_map()
         if self.user_id is not None:
@@ -9730,6 +9999,8 @@ class UpdateInstanceRequest(TeaModel):
         if m.get('SpotSpec') is not None:
             temp_model = UpdateInstanceRequestSpotSpec()
             self.spot_spec = temp_model.from_map(m['SpotSpec'])
+        if m.get('StartInstance') is not None:
+            self.start_instance = m.get('StartInstance')
         if m.get('UserCommand') is not None:
             temp_model = UpdateInstanceRequestUserCommand()
             self.user_command = temp_model.from_map(m['UserCommand'])
