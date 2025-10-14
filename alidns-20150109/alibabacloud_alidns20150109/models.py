@@ -4290,6 +4290,7 @@ class CreateCloudGtmInstanceConfigRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        charge_type: str = None,
         client_token: str = None,
         enable_status: str = None,
         instance_id: str = None,
@@ -4305,6 +4306,7 @@ class CreateCloudGtmInstanceConfigRequest(TeaModel):
         # *   zh-CN: Chinese
         # *   en-US: English
         self.accept_language = accept_language
+        self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The enabling state of the access domain name. Valid values:
@@ -4345,6 +4347,8 @@ class CreateCloudGtmInstanceConfigRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.enable_status is not None:
@@ -4369,6 +4373,8 @@ class CreateCloudGtmInstanceConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('EnableStatus') is not None:
@@ -4394,11 +4400,13 @@ class CreateCloudGtmInstanceConfigResponseBody(TeaModel):
     def __init__(
         self,
         config_id: bool = None,
+        instance_id: str = None,
         request_id: str = None,
         success: bool = None,
     ):
         # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
@@ -4418,6 +4426,8 @@ class CreateCloudGtmInstanceConfigResponseBody(TeaModel):
         result = dict()
         if self.config_id is not None:
             result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -4428,6 +4438,8 @@ class CreateCloudGtmInstanceConfigResponseBody(TeaModel):
         m = m or dict()
         if m.get('ConfigId') is not None:
             self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
@@ -36907,6 +36919,7 @@ class ListCloudGtmInstancesRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        charge_type: str = None,
         client_token: str = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -36917,6 +36930,7 @@ class ListCloudGtmInstancesRequest(TeaModel):
         # - zh-CN: Chinese.
         # - en-US: English.
         self.accept_language = accept_language
+        self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the GTM instance.
@@ -36939,6 +36953,8 @@ class ListCloudGtmInstancesRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.instance_id is not None:
@@ -36955,6 +36971,8 @@ class ListCloudGtmInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('InstanceId') is not None:
@@ -36971,6 +36989,7 @@ class ListCloudGtmInstancesRequest(TeaModel):
 class ListCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         commodity_code: str = None,
         create_time: str = None,
         create_timestamp: int = None,
@@ -36988,6 +37007,7 @@ class ListCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        self.charge_type = charge_type
         # The commodity code. Valid values:
         # 
         # *   dns_gtm_public_cn: commodity code on the China site (aliyun.com)
@@ -37035,6 +37055,8 @@ class ListCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
         if self.create_time is not None:
@@ -37071,6 +37093,8 @@ class ListCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
         if m.get('CreateTime') is not None:
@@ -43248,6 +43272,7 @@ class SearchCloudGtmInstancesRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        charge_type: str = None,
         client_token: str = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -43258,6 +43283,7 @@ class SearchCloudGtmInstancesRequest(TeaModel):
         # - **zh-CN**: Chinese. 
         # - **en-US**: English.
         self.accept_language = accept_language
+        self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
         # The ID of the Global Traffic Manager (GTM) 3.0 instance.
@@ -43280,6 +43306,8 @@ class SearchCloudGtmInstancesRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.instance_id is not None:
@@ -43296,6 +43324,8 @@ class SearchCloudGtmInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('InstanceId') is not None:
@@ -43312,6 +43342,7 @@ class SearchCloudGtmInstancesRequest(TeaModel):
 class SearchCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         commodity_code: str = None,
         create_time: str = None,
         create_timestamp: int = None,
@@ -43329,6 +43360,7 @@ class SearchCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        self.charge_type = charge_type
         # The commodity code. Valid values:
         # 
         # *   dns_gtm_public_cn: commodity code on the China site (aliyun.com)
@@ -43376,6 +43408,8 @@ class SearchCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
         if self.create_time is not None:
@@ -43412,6 +43446,8 @@ class SearchCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
         if m.get('CreateTime') is not None:

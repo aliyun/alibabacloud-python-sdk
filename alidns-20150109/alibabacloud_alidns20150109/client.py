@@ -2631,6 +2631,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
         """
+        @summary 创建gtm实例配置
+        
         @param request: CreateCloudGtmInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmInstanceConfigResponse
@@ -2639,6 +2641,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.enable_status):
@@ -2682,6 +2686,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
         """
+        @summary 创建gtm实例配置
+        
         @param request: CreateCloudGtmInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmInstanceConfigResponse
@@ -2690,6 +2696,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.enable_status):
@@ -2732,6 +2740,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmInstanceConfigRequest,
     ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
         """
+        @summary 创建gtm实例配置
+        
         @param request: CreateCloudGtmInstanceConfigRequest
         @return: CreateCloudGtmInstanceConfigResponse
         """
@@ -2743,6 +2753,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmInstanceConfigRequest,
     ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
         """
+        @summary 创建gtm实例配置
+        
         @param request: CreateCloudGtmInstanceConfigRequest
         @return: CreateCloudGtmInstanceConfigResponse
         """
@@ -15863,6 +15875,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.instance_id):
@@ -15908,6 +15922,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.instance_id):
@@ -18375,6 +18391,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.instance_id):
@@ -18420,6 +18438,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.instance_id):

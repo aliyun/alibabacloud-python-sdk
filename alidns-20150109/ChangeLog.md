@@ -1,3 +1,12 @@
+2025-10-14 Version: 3.6.1
+- Update API CreateCloudGtmInstanceConfig: add request parameters ChargeType.
+- Update API CreateCloudGtmInstanceConfig: add response parameters Body.InstanceId.
+- Update API ListCloudGtmInstances: add request parameters ChargeType.
+- Update API ListCloudGtmInstances: add response parameters Body.Instances.$.ChargeType.
+- Update API SearchCloudGtmInstances: add request parameters ChargeType.
+- Update API SearchCloudGtmInstances: add response parameters Body.Instances.$.ChargeType.
+
+
 2025-09-09 Version: 3.6.0
 - Support API AddRecursionRecord.
 - Support API AddRecursionZone.
