@@ -1,3 +1,7 @@
+2025-10-14 Version: 2.0.1
+- Update API SubmitDocTranslateTask: add request parameters ext.config.
+
+
 2025-09-23 Version: 2.0.0
 - Update API BatchTranslate: add request parameters appName.
 - Update API BatchTranslate: add request parameters ext.config.

@@ -1836,6 +1836,33 @@ class GetLongTextTranslateTaskResponse(TeaModel):
         return self
 
 
+class SubmitDocTranslateTaskRequestExtConfig(TeaModel):
+    def __init__(
+        self,
+        skip_img_trans: bool = None,
+    ):
+        self.skip_img_trans = skip_img_trans
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.skip_img_trans is not None:
+            result['skipImgTrans'] = self.skip_img_trans
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('skipImgTrans') is not None:
+            self.skip_img_trans = m.get('skipImgTrans')
+        return self
+
+
 class SubmitDocTranslateTaskRequestExtTerminologies(TeaModel):
     def __init__(
         self,
@@ -1872,13 +1899,17 @@ class SubmitDocTranslateTaskRequestExtTerminologies(TeaModel):
 class SubmitDocTranslateTaskRequestExt(TeaModel):
     def __init__(
         self,
+        config: SubmitDocTranslateTaskRequestExtConfig = None,
         domain_hint: str = None,
         terminologies: List[SubmitDocTranslateTaskRequestExtTerminologies] = None,
     ):
+        self.config = config
         self.domain_hint = domain_hint
         self.terminologies = terminologies
 
     def validate(self):
+        if self.config:
+            self.config.validate()
         if self.terminologies:
             for k in self.terminologies:
                 if k:
@@ -1890,6 +1921,8 @@ class SubmitDocTranslateTaskRequestExt(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.domain_hint is not None:
             result['domainHint'] = self.domain_hint
         result['terminologies'] = []
@@ -1900,6 +1933,9 @@ class SubmitDocTranslateTaskRequestExt(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = SubmitDocTranslateTaskRequestExtConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('domainHint') is not None:
             self.domain_hint = m.get('domainHint')
         self.terminologies = []
