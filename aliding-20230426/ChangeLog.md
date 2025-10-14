@@ -1,3 +1,8 @@
+2025-10-14 Version: 2.45.0
+- Support API DocBlocksDelete.
+- Support API DocBlocksModify.
+
+
 2025-10-14 Version: 2.44.4
 - Generated python 2023-04-26 for aliding.
 

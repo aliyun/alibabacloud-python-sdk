@@ -11099,6 +11099,290 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.DeleteWorkspaceMembersHeaders()
         return await self.delete_workspace_members_with_options_async(request, headers, runtime)
 
+    def doc_blocks_delete_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DocBlocksDeleteRequest,
+        tmp_header: aliding_20230426_models.DocBlocksDeleteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DocBlocksDeleteResponse:
+        """
+        @summary 删除块元素
+        
+        @param tmp_req: DocBlocksDeleteRequest
+        @param tmp_header: DocBlocksDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocBlocksDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DocBlocksDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DocBlocksDeleteShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.block_id):
+            body['BlockId'] = request.block_id
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocBlocksDelete',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/docBlocksDelete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DocBlocksDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def doc_blocks_delete_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DocBlocksDeleteRequest,
+        tmp_header: aliding_20230426_models.DocBlocksDeleteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DocBlocksDeleteResponse:
+        """
+        @summary 删除块元素
+        
+        @param tmp_req: DocBlocksDeleteRequest
+        @param tmp_header: DocBlocksDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocBlocksDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DocBlocksDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DocBlocksDeleteShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.block_id):
+            body['BlockId'] = request.block_id
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocBlocksDelete',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/docBlocksDelete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DocBlocksDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def doc_blocks_delete(
+        self,
+        request: aliding_20230426_models.DocBlocksDeleteRequest,
+    ) -> aliding_20230426_models.DocBlocksDeleteResponse:
+        """
+        @summary 删除块元素
+        
+        @param request: DocBlocksDeleteRequest
+        @return: DocBlocksDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DocBlocksDeleteHeaders()
+        return self.doc_blocks_delete_with_options(request, headers, runtime)
+
+    async def doc_blocks_delete_async(
+        self,
+        request: aliding_20230426_models.DocBlocksDeleteRequest,
+    ) -> aliding_20230426_models.DocBlocksDeleteResponse:
+        """
+        @summary 删除块元素
+        
+        @param request: DocBlocksDeleteRequest
+        @return: DocBlocksDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DocBlocksDeleteHeaders()
+        return await self.doc_blocks_delete_with_options_async(request, headers, runtime)
+
+    def doc_blocks_modify_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DocBlocksModifyRequest,
+        tmp_header: aliding_20230426_models.DocBlocksModifyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DocBlocksModifyResponse:
+        """
+        @summary 更新块元素
+        
+        @param tmp_req: DocBlocksModifyRequest
+        @param tmp_header: DocBlocksModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocBlocksModifyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DocBlocksModifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DocBlocksModifyShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.element):
+            request.element_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.element, 'Element', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.block_id):
+            body['BlockId'] = request.block_id
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.element_shrink):
+            body['Element'] = request.element_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocBlocksModify',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/docBlocksModify',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DocBlocksModifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def doc_blocks_modify_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DocBlocksModifyRequest,
+        tmp_header: aliding_20230426_models.DocBlocksModifyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DocBlocksModifyResponse:
+        """
+        @summary 更新块元素
+        
+        @param tmp_req: DocBlocksModifyRequest
+        @param tmp_header: DocBlocksModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocBlocksModifyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DocBlocksModifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DocBlocksModifyShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.element):
+            request.element_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.element, 'Element', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.block_id):
+            body['BlockId'] = request.block_id
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.element_shrink):
+            body['Element'] = request.element_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocBlocksModify',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/docBlocksModify',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DocBlocksModifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def doc_blocks_modify(
+        self,
+        request: aliding_20230426_models.DocBlocksModifyRequest,
+    ) -> aliding_20230426_models.DocBlocksModifyResponse:
+        """
+        @summary 更新块元素
+        
+        @param request: DocBlocksModifyRequest
+        @return: DocBlocksModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DocBlocksModifyHeaders()
+        return self.doc_blocks_modify_with_options(request, headers, runtime)
+
+    async def doc_blocks_modify_async(
+        self,
+        request: aliding_20230426_models.DocBlocksModifyRequest,
+    ) -> aliding_20230426_models.DocBlocksModifyResponse:
+        """
+        @summary 更新块元素
+        
+        @param request: DocBlocksModifyRequest
+        @return: DocBlocksModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DocBlocksModifyHeaders()
+        return await self.doc_blocks_modify_with_options_async(request, headers, runtime)
+
     def doc_blocks_query_with_options(
         self,
         tmp_req: aliding_20230426_models.DocBlocksQueryRequest,
