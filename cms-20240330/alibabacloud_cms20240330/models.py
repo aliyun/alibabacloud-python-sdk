@@ -14164,9 +14164,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroup(TeaModel):
 class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(TeaModel):
     def __init__(
         self,
+        eni_id: str = None,
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
+        self.eni_id = eni_id
         self.security_group_id = security_group_id
         self.vswitch_id = vswitch_id
 
@@ -14179,6 +14181,8 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.eni_id is not None:
+            result['eniId'] = self.eni_id
         if self.security_group_id is not None:
             result['securityGroupId'] = self.security_group_id
         if self.vswitch_id is not None:
@@ -14187,6 +14191,8 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('eniId') is not None:
+            self.eni_id = m.get('eniId')
         if m.get('securityGroupId') is not None:
             self.security_group_id = m.get('securityGroupId')
         if m.get('vswitchId') is not None:

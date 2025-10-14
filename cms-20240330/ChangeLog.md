@@ -1,3 +1,7 @@
+2025-10-14 Version: 3.2.2
+- Update API ListIntegrationPolicies: add response parameters Body.policies.$.managedInfo.eniId.
+
+
 2025-10-13 Version: 3.2.1
 - Update API CreateIntegrationPolicy: add request parameters body.entityGroup.disablePolicyShare.
 
