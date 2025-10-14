@@ -9098,6 +9098,7 @@ class CreateSiteMonitorRequest(TeaModel):
     def __init__(
         self,
         address: str = None,
+        agent_group: str = None,
         alert_ids: str = None,
         custom_schedule: str = None,
         interval: str = None,
@@ -9112,6 +9113,7 @@ class CreateSiteMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.address = address
+        self.agent_group = agent_group
         # The ID of the alert rule.
         # 
         # For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
@@ -9158,6 +9160,8 @@ class CreateSiteMonitorRequest(TeaModel):
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
+        if self.agent_group is not None:
+            result['AgentGroup'] = self.agent_group
         if self.alert_ids is not None:
             result['AlertIds'] = self.alert_ids
         if self.custom_schedule is not None:
@@ -9182,6 +9186,8 @@ class CreateSiteMonitorRequest(TeaModel):
         m = m or dict()
         if m.get('Address') is not None:
             self.address = m.get('Address')
+        if m.get('AgentGroup') is not None:
+            self.agent_group = m.get('AgentGroup')
         if m.get('AlertIds') is not None:
             self.alert_ids = m.get('AlertIds')
         if m.get('CustomSchedule') is not None:
@@ -37222,6 +37228,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         response_content: str = None,
         response_format: str = None,
         retry_delay: int = None,
+        safe_link: int = None,
         screen_shot: bool = None,
         scroll_end: bool = None,
         steps: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps = None,
@@ -37365,6 +37372,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.response_format = response_format
         # The number of retries for failed detections.
         self.retry_delay = retry_delay
+        self.safe_link = safe_link
         # Indicates whether page screenshot is enabled.
         self.screen_shot = screen_shot
         # Indicates whether to scroll to the bottom of the page after opening the page. This parameter is valid for a browser test task.
@@ -37511,6 +37519,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['response_format'] = self.response_format
         if self.retry_delay is not None:
             result['retry_delay'] = self.retry_delay
+        if self.safe_link is not None:
+            result['safe_link'] = self.safe_link
         if self.screen_shot is not None:
             result['screen_shot'] = self.screen_shot
         if self.scroll_end is not None:
@@ -37639,6 +37649,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.response_format = m.get('response_format')
         if m.get('retry_delay') is not None:
             self.retry_delay = m.get('retry_delay')
+        if m.get('safe_link') is not None:
+            self.safe_link = m.get('safe_link')
         if m.get('screen_shot') is not None:
             self.screen_shot = m.get('screen_shot')
         if m.get('scroll_end') is not None:

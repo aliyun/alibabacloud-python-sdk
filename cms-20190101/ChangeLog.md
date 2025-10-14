@@ -1,3 +1,7 @@
+2025-10-14 Version: 4.0.3
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.safe_link.
+
+
 2025-08-22 Version: 4.0.1
 - Update API CreateInstantSiteMonitor: add request parameters AgentGroup.
 

@@ -2623,6 +2623,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.address):
             query['Address'] = request.address
+        if not UtilClient.is_unset(request.agent_group):
+            query['AgentGroup'] = request.agent_group
         if not UtilClient.is_unset(request.alert_ids):
             query['AlertIds'] = request.alert_ids
         if not UtilClient.is_unset(request.custom_schedule):
@@ -2676,6 +2678,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.address):
             query['Address'] = request.address
+        if not UtilClient.is_unset(request.agent_group):
+            query['AgentGroup'] = request.agent_group
         if not UtilClient.is_unset(request.alert_ids):
             query['AlertIds'] = request.alert_ids
         if not UtilClient.is_unset(request.custom_schedule):
@@ -11231,6 +11235,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
         """
+        @summary 查询指定资源的进程数列表
+        
         @description >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
         This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8***` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
         
@@ -11267,6 +11273,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
         """
+        @summary 查询指定资源的进程数列表
+        
         @description >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
         This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8***` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
         
@@ -11302,6 +11310,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentProcessesRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
         """
+        @summary 查询指定资源的进程数列表
+        
         @description >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
         This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8***` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
         
@@ -11316,6 +11326,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentProcessesRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
         """
+        @summary 查询指定资源的进程数列表
+        
         @description >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
         This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8***` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
         
@@ -14751,6 +14763,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse:
         """
+        @summary 修改应用分组内的进程监控
+        
         @param request: ModifyGroupMonitoringAgentProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyGroupMonitoringAgentProcessResponse
@@ -14790,6 +14804,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse:
         """
+        @summary 修改应用分组内的进程监控
+        
         @param request: ModifyGroupMonitoringAgentProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyGroupMonitoringAgentProcessResponse
@@ -14828,6 +14844,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyGroupMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse:
         """
+        @summary 修改应用分组内的进程监控
+        
         @param request: ModifyGroupMonitoringAgentProcessRequest
         @return: ModifyGroupMonitoringAgentProcessResponse
         """
@@ -14839,6 +14857,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyGroupMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse:
         """
+        @summary 修改应用分组内的进程监控
+        
         @param request: ModifyGroupMonitoringAgentProcessRequest
         @return: ModifyGroupMonitoringAgentProcessResponse
         """
@@ -14987,6 +15007,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
         """
+        @summary 修改非阿里云的主机显示信息
+        
         @description ***\
         
         @param request: ModifyHostInfoRequest
@@ -15024,6 +15046,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
         """
+        @summary 修改非阿里云的主机显示信息
+        
         @description ***\
         
         @param request: ModifyHostInfoRequest
@@ -15060,6 +15084,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHostInfoRequest,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
         """
+        @summary 修改非阿里云的主机显示信息
+        
         @description ***\
         
         @param request: ModifyHostInfoRequest
@@ -15073,6 +15099,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHostInfoRequest,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
         """
+        @summary 修改非阿里云的主机显示信息
+        
         @description ***\
         
         @param request: ModifyHostInfoRequest
@@ -15691,6 +15719,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMonitorGroupResponse:
         """
+        @summary 修改应用分组
+        
         @param request: ModifyMonitorGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyMonitorGroupResponse
@@ -15728,6 +15758,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMonitorGroupResponse:
         """
+        @summary 修改应用分组
+        
         @param request: ModifyMonitorGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyMonitorGroupResponse
@@ -15764,6 +15796,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMonitorGroupRequest,
     ) -> cms_20190101_models.ModifyMonitorGroupResponse:
         """
+        @summary 修改应用分组
+        
         @param request: ModifyMonitorGroupRequest
         @return: ModifyMonitorGroupResponse
         """
@@ -15775,6 +15809,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMonitorGroupRequest,
     ) -> cms_20190101_models.ModifyMonitorGroupResponse:
         """
+        @summary 修改应用分组
+        
         @param request: ModifyMonitorGroupRequest
         @return: ModifyMonitorGroupResponse
         """
@@ -15787,7 +15823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
-        @summary ModifyMonitorGroupInstances
+        @summary 修改应用分组中的资源
         
         @param request: ModifyMonitorGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15824,7 +15860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
-        @summary ModifyMonitorGroupInstances
+        @summary 修改应用分组中的资源
         
         @param request: ModifyMonitorGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15860,7 +15896,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMonitorGroupInstancesRequest,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
-        @summary ModifyMonitorGroupInstances
+        @summary 修改应用分组中的资源
         
         @param request: ModifyMonitorGroupInstancesRequest
         @return: ModifyMonitorGroupInstancesResponse
@@ -15873,7 +15909,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMonitorGroupInstancesRequest,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
-        @summary ModifyMonitorGroupInstances
+        @summary 修改应用分组中的资源
         
         @param request: ModifyMonitorGroupInstancesRequest
         @return: ModifyMonitorGroupInstancesResponse
