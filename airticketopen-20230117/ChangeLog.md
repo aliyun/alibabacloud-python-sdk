@@ -1,3 +1,10 @@
+2025-10-14 Version: 4.0.7
+- Update API Book: add response parameters Body.data.order_list.$.order_attribute.
+- Update API Book: add response parameters Body.error_data.order_list.$.order_attribute.
+- Update API ChangeConfirm: add response parameters Body.data.pay_time.
+- Update API Ticketing: add response parameters Body.data.pay_time.
+
+
 2025-07-10 Version: 4.0.6
 - Generated python 2023-01-17 for airticketOpen.
 

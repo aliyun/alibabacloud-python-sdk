@@ -2217,8 +2217,6 @@ class BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential(TeaMod
         # travel document number
         self.credential_num = credential_num
         # travel document type , only support "1"(1 means passport) currently
-        # 
-        # This parameter is required.
         self.credential_type = credential_type
         # expiration date
         self.expire_date = expire_date
@@ -2410,8 +2408,6 @@ class BookRequestPassengerListCredential(TeaModel):
         # travel document number
         self.credential_num = credential_num
         # travel document type , only support "1"(1 means passport) currently.
-        # 
-        # This parameter is required.
         self.credential_type = credential_type
         # expiration date
         self.expire_date = expire_date
@@ -2692,13 +2688,18 @@ class BookShrinkRequest(TeaModel):
         return self
 
 
-class BookResponseBodyDataOrderList(TeaModel):
+class BookResponseBodyDataOrderListOrderAttributeAbaPayLockRateInfo(TeaModel):
     def __init__(
         self,
-        order_num: int = None,
+        pay_intended_amount: str = None,
+        pay_intended_currency_code: str = None,
+        quotation_currency_code: str = None,
+        to_pay_currency_rate: str = None,
     ):
-        # order number
-        self.order_num = order_num
+        self.pay_intended_amount = pay_intended_amount
+        self.pay_intended_currency_code = pay_intended_currency_code
+        self.quotation_currency_code = quotation_currency_code
+        self.to_pay_currency_rate = to_pay_currency_rate
 
     def validate(self):
         pass
@@ -2709,12 +2710,89 @@ class BookResponseBodyDataOrderList(TeaModel):
             return _map
 
         result = dict()
+        if self.pay_intended_amount is not None:
+            result['pay_intended_amount'] = self.pay_intended_amount
+        if self.pay_intended_currency_code is not None:
+            result['pay_intended_currency_code'] = self.pay_intended_currency_code
+        if self.quotation_currency_code is not None:
+            result['quotation_currency_code'] = self.quotation_currency_code
+        if self.to_pay_currency_rate is not None:
+            result['to_pay_currency_rate'] = self.to_pay_currency_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pay_intended_amount') is not None:
+            self.pay_intended_amount = m.get('pay_intended_amount')
+        if m.get('pay_intended_currency_code') is not None:
+            self.pay_intended_currency_code = m.get('pay_intended_currency_code')
+        if m.get('quotation_currency_code') is not None:
+            self.quotation_currency_code = m.get('quotation_currency_code')
+        if m.get('to_pay_currency_rate') is not None:
+            self.to_pay_currency_rate = m.get('to_pay_currency_rate')
+        return self
+
+
+class BookResponseBodyDataOrderListOrderAttribute(TeaModel):
+    def __init__(
+        self,
+        aba_pay_lock_rate_info: BookResponseBodyDataOrderListOrderAttributeAbaPayLockRateInfo = None,
+    ):
+        self.aba_pay_lock_rate_info = aba_pay_lock_rate_info
+
+    def validate(self):
+        if self.aba_pay_lock_rate_info:
+            self.aba_pay_lock_rate_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aba_pay_lock_rate_info is not None:
+            result['aba_pay_lock_rate_info'] = self.aba_pay_lock_rate_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aba_pay_lock_rate_info') is not None:
+            temp_model = BookResponseBodyDataOrderListOrderAttributeAbaPayLockRateInfo()
+            self.aba_pay_lock_rate_info = temp_model.from_map(m['aba_pay_lock_rate_info'])
+        return self
+
+
+class BookResponseBodyDataOrderList(TeaModel):
+    def __init__(
+        self,
+        order_attribute: BookResponseBodyDataOrderListOrderAttribute = None,
+        order_num: int = None,
+    ):
+        self.order_attribute = order_attribute
+        # order number
+        self.order_num = order_num
+
+    def validate(self):
+        if self.order_attribute:
+            self.order_attribute.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_attribute is not None:
+            result['order_attribute'] = self.order_attribute.to_map()
         if self.order_num is not None:
             result['order_num'] = self.order_num
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('order_attribute') is not None:
+            temp_model = BookResponseBodyDataOrderListOrderAttribute()
+            self.order_attribute = temp_model.from_map(m['order_attribute'])
         if m.get('order_num') is not None:
             self.order_num = m.get('order_num')
         return self
@@ -2756,13 +2834,18 @@ class BookResponseBodyData(TeaModel):
         return self
 
 
-class BookResponseBodyErrorDataOrderList(TeaModel):
+class BookResponseBodyErrorDataOrderListOrderAttributeAbaPayLockRateInfo(TeaModel):
     def __init__(
         self,
-        order_num: int = None,
+        pay_intended_amount: str = None,
+        pay_intended_currency_code: str = None,
+        quotation_currency_code: str = None,
+        to_pay_currency_rate: str = None,
     ):
-        # order number
-        self.order_num = order_num
+        self.pay_intended_amount = pay_intended_amount
+        self.pay_intended_currency_code = pay_intended_currency_code
+        self.quotation_currency_code = quotation_currency_code
+        self.to_pay_currency_rate = to_pay_currency_rate
 
     def validate(self):
         pass
@@ -2773,12 +2856,89 @@ class BookResponseBodyErrorDataOrderList(TeaModel):
             return _map
 
         result = dict()
+        if self.pay_intended_amount is not None:
+            result['pay_intended_amount'] = self.pay_intended_amount
+        if self.pay_intended_currency_code is not None:
+            result['pay_intended_currency_code'] = self.pay_intended_currency_code
+        if self.quotation_currency_code is not None:
+            result['quotation_currency_code'] = self.quotation_currency_code
+        if self.to_pay_currency_rate is not None:
+            result['to_pay_currency_rate'] = self.to_pay_currency_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pay_intended_amount') is not None:
+            self.pay_intended_amount = m.get('pay_intended_amount')
+        if m.get('pay_intended_currency_code') is not None:
+            self.pay_intended_currency_code = m.get('pay_intended_currency_code')
+        if m.get('quotation_currency_code') is not None:
+            self.quotation_currency_code = m.get('quotation_currency_code')
+        if m.get('to_pay_currency_rate') is not None:
+            self.to_pay_currency_rate = m.get('to_pay_currency_rate')
+        return self
+
+
+class BookResponseBodyErrorDataOrderListOrderAttribute(TeaModel):
+    def __init__(
+        self,
+        aba_pay_lock_rate_info: BookResponseBodyErrorDataOrderListOrderAttributeAbaPayLockRateInfo = None,
+    ):
+        self.aba_pay_lock_rate_info = aba_pay_lock_rate_info
+
+    def validate(self):
+        if self.aba_pay_lock_rate_info:
+            self.aba_pay_lock_rate_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aba_pay_lock_rate_info is not None:
+            result['aba_pay_lock_rate_info'] = self.aba_pay_lock_rate_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aba_pay_lock_rate_info') is not None:
+            temp_model = BookResponseBodyErrorDataOrderListOrderAttributeAbaPayLockRateInfo()
+            self.aba_pay_lock_rate_info = temp_model.from_map(m['aba_pay_lock_rate_info'])
+        return self
+
+
+class BookResponseBodyErrorDataOrderList(TeaModel):
+    def __init__(
+        self,
+        order_attribute: BookResponseBodyErrorDataOrderListOrderAttribute = None,
+        order_num: int = None,
+    ):
+        self.order_attribute = order_attribute
+        # order number
+        self.order_num = order_num
+
+    def validate(self):
+        if self.order_attribute:
+            self.order_attribute.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_attribute is not None:
+            result['order_attribute'] = self.order_attribute.to_map()
         if self.order_num is not None:
             result['order_num'] = self.order_num
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('order_attribute') is not None:
+            temp_model = BookResponseBodyErrorDataOrderListOrderAttribute()
+            self.order_attribute = temp_model.from_map(m['order_attribute'])
         if m.get('order_num') is not None:
             self.order_num = m.get('order_num')
         return self
@@ -4047,9 +4207,11 @@ class ChangeConfirmResponseBodyData(TeaModel):
     def __init__(
         self,
         pay_amount: float = None,
+        pay_time: int = None,
         transaction_no: str = None,
     ):
         self.pay_amount = pay_amount
+        self.pay_time = pay_time
         self.transaction_no = transaction_no
 
     def validate(self):
@@ -4063,6 +4225,8 @@ class ChangeConfirmResponseBodyData(TeaModel):
         result = dict()
         if self.pay_amount is not None:
             result['pay_amount'] = self.pay_amount
+        if self.pay_time is not None:
+            result['pay_time'] = self.pay_time
         if self.transaction_no is not None:
             result['transaction_no'] = self.transaction_no
         return result
@@ -4071,6 +4235,8 @@ class ChangeConfirmResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('pay_amount') is not None:
             self.pay_amount = m.get('pay_amount')
+        if m.get('pay_time') is not None:
+            self.pay_time = m.get('pay_time')
         if m.get('transaction_no') is not None:
             self.transaction_no = m.get('transaction_no')
         return self
@@ -10943,7 +11109,7 @@ class OrderListRequest(TeaModel):
         # 
         # This parameter is required.
         self.book_time_start = book_time_start
-        # pagination query parameters, from which page to start querying
+        # pagination query parameters, from which page to start querying,querying starts with 0
         self.page_index = page_index
         # pagination query parameters, how many orders to return
         self.page_size = page_size
@@ -14334,6 +14500,7 @@ class SearchRequestSearchControlOptions(TeaModel):
         self.airline_excluded_list = airline_excluded_list
         # preferred airlines list
         self.airline_prefer_list = airline_prefer_list
+        # service quality
         self.service_quality = service_quality
 
     def validate(self):
@@ -14869,6 +15036,7 @@ class SearchResponseBodyDataSolutionListSolutionAttribute(TeaModel):
         self,
         supply_source_type: str = None,
     ):
+        # supply source: 1;2;3
         self.supply_source_type = supply_source_type
 
     def validate(self):
@@ -14933,6 +15101,7 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
         # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
+        # supply source type
         self.solution_attribute = solution_attribute
         # solution ID
         self.solution_id = solution_id
@@ -15273,10 +15442,12 @@ class TicketingResponseBodyData(TeaModel):
     def __init__(
         self,
         order_num: int = None,
+        pay_time: int = None,
         transaction_no: str = None,
     ):
         # order number
         self.order_num = order_num
+        self.pay_time = pay_time
         # transaction serial number
         self.transaction_no = transaction_no
 
@@ -15291,6 +15462,8 @@ class TicketingResponseBodyData(TeaModel):
         result = dict()
         if self.order_num is not None:
             result['order_num'] = self.order_num
+        if self.pay_time is not None:
+            result['pay_time'] = self.pay_time
         if self.transaction_no is not None:
             result['transaction_no'] = self.transaction_no
         return result
@@ -15299,6 +15472,8 @@ class TicketingResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('order_num') is not None:
             self.order_num = m.get('order_num')
+        if m.get('pay_time') is not None:
+            self.pay_time = m.get('pay_time')
         if m.get('transaction_no') is not None:
             self.transaction_no = m.get('transaction_no')
         return self
