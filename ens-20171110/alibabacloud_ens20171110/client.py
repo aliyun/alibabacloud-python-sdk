@@ -5755,7 +5755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
         """
-        @summary 创建弹性网卡
+        @summary Create an Elastic Network Interface (ENI).
         
         @param tmp_req: CreateNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5800,7 +5800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
         """
-        @summary 创建弹性网卡
+        @summary Create an Elastic Network Interface (ENI).
         
         @param tmp_req: CreateNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5844,7 +5844,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkInterfaceRequest,
     ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
         """
-        @summary 创建弹性网卡
+        @summary Create an Elastic Network Interface (ENI).
         
         @param request: CreateNetworkInterfaceRequest
         @return: CreateNetworkInterfaceResponse
@@ -5857,7 +5857,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkInterfaceRequest,
     ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
         """
-        @summary 创建弹性网卡
+        @summary Create an Elastic Network Interface (ENI).
         
         @param request: CreateNetworkInterfaceRequest
         @return: CreateNetworkInterfaceResponse
@@ -7107,7 +7107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEipResponse:
         """
-        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        @summary Deletes a pay-as-you-go elastic IP address (EIP).
         
         @param request: DeleteEipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7142,7 +7142,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEipResponse:
         """
-        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        @summary Deletes a pay-as-you-go elastic IP address (EIP).
         
         @param request: DeleteEipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7176,7 +7176,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEipRequest,
     ) -> ens_20171110_models.DeleteEipResponse:
         """
-        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        @summary Deletes a pay-as-you-go elastic IP address (EIP).
         
         @param request: DeleteEipRequest
         @return: DeleteEipResponse
@@ -7189,7 +7189,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEipRequest,
     ) -> ens_20171110_models.DeleteEipResponse:
         """
-        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        @summary Deletes a pay-as-you-go elastic IP address (EIP).
         
         @param request: DeleteEipRequest
         @return: DeleteEipResponse
@@ -12127,6 +12127,8 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.ens_region_ids):
             query['EnsRegionIds'] = request.ens_region_ids
+        if not UtilClient.is_unset(request.icmp_reply_enabled):
+            query['IcmpReplyEnabled'] = request.icmp_reply_enabled
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12180,6 +12182,8 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.ens_region_ids):
             query['EnsRegionIds'] = request.ens_region_ids
+        if not UtilClient.is_unset(request.icmp_reply_enabled):
+            query['IcmpReplyEnabled'] = request.icmp_reply_enabled
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -14583,7 +14587,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeHistoryEventsResponse:
         """
-        @summary 查询事件列表
+        @summary Queries instance system events.
         
         @param tmp_req: DescribeHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14638,7 +14642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeHistoryEventsResponse:
         """
-        @summary 查询事件列表
+        @summary Queries instance system events.
         
         @param tmp_req: DescribeHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14692,7 +14696,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeHistoryEventsRequest,
     ) -> ens_20171110_models.DescribeHistoryEventsResponse:
         """
-        @summary 查询事件列表
+        @summary Queries instance system events.
         
         @param request: DescribeHistoryEventsRequest
         @return: DescribeHistoryEventsResponse
@@ -14705,7 +14709,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeHistoryEventsRequest,
     ) -> ens_20171110_models.DescribeHistoryEventsResponse:
         """
-        @summary 查询事件列表
+        @summary Queries instance system events.
         
         @param request: DescribeHistoryEventsRequest
         @return: DescribeHistoryEventsResponse
@@ -17290,7 +17294,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
         """
-        @summary 输出指定用户ID下可用资源对应的nas信息
+        @summary Queries the specifications of resources that you can purchase when you create a NAS.
         
         @param request: DescribeNASAvailableResourceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17318,7 +17322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
         """
-        @summary 输出指定用户ID下可用资源对应的nas信息
+        @summary Queries the specifications of resources that you can purchase when you create a NAS.
         
         @param request: DescribeNASAvailableResourceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17343,7 +17347,7 @@ class Client(OpenApiClient):
 
     def describe_nasavailable_resource_info(self) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
         """
-        @summary 输出指定用户ID下可用资源对应的nas信息
+        @summary Queries the specifications of resources that you can purchase when you create a NAS.
         
         @return: DescribeNASAvailableResourceInfoResponse
         """
@@ -17352,7 +17356,7 @@ class Client(OpenApiClient):
 
     async def describe_nasavailable_resource_info_async(self) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
         """
-        @summary 输出指定用户ID下可用资源对应的nas信息
+        @summary Queries the specifications of resources that you can purchase when you create a NAS.
         
         @return: DescribeNASAvailableResourceInfoResponse
         """
@@ -28177,7 +28181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveSDGsResponse:
         """
-        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        @summary Removes all versions of SDG and restores the mount to the local disk.
         
         @param tmp_req: RemoveSDGsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28220,7 +28224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveSDGsResponse:
         """
-        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        @summary Removes all versions of SDG and restores the mount to the local disk.
         
         @param tmp_req: RemoveSDGsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28262,7 +28266,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveSDGsRequest,
     ) -> ens_20171110_models.RemoveSDGsResponse:
         """
-        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        @summary Removes all versions of SDG and restores the mount to the local disk.
         
         @param request: RemoveSDGsRequest
         @return: RemoveSDGsResponse
@@ -28275,7 +28279,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveSDGsRequest,
     ) -> ens_20171110_models.RemoveSDGsResponse:
         """
-        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        @summary Removes all versions of SDG and restores the mount to the local disk.
         
         @param request: RemoveSDGsRequest
         @return: RemoveSDGsResponse

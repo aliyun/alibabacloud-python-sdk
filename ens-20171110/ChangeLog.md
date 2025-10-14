@@ -1,3 +1,8 @@
+2025-10-14 Version: 9.3.1
+- Update API DescribeEnsEipAddresses: add request parameters IcmpReplyEnabled.
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.IcmpReplyEnabled.
+
+
 2025-09-28 Version: 9.3.0
 - Support API BatchEventMigrateInstance.
 - Support API BatchEventRebootInstance.

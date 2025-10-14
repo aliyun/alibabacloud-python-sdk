@@ -9699,10 +9699,15 @@ class CreateNetworkInterfaceRequest(TeaModel):
         security_group_ids: List[str] = None,
         v_switch_id: str = None,
     ):
+        # Description of the ENI.
         self.description = description
+        # ENI name.
         self.name = name
+        # Security group ID.
+        # 
         # This parameter is required.
         self.security_group_ids = security_group_ids
+        # vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -9745,10 +9750,15 @@ class CreateNetworkInterfaceShrinkRequest(TeaModel):
         security_group_ids_shrink: str = None,
         v_switch_id: str = None,
     ):
+        # Description of the ENI.
         self.description = description
+        # ENI name.
         self.name = name
+        # Security group ID.
+        # 
         # This parameter is required.
         self.security_group_ids_shrink = security_group_ids_shrink
+        # vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -9789,7 +9799,9 @@ class CreateNetworkInterfaceResponseBody(TeaModel):
         network_interface_ids: List[str] = None,
         request_id: str = None,
     ):
+        # A list of ENI IDs.
         self.network_interface_ids = network_interface_ids
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11754,6 +11766,8 @@ class DeleteEipRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -11782,6 +11796,7 @@ class DeleteEipResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21768,6 +21783,7 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         eip_name: str = None,
         ens_region_id: str = None,
         ens_region_ids: List[str] = None,
+        icmp_reply_enabled: bool = None,
         page_number: int = None,
         page_size: int = None,
         standby: str = None,
@@ -21789,6 +21805,7 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         self.ens_region_id = ens_region_id
         # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
+        self.icmp_reply_enabled = icmp_reply_enabled
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100. Default value: 10.
@@ -21822,6 +21839,8 @@ class DescribeEnsEipAddressesRequest(TeaModel):
             result['EnsRegionId'] = self.ens_region_id
         if self.ens_region_ids is not None:
             result['EnsRegionIds'] = self.ens_region_ids
+        if self.icmp_reply_enabled is not None:
+            result['IcmpReplyEnabled'] = self.icmp_reply_enabled
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -21846,6 +21865,8 @@ class DescribeEnsEipAddressesRequest(TeaModel):
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('EnsRegionIds') is not None:
             self.ens_region_ids = m.get('EnsRegionIds')
+        if m.get('IcmpReplyEnabled') is not None:
+            self.icmp_reply_enabled = m.get('IcmpReplyEnabled')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -21944,6 +21965,7 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         charge_type: str = None,
         description: str = None,
         ens_region_id: str = None,
+        icmp_reply_enabled: bool = None,
         instance_id: str = None,
         instance_type: str = None,
         internet_charge_type: str = None,
@@ -21961,6 +21983,7 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.charge_type = charge_type
         self.description = description
         self.ens_region_id = ens_region_id
+        self.icmp_reply_enabled = icmp_reply_enabled
         self.instance_id = instance_id
         self.instance_type = instance_type
         self.internet_charge_type = internet_charge_type
@@ -21994,6 +22017,8 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
             result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.icmp_reply_enabled is not None:
+            result['IcmpReplyEnabled'] = self.icmp_reply_enabled
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
@@ -22030,6 +22055,8 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
             self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('IcmpReplyEnabled') is not None:
+            self.icmp_reply_enabled = m.get('IcmpReplyEnabled')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
@@ -28539,11 +28566,17 @@ class DescribeHistoryEventsRequest(TeaModel):
         page_size: int = None,
         resource_ids: List[str] = None,
     ):
+        # The levels of the event-triggered alerts.
         self.event_levels = event_levels
+        # Event status list.
         self.event_status = event_status
+        # The list of event types.
+        # 
         # This parameter is required.
         self.event_types = event_types
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_ids = resource_ids
 
@@ -28597,11 +28630,17 @@ class DescribeHistoryEventsShrinkRequest(TeaModel):
         page_size: int = None,
         resource_ids_shrink: str = None,
     ):
+        # The levels of the event-triggered alerts.
         self.event_levels_shrink = event_levels_shrink
+        # Event status list.
         self.event_status_shrink = event_status_shrink
+        # The list of event types.
+        # 
         # This parameter is required.
         self.event_types_shrink = event_types_shrink
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_ids_shrink = resource_ids_shrink
 
@@ -33021,7 +33060,7 @@ class DescribeInstancesResponseBody(TeaModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The returned instance information. It is an array that consists of InstanceAttributesType data.
+        # The information about the instance is returned in an array of InstanceAttributesType.
         self.instances = instances
         # The page number.
         self.page_number = page_number
@@ -36719,13 +36758,21 @@ class DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo(TeaMo
         nas_available_storge_type: str = None,
         province: str = None,
     ):
+        # The product supported by the edge node.
         self.ability = ability
+        # The region to which the ENS node belongs.
         self.area = area
+        # The English name.
         self.en_name = en_name
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The name of the ENS node.
         self.ens_region_name = ens_region_name
+        # the number of available NAS resources.
         self.nas_available_amount = nas_available_amount
+        # The types of available NAS resources.
         self.nas_available_storge_type = nas_available_storge_type
+        # The province to which the ENS node belongs.
         self.province = province
 
     def validate(self):
@@ -36784,9 +36831,13 @@ class DescribeNASAvailableResourceInfoResponseBody(TeaModel):
         nas_available_resource_info: List[DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo] = None,
         request_id: str = None,
     ):
+        # The returned service code. A value of 0 indicates that the operation was successful.
         self.code = code
+        # The error message.
         self.message = message
+        # The information of available NAS resources.
         self.nas_available_resource_info = nas_available_resource_info
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60047,8 +60098,11 @@ class RemoveSDGsRequest(TeaModel):
         instance_ids: List[str] = None,
         sdg_ids: List[str] = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The IDs of SDG.
         self.sdg_ids = sdg_ids
 
     def validate(self):
@@ -60081,8 +60135,11 @@ class RemoveSDGsShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdg_ids_shrink: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The IDs of SDG.
         self.sdg_ids_shrink = sdg_ids_shrink
 
     def validate(self):
@@ -60115,7 +60172,9 @@ class RemoveSDGsResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -60149,8 +60208,11 @@ class RemoveSDGsResponseBodyDataResult(TeaModel):
         failed_items: List[RemoveSDGsResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -60196,8 +60258,14 @@ class RemoveSDGsResponseBodyData(TeaModel):
         result: RemoveSDGsResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   **true**: All tasks are successful.
+        # *   **false**: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -60236,6 +60304,7 @@ class RemoveSDGsResponseBody(TeaModel):
         data: RemoveSDGsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id
