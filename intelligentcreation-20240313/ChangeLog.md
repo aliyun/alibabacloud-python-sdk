@@ -1,3 +1,7 @@
+2025-10-14 Version: 2.16.1
+- Update API BuildAICoachScriptRecord: add response parameters Body.scriptRecordId.
+
+
 2025-10-11 Version: 2.16.0
 - Support API BuildAICoachScriptRecord.
 - Support API CreateAgent.

@@ -2840,6 +2840,7 @@ class BuildAICoachScriptRecordResponseBody(TeaModel):
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
+        script_record_id: str = None,
         success: bool = None,
     ):
         self.data = data
@@ -2847,6 +2848,7 @@ class BuildAICoachScriptRecordResponseBody(TeaModel):
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        self.script_record_id = script_record_id
         self.success = success
 
     def validate(self):
@@ -2867,6 +2869,8 @@ class BuildAICoachScriptRecordResponseBody(TeaModel):
             result['errorMessage'] = self.error_message
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -2882,6 +2886,8 @@ class BuildAICoachScriptRecordResponseBody(TeaModel):
             self.error_message = m.get('errorMessage')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
