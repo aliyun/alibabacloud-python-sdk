@@ -1,3 +1,7 @@
+2025-10-15 Version: 1.16.0
+- Support API RunDialogAnalysis.
+
+
 2025-09-25 Version: 1.15.0
 - Support API GetDialogLog.
 - Update API RealTimeDialog: add response parameters Body.choices.$.delta.skipCurrentRecognize.
