@@ -13541,6 +13541,7 @@ class ListIntegrationPoliciesRequest(TeaModel):
     def __init__(
         self,
         addon_name: str = None,
+        bind_resource_id: str = None,
         entity_group_ids: str = None,
         filter_region_ids: str = None,
         max_results: int = None,
@@ -13555,6 +13556,7 @@ class ListIntegrationPoliciesRequest(TeaModel):
         workspace: str = None,
     ):
         self.addon_name = addon_name
+        self.bind_resource_id = bind_resource_id
         self.entity_group_ids = entity_group_ids
         self.filter_region_ids = filter_region_ids
         self.max_results = max_results
@@ -13582,6 +13584,8 @@ class ListIntegrationPoliciesRequest(TeaModel):
         result = dict()
         if self.addon_name is not None:
             result['addonName'] = self.addon_name
+        if self.bind_resource_id is not None:
+            result['bindResourceId'] = self.bind_resource_id
         if self.entity_group_ids is not None:
             result['entityGroupIds'] = self.entity_group_ids
         if self.filter_region_ids is not None:
@@ -13614,6 +13618,8 @@ class ListIntegrationPoliciesRequest(TeaModel):
         m = m or dict()
         if m.get('addonName') is not None:
             self.addon_name = m.get('addonName')
+        if m.get('bindResourceId') is not None:
+            self.bind_resource_id = m.get('bindResourceId')
         if m.get('entityGroupIds') is not None:
             self.entity_group_ids = m.get('entityGroupIds')
         if m.get('filterRegionIds') is not None:
@@ -13648,6 +13654,7 @@ class ListIntegrationPoliciesShrinkRequest(TeaModel):
     def __init__(
         self,
         addon_name: str = None,
+        bind_resource_id: str = None,
         entity_group_ids: str = None,
         filter_region_ids: str = None,
         max_results: int = None,
@@ -13662,6 +13669,7 @@ class ListIntegrationPoliciesShrinkRequest(TeaModel):
         workspace: str = None,
     ):
         self.addon_name = addon_name
+        self.bind_resource_id = bind_resource_id
         self.entity_group_ids = entity_group_ids
         self.filter_region_ids = filter_region_ids
         self.max_results = max_results
@@ -13686,6 +13694,8 @@ class ListIntegrationPoliciesShrinkRequest(TeaModel):
         result = dict()
         if self.addon_name is not None:
             result['addonName'] = self.addon_name
+        if self.bind_resource_id is not None:
+            result['bindResourceId'] = self.bind_resource_id
         if self.entity_group_ids is not None:
             result['entityGroupIds'] = self.entity_group_ids
         if self.filter_region_ids is not None:
@@ -13716,6 +13726,8 @@ class ListIntegrationPoliciesShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('addonName') is not None:
             self.addon_name = m.get('addonName')
+        if m.get('bindResourceId') is not None:
+            self.bind_resource_id = m.get('bindResourceId')
         if m.get('entityGroupIds') is not None:
             self.entity_group_ids = m.get('entityGroupIds')
         if m.get('filterRegionIds') is not None:
@@ -14809,6 +14821,7 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
     def __init__(
         self,
         folder_uid: str = None,
+        name: str = None,
         region: str = None,
         tags: List[str] = None,
         title: str = None,
@@ -14816,6 +14829,7 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
         url: str = None,
     ):
         self.folder_uid = folder_uid
+        self.name = name
         self.region = region
         self.tags = tags
         self.title = title
@@ -14833,6 +14847,8 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
         result = dict()
         if self.folder_uid is not None:
             result['folderUid'] = self.folder_uid
+        if self.name is not None:
+            result['name'] = self.name
         if self.region is not None:
             result['region'] = self.region
         if self.tags is not None:
@@ -14849,6 +14865,8 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
         m = m or dict()
         if m.get('folderUid') is not None:
             self.folder_uid = m.get('folderUid')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('region') is not None:
             self.region = m.get('region')
         if m.get('tags') is not None:

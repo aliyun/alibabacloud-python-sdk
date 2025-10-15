@@ -3901,6 +3901,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addon_name):
             query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.bind_resource_id):
+            query['bindResourceId'] = request.bind_resource_id
         if not UtilClient.is_unset(request.entity_group_ids):
             query['entityGroupIds'] = request.entity_group_ids
         if not UtilClient.is_unset(request.filter_region_ids):
@@ -3967,6 +3969,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addon_name):
             query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.bind_resource_id):
+            query['bindResourceId'] = request.bind_resource_id
         if not UtilClient.is_unset(request.entity_group_ids):
             query['entityGroupIds'] = request.entity_group_ids
         if not UtilClient.is_unset(request.filter_region_ids):

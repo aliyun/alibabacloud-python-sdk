@@ -1,3 +1,8 @@
+2025-10-15 Version: 3.2.3
+- Update API ListIntegrationPolicies: add request parameters bindResourceId.
+- Update API ListIntegrationPolicyDashboards: add response parameters Body.dashboards.$.name.
+
+
 2025-10-14 Version: 3.2.2
 - Update API ListIntegrationPolicies: add response parameters Body.policies.$.managedInfo.eniId.
 
