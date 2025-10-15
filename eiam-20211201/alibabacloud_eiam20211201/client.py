@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_application_account_to_user_with_options(
+        self,
+        request: eiam_20211201_models.AddApplicationAccountToUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.AddApplicationAccountToUserResponse:
+        """
+        @summary 在当前应用下给指定员工添加一个应用账号
+        
+        @param request: AddApplicationAccountToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddApplicationAccountToUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_username):
+            query['ApplicationUsername'] = request.application_username
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddApplicationAccountToUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddApplicationAccountToUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_application_account_to_user_with_options_async(
+        self,
+        request: eiam_20211201_models.AddApplicationAccountToUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.AddApplicationAccountToUserResponse:
+        """
+        @summary 在当前应用下给指定员工添加一个应用账号
+        
+        @param request: AddApplicationAccountToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddApplicationAccountToUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_username):
+            query['ApplicationUsername'] = request.application_username
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddApplicationAccountToUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddApplicationAccountToUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_application_account_to_user(
+        self,
+        request: eiam_20211201_models.AddApplicationAccountToUserRequest,
+    ) -> eiam_20211201_models.AddApplicationAccountToUserResponse:
+        """
+        @summary 在当前应用下给指定员工添加一个应用账号
+        
+        @param request: AddApplicationAccountToUserRequest
+        @return: AddApplicationAccountToUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_application_account_to_user_with_options(request, runtime)
+
+    async def add_application_account_to_user_async(
+        self,
+        request: eiam_20211201_models.AddApplicationAccountToUserRequest,
+    ) -> eiam_20211201_models.AddApplicationAccountToUserResponse:
+        """
+        @summary 在当前应用下给指定员工添加一个应用账号
+        
+        @param request: AddApplicationAccountToUserRequest
+        @return: AddApplicationAccountToUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_application_account_to_user_with_options_async(request, runtime)
+
     def add_user_to_organizational_units_with_options(
         self,
         request: eiam_20211201_models.AddUserToOrganizationalUnitsRequest,
@@ -793,6 +901,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_application_client_secret_with_options_async(request, runtime)
 
+    def create_application_federated_credential_with_options(
+        self,
+        request: eiam_20211201_models.CreateApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateApplicationFederatedCredentialResponse:
+        """
+        @summary 创建应用联邦凭证
+        
+        @param request: CreateApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_name):
+            query['ApplicationFederatedCredentialName'] = request.application_federated_credential_name
+        if not UtilClient.is_unset(request.application_federated_credential_type):
+            query['ApplicationFederatedCredentialType'] = request.application_federated_credential_type
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.attribute_mappings):
+            query['AttributeMappings'] = request.attribute_mappings
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.verification_condition):
+            query['VerificationCondition'] = request.verification_condition
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationFederatedCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_federated_credential_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateApplicationFederatedCredentialResponse:
+        """
+        @summary 创建应用联邦凭证
+        
+        @param request: CreateApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_name):
+            query['ApplicationFederatedCredentialName'] = request.application_federated_credential_name
+        if not UtilClient.is_unset(request.application_federated_credential_type):
+            query['ApplicationFederatedCredentialType'] = request.application_federated_credential_type
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.attribute_mappings):
+            query['AttributeMappings'] = request.attribute_mappings
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.verification_condition):
+            query['VerificationCondition'] = request.verification_condition
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationFederatedCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_federated_credential(
+        self,
+        request: eiam_20211201_models.CreateApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.CreateApplicationFederatedCredentialResponse:
+        """
+        @summary 创建应用联邦凭证
+        
+        @param request: CreateApplicationFederatedCredentialRequest
+        @return: CreateApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_federated_credential_with_options(request, runtime)
+
+    async def create_application_federated_credential_async(
+        self,
+        request: eiam_20211201_models.CreateApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.CreateApplicationFederatedCredentialResponse:
+        """
+        @summary 创建应用联邦凭证
+        
+        @param request: CreateApplicationFederatedCredentialRequest
+        @return: CreateApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_federated_credential_with_options_async(request, runtime)
+
+    def create_application_token_with_options(
+        self,
+        request: eiam_20211201_models.CreateApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateApplicationTokenResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: CreateApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_type):
+            query['ApplicationTokenType'] = request.application_token_type
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_token_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateApplicationTokenResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: CreateApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_type):
+            query['ApplicationTokenType'] = request.application_token_type
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_token(
+        self,
+        request: eiam_20211201_models.CreateApplicationTokenRequest,
+    ) -> eiam_20211201_models.CreateApplicationTokenResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: CreateApplicationTokenRequest
+        @return: CreateApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_token_with_options(request, runtime)
+
+    async def create_application_token_async(
+        self,
+        request: eiam_20211201_models.CreateApplicationTokenRequest,
+    ) -> eiam_20211201_models.CreateApplicationTokenResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: CreateApplicationTokenRequest
+        @return: CreateApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_token_with_options_async(request, runtime)
+
     def create_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.CreateConditionalAccessPolicyRequest,
@@ -1136,6 +1476,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_domain_proxy_token_with_options_async(request, runtime)
+
+    def create_federated_credential_provider_with_options(
+        self,
+        request: eiam_20211201_models.CreateFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateFederatedCredentialProviderResponse:
+        """
+        @summary 创建联邦凭证提供方
+        
+        @param request: CreateFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federated_credential_provider_name):
+            query['FederatedCredentialProviderName'] = request.federated_credential_provider_name
+        if not UtilClient.is_unset(request.federated_credential_provider_type):
+            query['FederatedCredentialProviderType'] = request.federated_credential_provider_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_provider_config):
+            query['OidcProviderConfig'] = request.oidc_provider_config
+        if not UtilClient.is_unset(request.pkcs_7provider_config):
+            query['Pkcs7ProviderConfig'] = request.pkcs_7provider_config
+        if not UtilClient.is_unset(request.private_ca_provider_config):
+            query['PrivateCaProviderConfig'] = request.private_ca_provider_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateFederatedCredentialProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_federated_credential_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateFederatedCredentialProviderResponse:
+        """
+        @summary 创建联邦凭证提供方
+        
+        @param request: CreateFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federated_credential_provider_name):
+            query['FederatedCredentialProviderName'] = request.federated_credential_provider_name
+        if not UtilClient.is_unset(request.federated_credential_provider_type):
+            query['FederatedCredentialProviderType'] = request.federated_credential_provider_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_provider_config):
+            query['OidcProviderConfig'] = request.oidc_provider_config
+        if not UtilClient.is_unset(request.pkcs_7provider_config):
+            query['Pkcs7ProviderConfig'] = request.pkcs_7provider_config
+        if not UtilClient.is_unset(request.private_ca_provider_config):
+            query['PrivateCaProviderConfig'] = request.private_ca_provider_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateFederatedCredentialProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_federated_credential_provider(
+        self,
+        request: eiam_20211201_models.CreateFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.CreateFederatedCredentialProviderResponse:
+        """
+        @summary 创建联邦凭证提供方
+        
+        @param request: CreateFederatedCredentialProviderRequest
+        @return: CreateFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_federated_credential_provider_with_options(request, runtime)
+
+    async def create_federated_credential_provider_async(
+        self,
+        request: eiam_20211201_models.CreateFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.CreateFederatedCredentialProviderResponse:
+        """
+        @summary 创建联邦凭证提供方
+        
+        @param request: CreateFederatedCredentialProviderRequest
+        @return: CreateFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_federated_credential_provider_with_options_async(request, runtime)
 
     def create_group_with_options(
         self,
@@ -1617,6 +2081,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_network_access_endpoint_with_options_async(request, runtime)
 
+    def create_network_zone_with_options(
+        self,
+        request: eiam_20211201_models.CreateNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateNetworkZoneResponse:
+        """
+        @summary 创建网络区域对象
+        
+        @param request: CreateNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ipv_4cidrs):
+            query['Ipv4Cidrs'] = request.ipv_4cidrs
+        if not UtilClient.is_unset(request.ipv_6cidrs):
+            query['Ipv6Cidrs'] = request.ipv_6cidrs
+        if not UtilClient.is_unset(request.network_zone_name):
+            query['NetworkZoneName'] = request.network_zone_name
+        if not UtilClient.is_unset(request.network_zone_type):
+            query['NetworkZoneType'] = request.network_zone_type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateNetworkZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_zone_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateNetworkZoneResponse:
+        """
+        @summary 创建网络区域对象
+        
+        @param request: CreateNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ipv_4cidrs):
+            query['Ipv4Cidrs'] = request.ipv_4cidrs
+        if not UtilClient.is_unset(request.ipv_6cidrs):
+            query['Ipv6Cidrs'] = request.ipv_6cidrs
+        if not UtilClient.is_unset(request.network_zone_name):
+            query['NetworkZoneName'] = request.network_zone_name
+        if not UtilClient.is_unset(request.network_zone_type):
+            query['NetworkZoneType'] = request.network_zone_type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateNetworkZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_zone(
+        self,
+        request: eiam_20211201_models.CreateNetworkZoneRequest,
+    ) -> eiam_20211201_models.CreateNetworkZoneResponse:
+        """
+        @summary 创建网络区域对象
+        
+        @param request: CreateNetworkZoneRequest
+        @return: CreateNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_zone_with_options(request, runtime)
+
+    async def create_network_zone_async(
+        self,
+        request: eiam_20211201_models.CreateNetworkZoneRequest,
+    ) -> eiam_20211201_models.CreateNetworkZoneResponse:
+        """
+        @summary 创建网络区域对象
+        
+        @param request: CreateNetworkZoneRequest
+        @return: CreateNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_zone_with_options_async(request, runtime)
+
     def create_organizational_unit_with_options(
         self,
         request: eiam_20211201_models.CreateOrganizationalUnitRequest,
@@ -2097,6 +2685,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_client_secret_with_options_async(request, runtime)
 
+    def delete_application_federated_credential_with_options(
+        self,
+        request: eiam_20211201_models.DeleteApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteApplicationFederatedCredentialResponse:
+        """
+        @summary 删除应用联邦凭证
+        
+        @param request: DeleteApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationFederatedCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_federated_credential_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteApplicationFederatedCredentialResponse:
+        """
+        @summary 删除应用联邦凭证
+        
+        @param request: DeleteApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationFederatedCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_federated_credential(
+        self,
+        request: eiam_20211201_models.DeleteApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.DeleteApplicationFederatedCredentialResponse:
+        """
+        @summary 删除应用联邦凭证
+        
+        @param request: DeleteApplicationFederatedCredentialRequest
+        @return: DeleteApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_federated_credential_with_options(request, runtime)
+
+    async def delete_application_federated_credential_async(
+        self,
+        request: eiam_20211201_models.DeleteApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.DeleteApplicationFederatedCredentialResponse:
+        """
+        @summary 删除应用联邦凭证
+        
+        @param request: DeleteApplicationFederatedCredentialRequest
+        @return: DeleteApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_federated_credential_with_options_async(request, runtime)
+
+    def delete_application_token_with_options(
+        self,
+        request: eiam_20211201_models.DeleteApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteApplicationTokenResponse:
+        """
+        @summary 删除ApplicationToken
+        
+        @param request: DeleteApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_token_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteApplicationTokenResponse:
+        """
+        @summary 删除ApplicationToken
+        
+        @param request: DeleteApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_token(
+        self,
+        request: eiam_20211201_models.DeleteApplicationTokenRequest,
+    ) -> eiam_20211201_models.DeleteApplicationTokenResponse:
+        """
+        @summary 删除ApplicationToken
+        
+        @param request: DeleteApplicationTokenRequest
+        @return: DeleteApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_token_with_options(request, runtime)
+
+    async def delete_application_token_async(
+        self,
+        request: eiam_20211201_models.DeleteApplicationTokenRequest,
+    ) -> eiam_20211201_models.DeleteApplicationTokenResponse:
+        """
+        @summary 删除ApplicationToken
+        
+        @param request: DeleteApplicationTokenRequest
+        @return: DeleteApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_token_with_options_async(request, runtime)
+
     def delete_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.DeleteConditionalAccessPolicyRequest,
@@ -2408,6 +3204,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_proxy_token_with_options_async(request, runtime)
+
+    def delete_federated_credential_provider_with_options(
+        self,
+        request: eiam_20211201_models.DeleteFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteFederatedCredentialProviderResponse:
+        """
+        @summary 删除联邦凭证提供方
+        
+        @param request: DeleteFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteFederatedCredentialProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_federated_credential_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteFederatedCredentialProviderResponse:
+        """
+        @summary 删除联邦凭证提供方
+        
+        @param request: DeleteFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteFederatedCredentialProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_federated_credential_provider(
+        self,
+        request: eiam_20211201_models.DeleteFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.DeleteFederatedCredentialProviderResponse:
+        """
+        @summary 删除联邦凭证提供方
+        
+        @param request: DeleteFederatedCredentialProviderRequest
+        @return: DeleteFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_federated_credential_provider_with_options(request, runtime)
+
+    async def delete_federated_credential_provider_async(
+        self,
+        request: eiam_20211201_models.DeleteFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.DeleteFederatedCredentialProviderResponse:
+        """
+        @summary 删除联邦凭证提供方
+        
+        @param request: DeleteFederatedCredentialProviderRequest
+        @return: DeleteFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_federated_credential_provider_with_options_async(request, runtime)
 
     def delete_group_with_options(
         self,
@@ -2812,6 +3708,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_access_endpoint_with_options_async(request, runtime)
+
+    def delete_network_zone_with_options(
+        self,
+        request: eiam_20211201_models.DeleteNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteNetworkZoneResponse:
+        """
+        @summary 删除网络区域对象
+        
+        @param request: DeleteNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteNetworkZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_zone_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteNetworkZoneResponse:
+        """
+        @summary 删除网络区域对象
+        
+        @param request: DeleteNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteNetworkZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_zone(
+        self,
+        request: eiam_20211201_models.DeleteNetworkZoneRequest,
+    ) -> eiam_20211201_models.DeleteNetworkZoneResponse:
+        """
+        @summary 删除网络区域对象
+        
+        @param request: DeleteNetworkZoneRequest
+        @return: DeleteNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_zone_with_options(request, runtime)
+
+    async def delete_network_zone_async(
+        self,
+        request: eiam_20211201_models.DeleteNetworkZoneRequest,
+    ) -> eiam_20211201_models.DeleteNetworkZoneResponse:
+        """
+        @summary 删除网络区域对象
+        
+        @param request: DeleteNetworkZoneRequest
+        @return: DeleteNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_zone_with_options_async(request, runtime)
 
     def delete_organizational_unit_with_options(
         self,
@@ -3425,6 +4421,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_application_client_secret_with_options_async(request, runtime)
 
+    def disable_application_federated_credential_with_options(
+        self,
+        request: eiam_20211201_models.DisableApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableApplicationFederatedCredentialResponse:
+        """
+        @summary 禁用应用联邦凭证
+        
+        @param request: DisableApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationFederatedCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_application_federated_credential_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableApplicationFederatedCredentialResponse:
+        """
+        @summary 禁用应用联邦凭证
+        
+        @param request: DisableApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationFederatedCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_application_federated_credential(
+        self,
+        request: eiam_20211201_models.DisableApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.DisableApplicationFederatedCredentialResponse:
+        """
+        @summary 禁用应用联邦凭证
+        
+        @param request: DisableApplicationFederatedCredentialRequest
+        @return: DisableApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_application_federated_credential_with_options(request, runtime)
+
+    async def disable_application_federated_credential_async(
+        self,
+        request: eiam_20211201_models.DisableApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.DisableApplicationFederatedCredentialResponse:
+        """
+        @summary 禁用应用联邦凭证
+        
+        @param request: DisableApplicationFederatedCredentialRequest
+        @return: DisableApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_application_federated_credential_with_options_async(request, runtime)
+
     def disable_application_provisioning_with_options(
         self,
         request: eiam_20211201_models.DisableApplicationProvisioningRequest,
@@ -3624,6 +4724,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.disable_application_sso_with_options_async(request, runtime)
+
+    def disable_application_token_with_options(
+        self,
+        request: eiam_20211201_models.DisableApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableApplicationTokenResponse:
+        """
+        @summary 禁用应用Token
+        
+        @param request: DisableApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_application_token_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableApplicationTokenResponse:
+        """
+        @summary 禁用应用Token
+        
+        @param request: DisableApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_application_token(
+        self,
+        request: eiam_20211201_models.DisableApplicationTokenRequest,
+    ) -> eiam_20211201_models.DisableApplicationTokenResponse:
+        """
+        @summary 禁用应用Token
+        
+        @param request: DisableApplicationTokenRequest
+        @return: DisableApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_application_token_with_options(request, runtime)
+
+    async def disable_application_token_async(
+        self,
+        request: eiam_20211201_models.DisableApplicationTokenRequest,
+    ) -> eiam_20211201_models.DisableApplicationTokenResponse:
+        """
+        @summary 禁用应用Token
+        
+        @param request: DisableApplicationTokenRequest
+        @return: DisableApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_application_token_with_options_async(request, runtime)
 
     def disable_conditional_access_policy_with_options(
         self,
@@ -3836,6 +5040,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.disable_domain_proxy_token_with_options_async(request, runtime)
+
+    def disable_federated_credential_provider_with_options(
+        self,
+        request: eiam_20211201_models.DisableFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableFederatedCredentialProviderResponse:
+        """
+        @summary 禁用联邦凭证提供方
+        
+        @param request: DisableFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableFederatedCredentialProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_federated_credential_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableFederatedCredentialProviderResponse:
+        """
+        @summary 禁用联邦凭证提供方
+        
+        @param request: DisableFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableFederatedCredentialProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_federated_credential_provider(
+        self,
+        request: eiam_20211201_models.DisableFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.DisableFederatedCredentialProviderResponse:
+        """
+        @summary 禁用联邦凭证提供方
+        
+        @param request: DisableFederatedCredentialProviderRequest
+        @return: DisableFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_federated_credential_provider_with_options(request, runtime)
+
+    async def disable_federated_credential_provider_async(
+        self,
+        request: eiam_20211201_models.DisableFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.DisableFederatedCredentialProviderResponse:
+        """
+        @summary 禁用联邦凭证提供方
+        
+        @param request: DisableFederatedCredentialProviderRequest
+        @return: DisableFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_federated_credential_provider_with_options_async(request, runtime)
+
+    def disable_identity_provider_authn_with_options(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAuthnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableIdentityProviderAuthnResponse:
+        """
+        @summary 禁用认证
+        
+        @param request: DisableIdentityProviderAuthnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableIdentityProviderAuthnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIdentityProviderAuthn',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderAuthnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_identity_provider_authn_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAuthnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableIdentityProviderAuthnResponse:
+        """
+        @summary 禁用认证
+        
+        @param request: DisableIdentityProviderAuthnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableIdentityProviderAuthnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIdentityProviderAuthn',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderAuthnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_identity_provider_authn(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAuthnRequest,
+    ) -> eiam_20211201_models.DisableIdentityProviderAuthnResponse:
+        """
+        @summary 禁用认证
+        
+        @param request: DisableIdentityProviderAuthnRequest
+        @return: DisableIdentityProviderAuthnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_identity_provider_authn_with_options(request, runtime)
+
+    async def disable_identity_provider_authn_async(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAuthnRequest,
+    ) -> eiam_20211201_models.DisableIdentityProviderAuthnResponse:
+        """
+        @summary 禁用认证
+        
+        @param request: DisableIdentityProviderAuthnRequest
+        @return: DisableIdentityProviderAuthnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_identity_provider_authn_with_options_async(request, runtime)
 
     def disable_identity_provider_ud_pull_with_options(
         self,
@@ -4437,6 +5841,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_application_client_secret_with_options_async(request, runtime)
 
+    def enable_application_federated_credential_with_options(
+        self,
+        request: eiam_20211201_models.EnableApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableApplicationFederatedCredentialResponse:
+        """
+        @summary 启用应用联邦凭证
+        
+        @param request: EnableApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationFederatedCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_application_federated_credential_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableApplicationFederatedCredentialResponse:
+        """
+        @summary 启用应用联邦凭证
+        
+        @param request: EnableApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationFederatedCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_application_federated_credential(
+        self,
+        request: eiam_20211201_models.EnableApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.EnableApplicationFederatedCredentialResponse:
+        """
+        @summary 启用应用联邦凭证
+        
+        @param request: EnableApplicationFederatedCredentialRequest
+        @return: EnableApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_application_federated_credential_with_options(request, runtime)
+
+    async def enable_application_federated_credential_async(
+        self,
+        request: eiam_20211201_models.EnableApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.EnableApplicationFederatedCredentialResponse:
+        """
+        @summary 启用应用联邦凭证
+        
+        @param request: EnableApplicationFederatedCredentialRequest
+        @return: EnableApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_application_federated_credential_with_options_async(request, runtime)
+
     def enable_application_provisioning_with_options(
         self,
         request: eiam_20211201_models.EnableApplicationProvisioningRequest,
@@ -4636,6 +6144,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_application_sso_with_options_async(request, runtime)
+
+    def enable_application_token_with_options(
+        self,
+        request: eiam_20211201_models.EnableApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableApplicationTokenResponse:
+        """
+        @summary 启用应用Token
+        
+        @param request: EnableApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_application_token_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableApplicationTokenResponse:
+        """
+        @summary 启用应用Token
+        
+        @param request: EnableApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_application_token(
+        self,
+        request: eiam_20211201_models.EnableApplicationTokenRequest,
+    ) -> eiam_20211201_models.EnableApplicationTokenResponse:
+        """
+        @summary 启用应用Token
+        
+        @param request: EnableApplicationTokenRequest
+        @return: EnableApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_application_token_with_options(request, runtime)
+
+    async def enable_application_token_async(
+        self,
+        request: eiam_20211201_models.EnableApplicationTokenRequest,
+    ) -> eiam_20211201_models.EnableApplicationTokenResponse:
+        """
+        @summary 启用应用Token
+        
+        @param request: EnableApplicationTokenRequest
+        @return: EnableApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_application_token_with_options_async(request, runtime)
 
     def enable_conditional_access_policy_with_options(
         self,
@@ -4848,6 +6460,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_domain_proxy_token_with_options_async(request, runtime)
+
+    def enable_federated_credential_provider_with_options(
+        self,
+        request: eiam_20211201_models.EnableFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableFederatedCredentialProviderResponse:
+        """
+        @summary 启用联邦凭证提供方
+        
+        @param request: EnableFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableFederatedCredentialProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_federated_credential_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableFederatedCredentialProviderResponse:
+        """
+        @summary 启用联邦凭证提供方
+        
+        @param request: EnableFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableFederatedCredentialProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_federated_credential_provider(
+        self,
+        request: eiam_20211201_models.EnableFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.EnableFederatedCredentialProviderResponse:
+        """
+        @summary 启用联邦凭证提供方
+        
+        @param request: EnableFederatedCredentialProviderRequest
+        @return: EnableFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_federated_credential_provider_with_options(request, runtime)
+
+    async def enable_federated_credential_provider_async(
+        self,
+        request: eiam_20211201_models.EnableFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.EnableFederatedCredentialProviderResponse:
+        """
+        @summary 启用联邦凭证提供方
+        
+        @param request: EnableFederatedCredentialProviderRequest
+        @return: EnableFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_federated_credential_provider_with_options_async(request, runtime)
+
+    def enable_identity_provider_authn_with_options(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAuthnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableIdentityProviderAuthnResponse:
+        """
+        @summary 启用认证
+        
+        @param request: EnableIdentityProviderAuthnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableIdentityProviderAuthnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIdentityProviderAuthn',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderAuthnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_identity_provider_authn_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAuthnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableIdentityProviderAuthnResponse:
+        """
+        @summary 启用认证
+        
+        @param request: EnableIdentityProviderAuthnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableIdentityProviderAuthnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIdentityProviderAuthn',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderAuthnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_identity_provider_authn(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAuthnRequest,
+    ) -> eiam_20211201_models.EnableIdentityProviderAuthnResponse:
+        """
+        @summary 启用认证
+        
+        @param request: EnableIdentityProviderAuthnRequest
+        @return: EnableIdentityProviderAuthnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_identity_provider_authn_with_options(request, runtime)
+
+    async def enable_identity_provider_authn_async(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAuthnRequest,
+    ) -> eiam_20211201_models.EnableIdentityProviderAuthnResponse:
+        """
+        @summary 启用认证
+        
+        @param request: EnableIdentityProviderAuthnRequest
+        @return: EnableIdentityProviderAuthnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_identity_provider_authn_with_options_async(request, runtime)
 
     def enable_identity_provider_ud_pull_with_options(
         self,
@@ -5244,6 +7056,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
+
+    def get_application_federated_credential_with_options(
+        self,
+        request: eiam_20211201_models.GetApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetApplicationFederatedCredentialResponse:
+        """
+        @summary 获取应用联邦凭证
+        
+        @param request: GetApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationFederatedCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_federated_credential_with_options_async(
+        self,
+        request: eiam_20211201_models.GetApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetApplicationFederatedCredentialResponse:
+        """
+        @summary 获取应用联邦凭证
+        
+        @param request: GetApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationFederatedCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_federated_credential(
+        self,
+        request: eiam_20211201_models.GetApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.GetApplicationFederatedCredentialResponse:
+        """
+        @summary 获取应用联邦凭证
+        
+        @param request: GetApplicationFederatedCredentialRequest
+        @return: GetApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_federated_credential_with_options(request, runtime)
+
+    async def get_application_federated_credential_async(
+        self,
+        request: eiam_20211201_models.GetApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.GetApplicationFederatedCredentialResponse:
+        """
+        @summary 获取应用联邦凭证
+        
+        @param request: GetApplicationFederatedCredentialRequest
+        @return: GetApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_federated_credential_with_options_async(request, runtime)
 
     def get_application_grant_scope_with_options(
         self,
@@ -5645,6 +7561,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_application_sso_config_with_options_async(request, runtime)
 
+    def get_application_template_with_options(
+        self,
+        request: eiam_20211201_models.GetApplicationTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetApplicationTemplateResponse:
+        """
+        @summary 获取应用模板信息
+        
+        @param request: GetApplicationTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationTemplate',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_template_with_options_async(
+        self,
+        request: eiam_20211201_models.GetApplicationTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetApplicationTemplateResponse:
+        """
+        @summary 获取应用模板信息
+        
+        @param request: GetApplicationTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationTemplate',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_template(
+        self,
+        request: eiam_20211201_models.GetApplicationTemplateRequest,
+    ) -> eiam_20211201_models.GetApplicationTemplateResponse:
+        """
+        @summary 获取应用模板信息
+        
+        @param request: GetApplicationTemplateRequest
+        @return: GetApplicationTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_template_with_options(request, runtime)
+
+    async def get_application_template_async(
+        self,
+        request: eiam_20211201_models.GetApplicationTemplateRequest,
+    ) -> eiam_20211201_models.GetApplicationTemplateResponse:
+        """
+        @summary 获取应用模板信息
+        
+        @param request: GetApplicationTemplateRequest
+        @return: GetApplicationTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_template_with_options_async(request, runtime)
+
     def get_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.GetConditionalAccessPolicyRequest,
@@ -5952,6 +7964,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_domain_dns_challenge_with_options_async(request, runtime)
+
+    def get_federated_credential_provider_with_options(
+        self,
+        request: eiam_20211201_models.GetFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetFederatedCredentialProviderResponse:
+        """
+        @summary 获取联邦凭证提供方
+        
+        @param request: GetFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetFederatedCredentialProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_federated_credential_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.GetFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetFederatedCredentialProviderResponse:
+        """
+        @summary 获取联邦凭证提供方
+        
+        @param request: GetFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetFederatedCredentialProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_federated_credential_provider(
+        self,
+        request: eiam_20211201_models.GetFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.GetFederatedCredentialProviderResponse:
+        """
+        @summary 获取联邦凭证提供方
+        
+        @param request: GetFederatedCredentialProviderRequest
+        @return: GetFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_federated_credential_provider_with_options(request, runtime)
+
+    async def get_federated_credential_provider_async(
+        self,
+        request: eiam_20211201_models.GetFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.GetFederatedCredentialProviderResponse:
+        """
+        @summary 获取联邦凭证提供方
+        
+        @param request: GetFederatedCredentialProviderRequest
+        @return: GetFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_federated_credential_provider_with_options_async(request, runtime)
 
     def get_forget_password_configuration_with_options(
         self,
@@ -6648,6 +8760,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_network_access_endpoint_with_options_async(request, runtime)
+
+    def get_network_zone_with_options(
+        self,
+        request: eiam_20211201_models.GetNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetNetworkZoneResponse:
+        """
+        @summary 获取网络区域对象
+        
+        @param request: GetNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetNetworkZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_zone_with_options_async(
+        self,
+        request: eiam_20211201_models.GetNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetNetworkZoneResponse:
+        """
+        @summary 获取网络区域对象
+        
+        @param request: GetNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetNetworkZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network_zone(
+        self,
+        request: eiam_20211201_models.GetNetworkZoneRequest,
+    ) -> eiam_20211201_models.GetNetworkZoneResponse:
+        """
+        @summary 获取网络区域对象
+        
+        @param request: GetNetworkZoneRequest
+        @return: GetNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_zone_with_options(request, runtime)
+
+    async def get_network_zone_async(
+        self,
+        request: eiam_20211201_models.GetNetworkZoneRequest,
+    ) -> eiam_20211201_models.GetNetworkZoneResponse:
+        """
+        @summary 获取网络区域对象
+        
+        @param request: GetNetworkZoneRequest
+        @return: GetNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_zone_with_options_async(request, runtime)
 
     def get_organizational_unit_with_options(
         self,
@@ -7429,6 +9641,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
 
+    def list_application_accounts_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationAccountsResponse:
+        """
+        @summary 分页查询应用下的应用账户列表
+        
+        @param request: ListApplicationAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationAccounts',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_accounts_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationAccountsResponse:
+        """
+        @summary 分页查询应用下的应用账户列表
+        
+        @param request: ListApplicationAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationAccounts',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_accounts(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsRequest,
+    ) -> eiam_20211201_models.ListApplicationAccountsResponse:
+        """
+        @summary 分页查询应用下的应用账户列表
+        
+        @param request: ListApplicationAccountsRequest
+        @return: ListApplicationAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_accounts_with_options(request, runtime)
+
+    async def list_application_accounts_async(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsRequest,
+    ) -> eiam_20211201_models.ListApplicationAccountsResponse:
+        """
+        @summary 分页查询应用下的应用账户列表
+        
+        @param request: ListApplicationAccountsRequest
+        @return: ListApplicationAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_accounts_with_options_async(request, runtime)
+
+    def list_application_accounts_for_user_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationAccountsForUserResponse:
+        """
+        @summary 查询当前应用下指定用户的所有账号
+        
+        @param request: ListApplicationAccountsForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationAccountsForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationAccountsForUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationAccountsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_accounts_for_user_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationAccountsForUserResponse:
+        """
+        @summary 查询当前应用下指定用户的所有账号
+        
+        @param request: ListApplicationAccountsForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationAccountsForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationAccountsForUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationAccountsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_accounts_for_user(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsForUserRequest,
+    ) -> eiam_20211201_models.ListApplicationAccountsForUserResponse:
+        """
+        @summary 查询当前应用下指定用户的所有账号
+        
+        @param request: ListApplicationAccountsForUserRequest
+        @return: ListApplicationAccountsForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_accounts_for_user_with_options(request, runtime)
+
+    async def list_application_accounts_for_user_async(
+        self,
+        request: eiam_20211201_models.ListApplicationAccountsForUserRequest,
+    ) -> eiam_20211201_models.ListApplicationAccountsForUserResponse:
+        """
+        @summary 查询当前应用下指定用户的所有账号
+        
+        @param request: ListApplicationAccountsForUserRequest
+        @return: ListApplicationAccountsForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_accounts_for_user_with_options_async(request, runtime)
+
     def list_application_client_secrets_with_options(
         self,
         request: eiam_20211201_models.ListApplicationClientSecretsRequest,
@@ -7528,6 +9952,438 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_application_client_secrets_with_options_async(request, runtime)
+
+    def list_application_federated_credentials_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsResponse:
+        """
+        @summary 查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationFederatedCredentialsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_type):
+            query['ApplicationFederatedCredentialType'] = request.application_federated_credential_type
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationFederatedCredentials',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationFederatedCredentialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_federated_credentials_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsResponse:
+        """
+        @summary 查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationFederatedCredentialsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_type):
+            query['ApplicationFederatedCredentialType'] = request.application_federated_credential_type
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationFederatedCredentials',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationFederatedCredentialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_federated_credentials(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsRequest,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsResponse:
+        """
+        @summary 查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsRequest
+        @return: ListApplicationFederatedCredentialsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_federated_credentials_with_options(request, runtime)
+
+    async def list_application_federated_credentials_async(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsRequest,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsResponse:
+        """
+        @summary 查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsRequest
+        @return: ListApplicationFederatedCredentialsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_federated_credentials_with_options_async(request, runtime)
+
+    def list_application_federated_credentials_for_provider_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsForProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsForProviderResponse:
+        """
+        @summary 根据联邦凭证提供方查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsForProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationFederatedCredentialsForProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationFederatedCredentialsForProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationFederatedCredentialsForProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_federated_credentials_for_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsForProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsForProviderResponse:
+        """
+        @summary 根据联邦凭证提供方查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsForProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationFederatedCredentialsForProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationFederatedCredentialsForProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationFederatedCredentialsForProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_federated_credentials_for_provider(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsForProviderRequest,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsForProviderResponse:
+        """
+        @summary 根据联邦凭证提供方查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsForProviderRequest
+        @return: ListApplicationFederatedCredentialsForProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_federated_credentials_for_provider_with_options(request, runtime)
+
+    async def list_application_federated_credentials_for_provider_async(
+        self,
+        request: eiam_20211201_models.ListApplicationFederatedCredentialsForProviderRequest,
+    ) -> eiam_20211201_models.ListApplicationFederatedCredentialsForProviderResponse:
+        """
+        @summary 根据联邦凭证提供方查询应用联邦凭证列表
+        
+        @param request: ListApplicationFederatedCredentialsForProviderRequest
+        @return: ListApplicationFederatedCredentialsForProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_federated_credentials_for_provider_with_options_async(request, runtime)
+
+    def list_application_supported_provision_protocol_types_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesResponse:
+        """
+        @summary 应用支持账户同步类型列表
+        
+        @param request: ListApplicationSupportedProvisionProtocolTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationSupportedProvisionProtocolTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationSupportedProvisionProtocolTypes',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_supported_provision_protocol_types_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesResponse:
+        """
+        @summary 应用支持账户同步类型列表
+        
+        @param request: ListApplicationSupportedProvisionProtocolTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationSupportedProvisionProtocolTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationSupportedProvisionProtocolTypes',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_supported_provision_protocol_types(
+        self,
+        request: eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesRequest,
+    ) -> eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesResponse:
+        """
+        @summary 应用支持账户同步类型列表
+        
+        @param request: ListApplicationSupportedProvisionProtocolTypesRequest
+        @return: ListApplicationSupportedProvisionProtocolTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_supported_provision_protocol_types_with_options(request, runtime)
+
+    async def list_application_supported_provision_protocol_types_async(
+        self,
+        request: eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesRequest,
+    ) -> eiam_20211201_models.ListApplicationSupportedProvisionProtocolTypesResponse:
+        """
+        @summary 应用支持账户同步类型列表
+        
+        @param request: ListApplicationSupportedProvisionProtocolTypesRequest
+        @return: ListApplicationSupportedProvisionProtocolTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_supported_provision_protocol_types_with_options_async(request, runtime)
+
+    def list_application_tokens_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationTokensRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationTokensResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: ListApplicationTokensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationTokensResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_type):
+            query['ApplicationTokenType'] = request.application_token_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationTokens',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationTokensResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_tokens_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationTokensRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationTokensResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: ListApplicationTokensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationTokensResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_type):
+            query['ApplicationTokenType'] = request.application_token_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationTokens',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationTokensResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_tokens(
+        self,
+        request: eiam_20211201_models.ListApplicationTokensRequest,
+    ) -> eiam_20211201_models.ListApplicationTokensResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: ListApplicationTokensRequest
+        @return: ListApplicationTokensResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_tokens_with_options(request, runtime)
+
+    async def list_application_tokens_async(
+        self,
+        request: eiam_20211201_models.ListApplicationTokensRequest,
+    ) -> eiam_20211201_models.ListApplicationTokensResponse:
+        """
+        @summary 创建应用Token
+        
+        @param request: ListApplicationTokensRequest
+        @return: ListApplicationTokensResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_tokens_with_options_async(request, runtime)
 
     def list_applications_with_options(
         self,
@@ -7660,6 +10516,338 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
+
+    def list_applications_for_group_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationsForGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationsForGroupResponse:
+        """
+        @summary 查询一个EIAM组可访问的应用列表
+        
+        @param request: ListApplicationsForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_ids):
+            query['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForGroup',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_for_group_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationsForGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationsForGroupResponse:
+        """
+        @summary 查询一个EIAM组可访问的应用列表
+        
+        @param request: ListApplicationsForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_ids):
+            query['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForGroup',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications_for_group(
+        self,
+        request: eiam_20211201_models.ListApplicationsForGroupRequest,
+    ) -> eiam_20211201_models.ListApplicationsForGroupResponse:
+        """
+        @summary 查询一个EIAM组可访问的应用列表
+        
+        @param request: ListApplicationsForGroupRequest
+        @return: ListApplicationsForGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_applications_for_group_with_options(request, runtime)
+
+    async def list_applications_for_group_async(
+        self,
+        request: eiam_20211201_models.ListApplicationsForGroupRequest,
+    ) -> eiam_20211201_models.ListApplicationsForGroupResponse:
+        """
+        @summary 查询一个EIAM组可访问的应用列表
+        
+        @param request: ListApplicationsForGroupRequest
+        @return: ListApplicationsForGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_applications_for_group_with_options_async(request, runtime)
+
+    def list_applications_for_network_access_endpoint_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkAccessEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络访问端点下的App信息。
+        
+        @param request: ListApplicationsForNetworkAccessEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForNetworkAccessEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForNetworkAccessEndpoint',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForNetworkAccessEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_for_network_access_endpoint_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkAccessEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络访问端点下的App信息。
+        
+        @param request: ListApplicationsForNetworkAccessEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForNetworkAccessEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForNetworkAccessEndpoint',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForNetworkAccessEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications_for_network_access_endpoint(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkAccessEndpointRequest,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络访问端点下的App信息。
+        
+        @param request: ListApplicationsForNetworkAccessEndpointRequest
+        @return: ListApplicationsForNetworkAccessEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_applications_for_network_access_endpoint_with_options(request, runtime)
+
+    async def list_applications_for_network_access_endpoint_async(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkAccessEndpointRequest,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络访问端点下的App信息。
+        
+        @param request: ListApplicationsForNetworkAccessEndpointRequest
+        @return: ListApplicationsForNetworkAccessEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_applications_for_network_access_endpoint_with_options_async(request, runtime)
+
+    def list_applications_for_network_zone_with_options(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkZoneResponse:
+        """
+        @summary 获取NetworkZone关联的应用列表
+        
+        @param request: ListApplicationsForNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForNetworkZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_for_network_zone_with_options_async(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkZoneResponse:
+        """
+        @summary 获取NetworkZone关联的应用列表
+        
+        @param request: ListApplicationsForNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForNetworkZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications_for_network_zone(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkZoneRequest,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkZoneResponse:
+        """
+        @summary 获取NetworkZone关联的应用列表
+        
+        @param request: ListApplicationsForNetworkZoneRequest
+        @return: ListApplicationsForNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_applications_for_network_zone_with_options(request, runtime)
+
+    async def list_applications_for_network_zone_async(
+        self,
+        request: eiam_20211201_models.ListApplicationsForNetworkZoneRequest,
+    ) -> eiam_20211201_models.ListApplicationsForNetworkZoneResponse:
+        """
+        @summary 获取NetworkZone关联的应用列表
+        
+        @param request: ListApplicationsForNetworkZoneRequest
+        @return: ListApplicationsForNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_applications_for_network_zone_with_options_async(request, runtime)
 
     def list_applications_for_organizational_unit_with_options(
         self,
@@ -8013,6 +11201,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_conditional_access_policies_with_options_async(request, runtime)
 
+    def list_conditional_access_policies_for_application_with_options(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForApplicationResponse:
+        """
+        @summary 获取应用关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesForApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPoliciesForApplication',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesForApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_conditional_access_policies_for_application_with_options_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForApplicationResponse:
+        """
+        @summary 获取应用关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesForApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPoliciesForApplication',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesForApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_conditional_access_policies_for_application(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForApplicationRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForApplicationResponse:
+        """
+        @summary 获取应用关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForApplicationRequest
+        @return: ListConditionalAccessPoliciesForApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_conditional_access_policies_for_application_with_options(request, runtime)
+
+    async def list_conditional_access_policies_for_application_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForApplicationRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForApplicationResponse:
+        """
+        @summary 获取应用关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForApplicationRequest
+        @return: ListConditionalAccessPoliciesForApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_conditional_access_policies_for_application_with_options_async(request, runtime)
+
     def list_conditional_access_policies_for_network_zone_with_options(
         self,
         request: eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneRequest,
@@ -8120,6 +11408,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_conditional_access_policies_for_network_zone_with_options_async(request, runtime)
+
+    def list_conditional_access_policies_for_user_with_options(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForUserResponse:
+        """
+        @summary 获取用户关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPoliciesForUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_conditional_access_policies_for_user_with_options_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForUserResponse:
+        """
+        @summary 获取用户关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPoliciesForUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_conditional_access_policies_for_user(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForUserRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForUserResponse:
+        """
+        @summary 获取用户关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForUserRequest
+        @return: ListConditionalAccessPoliciesForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_conditional_access_policies_for_user_with_options(request, runtime)
+
+    async def list_conditional_access_policies_for_user_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForUserRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForUserResponse:
+        """
+        @summary 获取用户关联的条件访问策略列表
+        
+        @param request: ListConditionalAccessPoliciesForUserRequest
+        @return: ListConditionalAccessPoliciesForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_conditional_access_policies_for_user_with_options_async(request, runtime)
 
     def list_domain_proxy_tokens_with_options(
         self,
@@ -8235,6 +11623,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -8270,6 +11660,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -8490,6 +11882,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_eiam_regions_with_options_async(runtime)
+
+    def list_federated_credential_providers_with_options(
+        self,
+        request: eiam_20211201_models.ListFederatedCredentialProvidersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListFederatedCredentialProvidersResponse:
+        """
+        @summary 查询联邦凭证提供方列表
+        
+        @param request: ListFederatedCredentialProvidersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFederatedCredentialProvidersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_name):
+            query['FederatedCredentialProviderName'] = request.federated_credential_provider_name
+        if not UtilClient.is_unset(request.federated_credential_provider_type):
+            query['FederatedCredentialProviderType'] = request.federated_credential_provider_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFederatedCredentialProviders',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListFederatedCredentialProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_federated_credential_providers_with_options_async(
+        self,
+        request: eiam_20211201_models.ListFederatedCredentialProvidersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListFederatedCredentialProvidersResponse:
+        """
+        @summary 查询联邦凭证提供方列表
+        
+        @param request: ListFederatedCredentialProvidersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFederatedCredentialProvidersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_name):
+            query['FederatedCredentialProviderName'] = request.federated_credential_provider_name
+        if not UtilClient.is_unset(request.federated_credential_provider_type):
+            query['FederatedCredentialProviderType'] = request.federated_credential_provider_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFederatedCredentialProviders',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListFederatedCredentialProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_federated_credential_providers(
+        self,
+        request: eiam_20211201_models.ListFederatedCredentialProvidersRequest,
+    ) -> eiam_20211201_models.ListFederatedCredentialProvidersResponse:
+        """
+        @summary 查询联邦凭证提供方列表
+        
+        @param request: ListFederatedCredentialProvidersRequest
+        @return: ListFederatedCredentialProvidersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_federated_credential_providers_with_options(request, runtime)
+
+    async def list_federated_credential_providers_async(
+        self,
+        request: eiam_20211201_models.ListFederatedCredentialProvidersRequest,
+    ) -> eiam_20211201_models.ListFederatedCredentialProvidersResponse:
+        """
+        @summary 查询联邦凭证提供方列表
+        
+        @param request: ListFederatedCredentialProvidersRequest
+        @return: ListFederatedCredentialProvidersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_federated_credential_providers_with_options_async(request, runtime)
 
     def list_groups_with_options(
         self,
@@ -8934,6 +12442,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_identity_providers_with_options_async(request, runtime)
+
+    def list_identity_providers_for_network_access_endpoint_with_options(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络端点下的IdP信息。
+        
+        @param request: ListIdentityProvidersForNetworkAccessEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityProvidersForNetworkAccessEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityProvidersForNetworkAccessEndpoint',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_identity_providers_for_network_access_endpoint_with_options_async(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络端点下的IdP信息。
+        
+        @param request: ListIdentityProvidersForNetworkAccessEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityProvidersForNetworkAccessEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityProvidersForNetworkAccessEndpoint',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_identity_providers_for_network_access_endpoint(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointRequest,
+    ) -> eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络端点下的IdP信息。
+        
+        @param request: ListIdentityProvidersForNetworkAccessEndpointRequest
+        @return: ListIdentityProvidersForNetworkAccessEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_identity_providers_for_network_access_endpoint_with_options(request, runtime)
+
+    async def list_identity_providers_for_network_access_endpoint_async(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointRequest,
+    ) -> eiam_20211201_models.ListIdentityProvidersForNetworkAccessEndpointResponse:
+        """
+        @summary 获取网络端点下的IdP信息。
+        
+        @param request: ListIdentityProvidersForNetworkAccessEndpointRequest
+        @return: ListIdentityProvidersForNetworkAccessEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_identity_providers_for_network_access_endpoint_with_options_async(request, runtime)
 
     def list_instances_with_options(
         self,
@@ -9432,6 +13048,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_network_access_paths_with_options_async(request, runtime)
+
+    def list_network_zones_with_options(
+        self,
+        request: eiam_20211201_models.ListNetworkZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListNetworkZonesResponse:
+        """
+        @summary 网络区域对象列表
+        
+        @param request: ListNetworkZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetworkZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_zone_ids):
+            query['NetworkZoneIds'] = request.network_zone_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkZones',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_network_zones_with_options_async(
+        self,
+        request: eiam_20211201_models.ListNetworkZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListNetworkZonesResponse:
+        """
+        @summary 网络区域对象列表
+        
+        @param request: ListNetworkZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetworkZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.network_zone_ids):
+            query['NetworkZoneIds'] = request.network_zone_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkZones',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_network_zones(
+        self,
+        request: eiam_20211201_models.ListNetworkZonesRequest,
+    ) -> eiam_20211201_models.ListNetworkZonesResponse:
+        """
+        @summary 网络区域对象列表
+        
+        @param request: ListNetworkZonesRequest
+        @return: ListNetworkZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_network_zones_with_options(request, runtime)
+
+    async def list_network_zones_async(
+        self,
+        request: eiam_20211201_models.ListNetworkZonesRequest,
+    ) -> eiam_20211201_models.ListNetworkZonesResponse:
+        """
+        @summary 网络区域对象列表
+        
+        @param request: ListNetworkZonesRequest
+        @return: ListNetworkZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_network_zones_with_options_async(request, runtime)
 
     def list_organizational_unit_parents_with_options(
         self,
@@ -10455,6 +14183,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.obtain_application_client_secret_with_options_async(request, runtime)
 
+    def obtain_application_token_with_options(
+        self,
+        request: eiam_20211201_models.ObtainApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ObtainApplicationTokenResponse:
+        """
+        @summary 查询指定应用Token
+        
+        @param request: ObtainApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ObtainApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ObtainApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ObtainApplicationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def obtain_application_token_with_options_async(
+        self,
+        request: eiam_20211201_models.ObtainApplicationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ObtainApplicationTokenResponse:
+        """
+        @summary 查询指定应用Token
+        
+        @param request: ObtainApplicationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ObtainApplicationTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ObtainApplicationToken',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ObtainApplicationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def obtain_application_token(
+        self,
+        request: eiam_20211201_models.ObtainApplicationTokenRequest,
+    ) -> eiam_20211201_models.ObtainApplicationTokenResponse:
+        """
+        @summary 查询指定应用Token
+        
+        @param request: ObtainApplicationTokenRequest
+        @return: ObtainApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.obtain_application_token_with_options(request, runtime)
+
+    async def obtain_application_token_async(
+        self,
+        request: eiam_20211201_models.ObtainApplicationTokenRequest,
+    ) -> eiam_20211201_models.ObtainApplicationTokenResponse:
+        """
+        @summary 查询指定应用Token
+        
+        @param request: ObtainApplicationTokenRequest
+        @return: ObtainApplicationTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.obtain_application_token_with_options_async(request, runtime)
+
     def obtain_domain_proxy_token_with_options(
         self,
         request: eiam_20211201_models.ObtainDomainProxyTokenRequest,
@@ -10558,6 +14390,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.obtain_domain_proxy_token_with_options_async(request, runtime)
+
+    def remove_application_account_from_user_with_options(
+        self,
+        request: eiam_20211201_models.RemoveApplicationAccountFromUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.RemoveApplicationAccountFromUserResponse:
+        """
+        @summary 删除一个当前应用下的指定员工的应用账号
+        
+        @param request: RemoveApplicationAccountFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApplicationAccountFromUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_account_id):
+            query['ApplicationAccountId'] = request.application_account_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveApplicationAccountFromUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveApplicationAccountFromUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_application_account_from_user_with_options_async(
+        self,
+        request: eiam_20211201_models.RemoveApplicationAccountFromUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.RemoveApplicationAccountFromUserResponse:
+        """
+        @summary 删除一个当前应用下的指定员工的应用账号
+        
+        @param request: RemoveApplicationAccountFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApplicationAccountFromUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_account_id):
+            query['ApplicationAccountId'] = request.application_account_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveApplicationAccountFromUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveApplicationAccountFromUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_application_account_from_user(
+        self,
+        request: eiam_20211201_models.RemoveApplicationAccountFromUserRequest,
+    ) -> eiam_20211201_models.RemoveApplicationAccountFromUserResponse:
+        """
+        @summary 删除一个当前应用下的指定员工的应用账号
+        
+        @param request: RemoveApplicationAccountFromUserRequest
+        @return: RemoveApplicationAccountFromUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_application_account_from_user_with_options(request, runtime)
+
+    async def remove_application_account_from_user_async(
+        self,
+        request: eiam_20211201_models.RemoveApplicationAccountFromUserRequest,
+    ) -> eiam_20211201_models.RemoveApplicationAccountFromUserResponse:
+        """
+        @summary 删除一个当前应用下的指定员工的应用账号
+        
+        @param request: RemoveApplicationAccountFromUserRequest
+        @return: RemoveApplicationAccountFromUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_application_account_from_user_with_options_async(request, runtime)
 
     def remove_user_from_organizational_units_with_options(
         self,
@@ -12959,6 +16899,450 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_application_description_with_options_async(request, runtime)
 
+    def update_application_federated_credential_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialResponse:
+        """
+        @summary 更新应用联邦凭证
+        
+        @param request: UpdateApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.attribute_mappings):
+            query['AttributeMappings'] = request.attribute_mappings
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.verification_condition):
+            query['VerificationCondition'] = request.verification_condition
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationFederatedCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_federated_credential_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialResponse:
+        """
+        @summary 更新应用联邦凭证
+        
+        @param request: UpdateApplicationFederatedCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationFederatedCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.attribute_mappings):
+            query['AttributeMappings'] = request.attribute_mappings
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.verification_condition):
+            query['VerificationCondition'] = request.verification_condition
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationFederatedCredential',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationFederatedCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_federated_credential(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialResponse:
+        """
+        @summary 更新应用联邦凭证
+        
+        @param request: UpdateApplicationFederatedCredentialRequest
+        @return: UpdateApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_federated_credential_with_options(request, runtime)
+
+    async def update_application_federated_credential_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialRequest,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialResponse:
+        """
+        @summary 更新应用联邦凭证
+        
+        @param request: UpdateApplicationFederatedCredentialRequest
+        @return: UpdateApplicationFederatedCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_federated_credential_with_options_async(request, runtime)
+
+    def update_application_federated_credential_description_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionResponse:
+        """
+        @summary 更新应用联邦凭证描述
+        
+        @param request: UpdateApplicationFederatedCredentialDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationFederatedCredentialDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationFederatedCredentialDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_federated_credential_description_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionResponse:
+        """
+        @summary 更新应用联邦凭证描述
+        
+        @param request: UpdateApplicationFederatedCredentialDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationFederatedCredentialDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_federated_credential_id):
+            query['ApplicationFederatedCredentialId'] = request.application_federated_credential_id
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationFederatedCredentialDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_federated_credential_description(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionResponse:
+        """
+        @summary 更新应用联邦凭证描述
+        
+        @param request: UpdateApplicationFederatedCredentialDescriptionRequest
+        @return: UpdateApplicationFederatedCredentialDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_federated_credential_description_with_options(request, runtime)
+
+    async def update_application_federated_credential_description_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateApplicationFederatedCredentialDescriptionResponse:
+        """
+        @summary 更新应用联邦凭证描述
+        
+        @param request: UpdateApplicationFederatedCredentialDescriptionRequest
+        @return: UpdateApplicationFederatedCredentialDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_federated_credential_description_with_options_async(request, runtime)
+
+    def update_application_info_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationInfoResponse:
+        """
+        @summary 更新应用基本信息
+        
+        @param request: UpdateApplicationInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.application_visibility):
+            query['ApplicationVisibility'] = request.application_visibility
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logo_url):
+            query['LogoUrl'] = request.logo_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationInfo',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_info_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationInfoResponse:
+        """
+        @summary 更新应用基本信息
+        
+        @param request: UpdateApplicationInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.application_visibility):
+            query['ApplicationVisibility'] = request.application_visibility
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logo_url):
+            query['LogoUrl'] = request.logo_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationInfo',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_info(
+        self,
+        request: eiam_20211201_models.UpdateApplicationInfoRequest,
+    ) -> eiam_20211201_models.UpdateApplicationInfoResponse:
+        """
+        @summary 更新应用基本信息
+        
+        @param request: UpdateApplicationInfoRequest
+        @return: UpdateApplicationInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_info_with_options(request, runtime)
+
+    async def update_application_info_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationInfoRequest,
+    ) -> eiam_20211201_models.UpdateApplicationInfoResponse:
+        """
+        @summary 更新应用基本信息
+        
+        @param request: UpdateApplicationInfoRequest
+        @return: UpdateApplicationInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_info_with_options_async(request, runtime)
+
+    def update_application_token_expiration_time_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationTokenExpirationTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationTokenExpirationTimeResponse:
+        """
+        @summary 更新ApplicationToken过期时间
+        
+        @param request: UpdateApplicationTokenExpirationTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationTokenExpirationTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationTokenExpirationTime',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationTokenExpirationTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_token_expiration_time_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationTokenExpirationTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationTokenExpirationTimeResponse:
+        """
+        @summary 更新ApplicationToken过期时间
+        
+        @param request: UpdateApplicationTokenExpirationTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationTokenExpirationTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_token_id):
+            query['ApplicationTokenId'] = request.application_token_id
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationTokenExpirationTime',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationTokenExpirationTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_token_expiration_time(
+        self,
+        request: eiam_20211201_models.UpdateApplicationTokenExpirationTimeRequest,
+    ) -> eiam_20211201_models.UpdateApplicationTokenExpirationTimeResponse:
+        """
+        @summary 更新ApplicationToken过期时间
+        
+        @param request: UpdateApplicationTokenExpirationTimeRequest
+        @return: UpdateApplicationTokenExpirationTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_token_expiration_time_with_options(request, runtime)
+
+    async def update_application_token_expiration_time_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationTokenExpirationTimeRequest,
+    ) -> eiam_20211201_models.UpdateApplicationTokenExpirationTimeResponse:
+        """
+        @summary 更新ApplicationToken过期时间
+        
+        @param request: UpdateApplicationTokenExpirationTimeRequest
+        @return: UpdateApplicationTokenExpirationTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_token_expiration_time_with_options_async(request, runtime)
+
     def update_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.UpdateConditionalAccessPolicyRequest,
@@ -13206,6 +17590,334 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_conditional_access_policy_description_with_options_async(request, runtime)
+
+    def update_domain_icp_number_with_options(
+        self,
+        request: eiam_20211201_models.UpdateDomainIcpNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateDomainIcpNumberResponse:
+        """
+        @summary 更新域名备案号。
+        
+        @param request: UpdateDomainIcpNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainIcpNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.icp_number):
+            query['IcpNumber'] = request.icp_number
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDomainIcpNumber',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateDomainIcpNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_domain_icp_number_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateDomainIcpNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateDomainIcpNumberResponse:
+        """
+        @summary 更新域名备案号。
+        
+        @param request: UpdateDomainIcpNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainIcpNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.icp_number):
+            query['IcpNumber'] = request.icp_number
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDomainIcpNumber',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateDomainIcpNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_domain_icp_number(
+        self,
+        request: eiam_20211201_models.UpdateDomainIcpNumberRequest,
+    ) -> eiam_20211201_models.UpdateDomainIcpNumberResponse:
+        """
+        @summary 更新域名备案号。
+        
+        @param request: UpdateDomainIcpNumberRequest
+        @return: UpdateDomainIcpNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_domain_icp_number_with_options(request, runtime)
+
+    async def update_domain_icp_number_async(
+        self,
+        request: eiam_20211201_models.UpdateDomainIcpNumberRequest,
+    ) -> eiam_20211201_models.UpdateDomainIcpNumberResponse:
+        """
+        @summary 更新域名备案号。
+        
+        @param request: UpdateDomainIcpNumberRequest
+        @return: UpdateDomainIcpNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_domain_icp_number_with_options_async(request, runtime)
+
+    def update_federated_credential_provider_with_options(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderResponse:
+        """
+        @summary 更新联邦凭证提供方
+        
+        @param request: UpdateFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.federated_credential_provider_name):
+            query['FederatedCredentialProviderName'] = request.federated_credential_provider_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_provider_config):
+            query['OidcProviderConfig'] = request.oidc_provider_config
+        if not UtilClient.is_unset(request.pkcs_7provider_config):
+            query['Pkcs7ProviderConfig'] = request.pkcs_7provider_config
+        if not UtilClient.is_unset(request.private_ca_provider_config):
+            query['PrivateCaProviderConfig'] = request.private_ca_provider_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateFederatedCredentialProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_federated_credential_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderResponse:
+        """
+        @summary 更新联邦凭证提供方
+        
+        @param request: UpdateFederatedCredentialProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFederatedCredentialProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.federated_credential_provider_name):
+            query['FederatedCredentialProviderName'] = request.federated_credential_provider_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_provider_config):
+            query['OidcProviderConfig'] = request.oidc_provider_config
+        if not UtilClient.is_unset(request.pkcs_7provider_config):
+            query['Pkcs7ProviderConfig'] = request.pkcs_7provider_config
+        if not UtilClient.is_unset(request.private_ca_provider_config):
+            query['PrivateCaProviderConfig'] = request.private_ca_provider_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFederatedCredentialProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateFederatedCredentialProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_federated_credential_provider(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderResponse:
+        """
+        @summary 更新联邦凭证提供方
+        
+        @param request: UpdateFederatedCredentialProviderRequest
+        @return: UpdateFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_federated_credential_provider_with_options(request, runtime)
+
+    async def update_federated_credential_provider_async(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderRequest,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderResponse:
+        """
+        @summary 更新联邦凭证提供方
+        
+        @param request: UpdateFederatedCredentialProviderRequest
+        @return: UpdateFederatedCredentialProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_federated_credential_provider_with_options_async(request, runtime)
+
+    def update_federated_credential_provider_description_with_options(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionResponse:
+        """
+        @summary 更新联邦凭证提供方描述
+        
+        @param request: UpdateFederatedCredentialProviderDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFederatedCredentialProviderDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFederatedCredentialProviderDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_federated_credential_provider_description_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionResponse:
+        """
+        @summary 更新联邦凭证提供方描述
+        
+        @param request: UpdateFederatedCredentialProviderDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFederatedCredentialProviderDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federated_credential_provider_id):
+            query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFederatedCredentialProviderDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_federated_credential_provider_description(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionResponse:
+        """
+        @summary 更新联邦凭证提供方描述
+        
+        @param request: UpdateFederatedCredentialProviderDescriptionRequest
+        @return: UpdateFederatedCredentialProviderDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_federated_credential_provider_description_with_options(request, runtime)
+
+    async def update_federated_credential_provider_description_async(
+        self,
+        request: eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateFederatedCredentialProviderDescriptionResponse:
+        """
+        @summary 更新联邦凭证提供方描述
+        
+        @param request: UpdateFederatedCredentialProviderDescriptionRequest
+        @return: UpdateFederatedCredentialProviderDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_federated_credential_provider_description_with_options_async(request, runtime)
 
     def update_group_with_options(
         self,
@@ -13758,6 +18470,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_network_access_endpoint_name_with_options_async(request, runtime)
+
+    def update_network_zone_with_options(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateNetworkZoneResponse:
+        """
+        @summary 更新网络区域对象
+        
+        @param request: UpdateNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ipv_4cidrs):
+            query['Ipv4Cidrs'] = request.ipv_4cidrs
+        if not UtilClient.is_unset(request.ipv_6cidrs):
+            query['Ipv6Cidrs'] = request.ipv_6cidrs
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        if not UtilClient.is_unset(request.network_zone_name):
+            query['NetworkZoneName'] = request.network_zone_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateNetworkZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_network_zone_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateNetworkZoneResponse:
+        """
+        @summary 更新网络区域对象
+        
+        @param request: UpdateNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ipv_4cidrs):
+            query['Ipv4Cidrs'] = request.ipv_4cidrs
+        if not UtilClient.is_unset(request.ipv_6cidrs):
+            query['Ipv6Cidrs'] = request.ipv_6cidrs
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        if not UtilClient.is_unset(request.network_zone_name):
+            query['NetworkZoneName'] = request.network_zone_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateNetworkZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_network_zone(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneRequest,
+    ) -> eiam_20211201_models.UpdateNetworkZoneResponse:
+        """
+        @summary 更新网络区域对象
+        
+        @param request: UpdateNetworkZoneRequest
+        @return: UpdateNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_network_zone_with_options(request, runtime)
+
+    async def update_network_zone_async(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneRequest,
+    ) -> eiam_20211201_models.UpdateNetworkZoneResponse:
+        """
+        @summary 更新网络区域对象
+        
+        @param request: UpdateNetworkZoneRequest
+        @return: UpdateNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_network_zone_with_options_async(request, runtime)
+
+    def update_network_zone_description_with_options(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateNetworkZoneDescriptionResponse:
+        """
+        @summary 更新网络区域对象描述
+        
+        @param request: UpdateNetworkZoneDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNetworkZoneDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkZoneDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateNetworkZoneDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_network_zone_description_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateNetworkZoneDescriptionResponse:
+        """
+        @summary 更新网络区域对象描述
+        
+        @param request: UpdateNetworkZoneDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNetworkZoneDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkZoneDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateNetworkZoneDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_network_zone_description(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateNetworkZoneDescriptionResponse:
+        """
+        @summary 更新网络区域对象描述
+        
+        @param request: UpdateNetworkZoneDescriptionRequest
+        @return: UpdateNetworkZoneDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_network_zone_description_with_options(request, runtime)
+
+    async def update_network_zone_description_async(
+        self,
+        request: eiam_20211201_models.UpdateNetworkZoneDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateNetworkZoneDescriptionResponse:
+        """
+        @summary 更新网络区域对象描述
+        
+        @param request: UpdateNetworkZoneDescriptionRequest
+        @return: UpdateNetworkZoneDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_network_zone_description_with_options_async(request, runtime)
 
     def update_organizational_unit_with_options(
         self,

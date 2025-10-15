@@ -1,7 +1,138 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class AddApplicationAccountToUserRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_username: str = None,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # IDaaS的应用主键id
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 应用账号名称
+        # 
+        # This parameter is required.
+        self.application_username = application_username
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 用户Id
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_username is not None:
+            result['ApplicationUsername'] = self.application_username
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationUsername') is not None:
+            self.application_username = m.get('ApplicationUsername')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AddApplicationAccountToUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_account_id: str = None,
+        request_id: str = None,
+    ):
+        self.application_account_id = application_account_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_account_id is not None:
+            result['ApplicationAccountId'] = self.application_account_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationAccountId') is not None:
+            self.application_account_id = m.get('ApplicationAccountId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddApplicationAccountToUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddApplicationAccountToUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddApplicationAccountToUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class AddUserToOrganizationalUnitsRequest(TeaModel):
@@ -914,6 +1045,383 @@ class CreateApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class CreateApplicationFederatedCredentialRequestAttributeMappings(TeaModel):
+    def __init__(
+        self,
+        source_value_expression: str = None,
+        target_field: str = None,
+    ):
+        # 源值表达式
+        self.source_value_expression = source_value_expression
+        # 目标字段
+        self.target_field = target_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_value_expression is not None:
+            result['SourceValueExpression'] = self.source_value_expression
+        if self.target_field is not None:
+            result['TargetField'] = self.target_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceValueExpression') is not None:
+            self.source_value_expression = m.get('SourceValueExpression')
+        if m.get('TargetField') is not None:
+            self.target_field = m.get('TargetField')
+        return self
+
+
+class CreateApplicationFederatedCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_name: str = None,
+        application_federated_credential_type: str = None,
+        application_id: str = None,
+        attribute_mappings: List[CreateApplicationFederatedCredentialRequestAttributeMappings] = None,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+        verification_condition: str = None,
+    ):
+        # 应用联邦凭证名称
+        # 
+        # This parameter is required.
+        self.application_federated_credential_name = application_federated_credential_name
+        # 应用联邦凭证类型
+        # 
+        # This parameter is required.
+        self.application_federated_credential_type = application_federated_credential_type
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 属性映射
+        self.attribute_mappings = attribute_mappings
+        # 描述
+        self.description = description
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 校验条件
+        self.verification_condition = verification_condition
+
+    def validate(self):
+        if self.attribute_mappings:
+            for k in self.attribute_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_name is not None:
+            result['ApplicationFederatedCredentialName'] = self.application_federated_credential_name
+        if self.application_federated_credential_type is not None:
+            result['ApplicationFederatedCredentialType'] = self.application_federated_credential_type
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        result['AttributeMappings'] = []
+        if self.attribute_mappings is not None:
+            for k in self.attribute_mappings:
+                result['AttributeMappings'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.verification_condition is not None:
+            result['VerificationCondition'] = self.verification_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialName') is not None:
+            self.application_federated_credential_name = m.get('ApplicationFederatedCredentialName')
+        if m.get('ApplicationFederatedCredentialType') is not None:
+            self.application_federated_credential_type = m.get('ApplicationFederatedCredentialType')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        self.attribute_mappings = []
+        if m.get('AttributeMappings') is not None:
+            for k in m.get('AttributeMappings'):
+                temp_model = CreateApplicationFederatedCredentialRequestAttributeMappings()
+                self.attribute_mappings.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('VerificationCondition') is not None:
+            self.verification_condition = m.get('VerificationCondition')
+        return self
+
+
+class CreateApplicationFederatedCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        request_id: str = None,
+    ):
+        self.application_federated_credential_id = application_federated_credential_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateApplicationFederatedCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApplicationFederatedCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApplicationFederatedCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateApplicationTokenRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_type: str = None,
+        expiration_time: int = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 应用token类型
+        # 
+        # This parameter is required.
+        self.application_token_type = application_token_type
+        # 不填，默认1年后到期
+        self.expiration_time = expiration_time
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_type is not None:
+            result['ApplicationTokenType'] = self.application_token_type
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenType') is not None:
+            self.application_token_type = m.get('ApplicationTokenType')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateApplicationTokenResponseBodyApplicationTokens(TeaModel):
+    def __init__(
+        self,
+        application_token: str = None,
+        application_token_id: str = None,
+        application_token_type: str = None,
+    ):
+        # 应用token
+        self.application_token = application_token
+        # 应用token ID
+        self.application_token_id = application_token_id
+        # 应用token类型
+        self.application_token_type = application_token_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_token is not None:
+            result['ApplicationToken'] = self.application_token
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.application_token_type is not None:
+            result['ApplicationTokenType'] = self.application_token_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationToken') is not None:
+            self.application_token = m.get('ApplicationToken')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('ApplicationTokenType') is not None:
+            self.application_token_type = m.get('ApplicationTokenType')
+        return self
+
+
+class CreateApplicationTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_tokens: CreateApplicationTokenResponseBodyApplicationTokens = None,
+        request_id: str = None,
+    ):
+        self.application_tokens = application_tokens
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_tokens:
+            self.application_tokens.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_tokens is not None:
+            result['ApplicationTokens'] = self.application_tokens.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationTokens') is not None:
+            temp_model = CreateApplicationTokenResponseBodyApplicationTokens()
+            self.application_tokens = temp_model.from_map(m['ApplicationTokens'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateApplicationTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApplicationTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApplicationTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateConditionalAccessPolicyRequestConditionsConfigApplications(TeaModel):
     def __init__(
         self,
@@ -1619,6 +2127,410 @@ class CreateDomainProxyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFederatedCredentialProviderRequestOidcProviderConfig(TeaModel):
+    def __init__(
+        self,
+        audiences: List[str] = None,
+        issuer: str = None,
+        jwks_source: str = None,
+        jwks_uri: str = None,
+        static_jwks: str = None,
+        trust_condition: str = None,
+    ):
+        self.audiences = audiences
+        # Issuer
+        self.issuer = issuer
+        # Jwks来源
+        self.jwks_source = jwks_source
+        # JWKS 端点
+        self.jwks_uri = jwks_uri
+        # 静态获取的jwks
+        self.static_jwks = static_jwks
+        # 信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audiences is not None:
+            result['Audiences'] = self.audiences
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_source is not None:
+            result['JwksSource'] = self.jwks_source
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.static_jwks is not None:
+            result['StaticJwks'] = self.static_jwks
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audiences') is not None:
+            self.audiences = m.get('Audiences')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksSource') is not None:
+            self.jwks_source = m.get('JwksSource')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('StaticJwks') is not None:
+            self.static_jwks = m.get('StaticJwks')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # Root证书内容
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class CreateFederatedCredentialProviderRequestPkcs7ProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates] = None,
+        cms_verification_mode: str = None,
+        signature_effective_time: int = None,
+        signing_time_value_expression: str = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # pkcs7证书列表
+        self.certificates = certificates
+        # CMS验证模式
+        self.cms_verification_mode = cms_verification_mode
+        # 签名有效期, 单位秒，1200
+        self.signature_effective_time = signature_effective_time
+        # 获取签名时间的表达式
+        self.signing_time_value_expression = signing_time_value_expression
+        # 证书信任锚点来源
+        self.trust_anchor_source = trust_anchor_source
+        # 信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.cms_verification_mode is not None:
+            result['CmsVerificationMode'] = self.cms_verification_mode
+        if self.signature_effective_time is not None:
+            result['SignatureEffectiveTime'] = self.signature_effective_time
+        if self.signing_time_value_expression is not None:
+            result['SigningTimeValueExpression'] = self.signing_time_value_expression
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('CmsVerificationMode') is not None:
+            self.cms_verification_mode = m.get('CmsVerificationMode')
+        if m.get('SignatureEffectiveTime') is not None:
+            self.signature_effective_time = m.get('SignatureEffectiveTime')
+        if m.get('SigningTimeValueExpression') is not None:
+            self.signing_time_value_expression = m.get('SigningTimeValueExpression')
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # Root证书内容
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class CreateFederatedCredentialProviderRequestPrivateCaProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates] = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # Root证书列表
+        self.certificates = certificates
+        # Root证书获取方式
+        self.trust_anchor_source = trust_anchor_source
+        # Root证书的信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class CreateFederatedCredentialProviderRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        federated_credential_provider_name: str = None,
+        federated_credential_provider_type: str = None,
+        instance_id: str = None,
+        network_access_endpoint_id: str = None,
+        oidc_provider_config: CreateFederatedCredentialProviderRequestOidcProviderConfig = None,
+        pkcs_7provider_config: CreateFederatedCredentialProviderRequestPkcs7ProviderConfig = None,
+        private_ca_provider_config: CreateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
+    ):
+        # 联邦凭证提供方描述
+        self.description = description
+        # 联邦凭证提供方名称
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_name = federated_credential_provider_name
+        # 联邦凭证提供方类型
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_type = federated_credential_provider_type
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 网络端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC配置
+        self.oidc_provider_config = oidc_provider_config
+        # PKCS7配置
+        self.pkcs_7provider_config = pkcs_7provider_config
+        # 私有CA配置
+        self.private_ca_provider_config = private_ca_provider_config
+
+    def validate(self):
+        if self.oidc_provider_config:
+            self.oidc_provider_config.validate()
+        if self.pkcs_7provider_config:
+            self.pkcs_7provider_config.validate()
+        if self.private_ca_provider_config:
+            self.private_ca_provider_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_name is not None:
+            result['FederatedCredentialProviderName'] = self.federated_credential_provider_name
+        if self.federated_credential_provider_type is not None:
+            result['FederatedCredentialProviderType'] = self.federated_credential_provider_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_provider_config is not None:
+            result['OidcProviderConfig'] = self.oidc_provider_config.to_map()
+        if self.pkcs_7provider_config is not None:
+            result['Pkcs7ProviderConfig'] = self.pkcs_7provider_config.to_map()
+        if self.private_ca_provider_config is not None:
+            result['PrivateCaProviderConfig'] = self.private_ca_provider_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderName') is not None:
+            self.federated_credential_provider_name = m.get('FederatedCredentialProviderName')
+        if m.get('FederatedCredentialProviderType') is not None:
+            self.federated_credential_provider_type = m.get('FederatedCredentialProviderType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcProviderConfig') is not None:
+            temp_model = CreateFederatedCredentialProviderRequestOidcProviderConfig()
+            self.oidc_provider_config = temp_model.from_map(m['OidcProviderConfig'])
+        if m.get('Pkcs7ProviderConfig') is not None:
+            temp_model = CreateFederatedCredentialProviderRequestPkcs7ProviderConfig()
+            self.pkcs_7provider_config = temp_model.from_map(m['Pkcs7ProviderConfig'])
+        if m.get('PrivateCaProviderConfig') is not None:
+            temp_model = CreateFederatedCredentialProviderRequestPrivateCaProviderConfig()
+            self.private_ca_provider_config = temp_model.from_map(m['PrivateCaProviderConfig'])
+        return self
+
+
+class CreateFederatedCredentialProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        request_id: str = None,
+    ):
+        self.federated_credential_provider_id = federated_credential_provider_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFederatedCredentialProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFederatedCredentialProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFederatedCredentialProviderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3213,6 +4125,163 @@ class CreateNetworkAccessEndpointResponse(TeaModel):
         return self
 
 
+class CreateNetworkZoneRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        instance_id: str = None,
+        ipv_4cidrs: List[str] = None,
+        ipv_6cidrs: List[str] = None,
+        network_zone_name: str = None,
+        network_zone_type: str = None,
+        vpc_id: str = None,
+    ):
+        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        self.client_token = client_token
+        # 网络区域描述
+        self.description = description
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 网络区域ipv4Cidr
+        self.ipv_4cidrs = ipv_4cidrs
+        # 网络区域ipv6Cidr
+        self.ipv_6cidrs = ipv_6cidrs
+        # 网络区域名称
+        # 
+        # This parameter is required.
+        self.network_zone_name = network_zone_name
+        # 网络区域类型
+        # 
+        # This parameter is required.
+        self.network_zone_type = network_zone_type
+        # 专有网络VpcId
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ipv_4cidrs is not None:
+            result['Ipv4Cidrs'] = self.ipv_4cidrs
+        if self.ipv_6cidrs is not None:
+            result['Ipv6Cidrs'] = self.ipv_6cidrs
+        if self.network_zone_name is not None:
+            result['NetworkZoneName'] = self.network_zone_name
+        if self.network_zone_type is not None:
+            result['NetworkZoneType'] = self.network_zone_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ipv4Cidrs') is not None:
+            self.ipv_4cidrs = m.get('Ipv4Cidrs')
+        if m.get('Ipv6Cidrs') is not None:
+            self.ipv_6cidrs = m.get('Ipv6Cidrs')
+        if m.get('NetworkZoneName') is not None:
+            self.network_zone_name = m.get('NetworkZoneName')
+        if m.get('NetworkZoneType') is not None:
+            self.network_zone_type = m.get('NetworkZoneType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateNetworkZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_zone_id: str = None,
+        request_id: str = None,
+    ):
+        self.network_zone_id = network_zone_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNetworkZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetworkZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetworkZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrganizationalUnitRequest(TeaModel):
     def __init__(
         self,
@@ -3893,6 +4962,238 @@ class DeleteApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class DeleteApplicationFederatedCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_id: str = None,
+        instance_id: str = None,
+    ):
+        # 应用联邦凭证Id
+        # 
+        # This parameter is required.
+        self.application_federated_credential_id = application_federated_credential_id
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteApplicationFederatedCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteApplicationFederatedCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApplicationFederatedCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApplicationFederatedCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteApplicationTokenRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS的应用资源TokenID。
+        # 
+        # This parameter is required.
+        self.application_token_id = application_token_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteApplicationTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteApplicationTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApplicationTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApplicationTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteConditionalAccessPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -4222,6 +5523,113 @@ class DeleteDomainProxyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFederatedCredentialProviderRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteFederatedCredentialProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFederatedCredentialProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFederatedCredentialProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFederatedCredentialProviderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4645,6 +6053,113 @@ class DeleteNetworkAccessEndpointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNetworkAccessEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNetworkZoneRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        network_zone_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # IDaaS的网络区域主键id
+        # 
+        # This parameter is required.
+        self.network_zone_id = network_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        return self
+
+
+class DeleteNetworkZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNetworkZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNetworkZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNetworkZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5306,6 +6821,122 @@ class DisableApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class DisableApplicationFederatedCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_id: str = None,
+        instance_id: str = None,
+    ):
+        # 应用联邦凭证Id
+        # 
+        # This parameter is required.
+        self.application_federated_credential_id = application_federated_credential_id
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableApplicationFederatedCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableApplicationFederatedCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableApplicationFederatedCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableApplicationFederatedCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableApplicationProvisioningRequest(TeaModel):
     def __init__(
         self,
@@ -5518,6 +7149,122 @@ class DisableApplicationSsoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableApplicationSsoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableApplicationTokenRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS的应用资源TokenID。
+        # 
+        # This parameter is required.
+        self.application_token_id = application_token_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableApplicationTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableApplicationTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableApplicationTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableApplicationTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5743,6 +7490,220 @@ class DisableDomainProxyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableFederatedCredentialProviderRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableFederatedCredentialProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableFederatedCredentialProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableFederatedCredentialProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableFederatedCredentialProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableIdentityProviderAuthnRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableIdentityProviderAuthnResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableIdentityProviderAuthnResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableIdentityProviderAuthnResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableIdentityProviderAuthnResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6395,6 +8356,122 @@ class EnableApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class EnableApplicationFederatedCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_id: str = None,
+        instance_id: str = None,
+    ):
+        # 应用联邦凭证Id
+        # 
+        # This parameter is required.
+        self.application_federated_credential_id = application_federated_credential_id
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableApplicationFederatedCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableApplicationFederatedCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableApplicationFederatedCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableApplicationFederatedCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableApplicationProvisioningRequest(TeaModel):
     def __init__(
         self,
@@ -6607,6 +8684,122 @@ class EnableApplicationSsoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableApplicationSsoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableApplicationTokenRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS的应用资源TokenID。
+        # 
+        # This parameter is required.
+        self.application_token_id = application_token_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableApplicationTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableApplicationTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableApplicationTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableApplicationTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6832,6 +9025,220 @@ class EnableDomainProxyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableFederatedCredentialProviderRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableFederatedCredentialProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableFederatedCredentialProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableFederatedCredentialProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableFederatedCredentialProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableIdentityProviderAuthnRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableIdentityProviderAuthnResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableIdentityProviderAuthnResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableIdentityProviderAuthnResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableIdentityProviderAuthnResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7457,6 +9864,285 @@ class GetApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetApplicationFederatedCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_id: str = None,
+        instance_id: str = None,
+    ):
+        # 应用联邦凭证Id
+        # 
+        # This parameter is required.
+        self.application_federated_credential_id = application_federated_credential_id
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings(TeaModel):
+    def __init__(
+        self,
+        source_value_expression: str = None,
+        target_field: str = None,
+    ):
+        # 源值表达式
+        self.source_value_expression = source_value_expression
+        # 目标字段
+        self.target_field = target_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_value_expression is not None:
+            result['SourceValueExpression'] = self.source_value_expression
+        if self.target_field is not None:
+            result['TargetField'] = self.target_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceValueExpression') is not None:
+            self.source_value_expression = m.get('SourceValueExpression')
+        if m.get('TargetField') is not None:
+            self.target_field = m.get('TargetField')
+        return self
+
+
+class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_federated_credential_name: str = None,
+        application_federated_credential_type: str = None,
+        application_id: str = None,
+        attribute_mappings: List[GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings] = None,
+        create_time: int = None,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+        update_time: int = None,
+        verification_condition: str = None,
+    ):
+        # 应用联邦凭证ID
+        self.application_federated_credential_id = application_federated_credential_id
+        # 应用联邦凭证名称
+        self.application_federated_credential_name = application_federated_credential_name
+        # 应用联邦凭证类型
+        self.application_federated_credential_type = application_federated_credential_type
+        # 应用ID
+        self.application_id = application_id
+        # 属性映射
+        self.attribute_mappings = attribute_mappings
+        # 创建时间
+        self.create_time = create_time
+        # 应用联邦凭证描述
+        self.description = description
+        # 应用联邦凭证提供者ID
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # EAIM 实例ID
+        self.instance_id = instance_id
+        # 最近使用时间
+        self.last_used_time = last_used_time
+        # 应用联邦凭证状态
+        self.status = status
+        # 更新时间
+        self.update_time = update_time
+        # 验证条件
+        self.verification_condition = verification_condition
+
+    def validate(self):
+        if self.attribute_mappings:
+            for k in self.attribute_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_federated_credential_name is not None:
+            result['ApplicationFederatedCredentialName'] = self.application_federated_credential_name
+        if self.application_federated_credential_type is not None:
+            result['ApplicationFederatedCredentialType'] = self.application_federated_credential_type
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        result['AttributeMappings'] = []
+        if self.attribute_mappings is not None:
+            for k in self.attribute_mappings:
+                result['AttributeMappings'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.verification_condition is not None:
+            result['VerificationCondition'] = self.verification_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationFederatedCredentialName') is not None:
+            self.application_federated_credential_name = m.get('ApplicationFederatedCredentialName')
+        if m.get('ApplicationFederatedCredentialType') is not None:
+            self.application_federated_credential_type = m.get('ApplicationFederatedCredentialType')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        self.attribute_mappings = []
+        if m.get('AttributeMappings') is not None:
+            for k in m.get('AttributeMappings'):
+                temp_model = GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings()
+                self.attribute_mappings.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VerificationCondition') is not None:
+            self.verification_condition = m.get('VerificationCondition')
+        return self
+
+
+class GetApplicationFederatedCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential: GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential = None,
+        request_id: str = None,
+    ):
+        self.application_federated_credential = application_federated_credential
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_federated_credential:
+            self.application_federated_credential.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential is not None:
+            result['ApplicationFederatedCredential'] = self.application_federated_credential.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredential') is not None:
+            temp_model = GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential()
+            self.application_federated_credential = temp_model.from_map(m['ApplicationFederatedCredential'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetApplicationFederatedCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApplicationFederatedCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApplicationFederatedCredentialResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8872,6 +11558,247 @@ class GetApplicationSsoConfigResponse(TeaModel):
         return self
 
 
+class GetApplicationTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        application_template_id: str = None,
+    ):
+        # 应用模板id
+        # 
+        # This parameter is required.
+        self.application_template_id = application_template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_template_id is not None:
+            result['ApplicationTemplateId'] = self.application_template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationTemplateId') is not None:
+            self.application_template_id = m.get('ApplicationTemplateId')
+        return self
+
+
+class GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo(TeaModel):
+    def __init__(
+        self,
+        always_free: bool = None,
+    ):
+        # 是否永久免费
+        self.always_free = always_free
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.always_free is not None:
+            result['AlwaysFree'] = self.always_free
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlwaysFree') is not None:
+            self.always_free = m.get('AlwaysFree')
+        return self
+
+
+class GetApplicationTemplateResponseBodyApplicationTemplate(TeaModel):
+    def __init__(
+        self,
+        application_template_id: str = None,
+        application_template_name: str = None,
+        create_time: int = None,
+        description: str = None,
+        help_document_url: str = None,
+        logo_url: str = None,
+        managed_service_code: str = None,
+        sale_info: GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo = None,
+        service_console_url: str = None,
+        service_managed: bool = None,
+        sso_types: List[str] = None,
+        update_time: int = None,
+    ):
+        # 应用模板Id
+        self.application_template_id = application_template_id
+        # 应用模板名称
+        self.application_template_name = application_template_name
+        # 应用模板创建时间
+        self.create_time = create_time
+        # 应用模板描述信息
+        self.description = description
+        # 应用模板对应帮助文档地址
+        self.help_document_url = help_document_url
+        # 应用模板Logo地址
+        self.logo_url = logo_url
+        # 托管应用模板的云产品ServiceCode。当且仅当ServiceManaged为true是返回。
+        self.managed_service_code = managed_service_code
+        # 应用模板售卖信息
+        self.sale_info = sale_info
+        # 托管应用模板的云产品控制台地址。当且仅当ServiceManaged为true是返回。
+        self.service_console_url = service_console_url
+        # 应用模板是否被云产品托管。
+        self.service_managed = service_managed
+        # 支持SSO协议
+        self.sso_types = sso_types
+        # 应用模板更新时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.sale_info:
+            self.sale_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_template_id is not None:
+            result['ApplicationTemplateId'] = self.application_template_id
+        if self.application_template_name is not None:
+            result['ApplicationTemplateName'] = self.application_template_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.help_document_url is not None:
+            result['HelpDocumentUrl'] = self.help_document_url
+        if self.logo_url is not None:
+            result['LogoUrl'] = self.logo_url
+        if self.managed_service_code is not None:
+            result['ManagedServiceCode'] = self.managed_service_code
+        if self.sale_info is not None:
+            result['SaleInfo'] = self.sale_info.to_map()
+        if self.service_console_url is not None:
+            result['ServiceConsoleUrl'] = self.service_console_url
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        if self.sso_types is not None:
+            result['SsoTypes'] = self.sso_types
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationTemplateId') is not None:
+            self.application_template_id = m.get('ApplicationTemplateId')
+        if m.get('ApplicationTemplateName') is not None:
+            self.application_template_name = m.get('ApplicationTemplateName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HelpDocumentUrl') is not None:
+            self.help_document_url = m.get('HelpDocumentUrl')
+        if m.get('LogoUrl') is not None:
+            self.logo_url = m.get('LogoUrl')
+        if m.get('ManagedServiceCode') is not None:
+            self.managed_service_code = m.get('ManagedServiceCode')
+        if m.get('SaleInfo') is not None:
+            temp_model = GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo()
+            self.sale_info = temp_model.from_map(m['SaleInfo'])
+        if m.get('ServiceConsoleUrl') is not None:
+            self.service_console_url = m.get('ServiceConsoleUrl')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        if m.get('SsoTypes') is not None:
+            self.sso_types = m.get('SsoTypes')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetApplicationTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_template: GetApplicationTemplateResponseBodyApplicationTemplate = None,
+        request_id: str = None,
+    ):
+        self.application_template = application_template
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_template:
+            self.application_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_template is not None:
+            result['ApplicationTemplate'] = self.application_template.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationTemplate') is not None:
+            temp_model = GetApplicationTemplateResponseBodyApplicationTemplate()
+            self.application_template = temp_model.from_map(m['ApplicationTemplate'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetApplicationTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApplicationTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApplicationTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetConditionalAccessPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -9416,6 +12343,7 @@ class GetDomainResponseBodyDomainFiling(TeaModel):
 class GetDomainResponseBodyDomain(TeaModel):
     def __init__(
         self,
+        brand_id: str = None,
         create_time: int = None,
         default_domain: bool = None,
         domain: str = None,
@@ -9426,6 +12354,7 @@ class GetDomainResponseBodyDomain(TeaModel):
         lock_mode: str = None,
         update_time: int = None,
     ):
+        self.brand_id = brand_id
         # The start time when the change order was created.
         self.create_time = create_time
         # Whether it is the default domain.
@@ -9461,6 +12390,8 @@ class GetDomainResponseBodyDomain(TeaModel):
             return _map
 
         result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.default_domain is not None:
@@ -9483,6 +12414,8 @@ class GetDomainResponseBodyDomain(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DefaultDomain') is not None:
@@ -9738,6 +12671,589 @@ class GetDomainDnsChallengeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDomainDnsChallengeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFederatedCredentialProviderRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcProviderConfig(TeaModel):
+    def __init__(
+        self,
+        audiences: List[str] = None,
+        dynamic_jwks: str = None,
+        issuer: str = None,
+        jwks_last_obtained_time: int = None,
+        jwks_source: str = None,
+        jwks_uri: str = None,
+        static_jwks: str = None,
+        trust_condition: str = None,
+    ):
+        # oidc凭证的受众列表
+        self.audiences = audiences
+        # 动态获取的jwks
+        self.dynamic_jwks = dynamic_jwks
+        # Issuer
+        self.issuer = issuer
+        self.jwks_last_obtained_time = jwks_last_obtained_time
+        # Jwks来源
+        self.jwks_source = jwks_source
+        # JWKS 端点
+        self.jwks_uri = jwks_uri
+        # 静态获取的jwks
+        self.static_jwks = static_jwks
+        # 默认条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audiences is not None:
+            result['Audiences'] = self.audiences
+        if self.dynamic_jwks is not None:
+            result['DynamicJwks'] = self.dynamic_jwks
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_last_obtained_time is not None:
+            result['JwksLastObtainedTime'] = self.jwks_last_obtained_time
+        if self.jwks_source is not None:
+            result['JwksSource'] = self.jwks_source
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.static_jwks is not None:
+            result['StaticJwks'] = self.static_jwks
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audiences') is not None:
+            self.audiences = m.get('Audiences')
+        if m.get('DynamicJwks') is not None:
+            self.dynamic_jwks = m.get('DynamicJwks')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksLastObtainedTime') is not None:
+            self.jwks_last_obtained_time = m.get('JwksLastObtainedTime')
+        if m.get('JwksSource') is not None:
+            self.jwks_source = m.get('JwksSource')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('StaticJwks') is not None:
+            self.static_jwks = m.get('StaticJwks')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificatesCertificateMetadata(TeaModel):
+    def __init__(
+        self,
+        not_after: int = None,
+        not_before: int = None,
+    ):
+        # 证书过期时间
+        self.not_after = not_after
+        # 证书生效时间
+        self.not_before = not_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        certificate_metadata: GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificatesCertificateMetadata = None,
+        content: str = None,
+        fingerprint: str = None,
+    ):
+        # 证书元数据
+        self.certificate_metadata = certificate_metadata
+        # Root证书内容
+        self.content = content
+        # Root证书指纹
+        self.fingerprint = fingerprint
+
+    def validate(self):
+        if self.certificate_metadata:
+            self.certificate_metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_metadata is not None:
+            result['CertificateMetadata'] = self.certificate_metadata.to_map()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateMetadata') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificatesCertificateMetadata()
+            self.certificate_metadata = temp_model.from_map(m['CertificateMetadata'])
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates] = None,
+        cms_verification_mode: str = None,
+        signature_effective_time: int = None,
+        signing_time_value_expression: str = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # pkcs7证书列表
+        self.certificates = certificates
+        # CMS验证模式
+        self.cms_verification_mode = cms_verification_mode
+        # 签名有效时间
+        self.signature_effective_time = signature_effective_time
+        # 签名时间
+        self.signing_time_value_expression = signing_time_value_expression
+        # 证书信任锚点来源
+        self.trust_anchor_source = trust_anchor_source
+        # 信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.cms_verification_mode is not None:
+            result['CmsVerificationMode'] = self.cms_verification_mode
+        if self.signature_effective_time is not None:
+            result['SignatureEffectiveTime'] = self.signature_effective_time
+        if self.signing_time_value_expression is not None:
+            result['SigningTimeValueExpression'] = self.signing_time_value_expression
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('CmsVerificationMode') is not None:
+            self.cms_verification_mode = m.get('CmsVerificationMode')
+        if m.get('SignatureEffectiveTime') is not None:
+            self.signature_effective_time = m.get('SignatureEffectiveTime')
+        if m.get('SigningTimeValueExpression') is not None:
+            self.signing_time_value_expression = m.get('SigningTimeValueExpression')
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificatesCertificateMetadata(TeaModel):
+    def __init__(
+        self,
+        not_after: int = None,
+        not_before: int = None,
+    ):
+        # 证书过期时间
+        self.not_after = not_after
+        # 证书生效时间
+        self.not_before = not_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        certificate_metadata: GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificatesCertificateMetadata = None,
+        content: str = None,
+        fingerprint: str = None,
+    ):
+        # 证书元数据
+        self.certificate_metadata = certificate_metadata
+        # Root证书内容
+        self.content = content
+        # Root证书指纹
+        self.fingerprint = fingerprint
+
+    def validate(self):
+        if self.certificate_metadata:
+            self.certificate_metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_metadata is not None:
+            result['CertificateMetadata'] = self.certificate_metadata.to_map()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateMetadata') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificatesCertificateMetadata()
+            self.certificate_metadata = temp_model.from_map(m['CertificateMetadata'])
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates] = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # Root证书
+        self.certificates = certificates
+        # Root证书获取方式
+        self.trust_anchor_source = trust_anchor_source
+        # Root证书的默认条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        federated_credential_provider_name: str = None,
+        federated_credential_provider_type: str = None,
+        instance_id: str = None,
+        network_access_endpoint_id: str = None,
+        oidc_provider_config: GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcProviderConfig = None,
+        pkcs_7provider_config: GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfig = None,
+        private_ca_provider_config: GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfig = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 创建时间
+        self.create_time = create_time
+        # 描述
+        self.description = description
+        # Federated Credential Provider ID
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # 联邦凭证提供方名称
+        self.federated_credential_provider_name = federated_credential_provider_name
+        # 联邦凭证提供方类型
+        self.federated_credential_provider_type = federated_credential_provider_type
+        # EIAM 实例ID
+        self.instance_id = instance_id
+        # 网络访问端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC配置
+        self.oidc_provider_config = oidc_provider_config
+        # PKCS7配置
+        self.pkcs_7provider_config = pkcs_7provider_config
+        # 私有CA配置
+        self.private_ca_provider_config = private_ca_provider_config
+        # 状态
+        self.status = status
+        # 更新时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.oidc_provider_config:
+            self.oidc_provider_config.validate()
+        if self.pkcs_7provider_config:
+            self.pkcs_7provider_config.validate()
+        if self.private_ca_provider_config:
+            self.private_ca_provider_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.federated_credential_provider_name is not None:
+            result['FederatedCredentialProviderName'] = self.federated_credential_provider_name
+        if self.federated_credential_provider_type is not None:
+            result['FederatedCredentialProviderType'] = self.federated_credential_provider_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_provider_config is not None:
+            result['OidcProviderConfig'] = self.oidc_provider_config.to_map()
+        if self.pkcs_7provider_config is not None:
+            result['Pkcs7ProviderConfig'] = self.pkcs_7provider_config.to_map()
+        if self.private_ca_provider_config is not None:
+            result['PrivateCaProviderConfig'] = self.private_ca_provider_config.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('FederatedCredentialProviderName') is not None:
+            self.federated_credential_provider_name = m.get('FederatedCredentialProviderName')
+        if m.get('FederatedCredentialProviderType') is not None:
+            self.federated_credential_provider_type = m.get('FederatedCredentialProviderType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcProviderConfig') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcProviderConfig()
+            self.oidc_provider_config = temp_model.from_map(m['OidcProviderConfig'])
+        if m.get('Pkcs7ProviderConfig') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfig()
+            self.pkcs_7provider_config = temp_model.from_map(m['Pkcs7ProviderConfig'])
+        if m.get('PrivateCaProviderConfig') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfig()
+            self.private_ca_provider_config = temp_model.from_map(m['PrivateCaProviderConfig'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetFederatedCredentialProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider: GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider = None,
+        request_id: str = None,
+    ):
+        self.federated_credential_provider = federated_credential_provider
+        self.request_id = request_id
+
+    def validate(self):
+        if self.federated_credential_provider:
+            self.federated_credential_provider.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider is not None:
+            result['FederatedCredentialProvider'] = self.federated_credential_provider.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProvider') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider()
+            self.federated_credential_provider = temp_model.from_map(m['FederatedCredentialProvider'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetFederatedCredentialProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFederatedCredentialProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFederatedCredentialProviderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12315,6 +15831,196 @@ class GetNetworkAccessEndpointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNetworkAccessEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetNetworkZoneRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        network_zone_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # IDaaS的网络区域主键id
+        # 
+        # This parameter is required.
+        self.network_zone_id = network_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        return self
+
+
+class GetNetworkZoneResponseBodyNetworkZone(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        ipv_4cidrs: List[str] = None,
+        ipv_6cidrs: List[str] = None,
+        network_zone_id: str = None,
+        network_zone_name: str = None,
+        network_zone_type: str = None,
+        vpc_id: str = None,
+    ):
+        # IDaaS EIAM 网络区域描述
+        self.description = description
+        # 实例ID。
+        self.instance_id = instance_id
+        self.ipv_4cidrs = ipv_4cidrs
+        self.ipv_6cidrs = ipv_6cidrs
+        # IDaaS EIAM 网络区域Id
+        self.network_zone_id = network_zone_id
+        # IDaaS EIAM 网络区域名称
+        self.network_zone_name = network_zone_name
+        # IDaaS EIAM 网络区域类型
+        self.network_zone_type = network_zone_type
+        # IDaaS EIAM 专有网络VpcId
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ipv_4cidrs is not None:
+            result['Ipv4Cidrs'] = self.ipv_4cidrs
+        if self.ipv_6cidrs is not None:
+            result['Ipv6Cidrs'] = self.ipv_6cidrs
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        if self.network_zone_name is not None:
+            result['NetworkZoneName'] = self.network_zone_name
+        if self.network_zone_type is not None:
+            result['NetworkZoneType'] = self.network_zone_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ipv4Cidrs') is not None:
+            self.ipv_4cidrs = m.get('Ipv4Cidrs')
+        if m.get('Ipv6Cidrs') is not None:
+            self.ipv_6cidrs = m.get('Ipv6Cidrs')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        if m.get('NetworkZoneName') is not None:
+            self.network_zone_name = m.get('NetworkZoneName')
+        if m.get('NetworkZoneType') is not None:
+            self.network_zone_type = m.get('NetworkZoneType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetNetworkZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_zone: GetNetworkZoneResponseBodyNetworkZone = None,
+        request_id: str = None,
+    ):
+        self.network_zone = network_zone
+        self.request_id = request_id
+
+    def validate(self):
+        if self.network_zone:
+            self.network_zone.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_zone is not None:
+            result['NetworkZone'] = self.network_zone.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkZone') is not None:
+            temp_model = GetNetworkZoneResponseBodyNetworkZone()
+            self.network_zone = temp_model.from_map(m['NetworkZone'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetNetworkZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNetworkZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNetworkZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15687,6 +19393,409 @@ class GetUserResponse(TeaModel):
         return self
 
 
+class ListApplicationAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # IDaaS的应用主键id
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 当前查询的列表页码，默认为1
+        self.page_number = page_number
+        # 当前查询的列表页码，默认为20
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListApplicationAccountsResponseBodyApplicationAccounts(TeaModel):
+    def __init__(
+        self,
+        application_account_id: str = None,
+        application_id: str = None,
+        application_username: str = None,
+        create_time: int = None,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # IDaaS EIAM 应用账号Id
+        self.application_account_id = application_account_id
+        # IDaaS EIAM 应用Id
+        self.application_id = application_id
+        # IDaaS EIAM 应用账号名称
+        self.application_username = application_username
+        # 创建时间
+        self.create_time = create_time
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # IDaaS EIAM 用户Id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_account_id is not None:
+            result['ApplicationAccountId'] = self.application_account_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_username is not None:
+            result['ApplicationUsername'] = self.application_username
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationAccountId') is not None:
+            self.application_account_id = m.get('ApplicationAccountId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationUsername') is not None:
+            self.application_username = m.get('ApplicationUsername')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListApplicationAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_accounts: List[ListApplicationAccountsResponseBodyApplicationAccounts] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.application_accounts = application_accounts
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.application_accounts:
+            for k in self.application_accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationAccounts'] = []
+        if self.application_accounts is not None:
+            for k in self.application_accounts:
+                result['ApplicationAccounts'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_accounts = []
+        if m.get('ApplicationAccounts') is not None:
+            for k in m.get('ApplicationAccounts'):
+                temp_model = ListApplicationAccountsResponseBodyApplicationAccounts()
+                self.application_accounts.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationAccountsForUserRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # IDaaS的应用主键id
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 用户Id
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListApplicationAccountsForUserResponseBodyApplicationAccounts(TeaModel):
+    def __init__(
+        self,
+        application_account_id: str = None,
+        application_id: str = None,
+        application_username: str = None,
+        create_time: int = None,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # IDaaS EIAM 应用账号Id
+        self.application_account_id = application_account_id
+        # IDaaS EIAM 应用Id
+        self.application_id = application_id
+        # IDaaS EIAM 应用账号名称
+        self.application_username = application_username
+        # 创建时间
+        self.create_time = create_time
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # IDaaS EIAM 用户Id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_account_id is not None:
+            result['ApplicationAccountId'] = self.application_account_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_username is not None:
+            result['ApplicationUsername'] = self.application_username
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationAccountId') is not None:
+            self.application_account_id = m.get('ApplicationAccountId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationUsername') is not None:
+            self.application_username = m.get('ApplicationUsername')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListApplicationAccountsForUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_accounts: List[ListApplicationAccountsForUserResponseBodyApplicationAccounts] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.application_accounts = application_accounts
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.application_accounts:
+            for k in self.application_accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationAccounts'] = []
+        if self.application_accounts is not None:
+            for k in self.application_accounts:
+                result['ApplicationAccounts'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_accounts = []
+        if m.get('ApplicationAccounts') is not None:
+            for k in m.get('ApplicationAccounts'):
+                temp_model = ListApplicationAccountsForUserResponseBodyApplicationAccounts()
+                self.application_accounts.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationAccountsForUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationAccountsForUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationAccountsForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListApplicationClientSecretsRequest(TeaModel):
     def __init__(
         self,
@@ -15892,6 +20001,915 @@ class ListApplicationClientSecretsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListApplicationClientSecretsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationFederatedCredentialsRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_type: str = None,
+        application_id: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # 应用联邦凭证提供者类型
+        self.application_federated_credential_type = application_federated_credential_type
+        # 应用ID
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_type is not None:
+            result['ApplicationFederatedCredentialType'] = self.application_federated_credential_type
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialType') is not None:
+            self.application_federated_credential_type = m.get('ApplicationFederatedCredentialType')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_federated_credential_name: str = None,
+        application_federated_credential_type: str = None,
+        application_id: str = None,
+        create_time: int = None,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 应用联邦凭证ID
+        self.application_federated_credential_id = application_federated_credential_id
+        # 应用联邦凭证名称
+        self.application_federated_credential_name = application_federated_credential_name
+        # 应用联邦凭证类型
+        self.application_federated_credential_type = application_federated_credential_type
+        # 应用ID
+        self.application_id = application_id
+        # 创建时间
+        self.create_time = create_time
+        # 应用联邦凭证描述
+        self.description = description
+        # 应用联邦凭证提供者ID
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # EAIM 实例ID
+        self.instance_id = instance_id
+        # 最近使用时间
+        self.last_used_time = last_used_time
+        # 应用联邦凭证状态
+        self.status = status
+        # 更新时间
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_federated_credential_name is not None:
+            result['ApplicationFederatedCredentialName'] = self.application_federated_credential_name
+        if self.application_federated_credential_type is not None:
+            result['ApplicationFederatedCredentialType'] = self.application_federated_credential_type
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationFederatedCredentialName') is not None:
+            self.application_federated_credential_name = m.get('ApplicationFederatedCredentialName')
+        if m.get('ApplicationFederatedCredentialType') is not None:
+            self.application_federated_credential_type = m.get('ApplicationFederatedCredentialType')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListApplicationFederatedCredentialsResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_federated_credentials: List[ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.application_federated_credentials = application_federated_credentials
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.application_federated_credentials:
+            for k in self.application_federated_credentials:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationFederatedCredentials'] = []
+        if self.application_federated_credentials is not None:
+            for k in self.application_federated_credentials:
+                result['ApplicationFederatedCredentials'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_federated_credentials = []
+        if m.get('ApplicationFederatedCredentials') is not None:
+            for k in m.get('ApplicationFederatedCredentials'):
+                temp_model = ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials()
+                self.application_federated_credentials.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationFederatedCredentialsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationFederatedCredentialsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationFederatedCredentialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationFederatedCredentialsForProviderRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # 联邦凭证提供方ID
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentials(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_federated_credential_name: str = None,
+        application_federated_credential_type: str = None,
+        application_id: str = None,
+        create_time: int = None,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 应用联邦凭证ID
+        self.application_federated_credential_id = application_federated_credential_id
+        # 应用联邦凭证名称
+        self.application_federated_credential_name = application_federated_credential_name
+        # 应用联邦凭证类型
+        self.application_federated_credential_type = application_federated_credential_type
+        # 应用ID
+        self.application_id = application_id
+        # 创建时间
+        self.create_time = create_time
+        # 应用联邦凭证描述
+        self.description = description
+        # 应用联邦凭证提供者ID
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # EAIM 实例ID
+        self.instance_id = instance_id
+        # 最近使用时间
+        self.last_used_time = last_used_time
+        # 应用联邦凭证状态
+        self.status = status
+        # 更新时间
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_federated_credential_name is not None:
+            result['ApplicationFederatedCredentialName'] = self.application_federated_credential_name
+        if self.application_federated_credential_type is not None:
+            result['ApplicationFederatedCredentialType'] = self.application_federated_credential_type
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationFederatedCredentialName') is not None:
+            self.application_federated_credential_name = m.get('ApplicationFederatedCredentialName')
+        if m.get('ApplicationFederatedCredentialType') is not None:
+            self.application_federated_credential_type = m.get('ApplicationFederatedCredentialType')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListApplicationFederatedCredentialsForProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_federated_credentials: List[ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentials] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.application_federated_credentials = application_federated_credentials
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.application_federated_credentials:
+            for k in self.application_federated_credentials:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationFederatedCredentials'] = []
+        if self.application_federated_credentials is not None:
+            for k in self.application_federated_credentials:
+                result['ApplicationFederatedCredentials'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_federated_credentials = []
+        if m.get('ApplicationFederatedCredentials') is not None:
+            for k in m.get('ApplicationFederatedCredentials'):
+                temp_model = ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentials()
+                self.application_federated_credentials.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationFederatedCredentialsForProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationFederatedCredentialsForProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationFederatedCredentialsForProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationSupportedProvisionProtocolTypesRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType(TeaModel):
+    def __init__(
+        self,
+        provision_protocol_type: List[str] = None,
+    ):
+        # 账户同步支持类型
+        self.provision_protocol_type = provision_protocol_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.provision_protocol_type is not None:
+            result['ProvisionProtocolType'] = self.provision_protocol_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProvisionProtocolType') is not None:
+            self.provision_protocol_type = m.get('ProvisionProtocolType')
+        return self
+
+
+class ListApplicationSupportedProvisionProtocolTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_supported_provision_protocol_type: ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType = None,
+        request_id: str = None,
+    ):
+        self.application_supported_provision_protocol_type = application_supported_provision_protocol_type
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_supported_provision_protocol_type:
+            self.application_supported_provision_protocol_type.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_supported_provision_protocol_type is not None:
+            result['ApplicationSupportedProvisionProtocolType'] = self.application_supported_provision_protocol_type.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationSupportedProvisionProtocolType') is not None:
+            temp_model = ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType()
+            self.application_supported_provision_protocol_type = temp_model.from_map(m['ApplicationSupportedProvisionProtocolType'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListApplicationSupportedProvisionProtocolTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationSupportedProvisionProtocolTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationSupportedProvisionProtocolTypesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationTokensRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_type: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # ApplicationToken的类型
+        # 
+        # This parameter is required.
+        self.application_token_type = application_token_type
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_type is not None:
+            result['ApplicationTokenType'] = self.application_token_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenType') is not None:
+            self.application_token_type = m.get('ApplicationTokenType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListApplicationTokensResponseBodyApplicationTokens(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        application_id: str = None,
+        application_token: str = None,
+        application_token_id: str = None,
+        application_token_type: str = None,
+        create_time: int = None,
+        description: str = None,
+        expiration_time: int = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+    ):
+        # aliUid。
+        self.ali_uid = ali_uid
+        # 应用ID
+        self.application_id = application_id
+        # 应用token
+        self.application_token = application_token
+        # 应用token ID
+        self.application_token_id = application_token_id
+        # 应用token类型
+        self.application_token_type = application_token_type
+        self.create_time = create_time
+        # 应用token描述
+        self.description = description
+        # 到期时间
+        self.expiration_time = expiration_time
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # 最后使用时间
+        self.last_used_time = last_used_time
+        # 应用状态
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token is not None:
+            result['ApplicationToken'] = self.application_token
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.application_token_type is not None:
+            result['ApplicationTokenType'] = self.application_token_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationToken') is not None:
+            self.application_token = m.get('ApplicationToken')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('ApplicationTokenType') is not None:
+            self.application_token_type = m.get('ApplicationTokenType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListApplicationTokensResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_tokens: List[ListApplicationTokensResponseBodyApplicationTokens] = None,
+        request_id: str = None,
+    ):
+        self.application_tokens = application_tokens
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_tokens:
+            for k in self.application_tokens:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationTokens'] = []
+        if self.application_tokens is not None:
+            for k in self.application_tokens:
+                result['ApplicationTokens'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_tokens = []
+        if m.get('ApplicationTokens') is not None:
+            for k in m.get('ApplicationTokens'):
+                temp_model = ListApplicationTokensResponseBodyApplicationTokens()
+                self.application_tokens.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListApplicationTokensResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationTokensResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationTokensResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16234,6 +21252,597 @@ class ListApplicationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationsForGroupRequest(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        group_id: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # 非必填，如果填写则可以基于应用ID进行过滤，列表中最多包含100个元素。
+        self.application_ids = application_ids
+        # 组的唯一标识。
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 当前查询的列表页码，默认为1。
+        self.page_number = page_number
+        # 当前查询的列表页码，默认为20。
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListApplicationsForGroupResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        has_direct_authorization: bool = None,
+        has_inherit_authorization: bool = None,
+    ):
+        # 应用的唯一标识。
+        self.application_id = application_id
+        # 直接分配给当前用户的权限，视为直接授权。
+        self.has_direct_authorization = has_direct_authorization
+        # 通过用户隶属的组织、组获取的权限，视为继承权限。
+        self.has_inherit_authorization = has_inherit_authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.has_direct_authorization is not None:
+            result['HasDirectAuthorization'] = self.has_direct_authorization
+        if self.has_inherit_authorization is not None:
+            result['HasInheritAuthorization'] = self.has_inherit_authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('HasDirectAuthorization') is not None:
+            self.has_direct_authorization = m.get('HasDirectAuthorization')
+        if m.get('HasInheritAuthorization') is not None:
+            self.has_inherit_authorization = m.get('HasInheritAuthorization')
+        return self
+
+
+class ListApplicationsForGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListApplicationsForGroupResponseBodyApplications] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.applications = applications
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListApplicationsForGroupResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationsForGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationsForGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationsForGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationsForNetworkAccessEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        network_access_endpoint_id: str = None,
+        next_token: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 网络端点ID。
+        # 
+        # This parameter is required.
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        instance_id: str = None,
+    ):
+        # 应用ID。
+        self.application_id = application_id
+        # 应用名称。
+        self.application_name = application_name
+        # IDaaS EIAM 实例ID
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListApplicationsForNetworkAccessEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications_for_network_access_endpoint: List[ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.applications_for_network_access_endpoint = applications_for_network_access_endpoint
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.applications_for_network_access_endpoint:
+            for k in self.applications_for_network_access_endpoint:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationsForNetworkAccessEndpoint'] = []
+        if self.applications_for_network_access_endpoint is not None:
+            for k in self.applications_for_network_access_endpoint:
+                result['ApplicationsForNetworkAccessEndpoint'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications_for_network_access_endpoint = []
+        if m.get('ApplicationsForNetworkAccessEndpoint') is not None:
+            for k in m.get('ApplicationsForNetworkAccessEndpoint'):
+                temp_model = ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint()
+                self.applications_for_network_access_endpoint.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationsForNetworkAccessEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationsForNetworkAccessEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationsForNetworkAccessEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationsForNetworkZoneRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        network_zone_id: str = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 应用关联的网络范围ID
+        # 
+        # This parameter is required.
+        self.network_zone_id = network_zone_id
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListApplicationsForNetworkZoneResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS EIAM 应用Id
+        self.application_id = application_id
+        # IDaaS EIAM 应用名称
+        self.application_name = application_name
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListApplicationsForNetworkZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListApplicationsForNetworkZoneResponseBodyApplications] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.applications = applications
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListApplicationsForNetworkZoneResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApplicationsForNetworkZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationsForNetworkZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationsForNetworkZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17140,6 +22749,482 @@ class ListConditionalAccessPoliciesResponse(TeaModel):
         return self
 
 
+class ListConditionalAccessPoliciesForApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        instance_id: str = None,
+    ):
+        # 条件访问策略关联的应用ID
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # 排除的应用
+        self.exclude_applications = exclude_applications
+        # 选择的应用
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # 排除的网络区域
+        self.exclude_network_zones = exclude_network_zones
+        # 选择的网络区域
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # 排除的用户组
+        self.exclude_groups = exclude_groups
+        # 排除的组织
+        self.exclude_organizational_units = exclude_organizational_units
+        # 排除的用户
+        self.exclude_users = exclude_users
+        # 选择的用户组
+        self.include_groups = include_groups
+        # 选择的组织
+        self.include_organizational_units = include_organizational_units
+        # 选择的用户
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigApplications = None,
+        network_zones: ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones = None,
+        users: ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigUsers = None,
+    ):
+        # 条件访问策略目标应用
+        self.applications = applications
+        # 条件访问策略网络区域
+        self.network_zones = network_zones
+        # 条件访问策略目标用户
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        self.active_session_reuse_status = active_session_reuse_status
+        # IDaaS EIAM 条件访问策略决策Action
+        self.effect = effect
+        # IDaaS EIAM 条件访问策略重复认证时间间隔(秒)
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # IDaaS EIAM 条件访问策略允许使用的mfa类型
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # IDaaS EIAM 条件访问策略Mfa类型
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPolicies(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        conditional_access_policy_name: str = None,
+        conditional_access_policy_type: str = None,
+        conditions_config: ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfig = None,
+        create_time: int = None,
+        decision_config: ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesDecisionConfig = None,
+        decision_type: str = None,
+        description: str = None,
+        evaluate_at: str = None,
+        instance_id: str = None,
+        last_updated_time: int = None,
+        priority: int = None,
+        status: str = None,
+    ):
+        # IDaaS EIAM 条件访问策略Id
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # IDaaS EIAM 条件访问策略名称
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # IDaaS EIAM 条件访问策略类型
+        self.conditional_access_policy_type = conditional_access_policy_type
+        # IDaaS EIAM 条件访问策略内容
+        self.conditions_config = conditions_config
+        # 创建时间
+        self.create_time = create_time
+        # IDaaS EIAM 条件访问策略执行Action
+        self.decision_config = decision_config
+        # IDaaS EIAM 条件访问策略执行类型
+        self.decision_type = decision_type
+        # IDaaS EIAM 条件访问策略描述
+        self.description = description
+        # IDaaS EIAM 条件访问策略执行点
+        self.evaluate_at = evaluate_at
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # 更新时间
+        self.last_updated_time = last_updated_time
+        # 优先级
+        self.priority = priority
+        # IDaaS EIAM 条件访问策略启用禁用状态
+        self.status = status
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditional_access_policy_type is not None:
+            result['ConditionalAccessPolicyType'] = self.conditional_access_policy_type
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.evaluate_at is not None:
+            result['EvaluateAt'] = self.evaluate_at
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_updated_time is not None:
+            result['LastUpdatedTime'] = self.last_updated_time
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionalAccessPolicyType') is not None:
+            self.conditional_access_policy_type = m.get('ConditionalAccessPolicyType')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DecisionConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EvaluateAt') is not None:
+            self.evaluate_at = m.get('EvaluateAt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUpdatedTime') is not None:
+            self.last_updated_time = m.get('LastUpdatedTime')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policies: List[ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPolicies] = None,
+        request_id: str = None,
+    ):
+        self.conditional_access_policies = conditional_access_policies
+        self.request_id = request_id
+
+    def validate(self):
+        if self.conditional_access_policies:
+            for k in self.conditional_access_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConditionalAccessPolicies'] = []
+        if self.conditional_access_policies is not None:
+            for k in self.conditional_access_policies:
+                result['ConditionalAccessPolicies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditional_access_policies = []
+        if m.get('ConditionalAccessPolicies') is not None:
+            for k in m.get('ConditionalAccessPolicies'):
+                temp_model = ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPolicies()
+                self.conditional_access_policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListConditionalAccessPoliciesForApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConditionalAccessPoliciesForApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConditionalAccessPoliciesForApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListConditionalAccessPoliciesForNetworkZoneRequest(TeaModel):
     def __init__(
         self,
@@ -17619,6 +23704,482 @@ class ListConditionalAccessPoliciesForNetworkZoneResponse(TeaModel):
         return self
 
 
+class ListConditionalAccessPoliciesForUserRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 条件访问策略关联的用户ID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # 排除的应用
+        self.exclude_applications = exclude_applications
+        # 选择的应用
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # 排除的网络区域
+        self.exclude_network_zones = exclude_network_zones
+        # 选择的网络区域
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # 排除的用户组
+        self.exclude_groups = exclude_groups
+        # 排除的组织
+        self.exclude_organizational_units = exclude_organizational_units
+        # 排除的用户
+        self.exclude_users = exclude_users
+        # 选择的用户组
+        self.include_groups = include_groups
+        # 选择的组织
+        self.include_organizational_units = include_organizational_units
+        # 选择的用户
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigApplications = None,
+        network_zones: ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones = None,
+        users: ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigUsers = None,
+    ):
+        # 条件访问策略目标应用
+        self.applications = applications
+        # 条件访问策略网络区域
+        self.network_zones = network_zones
+        # 条件访问策略目标用户
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        self.active_session_reuse_status = active_session_reuse_status
+        # IDaaS EIAM 条件访问策略决策Action
+        self.effect = effect
+        # IDaaS EIAM 条件访问策略重复认证时间间隔(秒)
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # IDaaS EIAM 条件访问策略允许使用的mfa类型
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # IDaaS EIAM 条件访问策略Mfa类型
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        conditional_access_policy_name: str = None,
+        conditional_access_policy_type: str = None,
+        conditions_config: ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfig = None,
+        create_time: int = None,
+        decision_config: ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDecisionConfig = None,
+        decision_type: str = None,
+        description: str = None,
+        evaluate_at: str = None,
+        instance_id: str = None,
+        last_updated_time: int = None,
+        priority: int = None,
+        status: str = None,
+    ):
+        # IDaaS EIAM 条件访问策略Id
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # IDaaS EIAM 条件访问策略名称
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # IDaaS EIAM 条件访问策略类型
+        self.conditional_access_policy_type = conditional_access_policy_type
+        # IDaaS EIAM 条件访问策略内容
+        self.conditions_config = conditions_config
+        # 创建时间
+        self.create_time = create_time
+        # IDaaS EIAM 条件访问策略执行Action
+        self.decision_config = decision_config
+        # IDaaS EIAM 条件访问策略执行类型
+        self.decision_type = decision_type
+        # IDaaS EIAM 条件访问策略描述
+        self.description = description
+        # IDaaS EIAM 条件访问策略执行点
+        self.evaluate_at = evaluate_at
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # 更新时间
+        self.last_updated_time = last_updated_time
+        # 优先级
+        self.priority = priority
+        # IDaaS EIAM 条件访问策略启用禁用状态
+        self.status = status
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditional_access_policy_type is not None:
+            result['ConditionalAccessPolicyType'] = self.conditional_access_policy_type
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.evaluate_at is not None:
+            result['EvaluateAt'] = self.evaluate_at
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_updated_time is not None:
+            result['LastUpdatedTime'] = self.last_updated_time
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionalAccessPolicyType') is not None:
+            self.conditional_access_policy_type = m.get('ConditionalAccessPolicyType')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DecisionConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EvaluateAt') is not None:
+            self.evaluate_at = m.get('EvaluateAt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUpdatedTime') is not None:
+            self.last_updated_time = m.get('LastUpdatedTime')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policies: List[ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies] = None,
+        request_id: str = None,
+    ):
+        self.conditional_access_policies = conditional_access_policies
+        self.request_id = request_id
+
+    def validate(self):
+        if self.conditional_access_policies:
+            for k in self.conditional_access_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConditionalAccessPolicies'] = []
+        if self.conditional_access_policies is not None:
+            for k in self.conditional_access_policies:
+                result['ConditionalAccessPolicies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditional_access_policies = []
+        if m.get('ConditionalAccessPolicies') is not None:
+            for k in m.get('ConditionalAccessPolicies'):
+                temp_model = ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies()
+                self.conditional_access_policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListConditionalAccessPoliciesForUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConditionalAccessPoliciesForUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConditionalAccessPoliciesForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDomainProxyTokensRequest(TeaModel):
     def __init__(
         self,
@@ -17825,8 +24386,10 @@ class ListDomainProxyTokensResponse(TeaModel):
 class ListDomainsRequest(TeaModel):
     def __init__(
         self,
+        brand_id: str = None,
         instance_id: str = None,
     ):
+        self.brand_id = brand_id
         # The instance ID.
         # 
         # This parameter is required.
@@ -17841,12 +24404,16 @@ class ListDomainsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -17883,6 +24450,7 @@ class ListDomainsResponseBodyDomainsFiling(TeaModel):
 class ListDomainsResponseBodyDomains(TeaModel):
     def __init__(
         self,
+        brand_id: str = None,
         create_time: int = None,
         default_domain: bool = None,
         domain: str = None,
@@ -17893,6 +24461,7 @@ class ListDomainsResponseBodyDomains(TeaModel):
         lock_mode: str = None,
         update_time: int = None,
     ):
+        self.brand_id = brand_id
         # The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # Indicates whether the domain name is the default domain.
@@ -17928,6 +24497,8 @@ class ListDomainsResponseBodyDomains(TeaModel):
             return _map
 
         result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.default_domain is not None:
@@ -17950,6 +24521,8 @@ class ListDomainsResponseBodyDomains(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DefaultDomain') is not None:
@@ -18386,6 +24959,648 @@ class ListEiamRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEiamRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFederatedCredentialProvidersRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_name: str = None,
+        federated_credential_provider_type: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # 联邦凭证提供方名称
+        self.federated_credential_provider_name = federated_credential_provider_name
+        # 联邦凭证提供方类型
+        self.federated_credential_provider_type = federated_credential_provider_type
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_name is not None:
+            result['FederatedCredentialProviderName'] = self.federated_credential_provider_name
+        if self.federated_credential_provider_type is not None:
+            result['FederatedCredentialProviderType'] = self.federated_credential_provider_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderName') is not None:
+            self.federated_credential_provider_name = m.get('FederatedCredentialProviderName')
+        if m.get('FederatedCredentialProviderType') is not None:
+            self.federated_credential_provider_type = m.get('FederatedCredentialProviderType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig(TeaModel):
+    def __init__(
+        self,
+        audiences: List[str] = None,
+        dynamic_jwks: str = None,
+        issuer: str = None,
+        jwks_last_obtained_time: int = None,
+        jwks_source: str = None,
+        jwks_uri: str = None,
+        static_jwks: str = None,
+        trust_condition: str = None,
+    ):
+        # oidc凭证的受众列表
+        self.audiences = audiences
+        # 动态获取的jwks
+        self.dynamic_jwks = dynamic_jwks
+        # Issuer
+        self.issuer = issuer
+        self.jwks_last_obtained_time = jwks_last_obtained_time
+        # Jwks来源
+        self.jwks_source = jwks_source
+        # JWKS 端点
+        self.jwks_uri = jwks_uri
+        # 静态获取的jwks
+        self.static_jwks = static_jwks
+        # 默认条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audiences is not None:
+            result['Audiences'] = self.audiences
+        if self.dynamic_jwks is not None:
+            result['DynamicJwks'] = self.dynamic_jwks
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_last_obtained_time is not None:
+            result['JwksLastObtainedTime'] = self.jwks_last_obtained_time
+        if self.jwks_source is not None:
+            result['JwksSource'] = self.jwks_source
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.static_jwks is not None:
+            result['StaticJwks'] = self.static_jwks
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audiences') is not None:
+            self.audiences = m.get('Audiences')
+        if m.get('DynamicJwks') is not None:
+            self.dynamic_jwks = m.get('DynamicJwks')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksLastObtainedTime') is not None:
+            self.jwks_last_obtained_time = m.get('JwksLastObtainedTime')
+        if m.get('JwksSource') is not None:
+            self.jwks_source = m.get('JwksSource')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('StaticJwks') is not None:
+            self.static_jwks = m.get('StaticJwks')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata(TeaModel):
+    def __init__(
+        self,
+        not_after: int = None,
+        not_before: int = None,
+    ):
+        # 证书过期时间
+        self.not_after = not_after
+        # 证书生效时间
+        self.not_before = not_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        certificate_metadata: ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata = None,
+        content: str = None,
+        fingerprint: str = None,
+    ):
+        # 证书元数据
+        self.certificate_metadata = certificate_metadata
+        # Root证书内容
+        self.content = content
+        # Root证书指纹
+        self.fingerprint = fingerprint
+
+    def validate(self):
+        if self.certificate_metadata:
+            self.certificate_metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_metadata is not None:
+            result['CertificateMetadata'] = self.certificate_metadata.to_map()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateMetadata') is not None:
+            temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata()
+            self.certificate_metadata = temp_model.from_map(m['CertificateMetadata'])
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates] = None,
+        cms_verification_mode: str = None,
+        signature_effective_time: int = None,
+        signing_time_value_expression: str = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # pkcs7证书列表
+        self.certificates = certificates
+        # CMS验证模式
+        self.cms_verification_mode = cms_verification_mode
+        # 签名有效时间
+        self.signature_effective_time = signature_effective_time
+        # 签名时间
+        self.signing_time_value_expression = signing_time_value_expression
+        # 证书信任锚点来源
+        self.trust_anchor_source = trust_anchor_source
+        # 信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.cms_verification_mode is not None:
+            result['CmsVerificationMode'] = self.cms_verification_mode
+        if self.signature_effective_time is not None:
+            result['SignatureEffectiveTime'] = self.signature_effective_time
+        if self.signing_time_value_expression is not None:
+            result['SigningTimeValueExpression'] = self.signing_time_value_expression
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('CmsVerificationMode') is not None:
+            self.cms_verification_mode = m.get('CmsVerificationMode')
+        if m.get('SignatureEffectiveTime') is not None:
+            self.signature_effective_time = m.get('SignatureEffectiveTime')
+        if m.get('SigningTimeValueExpression') is not None:
+            self.signing_time_value_expression = m.get('SigningTimeValueExpression')
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata(TeaModel):
+    def __init__(
+        self,
+        not_after: int = None,
+        not_before: int = None,
+    ):
+        # 证书过期时间
+        self.not_after = not_after
+        # 证书生效时间
+        self.not_before = not_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        certificate_metadata: ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata = None,
+        content: str = None,
+        fingerprint: str = None,
+    ):
+        # 证书元数据
+        self.certificate_metadata = certificate_metadata
+        # Root证书内容
+        self.content = content
+        # Root证书指纹
+        self.fingerprint = fingerprint
+
+    def validate(self):
+        if self.certificate_metadata:
+            self.certificate_metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_metadata is not None:
+            result['CertificateMetadata'] = self.certificate_metadata.to_map()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateMetadata') is not None:
+            temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata()
+            self.certificate_metadata = temp_model.from_map(m['CertificateMetadata'])
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates] = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # Root证书
+        self.certificates = certificates
+        # Root证书获取方式
+        self.trust_anchor_source = trust_anchor_source
+        # Root证书的默认条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        federated_credential_provider_name: str = None,
+        federated_credential_provider_type: str = None,
+        instance_id: str = None,
+        network_access_endpoint_id: str = None,
+        oidc_provider_config: ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig = None,
+        pkcs_7provider_config: ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig = None,
+        private_ca_provider_config: ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 创建时间
+        self.create_time = create_time
+        # 描述
+        self.description = description
+        # Federated Credential Provider ID
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # 联邦凭证提供方名称
+        self.federated_credential_provider_name = federated_credential_provider_name
+        # 联邦凭证提供方类型
+        self.federated_credential_provider_type = federated_credential_provider_type
+        # EIAM 实例ID
+        self.instance_id = instance_id
+        # 网络访问端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC配置
+        self.oidc_provider_config = oidc_provider_config
+        # PKCS7配置
+        self.pkcs_7provider_config = pkcs_7provider_config
+        # 私有CA配置
+        self.private_ca_provider_config = private_ca_provider_config
+        # 状态
+        self.status = status
+        # 更新时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.oidc_provider_config:
+            self.oidc_provider_config.validate()
+        if self.pkcs_7provider_config:
+            self.pkcs_7provider_config.validate()
+        if self.private_ca_provider_config:
+            self.private_ca_provider_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.federated_credential_provider_name is not None:
+            result['FederatedCredentialProviderName'] = self.federated_credential_provider_name
+        if self.federated_credential_provider_type is not None:
+            result['FederatedCredentialProviderType'] = self.federated_credential_provider_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_provider_config is not None:
+            result['OidcProviderConfig'] = self.oidc_provider_config.to_map()
+        if self.pkcs_7provider_config is not None:
+            result['Pkcs7ProviderConfig'] = self.pkcs_7provider_config.to_map()
+        if self.private_ca_provider_config is not None:
+            result['PrivateCaProviderConfig'] = self.private_ca_provider_config.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('FederatedCredentialProviderName') is not None:
+            self.federated_credential_provider_name = m.get('FederatedCredentialProviderName')
+        if m.get('FederatedCredentialProviderType') is not None:
+            self.federated_credential_provider_type = m.get('FederatedCredentialProviderType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcProviderConfig') is not None:
+            temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig()
+            self.oidc_provider_config = temp_model.from_map(m['OidcProviderConfig'])
+        if m.get('Pkcs7ProviderConfig') is not None:
+            temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig()
+            self.pkcs_7provider_config = temp_model.from_map(m['Pkcs7ProviderConfig'])
+        if m.get('PrivateCaProviderConfig') is not None:
+            temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig()
+            self.private_ca_provider_config = temp_model.from_map(m['PrivateCaProviderConfig'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListFederatedCredentialProvidersResponseBody(TeaModel):
+    def __init__(
+        self,
+        federated_credential_providers: List[ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.federated_credential_providers = federated_credential_providers
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.federated_credential_providers:
+            for k in self.federated_credential_providers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FederatedCredentialProviders'] = []
+        if self.federated_credential_providers is not None:
+            for k in self.federated_credential_providers:
+                result['FederatedCredentialProviders'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.federated_credential_providers = []
+        if m.get('FederatedCredentialProviders') is not None:
+            for k in m.get('FederatedCredentialProviders'):
+                temp_model = ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders()
+                self.federated_credential_providers.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFederatedCredentialProvidersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFederatedCredentialProvidersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFederatedCredentialProvidersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19323,6 +26538,196 @@ class ListIdentityProvidersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListIdentityProvidersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIdentityProvidersForNetworkAccessEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        network_access_endpoint_id: str = None,
+        next_token: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 网络端点ID。
+        # 
+        # This parameter is required.
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProvidersForNetworkAccessEndpoint(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        identity_provider_name: str = None,
+        instance_id: str = None,
+    ):
+        # IdP的ID。
+        self.identity_provider_id = identity_provider_id
+        # IdP名称。
+        self.identity_provider_name = identity_provider_name
+        # IDaaS EIAM 实例ID
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.identity_provider_name is not None:
+            result['IdentityProviderName'] = self.identity_provider_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('IdentityProviderName') is not None:
+            self.identity_provider_name = m.get('IdentityProviderName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListIdentityProvidersForNetworkAccessEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        identity_providers_for_network_access_endpoint: List[ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProvidersForNetworkAccessEndpoint] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.identity_providers_for_network_access_endpoint = identity_providers_for_network_access_endpoint
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.identity_providers_for_network_access_endpoint:
+            for k in self.identity_providers_for_network_access_endpoint:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IdentityProvidersForNetworkAccessEndpoint'] = []
+        if self.identity_providers_for_network_access_endpoint is not None:
+            for k in self.identity_providers_for_network_access_endpoint:
+                result['IdentityProvidersForNetworkAccessEndpoint'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.identity_providers_for_network_access_endpoint = []
+        if m.get('IdentityProvidersForNetworkAccessEndpoint') is not None:
+            for k in m.get('IdentityProvidersForNetworkAccessEndpoint'):
+                temp_model = ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProvidersForNetworkAccessEndpoint()
+                self.identity_providers_for_network_access_endpoint.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListIdentityProvidersForNetworkAccessEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIdentityProvidersForNetworkAccessEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIdentityProvidersForNetworkAccessEndpointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20303,6 +27708,239 @@ class ListNetworkAccessPathsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListNetworkAccessPathsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNetworkZonesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        network_zone_ids: List[str] = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 网络ID集合
+        self.network_zone_ids = network_zone_ids
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.network_zone_ids is not None:
+            result['NetworkZoneIds'] = self.network_zone_ids
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NetworkZoneIds') is not None:
+            self.network_zone_ids = m.get('NetworkZoneIds')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListNetworkZonesResponseBodyNetworkZones(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        ipv_4cidrs: List[str] = None,
+        ipv_6cidrs: List[str] = None,
+        network_zone_id: str = None,
+        network_zone_name: str = None,
+        network_zone_type: str = None,
+        vpc_id: str = None,
+    ):
+        # IDaaS EIAM 网络区域描述
+        self.description = description
+        # 实例ID。
+        self.instance_id = instance_id
+        self.ipv_4cidrs = ipv_4cidrs
+        self.ipv_6cidrs = ipv_6cidrs
+        # IDaaS EIAM 网络区域Id
+        self.network_zone_id = network_zone_id
+        # IDaaS EIAM 网络区域名称
+        self.network_zone_name = network_zone_name
+        # IDaaS EIAM 网络区域类型
+        self.network_zone_type = network_zone_type
+        # IDaaS EIAM 专有网络VpcId
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ipv_4cidrs is not None:
+            result['Ipv4Cidrs'] = self.ipv_4cidrs
+        if self.ipv_6cidrs is not None:
+            result['Ipv6Cidrs'] = self.ipv_6cidrs
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        if self.network_zone_name is not None:
+            result['NetworkZoneName'] = self.network_zone_name
+        if self.network_zone_type is not None:
+            result['NetworkZoneType'] = self.network_zone_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ipv4Cidrs') is not None:
+            self.ipv_4cidrs = m.get('Ipv4Cidrs')
+        if m.get('Ipv6Cidrs') is not None:
+            self.ipv_6cidrs = m.get('Ipv6Cidrs')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        if m.get('NetworkZoneName') is not None:
+            self.network_zone_name = m.get('NetworkZoneName')
+        if m.get('NetworkZoneType') is not None:
+            self.network_zone_type = m.get('NetworkZoneType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListNetworkZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_zones: List[ListNetworkZonesResponseBodyNetworkZones] = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.network_zones = network_zones
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.network_zones:
+            for k in self.network_zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetworkZones'] = []
+        if self.network_zones is not None:
+            for k in self.network_zones:
+                result['NetworkZones'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.network_zones = []
+        if m.get('NetworkZones') is not None:
+            for k in m.get('NetworkZones'):
+                temp_model = ListNetworkZonesResponseBodyNetworkZones()
+                self.network_zones.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListNetworkZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNetworkZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNetworkZonesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23977,6 +31615,212 @@ class ObtainApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class ObtainApplicationTokenRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS的应用资源TokenID。
+        # 
+        # This parameter is required.
+        self.application_token_id = application_token_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ObtainApplicationTokenResponseBodyApplicationToken(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token: str = None,
+        application_token_id: str = None,
+        application_token_type: str = None,
+        create_time: int = None,
+        expiration_time: int = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+    ):
+        # IDaaS EIAM 应用Id
+        self.application_id = application_id
+        # 客户端密钥
+        self.application_token = application_token
+        # IDaaS EIAM 客户端ID
+        self.application_token_id = application_token_id
+        # IDaaS EIAM 客户端密钥Id
+        self.application_token_type = application_token_type
+        self.create_time = create_time
+        self.expiration_time = expiration_time
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # IDaaS EIAM 客户端密钥最近使用时间
+        self.last_used_time = last_used_time
+        # IDaaS EIAM 客户端密钥状态
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token is not None:
+            result['ApplicationToken'] = self.application_token
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.application_token_type is not None:
+            result['ApplicationTokenType'] = self.application_token_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationToken') is not None:
+            self.application_token = m.get('ApplicationToken')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('ApplicationTokenType') is not None:
+            self.application_token_type = m.get('ApplicationTokenType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ObtainApplicationTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_token: ObtainApplicationTokenResponseBodyApplicationToken = None,
+        request_id: str = None,
+    ):
+        self.application_token = application_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_token:
+            self.application_token.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_token is not None:
+            result['ApplicationToken'] = self.application_token.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationToken') is not None:
+            temp_model = ObtainApplicationTokenResponseBodyApplicationToken()
+            self.application_token = temp_model.from_map(m['ApplicationToken'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ObtainApplicationTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ObtainApplicationTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ObtainApplicationTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ObtainDomainProxyTokenRequest(TeaModel):
     def __init__(
         self,
@@ -24179,6 +32023,131 @@ class ObtainDomainProxyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ObtainDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveApplicationAccountFromUserRequest(TeaModel):
+    def __init__(
+        self,
+        application_account_id: str = None,
+        application_id: str = None,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用账号Id
+        # 
+        # This parameter is required.
+        self.application_account_id = application_account_id
+        # IDaaS的应用主键id
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 用户Id
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_account_id is not None:
+            result['ApplicationAccountId'] = self.application_account_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationAccountId') is not None:
+            self.application_account_id = m.get('ApplicationAccountId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class RemoveApplicationAccountFromUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveApplicationAccountFromUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveApplicationAccountFromUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveApplicationAccountFromUserResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27854,6 +35823,562 @@ class UpdateApplicationDescriptionResponse(TeaModel):
         return self
 
 
+class UpdateApplicationFederatedCredentialRequestAttributeMappings(TeaModel):
+    def __init__(
+        self,
+        source_value_expression: str = None,
+        target_field: str = None,
+    ):
+        # 源值表达式
+        self.source_value_expression = source_value_expression
+        # 目标字段
+        self.target_field = target_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_value_expression is not None:
+            result['SourceValueExpression'] = self.source_value_expression
+        if self.target_field is not None:
+            result['TargetField'] = self.target_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceValueExpression') is not None:
+            self.source_value_expression = m.get('SourceValueExpression')
+        if m.get('TargetField') is not None:
+            self.target_field = m.get('TargetField')
+        return self
+
+
+class UpdateApplicationFederatedCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_id: str = None,
+        attribute_mappings: List[UpdateApplicationFederatedCredentialRequestAttributeMappings] = None,
+        instance_id: str = None,
+        verification_condition: str = None,
+    ):
+        # 应用联邦凭证Id
+        # 
+        # This parameter is required.
+        self.application_federated_credential_id = application_federated_credential_id
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 属性映射
+        self.attribute_mappings = attribute_mappings
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 校验条件
+        self.verification_condition = verification_condition
+
+    def validate(self):
+        if self.attribute_mappings:
+            for k in self.attribute_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        result['AttributeMappings'] = []
+        if self.attribute_mappings is not None:
+            for k in self.attribute_mappings:
+                result['AttributeMappings'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.verification_condition is not None:
+            result['VerificationCondition'] = self.verification_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        self.attribute_mappings = []
+        if m.get('AttributeMappings') is not None:
+            for k in m.get('AttributeMappings'):
+                temp_model = UpdateApplicationFederatedCredentialRequestAttributeMappings()
+                self.attribute_mappings.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('VerificationCondition') is not None:
+            self.verification_condition = m.get('VerificationCondition')
+        return self
+
+
+class UpdateApplicationFederatedCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateApplicationFederatedCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApplicationFederatedCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationFederatedCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateApplicationFederatedCredentialDescriptionRequest(TeaModel):
+    def __init__(
+        self,
+        application_federated_credential_id: str = None,
+        application_id: str = None,
+        description: str = None,
+        instance_id: str = None,
+    ):
+        # 应用联邦凭证Id
+        # 
+        # This parameter is required.
+        self.application_federated_credential_id = application_federated_credential_id
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 联邦凭证描述
+        self.description = description
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_federated_credential_id is not None:
+            result['ApplicationFederatedCredentialId'] = self.application_federated_credential_id
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationFederatedCredentialId') is not None:
+            self.application_federated_credential_id = m.get('ApplicationFederatedCredentialId')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateApplicationFederatedCredentialDescriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateApplicationFederatedCredentialDescriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApplicationFederatedCredentialDescriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationFederatedCredentialDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateApplicationInfoRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        application_visibility: List[str] = None,
+        client_token: str = None,
+        instance_id: str = None,
+        logo_url: str = None,
+    ):
+        # IDaaS的应用主键id
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 应用的表示名称
+        # 
+        # This parameter is required.
+        self.application_name = application_name
+        self.application_visibility = application_visibility
+        self.client_token = client_token
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 应用Logo地址
+        self.logo_url = logo_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.application_visibility is not None:
+            result['ApplicationVisibility'] = self.application_visibility
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.logo_url is not None:
+            result['LogoUrl'] = self.logo_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('ApplicationVisibility') is not None:
+            self.application_visibility = m.get('ApplicationVisibility')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LogoUrl') is not None:
+            self.logo_url = m.get('LogoUrl')
+        return self
+
+
+class UpdateApplicationInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateApplicationInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApplicationInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateApplicationTokenExpirationTimeRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_token_id: str = None,
+        expiration_time: int = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS的应用资源TokenID。
+        # 
+        # This parameter is required.
+        self.application_token_id = application_token_id
+        # 不填，默认1年后到期
+        # 
+        # This parameter is required.
+        self.expiration_time = expiration_time
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_token_id is not None:
+            result['ApplicationTokenId'] = self.application_token_id
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationTokenId') is not None:
+            self.application_token_id = m.get('ApplicationTokenId')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateApplicationTokenExpirationTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateApplicationTokenExpirationTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApplicationTokenExpirationTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationTokenExpirationTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateConditionalAccessPolicyRequestConditionsConfigApplications(TeaModel):
     def __init__(
         self,
@@ -28372,6 +36897,625 @@ class UpdateConditionalAccessPolicyDescriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConditionalAccessPolicyDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDomainIcpNumberRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        icp_number: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        # 
+        # This parameter is required.
+        self.domain_id = domain_id
+        # 域名关联的备案号，长度最大限制64。
+        # 
+        # This parameter is required.
+        self.icp_number = icp_number
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.icp_number is not None:
+            result['IcpNumber'] = self.icp_number
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('IcpNumber') is not None:
+            self.icp_number = m.get('IcpNumber')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateDomainIcpNumberResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDomainIcpNumberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDomainIcpNumberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDomainIcpNumberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateFederatedCredentialProviderRequestOidcProviderConfig(TeaModel):
+    def __init__(
+        self,
+        audiences: List[str] = None,
+        jwks_source: str = None,
+        jwks_uri: str = None,
+        static_jwks: str = None,
+        trust_condition: str = None,
+    ):
+        self.audiences = audiences
+        # Jwks来源
+        # 
+        # This parameter is required.
+        self.jwks_source = jwks_source
+        # JWKS 端点
+        self.jwks_uri = jwks_uri
+        # 静态获取的jwks
+        self.static_jwks = static_jwks
+        # 信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audiences is not None:
+            result['Audiences'] = self.audiences
+        if self.jwks_source is not None:
+            result['JwksSource'] = self.jwks_source
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.static_jwks is not None:
+            result['StaticJwks'] = self.static_jwks
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audiences') is not None:
+            self.audiences = m.get('Audiences')
+        if m.get('JwksSource') is not None:
+            self.jwks_source = m.get('JwksSource')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('StaticJwks') is not None:
+            self.static_jwks = m.get('StaticJwks')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # Root证书内容
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates] = None,
+        cms_verification_mode: str = None,
+        signature_effective_time: int = None,
+        signing_time_value_expression: str = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # pkcs7证书列表
+        self.certificates = certificates
+        # CMS验证模式
+        self.cms_verification_mode = cms_verification_mode
+        # 签名有效期, 单位秒，1200
+        self.signature_effective_time = signature_effective_time
+        self.signing_time_value_expression = signing_time_value_expression
+        # 证书信任锚点来源
+        # 
+        # This parameter is required.
+        self.trust_anchor_source = trust_anchor_source
+        # 信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.cms_verification_mode is not None:
+            result['CmsVerificationMode'] = self.cms_verification_mode
+        if self.signature_effective_time is not None:
+            result['SignatureEffectiveTime'] = self.signature_effective_time
+        if self.signing_time_value_expression is not None:
+            result['SigningTimeValueExpression'] = self.signing_time_value_expression
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('CmsVerificationMode') is not None:
+            self.cms_verification_mode = m.get('CmsVerificationMode')
+        if m.get('SignatureEffectiveTime') is not None:
+            self.signature_effective_time = m.get('SignatureEffectiveTime')
+        if m.get('SigningTimeValueExpression') is not None:
+            self.signing_time_value_expression = m.get('SigningTimeValueExpression')
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # Root证书内容
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig(TeaModel):
+    def __init__(
+        self,
+        certificates: List[UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates] = None,
+        trust_anchor_source: str = None,
+        trust_condition: str = None,
+    ):
+        # Root证书列表
+        self.certificates = certificates
+        # Root证书获取方式
+        # 
+        # This parameter is required.
+        self.trust_anchor_source = trust_anchor_source
+        # Root证书的信任条件
+        self.trust_condition = trust_condition
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.trust_anchor_source is not None:
+            result['TrustAnchorSource'] = self.trust_anchor_source
+        if self.trust_condition is not None:
+            result['TrustCondition'] = self.trust_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('TrustAnchorSource') is not None:
+            self.trust_anchor_source = m.get('TrustAnchorSource')
+        if m.get('TrustCondition') is not None:
+            self.trust_condition = m.get('TrustCondition')
+        return self
+
+
+class UpdateFederatedCredentialProviderRequest(TeaModel):
+    def __init__(
+        self,
+        federated_credential_provider_id: str = None,
+        federated_credential_provider_name: str = None,
+        instance_id: str = None,
+        network_access_endpoint_id: str = None,
+        oidc_provider_config: UpdateFederatedCredentialProviderRequestOidcProviderConfig = None,
+        pkcs_7provider_config: UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig = None,
+        private_ca_provider_config: UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
+    ):
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # 联邦凭证提供方名称
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_name = federated_credential_provider_name
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 网络端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC配置
+        self.oidc_provider_config = oidc_provider_config
+        # PKCS7配置
+        self.pkcs_7provider_config = pkcs_7provider_config
+        # 私有CA配置
+        self.private_ca_provider_config = private_ca_provider_config
+
+    def validate(self):
+        if self.oidc_provider_config:
+            self.oidc_provider_config.validate()
+        if self.pkcs_7provider_config:
+            self.pkcs_7provider_config.validate()
+        if self.private_ca_provider_config:
+            self.private_ca_provider_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.federated_credential_provider_name is not None:
+            result['FederatedCredentialProviderName'] = self.federated_credential_provider_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_provider_config is not None:
+            result['OidcProviderConfig'] = self.oidc_provider_config.to_map()
+        if self.pkcs_7provider_config is not None:
+            result['Pkcs7ProviderConfig'] = self.pkcs_7provider_config.to_map()
+        if self.private_ca_provider_config is not None:
+            result['PrivateCaProviderConfig'] = self.private_ca_provider_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('FederatedCredentialProviderName') is not None:
+            self.federated_credential_provider_name = m.get('FederatedCredentialProviderName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcProviderConfig') is not None:
+            temp_model = UpdateFederatedCredentialProviderRequestOidcProviderConfig()
+            self.oidc_provider_config = temp_model.from_map(m['OidcProviderConfig'])
+        if m.get('Pkcs7ProviderConfig') is not None:
+            temp_model = UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig()
+            self.pkcs_7provider_config = temp_model.from_map(m['Pkcs7ProviderConfig'])
+        if m.get('PrivateCaProviderConfig') is not None:
+            temp_model = UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig()
+            self.private_ca_provider_config = temp_model.from_map(m['PrivateCaProviderConfig'])
+        return self
+
+
+class UpdateFederatedCredentialProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateFederatedCredentialProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFederatedCredentialProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFederatedCredentialProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateFederatedCredentialProviderDescriptionRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        federated_credential_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # 联邦凭证提供方描述
+        self.description = description
+        # 联邦凭证提供方ID
+        # 
+        # This parameter is required.
+        self.federated_credential_provider_id = federated_credential_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federated_credential_provider_id is not None:
+            result['FederatedCredentialProviderId'] = self.federated_credential_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederatedCredentialProviderId') is not None:
+            self.federated_credential_provider_id = m.get('FederatedCredentialProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateFederatedCredentialProviderDescriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateFederatedCredentialProviderDescriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFederatedCredentialProviderDescriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFederatedCredentialProviderDescriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29390,6 +38534,271 @@ class UpdateNetworkAccessEndpointNameResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateNetworkAccessEndpointNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateNetworkZoneRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        ipv_4cidrs: List[str] = None,
+        ipv_6cidrs: List[str] = None,
+        network_zone_id: str = None,
+        network_zone_name: str = None,
+        vpc_id: str = None,
+    ):
+        self.client_token = client_token
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 包含的CIDR
+        self.ipv_4cidrs = ipv_4cidrs
+        # 网络区域ipv6Cidr
+        self.ipv_6cidrs = ipv_6cidrs
+        # IDaaS的网络区域主键id
+        # 
+        # This parameter is required.
+        self.network_zone_id = network_zone_id
+        # 网络区域名称
+        # 
+        # This parameter is required.
+        self.network_zone_name = network_zone_name
+        # 专有网络VpcId
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ipv_4cidrs is not None:
+            result['Ipv4Cidrs'] = self.ipv_4cidrs
+        if self.ipv_6cidrs is not None:
+            result['Ipv6Cidrs'] = self.ipv_6cidrs
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        if self.network_zone_name is not None:
+            result['NetworkZoneName'] = self.network_zone_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ipv4Cidrs') is not None:
+            self.ipv_4cidrs = m.get('Ipv4Cidrs')
+        if m.get('Ipv6Cidrs') is not None:
+            self.ipv_6cidrs = m.get('Ipv6Cidrs')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        if m.get('NetworkZoneName') is not None:
+            self.network_zone_name = m.get('NetworkZoneName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class UpdateNetworkZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateNetworkZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNetworkZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNetworkZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateNetworkZoneDescriptionRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        instance_id: str = None,
+        network_zone_id: str = None,
+    ):
+        self.client_token = client_token
+        # 网络区域描述
+        # 
+        # This parameter is required.
+        self.description = description
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # IDaaS的网络区域主键id
+        # 
+        # This parameter is required.
+        self.network_zone_id = network_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        return self
+
+
+class UpdateNetworkZoneDescriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateNetworkZoneDescriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNetworkZoneDescriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNetworkZoneDescriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

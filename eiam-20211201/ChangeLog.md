@@ -1,3 +1,55 @@
+2025-10-15 Version: 2.2.0
+- Support API AddApplicationAccountToUser.
+- Support API CreateApplicationFederatedCredential.
+- Support API CreateApplicationToken.
+- Support API CreateFederatedCredentialProvider.
+- Support API CreateNetworkZone.
+- Support API DeleteApplicationFederatedCredential.
+- Support API DeleteApplicationToken.
+- Support API DeleteFederatedCredentialProvider.
+- Support API DeleteNetworkZone.
+- Support API DisableApplicationFederatedCredential.
+- Support API DisableApplicationToken.
+- Support API DisableFederatedCredentialProvider.
+- Support API DisableIdentityProviderAuthn.
+- Support API EnableApplicationFederatedCredential.
+- Support API EnableApplicationToken.
+- Support API EnableFederatedCredentialProvider.
+- Support API EnableIdentityProviderAuthn.
+- Support API GetApplicationFederatedCredential.
+- Support API GetApplicationTemplate.
+- Support API GetFederatedCredentialProvider.
+- Support API GetNetworkZone.
+- Support API ListApplicationAccounts.
+- Support API ListApplicationAccountsForUser.
+- Support API ListApplicationFederatedCredentials.
+- Support API ListApplicationFederatedCredentialsForProvider.
+- Support API ListApplicationSupportedProvisionProtocolTypes.
+- Support API ListApplicationTokens.
+- Support API ListApplicationsForGroup.
+- Support API ListApplicationsForNetworkAccessEndpoint.
+- Support API ListApplicationsForNetworkZone.
+- Support API ListConditionalAccessPoliciesForApplication.
+- Support API ListConditionalAccessPoliciesForUser.
+- Support API ListFederatedCredentialProviders.
+- Support API ListIdentityProvidersForNetworkAccessEndpoint.
+- Support API ListNetworkZones.
+- Support API ObtainApplicationToken.
+- Support API RemoveApplicationAccountFromUser.
+- Support API UpdateApplicationFederatedCredential.
+- Support API UpdateApplicationFederatedCredentialDescription.
+- Support API UpdateApplicationInfo.
+- Support API UpdateApplicationTokenExpirationTime.
+- Support API UpdateDomainIcpNumber.
+- Support API UpdateFederatedCredentialProvider.
+- Support API UpdateFederatedCredentialProviderDescription.
+- Support API UpdateNetworkZone.
+- Support API UpdateNetworkZoneDescription.
+- Update API GetDomain: add response parameters Body.Domain.BrandId.
+- Update API ListDomains: add request parameters BrandId.
+- Update API ListDomains: add response parameters Body.Domains.$.BrandId.
+
+
 2025-08-25 Version: 2.1.0
 - Support API UpdateApplicationClientSecretExpirationTime.
 
