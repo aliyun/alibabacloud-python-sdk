@@ -48172,6 +48172,8 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         cpu: str = None,
         disk_size: str = None,
         memory: str = None,
+        resource_type: str = None,
+        v_switch_id: str = None,
         auto_enable_application_scaling_rule: bool = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
@@ -48190,6 +48192,8 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         # 
         # This parameter is required.
         self.memory = memory
+        self.resource_type = resource_type
+        self.v_switch_id = v_switch_id
         # Enable application scale rules automatically.
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
         # The ratio of minimum ready instances.
@@ -48214,6 +48218,10 @@ class RescaleApplicationVerticallyRequest(TeaModel):
             result['DiskSize'] = self.disk_size
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.auto_enable_application_scaling_rule is not None:
             result['autoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
         if self.min_ready_instance_ratio is not None:
@@ -48232,6 +48240,10 @@ class RescaleApplicationVerticallyRequest(TeaModel):
             self.disk_size = m.get('DiskSize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('autoEnableApplicationScalingRule') is not None:
             self.auto_enable_application_scaling_rule = m.get('autoEnableApplicationScalingRule')
         if m.get('minReadyInstanceRatio') is not None:

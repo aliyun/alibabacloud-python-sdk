@@ -14059,6 +14059,10 @@ class Client(OpenApiClient):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
             query['autoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
@@ -14109,6 +14113,10 @@ class Client(OpenApiClient):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
             query['autoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.min_ready_instance_ratio):

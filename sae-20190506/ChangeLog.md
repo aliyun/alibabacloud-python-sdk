@@ -1,3 +1,8 @@
+2025-10-15 Version: 2.8.2
+- Update API RescaleApplicationVertically: add request parameters ResourceType.
+- Update API RescaleApplicationVertically: add request parameters VSwitchId.
+
+
 2025-10-13 Version: 2.8.1
 - Update API DeployApplication: add request parameters AlbIngressReadinessGate.
 - Update API DescribeApplicationConfig: add response parameters Body.Data.AlbIngressReadinessGate.
