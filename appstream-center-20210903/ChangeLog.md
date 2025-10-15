@@ -1,3 +1,8 @@
+2025-10-15 Version: 2.0.4
+- Update API GetConnectionTicket: add response parameters Body.AvatarId.
+- Update API GetConnectionTicket: add response parameters Body.NextPollIntervalMs.
+
+
 2025-09-17 Version: 2.0.3
 - Generated python 2021-09-03 for appstream-center.
 

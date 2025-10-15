@@ -284,10 +284,12 @@ class GetConnectionTicketResponseBody(TeaModel):
         app_instance_group_id: str = None,
         app_instance_id: str = None,
         app_instance_persistent_id: str = None,
+        avatar_id: str = None,
         bind_queue_info: GetConnectionTicketResponseBodyBindQueueInfo = None,
         code: str = None,
         login_token: str = None,
         message: str = None,
+        next_poll_interval_ms: int = None,
         os_type: str = None,
         policy: GetConnectionTicketResponseBodyPolicy = None,
         region_id: str = None,
@@ -301,10 +303,12 @@ class GetConnectionTicketResponseBody(TeaModel):
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
         self.app_instance_persistent_id = app_instance_persistent_id
+        self.avatar_id = avatar_id
         self.bind_queue_info = bind_queue_info
         self.code = code
         self.login_token = login_token
         self.message = message
+        self.next_poll_interval_ms = next_poll_interval_ms
         self.os_type = os_type
         self.policy = policy
         self.region_id = region_id
@@ -334,6 +338,8 @@ class GetConnectionTicketResponseBody(TeaModel):
             result['AppInstanceId'] = self.app_instance_id
         if self.app_instance_persistent_id is not None:
             result['AppInstancePersistentId'] = self.app_instance_persistent_id
+        if self.avatar_id is not None:
+            result['AvatarId'] = self.avatar_id
         if self.bind_queue_info is not None:
             result['BindQueueInfo'] = self.bind_queue_info.to_map()
         if self.code is not None:
@@ -342,6 +348,8 @@ class GetConnectionTicketResponseBody(TeaModel):
             result['LoginToken'] = self.login_token
         if self.message is not None:
             result['Message'] = self.message
+        if self.next_poll_interval_ms is not None:
+            result['NextPollIntervalMs'] = self.next_poll_interval_ms
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.policy is not None:
@@ -370,6 +378,8 @@ class GetConnectionTicketResponseBody(TeaModel):
             self.app_instance_id = m.get('AppInstanceId')
         if m.get('AppInstancePersistentId') is not None:
             self.app_instance_persistent_id = m.get('AppInstancePersistentId')
+        if m.get('AvatarId') is not None:
+            self.avatar_id = m.get('AvatarId')
         if m.get('BindQueueInfo') is not None:
             temp_model = GetConnectionTicketResponseBodyBindQueueInfo()
             self.bind_queue_info = temp_model.from_map(m['BindQueueInfo'])
@@ -379,6 +389,8 @@ class GetConnectionTicketResponseBody(TeaModel):
             self.login_token = m.get('LoginToken')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('NextPollIntervalMs') is not None:
+            self.next_poll_interval_ms = m.get('NextPollIntervalMs')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('Policy') is not None:
