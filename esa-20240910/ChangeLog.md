@@ -1,3 +1,15 @@
+2025-10-15 Version: 2.29.1
+- Update API BatchGetExpressionFields: add request parameters InstanceId.
+- Update API BatchGetExpressionFields: add request parameters Kind.
+- Update API BatchGetExpressionFields: add request parameters PlanNameEn.
+- Update API ListWafManagedRules: add request parameters InstanceId.
+- Update API ListWafManagedRules: add request parameters ManagedRuleset.
+- Update API ListWafTemplateRules: add request parameters InstanceId.
+- Update API ListWafUsageOfRules: add request parameters InstanceId.
+- Update API ListWafUsageOfRules: add response parameters Body.BatchConfigUsage.
+- Update API ListWafUsageOfRules: add response parameters Body.InstanceUsage.
+
+
 2025-09-18 Version: 2.28.4
 - Update API CreateTransportLayerApplication: add request parameters StaticIp.
 - Update API GetTransportLayerApplication: add response parameters Body.StaticIp.

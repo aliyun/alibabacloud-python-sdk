@@ -1194,11 +1194,17 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.expressions):
             request.expressions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.expressions, 'Expressions', 'json')
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.plan_name_en):
+            query['PlanNameEn'] = request.plan_name_en
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         body = {}
         if not UtilClient.is_unset(request.expressions_shrink):
             body['Expressions'] = request.expressions_shrink
+        if not UtilClient.is_unset(request.kind):
+            body['Kind'] = request.kind
         if not UtilClient.is_unset(request.phase):
             body['Phase'] = request.phase
         req = open_api_models.OpenApiRequest(
@@ -1239,11 +1245,17 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.expressions):
             request.expressions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.expressions, 'Expressions', 'json')
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.plan_name_en):
+            query['PlanNameEn'] = request.plan_name_en
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         body = {}
         if not UtilClient.is_unset(request.expressions_shrink):
             body['Expressions'] = request.expressions_shrink
+        if not UtilClient.is_unset(request.kind):
+            body['Kind'] = request.kind
         if not UtilClient.is_unset(request.phase):
             body['Phase'] = request.phase
         req = open_api_models.OpenApiRequest(
@@ -3478,7 +3490,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站请求头规则
+        @summary Adds the configuration of modifying HTTP request headers for a website.
         
         @param tmp_req: CreateHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3529,7 +3541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站请求头规则
+        @summary Adds the configuration of modifying HTTP request headers for a website.
         
         @param tmp_req: CreateHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3579,7 +3591,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.CreateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站请求头规则
+        @summary Adds the configuration of modifying HTTP request headers for a website.
         
         @param request: CreateHttpIncomingRequestHeaderModificationRuleRequest
         @return: CreateHttpIncomingRequestHeaderModificationRuleResponse
@@ -3592,7 +3604,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.CreateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站请求头规则
+        @summary Adds the configuration of modifying HTTP request headers for a website.
         
         @param request: CreateHttpIncomingRequestHeaderModificationRuleRequest
         @return: CreateHttpIncomingRequestHeaderModificationRuleResponse
@@ -3606,7 +3618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站响应头规则
+        @summary Adds the configuration of modifying HTTP response headers for a website.
         
         @param tmp_req: CreateHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3657,7 +3669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站响应头规则
+        @summary Adds the configuration of modifying HTTP response headers for a website.
         
         @param tmp_req: CreateHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3707,7 +3719,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.CreateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站响应头规则
+        @summary Adds the configuration of modifying HTTP response headers for a website.
         
         @param request: CreateHttpIncomingResponseHeaderModificationRuleRequest
         @return: CreateHttpIncomingResponseHeaderModificationRuleResponse
@@ -3720,7 +3732,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.CreateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 新增HTTP入站响应头规则
+        @summary Adds the configuration of modifying HTTP response headers for a website.
         
         @param request: CreateHttpIncomingResponseHeaderModificationRuleRequest
         @return: CreateHttpIncomingResponseHeaderModificationRuleResponse
@@ -5990,7 +6002,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineCodeDeploymentResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Release the version of the function code in proportion to the specified environment.
+        
+        @description ## [](#)Request description
+        When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
+        `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
         
         @param tmp_req: CreateRoutineCodeDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6035,7 +6051,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineCodeDeploymentResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Release the version of the function code in proportion to the specified environment.
+        
+        @description ## [](#)Request description
+        When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
+        `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
         
         @param tmp_req: CreateRoutineCodeDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6079,7 +6099,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineCodeDeploymentRequest,
     ) -> esa20240910_models.CreateRoutineCodeDeploymentResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Release the version of the function code in proportion to the specified environment.
+        
+        @description ## [](#)Request description
+        When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
+        `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
         
         @param request: CreateRoutineCodeDeploymentRequest
         @return: CreateRoutineCodeDeploymentResponse
@@ -6092,7 +6116,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineCodeDeploymentRequest,
     ) -> esa20240910_models.CreateRoutineCodeDeploymentResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Release the version of the function code in proportion to the specified environment.
+        
+        @description ## [](#)Request description
+        When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
+        `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
         
         @param request: CreateRoutineCodeDeploymentRequest
         @return: CreateRoutineCodeDeploymentResponse
@@ -6210,7 +6238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineRouteResponse:
         """
-        @summary 新增边缘函数路由配置
+        @summary Adds edge function routing configurations.
         
         @param request: CreateRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6259,7 +6287,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineRouteResponse:
         """
-        @summary 新增边缘函数路由配置
+        @summary Adds edge function routing configurations.
         
         @param request: CreateRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6307,7 +6335,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRouteRequest,
     ) -> esa20240910_models.CreateRoutineRouteResponse:
         """
-        @summary 新增边缘函数路由配置
+        @summary Adds edge function routing configurations.
         
         @param request: CreateRoutineRouteRequest
         @return: CreateRoutineRouteResponse
@@ -6320,7 +6348,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRouteRequest,
     ) -> esa20240910_models.CreateRoutineRouteResponse:
         """
-        @summary 新增边缘函数路由配置
+        @summary Adds edge function routing configurations.
         
         @param request: CreateRoutineRouteRequest
         @return: CreateRoutineRouteResponse
@@ -7312,7 +7340,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateUrlObservationResponse:
         """
-        @summary 创建网页监测配置
+        @summary Create a web page monitoring configuration.
         
         @param request: CreateUrlObservationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7351,7 +7379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateUrlObservationResponse:
         """
-        @summary 创建网页监测配置
+        @summary Create a web page monitoring configuration.
         
         @param request: CreateUrlObservationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7389,7 +7417,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateUrlObservationRequest,
     ) -> esa20240910_models.CreateUrlObservationResponse:
         """
-        @summary 创建网页监测配置
+        @summary Create a web page monitoring configuration.
         
         @param request: CreateUrlObservationRequest
         @return: CreateUrlObservationResponse
@@ -7402,7 +7430,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateUrlObservationRequest,
     ) -> esa20240910_models.CreateUrlObservationResponse:
         """
-        @summary 创建网页监测配置
+        @summary Create a web page monitoring configuration.
         
         @param request: CreateUrlObservationRequest
         @return: CreateUrlObservationResponse
@@ -7624,7 +7652,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateVideoProcessingResponse:
         """
-        @summary 新增站点视频处理配置
+        @summary Add video processing configurations for a website.
         
         @param request: CreateVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7681,7 +7709,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateVideoProcessingResponse:
         """
-        @summary 新增站点视频处理配置
+        @summary Add video processing configurations for a website.
         
         @param request: CreateVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7737,7 +7765,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateVideoProcessingRequest,
     ) -> esa20240910_models.CreateVideoProcessingResponse:
         """
-        @summary 新增站点视频处理配置
+        @summary Add video processing configurations for a website.
         
         @param request: CreateVideoProcessingRequest
         @return: CreateVideoProcessingResponse
@@ -7750,7 +7778,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateVideoProcessingRequest,
     ) -> esa20240910_models.CreateVideoProcessingResponse:
         """
-        @summary 新增站点视频处理配置
+        @summary Add video processing configurations for a website.
         
         @param request: CreateVideoProcessingRequest
         @return: CreateVideoProcessingResponse
@@ -9428,7 +9456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站请求头规则
+        @summary Deletes the configuration of modifying incoming HTTP request headers for a website.
         
         @param request: DeleteHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9465,7 +9493,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站请求头规则
+        @summary Deletes the configuration of modifying incoming HTTP request headers for a website.
         
         @param request: DeleteHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9501,7 +9529,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站请求头规则
+        @summary Deletes the configuration of modifying incoming HTTP request headers for a website.
         
         @param request: DeleteHttpIncomingRequestHeaderModificationRuleRequest
         @return: DeleteHttpIncomingRequestHeaderModificationRuleResponse
@@ -9514,7 +9542,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站请求头规则
+        @summary Deletes the configuration of modifying incoming HTTP request headers for a website.
         
         @param request: DeleteHttpIncomingRequestHeaderModificationRuleRequest
         @return: DeleteHttpIncomingRequestHeaderModificationRuleResponse
@@ -9528,7 +9556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站响应头规则
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
         
         @param request: DeleteHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9565,7 +9593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站响应头规则
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
         
         @param request: DeleteHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9601,7 +9629,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.DeleteHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站响应头规则
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
         
         @param request: DeleteHttpIncomingResponseHeaderModificationRuleRequest
         @return: DeleteHttpIncomingResponseHeaderModificationRuleResponse
@@ -9614,7 +9642,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.DeleteHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 删除HTTP入站响应头规则
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
         
         @param request: DeleteHttpIncomingResponseHeaderModificationRuleRequest
         @return: DeleteHttpIncomingResponseHeaderModificationRuleResponse
@@ -11804,7 +11832,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineRouteResponse:
         """
-        @summary 删除边缘函数路由配置
+        @summary Deletes the route configuration of an edge function.
         
         @param request: DeleteRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11841,7 +11869,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineRouteResponse:
         """
-        @summary 删除边缘函数路由配置
+        @summary Deletes the route configuration of an edge function.
         
         @param request: DeleteRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11877,7 +11905,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRouteRequest,
     ) -> esa20240910_models.DeleteRoutineRouteResponse:
         """
-        @summary 删除边缘函数路由配置
+        @summary Deletes the route configuration of an edge function.
         
         @param request: DeleteRoutineRouteRequest
         @return: DeleteRoutineRouteResponse
@@ -11890,7 +11918,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRouteRequest,
     ) -> esa20240910_models.DeleteRoutineRouteResponse:
         """
-        @summary 删除边缘函数路由配置
+        @summary Deletes the route configuration of an edge function.
         
         @param request: DeleteRoutineRouteRequest
         @return: DeleteRoutineRouteResponse
@@ -12492,7 +12520,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteUrlObservationResponse:
         """
-        @summary 删除网页监测配置
+        @summary Deletes page monitoring configurations.
         
         @param request: DeleteUrlObservationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12529,7 +12557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteUrlObservationResponse:
         """
-        @summary 删除网页监测配置
+        @summary Deletes page monitoring configurations.
         
         @param request: DeleteUrlObservationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12565,7 +12593,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteUrlObservationRequest,
     ) -> esa20240910_models.DeleteUrlObservationResponse:
         """
-        @summary 删除网页监测配置
+        @summary Deletes page monitoring configurations.
         
         @param request: DeleteUrlObservationRequest
         @return: DeleteUrlObservationResponse
@@ -12578,7 +12606,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteUrlObservationRequest,
     ) -> esa20240910_models.DeleteUrlObservationResponse:
         """
-        @summary 删除网页监测配置
+        @summary Deletes page monitoring configurations.
         
         @param request: DeleteUrlObservationRequest
         @return: DeleteUrlObservationResponse
@@ -12708,7 +12736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteVideoProcessingResponse:
         """
-        @summary 删除站点视频处理配置
+        @summary Deletes a video processing configuration.
         
         @param request: DeleteVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12745,7 +12773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteVideoProcessingResponse:
         """
-        @summary 删除站点视频处理配置
+        @summary Deletes a video processing configuration.
         
         @param request: DeleteVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12781,7 +12809,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteVideoProcessingRequest,
     ) -> esa20240910_models.DeleteVideoProcessingResponse:
         """
-        @summary 删除站点视频处理配置
+        @summary Deletes a video processing configuration.
         
         @param request: DeleteVideoProcessingRequest
         @return: DeleteVideoProcessingResponse
@@ -12794,7 +12822,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteVideoProcessingRequest,
     ) -> esa20240910_models.DeleteVideoProcessingResponse:
         """
-        @summary 删除站点视频处理配置
+        @summary Deletes a video processing configuration.
         
         @param request: DeleteVideoProcessingRequest
         @return: DeleteVideoProcessingResponse
@@ -13748,7 +13776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeEdgeContainerAppStatsResponse:
         """
-        @summary 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+        @summary Provides monitoring data for metrics of ESA edge containers.
         
         @param request: DescribeEdgeContainerAppStatsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13781,7 +13809,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeEdgeContainerAppStatsResponse:
         """
-        @summary 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+        @summary Provides monitoring data for metrics of ESA edge containers.
         
         @param request: DescribeEdgeContainerAppStatsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13813,7 +13841,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeEdgeContainerAppStatsRequest,
     ) -> esa20240910_models.DescribeEdgeContainerAppStatsResponse:
         """
-        @summary 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+        @summary Provides monitoring data for metrics of ESA edge containers.
         
         @param request: DescribeEdgeContainerAppStatsRequest
         @return: DescribeEdgeContainerAppStatsResponse
@@ -13826,7 +13854,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeEdgeContainerAppStatsRequest,
     ) -> esa20240910_models.DescribeEdgeContainerAppStatsResponse:
         """
-        @summary 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+        @summary Provides monitoring data for metrics of ESA edge containers.
         
         @param request: DescribeEdgeContainerAppStatsRequest
         @return: DescribeEdgeContainerAppStatsResponse
@@ -14394,7 +14422,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeSiteLogsResponse:
         """
-        @summary 查询站点离线日志
+        @summary Queries the URLs from which you can download the raw access logs of a website.
+        
+        @description    If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+        The log data is collected every hour.
+        You can call this operation up to 50 times per second per account.
+        You can query only logs in the last month. The time range cannot exceed 31 days.
         
         @param request: DescribeSiteLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14437,7 +14470,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeSiteLogsResponse:
         """
-        @summary 查询站点离线日志
+        @summary Queries the URLs from which you can download the raw access logs of a website.
+        
+        @description    If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+        The log data is collected every hour.
+        You can call this operation up to 50 times per second per account.
+        You can query only logs in the last month. The time range cannot exceed 31 days.
         
         @param request: DescribeSiteLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14479,7 +14517,12 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeSiteLogsRequest,
     ) -> esa20240910_models.DescribeSiteLogsResponse:
         """
-        @summary 查询站点离线日志
+        @summary Queries the URLs from which you can download the raw access logs of a website.
+        
+        @description    If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+        The log data is collected every hour.
+        You can call this operation up to 50 times per second per account.
+        You can query only logs in the last month. The time range cannot exceed 31 days.
         
         @param request: DescribeSiteLogsRequest
         @return: DescribeSiteLogsResponse
@@ -14492,7 +14535,12 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeSiteLogsRequest,
     ) -> esa20240910_models.DescribeSiteLogsResponse:
         """
-        @summary 查询站点离线日志
+        @summary Queries the URLs from which you can download the raw access logs of a website.
+        
+        @description    If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+        The log data is collected every hour.
+        You can call this operation up to 50 times per second per account.
+        You can query only logs in the last month. The time range cannot exceed 31 days.
         
         @param request: DescribeSiteLogsRequest
         @return: DescribeSiteLogsResponse
@@ -14506,7 +14554,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
         """
-        @summary 获取时序数据
+        @summary Query traffic analysis time series data
+        
+        @description - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
+        - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
+        For a span of 3 hours or less, it returns 1-minute granularity data.
+        For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
+        For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
+        For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
+        For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
+        - Due to the high number of accesses during the query period, the data analysis may be sampled.
         
         @param tmp_req: DescribeSiteTimeSeriesDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14553,7 +14610,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
         """
-        @summary 获取时序数据
+        @summary Query traffic analysis time series data
+        
+        @description - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
+        - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
+        For a span of 3 hours or less, it returns 1-minute granularity data.
+        For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
+        For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
+        For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
+        For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
+        - Due to the high number of accesses during the query period, the data analysis may be sampled.
         
         @param tmp_req: DescribeSiteTimeSeriesDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14599,7 +14665,16 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeSiteTimeSeriesDataRequest,
     ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
         """
-        @summary 获取时序数据
+        @summary Query traffic analysis time series data
+        
+        @description - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
+        - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
+        For a span of 3 hours or less, it returns 1-minute granularity data.
+        For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
+        For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
+        For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
+        For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
+        - Due to the high number of accesses during the query period, the data analysis may be sampled.
         
         @param request: DescribeSiteTimeSeriesDataRequest
         @return: DescribeSiteTimeSeriesDataResponse
@@ -14612,7 +14687,16 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeSiteTimeSeriesDataRequest,
     ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
         """
-        @summary 获取时序数据
+        @summary Query traffic analysis time series data
+        
+        @description - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
+        - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
+        For a span of 3 hours or less, it returns 1-minute granularity data.
+        For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
+        For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
+        For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
+        For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
+        - Due to the high number of accesses during the query period, the data analysis may be sampled.
         
         @param request: DescribeSiteTimeSeriesDataRequest
         @return: DescribeSiteTimeSeriesDataResponse
@@ -14626,7 +14710,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeSiteTopDataResponse:
         """
-        @summary 获取Top数据
+        @summary Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+        
+        @description    If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
         
         @param tmp_req: DescribeSiteTopDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14675,7 +14761,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeSiteTopDataResponse:
         """
-        @summary 获取Top数据
+        @summary Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+        
+        @description    If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
         
         @param tmp_req: DescribeSiteTopDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14723,7 +14811,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeSiteTopDataRequest,
     ) -> esa20240910_models.DescribeSiteTopDataResponse:
         """
-        @summary 获取Top数据
+        @summary Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+        
+        @description    If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
         
         @param request: DescribeSiteTopDataRequest
         @return: DescribeSiteTopDataResponse
@@ -14736,7 +14826,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeSiteTopDataRequest,
     ) -> esa20240910_models.DescribeSiteTopDataResponse:
         """
-        @summary 获取Top数据
+        @summary Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+        
+        @description    If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
         
         @param request: DescribeSiteTopDataRequest
         @return: DescribeSiteTopDataResponse
@@ -14750,7 +14842,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeUrlObservationDataResponse:
         """
-        @summary 查询网页观测质量数据
+        @summary Queries the page monitoring data.
+        
+        @description If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
         
         @param request: DescribeUrlObservationDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14795,7 +14889,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeUrlObservationDataResponse:
         """
-        @summary 查询网页观测质量数据
+        @summary Queries the page monitoring data.
+        
+        @description If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
         
         @param request: DescribeUrlObservationDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14839,7 +14935,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeUrlObservationDataRequest,
     ) -> esa20240910_models.DescribeUrlObservationDataResponse:
         """
-        @summary 查询网页观测质量数据
+        @summary Queries the page monitoring data.
+        
+        @description If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
         
         @param request: DescribeUrlObservationDataRequest
         @return: DescribeUrlObservationDataResponse
@@ -14852,7 +14950,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeUrlObservationDataRequest,
     ) -> esa20240910_models.DescribeUrlObservationDataResponse:
         """
-        @summary 查询网页观测质量数据
+        @summary Queries the page monitoring data.
+        
+        @description If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
         
         @param request: DescribeUrlObservationDataRequest
         @return: DescribeUrlObservationDataResponse
@@ -16168,7 +16268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
         """
-        @summary 查询站点中国大陆网络接入优化配置
+        @summary Queries the configuration of Chinese mainland access optimization.
         
         @param request: GetCrossBorderOptimizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16201,7 +16301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
         """
-        @summary 查询站点中国大陆网络接入优化配置
+        @summary Queries the configuration of Chinese mainland access optimization.
         
         @param request: GetCrossBorderOptimizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16233,7 +16333,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetCrossBorderOptimizationRequest,
     ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
         """
-        @summary 查询站点中国大陆网络接入优化配置
+        @summary Queries the configuration of Chinese mainland access optimization.
         
         @param request: GetCrossBorderOptimizationRequest
         @return: GetCrossBorderOptimizationResponse
@@ -16246,7 +16346,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetCrossBorderOptimizationRequest,
     ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
         """
-        @summary 查询站点中国大陆网络接入优化配置
+        @summary Queries the configuration of Chinese mainland access optimization.
         
         @param request: GetCrossBorderOptimizationRequest
         @return: GetCrossBorderOptimizationResponse
@@ -16540,7 +16640,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
         """
-        @summary 获取边缘容器资源预留配置
+        @summary Obtain the resource reservation configuration of the edge container.
         
         @param request: GetEdgeContainerAppResourceReserveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16575,7 +16675,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
         """
-        @summary 获取边缘容器资源预留配置
+        @summary Obtain the resource reservation configuration of the edge container.
         
         @param request: GetEdgeContainerAppResourceReserveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16609,7 +16709,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
     ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
         """
-        @summary 获取边缘容器资源预留配置
+        @summary Obtain the resource reservation configuration of the edge container.
         
         @param request: GetEdgeContainerAppResourceReserveRequest
         @return: GetEdgeContainerAppResourceReserveResponse
@@ -16622,7 +16722,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
     ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
         """
-        @summary 获取边缘容器资源预留配置
+        @summary Obtain the resource reservation configuration of the edge container.
         
         @param request: GetEdgeContainerAppResourceReserveRequest
         @return: GetEdgeContainerAppResourceReserveResponse
@@ -16636,7 +16736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
         """
-        @summary 获取边缘容器应用资源分布
+        @summary Obtains the distribution of edge container application resources.
         
         @param request: GetEdgeContainerAppResourceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16671,7 +16771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
         """
-        @summary 获取边缘容器应用资源分布
+        @summary Obtains the distribution of edge container application resources.
         
         @param request: GetEdgeContainerAppResourceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16705,7 +16805,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppResourceStatusRequest,
     ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
         """
-        @summary 获取边缘容器应用资源分布
+        @summary Obtains the distribution of edge container application resources.
         
         @param request: GetEdgeContainerAppResourceStatusRequest
         @return: GetEdgeContainerAppResourceStatusResponse
@@ -16718,7 +16818,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppResourceStatusRequest,
     ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
         """
-        @summary 获取边缘容器应用资源分布
+        @summary Obtains the distribution of edge container application resources.
         
         @param request: GetEdgeContainerAppResourceStatusRequest
         @return: GetEdgeContainerAppResourceStatusResponse
@@ -17388,7 +17488,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站请求头规则详情
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
         
         @param request: GetHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17421,7 +17521,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站请求头规则详情
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
         
         @param request: GetHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17453,7 +17553,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站请求头规则详情
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
         
         @param request: GetHttpIncomingRequestHeaderModificationRuleRequest
         @return: GetHttpIncomingRequestHeaderModificationRuleResponse
@@ -17466,7 +17566,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站请求头规则详情
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
         
         @param request: GetHttpIncomingRequestHeaderModificationRuleRequest
         @return: GetHttpIncomingRequestHeaderModificationRuleResponse
@@ -17480,7 +17580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站响应头规则
+        @summary Queries the configuration details of an incoming HTTP response header modification rule for a website.
         
         @param request: GetHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17513,7 +17613,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站响应头规则
+        @summary Queries the configuration details of an incoming HTTP response header modification rule for a website.
         
         @param request: GetHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17545,7 +17645,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站响应头规则
+        @summary Queries the configuration details of an incoming HTTP response header modification rule for a website.
         
         @param request: GetHttpIncomingResponseHeaderModificationRuleRequest
         @return: GetHttpIncomingResponseHeaderModificationRuleResponse
@@ -17558,7 +17658,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 查询HTTP入站响应头规则
+        @summary Queries the configuration details of an incoming HTTP response header modification rule for a website.
         
         @param request: GetHttpIncomingResponseHeaderModificationRuleRequest
         @return: GetHttpIncomingResponseHeaderModificationRuleResponse
@@ -19960,13 +20060,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_routine_with_options_async(request, runtime)
 
+    def get_routine_code_version_with_options(
+        self,
+        request: esa20240910_models.GetRoutineCodeVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRoutineCodeVersionResponse:
+        """
+        @summary Queries information about a code version of a routine.
+        
+        @param request: GetRoutineCodeVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoutineCodeVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code_version):
+            body['CodeVersion'] = request.code_version
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetRoutineCodeVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetRoutineCodeVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_routine_code_version_with_options_async(
+        self,
+        request: esa20240910_models.GetRoutineCodeVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRoutineCodeVersionResponse:
+        """
+        @summary Queries information about a code version of a routine.
+        
+        @param request: GetRoutineCodeVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoutineCodeVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code_version):
+            body['CodeVersion'] = request.code_version
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetRoutineCodeVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetRoutineCodeVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_routine_code_version(
+        self,
+        request: esa20240910_models.GetRoutineCodeVersionRequest,
+    ) -> esa20240910_models.GetRoutineCodeVersionResponse:
+        """
+        @summary Queries information about a code version of a routine.
+        
+        @param request: GetRoutineCodeVersionRequest
+        @return: GetRoutineCodeVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_routine_code_version_with_options(request, runtime)
+
+    async def get_routine_code_version_async(
+        self,
+        request: esa20240910_models.GetRoutineCodeVersionRequest,
+    ) -> esa20240910_models.GetRoutineCodeVersionResponse:
+        """
+        @summary Queries information about a code version of a routine.
+        
+        @param request: GetRoutineCodeVersionRequest
+        @return: GetRoutineCodeVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_routine_code_version_with_options_async(request, runtime)
+
     def get_routine_route_with_options(
         self,
         request: esa20240910_models.GetRoutineRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineRouteResponse:
         """
-        @summary 查询单条边缘函数路由配置
+        @summary Queries the route configurations of a single edge function.
         
         @param request: GetRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20003,7 +20203,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineRouteResponse:
         """
-        @summary 查询单条边缘函数路由配置
+        @summary Queries the route configurations of a single edge function.
         
         @param request: GetRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20039,7 +20239,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRoutineRouteRequest,
     ) -> esa20240910_models.GetRoutineRouteResponse:
         """
-        @summary 查询单条边缘函数路由配置
+        @summary Queries the route configurations of a single edge function.
         
         @param request: GetRoutineRouteRequest
         @return: GetRoutineRouteResponse
@@ -20052,7 +20252,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRoutineRouteRequest,
     ) -> esa20240910_models.GetRoutineRouteResponse:
         """
-        @summary 查询单条边缘函数路由配置
+        @summary Queries the route configurations of a single edge function.
         
         @param request: GetRoutineRouteRequest
         @return: GetRoutineRouteResponse
@@ -21882,7 +22082,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetVideoProcessingResponse:
         """
-        @summary 查询站点视频处理配置详情
+        @summary Queries the video processing configuration details of a site.
         
         @param request: GetVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21919,7 +22119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetVideoProcessingResponse:
         """
-        @summary 查询站点视频处理配置详情
+        @summary Queries the video processing configuration details of a site.
         
         @param request: GetVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21955,7 +22155,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetVideoProcessingRequest,
     ) -> esa20240910_models.GetVideoProcessingResponse:
         """
-        @summary 查询站点视频处理配置详情
+        @summary Queries the video processing configuration details of a site.
         
         @param request: GetVideoProcessingRequest
         @return: GetVideoProcessingResponse
@@ -21968,7 +22168,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetVideoProcessingRequest,
     ) -> esa20240910_models.GetVideoProcessingResponse:
         """
-        @summary 查询站点视频处理配置详情
+        @summary Queries the video processing configuration details of a site.
         
         @param request: GetVideoProcessingRequest
         @return: GetVideoProcessingResponse
@@ -22740,7 +22940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListCertificatesByRecordResponse:
         """
-        @summary 查询匹配记录名的站点证书列表
+        @summary Lists certificates that match specified records for a website. You can specify multiple records at a time.
         
         @param request: ListCertificatesByRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22773,7 +22973,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListCertificatesByRecordResponse:
         """
-        @summary 查询匹配记录名的站点证书列表
+        @summary Lists certificates that match specified records for a website. You can specify multiple records at a time.
         
         @param request: ListCertificatesByRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22805,7 +23005,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListCertificatesByRecordRequest,
     ) -> esa20240910_models.ListCertificatesByRecordResponse:
         """
-        @summary 查询匹配记录名的站点证书列表
+        @summary Lists certificates that match specified records for a website. You can specify multiple records at a time.
         
         @param request: ListCertificatesByRecordRequest
         @return: ListCertificatesByRecordResponse
@@ -22818,7 +23018,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListCertificatesByRecordRequest,
     ) -> esa20240910_models.ListCertificatesByRecordResponse:
         """
-        @summary 查询匹配记录名的站点证书列表
+        @summary Lists certificates that match specified records for a website. You can specify multiple records at a time.
         
         @param request: ListCertificatesByRecordRequest
         @return: ListCertificatesByRecordResponse
@@ -23200,7 +23400,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListESAIPInfoResponse:
         """
-        @summary 批量查询IP是否为VIP
+        @summary Batch query whether the IP address is included in the ESA resolution result.
+        
+        @description This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
         
         @param request: ListESAIPInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23233,7 +23435,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListESAIPInfoResponse:
         """
-        @summary 批量查询IP是否为VIP
+        @summary Batch query whether the IP address is included in the ESA resolution result.
+        
+        @description This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
         
         @param request: ListESAIPInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23265,7 +23469,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListESAIPInfoRequest,
     ) -> esa20240910_models.ListESAIPInfoResponse:
         """
-        @summary 批量查询IP是否为VIP
+        @summary Batch query whether the IP address is included in the ESA resolution result.
+        
+        @description This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
         
         @param request: ListESAIPInfoRequest
         @return: ListESAIPInfoResponse
@@ -23278,7 +23484,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListESAIPInfoRequest,
     ) -> esa20240910_models.ListESAIPInfoResponse:
         """
-        @summary 批量查询IP是否为VIP
+        @summary Batch query whether the IP address is included in the ESA resolution result.
+        
+        @description This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
         
         @param request: ListESAIPInfoRequest
         @return: ListESAIPInfoResponse
@@ -23858,7 +24066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListHttpIncomingRequestHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站请求头规则列表
+        @summary Queries the configuration details of an incoming HTTP request header modification rule for a website.
         
         @param request: ListHttpIncomingRequestHeaderModificationRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23891,7 +24099,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListHttpIncomingRequestHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站请求头规则列表
+        @summary Queries the configuration details of an incoming HTTP request header modification rule for a website.
         
         @param request: ListHttpIncomingRequestHeaderModificationRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23923,7 +24131,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListHttpIncomingRequestHeaderModificationRulesRequest,
     ) -> esa20240910_models.ListHttpIncomingRequestHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站请求头规则列表
+        @summary Queries the configuration details of an incoming HTTP request header modification rule for a website.
         
         @param request: ListHttpIncomingRequestHeaderModificationRulesRequest
         @return: ListHttpIncomingRequestHeaderModificationRulesResponse
@@ -23936,7 +24144,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListHttpIncomingRequestHeaderModificationRulesRequest,
     ) -> esa20240910_models.ListHttpIncomingRequestHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站请求头规则列表
+        @summary Queries the configuration details of an incoming HTTP request header modification rule for a website.
         
         @param request: ListHttpIncomingRequestHeaderModificationRulesRequest
         @return: ListHttpIncomingRequestHeaderModificationRulesResponse
@@ -23950,7 +24158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListHttpIncomingResponseHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站响应头规则列表
+        @summary Queries the configurations of an incoming HTTP response header modification rule for a website.
         
         @param request: ListHttpIncomingResponseHeaderModificationRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23983,7 +24191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListHttpIncomingResponseHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站响应头规则列表
+        @summary Queries the configurations of an incoming HTTP response header modification rule for a website.
         
         @param request: ListHttpIncomingResponseHeaderModificationRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24015,7 +24223,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListHttpIncomingResponseHeaderModificationRulesRequest,
     ) -> esa20240910_models.ListHttpIncomingResponseHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站响应头规则列表
+        @summary Queries the configurations of an incoming HTTP response header modification rule for a website.
         
         @param request: ListHttpIncomingResponseHeaderModificationRulesRequest
         @return: ListHttpIncomingResponseHeaderModificationRulesResponse
@@ -24028,7 +24236,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListHttpIncomingResponseHeaderModificationRulesRequest,
     ) -> esa20240910_models.ListHttpIncomingResponseHeaderModificationRulesResponse:
         """
-        @summary 查询HTTP入站响应头规则列表
+        @summary Queries the configurations of an incoming HTTP response header modification rule for a website.
         
         @param request: ListHttpIncomingResponseHeaderModificationRulesRequest
         @return: ListHttpIncomingResponseHeaderModificationRulesResponse
@@ -26228,7 +26436,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
         """
-        @summary 查询Routine的代码版本列表
+        @summary Queries the code versions of a function (routine) by page.
+        
+        @description Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+        Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+        The response includes the number, description, and creation time of each code version.
         
         @param request: ListRoutineCodeVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26269,7 +26481,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
         """
-        @summary 查询Routine的代码版本列表
+        @summary Queries the code versions of a function (routine) by page.
+        
+        @description Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+        Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+        The response includes the number, description, and creation time of each code version.
         
         @param request: ListRoutineCodeVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26309,7 +26525,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRoutineCodeVersionsRequest,
     ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
         """
-        @summary 查询Routine的代码版本列表
+        @summary Queries the code versions of a function (routine) by page.
+        
+        @description Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+        Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+        The response includes the number, description, and creation time of each code version.
         
         @param request: ListRoutineCodeVersionsRequest
         @return: ListRoutineCodeVersionsResponse
@@ -26322,7 +26542,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRoutineCodeVersionsRequest,
     ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
         """
-        @summary 查询Routine的代码版本列表
+        @summary Queries the code versions of a function (routine) by page.
+        
+        @description Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+        Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+        The response includes the number, description, and creation time of each code version.
         
         @param request: ListRoutineCodeVersionsRequest
         @return: ListRoutineCodeVersionsResponse
@@ -26336,7 +26560,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary 查询函数关联域名列表
+        @summary The records associated with the function.
+        
+        @description You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
         
         @param request: ListRoutineRelatedRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26377,7 +26603,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary 查询函数关联域名列表
+        @summary The records associated with the function.
+        
+        @description You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
         
         @param request: ListRoutineRelatedRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26417,7 +26645,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRoutineRelatedRecordsRequest,
     ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary 查询函数关联域名列表
+        @summary The records associated with the function.
+        
+        @description You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
         
         @param request: ListRoutineRelatedRecordsRequest
         @return: ListRoutineRelatedRecordsResponse
@@ -26430,7 +26660,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRoutineRelatedRecordsRequest,
     ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary 查询函数关联域名列表
+        @summary The records associated with the function.
+        
+        @description You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
         
         @param request: ListRoutineRelatedRecordsRequest
         @return: ListRoutineRelatedRecordsResponse
@@ -26444,7 +26676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineRoutesResponse:
         """
-        @summary 查询边缘程序的函数路由列表
+        @summary Queries the routes of an edge function.
         
         @param request: ListRoutineRoutesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26483,7 +26715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineRoutesResponse:
         """
-        @summary 查询边缘程序的函数路由列表
+        @summary Queries the routes of an edge function.
         
         @param request: ListRoutineRoutesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26521,7 +26753,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRoutineRoutesRequest,
     ) -> esa20240910_models.ListRoutineRoutesResponse:
         """
-        @summary 查询边缘程序的函数路由列表
+        @summary Queries the routes of an edge function.
         
         @param request: ListRoutineRoutesRequest
         @return: ListRoutineRoutesResponse
@@ -26534,7 +26766,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRoutineRoutesRequest,
     ) -> esa20240910_models.ListRoutineRoutesResponse:
         """
-        @summary 查询边缘程序的函数路由列表
+        @summary Queries the routes of an edge function.
         
         @param request: ListRoutineRoutesRequest
         @return: ListRoutineRoutesResponse
@@ -26824,7 +27056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSiteRoutesResponse:
         """
-        @summary 查询站点的函数路由列表
+        @summary Queries the edge function routes for a website.
         
         @param request: ListSiteRoutesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26869,7 +27101,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSiteRoutesResponse:
         """
-        @summary 查询站点的函数路由列表
+        @summary Queries the edge function routes for a website.
         
         @param request: ListSiteRoutesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26913,7 +27145,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSiteRoutesRequest,
     ) -> esa20240910_models.ListSiteRoutesResponse:
         """
-        @summary 查询站点的函数路由列表
+        @summary Queries the edge function routes for a website.
         
         @param request: ListSiteRoutesRequest
         @return: ListSiteRoutesResponse
@@ -26926,7 +27158,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSiteRoutesRequest,
     ) -> esa20240910_models.ListSiteRoutesResponse:
         """
-        @summary 查询站点的函数路由列表
+        @summary Queries the edge function routes for a website.
         
         @param request: ListSiteRoutesRequest
         @return: ListSiteRoutesResponse
@@ -27348,7 +27580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUrlObservationsResponse:
         """
-        @summary 查询网页观测配置列表
+        @summary Queries the list of page monitoring configurations.
         
         @param request: ListUrlObservationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27389,7 +27621,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUrlObservationsResponse:
         """
-        @summary 查询网页观测配置列表
+        @summary Queries the list of page monitoring configurations.
         
         @param request: ListUrlObservationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27429,7 +27661,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUrlObservationsRequest,
     ) -> esa20240910_models.ListUrlObservationsResponse:
         """
-        @summary 查询网页观测配置列表
+        @summary Queries the list of page monitoring configurations.
         
         @param request: ListUrlObservationsRequest
         @return: ListUrlObservationsResponse
@@ -27442,7 +27674,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUrlObservationsRequest,
     ) -> esa20240910_models.ListUrlObservationsResponse:
         """
-        @summary 查询网页观测配置列表
+        @summary Queries the list of page monitoring configurations.
         
         @param request: ListUrlObservationsRequest
         @return: ListUrlObservationsResponse
@@ -27640,7 +27872,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUserRoutinesResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+        
+        @description You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
         
         @param request: ListUserRoutinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27679,7 +27913,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUserRoutinesResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+        
+        @description You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
         
         @param request: ListUserRoutinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27717,7 +27953,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUserRoutinesRequest,
     ) -> esa20240910_models.ListUserRoutinesResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+        
+        @description You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
         
         @param request: ListUserRoutinesRequest
         @return: ListUserRoutinesResponse
@@ -27730,7 +27968,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUserRoutinesRequest,
     ) -> esa20240910_models.ListUserRoutinesResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+        
+        @description You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
         
         @param request: ListUserRoutinesRequest
         @return: ListUserRoutinesResponse
@@ -27744,7 +27984,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListVideoProcessingsResponse:
         """
-        @summary 查询站点视频处理配置列表
+        @summary Queries the video processing configurations of a site.
         
         @param request: ListVideoProcessingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27791,7 +28031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListVideoProcessingsResponse:
         """
-        @summary 查询站点视频处理配置列表
+        @summary Queries the video processing configurations of a site.
         
         @param request: ListVideoProcessingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27837,7 +28077,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListVideoProcessingsRequest,
     ) -> esa20240910_models.ListVideoProcessingsResponse:
         """
-        @summary 查询站点视频处理配置列表
+        @summary Queries the video processing configurations of a site.
         
         @param request: ListVideoProcessingsRequest
         @return: ListVideoProcessingsResponse
@@ -27850,7 +28090,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListVideoProcessingsRequest,
     ) -> esa20240910_models.ListVideoProcessingsResponse:
         """
-        @summary 查询站点视频处理配置列表
+        @summary Queries the video processing configurations of a site.
         
         @param request: ListVideoProcessingsRequest
         @return: ListVideoProcessingsResponse
@@ -27873,6 +28113,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = esa20240910_models.ListWafManagedRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.managed_ruleset):
+            request.managed_ruleset_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managed_ruleset, 'ManagedRuleset', 'json')
         if not UtilClient.is_unset(tmp_req.query_args):
             request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
         query = {}
@@ -27880,8 +28122,12 @@ class Client(OpenApiClient):
             query['AttackType'] = request.attack_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.managed_ruleset_shrink):
+            query['ManagedRuleset'] = request.managed_ruleset_shrink
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -27926,6 +28172,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = esa20240910_models.ListWafManagedRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.managed_ruleset):
+            request.managed_ruleset_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managed_ruleset, 'ManagedRuleset', 'json')
         if not UtilClient.is_unset(tmp_req.query_args):
             request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
         query = {}
@@ -27933,8 +28181,12 @@ class Client(OpenApiClient):
             query['AttackType'] = request.attack_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.managed_ruleset_shrink):
+            query['ManagedRuleset'] = request.managed_ruleset_shrink
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -28360,6 +28612,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.query_args):
             request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.phase):
             query['Phase'] = request.phase
         if not UtilClient.is_unset(request.query_args_shrink):
@@ -28403,6 +28657,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.query_args):
             request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.phase):
             query['Phase'] = request.phase
         if not UtilClient.is_unset(request.query_args_shrink):
@@ -28468,6 +28724,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.phase):
             query['Phase'] = request.phase
         if not UtilClient.is_unset(request.site_id):
@@ -28505,6 +28763,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.phase):
             query['Phase'] = request.phase
         if not UtilClient.is_unset(request.site_id):
@@ -29453,6 +29713,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.channel):
+            query['Channel'] = request.channel
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.coverage):
@@ -29509,6 +29771,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.channel):
+            query['Channel'] = request.channel
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.coverage):
@@ -31634,7 +31898,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
         """
-        @summary 缓存保持变配
+        @summary Cache Reserve Specification Change
         
         @param request: UpdateCacheReserveSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31675,7 +31939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
         """
-        @summary 缓存保持变配
+        @summary Cache Reserve Specification Change
         
         @param request: UpdateCacheReserveSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31715,7 +31979,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateCacheReserveSpecRequest,
     ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
         """
-        @summary 缓存保持变配
+        @summary Cache Reserve Specification Change
         
         @param request: UpdateCacheReserveSpecRequest
         @return: UpdateCacheReserveSpecResponse
@@ -31728,7 +31992,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateCacheReserveSpecRequest,
     ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
         """
-        @summary 缓存保持变配
+        @summary Cache Reserve Specification Change
         
         @param request: UpdateCacheReserveSpecRequest
         @return: UpdateCacheReserveSpecResponse
@@ -32698,7 +32962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
         """
-        @summary 更新边缘容器资源预留配置
+        @summary Updates the resource reservation configuration of an edge container.
         
         @param tmp_req: UpdateEdgeContainerAppResourceReserveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32745,7 +33009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
         """
-        @summary 更新边缘容器资源预留配置
+        @summary Updates the resource reservation configuration of an edge container.
         
         @param tmp_req: UpdateEdgeContainerAppResourceReserveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32791,7 +33055,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateEdgeContainerAppResourceReserveRequest,
     ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
         """
-        @summary 更新边缘容器资源预留配置
+        @summary Updates the resource reservation configuration of an edge container.
         
         @param request: UpdateEdgeContainerAppResourceReserveRequest
         @return: UpdateEdgeContainerAppResourceReserveResponse
@@ -32804,7 +33068,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateEdgeContainerAppResourceReserveRequest,
     ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
         """
-        @summary 更新边缘容器资源预留配置
+        @summary Updates the resource reservation configuration of an edge container.
         
         @param request: UpdateEdgeContainerAppResourceReserveRequest
         @return: UpdateEdgeContainerAppResourceReserveResponse
@@ -32818,7 +33082,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站请求头规则
+        @summary Updates the HTTP incoming request header modification rule.
         
         @param tmp_req: UpdateHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32869,7 +33133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站请求头规则
+        @summary Updates the HTTP incoming request header modification rule.
         
         @param tmp_req: UpdateHttpIncomingRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32919,7 +33183,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.UpdateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站请求头规则
+        @summary Updates the HTTP incoming request header modification rule.
         
         @param request: UpdateHttpIncomingRequestHeaderModificationRuleRequest
         @return: UpdateHttpIncomingRequestHeaderModificationRuleResponse
@@ -32932,7 +33196,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateHttpIncomingRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.UpdateHttpIncomingRequestHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站请求头规则
+        @summary Updates the HTTP incoming request header modification rule.
         
         @param request: UpdateHttpIncomingRequestHeaderModificationRuleRequest
         @return: UpdateHttpIncomingRequestHeaderModificationRuleResponse
@@ -32946,7 +33210,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站响应头规则
+        @summary Updates the configuration of modifying HTTP response headers for a website.
         
         @param tmp_req: UpdateHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32997,7 +33261,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站响应头规则
+        @summary Updates the configuration of modifying HTTP response headers for a website.
         
         @param tmp_req: UpdateHttpIncomingResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33047,7 +33311,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.UpdateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站响应头规则
+        @summary Updates the configuration of modifying HTTP response headers for a website.
         
         @param request: UpdateHttpIncomingResponseHeaderModificationRuleRequest
         @return: UpdateHttpIncomingResponseHeaderModificationRuleResponse
@@ -33060,7 +33324,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateHttpIncomingResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.UpdateHttpIncomingResponseHeaderModificationRuleResponse:
         """
-        @summary 修改HTTP入站响应头规则
+        @summary Updates the configuration of modifying HTTP response headers for a website.
         
         @param request: UpdateHttpIncomingResponseHeaderModificationRuleRequest
         @return: UpdateHttpIncomingResponseHeaderModificationRuleResponse
@@ -35580,13 +35844,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_rewrite_url_rule_with_options_async(request, runtime)
 
+    def update_routine_config_description_with_options(
+        self,
+        request: esa20240910_models.UpdateRoutineConfigDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRoutineConfigDescriptionResponse:
+        """
+        @summary Modifies the description of a routine.
+        
+        @param request: UpdateRoutineConfigDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoutineConfigDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRoutineConfigDescription',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateRoutineConfigDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_routine_config_description_with_options_async(
+        self,
+        request: esa20240910_models.UpdateRoutineConfigDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRoutineConfigDescriptionResponse:
+        """
+        @summary Modifies the description of a routine.
+        
+        @param request: UpdateRoutineConfigDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoutineConfigDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRoutineConfigDescription',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateRoutineConfigDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_routine_config_description(
+        self,
+        request: esa20240910_models.UpdateRoutineConfigDescriptionRequest,
+    ) -> esa20240910_models.UpdateRoutineConfigDescriptionResponse:
+        """
+        @summary Modifies the description of a routine.
+        
+        @param request: UpdateRoutineConfigDescriptionRequest
+        @return: UpdateRoutineConfigDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_routine_config_description_with_options(request, runtime)
+
+    async def update_routine_config_description_async(
+        self,
+        request: esa20240910_models.UpdateRoutineConfigDescriptionRequest,
+    ) -> esa20240910_models.UpdateRoutineConfigDescriptionResponse:
+        """
+        @summary Modifies the description of a routine.
+        
+        @param request: UpdateRoutineConfigDescriptionRequest
+        @return: UpdateRoutineConfigDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_routine_config_description_with_options_async(request, runtime)
+
     def update_routine_route_with_options(
         self,
         request: esa20240910_models.UpdateRoutineRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateRoutineRouteResponse:
         """
-        @summary 修改边缘函数路由配置
+        @summary Modifies the route configuration of an edge function.
         
         @param request: UpdateRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35637,7 +36001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateRoutineRouteResponse:
         """
-        @summary 修改边缘函数路由配置
+        @summary Modifies the route configuration of an edge function.
         
         @param request: UpdateRoutineRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35687,7 +36051,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateRoutineRouteRequest,
     ) -> esa20240910_models.UpdateRoutineRouteResponse:
         """
-        @summary 修改边缘函数路由配置
+        @summary Modifies the route configuration of an edge function.
         
         @param request: UpdateRoutineRouteRequest
         @return: UpdateRoutineRouteResponse
@@ -35700,7 +36064,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateRoutineRouteRequest,
     ) -> esa20240910_models.UpdateRoutineRouteResponse:
         """
-        @summary 修改边缘函数路由配置
+        @summary Modifies the route configuration of an edge function.
         
         @param request: UpdateRoutineRouteRequest
         @return: UpdateRoutineRouteResponse
@@ -35830,7 +36194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSeoBypassResponse:
         """
-        @summary 修改站点放行搜索引擎爬虫配置
+        @summary Modifies the search engine crawler configuration for a website.
         
         @param request: UpdateSeoBypassRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35867,7 +36231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSeoBypassResponse:
         """
-        @summary 修改站点放行搜索引擎爬虫配置
+        @summary Modifies the search engine crawler configuration for a website.
         
         @param request: UpdateSeoBypassRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35903,7 +36267,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSeoBypassRequest,
     ) -> esa20240910_models.UpdateSeoBypassResponse:
         """
-        @summary 修改站点放行搜索引擎爬虫配置
+        @summary Modifies the search engine crawler configuration for a website.
         
         @param request: UpdateSeoBypassRequest
         @return: UpdateSeoBypassResponse
@@ -35916,7 +36280,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSeoBypassRequest,
     ) -> esa20240910_models.UpdateSeoBypassResponse:
         """
-        @summary 修改站点放行搜索引擎爬虫配置
+        @summary Modifies the search engine crawler configuration for a website.
         
         @param request: UpdateSeoBypassRequest
         @return: UpdateSeoBypassResponse
@@ -37006,7 +37370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateUrlObservationResponse:
         """
-        @summary 更新网页监测配置
+        @summary Updates the webpage monitoring configuration.
         
         @param request: UpdateUrlObservationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37045,7 +37409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateUrlObservationResponse:
         """
-        @summary 更新网页监测配置
+        @summary Updates the webpage monitoring configuration.
         
         @param request: UpdateUrlObservationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37083,7 +37447,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateUrlObservationRequest,
     ) -> esa20240910_models.UpdateUrlObservationResponse:
         """
-        @summary 更新网页监测配置
+        @summary Updates the webpage monitoring configuration.
         
         @param request: UpdateUrlObservationRequest
         @return: UpdateUrlObservationResponse
@@ -37096,7 +37460,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateUrlObservationRequest,
     ) -> esa20240910_models.UpdateUrlObservationResponse:
         """
-        @summary 更新网页监测配置
+        @summary Updates the webpage monitoring configuration.
         
         @param request: UpdateUrlObservationRequest
         @return: UpdateUrlObservationResponse
@@ -37330,7 +37694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateVideoProcessingResponse:
         """
-        @summary 修改站点视频处理配置
+        @summary Modifies the video processing configuration of the site.
         
         @param request: UpdateVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37387,7 +37751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateVideoProcessingResponse:
         """
-        @summary 修改站点视频处理配置
+        @summary Modifies the video processing configuration of the site.
         
         @param request: UpdateVideoProcessingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37443,7 +37807,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateVideoProcessingRequest,
     ) -> esa20240910_models.UpdateVideoProcessingResponse:
         """
-        @summary 修改站点视频处理配置
+        @summary Modifies the video processing configuration of the site.
         
         @param request: UpdateVideoProcessingRequest
         @return: UpdateVideoProcessingResponse
@@ -37456,7 +37820,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateVideoProcessingRequest,
     ) -> esa20240910_models.UpdateVideoProcessingResponse:
         """
-        @summary 修改站点视频处理配置
+        @summary Modifies the video processing configuration of the site.
         
         @param request: UpdateVideoProcessingRequest
         @return: UpdateVideoProcessingResponse
