@@ -63,6 +63,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ack_cluster_connector_id):
+            query['AckClusterConnectorId'] = request.ack_cluster_connector_id
+        if not UtilClient.is_unset(request.ack_labels):
+            query['AckLabels'] = request.ack_labels
+        if not UtilClient.is_unset(request.ack_namespaces):
+            query['AckNamespaces'] = request.ack_namespaces
         if not UtilClient.is_unset(request.address_list):
             query['AddressList'] = request.address_list
         if not UtilClient.is_unset(request.auto_add_tag_ecs):
@@ -118,6 +124,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ack_cluster_connector_id):
+            query['AckClusterConnectorId'] = request.ack_cluster_connector_id
+        if not UtilClient.is_unset(request.ack_labels):
+            query['AckLabels'] = request.ack_labels
+        if not UtilClient.is_unset(request.ack_namespaces):
+            query['AckNamespaces'] = request.ack_namespaces
         if not UtilClient.is_unset(request.address_list):
             query['AddressList'] = request.address_list
         if not UtilClient.is_unset(request.auto_add_tag_ecs):
@@ -989,6 +1001,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_vpc_firewall_control_policy_with_options_async(request, runtime)
 
+    def create_ack_cluster_connector_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateAckClusterConnectorResponse:
+        """
+        @summary 创建ACK集群连接器
+        
+        @param request: CreateAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVswitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_vswitch_ip):
+            query['PrimaryVswitchIp'] = request.primary_vswitch_ip
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVswitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_vswitch_ip):
+            query['StandbyVswitchIp'] = request.standby_vswitch_ip
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateAckClusterConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ack_cluster_connector_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateAckClusterConnectorResponse:
+        """
+        @summary 创建ACK集群连接器
+        
+        @param request: CreateAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVswitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_vswitch_ip):
+            query['PrimaryVswitchIp'] = request.primary_vswitch_ip
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVswitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_vswitch_ip):
+            query['StandbyVswitchIp'] = request.standby_vswitch_ip
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateAckClusterConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ack_cluster_connector(
+        self,
+        request: cloudfw_20171207_models.CreateAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.CreateAckClusterConnectorResponse:
+        """
+        @summary 创建ACK集群连接器
+        
+        @param request: CreateAckClusterConnectorRequest
+        @return: CreateAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ack_cluster_connector_with_options(request, runtime)
+
+    async def create_ack_cluster_connector_async(
+        self,
+        request: cloudfw_20171207_models.CreateAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.CreateAckClusterConnectorResponse:
+        """
+        @summary 创建ACK集群连接器
+        
+        @param request: CreateAckClusterConnectorRequest
+        @return: CreateAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ack_cluster_connector_with_options_async(request, runtime)
+
+    def create_acl_check_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateAclCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateAclCheckResponse:
+        """
+        @summary 创建ACL检查
+        
+        @param request: CreateAclCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAclCheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.check_names):
+            query['CheckNames'] = request.check_names
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAclCheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateAclCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_acl_check_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateAclCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateAclCheckResponse:
+        """
+        @summary 创建ACL检查
+        
+        @param request: CreateAclCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAclCheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.check_names):
+            query['CheckNames'] = request.check_names
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAclCheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateAclCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_acl_check(
+        self,
+        request: cloudfw_20171207_models.CreateAclCheckRequest,
+    ) -> cloudfw_20171207_models.CreateAclCheckResponse:
+        """
+        @summary 创建ACL检查
+        
+        @param request: CreateAclCheckRequest
+        @return: CreateAclCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_acl_check_with_options(request, runtime)
+
+    async def create_acl_check_async(
+        self,
+        request: cloudfw_20171207_models.CreateAclCheckRequest,
+    ) -> cloudfw_20171207_models.CreateAclCheckResponse:
+        """
+        @summary 创建ACL检查
+        
+        @param request: CreateAclCheckRequest
+        @return: CreateAclCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_acl_check_with_options_async(request, runtime)
+
     def create_download_task_with_options(
         self,
         request: cloudfw_20171207_models.CreateDownloadTaskRequest,
@@ -1292,6 +1536,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_nat_firewall_control_policy_with_options_async(request, runtime)
+
+    def create_nat_firewall_pre_check_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallPreCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateNatFirewallPreCheckResponse:
+        """
+        @summary 创建NAT防火墙预检查
+        
+        @param request: CreateNatFirewallPreCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNatFirewallPreCheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        body = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            body['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.region_no):
+            body['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNatFirewallPreCheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateNatFirewallPreCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_nat_firewall_pre_check_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallPreCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateNatFirewallPreCheckResponse:
+        """
+        @summary 创建NAT防火墙预检查
+        
+        @param request: CreateNatFirewallPreCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNatFirewallPreCheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        body = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            body['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.region_no):
+            body['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNatFirewallPreCheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateNatFirewallPreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_nat_firewall_pre_check(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallPreCheckRequest,
+    ) -> cloudfw_20171207_models.CreateNatFirewallPreCheckResponse:
+        """
+        @summary 创建NAT防火墙预检查
+        
+        @param request: CreateNatFirewallPreCheckRequest
+        @return: CreateNatFirewallPreCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_nat_firewall_pre_check_with_options(request, runtime)
+
+    async def create_nat_firewall_pre_check_async(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallPreCheckRequest,
+    ) -> cloudfw_20171207_models.CreateNatFirewallPreCheckResponse:
+        """
+        @summary 创建NAT防火墙预检查
+        
+        @param request: CreateNatFirewallPreCheckRequest
+        @return: CreateNatFirewallPreCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_nat_firewall_pre_check_with_options_async(request, runtime)
 
     def create_security_proxy_with_options(
         self,
@@ -2437,6 +2793,434 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vpc_firewall_control_policy_with_options_async(request, runtime)
 
+    def create_vpc_firewall_precheck_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallPrecheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallPrecheckResponse:
+        """
+        @summary 创建VPC防火墙开墙前置任务
+        
+        @param request: CreateVpcFirewallPrecheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcFirewallPrecheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.network_instance_type):
+            query['NetworkInstanceType'] = request.network_instance_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallPrecheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallPrecheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vpc_firewall_precheck_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallPrecheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallPrecheckResponse:
+        """
+        @summary 创建VPC防火墙开墙前置任务
+        
+        @param request: CreateVpcFirewallPrecheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcFirewallPrecheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.network_instance_type):
+            query['NetworkInstanceType'] = request.network_instance_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallPrecheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallPrecheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vpc_firewall_precheck(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallPrecheckRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallPrecheckResponse:
+        """
+        @summary 创建VPC防火墙开墙前置任务
+        
+        @param request: CreateVpcFirewallPrecheckRequest
+        @return: CreateVpcFirewallPrecheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_vpc_firewall_precheck_with_options(request, runtime)
+
+    async def create_vpc_firewall_precheck_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallPrecheckRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallPrecheckResponse:
+        """
+        @summary 创建VPC防火墙开墙前置任务
+        
+        @param request: CreateVpcFirewallPrecheckRequest
+        @return: CreateVpcFirewallPrecheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vpc_firewall_precheck_with_options_async(request, runtime)
+
+    def create_vpc_firewall_task_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallTaskResponse:
+        """
+        @summary 创建VPC防火墙资产同步任务
+        
+        @param request: CreateVpcFirewallTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcFirewallTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallTask',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vpc_firewall_task_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallTaskResponse:
+        """
+        @summary 创建VPC防火墙资产同步任务
+        
+        @param request: CreateVpcFirewallTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcFirewallTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallTask',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vpc_firewall_task(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallTaskRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallTaskResponse:
+        """
+        @summary 创建VPC防火墙资产同步任务
+        
+        @param request: CreateVpcFirewallTaskRequest
+        @return: CreateVpcFirewallTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_vpc_firewall_task_with_options(request, runtime)
+
+    async def create_vpc_firewall_task_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallTaskRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallTaskResponse:
+        """
+        @summary 创建VPC防火墙资产同步任务
+        
+        @param request: CreateVpcFirewallTaskRequest
+        @return: CreateVpcFirewallTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vpc_firewall_task_with_options_async(request, runtime)
+
+    def delete_ack_cluster_connector_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteAckClusterConnectorResponse:
+        """
+        @summary 删除ACK集群连接器
+        
+        @param request: DeleteAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteAckClusterConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ack_cluster_connector_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteAckClusterConnectorResponse:
+        """
+        @summary 删除ACK集群连接器
+        
+        @param request: DeleteAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteAckClusterConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ack_cluster_connector(
+        self,
+        request: cloudfw_20171207_models.DeleteAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.DeleteAckClusterConnectorResponse:
+        """
+        @summary 删除ACK集群连接器
+        
+        @param request: DeleteAckClusterConnectorRequest
+        @return: DeleteAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ack_cluster_connector_with_options(request, runtime)
+
+    async def delete_ack_cluster_connector_async(
+        self,
+        request: cloudfw_20171207_models.DeleteAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.DeleteAckClusterConnectorResponse:
+        """
+        @summary 删除ACK集群连接器
+        
+        @param request: DeleteAckClusterConnectorRequest
+        @return: DeleteAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ack_cluster_connector_with_options_async(request, runtime)
+
+    def delete_acl_backup_data_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteAclBackupDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteAclBackupDataResponse:
+        """
+        @summary 删除ACL备份
+        
+        @param request: DeleteAclBackupDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAclBackupDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.back_up_time):
+            query['BackUpTime'] = request.back_up_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAclBackupData',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteAclBackupDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_acl_backup_data_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteAclBackupDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteAclBackupDataResponse:
+        """
+        @summary 删除ACL备份
+        
+        @param request: DeleteAclBackupDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAclBackupDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.back_up_time):
+            query['BackUpTime'] = request.back_up_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAclBackupData',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteAclBackupDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_acl_backup_data(
+        self,
+        request: cloudfw_20171207_models.DeleteAclBackupDataRequest,
+    ) -> cloudfw_20171207_models.DeleteAclBackupDataResponse:
+        """
+        @summary 删除ACL备份
+        
+        @param request: DeleteAclBackupDataRequest
+        @return: DeleteAclBackupDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_acl_backup_data_with_options(request, runtime)
+
+    async def delete_acl_backup_data_async(
+        self,
+        request: cloudfw_20171207_models.DeleteAclBackupDataRequest,
+    ) -> cloudfw_20171207_models.DeleteAclBackupDataResponse:
+        """
+        @summary 删除ACL备份
+        
+        @param request: DeleteAclBackupDataRequest
+        @return: DeleteAclBackupDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_acl_backup_data_with_options_async(request, runtime)
+
     def delete_address_book_with_options(
         self,
         request: cloudfw_20171207_models.DeleteAddressBookRequest,
@@ -3224,6 +4008,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_members_with_options_async(request, runtime)
+
+    def delete_ips_private_assoc_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteIpsPrivateAssocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteIpsPrivateAssocResponse:
+        """
+        @summary 创建IPS私网关联信息
+        
+        @param request: DeleteIpsPrivateAssocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIpsPrivateAssocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIpsPrivateAssoc',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteIpsPrivateAssocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ips_private_assoc_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteIpsPrivateAssocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteIpsPrivateAssocResponse:
+        """
+        @summary 创建IPS私网关联信息
+        
+        @param request: DeleteIpsPrivateAssocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIpsPrivateAssocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIpsPrivateAssoc',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteIpsPrivateAssocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ips_private_assoc(
+        self,
+        request: cloudfw_20171207_models.DeleteIpsPrivateAssocRequest,
+    ) -> cloudfw_20171207_models.DeleteIpsPrivateAssocResponse:
+        """
+        @summary 创建IPS私网关联信息
+        
+        @param request: DeleteIpsPrivateAssocRequest
+        @return: DeleteIpsPrivateAssocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ips_private_assoc_with_options(request, runtime)
+
+    async def delete_ips_private_assoc_async(
+        self,
+        request: cloudfw_20171207_models.DeleteIpsPrivateAssocRequest,
+    ) -> cloudfw_20171207_models.DeleteIpsPrivateAssocResponse:
+        """
+        @summary 创建IPS私网关联信息
+        
+        @param request: DeleteIpsPrivateAssocRequest
+        @return: DeleteIpsPrivateAssocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ips_private_assoc_with_options_async(request, runtime)
 
     def delete_nat_firewall_control_policy_with_options(
         self,
@@ -4499,6 +5383,1574 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_aitraffic_analysis_status_with_options_async(runtime)
 
+    def describe_access_instance_region_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceRegionListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceRegionListResponse:
+        """
+        @summary 查询接入实例地域列表
+        
+        @param request: DescribeAccessInstanceRegionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceRegionListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceRegionList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceRegionListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_instance_region_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceRegionListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceRegionListResponse:
+        """
+        @summary 查询接入实例地域列表
+        
+        @param request: DescribeAccessInstanceRegionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceRegionListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceRegionList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceRegionListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_instance_region_list(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceRegionListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceRegionListResponse:
+        """
+        @summary 查询接入实例地域列表
+        
+        @param request: DescribeAccessInstanceRegionListRequest
+        @return: DescribeAccessInstanceRegionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_instance_region_list_with_options(request, runtime)
+
+    async def describe_access_instance_region_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceRegionListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceRegionListResponse:
+        """
+        @summary 查询接入实例地域列表
+        
+        @param request: DescribeAccessInstanceRegionListRequest
+        @return: DescribeAccessInstanceRegionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_instance_region_list_with_options_async(request, runtime)
+
+    def describe_access_instance_task_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceTaskResponse:
+        """
+        @summary 查询接入实例任务
+        
+        @param request: DescribeAccessInstanceTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceTask',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_instance_task_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceTaskResponse:
+        """
+        @summary 查询接入实例任务
+        
+        @param request: DescribeAccessInstanceTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceTask',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_instance_task(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceTaskRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceTaskResponse:
+        """
+        @summary 查询接入实例任务
+        
+        @param request: DescribeAccessInstanceTaskRequest
+        @return: DescribeAccessInstanceTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_instance_task_with_options(request, runtime)
+
+    async def describe_access_instance_task_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceTaskRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceTaskResponse:
+        """
+        @summary 查询接入实例任务
+        
+        @param request: DescribeAccessInstanceTaskRequest
+        @return: DescribeAccessInstanceTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_instance_task_with_options_async(request, runtime)
+
+    def describe_access_instance_vswitch_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVSwitchListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVSwitchListResponse:
+        """
+        @summary 查询接入实例的交换机列表
+        
+        @param request: DescribeAccessInstanceVSwitchListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceVSwitchListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceVSwitchList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceVSwitchListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_instance_vswitch_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVSwitchListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVSwitchListResponse:
+        """
+        @summary 查询接入实例的交换机列表
+        
+        @param request: DescribeAccessInstanceVSwitchListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceVSwitchListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceVSwitchList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceVSwitchListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_instance_vswitch_list(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVSwitchListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVSwitchListResponse:
+        """
+        @summary 查询接入实例的交换机列表
+        
+        @param request: DescribeAccessInstanceVSwitchListRequest
+        @return: DescribeAccessInstanceVSwitchListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_instance_vswitch_list_with_options(request, runtime)
+
+    async def describe_access_instance_vswitch_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVSwitchListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVSwitchListResponse:
+        """
+        @summary 查询接入实例的交换机列表
+        
+        @param request: DescribeAccessInstanceVSwitchListRequest
+        @return: DescribeAccessInstanceVSwitchListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_instance_vswitch_list_with_options_async(request, runtime)
+
+    def describe_access_instance_vpc_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVpcListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVpcListResponse:
+        """
+        @summary 查询接入实例VPC列表
+        
+        @param request: DescribeAccessInstanceVpcListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceVpcListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceVpcList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceVpcListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_instance_vpc_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVpcListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVpcListResponse:
+        """
+        @summary 查询接入实例VPC列表
+        
+        @param request: DescribeAccessInstanceVpcListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceVpcListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceVpcList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceVpcListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_instance_vpc_list(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVpcListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVpcListResponse:
+        """
+        @summary 查询接入实例VPC列表
+        
+        @param request: DescribeAccessInstanceVpcListRequest
+        @return: DescribeAccessInstanceVpcListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_instance_vpc_list_with_options(request, runtime)
+
+    async def describe_access_instance_vpc_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceVpcListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceVpcListResponse:
+        """
+        @summary 查询接入实例VPC列表
+        
+        @param request: DescribeAccessInstanceVpcListRequest
+        @return: DescribeAccessInstanceVpcListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_instance_vpc_list_with_options_async(request, runtime)
+
+    def describe_access_instance_zone_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceZoneListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceZoneListResponse:
+        """
+        @summary 查询接入实例支持的可用区列表
+        
+        @param request: DescribeAccessInstanceZoneListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceZoneListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceZoneList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceZoneListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_instance_zone_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceZoneListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceZoneListResponse:
+        """
+        @summary 查询接入实例支持的可用区列表
+        
+        @param request: DescribeAccessInstanceZoneListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessInstanceZoneListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessInstanceZoneList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAccessInstanceZoneListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_instance_zone_list(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceZoneListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceZoneListResponse:
+        """
+        @summary 查询接入实例支持的可用区列表
+        
+        @param request: DescribeAccessInstanceZoneListRequest
+        @return: DescribeAccessInstanceZoneListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_instance_zone_list_with_options(request, runtime)
+
+    async def describe_access_instance_zone_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAccessInstanceZoneListRequest,
+    ) -> cloudfw_20171207_models.DescribeAccessInstanceZoneListResponse:
+        """
+        @summary 查询接入实例支持的可用区列表
+        
+        @param request: DescribeAccessInstanceZoneListRequest
+        @return: DescribeAccessInstanceZoneListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_instance_zone_list_with_options_async(request, runtime)
+
+    def describe_ack_cluster_connector_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorResponse:
+        """
+        @summary 查询指定ACK集群连接器
+        
+        @param request: DescribeAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ack_cluster_connector_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorResponse:
+        """
+        @summary 查询指定ACK集群连接器
+        
+        @param request: DescribeAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ack_cluster_connector(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorResponse:
+        """
+        @summary 查询指定ACK集群连接器
+        
+        @param request: DescribeAckClusterConnectorRequest
+        @return: DescribeAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ack_cluster_connector_with_options(request, runtime)
+
+    async def describe_ack_cluster_connector_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorResponse:
+        """
+        @summary 查询指定ACK集群连接器
+        
+        @param request: DescribeAckClusterConnectorRequest
+        @return: DescribeAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ack_cluster_connector_with_options_async(request, runtime)
+
+    def describe_ack_cluster_connectors_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorsResponse:
+        """
+        @summary 批量查询ACK集群连接器列表
+        
+        @param request: DescribeAckClusterConnectorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterConnectorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterConnectors',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterConnectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ack_cluster_connectors_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorsResponse:
+        """
+        @summary 批量查询ACK集群连接器列表
+        
+        @param request: DescribeAckClusterConnectorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterConnectorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterConnectors',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterConnectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ack_cluster_connectors(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorsRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorsResponse:
+        """
+        @summary 批量查询ACK集群连接器列表
+        
+        @param request: DescribeAckClusterConnectorsRequest
+        @return: DescribeAckClusterConnectorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ack_cluster_connectors_with_options(request, runtime)
+
+    async def describe_ack_cluster_connectors_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterConnectorsRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterConnectorsResponse:
+        """
+        @summary 批量查询ACK集群连接器列表
+        
+        @param request: DescribeAckClusterConnectorsRequest
+        @return: DescribeAckClusterConnectorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ack_cluster_connectors_with_options_async(request, runtime)
+
+    def describe_ack_cluster_namespaces_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterNamespacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterNamespacesResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群命名空间
+        
+        @param request: DescribeAckClusterNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterNamespacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterNamespaces',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterNamespacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ack_cluster_namespaces_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterNamespacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterNamespacesResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群命名空间
+        
+        @param request: DescribeAckClusterNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterNamespacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterNamespaces',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterNamespacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ack_cluster_namespaces(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterNamespacesRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterNamespacesResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群命名空间
+        
+        @param request: DescribeAckClusterNamespacesRequest
+        @return: DescribeAckClusterNamespacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ack_cluster_namespaces_with_options(request, runtime)
+
+    async def describe_ack_cluster_namespaces_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterNamespacesRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterNamespacesResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群命名空间
+        
+        @param request: DescribeAckClusterNamespacesRequest
+        @return: DescribeAckClusterNamespacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ack_cluster_namespaces_with_options_async(request, runtime)
+
+    def describe_ack_cluster_pod_labels_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterPodLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterPodLabelsResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群标签
+        
+        @param request: DescribeAckClusterPodLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterPodLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterPodLabels',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterPodLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ack_cluster_pod_labels_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterPodLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClusterPodLabelsResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群标签
+        
+        @param request: DescribeAckClusterPodLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClusterPodLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusterPodLabels',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClusterPodLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ack_cluster_pod_labels(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterPodLabelsRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterPodLabelsResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群标签
+        
+        @param request: DescribeAckClusterPodLabelsRequest
+        @return: DescribeAckClusterPodLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ack_cluster_pod_labels_with_options(request, runtime)
+
+    async def describe_ack_cluster_pod_labels_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClusterPodLabelsRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClusterPodLabelsResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群标签
+        
+        @param request: DescribeAckClusterPodLabelsRequest
+        @return: DescribeAckClusterPodLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ack_cluster_pod_labels_with_options_async(request, runtime)
+
+    def describe_ack_clusters_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClustersResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+        
+        @param request: DescribeAckClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cluster_spec):
+            query['ClusterSpec'] = request.cluster_spec
+        if not UtilClient.is_unset(request.connector_status):
+            query['ConnectorStatus'] = request.connector_status
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusters',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ack_clusters_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAckClustersResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+        
+        @param request: DescribeAckClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAckClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cluster_spec):
+            query['ClusterSpec'] = request.cluster_spec
+        if not UtilClient.is_unset(request.connector_status):
+            query['ConnectorStatus'] = request.connector_status
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAckClusters',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAckClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ack_clusters(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClustersRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClustersResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+        
+        @param request: DescribeAckClustersRequest
+        @return: DescribeAckClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ack_clusters_with_options(request, runtime)
+
+    async def describe_ack_clusters_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAckClustersRequest,
+    ) -> cloudfw_20171207_models.DescribeAckClustersResponse:
+        """
+        @summary 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+        
+        @param request: DescribeAckClustersRequest
+        @return: DescribeAckClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ack_clusters_with_options_async(request, runtime)
+
+    def describe_acl_apps_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAclAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclAppsResponse:
+        """
+        @summary 批量查询访问控制应用
+        
+        @param request: DescribeAclAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclApps',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_acl_apps_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclAppsResponse:
+        """
+        @summary 批量查询访问控制应用
+        
+        @param request: DescribeAclAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclApps',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_acl_apps(
+        self,
+        request: cloudfw_20171207_models.DescribeAclAppsRequest,
+    ) -> cloudfw_20171207_models.DescribeAclAppsResponse:
+        """
+        @summary 批量查询访问控制应用
+        
+        @param request: DescribeAclAppsRequest
+        @return: DescribeAclAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_acl_apps_with_options(request, runtime)
+
+    async def describe_acl_apps_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclAppsRequest,
+    ) -> cloudfw_20171207_models.DescribeAclAppsResponse:
+        """
+        @summary 批量查询访问控制应用
+        
+        @param request: DescribeAclAppsRequest
+        @return: DescribeAclAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_acl_apps_with_options_async(request, runtime)
+
+    def describe_acl_check_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclCheckResponse:
+        """
+        @summary 查询ACL检查详情
+        
+        @param request: DescribeAclCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclCheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclCheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_acl_check_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclCheckResponse:
+        """
+        @summary 查询ACL检查详情
+        
+        @param request: DescribeAclCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclCheckResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclCheck',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_acl_check(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckRequest,
+    ) -> cloudfw_20171207_models.DescribeAclCheckResponse:
+        """
+        @summary 查询ACL检查详情
+        
+        @param request: DescribeAclCheckRequest
+        @return: DescribeAclCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_acl_check_with_options(request, runtime)
+
+    async def describe_acl_check_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckRequest,
+    ) -> cloudfw_20171207_models.DescribeAclCheckResponse:
+        """
+        @summary 查询ACL检查详情
+        
+        @param request: DescribeAclCheckRequest
+        @return: DescribeAclCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_acl_check_with_options_async(request, runtime)
+
+    def describe_acl_check_quota_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclCheckQuotaResponse:
+        """
+        @summary 查询NAT防火墙预检查结果
+        
+        @param request: DescribeAclCheckQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclCheckQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclCheckQuota',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclCheckQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_acl_check_quota_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclCheckQuotaResponse:
+        """
+        @summary 查询NAT防火墙预检查结果
+        
+        @param request: DescribeAclCheckQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclCheckQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclCheckQuota',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclCheckQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_acl_check_quota(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckQuotaRequest,
+    ) -> cloudfw_20171207_models.DescribeAclCheckQuotaResponse:
+        """
+        @summary 查询NAT防火墙预检查结果
+        
+        @param request: DescribeAclCheckQuotaRequest
+        @return: DescribeAclCheckQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_acl_check_quota_with_options(request, runtime)
+
+    async def describe_acl_check_quota_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclCheckQuotaRequest,
+    ) -> cloudfw_20171207_models.DescribeAclCheckQuotaResponse:
+        """
+        @summary 查询NAT防火墙预检查结果
+        
+        @param request: DescribeAclCheckQuotaRequest
+        @return: DescribeAclCheckQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_acl_check_quota_with_options_async(request, runtime)
+
+    def describe_acl_checks_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAclChecksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclChecksResponse:
+        """
+        @summary 批量查询ACL检查条目
+        
+        @param request: DescribeAclChecksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclChecksResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclChecks',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclChecksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_acl_checks_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclChecksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclChecksResponse:
+        """
+        @summary 批量查询ACL检查条目
+        
+        @param request: DescribeAclChecksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclChecksResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclChecks',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclChecksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_acl_checks(
+        self,
+        request: cloudfw_20171207_models.DescribeAclChecksRequest,
+    ) -> cloudfw_20171207_models.DescribeAclChecksResponse:
+        """
+        @summary 批量查询ACL检查条目
+        
+        @param request: DescribeAclChecksRequest
+        @return: DescribeAclChecksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_acl_checks_with_options(request, runtime)
+
+    async def describe_acl_checks_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclChecksRequest,
+    ) -> cloudfw_20171207_models.DescribeAclChecksResponse:
+        """
+        @summary 批量查询ACL检查条目
+        
+        @param request: DescribeAclChecksRequest
+        @return: DescribeAclChecksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_acl_checks_with_options_async(request, runtime)
+
+    def describe_acl_rule_count_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAclRuleCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclRuleCountResponse:
+        """
+        @summary 获取总ACL配置数
+        
+        @param request: DescribeAclRuleCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclRuleCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclRuleCount',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclRuleCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_acl_rule_count_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclRuleCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclRuleCountResponse:
+        """
+        @summary 获取总ACL配置数
+        
+        @param request: DescribeAclRuleCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclRuleCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclRuleCount',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclRuleCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_acl_rule_count(
+        self,
+        request: cloudfw_20171207_models.DescribeAclRuleCountRequest,
+    ) -> cloudfw_20171207_models.DescribeAclRuleCountResponse:
+        """
+        @summary 获取总ACL配置数
+        
+        @param request: DescribeAclRuleCountRequest
+        @return: DescribeAclRuleCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_acl_rule_count_with_options(request, runtime)
+
+    async def describe_acl_rule_count_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclRuleCountRequest,
+    ) -> cloudfw_20171207_models.DescribeAclRuleCountResponse:
+        """
+        @summary 获取总ACL配置数
+        
+        @param request: DescribeAclRuleCountRequest
+        @return: DescribeAclRuleCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_acl_rule_count_with_options_async(request, runtime)
+
+    def describe_acl_whitelist_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAclWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclWhitelistResponse:
+        """
+        @summary 获取ACL白名单
+        
+        @param request: DescribeAclWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclWhitelist',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_acl_whitelist_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAclWhitelistResponse:
+        """
+        @summary 获取ACL白名单
+        
+        @param request: DescribeAclWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAclWhitelist',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAclWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_acl_whitelist(
+        self,
+        request: cloudfw_20171207_models.DescribeAclWhitelistRequest,
+    ) -> cloudfw_20171207_models.DescribeAclWhitelistResponse:
+        """
+        @summary 获取ACL白名单
+        
+        @param request: DescribeAclWhitelistRequest
+        @return: DescribeAclWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_acl_whitelist_with_options(request, runtime)
+
+    async def describe_acl_whitelist_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAclWhitelistRequest,
+    ) -> cloudfw_20171207_models.DescribeAclWhitelistResponse:
+        """
+        @summary 获取ACL白名单
+        
+        @param request: DescribeAclWhitelistRequest
+        @return: DescribeAclWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_acl_whitelist_with_options_async(request, runtime)
+
     def describe_address_book_with_options(
         self,
         request: cloudfw_20171207_models.DescribeAddressBookRequest,
@@ -5115,6 +7567,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cfw_risk_level_summary_with_options_async(request, runtime)
 
+    def describe_clear_auth_info_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeClearAuthInfoResponse:
+        """
+        @summary 获取清空授权信息
+        
+        @param request: DescribeClearAuthInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClearAuthInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeClearAuthInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeClearAuthInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_clear_auth_info_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeClearAuthInfoResponse:
+        """
+        @summary 获取清空授权信息
+        
+        @param request: DescribeClearAuthInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClearAuthInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeClearAuthInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeClearAuthInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_clear_auth_info(self) -> cloudfw_20171207_models.DescribeClearAuthInfoResponse:
+        """
+        @summary 获取清空授权信息
+        
+        @return: DescribeClearAuthInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_clear_auth_info_with_options(runtime)
+
+    async def describe_clear_auth_info_async(self) -> cloudfw_20171207_models.DescribeClearAuthInfoResponse:
+        """
+        @summary 获取清空授权信息
+        
+        @return: DescribeClearAuthInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_clear_auth_info_with_options_async(runtime)
+
     def describe_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.DescribeControlPolicyRequest,
@@ -5278,6 +7804,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_control_policy_with_options_async(request, runtime)
+
+    def describe_ctrl_instance_member_accounts_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeCtrlInstanceMemberAccountsResponse:
+        """
+        @summary 获取成员账号列表
+        
+        @param request: DescribeCtrlInstanceMemberAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCtrlInstanceMemberAccountsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCtrlInstanceMemberAccounts',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeCtrlInstanceMemberAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ctrl_instance_member_accounts_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeCtrlInstanceMemberAccountsResponse:
+        """
+        @summary 获取成员账号列表
+        
+        @param request: DescribeCtrlInstanceMemberAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCtrlInstanceMemberAccountsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCtrlInstanceMemberAccounts',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeCtrlInstanceMemberAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ctrl_instance_member_accounts(self) -> cloudfw_20171207_models.DescribeCtrlInstanceMemberAccountsResponse:
+        """
+        @summary 获取成员账号列表
+        
+        @return: DescribeCtrlInstanceMemberAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ctrl_instance_member_accounts_with_options(runtime)
+
+    async def describe_ctrl_instance_member_accounts_async(self) -> cloudfw_20171207_models.DescribeCtrlInstanceMemberAccountsResponse:
+        """
+        @summary 获取成员账号列表
+        
+        @return: DescribeCtrlInstanceMemberAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ctrl_instance_member_accounts_with_options_async(runtime)
 
     def describe_default_ipsconfig_with_options(
         self,
@@ -5871,6 +8471,320 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_download_task_type_with_options_async(request, runtime)
 
+    def describe_firewall_drop_statistics_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeFirewallDropStatisticsResponse:
+        """
+        @summary 获取防火墙DROP数据统计
+        
+        @param request: DescribeFirewallDropStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirewallDropStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeFirewallDropStatistics',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeFirewallDropStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_drop_statistics_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeFirewallDropStatisticsResponse:
+        """
+        @summary 获取防火墙DROP数据统计
+        
+        @param request: DescribeFirewallDropStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirewallDropStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeFirewallDropStatistics',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeFirewallDropStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_drop_statistics(self) -> cloudfw_20171207_models.DescribeFirewallDropStatisticsResponse:
+        """
+        @summary 获取防火墙DROP数据统计
+        
+        @return: DescribeFirewallDropStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_firewall_drop_statistics_with_options(runtime)
+
+    async def describe_firewall_drop_statistics_async(self) -> cloudfw_20171207_models.DescribeFirewallDropStatisticsResponse:
+        """
+        @summary 获取防火墙DROP数据统计
+        
+        @return: DescribeFirewallDropStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_firewall_drop_statistics_with_options_async(runtime)
+
+    def describe_firewall_task_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeFirewallTaskResponse:
+        """
+        @summary 获取防火墙任务
+        
+        @param request: DescribeFirewallTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirewallTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFirewallTask',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeFirewallTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_task_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeFirewallTaskResponse:
+        """
+        @summary 获取防火墙任务
+        
+        @param request: DescribeFirewallTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirewallTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFirewallTask',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeFirewallTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_task(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallTaskRequest,
+    ) -> cloudfw_20171207_models.DescribeFirewallTaskResponse:
+        """
+        @summary 获取防火墙任务
+        
+        @param request: DescribeFirewallTaskRequest
+        @return: DescribeFirewallTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_firewall_task_with_options(request, runtime)
+
+    async def describe_firewall_task_async(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallTaskRequest,
+    ) -> cloudfw_20171207_models.DescribeFirewallTaskResponse:
+        """
+        @summary 获取防火墙任务
+        
+        @param request: DescribeFirewallTaskRequest
+        @return: DescribeFirewallTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_firewall_task_with_options_async(request, runtime)
+
+    def describe_firewall_vswitch_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallVSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeFirewallVSwitchResponse:
+        """
+        @summary 获取防火墙创建的交换机
+        
+        @param request: DescribeFirewallVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirewallVSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFirewallVSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeFirewallVSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_vswitch_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallVSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeFirewallVSwitchResponse:
+        """
+        @summary 获取防火墙创建的交换机
+        
+        @param request: DescribeFirewallVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirewallVSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFirewallVSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeFirewallVSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_vswitch(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallVSwitchRequest,
+    ) -> cloudfw_20171207_models.DescribeFirewallVSwitchResponse:
+        """
+        @summary 获取防火墙创建的交换机
+        
+        @param request: DescribeFirewallVSwitchRequest
+        @return: DescribeFirewallVSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_firewall_vswitch_with_options(request, runtime)
+
+    async def describe_firewall_vswitch_async(
+        self,
+        request: cloudfw_20171207_models.DescribeFirewallVSwitchRequest,
+    ) -> cloudfw_20171207_models.DescribeFirewallVSwitchResponse:
+        """
+        @summary 获取防火墙创建的交换机
+        
+        @param request: DescribeFirewallVSwitchRequest
+        @return: DescribeFirewallVSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_firewall_vswitch_with_options_async(request, runtime)
+
     def describe_instance_members_with_options(
         self,
         request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
@@ -6099,6 +9013,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_risk_levels_with_options_async(request, runtime)
 
+    def describe_internet_drop_traffic_trend_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetDropTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetDropTrafficTrendResponse:
+        """
+        @summary 获取互联网方向删除会话趋势图
+        
+        @param request: DescribeInternetDropTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetDropTrafficTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetDropTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetDropTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_internet_drop_traffic_trend_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetDropTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetDropTrafficTrendResponse:
+        """
+        @summary 获取互联网方向删除会话趋势图
+        
+        @param request: DescribeInternetDropTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetDropTrafficTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetDropTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetDropTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_internet_drop_traffic_trend(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetDropTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetDropTrafficTrendResponse:
+        """
+        @summary 获取互联网方向删除会话趋势图
+        
+        @param request: DescribeInternetDropTrafficTrendRequest
+        @return: DescribeInternetDropTrafficTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_internet_drop_traffic_trend_with_options(request, runtime)
+
+    async def describe_internet_drop_traffic_trend_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetDropTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetDropTrafficTrendResponse:
+        """
+        @summary 获取互联网方向删除会话趋势图
+        
+        @param request: DescribeInternetDropTrafficTrendRequest
+        @return: DescribeInternetDropTrafficTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_internet_drop_traffic_trend_with_options_async(request, runtime)
+
     def describe_internet_open_ip_with_options(
         self,
         request: cloudfw_20171207_models.DescribeInternetOpenIpRequest,
@@ -6242,6 +9276,286 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_internet_open_ip_with_options_async(request, runtime)
+
+    def describe_internet_open_port_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenPortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenPortResponse:
+        """
+        @summary 获取互联网开放端口
+        
+        @param request: DescribeInternetOpenPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetOpenPortResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_name_fuzzy):
+            query['ServiceNameFuzzy'] = request.service_name_fuzzy
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.suggest_level):
+            query['SuggestLevel'] = request.suggest_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetOpenPort',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetOpenPortResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_internet_open_port_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenPortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenPortResponse:
+        """
+        @summary 获取互联网开放端口
+        
+        @param request: DescribeInternetOpenPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetOpenPortResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_name_fuzzy):
+            query['ServiceNameFuzzy'] = request.service_name_fuzzy
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.suggest_level):
+            query['SuggestLevel'] = request.suggest_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetOpenPort',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetOpenPortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_internet_open_port(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenPortRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenPortResponse:
+        """
+        @summary 获取互联网开放端口
+        
+        @param request: DescribeInternetOpenPortRequest
+        @return: DescribeInternetOpenPortResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_internet_open_port_with_options(request, runtime)
+
+    async def describe_internet_open_port_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenPortRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenPortResponse:
+        """
+        @summary 获取互联网开放端口
+        
+        @param request: DescribeInternetOpenPortRequest
+        @return: DescribeInternetOpenPortResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_internet_open_port_with_options_async(request, runtime)
+
+    def describe_internet_open_service_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenServiceResponse:
+        """
+        @summary 获取互联网开放服务
+        
+        @param request: DescribeInternetOpenServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetOpenServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_name_fuzzy):
+            query['ServiceNameFuzzy'] = request.service_name_fuzzy
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.suggest_level):
+            query['SuggestLevel'] = request.suggest_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetOpenService',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetOpenServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_internet_open_service_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenServiceResponse:
+        """
+        @summary 获取互联网开放服务
+        
+        @param request: DescribeInternetOpenServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetOpenServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_name_fuzzy):
+            query['ServiceNameFuzzy'] = request.service_name_fuzzy
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.suggest_level):
+            query['SuggestLevel'] = request.suggest_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetOpenService',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetOpenServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_internet_open_service(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenServiceRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenServiceResponse:
+        """
+        @summary 获取互联网开放服务
+        
+        @param request: DescribeInternetOpenServiceRequest
+        @return: DescribeInternetOpenServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_internet_open_service_with_options(request, runtime)
+
+    async def describe_internet_open_service_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetOpenServiceRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetOpenServiceResponse:
+        """
+        @summary 获取互联网开放服务
+        
+        @param request: DescribeInternetOpenServiceRequest
+        @return: DescribeInternetOpenServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_internet_open_service_with_options_async(request, runtime)
 
     def describe_internet_traffic_trend_with_options(
         self,
@@ -6530,6 +9844,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_invade_event_list_with_options_async(request, runtime)
+
+    def describe_invade_event_name_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventNameListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventNameListResponse:
+        """
+        @summary 获取漏洞名称列表
+        
+        @param request: DescribeInvadeEventNameListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvadeEventNameListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvadeEventNameList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInvadeEventNameListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_invade_event_name_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventNameListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventNameListResponse:
+        """
+        @summary 获取漏洞名称列表
+        
+        @param request: DescribeInvadeEventNameListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvadeEventNameListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvadeEventNameList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInvadeEventNameListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_invade_event_name_list(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventNameListRequest,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventNameListResponse:
+        """
+        @summary 获取漏洞名称列表
+        
+        @param request: DescribeInvadeEventNameListRequest
+        @return: DescribeInvadeEventNameListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_invade_event_name_list_with_options(request, runtime)
+
+    async def describe_invade_event_name_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventNameListRequest,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventNameListResponse:
+        """
+        @summary 获取漏洞名称列表
+        
+        @param request: DescribeInvadeEventNameListRequest
+        @return: DescribeInvadeEventNameListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_invade_event_name_list_with_options_async(request, runtime)
+
+    def describe_invade_event_statistic_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventStatisticResponse:
+        """
+        @summary 获取漏洞事件统计
+        
+        @param request: DescribeInvadeEventStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvadeEventStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvadeEventStatistic',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInvadeEventStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_invade_event_statistic_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventStatisticResponse:
+        """
+        @summary 获取漏洞事件统计
+        
+        @param request: DescribeInvadeEventStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvadeEventStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvadeEventStatistic',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInvadeEventStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_invade_event_statistic(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventStatisticRequest,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventStatisticResponse:
+        """
+        @summary 获取漏洞事件统计
+        
+        @param request: DescribeInvadeEventStatisticRequest
+        @return: DescribeInvadeEventStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_invade_event_statistic_with_options(request, runtime)
+
+    async def describe_invade_event_statistic_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventStatisticRequest,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventStatisticResponse:
+        """
+        @summary 获取漏洞事件统计
+        
+        @param request: DescribeInvadeEventStatisticRequest
+        @return: DescribeInvadeEventStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_invade_event_statistic_with_options_async(request, runtime)
 
     def describe_log_store_info_with_options(
         self,
@@ -6853,6 +10391,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_firewall_control_policy_with_options_async(request, runtime)
 
+    def describe_nat_firewall_drop_traffic_trend_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendResponse:
+        """
+        @summary 概览页-nat防火墙拦截趋势
+        
+        @param request: DescribeNatFirewallDropTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallDropTrafficTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallDropTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_firewall_drop_traffic_trend_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendResponse:
+        """
+        @summary 概览页-nat防火墙拦截趋势
+        
+        @param request: DescribeNatFirewallDropTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallDropTrafficTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallDropTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_firewall_drop_traffic_trend(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendResponse:
+        """
+        @summary 概览页-nat防火墙拦截趋势
+        
+        @param request: DescribeNatFirewallDropTrafficTrendRequest
+        @return: DescribeNatFirewallDropTrafficTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_firewall_drop_traffic_trend_with_options(request, runtime)
+
+    async def describe_nat_firewall_drop_traffic_trend_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallDropTrafficTrendResponse:
+        """
+        @summary 概览页-nat防火墙拦截趋势
+        
+        @param request: DescribeNatFirewallDropTrafficTrendRequest
+        @return: DescribeNatFirewallDropTrafficTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_firewall_drop_traffic_trend_with_options_async(request, runtime)
+
     def describe_nat_firewall_list_with_options(
         self,
         request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
@@ -7105,6 +10735,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_firewall_policy_prior_used_with_options_async(request, runtime)
 
+    def describe_nat_firewall_quota_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallQuotaResponse:
+        """
+        @summary 获取NAT防火墙配额
+        
+        @param request: DescribeNatFirewallQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallQuota',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_firewall_quota_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallQuotaResponse:
+        """
+        @summary 获取NAT防火墙配额
+        
+        @param request: DescribeNatFirewallQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallQuota',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_firewall_quota(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallQuotaRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallQuotaResponse:
+        """
+        @summary 获取NAT防火墙配额
+        
+        @param request: DescribeNatFirewallQuotaRequest
+        @return: DescribeNatFirewallQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_firewall_quota_with_options(request, runtime)
+
+    async def describe_nat_firewall_quota_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallQuotaRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallQuotaResponse:
+        """
+        @summary 获取NAT防火墙配额
+        
+        @param request: DescribeNatFirewallQuotaRequest
+        @return: DescribeNatFirewallQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_firewall_quota_with_options_async(request, runtime)
+
     def describe_nat_firewall_traffic_trend_with_options(
         self,
         request: cloudfw_20171207_models.DescribeNatFirewallTrafficTrendRequest,
@@ -7196,6 +10918,662 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_firewall_traffic_trend_with_options_async(request, runtime)
+
+    def describe_network_instance_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceListResponse:
+        """
+        @summary 获取网络实例列表
+        
+        @param request: DescribeNetworkInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkInstanceListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkInstanceList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNetworkInstanceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_instance_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceListResponse:
+        """
+        @summary 获取网络实例列表
+        
+        @param request: DescribeNetworkInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkInstanceListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkInstanceList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNetworkInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_instance_list(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceListRequest,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceListResponse:
+        """
+        @summary 获取网络实例列表
+        
+        @param request: DescribeNetworkInstanceListRequest
+        @return: DescribeNetworkInstanceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_instance_list_with_options(request, runtime)
+
+    async def describe_network_instance_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceListRequest,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceListResponse:
+        """
+        @summary 获取网络实例列表
+        
+        @param request: DescribeNetworkInstanceListRequest
+        @return: DescribeNetworkInstanceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_instance_list_with_options_async(request, runtime)
+
+    def describe_network_instance_relation_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceRelationListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceRelationListResponse:
+        """
+        @summary 获取网络实例关系列表
+        
+        @param request: DescribeNetworkInstanceRelationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkInstanceRelationListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
+        if not UtilClient.is_unset(request.firewall_configure_status):
+            query['FirewallConfigureStatus'] = request.firewall_configure_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkInstanceRelationList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNetworkInstanceRelationListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_instance_relation_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceRelationListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceRelationListResponse:
+        """
+        @summary 获取网络实例关系列表
+        
+        @param request: DescribeNetworkInstanceRelationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkInstanceRelationListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
+        if not UtilClient.is_unset(request.firewall_configure_status):
+            query['FirewallConfigureStatus'] = request.firewall_configure_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkInstanceRelationList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNetworkInstanceRelationListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_instance_relation_list(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceRelationListRequest,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceRelationListResponse:
+        """
+        @summary 获取网络实例关系列表
+        
+        @param request: DescribeNetworkInstanceRelationListRequest
+        @return: DescribeNetworkInstanceRelationListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_instance_relation_list_with_options(request, runtime)
+
+    async def describe_network_instance_relation_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkInstanceRelationListRequest,
+    ) -> cloudfw_20171207_models.DescribeNetworkInstanceRelationListResponse:
+        """
+        @summary 获取网络实例关系列表
+        
+        @param request: DescribeNetworkInstanceRelationListRequest
+        @return: DescribeNetworkInstanceRelationListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_instance_relation_list_with_options_async(request, runtime)
+
+    def describe_network_traffic_top_ratio_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkTrafficTopRatioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNetworkTrafficTopRatioResponse:
+        """
+        @summary 获取网络流量TOP环比
+        
+        @param request: DescribeNetworkTrafficTopRatioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkTrafficTopRatioResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.asset_ip):
+            query['AssetIP'] = request.asset_ip
+        if not UtilClient.is_unset(request.asset_region):
+            query['AssetRegion'] = request.asset_region
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_port):
+            query['DstPort'] = request.dst_port
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.ip_property):
+            query['IpProperty'] = request.ip_property
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.location):
+            query['Location'] = request.location
+        if not UtilClient.is_unset(request.rule_result):
+            query['RuleResult'] = request.rule_result
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkTrafficTopRatio',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNetworkTrafficTopRatioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_traffic_top_ratio_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkTrafficTopRatioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNetworkTrafficTopRatioResponse:
+        """
+        @summary 获取网络流量TOP环比
+        
+        @param request: DescribeNetworkTrafficTopRatioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkTrafficTopRatioResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.asset_ip):
+            query['AssetIP'] = request.asset_ip
+        if not UtilClient.is_unset(request.asset_region):
+            query['AssetRegion'] = request.asset_region
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_port):
+            query['DstPort'] = request.dst_port
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.ip_property):
+            query['IpProperty'] = request.ip_property
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.location):
+            query['Location'] = request.location
+        if not UtilClient.is_unset(request.rule_result):
+            query['RuleResult'] = request.rule_result
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkTrafficTopRatio',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNetworkTrafficTopRatioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_traffic_top_ratio(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkTrafficTopRatioRequest,
+    ) -> cloudfw_20171207_models.DescribeNetworkTrafficTopRatioResponse:
+        """
+        @summary 获取网络流量TOP环比
+        
+        @param request: DescribeNetworkTrafficTopRatioRequest
+        @return: DescribeNetworkTrafficTopRatioResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_traffic_top_ratio_with_options(request, runtime)
+
+    async def describe_network_traffic_top_ratio_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNetworkTrafficTopRatioRequest,
+    ) -> cloudfw_20171207_models.DescribeNetworkTrafficTopRatioResponse:
+        """
+        @summary 获取网络流量TOP环比
+        
+        @param request: DescribeNetworkTrafficTopRatioRequest
+        @return: DescribeNetworkTrafficTopRatioResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_traffic_top_ratio_with_options_async(request, runtime)
+
+    def describe_open_ip_access_src_stat_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOpenIpAccessSrcStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOpenIpAccessSrcStatResponse:
+        """
+        @summary 获取公网IP通过的源状态
+        
+        @param request: DescribeOpenIpAccessSrcStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOpenIpAccessSrcStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIp'] = request.dst_ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOpenIpAccessSrcStat',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOpenIpAccessSrcStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_ip_access_src_stat_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOpenIpAccessSrcStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOpenIpAccessSrcStatResponse:
+        """
+        @summary 获取公网IP通过的源状态
+        
+        @param request: DescribeOpenIpAccessSrcStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOpenIpAccessSrcStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIp'] = request.dst_ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOpenIpAccessSrcStat',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOpenIpAccessSrcStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_ip_access_src_stat(
+        self,
+        request: cloudfw_20171207_models.DescribeOpenIpAccessSrcStatRequest,
+    ) -> cloudfw_20171207_models.DescribeOpenIpAccessSrcStatResponse:
+        """
+        @summary 获取公网IP通过的源状态
+        
+        @param request: DescribeOpenIpAccessSrcStatRequest
+        @return: DescribeOpenIpAccessSrcStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_open_ip_access_src_stat_with_options(request, runtime)
+
+    async def describe_open_ip_access_src_stat_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOpenIpAccessSrcStatRequest,
+    ) -> cloudfw_20171207_models.DescribeOpenIpAccessSrcStatResponse:
+        """
+        @summary 获取公网IP通过的源状态
+        
+        @param request: DescribeOpenIpAccessSrcStatRequest
+        @return: DescribeOpenIpAccessSrcStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_open_ip_access_src_stat_with_options_async(request, runtime)
+
+    def describe_outgoing_asset_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingAssetListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingAssetListResponse:
+        """
+        @summary 获取外联资产列表
+        
+        @param request: DescribeOutgoingAssetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingAssetListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assets_region):
+            query['AssetsRegion'] = request.assets_region
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iptype):
+            query['IPType'] = request.iptype
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.nat_gateway_name):
+            query['NatGatewayName'] = request.nat_gateway_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_risk):
+            query['SecurityRisk'] = request.security_risk
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingAssetList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingAssetListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_outgoing_asset_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingAssetListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingAssetListResponse:
+        """
+        @summary 获取外联资产列表
+        
+        @param request: DescribeOutgoingAssetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingAssetListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assets_region):
+            query['AssetsRegion'] = request.assets_region
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iptype):
+            query['IPType'] = request.iptype
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.nat_gateway_name):
+            query['NatGatewayName'] = request.nat_gateway_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_risk):
+            query['SecurityRisk'] = request.security_risk
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingAssetList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingAssetListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_outgoing_asset_list(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingAssetListRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingAssetListResponse:
+        """
+        @summary 获取外联资产列表
+        
+        @param request: DescribeOutgoingAssetListRequest
+        @return: DescribeOutgoingAssetListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_outgoing_asset_list_with_options(request, runtime)
+
+    async def describe_outgoing_asset_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingAssetListRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingAssetListResponse:
+        """
+        @summary 获取外联资产列表
+        
+        @param request: DescribeOutgoingAssetListRequest
+        @return: DescribeOutgoingAssetListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_outgoing_asset_list_with_options_async(request, runtime)
 
     def describe_outgoing_destination_ipwith_options(
         self,
@@ -7488,6 +11866,514 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_outgoing_domain_with_options_async(request, runtime)
+
+    def describe_outgoing_domain_detail_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainDetailResponse:
+        """
+        @summary 获取外联域名详情
+        
+        @param request: DescribeOutgoingDomainDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingDomainDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_coverage):
+            query['AclCoverage'] = request.acl_coverage
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_list):
+            query['DomainList'] = request.domain_list
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iptype):
+            query['IPType'] = request.iptype
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingDomainDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingDomainDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_outgoing_domain_detail_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainDetailResponse:
+        """
+        @summary 获取外联域名详情
+        
+        @param request: DescribeOutgoingDomainDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingDomainDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_coverage):
+            query['AclCoverage'] = request.acl_coverage
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_list):
+            query['DomainList'] = request.domain_list
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iptype):
+            query['IPType'] = request.iptype
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingDomainDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingDomainDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_outgoing_domain_detail(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainDetailResponse:
+        """
+        @summary 获取外联域名详情
+        
+        @param request: DescribeOutgoingDomainDetailRequest
+        @return: DescribeOutgoingDomainDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_outgoing_domain_detail_with_options(request, runtime)
+
+    async def describe_outgoing_domain_detail_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainDetailResponse:
+        """
+        @summary 获取外联域名详情
+        
+        @param request: DescribeOutgoingDomainDetailRequest
+        @return: DescribeOutgoingDomainDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_outgoing_domain_detail_with_options_async(request, runtime)
+
+    def describe_outgoing_statistic_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingStatisticResponse:
+        """
+        @summary 获取外联统计
+        
+        @param request: DescribeOutgoingStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingStatistic',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_outgoing_statistic_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingStatisticResponse:
+        """
+        @summary 获取外联统计
+        
+        @param request: DescribeOutgoingStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingStatistic',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_outgoing_statistic(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingStatisticRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingStatisticResponse:
+        """
+        @summary 获取外联统计
+        
+        @param request: DescribeOutgoingStatisticRequest
+        @return: DescribeOutgoingStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_outgoing_statistic_with_options(request, runtime)
+
+    async def describe_outgoing_statistic_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingStatisticRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingStatisticResponse:
+        """
+        @summary 获取外联统计
+        
+        @param request: DescribeOutgoingStatisticRequest
+        @return: DescribeOutgoingStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_outgoing_statistic_with_options_async(request, runtime)
+
+    def describe_outgoing_tag_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingTagResponse:
+        """
+        @summary 获取外联标签
+        
+        @param request: DescribeOutgoingTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_type):
+            query['DstType'] = request.dst_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingTag',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_outgoing_tag_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingTagResponse:
+        """
+        @summary 获取外联标签
+        
+        @param request: DescribeOutgoingTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_type):
+            query['DstType'] = request.dst_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingTag',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_outgoing_tag(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingTagRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingTagResponse:
+        """
+        @summary 获取外联标签
+        
+        @param request: DescribeOutgoingTagRequest
+        @return: DescribeOutgoingTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_outgoing_tag_with_options(request, runtime)
+
+    async def describe_outgoing_tag_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingTagRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingTagResponse:
+        """
+        @summary 获取外联标签
+        
+        @param request: DescribeOutgoingTagRequest
+        @return: DescribeOutgoingTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_outgoing_tag_with_options_async(request, runtime)
+
+    def describe_page_documents_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribePageDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePageDocumentsResponse:
+        """
+        @summary 获取文档
+        
+        @param request: DescribePageDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePageDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_name):
+            query['PageName'] = request.page_name
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.tab_name):
+            query['TabName'] = request.tab_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePageDocuments',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePageDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_page_documents_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribePageDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePageDocumentsResponse:
+        """
+        @summary 获取文档
+        
+        @param request: DescribePageDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePageDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_name):
+            query['PageName'] = request.page_name
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.tab_name):
+            query['TabName'] = request.tab_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePageDocuments',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePageDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_page_documents(
+        self,
+        request: cloudfw_20171207_models.DescribePageDocumentsRequest,
+    ) -> cloudfw_20171207_models.DescribePageDocumentsResponse:
+        """
+        @summary 获取文档
+        
+        @param request: DescribePageDocumentsRequest
+        @return: DescribePageDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_page_documents_with_options(request, runtime)
+
+    async def describe_page_documents_async(
+        self,
+        request: cloudfw_20171207_models.DescribePageDocumentsRequest,
+    ) -> cloudfw_20171207_models.DescribePageDocumentsResponse:
+        """
+        @summary 获取文档
+        
+        @param request: DescribePageDocumentsRequest
+        @return: DescribePageDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_page_documents_with_options_async(request, runtime)
 
     def describe_policy_advanced_config_with_options(
         self,
@@ -7973,6 +12859,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_postpay_traffic_total_with_options_async(request, runtime)
 
+    def describe_postpay_user_internet_status_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserInternetStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePostpayUserInternetStatusResponse:
+        """
+        @summary Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserInternetStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayUserInternetStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostpayUserInternetStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePostpayUserInternetStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_postpay_user_internet_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserInternetStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePostpayUserInternetStatusResponse:
+        """
+        @summary Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserInternetStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayUserInternetStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostpayUserInternetStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePostpayUserInternetStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_postpay_user_internet_status(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserInternetStatusRequest,
+    ) -> cloudfw_20171207_models.DescribePostpayUserInternetStatusResponse:
+        """
+        @summary Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserInternetStatusRequest
+        @return: DescribePostpayUserInternetStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_postpay_user_internet_status_with_options(request, runtime)
+
+    async def describe_postpay_user_internet_status_async(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserInternetStatusRequest,
+    ) -> cloudfw_20171207_models.DescribePostpayUserInternetStatusResponse:
+        """
+        @summary Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserInternetStatusRequest
+        @return: DescribePostpayUserInternetStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_postpay_user_internet_status_with_options_async(request, runtime)
+
+    def describe_postpay_user_nat_status_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserNatStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePostpayUserNatStatusResponse:
+        """
+        @summary Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserNatStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayUserNatStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostpayUserNatStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePostpayUserNatStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_postpay_user_nat_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserNatStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePostpayUserNatStatusResponse:
+        """
+        @summary Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserNatStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayUserNatStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostpayUserNatStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePostpayUserNatStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_postpay_user_nat_status(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserNatStatusRequest,
+    ) -> cloudfw_20171207_models.DescribePostpayUserNatStatusResponse:
+        """
+        @summary Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserNatStatusRequest
+        @return: DescribePostpayUserNatStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_postpay_user_nat_status_with_options(request, runtime)
+
+    async def describe_postpay_user_nat_status_async(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserNatStatusRequest,
+    ) -> cloudfw_20171207_models.DescribePostpayUserNatStatusResponse:
+        """
+        @summary Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserNatStatusRequest
+        @return: DescribePostpayUserNatStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_postpay_user_nat_status_with_options_async(request, runtime)
+
     def describe_prefix_lists_with_options(
         self,
         request: cloudfw_20171207_models.DescribePrefixListsRequest,
@@ -8341,6 +13411,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_private_dns_endpoint_list_with_options_async(request, runtime)
 
+    def describe_region_info_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeRegionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRegionInfoResponse:
+        """
+        @summary 获取地域信息
+        
+        @param request: DescribeRegionInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRegionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_region_info_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRegionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRegionInfoResponse:
+        """
+        @summary 获取地域信息
+        
+        @param request: DescribeRegionInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRegionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_region_info(
+        self,
+        request: cloudfw_20171207_models.DescribeRegionInfoRequest,
+    ) -> cloudfw_20171207_models.DescribeRegionInfoResponse:
+        """
+        @summary 获取地域信息
+        
+        @param request: DescribeRegionInfoRequest
+        @return: DescribeRegionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_region_info_with_options(request, runtime)
+
+    async def describe_region_info_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRegionInfoRequest,
+    ) -> cloudfw_20171207_models.DescribeRegionInfoResponse:
+        """
+        @summary 获取地域信息
+        
+        @param request: DescribeRegionInfoRequest
+        @return: DescribeRegionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_region_info_with_options_async(request, runtime)
+
+    def describe_resource_type_auto_enable_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeResourceTypeAutoEnableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeResourceTypeAutoEnableResponse:
+        """
+        @summary 查询资产类型默认引流
+        
+        @param request: DescribeResourceTypeAutoEnableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceTypeAutoEnableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceTypeAutoEnable',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeResourceTypeAutoEnableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_type_auto_enable_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeResourceTypeAutoEnableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeResourceTypeAutoEnableResponse:
+        """
+        @summary 查询资产类型默认引流
+        
+        @param request: DescribeResourceTypeAutoEnableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceTypeAutoEnableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceTypeAutoEnable',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeResourceTypeAutoEnableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_type_auto_enable(
+        self,
+        request: cloudfw_20171207_models.DescribeResourceTypeAutoEnableRequest,
+    ) -> cloudfw_20171207_models.DescribeResourceTypeAutoEnableResponse:
+        """
+        @summary 查询资产类型默认引流
+        
+        @param request: DescribeResourceTypeAutoEnableRequest
+        @return: DescribeResourceTypeAutoEnableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_type_auto_enable_with_options(request, runtime)
+
+    async def describe_resource_type_auto_enable_async(
+        self,
+        request: cloudfw_20171207_models.DescribeResourceTypeAutoEnableRequest,
+    ) -> cloudfw_20171207_models.DescribeResourceTypeAutoEnableResponse:
+        """
+        @summary 查询资产类型默认引流
+        
+        @param request: DescribeResourceTypeAutoEnableRequest
+        @return: DescribeResourceTypeAutoEnableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_type_auto_enable_with_options_async(request, runtime)
+
     def describe_risk_event_group_with_options(
         self,
         request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
@@ -8677,6 +13951,358 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_event_payload_with_options_async(request, runtime)
 
+    def describe_risk_event_top_attack_asset_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventTopAttackAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskEventTopAttackAssetResponse:
+        """
+        @summary 获取Top风险事件资产
+        
+        @param request: DescribeRiskEventTopAttackAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskEventTopAttackAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.buy_version):
+            query['BuyVersion'] = request.buy_version
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskEventTopAttackAsset',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskEventTopAttackAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_risk_event_top_attack_asset_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventTopAttackAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskEventTopAttackAssetResponse:
+        """
+        @summary 获取Top风险事件资产
+        
+        @param request: DescribeRiskEventTopAttackAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskEventTopAttackAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.buy_version):
+            query['BuyVersion'] = request.buy_version
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskEventTopAttackAsset',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskEventTopAttackAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_risk_event_top_attack_asset(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventTopAttackAssetRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskEventTopAttackAssetResponse:
+        """
+        @summary 获取Top风险事件资产
+        
+        @param request: DescribeRiskEventTopAttackAssetRequest
+        @return: DescribeRiskEventTopAttackAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_risk_event_top_attack_asset_with_options(request, runtime)
+
+    async def describe_risk_event_top_attack_asset_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventTopAttackAssetRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskEventTopAttackAssetResponse:
+        """
+        @summary 获取Top风险事件资产
+        
+        @param request: DescribeRiskEventTopAttackAssetRequest
+        @return: DescribeRiskEventTopAttackAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_risk_event_top_attack_asset_with_options_async(request, runtime)
+
+    def describe_risk_security_group_detail_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskSecurityGroupDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskSecurityGroupDetailResponse:
+        """
+        @summary 获取风险安全组详情
+        
+        @param request: DescribeRiskSecurityGroupDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskSecurityGroupDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_uuid):
+            query['RuleUuid'] = request.rule_uuid
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskSecurityGroupDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskSecurityGroupDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_risk_security_group_detail_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskSecurityGroupDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskSecurityGroupDetailResponse:
+        """
+        @summary 获取风险安全组详情
+        
+        @param request: DescribeRiskSecurityGroupDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskSecurityGroupDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_uuid):
+            query['RuleUuid'] = request.rule_uuid
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskSecurityGroupDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskSecurityGroupDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_risk_security_group_detail(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskSecurityGroupDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskSecurityGroupDetailResponse:
+        """
+        @summary 获取风险安全组详情
+        
+        @param request: DescribeRiskSecurityGroupDetailRequest
+        @return: DescribeRiskSecurityGroupDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_risk_security_group_detail_with_options(request, runtime)
+
+    async def describe_risk_security_group_detail_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskSecurityGroupDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskSecurityGroupDetailResponse:
+        """
+        @summary 获取风险安全组详情
+        
+        @param request: DescribeRiskSecurityGroupDetailRequest
+        @return: DescribeRiskSecurityGroupDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_risk_security_group_detail_with_options_async(request, runtime)
+
+    def describe_security_mode_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeSecurityModeResponse:
+        """
+        @summary 获取安全模式
+        
+        @param request: DescribeSecurityModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityMode',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeSecurityModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_security_mode_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeSecurityModeResponse:
+        """
+        @summary 获取安全模式
+        
+        @param request: DescribeSecurityModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityMode',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeSecurityModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_security_mode(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityModeRequest,
+    ) -> cloudfw_20171207_models.DescribeSecurityModeResponse:
+        """
+        @summary 获取安全模式
+        
+        @param request: DescribeSecurityModeRequest
+        @return: DescribeSecurityModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_mode_with_options(request, runtime)
+
+    async def describe_security_mode_async(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityModeRequest,
+    ) -> cloudfw_20171207_models.DescribeSecurityModeResponse:
+        """
+        @summary 获取安全模式
+        
+        @param request: DescribeSecurityModeRequest
+        @return: DescribeSecurityModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_mode_with_options_async(request, runtime)
+
     def describe_signature_lib_version_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -8750,6 +14376,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_signature_lib_version_with_options_async(runtime)
+
+    def describe_sls_analyze_open_status_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusResponse:
+        """
+        @summary 获取SLS开启状态
+        
+        @param request: DescribeSlsAnalyzeOpenStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlsAnalyzeOpenStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlsAnalyzeOpenStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sls_analyze_open_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusResponse:
+        """
+        @summary 获取SLS开启状态
+        
+        @param request: DescribeSlsAnalyzeOpenStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlsAnalyzeOpenStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlsAnalyzeOpenStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sls_analyze_open_status(
+        self,
+        request: cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusRequest,
+    ) -> cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusResponse:
+        """
+        @summary 获取SLS开启状态
+        
+        @param request: DescribeSlsAnalyzeOpenStatusRequest
+        @return: DescribeSlsAnalyzeOpenStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sls_analyze_open_status_with_options(request, runtime)
+
+    async def describe_sls_analyze_open_status_async(
+        self,
+        request: cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusRequest,
+    ) -> cloudfw_20171207_models.DescribeSlsAnalyzeOpenStatusResponse:
+        """
+        @summary 获取SLS开启状态
+        
+        @param request: DescribeSlsAnalyzeOpenStatusRequest
+        @return: DescribeSlsAnalyzeOpenStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sls_analyze_open_status_with_options_async(request, runtime)
 
     def describe_tr_firewall_policy_back_up_association_list_with_options(
         self,
@@ -9327,6 +15049,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tr_firewalls_v2route_list_with_options_async(request, runtime)
 
+    def describe_unprotected_vuln_trend_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeUnprotectedVulnTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUnprotectedVulnTrendResponse:
+        """
+        @summary 获取未保护漏洞趋势
+        
+        @param request: DescribeUnprotectedVulnTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUnprotectedVulnTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUnprotectedVulnTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUnprotectedVulnTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_unprotected_vuln_trend_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUnprotectedVulnTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUnprotectedVulnTrendResponse:
+        """
+        @summary 获取未保护漏洞趋势
+        
+        @param request: DescribeUnprotectedVulnTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUnprotectedVulnTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUnprotectedVulnTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUnprotectedVulnTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_unprotected_vuln_trend(
+        self,
+        request: cloudfw_20171207_models.DescribeUnprotectedVulnTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeUnprotectedVulnTrendResponse:
+        """
+        @summary 获取未保护漏洞趋势
+        
+        @param request: DescribeUnprotectedVulnTrendRequest
+        @return: DescribeUnprotectedVulnTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_unprotected_vuln_trend_with_options(request, runtime)
+
+    async def describe_unprotected_vuln_trend_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUnprotectedVulnTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeUnprotectedVulnTrendResponse:
+        """
+        @summary 获取未保护漏洞趋势
+        
+        @param request: DescribeUnprotectedVulnTrendRequest
+        @return: DescribeUnprotectedVulnTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_unprotected_vuln_trend_with_options_async(request, runtime)
+
+    def describe_user_alarm_config_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAlarmConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserAlarmConfigResponse:
+        """
+        @summary 获取用户告警配置
+        
+        @param request: DescribeUserAlarmConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAlarmConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAlarmConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserAlarmConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_alarm_config_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAlarmConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserAlarmConfigResponse:
+        """
+        @summary 获取用户告警配置
+        
+        @param request: DescribeUserAlarmConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAlarmConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAlarmConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserAlarmConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_alarm_config(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAlarmConfigRequest,
+    ) -> cloudfw_20171207_models.DescribeUserAlarmConfigResponse:
+        """
+        @summary 获取用户告警配置
+        
+        @param request: DescribeUserAlarmConfigRequest
+        @return: DescribeUserAlarmConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_alarm_config_with_options(request, runtime)
+
+    async def describe_user_alarm_config_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAlarmConfigRequest,
+    ) -> cloudfw_20171207_models.DescribeUserAlarmConfigResponse:
+        """
+        @summary 获取用户告警配置
+        
+        @param request: DescribeUserAlarmConfigRequest
+        @return: DescribeUserAlarmConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_alarm_config_with_options_async(request, runtime)
+
     def describe_user_asset_iptraffic_info_with_options(
         self,
         request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
@@ -9634,6 +15572,170 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_ipswhitelist_with_options_async(request, runtime)
+
+    def describe_vpc_firewall_access_detail_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAccessDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAccessDetailResponse:
+        """
+        @summary 获取VPC防火墙通过详情
+        
+        @param request: DescribeVpcFirewallAccessDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallAccessDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_ip):
+            query['AssetIP'] = request.asset_ip
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.ipprotocol):
+            query['IPProtocol'] = request.ipprotocol
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.peer_asset_ip):
+            query['PeerAssetIP'] = request.peer_asset_ip
+        if not UtilClient.is_unset(request.peer_asset_instance_id):
+            query['PeerAssetInstanceId'] = request.peer_asset_instance_id
+        if not UtilClient.is_unset(request.peer_asset_instance_name):
+            query['PeerAssetInstanceName'] = request.peer_asset_instance_name
+        if not UtilClient.is_unset(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallAccessDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallAccessDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_access_detail_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAccessDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAccessDetailResponse:
+        """
+        @summary 获取VPC防火墙通过详情
+        
+        @param request: DescribeVpcFirewallAccessDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallAccessDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_ip):
+            query['AssetIP'] = request.asset_ip
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.ipprotocol):
+            query['IPProtocol'] = request.ipprotocol
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.peer_asset_ip):
+            query['PeerAssetIP'] = request.peer_asset_ip
+        if not UtilClient.is_unset(request.peer_asset_instance_id):
+            query['PeerAssetInstanceId'] = request.peer_asset_instance_id
+        if not UtilClient.is_unset(request.peer_asset_instance_name):
+            query['PeerAssetInstanceName'] = request.peer_asset_instance_name
+        if not UtilClient.is_unset(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallAccessDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallAccessDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_access_detail(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAccessDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAccessDetailResponse:
+        """
+        @summary 获取VPC防火墙通过详情
+        
+        @param request: DescribeVpcFirewallAccessDetailRequest
+        @return: DescribeVpcFirewallAccessDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_access_detail_with_options(request, runtime)
+
+    async def describe_vpc_firewall_access_detail_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAccessDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAccessDetailResponse:
+        """
+        @summary 获取VPC防火墙通过详情
+        
+        @param request: DescribeVpcFirewallAccessDetailRequest
+        @return: DescribeVpcFirewallAccessDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_access_detail_with_options_async(request, runtime)
 
     def describe_vpc_firewall_acl_group_list_with_options(
         self,
@@ -10050,6 +16152,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_firewall_cen_list_with_options_async(request, runtime)
+
+    def describe_vpc_firewall_cen_summary_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListResponse:
+        """
+        @summary 获取VPC的CEN列表
+        
+        @param request: DescribeVpcFirewallCenSummaryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallCenSummaryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.transit_router_type):
+            query['TransitRouterType'] = request.transit_router_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallCenSummaryList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_cen_summary_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListResponse:
+        """
+        @summary 获取VPC的CEN列表
+        
+        @param request: DescribeVpcFirewallCenSummaryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallCenSummaryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.transit_router_type):
+            query['TransitRouterType'] = request.transit_router_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallCenSummaryList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_cen_summary_list(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListResponse:
+        """
+        @summary 获取VPC的CEN列表
+        
+        @param request: DescribeVpcFirewallCenSummaryListRequest
+        @return: DescribeVpcFirewallCenSummaryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_cen_summary_list_with_options(request, runtime)
+
+    async def describe_vpc_firewall_cen_summary_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenSummaryListResponse:
+        """
+        @summary 获取VPC的CEN列表
+        
+        @param request: DescribeVpcFirewallCenSummaryListRequest
+        @return: DescribeVpcFirewallCenSummaryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_cen_summary_list_with_options_async(request, runtime)
 
     def describe_vpc_firewall_control_policy_with_options(
         self,
@@ -10835,6 +17053,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_firewall_policy_prior_used_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_summary_info_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoResponse:
+        """
+        @summary 获取VPC防火墙总结信息
+        
+        @param request: DescribeVpcFirewallSummaryInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallSummaryInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallSummaryInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_summary_info_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoResponse:
+        """
+        @summary 获取VPC防火墙总结信息
+        
+        @param request: DescribeVpcFirewallSummaryInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallSummaryInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallSummaryInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_summary_info(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoResponse:
+        """
+        @summary 获取VPC防火墙总结信息
+        
+        @param request: DescribeVpcFirewallSummaryInfoRequest
+        @return: DescribeVpcFirewallSummaryInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_summary_info_with_options(request, runtime)
+
+    async def describe_vpc_firewall_summary_info_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallSummaryInfoResponse:
+        """
+        @summary 获取VPC防火墙总结信息
+        
+        @param request: DescribeVpcFirewallSummaryInfoRequest
+        @return: DescribeVpcFirewallSummaryInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_summary_info_with_options_async(request, runtime)
+
     def describe_vpc_list_lite_with_options(
         self,
         request: cloudfw_20171207_models.DescribeVpcListLiteRequest,
@@ -11219,6 +17541,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vulnerability_protected_list_with_options_async(request, runtime)
 
+    def enable_sdl_protected_asset_with_options(
+        self,
+        request: cloudfw_20171207_models.EnableSdlProtectedAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.EnableSdlProtectedAssetResponse:
+        """
+        @summary 开启资产数据泄露保护
+        
+        @param request: EnableSdlProtectedAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSdlProtectedAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_list):
+            query['IpList'] = request.ip_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableSdlProtectedAsset',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.EnableSdlProtectedAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_sdl_protected_asset_with_options_async(
+        self,
+        request: cloudfw_20171207_models.EnableSdlProtectedAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.EnableSdlProtectedAssetResponse:
+        """
+        @summary 开启资产数据泄露保护
+        
+        @param request: EnableSdlProtectedAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSdlProtectedAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_list):
+            query['IpList'] = request.ip_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableSdlProtectedAsset',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.EnableSdlProtectedAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_sdl_protected_asset(
+        self,
+        request: cloudfw_20171207_models.EnableSdlProtectedAssetRequest,
+    ) -> cloudfw_20171207_models.EnableSdlProtectedAssetResponse:
+        """
+        @summary 开启资产数据泄露保护
+        
+        @param request: EnableSdlProtectedAssetRequest
+        @return: EnableSdlProtectedAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_sdl_protected_asset_with_options(request, runtime)
+
+    async def enable_sdl_protected_asset_async(
+        self,
+        request: cloudfw_20171207_models.EnableSdlProtectedAssetRequest,
+    ) -> cloudfw_20171207_models.EnableSdlProtectedAssetResponse:
+        """
+        @summary 开启资产数据泄露保护
+        
+        @param request: EnableSdlProtectedAssetRequest
+        @return: EnableSdlProtectedAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_sdl_protected_asset_with_options_async(request, runtime)
+
     def modify_address_book_with_options(
         self,
         request: cloudfw_20171207_models.ModifyAddressBookRequest,
@@ -11237,6 +17659,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ack_labels):
+            query['AckLabels'] = request.ack_labels
+        if not UtilClient.is_unset(request.ack_namespaces):
+            query['AckNamespaces'] = request.ack_namespaces
         if not UtilClient.is_unset(request.address_list):
             query['AddressList'] = request.address_list
         if not UtilClient.is_unset(request.auto_add_tag_ecs):
@@ -11294,6 +17720,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ack_labels):
+            query['AckLabels'] = request.ack_labels
+        if not UtilClient.is_unset(request.ack_namespaces):
+            query['AckNamespaces'] = request.ack_namespaces
         if not UtilClient.is_unset(request.address_list):
             query['AddressList'] = request.address_list
         if not UtilClient.is_unset(request.auto_add_tag_ecs):
@@ -12275,6 +18705,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_member_attributes_with_options_async(request, runtime)
 
+    def modify_ips_rules_to_default_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyIpsRulesToDefaultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyIpsRulesToDefaultResponse:
+        """
+        @summary 修改IPS规则为默认
+        
+        @param request: ModifyIpsRulesToDefaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIpsRulesToDefaultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyIpsRulesToDefault',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyIpsRulesToDefaultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_ips_rules_to_default_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyIpsRulesToDefaultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyIpsRulesToDefaultResponse:
+        """
+        @summary 修改IPS规则为默认
+        
+        @param request: ModifyIpsRulesToDefaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIpsRulesToDefaultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyIpsRulesToDefault',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyIpsRulesToDefaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_ips_rules_to_default(
+        self,
+        request: cloudfw_20171207_models.ModifyIpsRulesToDefaultRequest,
+    ) -> cloudfw_20171207_models.ModifyIpsRulesToDefaultResponse:
+        """
+        @summary 修改IPS规则为默认
+        
+        @param request: ModifyIpsRulesToDefaultRequest
+        @return: ModifyIpsRulesToDefaultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_ips_rules_to_default_with_options(request, runtime)
+
+    async def modify_ips_rules_to_default_async(
+        self,
+        request: cloudfw_20171207_models.ModifyIpsRulesToDefaultRequest,
+    ) -> cloudfw_20171207_models.ModifyIpsRulesToDefaultResponse:
+        """
+        @summary 修改IPS规则为默认
+        
+        @param request: ModifyIpsRulesToDefaultRequest
+        @return: ModifyIpsRulesToDefaultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_ips_rules_to_default_with_options_async(request, runtime)
+
     def modify_nat_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
@@ -12939,6 +19489,314 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_private_dns_endpoint_with_options_async(request, runtime)
 
+    def modify_sensitive_switch_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifySensitiveSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifySensitiveSwitchResponse:
+        """
+        @summary 修改敏感数据开关
+        
+        @param request: ModifySensitiveSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySensitiveSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.sensitive_category):
+            query['SensitiveCategory'] = request.sensitive_category
+        if not UtilClient.is_unset(request.switch_status):
+            query['SwitchStatus'] = request.switch_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySensitiveSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifySensitiveSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sensitive_switch_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifySensitiveSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifySensitiveSwitchResponse:
+        """
+        @summary 修改敏感数据开关
+        
+        @param request: ModifySensitiveSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySensitiveSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.sensitive_category):
+            query['SensitiveCategory'] = request.sensitive_category
+        if not UtilClient.is_unset(request.switch_status):
+            query['SwitchStatus'] = request.switch_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySensitiveSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifySensitiveSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sensitive_switch(
+        self,
+        request: cloudfw_20171207_models.ModifySensitiveSwitchRequest,
+    ) -> cloudfw_20171207_models.ModifySensitiveSwitchResponse:
+        """
+        @summary 修改敏感数据开关
+        
+        @param request: ModifySensitiveSwitchRequest
+        @return: ModifySensitiveSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_sensitive_switch_with_options(request, runtime)
+
+    async def modify_sensitive_switch_async(
+        self,
+        request: cloudfw_20171207_models.ModifySensitiveSwitchRequest,
+    ) -> cloudfw_20171207_models.ModifySensitiveSwitchResponse:
+        """
+        @summary 修改敏感数据开关
+        
+        @param request: ModifySensitiveSwitchRequest
+        @return: ModifySensitiveSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_sensitive_switch_with_options_async(request, runtime)
+
+    def modify_sls_dispatch_status_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifySlsDispatchStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifySlsDispatchStatusResponse:
+        """
+        @summary 修改SLS投递
+        
+        @param request: ModifySlsDispatchStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySlsDispatchStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dispatch_value):
+            query['DispatchValue'] = request.dispatch_value
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.filter_keys):
+            query['FilterKeys'] = request.filter_keys
+        if not UtilClient.is_unset(request.new_region_id):
+            query['NewRegionId'] = request.new_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySlsDispatchStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifySlsDispatchStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sls_dispatch_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifySlsDispatchStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifySlsDispatchStatusResponse:
+        """
+        @summary 修改SLS投递
+        
+        @param request: ModifySlsDispatchStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySlsDispatchStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dispatch_value):
+            query['DispatchValue'] = request.dispatch_value
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.filter_keys):
+            query['FilterKeys'] = request.filter_keys
+        if not UtilClient.is_unset(request.new_region_id):
+            query['NewRegionId'] = request.new_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySlsDispatchStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifySlsDispatchStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sls_dispatch_status(
+        self,
+        request: cloudfw_20171207_models.ModifySlsDispatchStatusRequest,
+    ) -> cloudfw_20171207_models.ModifySlsDispatchStatusResponse:
+        """
+        @summary 修改SLS投递
+        
+        @param request: ModifySlsDispatchStatusRequest
+        @return: ModifySlsDispatchStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_sls_dispatch_status_with_options(request, runtime)
+
+    async def modify_sls_dispatch_status_async(
+        self,
+        request: cloudfw_20171207_models.ModifySlsDispatchStatusRequest,
+    ) -> cloudfw_20171207_models.ModifySlsDispatchStatusResponse:
+        """
+        @summary 修改SLS投递
+        
+        @param request: ModifySlsDispatchStatusRequest
+        @return: ModifySlsDispatchStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_sls_dispatch_status_with_options_async(request, runtime)
+
+    def modify_threat_intelligence_switch_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyThreatIntelligenceSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyThreatIntelligenceSwitchResponse:
+        """
+        @summary 修改威胁情报配置的信息
+        
+        @param request: ModifyThreatIntelligenceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyThreatIntelligenceSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_list):
+            query['CategoryList'] = request.category_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyThreatIntelligenceSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyThreatIntelligenceSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_threat_intelligence_switch_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyThreatIntelligenceSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyThreatIntelligenceSwitchResponse:
+        """
+        @summary 修改威胁情报配置的信息
+        
+        @param request: ModifyThreatIntelligenceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyThreatIntelligenceSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_list):
+            query['CategoryList'] = request.category_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyThreatIntelligenceSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyThreatIntelligenceSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_threat_intelligence_switch(
+        self,
+        request: cloudfw_20171207_models.ModifyThreatIntelligenceSwitchRequest,
+    ) -> cloudfw_20171207_models.ModifyThreatIntelligenceSwitchResponse:
+        """
+        @summary 修改威胁情报配置的信息
+        
+        @param request: ModifyThreatIntelligenceSwitchRequest
+        @return: ModifyThreatIntelligenceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_threat_intelligence_switch_with_options(request, runtime)
+
+    async def modify_threat_intelligence_switch_async(
+        self,
+        request: cloudfw_20171207_models.ModifyThreatIntelligenceSwitchRequest,
+    ) -> cloudfw_20171207_models.ModifyThreatIntelligenceSwitchResponse:
+        """
+        @summary 修改威胁情报配置的信息
+        
+        @param request: ModifyThreatIntelligenceSwitchRequest
+        @return: ModifyThreatIntelligenceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_threat_intelligence_switch_with_options_async(request, runtime)
+
     def modify_tr_firewall_v2configuration_with_options(
         self,
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
@@ -13294,6 +20152,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_ipswhitelist_with_options_async(request, runtime)
+
+    def modify_user_sls_log_storage_time_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyUserSlsLogStorageTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyUserSlsLogStorageTimeResponse:
+        """
+        @summary 修改用户日志存储时间
+        
+        @param request: ModifyUserSlsLogStorageTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserSlsLogStorageTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.storage_time):
+            query['StorageTime'] = request.storage_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserSlsLogStorageTime',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyUserSlsLogStorageTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_sls_log_storage_time_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyUserSlsLogStorageTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyUserSlsLogStorageTimeResponse:
+        """
+        @summary 修改用户日志存储时间
+        
+        @param request: ModifyUserSlsLogStorageTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserSlsLogStorageTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.storage_time):
+            query['StorageTime'] = request.storage_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserSlsLogStorageTime',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyUserSlsLogStorageTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_sls_log_storage_time(
+        self,
+        request: cloudfw_20171207_models.ModifyUserSlsLogStorageTimeRequest,
+    ) -> cloudfw_20171207_models.ModifyUserSlsLogStorageTimeResponse:
+        """
+        @summary 修改用户日志存储时间
+        
+        @param request: ModifyUserSlsLogStorageTimeRequest
+        @return: ModifyUserSlsLogStorageTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_sls_log_storage_time_with_options(request, runtime)
+
+    async def modify_user_sls_log_storage_time_async(
+        self,
+        request: cloudfw_20171207_models.ModifyUserSlsLogStorageTimeRequest,
+    ) -> cloudfw_20171207_models.ModifyUserSlsLogStorageTimeResponse:
+        """
+        @summary 修改用户日志存储时间
+        
+        @param request: ModifyUserSlsLogStorageTimeRequest
+        @return: ModifyUserSlsLogStorageTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_sls_log_storage_time_with_options_async(request, runtime)
+
+    def modify_vpc_firewall_acl_engine_mode_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeResponse:
+        """
+        @summary 修改VPC防火墙ACL引擎模式
+        
+        @param request: ModifyVpcFirewallAclEngineModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVpcFirewallAclEngineModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallAclEngineMode',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_firewall_acl_engine_mode_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeResponse:
+        """
+        @summary 修改VPC防火墙ACL引擎模式
+        
+        @param request: ModifyVpcFirewallAclEngineModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVpcFirewallAclEngineModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallAclEngineMode',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_firewall_acl_engine_mode(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeResponse:
+        """
+        @summary 修改VPC防火墙ACL引擎模式
+        
+        @param request: ModifyVpcFirewallAclEngineModeRequest
+        @return: ModifyVpcFirewallAclEngineModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpc_firewall_acl_engine_mode_with_options(request, runtime)
+
+    async def modify_vpc_firewall_acl_engine_mode_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallAclEngineModeResponse:
+        """
+        @summary 修改VPC防火墙ACL引擎模式
+        
+        @param request: ModifyVpcFirewallAclEngineModeRequest
+        @return: ModifyVpcFirewallAclEngineModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpc_firewall_acl_engine_mode_with_options_async(request, runtime)
 
     def modify_vpc_firewall_cen_configure_with_options(
         self,
@@ -15183,6 +22245,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_nat_firewall_rule_hit_count_with_options_async(request, runtime)
 
+    def reset_rule_hit_count_with_options(
+        self,
+        request: cloudfw_20171207_models.ResetRuleHitCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ResetRuleHitCountResponse:
+        """
+        @summary 重置规则命中数
+        
+        @param request: ResetRuleHitCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetRuleHitCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetRuleHitCount',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ResetRuleHitCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_rule_hit_count_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ResetRuleHitCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ResetRuleHitCountResponse:
+        """
+        @summary 重置规则命中数
+        
+        @param request: ResetRuleHitCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetRuleHitCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetRuleHitCount',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ResetRuleHitCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_rule_hit_count(
+        self,
+        request: cloudfw_20171207_models.ResetRuleHitCountRequest,
+    ) -> cloudfw_20171207_models.ResetRuleHitCountResponse:
+        """
+        @summary 重置规则命中数
+        
+        @param request: ResetRuleHitCountRequest
+        @return: ResetRuleHitCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_rule_hit_count_with_options(request, runtime)
+
+    async def reset_rule_hit_count_async(
+        self,
+        request: cloudfw_20171207_models.ResetRuleHitCountRequest,
+    ) -> cloudfw_20171207_models.ResetRuleHitCountResponse:
+        """
+        @summary 重置规则命中数
+        
+        @param request: ResetRuleHitCountRequest
+        @return: ResetRuleHitCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_rule_hit_count_with_options_async(request, runtime)
+
     def reset_vpc_firewall_rule_hit_count_with_options(
         self,
         request: cloudfw_20171207_models.ResetVpcFirewallRuleHitCountRequest,
@@ -15498,3 +22664,427 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_aitraffic_analysis_status_with_options_async(request, runtime)
+
+    def update_ack_cluster_connector_with_options(
+        self,
+        request: cloudfw_20171207_models.UpdateAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdateAckClusterConnectorResponse:
+        """
+        @summary 修改ACK集群连接器
+        
+        @param request: UpdateAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        if not UtilClient.is_unset(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdateAckClusterConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ack_cluster_connector_with_options_async(
+        self,
+        request: cloudfw_20171207_models.UpdateAckClusterConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdateAckClusterConnectorResponse:
+        """
+        @summary 修改ACK集群连接器
+        
+        @param request: UpdateAckClusterConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAckClusterConnectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        if not UtilClient.is_unset(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAckClusterConnector',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdateAckClusterConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ack_cluster_connector(
+        self,
+        request: cloudfw_20171207_models.UpdateAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.UpdateAckClusterConnectorResponse:
+        """
+        @summary 修改ACK集群连接器
+        
+        @param request: UpdateAckClusterConnectorRequest
+        @return: UpdateAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ack_cluster_connector_with_options(request, runtime)
+
+    async def update_ack_cluster_connector_async(
+        self,
+        request: cloudfw_20171207_models.UpdateAckClusterConnectorRequest,
+    ) -> cloudfw_20171207_models.UpdateAckClusterConnectorResponse:
+        """
+        @summary 修改ACK集群连接器
+        
+        @param request: UpdateAckClusterConnectorRequest
+        @return: UpdateAckClusterConnectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ack_cluster_connector_with_options_async(request, runtime)
+
+    def update_acl_check_detail_status_with_options(
+        self,
+        request: cloudfw_20171207_models.UpdateAclCheckDetailStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdateAclCheckDetailStatusResponse:
+        """
+        @summary 修改ACL检查状态
+        
+        @param request: UpdateAclCheckDetailStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAclCheckDetailStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAclCheckDetailStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdateAclCheckDetailStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_acl_check_detail_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.UpdateAclCheckDetailStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdateAclCheckDetailStatusResponse:
+        """
+        @summary 修改ACL检查状态
+        
+        @param request: UpdateAclCheckDetailStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAclCheckDetailStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAclCheckDetailStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdateAclCheckDetailStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_acl_check_detail_status(
+        self,
+        request: cloudfw_20171207_models.UpdateAclCheckDetailStatusRequest,
+    ) -> cloudfw_20171207_models.UpdateAclCheckDetailStatusResponse:
+        """
+        @summary 修改ACL检查状态
+        
+        @param request: UpdateAclCheckDetailStatusRequest
+        @return: UpdateAclCheckDetailStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_acl_check_detail_status_with_options(request, runtime)
+
+    async def update_acl_check_detail_status_async(
+        self,
+        request: cloudfw_20171207_models.UpdateAclCheckDetailStatusRequest,
+    ) -> cloudfw_20171207_models.UpdateAclCheckDetailStatusResponse:
+        """
+        @summary 修改ACL检查状态
+        
+        @param request: UpdateAclCheckDetailStatusRequest
+        @return: UpdateAclCheckDetailStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_acl_check_detail_status_with_options_async(request, runtime)
+
+    def update_postpay_user_internet_status_with_options(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserInternetStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserInternetStatusResponse:
+        """
+        @summary Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserInternetStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePostpayUserInternetStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostpayUserInternetStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdatePostpayUserInternetStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_postpay_user_internet_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserInternetStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserInternetStatusResponse:
+        """
+        @summary Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserInternetStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePostpayUserInternetStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostpayUserInternetStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdatePostpayUserInternetStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_postpay_user_internet_status(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserInternetStatusRequest,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserInternetStatusResponse:
+        """
+        @summary Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserInternetStatusRequest
+        @return: UpdatePostpayUserInternetStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_postpay_user_internet_status_with_options(request, runtime)
+
+    async def update_postpay_user_internet_status_async(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserInternetStatusRequest,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserInternetStatusResponse:
+        """
+        @summary Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserInternetStatusRequest
+        @return: UpdatePostpayUserInternetStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_postpay_user_internet_status_with_options_async(request, runtime)
+
+    def update_security_proxy_with_options(
+        self,
+        request: cloudfw_20171207_models.UpdateSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdateSecurityProxyResponse:
+        """
+        @summary 更新安全正向代理
+        
+        @param request: UpdateSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdateSecurityProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_security_proxy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.UpdateSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdateSecurityProxyResponse:
+        """
+        @summary 更新安全正向代理
+        
+        @param request: UpdateSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdateSecurityProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_security_proxy(
+        self,
+        request: cloudfw_20171207_models.UpdateSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.UpdateSecurityProxyResponse:
+        """
+        @summary 更新安全正向代理
+        
+        @param request: UpdateSecurityProxyRequest
+        @return: UpdateSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_security_proxy_with_options(request, runtime)
+
+    async def update_security_proxy_async(
+        self,
+        request: cloudfw_20171207_models.UpdateSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.UpdateSecurityProxyResponse:
+        """
+        @summary 更新安全正向代理
+        
+        @param request: UpdateSecurityProxyRequest
+        @return: UpdateSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_security_proxy_with_options_async(request, runtime)

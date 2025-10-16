@@ -1,3 +1,97 @@
+2025-10-16 Version: 7.0.0
+- Support API CreateAckClusterConnector.
+- Support API CreateAclCheck.
+- Support API CreateNatFirewallPreCheck.
+- Support API CreateVpcFirewallPrecheck.
+- Support API CreateVpcFirewallTask.
+- Support API DeleteAckClusterConnector.
+- Support API DeleteAclBackupData.
+- Support API DeleteIpsPrivateAssoc.
+- Support API DescribeAccessInstanceRegionList.
+- Support API DescribeAccessInstanceTask.
+- Support API DescribeAccessInstanceVSwitchList.
+- Support API DescribeAccessInstanceVpcList.
+- Support API DescribeAccessInstanceZoneList.
+- Support API DescribeAckClusterConnector.
+- Support API DescribeAckClusterConnectors.
+- Support API DescribeAckClusterNamespaces.
+- Support API DescribeAckClusterPodLabels.
+- Support API DescribeAckClusters.
+- Support API DescribeAclApps.
+- Support API DescribeAclCheck.
+- Support API DescribeAclCheckQuota.
+- Support API DescribeAclChecks.
+- Support API DescribeAclRuleCount.
+- Support API DescribeAclWhitelist.
+- Support API DescribeClearAuthInfo.
+- Support API DescribeCtrlInstanceMemberAccounts.
+- Support API DescribeFirewallDropStatistics.
+- Support API DescribeFirewallTask.
+- Support API DescribeFirewallVSwitch.
+- Support API DescribeInternetDropTrafficTrend.
+- Support API DescribeInternetOpenPort.
+- Support API DescribeInternetOpenService.
+- Support API DescribeInvadeEventNameList.
+- Support API DescribeInvadeEventStatistic.
+- Support API DescribeNatFirewallDropTrafficTrend.
+- Support API DescribeNatFirewallQuota.
+- Support API DescribeNetworkInstanceList.
+- Support API DescribeNetworkInstanceRelationList.
+- Support API DescribeNetworkTrafficTopRatio.
+- Support API DescribeOpenIpAccessSrcStat.
+- Support API DescribeOutgoingAssetList.
+- Support API DescribeOutgoingDomainDetail.
+- Support API DescribeOutgoingStatistic.
+- Support API DescribeOutgoingTag.
+- Support API DescribePageDocuments.
+- Support API DescribePostpayUserInternetStatus.
+- Support API DescribePostpayUserNatStatus.
+- Support API DescribeRegionInfo.
+- Support API DescribeResourceTypeAutoEnable.
+- Support API DescribeRiskEventTopAttackAsset.
+- Support API DescribeRiskSecurityGroupDetail.
+- Support API DescribeSecurityMode.
+- Support API DescribeSlsAnalyzeOpenStatus.
+- Support API DescribeUnprotectedVulnTrend.
+- Support API DescribeUserAlarmConfig.
+- Support API DescribeVpcFirewallAccessDetail.
+- Support API DescribeVpcFirewallCenSummaryList.
+- Support API DescribeVpcFirewallSummaryInfo.
+- Support API EnableSdlProtectedAsset.
+- Support API ModifyIpsRulesToDefault.
+- Support API ModifySensitiveSwitch.
+- Support API ModifySlsDispatchStatus.
+- Support API ModifyThreatIntelligenceSwitch.
+- Support API ModifyUserSlsLogStorageTime.
+- Support API ModifyVpcFirewallAclEngineMode.
+- Support API ResetRuleHitCount.
+- Support API UpdateAckClusterConnector.
+- Support API UpdateAclCheckDetailStatus.
+- Support API UpdatePostpayUserInternetStatus.
+- Support API UpdateSecurityProxy.
+- Update API AddAddressBook: add request parameters AckClusterConnectorId.
+- Update API AddAddressBook: add request parameters AckLabels.
+- Update API AddAddressBook: add request parameters AckNamespaces.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AckClusterConnectorId.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AckClusterConnectorName.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AckLabels.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AckNamespaces.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.RegionNo.
+- Update API DescribeAssetStatistic: add response parameters Body.GeneralInstanceSpecStatistic.
+- Update API DescribeRiskEventGroup: add response parameters Body.DataList.$.SrcIPTags.
+- Update API DescribeUserBuyVersion: add response parameters Body.AckClusterConnectorQuota.
+- Update API DescribeUserBuyVersion: add response parameters Body.DefaultBandwidth.
+- Update API DescribeUserBuyVersion: add response parameters Body.ExtensionBandwidth.
+- Update API DescribeUserBuyVersion: add response parameters Body.GeneralInstance.
+- Update API DescribeUserBuyVersion: add response parameters Body.MajorVersion.
+- Update API DescribeUserBuyVersion: add response parameters Body.PrivateDnsConnectorQuota.
+- Update API DescribeUserBuyVersion: add response parameters Body.Sdl.
+- Update API DescribeUserBuyVersion: add response parameters Body.TemporaryBandwidth.
+- Update API DescribeUserBuyVersion: add response parameters Body.ThreatIntelligence.
+- Update API ModifyAddressBook: add request parameters AckLabels.
+- Update API ModifyAddressBook: add request parameters AckNamespaces.
+
+
 2025-08-15 Version: 6.1.4
 - Generated python 2017-12-07 for Cloudfw.
 
