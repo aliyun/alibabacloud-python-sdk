@@ -11051,6 +11051,7 @@ class CreateDesktopsRequest(TeaModel):
         resource_group_id: str = None,
         saving_plan_id: str = None,
         snapshot_policy_id: str = None,
+        subnet_id: str = None,
         tag: List[CreateDesktopsRequestTag] = None,
         timer_group_id: str = None,
         user_assign_mode: str = None,
@@ -11183,6 +11184,7 @@ class CreateDesktopsRequest(TeaModel):
         self.saving_plan_id = saving_plan_id
         # The ID of the auto-snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
+        self.subnet_id = subnet_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
         # The ID of the timer group.
@@ -11314,6 +11316,8 @@ class CreateDesktopsRequest(TeaModel):
             result['SavingPlanId'] = self.saving_plan_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -11406,6 +11410,8 @@ class CreateDesktopsRequest(TeaModel):
             self.saving_plan_id = m.get('SavingPlanId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -11838,6 +11844,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         resource_group_id: str = None,
         saving_plan_id: str = None,
         snapshot_policy_id: str = None,
+        subnet_id: str = None,
         tag: List[CreateDesktopsShrinkRequestTag] = None,
         timer_group_id: str = None,
         user_assign_mode: str = None,
@@ -11970,6 +11977,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         self.saving_plan_id = saving_plan_id
         # The ID of the auto-snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
+        self.subnet_id = subnet_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
         # The ID of the timer group.
@@ -12099,6 +12107,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             result['SavingPlanId'] = self.saving_plan_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -12190,6 +12200,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             self.saving_plan_id = m.get('SavingPlanId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -62730,6 +62742,468 @@ class ModifyResourceCenterPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyResourceCenterPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifySecurityGroupAttributeRequestAuthorizeEgress(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class ModifySecurityGroupAttributeRequestAuthorizeIngress(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class ModifySecurityGroupAttributeRequestRevokeEgress(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class ModifySecurityGroupAttributeRequestRevokeIngress(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class ModifySecurityGroupAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        authorize_egress: List[ModifySecurityGroupAttributeRequestAuthorizeEgress] = None,
+        authorize_ingress: List[ModifySecurityGroupAttributeRequestAuthorizeIngress] = None,
+        office_site_id: str = None,
+        region_id: str = None,
+        revoke_egress: List[ModifySecurityGroupAttributeRequestRevokeEgress] = None,
+        revoke_ingress: List[ModifySecurityGroupAttributeRequestRevokeIngress] = None,
+    ):
+        self.authorize_egress = authorize_egress
+        self.authorize_ingress = authorize_ingress
+        # This parameter is required.
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.revoke_egress = revoke_egress
+        self.revoke_ingress = revoke_ingress
+
+    def validate(self):
+        if self.authorize_egress:
+            for k in self.authorize_egress:
+                if k:
+                    k.validate()
+        if self.authorize_ingress:
+            for k in self.authorize_ingress:
+                if k:
+                    k.validate()
+        if self.revoke_egress:
+            for k in self.revoke_egress:
+                if k:
+                    k.validate()
+        if self.revoke_ingress:
+            for k in self.revoke_ingress:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuthorizeEgress'] = []
+        if self.authorize_egress is not None:
+            for k in self.authorize_egress:
+                result['AuthorizeEgress'].append(k.to_map() if k else None)
+        result['AuthorizeIngress'] = []
+        if self.authorize_ingress is not None:
+            for k in self.authorize_ingress:
+                result['AuthorizeIngress'].append(k.to_map() if k else None)
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['RevokeEgress'] = []
+        if self.revoke_egress is not None:
+            for k in self.revoke_egress:
+                result['RevokeEgress'].append(k.to_map() if k else None)
+        result['RevokeIngress'] = []
+        if self.revoke_ingress is not None:
+            for k in self.revoke_ingress:
+                result['RevokeIngress'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authorize_egress = []
+        if m.get('AuthorizeEgress') is not None:
+            for k in m.get('AuthorizeEgress'):
+                temp_model = ModifySecurityGroupAttributeRequestAuthorizeEgress()
+                self.authorize_egress.append(temp_model.from_map(k))
+        self.authorize_ingress = []
+        if m.get('AuthorizeIngress') is not None:
+            for k in m.get('AuthorizeIngress'):
+                temp_model = ModifySecurityGroupAttributeRequestAuthorizeIngress()
+                self.authorize_ingress.append(temp_model.from_map(k))
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.revoke_egress = []
+        if m.get('RevokeEgress') is not None:
+            for k in m.get('RevokeEgress'):
+                temp_model = ModifySecurityGroupAttributeRequestRevokeEgress()
+                self.revoke_egress.append(temp_model.from_map(k))
+        self.revoke_ingress = []
+        if m.get('RevokeIngress') is not None:
+            for k in m.get('RevokeIngress'):
+                temp_model = ModifySecurityGroupAttributeRequestRevokeIngress()
+                self.revoke_ingress.append(temp_model.from_map(k))
+        return self
+
+
+class ModifySecurityGroupAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifySecurityGroupAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySecurityGroupAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySecurityGroupAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

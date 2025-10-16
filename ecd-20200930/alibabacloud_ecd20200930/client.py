@@ -5991,6 +5991,8 @@ class Client(OpenApiClient):
             query['SavingPlanId'] = request.saving_plan_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not UtilClient.is_unset(request.subnet_id):
+            query['SubnetId'] = request.subnet_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timer_group_id):
@@ -6112,6 +6114,8 @@ class Client(OpenApiClient):
             query['SavingPlanId'] = request.saving_plan_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not UtilClient.is_unset(request.subnet_id):
+            query['SubnetId'] = request.subnet_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timer_group_id):
@@ -28318,6 +28322,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_resource_center_policy_with_options_async(request, runtime)
+
+    def modify_security_group_attribute_with_options(
+        self,
+        request: ecd_20200930_models.ModifySecurityGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifySecurityGroupAttributeResponse:
+        """
+        @summary 修改办公网络维度安全组策略
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorize_egress):
+            query['AuthorizeEgress'] = request.authorize_egress
+        if not UtilClient.is_unset(request.authorize_ingress):
+            query['AuthorizeIngress'] = request.authorize_ingress
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.revoke_egress):
+            query['RevokeEgress'] = request.revoke_egress
+        if not UtilClient.is_unset(request.revoke_ingress):
+            query['RevokeIngress'] = request.revoke_ingress
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityGroupAttribute',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifySecurityGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_security_group_attribute_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifySecurityGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifySecurityGroupAttributeResponse:
+        """
+        @summary 修改办公网络维度安全组策略
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorize_egress):
+            query['AuthorizeEgress'] = request.authorize_egress
+        if not UtilClient.is_unset(request.authorize_ingress):
+            query['AuthorizeIngress'] = request.authorize_ingress
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.revoke_egress):
+            query['RevokeEgress'] = request.revoke_egress
+        if not UtilClient.is_unset(request.revoke_ingress):
+            query['RevokeIngress'] = request.revoke_ingress
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityGroupAttribute',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifySecurityGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_security_group_attribute(
+        self,
+        request: ecd_20200930_models.ModifySecurityGroupAttributeRequest,
+    ) -> ecd_20200930_models.ModifySecurityGroupAttributeResponse:
+        """
+        @summary 修改办公网络维度安全组策略
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @return: ModifySecurityGroupAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_security_group_attribute_with_options(request, runtime)
+
+    async def modify_security_group_attribute_async(
+        self,
+        request: ecd_20200930_models.ModifySecurityGroupAttributeRequest,
+    ) -> ecd_20200930_models.ModifySecurityGroupAttributeResponse:
+        """
+        @summary 修改办公网络维度安全组策略
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @return: ModifySecurityGroupAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_security_group_attribute_with_options_async(request, runtime)
 
     def modify_template_with_options(
         self,

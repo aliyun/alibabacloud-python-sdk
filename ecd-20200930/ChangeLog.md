@@ -1,3 +1,8 @@
+2025-10-16 Version: 4.13.0
+- Support API ModifySecurityGroupAttribute.
+- Update API CreateDesktops: add request parameters SubnetId.
+
+
 2025-09-29 Version: 4.12.11
 - Update API DescribeDesktops: add response parameters Body.Desktops.$.SerialNumber.
 
