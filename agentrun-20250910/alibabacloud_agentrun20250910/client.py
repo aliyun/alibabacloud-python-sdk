@@ -469,6 +469,226 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_code_interpreter_with_options_async(request, headers, runtime)
 
+    def create_memory_with_options(
+        self,
+        request: agent_run_20250910_models.CreateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.CreateMemoryResponse:
+        """
+        @summary create memory store
+        
+        @param request: CreateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.long_ttl):
+            body['longTtl'] = request.long_ttl
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.short_ttl):
+            body['shortTtl'] = request.short_ttl
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.CreateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_memory_with_options_async(
+        self,
+        request: agent_run_20250910_models.CreateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.CreateMemoryResponse:
+        """
+        @summary create memory store
+        
+        @param request: CreateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.long_ttl):
+            body['longTtl'] = request.long_ttl
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.short_ttl):
+            body['shortTtl'] = request.short_ttl
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.CreateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_memory(
+        self,
+        request: agent_run_20250910_models.CreateMemoryRequest,
+    ) -> agent_run_20250910_models.CreateMemoryResponse:
+        """
+        @summary create memory store
+        
+        @param request: CreateMemoryRequest
+        @return: CreateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_memory_with_options(request, headers, runtime)
+
+    async def create_memory_async(
+        self,
+        request: agent_run_20250910_models.CreateMemoryRequest,
+    ) -> agent_run_20250910_models.CreateMemoryResponse:
+        """
+        @summary create memory store
+        
+        @param request: CreateMemoryRequest
+        @return: CreateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_memory_with_options_async(request, headers, runtime)
+
+    def create_memory_event_with_options(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.CreateMemoryEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.CreateMemoryEventResponse:
+        """
+        @summary create event
+        
+        @param request: CreateMemoryEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryEventResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.events):
+            body['events'] = request.events
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMemoryEvent',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.CreateMemoryEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_memory_event_with_options_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.CreateMemoryEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.CreateMemoryEventResponse:
+        """
+        @summary create event
+        
+        @param request: CreateMemoryEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryEventResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.events):
+            body['events'] = request.events
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMemoryEvent',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.CreateMemoryEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_memory_event(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.CreateMemoryEventRequest,
+    ) -> agent_run_20250910_models.CreateMemoryEventResponse:
+        """
+        @summary create event
+        
+        @param request: CreateMemoryEventRequest
+        @return: CreateMemoryEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_memory_event_with_options(memory_name, request, headers, runtime)
+
+    async def create_memory_event_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.CreateMemoryEventRequest,
+    ) -> agent_run_20250910_models.CreateMemoryEventResponse:
+        """
+        @summary create event
+        
+        @param request: CreateMemoryEventRequest
+        @return: CreateMemoryEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_memory_event_with_options_async(memory_name, request, headers, runtime)
+
     def delete_agent_runtime_with_options(
         self,
         agent_runtime_id: str,
@@ -856,6 +1076,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_code_interpreter_with_options_async(code_interpreter_id, headers, runtime)
+
+    def delete_memory_with_options(
+        self,
+        memory_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.DeleteMemoryResponse:
+        """
+        @summary delete memory store
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.DeleteMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_memory_with_options_async(
+        self,
+        memory_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.DeleteMemoryResponse:
+        """
+        @summary delete memory store
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.DeleteMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_memory(
+        self,
+        memory_name: str,
+    ) -> agent_run_20250910_models.DeleteMemoryResponse:
+        """
+        @summary delete memory store
+        
+        @return: DeleteMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_memory_with_options(memory_name, headers, runtime)
+
+    async def delete_memory_async(
+        self,
+        memory_name: str,
+    ) -> agent_run_20250910_models.DeleteMemoryResponse:
+        """
+        @summary delete memory store
+        
+        @return: DeleteMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_with_options_async(memory_name, headers, runtime)
 
     def get_agent_runtime_with_options(
         self,
@@ -1262,6 +1572,344 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_code_interpreter_with_options_async(code_interpreter_id, headers, runtime)
+
+    def get_memory_with_options(
+        self,
+        memory_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.GetMemoryResponse:
+        """
+        @summary GetMemory
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.GetMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_with_options_async(
+        self,
+        memory_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.GetMemoryResponse:
+        """
+        @summary GetMemory
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.GetMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory(
+        self,
+        memory_name: str,
+    ) -> agent_run_20250910_models.GetMemoryResponse:
+        """
+        @summary GetMemory
+        
+        @return: GetMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_memory_with_options(memory_name, headers, runtime)
+
+    async def get_memory_async(
+        self,
+        memory_name: str,
+    ) -> agent_run_20250910_models.GetMemoryResponse:
+        """
+        @summary GetMemory
+        
+        @return: GetMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_memory_with_options_async(memory_name, headers, runtime)
+
+    def get_memory_event_with_options(
+        self,
+        memory_name: str,
+        session_id: str,
+        event_id: str,
+        request: agent_run_20250910_models.GetMemoryEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.GetMemoryEventResponse:
+        """
+        @summary get event
+        
+        @param request: GetMemoryEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMemoryEvent',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}/events/{OpenApiUtilClient.get_encode_param(event_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.GetMemoryEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_event_with_options_async(
+        self,
+        memory_name: str,
+        session_id: str,
+        event_id: str,
+        request: agent_run_20250910_models.GetMemoryEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.GetMemoryEventResponse:
+        """
+        @summary get event
+        
+        @param request: GetMemoryEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMemoryEvent',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}/events/{OpenApiUtilClient.get_encode_param(event_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.GetMemoryEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_event(
+        self,
+        memory_name: str,
+        session_id: str,
+        event_id: str,
+        request: agent_run_20250910_models.GetMemoryEventRequest,
+    ) -> agent_run_20250910_models.GetMemoryEventResponse:
+        """
+        @summary get event
+        
+        @param request: GetMemoryEventRequest
+        @return: GetMemoryEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_memory_event_with_options(memory_name, session_id, event_id, request, headers, runtime)
+
+    async def get_memory_event_async(
+        self,
+        memory_name: str,
+        session_id: str,
+        event_id: str,
+        request: agent_run_20250910_models.GetMemoryEventRequest,
+    ) -> agent_run_20250910_models.GetMemoryEventResponse:
+        """
+        @summary get event
+        
+        @param request: GetMemoryEventRequest
+        @return: GetMemoryEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_memory_event_with_options_async(memory_name, session_id, event_id, request, headers, runtime)
+
+    def get_memory_session_with_options(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.GetMemorySessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.GetMemorySessionResponse:
+        """
+        @summary 获取内存会话详情
+        
+        @description 根据会话ID获取指定内存会话的详细信息，包括会话中的事件记录、时间戳等。用于查看和管理对话历史。
+        
+        @param request: GetMemorySessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemorySessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMemorySession',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.GetMemorySessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_session_with_options_async(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.GetMemorySessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.GetMemorySessionResponse:
+        """
+        @summary 获取内存会话详情
+        
+        @description 根据会话ID获取指定内存会话的详细信息，包括会话中的事件记录、时间戳等。用于查看和管理对话历史。
+        
+        @param request: GetMemorySessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemorySessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMemorySession',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.GetMemorySessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_session(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.GetMemorySessionRequest,
+    ) -> agent_run_20250910_models.GetMemorySessionResponse:
+        """
+        @summary 获取内存会话详情
+        
+        @description 根据会话ID获取指定内存会话的详细信息，包括会话中的事件记录、时间戳等。用于查看和管理对话历史。
+        
+        @param request: GetMemorySessionRequest
+        @return: GetMemorySessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_memory_session_with_options(memory_name, session_id, request, headers, runtime)
+
+    async def get_memory_session_async(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.GetMemorySessionRequest,
+    ) -> agent_run_20250910_models.GetMemorySessionResponse:
+        """
+        @summary 获取内存会话详情
+        
+        @description 根据会话ID获取指定内存会话的详细信息，包括会话中的事件记录、时间戳等。用于查看和管理对话历史。
+        
+        @param request: GetMemorySessionRequest
+        @return: GetMemorySessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_memory_session_with_options_async(memory_name, session_id, request, headers, runtime)
 
     def list_agent_runtime_endpoints_with_options(
         self,
@@ -1863,6 +2511,370 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_code_interpreters_with_options_async(request, headers, runtime)
 
+    def list_memory_with_options(
+        self,
+        request: agent_run_20250910_models.ListMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.ListMemoryResponse:
+        """
+        @summary ListMemory
+        
+        @param request: ListMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name_prefix):
+            query['namePrefix'] = request.name_prefix
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.ListMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_with_options_async(
+        self,
+        request: agent_run_20250910_models.ListMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.ListMemoryResponse:
+        """
+        @summary ListMemory
+        
+        @param request: ListMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name_prefix):
+            query['namePrefix'] = request.name_prefix
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.ListMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory(
+        self,
+        request: agent_run_20250910_models.ListMemoryRequest,
+    ) -> agent_run_20250910_models.ListMemoryResponse:
+        """
+        @summary ListMemory
+        
+        @param request: ListMemoryRequest
+        @return: ListMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_memory_with_options(request, headers, runtime)
+
+    async def list_memory_async(
+        self,
+        request: agent_run_20250910_models.ListMemoryRequest,
+    ) -> agent_run_20250910_models.ListMemoryResponse:
+        """
+        @summary ListMemory
+        
+        @param request: ListMemoryRequest
+        @return: ListMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_memory_with_options_async(request, headers, runtime)
+
+    def list_memory_event_with_options(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.ListMemoryEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.ListMemoryEventResponse:
+        """
+        @summary list events
+        
+        @param request: ListMemoryEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoryEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemoryEvent',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.ListMemoryEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_event_with_options_async(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.ListMemoryEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.ListMemoryEventResponse:
+        """
+        @summary list events
+        
+        @param request: ListMemoryEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoryEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemoryEvent',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.ListMemoryEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_event(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.ListMemoryEventRequest,
+    ) -> agent_run_20250910_models.ListMemoryEventResponse:
+        """
+        @summary list events
+        
+        @param request: ListMemoryEventRequest
+        @return: ListMemoryEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_memory_event_with_options(memory_name, session_id, request, headers, runtime)
+
+    async def list_memory_event_async(
+        self,
+        memory_name: str,
+        session_id: str,
+        request: agent_run_20250910_models.ListMemoryEventRequest,
+    ) -> agent_run_20250910_models.ListMemoryEventResponse:
+        """
+        @summary list events
+        
+        @param request: ListMemoryEventRequest
+        @return: ListMemoryEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_memory_event_with_options_async(memory_name, session_id, request, headers, runtime)
+
+    def list_memory_sessions_with_options(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.ListMemorySessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.ListMemorySessionsResponse:
+        """
+        @summary 列出内存会话
+        
+        @description 获取指定内存实例的所有会话列表，支持按时间范围过滤和分页查询。会话是AgentRun中用于存储对话历史和管理上下文的重要组件。
+        
+        @param request: ListMemorySessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemorySessionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemorySessions',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.ListMemorySessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_sessions_with_options_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.ListMemorySessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.ListMemorySessionsResponse:
+        """
+        @summary 列出内存会话
+        
+        @description 获取指定内存实例的所有会话列表，支持按时间范围过滤和分页查询。会话是AgentRun中用于存储对话历史和管理上下文的重要组件。
+        
+        @param request: ListMemorySessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemorySessionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemorySessions',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/sessions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.ListMemorySessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_sessions(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.ListMemorySessionsRequest,
+    ) -> agent_run_20250910_models.ListMemorySessionsResponse:
+        """
+        @summary 列出内存会话
+        
+        @description 获取指定内存实例的所有会话列表，支持按时间范围过滤和分页查询。会话是AgentRun中用于存储对话历史和管理上下文的重要组件。
+        
+        @param request: ListMemorySessionsRequest
+        @return: ListMemorySessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_memory_sessions_with_options(memory_name, request, headers, runtime)
+
+    async def list_memory_sessions_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.ListMemorySessionsRequest,
+    ) -> agent_run_20250910_models.ListMemorySessionsResponse:
+        """
+        @summary 列出内存会话
+        
+        @description 获取指定内存实例的所有会话列表，支持按时间范围过滤和分页查询。会话是AgentRun中用于存储对话历史和管理上下文的重要组件。
+        
+        @param request: ListMemorySessionsRequest
+        @return: ListMemorySessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_memory_sessions_with_options_async(memory_name, request, headers, runtime)
+
     def publish_runtime_version_with_options(
         self,
         agent_runtime_id: str,
@@ -1972,6 +2984,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.publish_runtime_version_with_options_async(agent_runtime_id, request, headers, runtime)
+
+    def retrieve_memory_with_options(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.RetrieveMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.RetrieveMemoryResponse:
+        """
+        @summary RetrieveMemory
+        
+        @param request: RetrieveMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetrieveMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_):
+            body['from'] = request.from_
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.store):
+            body['store'] = request.store
+        if not UtilClient.is_unset(request.to):
+            body['to'] = request.to
+        if not UtilClient.is_unset(request.topk):
+            body['topk'] = request.topk
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetrieveMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/records',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.RetrieveMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retrieve_memory_with_options_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.RetrieveMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.RetrieveMemoryResponse:
+        """
+        @summary RetrieveMemory
+        
+        @param request: RetrieveMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetrieveMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_):
+            body['from'] = request.from_
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.store):
+            body['store'] = request.store
+        if not UtilClient.is_unset(request.to):
+            body['to'] = request.to
+        if not UtilClient.is_unset(request.topk):
+            body['topk'] = request.topk
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetrieveMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}/records',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.RetrieveMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retrieve_memory(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.RetrieveMemoryRequest,
+    ) -> agent_run_20250910_models.RetrieveMemoryResponse:
+        """
+        @summary RetrieveMemory
+        
+        @param request: RetrieveMemoryRequest
+        @return: RetrieveMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.retrieve_memory_with_options(memory_name, request, headers, runtime)
+
+    async def retrieve_memory_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.RetrieveMemoryRequest,
+    ) -> agent_run_20250910_models.RetrieveMemoryResponse:
+        """
+        @summary RetrieveMemory
+        
+        @param request: RetrieveMemoryRequest
+        @return: RetrieveMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.retrieve_memory_with_options_async(memory_name, request, headers, runtime)
 
     def update_agent_runtime_with_options(
         self,
@@ -2188,3 +3324,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_agent_runtime_endpoint_with_options_async(agent_runtime_id, agent_runtime_endpoint_id, request, headers, runtime)
+
+    def update_memory_with_options(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.UpdateMemoryResponse:
+        """
+        @summary Update Memory
+        
+        @param request: UpdateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.long_ttl):
+            query['longTtl'] = request.long_ttl
+        if not UtilClient.is_unset(request.short_ttl):
+            query['shortTtl'] = request.short_ttl
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.UpdateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_with_options_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.UpdateMemoryResponse:
+        """
+        @summary Update Memory
+        
+        @param request: UpdateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.long_ttl):
+            query['longTtl'] = request.long_ttl
+        if not UtilClient.is_unset(request.short_ttl):
+            query['shortTtl'] = request.short_ttl
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMemory',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/agents/memories/{OpenApiUtilClient.get_encode_param(memory_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.UpdateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.UpdateMemoryRequest,
+    ) -> agent_run_20250910_models.UpdateMemoryResponse:
+        """
+        @summary Update Memory
+        
+        @param request: UpdateMemoryRequest
+        @return: UpdateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_memory_with_options(memory_name, request, headers, runtime)
+
+    async def update_memory_async(
+        self,
+        memory_name: str,
+        request: agent_run_20250910_models.UpdateMemoryRequest,
+    ) -> agent_run_20250910_models.UpdateMemoryResponse:
+        """
+        @summary Update Memory
+        
+        @param request: UpdateMemoryRequest
+        @return: UpdateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_memory_with_options_async(memory_name, request, headers, runtime)
