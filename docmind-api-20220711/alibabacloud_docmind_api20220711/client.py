@@ -2536,6 +2536,8 @@ class Client(OpenApiClient):
             query['LlmEnhancement'] = request.llm_enhancement
         if not DaraCore.is_null(request.multimedia_parameters_shrink):
             query['MultimediaParameters'] = request.multimedia_parameters_shrink
+        if not DaraCore.is_null(request.need_header_footer):
+            query['NeedHeaderFooter'] = request.need_header_footer
         if not DaraCore.is_null(request.option):
             query['Option'] = request.option
         if not DaraCore.is_null(request.oss_bucket):
@@ -2598,6 +2600,8 @@ class Client(OpenApiClient):
             query['LlmEnhancement'] = request.llm_enhancement
         if not DaraCore.is_null(request.multimedia_parameters_shrink):
             query['MultimediaParameters'] = request.multimedia_parameters_shrink
+        if not DaraCore.is_null(request.need_header_footer):
+            query['NeedHeaderFooter'] = request.need_header_footer
         if not DaraCore.is_null(request.option):
             query['Option'] = request.option
         if not DaraCore.is_null(request.oss_bucket):

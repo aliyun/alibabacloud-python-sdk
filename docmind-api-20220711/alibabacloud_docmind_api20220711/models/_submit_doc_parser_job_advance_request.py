@@ -19,6 +19,7 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         llmparam: main_models.SubmitDocParserJobAdvanceRequestLLMParam = None,
         llm_enhancement: bool = None,
         multimedia_parameters: main_models.SubmitDocParserJobAdvanceRequestMultimediaParameters = None,
+        need_header_footer: bool = None,
         option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
@@ -34,6 +35,7 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         self.llmparam = llmparam
         self.llm_enhancement = llm_enhancement
         self.multimedia_parameters = multimedia_parameters
+        self.need_header_footer = need_header_footer
         self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
@@ -79,6 +81,9 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
 
         if self.multimedia_parameters is not None:
             result['MultimediaParameters'] = self.multimedia_parameters.to_map()
+
+        if self.need_header_footer is not None:
+            result['NeedHeaderFooter'] = self.need_header_footer
 
         if self.option is not None:
             result['Option'] = self.option
@@ -128,6 +133,9 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         if m.get('MultimediaParameters') is not None:
             temp_model = main_models.SubmitDocParserJobAdvanceRequestMultimediaParameters()
             self.multimedia_parameters = temp_model.from_map(m.get('MultimediaParameters'))
+
+        if m.get('NeedHeaderFooter') is not None:
+            self.need_header_footer = m.get('NeedHeaderFooter')
 
         if m.get('Option') is not None:
             self.option = m.get('Option')

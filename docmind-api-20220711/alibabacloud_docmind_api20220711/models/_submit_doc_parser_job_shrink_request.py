@@ -16,6 +16,7 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         llmparam_shrink: str = None,
         llm_enhancement: bool = None,
         multimedia_parameters_shrink: str = None,
+        need_header_footer: bool = None,
         option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
@@ -31,6 +32,7 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         self.llmparam_shrink = llmparam_shrink
         self.llm_enhancement = llm_enhancement
         self.multimedia_parameters_shrink = multimedia_parameters_shrink
+        self.need_header_footer = need_header_footer
         self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
@@ -71,6 +73,9 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
 
         if self.multimedia_parameters_shrink is not None:
             result['MultimediaParameters'] = self.multimedia_parameters_shrink
+
+        if self.need_header_footer is not None:
+            result['NeedHeaderFooter'] = self.need_header_footer
 
         if self.option is not None:
             result['Option'] = self.option
@@ -117,6 +122,9 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
 
         if m.get('MultimediaParameters') is not None:
             self.multimedia_parameters_shrink = m.get('MultimediaParameters')
+
+        if m.get('NeedHeaderFooter') is not None:
+            self.need_header_footer = m.get('NeedHeaderFooter')
 
         if m.get('Option') is not None:
             self.option = m.get('Option')

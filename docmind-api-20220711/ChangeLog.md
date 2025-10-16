@@ -1,3 +1,7 @@
+2025-10-16 Version: 1.4.12
+- Update API SubmitDocParserJob: add request parameters NeedHeaderFooter.
+
+
 2025-09-12 Version: 1.4.11
 - Update API SubmitDocParserJob: add request parameters CustomOssConfig.
 - Update API SubmitDocParserJob: add request parameters LLMParam.
