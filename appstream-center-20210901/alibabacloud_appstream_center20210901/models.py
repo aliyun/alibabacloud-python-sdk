@@ -1564,6 +1564,214 @@ class CreateAppInstanceGroupResponse(TeaModel):
         return self
 
 
+class CreateImageByInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_clean_userdata: bool = None,
+        biz_type: int = None,
+        description: str = None,
+        disk_type: str = None,
+        image_name: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        product_type: str = None,
+        sub_instance_id: str = None,
+    ):
+        self.auto_clean_userdata = auto_clean_userdata
+        self.biz_type = biz_type
+        self.description = description
+        self.disk_type = disk_type
+        self.image_name = image_name
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.product_type = product_type
+        self.sub_instance_id = sub_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_clean_userdata is not None:
+            result['AutoCleanUserdata'] = self.auto_clean_userdata
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.sub_instance_id is not None:
+            result['SubInstanceId'] = self.sub_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCleanUserdata') is not None:
+            self.auto_clean_userdata = m.get('AutoCleanUserdata')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('SubInstanceId') is not None:
+            self.sub_instance_id = m.get('SubInstanceId')
+        return self
+
+
+class CreateImageByInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        task_id: str = None,
+        version_id: str = None,
+    ):
+        self.image_id = image_id
+        self.task_id = task_id
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class CreateImageByInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateImageByInstanceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateImageByInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateImageByInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateImageByInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateImageByInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateImageFromAppInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -6702,6 +6910,686 @@ class ListBindInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListBindInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListImageRequestTagList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListImageRequest(TeaModel):
+    def __init__(
+        self,
+        biz_region_id_list: List[str] = None,
+        biz_type: int = None,
+        biz_type_list: List[int] = None,
+        feature_list: List[str] = None,
+        fota_version: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_type: str = None,
+        language_type: str = None,
+        os_type: str = None,
+        package_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        platform_name: str = None,
+        platform_name_list: List[str] = None,
+        product_type: str = None,
+        product_type_list: List[str] = None,
+        protocol_type: str = None,
+        resource_instance_type: str = None,
+        status: str = None,
+        tag_list: List[ListImageRequestTagList] = None,
+    ):
+        self.biz_region_id_list = biz_region_id_list
+        self.biz_type = biz_type
+        self.biz_type_list = biz_type_list
+        self.feature_list = feature_list
+        self.fota_version = fota_version
+        self.image_id = image_id
+        self.image_name = image_name
+        self.image_type = image_type
+        self.language_type = language_type
+        self.os_type = os_type
+        self.package_type = package_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.platform_name = platform_name
+        self.platform_name_list = platform_name_list
+        self.product_type = product_type
+        self.product_type_list = product_type_list
+        self.protocol_type = protocol_type
+        self.resource_instance_type = resource_instance_type
+        self.status = status
+        self.tag_list = tag_list
+
+    def validate(self):
+        if self.tag_list:
+            for k in self.tag_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_region_id_list is not None:
+            result['BizRegionIdList'] = self.biz_region_id_list
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.biz_type_list is not None:
+            result['BizTypeList'] = self.biz_type_list
+        if self.feature_list is not None:
+            result['FeatureList'] = self.feature_list
+        if self.fota_version is not None:
+            result['FotaVersion'] = self.fota_version
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.language_type is not None:
+            result['LanguageType'] = self.language_type
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.platform_name is not None:
+            result['PlatformName'] = self.platform_name
+        if self.platform_name_list is not None:
+            result['PlatformNameList'] = self.platform_name_list
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.product_type_list is not None:
+            result['ProductTypeList'] = self.product_type_list
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.resource_instance_type is not None:
+            result['ResourceInstanceType'] = self.resource_instance_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k in self.tag_list:
+                result['TagList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizRegionIdList') is not None:
+            self.biz_region_id_list = m.get('BizRegionIdList')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('BizTypeList') is not None:
+            self.biz_type_list = m.get('BizTypeList')
+        if m.get('FeatureList') is not None:
+            self.feature_list = m.get('FeatureList')
+        if m.get('FotaVersion') is not None:
+            self.fota_version = m.get('FotaVersion')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('LanguageType') is not None:
+            self.language_type = m.get('LanguageType')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PlatformName') is not None:
+            self.platform_name = m.get('PlatformName')
+        if m.get('PlatformNameList') is not None:
+            self.platform_name_list = m.get('PlatformNameList')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ProductTypeList') is not None:
+            self.product_type_list = m.get('ProductTypeList')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('ResourceInstanceType') is not None:
+            self.resource_instance_type = m.get('ResourceInstanceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k in m.get('TagList'):
+                temp_model = ListImageRequestTagList()
+                self.tag_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListImageResponseBodyDataAppList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        return self
+
+
+class ListImageResponseBodyDataImageRegionDistributeList(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        progress: str = None,
+        region_id: str = None,
+        status: str = None,
+        version_id: str = None,
+    ):
+        self.image_id = image_id
+        self.progress = progress
+        self.region_id = region_id
+        self.status = status
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class ListImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        app_list: List[ListImageResponseBodyDataAppList] = None,
+        base_image_id: str = None,
+        base_image_version: str = None,
+        biz_type: int = None,
+        compatible_mode: bool = None,
+        data_disk_size: int = None,
+        description: str = None,
+        distro: str = None,
+        driver_list: List[str] = None,
+        feature_list: List[str] = None,
+        fota_channel: str = None,
+        fota_version: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        image_create_mode: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_region_distribute_list: List[ListImageResponseBodyDataImageRegionDistributeList] = None,
+        image_region_list: List[str] = None,
+        image_type: str = None,
+        language: str = None,
+        latest_version_id: str = None,
+        online_version: bool = None,
+        online_version_id: str = None,
+        os_type: str = None,
+        package_type: str = None,
+        parent_image_id: str = None,
+        parent_image_version: str = None,
+        platform: int = None,
+        platform_name: str = None,
+        product_type: str = None,
+        protocol_type: str = None,
+        resource_instance_category: str = None,
+        session_type: str = None,
+        status: str = None,
+        supported_language_list: List[str] = None,
+        system_disk_size: int = None,
+        version_id: str = None,
+        version_name: str = None,
+        volume_encryption_enabled: bool = None,
+        volume_encryption_key: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.app_list = app_list
+        self.base_image_id = base_image_id
+        self.base_image_version = base_image_version
+        self.biz_type = biz_type
+        self.compatible_mode = compatible_mode
+        self.data_disk_size = data_disk_size
+        self.description = description
+        self.distro = distro
+        self.driver_list = driver_list
+        self.feature_list = feature_list
+        self.fota_channel = fota_channel
+        self.fota_version = fota_version
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.image_create_mode = image_create_mode
+        self.image_id = image_id
+        self.image_name = image_name
+        self.image_region_distribute_list = image_region_distribute_list
+        self.image_region_list = image_region_list
+        self.image_type = image_type
+        self.language = language
+        self.latest_version_id = latest_version_id
+        self.online_version = online_version
+        self.online_version_id = online_version_id
+        self.os_type = os_type
+        self.package_type = package_type
+        self.parent_image_id = parent_image_id
+        self.parent_image_version = parent_image_version
+        self.platform = platform
+        self.platform_name = platform_name
+        self.product_type = product_type
+        self.protocol_type = protocol_type
+        self.resource_instance_category = resource_instance_category
+        self.session_type = session_type
+        self.status = status
+        self.supported_language_list = supported_language_list
+        self.system_disk_size = system_disk_size
+        self.version_id = version_id
+        self.version_name = version_name
+        self.volume_encryption_enabled = volume_encryption_enabled
+        self.volume_encryption_key = volume_encryption_key
+
+    def validate(self):
+        if self.app_list:
+            for k in self.app_list:
+                if k:
+                    k.validate()
+        if self.image_region_distribute_list:
+            for k in self.image_region_distribute_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        result['AppList'] = []
+        if self.app_list is not None:
+            for k in self.app_list:
+                result['AppList'].append(k.to_map() if k else None)
+        if self.base_image_id is not None:
+            result['BaseImageId'] = self.base_image_id
+        if self.base_image_version is not None:
+            result['BaseImageVersion'] = self.base_image_version
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.compatible_mode is not None:
+            result['CompatibleMode'] = self.compatible_mode
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.distro is not None:
+            result['Distro'] = self.distro
+        if self.driver_list is not None:
+            result['DriverList'] = self.driver_list
+        if self.feature_list is not None:
+            result['FeatureList'] = self.feature_list
+        if self.fota_channel is not None:
+            result['FotaChannel'] = self.fota_channel
+        if self.fota_version is not None:
+            result['FotaVersion'] = self.fota_version
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.image_create_mode is not None:
+            result['ImageCreateMode'] = self.image_create_mode
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        result['ImageRegionDistributeList'] = []
+        if self.image_region_distribute_list is not None:
+            for k in self.image_region_distribute_list:
+                result['ImageRegionDistributeList'].append(k.to_map() if k else None)
+        if self.image_region_list is not None:
+            result['ImageRegionList'] = self.image_region_list
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.latest_version_id is not None:
+            result['LatestVersionId'] = self.latest_version_id
+        if self.online_version is not None:
+            result['OnlineVersion'] = self.online_version
+        if self.online_version_id is not None:
+            result['OnlineVersionId'] = self.online_version_id
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.parent_image_id is not None:
+            result['ParentImageId'] = self.parent_image_id
+        if self.parent_image_version is not None:
+            result['ParentImageVersion'] = self.parent_image_version
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.platform_name is not None:
+            result['PlatformName'] = self.platform_name
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.resource_instance_category is not None:
+            result['ResourceInstanceCategory'] = self.resource_instance_category
+        if self.session_type is not None:
+            result['SessionType'] = self.session_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.supported_language_list is not None:
+            result['SupportedLanguageList'] = self.supported_language_list
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+        if self.volume_encryption_enabled is not None:
+            result['VolumeEncryptionEnabled'] = self.volume_encryption_enabled
+        if self.volume_encryption_key is not None:
+            result['VolumeEncryptionKey'] = self.volume_encryption_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        self.app_list = []
+        if m.get('AppList') is not None:
+            for k in m.get('AppList'):
+                temp_model = ListImageResponseBodyDataAppList()
+                self.app_list.append(temp_model.from_map(k))
+        if m.get('BaseImageId') is not None:
+            self.base_image_id = m.get('BaseImageId')
+        if m.get('BaseImageVersion') is not None:
+            self.base_image_version = m.get('BaseImageVersion')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('CompatibleMode') is not None:
+            self.compatible_mode = m.get('CompatibleMode')
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Distro') is not None:
+            self.distro = m.get('Distro')
+        if m.get('DriverList') is not None:
+            self.driver_list = m.get('DriverList')
+        if m.get('FeatureList') is not None:
+            self.feature_list = m.get('FeatureList')
+        if m.get('FotaChannel') is not None:
+            self.fota_channel = m.get('FotaChannel')
+        if m.get('FotaVersion') is not None:
+            self.fota_version = m.get('FotaVersion')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ImageCreateMode') is not None:
+            self.image_create_mode = m.get('ImageCreateMode')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        self.image_region_distribute_list = []
+        if m.get('ImageRegionDistributeList') is not None:
+            for k in m.get('ImageRegionDistributeList'):
+                temp_model = ListImageResponseBodyDataImageRegionDistributeList()
+                self.image_region_distribute_list.append(temp_model.from_map(k))
+        if m.get('ImageRegionList') is not None:
+            self.image_region_list = m.get('ImageRegionList')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('LatestVersionId') is not None:
+            self.latest_version_id = m.get('LatestVersionId')
+        if m.get('OnlineVersion') is not None:
+            self.online_version = m.get('OnlineVersion')
+        if m.get('OnlineVersionId') is not None:
+            self.online_version_id = m.get('OnlineVersionId')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('ParentImageId') is not None:
+            self.parent_image_id = m.get('ParentImageId')
+        if m.get('ParentImageVersion') is not None:
+            self.parent_image_version = m.get('ParentImageVersion')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('PlatformName') is not None:
+            self.platform_name = m.get('PlatformName')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('ResourceInstanceCategory') is not None:
+            self.resource_instance_category = m.get('ResourceInstanceCategory')
+        if m.get('SessionType') is not None:
+            self.session_type = m.get('SessionType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SupportedLanguageList') is not None:
+            self.supported_language_list = m.get('SupportedLanguageList')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+        if m.get('VolumeEncryptionEnabled') is not None:
+            self.volume_encryption_enabled = m.get('VolumeEncryptionEnabled')
+        if m.get('VolumeEncryptionKey') is not None:
+            self.volume_encryption_key = m.get('VolumeEncryptionKey')
+        return self
+
+
+class ListImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: int = None,
+        data: List[ListImageResponseBodyData] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.count = count
+        self.data = data
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListImageResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

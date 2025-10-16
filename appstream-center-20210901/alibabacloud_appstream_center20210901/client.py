@@ -535,6 +535,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_app_instance_group_with_options_async(request, runtime)
 
+    def create_image_by_instance_with_options(
+        self,
+        request: appstream_center_20210901_models.CreateImageByInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
+        """
+        @summary 通过实例创建镜像
+        
+        @param request: CreateImageByInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageByInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_clean_userdata):
+            body['AutoCleanUserdata'] = request.auto_clean_userdata
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.disk_type):
+            body['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.sub_instance_id):
+            body['SubInstanceId'] = request.sub_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageByInstance',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.CreateImageByInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_by_instance_with_options_async(
+        self,
+        request: appstream_center_20210901_models.CreateImageByInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
+        """
+        @summary 通过实例创建镜像
+        
+        @param request: CreateImageByInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageByInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_clean_userdata):
+            body['AutoCleanUserdata'] = request.auto_clean_userdata
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.disk_type):
+            body['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.sub_instance_id):
+            body['SubInstanceId'] = request.sub_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageByInstance',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.CreateImageByInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_by_instance(
+        self,
+        request: appstream_center_20210901_models.CreateImageByInstanceRequest,
+    ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
+        """
+        @summary 通过实例创建镜像
+        
+        @param request: CreateImageByInstanceRequest
+        @return: CreateImageByInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_by_instance_with_options(request, runtime)
+
+    async def create_image_by_instance_async(
+        self,
+        request: appstream_center_20210901_models.CreateImageByInstanceRequest,
+    ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
+        """
+        @summary 通过实例创建镜像
+        
+        @param request: CreateImageByInstanceRequest
+        @return: CreateImageByInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_by_instance_with_options_async(request, runtime)
+
     def create_image_from_app_instance_group_with_options(
         self,
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
@@ -2432,6 +2560,186 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_bind_info_with_options_async(request, runtime)
+
+    def list_image_with_options(
+        self,
+        request: appstream_center_20210901_models.ListImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListImageResponse:
+        """
+        @summary 列表显示镜像
+        
+        @param request: ListImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        body = {}
+        if not UtilClient.is_unset(request.biz_region_id_list):
+            body['BizRegionIdList'] = request.biz_region_id_list
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.biz_type_list):
+            body['BizTypeList'] = request.biz_type_list
+        if not UtilClient.is_unset(request.feature_list):
+            body['FeatureList'] = request.feature_list
+        if not UtilClient.is_unset(request.fota_version):
+            body['FotaVersion'] = request.fota_version
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_type):
+            body['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.language_type):
+            body['LanguageType'] = request.language_type
+        if not UtilClient.is_unset(request.os_type):
+            body['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.package_type):
+            body['PackageType'] = request.package_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform_name):
+            body['PlatformName'] = request.platform_name
+        if not UtilClient.is_unset(request.platform_name_list):
+            body['PlatformNameList'] = request.platform_name_list
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.product_type_list):
+            body['ProductTypeList'] = request.product_type_list
+        if not UtilClient.is_unset(request.protocol_type):
+            body['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.resource_instance_type):
+            body['ResourceInstanceType'] = request.resource_instance_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_image_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListImageResponse:
+        """
+        @summary 列表显示镜像
+        
+        @param request: ListImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        body = {}
+        if not UtilClient.is_unset(request.biz_region_id_list):
+            body['BizRegionIdList'] = request.biz_region_id_list
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.biz_type_list):
+            body['BizTypeList'] = request.biz_type_list
+        if not UtilClient.is_unset(request.feature_list):
+            body['FeatureList'] = request.feature_list
+        if not UtilClient.is_unset(request.fota_version):
+            body['FotaVersion'] = request.fota_version
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_type):
+            body['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.language_type):
+            body['LanguageType'] = request.language_type
+        if not UtilClient.is_unset(request.os_type):
+            body['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.package_type):
+            body['PackageType'] = request.package_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform_name):
+            body['PlatformName'] = request.platform_name
+        if not UtilClient.is_unset(request.platform_name_list):
+            body['PlatformNameList'] = request.platform_name_list
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.product_type_list):
+            body['ProductTypeList'] = request.product_type_list
+        if not UtilClient.is_unset(request.protocol_type):
+            body['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.resource_instance_type):
+            body['ResourceInstanceType'] = request.resource_instance_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_image(
+        self,
+        request: appstream_center_20210901_models.ListImageRequest,
+    ) -> appstream_center_20210901_models.ListImageResponse:
+        """
+        @summary 列表显示镜像
+        
+        @param request: ListImageRequest
+        @return: ListImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_image_with_options(request, runtime)
+
+    async def list_image_async(
+        self,
+        request: appstream_center_20210901_models.ListImageRequest,
+    ) -> appstream_center_20210901_models.ListImageResponse:
+        """
+        @summary 列表显示镜像
+        
+        @param request: ListImageRequest
+        @return: ListImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_image_with_options_async(request, runtime)
 
     def list_node_instance_type_with_options(
         self,

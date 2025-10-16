@@ -1,3 +1,8 @@
+2025-10-16 Version: 4.4.0
+- Support API CreateImageByInstance.
+- Support API ListImage.
+
+
 2025-10-13 Version: 4.3.0
 - Support API DescribeWuyingServerEipInfo.
 - Update API CreateWuyingServer: add request parameters Bandwidth.
