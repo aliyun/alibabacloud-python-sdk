@@ -1,3 +1,55 @@
+2025-10-17 Version: 6.0.0
+- Support API CheckAccountNameZonal.
+- Support API CheckDBNameZonal.
+- Support API CreateAccountZonal.
+- Support API CreateDBClusterEndpointZonal.
+- Support API CreateDatabaseZonal.
+- Support API DeleteAccountZonal.
+- Support API DeleteDBClusterEndpointZonal.
+- Support API DeleteDatabaseZonal.
+- Support API DescribeAccountsZonal.
+- Support API DescribeApplicationServerlessConf.
+- Support API DescribeDBClusterEndpointsZonal.
+- Support API DescribeDBClusterVersionZonal.
+- Support API DescribeDBClustersZonal.
+- Support API DescribeDatabasesZonal.
+- Support API DescribeDbClusterAttributeZonal.
+- Support API FailoverDBClusterZonal.
+- Support API GrantAccountPrivilegeZonal.
+- Support API ModifyAccountDescriptionZonal.
+- Support API ModifyAccountPasswordZonal.
+- Support API ModifyApplicationServerlessConf.
+- Support API ModifyDBClusterDescriptionZonal.
+- Support API ModifyDBClusterEndpointZonal.
+- Support API ModifyDBDescriptionZonal.
+- Support API ResetAccountZonal.
+- Support API RestartDBNodeZonal.
+- Support API RevokeAccountPrivilegeZonal.
+- Support API UpgradeDBClusterVersionZonal.
+- Update API CreateApplication: add request parameters VpcId.
+- Update API CreateApplication: add request parameters Components.$.ScaleMax.
+- Update API CreateApplication: add request parameters Components.$.ScaleMin.
+- Update API CreateDBCluster: add request parameters CloudProvider.
+- Update API CreateDBCluster: add request parameters EnsRegionId.
+- Update API CreateDBClusterEndpoint: add request parameters PolarFsInstanceId.
+- Update API CreateDBNodes: add request parameters CloudProvider.
+- Update API DeleteDBClusterEndpoint: add request parameters PolarFsInstanceId.
+- Update API DeleteDBNodes: add request parameters CloudProvider.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.ChildVolumes.
+- Update API DescribeAIDBClusterAttribute: delete response parameters Body.DBNodes.$.Volumes.
+- Update API DescribeAIDBClusters: add response parameters Body.Items.$.RelativeDBClusterId.
+- Update API DescribeApplicationAttribute: add response parameters Body.ServerlessType.
+- Update API DescribeAutoRenewAttribute: add request parameters CloudProvider.
+- Update API DescribeDBClusterAttribute: add response parameters Body.SearchCompressStorageUsed.
+- Update API DescribeDBClusterAttribute: add response parameters Body.SearchStorageUsed.
+- Update API DescribeDBClusterEndpoints: add request parameters PolarFsInstanceId.
+- Update API DescribeDBClusters: add response parameters Body.Items.$.SearchStorageUsed.
+- Update API ModifyAutoRenewAttribute: add request parameters CloudProvider.
+- Update API ModifyDBClusterStorageSpace: add request parameters CloudProvider.
+- Update API ModifyDBNodeClass: add request parameters CloudProvider.
+- Update API ModifyDBNodesClass: add request parameters CloudProvider.
+
+
 2025-10-11 Version: 5.13.0
 - Generated python 2017-08-01 for polardb.
 
