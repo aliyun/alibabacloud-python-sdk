@@ -3920,8 +3920,10 @@ class DescribeClusterResponseBody(TeaModel):
         operating_state: str = None,
         request_id: str = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
         task_id: str = None,
         update_time: str = None,
+        v_switch_id: str = None,
         vpc_id: str = None,
     ):
         # The cluster description.
@@ -3954,10 +3956,12 @@ class DescribeClusterResponseBody(TeaModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
         # The job ID.
         self.task_id = task_id
         # The update time.
         self.update_time = update_time
+        self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
@@ -4007,10 +4011,14 @@ class DescribeClusterResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -4051,10 +4059,14 @@ class DescribeClusterResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
