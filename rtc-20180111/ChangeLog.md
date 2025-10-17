@@ -1,3 +1,7 @@
+2025-10-17 Version: 5.2.5
+- Update API StartCloudRecord: add request parameters SingleStreamingRecord.AvMerge.
+
+
 2025-10-10 Version: 5.2.4
 - Update API CreateAppAgentTemplate: add request parameters AmbientSoundConfig.
 - Update API CreateAppAgentTemplate: add request parameters BackChannelConfig.

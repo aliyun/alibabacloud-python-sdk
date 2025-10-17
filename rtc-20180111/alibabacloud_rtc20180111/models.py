@@ -24748,9 +24748,11 @@ class StartCloudRecordRequestSingleStreamingRecordTranscodingParameters(TeaModel
 class StartCloudRecordRequestSingleStreamingRecord(TeaModel):
     def __init__(
         self,
+        av_merge: bool = None,
         specified_streams: List[StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams] = None,
         transcoding_parameters: StartCloudRecordRequestSingleStreamingRecordTranscodingParameters = None,
     ):
+        self.av_merge = av_merge
         # This parameter is required.
         self.specified_streams = specified_streams
         self.transcoding_parameters = transcoding_parameters
@@ -24769,6 +24771,8 @@ class StartCloudRecordRequestSingleStreamingRecord(TeaModel):
             return _map
 
         result = dict()
+        if self.av_merge is not None:
+            result['AvMerge'] = self.av_merge
         result['SpecifiedStreams'] = []
         if self.specified_streams is not None:
             for k in self.specified_streams:
@@ -24779,6 +24783,8 @@ class StartCloudRecordRequestSingleStreamingRecord(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvMerge') is not None:
+            self.av_merge = m.get('AvMerge')
         self.specified_streams = []
         if m.get('SpecifiedStreams') is not None:
             for k in m.get('SpecifiedStreams'):
