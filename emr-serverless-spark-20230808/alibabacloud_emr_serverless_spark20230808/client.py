@@ -2981,6 +2981,246 @@ class Client(OpenApiClient):
         headers = {}
         return await self.grant_role_to_users_with_options_async(request, headers, runtime)
 
+    def list_catalogs_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListCatalogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListCatalogsResponse:
+        """
+        @summary 查看数据目录列表
+        
+        @param request: ListCatalogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCatalogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment):
+            query['environment'] = request.environment
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCatalogs',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/catalogs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListCatalogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_catalogs_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListCatalogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListCatalogsResponse:
+        """
+        @summary 查看数据目录列表
+        
+        @param request: ListCatalogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCatalogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment):
+            query['environment'] = request.environment
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCatalogs',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/catalogs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListCatalogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_catalogs(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListCatalogsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListCatalogsResponse:
+        """
+        @summary 查看数据目录列表
+        
+        @param request: ListCatalogsRequest
+        @return: ListCatalogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_catalogs_with_options(workspace_id, request, headers, runtime)
+
+    async def list_catalogs_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListCatalogsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListCatalogsResponse:
+        """
+        @summary 查看数据目录列表
+        
+        @param request: ListCatalogsRequest
+        @return: ListCatalogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_catalogs_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_job_executors_with_options(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        request: emr_serverless_spark_20230808_models.ListJobExecutorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListJobExecutorsResponse:
+        """
+        @summary 列出作业的executors
+        
+        @param request: ListJobExecutorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobExecutorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.executor_type):
+            query['executorType'] = request.executor_type
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobExecutors',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/jobRuns/{OpenApiUtilClient.get_encode_param(job_run_id)}/executors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListJobExecutorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_executors_with_options_async(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        request: emr_serverless_spark_20230808_models.ListJobExecutorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListJobExecutorsResponse:
+        """
+        @summary 列出作业的executors
+        
+        @param request: ListJobExecutorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobExecutorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.executor_type):
+            query['executorType'] = request.executor_type
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobExecutors',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/jobRuns/{OpenApiUtilClient.get_encode_param(job_run_id)}/executors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListJobExecutorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_executors(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        request: emr_serverless_spark_20230808_models.ListJobExecutorsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListJobExecutorsResponse:
+        """
+        @summary 列出作业的executors
+        
+        @param request: ListJobExecutorsRequest
+        @return: ListJobExecutorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_job_executors_with_options(workspace_id, job_run_id, request, headers, runtime)
+
+    async def list_job_executors_async(
+        self,
+        workspace_id: str,
+        job_run_id: str,
+        request: emr_serverless_spark_20230808_models.ListJobExecutorsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListJobExecutorsResponse:
+        """
+        @summary 列出作业的executors
+        
+        @param request: ListJobExecutorsRequest
+        @return: ListJobExecutorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_job_executors_with_options_async(workspace_id, job_run_id, request, headers, runtime)
+
     def list_job_runs_with_options(
         self,
         workspace_id: str,
@@ -4354,6 +4594,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_sql_statement_contents_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_template_with_options(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListTemplateResponse:
+        """
+        @summary 获取任务模板列表
+        
+        @param request: ListTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTemplate',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/template/listing',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_template_with_options_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListTemplateResponse:
+        """
+        @summary 获取任务模板列表
+        
+        @param request: ListTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTemplate',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/template/listing',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_template(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListTemplateRequest,
+    ) -> emr_serverless_spark_20230808_models.ListTemplateResponse:
+        """
+        @summary 获取任务模板列表
+        
+        @param request: ListTemplateRequest
+        @return: ListTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_template_with_options(workspace_biz_id, request, headers, runtime)
+
+    async def list_template_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListTemplateRequest,
+    ) -> emr_serverless_spark_20230808_models.ListTemplateResponse:
+        """
+        @summary 获取任务模板列表
+        
+        @param request: ListTemplateRequest
+        @return: ListTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_template_with_options_async(workspace_biz_id, request, headers, runtime)
 
     def list_workspace_queues_with_options(
         self,

@@ -1,3 +1,9 @@
+2025-10-17 Version: 1.16.0
+- Support API ListCatalogs.
+- Support API ListJobExecutors.
+- Support API ListTemplate.
+
+
 2025-09-09 Version: 1.15.0
 - Support API CreateKyuubiToken.
 - Support API DeleteKyuubiToken.
