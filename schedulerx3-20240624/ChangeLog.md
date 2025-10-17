@@ -1,3 +1,8 @@
+2025-10-17 Version: 1.3.3
+- Update API GetLog: add request parameters ScheduleTime.
+- Update API GetLog: add request parameters WorkerAddr.
+
+
 2025-09-24 Version: 1.3.2
 - Update API CreateCluster: add request parameters ChargeType.
 - Update API CreateCluster: add request parameters Duration.

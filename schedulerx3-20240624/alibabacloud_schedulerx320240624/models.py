@@ -3461,7 +3461,9 @@ class GetLogRequest(TeaModel):
         log_id: int = None,
         offset: int = None,
         reverse: bool = None,
+        schedule_time: int = None,
         start_time: int = None,
+        worker_addr: str = None,
     ):
         self.app_name = app_name
         # This parameter is required.
@@ -3475,7 +3477,9 @@ class GetLogRequest(TeaModel):
         self.log_id = log_id
         self.offset = offset
         self.reverse = reverse
+        self.schedule_time = schedule_time
         self.start_time = start_time
+        self.worker_addr = worker_addr
 
     def validate(self):
         pass
@@ -3506,8 +3510,12 @@ class GetLogRequest(TeaModel):
             result['Offset'] = self.offset
         if self.reverse is not None:
             result['Reverse'] = self.reverse
+        if self.schedule_time is not None:
+            result['ScheduleTime'] = self.schedule_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.worker_addr is not None:
+            result['WorkerAddr'] = self.worker_addr
         return result
 
     def from_map(self, m: dict = None):
@@ -3532,8 +3540,12 @@ class GetLogRequest(TeaModel):
             self.offset = m.get('Offset')
         if m.get('Reverse') is not None:
             self.reverse = m.get('Reverse')
+        if m.get('ScheduleTime') is not None:
+            self.schedule_time = m.get('ScheduleTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('WorkerAddr') is not None:
+            self.worker_addr = m.get('WorkerAddr')
         return self
 
 
