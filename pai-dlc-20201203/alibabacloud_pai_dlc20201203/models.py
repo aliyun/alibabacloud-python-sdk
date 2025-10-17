@@ -8008,6 +8008,7 @@ class ListJobsRequest(TeaModel):
         business_user_id: str = None,
         caller: str = None,
         display_name: str = None,
+        display_name_search_mode: str = None,
         end_time: str = None,
         from_all_workspaces: bool = None,
         job_id: str = None,
@@ -8041,6 +8042,7 @@ class ListJobsRequest(TeaModel):
         self.caller = caller
         # The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
         self.display_name = display_name
+        self.display_name_search_mode = display_name_search_mode
         # The end time of the query. Use the job creation time to filter data. The default value is the current time.
         self.end_time = end_time
         # Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
@@ -8138,6 +8140,8 @@ class ListJobsRequest(TeaModel):
             result['Caller'] = self.caller
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.display_name_search_mode is not None:
+            result['DisplayNameSearchMode'] = self.display_name_search_mode
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.from_all_workspaces is not None:
@@ -8192,6 +8196,8 @@ class ListJobsRequest(TeaModel):
             self.caller = m.get('Caller')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('DisplayNameSearchMode') is not None:
+            self.display_name_search_mode = m.get('DisplayNameSearchMode')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('FromAllWorkspaces') is not None:
@@ -8244,6 +8250,7 @@ class ListJobsShrinkRequest(TeaModel):
         business_user_id: str = None,
         caller: str = None,
         display_name: str = None,
+        display_name_search_mode: str = None,
         end_time: str = None,
         from_all_workspaces: bool = None,
         job_id: str = None,
@@ -8277,6 +8284,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.caller = caller
         # The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
         self.display_name = display_name
+        self.display_name_search_mode = display_name_search_mode
         # The end time of the query. Use the job creation time to filter data. The default value is the current time.
         self.end_time = end_time
         # Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
@@ -8374,6 +8382,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['Caller'] = self.caller
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.display_name_search_mode is not None:
+            result['DisplayNameSearchMode'] = self.display_name_search_mode
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.from_all_workspaces is not None:
@@ -8428,6 +8438,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.caller = m.get('Caller')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('DisplayNameSearchMode') is not None:
+            self.display_name_search_mode = m.get('DisplayNameSearchMode')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('FromAllWorkspaces') is not None:

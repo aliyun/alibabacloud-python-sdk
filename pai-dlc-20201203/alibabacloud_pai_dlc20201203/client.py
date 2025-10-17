@@ -2320,6 +2320,8 @@ class Client(OpenApiClient):
             query['Caller'] = request.caller
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.display_name_search_mode):
+            query['DisplayNameSearchMode'] = request.display_name_search_mode
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.from_all_workspaces):
@@ -2410,6 +2412,8 @@ class Client(OpenApiClient):
             query['Caller'] = request.caller
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.display_name_search_mode):
+            query['DisplayNameSearchMode'] = request.display_name_search_mode
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.from_all_workspaces):
