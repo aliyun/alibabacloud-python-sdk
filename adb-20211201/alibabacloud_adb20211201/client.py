@@ -2483,6 +2483,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_aps_sls_adbjob_with_options_async(request, runtime)
 
+    def create_aps_webhook_with_options(
+        self,
+        tmp_req: adb_20211201_models.CreateApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsWebhookResponse:
+        """
+        @summary CreateApsWebhook
+        
+        @param tmp_req: CreateApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsWebhookResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsWebhookShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.webhook):
+            request.webhook_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.webhook, 'Webhook', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.webhook_shrink):
+            body['Webhook'] = request.webhook_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateApsWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aps_webhook_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.CreateApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsWebhookResponse:
+        """
+        @summary CreateApsWebhook
+        
+        @param tmp_req: CreateApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsWebhookResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsWebhookShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.webhook):
+            request.webhook_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.webhook, 'Webhook', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.webhook_shrink):
+            body['Webhook'] = request.webhook_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateApsWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aps_webhook(
+        self,
+        request: adb_20211201_models.CreateApsWebhookRequest,
+    ) -> adb_20211201_models.CreateApsWebhookResponse:
+        """
+        @summary CreateApsWebhook
+        
+        @param request: CreateApsWebhookRequest
+        @return: CreateApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aps_webhook_with_options(request, runtime)
+
+    async def create_aps_webhook_async(
+        self,
+        request: adb_20211201_models.CreateApsWebhookRequest,
+    ) -> adb_20211201_models.CreateApsWebhookResponse:
+        """
+        @summary CreateApsWebhook
+        
+        @param request: CreateApsWebhookRequest
+        @return: CreateApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aps_webhook_with_options_async(request, runtime)
+
     def create_backup_with_options(
         self,
         request: adb_20211201_models.CreateBackupRequest,
@@ -3275,6 +3391,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_lake_storage_with_options_async(request, runtime)
 
+    def create_materialized_view_recommend_with_options(
+        self,
+        request: adb_20211201_models.CreateMaterializedViewRecommendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
+        """
+        @summary 创建物化视图自动推荐任务
+        
+        @param request: CreateMaterializedViewRecommendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMaterializedViewRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.min_rewrite_query_count):
+            query['MinRewriteQueryCount'] = request.min_rewrite_query_count
+        if not UtilClient.is_unset(request.min_rewrite_query_pattern):
+            query['MinRewriteQueryPattern'] = request.min_rewrite_query_pattern
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scan_queries_range):
+            query['ScanQueriesRange'] = request.scan_queries_range
+        if not UtilClient.is_unset(request.scheduling_day):
+            query['SchedulingDay'] = request.scheduling_day
+        if not UtilClient.is_unset(request.scheduling_policy):
+            query['SchedulingPolicy'] = request.scheduling_policy
+        if not UtilClient.is_unset(request.slow_query_threshold):
+            query['SlowQueryThreshold'] = request.slow_query_threshold
+        if not UtilClient.is_unset(request.specified_time):
+            query['SpecifiedTime'] = request.specified_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMaterializedViewRecommend',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateMaterializedViewRecommendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_materialized_view_recommend_with_options_async(
+        self,
+        request: adb_20211201_models.CreateMaterializedViewRecommendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
+        """
+        @summary 创建物化视图自动推荐任务
+        
+        @param request: CreateMaterializedViewRecommendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMaterializedViewRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.min_rewrite_query_count):
+            query['MinRewriteQueryCount'] = request.min_rewrite_query_count
+        if not UtilClient.is_unset(request.min_rewrite_query_pattern):
+            query['MinRewriteQueryPattern'] = request.min_rewrite_query_pattern
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scan_queries_range):
+            query['ScanQueriesRange'] = request.scan_queries_range
+        if not UtilClient.is_unset(request.scheduling_day):
+            query['SchedulingDay'] = request.scheduling_day
+        if not UtilClient.is_unset(request.scheduling_policy):
+            query['SchedulingPolicy'] = request.scheduling_policy
+        if not UtilClient.is_unset(request.slow_query_threshold):
+            query['SlowQueryThreshold'] = request.slow_query_threshold
+        if not UtilClient.is_unset(request.specified_time):
+            query['SpecifiedTime'] = request.specified_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMaterializedViewRecommend',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateMaterializedViewRecommendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_materialized_view_recommend(
+        self,
+        request: adb_20211201_models.CreateMaterializedViewRecommendRequest,
+    ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
+        """
+        @summary 创建物化视图自动推荐任务
+        
+        @param request: CreateMaterializedViewRecommendRequest
+        @return: CreateMaterializedViewRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_materialized_view_recommend_with_options(request, runtime)
+
+    async def create_materialized_view_recommend_async(
+        self,
+        request: adb_20211201_models.CreateMaterializedViewRecommendRequest,
+    ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
+        """
+        @summary 创建物化视图自动推荐任务
+        
+        @param request: CreateMaterializedViewRecommendRequest
+        @return: CreateMaterializedViewRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_materialized_view_recommend_with_options_async(request, runtime)
+
     def create_oss_sub_directory_with_options(
         self,
         request: adb_20211201_models.CreateOssSubDirectoryRequest,
@@ -3998,6 +4266,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_aps_job_with_options_async(request, runtime)
+
+    def delete_aps_webhook_with_options(
+        self,
+        request: adb_20211201_models.DeleteApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteApsWebhookResponse:
+        """
+        @summary DeleteApsWebhook
+        
+        @param request: DeleteApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApsWebhookResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.webhook_id):
+            body['WebhookId'] = request.webhook_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeleteApsWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aps_webhook_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteApsWebhookResponse:
+        """
+        @summary DeleteApsWebhook
+        
+        @param request: DeleteApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApsWebhookResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.webhook_id):
+            body['WebhookId'] = request.webhook_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeleteApsWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aps_webhook(
+        self,
+        request: adb_20211201_models.DeleteApsWebhookRequest,
+    ) -> adb_20211201_models.DeleteApsWebhookResponse:
+        """
+        @summary DeleteApsWebhook
+        
+        @param request: DeleteApsWebhookRequest
+        @return: DeleteApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aps_webhook_with_options(request, runtime)
+
+    async def delete_aps_webhook_async(
+        self,
+        request: adb_20211201_models.DeleteApsWebhookRequest,
+    ) -> adb_20211201_models.DeleteApsWebhookResponse:
+        """
+        @summary DeleteApsWebhook
+        
+        @param request: DeleteApsWebhookRequest
+        @return: DeleteApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aps_webhook_with_options_async(request, runtime)
 
     def delete_backups_with_options(
         self,
@@ -21219,6 +21591,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_aps_optimization_tasks_with_options_async(request, runtime)
 
+    def list_aps_webhook_with_options(
+        self,
+        request: adb_20211201_models.ListApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsWebhookResponse:
+        """
+        @summary ListApsWebhook
+        
+        @param request: ListApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsWebhookResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ListApsWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aps_webhook_with_options_async(
+        self,
+        request: adb_20211201_models.ListApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsWebhookResponse:
+        """
+        @summary ListApsWebhook
+        
+        @param request: ListApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsWebhookResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ListApsWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aps_webhook(
+        self,
+        request: adb_20211201_models.ListApsWebhookRequest,
+    ) -> adb_20211201_models.ListApsWebhookResponse:
+        """
+        @summary ListApsWebhook
+        
+        @param request: ListApsWebhookRequest
+        @return: ListApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aps_webhook_with_options(request, runtime)
+
+    async def list_aps_webhook_async(
+        self,
+        request: adb_20211201_models.ListApsWebhookRequest,
+    ) -> adb_20211201_models.ListApsWebhookResponse:
+        """
+        @summary ListApsWebhook
+        
+        @param request: ListApsWebhookRequest
+        @return: ListApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aps_webhook_with_options_async(request, runtime)
+
     def list_lake_storages_with_options(
         self,
         request: adb_20211201_models.ListLakeStoragesRequest,
@@ -25007,6 +25483,302 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_lake_cache_size_with_options_async(request, runtime)
 
+    def modify_materialized_view_with_options(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyMaterializedViewResponse:
+        """
+        @summary 修改物化视图
+        
+        @param request: ModifyMaterializedViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMaterializedViewResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.enable_delay_alert):
+            query['EnableDelayAlert'] = request.enable_delay_alert
+        if not UtilClient.is_unset(request.enable_failure_alert):
+            query['EnableFailureAlert'] = request.enable_failure_alert
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.latency_tolerance):
+            query['LatencyTolerance'] = request.latency_tolerance
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_write):
+            query['QueryWrite'] = request.query_write
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaterializedView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyMaterializedViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_materialized_view_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyMaterializedViewResponse:
+        """
+        @summary 修改物化视图
+        
+        @param request: ModifyMaterializedViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMaterializedViewResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.enable_delay_alert):
+            query['EnableDelayAlert'] = request.enable_delay_alert
+        if not UtilClient.is_unset(request.enable_failure_alert):
+            query['EnableFailureAlert'] = request.enable_failure_alert
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.latency_tolerance):
+            query['LatencyTolerance'] = request.latency_tolerance
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_write):
+            query['QueryWrite'] = request.query_write
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaterializedView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyMaterializedViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_materialized_view(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRequest,
+    ) -> adb_20211201_models.ModifyMaterializedViewResponse:
+        """
+        @summary 修改物化视图
+        
+        @param request: ModifyMaterializedViewRequest
+        @return: ModifyMaterializedViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_materialized_view_with_options(request, runtime)
+
+    async def modify_materialized_view_async(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRequest,
+    ) -> adb_20211201_models.ModifyMaterializedViewResponse:
+        """
+        @summary 修改物化视图
+        
+        @param request: ModifyMaterializedViewRequest
+        @return: ModifyMaterializedViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_materialized_view_with_options_async(request, runtime)
+
+    def modify_materialized_view_recommend_with_options(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRecommendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
+        """
+        @summary 修改物化视图自动推荐任务
+        
+        @param request: ModifyMaterializedViewRecommendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMaterializedViewRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.min_rewrite_query_count):
+            query['MinRewriteQueryCount'] = request.min_rewrite_query_count
+        if not UtilClient.is_unset(request.min_rewrite_query_pattern):
+            query['MinRewriteQueryPattern'] = request.min_rewrite_query_pattern
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scan_queries_range):
+            query['ScanQueriesRange'] = request.scan_queries_range
+        if not UtilClient.is_unset(request.scheduling_day):
+            query['SchedulingDay'] = request.scheduling_day
+        if not UtilClient.is_unset(request.scheduling_policy):
+            query['SchedulingPolicy'] = request.scheduling_policy
+        if not UtilClient.is_unset(request.slow_query_threshold):
+            query['SlowQueryThreshold'] = request.slow_query_threshold
+        if not UtilClient.is_unset(request.specified_time):
+            query['SpecifiedTime'] = request.specified_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaterializedViewRecommend',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyMaterializedViewRecommendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_materialized_view_recommend_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRecommendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
+        """
+        @summary 修改物化视图自动推荐任务
+        
+        @param request: ModifyMaterializedViewRecommendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMaterializedViewRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.min_rewrite_query_count):
+            query['MinRewriteQueryCount'] = request.min_rewrite_query_count
+        if not UtilClient.is_unset(request.min_rewrite_query_pattern):
+            query['MinRewriteQueryPattern'] = request.min_rewrite_query_pattern
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scan_queries_range):
+            query['ScanQueriesRange'] = request.scan_queries_range
+        if not UtilClient.is_unset(request.scheduling_day):
+            query['SchedulingDay'] = request.scheduling_day
+        if not UtilClient.is_unset(request.scheduling_policy):
+            query['SchedulingPolicy'] = request.scheduling_policy
+        if not UtilClient.is_unset(request.slow_query_threshold):
+            query['SlowQueryThreshold'] = request.slow_query_threshold
+        if not UtilClient.is_unset(request.specified_time):
+            query['SpecifiedTime'] = request.specified_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaterializedViewRecommend',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyMaterializedViewRecommendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_materialized_view_recommend(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRecommendRequest,
+    ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
+        """
+        @summary 修改物化视图自动推荐任务
+        
+        @param request: ModifyMaterializedViewRecommendRequest
+        @return: ModifyMaterializedViewRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_materialized_view_recommend_with_options(request, runtime)
+
+    async def modify_materialized_view_recommend_async(
+        self,
+        request: adb_20211201_models.ModifyMaterializedViewRecommendRequest,
+    ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
+        """
+        @summary 修改物化视图自动推荐任务
+        
+        @param request: ModifyMaterializedViewRecommendRequest
+        @return: ModifyMaterializedViewRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_materialized_view_recommend_with_options_async(request, runtime)
+
     def modify_performance_view_with_options(
         self,
         tmp_req: adb_20211201_models.ModifyPerformanceViewRequest,
@@ -26994,6 +27766,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_dbresource_group_with_user_with_options_async(request, runtime)
+
+    def update_aps_webhook_with_options(
+        self,
+        tmp_req: adb_20211201_models.UpdateApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UpdateApsWebhookResponse:
+        """
+        @summary UpdateApsWebhook
+        
+        @param tmp_req: UpdateApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApsWebhookResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.UpdateApsWebhookShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.webhook):
+            request.webhook_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.webhook, 'Webhook', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.webhook_shrink):
+            body['Webhook'] = request.webhook_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.UpdateApsWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_aps_webhook_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.UpdateApsWebhookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UpdateApsWebhookResponse:
+        """
+        @summary UpdateApsWebhook
+        
+        @param tmp_req: UpdateApsWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApsWebhookResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.UpdateApsWebhookShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.webhook):
+            request.webhook_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.webhook, 'Webhook', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.webhook_shrink):
+            body['Webhook'] = request.webhook_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateApsWebhook',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.UpdateApsWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_aps_webhook(
+        self,
+        request: adb_20211201_models.UpdateApsWebhookRequest,
+    ) -> adb_20211201_models.UpdateApsWebhookResponse:
+        """
+        @summary UpdateApsWebhook
+        
+        @param request: UpdateApsWebhookRequest
+        @return: UpdateApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_aps_webhook_with_options(request, runtime)
+
+    async def update_aps_webhook_async(
+        self,
+        request: adb_20211201_models.UpdateApsWebhookRequest,
+    ) -> adb_20211201_models.UpdateApsWebhookResponse:
+        """
+        @summary UpdateApsWebhook
+        
+        @param request: UpdateApsWebhookRequest
+        @return: UpdateApsWebhookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_aps_webhook_with_options_async(request, runtime)
 
     def update_lake_storage_with_options(
         self,
