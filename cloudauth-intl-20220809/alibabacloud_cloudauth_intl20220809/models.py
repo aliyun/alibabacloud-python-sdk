@@ -1712,6 +1712,8 @@ class CredentialGetResultIntlRequest(TeaModel):
         self,
         transaction_id: str = None,
     ):
+        # Unique identifier for the authentication request
+        # 
         # This parameter is required.
         self.transaction_id = transaction_id
 
@@ -1742,8 +1744,14 @@ class CredentialGetResultIntlResponseBodyResult(TeaModel):
         status: str = None,
         sub_code: str = None,
     ):
+        # Identified key information, in JSON format.
         self.ext_id_info = ext_id_info
+        # Task status:
+        # - PROCESSING: In progress (please continue polling)
+        # - SUCCESS: Execution succeeded
+        # - FAILED: Execution failed
         self.status = status
+        # Authentication result description. For more information, see ResultObject.SubCode error codes.
         self.sub_code = sub_code
 
     def validate(self):
@@ -1782,10 +1790,13 @@ class CredentialGetResultIntlResponseBody(TeaModel):
         request_id: str = None,
         result: CredentialGetResultIntlResponseBodyResult = None,
     ):
+        # Return code.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -2086,18 +2097,37 @@ class CredentialSubmitIntlRequest(TeaModel):
         product_code: str = None,
         scene_code: str = None,
     ):
+        # Base64 encoding of the image. If you choose to upload the photo this way, please check the photo size and avoid uploading overly large photos.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
+        # Image URL, accessible via HTTP or HTTPS on the public network.
         self.credential_ocr_picture_url = credential_ocr_picture_url
+        # Credential type:
+        # - 02: Vehicle registration certificate
+        # 
         # This parameter is required.
         self.doc_type = doc_type
+        # Whether to enable tampering detection
+        # - true: Enable
+        # - false: Disable
+        # 
         # This parameter is required.
         self.fraud_check = fraud_check
+        # A unique business identifier defined on the merchant side, used for troubleshooting issues later. Supports a combination of letters and digits, with a maximum length of 32 characters. Ensure uniqueness.
+        # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
+        # Extraction type:
+        # 
+        # - 0201: Thai vehicle registration certificate
+        # 
         # This parameter is required.
         self.ocr_area = ocr_area
+        # The product solution to be integrated. Value: CREDENTIAL_RECOGNITION.
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later. Supports a combination of 10 characters, digits, or underscores.
+        # 
         # This parameter is required.
         self.scene_code = scene_code
 
@@ -2154,6 +2184,7 @@ class CredentialSubmitIntlResponseBodyResult(TeaModel):
         self,
         transaction_id: str = None,
     ):
+        # Unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -2184,10 +2215,13 @@ class CredentialSubmitIntlResponseBody(TeaModel):
         request_id: str = None,
         result: CredentialSubmitIntlResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -2794,12 +2828,29 @@ class DeepfakeDetectIntlStreamRequest(TeaModel):
         product_code: str = None,
         scene_code: str = None,
     ):
+        # Enter the Base64 encoded format of the face image; for video formats, it is recommended to input via stream.
         self.face_base_64 = face_base_64
+        # Image input stream.
         self.face_file = face_file
+        # Face material input type:
+        # 
+        # - IMAGE (default): Face image
+        # - VIDEO: Face video
+        # 
+        # Note: Video processing takes longer, it is recommended to set the timeout > 3S.
         self.face_input_type = face_input_type
+        # Enter the URL address of the face image.
         self.face_url = face_url
+        # A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination.
+        # 
+        # The first few characters are composed of a custom abbreviation defined by the merchant, the middle part can include a period of time, and the latter part can use a random or incremental sequence.
         self.merchant_biz_id = merchant_biz_id
+        # The product solution to be integrated.
+        # Value: FACE_DEEPFAKE
         self.product_code = product_code
+        # Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later.
+        # 
+        # Supports a combination of 10 characters, including letters, numbers, or underscores.
         self.scene_code = scene_code
 
     def validate(self):
@@ -2857,12 +2908,29 @@ class DeepfakeDetectIntlStreamAdvanceRequest(TeaModel):
         product_code: str = None,
         scene_code: str = None,
     ):
+        # Enter the Base64 encoded format of the face image; for video formats, it is recommended to input via stream.
         self.face_base_64 = face_base_64
+        # Image input stream.
         self.face_file_object = face_file_object
+        # Face material input type:
+        # 
+        # - IMAGE (default): Face image
+        # - VIDEO: Face video
+        # 
+        # Note: Video processing takes longer, it is recommended to set the timeout > 3S.
         self.face_input_type = face_input_type
+        # Enter the URL address of the face image.
         self.face_url = face_url
+        # A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination.
+        # 
+        # The first few characters are composed of a custom abbreviation defined by the merchant, the middle part can include a period of time, and the latter part can use a random or incremental sequence.
         self.merchant_biz_id = merchant_biz_id
+        # The product solution to be integrated.
+        # Value: FACE_DEEPFAKE
         self.product_code = product_code
+        # Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later.
+        # 
+        # Supports a combination of 10 characters, including letters, numbers, or underscores.
         self.scene_code = scene_code
 
     def validate(self):
@@ -2916,8 +2984,20 @@ class DeepfakeDetectIntlStreamResponseBodyResultObject(TeaModel):
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
+        # Risk result:
+        # 
+        # - **0**: Low risk
+        # - **1**: High risk
+        # - **2**: Suspicious
         self.result = result
+        # Risk score map.
         self.risk_score = risk_score
+        # Risk tags. Multiple tags are separated by commas (,), including:
+        # 
+        # - SuspectDeepForgery: Suspected deep forgery
+        # - SuspectPSFace: Suspected synthetic attack
+        # - SuspectTemple: Suspected template attack
+        # - SuspectRemake: Suspected presentation attack
         self.risk_tag = risk_tag
 
     def validate(self):
@@ -2956,9 +3036,13 @@ class DeepfakeDetectIntlStreamResponseBody(TeaModel):
         request_id: str = None,
         result_object: DeepfakeDetectIntlStreamResponseBodyResultObject = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -3703,6 +3787,7 @@ class DocOcrMaxRequest(TeaModel):
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         ocr_model: str = None,
+        ocr_value_standard: str = None,
         product_code: str = None,
         prompt: str = None,
         scene_code: str = None,
@@ -3743,6 +3828,7 @@ class DocOcrMaxRequest(TeaModel):
         # 0: General document mode.
         # 1: Custom mode.
         self.ocr_model = ocr_model
+        self.ocr_value_standard = ocr_value_standard
         # The product solution to be integrated.
         # 
         # Value: ID_OCR_MAX
@@ -3784,6 +3870,8 @@ class DocOcrMaxRequest(TeaModel):
             result['MerchantUserId'] = self.merchant_user_id
         if self.ocr_model is not None:
             result['OcrModel'] = self.ocr_model
+        if self.ocr_value_standard is not None:
+            result['OcrValueStandard'] = self.ocr_value_standard
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         if self.prompt is not None:
@@ -3814,6 +3902,8 @@ class DocOcrMaxRequest(TeaModel):
             self.merchant_user_id = m.get('MerchantUserId')
         if m.get('OcrModel') is not None:
             self.ocr_model = m.get('OcrModel')
+        if m.get('OcrValueStandard') is not None:
+            self.ocr_value_standard = m.get('OcrValueStandard')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         if m.get('Prompt') is not None:
@@ -4480,18 +4570,34 @@ class FaceCrossCompareIntlRequest(TeaModel):
         source_cface_picture: str = None,
         source_cface_picture_url: str = None,
     ):
+        # Comparison mode
+        # - 0-Chain comparison (default): A:B and B:C
+        # - 1-Circular comparison: A:B and B:C and C:A
         self.compare_model = compare_model
+        # Face matching threshold.
         self.face_verify_threshold = face_verify_threshold
+        # A unique business identifier for subsequent troubleshooting. It supports a combination of 32 alphanumeric characters, please ensure its uniqueness.
+        # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
+        # Product solution to be integrated. Value: 
+        # FACE_CROSS_COMPARE
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # Custom business scenario ID
         self.scene_code = scene_code
+        # Base64 encoded portrait photo.
         self.source_aface_picture = source_aface_picture
+        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_aface_picture_url = source_aface_picture_url
+        # Base64 encoded portrait photo.
         self.source_bface_picture = source_bface_picture
+        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_bface_picture_url = source_bface_picture_url
+        # Base64 encoded portrait photo.
         self.source_cface_picture = source_cface_picture
+        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_cface_picture_url = source_cface_picture_url
 
     def validate(self):
@@ -4563,10 +4669,17 @@ class FaceCrossCompareIntlResponseBodyResult(TeaModel):
         face_passed: str = None,
         transaction_id: str = None,
     ):
+        # A to B comparison score, range 0～100.
         self.face_comparison_score_a2b = face_comparison_score_a2b
+        # B to C comparison score, range 0～100.
         self.face_comparison_score_b2c = face_comparison_score_b2c
+        # C to A comparison score, range 0～100.
         self.face_comparison_score_c2a = face_comparison_score_c2a
+        # Final verification result, values:
+        # - Y: Pass
+        # - N: Fail
         self.face_passed = face_passed
+        # Unique identifier for the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -4613,10 +4726,13 @@ class FaceCrossCompareIntlResponseBody(TeaModel):
         request_id: str = None,
         result: FaceCrossCompareIntlResponseBodyResult = None,
     ):
+        # Return code.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -8202,16 +8318,27 @@ class QueryFaceRecordRequest(TeaModel):
         page_size: int = None,
         registration_type: str = None,
     ):
+        # Current Page.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Face Group Code.
+        # 
         # This parameter is required.
         self.face_group_code = face_group_code
+        # Face ID.
         self.face_id = face_id
+        # Number of rows per page for paginated queries.
         self.max_results = max_results
+        # Merchant User ID.
         self.merchant_user_id = merchant_user_id
+        # Used to request the next page of search results.
         self.next_token = next_token
+        # Number of items per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Registration Type.
         self.registration_type = registration_type
 
     def validate(self):
@@ -8272,11 +8399,17 @@ class QueryFaceRecordResponseBodyItems(TeaModel):
         merchant_user_id: str = None,
         registration_type: str = None,
     ):
+        # Face ID.
         self.face_id = face_id
+        # Creation time.
         self.gmt_create = gmt_create
+        # Primary key ID.
         self.id = id
+        # Face image URL.
         self.img_oss_url = img_oss_url
+        # Merchant User ID.
         self.merchant_user_id = merchant_user_id
+        # Registration type.
         self.registration_type = registration_type
 
     def validate(self):
@@ -8333,16 +8466,25 @@ class QueryFaceRecordResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Return code.
         self.code = code
+        # Current query page number.
         self.current_page = current_page
+        # List of returned information.
         self.items = items
+        # Maximum number of data entries per page.
         self.max_results = max_results
+        # Return message.
         self.message = message
+        # Token for the next query start.
         self.next_token = next_token
+        # Number of items per page.
         self.page_size = page_size
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -8455,6 +8597,7 @@ class TempAccessTokenIntlRequest(TeaModel):
         self,
         type: str = None,
     ):
+        # Type.
         self.type = type
 
     def validate(self):
@@ -8487,12 +8630,17 @@ class TempAccessTokenIntlResponseBodyData(TeaModel):
         oss_end_point: str = None,
         security_token: str = None,
     ):
+        # AccessKeyId for temporary file upload credentials.
         self.access_key_id = access_key_id
+        # Temporary authorization secret.
         self.access_key_secret = access_key_secret
+        # Bucket name.
         self.bucket_name = bucket_name
+        # File prefix.
         self.file_name_prefix = file_name_prefix
-        # OssEndPoint。
+        # OSS endpoint.
         self.oss_end_point = oss_end_point
+        # Security token for temporary file upload credentials.
         self.security_token = security_token
 
     def validate(self):
@@ -8543,10 +8691,13 @@ class TempAccessTokenIntlResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Return code
         self.code = code
+        # Return result.
         self.data = data
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8629,6 +8780,8 @@ class TempOssUrlIntlRequest(TeaModel):
         self,
         object_name: str = None,
     ):
+        # Object name.
+        # 
         # This parameter is required.
         self.object_name = object_name
 
@@ -8657,6 +8810,7 @@ class TempOssUrlIntlResponseBodyData(TeaModel):
         self,
         url: str = None,
     ):
+        # File URL
         self.url = url
 
     def validate(self):
@@ -8687,10 +8841,13 @@ class TempOssUrlIntlResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Return code.
         self.code = code
+        # Result.
         self.data = data
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):

@@ -996,7 +996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
         """
-        @summary 凭证识别查询
+        @summary Credential Recognition Query
+        
+        @description After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
         
         @param request: CredentialGetResultIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1031,7 +1033,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
         """
-        @summary 凭证识别查询
+        @summary Credential Recognition Query
+        
+        @description After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
         
         @param request: CredentialGetResultIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1065,7 +1069,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CredentialGetResultIntlRequest,
     ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
         """
-        @summary 凭证识别查询
+        @summary Credential Recognition Query
+        
+        @description After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
         
         @param request: CredentialGetResultIntlRequest
         @return: CredentialGetResultIntlResponse
@@ -1078,7 +1084,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CredentialGetResultIntlRequest,
     ) -> cloudauth_intl_20220809_models.CredentialGetResultIntlResponse:
         """
-        @summary 凭证识别查询
+        @summary Credential Recognition Query
+        
+        @description After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
         
         @param request: CredentialGetResultIntlRequest
         @return: CredentialGetResultIntlResponse
@@ -1220,7 +1228,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
         """
-        @summary 凭证识别提交
+        @summary Credential Recognition Submission
+        
+        @description Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
         
         @param request: CredentialSubmitIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1271,7 +1281,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
         """
-        @summary 凭证识别提交
+        @summary Credential Recognition Submission
+        
+        @description Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
         
         @param request: CredentialSubmitIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1321,7 +1333,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CredentialSubmitIntlRequest,
     ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
         """
-        @summary 凭证识别提交
+        @summary Credential Recognition Submission
+        
+        @description Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
         
         @param request: CredentialSubmitIntlRequest
         @return: CredentialSubmitIntlResponse
@@ -1334,7 +1348,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CredentialSubmitIntlRequest,
     ) -> cloudauth_intl_20220809_models.CredentialSubmitIntlResponse:
         """
-        @summary 凭证识别提交
+        @summary Credential Recognition Submission
+        
+        @description Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
         
         @param request: CredentialSubmitIntlRequest
         @return: CredentialSubmitIntlResponse
@@ -1766,7 +1782,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
         """
-        @summary deepfake文件流api
+        @summary deepfake file stream API
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
         
         @param request: DeepfakeDetectIntlStreamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1813,7 +1831,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
         """
-        @summary deepfake文件流api
+        @summary deepfake file stream API
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
         
         @param request: DeepfakeDetectIntlStreamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1859,7 +1879,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
         """
-        @summary deepfake文件流api
+        @summary deepfake file stream API
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
         
         @param request: DeepfakeDetectIntlStreamRequest
         @return: DeepfakeDetectIntlStreamResponse
@@ -1872,7 +1894,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamRequest,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlStreamResponse:
         """
-        @summary deepfake文件流api
+        @summary deepfake file stream API
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
         
         @param request: DeepfakeDetectIntlStreamRequest
         @return: DeepfakeDetectIntlStreamResponse
@@ -2495,6 +2519,9 @@ class Client(OpenApiClient):
         @return: DocOcrMaxResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         body = {}
         if not UtilClient.is_unset(request.doc_page):
             body['DocPage'] = request.doc_page
@@ -2523,6 +2550,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.spoof):
             body['Spoof'] = request.spoof
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2554,6 +2582,9 @@ class Client(OpenApiClient):
         @return: DocOcrMaxResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         body = {}
         if not UtilClient.is_unset(request.doc_page):
             body['DocPage'] = request.doc_page
@@ -2582,6 +2613,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.spoof):
             body['Spoof'] = request.spoof
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2900,7 +2932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
         """
-        @summary 人脸交叉比对
+        @summary Face Cross Comparison
         
         @param request: FaceCrossCompareIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2955,7 +2987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
         """
-        @summary 人脸交叉比对
+        @summary Face Cross Comparison
         
         @param request: FaceCrossCompareIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3009,7 +3041,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceCrossCompareIntlRequest,
     ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
         """
-        @summary 人脸交叉比对
+        @summary Face Cross Comparison
         
         @param request: FaceCrossCompareIntlRequest
         @return: FaceCrossCompareIntlResponse
@@ -3022,7 +3054,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceCrossCompareIntlRequest,
     ) -> cloudauth_intl_20220809_models.FaceCrossCompareIntlResponse:
         """
-        @summary 人脸交叉比对
+        @summary Face Cross Comparison
         
         @param request: FaceCrossCompareIntlRequest
         @return: FaceCrossCompareIntlResponse
@@ -4694,7 +4726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
         """
-        @summary 查询人脸记录
+        @summary Query Face Records
         
         @param request: QueryFaceRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4743,7 +4775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
         """
-        @summary 查询人脸记录
+        @summary Query Face Records
         
         @param request: QueryFaceRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4791,7 +4823,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.QueryFaceRecordRequest,
     ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
         """
-        @summary 查询人脸记录
+        @summary Query Face Records
         
         @param request: QueryFaceRecordRequest
         @return: QueryFaceRecordResponse
@@ -4804,7 +4836,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.QueryFaceRecordRequest,
     ) -> cloudauth_intl_20220809_models.QueryFaceRecordResponse:
         """
-        @summary 查询人脸记录
+        @summary Query Face Records
         
         @param request: QueryFaceRecordRequest
         @return: QueryFaceRecordResponse
@@ -4818,7 +4850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
         """
-        @summary 获取临时token
+        @summary Get Temporary Token
         
         @param request: TempAccessTokenIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4853,7 +4885,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
         """
-        @summary 获取临时token
+        @summary Get Temporary Token
         
         @param request: TempAccessTokenIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4887,7 +4919,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.TempAccessTokenIntlRequest,
     ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
         """
-        @summary 获取临时token
+        @summary Get Temporary Token
         
         @param request: TempAccessTokenIntlRequest
         @return: TempAccessTokenIntlResponse
@@ -4900,7 +4932,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.TempAccessTokenIntlRequest,
     ) -> cloudauth_intl_20220809_models.TempAccessTokenIntlResponse:
         """
-        @summary 获取临时token
+        @summary Get Temporary Token
         
         @param request: TempAccessTokenIntlRequest
         @return: TempAccessTokenIntlResponse
@@ -4914,7 +4946,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
         """
-        @summary 获取文件临时地址
+        @summary Get Temporary File URL
         
         @param request: TempOssUrlIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4949,7 +4981,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
         """
-        @summary 获取文件临时地址
+        @summary Get Temporary File URL
         
         @param request: TempOssUrlIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4983,7 +5015,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.TempOssUrlIntlRequest,
     ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
         """
-        @summary 获取文件临时地址
+        @summary Get Temporary File URL
         
         @param request: TempOssUrlIntlRequest
         @return: TempOssUrlIntlResponse
@@ -4996,7 +5028,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.TempOssUrlIntlRequest,
     ) -> cloudauth_intl_20220809_models.TempOssUrlIntlResponse:
         """
-        @summary 获取文件临时地址
+        @summary Get Temporary File URL
         
         @param request: TempOssUrlIntlRequest
         @return: TempOssUrlIntlResponse
