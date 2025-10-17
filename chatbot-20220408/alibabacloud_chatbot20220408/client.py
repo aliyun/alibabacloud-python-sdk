@@ -277,10 +277,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        body = {}
         if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sand_box):
+            body['SandBox'] = request.sand_box
+        if not UtilClient.is_unset(request.vendor_param):
+            body['VendorParam'] = request.vendor_param
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BeginSession',
@@ -314,10 +320,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        body = {}
         if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sand_box):
+            body['SandBox'] = request.sand_box
+        if not UtilClient.is_unset(request.vendor_param):
+            body['VendorParam'] = request.vendor_param
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BeginSession',

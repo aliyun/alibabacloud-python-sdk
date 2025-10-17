@@ -1,3 +1,8 @@
+2025-10-17 Version: 2.3.1
+- Update API BeginSession: add request parameters SandBox.
+- Update API BeginSession: add request parameters VendorParam.
+
+
 2025-08-21 Version: 2.3.0
 - Support API TongyiChatDebugInfo.
 - Update API DescribeInstance: add response parameters Body.Categories.$.AbilityType.
