@@ -25127,12 +25127,14 @@ class DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo(TeaModel):
 class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
         client_ip: str = None,
         client_os: str = None,
         client_version: str = None,
         desktop_group_id: str = None,
         desktop_group_name: str = None,
         desktop_id: str = None,
+        directory_type: str = None,
         end_user_apply_coordinate_time: int = None,
         end_user_id: str = None,
         last_session_end_time: str = None,
@@ -25148,6 +25150,7 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         terminal_info: DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_duration: int = None,
     ):
+        self.account_type = account_type
         # The IP address of the client.
         self.client_ip = client_ip
         # The OS that the client runs.
@@ -25160,6 +25163,7 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         self.desktop_group_name = desktop_group_name
         # If the session is being established, the value of this parameter indicates the ID of the current cloud desktop. If the session is disconnected, the value of this parameter indicates the ID of the cloud desktop that was most recently connected.
         self.desktop_id = desktop_id
+        self.directory_type = directory_type
         # The point in time when the end user applies for administrator assistance.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
         # The ID of the end user.
@@ -25224,6 +25228,8 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.client_ip is not None:
             result['ClientIp'] = self.client_ip
         if self.client_os is not None:
@@ -25236,6 +25242,8 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
             result['DesktopGroupName'] = self.desktop_group_name
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
+        if self.directory_type is not None:
+            result['DirectoryType'] = self.directory_type
         if self.end_user_apply_coordinate_time is not None:
             result['EndUserApplyCoordinateTime'] = self.end_user_apply_coordinate_time
         if self.end_user_id is not None:
@@ -25268,6 +25276,8 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('ClientIp') is not None:
             self.client_ip = m.get('ClientIp')
         if m.get('ClientOS') is not None:
@@ -25280,6 +25290,8 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
             self.desktop_group_name = m.get('DesktopGroupName')
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
+        if m.get('DirectoryType') is not None:
+            self.directory_type = m.get('DirectoryType')
         if m.get('EndUserApplyCoordinateTime') is not None:
             self.end_user_apply_coordinate_time = m.get('EndUserApplyCoordinateTime')
         if m.get('EndUserId') is not None:
@@ -27520,11 +27532,13 @@ class DescribeDesktopSessionsResponseBodySessionsTerminalInfo(TeaModel):
 class DescribeDesktopSessionsResponseBodySessions(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
         client_ip: str = None,
         client_os: str = None,
         client_version: str = None,
         desktop_id: str = None,
         desktop_name: str = None,
+        directory_type: str = None,
         end_user_apply_coordinate_time: int = None,
         end_user_id: str = None,
         latest_connection_time: int = None,
@@ -27542,6 +27556,7 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         terminal_info: DescribeDesktopSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_time: int = None,
     ):
+        self.account_type = account_type
         # The IP address of the client.
         self.client_ip = client_ip
         # The client OS.
@@ -27552,6 +27567,7 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         self.desktop_id = desktop_id
         # The name of the cloud computer.
         self.desktop_name = desktop_name
+        self.directory_type = directory_type
         # The duration of the remote assistance. Unit: seconds.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
         # The ID of the end user.
@@ -27619,6 +27635,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.client_ip is not None:
             result['ClientIp'] = self.client_ip
         if self.client_os is not None:
@@ -27629,6 +27647,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.desktop_name is not None:
             result['DesktopName'] = self.desktop_name
+        if self.directory_type is not None:
+            result['DirectoryType'] = self.directory_type
         if self.end_user_apply_coordinate_time is not None:
             result['EndUserApplyCoordinateTime'] = self.end_user_apply_coordinate_time
         if self.end_user_id is not None:
@@ -27667,6 +27687,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('ClientIp') is not None:
             self.client_ip = m.get('ClientIp')
         if m.get('ClientOS') is not None:
@@ -27677,6 +27699,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('DesktopName') is not None:
             self.desktop_name = m.get('DesktopName')
+        if m.get('DirectoryType') is not None:
+            self.directory_type = m.get('DirectoryType')
         if m.get('EndUserApplyCoordinateTime') is not None:
             self.end_user_apply_coordinate_time = m.get('EndUserApplyCoordinateTime')
         if m.get('EndUserId') is not None:

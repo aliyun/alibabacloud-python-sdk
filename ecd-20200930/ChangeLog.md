@@ -1,3 +1,10 @@
+2025-10-17 Version: 4.13.1
+- Update API DescribeDesktopGroupSessions: add response parameters Body.Sessions.$.AccountType.
+- Update API DescribeDesktopGroupSessions: add response parameters Body.Sessions.$.DirectoryType.
+- Update API DescribeDesktopSessions: add response parameters Body.Sessions.$.AccountType.
+- Update API DescribeDesktopSessions: add response parameters Body.Sessions.$.DirectoryType.
+
+
 2025-10-16 Version: 4.13.0
 - Support API ModifySecurityGroupAttribute.
 - Update API CreateDesktops: add request parameters SubnetId.
