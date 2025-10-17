@@ -1,3 +1,8 @@
+2025-10-17 Version: 5.10.0
+- Support API ListJobStep.
+- Support API ModifyJobStepCheckpoint.
+
+
 2025-08-05 Version: 5.9.1
 - Update API DescribeDtsJobDetail: add response parameters Body.InitCheckpoint.
 

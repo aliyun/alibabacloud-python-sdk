@@ -10543,6 +10543,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dedicated_cluster_with_options_async(request, runtime)
 
+    def list_job_step_with_options(
+        self,
+        request: dts_20200101_models.ListJobStepRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ListJobStepResponse:
+        """
+        @summary 查询JobStep列表。
+        
+        @param request: ListJobStepRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobStepResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobStep',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ListJobStepResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_step_with_options_async(
+        self,
+        request: dts_20200101_models.ListJobStepRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ListJobStepResponse:
+        """
+        @summary 查询JobStep列表。
+        
+        @param request: ListJobStepRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobStepResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobStep',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ListJobStepResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_step(
+        self,
+        request: dts_20200101_models.ListJobStepRequest,
+    ) -> dts_20200101_models.ListJobStepResponse:
+        """
+        @summary 查询JobStep列表。
+        
+        @param request: ListJobStepRequest
+        @return: ListJobStepResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_job_step_with_options(request, runtime)
+
+    async def list_job_step_async(
+        self,
+        request: dts_20200101_models.ListJobStepRequest,
+    ) -> dts_20200101_models.ListJobStepResponse:
+        """
+        @summary 查询JobStep列表。
+        
+        @param request: ListJobStepRequest
+        @return: ListJobStepResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_job_step_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: dts_20200101_models.ListTagResourcesRequest,
@@ -12516,6 +12624,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_gad_instance_name_with_options_async(request, runtime)
+
+    def modify_job_step_checkpoint_with_options(
+        self,
+        request: dts_20200101_models.ModifyJobStepCheckpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyJobStepCheckpointResponse:
+        """
+        @summary 修改增量写入的位点。
+        
+        @param request: ModifyJobStepCheckpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyJobStepCheckpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_step_id):
+            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.new_check_point):
+            query['NewCheckPoint'] = request.new_check_point
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyJobStepCheckpoint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyJobStepCheckpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_job_step_checkpoint_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyJobStepCheckpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyJobStepCheckpointResponse:
+        """
+        @summary 修改增量写入的位点。
+        
+        @param request: ModifyJobStepCheckpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyJobStepCheckpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_step_id):
+            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.new_check_point):
+            query['NewCheckPoint'] = request.new_check_point
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyJobStepCheckpoint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyJobStepCheckpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_job_step_checkpoint(
+        self,
+        request: dts_20200101_models.ModifyJobStepCheckpointRequest,
+    ) -> dts_20200101_models.ModifyJobStepCheckpointResponse:
+        """
+        @summary 修改增量写入的位点。
+        
+        @param request: ModifyJobStepCheckpointRequest
+        @return: ModifyJobStepCheckpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_job_step_checkpoint_with_options(request, runtime)
+
+    async def modify_job_step_checkpoint_async(
+        self,
+        request: dts_20200101_models.ModifyJobStepCheckpointRequest,
+    ) -> dts_20200101_models.ModifyJobStepCheckpointResponse:
+        """
+        @summary 修改增量写入的位点。
+        
+        @param request: ModifyJobStepCheckpointRequest
+        @return: ModifyJobStepCheckpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_job_step_checkpoint_with_options_async(request, runtime)
 
     def modify_subscription_with_options(
         self,
