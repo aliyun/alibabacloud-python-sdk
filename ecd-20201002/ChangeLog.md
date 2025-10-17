@@ -1,3 +1,8 @@
+2025-10-17 Version: 1.2.9
+- Update API GetConnectionTicket: add request parameters AccessType.
+- Update API GetConnectionTicket: add response parameters Body.P2PToken.
+
+
 2025-09-17 Version: 1.2.8
 - Update API DescribeUserResources: add request parameters QueryDesktopDurationList.
 - Update API DescribeUserResources: add request parameters QueryDesktopTimers.

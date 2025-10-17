@@ -1535,6 +1535,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_os):
@@ -1598,6 +1600,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_os):

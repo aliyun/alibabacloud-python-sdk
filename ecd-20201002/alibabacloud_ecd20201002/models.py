@@ -3762,6 +3762,7 @@ class GetConnectionTicketRequestTag(TeaModel):
 class GetConnectionTicketRequest(TeaModel):
     def __init__(
         self,
+        access_type: str = None,
         client_id: str = None,
         client_os: str = None,
         client_type: str = None,
@@ -3778,6 +3779,7 @@ class GetConnectionTicketRequest(TeaModel):
         task_id: str = None,
         uuid: str = None,
     ):
+        self.access_type = access_type
         # This parameter is required.
         self.client_id = client_id
         self.client_os = client_os
@@ -3809,6 +3811,8 @@ class GetConnectionTicketRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_os is not None:
@@ -3845,6 +3849,8 @@ class GetConnectionTicketRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientOS') is not None:
@@ -3884,6 +3890,7 @@ class GetConnectionTicketRequest(TeaModel):
 class GetConnectionTicketResponseBody(TeaModel):
     def __init__(
         self,
+        p_2ptoken: str = None,
         request_id: str = None,
         task_code: str = None,
         task_id: str = None,
@@ -3891,6 +3898,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         task_status: str = None,
         ticket: str = None,
     ):
+        self.p_2ptoken = p_2ptoken
         self.request_id = request_id
         self.task_code = task_code
         self.task_id = task_id
@@ -3907,6 +3915,8 @@ class GetConnectionTicketResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.p_2ptoken is not None:
+            result['P2PToken'] = self.p_2ptoken
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.task_code is not None:
@@ -3923,6 +3933,8 @@ class GetConnectionTicketResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('P2PToken') is not None:
+            self.p_2ptoken = m.get('P2PToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TaskCode') is not None:
