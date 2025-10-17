@@ -1,3 +1,18 @@
+2025-10-17 Version: 7.2.4
+- Update API CreateImagePipeline: add request parameters ImportImageOptions.Description.
+- Update API CreateImagePipeline: add request parameters ImportImageOptions.ImageName.
+- Update API CreateImagePipeline: add request parameters ImportImageOptions.ImportImageTags.
+- Update API CreateImagePipeline: add request parameters ImportImageOptions.RetentionStrategy.
+- Update API CreateImagePipeline: add request parameters ImportImageOptions.RoleName.
+- Update API CreateImagePipeline: add request parameters ImportImageOptions.Features.ImdsSupport.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.ImportImageOptions.Description.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.ImportImageOptions.ImageName.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.ImportImageOptions.ImportImageTags.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.ImportImageOptions.RetentionStrategy.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.ImportImageOptions.RoleName.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.ImportImageOptions.Features.ImdsSupport.
+
+
 2025-10-10 Version: 7.2.3
 - Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.CpuOptions.
 - Update API DescribeManagedInstances: add request parameters MachineId.
