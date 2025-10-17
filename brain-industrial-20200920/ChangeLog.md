@@ -1,3 +1,14 @@
+2025-10-17 Version: 2.1.2
+- Update API CreateLoadForecastByFileUrlJob: add request parameters DataMode.
+- Update API CreateLoadForecastByFileUrlJob: add request parameters ForecastHorizon.
+- Update API CreateLoadForecastJob: add request parameters DataMode.
+- Update API CreateLoadForecastJob: add request parameters ForecastHorizon.
+- Update API CreatePowerForecastByFileUrlJob: add request parameters DataMode.
+- Update API CreatePowerForecastByFileUrlJob: add request parameters ForecastHorizon.
+- Update API CreatePowerForecastJob: add request parameters DataMode.
+- Update API CreatePowerForecastJob: add request parameters ForecastHorizon.
+
+
 2025-08-20 Version: 2.1.1
 - Update API AicsOpenApiInvoke: add request parameters JobId.
 

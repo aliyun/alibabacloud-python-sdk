@@ -1111,8 +1111,10 @@ class CreateLoadForecastByFileUrlJobRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_url: str = None,
         model_version: str = None,
@@ -1123,8 +1125,10 @@ class CreateLoadForecastByFileUrlJobRequest(TeaModel):
         value_column: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_url = history_url
         self.model_version = model_version
@@ -1145,10 +1149,14 @@ class CreateLoadForecastByFileUrlJobRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         if self.history_url is not None:
@@ -1171,10 +1179,14 @@ class CreateLoadForecastByFileUrlJobRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         if m.get('HistoryUrl') is not None:
@@ -1429,8 +1441,10 @@ class CreateLoadForecastJobRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_data: List[CreateLoadForecastJobRequestHistoryData] = None,
         model_version: str = None,
@@ -1439,8 +1453,10 @@ class CreateLoadForecastJobRequest(TeaModel):
         time_zone: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_data = history_data
         self.model_version = model_version
@@ -1462,10 +1478,14 @@ class CreateLoadForecastJobRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         result['HistoryData'] = []
@@ -1486,10 +1506,14 @@ class CreateLoadForecastJobRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         self.history_data = []
@@ -1512,8 +1536,10 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_data_shrink: str = None,
         model_version: str = None,
@@ -1522,8 +1548,10 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
         time_zone: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_data_shrink = history_data_shrink
         self.model_version = model_version
@@ -1542,10 +1570,14 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         if self.history_data_shrink is not None:
@@ -1564,10 +1596,14 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         if m.get('HistoryData') is not None:
@@ -1825,8 +1861,10 @@ class CreatePowerForecastByFileUrlJobRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_url: str = None,
         location: CreatePowerForecastByFileUrlJobRequestLocation = None,
@@ -1838,8 +1876,10 @@ class CreatePowerForecastByFileUrlJobRequest(TeaModel):
         value_column: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_url = history_url
         self.location = location
@@ -1862,10 +1902,14 @@ class CreatePowerForecastByFileUrlJobRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         if self.history_url is not None:
@@ -1890,10 +1934,14 @@ class CreatePowerForecastByFileUrlJobRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         if m.get('HistoryUrl') is not None:
@@ -1920,8 +1968,10 @@ class CreatePowerForecastByFileUrlJobShrinkRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_url: str = None,
         location_shrink: str = None,
@@ -1933,8 +1983,10 @@ class CreatePowerForecastByFileUrlJobShrinkRequest(TeaModel):
         value_column: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_url = history_url
         self.location_shrink = location_shrink
@@ -1956,10 +2008,14 @@ class CreatePowerForecastByFileUrlJobShrinkRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         if self.history_url is not None:
@@ -1984,10 +2040,14 @@ class CreatePowerForecastByFileUrlJobShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         if m.get('HistoryUrl') is not None:
@@ -2283,8 +2343,10 @@ class CreatePowerForecastJobRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_data: List[CreatePowerForecastJobRequestHistoryData] = None,
         location: CreatePowerForecastJobRequestLocation = None,
@@ -2294,8 +2356,10 @@ class CreatePowerForecastJobRequest(TeaModel):
         time_zone: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_data = history_data
         self.location = location
@@ -2320,10 +2384,14 @@ class CreatePowerForecastJobRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         result['HistoryData'] = []
@@ -2346,10 +2414,14 @@ class CreatePowerForecastJobRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         self.history_data = []
@@ -2375,8 +2447,10 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
     def __init__(
         self,
         business_key: str = None,
+        data_mode: str = None,
         device_type: str = None,
         duration: int = None,
+        forecast_horizon: str = None,
         freq: str = None,
         history_data_shrink: str = None,
         location_shrink: str = None,
@@ -2386,8 +2460,10 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
         time_zone: str = None,
     ):
         self.business_key = business_key
+        self.data_mode = data_mode
         self.device_type = device_type
         self.duration = duration
+        self.forecast_horizon = forecast_horizon
         self.freq = freq
         self.history_data_shrink = history_data_shrink
         self.location_shrink = location_shrink
@@ -2407,10 +2483,14 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
         result = dict()
         if self.business_key is not None:
             result['BusinessKey'] = self.business_key
+        if self.data_mode is not None:
+            result['DataMode'] = self.data_mode
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.forecast_horizon is not None:
+            result['ForecastHorizon'] = self.forecast_horizon
         if self.freq is not None:
             result['Freq'] = self.freq
         if self.history_data_shrink is not None:
@@ -2431,10 +2511,14 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessKey') is not None:
             self.business_key = m.get('BusinessKey')
+        if m.get('DataMode') is not None:
+            self.data_mode = m.get('DataMode')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('ForecastHorizon') is not None:
+            self.forecast_horizon = m.get('ForecastHorizon')
         if m.get('Freq') is not None:
             self.freq = m.get('Freq')
         if m.get('HistoryData') is not None:

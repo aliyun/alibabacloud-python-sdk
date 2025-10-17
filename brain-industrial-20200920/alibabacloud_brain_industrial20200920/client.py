@@ -445,10 +445,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_url):
@@ -500,10 +504,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_url):
@@ -585,10 +593,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_data_shrink):
@@ -640,10 +652,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_data_shrink):
@@ -721,10 +737,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_url):
@@ -782,10 +802,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_url):
@@ -871,10 +895,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_data_shrink):
@@ -930,10 +958,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_key):
             body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.data_mode):
+            body['DataMode'] = request.data_mode
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.forecast_horizon):
+            body['ForecastHorizon'] = request.forecast_horizon
         if not UtilClient.is_unset(request.freq):
             body['Freq'] = request.freq
         if not UtilClient.is_unset(request.history_data_shrink):
