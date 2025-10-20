@@ -14,6 +14,10 @@ from ._failure_permission import FailurePermission
 from ._full_data_type import FullDataType
 from ._full_instant import FullInstant
 from ._full_schema_change import FullSchemaChange
+from ._function import Function
+from ._function_change import FunctionChange
+from ._function_definition import FunctionDefinition
+from ._function_file_resource import FunctionFileResource
 from ._iceberg_nested_field import IcebergNestedField
 from ._iceberg_partition_field import IcebergPartitionField
 from ._iceberg_snapshot import IcebergSnapshot
@@ -41,6 +45,10 @@ from ._table_compaction_history import TableCompactionHistory
 from ._table_snapshot import TableSnapshot
 from ._table_summary import TableSummary
 from ._user import User
+from ._view import View
+from ._view_change import ViewChange
+from ._view_schema import ViewSchema
+from ._view_schema_change import ViewSchemaChange
 from ._alter_catalog_request import AlterCatalogRequest
 from ._alter_catalog_response_body import AlterCatalogResponseBody
 from ._alter_catalog_response import AlterCatalogResponse
@@ -134,6 +142,9 @@ from ._list_iceberg_table_details_response_body import ListIcebergTableDetailsRe
 from ._list_iceberg_table_details_response import ListIcebergTableDetailsResponse
 from ._list_partition_summaries_request import ListPartitionSummariesRequest
 from ._list_partition_summaries_response import ListPartitionSummariesResponse
+from ._list_partitions_request import ListPartitionsRequest
+from ._list_partitions_response_body import ListPartitionsResponseBody
+from ._list_partitions_response import ListPartitionsResponse
 from ._list_permissions_request import ListPermissionsRequest
 from ._list_permissions_response_body import ListPermissionsResponseBody
 from ._list_permissions_response import ListPermissionsResponse
@@ -199,6 +210,10 @@ __all__ = [
     FullDataType,
     FullInstant,
     FullSchemaChange,
+    Function,
+    FunctionChange,
+    FunctionDefinition,
+    FunctionFileResource,
     IcebergNestedField,
     IcebergPartitionField,
     IcebergSnapshot,
@@ -226,6 +241,10 @@ __all__ = [
     TableSnapshot,
     TableSummary,
     User,
+    View,
+    ViewChange,
+    ViewSchema,
+    ViewSchemaChange,
     AlterCatalogRequest,
     AlterCatalogResponseBody,
     AlterCatalogResponse,
@@ -319,6 +338,9 @@ __all__ = [
     ListIcebergTableDetailsResponse,
     ListPartitionSummariesRequest,
     ListPartitionSummariesResponse,
+    ListPartitionsRequest,
+    ListPartitionsResponseBody,
+    ListPartitionsResponse,
     ListPermissionsRequest,
     ListPermissionsResponseBody,
     ListPermissionsResponse,

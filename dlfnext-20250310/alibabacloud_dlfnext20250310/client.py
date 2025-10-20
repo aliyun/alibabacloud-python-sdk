@@ -3827,6 +3827,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_partition_summaries_with_options_async(catalog_id, database, table, request, headers, runtime)
 
+    def list_partitions_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPartitionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.partition_name_pattern):
+            query['partitionNamePattern'] = request.partition_name_pattern
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPartitions',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/partitions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPartitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_partitions_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPartitionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.partition_name_pattern):
+            query['partitionNamePattern'] = request.partition_name_pattern
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPartitions',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/partitions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPartitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_partitions(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsRequest,
+    ) -> main_models.ListPartitionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_partitions_with_options(catalog_id, database, table, request, headers, runtime)
+
+    async def list_partitions_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsRequest,
+    ) -> main_models.ListPartitionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_partitions_with_options_async(catalog_id, database, table, request, headers, runtime)
+
     def list_permissions_with_options(
         self,
         catalog_id: str,
