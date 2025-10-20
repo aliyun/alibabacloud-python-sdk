@@ -1133,6 +1133,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_application_token_with_options_async(request, runtime)
 
+    def create_brand_with_options(
+        self,
+        request: eiam_20211201_models.CreateBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateBrandResponse:
+        """
+        @summary 创建品牌
+        
+        @param request: CreateBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_name):
+            query['BrandName'] = request.brand_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateBrandResponse:
+        """
+        @summary 创建品牌
+        
+        @param request: CreateBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_name):
+            query['BrandName'] = request.brand_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_brand(
+        self,
+        request: eiam_20211201_models.CreateBrandRequest,
+    ) -> eiam_20211201_models.CreateBrandResponse:
+        """
+        @summary 创建品牌
+        
+        @param request: CreateBrandRequest
+        @return: CreateBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_brand_with_options(request, runtime)
+
+    async def create_brand_async(
+        self,
+        request: eiam_20211201_models.CreateBrandRequest,
+    ) -> eiam_20211201_models.CreateBrandResponse:
+        """
+        @summary 创建品牌
+        
+        @param request: CreateBrandRequest
+        @return: CreateBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_brand_with_options_async(request, runtime)
+
     def create_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.CreateConditionalAccessPolicyRequest,
@@ -2892,6 +2992,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_token_with_options_async(request, runtime)
+
+    def delete_brand_with_options(
+        self,
+        request: eiam_20211201_models.DeleteBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteBrandResponse:
+        """
+        @summary 删除品牌
+        
+        @param request: DeleteBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteBrandResponse:
+        """
+        @summary 删除品牌
+        
+        @param request: DeleteBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_brand(
+        self,
+        request: eiam_20211201_models.DeleteBrandRequest,
+    ) -> eiam_20211201_models.DeleteBrandResponse:
+        """
+        @summary 删除品牌
+        
+        @param request: DeleteBrandRequest
+        @return: DeleteBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_brand_with_options(request, runtime)
+
+    async def delete_brand_async(
+        self,
+        request: eiam_20211201_models.DeleteBrandRequest,
+    ) -> eiam_20211201_models.DeleteBrandResponse:
+        """
+        @summary 删除品牌
+        
+        @param request: DeleteBrandRequest
+        @return: DeleteBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_brand_with_options_async(request, runtime)
 
     def delete_conditional_access_policy_with_options(
         self,
@@ -4829,6 +5029,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_application_token_with_options_async(request, runtime)
 
+    def disable_brand_with_options(
+        self,
+        request: eiam_20211201_models.DisableBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableBrandResponse:
+        """
+        @summary 禁用品牌
+        
+        @param request: DisableBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableBrandResponse:
+        """
+        @summary 禁用品牌
+        
+        @param request: DisableBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_brand(
+        self,
+        request: eiam_20211201_models.DisableBrandRequest,
+    ) -> eiam_20211201_models.DisableBrandResponse:
+        """
+        @summary 禁用品牌
+        
+        @param request: DisableBrandRequest
+        @return: DisableBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_brand_with_options(request, runtime)
+
+    async def disable_brand_async(
+        self,
+        request: eiam_20211201_models.DisableBrandRequest,
+    ) -> eiam_20211201_models.DisableBrandResponse:
+        """
+        @summary 禁用品牌
+        
+        @param request: DisableBrandRequest
+        @return: DisableBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_brand_with_options_async(request, runtime)
+
     def disable_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.DisableConditionalAccessPolicyRequest,
@@ -6249,6 +6549,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_application_token_with_options_async(request, runtime)
 
+    def enable_brand_with_options(
+        self,
+        request: eiam_20211201_models.EnableBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableBrandResponse:
+        """
+        @summary 启用品牌
+        
+        @param request: EnableBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableBrandResponse:
+        """
+        @summary 启用品牌
+        
+        @param request: EnableBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_brand(
+        self,
+        request: eiam_20211201_models.EnableBrandRequest,
+    ) -> eiam_20211201_models.EnableBrandResponse:
+        """
+        @summary 启用品牌
+        
+        @param request: EnableBrandRequest
+        @return: EnableBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_brand_with_options(request, runtime)
+
+    async def enable_brand_async(
+        self,
+        request: eiam_20211201_models.EnableBrandRequest,
+    ) -> eiam_20211201_models.EnableBrandResponse:
+        """
+        @summary 启用品牌
+        
+        @param request: EnableBrandRequest
+        @return: EnableBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_brand_with_options_async(request, runtime)
+
     def enable_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.EnableConditionalAccessPolicyRequest,
@@ -7657,6 +8057,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_application_template_with_options_async(request, runtime)
 
+    def get_brand_with_options(
+        self,
+        request: eiam_20211201_models.GetBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetBrandResponse:
+        """
+        @summary 获取品牌详情
+        
+        @param request: GetBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.GetBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetBrandResponse:
+        """
+        @summary 获取品牌详情
+        
+        @param request: GetBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_brand(
+        self,
+        request: eiam_20211201_models.GetBrandRequest,
+    ) -> eiam_20211201_models.GetBrandResponse:
+        """
+        @summary 获取品牌详情
+        
+        @param request: GetBrandRequest
+        @return: GetBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_brand_with_options(request, runtime)
+
+    async def get_brand_async(
+        self,
+        request: eiam_20211201_models.GetBrandRequest,
+    ) -> eiam_20211201_models.GetBrandResponse:
+        """
+        @summary 获取品牌详情
+        
+        @param request: GetBrandRequest
+        @return: GetBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_brand_with_options_async(request, runtime)
+
     def get_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.GetConditionalAccessPolicyRequest,
@@ -8660,6 +9160,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_license_with_options_async(request, runtime)
+
+    def get_login_redirect_application_for_brand_with_options(
+        self,
+        request: eiam_20211201_models.GetLoginRedirectApplicationForBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 获取品牌登录后跳转应用
+        
+        @param request: GetLoginRedirectApplicationForBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginRedirectApplicationForBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLoginRedirectApplicationForBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetLoginRedirectApplicationForBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_login_redirect_application_for_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.GetLoginRedirectApplicationForBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 获取品牌登录后跳转应用
+        
+        @param request: GetLoginRedirectApplicationForBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginRedirectApplicationForBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLoginRedirectApplicationForBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetLoginRedirectApplicationForBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_login_redirect_application_for_brand(
+        self,
+        request: eiam_20211201_models.GetLoginRedirectApplicationForBrandRequest,
+    ) -> eiam_20211201_models.GetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 获取品牌登录后跳转应用
+        
+        @param request: GetLoginRedirectApplicationForBrandRequest
+        @return: GetLoginRedirectApplicationForBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_login_redirect_application_for_brand_with_options(request, runtime)
+
+    async def get_login_redirect_application_for_brand_async(
+        self,
+        request: eiam_20211201_models.GetLoginRedirectApplicationForBrandRequest,
+    ) -> eiam_20211201_models.GetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 获取品牌登录后跳转应用
+        
+        @param request: GetLoginRedirectApplicationForBrandRequest
+        @return: GetLoginRedirectApplicationForBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_login_redirect_application_for_brand_with_options_async(request, runtime)
 
     def get_network_access_endpoint_with_options(
         self,
@@ -11084,6 +11684,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_for_user_with_options_async(request, runtime)
+
+    def list_brands_with_options(
+        self,
+        request: eiam_20211201_models.ListBrandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListBrandsResponse:
+        """
+        @summary 获取品牌列表
+        
+        @param request: ListBrandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBrandsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBrands',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListBrandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_brands_with_options_async(
+        self,
+        request: eiam_20211201_models.ListBrandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListBrandsResponse:
+        """
+        @summary 获取品牌列表
+        
+        @param request: ListBrandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBrandsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBrands',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListBrandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_brands(
+        self,
+        request: eiam_20211201_models.ListBrandsRequest,
+    ) -> eiam_20211201_models.ListBrandsResponse:
+        """
+        @summary 获取品牌列表
+        
+        @param request: ListBrandsRequest
+        @return: ListBrandsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_brands_with_options(request, runtime)
+
+    async def list_brands_async(
+        self,
+        request: eiam_20211201_models.ListBrandsRequest,
+    ) -> eiam_20211201_models.ListBrandsResponse:
+        """
+        @summary 获取品牌列表
+        
+        @param request: ListBrandsRequest
+        @return: ListBrandsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_brands_with_options_async(request, runtime)
 
     def list_conditional_access_policies_with_options(
         self,
@@ -15931,6 +16639,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_identity_provider_ud_pull_configuration_with_options_async(request, runtime)
 
+    def set_login_redirect_application_for_brand_with_options(
+        self,
+        request: eiam_20211201_models.SetLoginRedirectApplicationForBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.SetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 为品牌设置登录后跳转应用
+        
+        @param request: SetLoginRedirectApplicationForBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoginRedirectApplicationForBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoginRedirectApplicationForBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetLoginRedirectApplicationForBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_login_redirect_application_for_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.SetLoginRedirectApplicationForBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.SetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 为品牌设置登录后跳转应用
+        
+        @param request: SetLoginRedirectApplicationForBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoginRedirectApplicationForBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoginRedirectApplicationForBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetLoginRedirectApplicationForBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_login_redirect_application_for_brand(
+        self,
+        request: eiam_20211201_models.SetLoginRedirectApplicationForBrandRequest,
+    ) -> eiam_20211201_models.SetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 为品牌设置登录后跳转应用
+        
+        @param request: SetLoginRedirectApplicationForBrandRequest
+        @return: SetLoginRedirectApplicationForBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_login_redirect_application_for_brand_with_options(request, runtime)
+
+    async def set_login_redirect_application_for_brand_async(
+        self,
+        request: eiam_20211201_models.SetLoginRedirectApplicationForBrandRequest,
+    ) -> eiam_20211201_models.SetLoginRedirectApplicationForBrandResponse:
+        """
+        @summary 为品牌设置登录后跳转应用
+        
+        @param request: SetLoginRedirectApplicationForBrandRequest
+        @return: SetLoginRedirectApplicationForBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_login_redirect_application_for_brand_with_options_async(request, runtime)
+
     def set_password_complexity_configuration_with_options(
         self,
         request: eiam_20211201_models.SetPasswordComplexityConfigurationRequest,
@@ -17343,6 +18155,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_application_token_expiration_time_with_options_async(request, runtime)
 
+    def update_brand_with_options(
+        self,
+        request: eiam_20211201_models.UpdateBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateBrandResponse:
+        """
+        @summary 修改品牌
+        
+        @param request: UpdateBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.brand_name):
+            query['BrandName'] = request.brand_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateBrandResponse:
+        """
+        @summary 修改品牌
+        
+        @param request: UpdateBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.brand_name):
+            query['BrandName'] = request.brand_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_brand(
+        self,
+        request: eiam_20211201_models.UpdateBrandRequest,
+    ) -> eiam_20211201_models.UpdateBrandResponse:
+        """
+        @summary 修改品牌
+        
+        @param request: UpdateBrandRequest
+        @return: UpdateBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_brand_with_options(request, runtime)
+
+    async def update_brand_async(
+        self,
+        request: eiam_20211201_models.UpdateBrandRequest,
+    ) -> eiam_20211201_models.UpdateBrandResponse:
+        """
+        @summary 修改品牌
+        
+        @param request: UpdateBrandRequest
+        @return: UpdateBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_brand_with_options_async(request, runtime)
+
     def update_conditional_access_policy_with_options(
         self,
         request: eiam_20211201_models.UpdateConditionalAccessPolicyRequest,
@@ -17590,6 +18506,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_conditional_access_policy_description_with_options_async(request, runtime)
+
+    def update_domain_brand_with_options(
+        self,
+        request: eiam_20211201_models.UpdateDomainBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateDomainBrandResponse:
+        """
+        @summary 修改域名关联的品牌。
+        
+        @param request: UpdateDomainBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDomainBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateDomainBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_domain_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateDomainBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateDomainBrandResponse:
+        """
+        @summary 修改域名关联的品牌。
+        
+        @param request: UpdateDomainBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDomainBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateDomainBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_domain_brand(
+        self,
+        request: eiam_20211201_models.UpdateDomainBrandRequest,
+    ) -> eiam_20211201_models.UpdateDomainBrandResponse:
+        """
+        @summary 修改域名关联的品牌。
+        
+        @param request: UpdateDomainBrandRequest
+        @return: UpdateDomainBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_domain_brand_with_options(request, runtime)
+
+    async def update_domain_brand_async(
+        self,
+        request: eiam_20211201_models.UpdateDomainBrandRequest,
+    ) -> eiam_20211201_models.UpdateDomainBrandResponse:
+        """
+        @summary 修改域名关联的品牌。
+        
+        @param request: UpdateDomainBrandRequest
+        @return: UpdateDomainBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_domain_brand_with_options_async(request, runtime)
 
     def update_domain_icp_number_with_options(
         self,

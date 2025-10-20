@@ -1422,6 +1422,119 @@ class CreateApplicationTokenResponse(TeaModel):
         return self
 
 
+class CreateBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_name: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化名称
+        # 
+        # This parameter is required.
+        self.brand_name = brand_name
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_name is not None:
+            result['BrandName'] = self.brand_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandName') is not None:
+            self.brand_name = m.get('BrandName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        request_id: str = None,
+    ):
+        self.brand_id = brand_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateConditionalAccessPolicyRequestConditionsConfigApplications(TeaModel):
     def __init__(
         self,
@@ -5194,6 +5307,113 @@ class DeleteApplicationTokenResponse(TeaModel):
         return self
 
 
+class DeleteBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteConditionalAccessPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -7269,6 +7489,113 @@ class DisableApplicationTokenResponse(TeaModel):
         return self
 
 
+class DisableBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableConditionalAccessPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -8800,6 +9127,113 @@ class EnableApplicationTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableApplicationTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableBrandResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11795,6 +12229,177 @@ class GetApplicationTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetApplicationTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetBrandResponseBodyBrand(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        brand_name: str = None,
+        brand_type: str = None,
+        instance_id: str = None,
+        status: str = None,
+    ):
+        # 品牌ID
+        self.brand_id = brand_id
+        # 品牌名称
+        self.brand_name = brand_name
+        # 品牌类型
+        self.brand_type = brand_type
+        # 实例ID。
+        self.instance_id = instance_id
+        # 品牌状态
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.brand_name is not None:
+            result['BrandName'] = self.brand_name
+        if self.brand_type is not None:
+            result['BrandType'] = self.brand_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('BrandName') is not None:
+            self.brand_name = m.get('BrandName')
+        if m.get('BrandType') is not None:
+            self.brand_type = m.get('BrandType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        brand: GetBrandResponseBodyBrand = None,
+        request_id: str = None,
+    ):
+        self.brand = brand
+        self.request_id = request_id
+
+    def validate(self):
+        if self.brand:
+            self.brand.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand is not None:
+            result['Brand'] = self.brand.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Brand') is not None:
+            temp_model = GetBrandResponseBodyBrand()
+            self.brand = temp_model.from_map(m['Brand'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBrandResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15586,6 +16191,163 @@ class GetInstanceLicenseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLoginRedirectApplicationForBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 应用ID
+        self.application_id = application_id
+        # 品牌ID
+        self.brand_id = brand_id
+        # 实例ID
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetLoginRedirectApplicationForBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        brand_login_redirect_application: GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication = None,
+        request_id: str = None,
+    ):
+        self.brand_login_redirect_application = brand_login_redirect_application
+        self.request_id = request_id
+
+    def validate(self):
+        if self.brand_login_redirect_application:
+            self.brand_login_redirect_application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_login_redirect_application is not None:
+            result['BrandLoginRedirectApplication'] = self.brand_login_redirect_application.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandLoginRedirectApplication') is not None:
+            temp_model = GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication()
+            self.brand_login_redirect_application = temp_model.from_map(m['BrandLoginRedirectApplication'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLoginRedirectApplicationForBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLoginRedirectApplicationForBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLoginRedirectApplicationForBrandResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22231,6 +22993,222 @@ class ListApplicationsForUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListApplicationsForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBrandsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListBrandsResponseBodyBrands(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        brand_name: str = None,
+        brand_type: str = None,
+        instance_id: str = None,
+        status: str = None,
+    ):
+        # 品牌ID
+        self.brand_id = brand_id
+        # 品牌名称
+        self.brand_name = brand_name
+        # 品牌类型
+        self.brand_type = brand_type
+        # 实例ID。
+        self.instance_id = instance_id
+        # 品牌状态
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.brand_name is not None:
+            result['BrandName'] = self.brand_name
+        if self.brand_type is not None:
+            result['BrandType'] = self.brand_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('BrandName') is not None:
+            self.brand_name = m.get('BrandName')
+        if m.get('BrandType') is not None:
+            self.brand_type = m.get('BrandType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListBrandsResponseBody(TeaModel):
+    def __init__(
+        self,
+        brands: List[ListBrandsResponseBodyBrands] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.brands = brands
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.brands:
+            for k in self.brands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Brands'] = []
+        if self.brands is not None:
+            for k in self.brands:
+                result['Brands'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.brands = []
+        if m.get('Brands') is not None:
+            for k in m.get('Brands'):
+                temp_model = ListBrandsResponseBodyBrands()
+                self.brands.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListBrandsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBrandsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBrandsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -34656,6 +35634,122 @@ class SetIdentityProviderUdPullConfigurationResponse(TeaModel):
         return self
 
 
+class SetLoginRedirectApplicationForBrandRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        brand_id: str = None,
+        instance_id: str = None,
+    ):
+        # 应用ID
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class SetLoginRedirectApplicationForBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetLoginRedirectApplicationForBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetLoginRedirectApplicationForBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetLoginRedirectApplicationForBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetPasswordComplexityConfigurationRequestPasswordComplexityRules(TeaModel):
     def __init__(
         self,
@@ -36379,6 +37473,122 @@ class UpdateApplicationTokenExpirationTimeResponse(TeaModel):
         return self
 
 
+class UpdateBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        brand_name: str = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # 品牌名称
+        # 
+        # This parameter is required.
+        self.brand_name = brand_name
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.brand_name is not None:
+            result['BrandName'] = self.brand_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('BrandName') is not None:
+            self.brand_name = m.get('BrandName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateConditionalAccessPolicyRequestConditionsConfigApplications(TeaModel):
     def __init__(
         self,
@@ -36897,6 +38107,120 @@ class UpdateConditionalAccessPolicyDescriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConditionalAccessPolicyDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDomainBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        domain_id: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.brand_id = brand_id
+        # 域名ID。
+        # 
+        # This parameter is required.
+        self.domain_id = domain_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateDomainBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDomainBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDomainBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDomainBrandResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
