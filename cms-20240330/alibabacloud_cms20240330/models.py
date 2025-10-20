@@ -1348,6 +1348,8 @@ class AlertRuleConditionCompareList(TeaModel):
     def __init__(
         self,
         aggregate: str = None,
+        base_unit: str = None,
+        display_unit: str = None,
         oper: str = None,
         value: float = None,
         value_level_list: List[AlertRuleConditionCompareListValueLevelList] = None,
@@ -1355,6 +1357,8 @@ class AlertRuleConditionCompareList(TeaModel):
         yoy_time_value: int = None,
     ):
         self.aggregate = aggregate
+        self.base_unit = base_unit
+        self.display_unit = display_unit
         self.oper = oper
         self.value = value
         self.value_level_list = value_level_list
@@ -1375,6 +1379,10 @@ class AlertRuleConditionCompareList(TeaModel):
         result = dict()
         if self.aggregate is not None:
             result['aggregate'] = self.aggregate
+        if self.base_unit is not None:
+            result['baseUnit'] = self.base_unit
+        if self.display_unit is not None:
+            result['displayUnit'] = self.display_unit
         if self.oper is not None:
             result['oper'] = self.oper
         if self.value is not None:
@@ -1393,6 +1401,10 @@ class AlertRuleConditionCompareList(TeaModel):
         m = m or dict()
         if m.get('aggregate') is not None:
             self.aggregate = m.get('aggregate')
+        if m.get('baseUnit') is not None:
+            self.base_unit = m.get('baseUnit')
+        if m.get('displayUnit') is not None:
+            self.display_unit = m.get('displayUnit')
         if m.get('oper') is not None:
             self.oper = m.get('oper')
         if m.get('value') is not None:
@@ -14788,9 +14800,11 @@ class ListIntegrationPolicyDashboardsRequest(TeaModel):
     def __init__(
         self,
         addon_name: str = None,
+        language: str = None,
         scene: str = None,
     ):
         self.addon_name = addon_name
+        self.language = language
         self.scene = scene
 
     def validate(self):
@@ -14804,6 +14818,8 @@ class ListIntegrationPolicyDashboardsRequest(TeaModel):
         result = dict()
         if self.addon_name is not None:
             result['addonName'] = self.addon_name
+        if self.language is not None:
+            result['language'] = self.language
         if self.scene is not None:
             result['scene'] = self.scene
         return result
@@ -14812,6 +14828,8 @@ class ListIntegrationPolicyDashboardsRequest(TeaModel):
         m = m or dict()
         if m.get('addonName') is not None:
             self.addon_name = m.get('addonName')
+        if m.get('language') is not None:
+            self.language = m.get('language')
         if m.get('scene') is not None:
             self.scene = m.get('scene')
         return self
@@ -14820,6 +14838,7 @@ class ListIntegrationPolicyDashboardsRequest(TeaModel):
 class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
     def __init__(
         self,
+        engine: str = None,
         folder_uid: str = None,
         name: str = None,
         region: str = None,
@@ -14828,6 +14847,7 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
         uid: str = None,
         url: str = None,
     ):
+        self.engine = engine
         self.folder_uid = folder_uid
         self.name = name
         self.region = region
@@ -14845,6 +14865,8 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
             return _map
 
         result = dict()
+        if self.engine is not None:
+            result['engine'] = self.engine
         if self.folder_uid is not None:
             result['folderUid'] = self.folder_uid
         if self.name is not None:
@@ -14863,6 +14885,8 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('engine') is not None:
+            self.engine = m.get('engine')
         if m.get('folderUid') is not None:
             self.folder_uid = m.get('folderUid')
         if m.get('name') is not None:

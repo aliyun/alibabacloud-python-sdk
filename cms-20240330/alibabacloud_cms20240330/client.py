@@ -4178,6 +4178,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addon_name):
             query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
         if not UtilClient.is_unset(request.scene):
             query['scene'] = request.scene
         req = open_api_models.OpenApiRequest(
@@ -4219,6 +4221,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addon_name):
             query['addonName'] = request.addon_name
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
         if not UtilClient.is_unset(request.scene):
             query['scene'] = request.scene
         req = open_api_models.OpenApiRequest(

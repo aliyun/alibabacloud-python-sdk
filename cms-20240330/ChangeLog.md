@@ -1,3 +1,8 @@
+2025-10-20 Version: 3.2.4
+- Update API ListIntegrationPolicyDashboards: add request parameters language.
+- Update API ListIntegrationPolicyDashboards: add response parameters Body.dashboards.$.engine.
+
+
 2025-10-15 Version: 3.2.3
 - Update API ListIntegrationPolicies: add request parameters bindResourceId.
 - Update API ListIntegrationPolicyDashboards: add response parameters Body.dashboards.$.name.
