@@ -814,6 +814,8 @@ class Client(OpenApiClient):
             body['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.server_instance_type):
             body['ServerInstanceType'] = request.server_instance_type
+        if not UtilClient.is_unset(request.server_port_range):
+            body['ServerPortRange'] = request.server_port_range
         if not UtilClient.is_unset(request.system_disk_category):
             body['SystemDiskCategory'] = request.system_disk_category
         if not UtilClient.is_unset(request.system_disk_performance_level):
@@ -894,6 +896,8 @@ class Client(OpenApiClient):
             body['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.server_instance_type):
             body['ServerInstanceType'] = request.server_instance_type
+        if not UtilClient.is_unset(request.server_port_range):
+            body['ServerPortRange'] = request.server_port_range
         if not UtilClient.is_unset(request.system_disk_category):
             body['SystemDiskCategory'] = request.system_disk_category
         if not UtilClient.is_unset(request.system_disk_performance_level):
@@ -1172,6 +1176,94 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instances_with_options_async(request, runtime)
+
+    def delete_image_with_options(
+        self,
+        request: appstream_center_20210901_models.DeleteImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DeleteImageResponse:
+        """
+        @param request: DeleteImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_image_with_options_async(
+        self,
+        request: appstream_center_20210901_models.DeleteImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DeleteImageResponse:
+        """
+        @param request: DeleteImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_image(
+        self,
+        request: appstream_center_20210901_models.DeleteImageRequest,
+    ) -> appstream_center_20210901_models.DeleteImageResponse:
+        """
+        @param request: DeleteImageRequest
+        @return: DeleteImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_image_with_options(request, runtime)
+
+    async def delete_image_async(
+        self,
+        request: appstream_center_20210901_models.DeleteImageRequest,
+    ) -> appstream_center_20210901_models.DeleteImageResponse:
+        """
+        @param request: DeleteImageRequest
+        @return: DeleteImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_image_with_options_async(request, runtime)
 
     def delete_wuying_server_with_options(
         self,
@@ -4958,6 +5050,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.restart_wuying_server_with_options_async(request, runtime)
+
+    def start_task_for_distribute_image_with_options(
+        self,
+        request: appstream_center_20210901_models.StartTaskForDistributeImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
+        """
+        @param request: StartTaskForDistributeImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTaskForDistributeImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_region_list):
+            body['DestinationRegionList'] = request.destination_region_list
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.retry_type):
+            body['RetryType'] = request.retry_type
+        if not UtilClient.is_unset(request.source_region):
+            body['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartTaskForDistributeImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.StartTaskForDistributeImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_task_for_distribute_image_with_options_async(
+        self,
+        request: appstream_center_20210901_models.StartTaskForDistributeImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
+        """
+        @param request: StartTaskForDistributeImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTaskForDistributeImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_region_list):
+            body['DestinationRegionList'] = request.destination_region_list
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.retry_type):
+            body['RetryType'] = request.retry_type
+        if not UtilClient.is_unset(request.source_region):
+            body['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartTaskForDistributeImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.StartTaskForDistributeImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_task_for_distribute_image(
+        self,
+        request: appstream_center_20210901_models.StartTaskForDistributeImageRequest,
+    ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
+        """
+        @param request: StartTaskForDistributeImageRequest
+        @return: StartTaskForDistributeImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_task_for_distribute_image_with_options(request, runtime)
+
+    async def start_task_for_distribute_image_async(
+        self,
+        request: appstream_center_20210901_models.StartTaskForDistributeImageRequest,
+    ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
+        """
+        @param request: StartTaskForDistributeImageRequest
+        @return: StartTaskForDistributeImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_task_for_distribute_image_with_options_async(request, runtime)
 
     def start_wuying_server_with_options(
         self,

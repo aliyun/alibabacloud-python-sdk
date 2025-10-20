@@ -1,3 +1,9 @@
+2025-10-20 Version: 4.5.0
+- Support API DeleteImage.
+- Support API StartTaskForDistributeImage.
+- Update API CreateWuyingServer: add request parameters ServerPortRange.
+
+
 2025-10-16 Version: 4.4.0
 - Support API CreateImageByInstance.
 - Support API ListImage.

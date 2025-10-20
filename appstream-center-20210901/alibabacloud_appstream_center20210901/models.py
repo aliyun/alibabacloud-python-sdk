@@ -1958,6 +1958,7 @@ class CreateWuyingServerRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         server_instance_type: str = None,
+        server_port_range: str = None,
         system_disk_category: str = None,
         system_disk_performance_level: str = None,
         system_disk_size: int = None,
@@ -1981,6 +1982,7 @@ class CreateWuyingServerRequest(TeaModel):
         self.period_unit = period_unit
         self.promotion_id = promotion_id
         self.server_instance_type = server_instance_type
+        self.server_port_range = server_port_range
         self.system_disk_category = system_disk_category
         self.system_disk_performance_level = system_disk_performance_level
         self.system_disk_size = system_disk_size
@@ -2034,6 +2036,8 @@ class CreateWuyingServerRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.server_instance_type is not None:
             result['ServerInstanceType'] = self.server_instance_type
+        if self.server_port_range is not None:
+            result['ServerPortRange'] = self.server_port_range
         if self.system_disk_category is not None:
             result['SystemDiskCategory'] = self.system_disk_category
         if self.system_disk_performance_level is not None:
@@ -2085,6 +2089,8 @@ class CreateWuyingServerRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('ServerInstanceType') is not None:
             self.server_instance_type = m.get('ServerInstanceType')
+        if m.get('ServerPortRange') is not None:
+            self.server_port_range = m.get('ServerPortRange')
         if m.get('SystemDiskCategory') is not None:
             self.system_disk_category = m.get('SystemDiskCategory')
         if m.get('SystemDiskPerformanceLevel') is not None:
@@ -2507,6 +2513,125 @@ class DeleteAppInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAppInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+    ):
+        self.image_id = image_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        return self
+
+
+class DeleteImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12129,6 +12254,156 @@ class RestartWuyingServerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestartWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartTaskForDistributeImageRequest(TeaModel):
+    def __init__(
+        self,
+        destination_region_list: List[str] = None,
+        image_id: str = None,
+        product_type: str = None,
+        retry_type: str = None,
+        source_region: str = None,
+        version_id: str = None,
+    ):
+        self.destination_region_list = destination_region_list
+        # This parameter is required.
+        self.image_id = image_id
+        self.product_type = product_type
+        self.retry_type = retry_type
+        self.source_region = source_region
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_list is not None:
+            result['DestinationRegionList'] = self.destination_region_list
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.retry_type is not None:
+            result['RetryType'] = self.retry_type
+        if self.source_region is not None:
+            result['SourceRegion'] = self.source_region
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionList') is not None:
+            self.destination_region_list = m.get('DestinationRegionList')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RetryType') is not None:
+            self.retry_type = m.get('RetryType')
+        if m.get('SourceRegion') is not None:
+            self.source_region = m.get('SourceRegion')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class StartTaskForDistributeImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StartTaskForDistributeImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartTaskForDistributeImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartTaskForDistributeImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
