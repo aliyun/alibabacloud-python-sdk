@@ -1,3 +1,11 @@
+2025-10-21 Version: 1.8.0
+- Support API CancelSqlPreview.
+- Support API CreateDeploymentTargetV2.
+- Support API FetchSqlPreviewResults.
+- Support API SubmitSqlPreview.
+- Support API UpdateDeploymentTargetV2.
+
+
 2025-02-28 Version: 1.7.0
 - Support API GetJobDiagnosis.
 - Support API UpdateVariable.
