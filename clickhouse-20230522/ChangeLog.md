@@ -1,3 +1,11 @@
+2025-10-21 Version: 2.0.0
+- Update API CreateDBInstance: update request parameters StorageQuota' type has changed.
+- Update API CreateDBInstance: update request parameters StorageQuota' format has changed.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.ClickObserveServiceStatus.
+- Update API ModifyDBInstanceClass: update request parameters StorageQuota' type has changed.
+- Update API ModifyDBInstanceClass: update request parameters StorageQuota' format has changed.
+
+
 2025-09-11 Version: 1.1.1
 - Update API CreateDBInstance: add request parameters NodeCount.
 - Update API CreateDBInstance: add request parameters NodeScaleMax.

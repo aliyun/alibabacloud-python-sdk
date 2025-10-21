@@ -723,7 +723,7 @@ class CreateDBInstanceRequest(TeaModel):
         scale_max: str = None,
         scale_min: str = None,
         source_dbinstance_id: str = None,
-        storage_quota: str = None,
+        storage_quota: int = None,
         storage_type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -888,7 +888,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         scale_max: str = None,
         scale_min: str = None,
         source_dbinstance_id: str = None,
-        storage_quota: str = None,
+        storage_quota: int = None,
         storage_type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -2968,6 +2968,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         bid: str = None,
         category: str = None,
         charge_type: str = None,
+        click_observe_service_status: str = None,
         create_time: str = None,
         dbinstance_id: str = None,
         deletion_protection: bool = None,
@@ -3009,6 +3010,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         self.category = category
         # The billing method. Enterprise Edition clusters use the pay-as-you-go billing method.
         self.charge_type = charge_type
+        self.click_observe_service_status = click_observe_service_status
         # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
         # The cluster ID.
@@ -3107,6 +3109,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             result['Category'] = self.category
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.click_observe_service_status is not None:
+            result['ClickObserveServiceStatus'] = self.click_observe_service_status
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.dbinstance_id is not None:
@@ -3191,6 +3195,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             self.category = m.get('Category')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClickObserveServiceStatus') is not None:
+            self.click_observe_service_status = m.get('ClickObserveServiceStatus')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DBInstanceId') is not None:
@@ -6754,7 +6760,7 @@ class ModifyDBInstanceClassRequest(TeaModel):
         region_id: str = None,
         scale_max: int = None,
         scale_min: int = None,
-        storage_quota: str = None,
+        storage_quota: int = None,
         storage_type: str = None,
     ):
         # The cluster ID.
