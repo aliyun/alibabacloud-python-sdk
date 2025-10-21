@@ -1143,6 +1143,204 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_video_detect_shot_config_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-获取配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoDetectShotConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetVideoDetectShotConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/getVideoDetectShotConfig',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoDetectShotConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_detect_shot_config_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-获取配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoDetectShotConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetVideoDetectShotConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/getVideoDetectShotConfig',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoDetectShotConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_detect_shot_config(
+        self,
+        workspace_id: str,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-获取配置
+        
+        @return: GetVideoDetectShotConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_video_detect_shot_config_with_options(workspace_id, headers, runtime)
+
+    async def get_video_detect_shot_config_async(
+        self,
+        workspace_id: str,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-获取配置
+        
+        @return: GetVideoDetectShotConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_video_detect_shot_config_with_options_async(workspace_id, headers, runtime)
+
+    def get_video_detect_shot_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoDetectShotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-获取视频拆条异步任务结果
+        
+        @param request: GetVideoDetectShotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoDetectShotTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoDetectShotTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getVideoDetectShotTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoDetectShotTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_detect_shot_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoDetectShotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-获取视频拆条异步任务结果
+        
+        @param request: GetVideoDetectShotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoDetectShotTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoDetectShotTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getVideoDetectShotTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoDetectShotTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_detect_shot_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoDetectShotTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-获取视频拆条异步任务结果
+        
+        @param request: GetVideoDetectShotTaskRequest
+        @return: GetVideoDetectShotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_video_detect_shot_task_with_options(workspace_id, request, headers, runtime)
+
+    async def get_video_detect_shot_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoDetectShotTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-获取视频拆条异步任务结果
+        
+        @param request: GetVideoDetectShotTaskRequest
+        @return: GetVideoDetectShotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_video_detect_shot_task_with_options_async(workspace_id, request, headers, runtime)
+
     def hot_news_recommend_with_options(
         self,
         workspace_id: str,
@@ -3575,6 +3773,178 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_video_analysis_with_options_async(workspace_id, request, headers, runtime)
 
+    def run_video_detect_shot_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunVideoDetectShotRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunVideoDetectShotResponse:
+        """
+        @summary 轻应用-视频拆条
+        
+        @param tmp_req: RunVideoDetectShotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunVideoDetectShotResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunVideoDetectShotShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
+        if not UtilClient.is_unset(tmp_req.recognition_options):
+            request.recognition_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recognition_options, 'recognitionOptions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.intelli_simp_prompt):
+            body['intelliSimpPrompt'] = request.intelli_simp_prompt
+        if not UtilClient.is_unset(request.intelli_simp_prompt_template_id):
+            body['intelliSimpPromptTemplateId'] = request.intelli_simp_prompt_template_id
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.model_custom_prompt_template_id):
+            body['modelCustomPromptTemplateId'] = request.model_custom_prompt_template_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_vl_custom_prompt_template_id):
+            body['modelVlCustomPromptTemplateId'] = request.model_vl_custom_prompt_template_id
+        if not UtilClient.is_unset(request.options_shrink):
+            body['options'] = request.options_shrink
+        if not UtilClient.is_unset(request.original_session_id):
+            body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.pre_model_id):
+            body['preModelId'] = request.pre_model_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.recognition_options_shrink):
+            body['recognitionOptions'] = request.recognition_options_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.video_url):
+            body['videoUrl'] = request.video_url
+        if not UtilClient.is_unset(request.vl_prompt):
+            body['vlPrompt'] = request.vl_prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunVideoDetectShot',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runVideoDetectShot',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunVideoDetectShotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_video_detect_shot_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunVideoDetectShotRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunVideoDetectShotResponse:
+        """
+        @summary 轻应用-视频拆条
+        
+        @param tmp_req: RunVideoDetectShotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunVideoDetectShotResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunVideoDetectShotShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
+        if not UtilClient.is_unset(tmp_req.recognition_options):
+            request.recognition_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recognition_options, 'recognitionOptions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.intelli_simp_prompt):
+            body['intelliSimpPrompt'] = request.intelli_simp_prompt
+        if not UtilClient.is_unset(request.intelli_simp_prompt_template_id):
+            body['intelliSimpPromptTemplateId'] = request.intelli_simp_prompt_template_id
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.model_custom_prompt_template_id):
+            body['modelCustomPromptTemplateId'] = request.model_custom_prompt_template_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_vl_custom_prompt_template_id):
+            body['modelVlCustomPromptTemplateId'] = request.model_vl_custom_prompt_template_id
+        if not UtilClient.is_unset(request.options_shrink):
+            body['options'] = request.options_shrink
+        if not UtilClient.is_unset(request.original_session_id):
+            body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.pre_model_id):
+            body['preModelId'] = request.pre_model_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.recognition_options_shrink):
+            body['recognitionOptions'] = request.recognition_options_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.video_url):
+            body['videoUrl'] = request.video_url
+        if not UtilClient.is_unset(request.vl_prompt):
+            body['vlPrompt'] = request.vl_prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunVideoDetectShot',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runVideoDetectShot',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunVideoDetectShotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_video_detect_shot(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunVideoDetectShotRequest,
+    ) -> quan_miao_light_app_20240801_models.RunVideoDetectShotResponse:
+        """
+        @summary 轻应用-视频拆条
+        
+        @param request: RunVideoDetectShotRequest
+        @return: RunVideoDetectShotResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_video_detect_shot_with_options(workspace_id, request, headers, runtime)
+
+    async def run_video_detect_shot_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunVideoDetectShotRequest,
+    ) -> quan_miao_light_app_20240801_models.RunVideoDetectShotResponse:
+        """
+        @summary 轻应用-视频拆条
+        
+        @param request: RunVideoDetectShotRequest
+        @return: RunVideoDetectShotResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_video_detect_shot_with_options_async(workspace_id, request, headers, runtime)
+
     def submit_enterprise_voc_analysis_task_with_options(
         self,
         workspace_id: str,
@@ -4247,6 +4617,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.submit_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def submit_video_detect_shot_task_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-提交视频拆条任务
+        
+        @param tmp_req: SubmitVideoDetectShotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoDetectShotTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
+        if not UtilClient.is_unset(tmp_req.recognition_options):
+            request.recognition_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recognition_options, 'recognitionOptions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.deduplication_id):
+            body['deduplicationId'] = request.deduplication_id
+        if not UtilClient.is_unset(request.intelli_simp_prompt):
+            body['intelliSimpPrompt'] = request.intelli_simp_prompt
+        if not UtilClient.is_unset(request.intelli_simp_prompt_template_id):
+            body['intelliSimpPromptTemplateId'] = request.intelli_simp_prompt_template_id
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.model_custom_prompt_template_id):
+            body['modelCustomPromptTemplateId'] = request.model_custom_prompt_template_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_vl_custom_prompt_template_id):
+            body['modelVlCustomPromptTemplateId'] = request.model_vl_custom_prompt_template_id
+        if not UtilClient.is_unset(request.options_shrink):
+            body['options'] = request.options_shrink
+        if not UtilClient.is_unset(request.original_session_id):
+            body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.pre_model_id):
+            body['preModelId'] = request.pre_model_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.recognition_options_shrink):
+            body['recognitionOptions'] = request.recognition_options_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.video_url):
+            body['videoUrl'] = request.video_url
+        if not UtilClient.is_unset(request.vl_prompt):
+            body['vlPrompt'] = request.vl_prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoDetectShotTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitVideoDetectShotTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_detect_shot_task_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-提交视频拆条任务
+        
+        @param tmp_req: SubmitVideoDetectShotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoDetectShotTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
+        if not UtilClient.is_unset(tmp_req.recognition_options):
+            request.recognition_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recognition_options, 'recognitionOptions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.deduplication_id):
+            body['deduplicationId'] = request.deduplication_id
+        if not UtilClient.is_unset(request.intelli_simp_prompt):
+            body['intelliSimpPrompt'] = request.intelli_simp_prompt
+        if not UtilClient.is_unset(request.intelli_simp_prompt_template_id):
+            body['intelliSimpPromptTemplateId'] = request.intelli_simp_prompt_template_id
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.model_custom_prompt_template_id):
+            body['modelCustomPromptTemplateId'] = request.model_custom_prompt_template_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_vl_custom_prompt_template_id):
+            body['modelVlCustomPromptTemplateId'] = request.model_vl_custom_prompt_template_id
+        if not UtilClient.is_unset(request.options_shrink):
+            body['options'] = request.options_shrink
+        if not UtilClient.is_unset(request.original_session_id):
+            body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.pre_model_id):
+            body['preModelId'] = request.pre_model_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.recognition_options_shrink):
+            body['recognitionOptions'] = request.recognition_options_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.video_url):
+            body['videoUrl'] = request.video_url
+        if not UtilClient.is_unset(request.vl_prompt):
+            body['vlPrompt'] = request.vl_prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoDetectShotTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitVideoDetectShotTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_detect_shot_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-提交视频拆条任务
+        
+        @param request: SubmitVideoDetectShotTaskRequest
+        @return: SubmitVideoDetectShotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_video_detect_shot_task_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_video_detect_shot_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoDetectShotTaskResponse:
+        """
+        @summary 轻应用-提交视频拆条任务
+        
+        @param request: SubmitVideoDetectShotTaskRequest
+        @return: SubmitVideoDetectShotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_video_detect_shot_task_with_options_async(workspace_id, request, headers, runtime)
+
     def update_video_analysis_config_with_options(
         self,
         workspace_id: str,
@@ -4586,3 +5132,223 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_video_analysis_tasks_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_video_detect_shot_config_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-更新配置
+        
+        @param request: UpdateVideoDetectShotConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoDetectShotConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.async_concurrency):
+            body['asyncConcurrency'] = request.async_concurrency
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoDetectShotConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/updateVideoDetectShotConfig',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_video_detect_shot_config_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-更新配置
+        
+        @param request: UpdateVideoDetectShotConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoDetectShotConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.async_concurrency):
+            body['asyncConcurrency'] = request.async_concurrency
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoDetectShotConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/updateVideoDetectShotConfig',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_video_detect_shot_config(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-更新配置
+        
+        @param request: UpdateVideoDetectShotConfigRequest
+        @return: UpdateVideoDetectShotConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_video_detect_shot_config_with_options(workspace_id, request, headers, runtime)
+
+    async def update_video_detect_shot_config_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotConfigResponse:
+        """
+        @summary 智能拆条-更新配置
+        
+        @param request: UpdateVideoDetectShotConfigRequest
+        @return: UpdateVideoDetectShotConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_video_detect_shot_config_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_video_detect_shot_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskResponse:
+        """
+        @summary 视频拆条-修改任务状态
+        
+        @param request: UpdateVideoDetectShotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoDetectShotTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_status):
+            body['taskStatus'] = request.task_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoDetectShotTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/updateVideoDetectShotTask',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_video_detect_shot_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskResponse:
+        """
+        @summary 视频拆条-修改任务状态
+        
+        @param request: UpdateVideoDetectShotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoDetectShotTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_status):
+            body['taskStatus'] = request.task_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoDetectShotTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/updateVideoDetectShotTask',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_video_detect_shot_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskResponse:
+        """
+        @summary 视频拆条-修改任务状态
+        
+        @param request: UpdateVideoDetectShotTaskRequest
+        @return: UpdateVideoDetectShotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_video_detect_shot_task_with_options(workspace_id, request, headers, runtime)
+
+    async def update_video_detect_shot_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoDetectShotTaskResponse:
+        """
+        @summary 视频拆条-修改任务状态
+        
+        @param request: UpdateVideoDetectShotTaskRequest
+        @return: UpdateVideoDetectShotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_video_detect_shot_task_with_options_async(workspace_id, request, headers, runtime)

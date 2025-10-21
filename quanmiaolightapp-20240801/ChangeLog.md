@@ -1,3 +1,12 @@
+2025-10-21 Version: 2.13.0
+- Support API GetVideoDetectShotConfig.
+- Support API GetVideoDetectShotTask.
+- Support API RunVideoDetectShot.
+- Support API SubmitVideoDetectShotTask.
+- Support API UpdateVideoDetectShotConfig.
+- Support API UpdateVideoDetectShotTask.
+
+
 2025-10-17 Version: 2.12.1
 - Update API RunVideoAnalysis: add request parameters splitType.
 - Update API SubmitVideoAnalysisTask: add request parameters splitType.
