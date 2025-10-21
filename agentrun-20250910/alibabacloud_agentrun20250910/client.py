@@ -489,8 +489,12 @@ class Client(OpenApiClient):
             body['longTtl'] = request.long_ttl
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.permanent):
+            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
             body['shortTtl'] = request.short_ttl
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -531,8 +535,12 @@ class Client(OpenApiClient):
             body['longTtl'] = request.long_ttl
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.permanent):
+            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
             body['shortTtl'] = request.short_ttl
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3341,14 +3349,18 @@ class Client(OpenApiClient):
         @return: UpdateMemoryResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.long_ttl):
-            query['longTtl'] = request.long_ttl
+            body['longTtl'] = request.long_ttl
+        if not UtilClient.is_unset(request.permanent):
+            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
-            query['shortTtl'] = request.short_ttl
+            body['shortTtl'] = request.short_ttl
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateMemory',
@@ -3382,14 +3394,18 @@ class Client(OpenApiClient):
         @return: UpdateMemoryResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.long_ttl):
-            query['longTtl'] = request.long_ttl
+            body['longTtl'] = request.long_ttl
+        if not UtilClient.is_unset(request.permanent):
+            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
-            query['shortTtl'] = request.short_ttl
+            body['shortTtl'] = request.short_ttl
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateMemory',

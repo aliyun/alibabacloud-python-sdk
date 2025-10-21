@@ -6594,14 +6594,18 @@ class CreateMemoryRequest(TeaModel):
         self,
         long_ttl: int = None,
         name: str = None,
+        permanent: bool = None,
         short_ttl: int = None,
+        strategy: List[str] = None,
     ):
         # This parameter is required.
         self.long_ttl = long_ttl
         # This parameter is required.
         self.name = name
+        self.permanent = permanent
         # This parameter is required.
         self.short_ttl = short_ttl
+        self.strategy = strategy
 
     def validate(self):
         pass
@@ -6616,8 +6620,12 @@ class CreateMemoryRequest(TeaModel):
             result['longTtl'] = self.long_ttl
         if self.name is not None:
             result['name'] = self.name
+        if self.permanent is not None:
+            result['permanent'] = self.permanent
         if self.short_ttl is not None:
             result['shortTtl'] = self.short_ttl
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -6626,20 +6634,21 @@ class CreateMemoryRequest(TeaModel):
             self.long_ttl = m.get('longTtl')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('permanent') is not None:
+            self.permanent = m.get('permanent')
         if m.get('shortTtl') is not None:
             self.short_ttl = m.get('shortTtl')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
         return self
 
 
-class CreateMemoryResponseBody(TeaModel):
+class CreateMemoryResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        request_id: str = None,
+        cms_workspace_name: str = None,
     ):
-        self.code = code
-        # Id of the request
-        self.request_id = request_id
+        self.cms_workspace_name = cms_workspace_name
 
     def validate(self):
         pass
@@ -6650,8 +6659,43 @@ class CreateMemoryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cms_workspace_name is not None:
+            result['cmsWorkspaceName'] = self.cms_workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cmsWorkspaceName') is not None:
+            self.cms_workspace_name = m.get('cmsWorkspaceName')
+        return self
+
+
+class CreateMemoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateMemoryResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
         return result
@@ -6660,6 +6704,9 @@ class CreateMemoryResponseBody(TeaModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateMemoryResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         return self
@@ -7305,15 +7352,21 @@ class GetCodeInterpreterResponse(TeaModel):
 class GetMemoryResponseBodyData(TeaModel):
     def __init__(
         self,
+        cms_workspace_name: str = None,
         create_time: int = None,
         long_ttl: int = None,
         name: str = None,
+        permanent: bool = None,
         short_ttl: int = None,
+        strategy: List[str] = None,
     ):
+        self.cms_workspace_name = cms_workspace_name
         self.create_time = create_time
         self.long_ttl = long_ttl
         self.name = name
+        self.permanent = permanent
         self.short_ttl = short_ttl
+        self.strategy = strategy
 
     def validate(self):
         pass
@@ -7324,26 +7377,38 @@ class GetMemoryResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.cms_workspace_name is not None:
+            result['cmsWorkspaceName'] = self.cms_workspace_name
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.long_ttl is not None:
             result['longTtl'] = self.long_ttl
         if self.name is not None:
             result['name'] = self.name
+        if self.permanent is not None:
+            result['permanent'] = self.permanent
         if self.short_ttl is not None:
             result['shortTtl'] = self.short_ttl
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cmsWorkspaceName') is not None:
+            self.cms_workspace_name = m.get('cmsWorkspaceName')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('longTtl') is not None:
             self.long_ttl = m.get('longTtl')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('permanent') is not None:
+            self.permanent = m.get('permanent')
         if m.get('shortTtl') is not None:
             self.short_ttl = m.get('shortTtl')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
         return self
 
 
@@ -9088,12 +9153,14 @@ class UpdateMemoryRequest(TeaModel):
     def __init__(
         self,
         long_ttl: int = None,
+        permanent: bool = None,
         short_ttl: int = None,
+        strategy: List[str] = None,
     ):
-        # This parameter is required.
         self.long_ttl = long_ttl
-        # This parameter is required.
+        self.permanent = permanent
         self.short_ttl = short_ttl
+        self.strategy = strategy
 
     def validate(self):
         pass
@@ -9106,28 +9173,33 @@ class UpdateMemoryRequest(TeaModel):
         result = dict()
         if self.long_ttl is not None:
             result['longTtl'] = self.long_ttl
+        if self.permanent is not None:
+            result['permanent'] = self.permanent
         if self.short_ttl is not None:
             result['shortTtl'] = self.short_ttl
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('longTtl') is not None:
             self.long_ttl = m.get('longTtl')
+        if m.get('permanent') is not None:
+            self.permanent = m.get('permanent')
         if m.get('shortTtl') is not None:
             self.short_ttl = m.get('shortTtl')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
         return self
 
 
-class UpdateMemoryResponseBody(TeaModel):
+class UpdateMemoryResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        request_id: str = None,
+        cms_workspace_name: str = None,
     ):
-        self.code = code
-        # Id of the request
-        self.request_id = request_id
+        self.cms_workspace_name = cms_workspace_name
 
     def validate(self):
         pass
@@ -9138,8 +9210,43 @@ class UpdateMemoryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cms_workspace_name is not None:
+            result['cmsWorkspaceName'] = self.cms_workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cmsWorkspaceName') is not None:
+            self.cms_workspace_name = m.get('cmsWorkspaceName')
+        return self
+
+
+class UpdateMemoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateMemoryResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
         return result
@@ -9148,6 +9255,9 @@ class UpdateMemoryResponseBody(TeaModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = UpdateMemoryResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         return self
