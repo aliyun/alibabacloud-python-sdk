@@ -1,3 +1,6 @@
+2025-10-21 Version: 2.13.1
+- Generated python 2024-08-01 for QuanMiaoLightApp.
+
 2025-10-21 Version: 2.13.0
 - Support API GetVideoDetectShotConfig.
 - Support API GetVideoDetectShotTask.
