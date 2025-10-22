@@ -1,3 +1,7 @@
+2025-10-22 Version: 1.2.0
+- Support API DescribeNodeGroups.
+
+
 2025-09-12 Version: 1.1.1
 - Update API CreateInstanceV1: add request parameters body.AgentNodeGroup.
 - Update API CreateInstanceV1: add request parameters body.AutoPay.

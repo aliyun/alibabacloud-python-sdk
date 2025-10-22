@@ -583,6 +583,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_instances_with_options_async(request, headers, runtime)
 
+    def describe_node_groups_with_options(
+        self,
+        request: starrocks_20221019_models.DescribeNodeGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.DescribeNodeGroupsResponse:
+        """
+        @summary 获取节点组信息
+        
+        @param request: DescribeNodeGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.component_type):
+            body['componentType'] = request.component_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_group_ids):
+            body['nodeGroupIds'] = request.node_group_ids
+        if not UtilClient.is_unset(request.node_group_name):
+            body['nodeGroupName'] = request.node_group_name
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNodeGroups',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/nodegroup/describeNodeGroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.DescribeNodeGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_node_groups_with_options_async(
+        self,
+        request: starrocks_20221019_models.DescribeNodeGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.DescribeNodeGroupsResponse:
+        """
+        @summary 获取节点组信息
+        
+        @param request: DescribeNodeGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.component_type):
+            body['componentType'] = request.component_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_group_ids):
+            body['nodeGroupIds'] = request.node_group_ids
+        if not UtilClient.is_unset(request.node_group_name):
+            body['nodeGroupName'] = request.node_group_name
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNodeGroups',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/nodegroup/describeNodeGroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.DescribeNodeGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_node_groups(
+        self,
+        request: starrocks_20221019_models.DescribeNodeGroupsRequest,
+    ) -> starrocks_20221019_models.DescribeNodeGroupsResponse:
+        """
+        @summary 获取节点组信息
+        
+        @param request: DescribeNodeGroupsRequest
+        @return: DescribeNodeGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_node_groups_with_options(request, headers, runtime)
+
+    async def describe_node_groups_async(
+        self,
+        request: starrocks_20221019_models.DescribeNodeGroupsRequest,
+    ) -> starrocks_20221019_models.DescribeNodeGroupsResponse:
+        """
+        @summary 获取节点组信息
+        
+        @param request: DescribeNodeGroupsRequest
+        @return: DescribeNodeGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_node_groups_with_options_async(request, headers, runtime)
+
     def modify_cu_with_options(
         self,
         request: starrocks_20221019_models.ModifyCuRequest,
