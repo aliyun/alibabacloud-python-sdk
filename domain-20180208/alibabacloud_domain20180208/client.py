@@ -237,6 +237,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_intrude_domains_with_options_async(request, runtime)
 
+    def batch_query_push_status_with_options(
+        self,
+        tmp_req: domain_20180208_models.BatchQueryPushStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
+        """
+        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
+        
+        @param tmp_req: BatchQueryPushStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchQueryPushStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.BatchQueryPushStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+            query['OutBizIds'] = request.out_biz_ids_shrink
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryPushStatus',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.BatchQueryPushStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_push_status_with_options_async(
+        self,
+        tmp_req: domain_20180208_models.BatchQueryPushStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
+        """
+        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
+        
+        @param tmp_req: BatchQueryPushStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchQueryPushStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.BatchQueryPushStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+            query['OutBizIds'] = request.out_biz_ids_shrink
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryPushStatus',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.BatchQueryPushStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_push_status(
+        self,
+        request: domain_20180208_models.BatchQueryPushStatusRequest,
+    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
+        """
+        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
+        
+        @param request: BatchQueryPushStatusRequest
+        @return: BatchQueryPushStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_query_push_status_with_options(request, runtime)
+
+    async def batch_query_push_status_async(
+        self,
+        request: domain_20180208_models.BatchQueryPushStatusRequest,
+    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
+        """
+        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
+        
+        @param request: BatchQueryPushStatusRequest
+        @return: BatchQueryPushStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_query_push_status_with_options_async(request, runtime)
+
+    def batch_recall_push_with_options(
+        self,
+        tmp_req: domain_20180208_models.BatchRecallPushRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.BatchRecallPushResponse:
+        """
+        @summary 批量撤回带价PUSH
+        
+        @param tmp_req: BatchRecallPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRecallPushResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.BatchRecallPushShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+            query['OutBizIds'] = request.out_biz_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRecallPush',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.BatchRecallPushResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_recall_push_with_options_async(
+        self,
+        tmp_req: domain_20180208_models.BatchRecallPushRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.BatchRecallPushResponse:
+        """
+        @summary 批量撤回带价PUSH
+        
+        @param tmp_req: BatchRecallPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRecallPushResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.BatchRecallPushShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+            query['OutBizIds'] = request.out_biz_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRecallPush',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.BatchRecallPushResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_recall_push(
+        self,
+        request: domain_20180208_models.BatchRecallPushRequest,
+    ) -> domain_20180208_models.BatchRecallPushResponse:
+        """
+        @summary 批量撤回带价PUSH
+        
+        @param request: BatchRecallPushRequest
+        @return: BatchRecallPushResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_recall_push_with_options(request, runtime)
+
+    async def batch_recall_push_async(
+        self,
+        request: domain_20180208_models.BatchRecallPushRequest,
+    ) -> domain_20180208_models.BatchRecallPushResponse:
+        """
+        @summary 批量撤回带价PUSH
+        
+        @param request: BatchRecallPushRequest
+        @return: BatchRecallPushResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_recall_push_with_options_async(request, runtime)
+
     def bid_domain_with_options(
         self,
         request: domain_20180208_models.BidDomainRequest,
@@ -512,6 +736,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_domain_status_with_options_async(request, runtime)
+
+    def check_push_receiver_with_options(
+        self,
+        request: domain_20180208_models.CheckPushReceiverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.CheckPushReceiverResponse:
+        """
+        @summary 校验域名带价PUSH接收方可接收
+        
+        @param request: CheckPushReceiverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckPushReceiverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.receiver_account):
+            query['ReceiverAccount'] = request.receiver_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckPushReceiver',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.CheckPushReceiverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_push_receiver_with_options_async(
+        self,
+        request: domain_20180208_models.CheckPushReceiverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.CheckPushReceiverResponse:
+        """
+        @summary 校验域名带价PUSH接收方可接收
+        
+        @param request: CheckPushReceiverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckPushReceiverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.receiver_account):
+            query['ReceiverAccount'] = request.receiver_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckPushReceiver',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.CheckPushReceiverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_push_receiver(
+        self,
+        request: domain_20180208_models.CheckPushReceiverRequest,
+    ) -> domain_20180208_models.CheckPushReceiverResponse:
+        """
+        @summary 校验域名带价PUSH接收方可接收
+        
+        @param request: CheckPushReceiverRequest
+        @return: CheckPushReceiverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_push_receiver_with_options(request, runtime)
+
+    async def check_push_receiver_async(
+        self,
+        request: domain_20180208_models.CheckPushReceiverRequest,
+    ) -> domain_20180208_models.CheckPushReceiverResponse:
+        """
+        @summary 校验域名带价PUSH接收方可接收
+        
+        @param request: CheckPushReceiverRequest
+        @return: CheckPushReceiverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_push_receiver_with_options_async(request, runtime)
 
     def check_selected_domain_status_with_options(
         self,
@@ -1248,6 +1568,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.purchase_intl_domain_with_options_async(request, runtime)
+
+    def push_domains_with_options(
+        self,
+        tmp_req: domain_20180208_models.PushDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.PushDomainsResponse:
+        """
+        @summary 发布域名PUSH，目前只支持0元PUSH
+        
+        @param tmp_req: PushDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushDomainsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.PushDomainsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_list):
+            request.domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_list, 'DomainList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domain_list_shrink):
+            query['DomainList'] = request.domain_list_shrink
+        if not UtilClient.is_unset(request.out_biz_id):
+            query['OutBizId'] = request.out_biz_id
+        if not UtilClient.is_unset(request.publish_remark):
+            query['PublishRemark'] = request.publish_remark
+        if not UtilClient.is_unset(request.receiver_account):
+            query['ReceiverAccount'] = request.receiver_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PushDomains',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.PushDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_domains_with_options_async(
+        self,
+        tmp_req: domain_20180208_models.PushDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.PushDomainsResponse:
+        """
+        @summary 发布域名PUSH，目前只支持0元PUSH
+        
+        @param tmp_req: PushDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushDomainsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.PushDomainsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_list):
+            request.domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_list, 'DomainList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domain_list_shrink):
+            query['DomainList'] = request.domain_list_shrink
+        if not UtilClient.is_unset(request.out_biz_id):
+            query['OutBizId'] = request.out_biz_id
+        if not UtilClient.is_unset(request.publish_remark):
+            query['PublishRemark'] = request.publish_remark
+        if not UtilClient.is_unset(request.receiver_account):
+            query['ReceiverAccount'] = request.receiver_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PushDomains',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.PushDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_domains(
+        self,
+        request: domain_20180208_models.PushDomainsRequest,
+    ) -> domain_20180208_models.PushDomainsResponse:
+        """
+        @summary 发布域名PUSH，目前只支持0元PUSH
+        
+        @param request: PushDomainsRequest
+        @return: PushDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.push_domains_with_options(request, runtime)
+
+    async def push_domains_async(
+        self,
+        request: domain_20180208_models.PushDomainsRequest,
+    ) -> domain_20180208_models.PushDomainsResponse:
+        """
+        @summary 发布域名PUSH，目前只支持0元PUSH
+        
+        @param request: PushDomainsRequest
+        @return: PushDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.push_domains_with_options_async(request, runtime)
 
     def query_auction_detail_with_options(
         self,

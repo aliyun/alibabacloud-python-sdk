@@ -394,6 +394,526 @@ class BatchIntrudeDomainsResponse(TeaModel):
         return self
 
 
+class BatchQueryPushStatusRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        out_biz_ids: List[str] = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.out_biz_ids = out_biz_ids
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.out_biz_ids is not None:
+            result['OutBizIds'] = self.out_biz_ids
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OutBizIds') is not None:
+            self.out_biz_ids = m.get('OutBizIds')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class BatchQueryPushStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        out_biz_ids_shrink: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.out_biz_ids_shrink = out_biz_ids_shrink
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.out_biz_ids_shrink is not None:
+            result['OutBizIds'] = self.out_biz_ids_shrink
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OutBizIds') is not None:
+            self.out_biz_ids_shrink = m.get('OutBizIds')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class BatchQueryPushStatusResponseBodyModulePushResults(TeaModel):
+    def __init__(
+        self,
+        out_biz_id: str = None,
+        push_no: str = None,
+        status: str = None,
+        status_desc: str = None,
+    ):
+        self.out_biz_id = out_biz_id
+        self.push_no = push_no
+        self.status = status
+        self.status_desc = status_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_biz_id is not None:
+            result['OutBizId'] = self.out_biz_id
+        if self.push_no is not None:
+            result['PushNo'] = self.push_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutBizId') is not None:
+            self.out_biz_id = m.get('OutBizId')
+        if m.get('PushNo') is not None:
+            self.push_no = m.get('PushNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        return self
+
+
+class BatchQueryPushStatusResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        push_results: List[BatchQueryPushStatusResponseBodyModulePushResults] = None,
+    ):
+        self.push_results = push_results
+
+    def validate(self):
+        if self.push_results:
+            for k in self.push_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PushResults'] = []
+        if self.push_results is not None:
+            for k in self.push_results:
+                result['PushResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.push_results = []
+        if m.get('PushResults') is not None:
+            for k in m.get('PushResults'):
+                temp_model = BatchQueryPushStatusResponseBodyModulePushResults()
+                self.push_results.append(temp_model.from_map(k))
+        return self
+
+
+class BatchQueryPushStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        allow_retry: bool = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        module: BatchQueryPushStatusResponseBodyModule = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.allow_retry = allow_retry
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.module = module
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Module') is not None:
+            temp_model = BatchQueryPushStatusResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchQueryPushStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchQueryPushStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchQueryPushStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchRecallPushRequest(TeaModel):
+    def __init__(
+        self,
+        out_biz_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.out_biz_ids = out_biz_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_biz_ids is not None:
+            result['OutBizIds'] = self.out_biz_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutBizIds') is not None:
+            self.out_biz_ids = m.get('OutBizIds')
+        return self
+
+
+class BatchRecallPushShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        out_biz_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.out_biz_ids_shrink = out_biz_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_biz_ids_shrink is not None:
+            result['OutBizIds'] = self.out_biz_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutBizIds') is not None:
+            self.out_biz_ids_shrink = m.get('OutBizIds')
+        return self
+
+
+class BatchRecallPushResponseBodyModuleRecallResults(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        out_biz_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.out_biz_id = out_biz_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.out_biz_id is not None:
+            result['OutBizId'] = self.out_biz_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OutBizId') is not None:
+            self.out_biz_id = m.get('OutBizId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchRecallPushResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        recall_results: List[BatchRecallPushResponseBodyModuleRecallResults] = None,
+    ):
+        self.recall_results = recall_results
+
+    def validate(self):
+        if self.recall_results:
+            for k in self.recall_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RecallResults'] = []
+        if self.recall_results is not None:
+            for k in self.recall_results:
+                result['RecallResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recall_results = []
+        if m.get('RecallResults') is not None:
+            for k in m.get('RecallResults'):
+                temp_model = BatchRecallPushResponseBodyModuleRecallResults()
+                self.recall_results.append(temp_model.from_map(k))
+        return self
+
+
+class BatchRecallPushResponseBody(TeaModel):
+    def __init__(
+        self,
+        allow_retry: bool = None,
+        http_status_code: int = None,
+        module: BatchRecallPushResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.allow_retry = allow_retry
+        self.http_status_code = http_status_code
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Module') is not None:
+            temp_model = BatchRecallPushResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchRecallPushResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchRecallPushResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchRecallPushResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BidDomainRequest(TeaModel):
     def __init__(
         self,
@@ -917,6 +1437,149 @@ class CheckDomainStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckDomainStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckPushReceiverRequest(TeaModel):
+    def __init__(
+        self,
+        receiver_account: str = None,
+    ):
+        # This parameter is required.
+        self.receiver_account = receiver_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_account is not None:
+            result['ReceiverAccount'] = self.receiver_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverAccount') is not None:
+            self.receiver_account = m.get('ReceiverAccount')
+        return self
+
+
+class CheckPushReceiverResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        can_receive_push: bool = None,
+        masked_mobile: str = None,
+        reason_code: str = None,
+    ):
+        self.can_receive_push = can_receive_push
+        self.masked_mobile = masked_mobile
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_receive_push is not None:
+            result['CanReceivePush'] = self.can_receive_push
+        if self.masked_mobile is not None:
+            result['MaskedMobile'] = self.masked_mobile
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanReceivePush') is not None:
+            self.can_receive_push = m.get('CanReceivePush')
+        if m.get('MaskedMobile') is not None:
+            self.masked_mobile = m.get('MaskedMobile')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
+class CheckPushReceiverResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: CheckPushReceiverResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = CheckPushReceiverResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckPushReceiverResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckPushReceiverResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckPushReceiverResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2043,6 +2706,276 @@ class PurchaseIntlDomainResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PurchaseIntlDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PushDomainsRequest(TeaModel):
+    def __init__(
+        self,
+        domain_list: List[str] = None,
+        out_biz_id: str = None,
+        publish_remark: str = None,
+        receiver_account: str = None,
+    ):
+        # This parameter is required.
+        self.domain_list = domain_list
+        # This parameter is required.
+        self.out_biz_id = out_biz_id
+        self.publish_remark = publish_remark
+        # This parameter is required.
+        self.receiver_account = receiver_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_list is not None:
+            result['DomainList'] = self.domain_list
+        if self.out_biz_id is not None:
+            result['OutBizId'] = self.out_biz_id
+        if self.publish_remark is not None:
+            result['PublishRemark'] = self.publish_remark
+        if self.receiver_account is not None:
+            result['ReceiverAccount'] = self.receiver_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainList') is not None:
+            self.domain_list = m.get('DomainList')
+        if m.get('OutBizId') is not None:
+            self.out_biz_id = m.get('OutBizId')
+        if m.get('PublishRemark') is not None:
+            self.publish_remark = m.get('PublishRemark')
+        if m.get('ReceiverAccount') is not None:
+            self.receiver_account = m.get('ReceiverAccount')
+        return self
+
+
+class PushDomainsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        domain_list_shrink: str = None,
+        out_biz_id: str = None,
+        publish_remark: str = None,
+        receiver_account: str = None,
+    ):
+        # This parameter is required.
+        self.domain_list_shrink = domain_list_shrink
+        # This parameter is required.
+        self.out_biz_id = out_biz_id
+        self.publish_remark = publish_remark
+        # This parameter is required.
+        self.receiver_account = receiver_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_list_shrink is not None:
+            result['DomainList'] = self.domain_list_shrink
+        if self.out_biz_id is not None:
+            result['OutBizId'] = self.out_biz_id
+        if self.publish_remark is not None:
+            result['PublishRemark'] = self.publish_remark
+        if self.receiver_account is not None:
+            result['ReceiverAccount'] = self.receiver_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainList') is not None:
+            self.domain_list_shrink = m.get('DomainList')
+        if m.get('OutBizId') is not None:
+            self.out_biz_id = m.get('OutBizId')
+        if m.get('PublishRemark') is not None:
+            self.publish_remark = m.get('PublishRemark')
+        if m.get('ReceiverAccount') is not None:
+            self.receiver_account = m.get('ReceiverAccount')
+        return self
+
+
+class PushDomainsResponseBodyModuleFailedResults(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        error_code: str = None,
+        error_msg: str = None,
+    ):
+        self.domain_name = domain_name
+        self.error_code = error_code
+        self.error_msg = error_msg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        return self
+
+
+class PushDomainsResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        failed_results: List[PushDomainsResponseBodyModuleFailedResults] = None,
+        out_biz_id: str = None,
+        push_no: str = None,
+        success: bool = None,
+        success_domains: List[str] = None,
+    ):
+        self.failed_results = failed_results
+        self.out_biz_id = out_biz_id
+        self.push_no = push_no
+        self.success = success
+        self.success_domains = success_domains
+
+    def validate(self):
+        if self.failed_results:
+            for k in self.failed_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedResults'] = []
+        if self.failed_results is not None:
+            for k in self.failed_results:
+                result['FailedResults'].append(k.to_map() if k else None)
+        if self.out_biz_id is not None:
+            result['OutBizId'] = self.out_biz_id
+        if self.push_no is not None:
+            result['PushNo'] = self.push_no
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.success_domains is not None:
+            result['SuccessDomains'] = self.success_domains
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_results = []
+        if m.get('FailedResults') is not None:
+            for k in m.get('FailedResults'):
+                temp_model = PushDomainsResponseBodyModuleFailedResults()
+                self.failed_results.append(temp_model.from_map(k))
+        if m.get('OutBizId') is not None:
+            self.out_biz_id = m.get('OutBizId')
+        if m.get('PushNo') is not None:
+            self.push_no = m.get('PushNo')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('SuccessDomains') is not None:
+            self.success_domains = m.get('SuccessDomains')
+        return self
+
+
+class PushDomainsResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: PushDomainsResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = PushDomainsResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PushDomainsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PushDomainsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PushDomainsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

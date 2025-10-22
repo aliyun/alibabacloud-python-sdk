@@ -1,3 +1,10 @@
+2025-10-22 Version: 1.6.0
+- Support API BatchQueryPushStatus.
+- Support API BatchRecallPush.
+- Support API CheckPushReceiver.
+- Support API PushDomains.
+
+
 2025-07-22 Version: 1.5.1
 - Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.Registrar.
 
