@@ -1,3 +1,6 @@
+2025-10-22 Version: 2.0.1
+- Generated python 2023-05-22 for clickhouse.
+
 2025-10-21 Version: 2.0.0
 - Update API CreateDBInstance: update request parameters StorageQuota' type has changed.
 - Update API CreateDBInstance: update request parameters StorageQuota' format has changed.
