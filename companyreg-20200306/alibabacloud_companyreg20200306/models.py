@@ -2791,6 +2791,150 @@ class ListUserSolutionsResponse(TeaModel):
         return self
 
 
+class OperateCallCenterForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        call_action: str = None,
+        employee_code: str = None,
+        request: str = None,
+        tenant_id: str = None,
+    ):
+        self.biz_type = biz_type
+        self.call_action = call_action
+        self.employee_code = employee_code
+        self.request = request
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.call_action is not None:
+            result['CallAction'] = self.call_action
+        if self.employee_code is not None:
+            result['EmployeeCode'] = self.employee_code
+        if self.request is not None:
+            result['Request'] = self.request
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('CallAction') is not None:
+            self.call_action = m.get('CallAction')
+        if m.get('EmployeeCode') is not None:
+            self.employee_code = m.get('EmployeeCode')
+        if m.get('Request') is not None:
+            self.request = m.get('Request')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class OperateCallCenterForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OperateCallCenterForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateCallCenterForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateCallCenterForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OperateProduceForPartnerRequest(TeaModel):
     def __init__(
         self,
@@ -4162,6 +4306,187 @@ class QueryUserNeedAuthResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryUserNeedAuthResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecordCallCenterEventForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        biz_type: str = None,
+        call_action: str = None,
+        callee: str = None,
+        caller: str = None,
+        conn_id: str = None,
+        contact_id: str = None,
+        job_id: str = None,
+        related_id: int = None,
+        secret_mobile: str = None,
+        skill_type: int = None,
+    ):
+        self.biz_id = biz_id
+        self.biz_type = biz_type
+        self.call_action = call_action
+        self.callee = callee
+        self.caller = caller
+        self.conn_id = conn_id
+        self.contact_id = contact_id
+        self.job_id = job_id
+        # RequestId
+        self.related_id = related_id
+        self.secret_mobile = secret_mobile
+        self.skill_type = skill_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.call_action is not None:
+            result['CallAction'] = self.call_action
+        if self.callee is not None:
+            result['Callee'] = self.callee
+        if self.caller is not None:
+            result['Caller'] = self.caller
+        if self.conn_id is not None:
+            result['ConnId'] = self.conn_id
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.related_id is not None:
+            result['RelatedId'] = self.related_id
+        if self.secret_mobile is not None:
+            result['SecretMobile'] = self.secret_mobile
+        if self.skill_type is not None:
+            result['SkillType'] = self.skill_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('CallAction') is not None:
+            self.call_action = m.get('CallAction')
+        if m.get('Callee') is not None:
+            self.callee = m.get('Callee')
+        if m.get('Caller') is not None:
+            self.caller = m.get('Caller')
+        if m.get('ConnId') is not None:
+            self.conn_id = m.get('ConnId')
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RelatedId') is not None:
+            self.related_id = m.get('RelatedId')
+        if m.get('SecretMobile') is not None:
+            self.secret_mobile = m.get('SecretMobile')
+        if m.get('SkillType') is not None:
+            self.skill_type = m.get('SkillType')
+        return self
+
+
+class RecordCallCenterEventForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RecordCallCenterEventForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RecordCallCenterEventForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RecordCallCenterEventForPartnerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

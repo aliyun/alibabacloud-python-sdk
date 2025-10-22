@@ -1627,6 +1627,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_solutions_with_options_async(request, runtime)
 
+    def operate_call_center_for_partner_with_options(
+        self,
+        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
+        """
+        @summary 服务商玄坛呼叫中心操作
+        
+        @param request: OperateCallCenterForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateCallCenterForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.call_action):
+            query['CallAction'] = request.call_action
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
+        if not UtilClient.is_unset(request.request):
+            query['Request'] = request.request
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateCallCenterForPartner',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.OperateCallCenterForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_call_center_for_partner_with_options_async(
+        self,
+        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
+        """
+        @summary 服务商玄坛呼叫中心操作
+        
+        @param request: OperateCallCenterForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateCallCenterForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.call_action):
+            query['CallAction'] = request.call_action
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
+        if not UtilClient.is_unset(request.request):
+            query['Request'] = request.request
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateCallCenterForPartner',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.OperateCallCenterForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_call_center_for_partner(
+        self,
+        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
+    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
+        """
+        @summary 服务商玄坛呼叫中心操作
+        
+        @param request: OperateCallCenterForPartnerRequest
+        @return: OperateCallCenterForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.operate_call_center_for_partner_with_options(request, runtime)
+
+    async def operate_call_center_for_partner_async(
+        self,
+        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
+    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
+        """
+        @summary 服务商玄坛呼叫中心操作
+        
+        @param request: OperateCallCenterForPartnerRequest
+        @return: OperateCallCenterForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_call_center_for_partner_with_options_async(request, runtime)
+
     def operate_produce_for_partner_with_options(
         self,
         request: companyreg_20200306_models.OperateProduceForPartnerRequest,
@@ -2576,6 +2688,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_need_auth_with_options_async(runtime)
+
+    def record_call_center_event_for_partner_with_options(
+        self,
+        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
+        """
+        @summary 服务商玄坛外呼呼叫中心事件回传
+        
+        @param request: RecordCallCenterEventForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordCallCenterEventForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.call_action):
+            query['CallAction'] = request.call_action
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.conn_id):
+            query['ConnId'] = request.conn_id
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.related_id):
+            query['RelatedId'] = request.related_id
+        if not UtilClient.is_unset(request.secret_mobile):
+            query['SecretMobile'] = request.secret_mobile
+        if not UtilClient.is_unset(request.skill_type):
+            query['SkillType'] = request.skill_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecordCallCenterEventForPartner',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.RecordCallCenterEventForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def record_call_center_event_for_partner_with_options_async(
+        self,
+        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
+        """
+        @summary 服务商玄坛外呼呼叫中心事件回传
+        
+        @param request: RecordCallCenterEventForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordCallCenterEventForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.call_action):
+            query['CallAction'] = request.call_action
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.conn_id):
+            query['ConnId'] = request.conn_id
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.related_id):
+            query['RelatedId'] = request.related_id
+        if not UtilClient.is_unset(request.secret_mobile):
+            query['SecretMobile'] = request.secret_mobile
+        if not UtilClient.is_unset(request.skill_type):
+            query['SkillType'] = request.skill_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecordCallCenterEventForPartner',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.RecordCallCenterEventForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def record_call_center_event_for_partner(
+        self,
+        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
+    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
+        """
+        @summary 服务商玄坛外呼呼叫中心事件回传
+        
+        @param request: RecordCallCenterEventForPartnerRequest
+        @return: RecordCallCenterEventForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.record_call_center_event_for_partner_with_options(request, runtime)
+
+    async def record_call_center_event_for_partner_async(
+        self,
+        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
+    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
+        """
+        @summary 服务商玄坛外呼呼叫中心事件回传
+        
+        @param request: RecordCallCenterEventForPartnerRequest
+        @return: RecordCallCenterEventForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.record_call_center_event_for_partner_with_options_async(request, runtime)
 
     def record_post_back_with_options(
         self,
