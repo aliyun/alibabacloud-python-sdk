@@ -13047,6 +13047,8 @@ class Client(OpenApiClient):
             query['MaxConversationDuration'] = request.max_conversation_duration
         if not UtilClient.is_unset(request.min_conversation_duration):
             query['MinConversationDuration'] = request.min_conversation_duration
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_no):
@@ -13114,6 +13116,8 @@ class Client(OpenApiClient):
             query['MaxConversationDuration'] = request.max_conversation_duration
         if not UtilClient.is_unset(request.min_conversation_duration):
             query['MinConversationDuration'] = request.min_conversation_duration
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_no):

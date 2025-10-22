@@ -1,3 +1,21 @@
+2025-10-22 Version: 3.1.1
+- Update API QueryAiCallDetailPage: add request parameters OutId.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.Status.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.CallId.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.CallResult.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.CalledPhone.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.CallerPhone.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.Duration.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.FailedReason.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.HangupDirection.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.MajorIntent.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.OutId.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.ReleaseTime.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.StartCallTime.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.StatusCode.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.StatusMsg.
+
+
 2025-08-19 Version: 3.1.0
 - Support API GetCallDialogContent.
 

@@ -25684,6 +25684,7 @@ class QueryAiCallDetailPageRequest(TeaModel):
         major_intent: str = None,
         max_conversation_duration: int = None,
         min_conversation_duration: int = None,
+        out_id: str = None,
         owner_id: int = None,
         page_no: int = None,
         page_size: int = None,
@@ -25702,6 +25703,7 @@ class QueryAiCallDetailPageRequest(TeaModel):
         self.major_intent = major_intent
         self.max_conversation_duration = max_conversation_duration
         self.min_conversation_duration = min_conversation_duration
+        self.out_id = out_id
         self.owner_id = owner_id
         self.page_no = page_no
         self.page_size = page_size
@@ -25739,6 +25741,8 @@ class QueryAiCallDetailPageRequest(TeaModel):
             result['MaxConversationDuration'] = self.max_conversation_duration
         if self.min_conversation_duration is not None:
             result['MinConversationDuration'] = self.min_conversation_duration
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.page_no is not None:
@@ -25777,6 +25781,8 @@ class QueryAiCallDetailPageRequest(TeaModel):
             self.max_conversation_duration = m.get('MaxConversationDuration')
         if m.get('MinConversationDuration') is not None:
             self.min_conversation_duration = m.get('MinConversationDuration')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('PageNo') is not None:
@@ -25814,6 +25820,7 @@ class QueryAiCallDetailPageResponseBodyDataList(TeaModel):
         major_intent: str = None,
         options: str = None,
         recording_file_path: str = None,
+        status: int = None,
         task_id: str = None,
     ):
         self.batch_id = batch_id
@@ -25829,6 +25836,7 @@ class QueryAiCallDetailPageResponseBodyDataList(TeaModel):
         self.major_intent = major_intent
         self.options = options
         self.recording_file_path = recording_file_path
+        self.status = status
         self.task_id = task_id
 
     def validate(self):
@@ -25866,6 +25874,8 @@ class QueryAiCallDetailPageResponseBodyDataList(TeaModel):
             result['Options'] = self.options
         if self.recording_file_path is not None:
             result['RecordingFilePath'] = self.recording_file_path
+        if self.status is not None:
+            result['Status'] = self.status
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -25898,6 +25908,8 @@ class QueryAiCallDetailPageResponseBodyDataList(TeaModel):
             self.options = m.get('Options')
         if m.get('RecordingFilePath') is not None:
             self.recording_file_path = m.get('RecordingFilePath')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -26882,16 +26894,42 @@ class QueryConversationDetailInfoResponseBodyDataVariables(TeaModel):
 class QueryConversationDetailInfoResponseBodyData(TeaModel):
     def __init__(
         self,
+        call_id: str = None,
+        call_result: str = None,
+        called_phone: str = None,
+        caller_phone: str = None,
         conversation_record: str = None,
+        duration: int = None,
+        failed_reason: str = None,
+        hangup_direction: str = None,
+        major_intent: str = None,
+        out_id: str = None,
         output_tags: List[QueryConversationDetailInfoResponseBodyDataOutputTags] = None,
         pick_up_time: int = None,
         recording_file_download_url: str = None,
+        release_time: int = None,
+        start_call_time: int = None,
+        status_code: str = None,
+        status_msg: str = None,
         variables: List[QueryConversationDetailInfoResponseBodyDataVariables] = None,
     ):
+        self.call_id = call_id
+        self.call_result = call_result
+        self.called_phone = called_phone
+        self.caller_phone = caller_phone
         self.conversation_record = conversation_record
+        self.duration = duration
+        self.failed_reason = failed_reason
+        self.hangup_direction = hangup_direction
+        self.major_intent = major_intent
+        self.out_id = out_id
         self.output_tags = output_tags
         self.pick_up_time = pick_up_time
         self.recording_file_download_url = recording_file_download_url
+        self.release_time = release_time
+        self.start_call_time = start_call_time
+        self.status_code = status_code
+        self.status_msg = status_msg
         self.variables = variables
 
     def validate(self):
@@ -26910,8 +26948,26 @@ class QueryConversationDetailInfoResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
+        if self.call_result is not None:
+            result['CallResult'] = self.call_result
+        if self.called_phone is not None:
+            result['CalledPhone'] = self.called_phone
+        if self.caller_phone is not None:
+            result['CallerPhone'] = self.caller_phone
         if self.conversation_record is not None:
             result['ConversationRecord'] = self.conversation_record
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.failed_reason is not None:
+            result['FailedReason'] = self.failed_reason
+        if self.hangup_direction is not None:
+            result['HangupDirection'] = self.hangup_direction
+        if self.major_intent is not None:
+            result['MajorIntent'] = self.major_intent
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
         result['OutputTags'] = []
         if self.output_tags is not None:
             for k in self.output_tags:
@@ -26920,6 +26976,14 @@ class QueryConversationDetailInfoResponseBodyData(TeaModel):
             result['PickUpTime'] = self.pick_up_time
         if self.recording_file_download_url is not None:
             result['RecordingFileDownloadUrl'] = self.recording_file_download_url
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        if self.start_call_time is not None:
+            result['StartCallTime'] = self.start_call_time
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.status_msg is not None:
+            result['StatusMsg'] = self.status_msg
         result['Variables'] = []
         if self.variables is not None:
             for k in self.variables:
@@ -26928,8 +26992,26 @@ class QueryConversationDetailInfoResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
+        if m.get('CallResult') is not None:
+            self.call_result = m.get('CallResult')
+        if m.get('CalledPhone') is not None:
+            self.called_phone = m.get('CalledPhone')
+        if m.get('CallerPhone') is not None:
+            self.caller_phone = m.get('CallerPhone')
         if m.get('ConversationRecord') is not None:
             self.conversation_record = m.get('ConversationRecord')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FailedReason') is not None:
+            self.failed_reason = m.get('FailedReason')
+        if m.get('HangupDirection') is not None:
+            self.hangup_direction = m.get('HangupDirection')
+        if m.get('MajorIntent') is not None:
+            self.major_intent = m.get('MajorIntent')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
         self.output_tags = []
         if m.get('OutputTags') is not None:
             for k in m.get('OutputTags'):
@@ -26939,6 +27021,14 @@ class QueryConversationDetailInfoResponseBodyData(TeaModel):
             self.pick_up_time = m.get('PickUpTime')
         if m.get('RecordingFileDownloadUrl') is not None:
             self.recording_file_download_url = m.get('RecordingFileDownloadUrl')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+        if m.get('StartCallTime') is not None:
+            self.start_call_time = m.get('StartCallTime')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('StatusMsg') is not None:
+            self.status_msg = m.get('StatusMsg')
         self.variables = []
         if m.get('Variables') is not None:
             for k in m.get('Variables'):
