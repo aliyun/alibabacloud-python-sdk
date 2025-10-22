@@ -2413,6 +2413,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_lake_table_with_options_async(request, runtime)
 
+    def get_notebook_and_submit_task_with_options(
+        self,
+        request: dms_20250414_models.GetNotebookAndSubmitTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.GetNotebookAndSubmitTaskResponse:
+        """
+        @summary 调度运行Notebook文件
+        
+        @param request: GetNotebookAndSubmitTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNotebookAndSubmitTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.path):
+            body['Path'] = request.path
+        if not UtilClient.is_unset(request.retry):
+            body['Retry'] = request.retry
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNotebookAndSubmitTask',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.GetNotebookAndSubmitTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_notebook_and_submit_task_with_options_async(
+        self,
+        request: dms_20250414_models.GetNotebookAndSubmitTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.GetNotebookAndSubmitTaskResponse:
+        """
+        @summary 调度运行Notebook文件
+        
+        @param request: GetNotebookAndSubmitTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNotebookAndSubmitTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.path):
+            body['Path'] = request.path
+        if not UtilClient.is_unset(request.retry):
+            body['Retry'] = request.retry
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNotebookAndSubmitTask',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.GetNotebookAndSubmitTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_notebook_and_submit_task(
+        self,
+        request: dms_20250414_models.GetNotebookAndSubmitTaskRequest,
+    ) -> dms_20250414_models.GetNotebookAndSubmitTaskResponse:
+        """
+        @summary 调度运行Notebook文件
+        
+        @param request: GetNotebookAndSubmitTaskRequest
+        @return: GetNotebookAndSubmitTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_notebook_and_submit_task_with_options(request, runtime)
+
+    async def get_notebook_and_submit_task_async(
+        self,
+        request: dms_20250414_models.GetNotebookAndSubmitTaskRequest,
+    ) -> dms_20250414_models.GetNotebookAndSubmitTaskResponse:
+        """
+        @summary 调度运行Notebook文件
+        
+        @param request: GetNotebookAndSubmitTaskRequest
+        @return: GetNotebookAndSubmitTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_notebook_and_submit_task_with_options_async(request, runtime)
+
     def list_airflows_with_options(
         self,
         request: dms_20250414_models.ListAirflowsRequest,

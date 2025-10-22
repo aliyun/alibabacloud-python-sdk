@@ -1,3 +1,7 @@
+2025-10-22 Version: 1.2.0
+- Support API GetNotebookAndSubmitTask.
+
+
 2025-08-26 Version: 1.1.0
 - Support API BatchCreateDataLakePartitions.
 - Support API BatchDeleteDataLakePartitions.

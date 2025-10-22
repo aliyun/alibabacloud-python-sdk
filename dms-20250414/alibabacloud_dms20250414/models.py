@@ -5294,6 +5294,164 @@ class GetDataLakeTableResponse(TeaModel):
         return self
 
 
+class GetNotebookAndSubmitTaskRequest(TeaModel):
+    def __init__(
+        self,
+        params: str = None,
+        path: str = None,
+        retry: int = None,
+        session_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.params = params
+        # This parameter is required.
+        self.path = path
+        self.retry = retry
+        # This parameter is required.
+        self.session_id = session_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.retry is not None:
+            result['Retry'] = self.retry
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetNotebookAndSubmitTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        err_msg: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        session_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.code = code
+        self.err_msg = err_msg
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.session_id = session_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetNotebookAndSubmitTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNotebookAndSubmitTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNotebookAndSubmitTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAirflowsRequest(TeaModel):
     def __init__(
         self,
