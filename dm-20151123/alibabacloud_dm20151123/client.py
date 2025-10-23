@@ -603,6 +603,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_domain_dkim_record_with_options_async(request, runtime)
 
+    def check_disposable_with_options(
+        self,
+        request: dm_20151123_models.CheckDisposableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.CheckDisposableResponse:
+        """
+        @summary 检查地址是否为一次性邮箱
+        
+        @param request: CheckDisposableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDisposableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckDisposable',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CheckDisposableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_disposable_with_options_async(
+        self,
+        request: dm_20151123_models.CheckDisposableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.CheckDisposableResponse:
+        """
+        @summary 检查地址是否为一次性邮箱
+        
+        @param request: CheckDisposableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDisposableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckDisposable',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CheckDisposableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_disposable(
+        self,
+        request: dm_20151123_models.CheckDisposableRequest,
+    ) -> dm_20151123_models.CheckDisposableResponse:
+        """
+        @summary 检查地址是否为一次性邮箱
+        
+        @param request: CheckDisposableRequest
+        @return: CheckDisposableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_disposable_with_options(request, runtime)
+
+    async def check_disposable_async(
+        self,
+        request: dm_20151123_models.CheckDisposableRequest,
+    ) -> dm_20151123_models.CheckDisposableResponse:
+        """
+        @summary 检查地址是否为一次性邮箱
+        
+        @param request: CheckDisposableRequest
+        @return: CheckDisposableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_disposable_with_options_async(request, runtime)
+
     def check_domain_with_options(
         self,
         request: dm_20151123_models.CheckDomainRequest,
@@ -826,6 +922,722 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_reply_to_mail_address_with_options_async(request, runtime)
+
+    def config_set_cancel_relation_from_address_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetCancelRelationFromAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetCancelRelationFromAddressResponse:
+        """
+        @summary 配置集取消关联发信地址
+        
+        @param request: ConfigSetCancelRelationFromAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetCancelRelationFromAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_address):
+            query['FromAddress'] = request.from_address
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetCancelRelationFromAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetCancelRelationFromAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_cancel_relation_from_address_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetCancelRelationFromAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetCancelRelationFromAddressResponse:
+        """
+        @summary 配置集取消关联发信地址
+        
+        @param request: ConfigSetCancelRelationFromAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetCancelRelationFromAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_address):
+            query['FromAddress'] = request.from_address
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetCancelRelationFromAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetCancelRelationFromAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_cancel_relation_from_address(
+        self,
+        request: dm_20151123_models.ConfigSetCancelRelationFromAddressRequest,
+    ) -> dm_20151123_models.ConfigSetCancelRelationFromAddressResponse:
+        """
+        @summary 配置集取消关联发信地址
+        
+        @param request: ConfigSetCancelRelationFromAddressRequest
+        @return: ConfigSetCancelRelationFromAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_cancel_relation_from_address_with_options(request, runtime)
+
+    async def config_set_cancel_relation_from_address_async(
+        self,
+        request: dm_20151123_models.ConfigSetCancelRelationFromAddressRequest,
+    ) -> dm_20151123_models.ConfigSetCancelRelationFromAddressResponse:
+        """
+        @summary 配置集取消关联发信地址
+        
+        @param request: ConfigSetCancelRelationFromAddressRequest
+        @return: ConfigSetCancelRelationFromAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_cancel_relation_from_address_with_options_async(request, runtime)
+
+    def config_set_create_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetCreateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetCreateResponse:
+        """
+        @summary 配置集创建
+        
+        @param request: ConfigSetCreateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetCreateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetCreate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_create_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetCreateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetCreateResponse:
+        """
+        @summary 配置集创建
+        
+        @param request: ConfigSetCreateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetCreateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetCreate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_create(
+        self,
+        request: dm_20151123_models.ConfigSetCreateRequest,
+    ) -> dm_20151123_models.ConfigSetCreateResponse:
+        """
+        @summary 配置集创建
+        
+        @param request: ConfigSetCreateRequest
+        @return: ConfigSetCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_create_with_options(request, runtime)
+
+    async def config_set_create_async(
+        self,
+        request: dm_20151123_models.ConfigSetCreateRequest,
+    ) -> dm_20151123_models.ConfigSetCreateResponse:
+        """
+        @summary 配置集创建
+        
+        @param request: ConfigSetCreateRequest
+        @return: ConfigSetCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_create_with_options_async(request, runtime)
+
+    def config_set_delete_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetDeleteResponse:
+        """
+        @summary 删除配置集
+        
+        @param request: ConfigSetDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetDeleteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.is_force):
+            query['IsForce'] = request.is_force
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetDelete',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_delete_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetDeleteResponse:
+        """
+        @summary 删除配置集
+        
+        @param request: ConfigSetDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetDeleteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.is_force):
+            query['IsForce'] = request.is_force
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetDelete',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_delete(
+        self,
+        request: dm_20151123_models.ConfigSetDeleteRequest,
+    ) -> dm_20151123_models.ConfigSetDeleteResponse:
+        """
+        @summary 删除配置集
+        
+        @param request: ConfigSetDeleteRequest
+        @return: ConfigSetDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_delete_with_options(request, runtime)
+
+    async def config_set_delete_async(
+        self,
+        request: dm_20151123_models.ConfigSetDeleteRequest,
+    ) -> dm_20151123_models.ConfigSetDeleteResponse:
+        """
+        @summary 删除配置集
+        
+        @param request: ConfigSetDeleteRequest
+        @return: ConfigSetDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_delete_with_options_async(request, runtime)
+
+    def config_set_detail_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetDetailResponse:
+        """
+        @summary 配置集详情
+        
+        @param request: ConfigSetDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_detail_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetDetailResponse:
+        """
+        @summary 配置集详情
+        
+        @param request: ConfigSetDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_detail(
+        self,
+        request: dm_20151123_models.ConfigSetDetailRequest,
+    ) -> dm_20151123_models.ConfigSetDetailResponse:
+        """
+        @summary 配置集详情
+        
+        @param request: ConfigSetDetailRequest
+        @return: ConfigSetDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_detail_with_options(request, runtime)
+
+    async def config_set_detail_async(
+        self,
+        request: dm_20151123_models.ConfigSetDetailRequest,
+    ) -> dm_20151123_models.ConfigSetDetailResponse:
+        """
+        @summary 配置集详情
+        
+        @param request: ConfigSetDetailRequest
+        @return: ConfigSetDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_detail_with_options_async(request, runtime)
+
+    def config_set_list_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetListResponse:
+        """
+        @summary 配置集列表
+        
+        @param request: ConfigSetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_list_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetListResponse:
+        """
+        @summary 配置集列表
+        
+        @param request: ConfigSetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_list(
+        self,
+        request: dm_20151123_models.ConfigSetListRequest,
+    ) -> dm_20151123_models.ConfigSetListResponse:
+        """
+        @summary 配置集列表
+        
+        @param request: ConfigSetListRequest
+        @return: ConfigSetListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_list_with_options(request, runtime)
+
+    async def config_set_list_async(
+        self,
+        request: dm_20151123_models.ConfigSetListRequest,
+    ) -> dm_20151123_models.ConfigSetListResponse:
+        """
+        @summary 配置集列表
+        
+        @param request: ConfigSetListRequest
+        @return: ConfigSetListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_list_with_options_async(request, runtime)
+
+    def config_set_relation_from_address_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetRelationFromAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetRelationFromAddressResponse:
+        """
+        @summary 配置集关联发信地址
+        
+        @param request: ConfigSetRelationFromAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetRelationFromAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_address):
+            query['FromAddress'] = request.from_address
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetRelationFromAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetRelationFromAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_relation_from_address_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetRelationFromAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetRelationFromAddressResponse:
+        """
+        @summary 配置集关联发信地址
+        
+        @param request: ConfigSetRelationFromAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetRelationFromAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_address):
+            query['FromAddress'] = request.from_address
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetRelationFromAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetRelationFromAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_relation_from_address(
+        self,
+        request: dm_20151123_models.ConfigSetRelationFromAddressRequest,
+    ) -> dm_20151123_models.ConfigSetRelationFromAddressResponse:
+        """
+        @summary 配置集关联发信地址
+        
+        @param request: ConfigSetRelationFromAddressRequest
+        @return: ConfigSetRelationFromAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_relation_from_address_with_options(request, runtime)
+
+    async def config_set_relation_from_address_async(
+        self,
+        request: dm_20151123_models.ConfigSetRelationFromAddressRequest,
+    ) -> dm_20151123_models.ConfigSetRelationFromAddressResponse:
+        """
+        @summary 配置集关联发信地址
+        
+        @param request: ConfigSetRelationFromAddressRequest
+        @return: ConfigSetRelationFromAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_relation_from_address_with_options_async(request, runtime)
+
+    def config_set_update_with_options(
+        self,
+        request: dm_20151123_models.ConfigSetUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetUpdateResponse:
+        """
+        @summary 配置集更新
+        
+        @param request: ConfigSetUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetUpdateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetUpdate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_set_update_with_options_async(
+        self,
+        request: dm_20151123_models.ConfigSetUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ConfigSetUpdateResponse:
+        """
+        @summary 配置集更新
+        
+        @param request: ConfigSetUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigSetUpdateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigSetUpdate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ConfigSetUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_set_update(
+        self,
+        request: dm_20151123_models.ConfigSetUpdateRequest,
+    ) -> dm_20151123_models.ConfigSetUpdateResponse:
+        """
+        @summary 配置集更新
+        
+        @param request: ConfigSetUpdateRequest
+        @return: ConfigSetUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_set_update_with_options(request, runtime)
+
+    async def config_set_update_async(
+        self,
+        request: dm_20151123_models.ConfigSetUpdateRequest,
+    ) -> dm_20151123_models.ConfigSetUpdateResponse:
+        """
+        @summary 配置集更新
+        
+        @param request: ConfigSetUpdateRequest
+        @return: ConfigSetUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_set_update_with_options_async(request, runtime)
 
     def create_domain_with_options(
         self,
@@ -2941,6 +3753,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_tag_with_options_async(request, runtime)
 
+    def delete_validate_file_with_options(
+        self,
+        request: dm_20151123_models.DeleteValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DeleteValidateFileResponse:
+        """
+        @summary 删除批量校验任务的结果文件
+        
+        @param request: DeleteValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteValidateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_validate_file_with_options_async(
+        self,
+        request: dm_20151123_models.DeleteValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DeleteValidateFileResponse:
+        """
+        @summary 删除批量校验任务的结果文件
+        
+        @param request: DeleteValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteValidateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_validate_file(
+        self,
+        request: dm_20151123_models.DeleteValidateFileRequest,
+    ) -> dm_20151123_models.DeleteValidateFileResponse:
+        """
+        @summary 删除批量校验任务的结果文件
+        
+        @param request: DeleteValidateFileRequest
+        @return: DeleteValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_validate_file_with_options(request, runtime)
+
+    async def delete_validate_file_async(
+        self,
+        request: dm_20151123_models.DeleteValidateFileRequest,
+    ) -> dm_20151123_models.DeleteValidateFileResponse:
+        """
+        @summary 删除批量校验任务的结果文件
+        
+        @param request: DeleteValidateFileRequest
+        @return: DeleteValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_validate_file_with_options_async(request, runtime)
+
     def desc_account_summary_with_options(
         self,
         request: dm_20151123_models.DescAccountSummaryRequest,
@@ -3156,6 +4064,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.desc_domain_with_options_async(request, runtime)
+
+    def desc_template_with_options(
+        self,
+        request: dm_20151123_models.DescTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DescTemplateResponse:
+        """
+        @summary 查看模板信息
+        
+        @param request: DescTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_type):
+            query['FromType'] = request.from_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescTemplate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DescTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def desc_template_with_options_async(
+        self,
+        request: dm_20151123_models.DescTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DescTemplateResponse:
+        """
+        @summary 查看模板信息
+        
+        @param request: DescTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_type):
+            query['FromType'] = request.from_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescTemplate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DescTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def desc_template(
+        self,
+        request: dm_20151123_models.DescTemplateRequest,
+    ) -> dm_20151123_models.DescTemplateResponse:
+        """
+        @summary 查看模板信息
+        
+        @param request: DescTemplateRequest
+        @return: DescTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.desc_template_with_options(request, runtime)
+
+    async def desc_template_async(
+        self,
+        request: dm_20151123_models.DescTemplateRequest,
+    ) -> dm_20151123_models.DescTemplateResponse:
+        """
+        @summary 查看模板信息
+        
+        @param request: DescTemplateRequest
+        @return: DescTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.desc_template_with_options_async(request, runtime)
 
     def get_dedicated_ip_warm_up_detail_with_options(
         self,
@@ -4066,6 +5086,272 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(runtime)
+
+    def get_validate_file_with_options(
+        self,
+        request: dm_20151123_models.GetValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetValidateFileResponse:
+        """
+        @summary 获取批量校验任务的结果文件
+        
+        @param request: GetValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetValidateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_validate_file_with_options_async(
+        self,
+        request: dm_20151123_models.GetValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetValidateFileResponse:
+        """
+        @summary 获取批量校验任务的结果文件
+        
+        @param request: GetValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetValidateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_validate_file(
+        self,
+        request: dm_20151123_models.GetValidateFileRequest,
+    ) -> dm_20151123_models.GetValidateFileResponse:
+        """
+        @summary 获取批量校验任务的结果文件
+        
+        @param request: GetValidateFileRequest
+        @return: GetValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_validate_file_with_options(request, runtime)
+
+    async def get_validate_file_async(
+        self,
+        request: dm_20151123_models.GetValidateFileRequest,
+    ) -> dm_20151123_models.GetValidateFileResponse:
+        """
+        @summary 获取批量校验任务的结果文件
+        
+        @param request: GetValidateFileRequest
+        @return: GetValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_validate_file_with_options_async(request, runtime)
+
+    def get_validate_file_status_with_options(
+        self,
+        request: dm_20151123_models.GetValidateFileStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetValidateFileStatusResponse:
+        """
+        @summary 获取批量校验任务的状态
+        
+        @param request: GetValidateFileStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidateFileStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetValidateFileStatus',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetValidateFileStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_validate_file_status_with_options_async(
+        self,
+        request: dm_20151123_models.GetValidateFileStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetValidateFileStatusResponse:
+        """
+        @summary 获取批量校验任务的状态
+        
+        @param request: GetValidateFileStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidateFileStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetValidateFileStatus',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetValidateFileStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_validate_file_status(
+        self,
+        request: dm_20151123_models.GetValidateFileStatusRequest,
+    ) -> dm_20151123_models.GetValidateFileStatusResponse:
+        """
+        @summary 获取批量校验任务的状态
+        
+        @param request: GetValidateFileStatusRequest
+        @return: GetValidateFileStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_validate_file_status_with_options(request, runtime)
+
+    async def get_validate_file_status_async(
+        self,
+        request: dm_20151123_models.GetValidateFileStatusRequest,
+    ) -> dm_20151123_models.GetValidateFileStatusResponse:
+        """
+        @summary 获取批量校验任务的状态
+        
+        @param request: GetValidateFileStatusRequest
+        @return: GetValidateFileStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_validate_file_status_with_options_async(request, runtime)
+
+    def get_validation_quota_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetValidationQuotaResponse:
+        """
+        @summary 获取电子邮件校验额度
+        
+        @param request: GetValidationQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidationQuotaResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetValidationQuota',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetValidationQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_validation_quota_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetValidationQuotaResponse:
+        """
+        @summary 获取电子邮件校验额度
+        
+        @param request: GetValidationQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidationQuotaResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetValidationQuota',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetValidationQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_validation_quota(self) -> dm_20151123_models.GetValidationQuotaResponse:
+        """
+        @summary 获取电子邮件校验额度
+        
+        @return: GetValidationQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_validation_quota_with_options(runtime)
+
+    async def get_validation_quota_async(self) -> dm_20151123_models.GetValidationQuotaResponse:
+        """
+        @summary 获取电子邮件校验额度
+        
+        @return: GetValidationQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_validation_quota_with_options_async(runtime)
 
     def list_block_sending_with_options(
         self,
@@ -5511,6 +6797,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_task_by_param_with_options_async(request, runtime)
 
+    def query_template_by_param_with_options(
+        self,
+        request: dm_20151123_models.QueryTemplateByParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.QueryTemplateByParamResponse:
+        """
+        @summary 查询模板信息
+        
+        @param request: QueryTemplateByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTemplateByParamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_type):
+            query['FromType'] = request.from_type
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTemplateByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryTemplateByParamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_template_by_param_with_options_async(
+        self,
+        request: dm_20151123_models.QueryTemplateByParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.QueryTemplateByParamResponse:
+        """
+        @summary 查询模板信息
+        
+        @param request: QueryTemplateByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTemplateByParamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_type):
+            query['FromType'] = request.from_type
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTemplateByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryTemplateByParamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_template_by_param(
+        self,
+        request: dm_20151123_models.QueryTemplateByParamRequest,
+    ) -> dm_20151123_models.QueryTemplateByParamResponse:
+        """
+        @summary 查询模板信息
+        
+        @param request: QueryTemplateByParamRequest
+        @return: QueryTemplateByParamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_template_by_param_with_options(request, runtime)
+
+    async def query_template_by_param_async(
+        self,
+        request: dm_20151123_models.QueryTemplateByParamRequest,
+    ) -> dm_20151123_models.QueryTemplateByParamResponse:
+        """
+        @summary 查询模板信息
+        
+        @param request: QueryTemplateByParamRequest
+        @return: QueryTemplateByParamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_template_by_param_with_options_async(request, runtime)
+
     def remove_user_suppression_with_options(
         self,
         request: dm_20151123_models.RemoveUserSuppressionRequest,
@@ -5633,6 +7043,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_detail):
+            query['CustomDetail'] = request.custom_detail
         if not UtilClient.is_unset(request.detail):
             query['Detail'] = request.detail
         if not UtilClient.is_unset(request.owner_id):
@@ -5676,6 +7088,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_detail):
+            query['CustomDetail'] = request.custom_detail
         if not UtilClient.is_unset(request.detail):
             query['Detail'] = request.detail
         if not UtilClient.is_unset(request.owner_id):
@@ -5765,6 +7179,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_params):
+            query['TemplateParams'] = request.template_params
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
@@ -5820,6 +7236,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_params):
+            query['TemplateParams'] = request.template_params
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
@@ -5866,6 +7284,284 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.send_test_by_template_with_options_async(request, runtime)
+
+    def send_validate_file_with_options(
+        self,
+        request: dm_20151123_models.SendValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SendValidateFileResponse:
+        """
+        @summary 提交批量校验任务
+        
+        @param request: SendValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_column):
+            query['AddressColumn'] = request.address_column
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.has_header_row):
+            query['HasHeaderRow'] = request.has_header_row
+        if not UtilClient.is_unset(request.remove_duplicate):
+            query['RemoveDuplicate'] = request.remove_duplicate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SendValidateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_validate_file_with_options_async(
+        self,
+        request: dm_20151123_models.SendValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SendValidateFileResponse:
+        """
+        @summary 提交批量校验任务
+        
+        @param request: SendValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_column):
+            query['AddressColumn'] = request.address_column
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.has_header_row):
+            query['HasHeaderRow'] = request.has_header_row
+        if not UtilClient.is_unset(request.remove_duplicate):
+            query['RemoveDuplicate'] = request.remove_duplicate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SendValidateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_validate_file(
+        self,
+        request: dm_20151123_models.SendValidateFileRequest,
+    ) -> dm_20151123_models.SendValidateFileResponse:
+        """
+        @summary 提交批量校验任务
+        
+        @param request: SendValidateFileRequest
+        @return: SendValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_validate_file_with_options(request, runtime)
+
+    async def send_validate_file_async(
+        self,
+        request: dm_20151123_models.SendValidateFileRequest,
+    ) -> dm_20151123_models.SendValidateFileResponse:
+        """
+        @summary 提交批量校验任务
+        
+        @param request: SendValidateFileRequest
+        @return: SendValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_validate_file_with_options_async(request, runtime)
+
+    def send_validate_file_advance(
+        self,
+        request: dm_20151123_models.SendValidateFileAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SendValidateFileResponse:
+        # Step 0: init client
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Dm',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
+        )
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        auth_response = {}
+        file_obj = file_form_models.FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        send_validate_file_req = dm_20151123_models.SendValidateFileRequest()
+        OpenApiUtilClient.convert(request, send_validate_file_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            send_validate_file_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        send_validate_file_resp = self.send_validate_file_with_options(send_validate_file_req, runtime)
+        return send_validate_file_resp
+
+    async def send_validate_file_advance_async(
+        self,
+        request: dm_20151123_models.SendValidateFileAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SendValidateFileResponse:
+        # Step 0: init client
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Dm',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
+        )
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        auth_response = {}
+        file_obj = file_form_models.FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        send_validate_file_req = dm_20151123_models.SendValidateFileRequest()
+        OpenApiUtilClient.convert(request, send_validate_file_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            send_validate_file_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        send_validate_file_resp = await self.send_validate_file_with_options_async(send_validate_file_req, runtime)
+        return send_validate_file_resp
 
     def sender_statistics_by_tag_name_and_batch_idwith_options(
         self,
@@ -6253,17 +7949,21 @@ class Client(OpenApiClient):
 
     def single_send_mail_with_options(
         self,
-        request: dm_20151123_models.SingleSendMailRequest,
+        tmp_req: dm_20151123_models.SingleSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         """
         @summary API for Sending Emails
         
-        @param request: SingleSendMailRequest
+        @param tmp_req: SingleSendMailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SingleSendMailResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dm_20151123_models.SingleSendMailShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
@@ -6298,6 +7998,8 @@ class Client(OpenApiClient):
             body['Subject'] = request.subject
         if not UtilClient.is_unset(request.tag_name):
             body['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.template_shrink):
+            body['Template'] = request.template_shrink
         if not UtilClient.is_unset(request.text_body):
             body['TextBody'] = request.text_body
         if not UtilClient.is_unset(request.to_address):
@@ -6328,17 +8030,21 @@ class Client(OpenApiClient):
 
     async def single_send_mail_with_options_async(
         self,
-        request: dm_20151123_models.SingleSendMailRequest,
+        tmp_req: dm_20151123_models.SingleSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         """
         @summary API for Sending Emails
         
-        @param request: SingleSendMailRequest
+        @param tmp_req: SingleSendMailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SingleSendMailResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dm_20151123_models.SingleSendMailShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
@@ -6373,6 +8079,8 @@ class Client(OpenApiClient):
             body['Subject'] = request.subject
         if not UtilClient.is_unset(request.tag_name):
             body['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.template_shrink):
+            body['Template'] = request.template_shrink
         if not UtilClient.is_unset(request.text_body):
             body['TextBody'] = request.text_body
         if not UtilClient.is_unset(request.to_address):
@@ -6918,3 +8626,103 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_with_options_async(request, runtime)
+
+    def validate_email_with_options(
+        self,
+        request: dm_20151123_models.ValidateEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ValidateEmailResponse:
+        """
+        @summary 校验电子邮件地址
+        
+        @param request: ValidateEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateEmailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidateEmail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ValidateEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_email_with_options_async(
+        self,
+        request: dm_20151123_models.ValidateEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ValidateEmailResponse:
+        """
+        @summary 校验电子邮件地址
+        
+        @param request: ValidateEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateEmailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidateEmail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ValidateEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_email(
+        self,
+        request: dm_20151123_models.ValidateEmailRequest,
+    ) -> dm_20151123_models.ValidateEmailResponse:
+        """
+        @summary 校验电子邮件地址
+        
+        @param request: ValidateEmailRequest
+        @return: ValidateEmailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.validate_email_with_options(request, runtime)
+
+    async def validate_email_async(
+        self,
+        request: dm_20151123_models.ValidateEmailRequest,
+    ) -> dm_20151123_models.ValidateEmailResponse:
+        """
+        @summary 校验电子邮件地址
+        
+        @param request: ValidateEmailRequest
+        @return: ValidateEmailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.validate_email_with_options_async(request, runtime)

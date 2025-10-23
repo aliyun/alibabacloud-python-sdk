@@ -1,3 +1,26 @@
+2025-10-23 Version: 1.7.0
+- Support API CheckDisposable.
+- Support API ConfigSetCancelRelationFromAddress.
+- Support API ConfigSetCreate.
+- Support API ConfigSetDelete.
+- Support API ConfigSetDetail.
+- Support API ConfigSetList.
+- Support API ConfigSetRelationFromAddress.
+- Support API ConfigSetUpdate.
+- Support API DeleteValidateFile.
+- Support API DescTemplate.
+- Support API GetValidateFile.
+- Support API GetValidateFileStatus.
+- Support API GetValidationQuota.
+- Support API QueryTemplateByParam.
+- Support API SendValidateFile.
+- Support API ValidateEmail.
+- Update API SaveReceiverDetail: add request parameters CustomDetail.
+- Update API SaveReceiverDetail: add response parameters Body.Data.$.ErrMessage.
+- Update API SendTestByTemplate: add request parameters TemplateParams.
+- Update API SingleSendMail: add request parameters Template.
+
+
 2025-09-03 Version: 1.6.2
 - Update API DedicatedIpPoolList: add request parameters All.
 - Update API GetTrackList: add request parameters ConfigSetId.
