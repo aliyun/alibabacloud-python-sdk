@@ -1354,6 +1354,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_folder_with_options_async(request, headers, runtime)
 
+    def detail_document_with_options(
+        self,
+        request: energy_expert_external_20220923_models.DetailDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.DetailDocumentResponse:
+        """
+        @summary 获取文档detail
+        
+        @param request: DetailDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetailDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetailDocument',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.DetailDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detail_document_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.DetailDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.DetailDocumentResponse:
+        """
+        @summary 获取文档detail
+        
+        @param request: DetailDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetailDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetailDocument',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.DetailDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detail_document(
+        self,
+        request: energy_expert_external_20220923_models.DetailDocumentRequest,
+    ) -> energy_expert_external_20220923_models.DetailDocumentResponse:
+        """
+        @summary 获取文档detail
+        
+        @param request: DetailDocumentRequest
+        @return: DetailDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.detail_document_with_options(request, headers, runtime)
+
+    async def detail_document_async(
+        self,
+        request: energy_expert_external_20220923_models.DetailDocumentRequest,
+    ) -> energy_expert_external_20220923_models.DetailDocumentResponse:
+        """
+        @summary 获取文档detail
+        
+        @param request: DetailDocumentRequest
+        @return: DetailDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.detail_document_with_options_async(request, headers, runtime)
+
     def edit_prohibited_devices_with_options(
         self,
         request: energy_expert_external_20220923_models.EditProhibitedDevicesRequest,

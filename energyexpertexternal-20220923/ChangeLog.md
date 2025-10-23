@@ -1,3 +1,7 @@
+2025-10-23 Version: 4.3.0
+- Support API DetailDocument.
+
+
 2025-09-22 Version: 4.2.0
 - Support API AddFolder.
 - Support API DeleteDocument.
