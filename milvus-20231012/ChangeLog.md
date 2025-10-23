@@ -1,3 +1,8 @@
+2025-10-23 Version: 1.1.2
+- Update API GetInstanceDetail: add response parameters Body.Data.MultiZoneMode.
+- Update API GetInstanceDetail: add response parameters Body.Data.VSwitches.
+
+
 2025-09-18 Version: 1.1.1
 - Generated python 2023-10-12 for milvus.
 

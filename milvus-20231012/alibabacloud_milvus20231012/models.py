@@ -735,6 +735,39 @@ class GetInstanceDetailResponseBodyDataTags(TeaModel):
         return self
 
 
+class GetInstanceDetailResponseBodyDataVSwitches(TeaModel):
+    def __init__(
+        self,
+        vsw_id: str = None,
+        zone_id: str = None,
+    ):
+        self.vsw_id = vsw_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vsw_id is not None:
+            result['VswId'] = self.vsw_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VswId') is not None:
+            self.vsw_id = m.get('VswId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class GetInstanceDetailResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -749,6 +782,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         instance_id: str = None,
         instance_status: str = None,
         measure_config: GetInstanceDetailResponseBodyDataMeasureConfig = None,
+        multi_zone_mode: str = None,
         node_type: str = None,
         open_public_net: bool = None,
         package_type: str = None,
@@ -761,6 +795,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         tags: List[GetInstanceDetailResponseBodyDataTags] = None,
         template_version: str = None,
         user_config: str = None,
+        v_switches: List[GetInstanceDetailResponseBodyDataVSwitches] = None,
         version: str = None,
         vpc_id: str = None,
         vsw_id: str = None,
@@ -793,6 +828,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         # *   deleted.
         self.instance_status = instance_status
         self.measure_config = measure_config
+        self.multi_zone_mode = multi_zone_mode
         self.node_type = node_type
         # Indicates whether Internet access is enabled.
         self.open_public_net = open_public_net
@@ -821,6 +857,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         self.template_version = template_version
         # User-defined configuration.
         self.user_config = user_config
+        self.v_switches = v_switches
         # The kernel version.
         self.version = version
         # The virtual private cloud (VPC) ID.
@@ -837,6 +874,10 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.measure_config.validate()
         if self.tags:
             for k in self.tags:
+                if k:
+                    k.validate()
+        if self.v_switches:
+            for k in self.v_switches:
                 if k:
                     k.validate()
 
@@ -868,6 +909,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['InstanceStatus'] = self.instance_status
         if self.measure_config is not None:
             result['MeasureConfig'] = self.measure_config.to_map()
+        if self.multi_zone_mode is not None:
+            result['MultiZoneMode'] = self.multi_zone_mode
         if self.node_type is not None:
             result['NodeType'] = self.node_type
         if self.open_public_net is not None:
@@ -894,6 +937,10 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['TemplateVersion'] = self.template_version
         if self.user_config is not None:
             result['UserConfig'] = self.user_config
+        result['VSwitches'] = []
+        if self.v_switches is not None:
+            for k in self.v_switches:
+                result['VSwitches'].append(k.to_map() if k else None)
         if self.version is not None:
             result['Version'] = self.version
         if self.vpc_id is not None:
@@ -930,6 +977,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         if m.get('MeasureConfig') is not None:
             temp_model = GetInstanceDetailResponseBodyDataMeasureConfig()
             self.measure_config = temp_model.from_map(m['MeasureConfig'])
+        if m.get('MultiZoneMode') is not None:
+            self.multi_zone_mode = m.get('MultiZoneMode')
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
         if m.get('OpenPublicNet') is not None:
@@ -957,6 +1006,11 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.template_version = m.get('TemplateVersion')
         if m.get('UserConfig') is not None:
             self.user_config = m.get('UserConfig')
+        self.v_switches = []
+        if m.get('VSwitches') is not None:
+            for k in m.get('VSwitches'):
+                temp_model = GetInstanceDetailResponseBodyDataVSwitches()
+                self.v_switches.append(temp_model.from_map(k))
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('VpcId') is not None:
