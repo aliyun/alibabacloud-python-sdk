@@ -1,3 +1,22 @@
+2025-10-24 Version: 2.4.0
+- Support API CreateTag.
+- Support API CreateTagGroup.
+- Support API DeleteTag.
+- Support API DeleteTagGroup.
+- Support API DescribeTag.
+- Support API DescribeTagGroup.
+- Support API ListTag.
+- Support API ListTagGroup.
+- Support API UpdateTag.
+- Support API UpdateTagGroup.
+- Update API CreateFaq: add request parameters TagIdList.
+- Update API CreateSolution: add request parameters TagIdList.
+- Update API DescribeFaq: add response parameters Body.TagIdList.
+- Update API ListSolution: add response parameters Body.Solutions.$.TagIdList.
+- Update API UpdateFaq: add request parameters TagIdList.
+- Update API UpdateSolution: add request parameters TagIdList.
+
+
 2025-10-17 Version: 2.3.1
 - Update API BeginSession: add request parameters SandBox.
 - Update API BeginSession: add request parameters VendorParam.

@@ -1431,17 +1431,21 @@ class Client(OpenApiClient):
 
     def create_faq_with_options(
         self,
-        request: chatbot_20220408_models.CreateFaqRequest,
+        tmp_req: chatbot_20220408_models.CreateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateFaqResponse:
         """
         @summary 新建FAQ
         
-        @param request: CreateFaqRequest
+        @param tmp_req: CreateFaqRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateFaqResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.CreateFaqShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -1456,6 +1460,8 @@ class Client(OpenApiClient):
             body['SolutionType'] = request.solution_type
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -1480,17 +1486,21 @@ class Client(OpenApiClient):
 
     async def create_faq_with_options_async(
         self,
-        request: chatbot_20220408_models.CreateFaqRequest,
+        tmp_req: chatbot_20220408_models.CreateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateFaqResponse:
         """
         @summary 新建FAQ
         
-        @param request: CreateFaqRequest
+        @param tmp_req: CreateFaqRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateFaqResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.CreateFaqShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -1505,6 +1515,8 @@ class Client(OpenApiClient):
             body['SolutionType'] = request.solution_type
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -2315,17 +2327,21 @@ class Client(OpenApiClient):
 
     def create_solution_with_options(
         self,
-        request: chatbot_20220408_models.CreateSolutionRequest,
+        tmp_req: chatbot_20220408_models.CreateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateSolutionResponse:
         """
         @summary 新建FAQ答案
         
-        @param request: CreateSolutionRequest
+        @param tmp_req: CreateSolutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSolutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.CreateSolutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -2337,8 +2353,12 @@ class Client(OpenApiClient):
             query['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.perspective_codes):
             query['PerspectiveCodes'] = request.perspective_codes
+        body = {}
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateSolution',
@@ -2358,17 +2378,21 @@ class Client(OpenApiClient):
 
     async def create_solution_with_options_async(
         self,
-        request: chatbot_20220408_models.CreateSolutionRequest,
+        tmp_req: chatbot_20220408_models.CreateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateSolutionResponse:
         """
         @summary 新建FAQ答案
         
-        @param request: CreateSolutionRequest
+        @param tmp_req: CreateSolutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSolutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.CreateSolutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -2380,8 +2404,12 @@ class Client(OpenApiClient):
             query['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.perspective_codes):
             query['PerspectiveCodes'] = request.perspective_codes
+        body = {}
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateSolution',
@@ -2424,6 +2452,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_solution_with_options_async(request, runtime)
+
+    def create_tag_with_options(
+        self,
+        request: chatbot_20220408_models.CreateTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CreateTagResponse:
+        """
+        @summary 标签创建
+        
+        @param request: CreateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tag_name):
+            body['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_with_options_async(
+        self,
+        request: chatbot_20220408_models.CreateTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CreateTagResponse:
+        """
+        @summary 标签创建
+        
+        @param request: CreateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tag_name):
+            body['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag(
+        self,
+        request: chatbot_20220408_models.CreateTagRequest,
+    ) -> chatbot_20220408_models.CreateTagResponse:
+        """
+        @summary 标签创建
+        
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_tag_with_options(request, runtime)
+
+    async def create_tag_async(
+        self,
+        request: chatbot_20220408_models.CreateTagRequest,
+    ) -> chatbot_20220408_models.CreateTagResponse:
+        """
+        @summary 标签创建
+        
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tag_with_options_async(request, runtime)
+
+    def create_tag_group_with_options(
+        self,
+        request: chatbot_20220408_models.CreateTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CreateTagGroupResponse:
+        """
+        @summary 标签组创建
+        
+        @param request: CreateTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CreateTagGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_group_with_options_async(
+        self,
+        request: chatbot_20220408_models.CreateTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CreateTagGroupResponse:
+        """
+        @summary 标签组创建
+        
+        @param request: CreateTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CreateTagGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag_group(
+        self,
+        request: chatbot_20220408_models.CreateTagGroupRequest,
+    ) -> chatbot_20220408_models.CreateTagGroupResponse:
+        """
+        @summary 标签组创建
+        
+        @param request: CreateTagGroupRequest
+        @return: CreateTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_tag_group_with_options(request, runtime)
+
+    async def create_tag_group_async(
+        self,
+        request: chatbot_20220408_models.CreateTagGroupRequest,
+    ) -> chatbot_20220408_models.CreateTagGroupResponse:
+        """
+        @summary 标签组创建
+        
+        @param request: CreateTagGroupRequest
+        @return: CreateTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tag_group_with_options_async(request, runtime)
 
     def create_user_say_with_options(
         self,
@@ -3781,6 +4029,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_solution_with_options_async(request, runtime)
 
+    def delete_tag_with_options(
+        self,
+        request: chatbot_20220408_models.DeleteTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DeleteTagResponse:
+        """
+        @summary 标签删除
+        
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_with_options_async(
+        self,
+        request: chatbot_20220408_models.DeleteTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DeleteTagResponse:
+        """
+        @summary 标签删除
+        
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag(
+        self,
+        request: chatbot_20220408_models.DeleteTagRequest,
+    ) -> chatbot_20220408_models.DeleteTagResponse:
+        """
+        @summary 标签删除
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tag_with_options(request, runtime)
+
+    async def delete_tag_async(
+        self,
+        request: chatbot_20220408_models.DeleteTagRequest,
+    ) -> chatbot_20220408_models.DeleteTagResponse:
+        """
+        @summary 标签删除
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tag_with_options_async(request, runtime)
+
+    def delete_tag_group_with_options(
+        self,
+        request: chatbot_20220408_models.DeleteTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DeleteTagGroupResponse:
+        """
+        @summary 标签组删除
+        
+        @param request: DeleteTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DeleteTagGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_group_with_options_async(
+        self,
+        request: chatbot_20220408_models.DeleteTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DeleteTagGroupResponse:
+        """
+        @summary 标签组删除
+        
+        @param request: DeleteTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DeleteTagGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag_group(
+        self,
+        request: chatbot_20220408_models.DeleteTagGroupRequest,
+    ) -> chatbot_20220408_models.DeleteTagGroupResponse:
+        """
+        @summary 标签组删除
+        
+        @param request: DeleteTagGroupRequest
+        @return: DeleteTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tag_group_with_options(request, runtime)
+
+    async def delete_tag_group_async(
+        self,
+        request: chatbot_20220408_models.DeleteTagGroupRequest,
+    ) -> chatbot_20220408_models.DeleteTagGroupResponse:
+        """
+        @summary 标签组删除
+        
+        @param request: DeleteTagGroupRequest
+        @return: DeleteTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tag_group_with_options_async(request, runtime)
+
     def delete_user_say_with_options(
         self,
         request: chatbot_20220408_models.DeleteUserSayRequest,
@@ -4612,6 +5080,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_perspective_with_options_async(request, runtime)
+
+    def describe_tag_with_options(
+        self,
+        request: chatbot_20220408_models.DescribeTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DescribeTagResponse:
+        """
+        @summary 标签详情
+        
+        @param request: DescribeTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DescribeTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tag_with_options_async(
+        self,
+        request: chatbot_20220408_models.DescribeTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DescribeTagResponse:
+        """
+        @summary 标签详情
+        
+        @param request: DescribeTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DescribeTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tag(
+        self,
+        request: chatbot_20220408_models.DescribeTagRequest,
+    ) -> chatbot_20220408_models.DescribeTagResponse:
+        """
+        @summary 标签详情
+        
+        @param request: DescribeTagRequest
+        @return: DescribeTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tag_with_options(request, runtime)
+
+    async def describe_tag_async(
+        self,
+        request: chatbot_20220408_models.DescribeTagRequest,
+    ) -> chatbot_20220408_models.DescribeTagResponse:
+        """
+        @summary 标签详情
+        
+        @param request: DescribeTagRequest
+        @return: DescribeTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tag_with_options_async(request, runtime)
+
+    def describe_tag_group_with_options(
+        self,
+        request: chatbot_20220408_models.DescribeTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DescribeTagGroupResponse:
+        """
+        @summary 标签组详情
+        
+        @param request: DescribeTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DescribeTagGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tag_group_with_options_async(
+        self,
+        request: chatbot_20220408_models.DescribeTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DescribeTagGroupResponse:
+        """
+        @summary 标签组详情
+        
+        @param request: DescribeTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DescribeTagGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tag_group(
+        self,
+        request: chatbot_20220408_models.DescribeTagGroupRequest,
+    ) -> chatbot_20220408_models.DescribeTagGroupResponse:
+        """
+        @summary 标签组详情
+        
+        @param request: DescribeTagGroupRequest
+        @return: DescribeTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tag_group_with_options(request, runtime)
+
+    async def describe_tag_group_async(
+        self,
+        request: chatbot_20220408_models.DescribeTagGroupRequest,
+    ) -> chatbot_20220408_models.DescribeTagGroupResponse:
+        """
+        @summary 标签组详情
+        
+        @param request: DescribeTagGroupRequest
+        @return: DescribeTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tag_group_with_options_async(request, runtime)
 
     def feedback_with_options(
         self,
@@ -6881,6 +7569,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_solution_with_options_async(request, runtime)
 
+    def list_tag_with_options(
+        self,
+        request: chatbot_20220408_models.ListTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTagResponse:
+        """
+        @summary 标签查询
+        
+        @param request: ListTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag_name):
+            body['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_with_options_async(
+        self,
+        request: chatbot_20220408_models.ListTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTagResponse:
+        """
+        @summary 标签查询
+        
+        @param request: ListTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag_name):
+            body['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag(
+        self,
+        request: chatbot_20220408_models.ListTagRequest,
+    ) -> chatbot_20220408_models.ListTagResponse:
+        """
+        @summary 标签查询
+        
+        @param request: ListTagRequest
+        @return: ListTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_with_options(request, runtime)
+
+    async def list_tag_async(
+        self,
+        request: chatbot_20220408_models.ListTagRequest,
+    ) -> chatbot_20220408_models.ListTagResponse:
+        """
+        @summary 标签查询
+        
+        @param request: ListTagRequest
+        @return: ListTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_with_options_async(request, runtime)
+
+    def list_tag_group_with_options(
+        self,
+        request: chatbot_20220408_models.ListTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTagGroupResponse:
+        """
+        @summary 标签组查询
+        
+        @param request: ListTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTagGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_group_with_options_async(
+        self,
+        request: chatbot_20220408_models.ListTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTagGroupResponse:
+        """
+        @summary 标签组查询
+        
+        @param request: ListTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTagGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_group(
+        self,
+        request: chatbot_20220408_models.ListTagGroupRequest,
+    ) -> chatbot_20220408_models.ListTagGroupResponse:
+        """
+        @summary 标签组查询
+        
+        @param request: ListTagGroupRequest
+        @return: ListTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_group_with_options(request, runtime)
+
+    async def list_tag_group_async(
+        self,
+        request: chatbot_20220408_models.ListTagGroupRequest,
+    ) -> chatbot_20220408_models.ListTagGroupResponse:
+        """
+        @summary 标签组查询
+        
+        @param request: ListTagGroupRequest
+        @return: ListTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_group_with_options_async(request, runtime)
+
     def list_tongyi_chat_historys_with_options(
         self,
         request: chatbot_20220408_models.ListTongyiChatHistorysRequest,
@@ -8583,17 +9507,21 @@ class Client(OpenApiClient):
 
     def update_faq_with_options(
         self,
-        request: chatbot_20220408_models.UpdateFaqRequest,
+        tmp_req: chatbot_20220408_models.UpdateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateFaqResponse:
         """
         @summary 更新FAQ
         
-        @param request: UpdateFaqRequest
+        @param tmp_req: UpdateFaqRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateFaqResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.UpdateFaqShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -8606,6 +9534,8 @@ class Client(OpenApiClient):
             body['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -8630,17 +9560,21 @@ class Client(OpenApiClient):
 
     async def update_faq_with_options_async(
         self,
-        request: chatbot_20220408_models.UpdateFaqRequest,
+        tmp_req: chatbot_20220408_models.UpdateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateFaqResponse:
         """
         @summary 更新FAQ
         
-        @param request: UpdateFaqRequest
+        @param tmp_req: UpdateFaqRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateFaqResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.UpdateFaqShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -8653,6 +9587,8 @@ class Client(OpenApiClient):
             body['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -9255,17 +10191,21 @@ class Client(OpenApiClient):
 
     def update_solution_with_options(
         self,
-        request: chatbot_20220408_models.UpdateSolutionRequest,
+        tmp_req: chatbot_20220408_models.UpdateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateSolutionResponse:
         """
         @summary 更新FAQ答案
         
-        @param request: UpdateSolutionRequest
+        @param tmp_req: UpdateSolutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateSolutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.UpdateSolutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -9278,6 +10218,8 @@ class Client(OpenApiClient):
             body['PerspectiveCodes'] = request.perspective_codes
         if not UtilClient.is_unset(request.solution_id):
             body['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9300,17 +10242,21 @@ class Client(OpenApiClient):
 
     async def update_solution_with_options_async(
         self,
-        request: chatbot_20220408_models.UpdateSolutionRequest,
+        tmp_req: chatbot_20220408_models.UpdateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateSolutionResponse:
         """
         @summary 更新FAQ答案
         
-        @param request: UpdateSolutionRequest
+        @param tmp_req: UpdateSolutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateSolutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.UpdateSolutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_id_list):
+            request.tag_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_id_list, 'TagIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
@@ -9323,6 +10269,8 @@ class Client(OpenApiClient):
             body['PerspectiveCodes'] = request.perspective_codes
         if not UtilClient.is_unset(request.solution_id):
             body['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.tag_id_list_shrink):
+            body['TagIdList'] = request.tag_id_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9368,6 +10316,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_solution_with_options_async(request, runtime)
+
+    def update_tag_with_options(
+        self,
+        request: chatbot_20220408_models.UpdateTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.UpdateTagResponse:
+        """
+        @summary 标签编辑
+        
+        @param request: UpdateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.tag_name):
+            body['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.UpdateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tag_with_options_async(
+        self,
+        request: chatbot_20220408_models.UpdateTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.UpdateTagResponse:
+        """
+        @summary 标签编辑
+        
+        @param request: UpdateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTagResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.tag_name):
+            body['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTag',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.UpdateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tag(
+        self,
+        request: chatbot_20220408_models.UpdateTagRequest,
+    ) -> chatbot_20220408_models.UpdateTagResponse:
+        """
+        @summary 标签编辑
+        
+        @param request: UpdateTagRequest
+        @return: UpdateTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_tag_with_options(request, runtime)
+
+    async def update_tag_async(
+        self,
+        request: chatbot_20220408_models.UpdateTagRequest,
+    ) -> chatbot_20220408_models.UpdateTagResponse:
+        """
+        @summary 标签编辑
+        
+        @param request: UpdateTagRequest
+        @return: UpdateTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_tag_with_options_async(request, runtime)
+
+    def update_tag_group_with_options(
+        self,
+        request: chatbot_20220408_models.UpdateTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.UpdateTagGroupResponse:
+        """
+        @summary 标签组编辑
+        
+        @param request: UpdateTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.UpdateTagGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tag_group_with_options_async(
+        self,
+        request: chatbot_20220408_models.UpdateTagGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.UpdateTagGroupResponse:
+        """
+        @summary 标签组编辑
+        
+        @param request: UpdateTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTagGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTagGroup',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.UpdateTagGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tag_group(
+        self,
+        request: chatbot_20220408_models.UpdateTagGroupRequest,
+    ) -> chatbot_20220408_models.UpdateTagGroupResponse:
+        """
+        @summary 标签组编辑
+        
+        @param request: UpdateTagGroupRequest
+        @return: UpdateTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_tag_group_with_options(request, runtime)
+
+    async def update_tag_group_async(
+        self,
+        request: chatbot_20220408_models.UpdateTagGroupRequest,
+    ) -> chatbot_20220408_models.UpdateTagGroupResponse:
+        """
+        @summary 标签组编辑
+        
+        @param request: UpdateTagGroupRequest
+        @return: UpdateTagGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_tag_group_with_options_async(request, runtime)
 
     def update_user_say_with_options(
         self,

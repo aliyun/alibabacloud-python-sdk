@@ -2596,6 +2596,7 @@ class CreateFaqRequest(TeaModel):
         solution_content: str = None,
         solution_type: int = None,
         start_date: str = None,
+        tag_id_list: List[int] = None,
         title: str = None,
     ):
         self.agent_key = agent_key
@@ -2605,6 +2606,7 @@ class CreateFaqRequest(TeaModel):
         self.solution_content = solution_content
         self.solution_type = solution_type
         self.start_date = start_date
+        self.tag_id_list = tag_id_list
         # This parameter is required.
         self.title = title
 
@@ -2629,6 +2631,8 @@ class CreateFaqRequest(TeaModel):
             result['SolutionType'] = self.solution_type
         if self.start_date is not None:
             result['StartDate'] = self.start_date
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -2647,6 +2651,79 @@ class CreateFaqRequest(TeaModel):
             self.solution_type = m.get('SolutionType')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateFaqShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        category_id: int = None,
+        end_date: str = None,
+        solution_content: str = None,
+        solution_type: int = None,
+        start_date: str = None,
+        tag_id_list_shrink: str = None,
+        title: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.category_id = category_id
+        self.end_date = end_date
+        self.solution_content = solution_content
+        self.solution_type = solution_type
+        self.start_date = start_date
+        self.tag_id_list_shrink = tag_id_list_shrink
+        # This parameter is required.
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.solution_content is not None:
+            result['SolutionContent'] = self.solution_content
+        if self.solution_type is not None:
+            result['SolutionType'] = self.solution_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.tag_id_list_shrink is not None:
+            result['TagIdList'] = self.tag_id_list_shrink
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('SolutionContent') is not None:
+            self.solution_content = m.get('SolutionContent')
+        if m.get('SolutionType') is not None:
+            self.solution_type = m.get('SolutionType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list_shrink = m.get('TagIdList')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -3875,6 +3952,7 @@ class CreateSolutionRequest(TeaModel):
         content_type: int = None,
         knowledge_id: int = None,
         perspective_codes: List[str] = None,
+        tag_id_list: List[int] = None,
     ):
         self.agent_key = agent_key
         # This parameter is required.
@@ -3884,6 +3962,7 @@ class CreateSolutionRequest(TeaModel):
         self.knowledge_id = knowledge_id
         # This parameter is required.
         self.perspective_codes = perspective_codes
+        self.tag_id_list = tag_id_list
 
     def validate(self):
         pass
@@ -3904,6 +3983,8 @@ class CreateSolutionRequest(TeaModel):
             result['KnowledgeId'] = self.knowledge_id
         if self.perspective_codes is not None:
             result['PerspectiveCodes'] = self.perspective_codes
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -3918,6 +3999,68 @@ class CreateSolutionRequest(TeaModel):
             self.knowledge_id = m.get('KnowledgeId')
         if m.get('PerspectiveCodes') is not None:
             self.perspective_codes = m.get('PerspectiveCodes')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
+        return self
+
+
+class CreateSolutionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        content: str = None,
+        content_type: int = None,
+        knowledge_id: int = None,
+        perspective_codes: List[str] = None,
+        tag_id_list_shrink: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.content = content
+        self.content_type = content_type
+        # This parameter is required.
+        self.knowledge_id = knowledge_id
+        # This parameter is required.
+        self.perspective_codes = perspective_codes
+        self.tag_id_list_shrink = tag_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.knowledge_id is not None:
+            result['KnowledgeId'] = self.knowledge_id
+        if self.perspective_codes is not None:
+            result['PerspectiveCodes'] = self.perspective_codes
+        if self.tag_id_list_shrink is not None:
+            result['TagIdList'] = self.tag_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('KnowledgeId') is not None:
+            self.knowledge_id = m.get('KnowledgeId')
+        if m.get('PerspectiveCodes') is not None:
+            self.perspective_codes = m.get('PerspectiveCodes')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list_shrink = m.get('TagIdList')
         return self
 
 
@@ -3991,6 +4134,241 @@ class CreateSolutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSolutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_id: int = None,
+        tag_name: str = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class CreateTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_name: str = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class CreateTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5590,6 +5968,241 @@ class DeleteSolutionResponse(TeaModel):
         return self
 
 
+class DeleteTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_id: int = None,
+        id: int = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        id: int = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTagGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserSayRequest(TeaModel):
     def __init__(
         self,
@@ -6742,6 +7355,7 @@ class DescribeFaqResponseBody(TeaModel):
         solutions: List[DescribeFaqResponseBodySolutions] = None,
         start_date: str = None,
         status: int = None,
+        tag_id_list: List[int] = None,
         title: str = None,
     ):
         self.category_id = category_id
@@ -6758,6 +7372,7 @@ class DescribeFaqResponseBody(TeaModel):
         self.solutions = solutions
         self.start_date = start_date
         self.status = status
+        self.tag_id_list = tag_id_list
         self.title = title
 
     def validate(self):
@@ -6814,6 +7429,8 @@ class DescribeFaqResponseBody(TeaModel):
             result['StartDate'] = self.start_date
         if self.status is not None:
             result['Status'] = self.status
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -6857,6 +7474,8 @@ class DescribeFaqResponseBody(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -7490,6 +8109,337 @@ class DescribePerspectiveResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribePerspectiveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_id: int = None,
+        id: int = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_user_id: int = None,
+        create_user_name: str = None,
+        group_id: int = None,
+        id: int = None,
+        modify_time: str = None,
+        modify_user_id: int = None,
+        modify_user_name: str = None,
+        request_id: str = None,
+        tag_name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.group_id = group_id
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+        self.request_id = request_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class DescribeTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        id: int = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_user_id: int = None,
+        create_user_name: str = None,
+        default_tag_id: int = None,
+        group_name: str = None,
+        id: int = None,
+        modify_time: str = None,
+        modify_user_id: int = None,
+        modify_user_name: str = None,
+        request_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.default_tag_id = default_tag_id
+        self.group_name = group_name
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.default_tag_id is not None:
+            result['DefaultTagId'] = self.default_tag_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('DefaultTagId') is not None:
+            self.default_tag_id = m.get('DefaultTagId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11044,6 +11994,7 @@ class ListSolutionResponseBodySolutions(TeaModel):
         perspective_codes: List[str] = None,
         plain_text: str = None,
         solution_id: int = None,
+        tag_id_list: List[int] = None,
     ):
         self.content = content
         self.content_type = content_type
@@ -11052,6 +12003,7 @@ class ListSolutionResponseBodySolutions(TeaModel):
         self.perspective_codes = perspective_codes
         self.plain_text = plain_text
         self.solution_id = solution_id
+        self.tag_id_list = tag_id_list
 
     def validate(self):
         pass
@@ -11076,6 +12028,8 @@ class ListSolutionResponseBodySolutions(TeaModel):
             result['PlainText'] = self.plain_text
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -11094,6 +12048,8 @@ class ListSolutionResponseBodySolutions(TeaModel):
             self.plain_text = m.get('PlainText')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
         return self
 
 
@@ -11175,6 +12131,464 @@ class ListSolutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSolutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        tag_name: str = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        self.group_id = group_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class ListTagResponseBodyTagGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_user_id: int = None,
+        create_user_name: str = None,
+        group_id: int = None,
+        id: int = None,
+        modify_time: str = None,
+        modify_user_id: int = None,
+        modify_user_name: str = None,
+        tag_name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.group_id = group_id
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class ListTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        tag_groups: List[ListTagResponseBodyTagGroups] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.tag_groups = tag_groups
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tag_groups:
+            for k in self.tag_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagGroups'] = []
+        if self.tag_groups is not None:
+            for k in self.tag_groups:
+                result['TagGroups'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_groups = []
+        if m.get('TagGroups') is not None:
+            for k in m.get('TagGroups'):
+                temp_model = ListTagResponseBodyTagGroups()
+                self.tag_groups.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        self.group_name = group_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListTagGroupResponseBodyTagGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_user_id: int = None,
+        create_user_name: str = None,
+        default_tag_id: int = None,
+        group_name: str = None,
+        id: int = None,
+        modify_time: str = None,
+        modify_user_id: int = None,
+        modify_user_name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.default_tag_id = default_tag_id
+        self.group_name = group_name
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.default_tag_id is not None:
+            result['DefaultTagId'] = self.default_tag_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('DefaultTagId') is not None:
+            self.default_tag_id = m.get('DefaultTagId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        return self
+
+
+class ListTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        tag_groups: List[ListTagGroupResponseBodyTagGroups] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.tag_groups = tag_groups
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tag_groups:
+            for k in self.tag_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagGroups'] = []
+        if self.tag_groups is not None:
+            for k in self.tag_groups:
+                result['TagGroups'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_groups = []
+        if m.get('TagGroups') is not None:
+            for k in m.get('TagGroups'):
+                temp_model = ListTagGroupResponseBodyTagGroups()
+                self.tag_groups.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14574,6 +15988,7 @@ class UpdateFaqRequest(TeaModel):
         end_date: str = None,
         knowledge_id: int = None,
         start_date: str = None,
+        tag_id_list: List[int] = None,
         title: str = None,
     ):
         self.agent_key = agent_key
@@ -14583,6 +15998,7 @@ class UpdateFaqRequest(TeaModel):
         # This parameter is required.
         self.knowledge_id = knowledge_id
         self.start_date = start_date
+        self.tag_id_list = tag_id_list
         # This parameter is required.
         self.title = title
 
@@ -14605,6 +16021,8 @@ class UpdateFaqRequest(TeaModel):
             result['KnowledgeId'] = self.knowledge_id
         if self.start_date is not None:
             result['StartDate'] = self.start_date
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -14621,6 +16039,74 @@ class UpdateFaqRequest(TeaModel):
             self.knowledge_id = m.get('KnowledgeId')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateFaqShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        category_id: int = None,
+        end_date: str = None,
+        knowledge_id: int = None,
+        start_date: str = None,
+        tag_id_list_shrink: str = None,
+        title: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.category_id = category_id
+        self.end_date = end_date
+        # This parameter is required.
+        self.knowledge_id = knowledge_id
+        self.start_date = start_date
+        self.tag_id_list_shrink = tag_id_list_shrink
+        # This parameter is required.
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.knowledge_id is not None:
+            result['KnowledgeId'] = self.knowledge_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.tag_id_list_shrink is not None:
+            result['TagIdList'] = self.tag_id_list_shrink
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('KnowledgeId') is not None:
+            self.knowledge_id = m.get('KnowledgeId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list_shrink = m.get('TagIdList')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -15520,6 +17006,7 @@ class UpdateSolutionRequest(TeaModel):
         content_type: int = None,
         perspective_codes: List[str] = None,
         solution_id: int = None,
+        tag_id_list: List[int] = None,
     ):
         self.agent_key = agent_key
         # This parameter is required.
@@ -15529,6 +17016,7 @@ class UpdateSolutionRequest(TeaModel):
         self.perspective_codes = perspective_codes
         # This parameter is required.
         self.solution_id = solution_id
+        self.tag_id_list = tag_id_list
 
     def validate(self):
         pass
@@ -15549,6 +17037,8 @@ class UpdateSolutionRequest(TeaModel):
             result['PerspectiveCodes'] = self.perspective_codes
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -15563,6 +17053,68 @@ class UpdateSolutionRequest(TeaModel):
             self.perspective_codes = m.get('PerspectiveCodes')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
+        return self
+
+
+class UpdateSolutionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        content: str = None,
+        content_type: int = None,
+        perspective_codes: List[str] = None,
+        solution_id: int = None,
+        tag_id_list_shrink: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.content = content
+        self.content_type = content_type
+        # This parameter is required.
+        self.perspective_codes = perspective_codes
+        # This parameter is required.
+        self.solution_id = solution_id
+        self.tag_id_list_shrink = tag_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.perspective_codes is not None:
+            result['PerspectiveCodes'] = self.perspective_codes
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        if self.tag_id_list_shrink is not None:
+            result['TagIdList'] = self.tag_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('PerspectiveCodes') is not None:
+            self.perspective_codes = m.get('PerspectiveCodes')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list_shrink = m.get('TagIdList')
         return self
 
 
@@ -15630,6 +17182,255 @@ class UpdateSolutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSolutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_id: int = None,
+        id: int = None,
+        tag_name: str = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class UpdateTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        client_token: str = None,
+        group_name: str = None,
+        id: int = None,
+    ):
+        self.agent_key = agent_key
+        self.client_token = client_token
+        # This parameter is required.
+        self.group_name = group_name
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class UpdateTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
