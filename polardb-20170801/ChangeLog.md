@@ -1,3 +1,7 @@
+2025-10-24 Version: 6.0.1
+- Update API DescribeDBClusterAttribute: add response parameters Body.SearchClusterStatus.
+
+
 2025-10-17 Version: 6.0.0
 - Support API CheckAccountNameZonal.
 - Support API CheckDBNameZonal.

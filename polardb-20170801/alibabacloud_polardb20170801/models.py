@@ -20984,6 +20984,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         restore_type: str = None,
         row_compression: str = None,
         sqlsize: int = None,
+        search_cluster_status: str = None,
         search_compress_storage_used: int = None,
         search_storage_used: int = None,
         serverless_type: str = None,
@@ -21181,6 +21182,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.row_compression = row_compression
         # Storage amount of SQL, in bytes. If the value is -1, it indicates no data.
         self.sqlsize = sqlsize
+        self.search_cluster_status = search_cluster_status
         self.search_compress_storage_used = search_compress_storage_used
         self.search_storage_used = search_storage_used
         # Serverless type. Valid values are as follows:
@@ -21348,6 +21350,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['RowCompression'] = self.row_compression
         if self.sqlsize is not None:
             result['SQLSize'] = self.sqlsize
+        if self.search_cluster_status is not None:
+            result['SearchClusterStatus'] = self.search_cluster_status
         if self.search_compress_storage_used is not None:
             result['SearchCompressStorageUsed'] = self.search_compress_storage_used
         if self.search_storage_used is not None:
@@ -21493,6 +21497,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.row_compression = m.get('RowCompression')
         if m.get('SQLSize') is not None:
             self.sqlsize = m.get('SQLSize')
+        if m.get('SearchClusterStatus') is not None:
+            self.search_cluster_status = m.get('SearchClusterStatus')
         if m.get('SearchCompressStorageUsed') is not None:
             self.search_compress_storage_used = m.get('SearchCompressStorageUsed')
         if m.get('SearchStorageUsed') is not None:
