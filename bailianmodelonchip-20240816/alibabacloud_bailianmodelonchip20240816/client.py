@@ -41,6 +41,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def active_interaction_create_with_options(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionCreateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionCreateResponse:
+        """
+        @summary 主动交互消息传递
+        
+        @param request: ActiveInteractionCreateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveInteractionCreateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image):
+            body['image'] = request.image
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActiveInteractionCreate',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/v1/active/interaction/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.ActiveInteractionCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def active_interaction_create_with_options_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionCreateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionCreateResponse:
+        """
+        @summary 主动交互消息传递
+        
+        @param request: ActiveInteractionCreateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveInteractionCreateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image):
+            body['image'] = request.image
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActiveInteractionCreate',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/v1/active/interaction/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.ActiveInteractionCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def active_interaction_create(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionCreateRequest,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionCreateResponse:
+        """
+        @summary 主动交互消息传递
+        
+        @param request: ActiveInteractionCreateRequest
+        @return: ActiveInteractionCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.active_interaction_create_with_options(request, headers, runtime)
+
+    async def active_interaction_create_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionCreateRequest,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionCreateResponse:
+        """
+        @summary 主动交互消息传递
+        
+        @param request: ActiveInteractionCreateRequest
+        @return: ActiveInteractionCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.active_interaction_create_with_options_async(request, headers, runtime)
+
     def device_register_with_options(
         self,
         request: bailian_model_on_chip_20240816_models.DeviceRegisterRequest,
