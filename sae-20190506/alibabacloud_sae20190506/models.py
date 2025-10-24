@@ -15276,6 +15276,7 @@ class CreateIngressRequest(TeaModel):
         cors_config: str = None,
         default_rule: str = None,
         description: str = None,
+        enable_gzip: bool = None,
         enable_xforwarded_for: bool = None,
         enable_xforwarded_for_client_src_port: bool = None,
         enable_xforwarded_for_proto: bool = None,
@@ -15314,6 +15315,7 @@ class CreateIngressRequest(TeaModel):
         self.default_rule = default_rule
         # Route rule name.
         self.description = description
+        self.enable_gzip = enable_gzip
         self.enable_xforwarded_for = enable_xforwarded_for
         self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
         self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
@@ -15383,6 +15385,8 @@ class CreateIngressRequest(TeaModel):
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_gzip is not None:
+            result['EnableGzip'] = self.enable_gzip
         if self.enable_xforwarded_for is not None:
             result['EnableXForwardedFor'] = self.enable_xforwarded_for
         if self.enable_xforwarded_for_client_src_port is not None:
@@ -15431,6 +15435,8 @@ class CreateIngressRequest(TeaModel):
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableGzip') is not None:
+            self.enable_gzip = m.get('EnableGzip')
         if m.get('EnableXForwardedFor') is not None:
             self.enable_xforwarded_for = m.get('EnableXForwardedFor')
         if m.get('EnableXForwardedForClientSrcPort') is not None:
@@ -19876,6 +19882,8 @@ class DeployApplicationRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        max_surge_instance_ratio: int = None,
+        max_surge_instances: int = None,
         memory: int = None,
         micro_registration: str = None,
         micro_registration_config: str = None,
@@ -20105,6 +20113,8 @@ class DeployApplicationRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.max_surge_instance_ratio = max_surge_instance_ratio
+        self.max_surge_instances = max_surge_instances
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -20454,6 +20464,10 @@ class DeployApplicationRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.max_surge_instance_ratio is not None:
+            result['MaxSurgeInstanceRatio'] = self.max_surge_instance_ratio
+        if self.max_surge_instances is not None:
+            result['MaxSurgeInstances'] = self.max_surge_instances
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.micro_registration is not None:
@@ -20619,6 +20633,10 @@ class DeployApplicationRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('MaxSurgeInstanceRatio') is not None:
+            self.max_surge_instance_ratio = m.get('MaxSurgeInstanceRatio')
+        if m.get('MaxSurgeInstances') is not None:
+            self.max_surge_instances = m.get('MaxSurgeInstances')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
@@ -20749,6 +20767,8 @@ class DeployApplicationShrinkRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        max_surge_instance_ratio: int = None,
+        max_surge_instances: int = None,
         memory: int = None,
         micro_registration: str = None,
         micro_registration_config: str = None,
@@ -20978,6 +20998,8 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.max_surge_instance_ratio = max_surge_instance_ratio
+        self.max_surge_instances = max_surge_instances
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -21318,6 +21340,10 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.max_surge_instance_ratio is not None:
+            result['MaxSurgeInstanceRatio'] = self.max_surge_instance_ratio
+        if self.max_surge_instances is not None:
+            result['MaxSurgeInstances'] = self.max_surge_instances
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.micro_registration is not None:
@@ -21478,6 +21504,10 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('MaxSurgeInstanceRatio') is not None:
+            self.max_surge_instance_ratio = m.get('MaxSurgeInstanceRatio')
+        if m.get('MaxSurgeInstances') is not None:
+            self.max_surge_instances = m.get('MaxSurgeInstances')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
@@ -22948,6 +22978,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        max_surge_instance_ratio: int = None,
+        max_surge_instances: int = None,
         memory: int = None,
         micro_registration: str = None,
         micro_registration_config: str = None,
@@ -23186,6 +23218,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.max_surge_instance_ratio = max_surge_instance_ratio
+        self.max_surge_instances = max_surge_instances
         # The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -23532,6 +23566,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.max_surge_instance_ratio is not None:
+            result['MaxSurgeInstanceRatio'] = self.max_surge_instance_ratio
+        if self.max_surge_instances is not None:
+            result['MaxSurgeInstances'] = self.max_surge_instances
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.micro_registration is not None:
@@ -23743,6 +23781,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('MaxSurgeInstanceRatio') is not None:
+            self.max_surge_instance_ratio = m.get('MaxSurgeInstanceRatio')
+        if m.get('MaxSurgeInstances') is not None:
+            self.max_surge_instances = m.get('MaxSurgeInstances')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
@@ -30764,6 +30806,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         created_by_sae: bool = None,
         default_rule: DescribeIngressResponseBodyDataDefaultRule = None,
         description: str = None,
+        enable_gzip: bool = None,
         enable_xforwarded_for: bool = None,
         enable_xforwarded_for_client_src_port: bool = None,
         enable_xforwarded_for_proto: bool = None,
@@ -30792,6 +30835,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         self.default_rule = default_rule
         # The name of a routing rule.
         self.description = description
+        self.enable_gzip = enable_gzip
         self.enable_xforwarded_for = enable_xforwarded_for
         self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
         self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
@@ -30858,6 +30902,8 @@ class DescribeIngressResponseBodyData(TeaModel):
             result['DefaultRule'] = self.default_rule.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_gzip is not None:
+            result['EnableGzip'] = self.enable_gzip
         if self.enable_xforwarded_for is not None:
             result['EnableXForwardedFor'] = self.enable_xforwarded_for
         if self.enable_xforwarded_for_client_src_port is not None:
@@ -30912,6 +30958,8 @@ class DescribeIngressResponseBodyData(TeaModel):
             self.default_rule = temp_model.from_map(m['DefaultRule'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableGzip') is not None:
+            self.enable_gzip = m.get('EnableGzip')
         if m.get('EnableXForwardedFor') is not None:
             self.enable_xforwarded_for = m.get('EnableXForwardedFor')
         if m.get('EnableXForwardedForClientSrcPort') is not None:
@@ -52194,6 +52242,7 @@ class UpdateIngressRequest(TeaModel):
         cors_config: str = None,
         default_rule: str = None,
         description: str = None,
+        enable_gzip: bool = None,
         enable_xforwarded_for: bool = None,
         enable_xforwarded_for_client_src_port: bool = None,
         enable_xforwarded_for_proto: bool = None,
@@ -52229,6 +52278,7 @@ class UpdateIngressRequest(TeaModel):
         self.default_rule = default_rule
         # The name of the routing rule.
         self.description = description
+        self.enable_gzip = enable_gzip
         self.enable_xforwarded_for = enable_xforwarded_for
         self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
         self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
@@ -52282,6 +52332,8 @@ class UpdateIngressRequest(TeaModel):
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_gzip is not None:
+            result['EnableGzip'] = self.enable_gzip
         if self.enable_xforwarded_for is not None:
             result['EnableXForwardedFor'] = self.enable_xforwarded_for
         if self.enable_xforwarded_for_client_src_port is not None:
@@ -52322,6 +52374,8 @@ class UpdateIngressRequest(TeaModel):
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableGzip') is not None:
+            self.enable_gzip = m.get('EnableGzip')
         if m.get('EnableXForwardedFor') is not None:
             self.enable_xforwarded_for = m.get('EnableXForwardedFor')
         if m.get('EnableXForwardedForClientSrcPort') is not None:

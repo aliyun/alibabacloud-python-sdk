@@ -1,3 +1,13 @@
+2025-10-24 Version: 2.8.3
+- Update API CreateIngress: add request parameters EnableGzip.
+- Update API DeployApplication: add request parameters MaxSurgeInstanceRatio.
+- Update API DeployApplication: add request parameters MaxSurgeInstances.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.MaxSurgeInstanceRatio.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.MaxSurgeInstances.
+- Update API DescribeIngress: add response parameters Body.Data.EnableGzip.
+- Update API UpdateIngress: add request parameters EnableGzip.
+
+
 2025-10-15 Version: 2.8.2
 - Update API RescaleApplicationVertically: add request parameters ResourceType.
 - Update API RescaleApplicationVertically: add request parameters VSwitchId.

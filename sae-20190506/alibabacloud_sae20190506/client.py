@@ -1813,6 +1813,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_gzip):
+            query['EnableGzip'] = request.enable_gzip
         if not UtilClient.is_unset(request.enable_xforwarded_for):
             query['EnableXForwardedFor'] = request.enable_xforwarded_for
         if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
@@ -1895,6 +1897,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_gzip):
+            query['EnableGzip'] = request.enable_gzip
         if not UtilClient.is_unset(request.enable_xforwarded_for):
             query['EnableXForwardedFor'] = request.enable_xforwarded_for
         if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
@@ -4661,6 +4665,10 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.max_surge_instance_ratio):
+            query['MaxSurgeInstanceRatio'] = request.max_surge_instance_ratio
+        if not UtilClient.is_unset(request.max_surge_instances):
+            query['MaxSurgeInstances'] = request.max_surge_instances
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
@@ -4861,6 +4869,10 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.max_surge_instance_ratio):
+            query['MaxSurgeInstanceRatio'] = request.max_surge_instance_ratio
+        if not UtilClient.is_unset(request.max_surge_instances):
+            query['MaxSurgeInstances'] = request.max_surge_instances
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
@@ -16377,6 +16389,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_gzip):
+            query['EnableGzip'] = request.enable_gzip
         if not UtilClient.is_unset(request.enable_xforwarded_for):
             query['EnableXForwardedFor'] = request.enable_xforwarded_for
         if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
@@ -16451,6 +16465,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_gzip):
+            query['EnableGzip'] = request.enable_gzip
         if not UtilClient.is_unset(request.enable_xforwarded_for):
             query['EnableXForwardedFor'] = request.enable_xforwarded_for
         if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
