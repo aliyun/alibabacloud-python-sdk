@@ -7899,6 +7899,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.authority_host):
+            query['AuthorityHost'] = request.authority_host
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.cen_id):
@@ -7907,10 +7911,16 @@ class Client(OpenApiClient):
             query['CenOwnerId'] = request.cen_owner_id
         if not UtilClient.is_unset(request.cidr_block):
             query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            query['ClientSecret'] = request.client_secret
         if not UtilClient.is_unset(request.cloud_box_office_site):
             query['CloudBoxOfficeSite'] = request.cloud_box_office_site
         if not UtilClient.is_unset(request.desktop_access_type):
             query['DesktopAccessType'] = request.desktop_access_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
         if not UtilClient.is_unset(request.enable_internet_access):
@@ -7921,6 +7931,8 @@ class Client(OpenApiClient):
             query['OfficeSiteName'] = request.office_site_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.verify_code):
@@ -7960,6 +7972,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.authority_host):
+            query['AuthorityHost'] = request.authority_host
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.cen_id):
@@ -7968,10 +7984,16 @@ class Client(OpenApiClient):
             query['CenOwnerId'] = request.cen_owner_id
         if not UtilClient.is_unset(request.cidr_block):
             query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            query['ClientSecret'] = request.client_secret
         if not UtilClient.is_unset(request.cloud_box_office_site):
             query['CloudBoxOfficeSite'] = request.cloud_box_office_site
         if not UtilClient.is_unset(request.desktop_access_type):
             query['DesktopAccessType'] = request.desktop_access_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
         if not UtilClient.is_unset(request.enable_internet_access):
@@ -7982,6 +8004,8 @@ class Client(OpenApiClient):
             query['OfficeSiteName'] = request.office_site_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.verify_code):
@@ -15466,6 +15490,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fota_tasks_with_options_async(request, runtime)
+
+    def describe_global_desktop_records_with_options(
+        self,
+        request: ecd_20200930_models.DescribeGlobalDesktopRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
+        """
+        @summary 查询全局桌面记录
+        
+        @param request: DescribeGlobalDesktopRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalDesktopRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not UtilClient.is_unset(request.desktop_type):
+            query['DesktopType'] = request.desktop_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDesktopRecords',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeGlobalDesktopRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_desktop_records_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeGlobalDesktopRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
+        """
+        @summary 查询全局桌面记录
+        
+        @param request: DescribeGlobalDesktopRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalDesktopRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not UtilClient.is_unset(request.desktop_type):
+            query['DesktopType'] = request.desktop_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDesktopRecords',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeGlobalDesktopRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_desktop_records(
+        self,
+        request: ecd_20200930_models.DescribeGlobalDesktopRecordsRequest,
+    ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
+        """
+        @summary 查询全局桌面记录
+        
+        @param request: DescribeGlobalDesktopRecordsRequest
+        @return: DescribeGlobalDesktopRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_desktop_records_with_options(request, runtime)
+
+    async def describe_global_desktop_records_async(
+        self,
+        request: ecd_20200930_models.DescribeGlobalDesktopRecordsRequest,
+    ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
+        """
+        @summary 查询全局桌面记录
+        
+        @param request: DescribeGlobalDesktopRecordsRequest
+        @return: DescribeGlobalDesktopRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_desktop_records_with_options_async(request, runtime)
 
     def describe_guest_applications_with_options(
         self,
@@ -27465,8 +27641,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authority_host):
+            query['AuthorityHost'] = request.authority_host
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            query['ClientSecret'] = request.client_secret
         if not UtilClient.is_unset(request.desktop_access_type):
             query['DesktopAccessType'] = request.desktop_access_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
         if not UtilClient.is_unset(request.need_verify_login_risk):
@@ -27479,6 +27663,8 @@ class Client(OpenApiClient):
             query['OfficeSiteName'] = request.office_site_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -27512,8 +27698,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authority_host):
+            query['AuthorityHost'] = request.authority_host
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            query['ClientSecret'] = request.client_secret
         if not UtilClient.is_unset(request.desktop_access_type):
             query['DesktopAccessType'] = request.desktop_access_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
         if not UtilClient.is_unset(request.need_verify_login_risk):
@@ -27526,6 +27720,8 @@ class Client(OpenApiClient):
             query['OfficeSiteName'] = request.office_site_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

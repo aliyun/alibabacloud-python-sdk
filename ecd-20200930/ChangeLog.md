@@ -1,3 +1,27 @@
+2025-10-24 Version: 4.14.0
+- Support API DescribeGlobalDesktopRecords.
+- Update API CreateSimpleOfficeSite: add request parameters AccountType.
+- Update API CreateSimpleOfficeSite: add request parameters AuthorityHost.
+- Update API CreateSimpleOfficeSite: add request parameters ClientId.
+- Update API CreateSimpleOfficeSite: add request parameters ClientSecret.
+- Update API CreateSimpleOfficeSite: add request parameters DomainName.
+- Update API CreateSimpleOfficeSite: add request parameters TenantId.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.AccountType.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.EntraDomainName.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.AccountType.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.EntraDomainName.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.AccountType.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.AuthorityHost.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.ClientId.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.ClientSecret.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.TenantId.
+- Update API ModifyOfficeSiteAttribute: add request parameters AuthorityHost.
+- Update API ModifyOfficeSiteAttribute: add request parameters ClientId.
+- Update API ModifyOfficeSiteAttribute: add request parameters ClientSecret.
+- Update API ModifyOfficeSiteAttribute: add request parameters DomainName.
+- Update API ModifyOfficeSiteAttribute: add request parameters TenantId.
+
+
 2025-10-17 Version: 4.13.1
 - Update API DescribeDesktopGroupSessions: add response parameters Body.Sessions.$.AccountType.
 - Update API DescribeDesktopGroupSessions: add response parameters Body.Sessions.$.DirectoryType.

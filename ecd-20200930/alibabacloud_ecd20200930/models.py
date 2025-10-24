@@ -15686,21 +15686,29 @@ class CreateRouteTableResponse(TeaModel):
 class CreateSimpleOfficeSiteRequest(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
+        authority_host: str = None,
         bandwidth: int = None,
         cen_id: str = None,
         cen_owner_id: int = None,
         cidr_block: str = None,
+        client_id: str = None,
+        client_secret: str = None,
         cloud_box_office_site: bool = None,
         desktop_access_type: str = None,
+        domain_name: str = None,
         enable_admin_access: bool = None,
         enable_internet_access: bool = None,
         need_verify_zero_device: bool = None,
         office_site_name: str = None,
         region_id: str = None,
+        tenant_id: str = None,
         v_switch_id: List[str] = None,
         verify_code: str = None,
         vpc_type: str = None,
     ):
+        self.account_type = account_type
+        self.authority_host = authority_host
         # The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
         self.bandwidth = bandwidth
         # The Cloud Enterprise Network (CEN) instance ID.
@@ -15718,6 +15726,8 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         # *   `172.16.0.0/12` (subnet mask range: 12 to 24 bits)
         # *   `192.168.0.0/16` (subnet mask range: 16 to 24 bits)
         self.cidr_block = cidr_block
+        self.client_id = client_id
+        self.client_secret = client_secret
         # Specifies whether to create a CloudBox-based office network.
         # 
         # Valid values:
@@ -15742,6 +15752,7 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         # 
         # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.````
         self.desktop_access_type = desktop_access_type
+        self.domain_name = domain_name
         # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
         # 
         # Valid values:
@@ -15777,6 +15788,7 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.tenant_id = tenant_id
         # The IDs of the vSwitches that you want to specify in VPCs. This parameter is required only when you create CloudBox-based office networks.
         self.v_switch_id = v_switch_id
         # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) operation to obtain the verification code.
@@ -15798,6 +15810,10 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        if self.authority_host is not None:
+            result['AuthorityHost'] = self.authority_host
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.cen_id is not None:
@@ -15806,10 +15822,16 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
             result['CenOwnerId'] = self.cen_owner_id
         if self.cidr_block is not None:
             result['CidrBlock'] = self.cidr_block
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
         if self.cloud_box_office_site is not None:
             result['CloudBoxOfficeSite'] = self.cloud_box_office_site
         if self.desktop_access_type is not None:
             result['DesktopAccessType'] = self.desktop_access_type
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
         if self.enable_admin_access is not None:
             result['EnableAdminAccess'] = self.enable_admin_access
         if self.enable_internet_access is not None:
@@ -15820,6 +15842,8 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
             result['OfficeSiteName'] = self.office_site_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.verify_code is not None:
@@ -15830,6 +15854,10 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        if m.get('AuthorityHost') is not None:
+            self.authority_host = m.get('AuthorityHost')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('CenId') is not None:
@@ -15838,10 +15866,16 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
             self.cen_owner_id = m.get('CenOwnerId')
         if m.get('CidrBlock') is not None:
             self.cidr_block = m.get('CidrBlock')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
         if m.get('CloudBoxOfficeSite') is not None:
             self.cloud_box_office_site = m.get('CloudBoxOfficeSite')
         if m.get('DesktopAccessType') is not None:
             self.desktop_access_type = m.get('DesktopAccessType')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
         if m.get('EnableAdminAccess') is not None:
             self.enable_admin_access = m.get('EnableAdminAccess')
         if m.get('EnableInternetAccess') is not None:
@@ -15852,6 +15886,8 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
             self.office_site_name = m.get('OfficeSiteName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VerifyCode') is not None:
@@ -25817,6 +25853,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroupsTags(TeaModel):
 class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
         bind_amount: int = None,
         buy_desktops_count: int = None,
         comments: str = None,
@@ -25832,6 +25869,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         desktop_group_name: str = None,
         desktop_type: str = None,
         end_user_count: int = None,
+        entra_domain_name: str = None,
         expired_time: str = None,
         expired_times: List[str] = None,
         gpu_count: float = None,
@@ -25873,6 +25911,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
+        self.account_type = account_type
         # The number of concurrent sessions allowed for each cloud computer within the multi-session many-to-many share.
         self.bind_amount = bind_amount
         # This parameter is applicable only to subscription cloud computer shares. It defines the initial number of cloud computers that are purchased. Valid values: 0 to 200.
@@ -25909,6 +25948,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.desktop_type = desktop_type
         # The number of users who can access the cloud computer share.
         self.end_user_count = end_user_count
+        self.entra_domain_name = entra_domain_name
         # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
         self.expired_times = expired_times
@@ -26085,6 +26125,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.bind_amount is not None:
             result['BindAmount'] = self.bind_amount
         if self.buy_desktops_count is not None:
@@ -26117,6 +26159,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['DesktopType'] = self.desktop_type
         if self.end_user_count is not None:
             result['EndUserCount'] = self.end_user_count
+        if self.entra_domain_name is not None:
+            result['EntraDomainName'] = self.entra_domain_name
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.expired_times is not None:
@@ -26203,6 +26247,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('BindAmount') is not None:
             self.bind_amount = m.get('BindAmount')
         if m.get('BuyDesktopsCount') is not None:
@@ -26236,6 +26282,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.desktop_type = m.get('DesktopType')
         if m.get('EndUserCount') is not None:
             self.end_user_count = m.get('EndUserCount')
+        if m.get('EntraDomainName') is not None:
+            self.entra_domain_name = m.get('EntraDomainName')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('ExpiredTimes') is not None:
@@ -29066,6 +29114,7 @@ class DescribeDesktopsResponseBodyDesktopsTags(TeaModel):
 class DescribeDesktopsResponseBodyDesktops(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
         bind_amount: int = None,
         bundle_id: str = None,
         bundle_name: str = None,
@@ -29088,6 +29137,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         downgrade_quota: int = None,
         downgraded_times: int = None,
         end_user_ids: List[str] = None,
+        entra_domain_name: str = None,
         expired_time: str = None,
         fota_update: DescribeDesktopsResponseBodyDesktopsFotaUpdate = None,
         gpu_category: int = None,
@@ -29133,6 +29183,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         volume_encryption_key: str = None,
         zone_type: str = None,
     ):
+        self.account_type = account_type
         # The number of concurrent sessions of each cloud computer in a multi-session cloud computer pool.
         self.bind_amount = bind_amount
         # The ID of the template used to create the cloud computer.
@@ -29206,6 +29257,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.downgraded_times = downgraded_times
         # The end user IDs.
         self.end_user_ids = end_user_ids
+        self.entra_domain_name = entra_domain_name
         # The time when a subscription cloud computer expired.
         self.expired_time = expired_time
         # The information about the image version of the cloud computer.
@@ -29373,6 +29425,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.bind_amount is not None:
             result['BindAmount'] = self.bind_amount
         if self.bundle_id is not None:
@@ -29421,6 +29475,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['DowngradedTimes'] = self.downgraded_times
         if self.end_user_ids is not None:
             result['EndUserIds'] = self.end_user_ids
+        if self.entra_domain_name is not None:
+            result['EntraDomainName'] = self.entra_domain_name
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.fota_update is not None:
@@ -29519,6 +29575,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('BindAmount') is not None:
             self.bind_amount = m.get('BindAmount')
         if m.get('BundleId') is not None:
@@ -29569,6 +29627,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.downgraded_times = m.get('DowngradedTimes')
         if m.get('EndUserIds') is not None:
             self.end_user_ids = m.get('EndUserIds')
+        if m.get('EntraDomainName') is not None:
+            self.entra_domain_name = m.get('EntraDomainName')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('FotaUpdate') is not None:
@@ -33478,6 +33538,460 @@ class DescribeFotaTasksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeFotaTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeGlobalDesktopRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        desktop_name: str = None,
+        desktop_type: str = None,
+        end_time: str = None,
+        end_user_id: str = None,
+        office_site_id: str = None,
+        order_by: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        scope: str = None,
+        sort_type: str = None,
+        start_time: str = None,
+        sub_pay_type: str = None,
+    ):
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
+        self.desktop_type = desktop_type
+        self.end_time = end_time
+        self.end_user_id = end_user_id
+        self.office_site_id = office_site_id
+        self.order_by = order_by
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.scope = scope
+        self.sort_type = sort_type
+        self.start_time = start_time
+        self.sub_pay_type = sub_pay_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.desktop_type is not None:
+            result['DesktopType'] = self.desktop_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('DesktopType') is not None:
+            self.desktop_type = m.get('DesktopType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
+        return self
+
+
+class DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(TeaModel):
+    def __init__(
+        self,
+        end_user_id: str = None,
+        establishment_time: str = None,
+    ):
+        self.end_user_id = end_user_id
+        self.establishment_time = establishment_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.establishment_time is not None:
+            result['EstablishmentTime'] = self.establishment_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('EstablishmentTime') is not None:
+            self.establishment_time = m.get('EstablishmentTime')
+        return self
+
+
+class DescribeGlobalDesktopRecordsResponseBodySessions(TeaModel):
+    def __init__(
+        self,
+        connection_status: str = None,
+        cpu: int = None,
+        desktop_group_id: str = None,
+        desktop_group_name: str = None,
+        desktop_id: str = None,
+        desktop_name: str = None,
+        desktop_status: str = None,
+        end_user_id: str = None,
+        end_user_ids: List[str] = None,
+        gpu_spec: str = None,
+        latest_connection_time: int = None,
+        memory: int = None,
+        office_site_id: str = None,
+        office_site_name: str = None,
+        os_type: str = None,
+        platform: str = None,
+        protocol_type: str = None,
+        region_id: str = None,
+        resource_groups: List[DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups] = None,
+        session_idle_time: int = None,
+        sessions: List[DescribeGlobalDesktopRecordsResponseBodySessionsSessions] = None,
+        status_change_time: int = None,
+        sub_pay_type: str = None,
+        total_connection_time: int = None,
+        up_time: int = None,
+    ):
+        self.connection_status = connection_status
+        self.cpu = cpu
+        self.desktop_group_id = desktop_group_id
+        self.desktop_group_name = desktop_group_name
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
+        self.desktop_status = desktop_status
+        self.end_user_id = end_user_id
+        self.end_user_ids = end_user_ids
+        self.gpu_spec = gpu_spec
+        self.latest_connection_time = latest_connection_time
+        self.memory = memory
+        self.office_site_id = office_site_id
+        self.office_site_name = office_site_name
+        self.os_type = os_type
+        self.platform = platform
+        self.protocol_type = protocol_type
+        self.region_id = region_id
+        self.resource_groups = resource_groups
+        self.session_idle_time = session_idle_time
+        self.sessions = sessions
+        self.status_change_time = status_change_time
+        self.sub_pay_type = sub_pay_type
+        self.total_connection_time = total_connection_time
+        self.up_time = up_time
+
+    def validate(self):
+        if self.resource_groups:
+            for k in self.resource_groups:
+                if k:
+                    k.validate()
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
+        if self.desktop_group_name is not None:
+            result['DesktopGroupName'] = self.desktop_group_name
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.desktop_status is not None:
+            result['DesktopStatus'] = self.desktop_status
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.gpu_spec is not None:
+            result['GpuSpec'] = self.gpu_spec
+        if self.latest_connection_time is not None:
+            result['LatestConnectionTime'] = self.latest_connection_time
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.office_site_name is not None:
+            result['OfficeSiteName'] = self.office_site_name
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['ResourceGroups'] = []
+        if self.resource_groups is not None:
+            for k in self.resource_groups:
+                result['ResourceGroups'].append(k.to_map() if k else None)
+        if self.session_idle_time is not None:
+            result['SessionIdleTime'] = self.session_idle_time
+        result['Sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['Sessions'].append(k.to_map() if k else None)
+        if self.status_change_time is not None:
+            result['StatusChangeTime'] = self.status_change_time
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
+        if self.total_connection_time is not None:
+            result['TotalConnectionTime'] = self.total_connection_time
+        if self.up_time is not None:
+            result['UpTime'] = self.up_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
+        if m.get('DesktopGroupName') is not None:
+            self.desktop_group_name = m.get('DesktopGroupName')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('DesktopStatus') is not None:
+            self.desktop_status = m.get('DesktopStatus')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('GpuSpec') is not None:
+            self.gpu_spec = m.get('GpuSpec')
+        if m.get('LatestConnectionTime') is not None:
+            self.latest_connection_time = m.get('LatestConnectionTime')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OfficeSiteName') is not None:
+            self.office_site_name = m.get('OfficeSiteName')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.resource_groups = []
+        if m.get('ResourceGroups') is not None:
+            for k in m.get('ResourceGroups'):
+                temp_model = DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups()
+                self.resource_groups.append(temp_model.from_map(k))
+        if m.get('SessionIdleTime') is not None:
+            self.session_idle_time = m.get('SessionIdleTime')
+        self.sessions = []
+        if m.get('Sessions') is not None:
+            for k in m.get('Sessions'):
+                temp_model = DescribeGlobalDesktopRecordsResponseBodySessionsSessions()
+                self.sessions.append(temp_model.from_map(k))
+        if m.get('StatusChangeTime') is not None:
+            self.status_change_time = m.get('StatusChangeTime')
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
+        if m.get('TotalConnectionTime') is not None:
+            self.total_connection_time = m.get('TotalConnectionTime')
+        if m.get('UpTime') is not None:
+            self.up_time = m.get('UpTime')
+        return self
+
+
+class DescribeGlobalDesktopRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sessions: List[DescribeGlobalDesktopRecordsResponseBodySessions] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.sessions = sessions
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['Sessions'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sessions = []
+        if m.get('Sessions') is not None:
+            for k in m.get('Sessions'):
+                temp_model = DescribeGlobalDesktopRecordsResponseBodySessions()
+                self.sessions.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeGlobalDesktopRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGlobalDesktopRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGlobalDesktopRecordsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37526,13 +38040,17 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self,
         adconnectors: List[DescribeOfficeSitesResponseBodyOfficeSitesADConnectors] = None,
         accelerator_id: str = None,
+        account_type: str = None,
         ad_hostname: str = None,
+        authority_host: str = None,
         backup_dchostname: str = None,
         backup_dns: str = None,
         bandwidth: int = None,
         cen_attach_status: str = None,
         cen_id: str = None,
         cidr_block: str = None,
+        client_id: str = None,
+        client_secret: str = None,
         cloud_box_office_site: bool = None,
         creation_time: str = None,
         custom_access_point: str = None,
@@ -37575,6 +38093,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         sub_dns_address: List[str] = None,
         sub_domain_name: str = None,
         subnet_mode: str = None,
+        tenant_id: str = None,
         total_eds_count: int = None,
         total_eds_count_for_group: int = None,
         total_resource_amount: int = None,
@@ -37587,8 +38106,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.adconnectors = adconnectors
         # The ID of the GA instance.
         self.accelerator_id = accelerator_id
+        self.account_type = account_type
         # The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows.
         self.ad_hostname = ad_hostname
+        self.authority_host = authority_host
         # The hostname of the secondary domain controller.
         self.backup_dchostname = backup_dchostname
         # The DNS address of the secondary domain controller.
@@ -37602,6 +38123,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.cen_id = cen_id
         # The IPv4 CIDR block of the VPC that the office network uses.
         self.cidr_block = cidr_block
+        self.client_id = client_id
+        self.client_secret = client_secret
         # Indicates whether the CloudBox-based office network is created.
         # 
         # Valid values:
@@ -37748,6 +38271,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         # *   0: disabled.
         # *   1: enabled.
         self.subnet_mode = subnet_mode
+        self.tenant_id = tenant_id
         # The total number of cloud computers.
         self.total_eds_count = total_eds_count
         # The number of cloud computers in the cloud computer share.
@@ -37795,8 +38319,12 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
                 result['ADConnectors'].append(k.to_map() if k else None)
         if self.accelerator_id is not None:
             result['AcceleratorId'] = self.accelerator_id
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.ad_hostname is not None:
             result['AdHostname'] = self.ad_hostname
+        if self.authority_host is not None:
+            result['AuthorityHost'] = self.authority_host
         if self.backup_dchostname is not None:
             result['BackupDCHostname'] = self.backup_dchostname
         if self.backup_dns is not None:
@@ -37809,6 +38337,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['CenId'] = self.cen_id
         if self.cidr_block is not None:
             result['CidrBlock'] = self.cidr_block
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
         if self.cloud_box_office_site is not None:
             result['CloudBoxOfficeSite'] = self.cloud_box_office_site
         if self.creation_time is not None:
@@ -37897,6 +38429,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['SubDomainName'] = self.sub_domain_name
         if self.subnet_mode is not None:
             result['SubnetMode'] = self.subnet_mode
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.total_eds_count is not None:
             result['TotalEdsCount'] = self.total_eds_count
         if self.total_eds_count_for_group is not None:
@@ -37922,8 +38456,12 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
                 self.adconnectors.append(temp_model.from_map(k))
         if m.get('AcceleratorId') is not None:
             self.accelerator_id = m.get('AcceleratorId')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('AdHostname') is not None:
             self.ad_hostname = m.get('AdHostname')
+        if m.get('AuthorityHost') is not None:
+            self.authority_host = m.get('AuthorityHost')
         if m.get('BackupDCHostname') is not None:
             self.backup_dchostname = m.get('BackupDCHostname')
         if m.get('BackupDns') is not None:
@@ -37936,6 +38474,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.cen_id = m.get('CenId')
         if m.get('CidrBlock') is not None:
             self.cidr_block = m.get('CidrBlock')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
         if m.get('CloudBoxOfficeSite') is not None:
             self.cloud_box_office_site = m.get('CloudBoxOfficeSite')
         if m.get('CreationTime') is not None:
@@ -38026,6 +38568,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.sub_domain_name = m.get('SubDomainName')
         if m.get('SubnetMode') is not None:
             self.subnet_mode = m.get('SubnetMode')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('TotalEdsCount') is not None:
             self.total_eds_count = m.get('TotalEdsCount')
         if m.get('TotalEdsCountForGroup') is not None:
@@ -60670,14 +61214,22 @@ class ModifyNetworkPackageEnabledResponse(TeaModel):
 class ModifyOfficeSiteAttributeRequest(TeaModel):
     def __init__(
         self,
+        authority_host: str = None,
+        client_id: str = None,
+        client_secret: str = None,
         desktop_access_type: str = None,
+        domain_name: str = None,
         enable_admin_access: bool = None,
         need_verify_login_risk: bool = None,
         need_verify_zero_device: bool = None,
         office_site_id: str = None,
         office_site_name: str = None,
         region_id: str = None,
+        tenant_id: str = None,
     ):
+        self.authority_host = authority_host
+        self.client_id = client_id
+        self.client_secret = client_secret
         # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
         # 
         # >  VPC connection relies on the Alibaba Cloud PrivateLink service. You can use PrivateLink for free. When you set this parameter to `VPC` or `Any`, the system automatically activates PrivateLink.
@@ -60688,6 +61240,7 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
         # *   VPC: allows end users to connect to cloud computers over VPCs.
         # *   ANY: allows end users to connect to cloud computers over the Internet and VPCs. When end users connect to cloud computers from Elastic Desktop Service, you can choose a connection method based on your business requirements.
         self.desktop_access_type = desktop_access_type
+        self.domain_name = domain_name
         # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
         # 
         # Valid values:
@@ -60710,6 +61263,7 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -60720,8 +61274,16 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authority_host is not None:
+            result['AuthorityHost'] = self.authority_host
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
         if self.desktop_access_type is not None:
             result['DesktopAccessType'] = self.desktop_access_type
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
         if self.enable_admin_access is not None:
             result['EnableAdminAccess'] = self.enable_admin_access
         if self.need_verify_login_risk is not None:
@@ -60734,12 +61296,22 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
             result['OfficeSiteName'] = self.office_site_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorityHost') is not None:
+            self.authority_host = m.get('AuthorityHost')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
         if m.get('DesktopAccessType') is not None:
             self.desktop_access_type = m.get('DesktopAccessType')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
         if m.get('EnableAdminAccess') is not None:
             self.enable_admin_access = m.get('EnableAdminAccess')
         if m.get('NeedVerifyLoginRisk') is not None:
@@ -60752,6 +61324,8 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
             self.office_site_name = m.get('OfficeSiteName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 
