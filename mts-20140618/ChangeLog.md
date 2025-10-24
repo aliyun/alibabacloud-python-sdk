@@ -1,3 +1,13 @@
+2025-10-24 Version: 6.0.1
+- Update API QueryMediaInfoJobList: add response parameters Body.MediaInfoJobList.$.Properties.FileMd5.
+- Update API QueryMediaInfoJobList: add response parameters Body.MediaInfoJobList.$.Properties.Streams.AudioStreamList.$.DurationInaccurate.
+- Update API QueryMediaInfoJobList: add response parameters Body.MediaInfoJobList.$.Properties.Streams.VideoStreamList.$.DurationInaccurate.
+- Update API SubmitMediaInfoJob: add request parameters Config.
+- Update API SubmitMediaInfoJob: add response parameters Body.MediaInfoJob.Properties.MD5.
+- Update API SubmitMediaInfoJob: add response parameters Body.MediaInfoJob.Properties.Streams.AudioStreamList.$.DurationInaccurate.
+- Update API SubmitMediaInfoJob: add response parameters Body.MediaInfoJob.Properties.Streams.VideoStreamList.$.DurationInaccurate.
+
+
 2025-05-14 Version: 6.0.0
 - Update API SubmitCopyrightJob: update request parameters StartTime' type has changed.
 - Update API SubmitCopyrightJob: update request parameters StartTime' format has changed.

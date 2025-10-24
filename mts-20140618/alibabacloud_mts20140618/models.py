@@ -22742,6 +22742,7 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         codec_tag_string: str = None,
         codec_time_base: str = None,
         duration: str = None,
+        duration_inaccurate: str = None,
         index: str = None,
         lang: str = None,
         num_frames: str = None,
@@ -22774,6 +22775,7 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         self.codec_time_base = codec_time_base
         # The duration of the media file.
         self.duration = duration
+        self.duration_inaccurate = duration_inaccurate
         # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
         # The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html?spm=a2c4g.11186623.2.66.243851cd2SntfN#Metadata).
@@ -22816,6 +22818,8 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
             result['CodecTimeBase'] = self.codec_time_base
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.duration_inaccurate is not None:
+            result['DurationInaccurate'] = self.duration_inaccurate
         if self.index is not None:
             result['Index'] = self.index
         if self.lang is not None:
@@ -22852,6 +22856,8 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
             self.codec_time_base = m.get('CodecTimeBase')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('DurationInaccurate') is not None:
+            self.duration_inaccurate = m.get('DurationInaccurate')
         if m.get('Index') is not None:
             self.index = m.get('Index')
         if m.get('Lang') is not None:
@@ -23090,6 +23096,7 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         color_transfer: str = None,
         dar: str = None,
         duration: str = None,
+        duration_inaccurate: str = None,
         fps: str = None,
         has_bframes: str = None,
         height: str = None,
@@ -23135,6 +23142,7 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         self.dar = dar
         # The duration of the media file.
         self.duration = duration
+        self.duration_inaccurate = duration_inaccurate
         # The frame rate of the media file.
         self.fps = fps
         # Indicates whether the video stream contains bidirectional frames (B-frames). A value of 1 indicates that the video stream contains B-frames. A value of 0 indicates that the video stream does not contain B-frames.
@@ -23200,6 +23208,8 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
             result['Dar'] = self.dar
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.duration_inaccurate is not None:
+            result['DurationInaccurate'] = self.duration_inaccurate
         if self.fps is not None:
             result['Fps'] = self.fps
         if self.has_bframes is not None:
@@ -23258,6 +23268,8 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
             self.dar = m.get('Dar')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('DurationInaccurate') is not None:
+            self.duration_inaccurate = m.get('DurationInaccurate')
         if m.get('Fps') is not None:
             self.fps = m.get('Fps')
         if m.get('HasBFrames') is not None:
@@ -23383,6 +23395,7 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties(Te
         bitrate: str = None,
         duration: str = None,
         file_format: str = None,
+        file_md_5: str = None,
         file_size: str = None,
         format: QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat = None,
         fps: str = None,
@@ -23396,6 +23409,7 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties(Te
         self.duration = duration
         # The format of the input media file.
         self.file_format = file_format
+        self.file_md_5 = file_md_5
         # The size of the image file.
         self.file_size = file_size
         # The format information.
@@ -23427,6 +23441,8 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties(Te
             result['Duration'] = self.duration
         if self.file_format is not None:
             result['FileFormat'] = self.file_format
+        if self.file_md_5 is not None:
+            result['FileMd5'] = self.file_md_5
         if self.file_size is not None:
             result['FileSize'] = self.file_size
         if self.format is not None:
@@ -23449,6 +23465,8 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties(Te
             self.duration = m.get('Duration')
         if m.get('FileFormat') is not None:
             self.file_format = m.get('FileFormat')
+        if m.get('FileMd5') is not None:
+            self.file_md_5 = m.get('FileMd5')
         if m.get('FileSize') is not None:
             self.file_size = m.get('FileSize')
         if m.get('Format') is not None:
@@ -40219,6 +40237,7 @@ class SubmitMediaInfoJobRequest(TeaModel):
     def __init__(
         self,
         async_: bool = None,
+        config: str = None,
         input: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -40232,6 +40251,7 @@ class SubmitMediaInfoJobRequest(TeaModel):
         # *   **true**: enables the asynchronous mode.
         # *   **false**: does not enable the asynchronous mode.
         self.async_ = async_
+        self.config = config
         # The information about the input media file. The value is a JSON string. You must perform the following operations to add the OSS bucket in which the input media file is stored as a media bucket: Log on to the **MPS console**, choose **Workflows** > **Media Buckets** in the left-side navigation pane, and then click **Add Bucket**. After you add the OSS bucket as a media bucket, you must perform URL encoding for the OSS object. For example, `{"Bucket":"example-bucket","Location":"example-location","Object":"example%2Fexample.flv"}` indicates the `example-bucket.example-location.aliyuncs.com/example/example.flv` file.
         # 
         # > The OSS bucket must reside in the same region as your MPS service.
@@ -40261,6 +40281,8 @@ class SubmitMediaInfoJobRequest(TeaModel):
         result = dict()
         if self.async_ is not None:
             result['Async'] = self.async_
+        if self.config is not None:
+            result['Config'] = self.config
         if self.input is not None:
             result['Input'] = self.input
         if self.owner_account is not None:
@@ -40281,6 +40303,8 @@ class SubmitMediaInfoJobRequest(TeaModel):
         m = m or dict()
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
         if m.get('Input') is not None:
             self.input = m.get('Input')
         if m.get('OwnerAccount') is not None:
@@ -40471,6 +40495,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
         codec_tag_string: str = None,
         codec_time_base: str = None,
         duration: str = None,
+        duration_inaccurate: str = None,
         index: str = None,
         lang: str = None,
         num_frames: str = None,
@@ -40503,6 +40528,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
         self.codec_time_base = codec_time_base
         # The duration of the audio stream. Unit: seconds.
         self.duration = duration
+        self.duration_inaccurate = duration_inaccurate
         # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
         # The language.
@@ -40545,6 +40571,8 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
             result['CodecTimeBase'] = self.codec_time_base
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.duration_inaccurate is not None:
+            result['DurationInaccurate'] = self.duration_inaccurate
         if self.index is not None:
             result['Index'] = self.index
         if self.lang is not None:
@@ -40581,6 +40609,8 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
             self.codec_time_base = m.get('CodecTimeBase')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('DurationInaccurate') is not None:
+            self.duration_inaccurate = m.get('DurationInaccurate')
         if m.get('Index') is not None:
             self.index = m.get('Index')
         if m.get('Lang') is not None:
@@ -40819,6 +40849,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
         color_transfer: str = None,
         dar: str = None,
         duration: str = None,
+        duration_inaccurate: str = None,
         fps: str = None,
         has_bframes: str = None,
         height: str = None,
@@ -40864,6 +40895,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
         self.dar = dar
         # The duration of the video stream. Unit: seconds.
         self.duration = duration
+        self.duration_inaccurate = duration_inaccurate
         # The frame rate.
         self.fps = fps
         # Indicates whether the video stream contains bidirectional frames (B-frames). A value of 1 indicates that the video stream contains B-frames. A value of 0 indicates that the video stream does not contain B-frames.
@@ -40929,6 +40961,8 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
             result['Dar'] = self.dar
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.duration_inaccurate is not None:
+            result['DurationInaccurate'] = self.duration_inaccurate
         if self.fps is not None:
             result['Fps'] = self.fps
         if self.has_bframes is not None:
@@ -40987,6 +41021,8 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
             self.dar = m.get('Dar')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('DurationInaccurate') is not None:
+            self.duration_inaccurate = m.get('DurationInaccurate')
         if m.get('Fps') is not None:
             self.fps = m.get('Fps')
         if m.get('HasBFrames') is not None:
@@ -41116,6 +41152,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobProperties(TeaModel):
         format: SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesFormat = None,
         fps: str = None,
         height: str = None,
+        md5: str = None,
         streams: SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreams = None,
         width: str = None,
     ):
@@ -41133,6 +41170,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobProperties(TeaModel):
         self.fps = fps
         # The height of the video. Unit: pixel.
         self.height = height
+        self.md5 = md5
         # The media streams that are contained in the input media file.
         self.streams = streams
         # The width of the video. Unit: pixel.
@@ -41164,6 +41202,8 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobProperties(TeaModel):
             result['Fps'] = self.fps
         if self.height is not None:
             result['Height'] = self.height
+        if self.md5 is not None:
+            result['MD5'] = self.md5
         if self.streams is not None:
             result['Streams'] = self.streams.to_map()
         if self.width is not None:
@@ -41187,6 +41227,8 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobProperties(TeaModel):
             self.fps = m.get('Fps')
         if m.get('Height') is not None:
             self.height = m.get('Height')
+        if m.get('MD5') is not None:
+            self.md5 = m.get('MD5')
         if m.get('Streams') is not None:
             temp_model = SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreams()
             self.streams = temp_model.from_map(m['Streams'])

@@ -10331,6 +10331,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.async_):
             query['Async'] = request.async_
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
         if not UtilClient.is_unset(request.input):
             query['Input'] = request.input
         if not UtilClient.is_unset(request.owner_account):
@@ -10386,6 +10388,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.async_):
             query['Async'] = request.async_
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
         if not UtilClient.is_unset(request.input):
             query['Input'] = request.input
         if not UtilClient.is_unset(request.owner_account):
