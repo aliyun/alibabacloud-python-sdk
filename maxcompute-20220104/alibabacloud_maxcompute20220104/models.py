@@ -675,6 +675,8 @@ class CreateMmsJobRequest(TeaModel):
         column_mapping: Dict[str, str] = None,
         dst_db_name: str = None,
         dst_schema_name: str = None,
+        enable_data_migration: bool = None,
+        enable_schema_migration: bool = None,
         enable_verification: bool = None,
         eta: str = None,
         increment: bool = None,
@@ -696,6 +698,8 @@ class CreateMmsJobRequest(TeaModel):
         self.column_mapping = column_mapping
         self.dst_db_name = dst_db_name
         self.dst_schema_name = dst_schema_name
+        self.enable_data_migration = enable_data_migration
+        self.enable_schema_migration = enable_schema_migration
         self.enable_verification = enable_verification
         self.eta = eta
         self.increment = increment
@@ -730,6 +734,10 @@ class CreateMmsJobRequest(TeaModel):
             result['dstDbName'] = self.dst_db_name
         if self.dst_schema_name is not None:
             result['dstSchemaName'] = self.dst_schema_name
+        if self.enable_data_migration is not None:
+            result['enableDataMigration'] = self.enable_data_migration
+        if self.enable_schema_migration is not None:
+            result['enableSchemaMigration'] = self.enable_schema_migration
         if self.enable_verification is not None:
             result['enableVerification'] = self.enable_verification
         if self.eta is not None:
@@ -774,6 +782,10 @@ class CreateMmsJobRequest(TeaModel):
             self.dst_db_name = m.get('dstDbName')
         if m.get('dstSchemaName') is not None:
             self.dst_schema_name = m.get('dstSchemaName')
+        if m.get('enableDataMigration') is not None:
+            self.enable_data_migration = m.get('enableDataMigration')
+        if m.get('enableSchemaMigration') is not None:
+            self.enable_schema_migration = m.get('enableSchemaMigration')
         if m.get('enableVerification') is not None:
             self.enable_verification = m.get('enableVerification')
         if m.get('eta') is not None:
@@ -3861,6 +3873,8 @@ class GetMmsDataSourceResponseBodyData(TeaModel):
         config: List[GetMmsDataSourceResponseBodyDataConfig] = None,
         create_time: str = None,
         db_num: int = None,
+        dst_project: str = None,
+        dst_projects: List[str] = None,
         err_msg: str = None,
         id: int = None,
         last_update_time: str = None,
@@ -3884,6 +3898,8 @@ class GetMmsDataSourceResponseBodyData(TeaModel):
         self.config = config
         self.create_time = create_time
         self.db_num = db_num
+        self.dst_project = dst_project
+        self.dst_projects = dst_projects
         self.err_msg = err_msg
         self.id = id
         self.last_update_time = last_update_time
@@ -3925,6 +3941,10 @@ class GetMmsDataSourceResponseBodyData(TeaModel):
             result['createTime'] = self.create_time
         if self.db_num is not None:
             result['dbNum'] = self.db_num
+        if self.dst_project is not None:
+            result['dstProject'] = self.dst_project
+        if self.dst_projects is not None:
+            result['dstProjects'] = self.dst_projects
         if self.err_msg is not None:
             result['errMsg'] = self.err_msg
         if self.id is not None:
@@ -3976,6 +3996,10 @@ class GetMmsDataSourceResponseBodyData(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('dbNum') is not None:
             self.db_num = m.get('dbNum')
+        if m.get('dstProject') is not None:
+            self.dst_project = m.get('dstProject')
+        if m.get('dstProjects') is not None:
+            self.dst_projects = m.get('dstProjects')
         if m.get('errMsg') is not None:
             self.err_msg = m.get('errMsg')
         if m.get('id') is not None:
@@ -4095,6 +4119,8 @@ class GetMmsDbResponseBodyData(TeaModel):
     def __init__(
         self,
         description: str = None,
+        dst_name: str = None,
+        dst_project_name: str = None,
         extra: str = None,
         id: int = None,
         last_ddl_time: str = None,
@@ -4118,6 +4144,8 @@ class GetMmsDbResponseBodyData(TeaModel):
         updated: bool = None,
     ):
         self.description = description
+        self.dst_name = dst_name
+        self.dst_project_name = dst_project_name
         self.extra = extra
         self.id = id
         # last ddl time
@@ -4152,6 +4180,10 @@ class GetMmsDbResponseBodyData(TeaModel):
         result = dict()
         if self.description is not None:
             result['description'] = self.description
+        if self.dst_name is not None:
+            result['dstName'] = self.dst_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
         if self.extra is not None:
             result['extra'] = self.extra
         if self.id is not None:
@@ -4200,6 +4232,10 @@ class GetMmsDbResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('dstName') is not None:
+            self.dst_name = m.get('dstName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
         if m.get('extra') is not None:
             self.extra = m.get('extra')
         if m.get('id') is not None:
@@ -4771,6 +4807,10 @@ class GetMmsPartitionResponseBodyData(TeaModel):
         self,
         db_id: int = None,
         db_name: str = None,
+        dst_project_name: str = None,
+        dst_schema_name: str = None,
+        dst_table_name: str = None,
+        dst_value: str = None,
         id: int = None,
         last_ddl_time: str = None,
         num_rows: int = None,
@@ -4785,6 +4825,10 @@ class GetMmsPartitionResponseBodyData(TeaModel):
     ):
         self.db_id = db_id
         self.db_name = db_name
+        self.dst_project_name = dst_project_name
+        self.dst_schema_name = dst_schema_name
+        self.dst_table_name = dst_table_name
+        self.dst_value = dst_value
         self.id = id
         # lastDdlTime
         self.last_ddl_time = last_ddl_time
@@ -4808,9 +4852,17 @@ class GetMmsPartitionResponseBodyData(TeaModel):
 
         result = dict()
         if self.db_id is not None:
-            result['DbId'] = self.db_id
+            result['dbId'] = self.db_id
         if self.db_name is not None:
             result['dbName'] = self.db_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
+        if self.dst_schema_name is not None:
+            result['dstSchemaName'] = self.dst_schema_name
+        if self.dst_table_name is not None:
+            result['dstTableName'] = self.dst_table_name
+        if self.dst_value is not None:
+            result['dstValue'] = self.dst_value
         if self.id is not None:
             result['id'] = self.id
         if self.last_ddl_time is not None:
@@ -4837,10 +4889,18 @@ class GetMmsPartitionResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DbId') is not None:
-            self.db_id = m.get('DbId')
+        if m.get('dbId') is not None:
+            self.db_id = m.get('dbId')
         if m.get('dbName') is not None:
             self.db_name = m.get('dbName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
+        if m.get('dstSchemaName') is not None:
+            self.dst_schema_name = m.get('dstSchemaName')
+        if m.get('dstTableName') is not None:
+            self.dst_table_name = m.get('dstTableName')
+        if m.get('dstValue') is not None:
+            self.dst_value = m.get('dstValue')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('lastDdlTime') is not None:
@@ -5111,6 +5171,9 @@ class GetMmsTableResponseBodyData(TeaModel):
         self,
         db_id: int = None,
         db_name: str = None,
+        dst_name: str = None,
+        dst_project_name: str = None,
+        dst_schema_name: str = None,
         extra: str = None,
         has_partitions: bool = None,
         id: int = None,
@@ -5136,6 +5199,9 @@ class GetMmsTableResponseBodyData(TeaModel):
     ):
         self.db_id = db_id
         self.db_name = db_name
+        self.dst_name = dst_name
+        self.dst_project_name = dst_project_name
+        self.dst_schema_name = dst_schema_name
         self.extra = extra
         self.has_partitions = has_partitions
         # table ID
@@ -5178,6 +5244,12 @@ class GetMmsTableResponseBodyData(TeaModel):
             result['dbId'] = self.db_id
         if self.db_name is not None:
             result['dbName'] = self.db_name
+        if self.dst_name is not None:
+            result['dstName'] = self.dst_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
+        if self.dst_schema_name is not None:
+            result['dstSchemaName'] = self.dst_schema_name
         if self.extra is not None:
             result['extra'] = self.extra
         if self.has_partitions is not None:
@@ -5230,6 +5302,12 @@ class GetMmsTableResponseBodyData(TeaModel):
             self.db_id = m.get('dbId')
         if m.get('dbName') is not None:
             self.db_name = m.get('dbName')
+        if m.get('dstName') is not None:
+            self.dst_name = m.get('dstName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
+        if m.get('dstSchemaName') is not None:
+            self.dst_schema_name = m.get('dstSchemaName')
         if m.get('extra') is not None:
             self.extra = m.get('extra')
         if m.get('hasPartitions') is not None:
@@ -14954,6 +15032,8 @@ class ListMmsDataSourcesResponseBodyDataObjectList(TeaModel):
         config: List[ListMmsDataSourcesResponseBodyDataObjectListConfig] = None,
         create_time: str = None,
         db_num: int = None,
+        dst_project: str = None,
+        dst_projects: List[str] = None,
         err_msg: str = None,
         id: int = None,
         last_update_time: str = None,
@@ -14977,6 +15057,8 @@ class ListMmsDataSourcesResponseBodyDataObjectList(TeaModel):
         self.config = config
         self.create_time = create_time
         self.db_num = db_num
+        self.dst_project = dst_project
+        self.dst_projects = dst_projects
         self.err_msg = err_msg
         self.id = id
         self.last_update_time = last_update_time
@@ -15018,6 +15100,10 @@ class ListMmsDataSourcesResponseBodyDataObjectList(TeaModel):
             result['createTime'] = self.create_time
         if self.db_num is not None:
             result['dbNum'] = self.db_num
+        if self.dst_project is not None:
+            result['dstProject'] = self.dst_project
+        if self.dst_projects is not None:
+            result['dstProjects'] = self.dst_projects
         if self.err_msg is not None:
             result['errMsg'] = self.err_msg
         if self.id is not None:
@@ -15069,6 +15155,10 @@ class ListMmsDataSourcesResponseBodyDataObjectList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('dbNum') is not None:
             self.db_num = m.get('dbNum')
+        if m.get('dstProject') is not None:
+            self.dst_project = m.get('dstProject')
+        if m.get('dstProjects') is not None:
+            self.dst_projects = m.get('dstProjects')
         if m.get('errMsg') is not None:
             self.err_msg = m.get('errMsg')
         if m.get('id') is not None:
@@ -15386,6 +15476,8 @@ class ListMmsDbsResponseBodyDataObjectList(TeaModel):
         create_time: str = None,
         deleted: bool = None,
         description: str = None,
+        dst_name: str = None,
+        dst_project_name: str = None,
         extra: str = None,
         id: int = None,
         last_ddl_time: str = None,
@@ -15412,6 +15504,8 @@ class ListMmsDbsResponseBodyDataObjectList(TeaModel):
         self.create_time = create_time
         self.deleted = deleted
         self.description = description
+        self.dst_name = dst_name
+        self.dst_project_name = dst_project_name
         self.extra = extra
         self.id = id
         # Last DDL Time
@@ -15451,6 +15545,10 @@ class ListMmsDbsResponseBodyDataObjectList(TeaModel):
             result['deleted'] = self.deleted
         if self.description is not None:
             result['description'] = self.description
+        if self.dst_name is not None:
+            result['dstName'] = self.dst_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
         if self.extra is not None:
             result['extra'] = self.extra
         if self.id is not None:
@@ -15505,6 +15603,10 @@ class ListMmsDbsResponseBodyDataObjectList(TeaModel):
             self.deleted = m.get('deleted')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('dstName') is not None:
+            self.dst_name = m.get('dstName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
         if m.get('extra') is not None:
             self.extra = m.get('extra')
         if m.get('id') is not None:
@@ -16194,6 +16296,7 @@ class ListMmsPartitionsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         status: List[str] = None,
+        table_id: int = None,
         table_name: str = None,
         updated: bool = None,
         value: str = None,
@@ -16206,6 +16309,7 @@ class ListMmsPartitionsRequest(TeaModel):
         self.page_num = page_num
         self.page_size = page_size
         self.status = status
+        self.table_id = table_id
         self.table_name = table_name
         self.updated = updated
         self.value = value
@@ -16236,6 +16340,8 @@ class ListMmsPartitionsRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.status is not None:
             result['status'] = self.status
+        if self.table_id is not None:
+            result['tableId'] = self.table_id
         if self.table_name is not None:
             result['tableName'] = self.table_name
         if self.updated is not None:
@@ -16263,6 +16369,8 @@ class ListMmsPartitionsRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('tableId') is not None:
+            self.table_id = m.get('tableId')
         if m.get('tableName') is not None:
             self.table_name = m.get('tableName')
         if m.get('updated') is not None:
@@ -16322,6 +16430,7 @@ class ListMmsPartitionsShrinkRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         status_shrink: str = None,
+        table_id: int = None,
         table_name: str = None,
         updated: bool = None,
         value: str = None,
@@ -16334,6 +16443,7 @@ class ListMmsPartitionsShrinkRequest(TeaModel):
         self.page_num = page_num
         self.page_size = page_size
         self.status_shrink = status_shrink
+        self.table_id = table_id
         self.table_name = table_name
         self.updated = updated
         self.value = value
@@ -16364,6 +16474,8 @@ class ListMmsPartitionsShrinkRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.status_shrink is not None:
             result['status'] = self.status_shrink
+        if self.table_id is not None:
+            result['tableId'] = self.table_id
         if self.table_name is not None:
             result['tableName'] = self.table_name
         if self.updated is not None:
@@ -16391,6 +16503,8 @@ class ListMmsPartitionsShrinkRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('status') is not None:
             self.status_shrink = m.get('status')
+        if m.get('tableId') is not None:
+            self.table_id = m.get('tableId')
         if m.get('tableName') is not None:
             self.table_name = m.get('tableName')
         if m.get('updated') is not None:
@@ -16405,6 +16519,10 @@ class ListMmsPartitionsResponseBodyDataObjectList(TeaModel):
         self,
         db_id: int = None,
         db_name: str = None,
+        dst_project_name: str = None,
+        dst_schema_name: str = None,
+        dst_table_name: str = None,
+        dst_value: str = None,
         id: int = None,
         last_ddl_time: str = None,
         num_rows: int = None,
@@ -16419,6 +16537,10 @@ class ListMmsPartitionsResponseBodyDataObjectList(TeaModel):
     ):
         self.db_id = db_id
         self.db_name = db_name
+        self.dst_project_name = dst_project_name
+        self.dst_schema_name = dst_schema_name
+        self.dst_table_name = dst_table_name
+        self.dst_value = dst_value
         self.id = id
         # lastDdlTime
         self.last_ddl_time = last_ddl_time
@@ -16442,9 +16564,17 @@ class ListMmsPartitionsResponseBodyDataObjectList(TeaModel):
 
         result = dict()
         if self.db_id is not None:
-            result['DbId'] = self.db_id
+            result['dbId'] = self.db_id
         if self.db_name is not None:
             result['dbName'] = self.db_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
+        if self.dst_schema_name is not None:
+            result['dstSchemaName'] = self.dst_schema_name
+        if self.dst_table_name is not None:
+            result['dstTableName'] = self.dst_table_name
+        if self.dst_value is not None:
+            result['dstValue'] = self.dst_value
         if self.id is not None:
             result['id'] = self.id
         if self.last_ddl_time is not None:
@@ -16471,10 +16601,18 @@ class ListMmsPartitionsResponseBodyDataObjectList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DbId') is not None:
-            self.db_id = m.get('DbId')
+        if m.get('dbId') is not None:
+            self.db_id = m.get('dbId')
         if m.get('dbName') is not None:
             self.db_name = m.get('dbName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
+        if m.get('dstSchemaName') is not None:
+            self.dst_schema_name = m.get('dstSchemaName')
+        if m.get('dstTableName') is not None:
+            self.dst_table_name = m.get('dstTableName')
+        if m.get('dstValue') is not None:
+            self.dst_value = m.get('dstValue')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('lastDdlTime') is not None:
@@ -16674,6 +16812,9 @@ class ListMmsTablesRequest(TeaModel):
         sorter: ListMmsTablesRequestSorter = None,
         db_id: int = None,
         db_name: str = None,
+        dst_name: str = None,
+        dst_project_name: str = None,
+        dst_schema_name: str = None,
         has_partitions: bool = None,
         last_ddl_time_end: str = None,
         last_ddl_time_start: str = None,
@@ -16687,6 +16828,9 @@ class ListMmsTablesRequest(TeaModel):
         self.sorter = sorter
         self.db_id = db_id
         self.db_name = db_name
+        self.dst_name = dst_name
+        self.dst_project_name = dst_project_name
+        self.dst_schema_name = dst_schema_name
         self.has_partitions = has_partitions
         self.last_ddl_time_end = last_ddl_time_end
         self.last_ddl_time_start = last_ddl_time_start
@@ -16713,6 +16857,12 @@ class ListMmsTablesRequest(TeaModel):
             result['dbId'] = self.db_id
         if self.db_name is not None:
             result['dbName'] = self.db_name
+        if self.dst_name is not None:
+            result['dstName'] = self.dst_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
+        if self.dst_schema_name is not None:
+            result['dstSchemaName'] = self.dst_schema_name
         if self.has_partitions is not None:
             result['hasPartitions'] = self.has_partitions
         if self.last_ddl_time_end is not None:
@@ -16742,6 +16892,12 @@ class ListMmsTablesRequest(TeaModel):
             self.db_id = m.get('dbId')
         if m.get('dbName') is not None:
             self.db_name = m.get('dbName')
+        if m.get('dstName') is not None:
+            self.dst_name = m.get('dstName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
+        if m.get('dstSchemaName') is not None:
+            self.dst_schema_name = m.get('dstSchemaName')
         if m.get('hasPartitions') is not None:
             self.has_partitions = m.get('hasPartitions')
         if m.get('lastDdlTimeEnd') is not None:
@@ -16808,6 +16964,9 @@ class ListMmsTablesShrinkRequest(TeaModel):
         sorter: ListMmsTablesShrinkRequestSorter = None,
         db_id: int = None,
         db_name: str = None,
+        dst_name: str = None,
+        dst_project_name: str = None,
+        dst_schema_name: str = None,
         has_partitions: bool = None,
         last_ddl_time_end: str = None,
         last_ddl_time_start: str = None,
@@ -16821,6 +16980,9 @@ class ListMmsTablesShrinkRequest(TeaModel):
         self.sorter = sorter
         self.db_id = db_id
         self.db_name = db_name
+        self.dst_name = dst_name
+        self.dst_project_name = dst_project_name
+        self.dst_schema_name = dst_schema_name
         self.has_partitions = has_partitions
         self.last_ddl_time_end = last_ddl_time_end
         self.last_ddl_time_start = last_ddl_time_start
@@ -16847,6 +17009,12 @@ class ListMmsTablesShrinkRequest(TeaModel):
             result['dbId'] = self.db_id
         if self.db_name is not None:
             result['dbName'] = self.db_name
+        if self.dst_name is not None:
+            result['dstName'] = self.dst_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
+        if self.dst_schema_name is not None:
+            result['dstSchemaName'] = self.dst_schema_name
         if self.has_partitions is not None:
             result['hasPartitions'] = self.has_partitions
         if self.last_ddl_time_end is not None:
@@ -16876,6 +17044,12 @@ class ListMmsTablesShrinkRequest(TeaModel):
             self.db_id = m.get('dbId')
         if m.get('dbName') is not None:
             self.db_name = m.get('dbName')
+        if m.get('dstName') is not None:
+            self.dst_name = m.get('dstName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
+        if m.get('dstSchemaName') is not None:
+            self.dst_schema_name = m.get('dstSchemaName')
         if m.get('hasPartitions') is not None:
             self.has_partitions = m.get('hasPartitions')
         if m.get('lastDdlTimeEnd') is not None:
@@ -17066,6 +17240,9 @@ class ListMmsTablesResponseBodyDataObjectList(TeaModel):
         self,
         db_id: int = None,
         db_name: str = None,
+        dst_name: str = None,
+        dst_project_name: str = None,
+        dst_schema_name: str = None,
         extra: str = None,
         has_partitions: bool = None,
         id: int = None,
@@ -17091,6 +17268,9 @@ class ListMmsTablesResponseBodyDataObjectList(TeaModel):
     ):
         self.db_id = db_id
         self.db_name = db_name
+        self.dst_name = dst_name
+        self.dst_project_name = dst_project_name
+        self.dst_schema_name = dst_schema_name
         self.extra = extra
         self.has_partitions = has_partitions
         # table ID
@@ -17133,6 +17313,12 @@ class ListMmsTablesResponseBodyDataObjectList(TeaModel):
             result['dbId'] = self.db_id
         if self.db_name is not None:
             result['dbName'] = self.db_name
+        if self.dst_name is not None:
+            result['dstName'] = self.dst_name
+        if self.dst_project_name is not None:
+            result['dstProjectName'] = self.dst_project_name
+        if self.dst_schema_name is not None:
+            result['dstSchemaName'] = self.dst_schema_name
         if self.extra is not None:
             result['extra'] = self.extra
         if self.has_partitions is not None:
@@ -17185,6 +17371,12 @@ class ListMmsTablesResponseBodyDataObjectList(TeaModel):
             self.db_id = m.get('dbId')
         if m.get('dbName') is not None:
             self.db_name = m.get('dbName')
+        if m.get('dstName') is not None:
+            self.dst_name = m.get('dstName')
+        if m.get('dstProjectName') is not None:
+            self.dst_project_name = m.get('dstProjectName')
+        if m.get('dstSchemaName') is not None:
+            self.dst_schema_name = m.get('dstSchemaName')
         if m.get('extra') is not None:
             self.extra = m.get('extra')
         if m.get('hasPartitions') is not None:
@@ -19358,6 +19550,7 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy(TeaMo
 class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel):
     def __init__(
         self,
+        adhoc_slot: int = None,
         elastic_reserved_cu: int = None,
         enable_priority: bool = None,
         force_reserved_min: bool = None,
@@ -19365,7 +19558,9 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
         min_cu: int = None,
         scheduler_type: str = None,
         single_job_culimit: int = None,
+        slot_num: int = None,
     ):
+        self.adhoc_slot = adhoc_slot
         self.elastic_reserved_cu = elastic_reserved_cu
         self.enable_priority = enable_priority
         self.force_reserved_min = force_reserved_min
@@ -19375,6 +19570,7 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
         self.min_cu = min_cu
         self.scheduler_type = scheduler_type
         self.single_job_culimit = single_job_culimit
+        self.slot_num = slot_num
 
     def validate(self):
         pass
@@ -19385,6 +19581,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
             return _map
 
         result = dict()
+        if self.adhoc_slot is not None:
+            result['adhocSlot'] = self.adhoc_slot
         if self.elastic_reserved_cu is not None:
             result['elasticReservedCU'] = self.elastic_reserved_cu
         if self.enable_priority is not None:
@@ -19399,10 +19597,14 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
             result['schedulerType'] = self.scheduler_type
         if self.single_job_culimit is not None:
             result['singleJobCULimit'] = self.single_job_culimit
+        if self.slot_num is not None:
+            result['slotNum'] = self.slot_num
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('adhocSlot') is not None:
+            self.adhoc_slot = m.get('adhocSlot')
         if m.get('elasticReservedCU') is not None:
             self.elastic_reserved_cu = m.get('elasticReservedCU')
         if m.get('enablePriority') is not None:
@@ -19417,6 +19619,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
             self.scheduler_type = m.get('schedulerType')
         if m.get('singleJobCULimit') is not None:
             self.single_job_culimit = m.get('singleJobCULimit')
+        if m.get('slotNum') is not None:
+            self.slot_num = m.get('slotNum')
         return self
 
 
@@ -20160,23 +20364,31 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy(TeaModel)
 class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
     def __init__(
         self,
+        adhoc_slot: int = None,
         elastic_reserved_cu: int = None,
         enable_priority: bool = None,
         force_reserved_min: bool = None,
         max_cu: int = None,
+        max_gu: int = None,
         min_cu: int = None,
+        min_gu: int = None,
         scheduler_type: str = None,
         single_job_culimit: int = None,
+        slot_num: int = None,
     ):
+        self.adhoc_slot = adhoc_slot
         self.elastic_reserved_cu = elastic_reserved_cu
         self.enable_priority = enable_priority
         self.force_reserved_min = force_reserved_min
         # This parameter is required.
         self.max_cu = max_cu
+        self.max_gu = max_gu
         # This parameter is required.
         self.min_cu = min_cu
+        self.min_gu = min_gu
         self.scheduler_type = scheduler_type
         self.single_job_culimit = single_job_culimit
+        self.slot_num = slot_num
 
     def validate(self):
         pass
@@ -20187,6 +20399,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
             return _map
 
         result = dict()
+        if self.adhoc_slot is not None:
+            result['adhocSlot'] = self.adhoc_slot
         if self.elastic_reserved_cu is not None:
             result['elasticReservedCU'] = self.elastic_reserved_cu
         if self.enable_priority is not None:
@@ -20195,16 +20409,24 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
             result['forceReservedMin'] = self.force_reserved_min
         if self.max_cu is not None:
             result['maxCU'] = self.max_cu
+        if self.max_gu is not None:
+            result['maxGu'] = self.max_gu
         if self.min_cu is not None:
             result['minCU'] = self.min_cu
+        if self.min_gu is not None:
+            result['minGu'] = self.min_gu
         if self.scheduler_type is not None:
             result['schedulerType'] = self.scheduler_type
         if self.single_job_culimit is not None:
             result['singleJobCULimit'] = self.single_job_culimit
+        if self.slot_num is not None:
+            result['slotNum'] = self.slot_num
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('adhocSlot') is not None:
+            self.adhoc_slot = m.get('adhocSlot')
         if m.get('elasticReservedCU') is not None:
             self.elastic_reserved_cu = m.get('elasticReservedCU')
         if m.get('enablePriority') is not None:
@@ -20213,12 +20435,18 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
             self.force_reserved_min = m.get('forceReservedMin')
         if m.get('maxCU') is not None:
             self.max_cu = m.get('maxCU')
+        if m.get('maxGu') is not None:
+            self.max_gu = m.get('maxGu')
         if m.get('minCU') is not None:
             self.min_cu = m.get('minCU')
+        if m.get('minGu') is not None:
+            self.min_gu = m.get('minGu')
         if m.get('schedulerType') is not None:
             self.scheduler_type = m.get('schedulerType')
         if m.get('singleJobCULimit') is not None:
             self.single_job_culimit = m.get('singleJobCULimit')
+        if m.get('slotNum') is not None:
+            self.slot_num = m.get('slotNum')
         return self
 
 
@@ -25316,6 +25544,245 @@ class QueryQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryQuotaMetricRequest(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        nickname: str = None,
+        sub_quota_nickname: str = None,
+        end_time: int = None,
+        start_time: int = None,
+        strategy: str = None,
+    ):
+        self.interval = interval
+        self.nickname = nickname
+        self.sub_quota_nickname = sub_quota_nickname
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.nickname is not None:
+            result['nickname'] = self.nickname
+        if self.sub_quota_nickname is not None:
+            result['subQuotaNickname'] = self.sub_quota_nickname
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('nickname') is not None:
+            self.nickname = m.get('nickname')
+        if m.get('subQuotaNickname') is not None:
+            self.sub_quota_nickname = m.get('subQuotaNickname')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
+class QueryQuotaMetricResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        metric: Dict[str, str] = None,
+        values: List[List[float]] = None,
+    ):
+        self.metric = metric
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['metric'] = self.metric
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class QueryQuotaMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        metrics: List[QueryQuotaMetricResponseBodyDataMetrics] = None,
+        name: str = None,
+        period: int = None,
+    ):
+        self.category = category
+        self.metrics = metrics
+        self.name = name
+        self.period = period
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        result['metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['metrics'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        self.metrics = []
+        if m.get('metrics') is not None:
+            for k in m.get('metrics'):
+                temp_model = QueryQuotaMetricResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
+class QueryQuotaMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryQuotaMetricResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = QueryQuotaMetricResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryQuotaMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryQuotaMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryQuotaMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

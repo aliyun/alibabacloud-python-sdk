@@ -556,6 +556,10 @@ class Client(OpenApiClient):
             body['dstDbName'] = request.dst_db_name
         if not UtilClient.is_unset(request.dst_schema_name):
             body['dstSchemaName'] = request.dst_schema_name
+        if not UtilClient.is_unset(request.enable_data_migration):
+            body['enableDataMigration'] = request.enable_data_migration
+        if not UtilClient.is_unset(request.enable_schema_migration):
+            body['enableSchemaMigration'] = request.enable_schema_migration
         if not UtilClient.is_unset(request.enable_verification):
             body['enableVerification'] = request.enable_verification
         if not UtilClient.is_unset(request.eta):
@@ -633,6 +637,10 @@ class Client(OpenApiClient):
             body['dstDbName'] = request.dst_db_name
         if not UtilClient.is_unset(request.dst_schema_name):
             body['dstSchemaName'] = request.dst_schema_name
+        if not UtilClient.is_unset(request.enable_data_migration):
+            body['enableDataMigration'] = request.enable_data_migration
+        if not UtilClient.is_unset(request.enable_schema_migration):
+            body['enableSchemaMigration'] = request.enable_schema_migration
         if not UtilClient.is_unset(request.enable_verification):
             body['enableVerification'] = request.enable_verification
         if not UtilClient.is_unset(request.eta):
@@ -5916,6 +5924,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.status_shrink):
             query['status'] = request.status_shrink
+        if not UtilClient.is_unset(request.table_id):
+            query['tableId'] = request.table_id
         if not UtilClient.is_unset(request.table_name):
             query['tableName'] = request.table_name
         if not UtilClient.is_unset(request.updated):
@@ -5979,6 +5989,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.status_shrink):
             query['status'] = request.status_shrink
+        if not UtilClient.is_unset(request.table_id):
+            query['tableId'] = request.table_id
         if not UtilClient.is_unset(request.table_name):
             query['tableName'] = request.table_name
         if not UtilClient.is_unset(request.updated):
@@ -6062,6 +6074,12 @@ class Client(OpenApiClient):
             query['dbId'] = request.db_id
         if not UtilClient.is_unset(request.db_name):
             query['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.dst_name):
+            query['dstName'] = request.dst_name
+        if not UtilClient.is_unset(request.dst_project_name):
+            query['dstProjectName'] = request.dst_project_name
+        if not UtilClient.is_unset(request.dst_schema_name):
+            query['dstSchemaName'] = request.dst_schema_name
         if not UtilClient.is_unset(request.has_partitions):
             query['hasPartitions'] = request.has_partitions
         if not UtilClient.is_unset(request.last_ddl_time_end):
@@ -6127,6 +6145,12 @@ class Client(OpenApiClient):
             query['dbId'] = request.db_id
         if not UtilClient.is_unset(request.db_name):
             query['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.dst_name):
+            query['dstName'] = request.dst_name
+        if not UtilClient.is_unset(request.dst_project_name):
+            query['dstProjectName'] = request.dst_project_name
+        if not UtilClient.is_unset(request.dst_schema_name):
+            query['dstSchemaName'] = request.dst_schema_name
         if not UtilClient.is_unset(request.has_partitions):
             query['hasPartitions'] = request.has_partitions
         if not UtilClient.is_unset(request.last_ddl_time_end):
@@ -8184,6 +8208,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_quota_with_options_async(nickname, request, headers, runtime)
+
+    def query_quota_metric_with_options(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryQuotaMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryQuotaMetricResponse:
+        """
+        @summary 查询quota的资源使用信息
+        
+        @param request: QueryQuotaMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryQuotaMetricResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy):
+            query['strategy'] = request.strategy
+        body = {}
+        if not UtilClient.is_unset(request.interval):
+            body['interval'] = request.interval
+        if not UtilClient.is_unset(request.nickname):
+            body['nickname'] = request.nickname
+        if not UtilClient.is_unset(request.sub_quota_nickname):
+            body['subQuotaNickname'] = request.sub_quota_nickname
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryQuotaMetric',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/quota/{OpenApiUtilClient.get_encode_param(metric)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryQuotaMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_quota_metric_with_options_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryQuotaMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryQuotaMetricResponse:
+        """
+        @summary 查询quota的资源使用信息
+        
+        @param request: QueryQuotaMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryQuotaMetricResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy):
+            query['strategy'] = request.strategy
+        body = {}
+        if not UtilClient.is_unset(request.interval):
+            body['interval'] = request.interval
+        if not UtilClient.is_unset(request.nickname):
+            body['nickname'] = request.nickname
+        if not UtilClient.is_unset(request.sub_quota_nickname):
+            body['subQuotaNickname'] = request.sub_quota_nickname
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryQuotaMetric',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/quota/{OpenApiUtilClient.get_encode_param(metric)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryQuotaMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_quota_metric(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryQuotaMetricRequest,
+    ) -> max_compute_20220104_models.QueryQuotaMetricResponse:
+        """
+        @summary 查询quota的资源使用信息
+        
+        @param request: QueryQuotaMetricRequest
+        @return: QueryQuotaMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_quota_metric_with_options(metric, request, headers, runtime)
+
+    async def query_quota_metric_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryQuotaMetricRequest,
+    ) -> max_compute_20220104_models.QueryQuotaMetricResponse:
+        """
+        @summary 查询quota的资源使用信息
+        
+        @param request: QueryQuotaMetricRequest
+        @return: QueryQuotaMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_quota_metric_with_options_async(metric, request, headers, runtime)
 
     def query_storage_metric_with_options(
         self,
