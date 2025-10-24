@@ -7361,7 +7361,7 @@ class EnrichHeaders(TeaModel):
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
-        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
+        # language code, defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -7404,21 +7404,17 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         departure_time: str = None,
         marketing_flight_no: str = None,
     ):
-        # arrival airport code (capitalized)
+        # arrival airport code
         self.arrival_airport = arrival_airport
-        # arrival city code (capitalized)
-        # 
-        # This parameter is required.
+        # arrival city code
         self.arrival_city = arrival_city
         # RBD
         self.cabin = cabin
         # child RBD
         self.child_cabin = child_cabin
-        # departure airport code (capitalized)
+        # departure airport code
         self.departure_airport = departure_airport
-        # departure city code (capitalized)
-        # 
-        # This parameter is required.
+        # departure city code
         self.departure_city = departure_city
         # departure time in string format (yyyy-MM-dd HH:mm:ss)
         # 
@@ -7485,11 +7481,11 @@ class EnrichRequestJourneyParamList(TeaModel):
         departure_date: str = None,
         segment_param_list: List[EnrichRequestJourneyParamListSegmentParamList] = None,
     ):
-        # arrival city code (capitalized)
+        # arrival city code
         # 
         # This parameter is required.
         self.arrival_city = arrival_city
-        # departure city code (capitalized)
+        # departure city code
         # 
         # This parameter is required.
         self.departure_city = departure_city
@@ -7714,13 +7710,13 @@ class EnrichResponseBodyDataSolutionListJourneyListSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
-        # arrival airport code (capitalized)
+        # arrival airport code
         self.arrival_airport = arrival_airport
-        # arrival city code (capitalized)
+        # arrival city code
         self.arrival_city = arrival_city
         # arrival terminal
         self.arrival_terminal = arrival_terminal
-        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
+        # arrival time (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
         # available seats (for reference only)
         self.availability = availability
@@ -7730,13 +7726,13 @@ class EnrichResponseBodyDataSolutionListJourneyListSegmentList(TeaModel):
         self.cabin_class = cabin_class
         # code share or not
         self.code_share = code_share
-        # departure airport code (capitalized)
+        # departure airport code
         self.departure_airport = departure_airport
-        # departure city code (capitalized)
+        # departure city code
         self.departure_city = departure_city
         # departure terminal
         self.departure_terminal = departure_terminal
-        # departure time in string format (yyyy-MM-dd HH:mm:ss)
+        # departure time (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
         # equipment type
         self.equip_type = equip_type
@@ -7752,7 +7748,7 @@ class EnrichResponseBodyDataSolutionListJourneyListSegmentList(TeaModel):
         self.operating_airline = operating_airline
         # operating airline flight no. (eg: CX601)
         self.operating_flight_no = operating_flight_no
-        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
+        # segment ID: flight no+departure airport+arrival airport+departure time(MMdd)
         self.segment_id = segment_id
         # stop city list. 
         # when stop_quantity > 1 , use “,” for seperation
@@ -8033,12 +8029,14 @@ class EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList(TeaMo
         return self
 
 
-class EnrichResponseBodyDataSolutionListSolutionAttribute(TeaModel):
+class EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo(TeaModel):
     def __init__(
         self,
-        supply_source_type: str = None,
+        issue_ticket_type: int = None,
+        issue_time_limit: int = None,
     ):
-        self.supply_source_type = supply_source_type
+        self.issue_ticket_type = issue_ticket_type
+        self.issue_time_limit = issue_time_limit
 
     def validate(self):
         pass
@@ -8049,12 +8047,52 @@ class EnrichResponseBodyDataSolutionListSolutionAttribute(TeaModel):
             return _map
 
         result = dict()
+        if self.issue_ticket_type is not None:
+            result['issue_ticket_type'] = self.issue_ticket_type
+        if self.issue_time_limit is not None:
+            result['issue_time_limit'] = self.issue_time_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('issue_ticket_type') is not None:
+            self.issue_ticket_type = m.get('issue_ticket_type')
+        if m.get('issue_time_limit') is not None:
+            self.issue_time_limit = m.get('issue_time_limit')
+        return self
+
+
+class EnrichResponseBodyDataSolutionListSolutionAttribute(TeaModel):
+    def __init__(
+        self,
+        issue_time_info: EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo = None,
+        supply_source_type: str = None,
+    ):
+        self.issue_time_info = issue_time_info
+        # Supply source type 1:self-operated; 2:agent; 3:flagship store
+        self.supply_source_type = supply_source_type
+
+    def validate(self):
+        if self.issue_time_info:
+            self.issue_time_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.issue_time_info is not None:
+            result['issue_time_info'] = self.issue_time_info.to_map()
         if self.supply_source_type is not None:
             result['supply_source_type'] = self.supply_source_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('issue_time_info') is not None:
+            temp_model = EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo()
+            self.issue_time_info = temp_model.from_map(m['issue_time_info'])
         if m.get('supply_source_type') is not None:
             self.supply_source_type = m.get('supply_source_type')
         return self
@@ -8070,8 +8108,6 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         infant_price: float = None,
         infant_tax: float = None,
         journey_list: List[EnrichResponseBodyDataSolutionListJourneyList] = None,
-        product_type_description: str = None,
-        refund_ticket_coupon_description: str = None,
         segment_baggage_check_in_info_list: List[EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList] = None,
         segment_baggage_mapping_list: List[EnrichResponseBodyDataSolutionListSegmentBaggageMappingList] = None,
         segment_refund_change_rule_mapping_list: List[EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList] = None,
@@ -8092,16 +8128,13 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         self.infant_tax = infant_tax
         # journey list
         self.journey_list = journey_list
-        # product type description
-        self.product_type_description = product_type_description
-        # refund airline coupon description
-        self.refund_ticket_coupon_description = refund_ticket_coupon_description
         # through check-in baggage  policy
         self.segment_baggage_check_in_info_list = segment_baggage_check_in_info_list
         # baggage rule
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
         # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
+        # Quotation Attributes
         self.solution_attribute = solution_attribute
         # solution ID
         self.solution_id = solution_id
@@ -8148,10 +8181,6 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         if self.journey_list is not None:
             for k in self.journey_list:
                 result['journey_list'].append(k.to_map() if k else None)
-        if self.product_type_description is not None:
-            result['product_type_description'] = self.product_type_description
-        if self.refund_ticket_coupon_description is not None:
-            result['refund_ticket_coupon_description'] = self.refund_ticket_coupon_description
         result['segment_baggage_check_in_info_list'] = []
         if self.segment_baggage_check_in_info_list is not None:
             for k in self.segment_baggage_check_in_info_list:
@@ -8189,10 +8218,6 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
             for k in m.get('journey_list'):
                 temp_model = EnrichResponseBodyDataSolutionListJourneyList()
                 self.journey_list.append(temp_model.from_map(k))
-        if m.get('product_type_description') is not None:
-            self.product_type_description = m.get('product_type_description')
-        if m.get('refund_ticket_coupon_description') is not None:
-            self.refund_ticket_coupon_description = m.get('refund_ticket_coupon_description')
         self.segment_baggage_check_in_info_list = []
         if m.get('segment_baggage_check_in_info_list') is not None:
             for k in m.get('segment_baggage_check_in_info_list'):
@@ -10577,6 +10602,74 @@ class OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList(TeaM
         return self
 
 
+class OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo(TeaModel):
+    def __init__(
+        self,
+        issue_ticket_type: int = None,
+        issue_time_limit: int = None,
+    ):
+        self.issue_ticket_type = issue_ticket_type
+        self.issue_time_limit = issue_time_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.issue_ticket_type is not None:
+            result['issue_ticket_type'] = self.issue_ticket_type
+        if self.issue_time_limit is not None:
+            result['issue_time_limit'] = self.issue_time_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('issue_ticket_type') is not None:
+            self.issue_ticket_type = m.get('issue_ticket_type')
+        if m.get('issue_time_limit') is not None:
+            self.issue_time_limit = m.get('issue_time_limit')
+        return self
+
+
+class OrderDetailResponseBodyDataSolutionSolutionAttribute(TeaModel):
+    def __init__(
+        self,
+        issue_time_info: OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo = None,
+        supply_source_type: str = None,
+    ):
+        self.issue_time_info = issue_time_info
+        self.supply_source_type = supply_source_type
+
+    def validate(self):
+        if self.issue_time_info:
+            self.issue_time_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.issue_time_info is not None:
+            result['issue_time_info'] = self.issue_time_info.to_map()
+        if self.supply_source_type is not None:
+            result['supply_source_type'] = self.supply_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('issue_time_info') is not None:
+            temp_model = OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo()
+            self.issue_time_info = temp_model.from_map(m['issue_time_info'])
+        if m.get('supply_source_type') is not None:
+            self.supply_source_type = m.get('supply_source_type')
+        return self
+
+
 class OrderDetailResponseBodyDataSolution(TeaModel):
     def __init__(
         self,
@@ -10592,6 +10685,7 @@ class OrderDetailResponseBodyDataSolution(TeaModel):
         segment_baggage_check_in_info_list: List[OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList] = None,
         segment_baggage_mapping_list: List[OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList] = None,
         segment_refund_change_rule_mapping_list: List[OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList] = None,
+        solution_attribute: OrderDetailResponseBodyDataSolutionSolutionAttribute = None,
         solution_id: str = None,
     ):
         # adult fare
@@ -10618,6 +10712,7 @@ class OrderDetailResponseBodyDataSolution(TeaModel):
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
         # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
+        self.solution_attribute = solution_attribute
         # solution_id
         self.solution_id = solution_id
 
@@ -10638,6 +10733,8 @@ class OrderDetailResponseBodyDataSolution(TeaModel):
             for k in self.segment_refund_change_rule_mapping_list:
                 if k:
                     k.validate()
+        if self.solution_attribute:
+            self.solution_attribute.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10677,6 +10774,8 @@ class OrderDetailResponseBodyDataSolution(TeaModel):
         if self.segment_refund_change_rule_mapping_list is not None:
             for k in self.segment_refund_change_rule_mapping_list:
                 result['segment_refund_change_rule_mapping_list'].append(k.to_map() if k else None)
+        if self.solution_attribute is not None:
+            result['solution_attribute'] = self.solution_attribute.to_map()
         if self.solution_id is not None:
             result['solution_id'] = self.solution_id
         return result
@@ -10719,6 +10818,9 @@ class OrderDetailResponseBodyDataSolution(TeaModel):
             for k in m.get('segment_refund_change_rule_mapping_list'):
                 temp_model = OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList()
                 self.segment_refund_change_rule_mapping_list.append(temp_model.from_map(k))
+        if m.get('solution_attribute') is not None:
+            temp_model = OrderDetailResponseBodyDataSolutionSolutionAttribute()
+            self.solution_attribute = temp_model.from_map(m['solution_attribute'])
         if m.get('solution_id') is not None:
             self.solution_id = m.get('solution_id')
         return self
@@ -12186,6 +12288,74 @@ class PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList(TeaModel
         return self
 
 
+class PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo(TeaModel):
+    def __init__(
+        self,
+        issue_ticket_type: int = None,
+        issue_time_limit: int = None,
+    ):
+        self.issue_ticket_type = issue_ticket_type
+        self.issue_time_limit = issue_time_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.issue_ticket_type is not None:
+            result['issue_ticket_type'] = self.issue_ticket_type
+        if self.issue_time_limit is not None:
+            result['issue_time_limit'] = self.issue_time_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('issue_ticket_type') is not None:
+            self.issue_ticket_type = m.get('issue_ticket_type')
+        if m.get('issue_time_limit') is not None:
+            self.issue_time_limit = m.get('issue_time_limit')
+        return self
+
+
+class PricingResponseBodyDataSolutionSolutionAttribute(TeaModel):
+    def __init__(
+        self,
+        issue_time_info: PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo = None,
+        supply_source_type: str = None,
+    ):
+        self.issue_time_info = issue_time_info
+        self.supply_source_type = supply_source_type
+
+    def validate(self):
+        if self.issue_time_info:
+            self.issue_time_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.issue_time_info is not None:
+            result['issue_time_info'] = self.issue_time_info.to_map()
+        if self.supply_source_type is not None:
+            result['supply_source_type'] = self.supply_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('issue_time_info') is not None:
+            temp_model = PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo()
+            self.issue_time_info = temp_model.from_map(m['issue_time_info'])
+        if m.get('supply_source_type') is not None:
+            self.supply_source_type = m.get('supply_source_type')
+        return self
+
+
 class PricingResponseBodyDataSolution(TeaModel):
     def __init__(
         self,
@@ -12201,6 +12371,7 @@ class PricingResponseBodyDataSolution(TeaModel):
         segment_baggage_check_in_info_list: List[PricingResponseBodyDataSolutionSegmentBaggageCheckInInfoList] = None,
         segment_baggage_mapping_list: List[PricingResponseBodyDataSolutionSegmentBaggageMappingList] = None,
         segment_refund_change_rule_mapping_list: List[PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList] = None,
+        solution_attribute: PricingResponseBodyDataSolutionSolutionAttribute = None,
         solution_id: str = None,
     ):
         # adult fare
@@ -12227,6 +12398,7 @@ class PricingResponseBodyDataSolution(TeaModel):
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
         # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
+        self.solution_attribute = solution_attribute
         # solution_id, equals to solution_id in request
         self.solution_id = solution_id
 
@@ -12247,6 +12419,8 @@ class PricingResponseBodyDataSolution(TeaModel):
             for k in self.segment_refund_change_rule_mapping_list:
                 if k:
                     k.validate()
+        if self.solution_attribute:
+            self.solution_attribute.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12286,6 +12460,8 @@ class PricingResponseBodyDataSolution(TeaModel):
         if self.segment_refund_change_rule_mapping_list is not None:
             for k in self.segment_refund_change_rule_mapping_list:
                 result['segment_refund_change_rule_mapping_list'].append(k.to_map() if k else None)
+        if self.solution_attribute is not None:
+            result['solution_attribute'] = self.solution_attribute.to_map()
         if self.solution_id is not None:
             result['solution_id'] = self.solution_id
         return result
@@ -12328,6 +12504,9 @@ class PricingResponseBodyDataSolution(TeaModel):
             for k in m.get('segment_refund_change_rule_mapping_list'):
                 temp_model = PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList()
                 self.segment_refund_change_rule_mapping_list.append(temp_model.from_map(k))
+        if m.get('solution_attribute') is not None:
+            temp_model = PricingResponseBodyDataSolutionSolutionAttribute()
+            self.solution_attribute = temp_model.from_map(m['solution_attribute'])
         if m.get('solution_id') is not None:
             self.solution_id = m.get('solution_id')
         return self
@@ -13361,7 +13540,7 @@ class RefundDetailResponseBodyDataPassengerRefundDetailsPassenger(TeaModel):
         self.document = document
         # first name
         self.first_name = first_name
-        # first name
+        # last name
         self.last_name = last_name
 
     def validate(self):
@@ -13528,29 +13707,29 @@ class RefundDetailResponseBodyDataRefundJourneysSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
-        # arrival airport code (capitalized)
+        # arrival airport code
         self.arrival_airport = arrival_airport
-        # arrival city code (capitalized)
+        # arrival city code
         self.arrival_city = arrival_city
         # arrival terminal
         self.arrival_terminal = arrival_terminal
-        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
+        # arrival time (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
         # field deprecated
         self.availability = availability
-        # RBD
+        # carbin
         self.cabin = cabin
         # cabin class
         self.cabin_class = cabin_class
         # code share or not
         self.code_share = code_share
-        # departure airport code (capitalized)
+        # departure airport code
         self.departure_airport = departure_airport
-        # departure city code (capitalized)
+        # departure city code
         self.departure_city = departure_city
         # departure terminal
         self.departure_terminal = departure_terminal
-        # departure time in string format (yyyy-MM-dd HH:mm:ss)
+        # departure time (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
         # equipment type
         self.equip_type = equip_type
@@ -13566,7 +13745,7 @@ class RefundDetailResponseBodyDataRefundJourneysSegmentList(TeaModel):
         self.operating_airline = operating_airline
         # operating flight no. (eg: CX601)
         self.operating_flight_no = operating_flight_no
-        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
+        # segment ID: flight no.+departure airport+arrival airport+departure time(MMdd)
         self.segment_id = segment_id
         # stopover city list when stop_quantity > 0 , use “,” for seperation use
         self.stop_city_list = stop_city_list
@@ -13683,9 +13862,9 @@ class RefundDetailResponseBodyDataRefundJourneys(TeaModel):
         segment_list: List[RefundDetailResponseBodyDataRefundJourneysSegmentList] = None,
         transfer_count: int = None,
     ):
-        # segment list
+        # segment list info
         self.segment_list = segment_list
-        # number of transfer
+        # transfer count
         self.transfer_count = transfer_count
 
     def validate(self):
@@ -13894,6 +14073,7 @@ class RefundDetailResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # RequestId
         self.request_id = request_id
         # data
         self.data = data
@@ -14439,14 +14619,10 @@ class SearchRequestAirLegs(TeaModel):
         # arrival airport [IATA airport code] list
         self.arrival_airport_list = arrival_airport_list
         # arrival city code
-        # 
-        # This parameter is required.
         self.arrival_city = arrival_city
         # departure airport [IATA airport code] list
         self.departure_airport_list = departure_airport_list
         # departure city code
-        # 
-        # This parameter is required.
         self.departure_city = departure_city
         # departure date (eg: yyyyMMdd)
         # 
@@ -15031,13 +15207,14 @@ class SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList(TeaMo
         return self
 
 
-class SearchResponseBodyDataSolutionListSolutionAttribute(TeaModel):
+class SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo(TeaModel):
     def __init__(
         self,
-        supply_source_type: str = None,
+        issue_ticket_type: int = None,
+        issue_time_limit: int = None,
     ):
-        # supply source: 1;2;3
-        self.supply_source_type = supply_source_type
+        self.issue_ticket_type = issue_ticket_type
+        self.issue_time_limit = issue_time_limit
 
     def validate(self):
         pass
@@ -15048,12 +15225,52 @@ class SearchResponseBodyDataSolutionListSolutionAttribute(TeaModel):
             return _map
 
         result = dict()
+        if self.issue_ticket_type is not None:
+            result['issue_ticket_type'] = self.issue_ticket_type
+        if self.issue_time_limit is not None:
+            result['issue_time_limit'] = self.issue_time_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('issue_ticket_type') is not None:
+            self.issue_ticket_type = m.get('issue_ticket_type')
+        if m.get('issue_time_limit') is not None:
+            self.issue_time_limit = m.get('issue_time_limit')
+        return self
+
+
+class SearchResponseBodyDataSolutionListSolutionAttribute(TeaModel):
+    def __init__(
+        self,
+        issue_time_info: SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo = None,
+        supply_source_type: str = None,
+    ):
+        self.issue_time_info = issue_time_info
+        # supply source: 1;2;3
+        self.supply_source_type = supply_source_type
+
+    def validate(self):
+        if self.issue_time_info:
+            self.issue_time_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.issue_time_info is not None:
+            result['issue_time_info'] = self.issue_time_info.to_map()
         if self.supply_source_type is not None:
             result['supply_source_type'] = self.supply_source_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('issue_time_info') is not None:
+            temp_model = SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo()
+            self.issue_time_info = temp_model.from_map(m['issue_time_info'])
         if m.get('supply_source_type') is not None:
             self.supply_source_type = m.get('supply_source_type')
         return self
@@ -15069,8 +15286,6 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         infant_price: float = None,
         infant_tax: float = None,
         journey_list: List[SearchResponseBodyDataSolutionListJourneyList] = None,
-        product_type_description: str = None,
-        refund_ticket_coupon_description: str = None,
         segment_baggage_check_in_info_list: List[SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList] = None,
         segment_baggage_mapping_list: List[SearchResponseBodyDataSolutionListSegmentBaggageMappingList] = None,
         segment_refund_change_rule_mapping_list: List[SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList] = None,
@@ -15091,10 +15306,6 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         self.infant_tax = infant_tax
         # segment list
         self.journey_list = journey_list
-        # product type description
-        self.product_type_description = product_type_description
-        # refund airline coupon description
-        self.refund_ticket_coupon_description = refund_ticket_coupon_description
         # through check-in baggage policy
         self.segment_baggage_check_in_info_list = segment_baggage_check_in_info_list
         # baggage rule
@@ -15148,10 +15359,6 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         if self.journey_list is not None:
             for k in self.journey_list:
                 result['journey_list'].append(k.to_map() if k else None)
-        if self.product_type_description is not None:
-            result['product_type_description'] = self.product_type_description
-        if self.refund_ticket_coupon_description is not None:
-            result['refund_ticket_coupon_description'] = self.refund_ticket_coupon_description
         result['segment_baggage_check_in_info_list'] = []
         if self.segment_baggage_check_in_info_list is not None:
             for k in self.segment_baggage_check_in_info_list:
@@ -15189,10 +15396,6 @@ class SearchResponseBodyDataSolutionList(TeaModel):
             for k in m.get('journey_list'):
                 temp_model = SearchResponseBodyDataSolutionListJourneyList()
                 self.journey_list.append(temp_model.from_map(k))
-        if m.get('product_type_description') is not None:
-            self.product_type_description = m.get('product_type_description')
-        if m.get('refund_ticket_coupon_description') is not None:
-            self.refund_ticket_coupon_description = m.get('refund_ticket_coupon_description')
         self.segment_baggage_check_in_info_list = []
         if m.get('segment_baggage_check_in_info_list') is not None:
             for k in m.get('segment_baggage_check_in_info_list'):

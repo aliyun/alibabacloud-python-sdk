@@ -1,3 +1,14 @@
+2025-10-24 Version: 5.0.0
+- Update API Enrich: add response parameters Body.data.solution_list.$.solution_attribute.issue_time_info.
+- Update API Enrich: delete response parameters Body.data.solution_list.$.product_type_description.
+- Update API Enrich: delete response parameters Body.data.solution_list.$.refund_ticket_coupon_description.
+- Update API OrderDetail: add response parameters Body.data.solution.solution_attribute.
+- Update API Pricing: add response parameters Body.data.solution.solution_attribute.
+- Update API Search: add response parameters Body.data.solution_list.$.solution_attribute.issue_time_info.
+- Update API Search: delete response parameters Body.data.solution_list.$.product_type_description.
+- Update API Search: delete response parameters Body.data.solution_list.$.refund_ticket_coupon_description.
+
+
 2025-10-14 Version: 4.0.7
 - Update API Book: add response parameters Body.data.order_list.$.order_attribute.
 - Update API Book: add response parameters Body.error_data.order_list.$.order_attribute.
