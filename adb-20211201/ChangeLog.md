@@ -1,3 +1,7 @@
+2025-10-27 Version: 3.5.1
+- Update API DescribeAuditLogRecords: add response parameters Body.Items.$.ExecuteTimestamp.
+
+
 2025-10-17 Version: 3.5.0
 - Support API CreateApsWebhook.
 - Support API CreateMaterializedViewRecommend.

@@ -18276,6 +18276,7 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
         conn_id: str = None,
         dbname: str = None,
         execute_time: str = None,
+        execute_timestamp: int = None,
         host_address: str = None,
         process_id: str = None,
         sqltext: str = None,
@@ -18290,6 +18291,7 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
         self.dbname = dbname
         # The start time of the execution of the SQL statement. The time is displayed in the ISO 8601 standard in the yyyy-MM-dd HH:mm:ss format. The time must be in UTC.
         self.execute_time = execute_time
+        self.execute_timestamp = execute_timestamp
         # The IP address and port number of the client that is used to execute the SQL statement.
         self.host_address = host_address
         # The task ID.
@@ -18323,6 +18325,8 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
             result['DBName'] = self.dbname
         if self.execute_time is not None:
             result['ExecuteTime'] = self.execute_time
+        if self.execute_timestamp is not None:
+            result['ExecuteTimestamp'] = self.execute_timestamp
         if self.host_address is not None:
             result['HostAddress'] = self.host_address
         if self.process_id is not None:
@@ -18347,6 +18351,8 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('ExecuteTime') is not None:
             self.execute_time = m.get('ExecuteTime')
+        if m.get('ExecuteTimestamp') is not None:
+            self.execute_timestamp = m.get('ExecuteTimestamp')
         if m.get('HostAddress') is not None:
             self.host_address = m.get('HostAddress')
         if m.get('ProcessID') is not None:
