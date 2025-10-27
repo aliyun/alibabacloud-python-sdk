@@ -635,6 +635,7 @@ class CreateAppGroupRequest(TeaModel):
         namespace: str = None,
         namespace_name: str = None,
         namespace_source: str = None,
+        notification_policy_name: str = None,
         region_id: str = None,
         schedule_busy_workers: bool = None,
     ):
@@ -676,6 +677,7 @@ class CreateAppGroupRequest(TeaModel):
         self.namespace_name = namespace_name
         # This parameter is not supported. You do not need to specify this parameter.
         self.namespace_source = namespace_source
+        self.notification_policy_name = notification_policy_name
         # The region ID.
         self.region_id = region_id
         # Specifies whether to schedule a busy worker.
@@ -716,6 +718,8 @@ class CreateAppGroupRequest(TeaModel):
             result['NamespaceName'] = self.namespace_name
         if self.namespace_source is not None:
             result['NamespaceSource'] = self.namespace_source
+        if self.notification_policy_name is not None:
+            result['NotificationPolicyName'] = self.notification_policy_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.schedule_busy_workers is not None:
@@ -750,6 +754,8 @@ class CreateAppGroupRequest(TeaModel):
             self.namespace_name = m.get('NamespaceName')
         if m.get('NamespaceSource') is not None:
             self.namespace_source = m.get('NamespaceSource')
+        if m.get('NotificationPolicyName') is not None:
+            self.notification_policy_name = m.get('NotificationPolicyName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ScheduleBusyWorkers') is not None:
@@ -4250,6 +4256,7 @@ class GetAppGroupResponseBodyData(TeaModel):
         monitor_config_json: str = None,
         monitor_contacts_json: str = None,
         namespace: str = None,
+        notification_policy_name: str = None,
     ):
         # The AppKey of the application.
         self.app_key = app_key
@@ -4275,6 +4282,7 @@ class GetAppGroupResponseBodyData(TeaModel):
         self.monitor_contacts_json = monitor_contacts_json
         # The ID of the namespace.
         self.namespace = namespace
+        self.notification_policy_name = notification_policy_name
 
     def validate(self):
         pass
@@ -4305,6 +4313,8 @@ class GetAppGroupResponseBodyData(TeaModel):
             result['MonitorContactsJson'] = self.monitor_contacts_json
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.notification_policy_name is not None:
+            result['NotificationPolicyName'] = self.notification_policy_name
         return result
 
     def from_map(self, m: dict = None):
@@ -4329,6 +4339,8 @@ class GetAppGroupResponseBodyData(TeaModel):
             self.monitor_contacts_json = m.get('MonitorContactsJson')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('NotificationPolicyName') is not None:
+            self.notification_policy_name = m.get('NotificationPolicyName')
         return self
 
 
@@ -9172,6 +9184,230 @@ class ListWorkflowInstanceResponse(TeaModel):
         return self
 
 
+class ManageSchedulerxJobSyncRequest(TeaModel):
+    def __init__(
+        self,
+        job_id_list: List[int] = None,
+        namespace_source: str = None,
+        original_group_id: str = None,
+        original_namespace: str = None,
+        region_id: str = None,
+        target_group_id: str = None,
+        target_namespace: str = None,
+    ):
+        # This parameter is required.
+        self.job_id_list = job_id_list
+        self.namespace_source = namespace_source
+        # This parameter is required.
+        self.original_group_id = original_group_id
+        # This parameter is required.
+        self.original_namespace = original_namespace
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.target_group_id = target_group_id
+        # This parameter is required.
+        self.target_namespace = target_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id_list is not None:
+            result['JobIdList'] = self.job_id_list
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.original_group_id is not None:
+            result['OriginalGroupId'] = self.original_group_id
+        if self.original_namespace is not None:
+            result['OriginalNamespace'] = self.original_namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.target_group_id is not None:
+            result['TargetGroupId'] = self.target_group_id
+        if self.target_namespace is not None:
+            result['TargetNamespace'] = self.target_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobIdList') is not None:
+            self.job_id_list = m.get('JobIdList')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('OriginalGroupId') is not None:
+            self.original_group_id = m.get('OriginalGroupId')
+        if m.get('OriginalNamespace') is not None:
+            self.original_namespace = m.get('OriginalNamespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TargetGroupId') is not None:
+            self.target_group_id = m.get('TargetGroupId')
+        if m.get('TargetNamespace') is not None:
+            self.target_namespace = m.get('TargetNamespace')
+        return self
+
+
+class ManageSchedulerxJobSyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        job_id_list_shrink: str = None,
+        namespace_source: str = None,
+        original_group_id: str = None,
+        original_namespace: str = None,
+        region_id: str = None,
+        target_group_id: str = None,
+        target_namespace: str = None,
+    ):
+        # This parameter is required.
+        self.job_id_list_shrink = job_id_list_shrink
+        self.namespace_source = namespace_source
+        # This parameter is required.
+        self.original_group_id = original_group_id
+        # This parameter is required.
+        self.original_namespace = original_namespace
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.target_group_id = target_group_id
+        # This parameter is required.
+        self.target_namespace = target_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id_list_shrink is not None:
+            result['JobIdList'] = self.job_id_list_shrink
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.original_group_id is not None:
+            result['OriginalGroupId'] = self.original_group_id
+        if self.original_namespace is not None:
+            result['OriginalNamespace'] = self.original_namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.target_group_id is not None:
+            result['TargetGroupId'] = self.target_group_id
+        if self.target_namespace is not None:
+            result['TargetNamespace'] = self.target_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobIdList') is not None:
+            self.job_id_list_shrink = m.get('JobIdList')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('OriginalGroupId') is not None:
+            self.original_group_id = m.get('OriginalGroupId')
+        if m.get('OriginalNamespace') is not None:
+            self.original_namespace = m.get('OriginalNamespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TargetGroupId') is not None:
+            self.target_group_id = m.get('TargetGroupId')
+        if m.get('TargetNamespace') is not None:
+            self.target_namespace = m.get('TargetNamespace')
+        return self
+
+
+class ManageSchedulerxJobSyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ManageSchedulerxJobSyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManageSchedulerxJobSyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManageSchedulerxJobSyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReadSchedulerxDesignateDetailRequest(TeaModel):
     def __init__(
         self,
@@ -11061,6 +11297,7 @@ class UpdateAppGroupRequest(TeaModel):
         monitor_config_json: str = None,
         monitor_contacts_json: str = None,
         namespace: str = None,
+        notification_policy_name: str = None,
         region_id: str = None,
     ):
         # The application version. 1: Basic version, 2: Professional version.
@@ -11081,6 +11318,7 @@ class UpdateAppGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.namespace = namespace
+        self.notification_policy_name = notification_policy_name
         # The ID of the region.
         # 
         # This parameter is required.
@@ -11109,6 +11347,8 @@ class UpdateAppGroupRequest(TeaModel):
             result['MonitorContactsJson'] = self.monitor_contacts_json
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.notification_policy_name is not None:
+            result['NotificationPolicyName'] = self.notification_policy_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -11129,6 +11369,8 @@ class UpdateAppGroupRequest(TeaModel):
             self.monitor_contacts_json = m.get('MonitorContactsJson')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('NotificationPolicyName') is not None:
+            self.notification_policy_name = m.get('NotificationPolicyName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self

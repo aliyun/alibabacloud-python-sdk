@@ -4155,6 +4155,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_workflow_instance_with_options_async(request, runtime)
 
+    def manage_schedulerx_job_sync_with_options(
+        self,
+        tmp_req: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
+        """
+        @summary 同步任务
+        
+        @param tmp_req: ManageSchedulerxJobSyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageSchedulerxJobSyncResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = schedulerx_220190430_models.ManageSchedulerxJobSyncShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_id_list):
+            request.job_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.job_id_list_shrink):
+            body['JobIdList'] = request.job_id_list_shrink
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.original_group_id):
+            body['OriginalGroupId'] = request.original_group_id
+        if not UtilClient.is_unset(request.original_namespace):
+            body['OriginalNamespace'] = request.original_namespace
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.target_group_id):
+            body['TargetGroupId'] = request.target_group_id
+        if not UtilClient.is_unset(request.target_namespace):
+            body['TargetNamespace'] = request.target_namespace
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ManageSchedulerxJobSync',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ManageSchedulerxJobSyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_schedulerx_job_sync_with_options_async(
+        self,
+        tmp_req: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
+        """
+        @summary 同步任务
+        
+        @param tmp_req: ManageSchedulerxJobSyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageSchedulerxJobSyncResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = schedulerx_220190430_models.ManageSchedulerxJobSyncShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_id_list):
+            request.job_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_id_list, 'JobIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.job_id_list_shrink):
+            body['JobIdList'] = request.job_id_list_shrink
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.original_group_id):
+            body['OriginalGroupId'] = request.original_group_id
+        if not UtilClient.is_unset(request.original_namespace):
+            body['OriginalNamespace'] = request.original_namespace
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.target_group_id):
+            body['TargetGroupId'] = request.target_group_id
+        if not UtilClient.is_unset(request.target_namespace):
+            body['TargetNamespace'] = request.target_namespace
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ManageSchedulerxJobSync',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ManageSchedulerxJobSyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manage_schedulerx_job_sync(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
+    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
+        """
+        @summary 同步任务
+        
+        @param request: ManageSchedulerxJobSyncRequest
+        @return: ManageSchedulerxJobSyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.manage_schedulerx_job_sync_with_options(request, runtime)
+
+    async def manage_schedulerx_job_sync_async(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
+    ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
+        """
+        @summary 同步任务
+        
+        @param request: ManageSchedulerxJobSyncRequest
+        @return: ManageSchedulerxJobSyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.manage_schedulerx_job_sync_with_options_async(request, runtime)
+
     def read_schedulerx_designate_detail_with_options(
         self,
         request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
@@ -5087,6 +5215,8 @@ class Client(OpenApiClient):
             query['MonitorContactsJson'] = request.monitor_contacts_json
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.notification_policy_name):
+            query['NotificationPolicyName'] = request.notification_policy_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -5136,6 +5266,8 @@ class Client(OpenApiClient):
             query['MonitorContactsJson'] = request.monitor_contacts_json
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.notification_policy_name):
+            query['NotificationPolicyName'] = request.notification_policy_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
