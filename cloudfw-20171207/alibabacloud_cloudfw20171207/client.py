@@ -1649,6 +1649,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_nat_firewall_pre_check_with_options_async(request, runtime)
 
+    def create_private_dns_endpoint_with_options(
+        self,
+        request: cloudfw_20171207_models.CreatePrivateDnsEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreatePrivateDnsEndpointResponse:
+        """
+        @summary 创建私网DNS终端节点
+        
+        @param request: CreatePrivateDnsEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateDnsEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_instance_name):
+            query['AccessInstanceName'] = request.access_instance_name
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.primary_dns):
+            query['PrimaryDns'] = request.primary_dns
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_vswitch_ip):
+            query['PrimaryVSwitchIp'] = request.primary_vswitch_ip
+        if not UtilClient.is_unset(request.private_dns_type):
+            query['PrivateDnsType'] = request.private_dns_type
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.standby_dns):
+            query['StandbyDns'] = request.standby_dns
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_vswitch_ip):
+            query['StandbyVSwitchIp'] = request.standby_vswitch_ip
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePrivateDnsEndpoint',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreatePrivateDnsEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_private_dns_endpoint_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreatePrivateDnsEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreatePrivateDnsEndpointResponse:
+        """
+        @summary 创建私网DNS终端节点
+        
+        @param request: CreatePrivateDnsEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateDnsEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_instance_name):
+            query['AccessInstanceName'] = request.access_instance_name
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.primary_dns):
+            query['PrimaryDns'] = request.primary_dns
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_vswitch_ip):
+            query['PrimaryVSwitchIp'] = request.primary_vswitch_ip
+        if not UtilClient.is_unset(request.private_dns_type):
+            query['PrivateDnsType'] = request.private_dns_type
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.standby_dns):
+            query['StandbyDns'] = request.standby_dns
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_vswitch_ip):
+            query['StandbyVSwitchIp'] = request.standby_vswitch_ip
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePrivateDnsEndpoint',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreatePrivateDnsEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_private_dns_endpoint(
+        self,
+        request: cloudfw_20171207_models.CreatePrivateDnsEndpointRequest,
+    ) -> cloudfw_20171207_models.CreatePrivateDnsEndpointResponse:
+        """
+        @summary 创建私网DNS终端节点
+        
+        @param request: CreatePrivateDnsEndpointRequest
+        @return: CreatePrivateDnsEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_private_dns_endpoint_with_options(request, runtime)
+
+    async def create_private_dns_endpoint_async(
+        self,
+        request: cloudfw_20171207_models.CreatePrivateDnsEndpointRequest,
+    ) -> cloudfw_20171207_models.CreatePrivateDnsEndpointResponse:
+        """
+        @summary 创建私网DNS终端节点
+        
+        @param request: CreatePrivateDnsEndpointRequest
+        @return: CreatePrivateDnsEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_private_dns_endpoint_with_options_async(request, runtime)
+
     def create_security_proxy_with_options(
         self,
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
@@ -9723,6 +9871,8 @@ class Client(OpenApiClient):
             query['IsIgnore'] = request.is_ignore
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.page_size):
@@ -9786,6 +9936,8 @@ class Client(OpenApiClient):
             query['EventUuid'] = request.event_uuid
         if not UtilClient.is_unset(request.is_ignore):
             query['IsIgnore'] = request.is_ignore
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
@@ -11049,6 +11201,10 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.peer_network_instance_id):
+            query['PeerNetworkInstanceId'] = request.peer_network_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11090,6 +11246,10 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.peer_network_instance_id):
+            query['PeerNetworkInstanceId'] = request.peer_network_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13043,6 +13203,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_postpay_user_nat_status_with_options_async(request, runtime)
 
+    def describe_postpay_user_vpc_status_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserVpcStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePostpayUserVpcStatusResponse:
+        """
+        @summary Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserVpcStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayUserVpcStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostpayUserVpcStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePostpayUserVpcStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_postpay_user_vpc_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserVpcStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePostpayUserVpcStatusResponse:
+        """
+        @summary Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserVpcStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayUserVpcStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostpayUserVpcStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePostpayUserVpcStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_postpay_user_vpc_status(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserVpcStatusRequest,
+    ) -> cloudfw_20171207_models.DescribePostpayUserVpcStatusResponse:
+        """
+        @summary Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserVpcStatusRequest
+        @return: DescribePostpayUserVpcStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_postpay_user_vpc_status_with_options(request, runtime)
+
+    async def describe_postpay_user_vpc_status_async(
+        self,
+        request: cloudfw_20171207_models.DescribePostpayUserVpcStatusRequest,
+    ) -> cloudfw_20171207_models.DescribePostpayUserVpcStatusResponse:
+        """
+        @summary Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayUserVpcStatusRequest
+        @return: DescribePostpayUserVpcStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_postpay_user_vpc_status_with_options_async(request, runtime)
+
     def describe_prefix_lists_with_options(
         self,
         request: cloudfw_20171207_models.DescribePrefixListsRequest,
@@ -14303,6 +14555,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_mode_with_options_async(request, runtime)
 
+    def describe_security_proxy_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeSecurityProxyResponse:
+        """
+        @summary 获取正向代理
+        
+        @param request: DescribeSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeSecurityProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_security_proxy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeSecurityProxyResponse:
+        """
+        @summary 获取正向代理
+        
+        @param request: DescribeSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeSecurityProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_security_proxy(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.DescribeSecurityProxyResponse:
+        """
+        @summary 获取正向代理
+        
+        @param request: DescribeSecurityProxyRequest
+        @return: DescribeSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_proxy_with_options(request, runtime)
+
+    async def describe_security_proxy_async(
+        self,
+        request: cloudfw_20171207_models.DescribeSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.DescribeSecurityProxyResponse:
+        """
+        @summary 获取正向代理
+        
+        @param request: DescribeSecurityProxyRequest
+        @return: DescribeSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_proxy_with_options_async(request, runtime)
+
     def describe_signature_lib_version_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -14472,6 +14860,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sls_analyze_open_status_with_options_async(request, runtime)
+
+    def describe_threat_intelligence_switch_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeThreatIntelligenceSwitchResponse:
+        """
+        @summary 查询威胁情报配置的信息
+        
+        @param request: DescribeThreatIntelligenceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeThreatIntelligenceSwitchResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeThreatIntelligenceSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeThreatIntelligenceSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_threat_intelligence_switch_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeThreatIntelligenceSwitchResponse:
+        """
+        @summary 查询威胁情报配置的信息
+        
+        @param request: DescribeThreatIntelligenceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeThreatIntelligenceSwitchResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeThreatIntelligenceSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeThreatIntelligenceSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_threat_intelligence_switch(self) -> cloudfw_20171207_models.DescribeThreatIntelligenceSwitchResponse:
+        """
+        @summary 查询威胁情报配置的信息
+        
+        @return: DescribeThreatIntelligenceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_threat_intelligence_switch_with_options(runtime)
+
+    async def describe_threat_intelligence_switch_async(self) -> cloudfw_20171207_models.DescribeThreatIntelligenceSwitchResponse:
+        """
+        @summary 查询威胁情报配置的信息
+        
+        @return: DescribeThreatIntelligenceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_threat_intelligence_switch_with_options_async(runtime)
 
     def describe_tr_firewall_policy_back_up_association_list_with_options(
         self,
@@ -17640,6 +18102,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_sdl_protected_asset_with_options_async(request, runtime)
+
+    def get_tls_inspect_certificate_download_url_with_options(
+        self,
+        request: cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlResponse:
+        """
+        @summary 下载TLS证书
+        
+        @param request: GetTlsInspectCertificateDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTlsInspectCertificateDownloadUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ca_cert_id):
+            query['CaCertId'] = request.ca_cert_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTlsInspectCertificateDownloadUrl',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tls_inspect_certificate_download_url_with_options_async(
+        self,
+        request: cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlResponse:
+        """
+        @summary 下载TLS证书
+        
+        @param request: GetTlsInspectCertificateDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTlsInspectCertificateDownloadUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ca_cert_id):
+            query['CaCertId'] = request.ca_cert_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTlsInspectCertificateDownloadUrl',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tls_inspect_certificate_download_url(
+        self,
+        request: cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlRequest,
+    ) -> cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlResponse:
+        """
+        @summary 下载TLS证书
+        
+        @param request: GetTlsInspectCertificateDownloadUrlRequest
+        @return: GetTlsInspectCertificateDownloadUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_tls_inspect_certificate_download_url_with_options(request, runtime)
+
+    async def get_tls_inspect_certificate_download_url_async(
+        self,
+        request: cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlRequest,
+    ) -> cloudfw_20171207_models.GetTlsInspectCertificateDownloadUrlResponse:
+        """
+        @summary 下载TLS证书
+        
+        @param request: GetTlsInspectCertificateDownloadUrlRequest
+        @return: GetTlsInspectCertificateDownloadUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_tls_inspect_certificate_download_url_with_options_async(request, runtime)
+
+    def list_tls_inspect_cacertificates_with_options(
+        self,
+        request: cloudfw_20171207_models.ListTlsInspectCACertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ListTlsInspectCACertificatesResponse:
+        """
+        @summary 查询TLS检查证书
+        
+        @param request: ListTlsInspectCACertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTlsInspectCACertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ca_cert_id):
+            query['CaCertId'] = request.ca_cert_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTlsInspectCACertificates',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ListTlsInspectCACertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tls_inspect_cacertificates_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ListTlsInspectCACertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ListTlsInspectCACertificatesResponse:
+        """
+        @summary 查询TLS检查证书
+        
+        @param request: ListTlsInspectCACertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTlsInspectCACertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ca_cert_id):
+            query['CaCertId'] = request.ca_cert_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTlsInspectCACertificates',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ListTlsInspectCACertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tls_inspect_cacertificates(
+        self,
+        request: cloudfw_20171207_models.ListTlsInspectCACertificatesRequest,
+    ) -> cloudfw_20171207_models.ListTlsInspectCACertificatesResponse:
+        """
+        @summary 查询TLS检查证书
+        
+        @param request: ListTlsInspectCACertificatesRequest
+        @return: ListTlsInspectCACertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tls_inspect_cacertificates_with_options(request, runtime)
+
+    async def list_tls_inspect_cacertificates_async(
+        self,
+        request: cloudfw_20171207_models.ListTlsInspectCACertificatesRequest,
+    ) -> cloudfw_20171207_models.ListTlsInspectCACertificatesResponse:
+        """
+        @summary 查询TLS检查证书
+        
+        @param request: ListTlsInspectCACertificatesRequest
+        @return: ListTlsInspectCACertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tls_inspect_cacertificates_with_options_async(request, runtime)
 
     def modify_address_book_with_options(
         self,
@@ -22980,6 +23642,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_postpay_user_internet_status_with_options_async(request, runtime)
+
+    def update_postpay_user_nat_status_with_options(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserNatStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserNatStatusResponse:
+        """
+        @summary Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserNatStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePostpayUserNatStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostpayUserNatStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdatePostpayUserNatStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_postpay_user_nat_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserNatStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserNatStatusResponse:
+        """
+        @summary Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserNatStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePostpayUserNatStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostpayUserNatStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdatePostpayUserNatStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_postpay_user_nat_status(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserNatStatusRequest,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserNatStatusResponse:
+        """
+        @summary Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserNatStatusRequest
+        @return: UpdatePostpayUserNatStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_postpay_user_nat_status_with_options(request, runtime)
+
+    async def update_postpay_user_nat_status_async(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserNatStatusRequest,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserNatStatusResponse:
+        """
+        @summary Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserNatStatusRequest
+        @return: UpdatePostpayUserNatStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_postpay_user_nat_status_with_options_async(request, runtime)
+
+    def update_postpay_user_vpc_status_with_options(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserVpcStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserVpcStatusResponse:
+        """
+        @summary Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserVpcStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePostpayUserVpcStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostpayUserVpcStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdatePostpayUserVpcStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_postpay_user_vpc_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserVpcStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserVpcStatusResponse:
+        """
+        @summary Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserVpcStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePostpayUserVpcStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostpayUserVpcStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.UpdatePostpayUserVpcStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_postpay_user_vpc_status(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserVpcStatusRequest,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserVpcStatusResponse:
+        """
+        @summary Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserVpcStatusRequest
+        @return: UpdatePostpayUserVpcStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_postpay_user_vpc_status_with_options(request, runtime)
+
+    async def update_postpay_user_vpc_status_async(
+        self,
+        request: cloudfw_20171207_models.UpdatePostpayUserVpcStatusRequest,
+    ) -> cloudfw_20171207_models.UpdatePostpayUserVpcStatusResponse:
+        """
+        @summary Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: UpdatePostpayUserVpcStatusRequest
+        @return: UpdatePostpayUserVpcStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_postpay_user_vpc_status_with_options_async(request, runtime)
 
     def update_security_proxy_with_options(
         self,

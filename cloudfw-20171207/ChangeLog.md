@@ -1,3 +1,18 @@
+2025-10-27 Version: 7.1.0
+- Support API CreatePrivateDnsEndpoint.
+- Support API DescribePostpayUserVpcStatus.
+- Support API DescribeSecurityProxy.
+- Support API DescribeThreatIntelligenceSwitch.
+- Support API GetTlsInspectCertificateDownloadUrl.
+- Support API ListTlsInspectCACertificates.
+- Support API UpdatePostpayUserNatStatus.
+- Support API UpdatePostpayUserVpcStatus.
+- Update API DescribeNetworkInstanceRelationList: add request parameters NetworkInstanceId.
+- Update API DescribeNetworkInstanceRelationList: add request parameters PeerNetworkInstanceId.
+- Update API DescribeNetworkInstanceRelationList: add response parameters Body.NetworkInstanceList.$.AssociatedCen.
+- Update API DescribeNetworkInstanceRelationList: add response parameters Body.NetworkInstanceList.$.PeerNetworkInstanceList.$.AssociatedCen.
+
+
 2025-10-16 Version: 7.0.0
 - Support API CreateAckClusterConnector.
 - Support API CreateAclCheck.
