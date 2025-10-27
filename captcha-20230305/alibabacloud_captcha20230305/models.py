@@ -124,9 +124,6 @@ class VerifyCaptchaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -192,9 +189,11 @@ class VerifyIntelligentCaptchaRequest(TeaModel):
 class VerifyIntelligentCaptchaResponseBodyResult(TeaModel):
     def __init__(
         self,
+        certify_id: str = None,
         verify_code: str = None,
         verify_result: bool = None,
     ):
+        self.certify_id = certify_id
         self.verify_code = verify_code
         self.verify_result = verify_result
 
@@ -207,6 +206,8 @@ class VerifyIntelligentCaptchaResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
         if self.verify_code is not None:
             result['VerifyCode'] = self.verify_code
         if self.verify_result is not None:
@@ -215,6 +216,8 @@ class VerifyIntelligentCaptchaResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
         if m.get('VerifyCode') is not None:
             self.verify_code = m.get('VerifyCode')
         if m.get('VerifyResult') is not None:
@@ -288,9 +291,6 @@ class VerifyIntelligentCaptchaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

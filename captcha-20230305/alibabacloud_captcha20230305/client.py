@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: captcha_20230305_models.VerifyCaptchaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> captcha_20230305_models.VerifyCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyCaptchaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyCaptchaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.captcha_verify_param):
@@ -74,6 +81,13 @@ class Client(OpenApiClient):
         request: captcha_20230305_models.VerifyCaptchaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> captcha_20230305_models.VerifyCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyCaptchaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyCaptchaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.captcha_verify_param):
@@ -101,6 +115,12 @@ class Client(OpenApiClient):
         self,
         request: captcha_20230305_models.VerifyCaptchaRequest,
     ) -> captcha_20230305_models.VerifyCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyCaptchaRequest
+        @return: VerifyCaptchaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_captcha_with_options(request, runtime)
 
@@ -108,6 +128,12 @@ class Client(OpenApiClient):
         self,
         request: captcha_20230305_models.VerifyCaptchaRequest,
     ) -> captcha_20230305_models.VerifyCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyCaptchaRequest
+        @return: VerifyCaptchaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_captcha_with_options_async(request, runtime)
 
@@ -116,6 +142,13 @@ class Client(OpenApiClient):
         request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyIntelligentCaptchaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyIntelligentCaptchaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.captcha_verify_param):
@@ -146,6 +179,13 @@ class Client(OpenApiClient):
         request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyIntelligentCaptchaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyIntelligentCaptchaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.captcha_verify_param):
@@ -175,6 +215,12 @@ class Client(OpenApiClient):
         self,
         request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
     ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyIntelligentCaptchaRequest
+        @return: VerifyIntelligentCaptchaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_intelligent_captcha_with_options(request, runtime)
 
@@ -182,5 +228,11 @@ class Client(OpenApiClient):
         self,
         request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
     ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        """
+        @summary 验证码验证
+        
+        @param request: VerifyIntelligentCaptchaRequest
+        @return: VerifyIntelligentCaptchaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_intelligent_captcha_with_options_async(request, runtime)
