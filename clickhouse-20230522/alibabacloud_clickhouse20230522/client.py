@@ -87,6 +87,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def change_resource_group_with_options(
+        self,
+        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
+    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
+    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def create_account_with_options(
         self,
         tmp_req: clickhouse_20230522_models.CreateAccountRequest,
@@ -633,6 +741,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.connection_prefix):
             query['ConnectionPrefix'] = request.connection_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -674,6 +784,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.connection_prefix):
             query['ConnectionPrefix'] = request.connection_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1153,6 +1265,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1194,6 +1308,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2309,6 +2425,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.initial_query_id):
@@ -2360,6 +2478,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.initial_query_id):
@@ -2537,6 +2657,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
@@ -2584,6 +2706,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
@@ -2657,6 +2781,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
@@ -2702,6 +2828,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
@@ -2773,6 +2901,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.initial_query_id):
@@ -2812,6 +2942,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.initial_query_id):
@@ -3325,6 +3457,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.node_count):
@@ -3376,6 +3510,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.node_count):
@@ -3557,6 +3693,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -3602,6 +3740,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not UtilClient.is_unset(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.connection_string_prefix):

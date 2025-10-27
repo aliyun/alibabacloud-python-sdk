@@ -1,3 +1,16 @@
+2025-10-27 Version: 2.1.0
+- Support API ChangeResourceGroup.
+- Update API CreateEndpoint: add request parameters ComputingGroupId.
+- Update API DeleteEndpoint: add request parameters ComputingGroupId.
+- Update API DescribeProcessList: add request parameters ComputingGroupId.
+- Update API DescribeSlowLogRecords: add request parameters ComputingGroupId.
+- Update API DescribeSlowLogTrend: add request parameters ComputingGroupId.
+- Update API KillProcess: add request parameters ComputingGroupId.
+- Update API ModifyDBInstanceClass: add request parameters ComputingGroupId.
+- Update API ModifyDBInstanceClass: add response parameters Body.Data.ComputingGroupId.
+- Update API ModifyDBInstanceConnectionString: add request parameters ComputingGroupId.
+
+
 2025-10-22 Version: 2.0.1
 - Generated python 2023-05-22 for clickhouse.
 

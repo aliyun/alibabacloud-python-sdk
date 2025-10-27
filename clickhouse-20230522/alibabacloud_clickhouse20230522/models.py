@@ -1,7 +1,124 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        resource_region_id: str = None,
+        resource_type: str = None,
+    ):
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_region_id = resource_region_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CreateAccountRequestDmlAuthSetting(TeaModel):
@@ -1150,11 +1267,13 @@ class CreateDBInstanceResponse(TeaModel):
 class CreateEndpointRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         connection_prefix: str = None,
         dbinstance_id: str = None,
         dbinstance_net_type: str = None,
         region_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The prefix of the new endpoint. The prefix of the ConnectionString parameter.
         self.connection_prefix = connection_prefix
         # The cluster ID.
@@ -1181,6 +1300,8 @@ class CreateEndpointRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.connection_prefix is not None:
             result['ConnectionPrefix'] = self.connection_prefix
         if self.dbinstance_id is not None:
@@ -1193,6 +1314,8 @@ class CreateEndpointRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('ConnectionPrefix') is not None:
             self.connection_prefix = m.get('ConnectionPrefix')
         if m.get('DBInstanceId') is not None:
@@ -1851,11 +1974,13 @@ class DeleteDBInstanceResponse(TeaModel):
 class DeleteEndpointRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         connection_string: str = None,
         dbinstance_id: str = None,
         dbinstance_net_type: str = None,
         region_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The prefix of the endpoint, which indicates the prefix of the value of the ConnectionString parameter.
         self.connection_string = connection_string
         # The cluster ID.
@@ -1875,6 +2000,8 @@ class DeleteEndpointRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
         if self.dbinstance_id is not None:
@@ -1887,6 +2014,8 @@ class DeleteEndpointRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
         if m.get('DBInstanceId') is not None:
@@ -4803,6 +4932,7 @@ class DescribeEndpointsResponse(TeaModel):
 class DescribeProcessListRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: str = None,
         initial_query_id: str = None,
         initial_user: str = None,
@@ -4813,6 +4943,7 @@ class DescribeProcessListRequest(TeaModel):
         query_order: int = None,
         region_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
@@ -4847,6 +4978,8 @@ class DescribeProcessListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.initial_query_id is not None:
@@ -4869,6 +5002,8 @@ class DescribeProcessListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('InitialQueryId') is not None:
@@ -5312,6 +5447,7 @@ class DescribeSecurityIPListResponse(TeaModel):
 class DescribeSlowLogRecordsRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: str = None,
         end_time: str = None,
         page_number: int = None,
@@ -5320,6 +5456,7 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
@@ -5350,6 +5487,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.end_time is not None:
@@ -5368,6 +5507,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('EndTime') is not None:
@@ -5621,6 +5762,7 @@ class DescribeSlowLogRecordsResponse(TeaModel):
 class DescribeSlowLogTrendRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: str = None,
         end_time: str = None,
         product: str = None,
@@ -5628,6 +5770,7 @@ class DescribeSlowLogTrendRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
@@ -5652,6 +5795,8 @@ class DescribeSlowLogTrendRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.end_time is not None:
@@ -5668,6 +5813,8 @@ class DescribeSlowLogTrendRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('EndTime') is not None:
@@ -5870,10 +6017,12 @@ class DescribeSlowLogTrendResponse(TeaModel):
 class KillProcessRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: str = None,
         initial_query_id: str = None,
         region_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
@@ -5892,6 +6041,8 @@ class KillProcessRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.initial_query_id is not None:
@@ -5902,6 +6053,8 @@ class KillProcessRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('InitialQueryId') is not None:
@@ -6753,6 +6906,7 @@ class ModifyDBInstanceAttributeResponse(TeaModel):
 class ModifyDBInstanceClassRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: str = None,
         node_count: int = None,
         node_scale_max: int = None,
@@ -6763,6 +6917,7 @@ class ModifyDBInstanceClassRequest(TeaModel):
         storage_quota: int = None,
         storage_type: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
@@ -6788,6 +6943,8 @@ class ModifyDBInstanceClassRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.node_count is not None:
@@ -6810,6 +6967,8 @@ class ModifyDBInstanceClassRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('NodeCount') is not None:
@@ -6834,12 +6993,14 @@ class ModifyDBInstanceClassRequest(TeaModel):
 class ModifyDBInstanceClassResponseBodyData(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: int = None,
         dbinstance_name: str = None,
         scale_max: int = None,
         scale_min: int = None,
         task_id: int = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
         # The cluster name.
@@ -6860,6 +7021,8 @@ class ModifyDBInstanceClassResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.dbinstance_id is not None:
             result['DBInstanceID'] = self.dbinstance_id
         if self.dbinstance_name is not None:
@@ -6874,6 +7037,8 @@ class ModifyDBInstanceClassResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('DBInstanceID') is not None:
             self.dbinstance_id = m.get('DBInstanceID')
         if m.get('DBInstanceName') is not None:
@@ -7113,6 +7278,7 @@ class ModifyDBInstanceConfigResponse(TeaModel):
 class ModifyDBInstanceConnectionStringRequest(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         connection_string: str = None,
         connection_string_prefix: str = None,
         dbinstance_id: str = None,
@@ -7120,6 +7286,7 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         disable_ports: str = None,
         region_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The endpoint of the cluster.
         self.connection_string = connection_string
         # The prefix of the endpoint that is used to connect to the database.
@@ -7149,6 +7316,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
         if self.connection_string_prefix is not None:
@@ -7165,6 +7334,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
         if m.get('ConnectionStringPrefix') is not None:
