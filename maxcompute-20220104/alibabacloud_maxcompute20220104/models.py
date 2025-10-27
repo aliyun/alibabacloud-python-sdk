@@ -19551,23 +19551,29 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
     def __init__(
         self,
         adhoc_slot: int = None,
+        auto_scale_cpulimit: int = None,
         elastic_reserved_cu: int = None,
         enable_priority: bool = None,
         force_reserved_min: bool = None,
         max_cu: int = None,
+        max_gu: int = None,
         min_cu: int = None,
+        min_gu: int = None,
         scheduler_type: str = None,
         single_job_culimit: int = None,
         slot_num: int = None,
     ):
         self.adhoc_slot = adhoc_slot
+        self.auto_scale_cpulimit = auto_scale_cpulimit
         self.elastic_reserved_cu = elastic_reserved_cu
         self.enable_priority = enable_priority
         self.force_reserved_min = force_reserved_min
         # This parameter is required.
         self.max_cu = max_cu
+        self.max_gu = max_gu
         # This parameter is required.
         self.min_cu = min_cu
+        self.min_gu = min_gu
         self.scheduler_type = scheduler_type
         self.single_job_culimit = single_job_culimit
         self.slot_num = slot_num
@@ -19583,6 +19589,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
         result = dict()
         if self.adhoc_slot is not None:
             result['adhocSlot'] = self.adhoc_slot
+        if self.auto_scale_cpulimit is not None:
+            result['autoScaleCPULimit'] = self.auto_scale_cpulimit
         if self.elastic_reserved_cu is not None:
             result['elasticReservedCU'] = self.elastic_reserved_cu
         if self.enable_priority is not None:
@@ -19591,8 +19599,12 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
             result['forceReservedMin'] = self.force_reserved_min
         if self.max_cu is not None:
             result['maxCU'] = self.max_cu
+        if self.max_gu is not None:
+            result['maxGu'] = self.max_gu
         if self.min_cu is not None:
             result['minCU'] = self.min_cu
+        if self.min_gu is not None:
+            result['minGu'] = self.min_gu
         if self.scheduler_type is not None:
             result['schedulerType'] = self.scheduler_type
         if self.single_job_culimit is not None:
@@ -19605,6 +19617,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
         m = m or dict()
         if m.get('adhocSlot') is not None:
             self.adhoc_slot = m.get('adhocSlot')
+        if m.get('autoScaleCPULimit') is not None:
+            self.auto_scale_cpulimit = m.get('autoScaleCPULimit')
         if m.get('elasticReservedCU') is not None:
             self.elastic_reserved_cu = m.get('elasticReservedCU')
         if m.get('enablePriority') is not None:
@@ -19613,8 +19627,12 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel)
             self.force_reserved_min = m.get('forceReservedMin')
         if m.get('maxCU') is not None:
             self.max_cu = m.get('maxCU')
+        if m.get('maxGu') is not None:
+            self.max_gu = m.get('maxGu')
         if m.get('minCU') is not None:
             self.min_cu = m.get('minCU')
+        if m.get('minGu') is not None:
+            self.min_gu = m.get('minGu')
         if m.get('schedulerType') is not None:
             self.scheduler_type = m.get('schedulerType')
         if m.get('singleJobCULimit') is not None:
@@ -20365,6 +20383,7 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
     def __init__(
         self,
         adhoc_slot: int = None,
+        auto_scale_cpulimit: int = None,
         elastic_reserved_cu: int = None,
         enable_priority: bool = None,
         force_reserved_min: bool = None,
@@ -20377,6 +20396,7 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
         slot_num: int = None,
     ):
         self.adhoc_slot = adhoc_slot
+        self.auto_scale_cpulimit = auto_scale_cpulimit
         self.elastic_reserved_cu = elastic_reserved_cu
         self.enable_priority = enable_priority
         self.force_reserved_min = force_reserved_min
@@ -20401,6 +20421,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
         result = dict()
         if self.adhoc_slot is not None:
             result['adhocSlot'] = self.adhoc_slot
+        if self.auto_scale_cpulimit is not None:
+            result['autoScaleCPULimit'] = self.auto_scale_cpulimit
         if self.elastic_reserved_cu is not None:
             result['elasticReservedCU'] = self.elastic_reserved_cu
         if self.enable_priority is not None:
@@ -20427,6 +20449,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
         m = m or dict()
         if m.get('adhocSlot') is not None:
             self.adhoc_slot = m.get('adhocSlot')
+        if m.get('autoScaleCPULimit') is not None:
+            self.auto_scale_cpulimit = m.get('autoScaleCPULimit')
         if m.get('elasticReservedCU') is not None:
             self.elastic_reserved_cu = m.get('elasticReservedCU')
         if m.get('enablePriority') is not None:

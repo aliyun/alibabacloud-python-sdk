@@ -1,3 +1,10 @@
+2025-10-27 Version: 5.0.1
+- Update API ListQuotas: add response parameters Body.data.quotaInfoList.$.subQuotaInfoList.$.parameter.autoScaleCPULimit.
+- Update API ListQuotas: add response parameters Body.data.quotaInfoList.$.subQuotaInfoList.$.parameter.maxGu.
+- Update API ListQuotas: add response parameters Body.data.quotaInfoList.$.subQuotaInfoList.$.parameter.minGu.
+- Update API ListQuotas: add response parameters Body.quotaInfoList.$.subQuotaInfoList.$.parameter.autoScaleCPULimit.
+
+
 2025-10-24 Version: 5.0.0
 - Support API QueryQuotaMetric.
 - Update API CreateMmsJob: add request parameters body.enableDataMigration.
