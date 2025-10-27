@@ -1311,6 +1311,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.mass_push_with_options_async(request, runtime)
 
+    def mass_push_v2with_options(
+        self,
+        tmp_req: push_20160801_models.MassPushV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> push_20160801_models.MassPushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param tmp_req: MassPushV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MassPushV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = push_20160801_models.MassPushV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.push_tasks):
+            request.push_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.push_tasks, 'PushTasks', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
+        if not UtilClient.is_unset(request.push_tasks_shrink):
+            query['PushTasks'] = request.push_tasks_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MassPushV2',
+            version='2016-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            push_20160801_models.MassPushV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mass_push_v2with_options_async(
+        self,
+        tmp_req: push_20160801_models.MassPushV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> push_20160801_models.MassPushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param tmp_req: MassPushV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MassPushV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = push_20160801_models.MassPushV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.push_tasks):
+            request.push_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.push_tasks, 'PushTasks', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
+        if not UtilClient.is_unset(request.push_tasks_shrink):
+            query['PushTasks'] = request.push_tasks_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MassPushV2',
+            version='2016-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            push_20160801_models.MassPushV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mass_push_v2(
+        self,
+        request: push_20160801_models.MassPushV2Request,
+    ) -> push_20160801_models.MassPushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param request: MassPushV2Request
+        @return: MassPushV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mass_push_v2with_options(request, runtime)
+
+    async def mass_push_v2_async(
+        self,
+        request: push_20160801_models.MassPushV2Request,
+    ) -> push_20160801_models.MassPushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param request: MassPushV2Request
+        @return: MassPushV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mass_push_v2with_options_async(request, runtime)
+
     def push_with_options(
         self,
         tmp_req: push_20160801_models.PushRequest,
@@ -2350,6 +2462,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.push_notice_toi_oswith_options_async(request, runtime)
+
+    def push_v2with_options(
+        self,
+        tmp_req: push_20160801_models.PushV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> push_20160801_models.PushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param tmp_req: PushV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = push_20160801_models.PushV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.push_task):
+            request.push_task_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.push_task, 'PushTask', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
+        if not UtilClient.is_unset(request.push_task_shrink):
+            query['PushTask'] = request.push_task_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PushV2',
+            version='2016-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            push_20160801_models.PushV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_v2with_options_async(
+        self,
+        tmp_req: push_20160801_models.PushV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> push_20160801_models.PushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param tmp_req: PushV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = push_20160801_models.PushV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.push_task):
+            request.push_task_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.push_task, 'PushTask', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
+        if not UtilClient.is_unset(request.push_task_shrink):
+            query['PushTask'] = request.push_task_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PushV2',
+            version='2016-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            push_20160801_models.PushV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_v2(
+        self,
+        request: push_20160801_models.PushV2Request,
+    ) -> push_20160801_models.PushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param request: PushV2Request
+        @return: PushV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.push_v2with_options(request, runtime)
+
+    async def push_v2_async(
+        self,
+        request: push_20160801_models.PushV2Request,
+    ) -> push_20160801_models.PushV2Response:
+        """
+        @summary 新版高级推送接口
+        
+        @param request: PushV2Request
+        @return: PushV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.push_v2with_options_async(request, runtime)
 
     def query_aliases_with_options(
         self,

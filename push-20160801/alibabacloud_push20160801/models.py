@@ -132,11 +132,13 @@ class PushTaskNotificationAndroidOptionsHuawei(TeaModel):
         self,
         category: str = None,
         importance: int = None,
+        live_notification_payload: str = None,
         receipt_id: str = None,
         urgency: str = None,
     ):
         self.category = category
         self.importance = importance
+        self.live_notification_payload = live_notification_payload
         self.receipt_id = receipt_id
         self.urgency = urgency
 
@@ -153,6 +155,8 @@ class PushTaskNotificationAndroidOptionsHuawei(TeaModel):
             result['Category'] = self.category
         if self.importance is not None:
             result['Importance'] = self.importance
+        if self.live_notification_payload is not None:
+            result['LiveNotificationPayload'] = self.live_notification_payload
         if self.receipt_id is not None:
             result['ReceiptId'] = self.receipt_id
         if self.urgency is not None:
@@ -165,10 +169,39 @@ class PushTaskNotificationAndroidOptionsHuawei(TeaModel):
             self.category = m.get('Category')
         if m.get('Importance') is not None:
             self.importance = m.get('Importance')
+        if m.get('LiveNotificationPayload') is not None:
+            self.live_notification_payload = m.get('LiveNotificationPayload')
         if m.get('ReceiptId') is not None:
             self.receipt_id = m.get('ReceiptId')
         if m.get('Urgency') is not None:
             self.urgency = m.get('Urgency')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsMeizu(TeaModel):
+    def __init__(
+        self,
+        notice_msg_type: int = None,
+    ):
+        self.notice_msg_type = notice_msg_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notice_msg_type is not None:
+            result['NoticeMsgType'] = self.notice_msg_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NoticeMsgType') is not None:
+            self.notice_msg_type = m.get('NoticeMsgType')
         return self
 
 
@@ -177,9 +210,15 @@ class PushTaskNotificationAndroidOptionsOppo(TeaModel):
         self,
         category: str = None,
         notify_level: int = None,
+        private_content_parameters: str = None,
+        private_msg_template_id: str = None,
+        private_title_parameters: str = None,
     ):
         self.category = category
         self.notify_level = notify_level
+        self.private_content_parameters = private_content_parameters
+        self.private_msg_template_id = private_msg_template_id
+        self.private_title_parameters = private_title_parameters
 
     def validate(self):
         pass
@@ -194,6 +233,12 @@ class PushTaskNotificationAndroidOptionsOppo(TeaModel):
             result['Category'] = self.category
         if self.notify_level is not None:
             result['NotifyLevel'] = self.notify_level
+        if self.private_content_parameters is not None:
+            result['PrivateContentParameters'] = self.private_content_parameters
+        if self.private_msg_template_id is not None:
+            result['PrivateMsgTemplateId'] = self.private_msg_template_id
+        if self.private_title_parameters is not None:
+            result['PrivateTitleParameters'] = self.private_title_parameters
         return result
 
     def from_map(self, m: dict = None):
@@ -202,6 +247,12 @@ class PushTaskNotificationAndroidOptionsOppo(TeaModel):
             self.category = m.get('Category')
         if m.get('NotifyLevel') is not None:
             self.notify_level = m.get('NotifyLevel')
+        if m.get('PrivateContentParameters') is not None:
+            self.private_content_parameters = m.get('PrivateContentParameters')
+        if m.get('PrivateMsgTemplateId') is not None:
+            self.private_msg_template_id = m.get('PrivateMsgTemplateId')
+        if m.get('PrivateTitleParameters') is not None:
+            self.private_title_parameters = m.get('PrivateTitleParameters')
         return self
 
 
@@ -277,6 +328,7 @@ class PushTaskNotificationAndroidOptions(TeaModel):
         accs: PushTaskNotificationAndroidOptionsAccs = None,
         honor: PushTaskNotificationAndroidOptionsHonor = None,
         huawei: PushTaskNotificationAndroidOptionsHuawei = None,
+        meizu: PushTaskNotificationAndroidOptionsMeizu = None,
         oppo: PushTaskNotificationAndroidOptionsOppo = None,
         vivo: PushTaskNotificationAndroidOptionsVivo = None,
         xiaomi: PushTaskNotificationAndroidOptionsXiaomi = None,
@@ -284,6 +336,7 @@ class PushTaskNotificationAndroidOptions(TeaModel):
         self.accs = accs
         self.honor = honor
         self.huawei = huawei
+        self.meizu = meizu
         self.oppo = oppo
         self.vivo = vivo
         self.xiaomi = xiaomi
@@ -295,6 +348,8 @@ class PushTaskNotificationAndroidOptions(TeaModel):
             self.honor.validate()
         if self.huawei:
             self.huawei.validate()
+        if self.meizu:
+            self.meizu.validate()
         if self.oppo:
             self.oppo.validate()
         if self.vivo:
@@ -314,6 +369,8 @@ class PushTaskNotificationAndroidOptions(TeaModel):
             result['Honor'] = self.honor.to_map()
         if self.huawei is not None:
             result['Huawei'] = self.huawei.to_map()
+        if self.meizu is not None:
+            result['Meizu'] = self.meizu.to_map()
         if self.oppo is not None:
             result['Oppo'] = self.oppo.to_map()
         if self.vivo is not None:
@@ -333,6 +390,9 @@ class PushTaskNotificationAndroidOptions(TeaModel):
         if m.get('Huawei') is not None:
             temp_model = PushTaskNotificationAndroidOptionsHuawei()
             self.huawei = temp_model.from_map(m['Huawei'])
+        if m.get('Meizu') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsMeizu()
+            self.meizu = temp_model.from_map(m['Meizu'])
         if m.get('Oppo') is not None:
             temp_model = PushTaskNotificationAndroidOptionsOppo()
             self.oppo = temp_model.from_map(m['Oppo'])
@@ -470,6 +530,7 @@ class PushTaskNotificationHmos(TeaModel):
         extension_push: bool = None,
         image_url: str = None,
         inbox_content: List[str] = None,
+        live_view_payload: str = None,
         notify_id: int = None,
         receipt_id: str = None,
         render_style: str = None,
@@ -486,6 +547,7 @@ class PushTaskNotificationHmos(TeaModel):
         self.extension_push = extension_push
         self.image_url = image_url
         self.inbox_content = inbox_content
+        self.live_view_payload = live_view_payload
         self.notify_id = notify_id
         self.receipt_id = receipt_id
         self.render_style = render_style
@@ -520,6 +582,8 @@ class PushTaskNotificationHmos(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.inbox_content is not None:
             result['InboxContent'] = self.inbox_content
+        if self.live_view_payload is not None:
+            result['LiveViewPayload'] = self.live_view_payload
         if self.notify_id is not None:
             result['NotifyId'] = self.notify_id
         if self.receipt_id is not None:
@@ -554,6 +618,8 @@ class PushTaskNotificationHmos(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InboxContent') is not None:
             self.inbox_content = m.get('InboxContent')
+        if m.get('LiveViewPayload') is not None:
+            self.live_view_payload = m.get('LiveViewPayload')
         if m.get('NotifyId') is not None:
             self.notify_id = m.get('NotifyId')
         if m.get('ReceiptId') is not None:
@@ -3283,6 +3349,170 @@ class MassPushResponse(TeaModel):
         return self
 
 
+class MassPushV2Request(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        idempotent_token: str = None,
+        push_tasks: List[PushTask] = None,
+    ):
+        # This parameter is required.
+        self.app_key = app_key
+        self.idempotent_token = idempotent_token
+        # This parameter is required.
+        self.push_tasks = push_tasks
+
+    def validate(self):
+        if self.push_tasks:
+            for k in self.push_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
+        result['PushTasks'] = []
+        if self.push_tasks is not None:
+            for k in self.push_tasks:
+                result['PushTasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
+        self.push_tasks = []
+        if m.get('PushTasks') is not None:
+            for k in m.get('PushTasks'):
+                temp_model = PushTask()
+                self.push_tasks.append(temp_model.from_map(k))
+        return self
+
+
+class MassPushV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        idempotent_token: str = None,
+        push_tasks_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_key = app_key
+        self.idempotent_token = idempotent_token
+        # This parameter is required.
+        self.push_tasks_shrink = push_tasks_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
+        if self.push_tasks_shrink is not None:
+            result['PushTasks'] = self.push_tasks_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
+        if m.get('PushTasks') is not None:
+            self.push_tasks_shrink = m.get('PushTasks')
+        return self
+
+
+class MassPushV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        message_ids: List[str] = None,
+        request_id: str = None,
+    ):
+        self.message_ids = message_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_ids is not None:
+            result['MessageIds'] = self.message_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageIds') is not None:
+            self.message_ids = m.get('MessageIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MassPushV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MassPushV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MassPushV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PushRequest(TeaModel):
     def __init__(
         self,
@@ -5329,6 +5559,164 @@ class PushNoticeToiOSResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PushNoticeToiOSResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PushV2Request(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        idempotent_token: str = None,
+        push_task: PushTask = None,
+    ):
+        # This parameter is required.
+        self.app_key = app_key
+        self.idempotent_token = idempotent_token
+        # This parameter is required.
+        self.push_task = push_task
+
+    def validate(self):
+        if self.push_task:
+            self.push_task.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
+        if self.push_task is not None:
+            result['PushTask'] = self.push_task.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
+        if m.get('PushTask') is not None:
+            temp_model = PushTask()
+            self.push_task = temp_model.from_map(m['PushTask'])
+        return self
+
+
+class PushV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        idempotent_token: str = None,
+        push_task_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_key = app_key
+        self.idempotent_token = idempotent_token
+        # This parameter is required.
+        self.push_task_shrink = push_task_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
+        if self.push_task_shrink is not None:
+            result['PushTask'] = self.push_task_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
+        if m.get('PushTask') is not None:
+            self.push_task_shrink = m.get('PushTask')
+        return self
+
+
+class PushV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        message_id: str = None,
+        request_id: str = None,
+    ):
+        self.message_id = message_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PushV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PushV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PushV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

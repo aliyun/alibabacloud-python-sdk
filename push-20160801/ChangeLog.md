@@ -1,3 +1,8 @@
+2025-10-27 Version: 2.1.0
+- Support API MassPushV2.
+- Support API PushV2.
+
+
 2025-09-19 Version: 2.0.1
 - Update API MassPush: add request parameters PushTask.$.AndroidHuaweiLiveNotificationPayload.
 - Update API MassPush: add request parameters PushTask.$.HarmonyLiveViewPayload.
