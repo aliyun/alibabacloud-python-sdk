@@ -93,7 +93,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
-        @summary 申请公网链接
+        @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
         @param request: AllocateClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -138,7 +138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
-        @summary 申请公网链接
+        @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
         @param request: AllocateClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -182,7 +182,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.AllocateClusterPublicConnectionRequest,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
-        @summary 申请公网链接
+        @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
         @param request: AllocateClusterPublicConnectionRequest
         @return: AllocateClusterPublicConnectionResponse
@@ -195,7 +195,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.AllocateClusterPublicConnectionRequest,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
-        @summary 申请公网链接
+        @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
         @param request: AllocateClusterPublicConnectionRequest
         @return: AllocateClusterPublicConnectionResponse

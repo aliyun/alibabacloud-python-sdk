@@ -1,3 +1,7 @@
+2025-10-27 Version: 5.0.8
+- Update API DescribeAuditLogRecords: add response parameters Body.Items.$.ExecuteTimestamp.
+
+
 2025-07-10 Version: 5.0.6
 - Update API ApplyAdviceById: add request parameters ApplyType.
 - Update API ApplyAdviceById: add request parameters BuildImmediately.

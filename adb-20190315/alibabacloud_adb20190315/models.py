@@ -20,9 +20,7 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
         # *   The prefix can be up to 30 characters in length.
         # *   By default, the cluster name is used as the prefix of the public endpoint.
         self.connection_string_prefix = connection_string_prefix
-        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
-        # 
-        # You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # The Data Warehouse Edition Cluster ID of AnalyticDB for MySQL. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to retrieve all Data Warehouse Edition cluster IDs within the specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -6569,6 +6567,7 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
         conn_id: str = None,
         dbname: str = None,
         execute_time: str = None,
+        execute_timestamp: int = None,
         host_address: str = None,
         process_id: str = None,
         sqltext: str = None,
@@ -6583,6 +6582,7 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
         self.dbname = dbname
         # The start time of the execution of the SQL statement. The time is displayed in the ISO 8601 standard in the yyyy-MM-dd HH:mm:ss format. The time must be in UTC.
         self.execute_time = execute_time
+        self.execute_timestamp = execute_timestamp
         # The IP address and port number of the client that is used to execute the SQL statement.
         self.host_address = host_address
         # The task ID.
@@ -6616,6 +6616,8 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
             result['DBName'] = self.dbname
         if self.execute_time is not None:
             result['ExecuteTime'] = self.execute_time
+        if self.execute_timestamp is not None:
+            result['ExecuteTimestamp'] = self.execute_timestamp
         if self.host_address is not None:
             result['HostAddress'] = self.host_address
         if self.process_id is not None:
@@ -6640,6 +6642,8 @@ class DescribeAuditLogRecordsResponseBodyItems(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('ExecuteTime') is not None:
             self.execute_time = m.get('ExecuteTime')
+        if m.get('ExecuteTimestamp') is not None:
+            self.execute_timestamp = m.get('ExecuteTimestamp')
         if m.get('HostAddress') is not None:
             self.host_address = m.get('HostAddress')
         if m.get('ProcessID') is not None:
@@ -8396,6 +8400,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         backup_method: str = None,
         backup_size: int = None,
         backup_start_time: str = None,
+        backup_status: str = None,
         backup_type: str = None,
         dbcluster_id: str = None,
     ):
@@ -8411,6 +8416,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         self.backup_size = backup_size
         # The start time of the backup.
         self.backup_start_time = backup_start_time
+        self.backup_status = backup_status
         # The backup type. Valid values:
         # 
         # *   **FullBackup**\
@@ -8440,6 +8446,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             result['BackupSize'] = self.backup_size
         if self.backup_start_time is not None:
             result['BackupStartTime'] = self.backup_start_time
+        if self.backup_status is not None:
+            result['BackupStatus'] = self.backup_status
         if self.backup_type is not None:
             result['BackupType'] = self.backup_type
         if self.dbcluster_id is not None:
@@ -8460,6 +8468,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             self.backup_size = m.get('BackupSize')
         if m.get('BackupStartTime') is not None:
             self.backup_start_time = m.get('BackupStartTime')
+        if m.get('BackupStatus') is not None:
+            self.backup_status = m.get('BackupStatus')
         if m.get('BackupType') is not None:
             self.backup_type = m.get('BackupType')
         if m.get('DBClusterId') is not None:
