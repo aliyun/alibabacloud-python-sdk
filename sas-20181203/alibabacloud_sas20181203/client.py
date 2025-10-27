@@ -46928,6 +46928,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -46963,6 +46965,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -62434,6 +62438,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id_list):
             query['GroupIdList'] = request.group_id_list
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type_list):
@@ -62473,6 +62479,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id_list):
             query['GroupIdList'] = request.group_id_list
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type_list):
@@ -67034,6 +67042,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.requirement_ids):
             query['RequirementIds'] = request.requirement_ids
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.risk_levels):
             query['RiskLevels'] = request.risk_levels
         if not UtilClient.is_unset(request.sort_types):
@@ -67105,6 +67115,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.requirement_ids):
             query['RequirementIds'] = request.requirement_ids
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.risk_levels):
             query['RiskLevels'] = request.risk_levels
         if not UtilClient.is_unset(request.sort_types):

@@ -1,3 +1,13 @@
+2025-10-27 Version: 6.0.0
+- Update API DescribeMonitorAccounts: delete response parameters Body.AccountIdInfos.$.IsCloudSiemAccount.
+- Update API DescribeMonitorAccounts: delete response parameters Body.AccountIdInfos.$.IsSasAccount.
+- Update API DescribeMonitorAccounts: delete response parameters Body.AccountIdInfos.$.aliUid.
+- Update API DescribeMonitorAccounts: delete response parameters Body.AccountIdInfos.$.isMarked.
+- Update API DescribeVulNumStatistics: add request parameters ResourceDirectoryAccountId.
+- Update API GetVulStatistics: add request parameters ResourceDirectoryAccountId.
+- Update API ListCheckResult: add request parameters ResourceDirectoryAccountId.
+
+
 2025-10-09 Version: 5.0.3
 - Update API DescribeNsasSuspEventType: add request parameters SupportOperateCodeList.
 - Update API DescribeSuspEventDetail: add response parameters Body.AlarmUniqueInfo.
