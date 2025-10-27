@@ -7216,6 +7216,7 @@ class CreateCenterPolicyRequest(TeaModel):
         enable_session_rate_limiting: str = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
+        external_drive: str = None,
         file_migrate: str = None,
         file_transfer_address: str = None,
         file_transfer_speed: str = None,
@@ -7437,6 +7438,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t allow end users in the same office network to share cloud computers.
         # *   on: allows end users in the same office network to share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
+        self.external_drive = external_drive
         # Specifies whether to enable file transfer.
         self.file_migrate = file_migrate
         self.file_transfer_address = file_transfer_address
@@ -7927,6 +7929,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
+        if self.external_drive is not None:
+            result['ExternalDrive'] = self.external_drive
         if self.file_migrate is not None:
             result['FileMigrate'] = self.file_migrate
         if self.file_transfer_address is not None:
@@ -8190,6 +8194,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
+        if m.get('ExternalDrive') is not None:
+            self.external_drive = m.get('ExternalDrive')
         if m.get('FileMigrate') is not None:
             self.file_migrate = m.get('FileMigrate')
         if m.get('FileTransferAddress') is not None:
@@ -39320,6 +39326,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         eds_count: int = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
+        external_drive: str = None,
         file_migrate: str = None,
         file_transfer: str = None,
         file_transfer_address: str = None,
@@ -39520,6 +39527,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.end_user_group_coordinate = end_user_group_coordinate
+        self.external_drive = external_drive
         self.file_migrate = file_migrate
         # Transfers files.
         self.file_transfer = file_transfer
@@ -40015,6 +40023,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
+        if self.external_drive is not None:
+            result['ExternalDrive'] = self.external_drive
         if self.file_migrate is not None:
             result['FileMigrate'] = self.file_migrate
         if self.file_transfer is not None:
@@ -40279,6 +40289,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
+        if m.get('ExternalDrive') is not None:
+            self.external_drive = m.get('ExternalDrive')
         if m.get('FileMigrate') is not None:
             self.file_migrate = m.get('FileMigrate')
         if m.get('FileTransfer') is not None:
@@ -56027,6 +56039,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         enable_session_rate_limiting: str = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
+        external_drive: str = None,
         file_migrate: str = None,
         file_transfer_address: str = None,
         file_transfer_speed: str = None,
@@ -56256,6 +56269,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t allow end users from the same office network to share cloud computers.
         # *   on: allows end users from the same office network to share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
+        self.external_drive = external_drive
         # Specifies whether to enable file transfer.
         # 
         # Valid values:
@@ -56775,6 +56789,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
+        if self.external_drive is not None:
+            result['ExternalDrive'] = self.external_drive
         if self.file_migrate is not None:
             result['FileMigrate'] = self.file_migrate
         if self.file_transfer_address is not None:
@@ -57048,6 +57064,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
+        if m.get('ExternalDrive') is not None:
+            self.external_drive = m.get('ExternalDrive')
         if m.get('FileMigrate') is not None:
             self.file_migrate = m.get('FileMigrate')
         if m.get('FileTransferAddress') is not None:

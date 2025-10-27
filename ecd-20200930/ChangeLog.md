@@ -1,3 +1,9 @@
+2025-10-27 Version: 4.14.1
+- Update API CreateCenterPolicy: add request parameters ExternalDrive.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ExternalDrive.
+- Update API ModifyCenterPolicy: add request parameters ExternalDrive.
+
+
 2025-10-24 Version: 4.14.0
 - Support API DescribeGlobalDesktopRecords.
 - Update API CreateSimpleOfficeSite: add request parameters AccountType.

@@ -4405,6 +4405,8 @@ class Client(OpenApiClient):
             query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
         if not UtilClient.is_unset(request.end_user_group_coordinate):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.external_drive):
+            query['ExternalDrive'] = request.external_drive
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
         if not UtilClient.is_unset(request.file_transfer_address):
@@ -4670,6 +4672,8 @@ class Client(OpenApiClient):
             query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
         if not UtilClient.is_unset(request.end_user_group_coordinate):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.external_drive):
+            query['ExternalDrive'] = request.external_drive
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
         if not UtilClient.is_unset(request.file_transfer_address):
@@ -24391,6 +24395,8 @@ class Client(OpenApiClient):
             query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
         if not UtilClient.is_unset(request.end_user_group_coordinate):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.external_drive):
+            query['ExternalDrive'] = request.external_drive
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
         if not UtilClient.is_unset(request.file_transfer_address):
@@ -24662,6 +24668,8 @@ class Client(OpenApiClient):
             query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
         if not UtilClient.is_unset(request.end_user_group_coordinate):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.external_drive):
+            query['ExternalDrive'] = request.external_drive
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
         if not UtilClient.is_unset(request.file_transfer_address):
