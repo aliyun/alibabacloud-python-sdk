@@ -3,6 +3,11 @@
 - Support API UpdateLindormInstanceAttribute.
 
 
+2025-10-27 Version: 4.12.0
+- Support API GetLindormV2InstanceDetails.
+- Support API UpdateLindormInstanceAttribute.
+
+
 2025-09-12 Version: 4.11.0
 - Support API GetLindormV2InstanceForTerraform.
 - Support API GetLindormV2InstanceSecurityGroups.
