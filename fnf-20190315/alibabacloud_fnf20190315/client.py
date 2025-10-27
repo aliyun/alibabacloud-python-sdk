@@ -50,7 +50,7 @@ class Client(OpenApiClient):
 
     def create_flow_with_options(
         self,
-        request: fnf_20190315_models.CreateFlowRequest,
+        tmp_req: fnf_20190315_models.CreateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateFlowResponse:
         """
@@ -60,16 +60,22 @@ class Client(OpenApiClient):
         The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
         At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
         
-        @param request: CreateFlowRequest
+        @param tmp_req: CreateFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateFlowResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.CreateFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.environment):
+            request.environment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.environment, 'Environment', 'json')
         body = {}
         if not UtilClient.is_unset(request.definition):
             body['Definition'] = request.definition
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.environment_shrink):
+            body['Environment'] = request.environment_shrink
         if not UtilClient.is_unset(request.execution_mode):
             body['ExecutionMode'] = request.execution_mode
         if not UtilClient.is_unset(request.external_storage_location):
@@ -101,7 +107,7 @@ class Client(OpenApiClient):
 
     async def create_flow_with_options_async(
         self,
-        request: fnf_20190315_models.CreateFlowRequest,
+        tmp_req: fnf_20190315_models.CreateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateFlowResponse:
         """
@@ -111,16 +117,22 @@ class Client(OpenApiClient):
         The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
         At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
         
-        @param request: CreateFlowRequest
+        @param tmp_req: CreateFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateFlowResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.CreateFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.environment):
+            request.environment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.environment, 'Environment', 'json')
         body = {}
         if not UtilClient.is_unset(request.definition):
             body['Definition'] = request.definition
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.environment_shrink):
+            body['Environment'] = request.environment_shrink
         if not UtilClient.is_unset(request.execution_mode):
             body['ExecutionMode'] = request.execution_mode
         if not UtilClient.is_unset(request.external_storage_location):
@@ -183,6 +195,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_with_options_async(request, runtime)
+
+    def create_flow_alias_with_options(
+        self,
+        tmp_req: fnf_20190315_models.CreateFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.CreateFlowAliasResponse:
+        """
+        @summary 创建流程版本别名
+        
+        @param tmp_req: CreateFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowAliasResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.CreateFlowAliasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routing_configurations):
+            request.routing_configurations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routing_configurations, 'RoutingConfigurations', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.routing_configurations_shrink):
+            body['RoutingConfigurations'] = request.routing_configurations_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.CreateFlowAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_flow_alias_with_options_async(
+        self,
+        tmp_req: fnf_20190315_models.CreateFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.CreateFlowAliasResponse:
+        """
+        @summary 创建流程版本别名
+        
+        @param tmp_req: CreateFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowAliasResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.CreateFlowAliasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routing_configurations):
+            request.routing_configurations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routing_configurations, 'RoutingConfigurations', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.routing_configurations_shrink):
+            body['RoutingConfigurations'] = request.routing_configurations_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.CreateFlowAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_flow_alias(
+        self,
+        request: fnf_20190315_models.CreateFlowAliasRequest,
+    ) -> fnf_20190315_models.CreateFlowAliasResponse:
+        """
+        @summary 创建流程版本别名
+        
+        @param request: CreateFlowAliasRequest
+        @return: CreateFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_flow_alias_with_options(request, runtime)
+
+    async def create_flow_alias_async(
+        self,
+        request: fnf_20190315_models.CreateFlowAliasRequest,
+    ) -> fnf_20190315_models.CreateFlowAliasResponse:
+        """
+        @summary 创建流程版本别名
+        
+        @param request: CreateFlowAliasRequest
+        @return: CreateFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_flow_alias_with_options_async(request, runtime)
 
     def create_schedule_with_options(
         self,
@@ -415,6 +543,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_with_options_async(request, runtime)
+
+    def delete_flow_alias_with_options(
+        self,
+        request: fnf_20190315_models.DeleteFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DeleteFlowAliasResponse:
+        """
+        @summary 删除流程别名
+        
+        @param request: DeleteFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowAliasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DeleteFlowAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_alias_with_options_async(
+        self,
+        request: fnf_20190315_models.DeleteFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DeleteFlowAliasResponse:
+        """
+        @summary 删除流程别名
+        
+        @param request: DeleteFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowAliasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DeleteFlowAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow_alias(
+        self,
+        request: fnf_20190315_models.DeleteFlowAliasRequest,
+    ) -> fnf_20190315_models.DeleteFlowAliasResponse:
+        """
+        @summary 删除流程别名
+        
+        @param request: DeleteFlowAliasRequest
+        @return: DeleteFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_flow_alias_with_options(request, runtime)
+
+    async def delete_flow_alias_async(
+        self,
+        request: fnf_20190315_models.DeleteFlowAliasRequest,
+    ) -> fnf_20190315_models.DeleteFlowAliasResponse:
+        """
+        @summary 删除流程别名
+        
+        @param request: DeleteFlowAliasRequest
+        @return: DeleteFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_flow_alias_with_options_async(request, runtime)
+
+    def delete_flow_version_with_options(
+        self,
+        request: fnf_20190315_models.DeleteFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DeleteFlowVersionResponse:
+        """
+        @summary 删除流程版本
+        
+        @param request: DeleteFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.flow_version):
+            body['FlowVersion'] = request.flow_version
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowVersion',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DeleteFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_version_with_options_async(
+        self,
+        request: fnf_20190315_models.DeleteFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DeleteFlowVersionResponse:
+        """
+        @summary 删除流程版本
+        
+        @param request: DeleteFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.flow_version):
+            body['FlowVersion'] = request.flow_version
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowVersion',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DeleteFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow_version(
+        self,
+        request: fnf_20190315_models.DeleteFlowVersionRequest,
+    ) -> fnf_20190315_models.DeleteFlowVersionResponse:
+        """
+        @summary 删除流程版本
+        
+        @param request: DeleteFlowVersionRequest
+        @return: DeleteFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_flow_version_with_options(request, runtime)
+
+    async def delete_flow_version_async(
+        self,
+        request: fnf_20190315_models.DeleteFlowVersionRequest,
+    ) -> fnf_20190315_models.DeleteFlowVersionResponse:
+        """
+        @summary 删除流程版本
+        
+        @param request: DeleteFlowVersionRequest
+        @return: DeleteFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_flow_version_with_options_async(request, runtime)
 
     def delete_schedule_with_options(
         self,
@@ -699,6 +1027,286 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_with_options_async(request, runtime)
+
+    def describe_flow_alias_with_options(
+        self,
+        request: fnf_20190315_models.DescribeFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DescribeFlowAliasResponse:
+        """
+        @summary 查询流程版本别名详情
+        
+        @param request: DescribeFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowAliasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DescribeFlowAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_flow_alias_with_options_async(
+        self,
+        request: fnf_20190315_models.DescribeFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DescribeFlowAliasResponse:
+        """
+        @summary 查询流程版本别名详情
+        
+        @param request: DescribeFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowAliasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DescribeFlowAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_flow_alias(
+        self,
+        request: fnf_20190315_models.DescribeFlowAliasRequest,
+    ) -> fnf_20190315_models.DescribeFlowAliasResponse:
+        """
+        @summary 查询流程版本别名详情
+        
+        @param request: DescribeFlowAliasRequest
+        @return: DescribeFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_flow_alias_with_options(request, runtime)
+
+    async def describe_flow_alias_async(
+        self,
+        request: fnf_20190315_models.DescribeFlowAliasRequest,
+    ) -> fnf_20190315_models.DescribeFlowAliasResponse:
+        """
+        @summary 查询流程版本别名详情
+        
+        @param request: DescribeFlowAliasRequest
+        @return: DescribeFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_flow_alias_with_options_async(request, runtime)
+
+    def describe_map_run_with_options(
+        self,
+        request: fnf_20190315_models.DescribeMapRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DescribeMapRunResponse:
+        """
+        @summary 查询 MapRun 详情
+        
+        @param request: DescribeMapRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMapRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMapRun',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DescribeMapRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_map_run_with_options_async(
+        self,
+        request: fnf_20190315_models.DescribeMapRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DescribeMapRunResponse:
+        """
+        @summary 查询 MapRun 详情
+        
+        @param request: DescribeMapRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMapRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMapRun',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DescribeMapRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_map_run(
+        self,
+        request: fnf_20190315_models.DescribeMapRunRequest,
+    ) -> fnf_20190315_models.DescribeMapRunResponse:
+        """
+        @summary 查询 MapRun 详情
+        
+        @param request: DescribeMapRunRequest
+        @return: DescribeMapRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_map_run_with_options(request, runtime)
+
+    async def describe_map_run_async(
+        self,
+        request: fnf_20190315_models.DescribeMapRunRequest,
+    ) -> fnf_20190315_models.DescribeMapRunResponse:
+        """
+        @summary 查询 MapRun 详情
+        
+        @param request: DescribeMapRunRequest
+        @return: DescribeMapRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_map_run_with_options_async(request, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: fnf_20190315_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accept_language):
+            body['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: fnf_20190315_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accept_language):
+            body['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: fnf_20190315_models.DescribeRegionsRequest,
+    ) -> fnf_20190315_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_with_options(request, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: fnf_20190315_models.DescribeRegionsRequest,
+    ) -> fnf_20190315_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_with_options_async(request, runtime)
 
     def describe_schedule_with_options(
         self,
@@ -988,6 +1596,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_executions_with_options_async(request, runtime)
 
+    def list_flow_aliases_with_options(
+        self,
+        request: fnf_20190315_models.ListFlowAliasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.ListFlowAliasesResponse:
+        """
+        @summary 查询流程版本别名列表
+        
+        @param request: ListFlowAliasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowAliasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlowAliases',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.ListFlowAliasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flow_aliases_with_options_async(
+        self,
+        request: fnf_20190315_models.ListFlowAliasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.ListFlowAliasesResponse:
+        """
+        @summary 查询流程版本别名列表
+        
+        @param request: ListFlowAliasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowAliasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlowAliases',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.ListFlowAliasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flow_aliases(
+        self,
+        request: fnf_20190315_models.ListFlowAliasesRequest,
+    ) -> fnf_20190315_models.ListFlowAliasesResponse:
+        """
+        @summary 查询流程版本别名列表
+        
+        @param request: ListFlowAliasesRequest
+        @return: ListFlowAliasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_flow_aliases_with_options(request, runtime)
+
+    async def list_flow_aliases_async(
+        self,
+        request: fnf_20190315_models.ListFlowAliasesRequest,
+    ) -> fnf_20190315_models.ListFlowAliasesResponse:
+        """
+        @summary 查询流程版本别名列表
+        
+        @param request: ListFlowAliasesRequest
+        @return: ListFlowAliasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flow_aliases_with_options_async(request, runtime)
+
+    def list_flow_versions_with_options(
+        self,
+        request: fnf_20190315_models.ListFlowVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.ListFlowVersionsResponse:
+        """
+        @summary 查询流程版本列表
+        
+        @param request: ListFlowVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlowVersions',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.ListFlowVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flow_versions_with_options_async(
+        self,
+        request: fnf_20190315_models.ListFlowVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.ListFlowVersionsResponse:
+        """
+        @summary 查询流程版本列表
+        
+        @param request: ListFlowVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlowVersions',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.ListFlowVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flow_versions(
+        self,
+        request: fnf_20190315_models.ListFlowVersionsRequest,
+    ) -> fnf_20190315_models.ListFlowVersionsResponse:
+        """
+        @summary 查询流程版本列表
+        
+        @param request: ListFlowVersionsRequest
+        @return: ListFlowVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_flow_versions_with_options(request, runtime)
+
+    async def list_flow_versions_async(
+        self,
+        request: fnf_20190315_models.ListFlowVersionsRequest,
+    ) -> fnf_20190315_models.ListFlowVersionsResponse:
+        """
+        @summary 查询流程版本列表
+        
+        @param request: ListFlowVersionsRequest
+        @return: ListFlowVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flow_versions_with_options_async(request, runtime)
+
     def list_flows_with_options(
         self,
         request: fnf_20190315_models.ListFlowsRequest,
@@ -1171,6 +1963,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_schedules_with_options_async(request, runtime)
+
+    def publish_flow_version_with_options(
+        self,
+        request: fnf_20190315_models.PublishFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.PublishFlowVersionResponse:
+        """
+        @summary 发布流程版本
+        
+        @param request: PublishFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishFlowVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishFlowVersion',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.PublishFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_flow_version_with_options_async(
+        self,
+        request: fnf_20190315_models.PublishFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.PublishFlowVersionResponse:
+        """
+        @summary 发布流程版本
+        
+        @param request: PublishFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishFlowVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishFlowVersion',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.PublishFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_flow_version(
+        self,
+        request: fnf_20190315_models.PublishFlowVersionRequest,
+    ) -> fnf_20190315_models.PublishFlowVersionResponse:
+        """
+        @summary 发布流程版本
+        
+        @param request: PublishFlowVersionRequest
+        @return: PublishFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.publish_flow_version_with_options(request, runtime)
+
+    async def publish_flow_version_async(
+        self,
+        request: fnf_20190315_models.PublishFlowVersionRequest,
+    ) -> fnf_20190315_models.PublishFlowVersionResponse:
+        """
+        @summary 发布流程版本
+        
+        @param request: PublishFlowVersionRequest
+        @return: PublishFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_flow_version_with_options_async(request, runtime)
 
     def report_task_failed_with_options(
         self,
@@ -1445,6 +2337,8 @@ class Client(OpenApiClient):
             body['FlowName'] = request.flow_name
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.qualifier):
+            body['Qualifier'] = request.qualifier
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1493,6 +2387,8 @@ class Client(OpenApiClient):
             body['FlowName'] = request.flow_name
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.qualifier):
+            body['Qualifier'] = request.qualifier
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1574,6 +2470,8 @@ class Client(OpenApiClient):
             body['FlowName'] = request.flow_name
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.qualifier):
+            body['Qualifier'] = request.qualifier
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1615,6 +2513,8 @@ class Client(OpenApiClient):
             body['FlowName'] = request.flow_name
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.qualifier):
+            body['Qualifier'] = request.qualifier
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1786,22 +2686,28 @@ class Client(OpenApiClient):
 
     def update_flow_with_options(
         self,
-        request: fnf_20190315_models.UpdateFlowRequest,
+        tmp_req: fnf_20190315_models.UpdateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.UpdateFlowResponse:
         """
         @summary Updates a flow.
         
-        @param request: UpdateFlowRequest
+        @param tmp_req: UpdateFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateFlowResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.UpdateFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.environment):
+            request.environment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.environment, 'Environment', 'json')
         body = {}
         if not UtilClient.is_unset(request.definition):
             body['Definition'] = request.definition
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.environment_shrink):
+            body['Environment'] = request.environment_shrink
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.role_arn):
@@ -1829,22 +2735,28 @@ class Client(OpenApiClient):
 
     async def update_flow_with_options_async(
         self,
-        request: fnf_20190315_models.UpdateFlowRequest,
+        tmp_req: fnf_20190315_models.UpdateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.UpdateFlowResponse:
         """
         @summary Updates a flow.
         
-        @param request: UpdateFlowRequest
+        @param tmp_req: UpdateFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateFlowResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.UpdateFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.environment):
+            request.environment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.environment, 'Environment', 'json')
         body = {}
         if not UtilClient.is_unset(request.definition):
             body['Definition'] = request.definition
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.environment_shrink):
+            body['Environment'] = request.environment_shrink
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.role_arn):
@@ -1895,6 +2807,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_flow_with_options_async(request, runtime)
+
+    def update_flow_alias_with_options(
+        self,
+        tmp_req: fnf_20190315_models.UpdateFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.UpdateFlowAliasResponse:
+        """
+        @summary 更新流程版本别名配置
+        
+        @param tmp_req: UpdateFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowAliasResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.UpdateFlowAliasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routing_configurations):
+            request.routing_configurations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routing_configurations, 'RoutingConfigurations', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.routing_configurations_shrink):
+            body['RoutingConfigurations'] = request.routing_configurations_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.UpdateFlowAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_flow_alias_with_options_async(
+        self,
+        tmp_req: fnf_20190315_models.UpdateFlowAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.UpdateFlowAliasResponse:
+        """
+        @summary 更新流程版本别名配置
+        
+        @param tmp_req: UpdateFlowAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowAliasResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fnf_20190315_models.UpdateFlowAliasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routing_configurations):
+            request.routing_configurations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routing_configurations, 'RoutingConfigurations', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.routing_configurations_shrink):
+            body['RoutingConfigurations'] = request.routing_configurations_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlowAlias',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.UpdateFlowAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_flow_alias(
+        self,
+        request: fnf_20190315_models.UpdateFlowAliasRequest,
+    ) -> fnf_20190315_models.UpdateFlowAliasResponse:
+        """
+        @summary 更新流程版本别名配置
+        
+        @param request: UpdateFlowAliasRequest
+        @return: UpdateFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_flow_alias_with_options(request, runtime)
+
+    async def update_flow_alias_async(
+        self,
+        request: fnf_20190315_models.UpdateFlowAliasRequest,
+    ) -> fnf_20190315_models.UpdateFlowAliasResponse:
+        """
+        @summary 更新流程版本别名配置
+        
+        @param request: UpdateFlowAliasRequest
+        @return: UpdateFlowAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_flow_alias_with_options_async(request, runtime)
+
+    def update_map_run_with_options(
+        self,
+        request: fnf_20190315_models.UpdateMapRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.UpdateMapRunResponse:
+        """
+        @summary 更新 MapRun 配置
+        
+        @param request: UpdateMapRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMapRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMapRun',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.UpdateMapRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_map_run_with_options_async(
+        self,
+        request: fnf_20190315_models.UpdateMapRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.UpdateMapRunResponse:
+        """
+        @summary 更新 MapRun 配置
+        
+        @param request: UpdateMapRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMapRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMapRun',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.UpdateMapRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_map_run(
+        self,
+        request: fnf_20190315_models.UpdateMapRunRequest,
+    ) -> fnf_20190315_models.UpdateMapRunResponse:
+        """
+        @summary 更新 MapRun 配置
+        
+        @param request: UpdateMapRunRequest
+        @return: UpdateMapRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_map_run_with_options(request, runtime)
+
+    async def update_map_run_async(
+        self,
+        request: fnf_20190315_models.UpdateMapRunRequest,
+    ) -> fnf_20190315_models.UpdateMapRunResponse:
+        """
+        @summary 更新 MapRun 配置
+        
+        @param request: UpdateMapRunRequest
+        @return: UpdateMapRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_map_run_with_options_async(request, runtime)
 
     def update_schedule_with_options(
         self,
