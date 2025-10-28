@@ -11654,7 +11654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteCheckPolicyResponse:
         """
-        @summary 删除自定义策略
+        @summary Delete custom scope directories in Cloud Security Posture Management (CSPM) custom checks. You can remove assigned standards, requirements, or sections.
         
         @param request: DeleteCheckPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11691,7 +11691,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteCheckPolicyResponse:
         """
-        @summary 删除自定义策略
+        @summary Delete custom scope directories in Cloud Security Posture Management (CSPM) custom checks. You can remove assigned standards, requirements, or sections.
         
         @param request: DeleteCheckPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11727,7 +11727,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteCheckPolicyRequest,
     ) -> sas_20181203_models.DeleteCheckPolicyResponse:
         """
-        @summary 删除自定义策略
+        @summary Delete custom scope directories in Cloud Security Posture Management (CSPM) custom checks. You can remove assigned standards, requirements, or sections.
         
         @param request: DeleteCheckPolicyRequest
         @return: DeleteCheckPolicyResponse
@@ -11740,7 +11740,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteCheckPolicyRequest,
     ) -> sas_20181203_models.DeleteCheckPolicyResponse:
         """
-        @summary 删除自定义策略
+        @summary Delete custom scope directories in Cloud Security Posture Management (CSPM) custom checks. You can remove assigned standards, requirements, or sections.
         
         @param request: DeleteCheckPolicyRequest
         @return: DeleteCheckPolicyResponse
@@ -20556,6 +20556,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.check_warning_id):
             query['CheckWarningId'] = request.check_warning_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.resource_directory_account_id):
@@ -20601,6 +20603,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.check_warning_id):
             query['CheckWarningId'] = request.check_warning_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.resource_directory_account_id):

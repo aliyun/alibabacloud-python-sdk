@@ -1,3 +1,7 @@
+2025-10-28 Version: 6.0.1
+- Update API DescribeCheckWarningDetail: add request parameters ContainerName.
+
+
 2025-10-27 Version: 6.0.0
 - Update API DescribeMonitorAccounts: delete response parameters Body.AccountIdInfos.$.IsCloudSiemAccount.
 - Update API DescribeMonitorAccounts: delete response parameters Body.AccountIdInfos.$.IsSasAccount.
