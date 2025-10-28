@@ -1,3 +1,10 @@
+2025-10-28 Version: 2.8.4
+- Update API DescribeSlowLogHistogramAsync: add response parameters Body.Data.Data.TotalCount.
+- Update API DescribeSlowLogHistogramAsync: add response parameters Body.Data.Data.Item.$.InsRole.
+- Update API DescribeSlowLogHistogramAsync: add response parameters Body.Data.Data.Item.$.TotalCount.
+- Update API DescribeSlowLogHistogramAsync: add response parameters Body.Data.Data.Item.$.InsItems.$.TotalCount.
+
+
 2025-09-23 Version: 2.8.3
 - Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.ClientIp.
 - Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Cmd.

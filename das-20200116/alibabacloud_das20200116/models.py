@@ -8612,10 +8612,12 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems(TeaModel):
         count: List[int] = None,
         ins_id: str = None,
         ins_role: str = None,
+        total_count: int = None,
     ):
         self.count = count
         self.ins_id = ins_id
         self.ins_role = ins_role
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -8632,6 +8634,8 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems(TeaModel):
             result['InsId'] = self.ins_id
         if self.ins_role is not None:
             result['InsRole'] = self.ins_role
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -8642,6 +8646,8 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems(TeaModel):
             self.ins_id = m.get('InsId')
         if m.get('InsRole') is not None:
             self.ins_role = m.get('InsRole')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -8650,11 +8656,15 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItem(TeaModel):
         self,
         count: List[int] = None,
         ins_items: List[DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems] = None,
+        ins_role: str = None,
         node_id: str = None,
+        total_count: int = None,
     ):
         self.count = count
         self.ins_items = ins_items
+        self.ins_role = ins_role
         self.node_id = node_id
+        self.total_count = total_count
 
     def validate(self):
         if self.ins_items:
@@ -8674,8 +8684,12 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItem(TeaModel):
         if self.ins_items is not None:
             for k in self.ins_items:
                 result['InsItems'].append(k.to_map() if k else None)
+        if self.ins_role is not None:
+            result['InsRole'] = self.ins_role
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -8687,8 +8701,12 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItem(TeaModel):
             for k in m.get('InsItems'):
                 temp_model = DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems()
                 self.ins_items.append(temp_model.from_map(k))
+        if m.get('InsRole') is not None:
+            self.ins_role = m.get('InsRole')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -8746,6 +8764,7 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataData(TeaModel):
         rt: List[float] = None,
         scnt: List[int] = None,
         total: int = None,
+        total_count: int = None,
         ts: List[int] = None,
         ts_end: List[int] = None,
     ):
@@ -8800,6 +8819,7 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataData(TeaModel):
         self.rt = rt
         self.scnt = scnt
         self.total = total
+        self.total_count = total_count
         self.ts = ts
         self.ts_end = ts_end
 
@@ -8919,6 +8939,8 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataData(TeaModel):
             result['Scnt'] = self.scnt
         if self.total is not None:
             result['Total'] = self.total
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.ts is not None:
             result['Ts'] = self.ts
         if self.ts_end is not None:
@@ -9032,6 +9054,8 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataData(TeaModel):
             self.scnt = m.get('Scnt')
         if m.get('Total') is not None:
             self.total = m.get('Total')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('Ts') is not None:
             self.ts = m.get('Ts')
         if m.get('TsEnd') is not None:
