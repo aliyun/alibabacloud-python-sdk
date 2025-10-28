@@ -3213,6 +3213,188 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_stack_resource_drift_with_options_async(request, runtime)
 
+    def enable_service_access_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.EnableServiceAccessResponse:
+        """
+        @summary 开启可信服务访问
+        
+        @param request: EnableServiceAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServiceAccessResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableServiceAccess',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.EnableServiceAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_service_access_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.EnableServiceAccessResponse:
+        """
+        @summary 开启可信服务访问
+        
+        @param request: EnableServiceAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServiceAccessResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableServiceAccess',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.EnableServiceAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_service_access(self) -> ros20190910_models.EnableServiceAccessResponse:
+        """
+        @summary 开启可信服务访问
+        
+        @return: EnableServiceAccessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_service_access_with_options(runtime)
+
+    async def enable_service_access_async(self) -> ros20190910_models.EnableServiceAccessResponse:
+        """
+        @summary 开启可信服务访问
+        
+        @return: EnableServiceAccessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_service_access_with_options_async(runtime)
+
+    def enable_services_with_options(
+        self,
+        tmp_req: ros20190910_models.EnableServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.EnableServicesResponse:
+        """
+        @summary 批量开通
+        
+        @param tmp_req: EnableServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServicesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.EnableServicesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.service_names):
+            request.service_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_names, 'ServiceNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_names_shrink):
+            query['ServiceNames'] = request.service_names_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableServices',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.EnableServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_services_with_options_async(
+        self,
+        tmp_req: ros20190910_models.EnableServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.EnableServicesResponse:
+        """
+        @summary 批量开通
+        
+        @param tmp_req: EnableServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServicesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.EnableServicesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.service_names):
+            request.service_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_names, 'ServiceNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_names_shrink):
+            query['ServiceNames'] = request.service_names_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableServices',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.EnableServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_services(
+        self,
+        request: ros20190910_models.EnableServicesRequest,
+    ) -> ros20190910_models.EnableServicesResponse:
+        """
+        @summary 批量开通
+        
+        @param request: EnableServicesRequest
+        @return: EnableServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_services_with_options(request, runtime)
+
+    async def enable_services_async(
+        self,
+        request: ros20190910_models.EnableServicesRequest,
+    ) -> ros20190910_models.EnableServicesResponse:
+        """
+        @summary 批量开通
+        
+        @param request: EnableServicesRequest
+        @return: EnableServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_services_with_options_async(request, runtime)
+
     def execute_change_set_with_options(
         self,
         request: ros20190910_models.ExecuteChangeSetRequest,
@@ -4200,6 +4382,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_type_template_with_options_async(request, runtime)
+
+    def get_service_access_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetServiceAccessResponse:
+        """
+        @summary 查询可信服务
+        
+        @param request: GetServiceAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceAccessResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetServiceAccess',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetServiceAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_access_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetServiceAccessResponse:
+        """
+        @summary 查询可信服务
+        
+        @param request: GetServiceAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceAccessResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetServiceAccess',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetServiceAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_access(self) -> ros20190910_models.GetServiceAccessResponse:
+        """
+        @summary 查询可信服务
+        
+        @return: GetServiceAccessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_access_with_options(runtime)
+
+    async def get_service_access_async(self) -> ros20190910_models.GetServiceAccessResponse:
+        """
+        @summary 查询可信服务
+        
+        @return: GetServiceAccessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_access_with_options_async(runtime)
 
     def get_service_provisions_with_options(
         self,
@@ -8188,6 +8444,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_stacks_with_options_async(request, runtime)
+
+    def list_summaries_with_options(
+        self,
+        request: ros20190910_models.ListSummariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListSummariesResponse:
+        """
+        @summary 查询总览
+        
+        @param request: ListSummariesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSummariesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSummaries',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListSummariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_summaries_with_options_async(
+        self,
+        request: ros20190910_models.ListSummariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListSummariesResponse:
+        """
+        @summary 查询总览
+        
+        @param request: ListSummariesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSummariesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSummaries',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListSummariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_summaries(
+        self,
+        request: ros20190910_models.ListSummariesRequest,
+    ) -> ros20190910_models.ListSummariesResponse:
+        """
+        @summary 查询总览
+        
+        @param request: ListSummariesRequest
+        @return: ListSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_summaries_with_options(request, runtime)
+
+    async def list_summaries_async(
+        self,
+        request: ros20190910_models.ListSummariesRequest,
+    ) -> ros20190910_models.ListSummariesResponse:
+        """
+        @summary 查询总览
+        
+        @param request: ListSummariesRequest
+        @return: ListSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_summaries_with_options_async(request, runtime)
 
     def list_tag_keys_with_options(
         self,
