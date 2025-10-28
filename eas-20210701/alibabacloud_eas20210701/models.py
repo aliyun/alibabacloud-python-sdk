@@ -178,6 +178,7 @@ class Instance(TeaModel):
         instance_name: str = None,
         instance_port: int = None,
         instance_type: str = None,
+        is_latest: bool = None,
         is_spot: bool = None,
         isolated: bool = None,
         last_state: List[Dict[str, Any]] = None,
@@ -205,6 +206,7 @@ class Instance(TeaModel):
         self.instance_name = instance_name
         self.instance_port = instance_port
         self.instance_type = instance_type
+        self.is_latest = is_latest
         self.is_spot = is_spot
         self.isolated = isolated
         self.last_state = last_state
@@ -250,6 +252,8 @@ class Instance(TeaModel):
             result['InstancePort'] = self.instance_port
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.is_latest is not None:
+            result['IsLatest'] = self.is_latest
         if self.is_spot is not None:
             result['IsSpot'] = self.is_spot
         if self.isolated is not None:
@@ -306,6 +310,8 @@ class Instance(TeaModel):
             self.instance_port = m.get('InstancePort')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('IsLatest') is not None:
+            self.is_latest = m.get('IsLatest')
         if m.get('IsSpot') is not None:
             self.is_spot = m.get('IsSpot')
         if m.get('Isolated') is not None:

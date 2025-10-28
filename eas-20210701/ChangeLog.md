@@ -1,3 +1,6 @@
+2025-10-28 Version: 6.8.9
+- Generated python 2021-07-01 for eas.
+
 2025-10-24 Version: 6.8.8
 - Update API ListBenchmarkTask: add request parameters ModelId.
 - Update API ListBenchmarkTask: add request parameters Order.
