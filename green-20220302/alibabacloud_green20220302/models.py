@@ -3418,6 +3418,98 @@ class ImageModerationRequest(TeaModel):
         return self
 
 
+class ImageModerationResponseBodyDataExtAigcDataAIGC(TeaModel):
+    def __init__(
+        self,
+        content_producer: str = None,
+        content_propagator: str = None,
+        label: str = None,
+        produce_id: str = None,
+        propagate_id: str = None,
+        reserved_code_1: str = None,
+        reserved_code_2: str = None,
+    ):
+        self.content_producer = content_producer
+        self.content_propagator = content_propagator
+        self.label = label
+        self.produce_id = produce_id
+        self.propagate_id = propagate_id
+        self.reserved_code_1 = reserved_code_1
+        self.reserved_code_2 = reserved_code_2
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_producer is not None:
+            result['ContentProducer'] = self.content_producer
+        if self.content_propagator is not None:
+            result['ContentPropagator'] = self.content_propagator
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.produce_id is not None:
+            result['ProduceID'] = self.produce_id
+        if self.propagate_id is not None:
+            result['PropagateID'] = self.propagate_id
+        if self.reserved_code_1 is not None:
+            result['ReservedCode1'] = self.reserved_code_1
+        if self.reserved_code_2 is not None:
+            result['ReservedCode2'] = self.reserved_code_2
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentProducer') is not None:
+            self.content_producer = m.get('ContentProducer')
+        if m.get('ContentPropagator') is not None:
+            self.content_propagator = m.get('ContentPropagator')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('ProduceID') is not None:
+            self.produce_id = m.get('ProduceID')
+        if m.get('PropagateID') is not None:
+            self.propagate_id = m.get('PropagateID')
+        if m.get('ReservedCode1') is not None:
+            self.reserved_code_1 = m.get('ReservedCode1')
+        if m.get('ReservedCode2') is not None:
+            self.reserved_code_2 = m.get('ReservedCode2')
+        return self
+
+
+class ImageModerationResponseBodyDataExtAigcData(TeaModel):
+    def __init__(
+        self,
+        aigc: ImageModerationResponseBodyDataExtAigcDataAIGC = None,
+    ):
+        self.aigc = aigc
+
+    def validate(self):
+        if self.aigc:
+            self.aigc.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aigc is not None:
+            result['AIGC'] = self.aigc.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIGC') is not None:
+            temp_model = ImageModerationResponseBodyDataExtAigcDataAIGC()
+            self.aigc = temp_model.from_map(m['AIGC'])
+        return self
+
+
 class ImageModerationResponseBodyDataExtCustomImage(TeaModel):
     def __init__(
         self,
@@ -4503,6 +4595,7 @@ class ImageModerationResponseBodyDataExtVlContent(TeaModel):
 class ImageModerationResponseBodyDataExt(TeaModel):
     def __init__(
         self,
+        aigc_data: ImageModerationResponseBodyDataExtAigcData = None,
         custom_image: List[ImageModerationResponseBodyDataExtCustomImage] = None,
         face_data: List[ImageModerationResponseBodyDataExtFaceData] = None,
         logo_data: List[ImageModerationResponseBodyDataExtLogoData] = None,
@@ -4512,6 +4605,7 @@ class ImageModerationResponseBodyDataExt(TeaModel):
         text_in_image: ImageModerationResponseBodyDataExtTextInImage = None,
         vl_content: ImageModerationResponseBodyDataExtVlContent = None,
     ):
+        self.aigc_data = aigc_data
         # If a custom image library is hit, information about the hit custom image library is returned.
         self.custom_image = custom_image
         # The returned face attribute information
@@ -4530,6 +4624,8 @@ class ImageModerationResponseBodyDataExt(TeaModel):
         self.vl_content = vl_content
 
     def validate(self):
+        if self.aigc_data:
+            self.aigc_data.validate()
         if self.custom_image:
             for k in self.custom_image:
                 if k:
@@ -4565,6 +4661,8 @@ class ImageModerationResponseBodyDataExt(TeaModel):
             return _map
 
         result = dict()
+        if self.aigc_data is not None:
+            result['AigcData'] = self.aigc_data.to_map()
         result['CustomImage'] = []
         if self.custom_image is not None:
             for k in self.custom_image:
@@ -4597,6 +4695,9 @@ class ImageModerationResponseBodyDataExt(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AigcData') is not None:
+            temp_model = ImageModerationResponseBodyDataExtAigcData()
+            self.aigc_data = temp_model.from_map(m['AigcData'])
         self.custom_image = []
         if m.get('CustomImage') is not None:
             for k in m.get('CustomImage'):

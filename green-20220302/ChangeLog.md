@@ -1,3 +1,7 @@
+2025-10-28 Version: 3.0.1
+- Update API ImageModeration: add response parameters Body.Data.Ext.AigcData.
+
+
 2025-09-22 Version: 3.0.0
 - Update API ImageQueueModeration: add response parameters Body.Data.Frame.
 - Update API ImageQueueModeration: add response parameters Body.Data.FrameNum.
