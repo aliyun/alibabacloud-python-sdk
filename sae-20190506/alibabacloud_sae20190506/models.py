@@ -33533,6 +33533,7 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         namespace_name: str = None,
         notification_expired: bool = None,
         security_group_id: str = None,
+        sls_configs: str = None,
         tenant_id: str = None,
         user_id: str = None,
         v_switch_id: str = None,
@@ -33582,6 +33583,7 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         self.notification_expired = notification_expired
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.sls_configs = sls_configs
         # The ID of the tenant in the SAE namespace.
         self.tenant_id = tenant_id
         # The ID of the user.
@@ -33630,6 +33632,8 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
             result['NotificationExpired'] = self.notification_expired
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.sls_configs is not None:
+            result['SlsConfigs'] = self.sls_configs
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.user_id is not None:
@@ -33672,6 +33676,8 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
             self.notification_expired = m.get('NotificationExpired')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SlsConfigs') is not None:
+            self.sls_configs = m.get('SlsConfigs')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('UserId') is not None:
