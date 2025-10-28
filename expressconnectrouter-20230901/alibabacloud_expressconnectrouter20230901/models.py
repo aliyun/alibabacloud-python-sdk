@@ -1242,6 +1242,7 @@ class CreateFlowLogRequest(TeaModel):
         resource_group_id: str = None,
         sampling_rate: str = None,
         tag: List[CreateFlowLogRequestTag] = None,
+        target_sls_region_id: str = None,
         version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
@@ -1320,6 +1321,7 @@ class CreateFlowLogRequest(TeaModel):
         # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
         self.tag = tag
+        self.target_sls_region_id = target_sls_region_id
         self.version = version
 
     def validate(self):
@@ -1362,6 +1364,8 @@ class CreateFlowLogRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.target_sls_region_id is not None:
+            result['TargetSlsRegionId'] = self.target_sls_region_id
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -1397,6 +1401,8 @@ class CreateFlowLogRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateFlowLogRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TargetSlsRegionId') is not None:
+            self.target_sls_region_id = m.get('TargetSlsRegionId')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self

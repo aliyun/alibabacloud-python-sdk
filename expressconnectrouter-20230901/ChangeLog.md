@@ -1,3 +1,7 @@
+2025-10-28 Version: 4.1.2
+- Update API CreateFlowLog: add request parameters TargetSlsRegionId.
+
+
 2025-09-18 Version: 4.1.1
 - Update API ActivateFlowLog: add request parameters Version.
 - Update API AttachExpressConnectRouterChildInstance: add request parameters Version.

@@ -731,6 +731,8 @@ class Client(OpenApiClient):
             query['SamplingRate'] = request.sampling_rate
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_sls_region_id):
+            query['TargetSlsRegionId'] = request.target_sls_region_id
         if not UtilClient.is_unset(request.version):
             query['Version'] = request.version
         body = {}
@@ -794,6 +796,8 @@ class Client(OpenApiClient):
             query['SamplingRate'] = request.sampling_rate
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_sls_region_id):
+            query['TargetSlsRegionId'] = request.target_sls_region_id
         if not UtilClient.is_unset(request.version):
             query['Version'] = request.version
         body = {}
