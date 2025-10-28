@@ -10399,6 +10399,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_ids):
@@ -10461,6 +10463,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_ids):

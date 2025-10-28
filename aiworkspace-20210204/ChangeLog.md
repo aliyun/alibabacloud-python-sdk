@@ -1,3 +1,7 @@
+2025-10-28 Version: 7.0.1
+- Update API ListWorkspaces: add request parameters UserId.
+
+
 2025-09-24 Version: 7.0.0
 - Support API ListFeatures.
 - Update API CreateConnection: add request parameters body.ResourceMeta.Extra.

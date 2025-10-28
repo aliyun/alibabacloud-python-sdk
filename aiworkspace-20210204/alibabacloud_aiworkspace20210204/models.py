@@ -18904,6 +18904,7 @@ class ListWorkspacesRequest(TeaModel):
         resource_group_id: str = None,
         sort_by: str = None,
         status: str = None,
+        user_id: str = None,
         verbose: bool = None,
         workspace_ids: str = None,
         workspace_name: str = None,
@@ -18942,6 +18943,7 @@ class ListWorkspacesRequest(TeaModel):
         # *   FROZEN
         # *   UPDATING
         self.status = status
+        self.user_id = user_id
         # Specifies whether to display workspace details. Valid values:
         # 
         # *   false (default)
@@ -18979,6 +18981,8 @@ class ListWorkspacesRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.status is not None:
             result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         if self.verbose is not None:
             result['Verbose'] = self.verbose
         if self.workspace_ids is not None:
@@ -19007,6 +19011,8 @@ class ListWorkspacesRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
         if m.get('WorkspaceIds') is not None:
