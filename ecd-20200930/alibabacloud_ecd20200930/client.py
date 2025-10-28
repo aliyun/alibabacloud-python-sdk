@@ -18523,6 +18523,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_route_table_list_with_options_async(request, runtime)
 
+    def describe_security_group_attribute_with_options(
+        self,
+        request: ecd_20200930_models.DescribeSecurityGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary 查询办公网络维度安全组策略
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityGroupAttribute',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeSecurityGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_security_group_attribute_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeSecurityGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary 查询办公网络维度安全组策略
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityGroupAttribute',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeSecurityGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_security_group_attribute(
+        self,
+        request: ecd_20200930_models.DescribeSecurityGroupAttributeRequest,
+    ) -> ecd_20200930_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary 查询办公网络维度安全组策略
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @return: DescribeSecurityGroupAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_group_attribute_with_options(request, runtime)
+
+    async def describe_security_group_attribute_async(
+        self,
+        request: ecd_20200930_models.DescribeSecurityGroupAttributeRequest,
+    ) -> ecd_20200930_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary 查询办公网络维度安全组策略
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @return: DescribeSecurityGroupAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_group_attribute_with_options_async(request, runtime)
+
     def describe_session_statistic_with_options(
         self,
         request: ecd_20200930_models.DescribeSessionStatisticRequest,

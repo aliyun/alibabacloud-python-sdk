@@ -43399,6 +43399,138 @@ class DescribeRouteTableListResponse(TeaModel):
         return self
 
 
+class DescribeSecurityGroupAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        office_site_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSecurityGroupAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        egress_permissions: List[Permission] = None,
+        ingress_permissions: List[Permission] = None,
+        request_id: str = None,
+    ):
+        self.egress_permissions = egress_permissions
+        self.ingress_permissions = ingress_permissions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.egress_permissions:
+            for k in self.egress_permissions:
+                if k:
+                    k.validate()
+        if self.ingress_permissions:
+            for k in self.ingress_permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EgressPermissions'] = []
+        if self.egress_permissions is not None:
+            for k in self.egress_permissions:
+                result['EgressPermissions'].append(k.to_map() if k else None)
+        result['IngressPermissions'] = []
+        if self.ingress_permissions is not None:
+            for k in self.ingress_permissions:
+                result['IngressPermissions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.egress_permissions = []
+        if m.get('EgressPermissions') is not None:
+            for k in m.get('EgressPermissions'):
+                temp_model = Permission()
+                self.egress_permissions.append(temp_model.from_map(k))
+        self.ingress_permissions = []
+        if m.get('IngressPermissions') is not None:
+            for k in m.get('IngressPermissions'):
+                temp_model = Permission()
+                self.ingress_permissions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSecurityGroupAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSecurityGroupAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSecurityGroupAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSessionStatisticRequest(TeaModel):
     def __init__(
         self,
