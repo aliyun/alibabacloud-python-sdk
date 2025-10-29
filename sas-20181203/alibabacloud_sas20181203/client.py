@@ -62646,6 +62646,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.is_agree):
             query['IsAgree'] = request.is_agree
+        if not UtilClient.is_unset(request.is_confirmed):
+            query['IsConfirmed'] = request.is_confirmed
         if not UtilClient.is_unset(request.is_immediate):
             query['IsImmediate'] = request.is_immediate
         if not UtilClient.is_unset(request.lang):
@@ -62687,6 +62689,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.is_agree):
             query['IsAgree'] = request.is_agree
+        if not UtilClient.is_unset(request.is_confirmed):
+            query['IsConfirmed'] = request.is_confirmed
         if not UtilClient.is_unset(request.is_immediate):
             query['IsImmediate'] = request.is_immediate
         if not UtilClient.is_unset(request.lang):

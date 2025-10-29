@@ -1,3 +1,8 @@
+2025-10-29 Version: 6.0.2
+- Update API GetSwitchRegionDetail: add response parameters Body.Data.NeedNotice.
+- Update API GrantSwitchAgreement: add request parameters IsConfirmed.
+
+
 2025-10-28 Version: 6.0.1
 - Update API DescribeCheckWarningDetail: add request parameters ContainerName.
 
