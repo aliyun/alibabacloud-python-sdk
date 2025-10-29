@@ -17871,6 +17871,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_tag):
+            query['RuleTag'] = request.rule_tag
         if not UtilClient.is_unset(request.sort_key):
             query['SortKey'] = request.sort_key
         if not UtilClient.is_unset(request.source_ip):
@@ -17940,6 +17942,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_tag):
+            query['RuleTag'] = request.rule_tag
         if not UtilClient.is_unset(request.sort_key):
             query['SortKey'] = request.sort_key
         if not UtilClient.is_unset(request.source_ip):

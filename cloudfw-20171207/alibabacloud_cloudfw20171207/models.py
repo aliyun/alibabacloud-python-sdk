@@ -35816,6 +35816,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         member_uid: str = None,
         order: str = None,
         page_size: str = None,
+        rule_tag: str = None,
         sort_key: str = None,
         source_ip: str = None,
         start_time: str = None,
@@ -35866,6 +35867,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         self.order = order
         # The number of entries to return on each page. Maximum value: 50.
         self.page_size = page_size
+        self.rule_tag = rule_tag
         # The sorting basis. Set the value to **attackCnt**, which indicates the number of attacks.
         self.sort_key = sort_key
         # The IP address of the access source.
@@ -35924,6 +35926,8 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
             result['Order'] = self.order
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.rule_tag is not None:
+            result['RuleTag'] = self.rule_tag
         if self.sort_key is not None:
             result['SortKey'] = self.sort_key
         if self.source_ip is not None:
@@ -35962,6 +35966,8 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
             self.order = m.get('Order')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RuleTag') is not None:
+            self.rule_tag = m.get('RuleTag')
         if m.get('SortKey') is not None:
             self.sort_key = m.get('SortKey')
         if m.get('SourceIp') is not None:
@@ -36089,6 +36095,7 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         need_rule_class: int = None,
         resource_cnt: int = None,
         resource_list: List[DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList] = None,
+        rule_tag: str = None,
         virtual_patche_ids: str = None,
         vuln_key: str = None,
         vuln_level: str = None,
@@ -36162,6 +36169,7 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         self.resource_cnt = resource_cnt
         # The assets on which the vulnerability is detected.
         self.resource_list = resource_list
+        self.rule_tag = rule_tag
         # The IDs of associated virtual patching policies.
         self.virtual_patche_ids = virtual_patche_ids
         # The code of the vulnerability.
@@ -36233,6 +36241,8 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         if self.resource_list is not None:
             for k in self.resource_list:
                 result['ResourceList'].append(k.to_map() if k else None)
+        if self.rule_tag is not None:
+            result['RuleTag'] = self.rule_tag
         if self.virtual_patche_ids is not None:
             result['VirtualPatcheIds'] = self.virtual_patche_ids
         if self.vuln_key is not None:
@@ -36284,6 +36294,8 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
             for k in m.get('ResourceList'):
                 temp_model = DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList()
                 self.resource_list.append(temp_model.from_map(k))
+        if m.get('RuleTag') is not None:
+            self.rule_tag = m.get('RuleTag')
         if m.get('VirtualPatcheIds') is not None:
             self.virtual_patche_ids = m.get('VirtualPatcheIds')
         if m.get('VulnKey') is not None:

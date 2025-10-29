@@ -1,3 +1,8 @@
+2025-10-29 Version: 7.1.1
+- Update API DescribeVulnerabilityProtectedList: add request parameters RuleTag.
+- Update API DescribeVulnerabilityProtectedList: add response parameters Body.VulnList.$.RuleTag.
+
+
 2025-10-27 Version: 7.1.0
 - Support API CreatePrivateDnsEndpoint.
 - Support API DescribePostpayUserVpcStatus.
