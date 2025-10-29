@@ -1,3 +1,12 @@
+2025-10-29 Version: 6.1.0
+- Support API AddPolarFsQuota.
+- Support API CancelPolarFsFileQuota.
+- Support API DeletePolarFsQuota.
+- Support API DescribePolarFsAttribute.
+- Support API DescribePolarFsQuota.
+- Support API SetPolarFsFileQuota.
+
+
 2025-10-24 Version: 6.0.1
 - Update API DescribeDBClusterAttribute: add response parameters Body.SearchClusterStatus.
 

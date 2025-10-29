@@ -443,6 +443,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_firewall_rules_with_options_async(request, runtime)
 
+    def add_polar_fs_quota_with_options(
+        self,
+        request: polardb_20170801_models.AddPolarFsQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.AddPolarFsQuotaResponse:
+        """
+        @summary 新增PolarFs Quota规则
+        
+        @param request: AddPolarFsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPolarFsQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.quotas):
+            query['Quotas'] = request.quotas
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddPolarFsQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.AddPolarFsQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_polar_fs_quota_with_options_async(
+        self,
+        request: polardb_20170801_models.AddPolarFsQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.AddPolarFsQuotaResponse:
+        """
+        @summary 新增PolarFs Quota规则
+        
+        @param request: AddPolarFsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPolarFsQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.quotas):
+            query['Quotas'] = request.quotas
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddPolarFsQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.AddPolarFsQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_polar_fs_quota(
+        self,
+        request: polardb_20170801_models.AddPolarFsQuotaRequest,
+    ) -> polardb_20170801_models.AddPolarFsQuotaResponse:
+        """
+        @summary 新增PolarFs Quota规则
+        
+        @param request: AddPolarFsQuotaRequest
+        @return: AddPolarFsQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_polar_fs_quota_with_options(request, runtime)
+
+    async def add_polar_fs_quota_async(
+        self,
+        request: polardb_20170801_models.AddPolarFsQuotaRequest,
+    ) -> polardb_20170801_models.AddPolarFsQuotaResponse:
+        """
+        @summary 新增PolarFs Quota规则
+        
+        @param request: AddPolarFsQuotaRequest
+        @return: AddPolarFsQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_polar_fs_quota_with_options_async(request, runtime)
+
     def add_sqlrate_limiting_rules_with_options(
         self,
         request: polardb_20170801_models.AddSQLRateLimitingRulesRequest,
@@ -910,6 +1014,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_cron_job_policy_serverless_with_options_async(request, runtime)
+
+    def cancel_polar_fs_file_quota_with_options(
+        self,
+        request: polardb_20170801_models.CancelPolarFsFileQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CancelPolarFsFileQuotaResponse:
+        """
+        @summary 取消目录的配额
+        
+        @param request: CancelPolarFsFileQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPolarFsFileQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.file_path_ids):
+            query['FilePathIds'] = request.file_path_ids
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelPolarFsFileQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CancelPolarFsFileQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_polar_fs_file_quota_with_options_async(
+        self,
+        request: polardb_20170801_models.CancelPolarFsFileQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CancelPolarFsFileQuotaResponse:
+        """
+        @summary 取消目录的配额
+        
+        @param request: CancelPolarFsFileQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPolarFsFileQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.file_path_ids):
+            query['FilePathIds'] = request.file_path_ids
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelPolarFsFileQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CancelPolarFsFileQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_polar_fs_file_quota(
+        self,
+        request: polardb_20170801_models.CancelPolarFsFileQuotaRequest,
+    ) -> polardb_20170801_models.CancelPolarFsFileQuotaResponse:
+        """
+        @summary 取消目录的配额
+        
+        @param request: CancelPolarFsFileQuotaRequest
+        @return: CancelPolarFsFileQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_polar_fs_file_quota_with_options(request, runtime)
+
+    async def cancel_polar_fs_file_quota_async(
+        self,
+        request: polardb_20170801_models.CancelPolarFsFileQuotaRequest,
+    ) -> polardb_20170801_models.CancelPolarFsFileQuotaResponse:
+        """
+        @summary 取消目录的配额
+        
+        @param request: CancelPolarFsFileQuotaRequest
+        @return: CancelPolarFsFileQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_polar_fs_file_quota_with_options_async(request, runtime)
 
     def cancel_schedule_tasks_with_options(
         self,
@@ -8682,6 +8890,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
+
+    def delete_polar_fs_quota_with_options(
+        self,
+        request: polardb_20170801_models.DeletePolarFsQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeletePolarFsQuotaResponse:
+        """
+        @summary 删除PolarFs Quota规则
+        
+        @param request: DeletePolarFsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolarFsQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.quotas):
+            query['Quotas'] = request.quotas
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolarFsQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeletePolarFsQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_fs_quota_with_options_async(
+        self,
+        request: polardb_20170801_models.DeletePolarFsQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeletePolarFsQuotaResponse:
+        """
+        @summary 删除PolarFs Quota规则
+        
+        @param request: DeletePolarFsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolarFsQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.quotas):
+            query['Quotas'] = request.quotas
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolarFsQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeletePolarFsQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_fs_quota(
+        self,
+        request: polardb_20170801_models.DeletePolarFsQuotaRequest,
+    ) -> polardb_20170801_models.DeletePolarFsQuotaResponse:
+        """
+        @summary 删除PolarFs Quota规则
+        
+        @param request: DeletePolarFsQuotaRequest
+        @return: DeletePolarFsQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_polar_fs_quota_with_options(request, runtime)
+
+    async def delete_polar_fs_quota_async(
+        self,
+        request: polardb_20170801_models.DeletePolarFsQuotaRequest,
+    ) -> polardb_20170801_models.DeletePolarFsQuotaResponse:
+        """
+        @summary 删除PolarFs Quota规则
+        
+        @param request: DeletePolarFsQuotaRequest
+        @return: DeletePolarFsQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_polar_fs_quota_with_options_async(request, runtime)
 
     def delete_sqlrate_limiting_rules_with_options(
         self,
@@ -19706,6 +20018,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pending_maintenance_actions_with_options_async(request, runtime)
+
+    def describe_polar_fs_attribute_with_options(
+        self,
+        request: polardb_20170801_models.DescribePolarFsAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribePolarFsAttributeResponse:
+        """
+        @summary 获取PolarFS实例详情
+        
+        @param request: DescribePolarFsAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolarFsAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.query_fuse_mount_info):
+            query['QueryFuseMountInfo'] = request.query_fuse_mount_info
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolarFsAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePolarFsAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_fs_attribute_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribePolarFsAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribePolarFsAttributeResponse:
+        """
+        @summary 获取PolarFS实例详情
+        
+        @param request: DescribePolarFsAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolarFsAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.query_fuse_mount_info):
+            query['QueryFuseMountInfo'] = request.query_fuse_mount_info
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolarFsAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePolarFsAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_fs_attribute(
+        self,
+        request: polardb_20170801_models.DescribePolarFsAttributeRequest,
+    ) -> polardb_20170801_models.DescribePolarFsAttributeResponse:
+        """
+        @summary 获取PolarFS实例详情
+        
+        @param request: DescribePolarFsAttributeRequest
+        @return: DescribePolarFsAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_polar_fs_attribute_with_options(request, runtime)
+
+    async def describe_polar_fs_attribute_async(
+        self,
+        request: polardb_20170801_models.DescribePolarFsAttributeRequest,
+    ) -> polardb_20170801_models.DescribePolarFsAttributeResponse:
+        """
+        @summary 获取PolarFS实例详情
+        
+        @param request: DescribePolarFsAttributeRequest
+        @return: DescribePolarFsAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_polar_fs_attribute_with_options_async(request, runtime)
+
+    def describe_polar_fs_quota_with_options(
+        self,
+        request: polardb_20170801_models.DescribePolarFsQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribePolarFsQuotaResponse:
+        """
+        @summary 查询配额规则
+        
+        @param request: DescribePolarFsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolarFsQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolarFsQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePolarFsQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_fs_quota_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribePolarFsQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribePolarFsQuotaResponse:
+        """
+        @summary 查询配额规则
+        
+        @param request: DescribePolarFsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolarFsQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolarFsQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePolarFsQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_fs_quota(
+        self,
+        request: polardb_20170801_models.DescribePolarFsQuotaRequest,
+    ) -> polardb_20170801_models.DescribePolarFsQuotaResponse:
+        """
+        @summary 查询配额规则
+        
+        @param request: DescribePolarFsQuotaRequest
+        @return: DescribePolarFsQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_polar_fs_quota_with_options(request, runtime)
+
+    async def describe_polar_fs_quota_async(
+        self,
+        request: polardb_20170801_models.DescribePolarFsQuotaRequest,
+    ) -> polardb_20170801_models.DescribePolarFsQuotaResponse:
+        """
+        @summary 查询配额规则
+        
+        @param request: DescribePolarFsQuotaRequest
+        @return: DescribePolarFsQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_polar_fs_quota_with_options_async(request, runtime)
 
     def describe_polar_sqlcollector_policy_with_options(
         self,
@@ -33468,6 +33988,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_account_privilege_zonal_with_options_async(request, runtime)
+
+    def set_polar_fs_file_quota_with_options(
+        self,
+        request: polardb_20170801_models.SetPolarFsFileQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.SetPolarFsFileQuotaResponse:
+        """
+        @summary 为目录应用配额规则
+        
+        @param request: SetPolarFsFileQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPolarFsFileQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.file_path_quotas):
+            query['FilePathQuotas'] = request.file_path_quotas
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolarFsFileQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.SetPolarFsFileQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_polar_fs_file_quota_with_options_async(
+        self,
+        request: polardb_20170801_models.SetPolarFsFileQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.SetPolarFsFileQuotaResponse:
+        """
+        @summary 为目录应用配额规则
+        
+        @param request: SetPolarFsFileQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPolarFsFileQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.file_path_quotas):
+            query['FilePathQuotas'] = request.file_path_quotas
+        if not UtilClient.is_unset(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolarFsFileQuota',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.SetPolarFsFileQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_polar_fs_file_quota(
+        self,
+        request: polardb_20170801_models.SetPolarFsFileQuotaRequest,
+    ) -> polardb_20170801_models.SetPolarFsFileQuotaResponse:
+        """
+        @summary 为目录应用配额规则
+        
+        @param request: SetPolarFsFileQuotaRequest
+        @return: SetPolarFsFileQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_polar_fs_file_quota_with_options(request, runtime)
+
+    async def set_polar_fs_file_quota_async(
+        self,
+        request: polardb_20170801_models.SetPolarFsFileQuotaRequest,
+    ) -> polardb_20170801_models.SetPolarFsFileQuotaResponse:
+        """
+        @summary 为目录应用配额规则
+        
+        @param request: SetPolarFsFileQuotaRequest
+        @return: SetPolarFsFileQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_polar_fs_file_quota_with_options_async(request, runtime)
 
     def switch_over_global_database_network_with_options(
         self,

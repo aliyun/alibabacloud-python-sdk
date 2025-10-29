@@ -426,6 +426,213 @@ class AddFirewallRulesResponse(TeaModel):
         return self
 
 
+class AddPolarFsQuotaRequestQuotas(TeaModel):
+    def __init__(
+        self,
+        access_ttl: int = None,
+        change_ttl: int = None,
+        description: str = None,
+        enabled: bool = None,
+        exclude: str = None,
+        file_count_limit: int = None,
+        include: str = None,
+        name: str = None,
+        priority: int = None,
+        size_limit: int = None,
+    ):
+        self.access_ttl = access_ttl
+        self.change_ttl = change_ttl
+        self.description = description
+        self.enabled = enabled
+        self.exclude = exclude
+        self.file_count_limit = file_count_limit
+        # This parameter is required.
+        self.include = include
+        # This parameter is required.
+        self.name = name
+        self.priority = priority
+        self.size_limit = size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_ttl is not None:
+            result['AccessTTL'] = self.access_ttl
+        if self.change_ttl is not None:
+            result['ChangeTTL'] = self.change_ttl
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        if self.file_count_limit is not None:
+            result['FileCountLimit'] = self.file_count_limit
+        if self.include is not None:
+            result['Include'] = self.include
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.size_limit is not None:
+            result['SizeLimit'] = self.size_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessTTL') is not None:
+            self.access_ttl = m.get('AccessTTL')
+        if m.get('ChangeTTL') is not None:
+            self.change_ttl = m.get('ChangeTTL')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        if m.get('FileCountLimit') is not None:
+            self.file_count_limit = m.get('FileCountLimit')
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SizeLimit') is not None:
+            self.size_limit = m.get('SizeLimit')
+        return self
+
+
+class AddPolarFsQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        polar_fs_instance_id: str = None,
+        quotas: List[AddPolarFsQuotaRequestQuotas] = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.polar_fs_instance_id = polar_fs_instance_id
+        # This parameter is required.
+        self.quotas = quotas
+
+    def validate(self):
+        if self.quotas:
+            for k in self.quotas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        result['Quotas'] = []
+        if self.quotas is not None:
+            for k in self.quotas:
+                result['Quotas'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        self.quotas = []
+        if m.get('Quotas') is not None:
+            for k in m.get('Quotas'):
+                temp_model = AddPolarFsQuotaRequestQuotas()
+                self.quotas.append(temp_model.from_map(k))
+        return self
+
+
+class AddPolarFsQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        polar_fs_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.polar_fs_instance_id = polar_fs_instance_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddPolarFsQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddPolarFsQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddPolarFsQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddSQLRateLimitingRulesRequest(TeaModel):
     def __init__(
         self,
@@ -980,6 +1187,128 @@ class CancelCronJobPolicyServerlessResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelCronJobPolicyServerlessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelPolarFsFileQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        file_path_ids: str = None,
+        polar_fs_instance_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.file_path_ids = file_path_ids
+        # This parameter is required.
+        self.polar_fs_instance_id = polar_fs_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.file_path_ids is not None:
+            result['FilePathIds'] = self.file_path_ids
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('FilePathIds') is not None:
+            self.file_path_ids = m.get('FilePathIds')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        return self
+
+
+class CancelPolarFsFileQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        file_path_ids: str = None,
+        polar_fs_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.file_path_ids = file_path_ids
+        self.polar_fs_instance_id = polar_fs_instance_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_path_ids is not None:
+            result['FilePathIds'] = self.file_path_ids
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilePathIds') is not None:
+            self.file_path_ids = m.get('FilePathIds')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelPolarFsFileQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelPolarFsFileQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelPolarFsFileQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11496,6 +11825,165 @@ class DeleteParameterGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePolarFsQuotaRequestQuotas(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeletePolarFsQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        polar_fs_instance_id: str = None,
+        quotas: List[DeletePolarFsQuotaRequestQuotas] = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.polar_fs_instance_id = polar_fs_instance_id
+        # This parameter is required.
+        self.quotas = quotas
+
+    def validate(self):
+        if self.quotas:
+            for k in self.quotas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        result['Quotas'] = []
+        if self.quotas is not None:
+            for k in self.quotas:
+                result['Quotas'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        self.quotas = []
+        if m.get('Quotas') is not None:
+            for k in m.get('Quotas'):
+                temp_model = DeletePolarFsQuotaRequestQuotas()
+                self.quotas.append(temp_model.from_map(k))
+        return self
+
+
+class DeletePolarFsQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        polar_fs_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.polar_fs_instance_id = polar_fs_instance_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePolarFsQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePolarFsQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePolarFsQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -40220,6 +40708,570 @@ class DescribePendingMaintenanceActionsResponse(TeaModel):
         return self
 
 
+class DescribePolarFsAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        polar_fs_instance_id: str = None,
+        query_fuse_mount_info: bool = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.polar_fs_instance_id = polar_fs_instance_id
+        self.query_fuse_mount_info = query_fuse_mount_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.query_fuse_mount_info is not None:
+            result['QueryFuseMountInfo'] = self.query_fuse_mount_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('QueryFuseMountInfo') is not None:
+            self.query_fuse_mount_info = m.get('QueryFuseMountInfo')
+        return self
+
+
+class DescribePolarFsAttributeResponseBodyMountInfo(TeaModel):
+    def __init__(
+        self,
+        polar_db_proxy: str = None,
+        polar_fs_cluster: str = None,
+        token: str = None,
+    ):
+        self.polar_db_proxy = polar_db_proxy
+        self.polar_fs_cluster = polar_fs_cluster
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.polar_db_proxy is not None:
+            result['PolarDbProxy'] = self.polar_db_proxy
+        if self.polar_fs_cluster is not None:
+            result['PolarFsCluster'] = self.polar_fs_cluster
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolarDbProxy') is not None:
+            self.polar_db_proxy = m.get('PolarDbProxy')
+        if m.get('PolarFsCluster') is not None:
+            self.polar_fs_cluster = m.get('PolarFsCluster')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class DescribePolarFsAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        accelerated_storage_space: float = None,
+        accelerating_enable: str = None,
+        bandwidth: float = None,
+        bandwidth_base_line: float = None,
+        category: str = None,
+        client_download_path: str = None,
+        create_time: str = None,
+        dbtype: str = None,
+        expire_time: str = None,
+        expired: str = None,
+        lock_mode: str = None,
+        meta_url: str = None,
+        minor_version: str = None,
+        mount_info: DescribePolarFsAttributeResponseBodyMountInfo = None,
+        pay_type: str = None,
+        polar_fs_instance_description: str = None,
+        polar_fs_instance_id: str = None,
+        polar_fs_status: str = None,
+        polar_fs_type: str = None,
+        polar_fs_version: str = None,
+        region_id: str = None,
+        relative_db_cluster_id: str = None,
+        request_id: str = None,
+        security_group_id: str = None,
+        storage_space: float = None,
+        storage_type: str = None,
+        storage_used: float = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.accelerated_storage_space = accelerated_storage_space
+        self.accelerating_enable = accelerating_enable
+        self.bandwidth = bandwidth
+        self.bandwidth_base_line = bandwidth_base_line
+        self.category = category
+        self.client_download_path = client_download_path
+        self.create_time = create_time
+        self.dbtype = dbtype
+        self.expire_time = expire_time
+        self.expired = expired
+        self.lock_mode = lock_mode
+        self.meta_url = meta_url
+        self.minor_version = minor_version
+        self.mount_info = mount_info
+        self.pay_type = pay_type
+        self.polar_fs_instance_description = polar_fs_instance_description
+        self.polar_fs_instance_id = polar_fs_instance_id
+        self.polar_fs_status = polar_fs_status
+        self.polar_fs_type = polar_fs_type
+        self.polar_fs_version = polar_fs_version
+        self.region_id = region_id
+        self.relative_db_cluster_id = relative_db_cluster_id
+        # Id of the request
+        self.request_id = request_id
+        self.security_group_id = security_group_id
+        self.storage_space = storage_space
+        self.storage_type = storage_type
+        self.storage_used = storage_used
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.mount_info:
+            self.mount_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerated_storage_space is not None:
+            result['AcceleratedStorageSpace'] = self.accelerated_storage_space
+        if self.accelerating_enable is not None:
+            result['AcceleratingEnable'] = self.accelerating_enable
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.bandwidth_base_line is not None:
+            result['BandwidthBaseLine'] = self.bandwidth_base_line
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.client_download_path is not None:
+            result['ClientDownloadPath'] = self.client_download_path
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.expired is not None:
+            result['Expired'] = self.expired
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.meta_url is not None:
+            result['MetaUrl'] = self.meta_url
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
+        if self.mount_info is not None:
+            result['MountInfo'] = self.mount_info.to_map()
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.polar_fs_instance_description is not None:
+            result['PolarFsInstanceDescription'] = self.polar_fs_instance_description
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.polar_fs_status is not None:
+            result['PolarFsStatus'] = self.polar_fs_status
+        if self.polar_fs_type is not None:
+            result['PolarFsType'] = self.polar_fs_type
+        if self.polar_fs_version is not None:
+            result['PolarFsVersion'] = self.polar_fs_version
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.relative_db_cluster_id is not None:
+            result['RelativeDbClusterId'] = self.relative_db_cluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.storage_space is not None:
+            result['StorageSpace'] = self.storage_space
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.storage_used is not None:
+            result['StorageUsed'] = self.storage_used
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratedStorageSpace') is not None:
+            self.accelerated_storage_space = m.get('AcceleratedStorageSpace')
+        if m.get('AcceleratingEnable') is not None:
+            self.accelerating_enable = m.get('AcceleratingEnable')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('BandwidthBaseLine') is not None:
+            self.bandwidth_base_line = m.get('BandwidthBaseLine')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ClientDownloadPath') is not None:
+            self.client_download_path = m.get('ClientDownloadPath')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Expired') is not None:
+            self.expired = m.get('Expired')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('MetaUrl') is not None:
+            self.meta_url = m.get('MetaUrl')
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
+        if m.get('MountInfo') is not None:
+            temp_model = DescribePolarFsAttributeResponseBodyMountInfo()
+            self.mount_info = temp_model.from_map(m['MountInfo'])
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('PolarFsInstanceDescription') is not None:
+            self.polar_fs_instance_description = m.get('PolarFsInstanceDescription')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('PolarFsStatus') is not None:
+            self.polar_fs_status = m.get('PolarFsStatus')
+        if m.get('PolarFsType') is not None:
+            self.polar_fs_type = m.get('PolarFsType')
+        if m.get('PolarFsVersion') is not None:
+            self.polar_fs_version = m.get('PolarFsVersion')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RelativeDbClusterId') is not None:
+            self.relative_db_cluster_id = m.get('RelativeDbClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('StorageSpace') is not None:
+            self.storage_space = m.get('StorageSpace')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('StorageUsed') is not None:
+            self.storage_used = m.get('StorageUsed')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribePolarFsAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePolarFsAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePolarFsAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePolarFsQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        polar_fs_instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.polar_fs_instance_id = polar_fs_instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribePolarFsQuotaResponseBodyPolicyItems(TeaModel):
+    def __init__(
+        self,
+        access_ttl: int = None,
+        change_ttl: int = None,
+        description: str = None,
+        enabled: bool = None,
+        exclude: str = None,
+        file_count_limit: int = None,
+        id: int = None,
+        include: str = None,
+        name: str = None,
+        priority: int = None,
+        size_limit: int = None,
+    ):
+        self.access_ttl = access_ttl
+        self.change_ttl = change_ttl
+        self.description = description
+        self.enabled = enabled
+        self.exclude = exclude
+        self.file_count_limit = file_count_limit
+        self.id = id
+        self.include = include
+        self.name = name
+        self.priority = priority
+        self.size_limit = size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_ttl is not None:
+            result['AccessTTL'] = self.access_ttl
+        if self.change_ttl is not None:
+            result['ChangeTTL'] = self.change_ttl
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        if self.file_count_limit is not None:
+            result['FileCountLimit'] = self.file_count_limit
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.include is not None:
+            result['Include'] = self.include
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.size_limit is not None:
+            result['SizeLimit'] = self.size_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessTTL') is not None:
+            self.access_ttl = m.get('AccessTTL')
+        if m.get('ChangeTTL') is not None:
+            self.change_ttl = m.get('ChangeTTL')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        if m.get('FileCountLimit') is not None:
+            self.file_count_limit = m.get('FileCountLimit')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SizeLimit') is not None:
+            self.size_limit = m.get('SizeLimit')
+        return self
+
+
+class DescribePolarFsQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: str = None,
+        page_record_count: str = None,
+        page_size: str = None,
+        polar_fs_instance_id: str = None,
+        policy_items: List[DescribePolarFsQuotaResponseBodyPolicyItems] = None,
+        request_id: str = None,
+        total_record_count: str = None,
+    ):
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        self.page_size = page_size
+        self.polar_fs_instance_id = polar_fs_instance_id
+        self.policy_items = policy_items
+        # Id of the request
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.policy_items:
+            for k in self.policy_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        result['PolicyItems'] = []
+        if self.policy_items is not None:
+            for k in self.policy_items:
+                result['PolicyItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        self.policy_items = []
+        if m.get('PolicyItems') is not None:
+            for k in m.get('PolicyItems'):
+                temp_model = DescribePolarFsQuotaResponseBodyPolicyItems()
+                self.policy_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribePolarFsQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePolarFsQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePolarFsQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePolarSQLCollectorPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -60624,6 +61676,175 @@ class RevokeAccountPrivilegeZonalResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevokeAccountPrivilegeZonalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetPolarFsFileQuotaRequestFilePathQuotas(TeaModel):
+    def __init__(
+        self,
+        file_path_id: str = None,
+        max_depth: int = None,
+        quota_ids: str = None,
+        strategy: str = None,
+    ):
+        self.file_path_id = file_path_id
+        self.max_depth = max_depth
+        self.quota_ids = quota_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_path_id is not None:
+            result['FilePathId'] = self.file_path_id
+        if self.max_depth is not None:
+            result['MaxDepth'] = self.max_depth
+        if self.quota_ids is not None:
+            result['QuotaIds'] = self.quota_ids
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilePathId') is not None:
+            self.file_path_id = m.get('FilePathId')
+        if m.get('MaxDepth') is not None:
+            self.max_depth = m.get('MaxDepth')
+        if m.get('QuotaIds') is not None:
+            self.quota_ids = m.get('QuotaIds')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
+class SetPolarFsFileQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        file_path_quotas: List[SetPolarFsFileQuotaRequestFilePathQuotas] = None,
+        polar_fs_instance_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.file_path_quotas = file_path_quotas
+        # This parameter is required.
+        self.polar_fs_instance_id = polar_fs_instance_id
+
+    def validate(self):
+        if self.file_path_quotas:
+            for k in self.file_path_quotas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['FilePathQuotas'] = []
+        if self.file_path_quotas is not None:
+            for k in self.file_path_quotas:
+                result['FilePathQuotas'].append(k.to_map() if k else None)
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.file_path_quotas = []
+        if m.get('FilePathQuotas') is not None:
+            for k in m.get('FilePathQuotas'):
+                temp_model = SetPolarFsFileQuotaRequestFilePathQuotas()
+                self.file_path_quotas.append(temp_model.from_map(k))
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        return self
+
+
+class SetPolarFsFileQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        polar_fs_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.polar_fs_instance_id = polar_fs_instance_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.polar_fs_instance_id is not None:
+            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolarFsInstanceId') is not None:
+            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetPolarFsFileQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetPolarFsFileQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetPolarFsFileQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
