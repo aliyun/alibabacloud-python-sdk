@@ -1,3 +1,6 @@
+2025-10-29 Version: 2.2.2
+- Generated python 2020-03-06 for companyreg.
+
 2025-10-29 Version: 2.2.1
 - Update API RecordCallCenterEventForPartner: add request parameters EmployeeCode.
 - Update API RecordCallCenterEventForPartner: add request parameters TenantId.
