@@ -1157,6 +1157,8 @@ class Client(OpenApiClient):
             query['AudioRate'] = request.audio_rate
         if not UtilClient.is_unset(request.bitrate_with_source):
             query['BitrateWithSource'] = request.bitrate_with_source
+        if not UtilClient.is_unset(request.de_interlaced):
+            query['DeInterlaced'] = request.de_interlaced
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.encrypt_parameters):
@@ -1251,6 +1253,8 @@ class Client(OpenApiClient):
             query['AudioRate'] = request.audio_rate
         if not UtilClient.is_unset(request.bitrate_with_source):
             query['BitrateWithSource'] = request.bitrate_with_source
+        if not UtilClient.is_unset(request.de_interlaced):
+            query['DeInterlaced'] = request.de_interlaced
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.encrypt_parameters):
@@ -44788,6 +44792,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.publish_live_staging_config_to_production_with_options_async(request, runtime)
 
+    def put_record_storage_life_cycle_with_options(
+        self,
+        tmp_req: live_20161101_models.PutRecordStorageLifeCycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.PutRecordStorageLifeCycleResponse:
+        """
+        @summary 用于修改指定直播流的录制文件存储时长。
+        
+        @description ## 请求说明
+        - 该接口允许用户为一个或多个指定的直播流设置新的录制文件存储期限。
+        - `Tag` 字段必须符合格式 `[0-9]+days`，表示直播结束后录制内容将被保存的天数。
+        - 如果对某个流的存储时间修改失败，错误信息会被记录在返回结果中。对于失败的情况，调用方应重试最多3次；如果超过重试次数仍失败，则视为最终失败。
+        - 为了支持未来可能的需求变化（如更长的存储周期），请确保您的系统能够处理不同的时间段值。
+        - 成功执行后，供应商会通过异步回调的方式通知调用方所有操作的结果。若回调失败，将按照1小时、2小时、4小时的时间间隔尝试重新发送，直至成功或达到最大重试次数。
+        
+        @param tmp_req: PutRecordStorageLifeCycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutRecordStorageLifeCycleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = live_20161101_models.PutRecordStorageLifeCycleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_ids):
+            request.stream_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_ids, 'StreamIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.stream_ids_shrink):
+            body['StreamIds'] = request.stream_ids_shrink
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.unix_timestamp):
+            body['UnixTimestamp'] = request.unix_timestamp
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutRecordStorageLifeCycle',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.PutRecordStorageLifeCycleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_record_storage_life_cycle_with_options_async(
+        self,
+        tmp_req: live_20161101_models.PutRecordStorageLifeCycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.PutRecordStorageLifeCycleResponse:
+        """
+        @summary 用于修改指定直播流的录制文件存储时长。
+        
+        @description ## 请求说明
+        - 该接口允许用户为一个或多个指定的直播流设置新的录制文件存储期限。
+        - `Tag` 字段必须符合格式 `[0-9]+days`，表示直播结束后录制内容将被保存的天数。
+        - 如果对某个流的存储时间修改失败，错误信息会被记录在返回结果中。对于失败的情况，调用方应重试最多3次；如果超过重试次数仍失败，则视为最终失败。
+        - 为了支持未来可能的需求变化（如更长的存储周期），请确保您的系统能够处理不同的时间段值。
+        - 成功执行后，供应商会通过异步回调的方式通知调用方所有操作的结果。若回调失败，将按照1小时、2小时、4小时的时间间隔尝试重新发送，直至成功或达到最大重试次数。
+        
+        @param tmp_req: PutRecordStorageLifeCycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutRecordStorageLifeCycleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = live_20161101_models.PutRecordStorageLifeCycleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_ids):
+            request.stream_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_ids, 'StreamIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.stream_ids_shrink):
+            body['StreamIds'] = request.stream_ids_shrink
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.unix_timestamp):
+            body['UnixTimestamp'] = request.unix_timestamp
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutRecordStorageLifeCycle',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.PutRecordStorageLifeCycleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_record_storage_life_cycle(
+        self,
+        request: live_20161101_models.PutRecordStorageLifeCycleRequest,
+    ) -> live_20161101_models.PutRecordStorageLifeCycleResponse:
+        """
+        @summary 用于修改指定直播流的录制文件存储时长。
+        
+        @description ## 请求说明
+        - 该接口允许用户为一个或多个指定的直播流设置新的录制文件存储期限。
+        - `Tag` 字段必须符合格式 `[0-9]+days`，表示直播结束后录制内容将被保存的天数。
+        - 如果对某个流的存储时间修改失败，错误信息会被记录在返回结果中。对于失败的情况，调用方应重试最多3次；如果超过重试次数仍失败，则视为最终失败。
+        - 为了支持未来可能的需求变化（如更长的存储周期），请确保您的系统能够处理不同的时间段值。
+        - 成功执行后，供应商会通过异步回调的方式通知调用方所有操作的结果。若回调失败，将按照1小时、2小时、4小时的时间间隔尝试重新发送，直至成功或达到最大重试次数。
+        
+        @param request: PutRecordStorageLifeCycleRequest
+        @return: PutRecordStorageLifeCycleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.put_record_storage_life_cycle_with_options(request, runtime)
+
+    async def put_record_storage_life_cycle_async(
+        self,
+        request: live_20161101_models.PutRecordStorageLifeCycleRequest,
+    ) -> live_20161101_models.PutRecordStorageLifeCycleResponse:
+        """
+        @summary 用于修改指定直播流的录制文件存储时长。
+        
+        @description ## 请求说明
+        - 该接口允许用户为一个或多个指定的直播流设置新的录制文件存储期限。
+        - `Tag` 字段必须符合格式 `[0-9]+days`，表示直播结束后录制内容将被保存的天数。
+        - 如果对某个流的存储时间修改失败，错误信息会被记录在返回结果中。对于失败的情况，调用方应重试最多3次；如果超过重试次数仍失败，则视为最终失败。
+        - 为了支持未来可能的需求变化（如更长的存储周期），请确保您的系统能够处理不同的时间段值。
+        - 成功执行后，供应商会通过异步回调的方式通知调用方所有操作的结果。若回调失败，将按照1小时、2小时、4小时的时间间隔尝试重新发送，直至成功或达到最大重试次数。
+        
+        @param request: PutRecordStorageLifeCycleRequest
+        @return: PutRecordStorageLifeCycleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.put_record_storage_life_cycle_with_options_async(request, runtime)
+
     def query_live_domain_multi_stream_list_with_options(
         self,
         request: live_20161101_models.QueryLiveDomainMultiStreamListRequest,
@@ -51962,6 +52106,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> live_20161101_models.UnTagLiveResourcesResponse:
         """
+        @summary 解绑标签
+        
         @param request: UnTagLiveResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnTagLiveResourcesResponse
@@ -52005,6 +52151,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> live_20161101_models.UnTagLiveResourcesResponse:
         """
+        @summary 解绑标签
+        
         @param request: UnTagLiveResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnTagLiveResourcesResponse
@@ -52047,6 +52195,8 @@ class Client(OpenApiClient):
         request: live_20161101_models.UnTagLiveResourcesRequest,
     ) -> live_20161101_models.UnTagLiveResourcesResponse:
         """
+        @summary 解绑标签
+        
         @param request: UnTagLiveResourcesRequest
         @return: UnTagLiveResourcesResponse
         """
@@ -52058,6 +52208,8 @@ class Client(OpenApiClient):
         request: live_20161101_models.UnTagLiveResourcesRequest,
     ) -> live_20161101_models.UnTagLiveResourcesResponse:
         """
+        @summary 解绑标签
+        
         @param request: UnTagLiveResourcesRequest
         @return: UnTagLiveResourcesResponse
         """
@@ -52621,6 +52773,8 @@ class Client(OpenApiClient):
             query['AudioRate'] = request.audio_rate
         if not UtilClient.is_unset(request.bitrate_with_source):
             query['BitrateWithSource'] = request.bitrate_with_source
+        if not UtilClient.is_unset(request.de_interlaced):
+            query['DeInterlaced'] = request.de_interlaced
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.encrypt_parameters):
@@ -52709,6 +52863,8 @@ class Client(OpenApiClient):
             query['AudioRate'] = request.audio_rate
         if not UtilClient.is_unset(request.bitrate_with_source):
             query['BitrateWithSource'] = request.bitrate_with_source
+        if not UtilClient.is_unset(request.de_interlaced):
+            query['DeInterlaced'] = request.de_interlaced
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.encrypt_parameters):

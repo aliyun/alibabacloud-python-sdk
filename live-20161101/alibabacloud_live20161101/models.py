@@ -2082,6 +2082,7 @@ class AddCustomLiveStreamTranscodeRequest(TeaModel):
         audio_profile: str = None,
         audio_rate: int = None,
         bitrate_with_source: str = None,
+        de_interlaced: bool = None,
         domain: str = None,
         encrypt_parameters: str = None,
         ext_with_source: str = None,
@@ -2136,6 +2137,7 @@ class AddCustomLiveStreamTranscodeRequest(TeaModel):
         # *   **LowerLimit int** : the minimum bitrate rate. Valid values: an integer from 128 to 10000. The value must be smaller than the maximum bitrate.
         # *   **Factor**: The ratio of the output bitrate to the source bitrate. Valid values: 0.1 to 1. The value is accurate to one decimal place. A value of 1 indicates that the output video has the same bitrate as the source video.
         self.bitrate_with_source = bitrate_with_source
+        self.de_interlaced = de_interlaced
         # The main streaming domain.
         # 
         # This parameter is required.
@@ -2256,6 +2258,8 @@ class AddCustomLiveStreamTranscodeRequest(TeaModel):
             result['AudioRate'] = self.audio_rate
         if self.bitrate_with_source is not None:
             result['BitrateWithSource'] = self.bitrate_with_source
+        if self.de_interlaced is not None:
+            result['DeInterlaced'] = self.de_interlaced
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.encrypt_parameters is not None:
@@ -2312,6 +2316,8 @@ class AddCustomLiveStreamTranscodeRequest(TeaModel):
             self.audio_rate = m.get('AudioRate')
         if m.get('BitrateWithSource') is not None:
             self.bitrate_with_source = m.get('BitrateWithSource')
+        if m.get('DeInterlaced') is not None:
+            self.de_interlaced = m.get('DeInterlaced')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('EncryptParameters') is not None:
@@ -50558,6 +50564,7 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
         audio_rate: int = None,
         bframes: str = None,
         bitrate_with_source: Dict[str, Any] = None,
+        de_interlaced: bool = None,
         ext_with_source: Dict[str, Any] = None,
         fps: int = None,
         fps_with_source: Dict[str, Any] = None,
@@ -50594,6 +50601,7 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
         self.bframes = bframes
         # The source-based bitrate settings.
         self.bitrate_with_source = bitrate_with_source
+        self.de_interlaced = de_interlaced
         # Other source-based settings.
         self.ext_with_source = ext_with_source
         # The frame rate of the output video. Unit: frames per second (FPS).
@@ -50652,6 +50660,8 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
             result['Bframes'] = self.bframes
         if self.bitrate_with_source is not None:
             result['BitrateWithSource'] = self.bitrate_with_source
+        if self.de_interlaced is not None:
+            result['DeInterlaced'] = self.de_interlaced
         if self.ext_with_source is not None:
             result['ExtWithSource'] = self.ext_with_source
         if self.fps is not None:
@@ -50692,6 +50702,8 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
             self.bframes = m.get('Bframes')
         if m.get('BitrateWithSource') is not None:
             self.bitrate_with_source = m.get('BitrateWithSource')
+        if m.get('DeInterlaced') is not None:
+            self.de_interlaced = m.get('DeInterlaced')
         if m.get('ExtWithSource') is not None:
             self.ext_with_source = m.get('ExtWithSource')
         if m.get('FPS') is not None:
@@ -77194,6 +77206,170 @@ class PublishLiveStagingConfigToProductionResponse(TeaModel):
         return self
 
 
+class PutRecordStorageLifeCycleRequest(TeaModel):
+    def __init__(
+        self,
+        stream_ids: List[str] = None,
+        tag: str = None,
+        unix_timestamp: int = None,
+    ):
+        # This parameter is required.
+        self.stream_ids = stream_ids
+        # This parameter is required.
+        self.tag = tag
+        # This parameter is required.
+        self.unix_timestamp = unix_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.stream_ids is not None:
+            result['StreamIds'] = self.stream_ids
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.unix_timestamp is not None:
+            result['UnixTimestamp'] = self.unix_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StreamIds') is not None:
+            self.stream_ids = m.get('StreamIds')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('UnixTimestamp') is not None:
+            self.unix_timestamp = m.get('UnixTimestamp')
+        return self
+
+
+class PutRecordStorageLifeCycleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        stream_ids_shrink: str = None,
+        tag: str = None,
+        unix_timestamp: int = None,
+    ):
+        # This parameter is required.
+        self.stream_ids_shrink = stream_ids_shrink
+        # This parameter is required.
+        self.tag = tag
+        # This parameter is required.
+        self.unix_timestamp = unix_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.stream_ids_shrink is not None:
+            result['StreamIds'] = self.stream_ids_shrink
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.unix_timestamp is not None:
+            result['UnixTimestamp'] = self.unix_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StreamIds') is not None:
+            self.stream_ids_shrink = m.get('StreamIds')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('UnixTimestamp') is not None:
+            self.unix_timestamp = m.get('UnixTimestamp')
+        return self
+
+
+class PutRecordStorageLifeCycleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        msg: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.msg = msg
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PutRecordStorageLifeCycleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PutRecordStorageLifeCycleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PutRecordStorageLifeCycleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryLiveDomainMultiStreamListRequest(TeaModel):
     def __init__(
         self,
@@ -88363,6 +88539,7 @@ class UpdateCustomLiveStreamTranscodeRequest(TeaModel):
         audio_profile: str = None,
         audio_rate: int = None,
         bitrate_with_source: str = None,
+        de_interlaced: bool = None,
         domain: str = None,
         encrypt_parameters: str = None,
         ext_with_source: str = None,
@@ -88409,6 +88586,7 @@ class UpdateCustomLiveStreamTranscodeRequest(TeaModel):
         # *   **LowerLimit**: the minimum bitrate. Set this field to an integer from 128 to 10000. The value must be smaller than the maximum bitrate.
         # *   **Factor**: the ratio of the output bitrate to the source bitrate. Valid values: 0.1 to 1. The value is accurate to one decimal place. A value of 1 indicates that the output video has the same bitrate as the source video.
         self.bitrate_with_source = bitrate_with_source
+        self.de_interlaced = de_interlaced
         # Streamer domain name, unmodifiable.
         # 
         # This parameter is required.
@@ -88505,6 +88683,8 @@ class UpdateCustomLiveStreamTranscodeRequest(TeaModel):
             result['AudioRate'] = self.audio_rate
         if self.bitrate_with_source is not None:
             result['BitrateWithSource'] = self.bitrate_with_source
+        if self.de_interlaced is not None:
+            result['DeInterlaced'] = self.de_interlaced
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.encrypt_parameters is not None:
@@ -88555,6 +88735,8 @@ class UpdateCustomLiveStreamTranscodeRequest(TeaModel):
             self.audio_rate = m.get('AudioRate')
         if m.get('BitrateWithSource') is not None:
             self.bitrate_with_source = m.get('BitrateWithSource')
+        if m.get('DeInterlaced') is not None:
+            self.de_interlaced = m.get('DeInterlaced')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('EncryptParameters') is not None:

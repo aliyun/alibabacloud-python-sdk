@@ -1,3 +1,10 @@
+2025-10-29 Version: 2.3.0
+- Support API PutRecordStorageLifeCycle.
+- Update API AddCustomLiveStreamTranscode: add request parameters DeInterlaced.
+- Update API DescribeLiveStreamTranscodeInfo: add response parameters Body.DomainTranscodeList.$.CustomTranscodeParameters.DeInterlaced.
+- Update API UpdateCustomLiveStreamTranscode: add request parameters DeInterlaced.
+
+
 2025-09-09 Version: 2.2.0
 - Support API ListRTCLiveRooms.
 
