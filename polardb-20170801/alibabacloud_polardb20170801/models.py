@@ -12243,6 +12243,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
         gpu: str = None,
         link_ip: str = None,
         memory_size: str = None,
+        public_ip: str = None,
         vnode_id: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -12257,6 +12258,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
         self.gpu = gpu
         self.link_ip = link_ip
         self.memory_size = memory_size
+        self.public_ip = public_ip
         self.vnode_id = vnode_id
         self.vpcid = vpcid
         self.v_switch_id = v_switch_id
@@ -12294,6 +12296,8 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['LinkIP'] = self.link_ip
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.public_ip is not None:
+            result['PublicIp'] = self.public_ip
         if self.vnode_id is not None:
             result['VNodeId'] = self.vnode_id
         if self.vpcid is not None:
@@ -12327,6 +12331,8 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.link_ip = m.get('LinkIP')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('PublicIp') is not None:
+            self.public_ip = m.get('PublicIp')
         if m.get('VNodeId') is not None:
             self.vnode_id = m.get('VNodeId')
         if m.get('VPCId') is not None:

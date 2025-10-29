@@ -1,3 +1,7 @@
+2025-10-29 Version: 6.1.1
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.PublicIp.
+
+
 2025-10-29 Version: 6.1.0
 - Support API AddPolarFsQuota.
 - Support API CancelPolarFsFileQuota.
