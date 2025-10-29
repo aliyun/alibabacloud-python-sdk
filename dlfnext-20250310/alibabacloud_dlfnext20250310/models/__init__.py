@@ -112,6 +112,7 @@ from ._get_role_request import GetRoleRequest
 from ._get_role_response import GetRoleResponse
 from ._get_share_response import GetShareResponse
 from ._get_table_response import GetTableResponse
+from ._get_table_compaction_response import GetTableCompactionResponse
 from ._get_table_snapshot_response import GetTableSnapshotResponse
 from ._get_table_summary_request import GetTableSummaryRequest
 from ._get_table_summary_response import GetTableSummaryResponse
@@ -308,6 +309,7 @@ __all__ = [
     GetRoleResponse,
     GetShareResponse,
     GetTableResponse,
+    GetTableCompactionResponse,
     GetTableSnapshotResponse,
     GetTableSummaryRequest,
     GetTableSummaryResponse,

@@ -11,8 +11,10 @@ class IcebergSnapshot(DaraModel):
         self,
         added_rows: int = None,
         id: int = None,
+        id_string: str = None,
         operation: str = None,
         parent_id: int = None,
+        parent_id_string: str = None,
         schema_id: int = None,
         sequence_number: int = None,
         summary: Dict[str, str] = None,
@@ -20,8 +22,10 @@ class IcebergSnapshot(DaraModel):
     ):
         self.added_rows = added_rows
         self.id = id
+        self.id_string = id_string
         self.operation = operation
         self.parent_id = parent_id
+        self.parent_id_string = parent_id_string
         self.schema_id = schema_id
         self.sequence_number = sequence_number
         self.summary = summary
@@ -41,11 +45,17 @@ class IcebergSnapshot(DaraModel):
         if self.id is not None:
             result['id'] = self.id
 
+        if self.id_string is not None:
+            result['idString'] = self.id_string
+
         if self.operation is not None:
             result['operation'] = self.operation
 
         if self.parent_id is not None:
             result['parentId'] = self.parent_id
+
+        if self.parent_id_string is not None:
+            result['parentIdString'] = self.parent_id_string
 
         if self.schema_id is not None:
             result['schemaId'] = self.schema_id
@@ -69,11 +79,17 @@ class IcebergSnapshot(DaraModel):
         if m.get('id') is not None:
             self.id = m.get('id')
 
+        if m.get('idString') is not None:
+            self.id_string = m.get('idString')
+
         if m.get('operation') is not None:
             self.operation = m.get('operation')
 
         if m.get('parentId') is not None:
             self.parent_id = m.get('parentId')
+
+        if m.get('parentIdString') is not None:
+            self.parent_id_string = m.get('parentIdString')
 
         if m.get('schemaId') is not None:
             self.schema_id = m.get('schemaId')

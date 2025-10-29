@@ -2793,6 +2793,80 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_table_with_options_async(catalog_id, database, table, headers, runtime)
 
+    def get_table_compaction_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableCompactionResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTableCompaction',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/compaction',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableCompactionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_compaction_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableCompactionResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTableCompaction',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/compaction',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableCompactionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_compaction(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> main_models.GetTableCompactionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_table_compaction_with_options(catalog_id, database, table, headers, runtime)
+
+    async def get_table_compaction_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> main_models.GetTableCompactionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_table_compaction_with_options_async(catalog_id, database, table, headers, runtime)
+
     def get_table_snapshot_with_options(
         self,
         catalog_id: str,

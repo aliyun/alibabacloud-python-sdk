@@ -10,6 +10,7 @@ class Table(DaraModel):
         self,
         created_at: int = None,
         created_by: str = None,
+        iceberg_table_metadata: main_models.IcebergTableMetadata = None,
         id: str = None,
         is_external: bool = None,
         name: str = None,
@@ -20,11 +21,13 @@ class Table(DaraModel):
         storage_action: str = None,
         storage_action_timestamp: int = None,
         storage_class: str = None,
+        type: str = None,
         updated_at: int = None,
         updated_by: str = None,
     ):
         self.created_at = created_at
         self.created_by = created_by
+        self.iceberg_table_metadata = iceberg_table_metadata
         self.id = id
         self.is_external = is_external
         self.name = name
@@ -35,10 +38,13 @@ class Table(DaraModel):
         self.storage_action = storage_action
         self.storage_action_timestamp = storage_action_timestamp
         self.storage_class = storage_class
+        self.type = type
         self.updated_at = updated_at
         self.updated_by = updated_by
 
     def validate(self):
+        if self.iceberg_table_metadata:
+            self.iceberg_table_metadata.validate()
         if self.schema:
             self.schema.validate()
 
@@ -52,6 +58,9 @@ class Table(DaraModel):
 
         if self.created_by is not None:
             result['createdBy'] = self.created_by
+
+        if self.iceberg_table_metadata is not None:
+            result['icebergTableMetadata'] = self.iceberg_table_metadata.to_map()
 
         if self.id is not None:
             result['id'] = self.id
@@ -83,6 +92,9 @@ class Table(DaraModel):
         if self.storage_class is not None:
             result['storageClass'] = self.storage_class
 
+        if self.type is not None:
+            result['type'] = self.type
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
@@ -98,6 +110,10 @@ class Table(DaraModel):
 
         if m.get('createdBy') is not None:
             self.created_by = m.get('createdBy')
+
+        if m.get('icebergTableMetadata') is not None:
+            temp_model = main_models.IcebergTableMetadata()
+            self.iceberg_table_metadata = temp_model.from_map(m.get('icebergTableMetadata'))
 
         if m.get('id') is not None:
             self.id = m.get('id')
@@ -129,6 +145,9 @@ class Table(DaraModel):
 
         if m.get('storageClass') is not None:
             self.storage_class = m.get('storageClass')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')

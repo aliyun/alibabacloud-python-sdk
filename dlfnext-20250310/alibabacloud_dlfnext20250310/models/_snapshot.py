@@ -18,10 +18,14 @@ class Snapshot(DaraModel):
         delta_manifest_list: str = None,
         delta_record_count: int = None,
         id: int = None,
+        id_string: str = None,
         index_manifest: str = None,
         log_offsets: Dict[str, int] = None,
+        parent_id_string: str = None,
         schema_id: int = None,
+        sequence_number: int = None,
         statistics: str = None,
+        summary: Dict[str, str] = None,
         time_millis: int = None,
         total_record_count: int = None,
         version: int = None,
@@ -36,10 +40,14 @@ class Snapshot(DaraModel):
         self.delta_manifest_list = delta_manifest_list
         self.delta_record_count = delta_record_count
         self.id = id
+        self.id_string = id_string
         self.index_manifest = index_manifest
         self.log_offsets = log_offsets
+        self.parent_id_string = parent_id_string
         self.schema_id = schema_id
+        self.sequence_number = sequence_number
         self.statistics = statistics
+        self.summary = summary
         self.time_millis = time_millis
         self.total_record_count = total_record_count
         self.version = version
@@ -80,17 +88,29 @@ class Snapshot(DaraModel):
         if self.id is not None:
             result['id'] = self.id
 
+        if self.id_string is not None:
+            result['idString'] = self.id_string
+
         if self.index_manifest is not None:
             result['indexManifest'] = self.index_manifest
 
         if self.log_offsets is not None:
             result['logOffsets'] = self.log_offsets
 
+        if self.parent_id_string is not None:
+            result['parentIdString'] = self.parent_id_string
+
         if self.schema_id is not None:
             result['schemaId'] = self.schema_id
 
+        if self.sequence_number is not None:
+            result['sequenceNumber'] = self.sequence_number
+
         if self.statistics is not None:
             result['statistics'] = self.statistics
+
+        if self.summary is not None:
+            result['summary'] = self.summary
 
         if self.time_millis is not None:
             result['timeMillis'] = self.time_millis
@@ -135,17 +155,29 @@ class Snapshot(DaraModel):
         if m.get('id') is not None:
             self.id = m.get('id')
 
+        if m.get('idString') is not None:
+            self.id_string = m.get('idString')
+
         if m.get('indexManifest') is not None:
             self.index_manifest = m.get('indexManifest')
 
         if m.get('logOffsets') is not None:
             self.log_offsets = m.get('logOffsets')
 
+        if m.get('parentIdString') is not None:
+            self.parent_id_string = m.get('parentIdString')
+
         if m.get('schemaId') is not None:
             self.schema_id = m.get('schemaId')
 
+        if m.get('sequenceNumber') is not None:
+            self.sequence_number = m.get('sequenceNumber')
+
         if m.get('statistics') is not None:
             self.statistics = m.get('statistics')
+
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
 
         if m.get('timeMillis') is not None:
             self.time_millis = m.get('timeMillis')
