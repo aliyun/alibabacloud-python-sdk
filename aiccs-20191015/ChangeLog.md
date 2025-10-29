@@ -1,3 +1,8 @@
+2025-10-29 Version: 3.2.0
+- Support API PageQueryAgentList.
+- Support API QueryAiVoiceAgentDetail.
+
+
 2025-10-22 Version: 3.1.1
 - Update API QueryAiCallDetailPage: add request parameters OutId.
 - Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.Status.

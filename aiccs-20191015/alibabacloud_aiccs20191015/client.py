@@ -13017,6 +13017,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.make_double_call_with_options_async(request, runtime)
 
+    def page_query_agent_list_with_options(
+        self,
+        request: aiccs_20191015_models.PageQueryAgentListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.PageQueryAgentListResponse:
+        """
+        @summary 分页查询智能体列表
+        
+        @param request: PageQueryAgentListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQueryAgentListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PageQueryAgentList',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.PageQueryAgentListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def page_query_agent_list_with_options_async(
+        self,
+        request: aiccs_20191015_models.PageQueryAgentListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.PageQueryAgentListResponse:
+        """
+        @summary 分页查询智能体列表
+        
+        @param request: PageQueryAgentListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQueryAgentListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PageQueryAgentList',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.PageQueryAgentListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def page_query_agent_list(
+        self,
+        request: aiccs_20191015_models.PageQueryAgentListRequest,
+    ) -> aiccs_20191015_models.PageQueryAgentListResponse:
+        """
+        @summary 分页查询智能体列表
+        
+        @param request: PageQueryAgentListRequest
+        @return: PageQueryAgentListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.page_query_agent_list_with_options(request, runtime)
+
+    async def page_query_agent_list_async(
+        self,
+        request: aiccs_20191015_models.PageQueryAgentListRequest,
+    ) -> aiccs_20191015_models.PageQueryAgentListResponse:
+        """
+        @summary 分页查询智能体列表
+        
+        @param request: PageQueryAgentListRequest
+        @return: PageQueryAgentListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.page_query_agent_list_with_options_async(request, runtime)
+
     def query_ai_call_detail_page_with_options(
         self,
         request: aiccs_20191015_models.QueryAiCallDetailPageRequest,
@@ -13416,6 +13540,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_ai_call_task_page_with_options_async(request, runtime)
+
+    def query_ai_voice_agent_detail_with_options(
+        self,
+        request: aiccs_20191015_models.QueryAiVoiceAgentDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.QueryAiVoiceAgentDetailResponse:
+        """
+        @summary 查询智能体明细
+        
+        @param request: QueryAiVoiceAgentDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAiVoiceAgentDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAiVoiceAgentDetail',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.QueryAiVoiceAgentDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_ai_voice_agent_detail_with_options_async(
+        self,
+        request: aiccs_20191015_models.QueryAiVoiceAgentDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.QueryAiVoiceAgentDetailResponse:
+        """
+        @summary 查询智能体明细
+        
+        @param request: QueryAiVoiceAgentDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAiVoiceAgentDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAiVoiceAgentDetail',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.QueryAiVoiceAgentDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_ai_voice_agent_detail(
+        self,
+        request: aiccs_20191015_models.QueryAiVoiceAgentDetailRequest,
+    ) -> aiccs_20191015_models.QueryAiVoiceAgentDetailResponse:
+        """
+        @summary 查询智能体明细
+        
+        @param request: QueryAiVoiceAgentDetailRequest
+        @return: QueryAiVoiceAgentDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_ai_voice_agent_detail_with_options(request, runtime)
+
+    async def query_ai_voice_agent_detail_async(
+        self,
+        request: aiccs_20191015_models.QueryAiVoiceAgentDetailRequest,
+    ) -> aiccs_20191015_models.QueryAiVoiceAgentDetailResponse:
+        """
+        @summary 查询智能体明细
+        
+        @param request: QueryAiVoiceAgentDetailRequest
+        @return: QueryAiVoiceAgentDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_ai_voice_agent_detail_with_options_async(request, runtime)
 
     def query_conversation_detail_info_with_options(
         self,
