@@ -1,3 +1,8 @@
+2025-10-29 Version: 1.6.0
+- Support API ReadPageScrape.
+- Update API GenericSearch: add request parameters advancedParams.
+
+
 2025-10-10 Version: 1.5.2
 - Generated python 2024-11-11 for IQS.
 

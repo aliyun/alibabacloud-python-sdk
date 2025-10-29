@@ -279,20 +279,26 @@ class Client(OpenApiClient):
 
     def generic_search_with_options(
         self,
-        request: iqs20241111_models.GenericSearchRequest,
+        tmp_req: iqs20241111_models.GenericSearchRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> iqs20241111_models.GenericSearchResponse:
         """
         @summary 通用搜索
         
-        @param request: GenericSearchRequest
+        @param tmp_req: GenericSearchRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GenericSearchResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = iqs20241111_models.GenericSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_params):
+            request.advanced_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_params, 'advancedParams', 'json')
         query = {}
+        if not UtilClient.is_unset(request.advanced_params_shrink):
+            query['advancedParams'] = request.advanced_params_shrink
         if not UtilClient.is_unset(request.enable_rerank):
             query['enableRerank'] = request.enable_rerank
         if not UtilClient.is_unset(request.industry):
@@ -335,20 +341,26 @@ class Client(OpenApiClient):
 
     async def generic_search_with_options_async(
         self,
-        request: iqs20241111_models.GenericSearchRequest,
+        tmp_req: iqs20241111_models.GenericSearchRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> iqs20241111_models.GenericSearchResponse:
         """
         @summary 通用搜索
         
-        @param request: GenericSearchRequest
+        @param tmp_req: GenericSearchRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GenericSearchResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = iqs20241111_models.GenericSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_params):
+            request.advanced_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_params, 'advancedParams', 'json')
         query = {}
+        if not UtilClient.is_unset(request.advanced_params_shrink):
+            query['advancedParams'] = request.advanced_params_shrink
         if not UtilClient.is_unset(request.enable_rerank):
             query['enableRerank'] = request.enable_rerank
         if not UtilClient.is_unset(request.industry):
@@ -738,6 +750,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.read_page_basic_with_options_async(request, headers, runtime)
+
+    def read_page_scrape_with_options(
+        self,
+        request: iqs20241111_models.ReadPageScrapeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.ReadPageScrapeResponse:
+        """
+        @summary 动态页面解析
+        
+        @param request: ReadPageScrapeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadPageScrapeResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ReadPageScrape',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.ReadPageScrapeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_page_scrape_with_options_async(
+        self,
+        request: iqs20241111_models.ReadPageScrapeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.ReadPageScrapeResponse:
+        """
+        @summary 动态页面解析
+        
+        @param request: ReadPageScrapeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadPageScrapeResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ReadPageScrape',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.ReadPageScrapeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_page_scrape(
+        self,
+        request: iqs20241111_models.ReadPageScrapeRequest,
+    ) -> iqs20241111_models.ReadPageScrapeResponse:
+        """
+        @summary 动态页面解析
+        
+        @param request: ReadPageScrapeRequest
+        @return: ReadPageScrapeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.read_page_scrape_with_options(request, headers, runtime)
+
+    async def read_page_scrape_async(
+        self,
+        request: iqs20241111_models.ReadPageScrapeRequest,
+    ) -> iqs20241111_models.ReadPageScrapeResponse:
+        """
+        @summary 动态页面解析
+        
+        @param request: ReadPageScrapeRequest
+        @return: ReadPageScrapeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.read_page_scrape_with_options_async(request, headers, runtime)
 
     def unified_search_with_options(
         self,
