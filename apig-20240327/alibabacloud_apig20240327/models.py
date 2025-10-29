@@ -13202,6 +13202,8 @@ class GetGatewayResponseBodyDataLoadBalancers(TeaModel):
         address_ip_version: str = None,
         address_type: str = None,
         gateway_default: bool = None,
+        ipv_4addresses: List[str] = None,
+        ipv_6addresses: List[str] = None,
         load_balancer_id: str = None,
         mode: str = None,
         ports: List[GetGatewayResponseBodyDataLoadBalancersPorts] = None,
@@ -13222,6 +13224,8 @@ class GetGatewayResponseBodyDataLoadBalancers(TeaModel):
         self.address_type = address_type
         # Indicates whether the address is the default ingress address of the instance.
         self.gateway_default = gateway_default
+        self.ipv_4addresses = ipv_4addresses
+        self.ipv_6addresses = ipv_6addresses
         # The load balancer ID.
         self.load_balancer_id = load_balancer_id
         # The mode in which the load balancer is provided. Valid values:
@@ -13261,6 +13265,10 @@ class GetGatewayResponseBodyDataLoadBalancers(TeaModel):
             result['addressType'] = self.address_type
         if self.gateway_default is not None:
             result['gatewayDefault'] = self.gateway_default
+        if self.ipv_4addresses is not None:
+            result['ipv4Addresses'] = self.ipv_4addresses
+        if self.ipv_6addresses is not None:
+            result['ipv6Addresses'] = self.ipv_6addresses
         if self.load_balancer_id is not None:
             result['loadBalancerId'] = self.load_balancer_id
         if self.mode is not None:
@@ -13285,6 +13293,10 @@ class GetGatewayResponseBodyDataLoadBalancers(TeaModel):
             self.address_type = m.get('addressType')
         if m.get('gatewayDefault') is not None:
             self.gateway_default = m.get('gatewayDefault')
+        if m.get('ipv4Addresses') is not None:
+            self.ipv_4addresses = m.get('ipv4Addresses')
+        if m.get('ipv6Addresses') is not None:
+            self.ipv_6addresses = m.get('ipv6Addresses')
         if m.get('loadBalancerId') is not None:
             self.load_balancer_id = m.get('loadBalancerId')
         if m.get('mode') is not None:
@@ -18850,6 +18862,7 @@ class ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo(TeaModel):
 class ListMcpServersResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        api_id: str = None,
         assembled_sources: List[ListMcpServersResponseBodyDataItemsAssembledSources] = None,
         backend: Backend = None,
         create_from_type: str = None,
@@ -18871,6 +18884,7 @@ class ListMcpServersResponseBodyDataItems(TeaModel):
         route_id: str = None,
         type: str = None,
     ):
+        self.api_id = api_id
         self.assembled_sources = assembled_sources
         self.backend = backend
         self.create_from_type = create_from_type
@@ -18915,6 +18929,8 @@ class ListMcpServersResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
         result['assembledSources'] = []
         if self.assembled_sources is not None:
             for k in self.assembled_sources:
@@ -18963,6 +18979,8 @@ class ListMcpServersResponseBodyDataItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiId') is not None:
+            self.api_id = m.get('apiId')
         self.assembled_sources = []
         if m.get('assembledSources') is not None:
             for k in m.get('assembledSources'):
