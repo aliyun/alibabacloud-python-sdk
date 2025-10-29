@@ -51663,6 +51663,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terminate_subscription):
+            query['TerminateSubscription'] = request.terminate_subscription
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -51711,6 +51713,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terminate_subscription):
+            query['TerminateSubscription'] = request.terminate_subscription
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

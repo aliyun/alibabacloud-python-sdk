@@ -1,3 +1,7 @@
+2025-10-29 Version: 7.2.5
+- Update API ReleaseDedicatedHost: add request parameters TerminateSubscription.
+
+
 2025-10-17 Version: 7.2.4
 - Update API CreateImagePipeline: add request parameters ImportImageOptions.Description.
 - Update API CreateImagePipeline: add request parameters ImportImageOptions.ImageName.
