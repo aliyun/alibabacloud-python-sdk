@@ -1,3 +1,8 @@
+2025-10-29 Version: 2.2.1
+- Update API RecordCallCenterEventForPartner: add request parameters EmployeeCode.
+- Update API RecordCallCenterEventForPartner: add request parameters TenantId.
+
+
 2025-10-22 Version: 2.2.0
 - Support API OperateCallCenterForPartner.
 - Support API RecordCallCenterEventForPartner.

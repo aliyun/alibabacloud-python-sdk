@@ -4320,10 +4320,12 @@ class RecordCallCenterEventForPartnerRequest(TeaModel):
         caller: str = None,
         conn_id: str = None,
         contact_id: str = None,
+        employee_code: str = None,
         job_id: str = None,
         related_id: int = None,
         secret_mobile: str = None,
         skill_type: int = None,
+        tenant_id: str = None,
     ):
         self.biz_id = biz_id
         self.biz_type = biz_type
@@ -4332,11 +4334,13 @@ class RecordCallCenterEventForPartnerRequest(TeaModel):
         self.caller = caller
         self.conn_id = conn_id
         self.contact_id = contact_id
+        self.employee_code = employee_code
         self.job_id = job_id
         # RequestId
         self.related_id = related_id
         self.secret_mobile = secret_mobile
         self.skill_type = skill_type
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -4361,6 +4365,8 @@ class RecordCallCenterEventForPartnerRequest(TeaModel):
             result['ConnId'] = self.conn_id
         if self.contact_id is not None:
             result['ContactId'] = self.contact_id
+        if self.employee_code is not None:
+            result['EmployeeCode'] = self.employee_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.related_id is not None:
@@ -4369,6 +4375,8 @@ class RecordCallCenterEventForPartnerRequest(TeaModel):
             result['SecretMobile'] = self.secret_mobile
         if self.skill_type is not None:
             result['SkillType'] = self.skill_type
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4387,6 +4395,8 @@ class RecordCallCenterEventForPartnerRequest(TeaModel):
             self.conn_id = m.get('ConnId')
         if m.get('ContactId') is not None:
             self.contact_id = m.get('ContactId')
+        if m.get('EmployeeCode') is not None:
+            self.employee_code = m.get('EmployeeCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('RelatedId') is not None:
@@ -4395,6 +4405,8 @@ class RecordCallCenterEventForPartnerRequest(TeaModel):
             self.secret_mobile = m.get('SecretMobile')
         if m.get('SkillType') is not None:
             self.skill_type = m.get('SkillType')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 

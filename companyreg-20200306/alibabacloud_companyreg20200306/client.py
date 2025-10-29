@@ -2717,6 +2717,8 @@ class Client(OpenApiClient):
             query['ConnId'] = request.conn_id
         if not UtilClient.is_unset(request.contact_id):
             query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.related_id):
@@ -2725,6 +2727,8 @@ class Client(OpenApiClient):
             query['SecretMobile'] = request.secret_mobile
         if not UtilClient.is_unset(request.skill_type):
             query['SkillType'] = request.skill_type
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2772,6 +2776,8 @@ class Client(OpenApiClient):
             query['ConnId'] = request.conn_id
         if not UtilClient.is_unset(request.contact_id):
             query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.related_id):
@@ -2780,6 +2786,8 @@ class Client(OpenApiClient):
             query['SecretMobile'] = request.secret_mobile
         if not UtilClient.is_unset(request.skill_type):
             query['SkillType'] = request.skill_type
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
