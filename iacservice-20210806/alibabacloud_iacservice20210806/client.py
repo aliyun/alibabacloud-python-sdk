@@ -4907,6 +4907,8 @@ class Client(OpenApiClient):
             query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4959,6 +4961,8 @@ class Client(OpenApiClient):
             query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

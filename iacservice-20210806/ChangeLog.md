@@ -1,3 +1,9 @@
+2025-10-29 Version: 2.0.1
+- Update API GetJob: add response parameters Body.job.logFile.
+- Update API GetJob: add response parameters Body.job.outputJsonPlan.
+- Update API ListModules: add request parameters moduleName.
+
+
 2025-08-22 Version: 2.0.0
 - Support API AddSharedAccounts.
 - Support API CreateRegistryModule.

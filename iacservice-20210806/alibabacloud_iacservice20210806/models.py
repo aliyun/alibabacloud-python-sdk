@@ -7,12 +7,12 @@ from typing import List, Dict, Any
 class JobStatusDetailValue(TeaModel):
     def __init__(
         self,
-        job_result: str = None,
         comment: str = None,
+        job_result: str = None,
         time_stamps: str = None,
     ):
-        self.job_result = job_result
         self.comment = comment
+        self.job_result = job_result
         self.time_stamps = time_stamps
 
     def validate(self):
@@ -24,20 +24,20 @@ class JobStatusDetailValue(TeaModel):
             return _map
 
         result = dict()
-        if self.job_result is not None:
-            result['jobResult'] = self.job_result
         if self.comment is not None:
             result['comment'] = self.comment
+        if self.job_result is not None:
+            result['jobResult'] = self.job_result
         if self.time_stamps is not None:
             result['timeStamps'] = self.time_stamps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('jobResult') is not None:
-            self.job_result = m.get('jobResult')
         if m.get('comment') is not None:
             self.comment = m.get('comment')
+        if m.get('jobResult') is not None:
+            self.job_result = m.get('jobResult')
         if m.get('timeStamps') is not None:
             self.time_stamps = m.get('timeStamps')
         return self
@@ -3850,7 +3850,9 @@ class GetJobResponseBodyJob(TeaModel):
         execute_type: str = None,
         is_pass_assert_check: bool = None,
         job_id: str = None,
+        log_file: Dict[str, Any] = None,
         output: str = None,
+        output_json_plan: Any = None,
         parameters: Dict[str, str] = None,
         status: str = None,
         status_detail: Dict[str, JobStatusDetailValue] = None,
@@ -3867,7 +3869,9 @@ class GetJobResponseBodyJob(TeaModel):
         self.execute_type = execute_type
         self.is_pass_assert_check = is_pass_assert_check
         self.job_id = job_id
+        self.log_file = log_file
         self.output = output
+        self.output_json_plan = output_json_plan
         self.parameters = parameters
         self.status = status
         self.status_detail = status_detail
@@ -3913,8 +3917,12 @@ class GetJobResponseBodyJob(TeaModel):
             result['isPassAssertCheck'] = self.is_pass_assert_check
         if self.job_id is not None:
             result['jobId'] = self.job_id
+        if self.log_file is not None:
+            result['logFile'] = self.log_file
         if self.output is not None:
             result['output'] = self.output
+        if self.output_json_plan is not None:
+            result['outputJsonPlan'] = self.output_json_plan
         if self.parameters is not None:
             result['parameters'] = self.parameters
         if self.status is not None:
@@ -3955,8 +3963,12 @@ class GetJobResponseBodyJob(TeaModel):
             self.is_pass_assert_check = m.get('isPassAssertCheck')
         if m.get('jobId') is not None:
             self.job_id = m.get('jobId')
+        if m.get('logFile') is not None:
+            self.log_file = m.get('logFile')
         if m.get('output') is not None:
             self.output = m.get('output')
+        if m.get('outputJsonPlan') is not None:
+            self.output_json_plan = m.get('outputJsonPlan')
         if m.get('parameters') is not None:
             self.parameters = m.get('parameters')
         if m.get('status') is not None:
@@ -7676,6 +7688,7 @@ class ListModulesRequest(TeaModel):
         self,
         group_id: str = None,
         keyword: str = None,
+        module_name: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
@@ -7683,6 +7696,7 @@ class ListModulesRequest(TeaModel):
     ):
         self.group_id = group_id
         self.keyword = keyword
+        self.module_name = module_name
         self.page_number = page_number
         self.page_size = page_size
         self.project_id = project_id
@@ -7704,6 +7718,8 @@ class ListModulesRequest(TeaModel):
             result['groupId'] = self.group_id
         if self.keyword is not None:
             result['keyword'] = self.keyword
+        if self.module_name is not None:
+            result['moduleName'] = self.module_name
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7722,6 +7738,8 @@ class ListModulesRequest(TeaModel):
             self.group_id = m.get('groupId')
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+        if m.get('moduleName') is not None:
+            self.module_name = m.get('moduleName')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
@@ -7741,6 +7759,7 @@ class ListModulesShrinkRequest(TeaModel):
         self,
         group_id: str = None,
         keyword: str = None,
+        module_name: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
@@ -7748,6 +7767,7 @@ class ListModulesShrinkRequest(TeaModel):
     ):
         self.group_id = group_id
         self.keyword = keyword
+        self.module_name = module_name
         self.page_number = page_number
         self.page_size = page_size
         self.project_id = project_id
@@ -7766,6 +7786,8 @@ class ListModulesShrinkRequest(TeaModel):
             result['groupId'] = self.group_id
         if self.keyword is not None:
             result['keyword'] = self.keyword
+        if self.module_name is not None:
+            result['moduleName'] = self.module_name
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7782,6 +7804,8 @@ class ListModulesShrinkRequest(TeaModel):
             self.group_id = m.get('groupId')
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+        if m.get('moduleName') is not None:
+            self.module_name = m.get('moduleName')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
