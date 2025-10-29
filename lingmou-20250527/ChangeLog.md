@@ -1,3 +1,10 @@
+2025-10-29 Version: 1.2.0
+- Support API CreateBackgroundPic.
+- Support API CreateChatConfig.
+- Support API CreateNoTrainPicAvatar.
+- Support API GetUploadPolicy.
+
+
 2025-08-20 Version: 1.1.0
 - Support API CloseChatInstanceSessions.
 - Support API QueryChatInstanceSessions.

@@ -157,6 +157,222 @@ class Client(OpenApiClient):
         headers = {}
         return await self.close_chat_instance_sessions_with_options_async(instance_id, request, headers, runtime)
 
+    def create_background_pic_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateBackgroundPicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateBackgroundPicResponse:
+        """
+        @summary 创建背景素材
+        
+        @param request: CreateBackgroundPicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackgroundPicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filename):
+            query['filename'] = request.filename
+        if not UtilClient.is_unset(request.oss_key):
+            query['ossKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackgroundPic',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/createBackgroundPic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateBackgroundPicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_background_pic_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateBackgroundPicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateBackgroundPicResponse:
+        """
+        @summary 创建背景素材
+        
+        @param request: CreateBackgroundPicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackgroundPicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filename):
+            query['filename'] = request.filename
+        if not UtilClient.is_unset(request.oss_key):
+            query['ossKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackgroundPic',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/createBackgroundPic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateBackgroundPicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_background_pic(
+        self,
+        request: ling_mou_20250527_models.CreateBackgroundPicRequest,
+    ) -> ling_mou_20250527_models.CreateBackgroundPicResponse:
+        """
+        @summary 创建背景素材
+        
+        @param request: CreateBackgroundPicRequest
+        @return: CreateBackgroundPicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_background_pic_with_options(request, headers, runtime)
+
+    async def create_background_pic_async(
+        self,
+        request: ling_mou_20250527_models.CreateBackgroundPicRequest,
+    ) -> ling_mou_20250527_models.CreateBackgroundPicResponse:
+        """
+        @summary 创建背景素材
+        
+        @param request: CreateBackgroundPicRequest
+        @return: CreateBackgroundPicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_background_pic_with_options_async(request, headers, runtime)
+
+    def create_chat_config_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateChatConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateChatConfigResponse:
+        """
+        @summary 背景配置
+        
+        @param request: CreateChatConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['avatarId'] = request.avatar_id
+        if not UtilClient.is_unset(request.background_id):
+            query['backgroundId'] = request.background_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatConfig',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/createChatConfig',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateChatConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chat_config_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateChatConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateChatConfigResponse:
+        """
+        @summary 背景配置
+        
+        @param request: CreateChatConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['avatarId'] = request.avatar_id
+        if not UtilClient.is_unset(request.background_id):
+            query['backgroundId'] = request.background_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatConfig',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/createChatConfig',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateChatConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chat_config(
+        self,
+        request: ling_mou_20250527_models.CreateChatConfigRequest,
+    ) -> ling_mou_20250527_models.CreateChatConfigResponse:
+        """
+        @summary 背景配置
+        
+        @param request: CreateChatConfigRequest
+        @return: CreateChatConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_chat_config_with_options(request, headers, runtime)
+
+    async def create_chat_config_async(
+        self,
+        request: ling_mou_20250527_models.CreateChatConfigRequest,
+    ) -> ling_mou_20250527_models.CreateChatConfigResponse:
+        """
+        @summary 背景配置
+        
+        @param request: CreateChatConfigRequest
+        @return: CreateChatConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_chat_config_with_options_async(request, headers, runtime)
+
     def create_chat_session_with_options(
         self,
         id: str,
@@ -272,6 +488,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_chat_session_with_options_async(id, request, headers, runtime)
+
+    def create_no_train_pic_avatar_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateNoTrainPicAvatarRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateNoTrainPicAvatarResponse:
+        """
+        @summary 创建对话免训照片数字人
+        
+        @param request: CreateNoTrainPicAvatarRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNoTrainPicAvatarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expressiveness):
+            query['expressiveness'] = request.expressiveness
+        if not UtilClient.is_unset(request.gender):
+            query['gender'] = request.gender
+        if not UtilClient.is_unset(request.generate_assets):
+            query['generateAssets'] = request.generate_assets
+        if not UtilClient.is_unset(request.image_oss_path):
+            query['imageOssPath'] = request.image_oss_path
+        if not UtilClient.is_unset(request.jwt_token):
+            query['jwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.transparent):
+            query['transparent'] = request.transparent
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNoTrainPicAvatar',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/createNoTrainPicAvatar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateNoTrainPicAvatarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_no_train_pic_avatar_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateNoTrainPicAvatarRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateNoTrainPicAvatarResponse:
+        """
+        @summary 创建对话免训照片数字人
+        
+        @param request: CreateNoTrainPicAvatarRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNoTrainPicAvatarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expressiveness):
+            query['expressiveness'] = request.expressiveness
+        if not UtilClient.is_unset(request.gender):
+            query['gender'] = request.gender
+        if not UtilClient.is_unset(request.generate_assets):
+            query['generateAssets'] = request.generate_assets
+        if not UtilClient.is_unset(request.image_oss_path):
+            query['imageOssPath'] = request.image_oss_path
+        if not UtilClient.is_unset(request.jwt_token):
+            query['jwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.transparent):
+            query['transparent'] = request.transparent
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNoTrainPicAvatar',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/createNoTrainPicAvatar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateNoTrainPicAvatarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_no_train_pic_avatar(
+        self,
+        request: ling_mou_20250527_models.CreateNoTrainPicAvatarRequest,
+    ) -> ling_mou_20250527_models.CreateNoTrainPicAvatarResponse:
+        """
+        @summary 创建对话免训照片数字人
+        
+        @param request: CreateNoTrainPicAvatarRequest
+        @return: CreateNoTrainPicAvatarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_no_train_pic_avatar_with_options(request, headers, runtime)
+
+    async def create_no_train_pic_avatar_async(
+        self,
+        request: ling_mou_20250527_models.CreateNoTrainPicAvatarRequest,
+    ) -> ling_mou_20250527_models.CreateNoTrainPicAvatarResponse:
+        """
+        @summary 创建对话免训照片数字人
+        
+        @param request: CreateNoTrainPicAvatarRequest
+        @return: CreateNoTrainPicAvatarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_no_train_pic_avatar_with_options_async(request, headers, runtime)
+
+    def get_upload_policy_with_options(
+        self,
+        request: ling_mou_20250527_models.GetUploadPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.GetUploadPolicyResponse:
+        """
+        @summary 获取对话免训图片素材上传凭证
+        
+        @param request: GetUploadPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['jwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUploadPolicy',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/getUploadPolicy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.GetUploadPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_upload_policy_with_options_async(
+        self,
+        request: ling_mou_20250527_models.GetUploadPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.GetUploadPolicyResponse:
+        """
+        @summary 获取对话免训图片素材上传凭证
+        
+        @param request: GetUploadPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['jwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUploadPolicy',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/getUploadPolicy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.GetUploadPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_upload_policy(
+        self,
+        request: ling_mou_20250527_models.GetUploadPolicyRequest,
+    ) -> ling_mou_20250527_models.GetUploadPolicyResponse:
+        """
+        @summary 获取对话免训图片素材上传凭证
+        
+        @param request: GetUploadPolicyRequest
+        @return: GetUploadPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_upload_policy_with_options(request, headers, runtime)
+
+    async def get_upload_policy_async(
+        self,
+        request: ling_mou_20250527_models.GetUploadPolicyRequest,
+    ) -> ling_mou_20250527_models.GetUploadPolicyResponse:
+        """
+        @summary 获取对话免训图片素材上传凭证
+        
+        @param request: GetUploadPolicyRequest
+        @return: GetUploadPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_upload_policy_with_options_async(request, headers, runtime)
 
     def query_chat_instance_sessions_with_options(
         self,

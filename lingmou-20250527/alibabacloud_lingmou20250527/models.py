@@ -203,6 +203,326 @@ class CloseChatInstanceSessionsResponse(TeaModel):
         return self
 
 
+class CreateBackgroundPicRequest(TeaModel):
+    def __init__(
+        self,
+        filename: str = None,
+        oss_key: str = None,
+    ):
+        self.filename = filename
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filename is not None:
+            result['filename'] = self.filename
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filename') is not None:
+            self.filename = m.get('filename')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class CreateBackgroundPicResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class CreateBackgroundPicResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateBackgroundPicResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateBackgroundPicResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateBackgroundPicResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBackgroundPicResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBackgroundPicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateChatConfigRequest(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        background_id: str = None,
+    ):
+        self.avatar_id = avatar_id
+        self.background_id = background_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['avatarId'] = self.avatar_id
+        if self.background_id is not None:
+            result['backgroundId'] = self.background_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarId') is not None:
+            self.avatar_id = m.get('avatarId')
+        if m.get('backgroundId') is not None:
+            self.background_id = m.get('backgroundId')
+        return self
+
+
+class CreateChatConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class CreateChatConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateChatConfigResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateChatConfigResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateChatConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChatConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChatConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateChatSessionRequest(TeaModel):
     def __init__(
         self,
@@ -509,6 +829,428 @@ class CreateChatSessionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateChatSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateNoTrainPicAvatarRequest(TeaModel):
+    def __init__(
+        self,
+        expressiveness: str = None,
+        gender: str = None,
+        generate_assets: bool = None,
+        image_oss_path: str = None,
+        jwt_token: str = None,
+        name: str = None,
+        transparent: bool = None,
+    ):
+        self.expressiveness = expressiveness
+        self.gender = gender
+        self.generate_assets = generate_assets
+        self.image_oss_path = image_oss_path
+        self.jwt_token = jwt_token
+        self.name = name
+        self.transparent = transparent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expressiveness is not None:
+            result['expressiveness'] = self.expressiveness
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.generate_assets is not None:
+            result['generateAssets'] = self.generate_assets
+        if self.image_oss_path is not None:
+            result['imageOssPath'] = self.image_oss_path
+        if self.jwt_token is not None:
+            result['jwtToken'] = self.jwt_token
+        if self.name is not None:
+            result['name'] = self.name
+        if self.transparent is not None:
+            result['transparent'] = self.transparent
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expressiveness') is not None:
+            self.expressiveness = m.get('expressiveness')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('generateAssets') is not None:
+            self.generate_assets = m.get('generateAssets')
+        if m.get('imageOssPath') is not None:
+            self.image_oss_path = m.get('imageOssPath')
+        if m.get('jwtToken') is not None:
+            self.jwt_token = m.get('jwtToken')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('transparent') is not None:
+            self.transparent = m.get('transparent')
+        return self
+
+
+class CreateNoTrainPicAvatarResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        pass_: bool = None,
+    ):
+        self.avatar_id = avatar_id
+        self.pass_ = pass_
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['avatarId'] = self.avatar_id
+        if self.pass_ is not None:
+            result['pass'] = self.pass_
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarId') is not None:
+            self.avatar_id = m.get('avatarId')
+        if m.get('pass') is not None:
+            self.pass_ = m.get('pass')
+        return self
+
+
+class CreateNoTrainPicAvatarResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateNoTrainPicAvatarResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateNoTrainPicAvatarResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateNoTrainPicAvatarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNoTrainPicAvatarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNoTrainPicAvatarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUploadPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        type: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['jwtToken'] = self.jwt_token
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('jwtToken') is not None:
+            self.jwt_token = m.get('jwtToken')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetUploadPolicyResponseBodyDataOssPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        # accessId。
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['accessId'] = self.access_id
+        if self.dir is not None:
+            result['dir'] = self.dir
+        if self.expire is not None:
+            result['expire'] = self.expire
+        if self.host is not None:
+            result['host'] = self.host
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.signature is not None:
+            result['signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessId') is not None:
+            self.access_id = m.get('accessId')
+        if m.get('dir') is not None:
+            self.dir = m.get('dir')
+        if m.get('expire') is not None:
+            self.expire = m.get('expire')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('policy') is not None:
+            self.policy = m.get('policy')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        return self
+
+
+class GetUploadPolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        oss_key: str = None,
+        oss_policy: GetUploadPolicyResponseBodyDataOssPolicy = None,
+    ):
+        self.oss_key = oss_key
+        self.oss_policy = oss_policy
+
+    def validate(self):
+        if self.oss_policy:
+            self.oss_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        if self.oss_policy is not None:
+            result['ossPolicy'] = self.oss_policy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        if m.get('ossPolicy') is not None:
+            temp_model = GetUploadPolicyResponseBodyDataOssPolicy()
+            self.oss_policy = temp_model.from_map(m['ossPolicy'])
+        return self
+
+
+class GetUploadPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetUploadPolicyResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetUploadPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetUploadPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUploadPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUploadPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
