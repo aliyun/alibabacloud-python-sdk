@@ -2,6 +2,10 @@
 - Update API DescribeConnectionCountRecords: add request parameters RegionId.
 
 
+2025-10-29 Version: 5.0.9
+- Update API DescribeConnectionCountRecords: add request parameters RegionId.
+
+
 2025-10-27 Version: 5.0.8
 - Update API DescribeAuditLogRecords: add response parameters Body.Items.$.ExecuteTimestamp.
 
