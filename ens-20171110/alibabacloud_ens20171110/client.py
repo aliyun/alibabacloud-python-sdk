@@ -1563,7 +1563,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
         """
-        @summary 因底层升级批量迁移
+        @summary Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+        
+        @description ## [](#)Request description
+        This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param tmp_req: BatchEventMigrateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1602,7 +1605,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
         """
-        @summary 因底层升级批量迁移
+        @summary Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+        
+        @description ## [](#)Request description
+        This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param tmp_req: BatchEventMigrateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1640,7 +1646,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.BatchEventMigrateInstanceRequest,
     ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
         """
-        @summary 因底层升级批量迁移
+        @summary Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+        
+        @description ## [](#)Request description
+        This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param request: BatchEventMigrateInstanceRequest
         @return: BatchEventMigrateInstanceResponse
@@ -1653,7 +1662,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.BatchEventMigrateInstanceRequest,
     ) -> ens_20171110_models.BatchEventMigrateInstanceResponse:
         """
-        @summary 因底层升级批量迁移
+        @summary Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+        
+        @description ## [](#)Request description
+        This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param request: BatchEventMigrateInstanceRequest
         @return: BatchEventMigrateInstanceResponse
@@ -1667,15 +1679,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
         """
-        @summary 批量因系统维护实例重启
+        @summary The event that is used to immediately redeploy specified resources in batches or by appointment
         
-        @description ## 请求说明
-        - `Action` 参数固定为 `BatchEventRebootInstance`。
-        - `Version` 参数固定为 `2017-11-10`。
-        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
-        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
-        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
-        - 错误情况下，返回相应的错误代码和消息。
+        @description    This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
         
         @param tmp_req: BatchEventRebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1714,15 +1720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
         """
-        @summary 批量因系统维护实例重启
+        @summary The event that is used to immediately redeploy specified resources in batches or by appointment
         
-        @description ## 请求说明
-        - `Action` 参数固定为 `BatchEventRebootInstance`。
-        - `Version` 参数固定为 `2017-11-10`。
-        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
-        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
-        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
-        - 错误情况下，返回相应的错误代码和消息。
+        @description    This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
         
         @param tmp_req: BatchEventRebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1760,15 +1760,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.BatchEventRebootInstanceRequest,
     ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
         """
-        @summary 批量因系统维护实例重启
+        @summary The event that is used to immediately redeploy specified resources in batches or by appointment
         
-        @description ## 请求说明
-        - `Action` 参数固定为 `BatchEventRebootInstance`。
-        - `Version` 参数固定为 `2017-11-10`。
-        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
-        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
-        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
-        - 错误情况下，返回相应的错误代码和消息。
+        @description    This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
         
         @param request: BatchEventRebootInstanceRequest
         @return: BatchEventRebootInstanceResponse
@@ -1781,15 +1775,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.BatchEventRebootInstanceRequest,
     ) -> ens_20171110_models.BatchEventRebootInstanceResponse:
         """
-        @summary 批量因系统维护实例重启
+        @summary The event that is used to immediately redeploy specified resources in batches or by appointment
         
-        @description ## 请求说明
-        - `Action` 参数固定为 `BatchEventRebootInstance`。
-        - `Version` 参数固定为 `2017-11-10`。
-        - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
-        - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
-        - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
-        - 错误情况下，返回相应的错误代码和消息。
+        @description    This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
         
         @param request: BatchEventRebootInstanceRequest
         @return: BatchEventRebootInstanceResponse
@@ -1803,7 +1791,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
         """
-        @summary 批量操作重新部署
+        @summary Batch redeployment
+        
+        @description - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
         
         @param tmp_req: BatchEventRedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1842,7 +1832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
         """
-        @summary 批量操作重新部署
+        @summary Batch redeployment
+        
+        @description - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
         
         @param tmp_req: BatchEventRedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1880,7 +1872,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.BatchEventRedeployInstanceRequest,
     ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
         """
-        @summary 批量操作重新部署
+        @summary Batch redeployment
+        
+        @description - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
         
         @param request: BatchEventRedeployInstanceRequest
         @return: BatchEventRedeployInstanceResponse
@@ -1893,7 +1887,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.BatchEventRedeployInstanceRequest,
     ) -> ens_20171110_models.BatchEventRedeployInstanceResponse:
         """
-        @summary 批量操作重新部署
+        @summary Batch redeployment
+        
+        @description - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
         
         @param request: BatchEventRedeployInstanceRequest
         @return: BatchEventRedeployInstanceResponse
@@ -3671,7 +3667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateHaVipResponse:
         """
-        @summary 创建高可用VIP
+        @summary Creates a high-availability virtual IP address (HAVIP).
         
         @param request: CreateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3714,7 +3710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateHaVipResponse:
         """
-        @summary 创建高可用VIP
+        @summary Creates a high-availability virtual IP address (HAVIP).
         
         @param request: CreateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3756,7 +3752,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateHaVipRequest,
     ) -> ens_20171110_models.CreateHaVipResponse:
         """
-        @summary 创建高可用VIP
+        @summary Creates a high-availability virtual IP address (HAVIP).
         
         @param request: CreateHaVipRequest
         @return: CreateHaVipResponse
@@ -3769,7 +3765,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateHaVipRequest,
     ) -> ens_20171110_models.CreateHaVipResponse:
         """
-        @summary 创建高可用VIP
+        @summary Creates a high-availability virtual IP address (HAVIP).
         
         @param request: CreateHaVipRequest
         @return: CreateHaVipResponse
@@ -6689,6 +6685,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vswitch_with_options_async(request, runtime)
 
+    def delete_aicpublic_key_with_options(
+        self,
+        request: ens_20171110_models.DeleteAICPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
+        """
+        @summary 删除托管公钥
+        
+        @param request: DeleteAICPublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAICPublicKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAICPublicKey',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteAICPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aicpublic_key_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteAICPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
+        """
+        @summary 删除托管公钥
+        
+        @param request: DeleteAICPublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAICPublicKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAICPublicKey',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteAICPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aicpublic_key(
+        self,
+        request: ens_20171110_models.DeleteAICPublicKeyRequest,
+    ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
+        """
+        @summary 删除托管公钥
+        
+        @param request: DeleteAICPublicKeyRequest
+        @return: DeleteAICPublicKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aicpublic_key_with_options(request, runtime)
+
+    async def delete_aicpublic_key_async(
+        self,
+        request: ens_20171110_models.DeleteAICPublicKeyRequest,
+    ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
+        """
+        @summary 删除托管公钥
+        
+        @param request: DeleteAICPublicKeyRequest
+        @return: DeleteAICPublicKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aicpublic_key_with_options_async(request, runtime)
+
     def delete_application_with_options(
         self,
         request: ens_20171110_models.DeleteApplicationRequest,
@@ -7823,7 +7915,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteHaVipsResponse:
         """
-        @summary 删除高可用VIP实例
+        @summary Deletes a high-availability VIP (HAVIP).
         
         @param tmp_req: DeleteHaVipsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7862,7 +7954,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteHaVipsResponse:
         """
-        @summary 删除高可用VIP实例
+        @summary Deletes a high-availability VIP (HAVIP).
         
         @param tmp_req: DeleteHaVipsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7900,7 +7992,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteHaVipsRequest,
     ) -> ens_20171110_models.DeleteHaVipsResponse:
         """
-        @summary 删除高可用VIP实例
+        @summary Deletes a high-availability VIP (HAVIP).
         
         @param request: DeleteHaVipsRequest
         @return: DeleteHaVipsResponse
@@ -7913,7 +8005,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteHaVipsRequest,
     ) -> ens_20171110_models.DeleteHaVipsResponse:
         """
-        @summary 删除高可用VIP实例
+        @summary Deletes a high-availability VIP (HAVIP).
         
         @param request: DeleteHaVipsRequest
         @return: DeleteHaVipsResponse
@@ -8751,7 +8843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
         """
-        @summary 删除弹性网卡
+        @summary Deletes an elastic network interface (ENI).
         
         @param tmp_req: DeleteNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8790,7 +8882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
         """
-        @summary 删除弹性网卡
+        @summary Deletes an elastic network interface (ENI).
         
         @param tmp_req: DeleteNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8828,7 +8920,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkInterfacesRequest,
     ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
         """
-        @summary 删除弹性网卡
+        @summary Deletes an elastic network interface (ENI).
         
         @param request: DeleteNetworkInterfacesRequest
         @return: DeleteNetworkInterfacesResponse
@@ -8841,7 +8933,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkInterfacesRequest,
     ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
         """
-        @summary 删除弹性网卡
+        @summary Deletes an elastic network interface (ENI).
         
         @param request: DeleteNetworkInterfacesRequest
         @return: DeleteNetworkInterfacesResponse
@@ -14589,6 +14681,8 @@ class Client(OpenApiClient):
         """
         @summary Queries instance system events.
         
+        @description    You must specify an event type to query. You can query multiple event types at the same time.
+        
         @param tmp_req: DescribeHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeHistoryEventsResponse
@@ -14644,6 +14738,8 @@ class Client(OpenApiClient):
         """
         @summary Queries instance system events.
         
+        @description    You must specify an event type to query. You can query multiple event types at the same time.
+        
         @param tmp_req: DescribeHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeHistoryEventsResponse
@@ -14698,6 +14794,8 @@ class Client(OpenApiClient):
         """
         @summary Queries instance system events.
         
+        @description    You must specify an event type to query. You can query multiple event types at the same time.
+        
         @param request: DescribeHistoryEventsRequest
         @return: DescribeHistoryEventsResponse
         """
@@ -14710,6 +14808,8 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeHistoryEventsResponse:
         """
         @summary Queries instance system events.
+        
+        @description    You must specify an event type to query. You can query multiple event types at the same time.
         
         @param request: DescribeHistoryEventsRequest
         @return: DescribeHistoryEventsResponse
@@ -15147,7 +15247,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
         """
-        @summary 查询实例5分钟粒度带宽明细
+        @summary Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
         
         @param request: DescribeInstanceBandwidthDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15180,7 +15284,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
         """
-        @summary 查询实例5分钟粒度带宽明细
+        @summary Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
         
         @param request: DescribeInstanceBandwidthDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15212,7 +15320,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceBandwidthDetailRequest,
     ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
         """
-        @summary 查询实例5分钟粒度带宽明细
+        @summary Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
         
         @param request: DescribeInstanceBandwidthDetailRequest
         @return: DescribeInstanceBandwidthDetailResponse
@@ -15225,7 +15337,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceBandwidthDetailRequest,
     ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
         """
-        @summary 查询实例5分钟粒度带宽明细
+        @summary Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
         
         @param request: DescribeInstanceBandwidthDetailRequest
         @return: DescribeInstanceBandwidthDetailResponse
@@ -18772,6 +18888,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeSDGDeploymentStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_ids):
+            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
         if not UtilClient.is_unset(tmp_req.instance_ids):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
@@ -18779,6 +18897,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deployment_type):
             query['DeploymentType'] = request.deployment_type
+        if not UtilClient.is_unset(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.page_number):
@@ -18825,6 +18945,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeSDGDeploymentStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_ids):
+            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
         if not UtilClient.is_unset(tmp_req.instance_ids):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
@@ -18832,6 +18954,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deployment_type):
             query['DeploymentType'] = request.deployment_type
+        if not UtilClient.is_unset(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.page_number):
@@ -18888,6 +19012,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sdgdeployment_status_with_options_async(request, runtime)
+
+    def describe_sdgshared_disks_with_options(
+        self,
+        request: ens_20171110_models.DescribeSDGSharedDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
+        """
+        @summary 查询SDG下的共享盘
+        
+        @param request: DescribeSDGSharedDisksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGSharedDisksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sdg_id):
+            query['SdgId'] = request.sdg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDGSharedDisks',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGSharedDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sdgshared_disks_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSDGSharedDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
+        """
+        @summary 查询SDG下的共享盘
+        
+        @param request: DescribeSDGSharedDisksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGSharedDisksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sdg_id):
+            query['SdgId'] = request.sdg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDGSharedDisks',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGSharedDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sdgshared_disks(
+        self,
+        request: ens_20171110_models.DescribeSDGSharedDisksRequest,
+    ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
+        """
+        @summary 查询SDG下的共享盘
+        
+        @param request: DescribeSDGSharedDisksRequest
+        @return: DescribeSDGSharedDisksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sdgshared_disks_with_options(request, runtime)
+
+    async def describe_sdgshared_disks_async(
+        self,
+        request: ens_20171110_models.DescribeSDGSharedDisksRequest,
+    ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
+        """
+        @summary 查询SDG下的共享盘
+        
+        @param request: DescribeSDGSharedDisksRequest
+        @return: DescribeSDGSharedDisksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sdgshared_disks_with_options_async(request, runtime)
 
     def describe_sdgs_with_options(
         self,
@@ -20419,7 +20655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeVSwitchAttributesResponse:
         """
-        @summary 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+        @summary Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
         
         @param request: DescribeVSwitchAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20454,7 +20690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeVSwitchAttributesResponse:
         """
-        @summary 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+        @summary Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
         
         @param request: DescribeVSwitchAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20488,7 +20724,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeVSwitchAttributesRequest,
     ) -> ens_20171110_models.DescribeVSwitchAttributesResponse:
         """
-        @summary 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+        @summary Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
         
         @param request: DescribeVSwitchAttributesRequest
         @return: DescribeVSwitchAttributesResponse
@@ -20501,7 +20737,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeVSwitchAttributesRequest,
     ) -> ens_20171110_models.DescribeVSwitchAttributesResponse:
         """
-        @summary 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+        @summary Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
         
         @param request: DescribeVSwitchAttributesRequest
         @return: DescribeVSwitchAttributesResponse
@@ -21071,7 +21307,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.EventMigrateInstanceResponse:
         """
-        @summary 因底层升级需要迁移
+        @summary Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+        
+        @description    This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param request: EventMigrateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21116,7 +21354,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.EventMigrateInstanceResponse:
         """
-        @summary 因底层升级需要迁移
+        @summary Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+        
+        @description    This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param request: EventMigrateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21160,7 +21400,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.EventMigrateInstanceRequest,
     ) -> ens_20171110_models.EventMigrateInstanceResponse:
         """
-        @summary 因底层升级需要迁移
+        @summary Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+        
+        @description    This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param request: EventMigrateInstanceRequest
         @return: EventMigrateInstanceResponse
@@ -21173,7 +21415,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.EventMigrateInstanceRequest,
     ) -> ens_20171110_models.EventMigrateInstanceResponse:
         """
-        @summary 因底层升级需要迁移
+        @summary Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+        
+        @description    This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
         
         @param request: EventMigrateInstanceRequest
         @return: EventMigrateInstanceResponse
@@ -21187,13 +21431,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.EventRebootInstanceResponse:
         """
-        @summary 因系统维护实例重启
+        @summary Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
         
-        @description ## 请求说明
-        - 该API用于触发一个实例的重启事件。
-        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
-        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
-        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        @description    This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
         
         @param request: EventRebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21234,13 +21474,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.EventRebootInstanceResponse:
         """
-        @summary 因系统维护实例重启
+        @summary Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
         
-        @description ## 请求说明
-        - 该API用于触发一个实例的重启事件。
-        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
-        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
-        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        @description    This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
         
         @param request: EventRebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21280,13 +21516,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.EventRebootInstanceRequest,
     ) -> ens_20171110_models.EventRebootInstanceResponse:
         """
-        @summary 因系统维护实例重启
+        @summary Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
         
-        @description ## 请求说明
-        - 该API用于触发一个实例的重启事件。
-        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
-        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
-        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        @description    This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
         
         @param request: EventRebootInstanceRequest
         @return: EventRebootInstanceResponse
@@ -21299,13 +21531,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.EventRebootInstanceRequest,
     ) -> ens_20171110_models.EventRebootInstanceResponse:
         """
-        @summary 因系统维护实例重启
+        @summary Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
         
-        @description ## 请求说明
-        - 该API用于触发一个实例的重启事件。
-        - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
-        - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
-        - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+        @description    This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
         
         @param request: EventRebootInstanceRequest
         @return: EventRebootInstanceResponse
@@ -21319,7 +21547,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.EventRedeployInstanceResponse:
         """
-        @summary 节点内迁移
+        @summary The event that is used to immediately redeploy a specified resource or by appointment
+        
+        @description    This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
         
         @param request: EventRedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21360,7 +21590,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.EventRedeployInstanceResponse:
         """
-        @summary 节点内迁移
+        @summary The event that is used to immediately redeploy a specified resource or by appointment
+        
+        @description    This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
         
         @param request: EventRedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21400,7 +21632,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.EventRedeployInstanceRequest,
     ) -> ens_20171110_models.EventRedeployInstanceResponse:
         """
-        @summary 节点内迁移
+        @summary The event that is used to immediately redeploy a specified resource or by appointment
+        
+        @description    This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
         
         @param request: EventRedeployInstanceRequest
         @return: EventRedeployInstanceResponse
@@ -21413,7 +21647,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.EventRedeployInstanceRequest,
     ) -> ens_20171110_models.EventRedeployInstanceResponse:
         """
-        @summary 节点内迁移
+        @summary The event that is used to immediately redeploy a specified resource or by appointment
+        
+        @description    This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
         
         @param request: EventRedeployInstanceRequest
         @return: EventRedeployInstanceResponse
@@ -22223,7 +22459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ImportImageResponse:
         """
-        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        @summary Call ImportImage to import your image file to the cloud server.
         
         @param tmp_req: ImportImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22286,7 +22522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ImportImageResponse:
         """
-        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        @summary Call ImportImage to import your image file to the cloud server.
         
         @param tmp_req: ImportImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22348,7 +22584,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ImportImageRequest,
     ) -> ens_20171110_models.ImportImageResponse:
         """
-        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        @summary Call ImportImage to import your image file to the cloud server.
         
         @param request: ImportImageRequest
         @return: ImportImageResponse
@@ -22361,7 +22597,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ImportImageRequest,
     ) -> ens_20171110_models.ImportImageResponse:
         """
-        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        @summary Call ImportImage to import your image file to the cloud server.
         
         @param request: ImportImageRequest
         @return: ImportImageResponse
@@ -22913,6 +23149,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.leave_security_group_with_options_async(request, runtime)
 
+    def list_aicpublic_key_deliveries_with_options(
+        self,
+        request: ens_20171110_models.ListAICPublicKeyDeliveriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
+        """
+        @summary 查询公钥下发信息
+        
+        @param request: ListAICPublicKeyDeliveriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAICPublicKeyDeliveriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAICPublicKeyDeliveries',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListAICPublicKeyDeliveriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aicpublic_key_deliveries_with_options_async(
+        self,
+        request: ens_20171110_models.ListAICPublicKeyDeliveriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
+        """
+        @summary 查询公钥下发信息
+        
+        @param request: ListAICPublicKeyDeliveriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAICPublicKeyDeliveriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAICPublicKeyDeliveries',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListAICPublicKeyDeliveriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aicpublic_key_deliveries(
+        self,
+        request: ens_20171110_models.ListAICPublicKeyDeliveriesRequest,
+    ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
+        """
+        @summary 查询公钥下发信息
+        
+        @param request: ListAICPublicKeyDeliveriesRequest
+        @return: ListAICPublicKeyDeliveriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aicpublic_key_deliveries_with_options(request, runtime)
+
+    async def list_aicpublic_key_deliveries_async(
+        self,
+        request: ens_20171110_models.ListAICPublicKeyDeliveriesRequest,
+    ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
+        """
+        @summary 查询公钥下发信息
+        
+        @param request: ListAICPublicKeyDeliveriesRequest
+        @return: ListAICPublicKeyDeliveriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aicpublic_key_deliveries_with_options_async(request, runtime)
+
+    def list_aicpublic_keys_with_options(
+        self,
+        request: ens_20171110_models.ListAICPublicKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListAICPublicKeysResponse:
+        """
+        @summary 查询所有托管的公钥
+        
+        @param request: ListAICPublicKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAICPublicKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAICPublicKeys',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListAICPublicKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aicpublic_keys_with_options_async(
+        self,
+        request: ens_20171110_models.ListAICPublicKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListAICPublicKeysResponse:
+        """
+        @summary 查询所有托管的公钥
+        
+        @param request: ListAICPublicKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAICPublicKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAICPublicKeys',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListAICPublicKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aicpublic_keys(
+        self,
+        request: ens_20171110_models.ListAICPublicKeysRequest,
+    ) -> ens_20171110_models.ListAICPublicKeysResponse:
+        """
+        @summary 查询所有托管的公钥
+        
+        @param request: ListAICPublicKeysRequest
+        @return: ListAICPublicKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aicpublic_keys_with_options(request, runtime)
+
+    async def list_aicpublic_keys_async(
+        self,
+        request: ens_20171110_models.ListAICPublicKeysRequest,
+    ) -> ens_20171110_models.ListAICPublicKeysResponse:
+        """
+        @summary 查询所有托管的公钥
+        
+        @param request: ListAICPublicKeysRequest
+        @return: ListAICPublicKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aicpublic_keys_with_options_async(request, runtime)
+
     def list_applications_with_options(
         self,
         request: ens_20171110_models.ListApplicationsRequest,
@@ -23443,6 +23907,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def manage_aiclogin_with_options(
+        self,
+        request: ens_20171110_models.ManageAICLoginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ManageAICLoginResponse:
+        """
+        @summary AIC公钥登入管理
+        
+        @param request: ManageAICLoginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageAICLoginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_name):
+            query['ActionName'] = request.action_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManageAICLogin',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ManageAICLoginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_aiclogin_with_options_async(
+        self,
+        request: ens_20171110_models.ManageAICLoginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ManageAICLoginResponse:
+        """
+        @summary AIC公钥登入管理
+        
+        @param request: ManageAICLoginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageAICLoginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_name):
+            query['ActionName'] = request.action_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManageAICLogin',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ManageAICLoginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manage_aiclogin(
+        self,
+        request: ens_20171110_models.ManageAICLoginRequest,
+    ) -> ens_20171110_models.ManageAICLoginResponse:
+        """
+        @summary AIC公钥登入管理
+        
+        @param request: ManageAICLoginRequest
+        @return: ManageAICLoginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.manage_aiclogin_with_options(request, runtime)
+
+    async def manage_aiclogin_async(
+        self,
+        request: ens_20171110_models.ManageAICLoginRequest,
+    ) -> ens_20171110_models.ManageAICLoginResponse:
+        """
+        @summary AIC公钥登入管理
+        
+        @param request: ManageAICLoginRequest
+        @return: ManageAICLoginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.manage_aiclogin_with_options_async(request, runtime)
+
     def modify_ens_eip_address_attribute_with_options(
         self,
         request: ens_20171110_models.ModifyEnsEipAddressAttributeRequest,
@@ -23557,7 +24129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyEnsRouteEntryResponse:
         """
-        @summary 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+        @summary Modifies the name and description of a custom route.
         
         @param request: ModifyEnsRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23596,7 +24168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyEnsRouteEntryResponse:
         """
-        @summary 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+        @summary Modifies the name and description of a custom route.
         
         @param request: ModifyEnsRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23634,7 +24206,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyEnsRouteEntryRequest,
     ) -> ens_20171110_models.ModifyEnsRouteEntryResponse:
         """
-        @summary 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+        @summary Modifies the name and description of a custom route.
         
         @param request: ModifyEnsRouteEntryRequest
         @return: ModifyEnsRouteEntryResponse
@@ -23647,7 +24219,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyEnsRouteEntryRequest,
     ) -> ens_20171110_models.ModifyEnsRouteEntryResponse:
         """
-        @summary 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+        @summary Modifies the name and description of a custom route.
         
         @param request: ModifyEnsRouteEntryRequest
         @return: ModifyEnsRouteEntryResponse
@@ -24545,7 +25117,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
         """
-        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        @summary Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        If the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
         
         @param request: ModifyInstanceBootConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24578,7 +25154,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
         """
-        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        @summary Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        If the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
         
         @param request: ModifyInstanceBootConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24610,7 +25190,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceBootConfigurationRequest,
     ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
         """
-        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        @summary Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        If the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
         
         @param request: ModifyInstanceBootConfigurationRequest
         @return: ModifyInstanceBootConfigurationResponse
@@ -24623,7 +25207,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceBootConfigurationRequest,
     ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
         """
-        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        @summary Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        If the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
         
         @param request: ModifyInstanceBootConfigurationRequest
         @return: ModifyInstanceBootConfigurationResponse
@@ -29587,6 +30175,12 @@ class Client(OpenApiClient):
             query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.launch_template_id):
+            query['LaunchTemplateId'] = request.launch_template_id
+        if not UtilClient.is_unset(request.launch_template_name):
+            query['LaunchTemplateName'] = request.launch_template_name
+        if not UtilClient.is_unset(request.launch_template_version):
+            query['LaunchTemplateVersion'] = request.launch_template_version
         if not UtilClient.is_unset(request.net_district_code):
             query['NetDistrictCode'] = request.net_district_code
         if not UtilClient.is_unset(request.net_work_id):
@@ -29704,6 +30298,12 @@ class Client(OpenApiClient):
             query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.launch_template_id):
+            query['LaunchTemplateId'] = request.launch_template_id
+        if not UtilClient.is_unset(request.launch_template_name):
+            query['LaunchTemplateName'] = request.launch_template_name
+        if not UtilClient.is_unset(request.launch_template_version):
+            query['LaunchTemplateVersion'] = request.launch_template_version
         if not UtilClient.is_unset(request.net_district_code):
             query['NetDistrictCode'] = request.net_district_code
         if not UtilClient.is_unset(request.net_work_id):
@@ -30906,6 +31506,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_udplistener_attribute_with_options_async(request, runtime)
+
+    def share_aicimage_with_options(
+        self,
+        tmp_req: ens_20171110_models.ShareAICImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ShareAICImageResponse:
+        """
+        @summary 共享AIC镜像
+        
+        @param tmp_req: ShareAICImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShareAICImageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ShareAICImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.users):
+            request.users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.users, 'Users', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.users_shrink):
+            query['Users'] = request.users_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ShareAICImage',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ShareAICImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def share_aicimage_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.ShareAICImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ShareAICImageResponse:
+        """
+        @summary 共享AIC镜像
+        
+        @param tmp_req: ShareAICImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShareAICImageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ShareAICImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.users):
+            request.users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.users, 'Users', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.users_shrink):
+            query['Users'] = request.users_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ShareAICImage',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ShareAICImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def share_aicimage(
+        self,
+        request: ens_20171110_models.ShareAICImageRequest,
+    ) -> ens_20171110_models.ShareAICImageResponse:
+        """
+        @summary 共享AIC镜像
+        
+        @param request: ShareAICImageRequest
+        @return: ShareAICImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.share_aicimage_with_options(request, runtime)
+
+    async def share_aicimage_async(
+        self,
+        request: ens_20171110_models.ShareAICImageRequest,
+    ) -> ens_20171110_models.ShareAICImageResponse:
+        """
+        @summary 共享AIC镜像
+        
+        @param request: ShareAICImageRequest
+        @return: ShareAICImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.share_aicimage_with_options_async(request, runtime)
 
     def start_epn_instance_with_options(
         self,
@@ -33130,3 +33838,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_application_with_options_async(request, runtime)
+
+    def upload_aicpublic_key_with_options(
+        self,
+        request: ens_20171110_models.UploadAICPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UploadAICPublicKeyResponse:
+        """
+        @summary 上传公钥
+        
+        @param request: UploadAICPublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadAICPublicKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadAICPublicKey',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UploadAICPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_aicpublic_key_with_options_async(
+        self,
+        request: ens_20171110_models.UploadAICPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UploadAICPublicKeyResponse:
+        """
+        @summary 上传公钥
+        
+        @param request: UploadAICPublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadAICPublicKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadAICPublicKey',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UploadAICPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_aicpublic_key(
+        self,
+        request: ens_20171110_models.UploadAICPublicKeyRequest,
+    ) -> ens_20171110_models.UploadAICPublicKeyResponse:
+        """
+        @summary 上传公钥
+        
+        @param request: UploadAICPublicKeyRequest
+        @return: UploadAICPublicKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_aicpublic_key_with_options(request, runtime)
+
+    async def upload_aicpublic_key_async(
+        self,
+        request: ens_20171110_models.UploadAICPublicKeyRequest,
+    ) -> ens_20171110_models.UploadAICPublicKeyResponse:
+        """
+        @summary 上传公钥
+        
+        @param request: UploadAICPublicKeyRequest
+        @return: UploadAICPublicKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_aicpublic_key_with_options_async(request, runtime)

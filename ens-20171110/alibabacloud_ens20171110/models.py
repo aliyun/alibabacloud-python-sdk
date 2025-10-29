@@ -2826,13 +2826,33 @@ class BatchEventMigrateInstanceRequestEventInfos(TeaModel):
         plan_time: int = None,
         resource_id: str = None,
     ):
+        # The data migration policy. Valid values:
+        # 
+        # *   abandon: does not migrate data. This is the default value.
+        # *   force_transfer: forcibly migrates data.
+        # *   try_transfer: Migrate data as much as possible.
         self.data_policy = data_policy
+        # Event ID e-\\*.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The type of the O\\&M task. Valid values:
+        # 
+        # *   immediate
+        # *   scheduled
+        # 
         # This parameter is required.
         self.ops_type = ops_type
+        # The password of the instance. This parameter is optional. If you do not specify this parameter, a random password is used.
+        # 
+        # The password must be 8 to 30 characters in length. The password must contain uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # Note that you cannot enter a password for scheduled execution.
         self.password = password
+        # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        # Resource ID i-\\*.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 
@@ -2881,6 +2901,7 @@ class BatchEventMigrateInstanceRequest(TeaModel):
         self,
         event_infos: List[BatchEventMigrateInstanceRequestEventInfos] = None,
     ):
+        # The details of events.
         self.event_infos = event_infos
 
     def validate(self):
@@ -2916,6 +2937,7 @@ class BatchEventMigrateInstanceShrinkRequest(TeaModel):
         self,
         event_infos_shrink: str = None,
     ):
+        # The details of events.
         self.event_infos_shrink = event_infos_shrink
 
     def validate(self):
@@ -2946,9 +2968,13 @@ class BatchEventMigrateInstanceResponseBodyResults(TeaModel):
         message: str = None,
         resource_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The ID of the event.
         self.event_id = event_id
+        # When Code!=200, it indicates the specific error message.
         self.message = message
+        # The resource IDs.
         self.resource_id = resource_id
 
     def validate(self):
@@ -2989,7 +3015,9 @@ class BatchEventMigrateInstanceResponseBody(TeaModel):
         request_id: str = None,
         results: List[BatchEventMigrateInstanceResponseBodyResults] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # The results.
         self.results = results
 
     def validate(self):
@@ -3073,9 +3101,16 @@ class BatchEventRebootInstanceRequestEventInfos(TeaModel):
         plan_time: int = None,
         resource_id: str = None,
     ):
+        # The ID of the system event.
         self.event_id = event_id
+        # The type of the O\\&M task.
+        # 
+        # *   immediate
+        # *   scheduled
         self.ops_type = ops_type
+        # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        # A client ID.
         self.resource_id = resource_id
 
     def validate(self):
@@ -3115,6 +3150,7 @@ class BatchEventRebootInstanceRequest(TeaModel):
         self,
         event_infos: List[BatchEventRebootInstanceRequestEventInfos] = None,
     ):
+        # The details of events.
         self.event_infos = event_infos
 
     def validate(self):
@@ -3150,6 +3186,7 @@ class BatchEventRebootInstanceShrinkRequest(TeaModel):
         self,
         event_infos_shrink: str = None,
     ):
+        # The details of events.
         self.event_infos_shrink = event_infos_shrink
 
     def validate(self):
@@ -3180,9 +3217,13 @@ class BatchEventRebootInstanceResponseBodyResults(TeaModel):
         message: str = None,
         resource_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The ID of the system event.
         self.event_id = event_id
+        # The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
         self.message = message
+        # The resource IDs.
         self.resource_id = resource_id
 
     def validate(self):
@@ -3223,8 +3264,9 @@ class BatchEventRebootInstanceResponseBody(TeaModel):
         request_id: str = None,
         results: List[BatchEventRebootInstanceResponseBodyResults] = None,
     ):
-        # Id of the request。
+        # The ID of the request.
         self.request_id = request_id
+        # The result.
         self.results = results
 
     def validate(self):
@@ -3308,9 +3350,16 @@ class BatchEventRedeployInstanceRequestEventInfos(TeaModel):
         plan_time: int = None,
         resource_id: str = None,
     ):
+        # System event ID.
         self.event_id = event_id
+        # Operation type, value range:
+        # 
+        # - immediate: Execute immediately.
+        # - scheduled: Scheduled execution.
         self.ops_type = ops_type
+        # Scheduled execution time, in timestamp, unit is milliseconds. This field is required when OpsType=scheduled.
         self.plan_time = plan_time
+        # Resource ID.
         self.resource_id = resource_id
 
     def validate(self):
@@ -3350,6 +3399,7 @@ class BatchEventRedeployInstanceRequest(TeaModel):
         self,
         event_infos: List[BatchEventRedeployInstanceRequestEventInfos] = None,
     ):
+        # List of events.
         self.event_infos = event_infos
 
     def validate(self):
@@ -3385,6 +3435,7 @@ class BatchEventRedeployInstanceShrinkRequest(TeaModel):
         self,
         event_infos_shrink: str = None,
     ):
+        # List of events.
         self.event_infos_shrink = event_infos_shrink
 
     def validate(self):
@@ -3415,9 +3466,13 @@ class BatchEventRedeployInstanceResponseBodyResults(TeaModel):
         message: str = None,
         resource_id: str = None,
     ):
+        # Status code.
         self.code = code
+        # System event ID.
         self.event_id = event_id
+        # Operational message, when code=200, the message is \\"successful\\".
         self.message = message
+        # Resource ID.
         self.resource_id = resource_id
 
     def validate(self):
@@ -3458,7 +3513,9 @@ class BatchEventRedeployInstanceResponseBody(TeaModel):
         request_id: str = None,
         results: List[BatchEventRedeployInstanceResponseBodyResults] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # List of results.
         self.results = results
 
     def validate(self):
@@ -6645,9 +6702,13 @@ class CreateHaVipRequest(TeaModel):
         # 
         # Default value: 1.
         self.amount = amount
+        # The description of the HAVIP.
         self.description = description
+        # The IP address of the HAVIP.
         self.ip_address = ip_address
+        # The name of the HAVIP.
         self.name = name
+        # The vSwitch ID of the HAVIP.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -6692,7 +6753,9 @@ class CreateHaVipResponseBody(TeaModel):
         ha_vip_ids: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs of the HAVIPs.
         self.ha_vip_ids = ha_vip_ids
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11344,6 +11407,103 @@ class CreateVSwitchResponse(TeaModel):
         return self
 
 
+class DeleteAICPublicKeyRequest(TeaModel):
+    def __init__(
+        self,
+        key_name: str = None,
+    ):
+        # This parameter is required.
+        self.key_name = key_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        return self
+
+
+class DeleteAICPublicKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAICPublicKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAICPublicKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAICPublicKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -12730,6 +12890,8 @@ class DeleteHaVipsRequest(TeaModel):
         self,
         ha_vip_ids: List[str] = None,
     ):
+        # The IDs of high-availability virtual IP addresses (HAVIPs).
+        # 
         # This parameter is required.
         self.ha_vip_ids = ha_vip_ids
 
@@ -12758,6 +12920,8 @@ class DeleteHaVipsShrinkRequest(TeaModel):
         self,
         ha_vip_ids_shrink: str = None,
     ):
+        # The IDs of high-availability virtual IP addresses (HAVIPs).
+        # 
         # This parameter is required.
         self.ha_vip_ids_shrink = ha_vip_ids_shrink
 
@@ -12786,6 +12950,7 @@ class DeleteHaVipsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13707,6 +13872,8 @@ class DeleteNetworkInterfacesRequest(TeaModel):
         self,
         network_interface_ids: List[str] = None,
     ):
+        # The IDs of the elastic network interfaces (ENIs).
+        # 
         # This parameter is required.
         self.network_interface_ids = network_interface_ids
 
@@ -13735,6 +13902,8 @@ class DeleteNetworkInterfacesShrinkRequest(TeaModel):
         self,
         network_interface_ids_shrink: str = None,
     ):
+        # The IDs of the elastic network interfaces (ENIs).
+        # 
         # This parameter is required.
         self.network_interface_ids_shrink = network_interface_ids_shrink
 
@@ -13763,6 +13932,7 @@ class DeleteNetworkInterfacesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28578,6 +28748,7 @@ class DescribeHistoryEventsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        # The IDs of resources.
         self.resource_ids = resource_ids
 
     def validate(self):
@@ -28642,6 +28813,7 @@ class DescribeHistoryEventsShrinkRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        # The IDs of resources.
         self.resource_ids_shrink = resource_ids_shrink
 
     def validate(self):
@@ -28697,14 +28869,45 @@ class DescribeHistoryEventsResponseBodyEvents(TeaModel):
         reason: str = None,
         resource_id: str = None,
     ):
+        # The ID of the event.
         self.event_id = event_id
+        # The level of the specific event. Valid values:
+        # 
+        # *   CRITICAL
+        # *   WARN
+        # *   INFO
         self.event_level = event_level
+        # The status of the event. Valid values:
+        # 
+        # *   Inquiring
+        # *   Scheduled
+        # *   Executing
+        # *   Executed
+        # *   Failed
+        # *   Canceled
+        # *   Avoided
         self.event_status = event_status
+        # The type of the event. Description:
+        # 
+        # *   Instance:SystemFailure.Redeploy: The instance is redeployed due to system issues.
+        # *   Instance:SystemFailure.Reboot: The instance is restarted due to a system error.
+        # *   Instance:RegionNetworkDown: The node network is interrupted.
+        # *   Disk:Stalled: The disk performance is impaired.
+        # *   EnsRegion:NetworkMigration: The instance is migrated due to a system error.
+        # *   IP:SafeRisk: IP alerts.
+        # *   IP:SafeBan: IP blocking.
+        # *   Instance:SystemUpgrade.Migrate: The instance needs to be migrated due to underlying upgrades.
+        # *   Instance:SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
         self.event_type = event_type
+        # The extended attributes.
         self.extended_attribute = extended_attribute
+        # The scheduled execution time of the event in milliseconds.
         self.not_before = not_before
+        # The release time in milliseconds.
         self.publish_time = publish_time
+        # The event cause.
         self.reason = reason
+        # The ID of the associated resources.
         self.resource_id = resource_id
 
     def validate(self):
@@ -28768,10 +28971,15 @@ class DescribeHistoryEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The queried events.
         self.events = events
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -30028,16 +30236,24 @@ class DescribeInstanceBandwidthDetailRequest(TeaModel):
         service_type: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. The maximum interval between the beginning time and the end time is 86400 seconds. The interval is left-closed and right-open. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The plan ID.
         self.instance_id = instance_id
+        # The type of the instance, such as vm, eip, single_tenant, and nc. You can leave this parameter empty. The type of the instance, such as vm, eip, single_tenant, and nc.
         self.instance_type = instance_type
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 200.
         self.page_size = page_size
+        # The type of the service, such as vm, eip, esk, and meta.
         self.service_type = service_type
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -30104,16 +30320,27 @@ class DescribeInstanceBandwidthDetailResponseBodyBandwidths(TeaModel):
         service_type: str = None,
         tx_bw: int = None,
     ):
+        # The user ID.
         self.ali_uid = ali_uid
+        # The bandwidth service time. The data granularity is 5 minutes.
         self.biz_time = biz_time
+        # The node ID.
         self.ens_region_id = ens_region_id
+        # The type of the bandwidth. Valid values: 1, which indicates public network bandwidth. 2, which indicates internal network bandwidth.
         self.flow_type = flow_type
+        # The plan ID.
         self.instance_id = instance_id
+        # The type of the instance, such as vm, eip, single_tenant, and nc.
         self.instance_type = instance_type
+        # null
         self.ip = ip
+        # The Internet service provider to which the IP address belongs.
         self.isp = isp
+        # null
         self.rx_bw = rx_bw
+        # The type of the service, such as vm, eip, esk, and meta.
         self.service_type = service_type
+        # null
         self.tx_bw = tx_bw
 
     def validate(self):
@@ -30185,11 +30412,15 @@ class DescribeInstanceBandwidthDetailResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details about the maximum public bandwidth.
         self.bandwidths = bandwidths
+        # The page number of the current page.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -44135,6 +44366,7 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
     def __init__(
         self,
         deployment_type: str = None,
+        disk_ids: List[str] = None,
         instance_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
@@ -44144,6 +44376,7 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
     ):
         # The deployment type.
         self.deployment_type = deployment_type
+        self.disk_ids = disk_ids
         # IDs of Android in Container (AIC) instances.
         self.instance_ids = instance_ids
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
@@ -44170,6 +44403,8 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
         result = dict()
         if self.deployment_type is not None:
             result['DeploymentType'] = self.deployment_type
+        if self.disk_ids is not None:
+            result['DiskIds'] = self.disk_ids
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.page_number is not None:
@@ -44188,6 +44423,8 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
         m = m or dict()
         if m.get('DeploymentType') is not None:
             self.deployment_type = m.get('DeploymentType')
+        if m.get('DiskIds') is not None:
+            self.disk_ids = m.get('DiskIds')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('PageNumber') is not None:
@@ -44207,6 +44444,7 @@ class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
     def __init__(
         self,
         deployment_type: str = None,
+        disk_ids_shrink: str = None,
         instance_ids_shrink: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -44216,6 +44454,7 @@ class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
     ):
         # The deployment type.
         self.deployment_type = deployment_type
+        self.disk_ids_shrink = disk_ids_shrink
         # IDs of Android in Container (AIC) instances.
         self.instance_ids_shrink = instance_ids_shrink
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
@@ -44242,6 +44481,8 @@ class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
         result = dict()
         if self.deployment_type is not None:
             result['DeploymentType'] = self.deployment_type
+        if self.disk_ids_shrink is not None:
+            result['DiskIds'] = self.disk_ids_shrink
         if self.instance_ids_shrink is not None:
             result['InstanceIds'] = self.instance_ids_shrink
         if self.page_number is not None:
@@ -44260,6 +44501,8 @@ class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DeploymentType') is not None:
             self.deployment_type = m.get('DeploymentType')
+        if m.get('DiskIds') is not None:
+            self.disk_ids_shrink = m.get('DiskIds')
         if m.get('InstanceIds') is not None:
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('PageNumber') is not None:
@@ -44474,6 +44717,227 @@ class DescribeSDGDeploymentStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSDGDeploymentStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSDGSharedDisksRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        sdg_id: str = None,
+    ):
+        self.namespace = namespace
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        # This parameter is required.
+        self.sdg_id = sdg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sdg_id is not None:
+            result['SdgId'] = self.sdg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SdgId') is not None:
+            self.sdg_id = m.get('SdgId')
+        return self
+
+
+class DescribeSDGSharedDisksResponseBodySharedDisks(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        disk_id: str = None,
+        disk_type: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        sdg_id: str = None,
+        shared_num: int = None,
+        status: str = None,
+    ):
+        self.creation_time = creation_time
+        self.disk_id = disk_id
+        self.disk_type = disk_type
+        self.namespace = namespace
+        self.region_id = region_id
+        self.sdg_id = sdg_id
+        self.shared_num = shared_num
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sdg_id is not None:
+            result['SdgId'] = self.sdg_id
+        if self.shared_num is not None:
+            result['SharedNum'] = self.shared_num
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SdgId') is not None:
+            self.sdg_id = m.get('SdgId')
+        if m.get('SharedNum') is not None:
+            self.shared_num = m.get('SharedNum')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSDGSharedDisksResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        shared_disks: List[DescribeSDGSharedDisksResponseBodySharedDisks] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.shared_disks = shared_disks
+        self.total_count = total_count
+
+    def validate(self):
+        if self.shared_disks:
+            for k in self.shared_disks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SharedDisks'] = []
+        if self.shared_disks is not None:
+            for k in self.shared_disks:
+                result['SharedDisks'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.shared_disks = []
+        if m.get('SharedDisks') is not None:
+            for k in m.get('SharedDisks'):
+                temp_model = DescribeSDGSharedDisksResponseBodySharedDisks()
+                self.shared_disks.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSDGSharedDisksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSDGSharedDisksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSDGSharedDisksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -48702,6 +49166,8 @@ class DescribeVSwitchAttributesRequest(TeaModel):
         self,
         v_switch_id: str = None,
     ):
+        # The ID of the VSwitch.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
@@ -48879,20 +49345,39 @@ class DescribeVSwitchAttributesResponseBody(TeaModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The number of available IP addresses in the VSwitch.
         self.available_ip_address_count = available_ip_address_count
+        # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
+        # The creation time, in UTC format (yyyy-MM-ddTHH:mm:ssZ).
         self.created_time = created_time
+        # The description of the VSwitch.
         self.description = description
+        # The ENS node ID.
         self.ens_region_id = ens_region_id
+        # A list of high-availability VIP instance IDs.
         self.ha_vip_ids = ha_vip_ids
+        # A list of instance IDs.
         self.instance_ids = instance_ids
+        # A list of load balancer instance IDs.
         self.load_balancer_ids = load_balancer_ids
+        # A list of NAT gateway IDs.
         self.nat_gateway_ids = nat_gateway_ids
+        # The network ID.
         self.network_id = network_id
+        # A list of elastic network interface IDs.
         self.network_interface_ids = network_interface_ids
+        # The request ID.
         self.request_id = request_id
+        # The status of the VSwitch, as follows:
+        # 
+        # - Pending
+        # - Available
+        # - Releasing
         self.status = status
+        # The ID of the VSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the VSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -50178,13 +50663,33 @@ class EventMigrateInstanceRequest(TeaModel):
         plan_time: int = None,
         resource_id: str = None,
     ):
+        # The data migration policy. Valid values:
+        # 
+        # *   abandon: does not migrate data. This is the default value.
+        # *   force_transfer: forcibly migrates data.
+        # *   try_transfer: Migrate data as much as possible.
         self.data_policy = data_policy
+        # The ID of the system event.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The type of the O\\&M task. Valid values:
+        # 
+        # *   immediate
+        # *   scheduled
+        # 
         # This parameter is required.
         self.ops_type = ops_type
+        # The password of the instance. This parameter is optional. If you do not specify this parameter, a random password is used.
+        # 
+        # The password must be 8 to 30 characters in length. The password must contain uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # Note that you cannot enter a password for scheduled execution.
         self.password = password
+        # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 
@@ -50233,6 +50738,7 @@ class EventMigrateInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50304,11 +50810,21 @@ class EventRebootInstanceRequest(TeaModel):
         plan_time: int = None,
         resource_id: str = None,
     ):
+        # The ID of the system event.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The type of the O\\&M task. Valid values:
+        # 
+        # *   immediate
+        # *   scheduled
+        # 
         # This parameter is required.
         self.ops_type = ops_type
+        # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 
@@ -50421,11 +50937,21 @@ class EventRedeployInstanceRequest(TeaModel):
         plan_time: int = None,
         resource_id: str = None,
     ):
+        # The ID of the system event.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The type of the O\\&M task. Valid values:
+        # 
+        # *   immediate
+        # *   scheduled
+        # 
         # This parameter is required.
         self.ops_type = ops_type
+        # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
         self.plan_time = plan_time
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 
@@ -50466,7 +50992,7 @@ class EventRedeployInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # RequestId。
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51759,8 +52285,11 @@ class ImportImageRequestDiskDeviceMapping(TeaModel):
         ossobject: str = None,
         ossregion: str = None,
     ):
+        # The OSS Bucket where the image is stored.
         self.ossbucket = ossbucket
+        # The filename (key) of the image file after it is uploaded to the OSS Bucket.
         self.ossobject = ossobject
+        # The Region where the image is located.
         self.ossregion = ossregion
 
     def validate(self):
@@ -51808,23 +52337,56 @@ class ImportImageRequest(TeaModel):
         platform: str = None,
         target_ossregion_id: str = None,
     ):
+        # System architecture. Allowed values:</br>
+        # 
+        # - x86_64.</br>
+        # 
+        # Currently, only x86_64 is supported.
+        # 
         # This parameter is required.
         self.architecture = architecture
+        # `Image Type`
+        # ens_vm: ens virtual machine image (default)
+        # 
         # This parameter is required.
         self.compute_type = compute_type
+        # List of custom image information being created.
         self.disk_device_mapping = disk_device_mapping
+        # Image format. Allowed values:</br>
+        # qcow2.</br>
+        # Currently, only qcow2 is supported.
+        # 
         # This parameter is required.
         self.image_format = image_format
+        # Image name. The length should be [2, 128] English or Chinese characters. It must start with a letter (uppercase or lowercase) or a Chinese character, and cannot start with http:// or https://. It can contain numbers, colons (:), underscores (_), or hyphens (-).
+        # 
         # This parameter is required.
         self.image_name = image_name
         self.license_type = license_type
+        # The OSS Bucket where the image file is located.
         self.ossbucket = ossbucket
+        # The name of the image file.
         self.ossobject = ossobject
+        # The Region where the image is located. Currently, only cn-beijing is supported.
         self.ossregion = ossregion
+        # Operating system platform type. Allowed values:
+        # 
+        # - windows.
+        # - linux.
+        # 
+        # Currently, only linux is supported.
+        # 
         # This parameter is required.
         self.ostype = ostype
+        # Operating system distribution version
         self.osversion = osversion
+        # Operating system distribution. Allowed values:
+        # * centos
+        # * ubuntu
         self.platform = platform
+        # The target OSS region where the image will be stored.</br>
+        # 
+        # > Currently, only cn-beijing and ap-southeast-1 are supported.
         self.target_ossregion_id = target_ossregion_id
 
     def validate(self):
@@ -51920,23 +52482,56 @@ class ImportImageShrinkRequest(TeaModel):
         platform: str = None,
         target_ossregion_id: str = None,
     ):
+        # System architecture. Allowed values:</br>
+        # 
+        # - x86_64.</br>
+        # 
+        # Currently, only x86_64 is supported.
+        # 
         # This parameter is required.
         self.architecture = architecture
+        # `Image Type`
+        # ens_vm: ens virtual machine image (default)
+        # 
         # This parameter is required.
         self.compute_type = compute_type
+        # List of custom image information being created.
         self.disk_device_mapping_shrink = disk_device_mapping_shrink
+        # Image format. Allowed values:</br>
+        # qcow2.</br>
+        # Currently, only qcow2 is supported.
+        # 
         # This parameter is required.
         self.image_format = image_format
+        # Image name. The length should be [2, 128] English or Chinese characters. It must start with a letter (uppercase or lowercase) or a Chinese character, and cannot start with http:// or https://. It can contain numbers, colons (:), underscores (_), or hyphens (-).
+        # 
         # This parameter is required.
         self.image_name = image_name
         self.license_type = license_type
+        # The OSS Bucket where the image file is located.
         self.ossbucket = ossbucket
+        # The name of the image file.
         self.ossobject = ossobject
+        # The Region where the image is located. Currently, only cn-beijing is supported.
         self.ossregion = ossregion
+        # Operating system platform type. Allowed values:
+        # 
+        # - windows.
+        # - linux.
+        # 
+        # Currently, only linux is supported.
+        # 
         # This parameter is required.
         self.ostype = ostype
+        # Operating system distribution version
         self.osversion = osversion
+        # Operating system distribution. Allowed values:
+        # * centos
+        # * ubuntu
         self.platform = platform
+        # The target OSS region where the image will be stored.</br>
+        # 
+        # > Currently, only cn-beijing and ap-southeast-1 are supported.
         self.target_ossregion_id = target_ossregion_id
 
     def validate(self):
@@ -52013,8 +52608,9 @@ class ImportImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # Image ID.
         self.image_id = image_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -52648,6 +53244,422 @@ class LeaveSecurityGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LeaveSecurityGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAICPublicKeyDeliveriesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        key_group: str = None,
+        key_name: str = None,
+        key_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.instance_id = instance_id
+        self.key_group = key_group
+        self.key_name = key_name
+        self.key_type = key_type
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.key_group is not None:
+            result['KeyGroup'] = self.key_group
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('KeyGroup') is not None:
+            self.key_group = m.get('KeyGroup')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        instance_id: str = None,
+        key_group: str = None,
+        key_name: str = None,
+        key_type: str = None,
+    ):
+        self.creation_time = creation_time
+        self.instance_id = instance_id
+        self.key_group = key_group
+        self.key_name = key_name
+        self.key_type = key_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.key_group is not None:
+            result['KeyGroup'] = self.key_group
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('KeyGroup') is not None:
+            self.key_group = m.get('KeyGroup')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        return self
+
+
+class ListAICPublicKeyDeliveriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        public_key_deliver_info: List[ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.public_key_deliver_info = public_key_deliver_info
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.public_key_deliver_info:
+            for k in self.public_key_deliver_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PublicKeyDeliverInfo'] = []
+        if self.public_key_deliver_info is not None:
+            for k in self.public_key_deliver_info:
+                result['PublicKeyDeliverInfo'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.public_key_deliver_info = []
+        if m.get('PublicKeyDeliverInfo') is not None:
+            for k in m.get('PublicKeyDeliverInfo'):
+                temp_model = ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo()
+                self.public_key_deliver_info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAICPublicKeyDeliveriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAICPublicKeyDeliveriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAICPublicKeyDeliveriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAICPublicKeysRequest(TeaModel):
+    def __init__(
+        self,
+        key_group: str = None,
+        key_name: str = None,
+        key_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.key_group = key_group
+        self.key_name = key_name
+        self.key_type = key_type
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_group is not None:
+            result['KeyGroup'] = self.key_group
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyGroup') is not None:
+            self.key_group = m.get('KeyGroup')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListAICPublicKeysResponseBodyPublicKeys(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        creation_time: str = None,
+        description: str = None,
+        key_group: str = None,
+        key_name: str = None,
+        key_type: str = None,
+    ):
+        self.content = content
+        self.creation_time = creation_time
+        self.description = description
+        self.key_group = key_group
+        self.key_name = key_name
+        self.key_type = key_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.key_group is not None:
+            result['KeyGroup'] = self.key_group
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('KeyGroup') is not None:
+            self.key_group = m.get('KeyGroup')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        return self
+
+
+class ListAICPublicKeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        public_keys: List[ListAICPublicKeysResponseBodyPublicKeys] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.public_keys = public_keys
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.public_keys:
+            for k in self.public_keys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PublicKeys'] = []
+        if self.public_keys is not None:
+            for k in self.public_keys:
+                result['PublicKeys'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.public_keys = []
+        if m.get('PublicKeys') is not None:
+            for k in m.get('PublicKeys'):
+                temp_model = ListAICPublicKeysResponseBodyPublicKeys()
+                self.public_keys.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAICPublicKeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAICPublicKeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAICPublicKeysResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -53803,6 +54815,122 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ManageAICLoginRequest(TeaModel):
+    def __init__(
+        self,
+        action_name: str = None,
+        instance_id: str = None,
+        key_group: str = None,
+        key_name: str = None,
+    ):
+        # This parameter is required.
+        self.action_name = action_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.key_group = key_group
+        self.key_name = key_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_name is not None:
+            result['ActionName'] = self.action_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.key_group is not None:
+            result['KeyGroup'] = self.key_group
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionName') is not None:
+            self.action_name = m.get('ActionName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('KeyGroup') is not None:
+            self.key_group = m.get('KeyGroup')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        return self
+
+
+class ManageAICLoginResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ManageAICLoginResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManageAICLoginResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManageAICLoginResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyEnsEipAddressAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -53930,9 +55058,15 @@ class ModifyEnsRouteEntryRequest(TeaModel):
         route_entry_id: str = None,
         route_entry_name: str = None,
     ):
+        # The description of the route entry. The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
+        # The ID of the custom route.
+        # 
         # This parameter is required.
         self.route_entry_id = route_entry_id
+        # The name of the route.
+        # 
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.route_entry_name = route_entry_name
 
     def validate(self):
@@ -53968,6 +55102,7 @@ class ModifyEnsRouteEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55063,10 +56198,16 @@ class ModifyInstanceBootConfigurationRequest(TeaModel):
         disk_set: str = None,
         instance_id: str = None,
     ):
+        # The startup method.
         self.boot_set = boot_set
+        # The startup type.
+        # 
         # This parameter is required.
         self.boot_type = boot_type
+        # Specifies whether the startup depends on the disk.
         self.disk_set = disk_set
+        # The ID of the instance for which you want to modify the configuration. You can specify only one ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -62086,6 +63227,9 @@ class RunInstancesRequest(TeaModel):
         ip_type: str = None,
         ipv_6address_count: int = None,
         key_pair_name: str = None,
+        launch_template_id: str = None,
+        launch_template_name: str = None,
+        launch_template_version: int = None,
         net_district_code: str = None,
         net_work_id: str = None,
         password: str = None,
@@ -62107,8 +63251,6 @@ class RunInstancesRequest(TeaModel):
         v_switch_id: str = None,
     ):
         # The number of instances that you want to create. Valid values: 1 to 100.
-        # 
-        # This parameter is required.
         self.amount = amount
         # The time when to automatically release the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in Coordinated Universal Time (UTC).
         # 
@@ -62157,16 +63299,12 @@ class RunInstancesRequest(TeaModel):
         # 
         # *   **PrePaid**: subscription.
         # *   **PostPaid:** pay-as-you-go.
-        # 
-        # This parameter is required.
         self.instance_charge_type = instance_charge_type
         # The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # The default value of this parameter is the value of the InstanceId parameter.
         self.instance_name = instance_name
         # The instance type.
-        # 
-        # This parameter is required.
         self.instance_type = instance_type
         # The bandwidth billing method. Valid values:
         # 
@@ -62176,8 +63314,6 @@ class RunInstancesRequest(TeaModel):
         # >  This parameter is required if you purchase an ENS instance for the first time. The value that you specified is used as the default value for subsequent purchases.
         self.internet_charge_type = internet_charge_type
         # The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
-        # 
-        # This parameter is required.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The type of the IP address. Valid values:
         # 
@@ -62191,6 +63327,9 @@ class RunInstancesRequest(TeaModel):
         # 
         # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
         self.key_pair_name = key_pair_name
+        self.launch_template_id = launch_template_id
+        self.launch_template_name = launch_template_name
+        self.launch_template_version = launch_template_version
         # The code of the region.
         # 
         # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
@@ -62232,8 +63371,6 @@ class RunInstancesRequest(TeaModel):
         # *   **Middle**: province
         # *   **Small**: city
         # *   **Region**: node
-        # 
-        # This parameter is required.
         self.schedule_area_level = schedule_area_level
         # The scheduling price policy. Valid values:
         # 
@@ -62336,6 +63473,12 @@ class RunInstancesRequest(TeaModel):
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.launch_template_id is not None:
+            result['LaunchTemplateId'] = self.launch_template_id
+        if self.launch_template_name is not None:
+            result['LaunchTemplateName'] = self.launch_template_name
+        if self.launch_template_version is not None:
+            result['LaunchTemplateVersion'] = self.launch_template_version
         if self.net_district_code is not None:
             result['NetDistrictCode'] = self.net_district_code
         if self.net_work_id is not None:
@@ -62423,6 +63566,12 @@ class RunInstancesRequest(TeaModel):
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('LaunchTemplateId') is not None:
+            self.launch_template_id = m.get('LaunchTemplateId')
+        if m.get('LaunchTemplateName') is not None:
+            self.launch_template_name = m.get('LaunchTemplateName')
+        if m.get('LaunchTemplateVersion') is not None:
+            self.launch_template_version = m.get('LaunchTemplateVersion')
         if m.get('NetDistrictCode') is not None:
             self.net_district_code = m.get('NetDistrictCode')
         if m.get('NetWorkId') is not None:
@@ -62526,6 +63675,9 @@ class RunInstancesShrinkRequest(TeaModel):
         ip_type: str = None,
         ipv_6address_count: int = None,
         key_pair_name: str = None,
+        launch_template_id: str = None,
+        launch_template_name: str = None,
+        launch_template_version: int = None,
         net_district_code: str = None,
         net_work_id: str = None,
         password: str = None,
@@ -62547,8 +63699,6 @@ class RunInstancesShrinkRequest(TeaModel):
         v_switch_id: str = None,
     ):
         # The number of instances that you want to create. Valid values: 1 to 100.
-        # 
-        # This parameter is required.
         self.amount = amount
         # The time when to automatically release the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in Coordinated Universal Time (UTC).
         # 
@@ -62597,16 +63747,12 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # *   **PrePaid**: subscription.
         # *   **PostPaid:** pay-as-you-go.
-        # 
-        # This parameter is required.
         self.instance_charge_type = instance_charge_type
         # The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # The default value of this parameter is the value of the InstanceId parameter.
         self.instance_name = instance_name
         # The instance type.
-        # 
-        # This parameter is required.
         self.instance_type = instance_type
         # The bandwidth billing method. Valid values:
         # 
@@ -62616,8 +63762,6 @@ class RunInstancesShrinkRequest(TeaModel):
         # >  This parameter is required if you purchase an ENS instance for the first time. The value that you specified is used as the default value for subsequent purchases.
         self.internet_charge_type = internet_charge_type
         # The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
-        # 
-        # This parameter is required.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The type of the IP address. Valid values:
         # 
@@ -62631,6 +63775,9 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
         self.key_pair_name = key_pair_name
+        self.launch_template_id = launch_template_id
+        self.launch_template_name = launch_template_name
+        self.launch_template_version = launch_template_version
         # The code of the region.
         # 
         # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
@@ -62672,8 +63819,6 @@ class RunInstancesShrinkRequest(TeaModel):
         # *   **Middle**: province
         # *   **Small**: city
         # *   **Region**: node
-        # 
-        # This parameter is required.
         self.schedule_area_level = schedule_area_level
         # The scheduling price policy. Valid values:
         # 
@@ -62768,6 +63913,12 @@ class RunInstancesShrinkRequest(TeaModel):
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.launch_template_id is not None:
+            result['LaunchTemplateId'] = self.launch_template_id
+        if self.launch_template_name is not None:
+            result['LaunchTemplateName'] = self.launch_template_name
+        if self.launch_template_version is not None:
+            result['LaunchTemplateVersion'] = self.launch_template_version
         if self.net_district_code is not None:
             result['NetDistrictCode'] = self.net_district_code
         if self.net_work_id is not None:
@@ -62852,6 +64003,12 @@ class RunInstancesShrinkRequest(TeaModel):
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('LaunchTemplateId') is not None:
+            self.launch_template_id = m.get('LaunchTemplateId')
+        if m.get('LaunchTemplateName') is not None:
+            self.launch_template_name = m.get('LaunchTemplateName')
+        if m.get('LaunchTemplateVersion') is not None:
+            self.launch_template_version = m.get('LaunchTemplateVersion')
         if m.get('NetDistrictCode') is not None:
             self.net_district_code = m.get('NetDistrictCode')
         if m.get('NetWorkId') is not None:
@@ -64774,6 +65931,145 @@ class SetLoadBalancerUDPListenerAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetLoadBalancerUDPListenerAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ShareAICImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        users: List[str] = None,
+    ):
+        # This parameter is required.
+        self.image_id = image_id
+        # This parameter is required.
+        self.users = users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.users is not None:
+            result['Users'] = self.users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('Users') is not None:
+            self.users = m.get('Users')
+        return self
+
+
+class ShareAICImageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        users_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.image_id = image_id
+        # This parameter is required.
+        self.users_shrink = users_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.users_shrink is not None:
+            result['Users'] = self.users_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('Users') is not None:
+            self.users_shrink = m.get('Users')
+        return self
+
+
+class ShareAICImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ShareAICImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ShareAICImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ShareAICImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -67884,6 +69180,129 @@ class UpgradeApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadAICPublicKeyRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        key_group: str = None,
+        key_name: str = None,
+        key_type: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.description = description
+        self.key_group = key_group
+        # This parameter is required.
+        self.key_name = key_name
+        # This parameter is required.
+        self.key_type = key_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.key_group is not None:
+            result['KeyGroup'] = self.key_group
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('KeyGroup') is not None:
+            self.key_group = m.get('KeyGroup')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        return self
+
+
+class UploadAICPublicKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UploadAICPublicKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadAICPublicKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadAICPublicKeyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

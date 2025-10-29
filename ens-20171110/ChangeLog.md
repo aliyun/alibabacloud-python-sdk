@@ -1,3 +1,17 @@
+2025-10-29 Version: 9.4.0
+- Support API DeleteAICPublicKey.
+- Support API DescribeSDGSharedDisks.
+- Support API ListAICPublicKeyDeliveries.
+- Support API ListAICPublicKeys.
+- Support API ManageAICLogin.
+- Support API ShareAICImage.
+- Support API UploadAICPublicKey.
+- Update API DescribeSDGDeploymentStatus: add request parameters DiskIds.
+- Update API RunInstances: add request parameters LaunchTemplateId.
+- Update API RunInstances: add request parameters LaunchTemplateName.
+- Update API RunInstances: add request parameters LaunchTemplateVersion.
+
+
 2025-10-14 Version: 9.3.1
 - Update API DescribeEnsEipAddresses: add request parameters IcmpReplyEnabled.
 - Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.IcmpReplyEnabled.
