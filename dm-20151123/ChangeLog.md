@@ -1,3 +1,6 @@
+2025-10-29 Version: 1.7.1
+- Generated python 2015-11-23 for Dm.
+
 2025-10-23 Version: 1.7.0
 - Support API CheckDisposable.
 - Support API ConfigSetCancelRelationFromAddress.
