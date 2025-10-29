@@ -1,3 +1,6 @@
+2025-10-29 Version: 2.0.1
+- Generated python 2025-09-10 for AgentRun.
+
 2025-10-21 Version: 2.0.0
 - Update API CreateMemory: add request parameters body.permanent.
 - Update API CreateMemory: add request parameters body.strategy.

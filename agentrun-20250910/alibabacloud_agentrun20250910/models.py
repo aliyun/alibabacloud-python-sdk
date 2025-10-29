@@ -10,6 +10,8 @@ class CodeConfiguration(TeaModel):
         checksum: str = None,
         command: List[str] = None,
         language: str = None,
+        oss_bucket_name: str = None,
+        oss_object_name: str = None,
         zip_file: str = None,
     ):
         # 代码包的CRC-64校验值。如果提供了checksum，则函数计算会校验代码包的checksum是否和提供的一致
@@ -18,6 +20,8 @@ class CodeConfiguration(TeaModel):
         self.command = command
         # 代码运行时的编程语言，如 python3、nodejs 等
         self.language = language
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_object_name = oss_object_name
         # 智能体代码ZIP包的Base64编码
         self.zip_file = zip_file
 
@@ -36,6 +40,10 @@ class CodeConfiguration(TeaModel):
             result['command'] = self.command
         if self.language is not None:
             result['language'] = self.language
+        if self.oss_bucket_name is not None:
+            result['ossBucketName'] = self.oss_bucket_name
+        if self.oss_object_name is not None:
+            result['ossObjectName'] = self.oss_object_name
         if self.zip_file is not None:
             result['zipFile'] = self.zip_file
         return result
@@ -48,6 +56,10 @@ class CodeConfiguration(TeaModel):
             self.command = m.get('command')
         if m.get('language') is not None:
             self.language = m.get('language')
+        if m.get('ossBucketName') is not None:
+            self.oss_bucket_name = m.get('ossBucketName')
+        if m.get('ossObjectName') is not None:
+            self.oss_object_name = m.get('ossObjectName')
         if m.get('zipFile') is not None:
             self.zip_file = m.get('zipFile')
         return self
@@ -929,6 +941,111 @@ class AiServiceConfig(TeaModel):
             self.protocols = m.get('protocols')
         if m.get('provider') is not None:
             self.provider = m.get('provider')
+        return self
+
+
+class ApigLLMModel(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        api_key: str = None,
+        created_time: str = None,
+        desc: str = None,
+        gateway_id: str = None,
+        model_id: str = None,
+        models: str = None,
+        models_weight: str = None,
+        name: str = None,
+        provider: str = None,
+        target_id: str = None,
+        tenant_id: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.address = address
+        self.api_key = api_key
+        self.created_time = created_time
+        self.desc = desc
+        self.gateway_id = gateway_id
+        self.model_id = model_id
+        self.models = models
+        self.models_weight = models_weight
+        self.name = name
+        self.provider = provider
+        self.target_id = target_id
+        self.tenant_id = tenant_id
+        self.type = type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.models is not None:
+            result['models'] = self.models
+        if self.models_weight is not None:
+            result['modelsWeight'] = self.models_weight
+        if self.name is not None:
+            result['name'] = self.name
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.target_id is not None:
+            result['targetId'] = self.target_id
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('models') is not None:
+            self.models = m.get('models')
+        if m.get('modelsWeight') is not None:
+            self.models_weight = m.get('modelsWeight')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('targetId') is not None:
+            self.target_id = m.get('targetId')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
         return self
 
 
@@ -2124,6 +2241,69 @@ class CreateAgentRuntimeVersionInput(TeaModel):
         return self
 
 
+class CreateApigLLMModelInput(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        api_key: str = None,
+        desc: str = None,
+        models: List[str] = None,
+        name: str = None,
+        provider: str = None,
+        type: str = None,
+    ):
+        self.address = address
+        self.api_key = api_key
+        self.desc = desc
+        self.models = models
+        self.name = name
+        self.provider = provider
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.models is not None:
+            result['models'] = self.models
+        if self.name is not None:
+            result['name'] = self.name
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('models') is not None:
+            self.models = m.get('models')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class CreateBrowserInput(TeaModel):
     def __init__(
         self,
@@ -2299,6 +2479,7 @@ class CreateCredentialInput(TeaModel):
         secret: str = None,
         type: str = None,
     ):
+        # 凭证的配置参数，以键值对形式存储
         self.config = config
         self.description = description
         self.name = name
@@ -3296,7 +3477,9 @@ class DeleteBrowserResult(TeaModel):
     ):
         # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
         self.code = code
+        # 被删除的浏览器详细信息
         self.data = data
+        # 唯一的请求标识符，用于问题追踪
         self.request_id = request_id
 
     def validate(self):
@@ -3377,7 +3560,9 @@ class DeleteCodeInterpreterResult(TeaModel):
     ):
         # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
         self.code = code
+        # 被删除的代码解释器详细信息
         self.data = data
+        # 唯一的请求标识符，用于问题追踪
         self.request_id = request_id
 
     def validate(self):
@@ -3689,6 +3874,7 @@ class GetCredentialOutput(TeaModel):
         type: str = None,
         updated_at: str = None,
     ):
+        # 凭证的配置参数，以键值对形式存储
         self.config = config
         self.created_at = created_at
         self.description = description
@@ -5825,11 +6011,14 @@ class UpdateAgentRuntimeInput(TeaModel):
     ):
         self.agent_runtime_name = agent_runtime_name
         self.artifact_type = artifact_type
+        # 当artifactType为Code时的代码配置信息，包括代码源、入口文件等
         self.code_configuration = code_configuration
+        # 当artifactType为Container时的容器配置信息，包括镜像地址、启动命令等
         self.container_configuration = container_configuration
         # This parameter is required.
         self.cpu = cpu
         self.description = description
+        # 智能体运行时的环境变量配置，用于在运行时传递配置参数
         self.environment_variables = environment_variables
         # 为智能体运行时提供访问云服务权限的执行角色ARN
         self.execution_role_arn = execution_role_arn
@@ -5838,8 +6027,10 @@ class UpdateAgentRuntimeInput(TeaModel):
         # SLS（简单日志服务）配置
         self.log_configuration = log_configuration
         self.memory = memory
+        # 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
         self.network_configuration = network_configuration
         self.port = port
+        # 智能体运行时的通信协议配置，定义运行时如何与外部系统交互
         self.protocol_configuration = protocol_configuration
         # 每个运行时实例允许的最大并发会话数
         self.session_concurrency_limit_per_instance = session_concurrency_limit_per_instance
@@ -5943,6 +6134,69 @@ class UpdateAgentRuntimeInput(TeaModel):
         return self
 
 
+class UpdateApigLLMModelInput(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        api_key: str = None,
+        desc: str = None,
+        models: List[str] = None,
+        name: str = None,
+        provider: str = None,
+        type: str = None,
+    ):
+        self.address = address
+        self.api_key = api_key
+        self.desc = desc
+        self.models = models
+        self.name = name
+        self.provider = provider
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.models is not None:
+            result['models'] = self.models
+        if self.name is not None:
+            result['name'] = self.name
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('models') is not None:
+            self.models = m.get('models')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class UpdateCredentialInput(TeaModel):
     def __init__(
         self,
@@ -5952,6 +6206,7 @@ class UpdateCredentialInput(TeaModel):
         secret: str = None,
         type: str = None,
     ):
+        # 凭证的配置参数，以键值对形式存储
         self.config = config
         self.description = description
         self.name = name
