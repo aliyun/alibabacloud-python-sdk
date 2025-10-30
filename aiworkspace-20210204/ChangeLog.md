@@ -1,3 +1,6 @@
+2025-10-30 Version: 7.0.2
+- Generated python 2021-02-04 for AIWorkSpace.
+
 2025-10-28 Version: 7.0.1
 - Update API ListWorkspaces: add request parameters UserId.
 
