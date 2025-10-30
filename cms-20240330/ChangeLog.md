@@ -1,3 +1,10 @@
+2025-10-30 Version: 3.2.5
+- Update API CreateIntegrationPolicy: add request parameters body.entityGroup.entityUserId.
+- Update API GetIntegrationPolicy: add response parameters Body.policy.csUmodelStatus.
+- Update API ListIntegrationPolicies: add response parameters Body.policies.$.csUmodelStatus.
+- Update API ListIntegrationPolicies: add response parameters Body.policies.$.feePackage.
+
+
 2025-10-20 Version: 3.2.4
 - Update API ListIntegrationPolicyDashboards: add request parameters language.
 - Update API ListIntegrationPolicyDashboards: add response parameters Body.dashboards.$.engine.

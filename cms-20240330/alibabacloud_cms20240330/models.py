@@ -6124,17 +6124,29 @@ class CreateAddonReleaseRequest(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # The Addon name of the component that needs to be monitored.
+        # 
         # This parameter is required.
         self.addon_name = addon_name
+        # The language type of the component.
         self.aliyun_lang = aliyun_lang
+        # Whether it is a dry run, default is false.
         self.dry_run = dry_run
+        # Field rules
         self.entity_rules = entity_rules
+        # Environment type. If the Policy type is CS and ECS, use accordingly; otherwise, it is unified as Cloud.
         self.env_type = env_type
+        # Parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
+        # The plugin name after access. If not specified, a default rule name will be generated.
         self.release_name = release_name
+        # Input metadata.
         self.values = values
+        # The version of the Addon component that needs to be monitored.
+        # 
         # This parameter is required.
         self.version = version
+        # The workspace name for installing the component resources.
         self.workspace = workspace
 
     def validate(self):
@@ -6204,10 +6216,15 @@ class CreateAddonReleaseResponseBodyReleaseConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # First transition time.
         self.first_transition_time = first_transition_time
+        # Last transition time.
         self.last_transition_time = last_transition_time
+        # Detailed information.
         self.message = message
+        # Phase status.
         self.status = status
+        # Phase type.
         self.type = type
 
     def validate(self):
@@ -6275,30 +6292,55 @@ class CreateAddonReleaseResponseBodyRelease(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # The Addon name of the component being monitored.
         self.addon_name = addon_name
+        # Number of alert groups.
         self.alert_rule_count = alert_rule_count
+        # Component installation phase information.
         self.conditions = conditions
+        # Component configuration.
         self.config = config
+        # Connection time.
         self.create_time = create_time
+        # Number of dashboards.
         self.dashboard_count = dashboard_count
+        # Entity details.
         self.entity_rules = entity_rules
+        # Environment type.
         self.env_type = env_type
+        # Environment ID.
         self.environment_id = environment_id
+        # Number of plugins.
         self.exporter_count = exporter_count
+        # Whether it has configuration.
         self.have_config = have_config
+        # ID of the user who installed it.
         self.install_user_id = install_user_id
+        # Language.
         self.language = language
+        # Whether it is a managed component.
         self.managed = managed
+        # Parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
+        # Policy environment ID.
         self.policy_id = policy_id
+        # Region ID.
         self.region_id = region_id
+        # ReleaseID after installation.
         self.release_id = release_id
+        # Name of the Release.
         self.release_name = release_name
+        # Component scenario.
         self.scene = scene
+        # Component status.
         self.status = status
+        # Update time.
         self.update_time = update_time
+        # ID of the owner user.
         self.user_id = user_id
+        # Component version.
         self.version = version
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -6434,7 +6476,9 @@ class CreateAddonReleaseResponseBody(TeaModel):
         release: CreateAddonReleaseResponseBodyRelease = None,
         request_id: str = None,
     ):
+        # Accessed component information.
         self.release = release
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6510,7 +6554,9 @@ class CreateAggTaskGroupRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Key of the resource group tag.
         self.key = key
+        # Value of the resource group tag.
         self.value = value
 
     def validate(self):
@@ -6558,25 +6604,46 @@ class CreateAggTaskGroupRequest(TeaModel):
         to_time: int = None,
         override_if_exists: bool = None,
     ):
+        # Aggregation task group configuration.
+        # Currently, only the “RecordingRuleYaml” format is supported, which must comply with the format requirements of open-source Prometheus RecordingRules.
+        # 
         # This parameter is required.
         self.agg_task_group_config = agg_task_group_config
+        # Aggregation task group configuration type, default is “RecordingRuleYaml” (open-source Prometheus RecordingRule format).
         self.agg_task_group_config_type = agg_task_group_config_type
+        # Aggregation task group name.
+        # 
         # This parameter is required.
         self.agg_task_group_name = agg_task_group_name
+        # When the scheduling mode is selected as “Cron”, this is the specific scheduling expression. For example, “0/1 * * * *” means starting from 0 minutes and scheduling every 1 minute.
         self.cron_expr = cron_expr
+        # Fixed delay time for scheduling, in seconds, default is 30.
         self.delay = delay
+        # Description of the aggregation task group.
         self.description = description
+        # The second-level timestamp corresponding to the start time of the schedule.
         self.from_time = from_time
+        # Maximum number of retries for executing the aggregation task, default is 20.
         self.max_retries = max_retries
+        # Maximum retry time for executing the aggregation task, in seconds, default is 600.
         self.max_run_time_in_seconds = max_run_time_in_seconds
+        # Pre-check configuration, no configuration by default. The input string needs to be correctly parsed as JSON.
         self.precheck_string = precheck_string
+        # Scheduling mode, either “Cron” or “FixedRate”, default is “FixedRate”.
         self.schedule_mode = schedule_mode
+        # Scheduling time expression, recommended “@s” or “@m”, indicating the alignment granularity of the scheduling time window, default is “@m”.
         self.schedule_time_expr = schedule_time_expr
+        # Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
         self.status = status
+        # Resource group tags.
         self.tags = tags
+        # The target Prometheus instance ID of the aggregation task group.
+        # 
         # This parameter is required.
         self.target_prometheus_id = target_prometheus_id
+        # The second-level timestamp corresponding to the end time of the schedule, 0 indicates that the scheduling does not stop.
         self.to_time = to_time
+        # Whether to overwrite and update if a resource with the same name exists when creating an aggregation task group.
         self.override_if_exists = override_if_exists
 
     def validate(self):
@@ -6681,11 +6748,17 @@ class CreateAggTaskGroupResponseBody(TeaModel):
         source_prometheus_id: str = None,
         status: str = None,
     ):
+        # Summary of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
+        # Aggregation task group ID.
         self.agg_task_group_id = agg_task_group_id
+        # Aggregation task group name.
         self.agg_task_group_name = agg_task_group_name
+        # Request ID.
         self.request_id = request_id
+        # Source Prometheus instance ID of the aggregation task group.
         self.source_prometheus_id = source_prometheus_id
+        # Current status of the aggregation task group.
         self.status = status
 
     def validate(self):
@@ -6775,7 +6848,9 @@ class CreateEntityStoreResponseBody(TeaModel):
         request_id: str = None,
         workspace_name: str = None,
     ):
+        # request ID
         self.request_id = request_id
+        # workspace name
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -6850,12 +6925,19 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
         cluster_id: str = None,
         disable_policy_share: bool = None,
         entity_group_id: str = None,
+        entity_user_id: str = None,
         vpc_id: str = None,
     ):
+        # Cluster entity type, such as acs.ack.cluster/acs.one.cluster/acs.asi.cluster or others.
         self.cluster_entity_type = cluster_entity_type
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # Whether to disable unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
         self.disable_policy_share = disable_policy_share
+        # Entity group ID.
         self.entity_group_id = entity_group_id
+        self.entity_user_id = entity_user_id
+        # VPC (Virtual Private Cloud) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6875,6 +6957,8 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
             result['disablePolicyShare'] = self.disable_policy_share
         if self.entity_group_id is not None:
             result['entityGroupId'] = self.entity_group_id
+        if self.entity_user_id is not None:
+            result['entityUserId'] = self.entity_user_id
         if self.vpc_id is not None:
             result['vpcId'] = self.vpc_id
         return result
@@ -6889,6 +6973,8 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
             self.disable_policy_share = m.get('disablePolicyShare')
         if m.get('entityGroupId') is not None:
             self.entity_group_id = m.get('entityGroupId')
+        if m.get('entityUserId') is not None:
+            self.entity_user_id = m.get('entityUserId')
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
         return self
@@ -6900,7 +6986,9 @@ class CreateIntegrationPolicyRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag `key` value.
         self.key = key
+        # Tag `value` value.
         self.value = value
 
     def validate(self):
@@ -6937,12 +7025,19 @@ class CreateIntegrationPolicyRequest(TeaModel):
         tags: List[CreateIntegrationPolicyRequestTags] = None,
         workspace: str = None,
     ):
+        # Entity group for creating the policy. Policies can be quickly created using the entity group, and `clusterId` and `vpcId` are independent of each other.
         self.entity_group = entity_group
+        # Policy name
         self.policy_name = policy_name
+        # Policy type: CS/ECS/Cloud
+        # 
         # This parameter is required.
         self.policy_type = policy_type
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource tags.
         self.tags = tags
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -7007,12 +7102,19 @@ class CreateIntegrationPolicyResponseBodyPolicy(TeaModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # Entity group ID.
         self.entity_group_id = entity_group_id
+        # Policy ID.
         self.policy_id = policy_id
+        # Policy name.
         self.policy_name = policy_name
+        # Policy type.
         self.policy_type = policy_type
+        # Region ID.
         self.region_id = region_id
+        # User ID.
         self.user_id = user_id
+        # The workspace where the Policy resides.
         self.workspace = workspace
 
     def validate(self):
@@ -7066,8 +7168,11 @@ class CreateIntegrationPolicyResponseBody(TeaModel):
         policy: CreateIntegrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # Whether it was created.
         self.created = created
+        # Uploaded policy.
         self.policy = policy
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7147,7 +7252,9 @@ class CreatePrometheusInstanceRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -7190,18 +7297,38 @@ class CreatePrometheusInstanceRequest(TeaModel):
         tags: List[CreatePrometheusInstanceRequestTags] = None,
         workspace: str = None,
     ):
+        # The number of days to automatically archive and save after the storage expires, 0 means no archiving. The range of archiving days is as follows:
+        # * V1: 60~365 days.
+        # * V2: 60~3650 days (3650 indicates permanent storage).
         self.archive_duration = archive_duration
+        # Password-free read policy (supports IP segments and VpcId).
         self.auth_free_read_policy = auth_free_read_policy
+        # Password-free write policy.
         self.auth_free_write_policy = auth_free_write_policy
+        # Whether to enable password-free read (only supported in V2 version).
         self.enable_auth_free_read = enable_auth_free_read
+        # Whether to enable password-free write (only supported in V2 version).
         self.enable_auth_free_write = enable_auth_free_write
+        # Whether to enable authorization Token (only supported in V1 version).
         self.enable_auth_token = enable_auth_token
+        # Billing method:
+        # * POSTPAY: Postpaid by metric reporting volume.
+        # * POSTPAY_GB: Postpaid by metric write volume.
+        # Note, if left blank, the user\\"s default billing method configuration will be used. If the user has not configured a default, the system defaults to billing by metric reporting volume.
         self.payment_type = payment_type
+        # Instance name.
+        # 
         # This parameter is required.
         self.prometheus_instance_name = prometheus_instance_name
+        # Instance status.
         self.status = status
+        # Storage duration (days):
+        # * By write volume: 90, 180.
+        # * By metric reporting volume: 15, 30, 60, 90, 180.
         self.storage_duration = storage_duration
+        # Tag values.
         self.tags = tags
+        # Belonging workspace, default value: default-cms-{userId}-{regionId}.
         self.workspace = workspace
 
     def validate(self):
@@ -7282,8 +7409,9 @@ class CreatePrometheusInstanceResponseBody(TeaModel):
         prometheus_instance_id: str = None,
         request_id: str = None,
     ):
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7358,8 +7486,11 @@ class CreatePrometheusViewRequestPrometheusInstances(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Region ID.
         self.region_id = region_id
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -7396,7 +7527,9 @@ class CreatePrometheusViewRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -7437,18 +7570,32 @@ class CreatePrometheusViewRequest(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Not enabled yet
         self.auth_free_read_policy = auth_free_read_policy
+        # Whether to support password-free read
         self.enable_auth_free_read = enable_auth_free_read
+        # Whether to support authToken
         self.enable_auth_token = enable_auth_token
+        # List of Prometheus instances.
+        # 
         # This parameter is required.
         self.prometheus_instances = prometheus_instances
+        # Prometheus view name.
+        # 
         # This parameter is required.
         self.prometheus_view_name = prometheus_view_name
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Not enabled yet.
         self.status = status
+        # The operation to be performed.
         self.tags = tags
+        # - V1: Old version
+        # - V2: New version
+        # 
         # This parameter is required.
         self.version = version
+        # Default value: default-cms-{userId}-{regionId}
         self.workspace = workspace
 
     def validate(self):
@@ -7530,8 +7677,9 @@ class CreatePrometheusViewResponseBody(TeaModel):
         prometheus_view_id: str = None,
         request_id: str = None,
     ):
+        # Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7604,6 +7752,8 @@ class CreatePrometheusVirtualInstanceRequest(TeaModel):
         self,
         namespace: str = None,
     ):
+        # Each cloud product can only create one virtual instance in each region.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -7637,11 +7787,17 @@ class CreatePrometheusVirtualInstanceResponseBodyInstance(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # Creation time
         self.created_at = created_at
+        # HTTP API query address
         self.http_api_url = http_api_url
+        # Region ID
         self.instance_id = instance_id
+        # Cloud product
         self.namespace = namespace
+        # User ID
         self.region_id = region_id
+        # User ID
         self.user_id = user_id
 
     def validate(self):
@@ -7690,8 +7846,9 @@ class CreatePrometheusVirtualInstanceResponseBody(TeaModel):
         instance: CreatePrometheusVirtualInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
+        # Instance ID
         self.instance = instance
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7772,13 +7929,22 @@ class CreateServiceRequest(TeaModel):
         service_status: str = None,
         service_type: str = None,
     ):
+        # Extended attributes.
         self.attributes = attributes
+        # Service description, only valid when `serviceType=RUM`.
         self.description = description
+        # Display name, only valid when `serviceType=RUM`.
         self.display_name = display_name
+        # Application ID, generally not required to be specified.
         self.pid = pid
+        # Service name
+        # 
         # This parameter is required.
         self.service_name = service_name
+        # Service status, not required for service creation.
         self.service_status = service_status
+        # Service type
+        # 
         # This parameter is required.
         self.service_type = service_type
 
@@ -7833,8 +7999,11 @@ class CreateServiceResponseBody(TeaModel):
         request_id: str = None,
         service_id: str = None,
     ):
+        # Historical compatible ARMS application ID
         self.pid = pid
+        # Request ID.
         self.request_id = request_id
+        # Service ID
         self.service_id = service_id
 
     def validate(self):
@@ -7912,7 +8081,11 @@ class CreateTicketRequest(TeaModel):
         access_token_expiration_time: int = None,
         expiration_time: int = None,
     ):
+        # - Access token expiration time (in seconds), which is the expiration time for the user to access the page interface. The default value is 86400 seconds (one day), and the range of values is from 0 to 86400 seconds (one day).
+        # - The access token expiration time is the minimum value between `accessTokenExpirationTime` and `expirationTime`.
+        # - If called through STS, the access token expiration time (i.e., the time during which the user can access the page interface) is the minimum value among `accessTokenExpirationTime`, `expirationTime`, and the STS expiration time.
         self.access_token_expiration_time = access_token_expiration_time
+        # - Expiration time (in seconds), which is the expiration time for the embedded page URL. The default value is 86400 seconds (one day), and the range of values is from 0 to 2592000 seconds (30 days).
         self.expiration_time = expiration_time
 
     def validate(self):
@@ -7944,6 +8117,7 @@ class CreateTicketResponseBody(TeaModel):
         self,
         ticket: str = None,
     ):
+        # 免登录票据。
         self.ticket = ticket
 
     def validate(self):
@@ -8012,6 +8186,7 @@ class CreateUmodelRequest(TeaModel):
         self,
         description: str = None,
     ):
+        # Umodel description
         self.description = description
 
     def validate(self):
@@ -8040,7 +8215,9 @@ class CreateUmodelResponseBody(TeaModel):
         request_id: str = None,
         workspace: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Workspace name
         self.workspace = workspace
 
     def validate(self):
@@ -8115,8 +8292,11 @@ class DeleteAddonReleaseRequest(TeaModel):
         force: bool = None,
         release_name: str = None,
     ):
+        # Addon name. When AddonName is provided, it will ignore the ReleaseName parameter and batch uninstall all AddonReleases belonging to the same Addon.
         self.addon_name = addon_name
+        # Whether to force deletion, default is false.
         self.force = force
+        # The name of the AddonRelease.
         self.release_name = release_name
 
     def validate(self):
@@ -8152,6 +8332,7 @@ class DeleteAddonReleaseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8220,6 +8401,7 @@ class DeleteAggTaskGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8288,6 +8470,7 @@ class DeleteEntityStoreResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # request ID
         self.request_id = request_id
 
     def validate(self):
@@ -8356,6 +8539,8 @@ class DeleteIntegrationPolicyRequest(TeaModel):
         self,
         force: bool = None,
     ):
+        # Whether to forcibly delete the cloud-native all-in-one machine,
+        # default value: `false`.
         self.force = force
 
     def validate(self):
@@ -8452,7 +8637,7 @@ class DeletePrometheusInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8521,7 +8706,7 @@ class DeletePrometheusViewResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8590,6 +8775,7 @@ class DeleteServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -8658,6 +8844,7 @@ class DeleteUmodelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # request ID
         self.request_id = request_id
 
     def validate(self):
@@ -8728,8 +8915,11 @@ class DeleteUmodelDataRequest(TeaModel):
         kind: str = None,
         name: str = None,
     ):
+        # Can specify the name of a specific Umodel data, leaving it blank means all
         self.domain = domain
+        # Can specify the kind of a specific Umodel data, leaving it blank means all
         self.kind = kind
+        # Can specify the name of a specific Umodel data, leaving it blank means all
         self.name = name
 
     def validate(self):
@@ -8765,6 +8955,7 @@ class DeleteUmodelDataResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -8833,6 +9024,7 @@ class DeleteWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -8905,10 +9097,15 @@ class GetAddonReleaseResponseBodyReleaseConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # First transition time.
         self.first_transition_time = first_transition_time
+        # Last transition time.
         self.last_transition_time = last_transition_time
+        # Details.
         self.message = message
+        # Phase status.
         self.status = status
+        # Phase type.
         self.type = type
 
     def validate(self):
@@ -8976,31 +9173,55 @@ class GetAddonReleaseResponseBodyRelease(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Addon component name.
         self.addon_name = addon_name
+        # Number of alert rules.
         self.alert_rule_count = alert_rule_count
+        # Installation phase information.
         self.conditions = conditions
+        # Component configuration information.
         self.config = config
+        # Connection time.
         self.create_time = create_time
+        # Number of dashboards.
         self.dashboard_count = dashboard_count
+        # Entity details.
         self.entity_rules = entity_rules
+        # Environment type.
         self.env_type = env_type
+        # Environment ID.
         self.environment_id = environment_id
+        # Number of plugins.
         self.exporter_count = exporter_count
+        # Whether there is a configuration.
         self.have_config = have_config
+        # User ID for connection.
         self.install_user_id = install_user_id
+        # Language.
         self.language = language
+        # Whether it is a managed component.
         self.managed = managed
+        # Parent AddonRelease ID.
         self.parent_addon_release_id = parent_addon_release_id
+        # Policy ID.
         self.policy_id = policy_id
+        # Region ID.
         self.region_id = region_id
-        # Release ID。
+        # Release ID.
         self.release_id = release_id
+        # The name of the Release.
         self.release_name = release_name
+        # Component scenario.
         self.scene = scene
+        # Component status.
         self.status = status
+        # Update time.
         self.update_time = update_time
+        # Owner user ID.
         self.user_id = user_id
+        # Component version.
         self.version = version
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -9137,8 +9358,11 @@ class GetAddonReleaseResponseBody(TeaModel):
         release: GetAddonReleaseResponseBodyRelease = None,
         request_id: str = None,
     ):
+        # Component configuration.
         self.config = config
+        # Detailed information.
         self.release = release
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9218,7 +9442,9 @@ class GetAggTaskGroupResponseBodyAggTaskGroupTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Key of the resource group tag.
         self.key = key
+        # The value of the resource group tag.
         self.value = value
 
     def validate(self):
@@ -9270,26 +9496,47 @@ class GetAggTaskGroupResponseBodyAggTaskGroup(TeaModel):
         update_time: str = None,
         user_id: str = None,
     ):
+        # Aggregation task group configuration.
         self.agg_task_group_config = agg_task_group_config
+        # Summary of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
+        # ID of the aggregation task group.
         self.agg_task_group_id = agg_task_group_id
+        # Name of the aggregation task group.
         self.agg_task_group_name = agg_task_group_name
+        # Scheduling expression for the aggregation task group when the scheduling mode is \\"Cron\\".
         self.cron_expr = cron_expr
+        # Fixed delay time (in seconds) for scheduling.
         self.delay = delay
+        # Description of the aggregation task group.
         self.description = description
+        # Second-level timestamp corresponding to the start time of scheduling (not yet effective).
         self.from_time = from_time
+        # Maximum number of retries for executing the aggregation task.
         self.max_retries = max_retries
+        # Maximum retry time for executing the aggregation task.
         self.max_run_time_in_seconds = max_run_time_in_seconds
+        # Pre-check configuration.
         self.precheck_string = precheck_string
+        # Region ID.
         self.region_id = region_id
+        # Scheduling mode.
         self.schedule_mode = schedule_mode
+        # Scheduling time expression.
         self.schedule_time_expr = schedule_time_expr
+        # ID of the source Prometheus instance for the aggregation task group.
         self.source_prometheus_id = source_prometheus_id
+        # Status of the aggregation task group.
         self.status = status
+        # Resource group tags
         self.tags = tags
+        # The target Prometheus instance ID of the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
+        # The second-level timestamp corresponding to the end time of the scheduling.
         self.to_time = to_time
+        # The update time (timestamp) of the aggregation task group.
         self.update_time = update_time
+        # The user to whom the aggregation task group belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -9407,8 +9654,11 @@ class GetAggTaskGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Aggregation task group.
         self.agg_task_group = agg_task_group
+        # Request ID
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):
@@ -9489,8 +9739,11 @@ class GetEntityStoreResponseBody(TeaModel):
         request_id: str = None,
         workspace_name: str = None,
     ):
+        # Region ID
         self.region_id = region_id
+        # Request ID
         self.request_id = request_id
+        # Workspace name
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -9569,6 +9822,7 @@ class GetEntityStoreDataHeaders(TeaModel):
         accept_encoding: str = None,
     ):
         self.common_headers = common_headers
+        # Content encoding type for the compression algorithm
         self.accept_encoding = accept_encoding
 
     def validate(self):
@@ -9602,10 +9856,20 @@ class GetEntityStoreDataRequest(TeaModel):
         query: str = None,
         to: int = None,
     ):
+        # Start time of the query.
+        # 
+        # Unix timestamp format, representing the number of seconds since 1970-1-1 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # Query statement
+        # 
         # This parameter is required.
         self.query = query
+        # End time of the query.
+        # 
+        # Unix timestamp format, representing the number of seconds since 1970-1-1 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.to = to
 
@@ -9645,9 +9909,13 @@ class GetEntityStoreDataResponseBodyResponseStatusStatusItem(TeaModel):
         message: str = None,
         suggestion: str = None,
     ):
+        # Status code
         self.code = code
+        # Status level
         self.level = level
+        # Calculation execution information
         self.message = message
+        # Suggestions when an error occurs during execution
         self.suggestion = suggestion
 
     def validate(self):
@@ -9691,10 +9959,15 @@ class GetEntityStoreDataResponseBodyResponseStatus(TeaModel):
         retry_policy: str = None,
         status_item: List[GetEntityStoreDataResponseBodyResponseStatusStatusItem] = None,
     ):
+        # Information during the execution process
         self.execution_states = execution_states
+        # Status level
         self.level = level
+        # Execution result
         self.result = result
+        # Retry policy
         self.retry_policy = retry_policy
+        # Detailed status information list
         self.status_item = status_item
 
     def validate(self):
@@ -9749,9 +10022,13 @@ class GetEntityStoreDataResponseBody(TeaModel):
         request_id: str = None,
         response_status: GetEntityStoreDataResponseBodyResponseStatus = None,
     ):
+        # Total list of returned data
         self.data = data
+        # List of request headers
         self.header = header
+        # Request ID
         self.request_id = request_id
+        # Result status
         self.response_status = response_status
 
     def validate(self):
@@ -9837,9 +10114,13 @@ class GetIntegrationPolicyResponseBodyPolicyBindResource(TeaModel):
         vpc_cidr: str = None,
         vpc_id: str = None,
     ):
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # Cluster type.
         self.cluster_type = cluster_type
+        # VPC CIDR.
         self.vpc_cidr = vpc_cidr
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9881,8 +10162,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations(Te
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # Operation to be performed.
         self.op = op
+        # Tag key.
         self.tag_key = tag_key
+        # Tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -9920,8 +10204,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules(Tea
         field_values: List[str] = None,
         op: str = None,
     ):
+        # Unique identifier for the field.
         self.field_key = field_key
+        # Field content.
         self.field_values = field_values
+        # Operation to be performed.
         self.op = op
 
     def validate(self):
@@ -9958,7 +10245,9 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule(Te
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
+        # IP segment.
         self.ip_cidr = ip_cidr
+        # Key for the IP field.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -9992,8 +10281,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels(TeaMode
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # The operation to be performed.
         self.op = op
+        # The tag key of the instance.
         self.tag_key = tag_key
+        # List of tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -10031,8 +10323,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags(TeaModel)
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # The operation to be performed.
         self.op = op
+        # The tag key of the instance.
         self.tag_key = tag_key
+        # List of tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -10076,14 +10371,23 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(TeaModel):
         resource_group_id: str = None,
         tags: List[GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags] = None,
     ):
+        # Annotations.
         self.annotations = annotations
+        # List of entity types.
         self.entity_types = entity_types
+        # List of field rules.
         self.field_rules = field_rules
+        # Instance ID.
         self.instance_ids = instance_ids
+        # IP matching rule.
         self.ip_match_rule = ip_match_rule
+        # Labels.
         self.labels = labels
+        # List of region IDs.
         self.region_ids = region_ids
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Tag values.
         self.tags = tags
 
     def validate(self):
@@ -10188,13 +10492,21 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroup(TeaModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # Description.
         self.description = description
+        # Entity group ID.
         self.entity_group_id = entity_group_id
+        # Entity group name.
         self.entity_group_name = entity_group_name
+        # Entity rules.
         self.entity_rules = entity_rules
+        # For querying
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # User ID.
         self.user_id = user_id
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -10253,7 +10565,9 @@ class GetIntegrationPolicyResponseBodyPolicyManagedInfo(TeaModel):
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
+        # Security group ID.
         self.security_group_id = security_group_id
+        # VSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -10286,7 +10600,9 @@ class GetIntegrationPolicyResponseBodyPolicyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -10317,6 +10633,7 @@ class GetIntegrationPolicyResponseBodyPolicy(TeaModel):
     def __init__(
         self,
         bind_resource: GetIntegrationPolicyResponseBodyPolicyBindResource = None,
+        cs_umodel_status: bool = None,
         entity_group: GetIntegrationPolicyResponseBodyPolicyEntityGroup = None,
         managed_info: GetIntegrationPolicyResponseBodyPolicyManagedInfo = None,
         policy_id: str = None,
@@ -10328,16 +10645,29 @@ class GetIntegrationPolicyResponseBodyPolicy(TeaModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # Bound resource information.
         self.bind_resource = bind_resource
+        # Cs umodel status
+        self.cs_umodel_status = cs_umodel_status
+        # Entity group.
         self.entity_group = entity_group
+        # Policy management information.
         self.managed_info = managed_info
+        # Policy ID.
         self.policy_id = policy_id
+        # Rule name.
         self.policy_name = policy_name
+        # Access policy type.
         self.policy_type = policy_type
+        # Region ID.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Tag keys.
         self.tags = tags
+        # User ID.
         self.user_id = user_id
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -10360,6 +10690,8 @@ class GetIntegrationPolicyResponseBodyPolicy(TeaModel):
         result = dict()
         if self.bind_resource is not None:
             result['bindResource'] = self.bind_resource.to_map()
+        if self.cs_umodel_status is not None:
+            result['csUmodelStatus'] = self.cs_umodel_status
         if self.entity_group is not None:
             result['entityGroup'] = self.entity_group.to_map()
         if self.managed_info is not None:
@@ -10389,6 +10721,8 @@ class GetIntegrationPolicyResponseBodyPolicy(TeaModel):
         if m.get('bindResource') is not None:
             temp_model = GetIntegrationPolicyResponseBodyPolicyBindResource()
             self.bind_resource = temp_model.from_map(m['bindResource'])
+        if m.get('csUmodelStatus') is not None:
+            self.cs_umodel_status = m.get('csUmodelStatus')
         if m.get('entityGroup') is not None:
             temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroup()
             self.entity_group = temp_model.from_map(m['entityGroup'])
@@ -10423,8 +10757,9 @@ class GetIntegrationPolicyResponseBody(TeaModel):
         policy: GetIntegrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # Access policy.
         self.policy = policy
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10500,7 +10835,9 @@ class GetPrometheusInstanceRequest(TeaModel):
         aliyun_lang: str = None,
         resource_group_id: str = None,
     ):
+        # Language setting, default is Chinese zh | en
         self.aliyun_lang = aliyun_lang
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -10533,7 +10870,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstanceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Matched value.
         self.value = value
 
     def validate(self):
@@ -10601,43 +10940,82 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Access type:
+        # readWrite, readOnly, httpReadOnly
         self.access_type = access_type
+        # Number of days to automatically archive and save after storage expiration. 0 means no archiving, 3650 means permanent saving.
         self.archive_duration = archive_duration
+        # Password-free read policy (supports IP segments and VpcId).
         self.auth_free_read_policy = auth_free_read_policy
+        # Password-free write policy (supports IP segments and VpcId).
         self.auth_free_write_policy = auth_free_write_policy
+        # authToken string.
         self.auth_token = auth_token
+        # Instance creation time, using UTC+0, formatted as yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
+        # Whether to enable password-free reading.
         self.enable_auth_free_read = enable_auth_free_read
+        # Whether to enable password-free writing.
         self.enable_auth_free_write = enable_auth_free_write
+        # Whether to enable authentication token.
         self.enable_auth_token = enable_auth_token
+        # Additional information.
         self.extra_info = extra_info
+        # URL of the visualization dashboard directory.
         self.folder_url = folder_url
+        # ID of the managed Grafana instance that is bound.
         self.grafana_instance_id = grafana_instance_id
+        # Name of the managed Grafana instance that is bound.
         self.grafana_instance_name = grafana_instance_name
+        # HTTP public network address.
         self.http_api_inter_url = http_api_inter_url
+        # HTTP intranet address.
         self.http_api_intra_url = http_api_intra_url
-        # remote-write（Prometheus for Remote Write）
+        # Prometheus instance type.
         self.instance_type = instance_type
+        # Billing method:
+        # POSTPAY: Pay-as-you-go based on metric reporting volume.
+        # POSTPAY_GB: Pay-as-you-go based on metric write volume.
         self.payment_type = payment_type
+        # Time when the billing method of the instance was updated.
         self.payment_type_update_time = payment_type_update_time
+        # The product to which the Prometheus instance belongs (arms or cms).
         self.product = product
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Instance name.
         self.prometheus_instance_name = prometheus_instance_name
+        # Public network address of PushGateway.
         self.push_gateway_inter_url = push_gateway_inter_url
+        # Intranet address of PushGateway.
         self.push_gateway_intra_url = push_gateway_intra_url
+        # Region ID.
         self.region_id = region_id
+        # Public network read address.
         self.remote_read_inter_url = remote_read_inter_url
+        # Intranet read address.
         self.remote_read_intra_url = remote_read_intra_url
+        # Public network write address.
         self.remote_write_inter_url = remote_write_inter_url
+        # Intranet write address.
         self.remote_write_intra_url = remote_write_intra_url
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Fixed value: PrometheusInstance.
         self.resource_type = resource_type
+        # Instance status.
         self.status = status
+        # Storage duration (in days).
         self.storage_duration = storage_duration
+        # Supported authentication types.
         self.support_auth_types = support_auth_types
+        # List of tags.
         self.tags = tags
+        # User ID.
         self.user_id = user_id
+        # Version.
         self.version = version
+        # The workspace to which the Prometheus instance belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -10818,8 +11196,9 @@ class GetPrometheusInstanceResponseBody(TeaModel):
         prometheus_instance: GetPrometheusInstanceResponseBodyPrometheusInstance = None,
         request_id: str = None,
     ):
+        # Details of the Prometheus instance.
         self.prometheus_instance = prometheus_instance
-        # Id of the request
+        # Unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10895,7 +11274,9 @@ class GetPrometheusViewRequest(TeaModel):
         aliyun_lang: str = None,
         resource_group_id: str = None,
     ):
+        # Language environment, default is Chinese zh | en
         self.aliyun_lang = aliyun_lang
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -10929,8 +11310,11 @@ class GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Region ID
         self.region_id = region_id
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -10967,7 +11351,9 @@ class GetPrometheusViewResponseBodyPrometheusViewTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # PagerDuty integration key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -11025,32 +11411,59 @@ class GetPrometheusViewResponseBodyPrometheusView(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Password-free read policy (supports IP segments and VpcId).
         self.auth_free_read_policy = auth_free_read_policy
+        # authToken string.
         self.auth_token = auth_token
+        # Instance creation time, using UTC+0 time, format is yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
+        # Whether to enable password-free read.
         self.enable_auth_free_read = enable_auth_free_read
+        # Whether to enable authToken.
         self.enable_auth_token = enable_auth_token
+        # Observability dashboard URL.
         self.folder_url = folder_url
+        # Bound managed Grafana instance ID.
         self.grafana_instance_id = grafana_instance_id
+        # Bound managed Grafana instance name.
         self.grafana_instance_name = grafana_instance_name
+        # Public HTTP address.
         self.http_api_inter_url = http_api_inter_url
+        # Private HTTP address.
         self.http_api_intra_url = http_api_intra_url
+        # Instance type, fixed value prom-view.
         self.instance_type = instance_type
+        # Payment type. Currently, the fixed value is FREE (free).
         self.payment_type = payment_type
+        # Product that the prom instance belongs to.
         self.product = product
+        # Prometheus instance list.
         self.prometheus_instances = prometheus_instances
+        # Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
+        # Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
+        # Region ID
         self.region_id = region_id
+        # Remote read public URL.
         self.remote_read_inter_url = remote_read_inter_url
+        # Remote read intranet URL.
         self.remote_read_intra_url = remote_read_intra_url
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Fixed value: PrometheusView
         self.resource_type = resource_type
+        # Backend data storage status
         self.status = status
+        # Supported authentication types.
         self.support_auth_types = support_auth_types
+        # Instance tag keys.
         self.tags = tags
+        # User ID.
         self.user_id = user_id
+        # Version.
         self.version = version
+        # Workspace to which the environment belongs
         self.workspace = workspace
 
     def validate(self):
@@ -11200,6 +11613,7 @@ class GetPrometheusViewResponseBody(TeaModel):
         prometheus_view: GetPrometheusViewResponseBodyPrometheusView = None,
         request_id: str = None,
     ):
+        # View instance.
         self.prometheus_view = prometheus_view
         # Id of the request
         self.request_id = request_id
@@ -11286,16 +11700,27 @@ class GetServiceResponseBodyService(TeaModel):
         service_type: str = None,
         workspace: str = None,
     ):
+        # Extended information.
         self.attributes = attributes
+        # Creation time
         self.create_time = create_time
+        # Description, only valid when serviceType=RUM.
         self.description = description
+        # Display name, only valid when serviceType=RUM.
         self.display_name = display_name
+        # Legacy ARMS application ID
         self.pid = pid
+        # Region ID
         self.region_id = region_id
+        # Service ID.
         self.service_id = service_id
+        # Service name
         self.service_name = service_name
+        # Service status, only valid when serviceType=RUM.
         self.service_status = service_status
+        # Service type.
         self.service_type = service_type
+        # Workspace name
         self.workspace = workspace
 
     def validate(self):
@@ -11364,7 +11789,9 @@ class GetServiceResponseBody(TeaModel):
         request_id: str = None,
         service: GetServiceResponseBodyService = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Service object.
         self.service = service
 
     def validate(self):
@@ -11442,10 +11869,13 @@ class GetServiceObservabilityResponseBodyEntryPointInfo(TeaModel):
         project: str = None,
         public_domain: str = None,
     ):
+        # Authentication Token for Data Reporting
         self.auth_token = auth_token
+        # Private Network Access Address
         self.private_domain = private_domain
         # SLS Project
         self.project = project
+        # Public Network Access Address
         self.public_domain = public_domain
 
     def validate(self):
@@ -11493,14 +11923,23 @@ class GetServiceObservabilityResponseBody(TeaModel):
         type: str = None,
         workspace: str = None,
     ):
+        # Endpoint and Authentication Information
         self.entry_point_info = entry_point_info
+        # Billing Type
         self.fee_type = fee_type
+        # Quota Configuration
         self.quotas = quotas
+        # Region
         self.region_id = region_id
+        # Request ID
         self.request_id = request_id
+        # System Configuration
         self.settings = settings
+        # Resource Initialization Status
         self.status = status
+        # Application Observability Type
         self.type = type
+        # Workspace Name
         self.workspace = workspace
 
     def validate(self):
@@ -11604,7 +12043,9 @@ class GetUmodelResponseBodyCommonSchemaRef(TeaModel):
         group: str = None,
         version: str = None,
     ):
+        # Common Umodel Schema group
         self.group = group
+        # Version
         self.version = version
 
     def validate(self):
@@ -11640,10 +12081,15 @@ class GetUmodelResponseBody(TeaModel):
         request_id: str = None,
         workspace: str = None,
     ):
+        # This field does not need to be filled currently
         self.common_schema_ref = common_schema_ref
+        # Umodel description
         self.description = description
+        # Region
         self.region_id = region_id
+        # Request ID
         self.request_id = request_id
+        # Workspace name
         self.workspace = workspace
 
     def validate(self):
@@ -11737,7 +12183,10 @@ class GetUmodelDataRequest(TeaModel):
         content: Any = None,
         method: str = None,
     ):
+        # Query conditions
         self.content = content
+        # Method
+        # 
         # This parameter is required.
         self.method = method
 
@@ -11771,7 +12220,9 @@ class GetUmodelDataResponseBodyErrors(TeaModel):
         message: str = None,
         type: str = None,
     ):
+        # Details.
         self.message = message
+        # Error type
         self.type = type
 
     def validate(self):
@@ -11808,11 +12259,17 @@ class GetUmodelDataResponseBody(TeaModel):
         total_links_count: int = None,
         total_nodes_count: int = None,
     ):
+        # Error information
         self.errors = errors
+        # List of node link relationships
         self.links = links
+        # List of nodes
         self.nodes = nodes
+        # Request ID
         self.request_id = request_id
+        # Total number of node links
         self.total_links_count = total_links_count
+        # Total number of nodes
         self.total_nodes_count = total_nodes_count
 
     def validate(self):
@@ -11916,19 +12373,25 @@ class GetWorkspaceResponseBody(TeaModel):
         sls_project: str = None,
         workspace_name: str = None,
     ):
+        # Creation Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.create_time = create_time
-        # 工作空间描述
+        # Workspace Description
         self.description = description
+        # Workspace Display Name
         self.display_name = display_name
+        # Last Modified Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_modify_time = last_modify_time
-        # 地域ID
+        # Region ID
         self.region_id = region_id
+        # Request ID
         self.request_id = request_id
-        # 工作空间绑定的日志服务项目名称
+        # Log Service Project Name
         self.sls_project = sls_project
-        # 工作空间名称
+        # Workspace Name
         # 
         # This parameter is required.
         self.workspace_name = workspace_name
@@ -12028,7 +12491,9 @@ class ListAddonReleasesRequest(TeaModel):
         addon_name: str = None,
         parent_addon_release_id: str = None,
     ):
+        # Addon component name.
         self.addon_name = addon_name
+        # Parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
 
     def validate(self):
@@ -12064,10 +12529,15 @@ class ListAddonReleasesResponseBodyReleasesConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # First transition time.
         self.first_transition_time = first_transition_time
+        # Last transition time.
         self.last_transition_time = last_transition_time
+        # Details.
         self.message = message
+        # Phase status.
         self.status = status
+        # Phase type.
         self.type = type
 
     def validate(self):
@@ -12112,7 +12582,9 @@ class ListAddonReleasesResponseBodyReleasesSubAddonRelease(TeaModel):
         ready: int = None,
         total: int = None,
     ):
+        # Number of ready sub-Releases.
         self.ready = ready
+        # Number of sub-Releases.
         self.total = total
 
     def validate(self):
@@ -12171,34 +12643,61 @@ class ListAddonReleasesResponseBodyReleases(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Addon name.
         self.addon_name = addon_name
+        # Number of alert rules.
         self.alert_rule_count = alert_rule_count
+        # API version.
         self.api_version = api_version
+        # Installation phase information.
         self.conditions = conditions
+        # Component configuration information.
         self.config = config
+        # Access time.
         self.create_time = create_time
+        # Number of dashboards.
         self.dashboard_count = dashboard_count
+        # Entity details.
         self.entity_rules = entity_rules
+        # Environment type.
         self.env_type = env_type
+        # Environment ID.
         self.environment_id = environment_id
+        # Number of plugins.
         self.exporter_count = exporter_count
+        # Whether there is a configuration.
         self.have_config = have_config
+        # Access user ID.
         self.install_user_id = install_user_id
+        # Language.
         self.language = language
+        # Whether it is a managed component.
         self.managed = managed
+        # Starting version number for the remaining list.
         self.next_version = next_version
+        # Parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
+        # Policy ID.
         self.policy_id = policy_id
+        # Region ID.
         self.region_id = region_id
-        # Release ID。
+        # Release ID.
         self.release_id = release_id
+        # Release name.
         self.release_name = release_name
+        # Component scenario.
         self.scene = scene
+        # Status.
         self.status = status
+        # Sub-AddonRelease statistics.
         self.sub_addon_release = sub_addon_release
+        # Update time.
         self.update_time = update_time
+        # Owner user ID.
         self.user_id = user_id
+        # Component version.
         self.version = version
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -12350,8 +12849,11 @@ class ListAddonReleasesResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Set of add-on component information.
         self.releases = releases
+        # Request ID.
         self.request_id = request_id
+        # Number of components.
         self.total = total
 
     def validate(self):
@@ -12437,7 +12939,9 @@ class ListAggTaskGroupsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Key of the resource group tag.
         self.key = key
+        # Value of the resource group tag.
         self.value = value
 
     def validate(self):
@@ -12476,13 +12980,21 @@ class ListAggTaskGroupsRequest(TeaModel):
         tags: List[ListAggTaskGroupsRequestTags] = None,
         target_prometheus_id: str = None,
     ):
+        # List of IDs for the aggregation task groups, which must be JSON parseable.
         self.filter_agg_task_group_ids = filter_agg_task_group_ids
+        # List of names for the aggregation task groups, which must be JSON parseable.
         self.filter_agg_task_group_names = filter_agg_task_group_names
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Query token.
         self.next_token = next_token
+        # Name search, supports fuzzy matching.
         self.query = query
+        # Status of the aggregation task group, either \\"Running\\" or \\"Stopped\\". Default is Running.
         self.status = status
+        # Resource group tags.
         self.tags = tags
+        # The target Prometheus instance ID for the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
 
     def validate(self):
@@ -12553,13 +13065,21 @@ class ListAggTaskGroupsShrinkRequest(TeaModel):
         tags_shrink: str = None,
         target_prometheus_id: str = None,
     ):
+        # List of IDs for the aggregation task groups, which must be JSON parseable.
         self.filter_agg_task_group_ids = filter_agg_task_group_ids
+        # List of names for the aggregation task groups, which must be JSON parseable.
         self.filter_agg_task_group_names = filter_agg_task_group_names
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Query token.
         self.next_token = next_token
+        # Name search, supports fuzzy matching.
         self.query = query
+        # Status of the aggregation task group, either \\"Running\\" or \\"Stopped\\". Default is Running.
         self.status = status
+        # Resource group tags.
         self.tags_shrink = tags_shrink
+        # The target Prometheus instance ID for the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
 
     def validate(self):
@@ -12616,7 +13136,9 @@ class ListAggTaskGroupsResponseBodyAggTaskGroupsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Key of the resource group tag.
         self.key = key
+        # Value of the resource group tag.
         self.value = value
 
     def validate(self):
@@ -12666,24 +13188,43 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(TeaModel):
         to_time: int = None,
         update_time: str = None,
     ):
+        # Hash of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
+        # ID of the aggregation task group.
         self.agg_task_group_id = agg_task_group_id
+        # Name of the aggregation task group.
         self.agg_task_group_name = agg_task_group_name
+        # Cron expression for the aggregation task group when the scheduling mode is set to \\"Cron\\".
         self.cron_expr = cron_expr
+        # Fixed delay time (in seconds) for scheduling.
         self.delay = delay
+        # Description of the aggregation task group.
         self.description = description
+        # Start time of the schedule in seconds since epoch.
         self.from_time = from_time
+        # Scheduling interval.
         self.interval = interval
+        # Maximum number of retries for the aggregation task.
         self.max_retries = max_retries
+        # Maximum retry time (in seconds) for the aggregation task.
         self.max_run_time_in_seconds = max_run_time_in_seconds
+        # Region ID.
         self.region_id = region_id
+        # Scheduling mode.
         self.schedule_mode = schedule_mode
+        # Scheduling time expression.
         self.schedule_time_expr = schedule_time_expr
+        # The source Prometheus instance ID of the aggregation task group.
         self.source_prometheus_id = source_prometheus_id
+        # Status of the aggregation task group.
         self.status = status
+        # Resource group tags
         self.tags = tags
+        # The target Prometheus instance ID of the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
+        # The second-level timestamp corresponding to the end time of scheduling.
         self.to_time = to_time
+        # Update time of the aggregation task group.
         self.update_time = update_time
 
     def validate(self):
@@ -12795,10 +13336,15 @@ class ListAggTaskGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of aggregation task groups.
         self.agg_task_groups = agg_task_groups
+        # The maximum number of records returned.
         self.max_results = max_results
+        # Token for the next query.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -12895,10 +13441,15 @@ class ListAlertActionsRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # Unique identifier for the action integration.
         self.alert_action_ids = alert_action_ids
+        # Name of the action integration.
         self.alert_action_name = alert_action_name
+        # Page number. Default is 1.
         self.page_number = page_number
+        # Page size. Default is 100.
         self.page_size = page_size
+        # Type of the action integration.
         self.type = type
 
     def validate(self):
@@ -12946,10 +13497,15 @@ class ListAlertActionsShrinkRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # Unique identifier for the action integration.
         self.alert_action_ids_shrink = alert_action_ids_shrink
+        # Name of the action integration.
         self.alert_action_name = alert_action_name
+        # Page number. Default is 1.
         self.page_number = page_number
+        # Page size. Default is 100.
         self.page_size = page_size
+        # Type of the action integration.
         self.type = type
 
     def validate(self):
@@ -12996,9 +13552,13 @@ class ListAlertActionsResponseBodyAlertActionsEbParam(TeaModel):
         region_id: str = None,
         subject: str = None,
     ):
+        # Event source.
         self.eb_source = eb_source
+        # Event bus name.
         self.event_bus_name = event_bus_name
+        # Region ID.
         self.region_id = region_id
+        # Subject.
         self.subject = subject
 
     def validate(self):
@@ -13040,8 +13600,11 @@ class ListAlertActionsResponseBodyAlertActionsEssParam(TeaModel):
         ess_rule_id: str = None,
         region_id: str = None,
     ):
+        # Elastic scaling group ID.
         self.ess_group_id = ess_group_id
+        # Elastic scaling rule ID.
         self.ess_rule_id = ess_rule_id
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -13079,8 +13642,11 @@ class ListAlertActionsResponseBodyAlertActionsFc3Param(TeaModel):
         qualifier: str = None,
         region_id: str = None,
     ):
+        # Function name of the Function Compute service.
         self.function = function
+        # Version or alias of the function.
         self.qualifier = qualifier
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -13118,8 +13684,11 @@ class ListAlertActionsResponseBodyAlertActionsFcParam(TeaModel):
         region_id: str = None,
         service: str = None,
     ):
+        # Function name in the Function Compute service.
         self.function = function
+        # Region ID.
         self.region_id = region_id
+        # Function Compute service name.
         self.service = service
 
     def validate(self):
@@ -13157,8 +13726,14 @@ class ListAlertActionsResponseBodyAlertActionsMnsParam(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
+        # Resource type of the Lightweight Message Queue (formerly MNS).
         self.mns_type = mns_type
+        # Resource name.
+        # 
+        # - If the resource type is queue, the resource name is the queue name.
+        # - If the resource type is topic, the resource name is the topic name.
         self.name = name
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -13195,7 +13770,9 @@ class ListAlertActionsResponseBodyAlertActionsPagerDutyParam(TeaModel):
         key: str = None,
         url: str = None,
     ):
+        # Integration key for PagerDuty.
         self.key = key
+        # Integration webhook for PagerDuty. Supports V1 and V2 versions.
         self.url = url
 
     def validate(self):
@@ -13229,8 +13806,11 @@ class ListAlertActionsResponseBodyAlertActionsSlsParam(TeaModel):
         project: str = None,
         region_id: str = None,
     ):
+        # Logstore name of the Log Service.
         self.logstore = logstore
+        # Log Service project name.
         self.project = project
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -13269,9 +13849,13 @@ class ListAlertActionsResponseBodyAlertActionsWebhookParam(TeaModel):
         method: str = None,
         url: str = None,
     ):
+        # Data format, effective when the request method is POST.
         self.content_type = content_type
+        # Request headers.
         self.headers = headers
+        # Webhook request method.
         self.method = method
+        # The URL address for the alarm callback.
         self.url = url
 
     def validate(self):
@@ -13321,16 +13905,27 @@ class ListAlertActionsResponseBodyAlertActions(TeaModel):
         type: str = None,
         webhook_param: ListAlertActionsResponseBodyAlertActionsWebhookParam = None,
     ):
+        # Unique identifier for the action integration.
         self.alert_action_id = alert_action_id
+        # Alert action name.
         self.alert_action_name = alert_action_name
+        # Event Bridge parameters.
         self.eb_param = eb_param
+        # Elastic scaling parameters.
         self.ess_param = ess_param
+        # Function Compute 3.0 parameters.
         self.fc_3param = fc_3param
+        # Function Compute parameters.
         self.fc_param = fc_param
+        # Lightweight Message Queue (formerly MNS) parameters.
         self.mns_param = mns_param
+        # PagerDuty parameters
         self.pager_duty_param = pager_duty_param
+        # Log Service parameters.
         self.sls_param = sls_param
+        # Action integration type.
         self.type = type
+        # Webhook parameters
         self.webhook_param = webhook_param
 
     def validate(self):
@@ -13425,10 +14020,15 @@ class ListAlertActionsResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # List of alert action configurations.
         self.alert_actions = alert_actions
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of items.
         self.total = total
 
     def validate(self):
@@ -13522,7 +14122,9 @@ class ListIntegrationPoliciesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag value
         self.value = value
 
     def validate(self):
@@ -13567,19 +14169,33 @@ class ListIntegrationPoliciesRequest(TeaModel):
         tag: List[ListIntegrationPoliciesRequestTag] = None,
         workspace: str = None,
     ):
+        # Addon Name.
         self.addon_name = addon_name
+        # Bound Resource ID.
         self.bind_resource_id = bind_resource_id
+        # Filter for entity IDs, separated by commas.
         self.entity_group_ids = entity_group_ids
+        # Used for Region query, separated by commas.
         self.filter_region_ids = filter_region_ids
+        # Maximum number of results to return, default is 30, with a maximum of 100.
         self.max_results = max_results
+        # Used to return more results. This parameter is not required for the first query; for subsequent queries, use the Token obtained from the previous response.
         self.next_token = next_token
+        # Policy ID.
         self.policy_id = policy_id
+        # Rule Name.
         self.policy_name = policy_name
+        # Policy Type
         self.policy_type = policy_type
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Used for general queries.
         self.query = query
+        # Resource Group ID.
         self.resource_group_id = resource_group_id
+        # Tag list.
         self.tag = tag
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -13680,19 +14296,33 @@ class ListIntegrationPoliciesShrinkRequest(TeaModel):
         tag_shrink: str = None,
         workspace: str = None,
     ):
+        # Addon Name.
         self.addon_name = addon_name
+        # Bound Resource ID.
         self.bind_resource_id = bind_resource_id
+        # Filter for entity IDs, separated by commas.
         self.entity_group_ids = entity_group_ids
+        # Used for Region query, separated by commas.
         self.filter_region_ids = filter_region_ids
+        # Maximum number of results to return, default is 30, with a maximum of 100.
         self.max_results = max_results
+        # Used to return more results. This parameter is not required for the first query; for subsequent queries, use the Token obtained from the previous response.
         self.next_token = next_token
+        # Policy ID.
         self.policy_id = policy_id
+        # Rule Name.
         self.policy_name = policy_name
+        # Policy Type
         self.policy_type = policy_type
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Used for general queries.
         self.query = query
+        # Resource Group ID.
         self.resource_group_id = resource_group_id
+        # Tag list.
         self.tag_shrink = tag_shrink
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -13775,9 +14405,13 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(TeaModel):
         vpc_cidr: str = None,
         vpc_id: str = None,
     ):
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # Cluster type.
         self.cluster_type = cluster_type
+        # VPC CIDR
         self.vpc_cidr = vpc_cidr
+        # Virtual Private Cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13819,8 +14453,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotatio
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # Operation to be performed.
         self.op = op
+        # Tag key
         self.tag_key = tag_key
+        # Tag values
         self.tag_values = tag_values
 
     def validate(self):
@@ -13858,8 +14495,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
         field_values: List[str] = None,
         op: str = None,
     ):
+        # Unique identifier for the field.
         self.field_key = field_key
+        # Field content, multiple values separated by commas.
         self.field_values = field_values
+        # Operation to be performed.
         self.op = op
 
     def validate(self):
@@ -13896,7 +14536,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRu
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
+        # IP segment
         self.ip_cidr = ip_cidr
+        # Key of the IP field
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -13930,8 +14572,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels(Te
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # Operation to be performed.
         self.op = op
+        # Tag key.
         self.tag_key = tag_key
+        # Tag values
         self.tag_values = tag_values
 
     def validate(self):
@@ -13969,8 +14614,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags(TeaM
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # Operation to be performed.
         self.op = op
+        # Tag key.
         self.tag_key = tag_key
+        # Tag value.
         self.tag_values = tag_values
 
     def validate(self):
@@ -14014,14 +14662,23 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules(TeaModel
         resource_group_id: str = None,
         tags: List[ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags] = None,
     ):
+        # Annotations
         self.annotations = annotations
+        # List of entity types
         self.entity_types = entity_types
+        # Field rules
         self.field_rules = field_rules
+        # Instance IDs.
         self.instance_ids = instance_ids
+        # IP match rule
         self.ip_match_rule = ip_match_rule
+        # Labels
         self.labels = labels
+        # List of region IDs
         self.region_ids = region_ids
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Instance tag information.
         self.tags = tags
 
     def validate(self):
@@ -14126,13 +14783,21 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroup(TeaModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # Description.
         self.description = description
+        # Entity group ID
         self.entity_group_id = entity_group_id
+        # Entity group name
         self.entity_group_name = entity_group_name
+        # Entity group
         self.entity_rules = entity_rules
+        # Search keyword, supports document library name and description
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # User ID
         self.user_id = user_id
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -14192,8 +14857,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(TeaModel):
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
+        # ENI card ID of the managed probe. For example: eni-xxxx.
         self.eni_id = eni_id
+        # Security group ID
         self.security_group_id = security_group_id
+        # VSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -14230,7 +14898,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease(TeaModel):
         ready: int = None,
         total: int = None,
     ):
+        # Number of ready sub-releases
         self.ready = ready
+        # Number of rules.
         self.total = total
 
     def validate(self):
@@ -14263,7 +14933,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Match value.
         self.value = value
 
     def validate(self):
@@ -14294,7 +14966,9 @@ class ListIntegrationPoliciesResponseBodyPolicies(TeaModel):
     def __init__(
         self,
         bind_resource: ListIntegrationPoliciesResponseBodyPoliciesBindResource = None,
+        cs_umodel_status: bool = None,
         entity_group: ListIntegrationPoliciesResponseBodyPoliciesEntityGroup = None,
+        fee_package: str = None,
         managed_info: ListIntegrationPoliciesResponseBodyPoliciesManagedInfo = None,
         policy_id: str = None,
         policy_name: str = None,
@@ -14306,17 +14980,32 @@ class ListIntegrationPoliciesResponseBodyPolicies(TeaModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # Bound resource information
         self.bind_resource = bind_resource
+        # Cs Umodel Status
+        self.cs_umodel_status = cs_umodel_status
+        # Entity group
         self.entity_group = entity_group
+        self.fee_package = fee_package
+        # Policy network management information.
         self.managed_info = managed_info
+        # Policy ID.
         self.policy_id = policy_id
+        # Rule name.
         self.policy_name = policy_name
+        # Access center policy type
         self.policy_type = policy_type
+        # Region ID.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Number of sub-releases
         self.sub_addon_release = sub_addon_release
+        # Resource tag key values.
         self.tags = tags
+        # User ID
         self.user_id = user_id
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -14341,8 +15030,12 @@ class ListIntegrationPoliciesResponseBodyPolicies(TeaModel):
         result = dict()
         if self.bind_resource is not None:
             result['bindResource'] = self.bind_resource.to_map()
+        if self.cs_umodel_status is not None:
+            result['csUmodelStatus'] = self.cs_umodel_status
         if self.entity_group is not None:
             result['entityGroup'] = self.entity_group.to_map()
+        if self.fee_package is not None:
+            result['feePackage'] = self.fee_package
         if self.managed_info is not None:
             result['managedInfo'] = self.managed_info.to_map()
         if self.policy_id is not None:
@@ -14372,9 +15065,13 @@ class ListIntegrationPoliciesResponseBodyPolicies(TeaModel):
         if m.get('bindResource') is not None:
             temp_model = ListIntegrationPoliciesResponseBodyPoliciesBindResource()
             self.bind_resource = temp_model.from_map(m['bindResource'])
+        if m.get('csUmodelStatus') is not None:
+            self.cs_umodel_status = m.get('csUmodelStatus')
         if m.get('entityGroup') is not None:
             temp_model = ListIntegrationPoliciesResponseBodyPoliciesEntityGroup()
             self.entity_group = temp_model.from_map(m['entityGroup'])
+        if m.get('feePackage') is not None:
+            self.fee_package = m.get('feePackage')
         if m.get('managedInfo') is not None:
             temp_model = ListIntegrationPoliciesResponseBodyPoliciesManagedInfo()
             self.managed_info = temp_model.from_map(m['managedInfo'])
@@ -14412,11 +15109,19 @@ class ListIntegrationPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Page size
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
+        # Pagination Token
         self.next_token = next_token
+        # Access policy list
         self.policies = policies
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total number of entries
         self.total_count = total_count
 
     def validate(self):
@@ -14511,8 +15216,11 @@ class ListIntegrationPolicyCustomScrapeJobRulesRequest(TeaModel):
         encrypt_yaml: bool = None,
         namespace: str = None,
     ):
+        # Addon Release name.
         self.addon_release_name = addon_release_name
+        # Whether to encrypt Yaml.
         self.encrypt_yaml = encrypt_yaml
+        # Namespace.
         self.namespace = namespace
 
     def validate(self):
@@ -14554,12 +15262,19 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesS
         scrape_timeout: str = None,
         service_discovery_configs: List[str] = None,
     ):
+        # Scraping job name
         self.job_name = job_name
+        # Detailed information.
         self.message = message
+        # Metrics path
         self.metrics_path = metrics_path
+        # Call method.
         self.scheme = scheme
+        # Scrape interval
         self.scrape_interval = scrape_interval
+        # Scrape timeout
         self.scrape_timeout = scrape_timeout
+        # Service discovery configuration
         self.service_discovery_configs = service_discovery_configs
 
     def validate(self):
@@ -14621,16 +15336,27 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules(
         namespace: str = None,
         scrape_configs: List[ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs] = None,
     ):
+        # Addon name.
         self.addon_name = addon_name
+        # Addon Release name
         self.addon_release_name = addon_release_name
+        # Addon version
         self.addon_version = addon_version
+        # Configuration yaml
         self.config_yaml = config_yaml
+        # Enable status
         self.enable_status = enable_status
+        # Encrypt yaml
         self.encrypt_yaml = encrypt_yaml
+        # Matched pod count
         self.matched_pod_count = matched_pod_count
+        # Detailed information.
         self.message = message
+        # Service name.
         self.name = name
+        # Namespace
         self.namespace = namespace
+        # Custom configurations
         self.scrape_configs = scrape_configs
 
     def validate(self):
@@ -14709,10 +15435,13 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBody(TeaModel):
         policy_id: str = None,
         request_id: str = None,
     ):
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # Custom scraping job rules
         self.custom_scrape_job_rules = custom_scrape_job_rules
+        # Policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -14803,8 +15532,11 @@ class ListIntegrationPolicyDashboardsRequest(TeaModel):
         language: str = None,
         scene: str = None,
     ):
+        # Addon Name.
         self.addon_name = addon_name
+        # Query Language
         self.language = language
+        # Component Scenario.
         self.scene = scene
 
     def validate(self):
@@ -14847,13 +15579,23 @@ class ListIntegrationPolicyDashboardsResponseBodyDashboards(TeaModel):
         uid: str = None,
         url: str = None,
     ):
+        # Dashboard engine:
+        # grafana: shared grafana.
+        # cms: cms self-developed dashboard engine.
         self.engine = engine
+        # UID of the dashboard folder.
         self.folder_uid = folder_uid
+        # Dashboard name
         self.name = name
+        # Region
         self.region = region
+        # List of tags.
         self.tags = tags
+        # Title of the UI module (not name)
         self.title = title
+        # ID of the current Alibaba Cloud primary account, read-only
         self.uid = uid
+        # pagerDuty integration webhook. Supports V1 and V2 versions
         self.url = url
 
     def validate(self):
@@ -14911,9 +15653,11 @@ class ListIntegrationPolicyDashboardsResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # List of dashboards.
         self.dashboards = dashboards
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Number of components.
         self.total = total
 
     def validate(self):
@@ -15000,8 +15744,11 @@ class ListIntegrationPolicyPodMonitorsRequest(TeaModel):
         encrypt_yaml: bool = None,
         namespace: str = None,
     ):
+        # Addon Release name.
         self.addon_release_name = addon_release_name
+        # Whether to encrypt Yaml.
         self.encrypt_yaml = encrypt_yaml
+        # Namespace.
         self.namespace = namespace
 
     def validate(self):
@@ -15041,10 +15788,15 @@ class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints(TeaModel)
         port: str = None,
         target_port: str = None,
     ):
+        # Collection interval
         self.interval = interval
+        # Number of matched targets
         self.matched_target_count = matched_target_count
+        # Metric collection path
         self.path = path
+        # Port number
         self.port = port
+        # Target port
         self.target_port = target_port
 
     def validate(self):
@@ -15097,15 +15849,25 @@ class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors(TeaModel):
         name: str = None,
         namespace: str = None,
     ):
+        # Addon name.
         self.addon_name = addon_name
+        # Addon Release name.
         self.addon_release_name = addon_release_name
+        # Addon version.
         self.addon_version = addon_version
+        # Configuration yaml.
         self.config_yaml = config_yaml
+        # Enable status.
         self.enable_status = enable_status
+        # Encrypt yaml.
         self.encrypt_yaml = encrypt_yaml
+        # Instance endpoints.
         self.endpoints = endpoints
+        # Number of matched pods
         self.matched_pod_count = matched_pod_count
+        # Collection name.
         self.name = name
+        # Namespace
         self.namespace = namespace
 
     def validate(self):
@@ -15180,10 +15942,13 @@ class ListIntegrationPolicyPodMonitorsResponseBody(TeaModel):
         policy_id: str = None,
         request_id: str = None,
     ):
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # PodMonitor list
         self.pod_monitors = pod_monitors
+        # Policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15274,8 +16039,11 @@ class ListIntegrationPolicyStorageRequirementsRequest(TeaModel):
         addon_release_name: str = None,
         storage_type: str = None,
     ):
+        # Addon Release Name
         self.addon_name = addon_name
+        # Name of AddonRelease.
         self.addon_release_name = addon_release_name
+        # Storage Type, LogStore/Prometheus/TraceStore/EventStore/EntityStore.
         self.storage_type = storage_type
 
     def validate(self):
@@ -15314,9 +16082,13 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMet
         name: str = None,
         namespace: str = None,
     ):
+        # Annotations
         self.annotations = annotations
+        # Resource labels
         self.labels = labels
+        # Resource name
         self.name = name
+        # Namespace
         self.namespace = namespace
 
     def validate(self):
@@ -15366,16 +16138,27 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpe
         user_id: str = None,
         workspace: str = None,
     ):
+        # Instance ID, which can be specified if you need to pinpoint to the instance level. It depends on the data in EntityStore.
         self.entity_id = entity_id
+        # Prom Instance ID.
         self.instance = instance
+        # Prom instance name
         self.instance_name = instance_name
+        # Optional parameter, determined based on the current environment type
         self.project = project
+        # Region
         self.region = region
+        # Storage sharing scope: Environment | Region | Workspace | Custom
         self.share_scope = share_scope
+        # Instance storage type
         self.storage_type = storage_type
+        # Tags to be applied to the target storage (injected as system tags)
         self.system_tags = system_tags
+        # Tags to be applied to the target storage (injected as regular tags)
         self.tags = tags
+        # User ID
         self.user_id = user_id
+        # Workspace
         self.workspace = workspace
 
     def validate(self):
@@ -15451,14 +16234,23 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSta
         storage_type: str = None,
         workspace: str = None,
     ):
+        # Instance ID
         self.instance_id = instance_id
+        # Internal URL
         self.inter_url = inter_url
+        # External URL
         self.intra_url = intra_url
+        # 存储需求名称
         self.name = name
+        # 存储需求项目
         self.project = project
+        # Prom\\"s metric center
         self.prom_metric_store = prom_metric_store
+        # Region
         self.region = region
+        # Instance storage type
         self.storage_type = storage_type
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -15523,11 +16315,17 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements(Te
         spec: ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec = None,
         status: ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus = None,
     ):
+        # Collection of AddonReleases.
         self.addon_release_names = addon_release_names
+        # API Version
         self.api_version = api_version
+        # Resource kind
         self.kind = kind
+        # Metadata
         self.metadata = metadata
+        # Resource spec
         self.spec = spec
+        # Storage requirement status
         self.status = status
 
     def validate(self):
@@ -15584,8 +16382,9 @@ class ListIntegrationPolicyStorageRequirementsResponseBody(TeaModel):
         request_id: str = None,
         storage_requirements: List[ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements] = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # List of storage requirements
         self.storage_requirements = storage_requirements
 
     def validate(self):
@@ -15667,7 +16466,9 @@ class ListPrometheusDashboardsRequest(TeaModel):
         aliyun_lang: str = None,
         resource_group_id: str = None,
     ):
+        # Language environment, default is Chinese zh | en
         self.aliyun_lang = aliyun_lang
+        # Resource Group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -15704,11 +16505,17 @@ class ListPrometheusDashboardsResponseBodyPrometheusDashboards(TeaModel):
         uid: str = None,
         url: str = None,
     ):
+        # Dashboard ID.
         self.id = id
+        # Dashboard name.
         self.name = name
+        # Tags.
         self.tags = tags
+        # Dashboard title.
         self.title = title
+        # Dashboard UID.
         self.uid = uid
+        # Dashboard URL address.
         self.url = url
 
     def validate(self):
@@ -15758,9 +16565,11 @@ class ListPrometheusDashboardsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of Prometheus instance dashboards.
         self.prometheus_dashboards = prometheus_dashboards
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total number of instances
         self.total_count = total_count
 
     def validate(self):
@@ -15846,7 +16655,9 @@ class ListPrometheusInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -15886,14 +16697,23 @@ class ListPrometheusInstancesRequest(TeaModel):
         tag: List[ListPrometheusInstancesRequestTag] = None,
         version: str = None,
     ):
+        # Specified list of regionIds to filter (comma-separated).
         self.filter_region_ids = filter_region_ids
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Query token.
         self.next_token = next_token
+        # List of instance IDs (comma-separated)
         self.prometheus_instance_ids = prometheus_instance_ids
+        # Instance name (partial match supported)
         self.prometheus_instance_name = prometheus_instance_name
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource type of the instance.
         self.resource_type = resource_type
+        # List of tags.
         self.tag = tag
+        # Instance version: V1 or V2
         self.version = version
 
     def validate(self):
@@ -15969,14 +16789,23 @@ class ListPrometheusInstancesShrinkRequest(TeaModel):
         tag_shrink: str = None,
         version: str = None,
     ):
+        # Specified list of regionIds to filter (comma-separated).
         self.filter_region_ids = filter_region_ids
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Query token.
         self.next_token = next_token
+        # List of instance IDs (comma-separated)
         self.prometheus_instance_ids = prometheus_instance_ids
+        # Instance name (partial match supported)
         self.prometheus_instance_name = prometheus_instance_name
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource type of the instance.
         self.resource_type = resource_type
+        # List of tags.
         self.tag_shrink = tag_shrink
+        # Instance version: V1 or V2
         self.version = version
 
     def validate(self):
@@ -16037,7 +16866,9 @@ class ListPrometheusInstancesResponseBodyPrometheusInstancesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -16084,21 +16915,41 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Access type:
+        # readWrite, readOnly, httpReadOnly
         self.access_type = access_type
+        # Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
+        # Instance type.
         self.instance_type = instance_type
+        # POSTPAY: Postpaid by metric.
+        # POSTPAY_GB: Postpaid by write volume.
+        # PREPAY: Prepaid.
+        # FREE: Free.
         self.payment_type = payment_type
+        # Product to which the prom instance belongs
         self.product = product
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Instance name.
         self.prometheus_instance_name = prometheus_instance_name
+        # Region ID
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource type.
         self.resource_type = resource_type
+        # Backend data storage status
         self.status = status
+        # Supported authentication types.
         self.support_auth_types = support_auth_types
+        # Tags key.
         self.tags = tags
+        # User ID.
         self.user_id = user_id
+        # Version
         self.version = version
+        # Workspace to which the Prometheus instance belongs
         self.workspace = workspace
 
     def validate(self):
@@ -16198,11 +17049,15 @@ class ListPrometheusInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Token for the next query.
         self.next_token = next_token
+        # List of Prometheus instances.
         self.prometheus_instances = prometheus_instances
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total number of instances
         self.total_count = total_count
 
     def validate(self):
@@ -16296,7 +17151,9 @@ class ListPrometheusViewsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Match value.
         self.value = value
 
     def validate(self):
@@ -16337,15 +17194,25 @@ class ListPrometheusViewsRequest(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Filter by RegionID.
         self.filter_region_ids = filter_region_ids
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Query token.
         self.next_token = next_token
+        # List of Prometheus view instance IDs.
         self.prometheus_view_ids = prometheus_view_ids
+        # Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource type.
         self.resource_type = resource_type
+        # List of tags.
         self.tag = tag
+        # Instance version: V1 or V2
         self.version = version
+        # Workspace name
         self.workspace = workspace
 
     def validate(self):
@@ -16426,15 +17293,25 @@ class ListPrometheusViewsShrinkRequest(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Filter by RegionID.
         self.filter_region_ids = filter_region_ids
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Query token.
         self.next_token = next_token
+        # List of Prometheus view instance IDs.
         self.prometheus_view_ids = prometheus_view_ids
+        # Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource type.
         self.resource_type = resource_type
+        # List of tags.
         self.tag_shrink = tag_shrink
+        # Instance version: V1 or V2
         self.version = version
+        # Workspace name
         self.workspace = workspace
 
     def validate(self):
@@ -16499,7 +17376,9 @@ class ListPrometheusViewsResponseBodyPrometheusViewsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Match value.
         self.value = value
 
     def validate(self):
@@ -16545,20 +17424,37 @@ class ListPrometheusViewsResponseBodyPrometheusViews(TeaModel):
         version: str = None,
         workspace: str = None,
     ):
+        # Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
+        # Instance type:
+        # prom-view: new version aggregated view
+        # global-view: old version aggregated view
         self.instance_type = instance_type
+        # Payment type. Currently, the fixed value is FREE (free).
         self.payment_type = payment_type
+        # Product that the prom instance belongs to (arms or cms).
         self.product = product
+        # Number of Prometheus instances in the view.
         self.prometheus_instance_count = prometheus_instance_count
+        # Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
+        # Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
+        # Region ID.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Fixed value: PrometheusView.
         self.resource_type = resource_type
+        # Backend data storage status.
         self.status = status
+        # Tag values.
         self.tags = tags
+        # User ID.
         self.user_id = user_id
+        # Version.
         self.version = version
+        # Workspace that the prom instance belongs to.
         self.workspace = workspace
 
     def validate(self):
@@ -16654,11 +17550,15 @@ class ListPrometheusViewsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Token for the next query.
         self.next_token = next_token
+        # List of Prometheus view instances.
         self.prometheus_views = prometheus_views
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total number of instances
         self.total_count = total_count
 
     def validate(self):
@@ -16751,6 +17651,7 @@ class ListPrometheusVirtualInstancesRequest(TeaModel):
         self,
         namespace: str = None,
     ):
+        # Optional cloud product
         self.namespace = namespace
 
     def validate(self):
@@ -16783,11 +17684,21 @@ class ListPrometheusVirtualInstancesResponseBodyInstances(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # Creation time
         self.created_at = created_at
+        # HTTP API URL.
         self.http_api_url = http_api_url
+        # Applicable data source type: PROMETHEUS_DS
+        # 
+        # Prometheus instance ID
         self.instance_id = instance_id
+        # Applicable query type: CMS_BASIC_QUERY.
+        # 
+        # Namespace of the metric
         self.namespace = namespace
+        # Region ID.
         self.region_id = region_id
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -16836,8 +17747,9 @@ class ListPrometheusVirtualInstancesResponseBody(TeaModel):
         instances: List[ListPrometheusVirtualInstancesResponseBodyInstances] = None,
         request_id: str = None,
     ):
+        # Instance information.
         self.instances = instances
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16920,8 +17832,11 @@ class ListServicesRequest(TeaModel):
         next_token: str = None,
         service_type: str = None,
     ):
+        # The maximum number of records to return in this request.
         self.max_results = max_results
+        # Token for the next query, an empty value indicates the last page.
         self.next_token = next_token
+        # Service type
         self.service_type = service_type
 
     def validate(self):
@@ -16966,15 +17881,25 @@ class ListServicesResponseBodyServices(TeaModel):
         service_type: str = None,
         workspace: str = None,
     ):
+        # Extended information.
         self.attributes = attributes
+        # Creation time
         self.create_time = create_time
+        # Service description, valid only when serviceType=RUM.
         self.description = description
+        # Display name, valid only when serviceType=RUM.
         self.display_name = display_name
+        # Historical compatible ARMS application ID
         self.pid = pid
+        # Service ID
         self.service_id = service_id
+        # Service name
         self.service_name = service_name
+        # Service status, valid only when serviceType=RUM.
         self.service_status = service_status
+        # Service type
         self.service_type = service_type
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -17042,10 +17967,15 @@ class ListServicesResponseBody(TeaModel):
         services: List[ListServicesResponseBodyServices] = None,
         total_count: int = None,
     ):
+        # Maximum number of results to return, with a maximum value of 200
         self.max_results = max_results
+        # Pagination token
         self.next_token = next_token
+        # Request ID
         self.request_id = request_id
+        # List of service information.
         self.services = services
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -17142,10 +18072,19 @@ class ListWorkspacesRequest(TeaModel):
         workspace_name: str = None,
         workspace_name_list: List[str] = None,
     ):
+        # Page size
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
+        # Pagination Token
         self.next_token = next_token
+        # Region
         self.region = region
+        # Workspace name, fuzzy search
         self.workspace_name = workspace_name
+        # Workspace name, exact match
         self.workspace_name_list = workspace_name_list
 
     def validate(self):
@@ -17193,10 +18132,19 @@ class ListWorkspacesShrinkRequest(TeaModel):
         workspace_name: str = None,
         workspace_name_list_shrink: str = None,
     ):
+        # Page size
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
+        # Pagination Token
         self.next_token = next_token
+        # Region
         self.region = region
+        # Workspace name, fuzzy search
         self.workspace_name = workspace_name
+        # Workspace name, exact match
         self.workspace_name_list_shrink = workspace_name_list_shrink
 
     def validate(self):
@@ -17246,18 +18194,23 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         sls_project: str = None,
         workspace_name: str = None,
     ):
+        # Creation time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # 工作空间描述
+        # Workspace description
         self.description = description
+        # Workspace display name
         self.display_name = display_name
+        # Last modified time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_modify_time = last_modify_time
-        # 地域ID
+        # Region ID
         self.region_id = region_id
-        # 工作空间绑定的日志服务项目名称
+        # Log Service project name
         self.sls_project = sls_project
-        # 工作空间名称
+        # Workspace name
         # 
         # This parameter is required.
         self.workspace_name = workspace_name
@@ -17315,10 +18268,19 @@ class ListWorkspacesResponseBody(TeaModel):
         total: int = None,
         workspaces: List[ListWorkspacesResponseBodyWorkspaces] = None,
     ):
+        # Page size
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
+        # Pagination Token
         self.next_token = next_token
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total = total
+        # List of workspaces
         self.workspaces = workspaces
 
     def validate(self):
@@ -17413,10 +18375,11 @@ class PutWorkspaceRequest(TeaModel):
         display_name: str = None,
         sls_project: str = None,
     ):
-        # 工作空间描述
+        # Description of the workspace
         self.description = description
+        # Display name of the workspace
         self.display_name = display_name
-        # 工作空间绑定的日志服务项目名称
+        # Name of the Log Service project
         # 
         # This parameter is required.
         self.sls_project = sls_project
@@ -17455,8 +18418,9 @@ class PutWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         workspace_name: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -17532,9 +18496,13 @@ class UpdateAddonReleaseRequest(TeaModel):
         entity_rules: EntityDiscoverRule = None,
         values: str = None,
     ):
+        # Addon version information.
         self.addon_version = addon_version
+        # Whether to pre-check this request.
         self.dry_run = dry_run
+        # Entity discovery rules.
         self.entity_rules = entity_rules
+        # Metadata information.
         self.values = values
 
     def validate(self):
@@ -17576,6 +18544,7 @@ class UpdateAddonReleaseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17645,7 +18614,9 @@ class UpdateAggTaskGroupRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Key of the resource group tag.
         self.key = key
+        # Value of the resource group tag.
         self.value = value
 
     def validate(self):
@@ -17692,23 +18663,41 @@ class UpdateAggTaskGroupRequest(TeaModel):
         target_prometheus_id: str = None,
         to_time: int = None,
     ):
+        # Aggregation task group configuration. Currently, only the “RecordingRuleYaml” format is supported, and it must comply with the format requirements of open-source Prometheus RecordingRules.
+        # 
         # This parameter is required.
         self.agg_task_group_config = agg_task_group_config
+        # Aggregation task group configuration type, default is “RecordingRuleYaml” (open-source Prometheus RecordingRule format).
         self.agg_task_group_config_type = agg_task_group_config_type
+        # Aggregation task group name.
         self.agg_task_group_name = agg_task_group_name
+        # When the scheduling mode is set to “Cron”, this is the specific scheduling expression. For example, “0/1 * * * *” means starting from 0 minutes, schedule every 1 minute.
         self.cron_expr = cron_expr
+        # Fixed delay time for scheduling, in seconds, default is 30.
         self.delay = delay
+        # Description of the aggregation task group.
         self.description = description
+        # The second-level timestamp corresponding to the start time of the scheduling.
         self.from_time = from_time
+        # Maximum number of retries for executing the aggregation task, default is 20.
         self.max_retries = max_retries
+        # Maximum retry time for executing the aggregation task, in seconds, default is 600.
         self.max_run_time_in_seconds = max_run_time_in_seconds
+        # Pre-check configuration, no configuration by default. The input string needs to be correctly parsed as JSON.
         self.precheck_string = precheck_string
+        # Scheduling mode, either “Cron” or “FixedRate”, default is “FixedRate”.
         self.schedule_mode = schedule_mode
+        # Scheduling time expression, recommended values are “@s” or “@m”, indicating the granularity of the scheduling time window alignment, default is “@m”.
         self.schedule_time_expr = schedule_time_expr
+        # Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
         self.status = status
+        # Resource group tags.
         self.tags = tags
+        # Target Prometheus instance ID of the aggregation task group.
+        # 
         # This parameter is required.
         self.target_prometheus_id = target_prometheus_id
+        # The second-level timestamp corresponding to the end time of the scheduling, 0 indicates that the scheduling does not stop.
         self.to_time = to_time
 
     def validate(self):
@@ -17809,11 +18798,17 @@ class UpdateAggTaskGroupResponseBody(TeaModel):
         source_prometheus_id: str = None,
         status: str = None,
     ):
+        # Summary of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
+        # Aggregation task group ID
         self.agg_task_group_id = agg_task_group_id
+        # Aggregation task group name
         self.agg_task_group_name = agg_task_group_name
+        # Request ID
         self.request_id = request_id
+        # Source Prometheus instance ID of the aggregation task group
         self.source_prometheus_id = source_prometheus_id
+        # Current status of the aggregation task group
         self.status = status
 
     def validate(self):
@@ -17902,6 +18897,8 @@ class UpdateAggTaskGroupStatusRequest(TeaModel):
         self,
         status: str = None,
     ):
+        # Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
+        # 
         # This parameter is required.
         self.status = status
 
@@ -17935,11 +18932,17 @@ class UpdateAggTaskGroupStatusResponseBody(TeaModel):
         source_prometheus_id: str = None,
         status: str = None,
     ):
+        # Summary of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
+        # Aggregation task group ID.
         self.agg_task_group_id = agg_task_group_id
+        # Aggregation task group name.
         self.agg_task_group_name = agg_task_group_name
+        # Request ID.
         self.request_id = request_id
+        # Source Prometheus instance ID of the aggregation task group.
         self.source_prometheus_id = source_prometheus_id
+        # The current status of the aggregated task group.
         self.status = status
 
     def validate(self):
@@ -18029,7 +19032,9 @@ class UpdateIntegrationPolicyRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag `key` value.
         self.key = key
+        # Tag `value` value.
         self.value = value
 
     def validate(self):
@@ -18064,9 +19069,13 @@ class UpdateIntegrationPolicyRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[UpdateIntegrationPolicyRequestTags] = None,
     ):
+        # Fee package type, CS_Pro/CS_Basic/empty.
         self.fee_package = fee_package
+        # Rule name, minimum 3 characters, maximum 63 characters, must start with a letter.
         self.policy_name = policy_name
+        # Resource group ID of the instance.
         self.resource_group_id = resource_group_id
+        # Resource tags.
         self.tags = tags
 
     def validate(self):
@@ -18114,7 +19123,7 @@ class UpdateIntegrationPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -18193,16 +19202,33 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         storage_duration: int = None,
         workspace: str = None,
     ):
+        # The number of days to automatically archive and save after the storage expires, 0 means no archiving. The range of archiving days:
+        # V1: 1~365 days. Only supported for metric write volume.
+        # V2: 1~3650 days (3650 indicates permanent storage).
         self.archive_duration = archive_duration
+        # Password-free read policy (supports IP segments and VpcId).
         self.auth_free_read_policy = auth_free_read_policy
+        # Password-free write policy (supports IP segments and VpcId).
         self.auth_free_write_policy = auth_free_write_policy
+        # Whether to enable password-free read.
         self.enable_auth_free_read = enable_auth_free_read
+        # Whether to enable password-free write.
         self.enable_auth_free_write = enable_auth_free_write
+        # Whether to enable access token authentication.
         self.enable_auth_token = enable_auth_token
+        # Billing method (can only be modified once during the instance\\"s lifecycle):
+        # POSTPAY: Postpaid by metric reporting volume.
+        # POSTPAY_GB: Postpaid by metric write volume.
         self.payment_type = payment_type
+        # Instance name.
         self.prometheus_instance_name = prometheus_instance_name
+        # Instance storage DB status (only supports RUNNING). If empty, the storage DB status will not be changed.
         self.status = status
+        # Storage duration (days):
+        # By write volume: 90, 180.
+        # By metric reporting volume: 15, 30, 60, 90, 180.
         self.storage_duration = storage_duration
+        # Belonging workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -18271,8 +19297,9 @@ class UpdatePrometheusInstanceResponseBody(TeaModel):
         prometheus_instance_id: str = None,
         request_id: str = None,
     ):
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -18347,8 +19374,11 @@ class UpdatePrometheusViewRequestPrometheusInstances(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
+        # Region.
         self.region_id = region_id
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -18390,12 +19420,19 @@ class UpdatePrometheusViewRequest(TeaModel):
         status: str = None,
         workspace: str = None,
     ):
+        # Password-free read policy (supports IP segments and VpcId).
         self.auth_free_read_policy = auth_free_read_policy
+        # Whether to support password-free read.
         self.enable_auth_free_read = enable_auth_free_read
+        # Whether to support authToken.
         self.enable_auth_token = enable_auth_token
+        # List of Prometheus instances.
         self.prometheus_instances = prometheus_instances
+        # Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
+        # Running status.
         self.status = status
+        # Belonging workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -18456,8 +19493,9 @@ class UpdatePrometheusViewResponseBody(TeaModel):
         prometheus_view_id: str = None,
         request_id: str = None,
     ):
+        # Prometheus view instance ID.
         self.prometheus_view_id = prometheus_view_id
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18533,9 +19571,13 @@ class UpdateServiceRequest(TeaModel):
         display_name: str = None,
         service_status: str = None,
     ):
+        # Extended attributes.
         self.attributes = attributes
+        # Service description, only valid when serviceType=RUM.
         self.description = description
+        # Display name, only valid when serviceType=RUM.
         self.display_name = display_name
+        # Service status, only valid when serviceType=RUM.
         self.service_status = service_status
 
     def validate(self):
@@ -18576,7 +19618,9 @@ class UpdateServiceResponseBody(TeaModel):
         request_id: str = None,
         service_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Service ID.
         self.service_id = service_id
 
     def validate(self):
@@ -18649,6 +19693,7 @@ class UpdateUmodelRequest(TeaModel):
         self,
         description: str = None,
     ):
+        # Description.
         self.description = description
 
     def validate(self):
@@ -18677,7 +19722,9 @@ class UpdateUmodelResponseBody(TeaModel):
         request_id: str = None,
         workspace: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Workspace name
         self.workspace = workspace
 
     def validate(self):
@@ -18751,7 +19798,9 @@ class UpsertUmodelDataRequest(TeaModel):
         elements: List[Any] = None,
         method: str = None,
     ):
+        # Element content
         self.elements = elements
+        # Method
         self.method = method
 
     def validate(self):
@@ -18783,6 +19832,7 @@ class UpsertUmodelDataResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

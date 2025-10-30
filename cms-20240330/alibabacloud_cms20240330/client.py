@@ -49,7 +49,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateAddonReleaseResponse:
         """
-        @summary 安装接入组件，代表进行一次接入
+        @summary Install the access component, representing a single access attempt
+        
+        @description Used to create a site monitoring task
         
         @param request: CreateAddonReleaseRequest
         @param headers: map
@@ -106,7 +108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateAddonReleaseResponse:
         """
-        @summary 安装接入组件，代表进行一次接入
+        @summary Install the access component, representing a single access attempt
+        
+        @description Used to create a site monitoring task
         
         @param request: CreateAddonReleaseRequest
         @param headers: map
@@ -161,7 +165,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateAddonReleaseRequest,
     ) -> cms_20240330_models.CreateAddonReleaseResponse:
         """
-        @summary 安装接入组件，代表进行一次接入
+        @summary Install the access component, representing a single access attempt
+        
+        @description Used to create a site monitoring task
         
         @param request: CreateAddonReleaseRequest
         @return: CreateAddonReleaseResponse
@@ -176,7 +182,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateAddonReleaseRequest,
     ) -> cms_20240330_models.CreateAddonReleaseResponse:
         """
-        @summary 安装接入组件，代表进行一次接入
+        @summary Install the access component, representing a single access attempt
+        
+        @description Used to create a site monitoring task
         
         @param request: CreateAddonReleaseRequest
         @return: CreateAddonReleaseResponse
@@ -193,7 +201,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateAggTaskGroupResponse:
         """
-        @summary 创建聚合任务组
+        @summary Create Aggregation Task Group
         
         @param request: CreateAggTaskGroupRequest
         @param headers: map
@@ -266,7 +274,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateAggTaskGroupResponse:
         """
-        @summary 创建聚合任务组
+        @summary Create Aggregation Task Group
         
         @param request: CreateAggTaskGroupRequest
         @param headers: map
@@ -337,7 +345,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateAggTaskGroupRequest,
     ) -> cms_20240330_models.CreateAggTaskGroupResponse:
         """
-        @summary 创建聚合任务组
+        @summary Create Aggregation Task Group
         
         @param request: CreateAggTaskGroupRequest
         @return: CreateAggTaskGroupResponse
@@ -352,7 +360,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateAggTaskGroupRequest,
     ) -> cms_20240330_models.CreateAggTaskGroupResponse:
         """
-        @summary 创建聚合任务组
+        @summary Create Aggregation Task Group
         
         @param request: CreateAggTaskGroupRequest
         @return: CreateAggTaskGroupResponse
@@ -368,7 +376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateEntityStoreResponse:
         """
-        @summary 创建EntityStore相关存储
+        @summary Create storage related to EntityStore
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -400,7 +408,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateEntityStoreResponse:
         """
-        @summary 创建EntityStore相关存储
+        @summary Create storage related to EntityStore
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -430,7 +438,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.CreateEntityStoreResponse:
         """
-        @summary 创建EntityStore相关存储
+        @summary Create storage related to EntityStore
         
         @return: CreateEntityStoreResponse
         """
@@ -443,7 +451,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.CreateEntityStoreResponse:
         """
-        @summary 创建EntityStore相关存储
+        @summary Create storage related to EntityStore
         
         @return: CreateEntityStoreResponse
         """
@@ -458,7 +466,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateIntegrationPolicyResponse:
         """
-        @summary 创建接入中心策略
+        @summary Create Access Center Policy
+        
+        @description This interface is used to support users in creating event integration.
         
         @param request: CreateIntegrationPolicyRequest
         @param headers: map
@@ -506,7 +516,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateIntegrationPolicyResponse:
         """
-        @summary 创建接入中心策略
+        @summary Create Access Center Policy
+        
+        @description This interface is used to support users in creating event integration.
         
         @param request: CreateIntegrationPolicyRequest
         @param headers: map
@@ -552,7 +564,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateIntegrationPolicyRequest,
     ) -> cms_20240330_models.CreateIntegrationPolicyResponse:
         """
-        @summary 创建接入中心策略
+        @summary Create Access Center Policy
+        
+        @description This interface is used to support users in creating event integration.
         
         @param request: CreateIntegrationPolicyRequest
         @return: CreateIntegrationPolicyResponse
@@ -566,7 +580,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateIntegrationPolicyRequest,
     ) -> cms_20240330_models.CreateIntegrationPolicyResponse:
         """
-        @summary 创建接入中心策略
+        @summary Create Access Center Policy
+        
+        @description This interface is used to support users in creating event integration.
         
         @param request: CreateIntegrationPolicyRequest
         @return: CreateIntegrationPolicyResponse
@@ -582,7 +598,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreatePrometheusInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create a Prometheus monitoring instance
         
         @param request: CreatePrometheusInstanceRequest
         @param headers: map
@@ -642,7 +658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreatePrometheusInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create a Prometheus monitoring instance
         
         @param request: CreatePrometheusInstanceRequest
         @param headers: map
@@ -700,7 +716,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreatePrometheusInstanceRequest,
     ) -> cms_20240330_models.CreatePrometheusInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create a Prometheus monitoring instance
         
         @param request: CreatePrometheusInstanceRequest
         @return: CreatePrometheusInstanceResponse
@@ -714,7 +730,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreatePrometheusInstanceRequest,
     ) -> cms_20240330_models.CreatePrometheusInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create a Prometheus monitoring instance
         
         @param request: CreatePrometheusInstanceRequest
         @return: CreatePrometheusInstanceResponse
@@ -730,7 +746,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreatePrometheusViewResponse:
         """
-        @summary 创建prometheus视图
+        @summary Create Prometheus View
+        
+        @description Used to create a site monitoring task
         
         @param request: CreatePrometheusViewRequest
         @param headers: map
@@ -786,7 +804,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreatePrometheusViewResponse:
         """
-        @summary 创建prometheus视图
+        @summary Create Prometheus View
+        
+        @description Used to create a site monitoring task
         
         @param request: CreatePrometheusViewRequest
         @param headers: map
@@ -840,7 +860,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreatePrometheusViewRequest,
     ) -> cms_20240330_models.CreatePrometheusViewResponse:
         """
-        @summary 创建prometheus视图
+        @summary Create Prometheus View
+        
+        @description Used to create a site monitoring task
         
         @param request: CreatePrometheusViewRequest
         @return: CreatePrometheusViewResponse
@@ -854,7 +876,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreatePrometheusViewRequest,
     ) -> cms_20240330_models.CreatePrometheusViewResponse:
         """
-        @summary 创建prometheus视图
+        @summary Create Prometheus View
+        
+        @description Used to create a site monitoring task
         
         @param request: CreatePrometheusViewRequest
         @return: CreatePrometheusViewResponse
@@ -870,7 +894,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreatePrometheusVirtualInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create Prometheus Monitoring Instance
+        
+        @description Create a Prometheus monitoring virtual instance.
         
         @param request: CreatePrometheusVirtualInstanceRequest
         @param headers: map
@@ -908,7 +934,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreatePrometheusVirtualInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create Prometheus Monitoring Instance
+        
+        @description Create a Prometheus monitoring virtual instance.
         
         @param request: CreatePrometheusVirtualInstanceRequest
         @param headers: map
@@ -944,7 +972,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreatePrometheusVirtualInstanceRequest,
     ) -> cms_20240330_models.CreatePrometheusVirtualInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create Prometheus Monitoring Instance
+        
+        @description Create a Prometheus monitoring virtual instance.
         
         @param request: CreatePrometheusVirtualInstanceRequest
         @return: CreatePrometheusVirtualInstanceResponse
@@ -958,7 +988,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreatePrometheusVirtualInstanceRequest,
     ) -> cms_20240330_models.CreatePrometheusVirtualInstanceResponse:
         """
-        @summary 创建Prometheus监控实例
+        @summary Create Prometheus Monitoring Instance
+        
+        @description Create a Prometheus monitoring virtual instance.
         
         @param request: CreatePrometheusVirtualInstanceRequest
         @return: CreatePrometheusVirtualInstanceResponse
@@ -975,7 +1007,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateServiceResponse:
         """
-        @summary 创建Service
+        @summary Create Service
         
         @param request: CreateServiceRequest
         @param headers: map
@@ -1026,7 +1058,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateServiceResponse:
         """
-        @summary 创建Service
+        @summary Create Service
         
         @param request: CreateServiceRequest
         @param headers: map
@@ -1075,7 +1107,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateServiceRequest,
     ) -> cms_20240330_models.CreateServiceResponse:
         """
-        @summary 创建Service
+        @summary Create Service
         
         @param request: CreateServiceRequest
         @return: CreateServiceResponse
@@ -1090,7 +1122,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateServiceRequest,
     ) -> cms_20240330_models.CreateServiceResponse:
         """
-        @summary 创建Service
+        @summary Create Service
         
         @param request: CreateServiceRequest
         @return: CreateServiceResponse
@@ -1106,7 +1138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateTicketResponse:
         """
-        @summary 创建票据
+        @summary Create Ticket
         
         @param request: CreateTicketRequest
         @param headers: map
@@ -1146,7 +1178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateTicketResponse:
         """
-        @summary 创建票据
+        @summary Create Ticket
         
         @param request: CreateTicketRequest
         @param headers: map
@@ -1184,7 +1216,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateTicketRequest,
     ) -> cms_20240330_models.CreateTicketResponse:
         """
-        @summary 创建票据
+        @summary Create Ticket
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -1198,7 +1230,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateTicketRequest,
     ) -> cms_20240330_models.CreateTicketResponse:
         """
-        @summary 创建票据
+        @summary Create Ticket
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -1215,7 +1247,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateUmodelResponse:
         """
-        @summary 创建Umodel配置
+        @summary Create Umodel configuration
+        
+        @description Create Umodel configuration in the specified workspace
         
         @param request: CreateUmodelRequest
         @param headers: map
@@ -1254,7 +1288,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.CreateUmodelResponse:
         """
-        @summary 创建Umodel配置
+        @summary Create Umodel configuration
+        
+        @description Create Umodel configuration in the specified workspace
         
         @param request: CreateUmodelRequest
         @param headers: map
@@ -1291,7 +1327,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateUmodelRequest,
     ) -> cms_20240330_models.CreateUmodelResponse:
         """
-        @summary 创建Umodel配置
+        @summary Create Umodel configuration
+        
+        @description Create Umodel configuration in the specified workspace
         
         @param request: CreateUmodelRequest
         @return: CreateUmodelResponse
@@ -1306,7 +1344,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.CreateUmodelRequest,
     ) -> cms_20240330_models.CreateUmodelResponse:
         """
-        @summary 创建Umodel配置
+        @summary Create Umodel configuration
+        
+        @description Create Umodel configuration in the specified workspace
         
         @param request: CreateUmodelRequest
         @return: CreateUmodelResponse
@@ -1323,7 +1363,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteAddonReleaseResponse:
         """
-        @summary 删除addon release信息
+        @summary Delete addon release information
         
         @param request: DeleteAddonReleaseRequest
         @param headers: map
@@ -1366,7 +1406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteAddonReleaseResponse:
         """
-        @summary 删除addon release信息
+        @summary Delete addon release information
         
         @param request: DeleteAddonReleaseRequest
         @param headers: map
@@ -1407,7 +1447,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.DeleteAddonReleaseRequest,
     ) -> cms_20240330_models.DeleteAddonReleaseResponse:
         """
-        @summary 删除addon release信息
+        @summary Delete addon release information
         
         @param request: DeleteAddonReleaseRequest
         @return: DeleteAddonReleaseResponse
@@ -1422,7 +1462,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.DeleteAddonReleaseRequest,
     ) -> cms_20240330_models.DeleteAddonReleaseResponse:
         """
-        @summary 删除addon release信息
+        @summary Delete addon release information
         
         @param request: DeleteAddonReleaseRequest
         @return: DeleteAddonReleaseResponse
@@ -1439,7 +1479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteAggTaskGroupResponse:
         """
-        @summary 删除聚合任务组
+        @summary Delete Aggregation Task Group
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1472,7 +1512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteAggTaskGroupResponse:
         """
-        @summary 删除聚合任务组
+        @summary Delete Aggregation Task Group
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1503,7 +1543,7 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> cms_20240330_models.DeleteAggTaskGroupResponse:
         """
-        @summary 删除聚合任务组
+        @summary Delete Aggregation Task Group
         
         @return: DeleteAggTaskGroupResponse
         """
@@ -1517,7 +1557,7 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> cms_20240330_models.DeleteAggTaskGroupResponse:
         """
-        @summary 删除聚合任务组
+        @summary Delete Aggregation Task Group
         
         @return: DeleteAggTaskGroupResponse
         """
@@ -1532,7 +1572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteEntityStoreResponse:
         """
-        @summary 删除EntityStore相关存储
+        @summary Delete EntityStore related storage
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1564,7 +1604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteEntityStoreResponse:
         """
-        @summary 删除EntityStore相关存储
+        @summary Delete EntityStore related storage
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1594,7 +1634,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.DeleteEntityStoreResponse:
         """
-        @summary 删除EntityStore相关存储
+        @summary Delete EntityStore related storage
         
         @return: DeleteEntityStoreResponse
         """
@@ -1607,7 +1647,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.DeleteEntityStoreResponse:
         """
-        @summary 删除EntityStore相关存储
+        @summary Delete EntityStore related storage
         
         @return: DeleteEntityStoreResponse
         """
@@ -1623,7 +1663,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteIntegrationPolicyResponse:
         """
-        @summary 删除接入中心策略
+        @summary Delete Access Center Policy
         
         @param request: DeleteIntegrationPolicyRequest
         @param headers: map
@@ -1662,7 +1702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteIntegrationPolicyResponse:
         """
-        @summary 删除接入中心策略
+        @summary Delete Access Center Policy
         
         @param request: DeleteIntegrationPolicyRequest
         @param headers: map
@@ -1699,7 +1739,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.DeleteIntegrationPolicyRequest,
     ) -> cms_20240330_models.DeleteIntegrationPolicyResponse:
         """
-        @summary 删除接入中心策略
+        @summary Delete Access Center Policy
         
         @param request: DeleteIntegrationPolicyRequest
         @return: DeleteIntegrationPolicyResponse
@@ -1714,7 +1754,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.DeleteIntegrationPolicyRequest,
     ) -> cms_20240330_models.DeleteIntegrationPolicyResponse:
         """
-        @summary 删除接入中心策略
+        @summary Delete Access Center Policy
         
         @param request: DeleteIntegrationPolicyRequest
         @return: DeleteIntegrationPolicyResponse
@@ -1730,7 +1770,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeletePrometheusInstanceResponse:
         """
-        @summary 删除prom实例
+        @summary Delete prom instance
+        
+        @description Delete a Prometheus instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1762,7 +1804,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeletePrometheusInstanceResponse:
         """
-        @summary 删除prom实例
+        @summary Delete prom instance
+        
+        @description Delete a Prometheus instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1792,7 +1836,9 @@ class Client(OpenApiClient):
         prometheus_instance_id: str,
     ) -> cms_20240330_models.DeletePrometheusInstanceResponse:
         """
-        @summary 删除prom实例
+        @summary Delete prom instance
+        
+        @description Delete a Prometheus instance.
         
         @return: DeletePrometheusInstanceResponse
         """
@@ -1805,7 +1851,9 @@ class Client(OpenApiClient):
         prometheus_instance_id: str,
     ) -> cms_20240330_models.DeletePrometheusInstanceResponse:
         """
-        @summary 删除prom实例
+        @summary Delete prom instance
+        
+        @description Delete a Prometheus instance.
         
         @return: DeletePrometheusInstanceResponse
         """
@@ -1820,7 +1868,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeletePrometheusViewResponse:
         """
-        @summary 删除prometheus视图实例
+        @summary Delete prometheus view instance
+        
+        @description Delete prometheus view instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1852,7 +1902,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeletePrometheusViewResponse:
         """
-        @summary 删除prometheus视图实例
+        @summary Delete prometheus view instance
+        
+        @description Delete prometheus view instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1882,7 +1934,9 @@ class Client(OpenApiClient):
         prometheus_view_id: str,
     ) -> cms_20240330_models.DeletePrometheusViewResponse:
         """
-        @summary 删除prometheus视图实例
+        @summary Delete prometheus view instance
+        
+        @description Delete prometheus view instance.
         
         @return: DeletePrometheusViewResponse
         """
@@ -1895,7 +1949,9 @@ class Client(OpenApiClient):
         prometheus_view_id: str,
     ) -> cms_20240330_models.DeletePrometheusViewResponse:
         """
-        @summary 删除prometheus视图实例
+        @summary Delete prometheus view instance
+        
+        @description Delete prometheus view instance.
         
         @return: DeletePrometheusViewResponse
         """
@@ -1911,7 +1967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteServiceResponse:
         """
-        @summary 删除Service
+        @summary Delete Service
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1944,7 +2000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteServiceResponse:
         """
-        @summary 删除Service
+        @summary Delete Service
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1975,7 +2031,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> cms_20240330_models.DeleteServiceResponse:
         """
-        @summary 删除Service
+        @summary Delete Service
         
         @return: DeleteServiceResponse
         """
@@ -1989,7 +2045,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> cms_20240330_models.DeleteServiceResponse:
         """
-        @summary 删除Service
+        @summary Delete Service
         
         @return: DeleteServiceResponse
         """
@@ -2004,7 +2060,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteUmodelResponse:
         """
-        @summary 删除Umodel配置信息
+        @summary Delete Umodel configuration information
+        
+        @description Delete the Umodel under the specified workspace
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2036,7 +2094,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteUmodelResponse:
         """
-        @summary 删除Umodel配置信息
+        @summary Delete Umodel configuration information
+        
+        @description Delete the Umodel under the specified workspace
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2066,7 +2126,9 @@ class Client(OpenApiClient):
         workspace: str,
     ) -> cms_20240330_models.DeleteUmodelResponse:
         """
-        @summary 删除Umodel配置信息
+        @summary Delete Umodel configuration information
+        
+        @description Delete the Umodel under the specified workspace
         
         @return: DeleteUmodelResponse
         """
@@ -2079,7 +2141,9 @@ class Client(OpenApiClient):
         workspace: str,
     ) -> cms_20240330_models.DeleteUmodelResponse:
         """
-        @summary 删除Umodel配置信息
+        @summary Delete Umodel configuration information
+        
+        @description Delete the Umodel under the specified workspace
         
         @return: DeleteUmodelResponse
         """
@@ -2095,7 +2159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteUmodelDataResponse:
         """
-        @summary 删除 Umodel Elements
+        @summary Delete Umodel Elements
+        
+        @description Delete the Umodel Data under a specified workspace
         
         @param request: DeleteUmodelDataRequest
         @param headers: map
@@ -2138,7 +2204,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteUmodelDataResponse:
         """
-        @summary 删除 Umodel Elements
+        @summary Delete Umodel Elements
+        
+        @description Delete the Umodel Data under a specified workspace
         
         @param request: DeleteUmodelDataRequest
         @param headers: map
@@ -2179,7 +2247,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.DeleteUmodelDataRequest,
     ) -> cms_20240330_models.DeleteUmodelDataResponse:
         """
-        @summary 删除 Umodel Elements
+        @summary Delete Umodel Elements
+        
+        @description Delete the Umodel Data under a specified workspace
         
         @param request: DeleteUmodelDataRequest
         @return: DeleteUmodelDataResponse
@@ -2194,7 +2264,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.DeleteUmodelDataRequest,
     ) -> cms_20240330_models.DeleteUmodelDataResponse:
         """
-        @summary 删除 Umodel Elements
+        @summary Delete Umodel Elements
+        
+        @description Delete the Umodel Data under a specified workspace
         
         @param request: DeleteUmodelDataRequest
         @return: DeleteUmodelDataResponse
@@ -2210,7 +2282,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Delete Workspace
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2242,7 +2314,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Delete Workspace
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2272,7 +2344,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Delete Workspace
         
         @return: DeleteWorkspaceResponse
         """
@@ -2285,7 +2357,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Delete Workspace
         
         @return: DeleteWorkspaceResponse
         """
@@ -2301,7 +2373,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetAddonReleaseResponse:
         """
-        @summary 查看addon release(查看接入状态)
+        @summary Check addon release (view connection status)
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2334,7 +2406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetAddonReleaseResponse:
         """
-        @summary 查看addon release(查看接入状态)
+        @summary Check addon release (view connection status)
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2365,7 +2437,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> cms_20240330_models.GetAddonReleaseResponse:
         """
-        @summary 查看addon release(查看接入状态)
+        @summary Check addon release (view connection status)
         
         @return: GetAddonReleaseResponse
         """
@@ -2379,7 +2451,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> cms_20240330_models.GetAddonReleaseResponse:
         """
-        @summary 查看addon release(查看接入状态)
+        @summary Check addon release (view connection status)
         
         @return: GetAddonReleaseResponse
         """
@@ -2395,7 +2467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetAggTaskGroupResponse:
         """
-        @summary 描述聚合任务组
+        @summary Describes the aggregation task group
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2428,7 +2500,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetAggTaskGroupResponse:
         """
-        @summary 描述聚合任务组
+        @summary Describes the aggregation task group
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2459,7 +2531,7 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> cms_20240330_models.GetAggTaskGroupResponse:
         """
-        @summary 描述聚合任务组
+        @summary Describes the aggregation task group
         
         @return: GetAggTaskGroupResponse
         """
@@ -2473,7 +2545,7 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> cms_20240330_models.GetAggTaskGroupResponse:
         """
-        @summary 描述聚合任务组
+        @summary Describes the aggregation task group
         
         @return: GetAggTaskGroupResponse
         """
@@ -2488,7 +2560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetEntityStoreResponse:
         """
-        @summary 获取EntityStore相关存储信息
+        @summary Get EntityStore related storage information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2520,7 +2592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetEntityStoreResponse:
         """
-        @summary 获取EntityStore相关存储信息
+        @summary Get EntityStore related storage information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2550,7 +2622,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.GetEntityStoreResponse:
         """
-        @summary 获取EntityStore相关存储信息
+        @summary Get EntityStore related storage information
         
         @return: GetEntityStoreResponse
         """
@@ -2563,7 +2635,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.GetEntityStoreResponse:
         """
-        @summary 获取EntityStore相关存储信息
+        @summary Get EntityStore related storage information
         
         @return: GetEntityStoreResponse
         """
@@ -2579,7 +2651,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetEntityStoreDataResponse:
         """
-        @summary 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+        @summary Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
         
         @param request: GetEntityStoreDataRequest
         @param headers: GetEntityStoreDataHeaders
@@ -2627,7 +2699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetEntityStoreDataResponse:
         """
-        @summary 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+        @summary Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
         
         @param request: GetEntityStoreDataRequest
         @param headers: GetEntityStoreDataHeaders
@@ -2673,7 +2745,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetEntityStoreDataRequest,
     ) -> cms_20240330_models.GetEntityStoreDataResponse:
         """
-        @summary 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+        @summary Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
         
         @param request: GetEntityStoreDataRequest
         @return: GetEntityStoreDataResponse
@@ -2688,7 +2760,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetEntityStoreDataRequest,
     ) -> cms_20240330_models.GetEntityStoreDataResponse:
         """
-        @summary 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+        @summary Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
         
         @param request: GetEntityStoreDataRequest
         @return: GetEntityStoreDataResponse
@@ -2704,7 +2776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetIntegrationPolicyResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query the list of access center policies
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2736,7 +2808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetIntegrationPolicyResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query the list of access center policies
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2766,7 +2838,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> cms_20240330_models.GetIntegrationPolicyResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query the list of access center policies
         
         @return: GetIntegrationPolicyResponse
         """
@@ -2779,7 +2851,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> cms_20240330_models.GetIntegrationPolicyResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query the list of access center policies
         
         @return: GetIntegrationPolicyResponse
         """
@@ -2795,7 +2867,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetPrometheusInstanceResponse:
         """
-        @summary 查询指定环境实例
+        @summary Query the instance in a specified environment
+        
+        @description Retrieve details of a Prometheus instance.
         
         @param request: GetPrometheusInstanceRequest
         @param headers: map
@@ -2836,7 +2910,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetPrometheusInstanceResponse:
         """
-        @summary 查询指定环境实例
+        @summary Query the instance in a specified environment
+        
+        @description Retrieve details of a Prometheus instance.
         
         @param request: GetPrometheusInstanceRequest
         @param headers: map
@@ -2875,7 +2951,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetPrometheusInstanceRequest,
     ) -> cms_20240330_models.GetPrometheusInstanceResponse:
         """
-        @summary 查询指定环境实例
+        @summary Query the instance in a specified environment
+        
+        @description Retrieve details of a Prometheus instance.
         
         @param request: GetPrometheusInstanceRequest
         @return: GetPrometheusInstanceResponse
@@ -2890,7 +2968,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetPrometheusInstanceRequest,
     ) -> cms_20240330_models.GetPrometheusInstanceResponse:
         """
-        @summary 查询指定环境实例
+        @summary Query the instance in a specified environment
+        
+        @description Retrieve details of a Prometheus instance.
         
         @param request: GetPrometheusInstanceRequest
         @return: GetPrometheusInstanceResponse
@@ -2907,7 +2987,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetPrometheusViewResponse:
         """
-        @summary 查询指定Prometheus视图实例
+        @summary Query a specified Prometheus view instance
+        
+        @description Query a specified Prometheus view instance.
         
         @param request: GetPrometheusViewRequest
         @param headers: map
@@ -2948,7 +3030,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetPrometheusViewResponse:
         """
-        @summary 查询指定Prometheus视图实例
+        @summary Query a specified Prometheus view instance
+        
+        @description Query a specified Prometheus view instance.
         
         @param request: GetPrometheusViewRequest
         @param headers: map
@@ -2987,7 +3071,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetPrometheusViewRequest,
     ) -> cms_20240330_models.GetPrometheusViewResponse:
         """
-        @summary 查询指定Prometheus视图实例
+        @summary Query a specified Prometheus view instance
+        
+        @description Query a specified Prometheus view instance.
         
         @param request: GetPrometheusViewRequest
         @return: GetPrometheusViewResponse
@@ -3002,7 +3088,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetPrometheusViewRequest,
     ) -> cms_20240330_models.GetPrometheusViewResponse:
         """
-        @summary 查询指定Prometheus视图实例
+        @summary Query a specified Prometheus view instance
+        
+        @description Query a specified Prometheus view instance.
         
         @param request: GetPrometheusViewRequest
         @return: GetPrometheusViewResponse
@@ -3019,7 +3107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetServiceResponse:
         """
-        @summary 查询 Service
+        @summary Query Service
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3052,7 +3140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetServiceResponse:
         """
-        @summary 查询 Service
+        @summary Query Service
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3083,7 +3171,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> cms_20240330_models.GetServiceResponse:
         """
-        @summary 查询 Service
+        @summary Query Service
         
         @return: GetServiceResponse
         """
@@ -3097,7 +3185,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> cms_20240330_models.GetServiceResponse:
         """
-        @summary 查询 Service
+        @summary Query Service
         
         @return: GetServiceResponse
         """
@@ -3113,7 +3201,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetServiceObservabilityResponse:
         """
-        @summary 获取应用可观测实例
+        @summary Get Application Observability Instance
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3146,7 +3234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetServiceObservabilityResponse:
         """
-        @summary 获取应用可观测实例
+        @summary Get Application Observability Instance
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3177,7 +3265,7 @@ class Client(OpenApiClient):
         type: str,
     ) -> cms_20240330_models.GetServiceObservabilityResponse:
         """
-        @summary 获取应用可观测实例
+        @summary Get Application Observability Instance
         
         @return: GetServiceObservabilityResponse
         """
@@ -3191,7 +3279,7 @@ class Client(OpenApiClient):
         type: str,
     ) -> cms_20240330_models.GetServiceObservabilityResponse:
         """
-        @summary 获取应用可观测实例
+        @summary Get Application Observability Instance
         
         @return: GetServiceObservabilityResponse
         """
@@ -3206,7 +3294,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetUmodelResponse:
         """
-        @summary 获取Umodel配置信息
+        @summary Get Umodel configuration information
+        
+        @description Get Umodel configuration information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3238,7 +3328,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetUmodelResponse:
         """
-        @summary 获取Umodel配置信息
+        @summary Get Umodel configuration information
+        
+        @description Get Umodel configuration information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3268,7 +3360,9 @@ class Client(OpenApiClient):
         workspace: str,
     ) -> cms_20240330_models.GetUmodelResponse:
         """
-        @summary 获取Umodel配置信息
+        @summary Get Umodel configuration information
+        
+        @description Get Umodel configuration information
         
         @return: GetUmodelResponse
         """
@@ -3281,7 +3375,9 @@ class Client(OpenApiClient):
         workspace: str,
     ) -> cms_20240330_models.GetUmodelResponse:
         """
-        @summary 获取Umodel配置信息
+        @summary Get Umodel configuration information
+        
+        @description Get Umodel configuration information
         
         @return: GetUmodelResponse
         """
@@ -3297,7 +3393,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetUmodelDataResponse:
         """
-        @summary 获取相关联的 Umodel 图数据
+        @summary Retrieve associated Umodel graph data
+        
+        @description Find Umodel
         
         @param request: GetUmodelDataRequest
         @param headers: map
@@ -3340,7 +3438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetUmodelDataResponse:
         """
-        @summary 获取相关联的 Umodel 图数据
+        @summary Retrieve associated Umodel graph data
+        
+        @description Find Umodel
         
         @param request: GetUmodelDataRequest
         @param headers: map
@@ -3381,7 +3481,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetUmodelDataRequest,
     ) -> cms_20240330_models.GetUmodelDataResponse:
         """
-        @summary 获取相关联的 Umodel 图数据
+        @summary Retrieve associated Umodel graph data
+        
+        @description Find Umodel
         
         @param request: GetUmodelDataRequest
         @return: GetUmodelDataResponse
@@ -3396,7 +3498,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.GetUmodelDataRequest,
     ) -> cms_20240330_models.GetUmodelDataResponse:
         """
-        @summary 获取相关联的 Umodel 图数据
+        @summary Retrieve associated Umodel graph data
+        
+        @description Find Umodel
         
         @param request: GetUmodelDataRequest
         @return: GetUmodelDataResponse
@@ -3412,7 +3516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Get Workspace
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3444,7 +3548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Get Workspace
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3474,7 +3578,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Get Workspace
         
         @return: GetWorkspaceResponse
         """
@@ -3487,7 +3591,7 @@ class Client(OpenApiClient):
         workspace_name: str,
     ) -> cms_20240330_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Get Workspace
         
         @return: GetWorkspaceResponse
         """
@@ -3503,7 +3607,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListAddonReleasesResponse:
         """
-        @summary addon的release列表
+        @summary List of addon releases
+        
+        @description Query the list of access configurations
         
         @param request: ListAddonReleasesRequest
         @param headers: map
@@ -3544,7 +3650,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListAddonReleasesResponse:
         """
-        @summary addon的release列表
+        @summary List of addon releases
+        
+        @description Query the list of access configurations
         
         @param request: ListAddonReleasesRequest
         @param headers: map
@@ -3583,7 +3691,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListAddonReleasesRequest,
     ) -> cms_20240330_models.ListAddonReleasesResponse:
         """
-        @summary addon的release列表
+        @summary List of addon releases
+        
+        @description Query the list of access configurations
         
         @param request: ListAddonReleasesRequest
         @return: ListAddonReleasesResponse
@@ -3598,7 +3708,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListAddonReleasesRequest,
     ) -> cms_20240330_models.ListAddonReleasesResponse:
         """
-        @summary addon的release列表
+        @summary List of addon releases
+        
+        @description Query the list of access configurations
         
         @param request: ListAddonReleasesRequest
         @return: ListAddonReleasesResponse
@@ -3615,7 +3727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListAggTaskGroupsResponse:
         """
-        @summary 列举聚合任务组
+        @summary List Aggregation Task Groups
         
         @param tmp_req: ListAggTaskGroupsRequest
         @param headers: map
@@ -3672,7 +3784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListAggTaskGroupsResponse:
         """
-        @summary 列举聚合任务组
+        @summary List Aggregation Task Groups
         
         @param tmp_req: ListAggTaskGroupsRequest
         @param headers: map
@@ -3727,7 +3839,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListAggTaskGroupsRequest,
     ) -> cms_20240330_models.ListAggTaskGroupsResponse:
         """
-        @summary 列举聚合任务组
+        @summary List Aggregation Task Groups
         
         @param request: ListAggTaskGroupsRequest
         @return: ListAggTaskGroupsResponse
@@ -3742,7 +3854,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListAggTaskGroupsRequest,
     ) -> cms_20240330_models.ListAggTaskGroupsResponse:
         """
-        @summary 列举聚合任务组
+        @summary List Aggregation Task Groups
         
         @param request: ListAggTaskGroupsRequest
         @return: ListAggTaskGroupsResponse
@@ -3758,7 +3870,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListAlertActionsResponse:
         """
-        @summary 查询告警动作
+        @summary Query Alert Actions
         
         @param tmp_req: ListAlertActionsRequest
         @param headers: map
@@ -3808,7 +3920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListAlertActionsResponse:
         """
-        @summary 查询告警动作
+        @summary Query Alert Actions
         
         @param tmp_req: ListAlertActionsRequest
         @param headers: map
@@ -3856,7 +3968,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListAlertActionsRequest,
     ) -> cms_20240330_models.ListAlertActionsResponse:
         """
-        @summary 查询告警动作
+        @summary Query Alert Actions
         
         @param request: ListAlertActionsRequest
         @return: ListAlertActionsResponse
@@ -3870,7 +3982,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListAlertActionsRequest,
     ) -> cms_20240330_models.ListAlertActionsResponse:
         """
-        @summary 查询告警动作
+        @summary Query Alert Actions
         
         @param request: ListAlertActionsRequest
         @return: ListAlertActionsResponse
@@ -3886,7 +3998,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query Access Center Policy List Information
+        
+        @description Query Integration List
         
         @param tmp_req: ListIntegrationPoliciesRequest
         @param headers: map
@@ -3954,7 +4068,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query Access Center Policy List Information
+        
+        @description Query Integration List
         
         @param tmp_req: ListIntegrationPoliciesRequest
         @param headers: map
@@ -4020,7 +4136,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPoliciesRequest,
     ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query Access Center Policy List Information
+        
+        @description Query Integration List
         
         @param request: ListIntegrationPoliciesRequest
         @return: ListIntegrationPoliciesResponse
@@ -4034,7 +4152,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPoliciesRequest,
     ) -> cms_20240330_models.ListIntegrationPoliciesResponse:
         """
-        @summary 查询接入中心策略列表信息
+        @summary Query Access Center Policy List Information
+        
+        @description Query Integration List
         
         @param request: ListIntegrationPoliciesRequest
         @return: ListIntegrationPoliciesResponse
@@ -4051,7 +4171,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyCustomScrapeJobRulesResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get storage requirement information for the access center policy
         
         @param request: ListIntegrationPolicyCustomScrapeJobRulesRequest
         @param headers: map
@@ -4094,7 +4214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyCustomScrapeJobRulesResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get storage requirement information for the access center policy
         
         @param request: ListIntegrationPolicyCustomScrapeJobRulesRequest
         @param headers: map
@@ -4135,7 +4255,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyCustomScrapeJobRulesRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyCustomScrapeJobRulesResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get storage requirement information for the access center policy
         
         @param request: ListIntegrationPolicyCustomScrapeJobRulesRequest
         @return: ListIntegrationPolicyCustomScrapeJobRulesResponse
@@ -4150,7 +4270,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyCustomScrapeJobRulesRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyCustomScrapeJobRulesResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get storage requirement information for the access center policy
         
         @param request: ListIntegrationPolicyCustomScrapeJobRulesRequest
         @return: ListIntegrationPolicyCustomScrapeJobRulesResponse
@@ -4167,7 +4287,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
         """
-        @summary 策略大盘列表
+        @summary Policy Dashboard List
+        
+        @description This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyDashboardsRequest
         @param headers: map
@@ -4210,7 +4332,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
         """
-        @summary 策略大盘列表
+        @summary Policy Dashboard List
+        
+        @description This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyDashboardsRequest
         @param headers: map
@@ -4251,7 +4375,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyDashboardsRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
         """
-        @summary 策略大盘列表
+        @summary Policy Dashboard List
+        
+        @description This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyDashboardsRequest
         @return: ListIntegrationPolicyDashboardsResponse
@@ -4266,7 +4392,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyDashboardsRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyDashboardsResponse:
         """
-        @summary 策略大盘列表
+        @summary Policy Dashboard List
+        
+        @description This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyDashboardsRequest
         @return: ListIntegrationPolicyDashboardsResponse
@@ -4283,7 +4411,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyPodMonitorsResponse:
         """
-        @summary 获取接入中心策略的PodMonitor资源
+        @summary Get PodMonitor Resources of Access Center Policy
+        
+        @description This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyPodMonitorsRequest
         @param headers: map
@@ -4326,7 +4456,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyPodMonitorsResponse:
         """
-        @summary 获取接入中心策略的PodMonitor资源
+        @summary Get PodMonitor Resources of Access Center Policy
+        
+        @description This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyPodMonitorsRequest
         @param headers: map
@@ -4367,7 +4499,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyPodMonitorsRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyPodMonitorsResponse:
         """
-        @summary 获取接入中心策略的PodMonitor资源
+        @summary Get PodMonitor Resources of Access Center Policy
+        
+        @description This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyPodMonitorsRequest
         @return: ListIntegrationPolicyPodMonitorsResponse
@@ -4382,7 +4516,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyPodMonitorsRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyPodMonitorsResponse:
         """
-        @summary 获取接入中心策略的PodMonitor资源
+        @summary Get PodMonitor Resources of Access Center Policy
+        
+        @description This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
         
         @param request: ListIntegrationPolicyPodMonitorsRequest
         @return: ListIntegrationPolicyPodMonitorsResponse
@@ -4399,7 +4535,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyStorageRequirementsResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get Storage Requirements Information for Access Center Policy
+        
+        @description During the effective period of the policy, all alarms within the application group will no longer send notifications.
+        
+        This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301***`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
         
         @param request: ListIntegrationPolicyStorageRequirementsRequest
         @param headers: map
@@ -4442,7 +4582,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListIntegrationPolicyStorageRequirementsResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get Storage Requirements Information for Access Center Policy
+        
+        @description During the effective period of the policy, all alarms within the application group will no longer send notifications.
+        
+        This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301***`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
         
         @param request: ListIntegrationPolicyStorageRequirementsRequest
         @param headers: map
@@ -4483,7 +4627,11 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyStorageRequirementsRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyStorageRequirementsResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get Storage Requirements Information for Access Center Policy
+        
+        @description During the effective period of the policy, all alarms within the application group will no longer send notifications.
+        
+        This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301***`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
         
         @param request: ListIntegrationPolicyStorageRequirementsRequest
         @return: ListIntegrationPolicyStorageRequirementsResponse
@@ -4498,7 +4646,11 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListIntegrationPolicyStorageRequirementsRequest,
     ) -> cms_20240330_models.ListIntegrationPolicyStorageRequirementsResponse:
         """
-        @summary 获取接入中心策略的存储要求信息
+        @summary Get Storage Requirements Information for Access Center Policy
+        
+        @description During the effective period of the policy, all alarms within the application group will no longer send notifications.
+        
+        This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301***`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
         
         @param request: ListIntegrationPolicyStorageRequirementsRequest
         @return: ListIntegrationPolicyStorageRequirementsResponse
@@ -4515,7 +4667,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusDashboardsResponse:
         """
-        @summary 获取Prometheus实例大盘列表
+        @summary Get Prometheus Instance Dashboard List
+        
+        @description Get the list of Prometheus instance dashboards.
         
         @param request: ListPrometheusDashboardsRequest
         @param headers: map
@@ -4556,7 +4710,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusDashboardsResponse:
         """
-        @summary 获取Prometheus实例大盘列表
+        @summary Get Prometheus Instance Dashboard List
+        
+        @description Get the list of Prometheus instance dashboards.
         
         @param request: ListPrometheusDashboardsRequest
         @param headers: map
@@ -4595,7 +4751,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusDashboardsRequest,
     ) -> cms_20240330_models.ListPrometheusDashboardsResponse:
         """
-        @summary 获取Prometheus实例大盘列表
+        @summary Get Prometheus Instance Dashboard List
+        
+        @description Get the list of Prometheus instance dashboards.
         
         @param request: ListPrometheusDashboardsRequest
         @return: ListPrometheusDashboardsResponse
@@ -4610,7 +4768,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusDashboardsRequest,
     ) -> cms_20240330_models.ListPrometheusDashboardsResponse:
         """
-        @summary 获取Prometheus实例大盘列表
+        @summary Get Prometheus Instance Dashboard List
+        
+        @description Get the list of Prometheus instance dashboards.
         
         @param request: ListPrometheusDashboardsRequest
         @return: ListPrometheusDashboardsResponse
@@ -4626,7 +4786,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusInstancesResponse:
         """
-        @summary 获取Prometheus实例信息列表
+        @summary Get the list of Prometheus instance information
+        
+        @description Get the list of Prometheus instances.
         
         @param tmp_req: ListPrometheusInstancesRequest
         @param headers: map
@@ -4684,7 +4846,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusInstancesResponse:
         """
-        @summary 获取Prometheus实例信息列表
+        @summary Get the list of Prometheus instance information
+        
+        @description Get the list of Prometheus instances.
         
         @param tmp_req: ListPrometheusInstancesRequest
         @param headers: map
@@ -4740,7 +4904,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusInstancesRequest,
     ) -> cms_20240330_models.ListPrometheusInstancesResponse:
         """
-        @summary 获取Prometheus实例信息列表
+        @summary Get the list of Prometheus instance information
+        
+        @description Get the list of Prometheus instances.
         
         @param request: ListPrometheusInstancesRequest
         @return: ListPrometheusInstancesResponse
@@ -4754,7 +4920,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusInstancesRequest,
     ) -> cms_20240330_models.ListPrometheusInstancesResponse:
         """
-        @summary 获取Prometheus实例信息列表
+        @summary Get the list of Prometheus instance information
+        
+        @description Get the list of Prometheus instances.
         
         @param request: ListPrometheusInstancesRequest
         @return: ListPrometheusInstancesResponse
@@ -4770,7 +4938,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusViewsResponse:
         """
-        @summary 获取Prometheus视图实例信息列表
+        @summary Retrieve a list of Prometheus view instance information
+        
+        @description Retrieve a list of Prometheus view instance information.
         
         @param tmp_req: ListPrometheusViewsRequest
         @param headers: map
@@ -4830,7 +5000,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusViewsResponse:
         """
-        @summary 获取Prometheus视图实例信息列表
+        @summary Retrieve a list of Prometheus view instance information
+        
+        @description Retrieve a list of Prometheus view instance information.
         
         @param tmp_req: ListPrometheusViewsRequest
         @param headers: map
@@ -4888,7 +5060,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusViewsRequest,
     ) -> cms_20240330_models.ListPrometheusViewsResponse:
         """
-        @summary 获取Prometheus视图实例信息列表
+        @summary Retrieve a list of Prometheus view instance information
+        
+        @description Retrieve a list of Prometheus view instance information.
         
         @param request: ListPrometheusViewsRequest
         @return: ListPrometheusViewsResponse
@@ -4902,7 +5076,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusViewsRequest,
     ) -> cms_20240330_models.ListPrometheusViewsResponse:
         """
-        @summary 获取Prometheus视图实例信息列表
+        @summary Retrieve a list of Prometheus view instance information
+        
+        @description Retrieve a list of Prometheus view instance information.
         
         @param request: ListPrometheusViewsRequest
         @return: ListPrometheusViewsResponse
@@ -4918,7 +5094,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusVirtualInstancesResponse:
         """
-        @summary 获取Prometheus虚拟实例
+        @summary Get Prometheus Virtual Instance
+        
+        @description Used for creating a site monitoring task
         
         @param request: ListPrometheusVirtualInstancesRequest
         @param headers: map
@@ -4956,7 +5134,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListPrometheusVirtualInstancesResponse:
         """
-        @summary 获取Prometheus虚拟实例
+        @summary Get Prometheus Virtual Instance
+        
+        @description Used for creating a site monitoring task
         
         @param request: ListPrometheusVirtualInstancesRequest
         @param headers: map
@@ -4992,7 +5172,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusVirtualInstancesRequest,
     ) -> cms_20240330_models.ListPrometheusVirtualInstancesResponse:
         """
-        @summary 获取Prometheus虚拟实例
+        @summary Get Prometheus Virtual Instance
+        
+        @description Used for creating a site monitoring task
         
         @param request: ListPrometheusVirtualInstancesRequest
         @return: ListPrometheusVirtualInstancesResponse
@@ -5006,7 +5188,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListPrometheusVirtualInstancesRequest,
     ) -> cms_20240330_models.ListPrometheusVirtualInstancesResponse:
         """
-        @summary 获取Prometheus虚拟实例
+        @summary Get Prometheus Virtual Instance
+        
+        @description Used for creating a site monitoring task
         
         @param request: ListPrometheusVirtualInstancesRequest
         @return: ListPrometheusVirtualInstancesResponse
@@ -5023,7 +5207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListServicesResponse:
         """
-        @summary 列出资源Service
+        @summary List Resource Services
         
         @param request: ListServicesRequest
         @param headers: map
@@ -5066,7 +5250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListServicesResponse:
         """
-        @summary 列出资源Service
+        @summary List Resource Services
         
         @param request: ListServicesRequest
         @param headers: map
@@ -5107,7 +5291,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListServicesRequest,
     ) -> cms_20240330_models.ListServicesResponse:
         """
-        @summary 列出资源Service
+        @summary List Resource Services
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -5122,7 +5306,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListServicesRequest,
     ) -> cms_20240330_models.ListServicesResponse:
         """
-        @summary 列出资源Service
+        @summary List Resource Services
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -5138,7 +5322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListWorkspacesResponse:
         """
-        @summary 获取工作空间列表
+        @summary Get Workspace List
         
         @param tmp_req: ListWorkspacesRequest
         @param headers: map
@@ -5188,7 +5372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.ListWorkspacesResponse:
         """
-        @summary 获取工作空间列表
+        @summary Get Workspace List
         
         @param tmp_req: ListWorkspacesRequest
         @param headers: map
@@ -5236,7 +5420,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListWorkspacesRequest,
     ) -> cms_20240330_models.ListWorkspacesResponse:
         """
-        @summary 获取工作空间列表
+        @summary Get Workspace List
         
         @param request: ListWorkspacesRequest
         @return: ListWorkspacesResponse
@@ -5250,7 +5434,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.ListWorkspacesRequest,
     ) -> cms_20240330_models.ListWorkspacesResponse:
         """
-        @summary 获取工作空间列表
+        @summary Get Workspace List
         
         @param request: ListWorkspacesRequest
         @return: ListWorkspacesResponse
@@ -5267,7 +5451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.PutWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Create Workspace
         
         @param request: PutWorkspaceRequest
         @param headers: map
@@ -5310,7 +5494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.PutWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Create Workspace
         
         @param request: PutWorkspaceRequest
         @param headers: map
@@ -5351,7 +5535,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.PutWorkspaceRequest,
     ) -> cms_20240330_models.PutWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Create Workspace
         
         @param request: PutWorkspaceRequest
         @return: PutWorkspaceResponse
@@ -5366,7 +5550,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.PutWorkspaceRequest,
     ) -> cms_20240330_models.PutWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Create Workspace
         
         @param request: PutWorkspaceRequest
         @return: PutWorkspaceResponse
@@ -5384,7 +5568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateAddonReleaseResponse:
         """
-        @summary 升级接入组件
+        @summary Upgrade Access Component
         
         @param request: UpdateAddonReleaseRequest
         @param headers: map
@@ -5430,7 +5614,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateAddonReleaseResponse:
         """
-        @summary 升级接入组件
+        @summary Upgrade Access Component
         
         @param request: UpdateAddonReleaseRequest
         @param headers: map
@@ -5474,7 +5658,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateAddonReleaseRequest,
     ) -> cms_20240330_models.UpdateAddonReleaseResponse:
         """
-        @summary 升级接入组件
+        @summary Upgrade Access Component
         
         @param request: UpdateAddonReleaseRequest
         @return: UpdateAddonReleaseResponse
@@ -5490,7 +5674,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateAddonReleaseRequest,
     ) -> cms_20240330_models.UpdateAddonReleaseResponse:
         """
-        @summary 升级接入组件
+        @summary Upgrade Access Component
         
         @param request: UpdateAddonReleaseRequest
         @return: UpdateAddonReleaseResponse
@@ -5508,7 +5692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateAggTaskGroupResponse:
         """
-        @summary 应用聚合任务组
+        @summary Apply Aggregation Task Group
         
         @param request: UpdateAggTaskGroupRequest
         @param headers: map
@@ -5578,7 +5762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateAggTaskGroupResponse:
         """
-        @summary 应用聚合任务组
+        @summary Apply Aggregation Task Group
         
         @param request: UpdateAggTaskGroupRequest
         @param headers: map
@@ -5646,7 +5830,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateAggTaskGroupRequest,
     ) -> cms_20240330_models.UpdateAggTaskGroupResponse:
         """
-        @summary 应用聚合任务组
+        @summary Apply Aggregation Task Group
         
         @param request: UpdateAggTaskGroupRequest
         @return: UpdateAggTaskGroupResponse
@@ -5662,7 +5846,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateAggTaskGroupRequest,
     ) -> cms_20240330_models.UpdateAggTaskGroupResponse:
         """
-        @summary 应用聚合任务组
+        @summary Apply Aggregation Task Group
         
         @param request: UpdateAggTaskGroupRequest
         @return: UpdateAggTaskGroupResponse
@@ -5680,7 +5864,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateAggTaskGroupStatusResponse:
         """
-        @summary 更新聚合任务组状态
+        @summary Update Aggregation Task Group Status
         
         @param request: UpdateAggTaskGroupStatusRequest
         @param headers: map
@@ -5720,7 +5904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateAggTaskGroupStatusResponse:
         """
-        @summary 更新聚合任务组状态
+        @summary Update Aggregation Task Group Status
         
         @param request: UpdateAggTaskGroupStatusRequest
         @param headers: map
@@ -5758,7 +5942,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateAggTaskGroupStatusRequest,
     ) -> cms_20240330_models.UpdateAggTaskGroupStatusResponse:
         """
-        @summary 更新聚合任务组状态
+        @summary Update Aggregation Task Group Status
         
         @param request: UpdateAggTaskGroupStatusRequest
         @return: UpdateAggTaskGroupStatusResponse
@@ -5774,7 +5958,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateAggTaskGroupStatusRequest,
     ) -> cms_20240330_models.UpdateAggTaskGroupStatusResponse:
         """
-        @summary 更新聚合任务组状态
+        @summary Update Aggregation Task Group Status
         
         @param request: UpdateAggTaskGroupStatusRequest
         @return: UpdateAggTaskGroupStatusResponse
@@ -5791,7 +5975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateIntegrationPolicyResponse:
         """
-        @summary 更新指定策略
+        @summary Update the specified policy
         
         @param request: UpdateIntegrationPolicyRequest
         @param headers: map
@@ -5836,7 +6020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateIntegrationPolicyResponse:
         """
-        @summary 更新指定策略
+        @summary Update the specified policy
         
         @param request: UpdateIntegrationPolicyRequest
         @param headers: map
@@ -5879,7 +6063,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateIntegrationPolicyRequest,
     ) -> cms_20240330_models.UpdateIntegrationPolicyResponse:
         """
-        @summary 更新指定策略
+        @summary Update the specified policy
         
         @param request: UpdateIntegrationPolicyRequest
         @return: UpdateIntegrationPolicyResponse
@@ -5894,7 +6078,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateIntegrationPolicyRequest,
     ) -> cms_20240330_models.UpdateIntegrationPolicyResponse:
         """
-        @summary 更新指定策略
+        @summary Update the specified policy
         
         @param request: UpdateIntegrationPolicyRequest
         @return: UpdateIntegrationPolicyResponse
@@ -5911,7 +6095,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdatePrometheusInstanceResponse:
         """
-        @summary 更新Prom实例信息
+        @summary Update Prometheus instance information
+        
+        @description Update Prometheus instance information.
         
         @param request: UpdatePrometheusInstanceRequest
         @param headers: map
@@ -5970,7 +6156,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdatePrometheusInstanceResponse:
         """
-        @summary 更新Prom实例信息
+        @summary Update Prometheus instance information
+        
+        @description Update Prometheus instance information.
         
         @param request: UpdatePrometheusInstanceRequest
         @param headers: map
@@ -6027,7 +6215,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdatePrometheusInstanceRequest,
     ) -> cms_20240330_models.UpdatePrometheusInstanceResponse:
         """
-        @summary 更新Prom实例信息
+        @summary Update Prometheus instance information
+        
+        @description Update Prometheus instance information.
         
         @param request: UpdatePrometheusInstanceRequest
         @return: UpdatePrometheusInstanceResponse
@@ -6042,7 +6232,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdatePrometheusInstanceRequest,
     ) -> cms_20240330_models.UpdatePrometheusInstanceResponse:
         """
-        @summary 更新Prom实例信息
+        @summary Update Prometheus instance information
+        
+        @description Update Prometheus instance information.
         
         @param request: UpdatePrometheusInstanceRequest
         @return: UpdatePrometheusInstanceResponse
@@ -6059,7 +6251,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdatePrometheusViewResponse:
         """
-        @summary 更新Prom视图实例信息
+        @summary Update Prometheus view instance information
+        
+        @description Update Prometheus view instance information.
         
         @param request: UpdatePrometheusViewRequest
         @param headers: map
@@ -6110,7 +6304,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdatePrometheusViewResponse:
         """
-        @summary 更新Prom视图实例信息
+        @summary Update Prometheus view instance information
+        
+        @description Update Prometheus view instance information.
         
         @param request: UpdatePrometheusViewRequest
         @param headers: map
@@ -6159,7 +6355,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdatePrometheusViewRequest,
     ) -> cms_20240330_models.UpdatePrometheusViewResponse:
         """
-        @summary 更新Prom视图实例信息
+        @summary Update Prometheus view instance information
+        
+        @description Update Prometheus view instance information.
         
         @param request: UpdatePrometheusViewRequest
         @return: UpdatePrometheusViewResponse
@@ -6174,7 +6372,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdatePrometheusViewRequest,
     ) -> cms_20240330_models.UpdatePrometheusViewResponse:
         """
-        @summary 更新Prom视图实例信息
+        @summary Update Prometheus view instance information
+        
+        @description Update Prometheus view instance information.
         
         @param request: UpdatePrometheusViewRequest
         @return: UpdatePrometheusViewResponse
@@ -6192,7 +6392,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateServiceResponse:
         """
-        @summary 更新UpdateService
+        @summary Update Service
         
         @param request: UpdateServiceRequest
         @param headers: map
@@ -6238,7 +6438,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateServiceResponse:
         """
-        @summary 更新UpdateService
+        @summary Update Service
         
         @param request: UpdateServiceRequest
         @param headers: map
@@ -6282,7 +6482,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateServiceRequest,
     ) -> cms_20240330_models.UpdateServiceResponse:
         """
-        @summary 更新UpdateService
+        @summary Update Service
         
         @param request: UpdateServiceRequest
         @return: UpdateServiceResponse
@@ -6298,7 +6498,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateServiceRequest,
     ) -> cms_20240330_models.UpdateServiceResponse:
         """
-        @summary 更新UpdateService
+        @summary Update Service
         
         @param request: UpdateServiceRequest
         @return: UpdateServiceResponse
@@ -6315,7 +6515,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateUmodelResponse:
         """
-        @summary 更新Umodel配置信息
+        @summary Update Umodel configuration information
+        
+        @description Update Umodel configuration information
         
         @param request: UpdateUmodelRequest
         @param headers: map
@@ -6354,7 +6556,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateUmodelResponse:
         """
-        @summary 更新Umodel配置信息
+        @summary Update Umodel configuration information
+        
+        @description Update Umodel configuration information
         
         @param request: UpdateUmodelRequest
         @param headers: map
@@ -6391,7 +6595,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateUmodelRequest,
     ) -> cms_20240330_models.UpdateUmodelResponse:
         """
-        @summary 更新Umodel配置信息
+        @summary Update Umodel configuration information
+        
+        @description Update Umodel configuration information
         
         @param request: UpdateUmodelRequest
         @return: UpdateUmodelResponse
@@ -6406,7 +6612,9 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateUmodelRequest,
     ) -> cms_20240330_models.UpdateUmodelResponse:
         """
-        @summary 更新Umodel配置信息
+        @summary Update Umodel configuration information
+        
+        @description Update Umodel configuration information
         
         @param request: UpdateUmodelRequest
         @return: UpdateUmodelResponse
@@ -6423,7 +6631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpsertUmodelDataResponse:
         """
-        @summary 写入 Umodel Elements
+        @summary Write Umodel Elements
         
         @param request: UpsertUmodelDataRequest
         @param headers: map
@@ -6466,7 +6674,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpsertUmodelDataResponse:
         """
-        @summary 写入 Umodel Elements
+        @summary Write Umodel Elements
         
         @param request: UpsertUmodelDataRequest
         @param headers: map
@@ -6507,7 +6715,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpsertUmodelDataRequest,
     ) -> cms_20240330_models.UpsertUmodelDataResponse:
         """
-        @summary 写入 Umodel Elements
+        @summary Write Umodel Elements
         
         @param request: UpsertUmodelDataRequest
         @return: UpsertUmodelDataResponse
@@ -6522,7 +6730,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpsertUmodelDataRequest,
     ) -> cms_20240330_models.UpsertUmodelDataResponse:
         """
-        @summary 写入 Umodel Elements
+        @summary Write Umodel Elements
         
         @param request: UpsertUmodelDataRequest
         @return: UpsertUmodelDataResponse
