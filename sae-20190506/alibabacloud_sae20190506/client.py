@@ -2436,7 +2436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
         """
-        @summary 创建或者更新泳道
+        @summary Creates or updates a lane.
         
         @param tmp_req: CreateOrUpdateSwimmingLaneRequest
         @param headers: map
@@ -2496,7 +2496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
         """
-        @summary 创建或者更新泳道
+        @summary Creates or updates a lane.
         
         @param tmp_req: CreateOrUpdateSwimmingLaneRequest
         @param headers: map
@@ -2554,7 +2554,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateOrUpdateSwimmingLaneRequest,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
         """
-        @summary 创建或者更新泳道
+        @summary Creates or updates a lane.
         
         @param request: CreateOrUpdateSwimmingLaneRequest
         @return: CreateOrUpdateSwimmingLaneResponse
@@ -2568,7 +2568,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateOrUpdateSwimmingLaneRequest,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
         """
-        @summary 创建或者更新泳道
+        @summary Creates or updates a lane.
         
         @param request: CreateOrUpdateSwimmingLaneRequest
         @return: CreateOrUpdateSwimmingLaneResponse
@@ -2584,7 +2584,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
         """
-        @summary 创建或者更新泳道组
+        @summary Creates or updates a lane group.
         
         @param tmp_req: CreateOrUpdateSwimmingLaneGroupRequest
         @param headers: map
@@ -2638,7 +2638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
         """
-        @summary 创建或者更新泳道组
+        @summary Creates or updates a lane group.
         
         @param tmp_req: CreateOrUpdateSwimmingLaneGroupRequest
         @param headers: map
@@ -2690,7 +2690,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateOrUpdateSwimmingLaneGroupRequest,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
         """
-        @summary 创建或者更新泳道组
+        @summary Creates or updates a lane group.
         
         @param request: CreateOrUpdateSwimmingLaneGroupRequest
         @return: CreateOrUpdateSwimmingLaneGroupResponse
@@ -2704,7 +2704,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateOrUpdateSwimmingLaneGroupRequest,
     ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
         """
-        @summary 创建或者更新泳道组
+        @summary Creates or updates a lane group.
         
         @param request: CreateOrUpdateSwimmingLaneGroupRequest
         @return: CreateOrUpdateSwimmingLaneGroupResponse
@@ -3704,7 +3704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
         
         @param request: DeleteInstancesRequest
         @param headers: map
@@ -3744,7 +3744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
         
         @param request: DeleteInstancesRequest
         @param headers: map
@@ -3782,7 +3782,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteInstancesRequest,
     ) -> sae_20190506_models.DeleteInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -3796,7 +3796,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteInstancesRequest,
     ) -> sae_20190506_models.DeleteInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -4132,7 +4132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
         """
-        @summary 删除泳道组
+        @summary Deletes a lane group.
         
         @param request: DeleteSwimmingLaneGroupRequest
         @param headers: map
@@ -4172,7 +4172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
         """
-        @summary 删除泳道组
+        @summary Deletes a lane group.
         
         @param request: DeleteSwimmingLaneGroupRequest
         @param headers: map
@@ -4210,7 +4210,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteSwimmingLaneGroupRequest,
     ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
         """
-        @summary 删除泳道组
+        @summary Deletes a lane group.
         
         @param request: DeleteSwimmingLaneGroupRequest
         @return: DeleteSwimmingLaneGroupResponse
@@ -4224,7 +4224,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteSwimmingLaneGroupRequest,
     ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
         """
-        @summary 删除泳道组
+        @summary Deletes a lane group.
         
         @param request: DeleteSwimmingLaneGroupRequest
         @return: DeleteSwimmingLaneGroupResponse
@@ -6979,6 +6979,8 @@ class Client(OpenApiClient):
             query['ContainerId'] = request.container_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.previous):
+            query['Previous'] = request.previous
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -7019,6 +7021,8 @@ class Client(OpenApiClient):
             query['ContainerId'] = request.container_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.previous):
+            query['Previous'] = request.previous
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -8214,7 +8218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
         """
-        @summary 查询泳道详情
+        @summary Queries details about swimlanes.
         
         @param request: DescribeSwimmingLaneRequest
         @param headers: map
@@ -8256,7 +8260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
         """
-        @summary 查询泳道详情
+        @summary Queries details about swimlanes.
         
         @param request: DescribeSwimmingLaneRequest
         @param headers: map
@@ -8296,7 +8300,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeSwimmingLaneRequest,
     ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
         """
-        @summary 查询泳道详情
+        @summary Queries details about swimlanes.
         
         @param request: DescribeSwimmingLaneRequest
         @return: DescribeSwimmingLaneResponse
@@ -8310,7 +8314,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeSwimmingLaneRequest,
     ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
         """
-        @summary 查询泳道详情
+        @summary Queries details about swimlanes.
         
         @param request: DescribeSwimmingLaneRequest
         @return: DescribeSwimmingLaneResponse
@@ -9258,7 +9262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
-        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        @summary Disable ARMS Advanced Edition monitoring.
         
         @param request: DowngradeApplicationApmServiceRequest
         @param headers: map
@@ -9296,7 +9300,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
-        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        @summary Disable ARMS Advanced Edition monitoring.
         
         @param request: DowngradeApplicationApmServiceRequest
         @param headers: map
@@ -9332,7 +9336,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
-        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        @summary Disable ARMS Advanced Edition monitoring.
         
         @param request: DowngradeApplicationApmServiceRequest
         @return: DowngradeApplicationApmServiceResponse
@@ -9346,7 +9350,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
-        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        @summary Disable ARMS Advanced Edition monitoring.
         
         @param request: DowngradeApplicationApmServiceRequest
         @return: DowngradeApplicationApmServiceResponse
@@ -10442,7 +10446,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
         """
-        @summary 查询所有泳道组
+        @summary Queries all lane groups.
         
         @param request: ListAllSwimmingLaneGroupsRequest
         @param headers: map
@@ -10480,7 +10484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
         """
-        @summary 查询所有泳道组
+        @summary Queries all lane groups.
         
         @param request: ListAllSwimmingLaneGroupsRequest
         @param headers: map
@@ -10516,7 +10520,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAllSwimmingLaneGroupsRequest,
     ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
         """
-        @summary 查询所有泳道组
+        @summary Queries all lane groups.
         
         @param request: ListAllSwimmingLaneGroupsRequest
         @return: ListAllSwimmingLaneGroupsResponse
@@ -10530,7 +10534,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAllSwimmingLaneGroupsRequest,
     ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
         """
-        @summary 查询所有泳道组
+        @summary Queries all lane groups.
         
         @param request: ListAllSwimmingLaneGroupsRequest
         @return: ListAllSwimmingLaneGroupsResponse
@@ -10546,7 +10550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
         """
-        @summary 查询所有泳道
+        @summary Queries all swimlanes.
         
         @param request: ListAllSwimmingLanesRequest
         @param headers: map
@@ -10586,7 +10590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
         """
-        @summary 查询所有泳道
+        @summary Queries all swimlanes.
         
         @param request: ListAllSwimmingLanesRequest
         @param headers: map
@@ -10624,7 +10628,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAllSwimmingLanesRequest,
     ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
         """
-        @summary 查询所有泳道
+        @summary Queries all swimlanes.
         
         @param request: ListAllSwimmingLanesRequest
         @return: ListAllSwimmingLanesResponse
@@ -10638,7 +10642,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAllSwimmingLanesRequest,
     ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
         """
-        @summary 查询所有泳道
+        @summary Queries all swimlanes.
         
         @param request: ListAllSwimmingLanesRequest
         @return: ListAllSwimmingLanesResponse
@@ -11286,7 +11290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
         """
-        @summary 获取应用列表，供全链路灰度拉取应用列表
+        @summary Obtains the application list for the end-to-end grayscale pull application list.
         
         @param request: ListApplicationsForSwimmingLaneRequest
         @param headers: map
@@ -11328,7 +11332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
         """
-        @summary 获取应用列表，供全链路灰度拉取应用列表
+        @summary Obtains the application list for the end-to-end grayscale pull application list.
         
         @param request: ListApplicationsForSwimmingLaneRequest
         @param headers: map
@@ -11368,7 +11372,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListApplicationsForSwimmingLaneRequest,
     ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
         """
-        @summary 获取应用列表，供全链路灰度拉取应用列表
+        @summary Obtains the application list for the end-to-end grayscale pull application list.
         
         @param request: ListApplicationsForSwimmingLaneRequest
         @return: ListApplicationsForSwimmingLaneResponse
@@ -11382,7 +11386,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListApplicationsForSwimmingLaneRequest,
     ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
         """
-        @summary 获取应用列表，供全链路灰度拉取应用列表
+        @summary Obtains the application list for the end-to-end grayscale pull application list.
         
         @param request: ListApplicationsForSwimmingLaneRequest
         @return: ListApplicationsForSwimmingLaneResponse
@@ -12550,7 +12554,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
         """
-        @summary 查询泳道可选的网关路由
+        @summary Query the gateway routes that are available for a lane
         
         @param request: ListSwimmingLaneGatewayRoutesRequest
         @param headers: map
@@ -12590,7 +12594,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
         """
-        @summary 查询泳道可选的网关路由
+        @summary Query the gateway routes that are available for a lane
         
         @param request: ListSwimmingLaneGatewayRoutesRequest
         @param headers: map
@@ -12628,7 +12632,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListSwimmingLaneGatewayRoutesRequest,
     ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
         """
-        @summary 查询泳道可选的网关路由
+        @summary Query the gateway routes that are available for a lane
         
         @param request: ListSwimmingLaneGatewayRoutesRequest
         @return: ListSwimmingLaneGatewayRoutesResponse
@@ -12642,7 +12646,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListSwimmingLaneGatewayRoutesRequest,
     ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
         """
-        @summary 查询泳道可选的网关路由
+        @summary Query the gateway routes that are available for a lane
         
         @param request: ListSwimmingLaneGatewayRoutesRequest
         @return: ListSwimmingLaneGatewayRoutesResponse
@@ -12658,7 +12662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
         """
-        @summary 查询所有泳道标签列表
+        @summary Queries all lane tags.
         
         @param request: ListSwimmingLaneGroupTagsRequest
         @param headers: map
@@ -12698,7 +12702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
         """
-        @summary 查询所有泳道标签列表
+        @summary Queries all lane tags.
         
         @param request: ListSwimmingLaneGroupTagsRequest
         @param headers: map
@@ -12736,7 +12740,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListSwimmingLaneGroupTagsRequest,
     ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
         """
-        @summary 查询所有泳道标签列表
+        @summary Queries all lane tags.
         
         @param request: ListSwimmingLaneGroupTagsRequest
         @return: ListSwimmingLaneGroupTagsResponse
@@ -12750,7 +12754,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListSwimmingLaneGroupTagsRequest,
     ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
         """
-        @summary 查询所有泳道标签列表
+        @summary Queries all lane tags.
         
         @param request: ListSwimmingLaneGroupTagsRequest
         @return: ListSwimmingLaneGroupTagsResponse
@@ -15554,7 +15558,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateAppModeResponse:
         """
-        @summary 应用闲置模式更新
+        @summary Application Idle Mode Update
         
         @param request: UpdateAppModeRequest
         @param headers: map
@@ -15598,7 +15602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateAppModeResponse:
         """
-        @summary 应用闲置模式更新
+        @summary Application Idle Mode Update
         
         @param request: UpdateAppModeRequest
         @param headers: map
@@ -15640,7 +15644,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateAppModeRequest,
     ) -> sae_20190506_models.UpdateAppModeResponse:
         """
-        @summary 应用闲置模式更新
+        @summary Application Idle Mode Update
         
         @param request: UpdateAppModeRequest
         @return: UpdateAppModeResponse
@@ -15654,7 +15658,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateAppModeRequest,
     ) -> sae_20190506_models.UpdateAppModeResponse:
         """
-        @summary 应用闲置模式更新
+        @summary Application Idle Mode Update
         
         @param request: UpdateAppModeRequest
         @return: UpdateAppModeResponse
@@ -16955,6 +16959,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_namespace_with_options_async(request, headers, runtime)
 
+    def update_namespace_sls_configs_with_options(
+        self,
+        request: sae_20190506_models.UpdateNamespaceSlsConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateNamespaceSlsConfigsResponse:
+        """
+        @summary 更新命名空间级别sls配置
+        
+        @param request: UpdateNamespaceSlsConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceSlsConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.sls_configs):
+            query['SlsConfigs'] = request.sls_configs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNamespaceSlsConfigs',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/cas/namespace/updateNamespaceSlsConfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateNamespaceSlsConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_namespace_sls_configs_with_options_async(
+        self,
+        request: sae_20190506_models.UpdateNamespaceSlsConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateNamespaceSlsConfigsResponse:
+        """
+        @summary 更新命名空间级别sls配置
+        
+        @param request: UpdateNamespaceSlsConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceSlsConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.sls_configs):
+            query['SlsConfigs'] = request.sls_configs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNamespaceSlsConfigs',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/cas/namespace/updateNamespaceSlsConfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateNamespaceSlsConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_namespace_sls_configs(
+        self,
+        request: sae_20190506_models.UpdateNamespaceSlsConfigsRequest,
+    ) -> sae_20190506_models.UpdateNamespaceSlsConfigsResponse:
+        """
+        @summary 更新命名空间级别sls配置
+        
+        @param request: UpdateNamespaceSlsConfigsRequest
+        @return: UpdateNamespaceSlsConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_namespace_sls_configs_with_options(request, headers, runtime)
+
+    async def update_namespace_sls_configs_async(
+        self,
+        request: sae_20190506_models.UpdateNamespaceSlsConfigsRequest,
+    ) -> sae_20190506_models.UpdateNamespaceSlsConfigsResponse:
+        """
+        @summary 更新命名空间级别sls配置
+        
+        @param request: UpdateNamespaceSlsConfigsRequest
+        @return: UpdateNamespaceSlsConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_namespace_sls_configs_with_options_async(request, headers, runtime)
+
     def update_namespace_vpc_with_options(
         self,
         request: sae_20190506_models.UpdateNamespaceVpcRequest,
@@ -17210,7 +17326,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
         """
-        @summary 更新泳道的启用属性
+        @summary Update the enabled property of the swimlane.
         
         @param request: UpdateSwimmingLaneEnableAttributeRequest
         @param headers: map
@@ -17254,7 +17370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
         """
-        @summary 更新泳道的启用属性
+        @summary Update the enabled property of the swimlane.
         
         @param request: UpdateSwimmingLaneEnableAttributeRequest
         @param headers: map
@@ -17296,7 +17412,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateSwimmingLaneEnableAttributeRequest,
     ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
         """
-        @summary 更新泳道的启用属性
+        @summary Update the enabled property of the swimlane.
         
         @param request: UpdateSwimmingLaneEnableAttributeRequest
         @return: UpdateSwimmingLaneEnableAttributeResponse
@@ -17310,7 +17426,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateSwimmingLaneEnableAttributeRequest,
     ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
         """
-        @summary 更新泳道的启用属性
+        @summary Update the enabled property of the swimlane.
         
         @param request: UpdateSwimmingLaneEnableAttributeRequest
         @return: UpdateSwimmingLaneEnableAttributeResponse

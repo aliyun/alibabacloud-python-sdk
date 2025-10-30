@@ -1,3 +1,8 @@
+2025-10-30 Version: 2.9.0
+- Support API UpdateNamespaceSlsConfigs.
+- Update API DescribeInstanceLog: add request parameters Previous.
+
+
 2025-10-28 Version: 2.8.4
 - Update API DescribeNamespaceResources: add response parameters Body.Data.SlsConfigs.
 

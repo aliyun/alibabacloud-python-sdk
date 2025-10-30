@@ -16580,9 +16580,23 @@ class CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # Matching Rule:
+        # 
+        # *   The exact match. The condition is met if the traffic value and the condition value are exactly the same.
+        # *   The exact match. The condition is met if the traffic value and the condition value are exactly the same.
+        # *   The inclusive match. The condition is met if the traffic value is included in the specified list.
+        # *   The percentage match. Principle: The condition is met if \\"hash(get(`key`)) % 100 < value\\".
+        # *   Regular match: a regular expression match. The condition is met when the match is based on regular expression rules.
         self.condition = condition
+        # The parameter name.
         self.name = name
+        # The parameter type. Valid values:
+        # 
+        # *   header
+        # *   param
+        # *   Cookie: forwards requests based on cookies.
         self.type = type
+        # The match value of the condition.
         self.value = value
 
     def validate(self):
@@ -16627,11 +16641,23 @@ class CreateOrUpdateSwimmingLaneRequestAppEntryRule(TeaModel):
         percentage: int = None,
         percentage_by_path: Dict[str, int] = None,
     ):
+        # Logical connectors between conditions:
+        # 
+        # *   AND: All conditions are met at the same time.
+        # *   OR: Any condition is met.
         self.condition_joiner = condition_joiner
+        # The conditions that trigger circuit breaking.
         self.conditions = conditions
+        # Whether to enable proportional grayscale.
+        # 
+        # *   true: enabled. After you enable this parameter, you must configure the PercentageByPath.
+        # *   false: disables the service.
         self.independent_percentage_enable = independent_percentage_enable
+        # The matched request path.
         self.paths = paths
+        # The traffic ratio. Valid values: 0 to 100.
         self.percentage = percentage
+        # The traffic configuration.
         self.percentage_by_path = percentage_by_path
 
     def validate(self):
@@ -16690,9 +16716,23 @@ class CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The matching rule.
+        # 
+        # *   \\==: exact match.
+        # *   ! =: exact match.
+        # *   in: contains matches.
+        # *   Percentage: Percentage matching.
+        # *   Regular matching: specifies whether a regular expression is used to search for the original string.
         self.condition = condition
+        # The parameter name.
         self.name = name
+        # The parameter type. Valid values:
+        # 
+        # *   header
+        # *   param
+        # *   Cookie: forwards requests based on cookies.
         self.type = type
+        # The match value of the condition.
         self.value = value
 
     def validate(self):
@@ -16737,11 +16777,23 @@ class CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule(TeaModel):
         percentage_by_route: Dict[str, int] = None,
         route_ids: List[int] = None,
     ):
+        # Logical connectors between conditions:
+        # 
+        # *   AND: All conditions are met at the same time.
+        # *   OR: Any condition is met.
         self.condition_joiner = condition_joiner
+        # Routing Condition
         self.conditions = conditions
+        # Whether to enable proportional grayscale.
+        # 
+        # *   true: Enabled. After you enable this parameter, you must configure the PercentageByPath.
+        # *   false: Disabled.
         self.independent_percentage_enable = independent_percentage_enable
+        # The percentage of traffic replication. Valid values: 0 to 100.
         self.percentage = percentage
+        # The traffic configuration.
         self.percentage_by_route = percentage_by_route
+        # The ID of the route.
         self.route_ids = route_ids
 
     def validate(self):
@@ -16805,14 +16857,33 @@ class CreateOrUpdateSwimmingLaneRequest(TeaModel):
         mse_gateway_entry_rule: CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule = None,
         namespace_id: str = None,
     ):
+        # The route configuration of the gateway.
+        # 
+        # >  This parameter is required if the gateway entry of the lane group is Java.
         self.app_entry_rule = app_entry_rule
+        # Full-link Grayscale Mode:
+        # 
+        # *   0: The request is routed based on the content of the request.
+        # *   1: routing based on percentages
         self.canary_model = canary_model
+        # Lane Status
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.enable = enable
+        # The ID of the lane group to which the lane belongs.
         self.group_id = group_id
+        # The ID of the lane.
         self.lane_id = lane_id
+        # The name of the lane.
         self.lane_name = lane_name
+        # The tag of the lane.
         self.lane_tag = lane_tag
+        # The route configuration of the MSE gateway.
+        # 
+        # >  If the **EntryAppType** is set to **apig** or **mse-gw**, it is required.
         self.mse_gateway_entry_rule = mse_gateway_entry_rule
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -16885,14 +16956,33 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
         mse_gateway_entry_rule_shrink: str = None,
         namespace_id: str = None,
     ):
+        # The route configuration of the gateway.
+        # 
+        # >  This parameter is required if the gateway entry of the lane group is Java.
         self.app_entry_rule_shrink = app_entry_rule_shrink
+        # Full-link Grayscale Mode:
+        # 
+        # *   0: The request is routed based on the content of the request.
+        # *   1: routing based on percentages
         self.canary_model = canary_model
+        # Lane Status
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.enable = enable
+        # The ID of the lane group to which the lane belongs.
         self.group_id = group_id
+        # The ID of the lane.
         self.lane_id = lane_id
+        # The name of the lane.
         self.lane_name = lane_name
+        # The tag of the lane.
         self.lane_tag = lane_tag
+        # The route configuration of the MSE gateway.
+        # 
+        # >  If the **EntryAppType** is set to **apig** or **mse-gw**, it is required.
         self.mse_gateway_entry_rule_shrink = mse_gateway_entry_rule_shrink
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -16952,6 +17042,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(TeaModel):
         self,
         lane_id: int = None,
     ):
+        # The ID of the lane.
         self.lane_id = lane_id
 
     def validate(self):
@@ -16985,12 +17076,33 @@ class CreateOrUpdateSwimmingLaneResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: Success.
+        # *   **3xx**: Redirection.
+        # *   **4xx**: Request error.
+        # *   **5xx**: Server error.
         self.code = code
+        # The returned information.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The message returned. Value description:
+        # 
+        # *   If the request was successful, a success message is returned.
+        # *   An error code is returned if the request failed.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Whether the creation or update was successful. Valid values:
+        # 
+        # *   true: created.
+        # *   false: failed to create.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -17091,12 +17203,23 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
         namespace_id: str = None,
         swim_version: str = None,
     ):
+        # The ID of the baseline application.
         self.app_ids = app_ids
+        # The unique ID of the corresponding gateway.
         self.entry_app_id = entry_app_id
+        # The application entry type (gateway type).
+        # 
+        # *   **apig:** cloud-native API Gateway
+        # *   **mse:** Java Services Gateway
+        # *   **mse-gw:** MSE cloud-native Gateway
         self.entry_app_type = entry_app_type
+        # The ID of the lane group. This is required when you update a lane group.
         self.group_id = group_id
+        # The name of the lane group.
         self.group_name = group_name
+        # The ID of a namespace.
         self.namespace_id = namespace_id
+        # The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
         self.swim_version = swim_version
 
     def validate(self):
@@ -17154,12 +17277,23 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
         namespace_id: str = None,
         swim_version: str = None,
     ):
+        # The ID of the baseline application.
         self.app_ids_shrink = app_ids_shrink
+        # The unique ID of the corresponding gateway.
         self.entry_app_id = entry_app_id
+        # The application entry type (gateway type).
+        # 
+        # *   **apig:** cloud-native API Gateway
+        # *   **mse:** Java Services Gateway
+        # *   **mse-gw:** MSE cloud-native Gateway
         self.entry_app_type = entry_app_type
+        # The ID of the lane group. This is required when you update a lane group.
         self.group_id = group_id
+        # The name of the lane group.
         self.group_name = group_name
+        # The ID of a namespace.
         self.namespace_id = namespace_id
+        # The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
         self.swim_version = swim_version
 
     def validate(self):
@@ -17211,6 +17345,7 @@ class CreateOrUpdateSwimmingLaneGroupResponseBodyData(TeaModel):
         self,
         group_id: int = None,
     ):
+        # The ID of the lane group.
         self.group_id = group_id
 
     def validate(self):
@@ -17244,12 +17379,33 @@ class CreateOrUpdateSwimmingLaneGroupResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: Redirection.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: Server error.
         self.code = code
+        # The application information.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # Additional information. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Whether the lane group is created. Valid values:
+        # 
+        # *   **true**: Created successfully.
+        # *   **false**: The ConfigMap failed to be created.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -18840,8 +18996,12 @@ class DeleteInstancesRequest(TeaModel):
         app_id: str = None,
         instance_ids: str = None,
     ):
+        # The ID of the application.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the instance to be deleted.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
 
@@ -18874,6 +19034,7 @@ class DeleteInstancesResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the release order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -18907,12 +19068,33 @@ class DeleteInstancesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Responses.
         self.data = data
+        # Error code. Valid values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # Additional information about the call result. Valid values:
+        # 
+        # *   If the request is normal, success is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Whether the instance is deleted successfully. Valid values:
+        # 
+        # *   **true**: The namespace was deleted.
+        # *   **false**: The namespace failed to be deleted.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -19506,7 +19688,9 @@ class DeleteSwimmingLaneGroupRequest(TeaModel):
         group_id: int = None,
         namespace_id: str = None,
     ):
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of a namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -19543,11 +19727,31 @@ class DeleteSwimmingLaneGroupResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # null null
+        # 
+        # *   null****\
+        # *   null
         self.message = message
+        # null
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: Valid values:
+        # 
+        # *   **true**: The policy was deleted.
+        # *   **false**: Delete failed.
         self.success = success
+        # null
         self.trace_id = trace_id
 
     def validate(self):
@@ -31132,6 +31336,7 @@ class DescribeInstanceLogRequest(TeaModel):
         self,
         container_id: str = None,
         instance_id: str = None,
+        previous: str = None,
     ):
         # The ID of the sidecar container. You can call the [DescribeApplicationInstances](https://help.aliyun.com/document_detail/2834847.html) to obtain the ID.
         self.container_id = container_id
@@ -31139,6 +31344,7 @@ class DescribeInstanceLogRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.previous = previous
 
     def validate(self):
         pass
@@ -31153,6 +31359,8 @@ class DescribeInstanceLogRequest(TeaModel):
             result['ContainerId'] = self.container_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.previous is not None:
+            result['Previous'] = self.previous
         return result
 
     def from_map(self, m: dict = None):
@@ -31161,6 +31369,8 @@ class DescribeInstanceLogRequest(TeaModel):
             self.container_id = m.get('ContainerId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Previous') is not None:
+            self.previous = m.get('Previous')
         return self
 
 
@@ -35079,8 +35289,11 @@ class DescribeSwimmingLaneRequest(TeaModel):
         lane_id: int = None,
         namespace_id: str = None,
     ):
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of the lane.
         self.lane_id = lane_id
+        # The ID of a namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -35120,10 +35333,15 @@ class DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions(TeaModel):
         value: str = None,
         values: List[str] = None,
     ):
+        # The matching rule.
         self.condition = condition
+        # The name of the parameter.
         self.name = name
+        # Parameter type.
         self.type = type
+        # The match value of the condition.
         self.value = value
+        # The match value of the condition.
         self.values = values
 
     def validate(self):
@@ -35172,11 +35390,20 @@ class DescribeSwimmingLaneResponseBodyDataAppEntryRule(TeaModel):
         percentage: int = None,
         percentage_by_path: Dict[str, int] = None,
     ):
+        # Logical connectors between conditions:
+        # 
+        # *   AND: All conditions are met at the same time.
+        # *   OR: Any condition is met.
         self.condition_joiner = condition_joiner
+        # The matching condition.
         self.conditions = conditions
+        # Whether to enable proportional grayscale.
         self.independent_percentage_enable = independent_percentage_enable
+        # The request path.
         self.paths = paths
+        # The traffic ratio. Valid values: 0 to 100.
         self.percentage = percentage
+        # Traffic matching.
         self.percentage_by_path = percentage_by_path
 
     def validate(self):
@@ -35236,10 +35463,15 @@ class DescribeSwimmingLaneResponseBodyDataApps(TeaModel):
         mse_app_name: str = None,
         mse_namespace_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
+        # The name of the MSE instance.
         self.mse_app_name = mse_app_name
+        # The ID of the MSE namespace.
         self.mse_namespace_id = mse_namespace_id
 
     def validate(self):
@@ -35286,9 +35518,13 @@ class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions(TeaModel
         type: str = None,
         value: str = None,
     ):
+        # The matching rule.
         self.condition = condition
+        # The parameter name.
         self.name = name
+        # The type of the parameter.
         self.type = type
+        # The match value of the condition.
         self.value = value
 
     def validate(self):
@@ -35329,7 +35565,9 @@ class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicat
         path: str = None,
         type: str = None,
     ):
+        # The path.
         self.path = path
+        # The matching rule.
         self.type = type
 
     def validate(self):
@@ -35361,6 +35599,7 @@ class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicat
         self,
         path_predicate: DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate = None,
     ):
+        # The path matching rule.
         self.path_predicate = path_predicate
 
     def validate(self):
@@ -35392,8 +35631,11 @@ class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes(TeaModel):
         route_name: str = None,
         route_predicate: DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate = None,
     ):
+        # The route ID.
         self.route_id = route_id
+        # The name of the route.
         self.route_name = route_name
+        # The routing rule.
         self.route_predicate = route_predicate
 
     def validate(self):
@@ -35437,12 +35679,19 @@ class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule(TeaModel):
         route_ids: List[int] = None,
         routes: List[DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes] = None,
     ):
+        # The logical connector between conditions.
         self.condition_joiner = condition_joiner
+        # The matching condition.
         self.conditions = conditions
+        # Whether to enable proportional grayscale.
         self.independent_percentage_enable = independent_percentage_enable
+        # The proportion of path traffic.
         self.percentage = percentage
+        # The traffic configuration.
         self.percentage_by_route = percentage_by_route
+        # The list of route IDs.
         self.route_ids = route_ids
+        # The detailed configuration of the routing rule.
         self.routes = routes
 
     def validate(self):
@@ -35519,14 +35768,29 @@ class DescribeSwimmingLaneResponseBodyData(TeaModel):
         lane_tag: str = None,
         mse_gateway_entry_rule: DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule = None,
     ):
+        # Apply ingress rules.
         self.app_entry_rule = app_entry_rule
+        # The apps.
         self.apps = apps
+        # The routing mode for end-to-end canary release.
+        # 
+        # *   0: routing based on request content
+        # *   1: routing based on percentages
         self.canary_model = canary_model
+        # Lane status:
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.enable = enable
+        # Whether the traffic rule is enabled.
         self.enable_rules = enable_rules
+        # The ID of the lane.
         self.lane_id = lane_id
+        # The name of the lane group.
         self.lane_name = lane_name
+        # The label of the lane.
         self.lane_tag = lane_tag
+        # MSE gateway routes.
         self.mse_gateway_entry_rule = mse_gateway_entry_rule
 
     def validate(self):
@@ -35606,12 +35870,33 @@ class DescribeSwimmingLaneResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Responses.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: Query failed.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -38607,6 +38892,7 @@ class GetWebshellTokenResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
+        # Response
         self.data = data
         self.error_code = error_code
         self.message = message
@@ -38706,6 +38992,7 @@ class ListAllSwimmingLaneGroupsRequest(TeaModel):
         self,
         namespace_id: str = None,
     ):
+        # The ID of a namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -38737,10 +39024,15 @@ class ListAllSwimmingLaneGroupsResponseBodyDataApps(TeaModel):
         mse_app_name: str = None,
         mse_namespace_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
+        # The name of the MSE instance.
         self.mse_app_name = mse_app_name
+        # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
 
     def validate(self):
@@ -38789,11 +39081,17 @@ class ListAllSwimmingLaneGroupsResponseBodyDataEntryApp(TeaModel):
         mse_app_name: str = None,
         mse_namespace_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The type of the application.
         self.app_type = app_type
+        # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
+        # MSE Instance Name
         self.mse_app_name = mse_app_name
+        # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
 
     def validate(self):
@@ -38851,16 +39149,34 @@ class ListAllSwimmingLaneGroupsResponseBodyData(TeaModel):
         namespace_id: str = None,
         swim_version: str = None,
     ):
+        # The IDs of the applications associated with the lane group.
         self.app_ids = app_ids
+        # The application information.
         self.apps = apps
+        # Full-link Grayscale Mode:
+        # 
+        # *   0: The request is routed based on the content of the request.
+        # *   1: Proportional routing
         self.canary_model = canary_model
+        # The entry application.
         self.entry_app = entry_app
+        # The ID of the gateway.
         self.entry_app_id = entry_app_id
+        # The application entry type (gateway type).
+        # 
+        # *   **apig:** cloud-native API Gateway
+        # *   **mse-gw:** an MSE cloud original gateway
+        # *   **mse:** Java Services Gateway
         self.entry_app_type = entry_app_type
+        # The ID of the lane group.
         self.group_id = group_id
+        # The name of a lane group.
         self.group_name = group_name
+        # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
         self.swim_version = swim_version
 
     def validate(self):
@@ -38945,12 +39261,33 @@ class ListAllSwimmingLaneGroupsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Responses.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # Additional information. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The information failed to be queried.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -39052,7 +39389,9 @@ class ListAllSwimmingLanesRequest(TeaModel):
         group_id: int = None,
         namespace_id: str = None,
     ):
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of a namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -39088,10 +39427,15 @@ class ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions(TeaModel):
         value: str = None,
         values: List[str] = None,
     ):
+        # The matching rule.
         self.condition = condition
+        # The parameter name.
         self.name = name
+        # The type of the parameter.
         self.type = type
+        # The match value.
         self.value = value
+        # The match value of the condition.
         self.values = values
 
     def validate(self):
@@ -39140,11 +39484,20 @@ class ListAllSwimmingLanesResponseBodyDataAppEntryRule(TeaModel):
         percentage: int = None,
         percentage_by_path: Dict[str, int] = None,
     ):
+        # Logical connectors between conditions:
+        # 
+        # *   AND: All conditions are met at the same time.
+        # *   OR: Any condition is met.
         self.condition_joiner = condition_joiner
+        # The matching condition.
         self.conditions = conditions
+        # Whether to enable proportional grayscale.
         self.independent_percentage_enable = independent_percentage_enable
+        # The request path.
         self.paths = paths
+        # The traffic ratio. Valid values: 0 to 100.
         self.percentage = percentage
+        # Traffic matching.
         self.percentage_by_path = percentage_by_path
 
     def validate(self):
@@ -39204,10 +39557,15 @@ class ListAllSwimmingLanesResponseBodyDataApps(TeaModel):
         mse_app_name: str = None,
         mse_namespace_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
+        # The name of the MSE instance.
         self.mse_app_name = mse_app_name
+        # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
 
     def validate(self):
@@ -39254,9 +39612,13 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions(TeaModel
         type: str = None,
         value: str = None,
     ):
+        # The matching rule.
         self.condition = condition
+        # The parameter name.
         self.name = name
+        # The type of the parameter.
         self.type = type
+        # The match value of the condition.
         self.value = value
 
     def validate(self):
@@ -39297,7 +39659,9 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicat
         path: str = None,
         type: str = None,
     ):
+        # The path.
         self.path = path
+        # The matching rule.
         self.type = type
 
     def validate(self):
@@ -39329,6 +39693,7 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicat
         self,
         path_predicate: ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate = None,
     ):
+        # The path matching rule.
         self.path_predicate = path_predicate
 
     def validate(self):
@@ -39360,8 +39725,11 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes(TeaModel):
         route_name: str = None,
         route_predicate: ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate = None,
     ):
+        # The route ID.
         self.route_id = route_id
+        # The name of the route.
         self.route_name = route_name
+        # The routing rule.
         self.route_predicate = route_predicate
 
     def validate(self):
@@ -39405,12 +39773,19 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule(TeaModel):
         route_ids: List[int] = None,
         routes: List[ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes] = None,
     ):
+        # The logical connector between conditions.
         self.condition_joiner = condition_joiner
+        # The matching condition.
         self.conditions = conditions
+        # Whether to enable proportional grayscale.
         self.independent_percentage_enable = independent_percentage_enable
+        # The proportion of path traffic.
         self.percentage = percentage
+        # The traffic configuration.
         self.percentage_by_route = percentage_by_route
+        # The IDs of the route tables.
         self.route_ids = route_ids
+        # The detailed configuration of the routing rule.
         self.routes = routes
 
     def validate(self):
@@ -39487,14 +39862,29 @@ class ListAllSwimmingLanesResponseBodyData(TeaModel):
         lane_tag: str = None,
         mse_gateway_entry_rule: ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule = None,
     ):
+        # Apply ingress rules.
         self.app_entry_rule = app_entry_rule
+        # The associated application.
         self.apps = apps
+        # Full-link Grayscale Mode:
+        # 
+        # *   0: The request is routed based on the content of the request.
+        # *   1: Proportional routing
         self.canary_model = canary_model
+        # Lane status:
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.enable = enable
+        # Whether the traffic rule is enabled.
         self.enable_rules = enable_rules
+        # The ID of the lane.
         self.lane_id = lane_id
+        # The name of the lane group.
         self.lane_name = lane_name
+        # The tag of the lane.
         self.lane_tag = lane_tag
+        # MSE gateway routing
         self.mse_gateway_entry_rule = mse_gateway_entry_rule
 
     def validate(self):
@@ -39574,12 +39964,33 @@ class ListAllSwimmingLanesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The interface status or POP error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: Redirection.
+        # *   **4xx**: Request error.
+        # *   **5xx**: Server error.
         self.code = code
+        # The output parameters of the node.
         self.data = data
+        # Error code. Valid values:
+        # 
+        # *   If the request is successful, no **ErrorCode** fields are returned.
+        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
         self.error_code = error_code
+        # Additional information. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Whether the data is successful. Valid values:
+        # 
+        # *   **true**: The application instances were restarted.
+        # *   **false**: Restart failed.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -41700,9 +42111,13 @@ class ListApplicationsForSwimmingLaneRequest(TeaModel):
         namespace_id: str = None,
         tag: str = None,
     ):
+        # The ID of the application group. You can call the [DescribeApplicationGroups](https://help.aliyun.com/document_detail/126249.html) operation to obtain the ID.
         self.group_id = group_id
+        # The ID of a namespace.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The canary tag
         self.tag = tag
 
     def validate(self):
@@ -41745,13 +42160,21 @@ class ListApplicationsForSwimmingLaneResponseBodyData(TeaModel):
         mse_namespace_id: str = None,
         service_tags: Dict[str, str] = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the baseline application.
         self.base_app_id = base_app_id
+        # The name of the baseline application.
         self.base_app_name = base_app_name
+        # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
+        # MSE Instance Name
         self.mse_app_name = mse_app_name
+        # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
+        # The canary tag configured for the application.
         self.service_tags = service_tags
 
     def validate(self):
@@ -41812,11 +42235,31 @@ class ListApplicationsForSwimmingLaneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The list of applications.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, the **ErrorCode** parameter is returned. For more information, see **Error codes** section in this topic.
         self.error_code = error_code
+        # The message returned. The following limits are imposed on the ID:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   An error code is returned when a request failed.
         self.message = message
+        # The ID of the trace. The ID is used to query the details of a request.
         self.request_id = request_id
+        # Indicates whether the list of application instances was queried. Valid values:
+        # 
+        # *   **true**: The instance groups were obtained.
+        # *   **false**: The instance groups failed to be obtained.
         self.success = success
 
     def validate(self):
@@ -46011,7 +46454,9 @@ class ListSwimmingLaneGatewayRoutesRequest(TeaModel):
         gateway_unique_id: str = None,
         namespace_id: str = None,
     ):
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -46044,7 +46489,9 @@ class ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate(T
         path: str = None,
         type: str = None,
     ):
+        # The route URL.
         self.path = path
+        # The type of the protection rule.
         self.type = type
 
     def validate(self):
@@ -46076,6 +46523,7 @@ class ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate(TeaModel):
         self,
         path_predicate: ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate = None,
     ):
+        # The path matching rule.
         self.path_predicate = path_predicate
 
     def validate(self):
@@ -46107,8 +46555,11 @@ class ListSwimmingLaneGatewayRoutesResponseBodyData(TeaModel):
         route_name: str = None,
         route_predicate: ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate = None,
     ):
+        # The ID of the route.
         self.route_id = route_id
+        # The name of the route.
         self.route_name = route_name
+        # The routing rule.
         self.route_predicate = route_predicate
 
     def validate(self):
@@ -46152,12 +46603,33 @@ class ListSwimmingLaneGatewayRoutesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Responses.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # Additional information. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: Valid values:
+        # 
+        # *   **true**: The configurations were obtained.
+        # *   **false**: The configurations failed to be queried.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -46259,7 +46731,9 @@ class ListSwimmingLaneGroupTagsRequest(TeaModel):
         group_id: int = None,
         namespace_id: str = None,
     ):
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of a namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -46292,7 +46766,9 @@ class ListSwimmingLaneGroupTagsResponseBodyData(TeaModel):
         metadata: str = None,
         tag: str = None,
     ):
+        # The metadata.
         self.metadata = metadata
+        # The label of the lane.
         self.tag = tag
 
     def validate(self):
@@ -46330,12 +46806,33 @@ class ListSwimmingLaneGroupTagsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: Redirection.
+        # *   **4xx**: Request error.
+        # *   **5xx**: Server error.
         self.code = code
+        # Responses.
         self.data = data
+        # Error code. Valid values:
+        # 
+        # *   If the request is successful, no **ErrorCode** fields are returned.
+        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
         self.error_code = error_code
+        # Additional information. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Whether the data is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: Failed.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -50618,8 +51115,15 @@ class UpdateAppModeRequest(TeaModel):
         enable_idle: bool = None,
         namespace_id: str = None,
     ):
+        # The app ID.
         self.app_id = app_id
         self.app_ids = app_ids
+        # Enable Idle Mode?
+        # 
+        # Enumeration value:
+        # 
+        # *   true: enables.
+        # *   false: disables.
         self.enable_idle = enable_idle
         self.namespace_id = namespace_id
 
@@ -50665,12 +51169,28 @@ class UpdateAppModeResponseBody(TeaModel):
         success: str = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Error code. Valid values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes**.
         self.error_code = error_code
+        # The message returned. The following limits are imposed on the ID:
+        # 
+        # *   The request is normal. **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the application was created. true and false. false
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -53413,6 +53933,144 @@ class UpdateNamespaceResponse(TeaModel):
         return self
 
 
+class UpdateNamespaceSlsConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        name_space_short_id: str = None,
+        namespace_id: str = None,
+        sls_configs: str = None,
+    ):
+        self.name_space_short_id = name_space_short_id
+        self.namespace_id = namespace_id
+        self.sls_configs = sls_configs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.sls_configs is not None:
+            result['SlsConfigs'] = self.sls_configs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SlsConfigs') is not None:
+            self.sls_configs = m.get('SlsConfigs')
+        return self
+
+
+class UpdateNamespaceSlsConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
+        success: bool = None,
+        trace_id: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
+        self.success = success
+        self.trace_id = trace_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateNamespaceSlsConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNamespaceSlsConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNamespaceSlsConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateNamespaceVpcRequest(TeaModel):
     def __init__(
         self,
@@ -53842,9 +54500,16 @@ class UpdateSwimmingLaneEnableAttributeRequest(TeaModel):
         lane_id: int = None,
         namespace_id: str = None,
     ):
+        # Lane status:
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.enable = enable
+        # The ID of the lane group.
         self.group_id = group_id
+        # The ID of the lane.
         self.lane_id = lane_id
+        # The ID of a namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -53889,11 +54554,31 @@ class UpdateSwimmingLaneEnableAttributeResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The interface status or POP error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: Redirection.
+        # *   **4xx**: Request error.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Error code. Valid values:
+        # 
+        # *   If the request is successful, no **ErrorCode** fields are returned.
+        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
         self.error_code = error_code
+        # Additional information. Valid values:
+        # 
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Whether the data is successful. Valid values:
+        # 
+        # *   **true**: The policy was deleted.
+        # *   **false**: The policy failed to be deleted.
         self.success = success
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
