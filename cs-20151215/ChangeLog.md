@@ -1,3 +1,13 @@
+2025-10-30 Version: 6.0.0
+- Update API DescribePolicyGovernanceInCluster: add response parameters Body.Violation.
+- Update API DescribePolicyGovernanceInCluster: add response parameters Body.admit_log.log_project.
+- Update API DescribePolicyGovernanceInCluster: add response parameters Body.admit_log.log_store.
+- Update API DescribePolicyGovernanceInCluster: add response parameters Body.admit_log.logs.
+- Update API DescribePolicyGovernanceInCluster: delete response parameters Body.admit_log.log.
+- Update API DescribePolicyGovernanceInCluster: delete response parameters Body.totalViolations.
+- Update API DescribePolicyGovernanceInCluster: delete response parameters Body.violations.
+
+
 2025-10-10 Version: 5.0.0
 - Delete API CreateEdgeMachine.
 - Delete API DeleteEdgeMachine.

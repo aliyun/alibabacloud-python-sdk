@@ -18533,28 +18533,334 @@ class DescribePolicyDetailsResponse(TeaModel):
         return self
 
 
-class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog(TeaModel):
+class DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny(TeaModel):
+    def __init__(
+        self,
+        severity: str = None,
+        violations: str = None,
+    ):
+        self.severity = severity
+        self.violations = violations
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.severity is not None:
+            result['severity'] = self.severity
+        if self.violations is not None:
+            result['violations'] = self.violations
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('severity') is not None:
+            self.severity = m.get('severity')
+        if m.get('violations') is not None:
+            self.violations = m.get('violations')
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn(TeaModel):
+    def __init__(
+        self,
+        severity: str = None,
+        violations: int = None,
+    ):
+        self.severity = severity
+        self.violations = violations
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.severity is not None:
+            result['severity'] = self.severity
+        if self.violations is not None:
+            result['violations'] = self.violations
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('severity') is not None:
+            self.severity = m.get('severity')
+        if m.get('violations') is not None:
+            self.violations = m.get('violations')
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations(TeaModel):
+    def __init__(
+        self,
+        deny: List[DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny] = None,
+        warn: List[DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn] = None,
+    ):
+        self.deny = deny
+        self.warn = warn
+
+    def validate(self):
+        if self.deny:
+            for k in self.deny:
+                if k:
+                    k.validate()
+        if self.warn:
+            for k in self.warn:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['deny'] = []
+        if self.deny is not None:
+            for k in self.deny:
+                result['deny'].append(k.to_map() if k else None)
+        result['warn'] = []
+        if self.warn is not None:
+            for k in self.warn:
+                result['warn'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.deny = []
+        if m.get('deny') is not None:
+            for k in m.get('deny'):
+                temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny()
+                self.deny.append(temp_model.from_map(k))
+        self.warn = []
+        if m.get('warn') is not None:
+            for k in m.get('warn'):
+                temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn()
+                self.warn.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny(TeaModel):
+    def __init__(
+        self,
+        policy_description: str = None,
+        policy_name: str = None,
+        severity: str = None,
+        violations: int = None,
+    ):
+        self.policy_description = policy_description
+        self.policy_name = policy_name
+        self.severity = severity
+        self.violations = violations
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_description is not None:
+            result['policyDescription'] = self.policy_description
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.severity is not None:
+            result['severity'] = self.severity
+        if self.violations is not None:
+            result['violations'] = self.violations
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('policyDescription') is not None:
+            self.policy_description = m.get('policyDescription')
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('severity') is not None:
+            self.severity = m.get('severity')
+        if m.get('violations') is not None:
+            self.violations = m.get('violations')
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn(TeaModel):
+    def __init__(
+        self,
+        policy_description: str = None,
+        policy_name: str = None,
+        severity: str = None,
+        violations: int = None,
+    ):
+        self.policy_description = policy_description
+        self.policy_name = policy_name
+        self.severity = severity
+        self.violations = violations
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_description is not None:
+            result['policyDescription'] = self.policy_description
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.severity is not None:
+            result['severity'] = self.severity
+        if self.violations is not None:
+            result['violations'] = self.violations
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('policyDescription') is not None:
+            self.policy_description = m.get('policyDescription')
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('severity') is not None:
+            self.severity = m.get('severity')
+        if m.get('violations') is not None:
+            self.violations = m.get('violations')
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyViolationViolations(TeaModel):
+    def __init__(
+        self,
+        deny: List[DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny] = None,
+        warn: List[DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn] = None,
+    ):
+        self.deny = deny
+        self.warn = warn
+
+    def validate(self):
+        if self.deny:
+            for k in self.deny:
+                if k:
+                    k.validate()
+        if self.warn:
+            for k in self.warn:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['deny'] = []
+        if self.deny is not None:
+            for k in self.deny:
+                result['deny'].append(k.to_map() if k else None)
+        result['warn'] = []
+        if self.warn is not None:
+            for k in self.warn:
+                result['warn'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.deny = []
+        if m.get('deny') is not None:
+            for k in m.get('deny'):
+                temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny()
+                self.deny.append(temp_model.from_map(k))
+        self.warn = []
+        if m.get('warn') is not None:
+            for k in m.get('warn'):
+                temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn()
+                self.warn.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyViolation(TeaModel):
+    def __init__(
+        self,
+        total_violations: DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations = None,
+        violations: DescribePolicyGovernanceInClusterResponseBodyViolationViolations = None,
+    ):
+        self.total_violations = total_violations
+        self.violations = violations
+
+    def validate(self):
+        if self.total_violations:
+            self.total_violations.validate()
+        if self.violations:
+            self.violations.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_violations is not None:
+            result['totalViolations'] = self.total_violations.to_map()
+        if self.violations is not None:
+            result['violations'] = self.violations.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('totalViolations') is not None:
+            temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations()
+            self.total_violations = temp_model.from_map(m['totalViolations'])
+        if m.get('violations') is not None:
+            temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationViolations()
+            self.violations = temp_model.from_map(m['violations'])
+        return self
+
+
+class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        constraint_action: str = None,
+        constraint_api_version: str = None,
+        constraint_category: str = None,
+        constraint_group: str = None,
         constraint_kind: str = None,
-        msg: str = None,
+        constraint_name: str = None,
+        event_msg: str = None,
+        event_type: str = None,
+        request_uid: str = None,
+        request_userinfo: str = None,
+        request_username: str = None,
         resource_kind: str = None,
         resource_name: str = None,
-        resource_namespace: str = None,
+        time: str = None,
     ):
-        # The cluster ID.
         self.cluster_id = cluster_id
-        # The policy type.
+        self.constraint_action = constraint_action
+        self.constraint_api_version = constraint_api_version
+        self.constraint_category = constraint_category
+        self.constraint_group = constraint_group
         self.constraint_kind = constraint_kind
-        # The message that appears when an event is generated by a policy.
-        self.msg = msg
-        # The resource type.
+        self.constraint_name = constraint_name
+        self.event_msg = event_msg
+        self.event_type = event_type
+        self.request_uid = request_uid
+        self.request_userinfo = request_userinfo
+        self.request_username = request_username
         self.resource_kind = resource_kind
-        # The resource name.
         self.resource_name = resource_name
-        # The namespace to which the resource belongs.
-        self.resource_namespace = resource_namespace
+        self.time = time
 
     def validate(self):
         pass
@@ -18567,32 +18873,68 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
+        if self.constraint_action is not None:
+            result['constraint_action'] = self.constraint_action
+        if self.constraint_api_version is not None:
+            result['constraint_api_version'] = self.constraint_api_version
+        if self.constraint_category is not None:
+            result['constraint_category'] = self.constraint_category
+        if self.constraint_group is not None:
+            result['constraint_group'] = self.constraint_group
         if self.constraint_kind is not None:
             result['constraint_kind'] = self.constraint_kind
-        if self.msg is not None:
-            result['msg'] = self.msg
+        if self.constraint_name is not None:
+            result['constraint_name'] = self.constraint_name
+        if self.event_msg is not None:
+            result['event_msg'] = self.event_msg
+        if self.event_type is not None:
+            result['event_type'] = self.event_type
+        if self.request_uid is not None:
+            result['request_uid'] = self.request_uid
+        if self.request_userinfo is not None:
+            result['request_userinfo'] = self.request_userinfo
+        if self.request_username is not None:
+            result['request_username'] = self.request_username
         if self.resource_kind is not None:
             result['resource_kind'] = self.resource_kind
         if self.resource_name is not None:
             result['resource_name'] = self.resource_name
-        if self.resource_namespace is not None:
-            result['resource_namespace'] = self.resource_namespace
+        if self.time is not None:
+            result['time'] = self.time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
+        if m.get('constraint_action') is not None:
+            self.constraint_action = m.get('constraint_action')
+        if m.get('constraint_api_version') is not None:
+            self.constraint_api_version = m.get('constraint_api_version')
+        if m.get('constraint_category') is not None:
+            self.constraint_category = m.get('constraint_category')
+        if m.get('constraint_group') is not None:
+            self.constraint_group = m.get('constraint_group')
         if m.get('constraint_kind') is not None:
             self.constraint_kind = m.get('constraint_kind')
-        if m.get('msg') is not None:
-            self.msg = m.get('msg')
+        if m.get('constraint_name') is not None:
+            self.constraint_name = m.get('constraint_name')
+        if m.get('event_msg') is not None:
+            self.event_msg = m.get('event_msg')
+        if m.get('event_type') is not None:
+            self.event_type = m.get('event_type')
+        if m.get('request_uid') is not None:
+            self.request_uid = m.get('request_uid')
+        if m.get('request_userinfo') is not None:
+            self.request_userinfo = m.get('request_userinfo')
+        if m.get('request_username') is not None:
+            self.request_username = m.get('request_username')
         if m.get('resource_kind') is not None:
             self.resource_kind = m.get('resource_kind')
         if m.get('resource_name') is not None:
             self.resource_name = m.get('resource_name')
-        if m.get('resource_namespace') is not None:
-            self.resource_namespace = m.get('resource_namespace')
+        if m.get('time') is not None:
+            self.time = m.get('time')
         return self
 
 
@@ -18600,13 +18942,16 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(TeaModel):
     def __init__(
         self,
         count: int = None,
-        log: DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog = None,
+        log_project: str = None,
+        log_store: str = None,
+        logs: List[DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs] = None,
         progress: str = None,
     ):
         # The number of audit log entries.
         self.count = count
-        # The audit log content.
-        self.log = log
+        self.log_project = log_project
+        self.log_store = log_store
+        self.logs = logs
         # The status of the query. Valid values:
         # 
         # *   `Complete`: The query succeeded and the complete query result is returned.
@@ -18614,8 +18959,10 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(TeaModel):
         self.progress = progress
 
     def validate(self):
-        if self.log:
-            self.log.validate()
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18625,8 +18972,14 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(TeaModel):
         result = dict()
         if self.count is not None:
             result['count'] = self.count
-        if self.log is not None:
-            result['log'] = self.log.to_map()
+        if self.log_project is not None:
+            result['log_project'] = self.log_project
+        if self.log_store is not None:
+            result['log_store'] = self.log_store
+        result['logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['logs'].append(k.to_map() if k else None)
         if self.progress is not None:
             result['progress'] = self.progress
         return result
@@ -18635,9 +18988,15 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(TeaModel):
         m = m or dict()
         if m.get('count') is not None:
             self.count = m.get('count')
-        if m.get('log') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog()
-            self.log = temp_model.from_map(m['log'])
+        if m.get('log_project') is not None:
+            self.log_project = m.get('log_project')
+        if m.get('log_store') is not None:
+            self.log_store = m.get('log_store')
+        self.logs = []
+        if m.get('logs') is not None:
+            for k in m.get('logs'):
+                temp_model = DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs()
+                self.logs.append(temp_model.from_map(k))
         if m.get('progress') is not None:
             self.progress = m.get('progress')
         return self
@@ -18685,282 +19044,28 @@ class DescribePolicyGovernanceInClusterResponseBodyOnState(TeaModel):
         return self
 
 
-class DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny(TeaModel):
-    def __init__(
-        self,
-        severity: str = None,
-        violations: int = None,
-    ):
-        # The severity level of the policy.
-        self.severity = severity
-        # The number of blocking events that are triggered.
-        self.violations = violations
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.severity is not None:
-            result['severity'] = self.severity
-        if self.violations is not None:
-            result['violations'] = self.violations
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('severity') is not None:
-            self.severity = m.get('severity')
-        if m.get('violations') is not None:
-            self.violations = m.get('violations')
-        return self
-
-
-class DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn(TeaModel):
-    def __init__(
-        self,
-        severity: str = None,
-        violations: int = None,
-    ):
-        # The severity level of the policy.
-        self.severity = severity
-        # The number of alerting events that are triggered.
-        self.violations = violations
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.severity is not None:
-            result['severity'] = self.severity
-        if self.violations is not None:
-            result['violations'] = self.violations
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('severity') is not None:
-            self.severity = m.get('severity')
-        if m.get('violations') is not None:
-            self.violations = m.get('violations')
-        return self
-
-
-class DescribePolicyGovernanceInClusterResponseBodyTotalViolations(TeaModel):
-    def __init__(
-        self,
-        deny: DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny = None,
-        warn: DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn = None,
-    ):
-        # Details about the blocking events that are triggered by the policies of each severity level.
-        self.deny = deny
-        # Details about the alerting events that are triggered by the policies of each severity level.
-        self.warn = warn
-
-    def validate(self):
-        if self.deny:
-            self.deny.validate()
-        if self.warn:
-            self.warn.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.deny is not None:
-            result['deny'] = self.deny.to_map()
-        if self.warn is not None:
-            result['warn'] = self.warn.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('deny') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny()
-            self.deny = temp_model.from_map(m['deny'])
-        if m.get('warn') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn()
-            self.warn = temp_model.from_map(m['warn'])
-        return self
-
-
-class DescribePolicyGovernanceInClusterResponseBodyViolationsDeny(TeaModel):
-    def __init__(
-        self,
-        policy_description: str = None,
-        policy_name: str = None,
-        severity: str = None,
-        violations: int = None,
-    ):
-        # The policy description.
-        self.policy_description = policy_description
-        # The policy name.
-        self.policy_name = policy_name
-        # The severity level of the policy.
-        self.severity = severity
-        # The total number of blocking events that are triggered by the policy.
-        self.violations = violations
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.policy_description is not None:
-            result['policyDescription'] = self.policy_description
-        if self.policy_name is not None:
-            result['policyName'] = self.policy_name
-        if self.severity is not None:
-            result['severity'] = self.severity
-        if self.violations is not None:
-            result['violations'] = self.violations
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('policyDescription') is not None:
-            self.policy_description = m.get('policyDescription')
-        if m.get('policyName') is not None:
-            self.policy_name = m.get('policyName')
-        if m.get('severity') is not None:
-            self.severity = m.get('severity')
-        if m.get('violations') is not None:
-            self.violations = m.get('violations')
-        return self
-
-
-class DescribePolicyGovernanceInClusterResponseBodyViolationsWarn(TeaModel):
-    def __init__(
-        self,
-        policy_description: str = None,
-        policy_name: str = None,
-        severity: str = None,
-        violations: int = None,
-    ):
-        # The policy description.
-        self.policy_description = policy_description
-        # The policy name.
-        self.policy_name = policy_name
-        # The severity level of the policy.
-        self.severity = severity
-        # The total number of alerting events that are triggered by the policy.
-        self.violations = violations
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.policy_description is not None:
-            result['policyDescription'] = self.policy_description
-        if self.policy_name is not None:
-            result['policyName'] = self.policy_name
-        if self.severity is not None:
-            result['severity'] = self.severity
-        if self.violations is not None:
-            result['violations'] = self.violations
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('policyDescription') is not None:
-            self.policy_description = m.get('policyDescription')
-        if m.get('policyName') is not None:
-            self.policy_name = m.get('policyName')
-        if m.get('severity') is not None:
-            self.severity = m.get('severity')
-        if m.get('violations') is not None:
-            self.violations = m.get('violations')
-        return self
-
-
-class DescribePolicyGovernanceInClusterResponseBodyViolations(TeaModel):
-    def __init__(
-        self,
-        deny: DescribePolicyGovernanceInClusterResponseBodyViolationsDeny = None,
-        warn: DescribePolicyGovernanceInClusterResponseBodyViolationsWarn = None,
-    ):
-        # Details about the blocking events that are triggered by each policy.
-        self.deny = deny
-        # Details about the alerting events that are triggered by the policies of each severity level.
-        self.warn = warn
-
-    def validate(self):
-        if self.deny:
-            self.deny.validate()
-        if self.warn:
-            self.warn.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.deny is not None:
-            result['deny'] = self.deny.to_map()
-        if self.warn is not None:
-            result['warn'] = self.warn.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('deny') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationsDeny()
-            self.deny = temp_model.from_map(m['deny'])
-        if m.get('warn') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyViolationsWarn()
-            self.warn = temp_model.from_map(m['warn'])
-        return self
-
-
 class DescribePolicyGovernanceInClusterResponseBody(TeaModel):
     def __init__(
         self,
+        violation: DescribePolicyGovernanceInClusterResponseBodyViolation = None,
         admit_log: DescribePolicyGovernanceInClusterResponseBodyAdmitLog = None,
         on_state: List[DescribePolicyGovernanceInClusterResponseBodyOnState] = None,
-        total_violations: DescribePolicyGovernanceInClusterResponseBodyTotalViolations = None,
-        violations: DescribePolicyGovernanceInClusterResponseBodyViolations = None,
     ):
+        self.violation = violation
         # The audit logs of the policies in the cluster.
         self.admit_log = admit_log
         # Details about the policies of different severity levels that are enabled for the cluster.
         self.on_state = on_state
-        # Details about the blocking and alerting events that are triggered by policies of different severity levels.
-        self.total_violations = total_violations
-        # Details about the blocking and alerting events that are triggered by different policies.
-        self.violations = violations
 
     def validate(self):
+        if self.violation:
+            self.violation.validate()
         if self.admit_log:
             self.admit_log.validate()
         if self.on_state:
             for k in self.on_state:
                 if k:
                     k.validate()
-        if self.total_violations:
-            self.total_violations.validate()
-        if self.violations:
-            self.violations.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18968,20 +19073,21 @@ class DescribePolicyGovernanceInClusterResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.violation is not None:
+            result['Violation'] = self.violation.to_map()
         if self.admit_log is not None:
             result['admit_log'] = self.admit_log.to_map()
         result['on_state'] = []
         if self.on_state is not None:
             for k in self.on_state:
                 result['on_state'].append(k.to_map() if k else None)
-        if self.total_violations is not None:
-            result['totalViolations'] = self.total_violations.to_map()
-        if self.violations is not None:
-            result['violations'] = self.violations.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Violation') is not None:
+            temp_model = DescribePolicyGovernanceInClusterResponseBodyViolation()
+            self.violation = temp_model.from_map(m['Violation'])
         if m.get('admit_log') is not None:
             temp_model = DescribePolicyGovernanceInClusterResponseBodyAdmitLog()
             self.admit_log = temp_model.from_map(m['admit_log'])
@@ -18990,12 +19096,6 @@ class DescribePolicyGovernanceInClusterResponseBody(TeaModel):
             for k in m.get('on_state'):
                 temp_model = DescribePolicyGovernanceInClusterResponseBodyOnState()
                 self.on_state.append(temp_model.from_map(k))
-        if m.get('totalViolations') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyTotalViolations()
-            self.total_violations = temp_model.from_map(m['totalViolations'])
-        if m.get('violations') is not None:
-            temp_model = DescribePolicyGovernanceInClusterResponseBodyViolations()
-            self.violations = temp_model.from_map(m['violations'])
         return self
 
 
