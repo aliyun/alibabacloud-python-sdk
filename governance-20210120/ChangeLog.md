@@ -5,6 +5,13 @@
 - Update API ListEvaluationResults: add response parameters Body.Results.MetricResults.$.PotentialScoreIncrease.
 
 
+2025-10-30 Version: 0.3.8
+- Update API ListEvaluationMetadata: add request parameters TopicCode.
+- Update API ListEvaluationMetadata: add response parameters Body.EvaluationMetadata.$.Metadata.$.TopicCode.
+- Update API ListEvaluationResults: add request parameters TopicCode.
+- Update API ListEvaluationResults: add response parameters Body.Results.MetricResults.$.PotentialScoreIncrease.
+
+
 2025-05-15 Version: 0.3.7
 - Update API ListEvaluationMetadata: add request parameters LensCode.
 - Update API ListEvaluationResults: add request parameters LensCode.
