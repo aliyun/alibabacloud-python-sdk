@@ -1,3 +1,8 @@
+2025-10-30 Version: 1.1.3
+- Update API GetInstanceDetail: add response parameters Body.Data.Encrypted.
+- Update API GetInstanceDetail: add response parameters Body.Data.KmsKeyId.
+
+
 2025-10-23 Version: 1.1.2
 - Update API GetInstanceDetail: add response parameters Body.Data.MultiZoneMode.
 - Update API GetInstanceDetail: add response parameters Body.Data.VSwitches.
