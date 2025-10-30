@@ -37480,20 +37480,16 @@ class DescribeSafDeOrderRequest(TeaModel):
         return self
 
 
-class DescribeSafDeOrderResponseBodyResultObject(TeaModel):
+class DescribeSafDeOrderResponseBodyResultObjectRegions(TeaModel):
     def __init__(
         self,
         expiration_date: int = None,
-        open_user_type: int = None,
+        region: str = None,
+        specification: int = None,
     ):
-        # Expiration time
         self.expiration_date = expiration_date
-        # Based on the product type subscribed by the customer, the console permissions are divided into three categories:
-        # 
-        #      1. New Customer: Has not purchased/subscribed to any service.
-        #      2. Old Customer (Subscription): Customers who have purchased the SAF product.
-        #      3. Pay-As-You-Go: Customers who have purchased the SAF_BAG product or activated SAF_POS.
-        self.open_user_type = open_user_type
+        self.region = region
+        self.specification = specification
 
     def validate(self):
         pass
@@ -37506,8 +37502,60 @@ class DescribeSafDeOrderResponseBodyResultObject(TeaModel):
         result = dict()
         if self.expiration_date is not None:
             result['expirationDate'] = self.expiration_date
+        if self.region is not None:
+            result['region'] = self.region
+        if self.specification is not None:
+            result['specification'] = self.specification
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expirationDate') is not None:
+            self.expiration_date = m.get('expirationDate')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('specification') is not None:
+            self.specification = m.get('specification')
+        return self
+
+
+class DescribeSafDeOrderResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        expiration_date: int = None,
+        open_user_type: int = None,
+        regions: List[DescribeSafDeOrderResponseBodyResultObjectRegions] = None,
+    ):
+        # Expiration time
+        self.expiration_date = expiration_date
+        # Based on the product type subscribed by the customer, the console permissions are divided into three categories:
+        # 
+        #      1. New Customer: Has not purchased/subscribed to any service.
+        #      2. Old Customer (Subscription): Customers who have purchased the SAF product.
+        #      3. Pay-As-You-Go: Customers who have purchased the SAF_BAG product or activated SAF_POS.
+        self.open_user_type = open_user_type
+        self.regions = regions
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expiration_date is not None:
+            result['expirationDate'] = self.expiration_date
         if self.open_user_type is not None:
             result['openUserType'] = self.open_user_type
+        result['regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['regions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -37516,6 +37564,11 @@ class DescribeSafDeOrderResponseBodyResultObject(TeaModel):
             self.expiration_date = m.get('expirationDate')
         if m.get('openUserType') is not None:
             self.open_user_type = m.get('openUserType')
+        self.regions = []
+        if m.get('regions') is not None:
+            for k in m.get('regions'):
+                temp_model = DescribeSafDeOrderResponseBodyResultObjectRegions()
+                self.regions.append(temp_model.from_map(k))
         return self
 
 

@@ -1,3 +1,7 @@
+2025-10-30 Version: 2.1.2
+- Update API DescribeSafDeOrder: add response parameters Body.resultObject.regions.
+
+
 2025-09-22 Version: 2.1.1
 - Generated python 2021-09-10 for xtee.
 
