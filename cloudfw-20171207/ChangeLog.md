@@ -1,3 +1,6 @@
+2025-10-30 Version: 7.1.2
+- Generated python 2017-12-07 for Cloudfw.
+
 2025-10-29 Version: 7.1.1
 - Update API DescribeVulnerabilityProtectedList: add request parameters RuleTag.
 - Update API DescribeVulnerabilityProtectedList: add response parameters Body.VulnList.$.RuleTag.
