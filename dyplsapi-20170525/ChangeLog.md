@@ -1,3 +1,10 @@
+2025-10-30 Version: 2.5.0
+- Support API BindAxb700.
+- Support API BindGxb700.
+- Support API UnbindSubs700.
+- Support API UpdateSubs700.
+
+
 2025-05-07 Version: 2.4.0
 - Support API BindAxbFixedLine.
 - Support API BindAxnExtensionFixedLine.

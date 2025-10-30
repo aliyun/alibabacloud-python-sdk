@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('dyplsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -613,6 +612,178 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_axb_with_options_async(request, runtime)
+
+    def bind_axb_700with_options(
+        self,
+        request: dyplsapi_20170525_models.BindAxb700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxb700Response:
+        """
+        @summary 创建700绑定关系
+        
+        @param request: BindAxb700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxb700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['AsrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.dtmf_config):
+            query['DtmfConfig'] = request.dtmf_config
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.need_asr):
+            query['NeedAsr'] = request.need_asr
+        if not UtilClient.is_unset(request.need_record):
+            query['NeedRecord'] = request.need_record
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.rec_type):
+            query['RecType'] = request.rec_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxb700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxb700Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_axb_700with_options_async(
+        self,
+        request: dyplsapi_20170525_models.BindAxb700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxb700Response:
+        """
+        @summary 创建700绑定关系
+        
+        @param request: BindAxb700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxb700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['AsrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.dtmf_config):
+            query['DtmfConfig'] = request.dtmf_config
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.need_asr):
+            query['NeedAsr'] = request.need_asr
+        if not UtilClient.is_unset(request.need_record):
+            query['NeedRecord'] = request.need_record
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.rec_type):
+            query['RecType'] = request.rec_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxb700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxb700Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_axb_700(
+        self,
+        request: dyplsapi_20170525_models.BindAxb700Request,
+    ) -> dyplsapi_20170525_models.BindAxb700Response:
+        """
+        @summary 创建700绑定关系
+        
+        @param request: BindAxb700Request
+        @return: BindAxb700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_axb_700with_options(request, runtime)
+
+    async def bind_axb_700_async(
+        self,
+        request: dyplsapi_20170525_models.BindAxb700Request,
+    ) -> dyplsapi_20170525_models.BindAxb700Response:
+        """
+        @summary 创建700绑定关系
+        
+        @param request: BindAxb700Request
+        @return: BindAxb700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_axb_700with_options_async(request, runtime)
 
     def bind_axb_fixed_line_with_options(
         self,
@@ -1785,6 +1956,182 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_batch_axg_with_options_async(request, runtime)
+
+    def bind_gxb_700with_options(
+        self,
+        request: dyplsapi_20170525_models.BindGxb700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindGxb700Response:
+        """
+        @summary 创建700Gxb绑定关系
+        
+        @param request: BindGxb700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindGxb700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['AsrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.default_a):
+            query['DefaultA'] = request.default_a
+        if not UtilClient.is_unset(request.dtmf_config):
+            query['DtmfConfig'] = request.dtmf_config
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.need_asr):
+            query['NeedAsr'] = request.need_asr
+        if not UtilClient.is_unset(request.need_record):
+            query['NeedRecord'] = request.need_record
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.rec_type):
+            query['RecType'] = request.rec_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindGxb700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindGxb700Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_gxb_700with_options_async(
+        self,
+        request: dyplsapi_20170525_models.BindGxb700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindGxb700Response:
+        """
+        @summary 创建700Gxb绑定关系
+        
+        @param request: BindGxb700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindGxb700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['AsrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.default_a):
+            query['DefaultA'] = request.default_a
+        if not UtilClient.is_unset(request.dtmf_config):
+            query['DtmfConfig'] = request.dtmf_config
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.need_asr):
+            query['NeedAsr'] = request.need_asr
+        if not UtilClient.is_unset(request.need_record):
+            query['NeedRecord'] = request.need_record
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.rec_type):
+            query['RecType'] = request.rec_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindGxb700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindGxb700Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_gxb_700(
+        self,
+        request: dyplsapi_20170525_models.BindGxb700Request,
+    ) -> dyplsapi_20170525_models.BindGxb700Response:
+        """
+        @summary 创建700Gxb绑定关系
+        
+        @param request: BindGxb700Request
+        @return: BindGxb700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_gxb_700with_options(request, runtime)
+
+    async def bind_gxb_700_async(
+        self,
+        request: dyplsapi_20170525_models.BindGxb700Request,
+    ) -> dyplsapi_20170525_models.BindGxb700Response:
+        """
+        @summary 创建700Gxb绑定关系
+        
+        @param request: BindGxb700Request
+        @return: BindGxb700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_gxb_700with_options_async(request, runtime)
 
     def bind_xbwith_options(
         self,
@@ -6818,6 +7165,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.un_bind_xbwith_options_async(request, runtime)
 
+    def unbind_subs_700with_options(
+        self,
+        request: dyplsapi_20170525_models.UnbindSubs700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UnbindSubs700Response:
+        """
+        @summary 解除700绑定关系
+        
+        @param request: UnbindSubs700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindSubs700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindSubs700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UnbindSubs700Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_subs_700with_options_async(
+        self,
+        request: dyplsapi_20170525_models.UnbindSubs700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UnbindSubs700Response:
+        """
+        @summary 解除700绑定关系
+        
+        @param request: UnbindSubs700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindSubs700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindSubs700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UnbindSubs700Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_subs_700(
+        self,
+        request: dyplsapi_20170525_models.UnbindSubs700Request,
+    ) -> dyplsapi_20170525_models.UnbindSubs700Response:
+        """
+        @summary 解除700绑定关系
+        
+        @param request: UnbindSubs700Request
+        @return: UnbindSubs700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_subs_700with_options(request, runtime)
+
+    async def unbind_subs_700_async(
+        self,
+        request: dyplsapi_20170525_models.UnbindSubs700Request,
+    ) -> dyplsapi_20170525_models.UnbindSubs700Response:
+        """
+        @summary 解除700绑定关系
+        
+        @param request: UnbindSubs700Request
+        @return: UnbindSubs700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_subs_700with_options_async(request, runtime)
+
     def unbind_subscription_with_options(
         self,
         request: dyplsapi_20170525_models.UnbindSubscriptionRequest,
@@ -7561,6 +8024,178 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_axn_extension_bind_fixed_line_with_options_async(request, runtime)
+
+    def update_subs_700with_options(
+        self,
+        request: dyplsapi_20170525_models.UpdateSubs700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateSubs700Response:
+        """
+        @summary 更新700绑定关系
+        
+        @param request: UpdateSubs700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubs700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['AsrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.default_a):
+            query['DefaultA'] = request.default_a
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.need_asr):
+            query['NeedAsr'] = request.need_asr
+        if not UtilClient.is_unset(request.need_record):
+            query['NeedRecord'] = request.need_record
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubs700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateSubs700Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_subs_700with_options_async(
+        self,
+        request: dyplsapi_20170525_models.UpdateSubs700Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateSubs700Response:
+        """
+        @summary 更新700绑定关系
+        
+        @param request: UpdateSubs700Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubs700Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['AsrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.default_a):
+            query['DefaultA'] = request.default_a
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.need_asr):
+            query['NeedAsr'] = request.need_asr
+        if not UtilClient.is_unset(request.need_record):
+            query['NeedRecord'] = request.need_record
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubs700',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateSubs700Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_subs_700(
+        self,
+        request: dyplsapi_20170525_models.UpdateSubs700Request,
+    ) -> dyplsapi_20170525_models.UpdateSubs700Response:
+        """
+        @summary 更新700绑定关系
+        
+        @param request: UpdateSubs700Request
+        @return: UpdateSubs700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_subs_700with_options(request, runtime)
+
+    async def update_subs_700_async(
+        self,
+        request: dyplsapi_20170525_models.UpdateSubs700Request,
+    ) -> dyplsapi_20170525_models.UpdateSubs700Response:
+        """
+        @summary 更新700绑定关系
+        
+        @param request: UpdateSubs700Request
+        @return: UpdateSubs700Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_subs_700with_options_async(request, runtime)
 
     def update_subscription_with_options(
         self,
