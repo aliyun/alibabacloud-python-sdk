@@ -2119,10 +2119,12 @@ class Node(TeaModel):
         accelerator_type: str = None,
         allocatable_cpu: str = None,
         allocatable_memory: str = None,
+        ancestor_quota_workload_num: int = None,
         availability_zone: str = None,
         bound_quotas: List[QuotaIdName] = None,
         cpu: str = None,
         creator_id: str = None,
+        descendant_quota_workload_num: int = None,
         gpu: str = None,
         gpumemory: str = None,
         gputype: str = None,
@@ -2148,6 +2150,7 @@ class Node(TeaModel):
         request_memory: str = None,
         resource_group_id: str = None,
         resource_group_name: str = None,
+        self_quota_workload_num: int = None,
         system_reserved_cpu: str = None,
         system_reserved_memory: str = None,
         users: List[UserInfo] = None,
@@ -2156,10 +2159,12 @@ class Node(TeaModel):
         self.accelerator_type = accelerator_type
         self.allocatable_cpu = allocatable_cpu
         self.allocatable_memory = allocatable_memory
+        self.ancestor_quota_workload_num = ancestor_quota_workload_num
         self.availability_zone = availability_zone
         self.bound_quotas = bound_quotas
         self.cpu = cpu
         self.creator_id = creator_id
+        self.descendant_quota_workload_num = descendant_quota_workload_num
         self.gpu = gpu
         self.gpumemory = gpumemory
         self.gputype = gputype
@@ -2185,6 +2190,7 @@ class Node(TeaModel):
         self.request_memory = request_memory
         self.resource_group_id = resource_group_id
         self.resource_group_name = resource_group_name
+        self.self_quota_workload_num = self_quota_workload_num
         self.system_reserved_cpu = system_reserved_cpu
         self.system_reserved_memory = system_reserved_memory
         self.users = users
@@ -2212,6 +2218,8 @@ class Node(TeaModel):
             result['AllocatableCPU'] = self.allocatable_cpu
         if self.allocatable_memory is not None:
             result['AllocatableMemory'] = self.allocatable_memory
+        if self.ancestor_quota_workload_num is not None:
+            result['AncestorQuotaWorkloadNum'] = self.ancestor_quota_workload_num
         if self.availability_zone is not None:
             result['AvailabilityZone'] = self.availability_zone
         result['BoundQuotas'] = []
@@ -2222,6 +2230,8 @@ class Node(TeaModel):
             result['CPU'] = self.cpu
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
+        if self.descendant_quota_workload_num is not None:
+            result['DescendantQuotaWorkloadNum'] = self.descendant_quota_workload_num
         if self.gpu is not None:
             result['GPU'] = self.gpu
         if self.gpumemory is not None:
@@ -2272,6 +2282,8 @@ class Node(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
+        if self.self_quota_workload_num is not None:
+            result['SelfQuotaWorkloadNum'] = self.self_quota_workload_num
         if self.system_reserved_cpu is not None:
             result['SystemReservedCPU'] = self.system_reserved_cpu
         if self.system_reserved_memory is not None:
@@ -2292,6 +2304,8 @@ class Node(TeaModel):
             self.allocatable_cpu = m.get('AllocatableCPU')
         if m.get('AllocatableMemory') is not None:
             self.allocatable_memory = m.get('AllocatableMemory')
+        if m.get('AncestorQuotaWorkloadNum') is not None:
+            self.ancestor_quota_workload_num = m.get('AncestorQuotaWorkloadNum')
         if m.get('AvailabilityZone') is not None:
             self.availability_zone = m.get('AvailabilityZone')
         self.bound_quotas = []
@@ -2303,6 +2317,8 @@ class Node(TeaModel):
             self.cpu = m.get('CPU')
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
+        if m.get('DescendantQuotaWorkloadNum') is not None:
+            self.descendant_quota_workload_num = m.get('DescendantQuotaWorkloadNum')
         if m.get('GPU') is not None:
             self.gpu = m.get('GPU')
         if m.get('GPUMemory') is not None:
@@ -2353,6 +2369,8 @@ class Node(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('SelfQuotaWorkloadNum') is not None:
+            self.self_quota_workload_num = m.get('SelfQuotaWorkloadNum')
         if m.get('SystemReservedCPU') is not None:
             self.system_reserved_cpu = m.get('SystemReservedCPU')
         if m.get('SystemReservedMemory') is not None:

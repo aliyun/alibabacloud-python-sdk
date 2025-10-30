@@ -1,3 +1,6 @@
+2025-10-30 Version: 2.1.11
+- Generated python 2022-01-12 for PaiStudio.
+
 2025-10-13 Version: 2.1.10
 - Update API CreateResourceGroup: add request parameters body.Version.
 - Update API GetQuota: add response parameters Body.HyperZones.
