@@ -571,6 +571,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbtime_zone):
+            query['DBTimeZone'] = request.dbtime_zone
         if not UtilClient.is_unset(request.deploy_schema):
             query['DeploySchema'] = request.deploy_schema
         if not UtilClient.is_unset(request.engine):
@@ -648,6 +650,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbtime_zone):
+            query['DBTimeZone'] = request.dbtime_zone
         if not UtilClient.is_unset(request.deploy_schema):
             query['DeploySchema'] = request.deploy_schema
         if not UtilClient.is_unset(request.engine):

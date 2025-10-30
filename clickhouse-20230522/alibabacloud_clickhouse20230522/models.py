@@ -828,6 +828,7 @@ class CreateDBInstanceRequest(TeaModel):
         backup_set_id: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
+        dbtime_zone: str = None,
         deploy_schema: str = None,
         engine: str = None,
         engine_version: str = None,
@@ -852,6 +853,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.client_token = client_token
         # The cluster description.
         self.dbinstance_description = dbinstance_description
+        self.dbtime_zone = dbtime_zone
         # The deployment status of the cluster.
         self.deploy_schema = deploy_schema
         # The engine type.
@@ -901,6 +903,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbtime_zone is not None:
+            result['DBTimeZone'] = self.dbtime_zone
         if self.deploy_schema is not None:
             result['DeploySchema'] = self.deploy_schema
         if self.engine is not None:
@@ -947,6 +951,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBTimeZone') is not None:
+            self.dbtime_zone = m.get('DBTimeZone')
         if m.get('DeploySchema') is not None:
             self.deploy_schema = m.get('DeploySchema')
         if m.get('Engine') is not None:
@@ -993,6 +999,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         backup_set_id: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
+        dbtime_zone: str = None,
         deploy_schema: str = None,
         engine: str = None,
         engine_version: str = None,
@@ -1017,6 +1024,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.client_token = client_token
         # The cluster description.
         self.dbinstance_description = dbinstance_description
+        self.dbtime_zone = dbtime_zone
         # The deployment status of the cluster.
         self.deploy_schema = deploy_schema
         # The engine type.
@@ -1063,6 +1071,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbtime_zone is not None:
+            result['DBTimeZone'] = self.dbtime_zone
         if self.deploy_schema is not None:
             result['DeploySchema'] = self.deploy_schema
         if self.engine is not None:
@@ -1107,6 +1117,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBTimeZone') is not None:
+            self.dbtime_zone = m.get('DBTimeZone')
         if m.get('DeploySchema') is not None:
             self.deploy_schema = m.get('DeploySchema')
         if m.get('Engine') is not None:

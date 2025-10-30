@@ -1,3 +1,7 @@
+2025-10-30 Version: 2.1.1
+- Update API CreateDBInstance: add request parameters DBTimeZone.
+
+
 2025-10-27 Version: 2.1.0
 - Support API ChangeResourceGroup.
 - Update API CreateEndpoint: add request parameters ComputingGroupId.
