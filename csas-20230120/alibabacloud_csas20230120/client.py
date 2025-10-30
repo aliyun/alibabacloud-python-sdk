@@ -3525,11 +3525,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
         """
+        @deprecated OpenAPI DetachApplication2Connector is deprecated, please use csas::2023-01-20::ModifyForwardStrategy instead.
+        
         @summary 卸载connector的应用
         
         @param tmp_req: DetachApplication2ConnectorRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DetachApplication2ConnectorResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.DetachApplication2ConnectorShrinkRequest()
@@ -3566,11 +3569,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
         """
+        @deprecated OpenAPI DetachApplication2Connector is deprecated, please use csas::2023-01-20::ModifyForwardStrategy instead.
+        
         @summary 卸载connector的应用
         
         @param tmp_req: DetachApplication2ConnectorRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DetachApplication2ConnectorResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.DetachApplication2ConnectorShrinkRequest()
@@ -3606,10 +3612,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DetachApplication2ConnectorRequest,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
         """
+        @deprecated OpenAPI DetachApplication2Connector is deprecated, please use csas::2023-01-20::ModifyForwardStrategy instead.
+        
         @summary 卸载connector的应用
         
         @param request: DetachApplication2ConnectorRequest
         @return: DetachApplication2ConnectorResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.detach_application_2connector_with_options(request, runtime)
@@ -3619,10 +3628,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DetachApplication2ConnectorRequest,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
         """
+        @deprecated OpenAPI DetachApplication2Connector is deprecated, please use csas::2023-01-20::ModifyForwardStrategy instead.
+        
         @summary 卸载connector的应用
         
         @param request: DetachApplication2ConnectorRequest
         @return: DetachApplication2ConnectorResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_application_2connector_with_options_async(request, runtime)

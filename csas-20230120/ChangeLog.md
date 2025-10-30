@@ -1,3 +1,6 @@
+2025-10-30 Version: 1.10.15
+- Generated python 2023-01-20 for csas.
+
 2025-09-26 Version: 1.10.14
 - Update API GetApprovalProcess: add response parameters Body.Process.AppUninstallPolicies.FieldMap.$.DisplayFieldValue.
 - Update API GetApprovalProcess: add response parameters Body.Process.DeviceRegistrationPolicies.FieldMap.$.DisplayFieldValue.
