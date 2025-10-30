@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CheckHadoopNetConnectionRequest(DaraModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        data_source_id: str = None,
+        emr_instance_id: str = None,
+        region_id: str = None,
+    ):
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # 1. Either DataSourceId or EmrInstanceId must be specified as input, otherwise an error will occur.
+        # 2. If both of the above parameters are specified, EmrInstanceId will be used preferentially.
+        # 3. If the data source specified by DataSourceId is a self-built Hadoop cluster, an error will occur directly.
+        self.data_source_id = data_source_id
+        # EMR instance ID.
+        self.emr_instance_id = emr_instance_id
+        # Region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+
+        if self.emr_instance_id is not None:
+            result['EmrInstanceId'] = self.emr_instance_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+
+        if m.get('EmrInstanceId') is not None:
+            self.emr_instance_id = m.get('EmrInstanceId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        return self
+

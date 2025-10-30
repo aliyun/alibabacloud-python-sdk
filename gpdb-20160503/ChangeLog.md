@@ -1,3 +1,13 @@
+2025-10-30 Version: 4.14.0
+- Support API QueryKnowledgeBasesContent.
+- Update API ChatWithKnowledgeBase: add request parameters RegionId.
+- Update API ChatWithKnowledgeBase: add response parameters Body.ChatCompletion.Choices.$.Message.ReasoningContent.
+- Update API ChatWithKnowledgeBaseStream: add request parameters RegionId.
+- Update API ChatWithKnowledgeBaseStream: add response parameters Body.ChatCompletion.Choices.$.Message.ReasoningContent.
+- Update API QueryContent: add request parameters Offset.
+- Update API QueryContent: add request parameters OrderBy.
+
+
 2025-09-30 Version: 4.13.0
 - Support API ChatWithKnowledgeBase.
 - Support API ChatWithKnowledgeBaseStream.
