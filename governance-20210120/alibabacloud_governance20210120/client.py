@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('governance', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1066,6 +1065,8 @@ class Client(OpenApiClient):
             query['LensCode'] = request.lens_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.topic_code):
+            query['TopicCode'] = request.topic_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1105,6 +1106,8 @@ class Client(OpenApiClient):
             query['LensCode'] = request.lens_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.topic_code):
+            query['TopicCode'] = request.topic_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1296,6 +1299,8 @@ class Client(OpenApiClient):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.topic_code):
+            query['TopicCode'] = request.topic_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1341,6 +1346,8 @@ class Client(OpenApiClient):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.topic_code):
+            query['TopicCode'] = request.topic_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -2428,6 +2428,7 @@ class ListEvaluationMetadataRequest(TeaModel):
         language: str = None,
         lens_code: str = None,
         region_id: str = None,
+        topic_code: str = None,
     ):
         # The language. The information is returned in the specified language. Valid values:
         # 
@@ -2437,6 +2438,7 @@ class ListEvaluationMetadataRequest(TeaModel):
         self.lens_code = lens_code
         # The region ID.
         self.region_id = region_id
+        self.topic_code = topic_code
 
     def validate(self):
         pass
@@ -2453,6 +2455,8 @@ class ListEvaluationMetadataRequest(TeaModel):
             result['LensCode'] = self.lens_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.topic_code is not None:
+            result['TopicCode'] = self.topic_code
         return result
 
     def from_map(self, m: dict = None):
@@ -2463,6 +2467,8 @@ class ListEvaluationMetadataRequest(TeaModel):
             self.lens_code = m.get('LensCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('TopicCode') is not None:
+            self.topic_code = m.get('TopicCode')
         return self
 
 
@@ -2765,6 +2771,7 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata(TeaModel):
         resource_metadata: ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata = None,
         scope: str = None,
         stage: str = None,
+        topic_code: str = None,
     ):
         # The category of the check item.
         self.category = category
@@ -2790,6 +2797,7 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata(TeaModel):
         # *   Released: The check item is released.
         # *   Beta: The check item is pre-released.
         self.stage = stage
+        self.topic_code = topic_code
 
     def validate(self):
         if self.remediation_metadata:
@@ -2821,6 +2829,8 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata(TeaModel):
             result['Scope'] = self.scope
         if self.stage is not None:
             result['Stage'] = self.stage
+        if self.topic_code is not None:
+            result['TopicCode'] = self.topic_code
         return result
 
     def from_map(self, m: dict = None):
@@ -2845,6 +2855,8 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata(TeaModel):
             self.scope = m.get('Scope')
         if m.get('Stage') is not None:
             self.stage = m.get('Stage')
+        if m.get('TopicCode') is not None:
+            self.topic_code = m.get('TopicCode')
         return self
 
 
@@ -3313,6 +3325,7 @@ class ListEvaluationResultsRequest(TeaModel):
         region_id: str = None,
         scope: str = None,
         snapshot_id: str = None,
+        topic_code: str = None,
     ):
         # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
@@ -3323,6 +3336,7 @@ class ListEvaluationResultsRequest(TeaModel):
         self.region_id = region_id
         self.scope = scope
         self.snapshot_id = snapshot_id
+        self.topic_code = topic_code
 
     def validate(self):
         if self.filters:
@@ -3350,6 +3364,8 @@ class ListEvaluationResultsRequest(TeaModel):
             result['Scope'] = self.scope
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.topic_code is not None:
+            result['TopicCode'] = self.topic_code
         return result
 
     def from_map(self, m: dict = None):
@@ -3369,6 +3385,8 @@ class ListEvaluationResultsRequest(TeaModel):
             self.scope = m.get('Scope')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('TopicCode') is not None:
+            self.topic_code = m.get('TopicCode')
         return self
 
 
@@ -3469,6 +3487,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         error_info: ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo = None,
         evaluation_time: str = None,
         id: str = None,
+        potential_score_increase: float = None,
         resources_summary: ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary = None,
         result: float = None,
         risk: str = None,
@@ -3483,6 +3502,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         self.evaluation_time = evaluation_time
         # The ID of the check item.
         self.id = id
+        self.potential_score_increase = potential_score_increase
         # The checked resources.
         self.resources_summary = resources_summary
         # The rate of the non-compliant resources.
@@ -3522,6 +3542,8 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
             result['EvaluationTime'] = self.evaluation_time
         if self.id is not None:
             result['Id'] = self.id
+        if self.potential_score_increase is not None:
+            result['PotentialScoreIncrease'] = self.potential_score_increase
         if self.resources_summary is not None:
             result['ResourcesSummary'] = self.resources_summary.to_map()
         if self.result is not None:
@@ -3544,6 +3566,8 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
             self.evaluation_time = m.get('EvaluationTime')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('PotentialScoreIncrease') is not None:
+            self.potential_score_increase = m.get('PotentialScoreIncrease')
         if m.get('ResourcesSummary') is not None:
             temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary()
             self.resources_summary = temp_model.from_map(m['ResourcesSummary'])
@@ -3566,7 +3590,7 @@ class ListEvaluationResultsResponseBodyResults(TeaModel):
     ):
         # The end time of the overall check. The time is displayed in UTC.
         self.evaluation_time = evaluation_time
-        # The check results.
+        # The check result.
         self.metric_results = metric_results
         # The status of the overall check. Valid values:
         # 
