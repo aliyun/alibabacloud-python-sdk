@@ -31563,18 +31563,24 @@ class Client(OpenApiClient):
 
     def modify_log_backup_policy_with_options(
         self,
-        request: polardb_20170801_models.ModifyLogBackupPolicyRequest,
+        tmp_req: polardb_20170801_models.ModifyLogBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyLogBackupPolicyResponse:
         """
         @summary Modifies the retention policy of the log backups in a PolarDB cluster.
         
-        @param request: ModifyLogBackupPolicyRequest
+        @param tmp_req: ModifyLogBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLogBackupPolicyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.ModifyLogBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_log_policies):
+            request.advanced_log_policies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_log_policies, 'AdvancedLogPolicies', 'json')
         query = {}
+        if not UtilClient.is_unset(request.advanced_log_policies_shrink):
+            query['AdvancedLogPolicies'] = request.advanced_log_policies_shrink
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.log_backup_another_region_region):
@@ -31612,18 +31618,24 @@ class Client(OpenApiClient):
 
     async def modify_log_backup_policy_with_options_async(
         self,
-        request: polardb_20170801_models.ModifyLogBackupPolicyRequest,
+        tmp_req: polardb_20170801_models.ModifyLogBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyLogBackupPolicyResponse:
         """
         @summary Modifies the retention policy of the log backups in a PolarDB cluster.
         
-        @param request: ModifyLogBackupPolicyRequest
+        @param tmp_req: ModifyLogBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLogBackupPolicyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.ModifyLogBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_log_policies):
+            request.advanced_log_policies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_log_policies, 'AdvancedLogPolicies', 'json')
         query = {}
+        if not UtilClient.is_unset(request.advanced_log_policies_shrink):
+            query['AdvancedLogPolicies'] = request.advanced_log_policies_shrink
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.log_backup_another_region_region):

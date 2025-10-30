@@ -1,3 +1,8 @@
+2025-10-30 Version: 6.1.2
+- Update API DescribeMetaList: add response parameters Body.Items.$.Size.
+- Update API ModifyLogBackupPolicy: add request parameters AdvancedLogPolicies.
+
+
 2025-10-29 Version: 6.1.1
 - Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.PublicIp.
 
