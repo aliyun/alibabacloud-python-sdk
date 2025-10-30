@@ -1,7 +1,40 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class CreateClientCertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
 
 
 class CreateClientCertificateRequest(TeaModel):
@@ -20,9 +53,11 @@ class CreateClientCertificateRequest(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         san_type: int = None,
         san_value: str = None,
         state: str = None,
+        tags: List[CreateClientCertificateRequestTags] = None,
         years: int = None,
     ):
         # The expiration time of the client certificate. This value is a UNIX timestamp. Unit: seconds.
@@ -85,6 +120,7 @@ class CreateClientCertificateRequest(TeaModel):
         # 
         # > You can call the [DescribeCACertificateList] operation to query the unique identifier of an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
         # 
         # *   **1**: an email address
@@ -94,11 +130,15 @@ class CreateClientCertificateRequest(TeaModel):
         self.san_value = san_value
         # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        self.tags = tags
         # The validity period of the client certificate. Unit: years.
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -132,12 +172,18 @@ class CreateClientCertificateRequest(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.san_type is not None:
             result['SanType'] = self.san_type
         if self.san_value is not None:
             result['SanValue'] = self.san_value
         if self.state is not None:
             result['State'] = self.state
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.years is not None:
             result['Years'] = self.years
         return result
@@ -170,12 +216,19 @@ class CreateClientCertificateRequest(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SanType') is not None:
             self.san_type = m.get('SanType')
         if m.get('SanValue') is not None:
             self.san_value = m.get('SanValue')
         if m.get('State') is not None:
             self.state = m.get('State')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateClientCertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Years') is not None:
             self.years = m.get('Years')
         return self
@@ -278,6 +331,39 @@ class CreateClientCertificateResponse(TeaModel):
         return self
 
 
+class CreateClientCertificateWithCsrRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateClientCertificateWithCsrRequest(TeaModel):
     def __init__(
         self,
@@ -295,9 +381,11 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         san_type: int = None,
         san_value: str = None,
         state: str = None,
+        tags: List[CreateClientCertificateWithCsrRequestTags] = None,
         years: int = None,
     ):
         # The expiration time of the client certificate. This value is a UNIX timestamp. Unit: seconds.
@@ -364,6 +452,7 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
         # 
         # >  You can call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) operation to query the unique identifier of an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
         # 
         # *   **1**: an email address
@@ -373,11 +462,15 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
         self.san_value = san_value
         # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        self.tags = tags
         # The validity period of the client certificate. Unit: years.
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -413,12 +506,18 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.san_type is not None:
             result['SanType'] = self.san_type
         if self.san_value is not None:
             result['SanValue'] = self.san_value
         if self.state is not None:
             result['State'] = self.state
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.years is not None:
             result['Years'] = self.years
         return result
@@ -453,12 +552,19 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SanType') is not None:
             self.san_type = m.get('SanType')
         if m.get('SanValue') is not None:
             self.san_value = m.get('SanValue')
         if m.get('State') is not None:
             self.state = m.get('State')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateClientCertificateWithCsrRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Years') is not None:
             self.years = m.get('Years')
         return self
@@ -928,6 +1034,39 @@ class CreateCustomCertificateRequestApiPassthrough(TeaModel):
         return self
 
 
+class CreateCustomCertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCustomCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -936,6 +1075,8 @@ class CreateCustomCertificateRequest(TeaModel):
         enable_crl: int = None,
         immediately: int = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
+        tags: List[CreateCustomCertificateRequestTags] = None,
         validity: str = None,
     ):
         # The passthrough parameters.
@@ -959,6 +1100,8 @@ class CreateCustomCertificateRequest(TeaModel):
         # 
         # This parameter is required.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
+        self.tags = tags
         # The validity period of the certificate. The value cannot exceed the validity period of the certificate instance. Relative time and absolute time are supported.
         # 
         # Units of relative time: year, month, and day.
@@ -978,6 +1121,10 @@ class CreateCustomCertificateRequest(TeaModel):
     def validate(self):
         if self.api_passthrough:
             self.api_passthrough.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -995,6 +1142,12 @@ class CreateCustomCertificateRequest(TeaModel):
             result['Immediately'] = self.immediately
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.validity is not None:
             result['Validity'] = self.validity
         return result
@@ -1012,6 +1165,13 @@ class CreateCustomCertificateRequest(TeaModel):
             self.immediately = m.get('Immediately')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateCustomCertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Validity') is not None:
             self.validity = m.get('Validity')
         return self
@@ -1242,25 +1402,63 @@ class CreateExternalCACertificateRequestApiPassthrough(TeaModel):
         return self
 
 
+class CreateExternalCACertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateExternalCACertificateRequest(TeaModel):
     def __init__(
         self,
         api_passthrough: CreateExternalCACertificateRequestApiPassthrough = None,
         csr: str = None,
         instance_id: str = None,
+        resource_group_id: str = None,
+        tags: List[CreateExternalCACertificateRequestTags] = None,
         validity: str = None,
     ):
         self.api_passthrough = api_passthrough
-        # This parameter is required.
         self.csr = csr
-        # This parameter is required.
         self.instance_id = instance_id
-        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        self.tags = tags
         self.validity = validity
 
     def validate(self):
         if self.api_passthrough:
             self.api_passthrough.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1274,6 +1472,12 @@ class CreateExternalCACertificateRequest(TeaModel):
             result['Csr'] = self.csr
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.validity is not None:
             result['Validity'] = self.validity
         return result
@@ -1287,8 +1491,48 @@ class CreateExternalCACertificateRequest(TeaModel):
             self.csr = m.get('Csr')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateExternalCACertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Validity') is not None:
             self.validity = m.get('Validity')
+        return self
+
+
+class CreateExternalCACertificateShrinkRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1298,18 +1542,22 @@ class CreateExternalCACertificateShrinkRequest(TeaModel):
         api_passthrough_shrink: str = None,
         csr: str = None,
         instance_id: str = None,
+        resource_group_id: str = None,
+        tags: List[CreateExternalCACertificateShrinkRequestTags] = None,
         validity: str = None,
     ):
         self.api_passthrough_shrink = api_passthrough_shrink
-        # This parameter is required.
         self.csr = csr
-        # This parameter is required.
         self.instance_id = instance_id
-        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        self.tags = tags
         self.validity = validity
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1323,6 +1571,12 @@ class CreateExternalCACertificateShrinkRequest(TeaModel):
             result['Csr'] = self.csr
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.validity is not None:
             result['Validity'] = self.validity
         return result
@@ -1335,6 +1589,13 @@ class CreateExternalCACertificateShrinkRequest(TeaModel):
             self.csr = m.get('Csr')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateExternalCACertificateShrinkRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Validity') is not None:
             self.validity = m.get('Validity')
         return self
@@ -1527,6 +1788,39 @@ class CreateRevokeClientCertificateResponse(TeaModel):
         return self
 
 
+class CreateRootCACertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateRootCACertificateRequest(TeaModel):
     def __init__(
         self,
@@ -1537,7 +1831,9 @@ class CreateRootCACertificateRequest(TeaModel):
         locality: str = None,
         organization: str = None,
         organization_unit: str = None,
+        resource_group_id: str = None,
         state: str = None,
+        tags: List[CreateRootCACertificateRequestTags] = None,
         years: int = None,
     ):
         # The key algorithm of the root CA certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
@@ -1573,10 +1869,12 @@ class CreateRootCACertificateRequest(TeaModel):
         # 
         # This parameter is required.
         self.organization_unit = organization_unit
+        self.resource_group_id = resource_group_id
         # The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
         # 
         # This parameter is required.
         self.state = state
+        self.tags = tags
         # The validity period of the root CA certificate. Unit: years.
         # 
         # >  We recommend that you set this parameter to a value from 5 to 10.
@@ -1585,7 +1883,10 @@ class CreateRootCACertificateRequest(TeaModel):
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1607,8 +1908,14 @@ class CreateRootCACertificateRequest(TeaModel):
             result['Organization'] = self.organization
         if self.organization_unit is not None:
             result['OrganizationUnit'] = self.organization_unit
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.years is not None:
             result['Years'] = self.years
         return result
@@ -1629,8 +1936,15 @@ class CreateRootCACertificateRequest(TeaModel):
             self.organization = m.get('Organization')
         if m.get('OrganizationUnit') is not None:
             self.organization_unit = m.get('OrganizationUnit')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('State') is not None:
             self.state = m.get('State')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateRootCACertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Years') is not None:
             self.years = m.get('Years')
         return self
@@ -1726,6 +2040,39 @@ class CreateRootCACertificateResponse(TeaModel):
         return self
 
 
+class CreateServerCertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateServerCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -1743,7 +2090,9 @@ class CreateServerCertificateRequest(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         state: str = None,
+        tags: List[CreateServerCertificateRequestTags] = None,
         years: int = None,
     ):
         # The expiration time of the server certificate. This value is a UNIX timestamp. Unit: seconds.
@@ -1816,13 +2165,18 @@ class CreateServerCertificateRequest(TeaModel):
         # 
         # This parameter is required.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        self.tags = tags
         # The validity period of the server certificate. Unit: years.
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1858,8 +2212,14 @@ class CreateServerCertificateRequest(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.years is not None:
             result['Years'] = self.years
         return result
@@ -1894,8 +2254,15 @@ class CreateServerCertificateRequest(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('State') is not None:
             self.state = m.get('State')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateServerCertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Years') is not None:
             self.years = m.get('Years')
         return self
@@ -1998,6 +2365,39 @@ class CreateServerCertificateResponse(TeaModel):
         return self
 
 
+class CreateServerCertificateWithCsrRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateServerCertificateWithCsrRequest(TeaModel):
     def __init__(
         self,
@@ -2016,7 +2416,9 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         state: str = None,
+        tags: List[CreateServerCertificateWithCsrRequestTags] = None,
         years: int = None,
     ):
         # The expiration time of the server certificate. This value is a UNIX timestamp. Unit: seconds.
@@ -2092,13 +2494,18 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
         # 
         # This parameter is required.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        self.tags = tags
         # The validity period of the server certificate. Unit: years.
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2136,8 +2543,14 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.years is not None:
             result['Years'] = self.years
         return result
@@ -2174,8 +2587,15 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('State') is not None:
             self.state = m.get('State')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateServerCertificateWithCsrRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Years') is not None:
             self.years = m.get('Years')
         return self
@@ -2278,10 +2698,44 @@ class CreateServerCertificateWithCsrResponse(TeaModel):
         return self
 
 
+class CreateSubCACertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateSubCACertificateRequest(TeaModel):
     def __init__(
         self,
         algorithm: str = None,
+        client_token: str = None,
         common_name: str = None,
         country_code: str = None,
         crl_day: int = None,
@@ -2292,7 +2746,9 @@ class CreateSubCACertificateRequest(TeaModel):
         organization_unit: str = None,
         parent_identifier: str = None,
         path_len_constraint: int = None,
+        resource_group_id: str = None,
         state: str = None,
+        tags: List[CreateSubCACertificateRequestTags] = None,
         years: int = None,
     ):
         # The type of the key algorithm of the intermediate CA. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
@@ -2309,6 +2765,7 @@ class CreateSubCACertificateRequest(TeaModel):
         # 
         # This parameter is required.
         self.algorithm = algorithm
+        self.client_token = client_token
         # The common name or abbreviation of the organization. The value can contain letters.
         # 
         # This parameter is required.
@@ -2341,15 +2798,15 @@ class CreateSubCACertificateRequest(TeaModel):
         # The unique identifier of the root CA certificate.
         # 
         # > You can call the [DescribeCACertificateList] operation to query the unique identifiers of all CA certificates.
-        # 
-        # This parameter is required.
         self.parent_identifier = parent_identifier
         # The path length constraint of the certificate. Default value: 0.
         self.path_len_constraint = path_len_constraint
+        self.resource_group_id = resource_group_id
         # The name of the province or state in which the organization is located. The value can contain letters.
         # 
         # This parameter is required.
         self.state = state
+        self.tags = tags
         # The validity period of the intermediate CA certificate. Unit: years.
         # 
         # We recommend that you set this parameter to 5 to 10.
@@ -2360,7 +2817,10 @@ class CreateSubCACertificateRequest(TeaModel):
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2370,6 +2830,8 @@ class CreateSubCACertificateRequest(TeaModel):
         result = dict()
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.common_name is not None:
             result['CommonName'] = self.common_name
         if self.country_code is not None:
@@ -2390,8 +2852,14 @@ class CreateSubCACertificateRequest(TeaModel):
             result['ParentIdentifier'] = self.parent_identifier
         if self.path_len_constraint is not None:
             result['PathLenConstraint'] = self.path_len_constraint
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.years is not None:
             result['Years'] = self.years
         return result
@@ -2400,6 +2868,8 @@ class CreateSubCACertificateRequest(TeaModel):
         m = m or dict()
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
@@ -2420,8 +2890,15 @@ class CreateSubCACertificateRequest(TeaModel):
             self.parent_identifier = m.get('ParentIdentifier')
         if m.get('PathLenConstraint') is not None:
             self.path_len_constraint = m.get('PathLenConstraint')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('State') is not None:
             self.state = m.get('State')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateSubCACertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Years') is not None:
             self.years = m.get('Years')
         return self
@@ -2648,6 +3125,39 @@ class DescribeCACertificateRequest(TeaModel):
         return self
 
 
+class DescribeCACertificateResponseBodyCertificateTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeCACertificateResponseBodyCertificate(TeaModel):
     def __init__(
         self,
@@ -2673,6 +3183,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         sans: str = None,
         serial_number: str = None,
         sha_2: str = None,
@@ -2680,6 +3191,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         state: str = None,
         status: str = None,
         subject_dn: str = None,
+        tags: List[DescribeCACertificateResponseBodyCertificateTags] = None,
         x_509certificate: str = None,
         years: int = None,
     ):
@@ -2736,6 +3248,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         # 
         # >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # This parameter is deprecated.
         self.sans = sans
         # The serial number of the CA certificate.
@@ -2760,12 +3273,16 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         # *   **ST**: the name of the province, municipality, or autonomous region in which the organization is located
         # *   **CN**: the common name or abbreviation of the organization
         self.subject_dn = subject_dn
+        self.tags = tags
         # The content of the CA certificate.
         self.x_509certificate = x_509certificate
         self.years = years
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2817,6 +3334,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sans is not None:
             result['Sans'] = self.sans
         if self.serial_number is not None:
@@ -2831,6 +3350,10 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             result['Status'] = self.status
         if self.subject_dn is not None:
             result['SubjectDN'] = self.subject_dn
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         if self.years is not None:
@@ -2883,6 +3406,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
         if m.get('SerialNumber') is not None:
@@ -2897,6 +3422,11 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             self.status = m.get('Status')
         if m.get('SubjectDN') is not None:
             self.subject_dn = m.get('SubjectDN')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeCACertificateResponseBodyCertificateTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         if m.get('Years') is not None:
@@ -3073,6 +3603,7 @@ class DescribeCACertificateListRequest(TeaModel):
         current_page: int = None,
         identifier: str = None,
         issuer_type: str = None,
+        resource_group_id: str = None,
         show_size: int = None,
         valid_status: str = None,
     ):
@@ -3100,6 +3631,7 @@ class DescribeCACertificateListRequest(TeaModel):
         # - iTrusChina: Compliance CA.
         # - external: External Import.
         self.issuer_type = issuer_type
+        self.resource_group_id = resource_group_id
         # The number of CA certificates per page. Default value: **20**.
         self.show_size = show_size
         # valid time.
@@ -3127,6 +3659,8 @@ class DescribeCACertificateListRequest(TeaModel):
             result['Identifier'] = self.identifier
         if self.issuer_type is not None:
             result['IssuerType'] = self.issuer_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.show_size is not None:
             result['ShowSize'] = self.show_size
         if self.valid_status is not None:
@@ -3145,6 +3679,8 @@ class DescribeCACertificateListRequest(TeaModel):
             self.identifier = m.get('Identifier')
         if m.get('IssuerType') is not None:
             self.issuer_type = m.get('IssuerType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ShowSize') is not None:
             self.show_size = m.get('ShowSize')
         if m.get('ValidStatus') is not None:
@@ -3170,6 +3706,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         sans: str = None,
         serial_number: str = None,
         sha_2: str = None,
@@ -3221,6 +3758,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         # 
         # >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # This parameter is deprecated.
         self.sans = sans
         # The serial number of the CA certificate.
@@ -3289,6 +3827,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sans is not None:
             result['Sans'] = self.sans
         if self.serial_number is not None:
@@ -3343,6 +3883,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
         if m.get('SerialNumber') is not None:
@@ -3629,6 +4171,39 @@ class DescribeClientCertificateRequest(TeaModel):
         return self
 
 
+class DescribeClientCertificateResponseBodyCertificateTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeClientCertificateResponseBodyCertificate(TeaModel):
     def __init__(
         self,
@@ -3646,6 +4221,7 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         sans: str = None,
         serial_number: str = None,
         sha_2: str = None,
@@ -3653,6 +4229,7 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         state: str = None,
         status: str = None,
         subject_dn: str = None,
+        tags: List[DescribeClientCertificateResponseBodyCertificateTags] = None,
         x_509certificate: str = None,
     ):
         # The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
@@ -3692,6 +4269,7 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         self.organization_unit = organization_unit
         # The unique identifier of the intermediate certificate from which the client certificate is issued.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
         # 
         # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
@@ -3727,11 +4305,15 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         # *   **ST**: the province, municipality, or autonomous region
         # *   **CN**: the common name
         self.subject_dn = subject_dn
+        self.tags = tags
         # The content of the certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3767,6 +4349,8 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sans is not None:
             result['Sans'] = self.sans
         if self.serial_number is not None:
@@ -3781,6 +4365,10 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
             result['Status'] = self.status
         if self.subject_dn is not None:
             result['SubjectDN'] = self.subject_dn
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         return result
@@ -3815,6 +4403,8 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
         if m.get('SerialNumber') is not None:
@@ -3829,6 +4419,11 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
             self.status = m.get('Status')
         if m.get('SubjectDN') is not None:
             self.subject_dn = m.get('SubjectDN')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeClientCertificateResponseBodyCertificateTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         return self
@@ -4628,6 +5223,7 @@ class ListClientCertificateRequest(TeaModel):
         self,
         current_page: int = None,
         identifier: str = None,
+        resource_group_id: str = None,
         show_size: int = None,
     ):
         # The number of the page to return. Default value: **1**.
@@ -4636,6 +5232,7 @@ class ListClientCertificateRequest(TeaModel):
         # 
         # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
         self.identifier = identifier
+        self.resource_group_id = resource_group_id
         # The number of certificates to return on each page. Default value: **20**.
         self.show_size = show_size
 
@@ -4652,6 +5249,8 @@ class ListClientCertificateRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.identifier is not None:
             result['Identifier'] = self.identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.show_size is not None:
             result['ShowSize'] = self.show_size
         return result
@@ -4662,6 +5261,8 @@ class ListClientCertificateRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ShowSize') is not None:
             self.show_size = m.get('ShowSize')
         return self
@@ -4684,6 +5285,7 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
         organization: str = None,
         organization_unit: str = None,
         parent_identifier: str = None,
+        resource_group_id: str = None,
         sans: str = None,
         serial_number: str = None,
         sha_2: str = None,
@@ -4730,6 +5332,7 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
         self.organization_unit = organization_unit
         # The unique identifier of the intermediate certificate from which the client certificate is issued.
         self.parent_identifier = parent_identifier
+        self.resource_group_id = resource_group_id
         # The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
         # 
         # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
@@ -4805,6 +5408,8 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
             result['OrganizationUnit'] = self.organization_unit
         if self.parent_identifier is not None:
             result['ParentIdentifier'] = self.parent_identifier
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sans is not None:
             result['Sans'] = self.sans
         if self.serial_number is not None:
@@ -4853,6 +5458,8 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
             self.organization_unit = m.get('OrganizationUnit')
         if m.get('ParentIdentifier') is not None:
             self.parent_identifier = m.get('ParentIdentifier')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
         if m.get('SerialNumber') is not None:

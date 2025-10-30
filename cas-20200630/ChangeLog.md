@@ -1,3 +1,31 @@
+2025-10-30 Version: 1.2.2
+- Update API CreateClientCertificate: add request parameters ResourceGroupId.
+- Update API CreateClientCertificate: add request parameters Tags.
+- Update API CreateClientCertificateWithCsr: add request parameters ResourceGroupId.
+- Update API CreateClientCertificateWithCsr: add request parameters Tags.
+- Update API CreateCustomCertificate: add request parameters ResourceGroupId.
+- Update API CreateCustomCertificate: add request parameters Tags.
+- Update API CreateExternalCACertificate: add request parameters ResourceGroupId.
+- Update API CreateExternalCACertificate: add request parameters Tags.
+- Update API CreateRootCACertificate: add request parameters ResourceGroupId.
+- Update API CreateRootCACertificate: add request parameters Tags.
+- Update API CreateServerCertificate: add request parameters ResourceGroupId.
+- Update API CreateServerCertificate: add request parameters Tags.
+- Update API CreateServerCertificateWithCsr: add request parameters ResourceGroupId.
+- Update API CreateServerCertificateWithCsr: add request parameters Tags.
+- Update API CreateSubCACertificate: add request parameters ClientToken.
+- Update API CreateSubCACertificate: add request parameters ResourceGroupId.
+- Update API CreateSubCACertificate: add request parameters Tags.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.ResourceGroupId.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.Tags.
+- Update API DescribeCACertificateList: add request parameters ResourceGroupId.
+- Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.ResourceGroupId.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.ResourceGroupId.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.Tags.
+- Update API ListClientCertificate: add request parameters ResourceGroupId.
+- Update API ListClientCertificate: add response parameters Body.CertificateList.$.ResourceGroupId.
+
+
 2025-09-17 Version: 1.2.1
 - Generated python 2020-06-30 for cas.
 

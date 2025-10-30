@@ -138,12 +138,16 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.san_type):
             query['SanType'] = request.san_type
         if not UtilClient.is_unset(request.san_value):
             query['SanValue'] = request.san_value
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -209,12 +213,16 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.san_type):
             query['SanType'] = request.san_type
         if not UtilClient.is_unset(request.san_value):
             query['SanValue'] = request.san_value
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -316,12 +324,16 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.san_type):
             query['SanType'] = request.san_type
         if not UtilClient.is_unset(request.san_value):
             query['SanValue'] = request.san_value
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -389,12 +401,16 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.san_type):
             query['SanType'] = request.san_type
         if not UtilClient.is_unset(request.san_value):
             query['SanValue'] = request.san_value
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -490,6 +506,10 @@ class Client(OpenApiClient):
             query['Immediately'] = request.immediately
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.validity):
             query['Validity'] = request.validity
         req = open_api_models.OpenApiRequest(
@@ -551,6 +571,10 @@ class Client(OpenApiClient):
             query['Immediately'] = request.immediately
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.validity):
             query['Validity'] = request.validity
         req = open_api_models.OpenApiRequest(
@@ -654,6 +678,10 @@ class Client(OpenApiClient):
             query['Csr'] = request.csr
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.validity):
             query['Validity'] = request.validity
         req = open_api_models.OpenApiRequest(
@@ -699,6 +727,10 @@ class Client(OpenApiClient):
             query['Csr'] = request.csr
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.validity):
             query['Validity'] = request.validity
         req = open_api_models.OpenApiRequest(
@@ -895,8 +927,12 @@ class Client(OpenApiClient):
             query['Organization'] = request.organization
         if not UtilClient.is_unset(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -951,8 +987,12 @@ class Client(OpenApiClient):
             query['Organization'] = request.organization
         if not UtilClient.is_unset(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -1056,8 +1096,12 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -1125,8 +1169,12 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -1229,8 +1277,12 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -1299,8 +1351,12 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
@@ -1395,12 +1451,20 @@ class Client(OpenApiClient):
             query['ParentIdentifier'] = request.parent_identifier
         if not UtilClient.is_unset(request.path_len_constraint):
             query['PathLenConstraint'] = request.path_len_constraint
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateSubCACertificate',
@@ -1459,12 +1523,20 @@ class Client(OpenApiClient):
             query['ParentIdentifier'] = request.parent_identifier
         if not UtilClient.is_unset(request.path_len_constraint):
             query['PathLenConstraint'] = request.path_len_constraint
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.years):
             query['Years'] = request.years
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateSubCACertificate',
@@ -1864,6 +1936,8 @@ class Client(OpenApiClient):
             query['Identifier'] = request.identifier
         if not UtilClient.is_unset(request.issuer_type):
             query['IssuerType'] = request.issuer_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.show_size):
             query['ShowSize'] = request.show_size
         if not UtilClient.is_unset(request.valid_status):
@@ -1915,6 +1989,8 @@ class Client(OpenApiClient):
             query['Identifier'] = request.identifier
         if not UtilClient.is_unset(request.issuer_type):
             query['IssuerType'] = request.issuer_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.show_size):
             query['ShowSize'] = request.show_size
         if not UtilClient.is_unset(request.valid_status):
@@ -2638,6 +2714,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.identifier):
             query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.show_size):
             query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
@@ -2681,6 +2759,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.identifier):
             query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.show_size):
             query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
