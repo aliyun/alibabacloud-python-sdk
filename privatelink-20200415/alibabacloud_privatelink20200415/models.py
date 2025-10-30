@@ -170,6 +170,7 @@ class AddZoneToVpcEndpointRequest(TeaModel):
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
+        # The IPv6 address of the endpoint ENI in the zone that you want to add.
         self.ipv_6address = ipv_6address
         # The region ID of the endpoint.
         # 
@@ -327,7 +328,7 @@ class AttachResourceToVpcEndpointServiceRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the endpoint service to which you want to add the service resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -840,16 +841,17 @@ class CreateVpcEndpointRequestZone(TeaModel):
         zone_id: str = None,
         ip: str = None,
     ):
+        # The IPv6 address of the zone where the endpoint is deployed.
+        # 
+        # >  You can specify this parameter only if AddressIpVersion is set to DualStack.
         self.ipv_6address = ipv_6address
-        # The ID of the vSwitch where you want to create the endpoint ENI in the zone. You can specify up to 10 vSwitch IDs.
+        # The ID of the vSwitch for which you want to create the endpoint elastic network interface (ENI) in the zone. You can specify up to 10 vSwitches.
         self.v_switch_id = v_switch_id
-        # The ID of the zone in which the endpoint is deployed.
+        # The ID of the zone where the endpoint service is deployed.
         # 
-        # You can specify up to 10 zone IDs.
+        # You can specify up to 10 zones.
         self.zone_id = zone_id
-        # The IP address of the zone in which the endpoint is deployed.
-        # 
-        # You can specify up to 10 IP addresses.
+        # The IP address of the zone where the endpoint is deployed.
         self.ip = ip
 
     def validate(self):
@@ -903,8 +905,15 @@ class CreateVpcEndpointRequest(TeaModel):
         tag: List[CreateVpcEndpointRequestTag] = None,
         vpc_id: str = None,
         zone: List[CreateVpcEndpointRequestZone] = None,
+        zone_affinity_enabled: bool = None,
         zone_private_ip_address_count: int = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4** (default)
+        # *   **DualStack**\
+        # 
+        # >  An endpoint supports dual-stack if its associated endpoint service and VPC both support dual-stack.
         self.address_ip_version = address_ip_version
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -958,6 +967,7 @@ class CreateVpcEndpointRequest(TeaModel):
         self.vpc_id = vpc_id
         # The zones where the endpoint is deployed.
         self.zone = zone
+        self.zone_affinity_enabled = zone_affinity_enabled
         # The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Set the value to **1**.
         self.zone_private_ip_address_count = zone_private_ip_address_count
 
@@ -1013,6 +1023,8 @@ class CreateVpcEndpointRequest(TeaModel):
         if self.zone is not None:
             for k in self.zone:
                 result['Zone'].append(k.to_map() if k else None)
+        if self.zone_affinity_enabled is not None:
+            result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         if self.zone_private_ip_address_count is not None:
             result['ZonePrivateIpAddressCount'] = self.zone_private_ip_address_count
         return result
@@ -1057,6 +1069,8 @@ class CreateVpcEndpointRequest(TeaModel):
             for k in m.get('Zone'):
                 temp_model = CreateVpcEndpointRequestZone()
                 self.zone.append(temp_model.from_map(k))
+        if m.get('ZoneAffinityEnabled') is not None:
+            self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         if m.get('ZonePrivateIpAddressCount') is not None:
             self.zone_private_ip_address_count = m.get('ZonePrivateIpAddressCount')
         return self
@@ -1079,7 +1093,12 @@ class CreateVpcEndpointResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         vpc_id: str = None,
+        zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4** (default)
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # The bandwidth of the endpoint connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
@@ -1122,6 +1141,7 @@ class CreateVpcEndpointResponseBody(TeaModel):
         self.service_name = service_name
         # The ID of the VPC to which the endpoint belongs.
         self.vpc_id = vpc_id
+        self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
         pass
@@ -1160,6 +1180,8 @@ class CreateVpcEndpointResponseBody(TeaModel):
             result['ServiceName'] = self.service_name
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.zone_affinity_enabled is not None:
+            result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -1192,6 +1214,8 @@ class CreateVpcEndpointResponseBody(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('ZoneAffinityEnabled') is not None:
+            self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         return self
 
 
@@ -1243,7 +1267,7 @@ class CreateVpcEndpointServiceRequestResource(TeaModel):
         resource_type: str = None,
         zone_id: str = None,
     ):
-        # The ID of the service resource that is added to the endpoint service. You can specify up to 20 service resource IDs.
+        # The ID of the service resource that is added to the endpoint service.
         self.resource_id = resource_id
         # The type of the service resource that is added to the endpoint service. You can add up to 20 service resources to the endpoint service. Valid values:
         # 
@@ -1253,7 +1277,7 @@ class CreateVpcEndpointServiceRequestResource(TeaModel):
         # 
         # >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service. You cannot access TCP/SSL listeners configured for NLB instances.
         self.resource_type = resource_type
-        # The ID of the zone.
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1340,6 +1364,12 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         tag: List[CreateVpcEndpointServiceRequestTag] = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4** (default)
+        # *   **DualStack**\
+        # 
+        # >  You can set the protocol to DualStack only for endpoint services whose backend resource type is NLB. An endpoint service supports dual-stack only if its backend resources support dual-stack.
         self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 
@@ -1366,7 +1396,7 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The service resources of the endpoint service.
+        # The service resources of the endpoint service. You can create at most 10 resources. After the resource is created, you can continue to add service resources to the endpoint.
         self.resource = resource
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -1495,6 +1525,10 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
         service_support_ipv_6: bool = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         # 
@@ -3199,7 +3233,7 @@ class GetVpcEndpointAttributeRequest(TeaModel):
         self.endpoint_id = endpoint_id
         # The region ID of the endpoint whose attributes you want to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3538,6 +3572,10 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
         zone_affinity_enabled: bool = None,
         zones: List[str] = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # Indicates whether endpoint connection requests are automatically accepted. Valid values:
         # 
@@ -5160,13 +5198,13 @@ class ListVpcEndpointServicesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5211,13 +5249,17 @@ class ListVpcEndpointServicesRequest(TeaModel):
         tag: List[ListVpcEndpointServicesRequestTag] = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.auto_accept_enabled = auto_accept_enabled
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+        # The number of entries per page. Valid values: **1** to **1000**. Default value: **50**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -5255,7 +5297,7 @@ class ListVpcEndpointServicesRequest(TeaModel):
         # *   **Active**: The endpoint service is available.
         # *   **Deleting**: The endpoint service is being deleted
         self.service_status = service_status
-        # The list of tags.
+        # The tags.
         self.tag = tag
         # Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         # 
@@ -5402,6 +5444,10 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
         tags: List[ListVpcEndpointServicesResponseBodyServicesTags] = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # Indicates whether endpoint connection requests are automatically accepted. Valid values:
         # 
@@ -5686,13 +5732,13 @@ class ListVpcEndpointServicesByEndUserRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5731,7 +5777,7 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         service_type: str = None,
         tag: List[ListVpcEndpointServicesByEndUserRequestTag] = None,
     ):
-        # The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
+        # The number of entries per page. Valid values: **1** to **1000**. Default value: **50**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -5754,7 +5800,7 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         # 
         # Set the value to **Interface**. You can specify CLB and ALB instances as service resources for the endpoint service.
         self.service_type = service_type
-        # The list of tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -5861,8 +5907,13 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         service_support_ipv_6: bool = None,
         service_type: str = None,
         tags: List[ListVpcEndpointServicesByEndUserResponseBodyServicesTags] = None,
+        zone_affinity_enabled: bool = None,
         zones: List[str] = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # The payer. Valid values:
         # 
@@ -5894,6 +5945,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         self.service_type = service_type
         # The list of tags.
         self.tags = tags
+        self.zone_affinity_enabled = zone_affinity_enabled
         # The zones of the endpoint service that can be associated with the endpoint.
         self.zones = zones
 
@@ -5931,6 +5983,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.zone_affinity_enabled is not None:
+            result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         if self.zones is not None:
             result['Zones'] = self.zones
         return result
@@ -5960,6 +6014,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListVpcEndpointServicesByEndUserResponseBodyServicesTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('ZoneAffinityEnabled') is not None:
+            self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         if m.get('Zones') is not None:
             self.zones = m.get('Zones')
         return self
@@ -6337,13 +6393,13 @@ class ListVpcEndpointsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The key of the tag added to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -6387,6 +6443,10 @@ class ListVpcEndpointsRequest(TeaModel):
         tag: List[ListVpcEndpointsRequestTag] = None,
         vpc_id: str = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # The state of the endpoint connection. Valid values:
         # 
@@ -6414,7 +6474,7 @@ class ListVpcEndpointsRequest(TeaModel):
         # *   **Interface**: interface endpoint
         # *   **Reverse**: reverse endpoint
         self.endpoint_type = endpoint_type
-        # The number of entries returned on each page.
+        # The number of entries per page. Valid values: **1** to **1000**. Default value: **50**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -6431,7 +6491,7 @@ class ListVpcEndpointsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The name of the endpoint service with which the endpoint is associated.
         self.service_name = service_name
-        # The list of tags.
+        # The tags.
         self.tag = tag
         # The ID of the VPC to which the endpoint belongs.
         self.vpc_id = vpc_id
@@ -6571,6 +6631,10 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         vpc_id: str = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # The bandwidth of the endpoint connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
@@ -7602,7 +7666,14 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         endpoint_name: str = None,
         policy_document: str = None,
         region_id: str = None,
+        zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
+        # 
+        # >  An endpoint supports dual-stack only if its associated endpoint service and VPC support dual-stack.
         self.address_ip_version = address_ip_version
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -7630,6 +7701,7 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
         pass
@@ -7656,6 +7728,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             result['PolicyDocument'] = self.policy_document
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.zone_affinity_enabled is not None:
+            result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -7676,6 +7750,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             self.policy_document = m.get('PolicyDocument')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ZoneAffinityEnabled') is not None:
+            self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         return self
 
 
@@ -7907,6 +7983,12 @@ class UpdateVpcEndpointServiceAttributeRequest(TeaModel):
         service_support_ipv_6: bool = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
+        # 
+        # >  You can set the protocol to DualStack only for endpoint services whose backend resource type is NLB.
         self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 

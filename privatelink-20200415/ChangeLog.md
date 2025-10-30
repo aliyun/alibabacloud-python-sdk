@@ -1,3 +1,10 @@
+2025-10-30 Version: 4.0.3
+- Update API CreateVpcEndpoint: add request parameters ZoneAffinityEnabled.
+- Update API CreateVpcEndpoint: add response parameters Body.ZoneAffinityEnabled.
+- Update API ListVpcEndpointServicesByEndUser: add response parameters Body.Services.$.ZoneAffinityEnabled.
+- Update API UpdateVpcEndpointAttribute: add request parameters ZoneAffinityEnabled.
+
+
 2025-02-10 Version: 4.0.2
 - Update API AddZoneToVpcEndpoint: add param Ipv6Address.
 - Update API CreateVpcEndpoint: add param AddressIpVersion.
