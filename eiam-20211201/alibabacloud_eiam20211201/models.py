@@ -135,6 +135,122 @@ class AddApplicationAccountToUserResponse(TeaModel):
         return self
 
 
+class AddCustomPrivacyPoliciesToBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        custom_privacy_policy_ids: List[str] = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # 条款ID列表
+        # 
+        # This parameter is required.
+        self.custom_privacy_policy_ids = custom_privacy_policy_ids
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.custom_privacy_policy_ids is not None:
+            result['CustomPrivacyPolicyIds'] = self.custom_privacy_policy_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('CustomPrivacyPolicyIds') is not None:
+            self.custom_privacy_policy_ids = m.get('CustomPrivacyPolicyIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class AddCustomPrivacyPoliciesToBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddCustomPrivacyPoliciesToBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomPrivacyPoliciesToBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomPrivacyPoliciesToBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddUserToOrganizationalUnitsRequest(TeaModel):
     def __init__(
         self,
@@ -1973,6 +2089,246 @@ class CreateConditionalAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_item_name: str = None,
+        custom_privacy_policy_item_url: str = None,
+    ):
+        # 自定义条款名称
+        self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
+        # 自定义条款访问地址
+        self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_item_name is not None:
+            result['CustomPrivacyPolicyItemName'] = self.custom_privacy_policy_item_name
+        if self.custom_privacy_policy_item_url is not None:
+            result['CustomPrivacyPolicyItemUrl'] = self.custom_privacy_policy_item_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyItemName') is not None:
+            self.custom_privacy_policy_item_name = m.get('CustomPrivacyPolicyItemName')
+        if m.get('CustomPrivacyPolicyItemUrl') is not None:
+            self.custom_privacy_policy_item_url = m.get('CustomPrivacyPolicyItemUrl')
+        return self
+
+
+class CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_items: List[CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems] = None,
+        custom_privacy_policy_tip: str = None,
+        language_code: str = None,
+    ):
+        # 自定义条款项
+        self.custom_privacy_policy_items = custom_privacy_policy_items
+        # 自定义条款提示
+        self.custom_privacy_policy_tip = custom_privacy_policy_tip
+        # 自定义条款所属语言
+        self.language_code = language_code
+
+    def validate(self):
+        if self.custom_privacy_policy_items:
+            for k in self.custom_privacy_policy_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPrivacyPolicyItems'] = []
+        if self.custom_privacy_policy_items is not None:
+            for k in self.custom_privacy_policy_items:
+                result['CustomPrivacyPolicyItems'].append(k.to_map() if k else None)
+        if self.custom_privacy_policy_tip is not None:
+            result['CustomPrivacyPolicyTip'] = self.custom_privacy_policy_tip
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_privacy_policy_items = []
+        if m.get('CustomPrivacyPolicyItems') is not None:
+            for k in m.get('CustomPrivacyPolicyItems'):
+                temp_model = CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems()
+                self.custom_privacy_policy_items.append(temp_model.from_map(k))
+        if m.get('CustomPrivacyPolicyTip') is not None:
+            self.custom_privacy_policy_tip = m.get('CustomPrivacyPolicyTip')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class CreateCustomPrivacyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        custom_privacy_policy_contents: List[CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents] = None,
+        custom_privacy_policy_name: str = None,
+        default_language_code: str = None,
+        instance_id: str = None,
+        status: str = None,
+        user_consent_type: str = None,
+    ):
+        self.client_token = client_token
+        # 自定义条款内容详情
+        self.custom_privacy_policy_contents = custom_privacy_policy_contents
+        # 自定义条款名称
+        # 
+        # This parameter is required.
+        self.custom_privacy_policy_name = custom_privacy_policy_name
+        # 默认条款语言，若其他语言未配置条款，则使用默认的
+        self.default_language_code = default_language_code
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 自定义条款状态
+        self.status = status
+        # 手动勾选同意，还是默认同意
+        self.user_consent_type = user_consent_type
+
+    def validate(self):
+        if self.custom_privacy_policy_contents:
+            for k in self.custom_privacy_policy_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['CustomPrivacyPolicyContents'] = []
+        if self.custom_privacy_policy_contents is not None:
+            for k in self.custom_privacy_policy_contents:
+                result['CustomPrivacyPolicyContents'].append(k.to_map() if k else None)
+        if self.custom_privacy_policy_name is not None:
+            result['CustomPrivacyPolicyName'] = self.custom_privacy_policy_name
+        if self.default_language_code is not None:
+            result['DefaultLanguageCode'] = self.default_language_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_consent_type is not None:
+            result['UserConsentType'] = self.user_consent_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.custom_privacy_policy_contents = []
+        if m.get('CustomPrivacyPolicyContents') is not None:
+            for k in m.get('CustomPrivacyPolicyContents'):
+                temp_model = CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents()
+                self.custom_privacy_policy_contents.append(temp_model.from_map(k))
+        if m.get('CustomPrivacyPolicyName') is not None:
+            self.custom_privacy_policy_name = m.get('CustomPrivacyPolicyName')
+        if m.get('DefaultLanguageCode') is not None:
+            self.default_language_code = m.get('DefaultLanguageCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserConsentType') is not None:
+            self.user_consent_type = m.get('UserConsentType')
+        return self
+
+
+class CreateCustomPrivacyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+        request_id: str = None,
+    ):
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCustomPrivacyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCustomPrivacyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCustomPrivacyPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5522,6 +5878,113 @@ class DeleteConditionalAccessPolicyResponse(TeaModel):
         return self
 
 
+class DeleteCustomPrivacyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # 自定义条款ID
+        # 
+        # This parameter is required.
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteCustomPrivacyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomPrivacyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomPrivacyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomPrivacyPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainRequest(TeaModel):
     def __init__(
         self,
@@ -7704,6 +8167,111 @@ class DisableConditionalAccessPolicyResponse(TeaModel):
         return self
 
 
+class DisableCustomPrivacyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableCustomPrivacyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableCustomPrivacyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableCustomPrivacyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableCustomPrivacyPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableDomainProxyTokenRequest(TeaModel):
     def __init__(
         self,
@@ -9342,6 +9910,111 @@ class EnableConditionalAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableCustomPrivacyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableCustomPrivacyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableCustomPrivacyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableCustomPrivacyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableCustomPrivacyPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12873,6 +13546,272 @@ class GetConditionalAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCustomPrivacyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # 自定义条款ID
+        # 
+        # This parameter is required.
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContentsCustomPrivacyPolicyItems(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_item_name: str = None,
+        custom_privacy_policy_item_url: str = None,
+    ):
+        self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
+        self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_item_name is not None:
+            result['CustomPrivacyPolicyItemName'] = self.custom_privacy_policy_item_name
+        if self.custom_privacy_policy_item_url is not None:
+            result['CustomPrivacyPolicyItemUrl'] = self.custom_privacy_policy_item_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyItemName') is not None:
+            self.custom_privacy_policy_item_name = m.get('CustomPrivacyPolicyItemName')
+        if m.get('CustomPrivacyPolicyItemUrl') is not None:
+            self.custom_privacy_policy_item_url = m.get('CustomPrivacyPolicyItemUrl')
+        return self
+
+
+class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_items: List[GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContentsCustomPrivacyPolicyItems] = None,
+        custom_privacy_policy_tip: str = None,
+        language_code: str = None,
+    ):
+        self.custom_privacy_policy_items = custom_privacy_policy_items
+        self.custom_privacy_policy_tip = custom_privacy_policy_tip
+        self.language_code = language_code
+
+    def validate(self):
+        if self.custom_privacy_policy_items:
+            for k in self.custom_privacy_policy_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPrivacyPolicyItems'] = []
+        if self.custom_privacy_policy_items is not None:
+            for k in self.custom_privacy_policy_items:
+                result['CustomPrivacyPolicyItems'].append(k.to_map() if k else None)
+        if self.custom_privacy_policy_tip is not None:
+            result['CustomPrivacyPolicyTip'] = self.custom_privacy_policy_tip
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_privacy_policy_items = []
+        if m.get('CustomPrivacyPolicyItems') is not None:
+            for k in m.get('CustomPrivacyPolicyItems'):
+                temp_model = GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContentsCustomPrivacyPolicyItems()
+                self.custom_privacy_policy_items.append(temp_model.from_map(k))
+        if m.get('CustomPrivacyPolicyTip') is not None:
+            self.custom_privacy_policy_tip = m.get('CustomPrivacyPolicyTip')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_contents: List[GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents] = None,
+        custom_privacy_policy_id: str = None,
+        custom_privacy_policy_name: str = None,
+        default_language_code: str = None,
+        instance_id: str = None,
+        status: str = None,
+        user_consent_type: str = None,
+    ):
+        self.custom_privacy_policy_contents = custom_privacy_policy_contents
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        self.custom_privacy_policy_name = custom_privacy_policy_name
+        self.default_language_code = default_language_code
+        self.instance_id = instance_id
+        self.status = status
+        self.user_consent_type = user_consent_type
+
+    def validate(self):
+        if self.custom_privacy_policy_contents:
+            for k in self.custom_privacy_policy_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPrivacyPolicyContents'] = []
+        if self.custom_privacy_policy_contents is not None:
+            for k in self.custom_privacy_policy_contents:
+                result['CustomPrivacyPolicyContents'].append(k.to_map() if k else None)
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.custom_privacy_policy_name is not None:
+            result['CustomPrivacyPolicyName'] = self.custom_privacy_policy_name
+        if self.default_language_code is not None:
+            result['DefaultLanguageCode'] = self.default_language_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_consent_type is not None:
+            result['UserConsentType'] = self.user_consent_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_privacy_policy_contents = []
+        if m.get('CustomPrivacyPolicyContents') is not None:
+            for k in m.get('CustomPrivacyPolicyContents'):
+                temp_model = GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents()
+                self.custom_privacy_policy_contents.append(temp_model.from_map(k))
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('CustomPrivacyPolicyName') is not None:
+            self.custom_privacy_policy_name = m.get('CustomPrivacyPolicyName')
+        if m.get('DefaultLanguageCode') is not None:
+            self.default_language_code = m.get('DefaultLanguageCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserConsentType') is not None:
+            self.user_consent_type = m.get('UserConsentType')
+        return self
+
+
+class GetCustomPrivacyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy: GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy = None,
+        request_id: str = None,
+    ):
+        self.custom_privacy_policy = custom_privacy_policy
+        self.request_id = request_id
+
+    def validate(self):
+        if self.custom_privacy_policy:
+            self.custom_privacy_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy is not None:
+            result['CustomPrivacyPolicy'] = self.custom_privacy_policy.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicy') is not None:
+            temp_model = GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy()
+            self.custom_privacy_policy = temp_model.from_map(m['CustomPrivacyPolicy'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCustomPrivacyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCustomPrivacyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCustomPrivacyPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25158,6 +26097,433 @@ class ListConditionalAccessPoliciesForUserResponse(TeaModel):
         return self
 
 
+class ListCustomPrivacyPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_name_starts_with: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # 自定义条款名称，左模糊匹配
+        self.custom_privacy_policy_name_starts_with = custom_privacy_policy_name_starts_with
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_name_starts_with is not None:
+            result['CustomPrivacyPolicyNameStartsWith'] = self.custom_privacy_policy_name_starts_with
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyNameStartsWith') is not None:
+            self.custom_privacy_policy_name_starts_with = m.get('CustomPrivacyPolicyNameStartsWith')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+        custom_privacy_policy_name: str = None,
+        default_language_code: str = None,
+        instance_id: str = None,
+        status: str = None,
+        user_consent_type: str = None,
+    ):
+        # 自定义条款Id
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        # 自定义条款名称
+        self.custom_privacy_policy_name = custom_privacy_policy_name
+        # 若显示语言未配置时，门户侧展示默认语言展示条款。
+        self.default_language_code = default_language_code
+        # 实例id
+        self.instance_id = instance_id
+        # 自定义条款状态
+        self.status = status
+        # 自定义条款同意类型，是默认同意，还是用户勾选同意
+        self.user_consent_type = user_consent_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.custom_privacy_policy_name is not None:
+            result['CustomPrivacyPolicyName'] = self.custom_privacy_policy_name
+        if self.default_language_code is not None:
+            result['DefaultLanguageCode'] = self.default_language_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_consent_type is not None:
+            result['UserConsentType'] = self.user_consent_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('CustomPrivacyPolicyName') is not None:
+            self.custom_privacy_policy_name = m.get('CustomPrivacyPolicyName')
+        if m.get('DefaultLanguageCode') is not None:
+            self.default_language_code = m.get('DefaultLanguageCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserConsentType') is not None:
+            self.user_consent_type = m.get('UserConsentType')
+        return self
+
+
+class ListCustomPrivacyPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policies: List[ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.custom_privacy_policies = custom_privacy_policies
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.custom_privacy_policies:
+            for k in self.custom_privacy_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPrivacyPolicies'] = []
+        if self.custom_privacy_policies is not None:
+            for k in self.custom_privacy_policies:
+                result['CustomPrivacyPolicies'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_privacy_policies = []
+        if m.get('CustomPrivacyPolicies') is not None:
+            for k in m.get('CustomPrivacyPolicies'):
+                temp_model = ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies()
+                self.custom_privacy_policies.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomPrivacyPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomPrivacyPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomPrivacyPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCustomPrivacyPoliciesForBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_id: str = None,
+    ):
+        # 条款ID
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        return self
+
+
+class ListCustomPrivacyPoliciesForBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        brand_custom_privacy_policies: List[ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.brand_custom_privacy_policies = brand_custom_privacy_policies
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.brand_custom_privacy_policies:
+            for k in self.brand_custom_privacy_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BrandCustomPrivacyPolicies'] = []
+        if self.brand_custom_privacy_policies is not None:
+            for k in self.brand_custom_privacy_policies:
+                result['BrandCustomPrivacyPolicies'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.brand_custom_privacy_policies = []
+        if m.get('BrandCustomPrivacyPolicies') is not None:
+            for k in m.get('BrandCustomPrivacyPolicies'):
+                temp_model = ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies()
+                self.brand_custom_privacy_policies.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomPrivacyPoliciesForBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomPrivacyPoliciesForBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomPrivacyPoliciesForBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDomainProxyTokensRequest(TeaModel):
     def __init__(
         self,
@@ -33130,6 +34496,122 @@ class RemoveApplicationAccountFromUserResponse(TeaModel):
         return self
 
 
+class RemoveCustomPrivacyPoliciesFromBrandRequest(TeaModel):
+    def __init__(
+        self,
+        brand_id: str = None,
+        custom_privacy_policy_ids: List[str] = None,
+        instance_id: str = None,
+    ):
+        # 品牌化Id
+        # 
+        # This parameter is required.
+        self.brand_id = brand_id
+        # 条款ID列表
+        # 
+        # This parameter is required.
+        self.custom_privacy_policy_ids = custom_privacy_policy_ids
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_id is not None:
+            result['BrandId'] = self.brand_id
+        if self.custom_privacy_policy_ids is not None:
+            result['CustomPrivacyPolicyIds'] = self.custom_privacy_policy_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrandId') is not None:
+            self.brand_id = m.get('BrandId')
+        if m.get('CustomPrivacyPolicyIds') is not None:
+            self.custom_privacy_policy_ids = m.get('CustomPrivacyPolicyIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class RemoveCustomPrivacyPoliciesFromBrandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveCustomPrivacyPoliciesFromBrandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveCustomPrivacyPoliciesFromBrandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveCustomPrivacyPoliciesFromBrandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveUserFromOrganizationalUnitsRequest(TeaModel):
     def __init__(
         self,
@@ -38107,6 +39589,223 @@ class UpdateConditionalAccessPolicyDescriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConditionalAccessPolicyDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_item_name: str = None,
+        custom_privacy_policy_item_url: str = None,
+    ):
+        self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
+        self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_privacy_policy_item_name is not None:
+            result['CustomPrivacyPolicyItemName'] = self.custom_privacy_policy_item_name
+        if self.custom_privacy_policy_item_url is not None:
+            result['CustomPrivacyPolicyItemUrl'] = self.custom_privacy_policy_item_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomPrivacyPolicyItemName') is not None:
+            self.custom_privacy_policy_item_name = m.get('CustomPrivacyPolicyItemName')
+        if m.get('CustomPrivacyPolicyItemUrl') is not None:
+            self.custom_privacy_policy_item_url = m.get('CustomPrivacyPolicyItemUrl')
+        return self
+
+
+class UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_items: List[UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems] = None,
+        custom_privacy_policy_tip: str = None,
+        language_code: str = None,
+    ):
+        self.custom_privacy_policy_items = custom_privacy_policy_items
+        self.custom_privacy_policy_tip = custom_privacy_policy_tip
+        self.language_code = language_code
+
+    def validate(self):
+        if self.custom_privacy_policy_items:
+            for k in self.custom_privacy_policy_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPrivacyPolicyItems'] = []
+        if self.custom_privacy_policy_items is not None:
+            for k in self.custom_privacy_policy_items:
+                result['CustomPrivacyPolicyItems'].append(k.to_map() if k else None)
+        if self.custom_privacy_policy_tip is not None:
+            result['CustomPrivacyPolicyTip'] = self.custom_privacy_policy_tip
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_privacy_policy_items = []
+        if m.get('CustomPrivacyPolicyItems') is not None:
+            for k in m.get('CustomPrivacyPolicyItems'):
+                temp_model = UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems()
+                self.custom_privacy_policy_items.append(temp_model.from_map(k))
+        if m.get('CustomPrivacyPolicyTip') is not None:
+            self.custom_privacy_policy_tip = m.get('CustomPrivacyPolicyTip')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class UpdateCustomPrivacyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        custom_privacy_policy_contents: List[UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents] = None,
+        custom_privacy_policy_id: str = None,
+        custom_privacy_policy_name: str = None,
+        default_language_code: str = None,
+        instance_id: str = None,
+        user_consent_type: str = None,
+    ):
+        self.custom_privacy_policy_contents = custom_privacy_policy_contents
+        # This parameter is required.
+        self.custom_privacy_policy_id = custom_privacy_policy_id
+        self.custom_privacy_policy_name = custom_privacy_policy_name
+        self.default_language_code = default_language_code
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.user_consent_type = user_consent_type
+
+    def validate(self):
+        if self.custom_privacy_policy_contents:
+            for k in self.custom_privacy_policy_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPrivacyPolicyContents'] = []
+        if self.custom_privacy_policy_contents is not None:
+            for k in self.custom_privacy_policy_contents:
+                result['CustomPrivacyPolicyContents'].append(k.to_map() if k else None)
+        if self.custom_privacy_policy_id is not None:
+            result['CustomPrivacyPolicyId'] = self.custom_privacy_policy_id
+        if self.custom_privacy_policy_name is not None:
+            result['CustomPrivacyPolicyName'] = self.custom_privacy_policy_name
+        if self.default_language_code is not None:
+            result['DefaultLanguageCode'] = self.default_language_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_consent_type is not None:
+            result['UserConsentType'] = self.user_consent_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_privacy_policy_contents = []
+        if m.get('CustomPrivacyPolicyContents') is not None:
+            for k in m.get('CustomPrivacyPolicyContents'):
+                temp_model = UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents()
+                self.custom_privacy_policy_contents.append(temp_model.from_map(k))
+        if m.get('CustomPrivacyPolicyId') is not None:
+            self.custom_privacy_policy_id = m.get('CustomPrivacyPolicyId')
+        if m.get('CustomPrivacyPolicyName') is not None:
+            self.custom_privacy_policy_name = m.get('CustomPrivacyPolicyName')
+        if m.get('DefaultLanguageCode') is not None:
+            self.default_language_code = m.get('DefaultLanguageCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserConsentType') is not None:
+            self.user_consent_type = m.get('UserConsentType')
+        return self
+
+
+class UpdateCustomPrivacyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCustomPrivacyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCustomPrivacyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCustomPrivacyPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

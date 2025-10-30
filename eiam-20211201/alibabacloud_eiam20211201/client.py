@@ -149,6 +149,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_application_account_to_user_with_options_async(request, runtime)
 
+    def add_custom_privacy_policies_to_brand_with_options(
+        self,
+        request: eiam_20211201_models.AddCustomPrivacyPoliciesToBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.AddCustomPrivacyPoliciesToBrandResponse:
+        """
+        @summary 添加条款到品牌
+        
+        @param request: AddCustomPrivacyPoliciesToBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomPrivacyPoliciesToBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.custom_privacy_policy_ids):
+            query['CustomPrivacyPolicyIds'] = request.custom_privacy_policy_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCustomPrivacyPoliciesToBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddCustomPrivacyPoliciesToBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_custom_privacy_policies_to_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.AddCustomPrivacyPoliciesToBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.AddCustomPrivacyPoliciesToBrandResponse:
+        """
+        @summary 添加条款到品牌
+        
+        @param request: AddCustomPrivacyPoliciesToBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomPrivacyPoliciesToBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.custom_privacy_policy_ids):
+            query['CustomPrivacyPolicyIds'] = request.custom_privacy_policy_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCustomPrivacyPoliciesToBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddCustomPrivacyPoliciesToBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_custom_privacy_policies_to_brand(
+        self,
+        request: eiam_20211201_models.AddCustomPrivacyPoliciesToBrandRequest,
+    ) -> eiam_20211201_models.AddCustomPrivacyPoliciesToBrandResponse:
+        """
+        @summary 添加条款到品牌
+        
+        @param request: AddCustomPrivacyPoliciesToBrandRequest
+        @return: AddCustomPrivacyPoliciesToBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_custom_privacy_policies_to_brand_with_options(request, runtime)
+
+    async def add_custom_privacy_policies_to_brand_async(
+        self,
+        request: eiam_20211201_models.AddCustomPrivacyPoliciesToBrandRequest,
+    ) -> eiam_20211201_models.AddCustomPrivacyPoliciesToBrandResponse:
+        """
+        @summary 添加条款到品牌
+        
+        @param request: AddCustomPrivacyPoliciesToBrandRequest
+        @return: AddCustomPrivacyPoliciesToBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_custom_privacy_policies_to_brand_with_options_async(request, runtime)
+
     def add_user_to_organizational_units_with_options(
         self,
         request: eiam_20211201_models.AddUserToOrganizationalUnitsRequest,
@@ -1372,6 +1476,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_conditional_access_policy_with_options_async(request, runtime)
+
+    def create_custom_privacy_policy_with_options(
+        self,
+        request: eiam_20211201_models.CreateCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateCustomPrivacyPolicyResponse:
+        """
+        @summary 创建自定义条款
+        
+        @param request: CreateCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.custom_privacy_policy_contents):
+            query['CustomPrivacyPolicyContents'] = request.custom_privacy_policy_contents
+        if not UtilClient.is_unset(request.custom_privacy_policy_name):
+            query['CustomPrivacyPolicyName'] = request.custom_privacy_policy_name
+        if not UtilClient.is_unset(request.default_language_code):
+            query['DefaultLanguageCode'] = request.default_language_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_consent_type):
+            query['UserConsentType'] = request.user_consent_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateCustomPrivacyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_privacy_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateCustomPrivacyPolicyResponse:
+        """
+        @summary 创建自定义条款
+        
+        @param request: CreateCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.custom_privacy_policy_contents):
+            query['CustomPrivacyPolicyContents'] = request.custom_privacy_policy_contents
+        if not UtilClient.is_unset(request.custom_privacy_policy_name):
+            query['CustomPrivacyPolicyName'] = request.custom_privacy_policy_name
+        if not UtilClient.is_unset(request.default_language_code):
+            query['DefaultLanguageCode'] = request.default_language_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_consent_type):
+            query['UserConsentType'] = request.user_consent_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateCustomPrivacyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_privacy_policy(
+        self,
+        request: eiam_20211201_models.CreateCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.CreateCustomPrivacyPolicyResponse:
+        """
+        @summary 创建自定义条款
+        
+        @param request: CreateCustomPrivacyPolicyRequest
+        @return: CreateCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_custom_privacy_policy_with_options(request, runtime)
+
+    async def create_custom_privacy_policy_async(
+        self,
+        request: eiam_20211201_models.CreateCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.CreateCustomPrivacyPolicyResponse:
+        """
+        @summary 创建自定义条款
+        
+        @param request: CreateCustomPrivacyPolicyRequest
+        @return: CreateCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_custom_privacy_policy_with_options_async(request, runtime)
 
     def create_domain_with_options(
         self,
@@ -3200,6 +3424,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_conditional_access_policy_with_options_async(request, runtime)
+
+    def delete_custom_privacy_policy_with_options(
+        self,
+        request: eiam_20211201_models.DeleteCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteCustomPrivacyPolicyResponse:
+        """
+        @summary 删除自定义条款
+        
+        @param request: DeleteCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteCustomPrivacyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_privacy_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteCustomPrivacyPolicyResponse:
+        """
+        @summary 删除自定义条款
+        
+        @param request: DeleteCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteCustomPrivacyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_privacy_policy(
+        self,
+        request: eiam_20211201_models.DeleteCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.DeleteCustomPrivacyPolicyResponse:
+        """
+        @summary 删除自定义条款
+        
+        @param request: DeleteCustomPrivacyPolicyRequest
+        @return: DeleteCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_privacy_policy_with_options(request, runtime)
+
+    async def delete_custom_privacy_policy_async(
+        self,
+        request: eiam_20211201_models.DeleteCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.DeleteCustomPrivacyPolicyResponse:
+        """
+        @summary 删除自定义条款
+        
+        @param request: DeleteCustomPrivacyPolicyRequest
+        @return: DeleteCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_privacy_policy_with_options_async(request, runtime)
 
     def delete_domain_with_options(
         self,
@@ -5237,6 +5561,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_conditional_access_policy_with_options_async(request, runtime)
 
+    def disable_custom_privacy_policy_with_options(
+        self,
+        request: eiam_20211201_models.DisableCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableCustomPrivacyPolicyResponse:
+        """
+        @summary 禁用自定义条款
+        
+        @param request: DisableCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableCustomPrivacyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_custom_privacy_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableCustomPrivacyPolicyResponse:
+        """
+        @summary 禁用自定义条款
+        
+        @param request: DisableCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableCustomPrivacyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_custom_privacy_policy(
+        self,
+        request: eiam_20211201_models.DisableCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.DisableCustomPrivacyPolicyResponse:
+        """
+        @summary 禁用自定义条款
+        
+        @param request: DisableCustomPrivacyPolicyRequest
+        @return: DisableCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_custom_privacy_policy_with_options(request, runtime)
+
+    async def disable_custom_privacy_policy_async(
+        self,
+        request: eiam_20211201_models.DisableCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.DisableCustomPrivacyPolicyResponse:
+        """
+        @summary 禁用自定义条款
+        
+        @param request: DisableCustomPrivacyPolicyRequest
+        @return: DisableCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_custom_privacy_policy_with_options_async(request, runtime)
+
     def disable_domain_proxy_token_with_options(
         self,
         request: eiam_20211201_models.DisableDomainProxyTokenRequest,
@@ -6757,6 +7181,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_conditional_access_policy_with_options_async(request, runtime)
 
+    def enable_custom_privacy_policy_with_options(
+        self,
+        request: eiam_20211201_models.EnableCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableCustomPrivacyPolicyResponse:
+        """
+        @summary 启用自定义条款
+        
+        @param request: EnableCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableCustomPrivacyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_custom_privacy_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableCustomPrivacyPolicyResponse:
+        """
+        @summary 启用自定义条款
+        
+        @param request: EnableCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableCustomPrivacyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_custom_privacy_policy(
+        self,
+        request: eiam_20211201_models.EnableCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.EnableCustomPrivacyPolicyResponse:
+        """
+        @summary 启用自定义条款
+        
+        @param request: EnableCustomPrivacyPolicyRequest
+        @return: EnableCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_custom_privacy_policy_with_options(request, runtime)
+
+    async def enable_custom_privacy_policy_async(
+        self,
+        request: eiam_20211201_models.EnableCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.EnableCustomPrivacyPolicyResponse:
+        """
+        @summary 启用自定义条款
+        
+        @param request: EnableCustomPrivacyPolicyRequest
+        @return: EnableCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_custom_privacy_policy_with_options_async(request, runtime)
+
     def enable_domain_proxy_token_with_options(
         self,
         request: eiam_20211201_models.EnableDomainProxyTokenRequest,
@@ -8264,6 +8788,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_conditional_access_policy_with_options_async(request, runtime)
+
+    def get_custom_privacy_policy_with_options(
+        self,
+        request: eiam_20211201_models.GetCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetCustomPrivacyPolicyResponse:
+        """
+        @summary 获取自定义条款
+        
+        @param request: GetCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetCustomPrivacyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_privacy_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.GetCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetCustomPrivacyPolicyResponse:
+        """
+        @summary 获取自定义条款
+        
+        @param request: GetCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetCustomPrivacyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_privacy_policy(
+        self,
+        request: eiam_20211201_models.GetCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.GetCustomPrivacyPolicyResponse:
+        """
+        @summary 获取自定义条款
+        
+        @param request: GetCustomPrivacyPolicyRequest
+        @return: GetCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_custom_privacy_policy_with_options(request, runtime)
+
+    async def get_custom_privacy_policy_async(
+        self,
+        request: eiam_20211201_models.GetCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.GetCustomPrivacyPolicyResponse:
+        """
+        @summary 获取自定义条款
+        
+        @param request: GetCustomPrivacyPolicyRequest
+        @return: GetCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_custom_privacy_policy_with_options_async(request, runtime)
 
     def get_domain_with_options(
         self,
@@ -12217,6 +12841,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_conditional_access_policies_for_user_with_options_async(request, runtime)
 
+    def list_custom_privacy_policies_with_options(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesResponse:
+        """
+        @summary 自定义条款列表查询。
+        
+        @param request: ListCustomPrivacyPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomPrivacyPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_name_starts_with):
+            query['CustomPrivacyPolicyNameStartsWith'] = request.custom_privacy_policy_name_starts_with
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomPrivacyPolicies',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListCustomPrivacyPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_privacy_policies_with_options_async(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesResponse:
+        """
+        @summary 自定义条款列表查询。
+        
+        @param request: ListCustomPrivacyPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomPrivacyPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_name_starts_with):
+            query['CustomPrivacyPolicyNameStartsWith'] = request.custom_privacy_policy_name_starts_with
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomPrivacyPolicies',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListCustomPrivacyPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_privacy_policies(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesRequest,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesResponse:
+        """
+        @summary 自定义条款列表查询。
+        
+        @param request: ListCustomPrivacyPoliciesRequest
+        @return: ListCustomPrivacyPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_custom_privacy_policies_with_options(request, runtime)
+
+    async def list_custom_privacy_policies_async(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesRequest,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesResponse:
+        """
+        @summary 自定义条款列表查询。
+        
+        @param request: ListCustomPrivacyPoliciesRequest
+        @return: ListCustomPrivacyPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_custom_privacy_policies_with_options_async(request, runtime)
+
+    def list_custom_privacy_policies_for_brand_with_options(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesForBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesForBrandResponse:
+        """
+        @summary 获取品牌关联资源的资源
+        
+        @param request: ListCustomPrivacyPoliciesForBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomPrivacyPoliciesForBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomPrivacyPoliciesForBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListCustomPrivacyPoliciesForBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_privacy_policies_for_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesForBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesForBrandResponse:
+        """
+        @summary 获取品牌关联资源的资源
+        
+        @param request: ListCustomPrivacyPoliciesForBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomPrivacyPoliciesForBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomPrivacyPoliciesForBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListCustomPrivacyPoliciesForBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_privacy_policies_for_brand(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesForBrandRequest,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesForBrandResponse:
+        """
+        @summary 获取品牌关联资源的资源
+        
+        @param request: ListCustomPrivacyPoliciesForBrandRequest
+        @return: ListCustomPrivacyPoliciesForBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_custom_privacy_policies_for_brand_with_options(request, runtime)
+
+    async def list_custom_privacy_policies_for_brand_async(
+        self,
+        request: eiam_20211201_models.ListCustomPrivacyPoliciesForBrandRequest,
+    ) -> eiam_20211201_models.ListCustomPrivacyPoliciesForBrandResponse:
+        """
+        @summary 获取品牌关联资源的资源
+        
+        @param request: ListCustomPrivacyPoliciesForBrandRequest
+        @return: ListCustomPrivacyPoliciesForBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_custom_privacy_policies_for_brand_with_options_async(request, runtime)
+
     def list_domain_proxy_tokens_with_options(
         self,
         request: eiam_20211201_models.ListDomainProxyTokensRequest,
@@ -15206,6 +16054,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_application_account_from_user_with_options_async(request, runtime)
+
+    def remove_custom_privacy_policies_from_brand_with_options(
+        self,
+        request: eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandResponse:
+        """
+        @summary 移除品牌关联条款
+        
+        @param request: RemoveCustomPrivacyPoliciesFromBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveCustomPrivacyPoliciesFromBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.custom_privacy_policy_ids):
+            query['CustomPrivacyPolicyIds'] = request.custom_privacy_policy_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveCustomPrivacyPoliciesFromBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_custom_privacy_policies_from_brand_with_options_async(
+        self,
+        request: eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandResponse:
+        """
+        @summary 移除品牌关联条款
+        
+        @param request: RemoveCustomPrivacyPoliciesFromBrandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveCustomPrivacyPoliciesFromBrandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brand_id):
+            query['BrandId'] = request.brand_id
+        if not UtilClient.is_unset(request.custom_privacy_policy_ids):
+            query['CustomPrivacyPolicyIds'] = request.custom_privacy_policy_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveCustomPrivacyPoliciesFromBrand',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_custom_privacy_policies_from_brand(
+        self,
+        request: eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandRequest,
+    ) -> eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandResponse:
+        """
+        @summary 移除品牌关联条款
+        
+        @param request: RemoveCustomPrivacyPoliciesFromBrandRequest
+        @return: RemoveCustomPrivacyPoliciesFromBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_custom_privacy_policies_from_brand_with_options(request, runtime)
+
+    async def remove_custom_privacy_policies_from_brand_async(
+        self,
+        request: eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandRequest,
+    ) -> eiam_20211201_models.RemoveCustomPrivacyPoliciesFromBrandResponse:
+        """
+        @summary 移除品牌关联条款
+        
+        @param request: RemoveCustomPrivacyPoliciesFromBrandRequest
+        @return: RemoveCustomPrivacyPoliciesFromBrandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_custom_privacy_policies_from_brand_with_options_async(request, runtime)
 
     def remove_user_from_organizational_units_with_options(
         self,
@@ -18506,6 +19458,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_conditional_access_policy_description_with_options_async(request, runtime)
+
+    def update_custom_privacy_policy_with_options(
+        self,
+        request: eiam_20211201_models.UpdateCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateCustomPrivacyPolicyResponse:
+        """
+        @summary 更新自定义条款
+        
+        @param request: UpdateCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_contents):
+            query['CustomPrivacyPolicyContents'] = request.custom_privacy_policy_contents
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.custom_privacy_policy_name):
+            query['CustomPrivacyPolicyName'] = request.custom_privacy_policy_name
+        if not UtilClient.is_unset(request.default_language_code):
+            query['DefaultLanguageCode'] = request.default_language_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_consent_type):
+            query['UserConsentType'] = request.user_consent_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateCustomPrivacyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_privacy_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateCustomPrivacyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateCustomPrivacyPolicyResponse:
+        """
+        @summary 更新自定义条款
+        
+        @param request: UpdateCustomPrivacyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomPrivacyPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_privacy_policy_contents):
+            query['CustomPrivacyPolicyContents'] = request.custom_privacy_policy_contents
+        if not UtilClient.is_unset(request.custom_privacy_policy_id):
+            query['CustomPrivacyPolicyId'] = request.custom_privacy_policy_id
+        if not UtilClient.is_unset(request.custom_privacy_policy_name):
+            query['CustomPrivacyPolicyName'] = request.custom_privacy_policy_name
+        if not UtilClient.is_unset(request.default_language_code):
+            query['DefaultLanguageCode'] = request.default_language_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_consent_type):
+            query['UserConsentType'] = request.user_consent_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomPrivacyPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateCustomPrivacyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_privacy_policy(
+        self,
+        request: eiam_20211201_models.UpdateCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.UpdateCustomPrivacyPolicyResponse:
+        """
+        @summary 更新自定义条款
+        
+        @param request: UpdateCustomPrivacyPolicyRequest
+        @return: UpdateCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_custom_privacy_policy_with_options(request, runtime)
+
+    async def update_custom_privacy_policy_async(
+        self,
+        request: eiam_20211201_models.UpdateCustomPrivacyPolicyRequest,
+    ) -> eiam_20211201_models.UpdateCustomPrivacyPolicyResponse:
+        """
+        @summary 更新自定义条款
+        
+        @param request: UpdateCustomPrivacyPolicyRequest
+        @return: UpdateCustomPrivacyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_custom_privacy_policy_with_options_async(request, runtime)
 
     def update_domain_brand_with_options(
         self,
