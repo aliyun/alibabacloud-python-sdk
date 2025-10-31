@@ -6061,9 +6061,13 @@ class GetProjectRequest(TeaModel):
     def __init__(
         self,
         verbose: bool = None,
+        with_quota_product_type: bool = None,
+        with_storage_tier_info: bool = None,
     ):
         # Specifies whether to use additional information.
         self.verbose = verbose
+        self.with_quota_product_type = with_quota_product_type
+        self.with_storage_tier_info = with_storage_tier_info
 
     def validate(self):
         pass
@@ -6076,12 +6080,20 @@ class GetProjectRequest(TeaModel):
         result = dict()
         if self.verbose is not None:
             result['verbose'] = self.verbose
+        if self.with_quota_product_type is not None:
+            result['withQuotaProductType'] = self.with_quota_product_type
+        if self.with_storage_tier_info is not None:
+            result['withStorageTierInfo'] = self.with_storage_tier_info
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('verbose') is not None:
             self.verbose = m.get('verbose')
+        if m.get('withQuotaProductType') is not None:
+            self.with_quota_product_type = m.get('withQuotaProductType')
+        if m.get('withStorageTierInfo') is not None:
+            self.with_storage_tier_info = m.get('withStorageTierInfo')
         return self
 
 
@@ -15823,6 +15835,7 @@ class ListMmsJobsRequest(TeaModel):
         src_table_name: str = None,
         status: str = None,
         stopped: int = None,
+        timer_id: int = None,
     ):
         self.sorter = sorter
         self.dst_db_name = dst_db_name
@@ -15834,6 +15847,7 @@ class ListMmsJobsRequest(TeaModel):
         self.src_table_name = src_table_name
         self.status = status
         self.stopped = stopped
+        self.timer_id = timer_id
 
     def validate(self):
         if self.sorter:
@@ -15865,6 +15879,8 @@ class ListMmsJobsRequest(TeaModel):
             result['status'] = self.status
         if self.stopped is not None:
             result['stopped'] = self.stopped
+        if self.timer_id is not None:
+            result['timerId'] = self.timer_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15890,6 +15906,8 @@ class ListMmsJobsRequest(TeaModel):
             self.status = m.get('status')
         if m.get('stopped') is not None:
             self.stopped = m.get('stopped')
+        if m.get('timerId') is not None:
+            self.timer_id = m.get('timerId')
         return self
 
 

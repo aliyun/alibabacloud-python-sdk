@@ -2958,6 +2958,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['verbose'] = request.verbose
+        if not UtilClient.is_unset(request.with_quota_product_type):
+            query['withQuotaProductType'] = request.with_quota_product_type
+        if not UtilClient.is_unset(request.with_storage_tier_info):
+            query['withStorageTierInfo'] = request.with_storage_tier_info
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2997,6 +3001,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['verbose'] = request.verbose
+        if not UtilClient.is_unset(request.with_quota_product_type):
+            query['withQuotaProductType'] = request.with_quota_product_type
+        if not UtilClient.is_unset(request.with_storage_tier_info):
+            query['withStorageTierInfo'] = request.with_storage_tier_info
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5780,6 +5788,8 @@ class Client(OpenApiClient):
             query['status'] = request.status
         if not UtilClient.is_unset(request.stopped):
             query['stopped'] = request.stopped
+        if not UtilClient.is_unset(request.timer_id):
+            query['timerId'] = request.timer_id
         if not UtilClient.is_unset(request.sorter):
             query['sorter'] = request.sorter
         req = open_api_models.OpenApiRequest(
@@ -5837,6 +5847,8 @@ class Client(OpenApiClient):
             query['status'] = request.status
         if not UtilClient.is_unset(request.stopped):
             query['stopped'] = request.stopped
+        if not UtilClient.is_unset(request.timer_id):
+            query['timerId'] = request.timer_id
         if not UtilClient.is_unset(request.sorter):
             query['sorter'] = request.sorter
         req = open_api_models.OpenApiRequest(

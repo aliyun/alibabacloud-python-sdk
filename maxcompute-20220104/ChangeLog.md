@@ -1,3 +1,9 @@
+2025-10-31 Version: 5.0.2
+- Update API GetProject: add request parameters withQuotaProductType.
+- Update API GetProject: add request parameters withStorageTierInfo.
+- Update API ListMmsJobs: add request parameters timerId.
+
+
 2025-10-27 Version: 5.0.1
 - Update API ListQuotas: add response parameters Body.data.quotaInfoList.$.subQuotaInfoList.$.parameter.autoScaleCPULimit.
 - Update API ListQuotas: add response parameters Body.data.quotaInfoList.$.subQuotaInfoList.$.parameter.maxGu.
