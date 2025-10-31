@@ -1,3 +1,6 @@
+2025-10-31 Version: 1.2.3
+- Generated python 2020-06-30 for cas.
+
 2025-10-30 Version: 1.2.2
 - Update API CreateClientCertificate: add request parameters ResourceGroupId.
 - Update API CreateClientCertificate: add request parameters Tags.
