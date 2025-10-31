@@ -24,7 +24,7 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-beijing': 'pai.cn-beijing.aliyuncs.com',
-            'cn-hangzhou': 'pai.cn-hangzhou.aliyuncs.com',
+            'cn-hangzhou': 'pai.cn-hangzhou.data.aliyun.com',
             'cn-shanghai': 'pai.cn-shanghai.aliyuncs.com',
             'cn-shenzhen': 'pai.cn-shenzhen.aliyuncs.com',
             'cn-hongkong': 'pai.cn-hongkong.aliyuncs.com',
@@ -32,12 +32,15 @@ class Client(OpenApiClient):
             'ap-southeast-2': 'pai.ap-southeast-2.aliyuncs.com',
             'ap-southeast-3': 'pai.ap-southeast-3.aliyuncs.com',
             'ap-southeast-5': 'pai.ap-southeast-5.aliyuncs.com',
-            'us-west-1': 'pai.us-west-1.aliyuncs.com',
             'us-east-1': 'pai.us-east-1.aliyuncs.com',
+            'us-west-1': 'pai.us-west-1.aliyuncs.com',
             'eu-central-1': 'pai.eu-central-1.aliyuncs.com',
-            'me-east-1': 'pai.me-east-1.aliyuncs.com',
             'ap-south-1': 'pai.ap-south-1.aliyuncs.com',
+            'me-east-1': 'pai.me-east-1.aliyuncs.com',
+            'ap-northeast-1': 'pai.ap-northeast-1.aliyuncs.com',
             'cn-qingdao': 'pai.cn-qingdao.aliyuncs.com',
+            'cn-shanghai-finance-1': 'pai.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-wulanchabu': 'pai.cn-wulanchabu.aliyuncs.com',
             'cn-zhangjiakou': 'pai.cn-zhangjiakou.aliyuncs.com'
         }
         self.check_config(config)
