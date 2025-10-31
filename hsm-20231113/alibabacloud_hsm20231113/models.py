@@ -1964,6 +1964,108 @@ class DescribeRegionsResponse(TeaModel):
         return self
 
 
+class DownloadClusterManagedCertRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        return self
+
+
+class DownloadClusterManagedCertResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DownloadClusterManagedCertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DownloadClusterManagedCertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DownloadClusterManagedCertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableBackupRequest(TeaModel):
     def __init__(
         self,
@@ -3300,6 +3402,8 @@ class GetInstanceRequest(TeaModel):
 class GetInstanceResponseBodyInstance(TeaModel):
     def __init__(
         self,
+        certification: str = None,
+        certification_url: str = None,
         cluster_id: str = None,
         cluster_name: str = None,
         create_time: int = None,
@@ -3310,6 +3414,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         is_trial: bool = None,
         master: bool = None,
         order_id: str = None,
+        pqc_enabled: int = None,
         region_id: str = None,
         remark: str = None,
         status: str = None,
@@ -3320,6 +3425,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
         whitelist: str = None,
         zone_id: str = None,
     ):
+        self.certification = certification
+        self.certification_url = certification_url
         # The ID of the cluster to which the HSM belongs.
         self.cluster_id = cluster_id
         # The name of the cluster.
@@ -3346,6 +3453,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.master = master
         # The ID of the order.
         self.order_id = order_id
+        self.pqc_enabled = pqc_enabled
         # The ID of the region.
         self.region_id = region_id
         # The description of the HSM.
@@ -3385,6 +3493,10 @@ class GetInstanceResponseBodyInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.certification is not None:
+            result['Certification'] = self.certification
+        if self.certification_url is not None:
+            result['CertificationUrl'] = self.certification_url
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.cluster_name is not None:
@@ -3405,6 +3517,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['Master'] = self.master
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.pqc_enabled is not None:
+            result['PqcEnabled'] = self.pqc_enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remark is not None:
@@ -3427,6 +3541,10 @@ class GetInstanceResponseBodyInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Certification') is not None:
+            self.certification = m.get('Certification')
+        if m.get('CertificationUrl') is not None:
+            self.certification_url = m.get('CertificationUrl')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('ClusterName') is not None:
@@ -3447,6 +3565,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.master = m.get('Master')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('PqcEnabled') is not None:
+            self.pqc_enabled = m.get('PqcEnabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Remark') is not None:
@@ -5461,6 +5581,287 @@ class PauseInstanceResponse(TeaModel):
         return self
 
 
+class QuickDeployClusterRequest(TeaModel):
+    def __init__(
+        self,
+        cert_managed: bool = None,
+        cluster_name: str = None,
+        instance_list: List[str] = None,
+        region_id: str = None,
+        v_switch_id_list: List[str] = None,
+        vpc_id: str = None,
+        white_list: List[str] = None,
+    ):
+        self.cert_managed = cert_managed
+        # This parameter is required.
+        self.cluster_name = cluster_name
+        # This parameter is required.
+        self.instance_list = instance_list
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.v_switch_id_list = v_switch_id_list
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_managed is not None:
+            result['CertManaged'] = self.cert_managed
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.instance_list is not None:
+            result['InstanceList'] = self.instance_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.v_switch_id_list is not None:
+            result['VSwitchIdList'] = self.v_switch_id_list
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.white_list is not None:
+            result['WhiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertManaged') is not None:
+            self.cert_managed = m.get('CertManaged')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('InstanceList') is not None:
+            self.instance_list = m.get('InstanceList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VSwitchIdList') is not None:
+            self.v_switch_id_list = m.get('VSwitchIdList')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WhiteList') is not None:
+            self.white_list = m.get('WhiteList')
+        return self
+
+
+class QuickDeployClusterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cert_managed: bool = None,
+        cluster_name: str = None,
+        instance_list_shrink: str = None,
+        region_id: str = None,
+        v_switch_id_list_shrink: str = None,
+        vpc_id: str = None,
+        white_list_shrink: str = None,
+    ):
+        self.cert_managed = cert_managed
+        # This parameter is required.
+        self.cluster_name = cluster_name
+        # This parameter is required.
+        self.instance_list_shrink = instance_list_shrink
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.v_switch_id_list_shrink = v_switch_id_list_shrink
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        self.white_list_shrink = white_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_managed is not None:
+            result['CertManaged'] = self.cert_managed
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.instance_list_shrink is not None:
+            result['InstanceList'] = self.instance_list_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.v_switch_id_list_shrink is not None:
+            result['VSwitchIdList'] = self.v_switch_id_list_shrink
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.white_list_shrink is not None:
+            result['WhiteList'] = self.white_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertManaged') is not None:
+            self.cert_managed = m.get('CertManaged')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('InstanceList') is not None:
+            self.instance_list_shrink = m.get('InstanceList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VSwitchIdList') is not None:
+            self.v_switch_id_list_shrink = m.get('VSwitchIdList')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WhiteList') is not None:
+            self.white_list_shrink = m.get('WhiteList')
+        return self
+
+
+class QuickDeployClusterResponseBodyJob(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QuickDeployClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        job: QuickDeployClusterResponseBodyJob = None,
+        request_id: str = None,
+    ):
+        self.job = job
+        self.request_id = request_id
+
+    def validate(self):
+        if self.job:
+            self.job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Job') is not None:
+            temp_model = QuickDeployClusterResponseBodyJob()
+            self.job = temp_model.from_map(m['Job'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QuickDeployClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuickDeployClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuickDeployClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuickInitInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -6236,6 +6637,179 @@ class ResumeInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResumeInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RotateClusterManagedCertRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        return self
+
+
+class RotateClusterManagedCertResponseBodyJob(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        process: int = None,
+        response: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.process = process
+        self.response = response
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.process is not None:
+            result['Process'] = self.process
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RotateClusterManagedCertResponseBody(TeaModel):
+    def __init__(
+        self,
+        job: RotateClusterManagedCertResponseBodyJob = None,
+        request_id: str = None,
+    ):
+        self.job = job
+        self.request_id = request_id
+
+    def validate(self):
+        if self.job:
+            self.job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Job') is not None:
+            temp_model = RotateClusterManagedCertResponseBodyJob()
+            self.job = temp_model.from_map(m['Job'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RotateClusterManagedCertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RotateClusterManagedCertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RotateClusterManagedCertResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

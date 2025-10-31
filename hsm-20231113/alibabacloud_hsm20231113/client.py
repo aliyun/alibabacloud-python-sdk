@@ -1677,6 +1677,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def download_cluster_managed_cert_with_options(
+        self,
+        request: hsm_20231113_models.DownloadClusterManagedCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.DownloadClusterManagedCertResponse:
+        """
+        @summary 下载集群托管证书
+        
+        @description ## 请求说明
+        - 该API允许用户获取特定集群的管理证书。
+        - 返回的数据是经过base64编码的证书内容。
+        
+        @param request: DownloadClusterManagedCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadClusterManagedCertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadClusterManagedCert',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.DownloadClusterManagedCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_cluster_managed_cert_with_options_async(
+        self,
+        request: hsm_20231113_models.DownloadClusterManagedCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.DownloadClusterManagedCertResponse:
+        """
+        @summary 下载集群托管证书
+        
+        @description ## 请求说明
+        - 该API允许用户获取特定集群的管理证书。
+        - 返回的数据是经过base64编码的证书内容。
+        
+        @param request: DownloadClusterManagedCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadClusterManagedCertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadClusterManagedCert',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.DownloadClusterManagedCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_cluster_managed_cert(
+        self,
+        request: hsm_20231113_models.DownloadClusterManagedCertRequest,
+    ) -> hsm_20231113_models.DownloadClusterManagedCertResponse:
+        """
+        @summary 下载集群托管证书
+        
+        @description ## 请求说明
+        - 该API允许用户获取特定集群的管理证书。
+        - 返回的数据是经过base64编码的证书内容。
+        
+        @param request: DownloadClusterManagedCertRequest
+        @return: DownloadClusterManagedCertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_cluster_managed_cert_with_options(request, runtime)
+
+    async def download_cluster_managed_cert_async(
+        self,
+        request: hsm_20231113_models.DownloadClusterManagedCertRequest,
+    ) -> hsm_20231113_models.DownloadClusterManagedCertResponse:
+        """
+        @summary 下载集群托管证书
+        
+        @description ## 请求说明
+        - 该API允许用户获取特定集群的管理证书。
+        - 返回的数据是经过base64编码的证书内容。
+        
+        @param request: DownloadClusterManagedCertRequest
+        @return: DownloadClusterManagedCertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_cluster_managed_cert_with_options_async(request, runtime)
+
     def enable_backup_with_options(
         self,
         request: hsm_20231113_models.EnableBackupRequest,
@@ -3523,6 +3635,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pause_instance_with_options_async(request, runtime)
 
+    def quick_deploy_cluster_with_options(
+        self,
+        tmp_req: hsm_20231113_models.QuickDeployClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.QuickDeployClusterResponse:
+        """
+        @summary 快速部署集群
+        
+        @param tmp_req: QuickDeployClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuickDeployClusterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = hsm_20231113_models.QuickDeployClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_list):
+            request.instance_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_list, 'InstanceList', 'json')
+        if not UtilClient.is_unset(tmp_req.v_switch_id_list):
+            request.v_switch_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switch_id_list, 'VSwitchIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.white_list):
+            request.white_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.white_list, 'WhiteList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cert_managed):
+            query['CertManaged'] = request.cert_managed
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.instance_list_shrink):
+            query['InstanceList'] = request.instance_list_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id_list_shrink):
+            query['VSwitchIdList'] = request.v_switch_id_list_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.white_list_shrink):
+            query['WhiteList'] = request.white_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuickDeployCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.QuickDeployClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def quick_deploy_cluster_with_options_async(
+        self,
+        tmp_req: hsm_20231113_models.QuickDeployClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.QuickDeployClusterResponse:
+        """
+        @summary 快速部署集群
+        
+        @param tmp_req: QuickDeployClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuickDeployClusterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = hsm_20231113_models.QuickDeployClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_list):
+            request.instance_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_list, 'InstanceList', 'json')
+        if not UtilClient.is_unset(tmp_req.v_switch_id_list):
+            request.v_switch_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switch_id_list, 'VSwitchIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.white_list):
+            request.white_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.white_list, 'WhiteList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cert_managed):
+            query['CertManaged'] = request.cert_managed
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.instance_list_shrink):
+            query['InstanceList'] = request.instance_list_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id_list_shrink):
+            query['VSwitchIdList'] = request.v_switch_id_list_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.white_list_shrink):
+            query['WhiteList'] = request.white_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuickDeployCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.QuickDeployClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def quick_deploy_cluster(
+        self,
+        request: hsm_20231113_models.QuickDeployClusterRequest,
+    ) -> hsm_20231113_models.QuickDeployClusterResponse:
+        """
+        @summary 快速部署集群
+        
+        @param request: QuickDeployClusterRequest
+        @return: QuickDeployClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.quick_deploy_cluster_with_options(request, runtime)
+
+    async def quick_deploy_cluster_async(
+        self,
+        request: hsm_20231113_models.QuickDeployClusterRequest,
+    ) -> hsm_20231113_models.QuickDeployClusterResponse:
+        """
+        @summary 快速部署集群
+        
+        @param request: QuickDeployClusterRequest
+        @return: QuickDeployClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.quick_deploy_cluster_with_options_async(request, runtime)
+
     def quick_init_instance_with_options(
         self,
         request: hsm_20231113_models.QuickInitInstanceRequest,
@@ -4038,6 +4286,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.resume_instance_with_options_async(request, runtime)
+
+    def rotate_cluster_managed_cert_with_options(
+        self,
+        request: hsm_20231113_models.RotateClusterManagedCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.RotateClusterManagedCertResponse:
+        """
+        @summary 轮转集群托管证书
+        
+        @description ## 请求说明
+        该API用于触发指定集群的管理证书轮转过程。通过提供`ClusterId`参数，可以指定需要进行证书轮转的集群。此操作有助于提高集群的安全性，建议定期执行。
+        ### 注意事项
+        - 确保提供的`ClusterId`是有效的，并且用户具有对该集群的操作权限。
+        - 证书轮转可能会影响依赖于旧证书的服务，请在适当的时间窗口内执行此操作。
+        
+        @param request: RotateClusterManagedCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RotateClusterManagedCertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RotateClusterManagedCert',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.RotateClusterManagedCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rotate_cluster_managed_cert_with_options_async(
+        self,
+        request: hsm_20231113_models.RotateClusterManagedCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.RotateClusterManagedCertResponse:
+        """
+        @summary 轮转集群托管证书
+        
+        @description ## 请求说明
+        该API用于触发指定集群的管理证书轮转过程。通过提供`ClusterId`参数，可以指定需要进行证书轮转的集群。此操作有助于提高集群的安全性，建议定期执行。
+        ### 注意事项
+        - 确保提供的`ClusterId`是有效的，并且用户具有对该集群的操作权限。
+        - 证书轮转可能会影响依赖于旧证书的服务，请在适当的时间窗口内执行此操作。
+        
+        @param request: RotateClusterManagedCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RotateClusterManagedCertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RotateClusterManagedCert',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.RotateClusterManagedCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rotate_cluster_managed_cert(
+        self,
+        request: hsm_20231113_models.RotateClusterManagedCertRequest,
+    ) -> hsm_20231113_models.RotateClusterManagedCertResponse:
+        """
+        @summary 轮转集群托管证书
+        
+        @description ## 请求说明
+        该API用于触发指定集群的管理证书轮转过程。通过提供`ClusterId`参数，可以指定需要进行证书轮转的集群。此操作有助于提高集群的安全性，建议定期执行。
+        ### 注意事项
+        - 确保提供的`ClusterId`是有效的，并且用户具有对该集群的操作权限。
+        - 证书轮转可能会影响依赖于旧证书的服务，请在适当的时间窗口内执行此操作。
+        
+        @param request: RotateClusterManagedCertRequest
+        @return: RotateClusterManagedCertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rotate_cluster_managed_cert_with_options(request, runtime)
+
+    async def rotate_cluster_managed_cert_async(
+        self,
+        request: hsm_20231113_models.RotateClusterManagedCertRequest,
+    ) -> hsm_20231113_models.RotateClusterManagedCertResponse:
+        """
+        @summary 轮转集群托管证书
+        
+        @description ## 请求说明
+        该API用于触发指定集群的管理证书轮转过程。通过提供`ClusterId`参数，可以指定需要进行证书轮转的集群。此操作有助于提高集群的安全性，建议定期执行。
+        ### 注意事项
+        - 确保提供的`ClusterId`是有效的，并且用户具有对该集群的操作权限。
+        - 证书轮转可能会影响依赖于旧证书的服务，请在适当的时间窗口内执行此操作。
+        
+        @param request: RotateClusterManagedCertRequest
+        @return: RotateClusterManagedCertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rotate_cluster_managed_cert_with_options_async(request, runtime)
 
     def switch_cluster_master_with_options(
         self,
