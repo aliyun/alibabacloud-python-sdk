@@ -1,3 +1,7 @@
+2025-10-31 Version: 1.2.1
+- Update API AllocateAnycastEipAddress: add request parameters Tag.
+
+
 2025-08-06 Version: 1.2.0
 - Support API ChangeResourceGroup.
 

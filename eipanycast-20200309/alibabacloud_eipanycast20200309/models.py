@@ -1,7 +1,40 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class AllocateAnycastEipAddressRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
 
 
 class AllocateAnycastEipAddressRequest(TeaModel):
@@ -15,6 +48,7 @@ class AllocateAnycastEipAddressRequest(TeaModel):
         name: str = None,
         resource_group_id: str = None,
         service_location: str = None,
+        tag: List[AllocateAnycastEipAddressRequestTag] = None,
     ):
         # The maximum bandwidth of the Anycast EIP. Unit: Mbit/s.
         # 
@@ -54,9 +88,13 @@ class AllocateAnycastEipAddressRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_location = service_location
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -80,6 +118,10 @@ class AllocateAnycastEipAddressRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.service_location is not None:
             result['ServiceLocation'] = self.service_location
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -100,6 +142,11 @@ class AllocateAnycastEipAddressRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceLocation') is not None:
             self.service_location = m.get('ServiceLocation')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AllocateAnycastEipAddressRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
