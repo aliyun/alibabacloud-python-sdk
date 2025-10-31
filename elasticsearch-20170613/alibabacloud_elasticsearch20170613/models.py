@@ -563,15 +563,54 @@ class WhiteIpGroup(TeaModel):
         return self
 
 
+class NetworkConfigLoadBalanceConfig(TeaModel):
+    def __init__(
+        self,
+        vs_area: str = None,
+        vswitch_id: str = None,
+    ):
+        self.vs_area = vs_area
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vs_area is not None:
+            result['vsArea'] = self.vs_area
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vsArea') is not None:
+            self.vs_area = m.get('vsArea')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        return self
+
+
 class NetworkConfig(TeaModel):
     def __init__(
         self,
+        lb_replica: int = None,
+        load_balance_config: List[NetworkConfigLoadBalanceConfig] = None,
+        load_balance_type: str = None,
         type: str = None,
         vpc_id: str = None,
         vs_area: str = None,
         vswitch_id: str = None,
         white_ip_group_list: List[WhiteIpGroup] = None,
     ):
+        self.lb_replica = lb_replica
+        self.load_balance_config = load_balance_config
+        self.load_balance_type = load_balance_type
         self.type = type
         self.vpc_id = vpc_id
         self.vs_area = vs_area
@@ -579,6 +618,10 @@ class NetworkConfig(TeaModel):
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
+        if self.load_balance_config:
+            for k in self.load_balance_config:
+                if k:
+                    k.validate()
         if self.white_ip_group_list:
             for k in self.white_ip_group_list:
                 if k:
@@ -590,6 +633,14 @@ class NetworkConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.lb_replica is not None:
+            result['lbReplica'] = self.lb_replica
+        result['loadBalanceConfig'] = []
+        if self.load_balance_config is not None:
+            for k in self.load_balance_config:
+                result['loadBalanceConfig'].append(k.to_map() if k else None)
+        if self.load_balance_type is not None:
+            result['loadBalanceType'] = self.load_balance_type
         if self.type is not None:
             result['type'] = self.type
         if self.vpc_id is not None:
@@ -606,6 +657,15 @@ class NetworkConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('lbReplica') is not None:
+            self.lb_replica = m.get('lbReplica')
+        self.load_balance_config = []
+        if m.get('loadBalanceConfig') is not None:
+            for k in m.get('loadBalanceConfig'):
+                temp_model = NetworkConfigLoadBalanceConfig()
+                self.load_balance_config.append(temp_model.from_map(k))
+        if m.get('loadBalanceType') is not None:
+            self.load_balance_type = m.get('loadBalanceType')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('vpcId') is not None:
@@ -8526,6 +8586,45 @@ class DescribeInstanceResponseBodyResultElasticDataNodeConfiguration(TeaModel):
         return self
 
 
+class DescribeInstanceResponseBodyResultEndpoints(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        vswitch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.endpoint = endpoint
+        self.vswitch_id = vswitch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
 class DescribeInstanceResponseBodyResultIkHotDicts(TeaModel):
     def __init__(
         self,
@@ -9008,6 +9107,7 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         enable_kibana_public_network: bool = None,
         enable_public: bool = None,
         end_time: int = None,
+        endpoints: List[DescribeInstanceResponseBodyResultEndpoints] = None,
         es_config: Dict[str, Any] = None,
         es_ipblacklist: List[str] = None,
         es_ipwhitelist: List[str] = None,
@@ -9065,6 +9165,7 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         self.enable_kibana_public_network = enable_kibana_public_network
         self.enable_public = enable_public
         self.end_time = end_time
+        self.endpoints = endpoints
         self.es_config = es_config
         self.es_ipblacklist = es_ipblacklist
         self.es_ipwhitelist = es_ipwhitelist
@@ -9122,6 +9223,10 @@ class DescribeInstanceResponseBodyResult(TeaModel):
                     k.validate()
         if self.elastic_data_node_configuration:
             self.elastic_data_node_configuration.validate()
+        if self.endpoints:
+            for k in self.endpoints:
+                if k:
+                    k.validate()
         if self.ik_hot_dicts:
             for k in self.ik_hot_dicts:
                 if k:
@@ -9189,6 +9294,10 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             result['enablePublic'] = self.enable_public
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        result['endpoints'] = []
+        if self.endpoints is not None:
+            for k in self.endpoints:
+                result['endpoints'].append(k.to_map() if k else None)
         if self.es_config is not None:
             result['esConfig'] = self.es_config
         if self.es_ipblacklist is not None:
@@ -9322,6 +9431,11 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             self.enable_public = m.get('enablePublic')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        self.endpoints = []
+        if m.get('endpoints') is not None:
+            for k in m.get('endpoints'):
+                temp_model = DescribeInstanceResponseBodyResultEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
         if m.get('esConfig') is not None:
             self.es_config = m.get('esConfig')
         if m.get('esIPBlacklist') is not None:
@@ -31492,6 +31606,198 @@ class TriggerNetworkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TriggerNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TurnOffZoneRequest(TeaModel):
+    def __init__(
+        self,
+        zone: str = None,
+    ):
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zone is not None:
+            result['zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('zone') is not None:
+            self.zone = m.get('zone')
+        return self
+
+
+class TurnOffZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class TurnOffZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TurnOffZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TurnOffZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TurnOnZoneRequest(TeaModel):
+    def __init__(
+        self,
+        zone: str = None,
+    ):
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zone is not None:
+            result['zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('zone') is not None:
+            self.zone = m.get('zone')
+        return self
+
+
+class TurnOnZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class TurnOnZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TurnOnZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TurnOnZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

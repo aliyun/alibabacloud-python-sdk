@@ -1,3 +1,7 @@
+2025-10-31 Version: 4.0.1
+- Update API DescribeInstance: add response parameters Body.Result.endpoints.
+
+
 2025-09-12 Version: 4.0.0
 - Delete API DescribeApm.
 - Delete API ListApm.

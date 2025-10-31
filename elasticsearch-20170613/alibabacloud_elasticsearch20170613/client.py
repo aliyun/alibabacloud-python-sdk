@@ -15937,6 +15937,222 @@ class Client(OpenApiClient):
         headers = {}
         return await self.trigger_network_with_options_async(instance_id, request, headers, runtime)
 
+    def turn_off_zone_with_options(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOffZoneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.TurnOffZoneResponse:
+        """
+        @summary 可用区关机
+        
+        @param request: TurnOffZoneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TurnOffZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.zone):
+            query['zone'] = request.zone
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TurnOffZone',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/turnOff-zone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.TurnOffZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def turn_off_zone_with_options_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOffZoneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.TurnOffZoneResponse:
+        """
+        @summary 可用区关机
+        
+        @param request: TurnOffZoneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TurnOffZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.zone):
+            query['zone'] = request.zone
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TurnOffZone',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/turnOff-zone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.TurnOffZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def turn_off_zone(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOffZoneRequest,
+    ) -> elasticsearch_20170613_models.TurnOffZoneResponse:
+        """
+        @summary 可用区关机
+        
+        @param request: TurnOffZoneRequest
+        @return: TurnOffZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.turn_off_zone_with_options(instance_id, request, headers, runtime)
+
+    async def turn_off_zone_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOffZoneRequest,
+    ) -> elasticsearch_20170613_models.TurnOffZoneResponse:
+        """
+        @summary 可用区关机
+        
+        @param request: TurnOffZoneRequest
+        @return: TurnOffZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.turn_off_zone_with_options_async(instance_id, request, headers, runtime)
+
+    def turn_on_zone_with_options(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOnZoneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.TurnOnZoneResponse:
+        """
+        @summary 可用区开机
+        
+        @param request: TurnOnZoneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TurnOnZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.zone):
+            query['zone'] = request.zone
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TurnOnZone',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/turnOn-zone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.TurnOnZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def turn_on_zone_with_options_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOnZoneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.TurnOnZoneResponse:
+        """
+        @summary 可用区开机
+        
+        @param request: TurnOnZoneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TurnOnZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.zone):
+            query['zone'] = request.zone
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TurnOnZone',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/turnOn-zone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.TurnOnZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def turn_on_zone(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOnZoneRequest,
+    ) -> elasticsearch_20170613_models.TurnOnZoneResponse:
+        """
+        @summary 可用区开机
+        
+        @param request: TurnOnZoneRequest
+        @return: TurnOnZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.turn_on_zone_with_options(instance_id, request, headers, runtime)
+
+    async def turn_on_zone_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.TurnOnZoneRequest,
+    ) -> elasticsearch_20170613_models.TurnOnZoneResponse:
+        """
+        @summary 可用区开机
+        
+        @param request: TurnOnZoneRequest
+        @return: TurnOnZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.turn_on_zone_with_options_async(instance_id, request, headers, runtime)
+
     def uninstall_kibana_plugin_with_options(
         self,
         instance_id: str,
