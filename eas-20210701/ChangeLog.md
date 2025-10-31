@@ -1,3 +1,8 @@
+2025-10-31 Version: 6.8.10
+- Update API DeleteResourceInstanceLabel: add request parameters LabelKeys.
+- Update API DeleteServiceLabel: add request parameters LabelKeys.
+
+
 2025-10-28 Version: 6.8.9
 - Generated python 2021-07-01 for eas.
 

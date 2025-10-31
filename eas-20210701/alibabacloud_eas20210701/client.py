@@ -2905,6 +2905,8 @@ class Client(OpenApiClient):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        if not UtilClient.is_unset(tmp_req.label_keys):
+            request.label_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_keys, 'LabelKeys', 'json')
         query = {}
         if not UtilClient.is_unset(request.all_instances):
             query['AllInstances'] = request.all_instances
@@ -2912,6 +2914,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.keys_shrink):
             query['Keys'] = request.keys_shrink
+        if not UtilClient.is_unset(request.label_keys_shrink):
+            query['LabelKeys'] = request.label_keys_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2955,6 +2959,8 @@ class Client(OpenApiClient):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        if not UtilClient.is_unset(tmp_req.label_keys):
+            request.label_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_keys, 'LabelKeys', 'json')
         query = {}
         if not UtilClient.is_unset(request.all_instances):
             query['AllInstances'] = request.all_instances
@@ -2962,6 +2968,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.keys_shrink):
             query['Keys'] = request.keys_shrink
+        if not UtilClient.is_unset(request.label_keys_shrink):
+            query['LabelKeys'] = request.label_keys_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3647,9 +3655,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        if not UtilClient.is_unset(tmp_req.label_keys):
+            request.label_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_keys, 'LabelKeys', 'json')
         query = {}
         if not UtilClient.is_unset(request.keys_shrink):
             query['Keys'] = request.keys_shrink
+        if not UtilClient.is_unset(request.label_keys_shrink):
+            query['LabelKeys'] = request.label_keys_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3691,9 +3703,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        if not UtilClient.is_unset(tmp_req.label_keys):
+            request.label_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_keys, 'LabelKeys', 'json')
         query = {}
         if not UtilClient.is_unset(request.keys_shrink):
             query['Keys'] = request.keys_shrink
+        if not UtilClient.is_unset(request.label_keys_shrink):
+            query['LabelKeys'] = request.label_keys_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

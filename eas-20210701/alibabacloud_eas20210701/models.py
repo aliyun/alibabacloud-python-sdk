@@ -5240,6 +5240,7 @@ class DeleteResourceInstanceLabelRequest(TeaModel):
         all_instances: bool = None,
         instance_ids: List[str] = None,
         keys: List[str] = None,
+        label_keys: List[str] = None,
     ):
         # Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
@@ -5247,6 +5248,7 @@ class DeleteResourceInstanceLabelRequest(TeaModel):
         self.instance_ids = instance_ids
         # The keys of the tags that you want to delete.
         self.keys = keys
+        self.label_keys = label_keys
 
     def validate(self):
         pass
@@ -5263,6 +5265,8 @@ class DeleteResourceInstanceLabelRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids
         if self.keys is not None:
             result['Keys'] = self.keys
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
         return result
 
     def from_map(self, m: dict = None):
@@ -5273,6 +5277,8 @@ class DeleteResourceInstanceLabelRequest(TeaModel):
             self.instance_ids = m.get('InstanceIds')
         if m.get('Keys') is not None:
             self.keys = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
         return self
 
 
@@ -5282,6 +5288,7 @@ class DeleteResourceInstanceLabelShrinkRequest(TeaModel):
         all_instances: bool = None,
         instance_ids_shrink: str = None,
         keys_shrink: str = None,
+        label_keys_shrink: str = None,
     ):
         # Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
@@ -5289,6 +5296,7 @@ class DeleteResourceInstanceLabelShrinkRequest(TeaModel):
         self.instance_ids_shrink = instance_ids_shrink
         # The keys of the tags that you want to delete.
         self.keys_shrink = keys_shrink
+        self.label_keys_shrink = label_keys_shrink
 
     def validate(self):
         pass
@@ -5305,6 +5313,8 @@ class DeleteResourceInstanceLabelShrinkRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids_shrink
         if self.keys_shrink is not None:
             result['Keys'] = self.keys_shrink
+        if self.label_keys_shrink is not None:
+            result['LabelKeys'] = self.label_keys_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -5315,6 +5325,8 @@ class DeleteResourceInstanceLabelShrinkRequest(TeaModel):
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('Keys') is not None:
             self.keys_shrink = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys_shrink = m.get('LabelKeys')
         return self
 
 
@@ -5936,11 +5948,11 @@ class DeleteServiceLabelRequest(TeaModel):
     def __init__(
         self,
         keys: List[str] = None,
+        label_keys: List[str] = None,
     ):
         # The service tags that you want to delete.
-        # 
-        # This parameter is required.
         self.keys = keys
+        self.label_keys = label_keys
 
     def validate(self):
         pass
@@ -5953,12 +5965,16 @@ class DeleteServiceLabelRequest(TeaModel):
         result = dict()
         if self.keys is not None:
             result['Keys'] = self.keys
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Keys') is not None:
             self.keys = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
         return self
 
 
@@ -5966,11 +5982,11 @@ class DeleteServiceLabelShrinkRequest(TeaModel):
     def __init__(
         self,
         keys_shrink: str = None,
+        label_keys_shrink: str = None,
     ):
         # The service tags that you want to delete.
-        # 
-        # This parameter is required.
         self.keys_shrink = keys_shrink
+        self.label_keys_shrink = label_keys_shrink
 
     def validate(self):
         pass
@@ -5983,12 +5999,16 @@ class DeleteServiceLabelShrinkRequest(TeaModel):
         result = dict()
         if self.keys_shrink is not None:
             result['Keys'] = self.keys_shrink
+        if self.label_keys_shrink is not None:
+            result['LabelKeys'] = self.label_keys_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Keys') is not None:
             self.keys_shrink = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys_shrink = m.get('LabelKeys')
         return self
 
 
