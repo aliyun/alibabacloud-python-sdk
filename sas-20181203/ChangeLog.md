@@ -1,3 +1,21 @@
+2025-11-03 Version: 6.0.3
+- Update API CreateMaliciousFileWhitelistConfig: add request parameters Remark.
+- Update API GetOssBucketScanStatistic: add response parameters Body.Data.PostPayInvokeCount.
+- Update API GetOssBucketScanStatistic: add response parameters Body.Data.PrePayAuthCount.
+- Update API GetOssBucketScanStatistic: add response parameters Body.Data.PrePayInvokeCount.
+- Update API ListMaliciousFileWhitelistConfigs: add request parameters IdList.
+- Update API ListMaliciousFileWhitelistConfigs: add response parameters Body.List.$.Remark.
+- Update API ListObjectScanEvent: add request parameters BatchType.
+- Update API ListObjectScanEvent: add request parameters EventId.
+- Update API ListObjectScanEvent: add request parameters Status.
+- Update API ListObjectScanEvent: add response parameters Body.Data.$.ErrorMsg.
+- Update API ListObjectScanEvent: add response parameters Body.Data.$.MatchedWhiteListRuleI18nStr.
+- Update API ListObjectScanEvent: add response parameters Body.Data.$.OperateResult.
+- Update API ListObjectScanEvent: add response parameters Body.Data.$.Remark.
+- Update API ListObjectScanEvent: add response parameters Body.Data.$.Status.
+- Update API UpdateMaliciousFileWhitelistConfig: add request parameters Remark.
+
+
 2025-10-29 Version: 6.0.2
 - Update API GetSwitchRegionDetail: add response parameters Body.Data.NeedNotice.
 - Update API GrantSwitchAgreement: add request parameters IsConfirmed.

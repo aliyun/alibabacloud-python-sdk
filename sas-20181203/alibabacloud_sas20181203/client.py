@@ -7986,6 +7986,8 @@ class Client(OpenApiClient):
             query['FieldValue'] = request.field_value
         if not UtilClient.is_unset(request.operator):
             query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.target_type):
@@ -8033,6 +8035,8 @@ class Client(OpenApiClient):
             query['FieldValue'] = request.field_value
         if not UtilClient.is_unset(request.operator):
             query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.target_type):
@@ -38628,7 +38632,7 @@ class Client(OpenApiClient):
         
         @summary Queries the assets that are affected by the risk item detected in configuration assessment based on a specified check item.
         
-        @description This operation is phased out. You can use the ListCheckInstanceResult operation.
+        @description 该接口已下线，使用升级接口ListCheckInstanceResult替换。
         
         @param request: DescribeRiskCheckItemResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38678,7 +38682,7 @@ class Client(OpenApiClient):
         
         @summary Queries the assets that are affected by the risk item detected in configuration assessment based on a specified check item.
         
-        @description This operation is phased out. You can use the ListCheckInstanceResult operation.
+        @description 该接口已下线，使用升级接口ListCheckInstanceResult替换。
         
         @param request: DescribeRiskCheckItemResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38727,7 +38731,7 @@ class Client(OpenApiClient):
         
         @summary Queries the assets that are affected by the risk item detected in configuration assessment based on a specified check item.
         
-        @description This operation is phased out. You can use the ListCheckInstanceResult operation.
+        @description 该接口已下线，使用升级接口ListCheckInstanceResult替换。
         
         @param request: DescribeRiskCheckItemResultRequest
         @return: DescribeRiskCheckItemResultResponse
@@ -38745,7 +38749,7 @@ class Client(OpenApiClient):
         
         @summary Queries the assets that are affected by the risk item detected in configuration assessment based on a specified check item.
         
-        @description This operation is phased out. You can use the ListCheckInstanceResult operation.
+        @description 该接口已下线，使用升级接口ListCheckInstanceResult替换。
         
         @param request: DescribeRiskCheckItemResultRequest
         @return: DescribeRiskCheckItemResultResponse
@@ -56292,7 +56296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetDockerhubImageRiskStatisticResponse:
         """
-        @summary Query the statistical counts of images across various dimensions.
+        @summary Queries the risk statistics of Docker Hub images.
         
         @param request: GetDockerhubImageRiskStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56327,7 +56331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetDockerhubImageRiskStatisticResponse:
         """
-        @summary Query the statistical counts of images across various dimensions.
+        @summary Queries the risk statistics of Docker Hub images.
         
         @param request: GetDockerhubImageRiskStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56361,7 +56365,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetDockerhubImageRiskStatisticRequest,
     ) -> sas_20181203_models.GetDockerhubImageRiskStatisticResponse:
         """
-        @summary Query the statistical counts of images across various dimensions.
+        @summary Queries the risk statistics of Docker Hub images.
         
         @param request: GetDockerhubImageRiskStatisticRequest
         @return: GetDockerhubImageRiskStatisticResponse
@@ -56374,7 +56378,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetDockerhubImageRiskStatisticRequest,
     ) -> sas_20181203_models.GetDockerhubImageRiskStatisticResponse:
         """
-        @summary Query the statistical counts of images across various dimensions.
+        @summary Queries the risk statistics of Docker Hub images.
         
         @param request: GetDockerhubImageRiskStatisticRequest
         @return: GetDockerhubImageRiskStatisticResponse
@@ -59732,7 +59736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetOpaClusterImageListResponse:
         """
-        @summary 查询集群镜像
+        @summary Get cluster image information.
         
         @param request: GetOpaClusterImageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -59773,7 +59777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetOpaClusterImageListResponse:
         """
-        @summary 查询集群镜像
+        @summary Get cluster image information.
         
         @param request: GetOpaClusterImageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -59813,7 +59817,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetOpaClusterImageListRequest,
     ) -> sas_20181203_models.GetOpaClusterImageListResponse:
         """
-        @summary 查询集群镜像
+        @summary Get cluster image information.
         
         @param request: GetOpaClusterImageListRequest
         @return: GetOpaClusterImageListResponse
@@ -59826,7 +59830,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetOpaClusterImageListRequest,
     ) -> sas_20181203_models.GetOpaClusterImageListResponse:
         """
-        @summary 查询集群镜像
+        @summary Get cluster image information.
         
         @param request: GetOpaClusterImageListRequest
         @return: GetOpaClusterImageListResponse
@@ -60777,7 +60781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetRegistryScanDayNumResponse:
         """
-        @summary Query Image Scan Period.
+        @summary Queries the time range of image scans.
         
         @param request: GetRegistryScanDayNumRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -60805,7 +60809,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetRegistryScanDayNumResponse:
         """
-        @summary Query Image Scan Period.
+        @summary Queries the time range of image scans.
         
         @param request: GetRegistryScanDayNumRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -60830,7 +60834,7 @@ class Client(OpenApiClient):
 
     def get_registry_scan_day_num(self) -> sas_20181203_models.GetRegistryScanDayNumResponse:
         """
-        @summary Query Image Scan Period.
+        @summary Queries the time range of image scans.
         
         @return: GetRegistryScanDayNumResponse
         """
@@ -60839,7 +60843,7 @@ class Client(OpenApiClient):
 
     async def get_registry_scan_day_num_async(self) -> sas_20181203_models.GetRegistryScanDayNumResponse:
         """
-        @summary Query Image Scan Period.
+        @summary Queries the time range of image scans.
         
         @return: GetRegistryScanDayNumResponse
         """
@@ -70414,7 +70418,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListHoneypotProbeUuidResponse:
         """
-        @summary 查询已安装的探针
+        @summary Query installed probes
         
         @param request: ListHoneypotProbeUuidRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -70453,7 +70457,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListHoneypotProbeUuidResponse:
         """
-        @summary 查询已安装的探针
+        @summary Query installed probes
         
         @param request: ListHoneypotProbeUuidRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -70491,7 +70495,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListHoneypotProbeUuidRequest,
     ) -> sas_20181203_models.ListHoneypotProbeUuidResponse:
         """
-        @summary 查询已安装的探针
+        @summary Query installed probes
         
         @param request: ListHoneypotProbeUuidRequest
         @return: ListHoneypotProbeUuidResponse
@@ -70504,7 +70508,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListHoneypotProbeUuidRequest,
     ) -> sas_20181203_models.ListHoneypotProbeUuidResponse:
         """
-        @summary 查询已安装的探针
+        @summary Query installed probes
         
         @param request: ListHoneypotProbeUuidRequest
         @return: ListHoneypotProbeUuidResponse
@@ -70614,7 +70618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListImageRegistryExtraResponse:
         """
-        @summary Query Image Registry Extended Information.
+        @summary Queries the additional configuration information about an image repository.
         
         @param request: ListImageRegistryExtraRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -70649,7 +70653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListImageRegistryExtraResponse:
         """
-        @summary Query Image Registry Extended Information.
+        @summary Queries the additional configuration information about an image repository.
         
         @param request: ListImageRegistryExtraRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -70683,7 +70687,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListImageRegistryExtraRequest,
     ) -> sas_20181203_models.ListImageRegistryExtraResponse:
         """
-        @summary Query Image Registry Extended Information.
+        @summary Queries the additional configuration information about an image repository.
         
         @param request: ListImageRegistryExtraRequest
         @return: ListImageRegistryExtraResponse
@@ -70696,7 +70700,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListImageRegistryExtraRequest,
     ) -> sas_20181203_models.ListImageRegistryExtraResponse:
         """
-        @summary Query Image Registry Extended Information.
+        @summary Queries the additional configuration information about an image repository.
         
         @param request: ListImageRegistryExtraRequest
         @return: ListImageRegistryExtraResponse
@@ -71784,7 +71788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListMachineAppsResponse:
         """
-        @summary Paginate to query the application list.
+        @summary Queries Serverless App Engine (SAE) applications.
         
         @param request: ListMachineAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -71833,7 +71837,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListMachineAppsResponse:
         """
-        @summary Paginate to query the application list.
+        @summary Queries Serverless App Engine (SAE) applications.
         
         @param request: ListMachineAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -71881,7 +71885,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListMachineAppsRequest,
     ) -> sas_20181203_models.ListMachineAppsResponse:
         """
-        @summary Paginate to query the application list.
+        @summary Queries Serverless App Engine (SAE) applications.
         
         @param request: ListMachineAppsRequest
         @return: ListMachineAppsResponse
@@ -71894,7 +71898,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListMachineAppsRequest,
     ) -> sas_20181203_models.ListMachineAppsResponse:
         """
-        @summary Paginate to query the application list.
+        @summary Queries Serverless App Engine (SAE) applications.
         
         @param request: ListMachineAppsRequest
         @return: ListMachineAppsResponse
@@ -71920,6 +71924,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.event_name):
             query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.id_list):
+            query['IdList'] = request.id_list
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -71963,6 +71969,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.event_name):
             query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.id_list):
+            query['IdList'] = request.id_list
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -72028,10 +72036,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.batch_type):
+            query['BatchType'] = request.batch_type
         if not UtilClient.is_unset(request.bucket_name):
             query['BucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
         if not UtilClient.is_unset(request.event_name):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.lang):
@@ -72048,6 +72060,8 @@ class Client(OpenApiClient):
             query['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.time_end):
             query['TimeEnd'] = request.time_end
         if not UtilClient.is_unset(request.time_start):
@@ -72085,10 +72099,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.batch_type):
+            query['BatchType'] = request.batch_type
         if not UtilClient.is_unset(request.bucket_name):
             query['BucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
         if not UtilClient.is_unset(request.event_name):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.lang):
@@ -72105,6 +72123,8 @@ class Client(OpenApiClient):
             query['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.time_end):
             query['TimeEnd'] = request.time_end
         if not UtilClient.is_unset(request.time_start):
@@ -74912,7 +74932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListUuidsByAppIdResponse:
         """
-        @summary Query the list of instance UUIDs based on the application ID.
+        @summary Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
         
         @param request: ListUuidsByAppIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -74957,7 +74977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListUuidsByAppIdResponse:
         """
-        @summary Query the list of instance UUIDs based on the application ID.
+        @summary Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
         
         @param request: ListUuidsByAppIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -75001,7 +75021,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListUuidsByAppIdRequest,
     ) -> sas_20181203_models.ListUuidsByAppIdResponse:
         """
-        @summary Query the list of instance UUIDs based on the application ID.
+        @summary Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
         
         @param request: ListUuidsByAppIdRequest
         @return: ListUuidsByAppIdResponse
@@ -75014,7 +75034,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListUuidsByAppIdRequest,
     ) -> sas_20181203_models.ListUuidsByAppIdResponse:
         """
-        @summary Query the list of instance UUIDs based on the application ID.
+        @summary Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
         
         @param request: ListUuidsByAppIdRequest
         @return: ListUuidsByAppIdResponse
@@ -79204,7 +79224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyHybridProxyClusterResponse:
         """
-        @summary 修改代理集群
+        @summary Modify proxy cluster.
         
         @param request: ModifyHybridProxyClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -79241,7 +79261,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyHybridProxyClusterResponse:
         """
-        @summary 修改代理集群
+        @summary Modify proxy cluster.
         
         @param request: ModifyHybridProxyClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -79277,7 +79297,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyHybridProxyClusterRequest,
     ) -> sas_20181203_models.ModifyHybridProxyClusterResponse:
         """
-        @summary 修改代理集群
+        @summary Modify proxy cluster.
         
         @param request: ModifyHybridProxyClusterRequest
         @return: ModifyHybridProxyClusterResponse
@@ -79290,7 +79310,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyHybridProxyClusterRequest,
     ) -> sas_20181203_models.ModifyHybridProxyClusterResponse:
         """
-        @summary 修改代理集群
+        @summary Modify proxy cluster.
         
         @param request: ModifyHybridProxyClusterRequest
         @return: ModifyHybridProxyClusterResponse
@@ -79304,7 +79324,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyHybridProxyPolicyResponse:
         """
-        @summary 修改代理策略
+        @summary Modify proxy policy.
         
         @param request: ModifyHybridProxyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -79341,7 +79361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyHybridProxyPolicyResponse:
         """
-        @summary 修改代理策略
+        @summary Modify proxy policy.
         
         @param request: ModifyHybridProxyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -79377,7 +79397,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyHybridProxyPolicyRequest,
     ) -> sas_20181203_models.ModifyHybridProxyPolicyResponse:
         """
-        @summary 修改代理策略
+        @summary Modify proxy policy.
         
         @param request: ModifyHybridProxyPolicyRequest
         @return: ModifyHybridProxyPolicyResponse
@@ -79390,7 +79410,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyHybridProxyPolicyRequest,
     ) -> sas_20181203_models.ModifyHybridProxyPolicyResponse:
         """
-        @summary 修改代理策略
+        @summary Modify proxy policy.
         
         @param request: ModifyHybridProxyPolicyRequest
         @return: ModifyHybridProxyPolicyResponse
@@ -94478,6 +94498,8 @@ class Client(OpenApiClient):
             query['FieldValue'] = request.field_value
         if not UtilClient.is_unset(request.operator):
             query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.target_type):
@@ -94527,6 +94549,8 @@ class Client(OpenApiClient):
             query['FieldValue'] = request.field_value
         if not UtilClient.is_unset(request.operator):
             query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.target_type):
@@ -95716,7 +95740,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.UpdateWhiteListResponse:
         """
-        @summary Modify Image Service Whitelist.
+        @summary Updates the IP address whitelist of an image repository.
         
         @param request: UpdateWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -95753,7 +95777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.UpdateWhiteListResponse:
         """
-        @summary Modify Image Service Whitelist.
+        @summary Updates the IP address whitelist of an image repository.
         
         @param request: UpdateWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -95789,7 +95813,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.UpdateWhiteListRequest,
     ) -> sas_20181203_models.UpdateWhiteListResponse:
         """
-        @summary Modify Image Service Whitelist.
+        @summary Updates the IP address whitelist of an image repository.
         
         @param request: UpdateWhiteListRequest
         @return: UpdateWhiteListResponse
@@ -95802,7 +95826,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.UpdateWhiteListRequest,
     ) -> sas_20181203_models.UpdateWhiteListResponse:
         """
-        @summary Modify Image Service Whitelist.
+        @summary Updates the IP address whitelist of an image repository.
         
         @param request: UpdateWhiteListRequest
         @return: UpdateWhiteListResponse
