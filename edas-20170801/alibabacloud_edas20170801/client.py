@@ -4438,6 +4438,8 @@ class Client(OpenApiClient):
             query['RequestsEphemeralStorage'] = request.requests_ephemeral_storage
         if not UtilClient.is_unset(request.runtime_class_name):
             query['RuntimeClassName'] = request.runtime_class_name
+        if not UtilClient.is_unset(request.security_context):
+            query['SecurityContext'] = request.security_context
         if not UtilClient.is_unset(request.sidecars):
             query['Sidecars'] = request.sidecars
         if not UtilClient.is_unset(request.sls_configs):
@@ -4610,6 +4612,8 @@ class Client(OpenApiClient):
             query['RequestsEphemeralStorage'] = request.requests_ephemeral_storage
         if not UtilClient.is_unset(request.runtime_class_name):
             query['RuntimeClassName'] = request.runtime_class_name
+        if not UtilClient.is_unset(request.security_context):
+            query['SecurityContext'] = request.security_context
         if not UtilClient.is_unset(request.sidecars):
             query['Sidecars'] = request.sidecars
         if not UtilClient.is_unset(request.sls_configs):
@@ -4895,6 +4899,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_scaling_rules_with_options_async(request, headers, runtime)
+
+    def describe_locality_setting_with_options(
+        self,
+        request: edas_20170801_models.DescribeLocalitySettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> edas_20170801_models.DescribeLocalitySettingResponse:
+        """
+        @param request: DescribeLocalitySettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLocalitySettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLocalitySetting',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname=f'/pop/sp/applications/locality/setting',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edas_20170801_models.DescribeLocalitySettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_locality_setting_with_options_async(
+        self,
+        request: edas_20170801_models.DescribeLocalitySettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> edas_20170801_models.DescribeLocalitySettingResponse:
+        """
+        @param request: DescribeLocalitySettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLocalitySettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLocalitySetting',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname=f'/pop/sp/applications/locality/setting',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edas_20170801_models.DescribeLocalitySettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_locality_setting(
+        self,
+        request: edas_20170801_models.DescribeLocalitySettingRequest,
+    ) -> edas_20170801_models.DescribeLocalitySettingResponse:
+        """
+        @param request: DescribeLocalitySettingRequest
+        @return: DescribeLocalitySettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_locality_setting_with_options(request, headers, runtime)
+
+    async def describe_locality_setting_async(
+        self,
+        request: edas_20170801_models.DescribeLocalitySettingRequest,
+    ) -> edas_20170801_models.DescribeLocalitySettingResponse:
+        """
+        @param request: DescribeLocalitySettingRequest
+        @return: DescribeLocalitySettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_locality_setting_with_options_async(request, headers, runtime)
 
     def disable_application_scaling_rule_with_options(
         self,
@@ -8306,6 +8414,8 @@ class Client(OpenApiClient):
             query['RuntimeClassName'] = request.runtime_class_name
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.security_context):
+            query['SecurityContext'] = request.security_context
         if not UtilClient.is_unset(request.service_configs):
             query['ServiceConfigs'] = request.service_configs
         if not UtilClient.is_unset(request.sidecars):
@@ -8512,6 +8622,8 @@ class Client(OpenApiClient):
             query['RuntimeClassName'] = request.runtime_class_name
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.security_context):
+            query['SecurityContext'] = request.security_context
         if not UtilClient.is_unset(request.service_configs):
             query['ServiceConfigs'] = request.service_configs
         if not UtilClient.is_unset(request.sidecars):

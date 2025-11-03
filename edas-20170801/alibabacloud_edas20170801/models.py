@@ -6866,6 +6866,7 @@ class DeployK8sApplicationRequest(TeaModel):
         replicas: int = None,
         requests_ephemeral_storage: int = None,
         runtime_class_name: str = None,
+        security_context: str = None,
         sidecars: str = None,
         sls_configs: str = None,
         startup: str = None,
@@ -7071,6 +7072,7 @@ class DeployK8sApplicationRequest(TeaModel):
         # 
         # This parameter is applicable only to clusters that use sandboxed containers.
         self.runtime_class_name = runtime_class_name
+        self.security_context = security_context
         self.sidecars = sidecars
         # The Logstore configuration. If you want to cancel this configuration, leave the parameter value empty by entering `""` or `"{}"`.
         # 
@@ -7272,6 +7274,8 @@ class DeployK8sApplicationRequest(TeaModel):
             result['RequestsEphemeralStorage'] = self.requests_ephemeral_storage
         if self.runtime_class_name is not None:
             result['RuntimeClassName'] = self.runtime_class_name
+        if self.security_context is not None:
+            result['SecurityContext'] = self.security_context
         if self.sidecars is not None:
             result['Sidecars'] = self.sidecars
         if self.sls_configs is not None:
@@ -7412,6 +7416,8 @@ class DeployK8sApplicationRequest(TeaModel):
             self.requests_ephemeral_storage = m.get('RequestsEphemeralStorage')
         if m.get('RuntimeClassName') is not None:
             self.runtime_class_name = m.get('RuntimeClassName')
+        if m.get('SecurityContext') is not None:
+            self.security_context = m.get('SecurityContext')
         if m.get('Sidecars') is not None:
             self.sidecars = m.get('Sidecars')
         if m.get('SlsConfigs') is not None:
@@ -8424,6 +8430,181 @@ class DescribeApplicationScalingRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeApplicationScalingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLocalitySettingRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        namespace_id: str = None,
+        region: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class DescribeLocalitySettingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        threshold: float = None,
+    ):
+        self.enabled = enabled
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class DescribeLocalitySettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeLocalitySettingResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeLocalitySettingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeLocalitySettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLocalitySettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLocalitySettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12112,6 +12293,7 @@ class GetK8sApplicationResponseBodyApplcationApp(TeaModel):
         request_cpu_m: int = None,
         request_ephemeral_storage: str = None,
         request_mem: int = None,
+        security_context: str = None,
         slb_info: str = None,
         tomcat_version: str = None,
         workload_type: str = None,
@@ -12189,6 +12371,7 @@ class GetK8sApplicationResponseBodyApplcationApp(TeaModel):
         self.request_ephemeral_storage = request_ephemeral_storage
         # The size of the reserved memory. Unit: MiB.
         self.request_mem = request_mem
+        self.security_context = security_context
         # The configuration information about the Server Load Balancer (SLB).
         self.slb_info = slb_info
         # The version of Apache Tomcat.
@@ -12272,6 +12455,8 @@ class GetK8sApplicationResponseBodyApplcationApp(TeaModel):
             result['RequestEphemeralStorage'] = self.request_ephemeral_storage
         if self.request_mem is not None:
             result['RequestMem'] = self.request_mem
+        if self.security_context is not None:
+            result['SecurityContext'] = self.security_context
         if self.slb_info is not None:
             result['SlbInfo'] = self.slb_info
         if self.tomcat_version is not None:
@@ -12348,6 +12533,8 @@ class GetK8sApplicationResponseBodyApplcationApp(TeaModel):
             self.request_ephemeral_storage = m.get('RequestEphemeralStorage')
         if m.get('RequestMem') is not None:
             self.request_mem = m.get('RequestMem')
+        if m.get('SecurityContext') is not None:
+            self.security_context = m.get('SecurityContext')
         if m.get('SlbInfo') is not None:
             self.slb_info = m.get('SlbInfo')
         if m.get('TomcatVersion') is not None:
@@ -17771,6 +17958,7 @@ class InsertK8sApplicationRequest(TeaModel):
         resource_group_id: str = None,
         runtime_class_name: str = None,
         secret_name: str = None,
+        security_context: str = None,
         service_configs: str = None,
         sidecars: str = None,
         sls_configs: str = None,
@@ -18016,6 +18204,7 @@ class InsertK8sApplicationRequest(TeaModel):
         self.runtime_class_name = runtime_class_name
         # The name of the credential that is used to pull the images specified by the user. You must configure the Secret.
         self.secret_name = secret_name
+        self.security_context = security_context
         # The configurations of services in a Kubernetes cluster.
         self.service_configs = service_configs
         # Set up a Sidecar container for the application Pod. Support setting the format YAML for container configuration, which is the value of Sidecar container YAML configured with base64 encoding.
@@ -18245,6 +18434,8 @@ class InsertK8sApplicationRequest(TeaModel):
             result['RuntimeClassName'] = self.runtime_class_name
         if self.secret_name is not None:
             result['SecretName'] = self.secret_name
+        if self.security_context is not None:
+            result['SecurityContext'] = self.security_context
         if self.service_configs is not None:
             result['ServiceConfigs'] = self.service_configs
         if self.sidecars is not None:
@@ -18419,6 +18610,8 @@ class InsertK8sApplicationRequest(TeaModel):
             self.runtime_class_name = m.get('RuntimeClassName')
         if m.get('SecretName') is not None:
             self.secret_name = m.get('SecretName')
+        if m.get('SecurityContext') is not None:
+            self.security_context = m.get('SecurityContext')
         if m.get('ServiceConfigs') is not None:
             self.service_configs = m.get('ServiceConfigs')
         if m.get('Sidecars') is not None:
