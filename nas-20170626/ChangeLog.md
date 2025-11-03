@@ -1,3 +1,10 @@
+2025-11-03 Version: 3.1.3
+- Update API CreateAccessPoint: add request parameters Tag.
+- Update API DescribeAccessPoint: add response parameters Body.AccessPoint.Tags.
+- Update API DescribeAccessPoints: add request parameters Tag.
+- Update API DescribeAccessPoints: add response parameters Body.AccessPoints.$.Tags.
+
+
 2025-09-22 Version: 3.1.2
 - Update API CreateDataFlowTask: add request parameters TransferFileListPath.
 - Update API DescribeDataFlowTasks: add response parameters Body.TaskInfo.$.TransferFileListPath.

@@ -1807,6 +1807,8 @@ class Client(OpenApiClient):
             query['PosixUserId'] = request.posix_user_id
         if not UtilClient.is_unset(request.root_directory):
             query['RootDirectory'] = request.root_directory
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vsw_id):
@@ -1870,6 +1872,8 @@ class Client(OpenApiClient):
             query['PosixUserId'] = request.posix_user_id
         if not UtilClient.is_unset(request.root_directory):
             query['RootDirectory'] = request.root_directory
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vsw_id):
@@ -4447,8 +4451,7 @@ class Client(OpenApiClient):
         """
         @summary Restores a file or directory from the recycle bin.
         
-        @description ### Usage notes
-        Only General-purpose NAS file systems support this operation.
+        @description    Only General-purpose NAS file systems support this operation.
         You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
         You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
         After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
@@ -4486,8 +4489,7 @@ class Client(OpenApiClient):
         """
         @summary Restores a file or directory from the recycle bin.
         
-        @description ### Usage notes
-        Only General-purpose NAS file systems support this operation.
+        @description    Only General-purpose NAS file systems support this operation.
         You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
         You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
         After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
@@ -4524,8 +4526,7 @@ class Client(OpenApiClient):
         """
         @summary Restores a file or directory from the recycle bin.
         
-        @description ### Usage notes
-        Only General-purpose NAS file systems support this operation.
+        @description    Only General-purpose NAS file systems support this operation.
         You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
         You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
         After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
@@ -4543,8 +4544,7 @@ class Client(OpenApiClient):
         """
         @summary Restores a file or directory from the recycle bin.
         
-        @description ### Usage notes
-        Only General-purpose NAS file systems support this operation.
+        @description    Only General-purpose NAS file systems support this operation.
         You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
         You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
         After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
@@ -6523,6 +6523,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6566,6 +6568,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

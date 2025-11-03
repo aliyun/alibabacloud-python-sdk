@@ -1799,8 +1799,8 @@ class CreateAccessGroupRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
+        # *   standard (default): General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
 
     def validate(self):
@@ -1911,6 +1911,39 @@ class CreateAccessGroupResponse(TeaModel):
         return self
 
 
+class CreateAccessPointRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateAccessPointRequest(TeaModel):
     def __init__(
         self,
@@ -1925,6 +1958,7 @@ class CreateAccessPointRequest(TeaModel):
         posix_secondary_group_ids: str = None,
         posix_user_id: int = None,
         root_directory: str = None,
+        tag: List[CreateAccessPointRequestTag] = None,
         vpc_id: str = None,
         vsw_id: str = None,
     ):
@@ -1969,6 +2003,7 @@ class CreateAccessPointRequest(TeaModel):
         self.posix_user_id = posix_user_id
         # The root directory of the access point. The default value is /. If the directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
         self.root_directory = root_directory
+        self.tag = tag
         # The VPC ID.
         # 
         # This parameter is required.
@@ -1979,7 +2014,10 @@ class CreateAccessPointRequest(TeaModel):
         self.vsw_id = vsw_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2009,6 +2047,10 @@ class CreateAccessPointRequest(TeaModel):
             result['PosixUserId'] = self.posix_user_id
         if self.root_directory is not None:
             result['RootDirectory'] = self.root_directory
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vsw_id is not None:
@@ -2039,6 +2081,11 @@ class CreateAccessPointRequest(TeaModel):
             self.posix_user_id = m.get('PosixUserId')
         if m.get('RootDirectory') is not None:
             self.root_directory = m.get('RootDirectory')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateAccessPointRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswId') is not None:
@@ -5372,7 +5419,7 @@ class CreateRecycleBinDeleteJobRequest(TeaModel):
         self.client_token = client_token
         # The ID of the file or directory that you want to permanently delete.
         # 
-        # You can call the [ListRecycledDirectoriesAndFiles](https://help.aliyun.com/document_detail/264193.html) operation to query the value of the FileId parameter.
+        # You can call the [ListRecycledDirectoriesAndFiles](https://help.aliyun.com/document_detail/2412174.html) operation to query the FileId of the deleted data.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -5501,7 +5548,7 @@ class CreateRecycleBinRestoreJobRequest(TeaModel):
         self.client_token = client_token
         # The ID of the file or directory that you want to restore.
         # 
-        # You can call the [ListRecycleBinJobs](https://help.aliyun.com/document_detail/264192.html) operation to query the value of the FileId parameter.
+        # You can call the [ListRecycledDirectoriesAndFiles](https://help.aliyun.com/document_detail/2412174.html) operation to query the FileId of the deleted data.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -5510,6 +5557,9 @@ class CreateRecycleBinRestoreJobRequest(TeaModel):
         # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the directory to which the file is restored.
+        # 
+        # *   You can call the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation to query the TargetFileId for recently deleted directories.
+        # *   You can call the [ListDirectoriesAndFiles](https://help.aliyun.com/document_detail/2412163.html) operation to query the TargetFileId for existing directories.
         # 
         # This parameter is required.
         self.target_file_id = target_file_id
@@ -7424,9 +7474,9 @@ class DescribeAccessGroupsRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: Cloud Parallel File Storage (CPFS) file system
+        # *   standard (default): General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
+        # *   cpfs: Cloud Parallel File Storage (CPFS) file system.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
@@ -7826,6 +7876,39 @@ class DescribeAccessPointResponseBodyAccessPointRootPathPermission(TeaModel):
         return self
 
 
+class DescribeAccessPointResponseBodyAccessPointTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
     def __init__(
         self,
@@ -7844,6 +7927,7 @@ class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
         root_path_permission: DescribeAccessPointResponseBodyAccessPointRootPathPermission = None,
         root_path_status: str = None,
         status: str = None,
+        tags: List[DescribeAccessPointResponseBodyAccessPointTags] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -7890,6 +7974,7 @@ class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
         # *   Pending: The access point is being created.
         # *   Deleting: The access point is being deleted.
         self.status = status
+        self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
@@ -7902,6 +7987,10 @@ class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
             self.posix_user.validate()
         if self.root_path_permission:
             self.root_path_permission.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7939,6 +8028,10 @@ class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
             result['RootPathStatus'] = self.root_path_status
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -7979,6 +8072,11 @@ class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
             self.root_path_status = m.get('RootPathStatus')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeAccessPointResponseBodyAccessPointTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -8066,6 +8164,39 @@ class DescribeAccessPointResponse(TeaModel):
         return self
 
 
+class DescribeAccessPointsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAccessPointsRequest(TeaModel):
     def __init__(
         self,
@@ -8073,6 +8204,7 @@ class DescribeAccessPointsRequest(TeaModel):
         file_system_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        tag: List[DescribeAccessPointsRequestTag] = None,
     ):
         # The name of the permission group.
         # 
@@ -8088,9 +8220,13 @@ class DescribeAccessPointsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8106,6 +8242,10 @@ class DescribeAccessPointsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8118,6 +8258,11 @@ class DescribeAccessPointsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeAccessPointsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -8205,6 +8350,39 @@ class DescribeAccessPointsResponseBodyAccessPointsRootPathPermission(TeaModel):
         return self
 
 
+class DescribeAccessPointsResponseBodyAccessPointsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
     def __init__(
         self,
@@ -8222,6 +8400,7 @@ class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
         root_path_permission: DescribeAccessPointsResponseBodyAccessPointsRootPathPermission = None,
         root_path_status: str = None,
         status: str = None,
+        tags: List[DescribeAccessPointsResponseBodyAccessPointsTags] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -8268,6 +8447,7 @@ class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
         # 
         # >  You can mount a file system only if the access point is in the Active state.
         self.status = status
+        self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The VPC ID.
@@ -8278,6 +8458,10 @@ class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
             self.posix_user.validate()
         if self.root_path_permission:
             self.root_path_permission.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8313,6 +8497,10 @@ class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
             result['RootPathStatus'] = self.root_path_status
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -8351,6 +8539,11 @@ class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
             self.root_path_status = m.get('RootPathStatus')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeAccessPointsResponseBodyAccessPointsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
