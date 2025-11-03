@@ -6461,3 +6461,265 @@ class UpdatePartnerReservePriceResponse(TeaModel):
         return self
 
 
+class WebsiteAddDnsRecordRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        rr: str = None,
+        source: str = None,
+        type: str = None,
+        user_id: str = None,
+        value: str = None,
+        website_no: str = None,
+    ):
+        self.domain_name = domain_name
+        self.rr = rr
+        self.source = source
+        self.type = type
+        self.user_id = user_id
+        self.value = value
+        self.website_no = website_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.website_no is not None:
+            result['WebsiteNo'] = self.website_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('WebsiteNo') is not None:
+            self.website_no = m.get('WebsiteNo')
+        return self
+
+
+class WebsiteAddDnsRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class WebsiteAddDnsRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebsiteAddDnsRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebsiteAddDnsRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WebsiteDeleteDnsRecordRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        rr: str = None,
+        source: str = None,
+        type: str = None,
+        user_id: str = None,
+        value: str = None,
+        website_no: str = None,
+    ):
+        self.domain_name = domain_name
+        self.rr = rr
+        self.source = source
+        self.type = type
+        self.user_id = user_id
+        self.value = value
+        self.website_no = website_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.website_no is not None:
+            result['WebsiteNo'] = self.website_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('WebsiteNo') is not None:
+            self.website_no = m.get('WebsiteNo')
+        return self
+
+
+class WebsiteDeleteDnsRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class WebsiteDeleteDnsRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebsiteDeleteDnsRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebsiteDeleteDnsRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+

@@ -3556,3 +3556,243 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_partner_reserve_price_with_options_async(request, runtime)
+
+    def website_add_dns_record_with_options(
+        self,
+        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
+        """
+        @summary 域名建站添加DNS记录
+        
+        @param request: WebsiteAddDnsRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebsiteAddDnsRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.website_no):
+            query['WebsiteNo'] = request.website_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WebsiteAddDnsRecord',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.WebsiteAddDnsRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def website_add_dns_record_with_options_async(
+        self,
+        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
+        """
+        @summary 域名建站添加DNS记录
+        
+        @param request: WebsiteAddDnsRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebsiteAddDnsRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.website_no):
+            query['WebsiteNo'] = request.website_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WebsiteAddDnsRecord',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.WebsiteAddDnsRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def website_add_dns_record(
+        self,
+        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
+    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
+        """
+        @summary 域名建站添加DNS记录
+        
+        @param request: WebsiteAddDnsRecordRequest
+        @return: WebsiteAddDnsRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.website_add_dns_record_with_options(request, runtime)
+
+    async def website_add_dns_record_async(
+        self,
+        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
+    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
+        """
+        @summary 域名建站添加DNS记录
+        
+        @param request: WebsiteAddDnsRecordRequest
+        @return: WebsiteAddDnsRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.website_add_dns_record_with_options_async(request, runtime)
+
+    def website_delete_dns_record_with_options(
+        self,
+        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
+        """
+        @summary 域名建站删除DNS记录
+        
+        @param request: WebsiteDeleteDnsRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebsiteDeleteDnsRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.website_no):
+            query['WebsiteNo'] = request.website_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WebsiteDeleteDnsRecord',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.WebsiteDeleteDnsRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def website_delete_dns_record_with_options_async(
+        self,
+        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
+        """
+        @summary 域名建站删除DNS记录
+        
+        @param request: WebsiteDeleteDnsRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebsiteDeleteDnsRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.website_no):
+            query['WebsiteNo'] = request.website_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WebsiteDeleteDnsRecord',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.WebsiteDeleteDnsRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def website_delete_dns_record(
+        self,
+        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
+    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
+        """
+        @summary 域名建站删除DNS记录
+        
+        @param request: WebsiteDeleteDnsRecordRequest
+        @return: WebsiteDeleteDnsRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.website_delete_dns_record_with_options(request, runtime)
+
+    async def website_delete_dns_record_async(
+        self,
+        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
+    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
+        """
+        @summary 域名建站删除DNS记录
+        
+        @param request: WebsiteDeleteDnsRecordRequest
+        @return: WebsiteDeleteDnsRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.website_delete_dns_record_with_options_async(request, runtime)

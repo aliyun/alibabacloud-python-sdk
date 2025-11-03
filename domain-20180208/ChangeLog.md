@@ -1,3 +1,8 @@
+2025-11-03 Version: 1.7.0
+- Support API WebsiteAddDnsRecord.
+- Support API WebsiteDeleteDnsRecord.
+
+
 2025-10-22 Version: 1.6.0
 - Support API BatchQueryPushStatus.
 - Support API BatchRecallPush.
