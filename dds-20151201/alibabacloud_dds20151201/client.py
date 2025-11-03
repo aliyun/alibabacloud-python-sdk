@@ -4726,6 +4726,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dest_region):
@@ -4742,6 +4744,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -4785,6 +4789,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dest_region):
@@ -4801,6 +4807,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -4873,6 +4881,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dest_region):
@@ -4889,6 +4899,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -4935,6 +4947,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dest_region):
@@ -4951,6 +4965,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -12633,6 +12649,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.search_node_class):
+            query['SearchNodeClass'] = request.search_node_class
+        if not UtilClient.is_unset(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        if not UtilClient.is_unset(request.search_node_storage):
+            query['SearchNodeStorage'] = request.search_node_storage
         if not UtilClient.is_unset(request.target_hidden_zone_id):
             query['TargetHiddenZoneId'] = request.target_hidden_zone_id
         if not UtilClient.is_unset(request.target_secondary_zone_id):
@@ -12707,6 +12729,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.search_node_class):
+            query['SearchNodeClass'] = request.search_node_class
+        if not UtilClient.is_unset(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        if not UtilClient.is_unset(request.search_node_storage):
+            query['SearchNodeStorage'] = request.search_node_storage
         if not UtilClient.is_unset(request.target_hidden_zone_id):
             query['TargetHiddenZoneId'] = request.target_hidden_zone_id
         if not UtilClient.is_unset(request.target_secondary_zone_id):

@@ -1,3 +1,19 @@
+2025-11-03 Version: 9.2.1
+- Update API CreateBackup: add response parameters Body.BackupJobId.
+- Update API DescribeBackups: add request parameters BackupJobId.
+- Update API DescribeBackups: add request parameters ResourceGroupId.
+- Update API DescribeClusterBackups: add request parameters BackupJobId.
+- Update API DescribeClusterBackups: add request parameters ResourceGroupId.
+- Update API DescribeClusterRecoverTime: add request parameters ResourceGroupId.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.SearchNodeClass.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.SearchNodeCount.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.SearchNodeStorage.
+- Update API DescribeInstanceRecoverTime: add request parameters ResourceGroupId.
+- Update API ModifyDBInstanceSpec: add request parameters SearchNodeClass.
+- Update API ModifyDBInstanceSpec: add request parameters SearchNodeCount.
+- Update API ModifyDBInstanceSpec: add request parameters SearchNodeStorage.
+
+
 2025-08-27 Version: 9.2.0
 - Support API AllocateDBInstanceSrvNetworkAddress.
 - Support API ModifySrvNetworkAddress.

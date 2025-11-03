@@ -1168,10 +1168,12 @@ class CreateBackupResponseBody(TeaModel):
     def __init__(
         self,
         backup_id: str = None,
+        backup_job_id: str = None,
         request_id: str = None,
     ):
         # The ID of the backup set.
         self.backup_id = backup_id
+        self.backup_job_id = backup_job_id
         # The request ID.
         self.request_id = request_id
 
@@ -1186,6 +1188,8 @@ class CreateBackupResponseBody(TeaModel):
         result = dict()
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1194,6 +1198,8 @@ class CreateBackupResponseBody(TeaModel):
         m = m or dict()
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -8215,6 +8221,7 @@ class DescribeBackupsRequest(TeaModel):
     def __init__(
         self,
         backup_id: str = None,
+        backup_job_id: str = None,
         dbinstance_id: str = None,
         dest_region: str = None,
         end_time: str = None,
@@ -8223,6 +8230,7 @@ class DescribeBackupsRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         src_region: str = None,
@@ -8232,6 +8240,7 @@ class DescribeBackupsRequest(TeaModel):
         # 
         # If you set the **DBInstanceId** parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shard nodes. Multiple backup IDs are separated with commas (,).
         self.backup_id = backup_id
+        self.backup_job_id = backup_job_id
         # The instance ID.
         # 
         # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
@@ -8258,6 +8267,7 @@ class DescribeBackupsRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The region ID of the instance.
@@ -8279,6 +8289,8 @@ class DescribeBackupsRequest(TeaModel):
         result = dict()
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.dest_region is not None:
@@ -8295,6 +8307,8 @@ class DescribeBackupsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8309,6 +8323,8 @@ class DescribeBackupsRequest(TeaModel):
         m = m or dict()
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('DestRegion') is not None:
@@ -8325,6 +8341,8 @@ class DescribeBackupsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8641,6 +8659,7 @@ class DescribeClusterBackupsRequest(TeaModel):
     def __init__(
         self,
         backup_id: str = None,
+        backup_job_id: str = None,
         dbinstance_id: str = None,
         dest_region: str = None,
         end_time: str = None,
@@ -8649,6 +8668,7 @@ class DescribeClusterBackupsRequest(TeaModel):
         owner_id: int = None,
         page_no: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         src_region: str = None,
@@ -8656,6 +8676,7 @@ class DescribeClusterBackupsRequest(TeaModel):
     ):
         # The ID of the cluster backup set.
         self.backup_id = backup_id
+        self.backup_job_id = backup_job_id
         # The ID of the instance.
         # 
         # This parameter is required.
@@ -8681,6 +8702,7 @@ class DescribeClusterBackupsRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The region ID of the instance.
@@ -8705,6 +8727,8 @@ class DescribeClusterBackupsRequest(TeaModel):
         result = dict()
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.dest_region is not None:
@@ -8721,6 +8745,8 @@ class DescribeClusterBackupsRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8735,6 +8761,8 @@ class DescribeClusterBackupsRequest(TeaModel):
         m = m or dict()
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('DestRegion') is not None:
@@ -8751,6 +8779,8 @@ class DescribeClusterBackupsRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9197,6 +9227,7 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
         dest_region: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         src_region: str = None,
@@ -9208,6 +9239,7 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
         self.dest_region = dest_region
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.src_region = src_region
@@ -9229,6 +9261,8 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9247,6 +9281,8 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -10163,6 +10199,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         replica_sets: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets = None,
         replication_factor: str = None,
         resource_group_id: str = None,
+        search_node_class: str = None,
+        search_node_count: int = None,
+        search_node_storage: int = None,
         secondary_zone_id: str = None,
         shard_list: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList = None,
         storage_engine: str = None,
@@ -10342,6 +10381,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # 
         # >  This parameter is returned only if you use the China site (aliyun.com).
         self.resource_group_id = resource_group_id
+        self.search_node_class = search_node_class
+        self.search_node_count = search_node_count
+        self.search_node_storage = search_node_storage
         # The ID of the secondary zone 1 of the instance. Valid values:
         # 
         # *   **cn-hangzhou-g**: Hangzhou Zone G
@@ -10509,6 +10551,12 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['ReplicationFactor'] = self.replication_factor
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.search_node_class is not None:
+            result['SearchNodeClass'] = self.search_node_class
+        if self.search_node_count is not None:
+            result['SearchNodeCount'] = self.search_node_count
+        if self.search_node_storage is not None:
+            result['SearchNodeStorage'] = self.search_node_storage
         if self.secondary_zone_id is not None:
             result['SecondaryZoneId'] = self.secondary_zone_id
         if self.shard_list is not None:
@@ -10622,6 +10670,12 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             self.replication_factor = m.get('ReplicationFactor')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SearchNodeClass') is not None:
+            self.search_node_class = m.get('SearchNodeClass')
+        if m.get('SearchNodeCount') is not None:
+            self.search_node_count = m.get('SearchNodeCount')
+        if m.get('SearchNodeStorage') is not None:
+            self.search_node_storage = m.get('SearchNodeStorage')
         if m.get('SecondaryZoneId') is not None:
             self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('ShardList') is not None:
@@ -15596,6 +15650,7 @@ class DescribeInstanceRecoverTimeRequest(TeaModel):
         dest_region: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -15608,6 +15663,7 @@ class DescribeInstanceRecoverTimeRequest(TeaModel):
         self.dest_region = dest_region
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -15630,6 +15686,8 @@ class DescribeInstanceRecoverTimeRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -15650,6 +15708,8 @@ class DescribeInstanceRecoverTimeRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -26532,6 +26592,9 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         replication_factor: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        search_node_class: str = None,
+        search_node_count: int = None,
+        search_node_storage: int = None,
         target_hidden_zone_id: str = None,
         target_secondary_zone_id: str = None,
         target_vswitch_id: str = None,
@@ -26611,6 +26674,9 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.search_node_class = search_node_class
+        self.search_node_count = search_node_count
+        self.search_node_storage = search_node_storage
         self.target_hidden_zone_id = target_hidden_zone_id
         self.target_secondary_zone_id = target_secondary_zone_id
         self.target_vswitch_id = target_vswitch_id
@@ -26655,6 +26721,12 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.search_node_class is not None:
+            result['SearchNodeClass'] = self.search_node_class
+        if self.search_node_count is not None:
+            result['SearchNodeCount'] = self.search_node_count
+        if self.search_node_storage is not None:
+            result['SearchNodeStorage'] = self.search_node_storage
         if self.target_hidden_zone_id is not None:
             result['TargetHiddenZoneId'] = self.target_hidden_zone_id
         if self.target_secondary_zone_id is not None:
@@ -26697,6 +26769,12 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SearchNodeClass') is not None:
+            self.search_node_class = m.get('SearchNodeClass')
+        if m.get('SearchNodeCount') is not None:
+            self.search_node_count = m.get('SearchNodeCount')
+        if m.get('SearchNodeStorage') is not None:
+            self.search_node_storage = m.get('SearchNodeStorage')
         if m.get('TargetHiddenZoneId') is not None:
             self.target_hidden_zone_id = m.get('TargetHiddenZoneId')
         if m.get('TargetSecondaryZoneId') is not None:
@@ -29183,8 +29261,6 @@ class ReleaseNodePrivateNetworkAddressRequest(TeaModel):
         # The ID of the shard or Configserver node.
         # 
         # >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the ID of the shard or Configserver node.
-        # 
-        # This parameter is required.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
