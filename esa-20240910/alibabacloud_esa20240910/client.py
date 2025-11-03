@@ -5110,6 +5110,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_confirm_iplist):
+            query['AutoConfirmIPList'] = request.auto_confirm_iplist
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -5145,6 +5147,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_confirm_iplist):
+            query['AutoConfirmIPList'] = request.auto_confirm_iplist
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -34814,6 +34818,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_confirm_iplist):
+            query['AutoConfirmIPList'] = request.auto_confirm_iplist
         if not UtilClient.is_unset(request.origin_converge):
             query['OriginConverge'] = request.origin_converge
         if not UtilClient.is_unset(request.site_id):
@@ -34851,6 +34857,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_confirm_iplist):
+            query['AutoConfirmIPList'] = request.auto_confirm_iplist
         if not UtilClient.is_unset(request.origin_converge):
             query['OriginConverge'] = request.origin_converge
         if not UtilClient.is_unset(request.site_id):

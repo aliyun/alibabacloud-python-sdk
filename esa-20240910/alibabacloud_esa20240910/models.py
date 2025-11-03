@@ -11001,8 +11001,10 @@ class CreateOriginPoolResponse(TeaModel):
 class CreateOriginProtectionRequest(TeaModel):
     def __init__(
         self,
+        auto_confirm_iplist: str = None,
         site_id: int = None,
     ):
+        self.auto_confirm_iplist = auto_confirm_iplist
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
@@ -11017,12 +11019,16 @@ class CreateOriginProtectionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_confirm_iplist is not None:
+            result['AutoConfirmIPList'] = self.auto_confirm_iplist
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoConfirmIPList') is not None:
+            self.auto_confirm_iplist = m.get('AutoConfirmIPList')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -36972,18 +36978,650 @@ class GetOriginProtectionResponseBodyLatestIPWhitelist(TeaModel):
         return self
 
 
+class GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        regional_ipv_4: List[GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4] = None,
+        regional_ipv_6: List[GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6] = None,
+    ):
+        self.regional_ipv_4 = regional_ipv_4
+        self.regional_ipv_6 = regional_ipv_6
+
+    def validate(self):
+        if self.regional_ipv_4:
+            for k in self.regional_ipv_4:
+                if k:
+                    k.validate()
+        if self.regional_ipv_6:
+            for k in self.regional_ipv_6:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionalIPv4'] = []
+        if self.regional_ipv_4 is not None:
+            for k in self.regional_ipv_4:
+                result['RegionalIPv4'].append(k.to_map() if k else None)
+        result['RegionalIPv6'] = []
+        if self.regional_ipv_6 is not None:
+            for k in self.regional_ipv_6:
+                result['RegionalIPv6'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regional_ipv_4 = []
+        if m.get('RegionalIPv4') is not None:
+            for k in m.get('RegionalIPv4'):
+                temp_model = GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4()
+                self.regional_ipv_4.append(temp_model.from_map(k))
+        self.regional_ipv_6 = []
+        if m.get('RegionalIPv6') is not None:
+            for k in m.get('RegionalIPv6'):
+                temp_model = GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6()
+                self.regional_ipv_6.append(temp_model.from_map(k))
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv4(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv6(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelist(TeaModel):
+    def __init__(
+        self,
+        regional_ipv_4: List[GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv4] = None,
+        regional_ipv_6: List[GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv6] = None,
+    ):
+        self.regional_ipv_4 = regional_ipv_4
+        self.regional_ipv_6 = regional_ipv_6
+
+    def validate(self):
+        if self.regional_ipv_4:
+            for k in self.regional_ipv_4:
+                if k:
+                    k.validate()
+        if self.regional_ipv_6:
+            for k in self.regional_ipv_6:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionalIPv4'] = []
+        if self.regional_ipv_4 is not None:
+            for k in self.regional_ipv_4:
+                result['RegionalIPv4'].append(k.to_map() if k else None)
+        result['RegionalIPv6'] = []
+        if self.regional_ipv_6 is not None:
+            for k in self.regional_ipv_6:
+                result['RegionalIPv6'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regional_ipv_4 = []
+        if m.get('RegionalIPv4') is not None:
+            for k in m.get('RegionalIPv4'):
+                temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv4()
+                self.regional_ipv_4.append(temp_model.from_map(k))
+        self.regional_ipv_6 = []
+        if m.get('RegionalIPv6') is not None:
+            for k in m.get('RegionalIPv6'):
+                temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv6()
+                self.regional_ipv_6.append(temp_model.from_map(k))
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv4(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv6(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist(TeaModel):
+    def __init__(
+        self,
+        regional_ipv_4: List[GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv4] = None,
+        regional_ipv_6: List[GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv6] = None,
+    ):
+        self.regional_ipv_4 = regional_ipv_4
+        self.regional_ipv_6 = regional_ipv_6
+
+    def validate(self):
+        if self.regional_ipv_4:
+            for k in self.regional_ipv_4:
+                if k:
+                    k.validate()
+        if self.regional_ipv_6:
+            for k in self.regional_ipv_6:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionalIPv4'] = []
+        if self.regional_ipv_4 is not None:
+            for k in self.regional_ipv_4:
+                result['RegionalIPv4'].append(k.to_map() if k else None)
+        result['RegionalIPv6'] = []
+        if self.regional_ipv_6 is not None:
+            for k in self.regional_ipv_6:
+                result['RegionalIPv6'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regional_ipv_4 = []
+        if m.get('RegionalIPv4') is not None:
+            for k in m.get('RegionalIPv4'):
+                temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv4()
+                self.regional_ipv_4.append(temp_model.from_map(k))
+        self.regional_ipv_6 = []
+        if m.get('RegionalIPv6') is not None:
+            for k in m.get('RegionalIPv6'):
+                temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv6()
+                self.regional_ipv_6.append(temp_model.from_map(k))
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv4(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv6(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelist(TeaModel):
+    def __init__(
+        self,
+        regional_ipv_4: List[GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv4] = None,
+        regional_ipv_6: List[GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv6] = None,
+    ):
+        self.regional_ipv_4 = regional_ipv_4
+        self.regional_ipv_6 = regional_ipv_6
+
+    def validate(self):
+        if self.regional_ipv_4:
+            for k in self.regional_ipv_4:
+                if k:
+                    k.validate()
+        if self.regional_ipv_6:
+            for k in self.regional_ipv_6:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionalIPv4'] = []
+        if self.regional_ipv_4 is not None:
+            for k in self.regional_ipv_4:
+                result['RegionalIPv4'].append(k.to_map() if k else None)
+        result['RegionalIPv6'] = []
+        if self.regional_ipv_6 is not None:
+            for k in self.regional_ipv_6:
+                result['RegionalIPv6'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regional_ipv_4 = []
+        if m.get('RegionalIPv4') is not None:
+            for k in m.get('RegionalIPv4'):
+                temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv4()
+                self.regional_ipv_4.append(temp_model.from_map(k))
+        self.regional_ipv_6 = []
+        if m.get('RegionalIPv6') is not None:
+            for k in m.get('RegionalIPv6'):
+                temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv6()
+                self.regional_ipv_6.append(temp_model.from_map(k))
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalDiffIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        added_ipregion_whitelist: GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelist = None,
+        no_change_ip_whitelist: GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist = None,
+        removed_ipregion_whitelist: GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelist = None,
+    ):
+        self.added_ipregion_whitelist = added_ipregion_whitelist
+        self.no_change_ip_whitelist = no_change_ip_whitelist
+        self.removed_ipregion_whitelist = removed_ipregion_whitelist
+
+    def validate(self):
+        if self.added_ipregion_whitelist:
+            self.added_ipregion_whitelist.validate()
+        if self.no_change_ip_whitelist:
+            self.no_change_ip_whitelist.validate()
+        if self.removed_ipregion_whitelist:
+            self.removed_ipregion_whitelist.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.added_ipregion_whitelist is not None:
+            result['AddedIPRegionWhitelist'] = self.added_ipregion_whitelist.to_map()
+        if self.no_change_ip_whitelist is not None:
+            result['NoChangeIpWhitelist'] = self.no_change_ip_whitelist.to_map()
+        if self.removed_ipregion_whitelist is not None:
+            result['RemovedIPRegionWhitelist'] = self.removed_ipregion_whitelist.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddedIPRegionWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelist()
+            self.added_ipregion_whitelist = temp_model.from_map(m['AddedIPRegionWhitelist'])
+        if m.get('NoChangeIpWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist()
+            self.no_change_ip_whitelist = temp_model.from_map(m['NoChangeIpWhitelist'])
+        if m.get('RemovedIPRegionWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelist()
+            self.removed_ipregion_whitelist = temp_model.from_map(m['RemovedIPRegionWhitelist'])
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        region: str = None,
+    ):
+        self.cidr = cidr
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetOriginProtectionResponseBodyRegionalLatestIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        regional_ipv_4: List[GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4] = None,
+        regional_ipv_6: List[GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6] = None,
+    ):
+        self.regional_ipv_4 = regional_ipv_4
+        self.regional_ipv_6 = regional_ipv_6
+
+    def validate(self):
+        if self.regional_ipv_4:
+            for k in self.regional_ipv_4:
+                if k:
+                    k.validate()
+        if self.regional_ipv_6:
+            for k in self.regional_ipv_6:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionalIPv4'] = []
+        if self.regional_ipv_4 is not None:
+            for k in self.regional_ipv_4:
+                result['RegionalIPv4'].append(k.to_map() if k else None)
+        result['RegionalIPv6'] = []
+        if self.regional_ipv_6 is not None:
+            for k in self.regional_ipv_6:
+                result['RegionalIPv6'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regional_ipv_4 = []
+        if m.get('RegionalIPv4') is not None:
+            for k in m.get('RegionalIPv4'):
+                temp_model = GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4()
+                self.regional_ipv_4.append(temp_model.from_map(k))
+        self.regional_ipv_6 = []
+        if m.get('RegionalIPv6') is not None:
+            for k in m.get('RegionalIPv6'):
+                temp_model = GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6()
+                self.regional_ipv_6.append(temp_model.from_map(k))
+        return self
+
+
 class GetOriginProtectionResponseBody(TeaModel):
     def __init__(
         self,
+        auto_confirm_iplist: str = None,
         current_ipwhitelist: GetOriginProtectionResponseBodyCurrentIPWhitelist = None,
         diff_ipwhitelist: GetOriginProtectionResponseBodyDiffIPWhitelist = None,
         latest_ipwhitelist: GetOriginProtectionResponseBodyLatestIPWhitelist = None,
         need_update: bool = None,
         origin_converge: str = None,
         origin_protection: str = None,
+        regional_current_ipwhitelist: GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist = None,
+        regional_diff_ipwhitelist: GetOriginProtectionResponseBodyRegionalDiffIPWhitelist = None,
+        regional_latest_ipwhitelist: GetOriginProtectionResponseBodyRegionalLatestIPWhitelist = None,
         request_id: str = None,
         site_id: int = None,
     ):
+        self.auto_confirm_iplist = auto_confirm_iplist
         # The IP whitelist for origin protection used by the website.
         self.current_ipwhitelist = current_ipwhitelist
         # The IP whitelist for origin protection that has been updated.
@@ -37005,6 +37643,9 @@ class GetOriginProtectionResponseBody(TeaModel):
         # *   on
         # *   off
         self.origin_protection = origin_protection
+        self.regional_current_ipwhitelist = regional_current_ipwhitelist
+        self.regional_diff_ipwhitelist = regional_diff_ipwhitelist
+        self.regional_latest_ipwhitelist = regional_latest_ipwhitelist
         # The request ID.
         self.request_id = request_id
         # The website ID.
@@ -37017,6 +37658,12 @@ class GetOriginProtectionResponseBody(TeaModel):
             self.diff_ipwhitelist.validate()
         if self.latest_ipwhitelist:
             self.latest_ipwhitelist.validate()
+        if self.regional_current_ipwhitelist:
+            self.regional_current_ipwhitelist.validate()
+        if self.regional_diff_ipwhitelist:
+            self.regional_diff_ipwhitelist.validate()
+        if self.regional_latest_ipwhitelist:
+            self.regional_latest_ipwhitelist.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -37024,6 +37671,8 @@ class GetOriginProtectionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_confirm_iplist is not None:
+            result['AutoConfirmIPList'] = self.auto_confirm_iplist
         if self.current_ipwhitelist is not None:
             result['CurrentIPWhitelist'] = self.current_ipwhitelist.to_map()
         if self.diff_ipwhitelist is not None:
@@ -37036,6 +37685,12 @@ class GetOriginProtectionResponseBody(TeaModel):
             result['OriginConverge'] = self.origin_converge
         if self.origin_protection is not None:
             result['OriginProtection'] = self.origin_protection
+        if self.regional_current_ipwhitelist is not None:
+            result['RegionalCurrentIPWhitelist'] = self.regional_current_ipwhitelist.to_map()
+        if self.regional_diff_ipwhitelist is not None:
+            result['RegionalDiffIPWhitelist'] = self.regional_diff_ipwhitelist.to_map()
+        if self.regional_latest_ipwhitelist is not None:
+            result['RegionalLatestIPWhitelist'] = self.regional_latest_ipwhitelist.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.site_id is not None:
@@ -37044,6 +37699,8 @@ class GetOriginProtectionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoConfirmIPList') is not None:
+            self.auto_confirm_iplist = m.get('AutoConfirmIPList')
         if m.get('CurrentIPWhitelist') is not None:
             temp_model = GetOriginProtectionResponseBodyCurrentIPWhitelist()
             self.current_ipwhitelist = temp_model.from_map(m['CurrentIPWhitelist'])
@@ -37059,6 +37716,15 @@ class GetOriginProtectionResponseBody(TeaModel):
             self.origin_converge = m.get('OriginConverge')
         if m.get('OriginProtection') is not None:
             self.origin_protection = m.get('OriginProtection')
+        if m.get('RegionalCurrentIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist()
+            self.regional_current_ipwhitelist = temp_model.from_map(m['RegionalCurrentIPWhitelist'])
+        if m.get('RegionalDiffIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyRegionalDiffIPWhitelist()
+            self.regional_diff_ipwhitelist = temp_model.from_map(m['RegionalDiffIPWhitelist'])
+        if m.get('RegionalLatestIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyRegionalLatestIPWhitelist()
+            self.regional_latest_ipwhitelist = temp_model.from_map(m['RegionalLatestIPWhitelist'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SiteId') is not None:
@@ -72672,9 +73338,11 @@ class UpdateOriginPoolResponse(TeaModel):
 class UpdateOriginProtectionRequest(TeaModel):
     def __init__(
         self,
+        auto_confirm_iplist: str = None,
         origin_converge: str = None,
         site_id: int = None,
     ):
+        self.auto_confirm_iplist = auto_confirm_iplist
         # The IP convergence status.
         # 
         # *   on
@@ -72696,6 +73364,8 @@ class UpdateOriginProtectionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_confirm_iplist is not None:
+            result['AutoConfirmIPList'] = self.auto_confirm_iplist
         if self.origin_converge is not None:
             result['OriginConverge'] = self.origin_converge
         if self.site_id is not None:
@@ -72704,6 +73374,8 @@ class UpdateOriginProtectionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoConfirmIPList') is not None:
+            self.auto_confirm_iplist = m.get('AutoConfirmIPList')
         if m.get('OriginConverge') is not None:
             self.origin_converge = m.get('OriginConverge')
         if m.get('SiteId') is not None:

@@ -1,3 +1,12 @@
+2025-11-03 Version: 2.29.2
+- Update API CreateOriginProtection: add request parameters AutoConfirmIPList.
+- Update API GetOriginProtection: add response parameters Body.AutoConfirmIPList.
+- Update API GetOriginProtection: add response parameters Body.RegionalCurrentIPWhitelist.
+- Update API GetOriginProtection: add response parameters Body.RegionalDiffIPWhitelist.
+- Update API GetOriginProtection: add response parameters Body.RegionalLatestIPWhitelist.
+- Update API UpdateOriginProtection: add request parameters AutoConfirmIPList.
+
+
 2025-10-15 Version: 2.29.1
 - Update API BatchGetExpressionFields: add request parameters InstanceId.
 - Update API BatchGetExpressionFields: add request parameters Kind.
