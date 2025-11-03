@@ -1,3 +1,8 @@
+2025-11-03 Version: 2.5.1
+- Update API UnbindSubs700: add request parameters IndustrialId.
+- Update API UnbindSubs700: add request parameters OrderId.
+
+
 2025-10-30 Version: 2.5.0
 - Support API BindAxb700.
 - Support API BindGxb700.

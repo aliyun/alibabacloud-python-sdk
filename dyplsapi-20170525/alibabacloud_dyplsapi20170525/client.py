@@ -7179,6 +7179,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.pool_key):
@@ -7224,6 +7228,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.industrial_id):
+            query['IndustrialId'] = request.industrial_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.pool_key):

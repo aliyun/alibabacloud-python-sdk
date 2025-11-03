@@ -14415,6 +14415,8 @@ class UnBindXBResponse(TeaModel):
 class UnbindSubs700Request(TeaModel):
     def __init__(
         self,
+        industrial_id: str = None,
+        order_id: str = None,
         owner_id: int = None,
         pool_key: str = None,
         resource_owner_account: str = None,
@@ -14422,6 +14424,8 @@ class UnbindSubs700Request(TeaModel):
         subs_id: int = None,
         tel_x: str = None,
     ):
+        self.industrial_id = industrial_id
+        self.order_id = order_id
         self.owner_id = owner_id
         # This parameter is required.
         self.pool_key = pool_key
@@ -14441,6 +14445,10 @@ class UnbindSubs700Request(TeaModel):
             return _map
 
         result = dict()
+        if self.industrial_id is not None:
+            result['IndustrialId'] = self.industrial_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.pool_key is not None:
@@ -14457,6 +14465,10 @@ class UnbindSubs700Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IndustrialId') is not None:
+            self.industrial_id = m.get('IndustrialId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('PoolKey') is not None:
