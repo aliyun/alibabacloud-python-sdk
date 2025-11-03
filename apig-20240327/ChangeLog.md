@@ -1,3 +1,6 @@
+2025-11-03 Version: 5.0.2
+- Generated python 2024-03-27 for APIG.
+
 2025-10-29 Version: 5.0.1
 - Update API GetGateway: add response parameters Body.data.loadBalancers.$.ipv4Addresses.
 - Update API GetGateway: add response parameters Body.data.loadBalancers.$.ipv6Addresses.

@@ -256,6 +256,7 @@ class AiServiceConfigPaiEASServiceConfig(TeaModel):
 class AiServiceConfig(TeaModel):
     def __init__(
         self,
+        api_key_generate_mode: str = None,
         address: str = None,
         api_keys: List[str] = None,
         bedrock_service_config: AiServiceConfigBedrockServiceConfig = None,
@@ -264,6 +265,7 @@ class AiServiceConfig(TeaModel):
         protocols: List[str] = None,
         provider: str = None,
     ):
+        self.api_key_generate_mode = api_key_generate_mode
         self.address = address
         self.api_keys = api_keys
         self.bedrock_service_config = bedrock_service_config
@@ -284,6 +286,8 @@ class AiServiceConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key_generate_mode is not None:
+            result['ApiKeyGenerateMode'] = self.api_key_generate_mode
         if self.address is not None:
             result['address'] = self.address
         if self.api_keys is not None:
@@ -302,6 +306,8 @@ class AiServiceConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKeyGenerateMode') is not None:
+            self.api_key_generate_mode = m.get('ApiKeyGenerateMode')
         if m.get('address') is not None:
             self.address = m.get('address')
         if m.get('apiKeys') is not None:
@@ -2795,6 +2801,7 @@ class HttpApiApiInfo(TeaModel):
         gateway_id: str = None,
         http_api_id: str = None,
         ingress_info: HttpApiApiInfoIngressInfo = None,
+        model_category: str = None,
         name: str = None,
         protocols: List[str] = None,
         resource_group_id: str = None,
@@ -2812,6 +2819,7 @@ class HttpApiApiInfo(TeaModel):
         self.gateway_id = gateway_id
         self.http_api_id = http_api_id
         self.ingress_info = ingress_info
+        self.model_category = model_category
         self.name = name
         self.protocols = protocols
         self.resource_group_id = resource_group_id
@@ -2872,6 +2880,8 @@ class HttpApiApiInfo(TeaModel):
             result['httpApiId'] = self.http_api_id
         if self.ingress_info is not None:
             result['ingressInfo'] = self.ingress_info.to_map()
+        if self.model_category is not None:
+            result['modelCategory'] = self.model_category
         if self.name is not None:
             result['name'] = self.name
         if self.protocols is not None:
@@ -2919,6 +2929,8 @@ class HttpApiApiInfo(TeaModel):
         if m.get('ingressInfo') is not None:
             temp_model = HttpApiApiInfoIngressInfo()
             self.ingress_info = temp_model.from_map(m['ingressInfo'])
+        if m.get('modelCategory') is not None:
+            self.model_category = m.get('modelCategory')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('protocols') is not None:
@@ -4590,6 +4602,7 @@ class HttpRoute(TeaModel):
     def __init__(
         self,
         backend: Backend = None,
+        builtin: str = None,
         create_timestamp: int = None,
         deploy_status: str = None,
         description: str = None,
@@ -4603,6 +4616,7 @@ class HttpRoute(TeaModel):
         update_timestamp: int = None,
     ):
         self.backend = backend
+        self.builtin = builtin
         self.create_timestamp = create_timestamp
         self.deploy_status = deploy_status
         self.description = description
@@ -4637,6 +4651,8 @@ class HttpRoute(TeaModel):
         result = dict()
         if self.backend is not None:
             result['backend'] = self.backend.to_map()
+        if self.builtin is not None:
+            result['builtin'] = self.builtin
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
         if self.deploy_status is not None:
@@ -4668,6 +4684,8 @@ class HttpRoute(TeaModel):
         if m.get('backend') is not None:
             temp_model = Backend()
             self.backend = temp_model.from_map(m['backend'])
+        if m.get('builtin') is not None:
+            self.builtin = m.get('builtin')
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
         if m.get('deployStatus') is not None:
