@@ -374,11 +374,13 @@ class CreateAlertStrategyRequest(TeaModel):
     def __init__(
         self,
         enabled: bool = None,
+        k_8s_label: bool = None,
         name: str = None,
         strategy: CreateAlertStrategyRequestStrategy = None,
     ):
         # This parameter is required.
         self.enabled = enabled
+        self.k_8s_label = k_8s_label
         # This parameter is required.
         self.name = name
         # This parameter is required.
@@ -396,6 +398,8 @@ class CreateAlertStrategyRequest(TeaModel):
         result = dict()
         if self.enabled is not None:
             result['enabled'] = self.enabled
+        if self.k_8s_label is not None:
+            result['k8sLabel'] = self.k_8s_label
         if self.name is not None:
             result['name'] = self.name
         if self.strategy is not None:
@@ -406,6 +410,8 @@ class CreateAlertStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        if m.get('k8sLabel') is not None:
+            self.k_8s_label = m.get('k8sLabel')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('strategy') is not None:
@@ -1491,9 +1497,11 @@ class GetAgentTaskResponseBodyData(TeaModel):
     def __init__(
         self,
         jobs: List[GetAgentTaskResponseBodyDataJobs] = None,
+        status: str = None,
         task_id: str = None,
     ):
         self.jobs = jobs
+        self.status = status
         self.task_id = task_id
 
     def validate(self):
@@ -1512,6 +1520,8 @@ class GetAgentTaskResponseBodyData(TeaModel):
         if self.jobs is not None:
             for k in self.jobs:
                 result['jobs'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
         if self.task_id is not None:
             result['task_id'] = self.task_id
         return result
@@ -1523,6 +1533,8 @@ class GetAgentTaskResponseBodyData(TeaModel):
             for k in m.get('jobs'):
                 temp_model = GetAgentTaskResponseBodyDataJobs()
                 self.jobs.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
         if m.get('task_id') is not None:
             self.task_id = m.get('task_id')
         return self
@@ -1682,6 +1694,7 @@ class GetAlertStrategyResponseBodyData(TeaModel):
         created_at: int = None,
         enabled: bool = None,
         id: int = None,
+        k_8s_label: bool = None,
         name: str = None,
         strategy: GetAlertStrategyResponseBodyDataStrategy = None,
         uid: str = None,
@@ -1690,6 +1703,7 @@ class GetAlertStrategyResponseBodyData(TeaModel):
         self.created_at = created_at
         self.enabled = enabled
         self.id = id
+        self.k_8s_label = k_8s_label
         self.name = name
         self.strategy = strategy
         self.uid = uid
@@ -1711,6 +1725,8 @@ class GetAlertStrategyResponseBodyData(TeaModel):
             result['enabled'] = self.enabled
         if self.id is not None:
             result['id'] = self.id
+        if self.k_8s_label is not None:
+            result['k8sLabel'] = self.k_8s_label
         if self.name is not None:
             result['name'] = self.name
         if self.strategy is not None:
@@ -1729,6 +1745,8 @@ class GetAlertStrategyResponseBodyData(TeaModel):
             self.enabled = m.get('enabled')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('k8sLabel') is not None:
+            self.k_8s_label = m.get('k8sLabel')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('strategy') is not None:
@@ -6878,6 +6896,7 @@ class ListAlertStrategiesResponseBodyData(TeaModel):
         created_at: str = None,
         enabled: bool = None,
         id: int = None,
+        k_8s_label: bool = None,
         name: str = None,
         strategy: ListAlertStrategiesResponseBodyDataStrategy = None,
         uid: str = None,
@@ -6886,6 +6905,7 @@ class ListAlertStrategiesResponseBodyData(TeaModel):
         self.created_at = created_at
         self.enabled = enabled
         self.id = id
+        self.k_8s_label = k_8s_label
         self.name = name
         self.strategy = strategy
         self.uid = uid
@@ -6907,6 +6927,8 @@ class ListAlertStrategiesResponseBodyData(TeaModel):
             result['enabled'] = self.enabled
         if self.id is not None:
             result['id'] = self.id
+        if self.k_8s_label is not None:
+            result['k8sLabel'] = self.k_8s_label
         if self.name is not None:
             result['name'] = self.name
         if self.strategy is not None:
@@ -6925,6 +6947,8 @@ class ListAlertStrategiesResponseBodyData(TeaModel):
             self.enabled = m.get('enabled')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('k8sLabel') is not None:
+            self.k_8s_label = m.get('k8sLabel')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('strategy') is not None:
@@ -10984,6 +11008,7 @@ class UpdateAlertStrategyRequest(TeaModel):
         self,
         enabled: bool = None,
         id: int = None,
+        k_8s_label: bool = None,
         name: str = None,
         strategy: UpdateAlertStrategyRequestStrategy = None,
     ):
@@ -10991,6 +11016,7 @@ class UpdateAlertStrategyRequest(TeaModel):
         self.enabled = enabled
         # This parameter is required.
         self.id = id
+        self.k_8s_label = k_8s_label
         # This parameter is required.
         self.name = name
         # This parameter is required.
@@ -11010,6 +11036,8 @@ class UpdateAlertStrategyRequest(TeaModel):
             result['enabled'] = self.enabled
         if self.id is not None:
             result['id'] = self.id
+        if self.k_8s_label is not None:
+            result['k8sLabel'] = self.k_8s_label
         if self.name is not None:
             result['name'] = self.name
         if self.strategy is not None:
@@ -11022,6 +11050,8 @@ class UpdateAlertStrategyRequest(TeaModel):
             self.enabled = m.get('enabled')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('k8sLabel') is not None:
+            self.k_8s_label = m.get('k8sLabel')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('strategy') is not None:

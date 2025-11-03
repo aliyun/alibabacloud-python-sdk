@@ -279,6 +279,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.enabled):
             body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.k_8s_label):
+            body['k8sLabel'] = request.k_8s_label
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.strategy):
@@ -321,6 +323,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.enabled):
             body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.k_8s_label):
+            body['k8sLabel'] = request.k_8s_label
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.strategy):
@@ -6353,6 +6357,8 @@ class Client(OpenApiClient):
             body['enabled'] = request.enabled
         if not UtilClient.is_unset(request.id):
             body['id'] = request.id
+        if not UtilClient.is_unset(request.k_8s_label):
+            body['k8sLabel'] = request.k_8s_label
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.strategy):
@@ -6397,6 +6403,8 @@ class Client(OpenApiClient):
             body['enabled'] = request.enabled
         if not UtilClient.is_unset(request.id):
             body['id'] = request.id
+        if not UtilClient.is_unset(request.k_8s_label):
+            body['k8sLabel'] = request.k_8s_label
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.strategy):

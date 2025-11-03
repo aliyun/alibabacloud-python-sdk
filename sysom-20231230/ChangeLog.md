@@ -1,3 +1,11 @@
+2025-11-03 Version: 1.12.1
+- Update API CreateAlertStrategy: add request parameters body.k8sLabel.
+- Update API GetAgentTask: add response parameters Body.data.status.
+- Update API GetAlertStrategy: add response parameters Body.data.k8sLabel.
+- Update API ListAlertStrategies: add response parameters Body.data.$.k8sLabel.
+- Update API UpdateAlertStrategy: add request parameters body.k8sLabel.
+
+
 2025-09-19 Version: 1.12.0
 - Support API CreateAlertStrategy.
 - Support API DeleteAlertStrategy.
