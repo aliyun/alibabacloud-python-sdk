@@ -783,29 +783,16 @@ class AddFilePermissionRequestMemberListCdsIdentity(TeaModel):
         id: str = None,
         type: str = None,
     ):
-        # The ID of the user.
+        # The ID of the convenience user.
         # 
         # This parameter is required.
         self.id = id
-        # The type of the user.
+        # The user type.
         # 
-        # Valid values:
+        # Set the value to TENANT_ADMIN.
         # 
-        # *   <!-- -->
-        # 
-        #     IT_Group
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     IT_User
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   IT_Group: group.
+        # *   IT_User: user.
         # 
         # This parameter is required.
         self.type = type
@@ -850,23 +837,23 @@ class AddFilePermissionRequestMemberList(TeaModel):
         self.disinherit_sub_group = disinherit_sub_group
         # The time when the authorization expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The value never expires. You can specify a value that is predefined by the system for this parameter. Example: 4775500800000.
         self.expire_time = expire_time
-        # The ID of the role to which you want to attach the folder permissions. To configure the folder permissions: you can specify a role or create custom operation permissions. You can use RoleId to specify a role. RoleId is mutually exclusive with ActionList. If you specify both of them, the value of RoleId takes precedence.
+        # You can set permissions by specifying roles or by customizing operation permissions. This field is used to set permissions by specifying roles. This field is mutually exclusive with `ActionList`.
         # 
         # Valid values:
         # 
-        # * SystemFileEditorWithoutShareLink
-        # * SystemFileUploaderAndDownloaderWithShareLink
-        # * SystemFileDownloader
-        # * SystemFileEditorWithoutDelete
-        # * SystemFileOwner
-        # * SystemFileDownloaderWithShareLink
-        # * SystemFileUploaderAndViewer
-        # * SystemFileViewer
-        # * SystemFileEditor
-        # * SystemFileUploaderWithShareLink
-        # * SystemFileUploader
-        # * SystemFileUploaderAndDownloader
-        # * SystemFileMetaViewer
+        # *   SystemFileEditorWithoutShareLink: The role that can edit but cannot share files.
+        # *   SystemFileUploaderAndDownloaderWithShareLink: The role that can upload, download, and share files.
+        # *   SystemFileDownloader: The role that can download files.
+        # *   SystemFileEditorWithoutDelete: The role that can edit but cannot edit files.
+        # *   SystemFileOwner: The role that can collaborate with others on files.
+        # *   SystemFileDownloaderWithShareLink: The role that can download and share files.
+        # *   SystemFileUploaderAndViewer: The role that can preview and upload files.
+        # *   SystemFileViewer: The role that can preview files.
+        # *   SystemFileEditor: The role that can edit files.
+        # *   SystemFileUploaderWithShareLink: The role that can upload and share files.
+        # *   SystemFileUploader: The role that can upload files.
+        # *   SystemFileUploaderAndDownloader: The role that can upload and download files.
+        # *   SystemFileMetaViewer: The role that can view file list.
         # 
         # This parameter is required.
         self.role_id = role_id
@@ -915,23 +902,23 @@ class AddFilePermissionRequest(TeaModel):
         member_list: List[AddFilePermissionRequestMemberList] = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk whose folder you want to share.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the end user who uses the cloud disk.
+        # The ID of the user who uses the network disk.
         self.end_user_id = end_user_id
-        # The ID of the file.
+        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The ID of the team that uses cloud disks in Cloud Drive Service.
+        # The ID of the team space.
         self.group_id = group_id
-        # The members who are granted the folder permissions.
+        # The users that you want to authorize to use the cloud disk.
         # 
         # This parameter is required.
         self.member_list = member_list
-        # The region ID of the folder. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -994,23 +981,23 @@ class AddFilePermissionShrinkRequest(TeaModel):
         member_list_shrink: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk whose folder you want to share.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the end user who uses the cloud disk.
+        # The ID of the user who uses the network disk.
         self.end_user_id = end_user_id
-        # The ID of the file.
+        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The ID of the team that uses cloud disks in Cloud Drive Service.
+        # The ID of the team space.
         self.group_id = group_id
-        # The members who are granted the folder permissions.
+        # The users that you want to authorize to use the cloud disk.
         # 
         # This parameter is required.
         self.member_list_shrink = member_list_shrink
-        # The region ID of the folder. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3843,22 +3830,23 @@ class CompleteCdsFileRequest(TeaModel):
         region_id: str = None,
         upload_id: str = None,
     ):
-        # The ID of the cloud disk.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The name of the end user.
+        # The username. You must specify at least one of `EndUserId` and `GroupId`.
         self.end_user_id = end_user_id
-        # The file ID. An ID is the unique identifier of a file.
+        # The file ID.
         # 
         # This parameter is required.
         self.file_id = file_id
+        # The ID of the team space. You must specify at least one of `EndUserId` and `GroupId`.
         self.group_id = group_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the file uploading task.
+        # The ID of the file upload task. Callable interface [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html).
         # 
         # This parameter is required.
         self.upload_id = upload_id
@@ -6126,8 +6114,6 @@ class CreateCdsFileRequest(TeaModel):
         self.file_type = file_type
         self.group_id = group_id
         # The ID of the parent folder.
-        # 
-        # This parameter is required.
         self.parent_file_id = parent_file_id
         # The region ID.
         # 
@@ -12445,15 +12431,39 @@ class CreateDriveRequest(TeaModel):
         type: str = None,
         user_id: str = None,
     ):
+        # The ID of your Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The description of the user-level storage resource.
         self.description = description
+        # The ID of the storage resource.
+        # 
+        # >  Call the DescribeDrives operation to retrieve the storage resource ID.
         self.domain_id = domain_id
+        # The name of the user-level storage resource.
         self.drive_name = drive_name
+        # The ID of the external storage resource.
+        # 
+        # >  Call the DescribeDrives operation to retrieve the external storage resource ID.
         self.external_domain_id = external_domain_id
+        # >  This parameter is deprecated.
         self.profile_roaming = profile_roaming
+        # The region ID.
         self.region_id = region_id
+        # The type of the storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   NAS: File Storage NAS
+        # *   PDS: Drive and Photo Service
         self.resource_type = resource_type
+        # The usage of the storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   DESKTOP: data disk space
+        # *   USER_PROFILE: space for personal data of the user
         self.type = type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -12532,22 +12542,57 @@ class CreateDriveResponseBodyDrive(TeaModel):
         used_size: int = None,
         user_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The description of the storage resource.
         self.description = description
+        # The ID of the storage resource.
         self.domain_id = domain_id
+        # The ID of the user-level storage resource.
         self.drive_id = drive_id
+        # The ID of the external user-level storage resource.
+        # 
+        # >  A value is returned for this parameter only if ResourceType is set to PDS.
         self.external_drive_id = external_drive_id
+        # The ID of the external user.
         self.external_user_id = external_user_id
+        # The time when the storage resource was created.
         self.gmt_create = gmt_create
+        # The time when the storage resource was last modified.
         self.gmt_modified = gmt_modified
-        # ID。
+        # The ID.
         self.id = id
+        # The name of the storage resource.
         self.name = name
+        # >  This parameter is deprecated.
         self.profile_roaming = profile_roaming
+        # The status of the user-level storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   INIT: initializing
+        # *   MAINTAIN: maintaining
+        # *   DELETING
+        # *   INVALID
+        # *   NORMAL
+        # *   FAIL: failed
         self.status = status
+        # The total amount of the user-level storage resource capacity.
+        # 
+        # >  Unit: bytes.
         self.total_size = total_size
+        # The usage of the storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   DESKTOP: data disk space
+        # *   USER_PROFILE: space for personal data of the user
         self.type = type
+        # The amount of user-level storage resource capacity used.
+        # 
+        # >  Unit: bytes.
         self.used_size = used_size
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -12639,10 +12684,15 @@ class CreateDriveResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The value 200 indicates that the request was successful.
         self.code = code
+        # The user-level storage resource.
         self.drive = drive
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -12730,7 +12780,36 @@ class CreateEcdReportTaskRequestFilterList(TeaModel):
         filter_key: str = None,
         filter_values: List[str] = None,
     ):
+        # The key of the filter condition for filtering query results. When SubType is set to:
+        # 
+        # 1.  DESKTOP (indicating a cloud computer report), the following filter conditions are available:
+        # 
+        # *   KeyWord: cloud computer keyword (supports automatic recognition)
+        # *   RegionId: region ID
+        # *   DesktopId: cloud computer ID
+        # *   DesktopName: cloud computer name (supports fuzzy matching)
+        # *   OfficeSiteId: office network ID
+        # *   OfficeSiteName: office network name (supports fuzzy matching)
+        # *   Status: cloud computer status
+        # *   DesktopType: desktop type
+        # *   DesktopIP: cloud computer IP address
+        # *   SubPayType: billing method
+        # *   EndUserId: user name (supports fuzzy matching)
+        # *   ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
+        # *   IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
+        # *   ResourceGroupId: resource group ID
+        # *   PolicyId: policy ID
+        # *   Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
         self.filter_key = filter_key
+        # The value of the filter condition. Only the first value of the FilterValues parameter is used, if FilterKey is set to one of the following values:
+        # 
+        # *   KeyWord
+        # *   DesktopName
+        # *   OfficeSiteName
+        # *   DesktopIP
+        # *   EndUserId
+        # *   ExpireTime
+        # *   IncludeAssignedUser
         self.filter_values = filter_values
 
     def validate(self):
@@ -12766,11 +12845,31 @@ class CreateEcdReportTaskRequest(TeaModel):
         sub_type: str = None,
         task_type: str = None,
     ):
+        # The filter conditions for filtering query results. The logical relationship between each filter condition is "and" (&). Each filter condition contains FilterKey and FilterValues, which indicate the key and value for the filter condition.
         self.filter_list = filter_list
+        # The language of the report. An enumerated type.
+        # 
+        # Valid values:
+        # 
+        # *   zh-CN (default): Chinese
+        # *   en-GB: English
         self.lang_type = lang_type
+        # The name of the report file.
         self.report_file_name = report_file_name
+        # The sub-type of the report export task.
+        # 
+        # Valid value:
+        # 
+        # *   DESKTOP: cloud computer
+        # 
         # This parameter is required.
         self.sub_type = sub_type
+        # The type of the report task.
+        # 
+        # Valid value:
+        # 
+        # *   RESOURCE_REPORT
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -12827,10 +12926,15 @@ class CreateEcdReportTaskResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The request result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
+        # The error message returned if the request failed. This parameter is not returned if the value of Code is success.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The ID of the report export task.
         self.task_id = task_id
 
     def validate(self):
@@ -17074,19 +17178,19 @@ class DeleteCdsFileRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the end user who uses the cloud disk.
+        # The ID of the user who uses the network disk.
         self.end_user_id = end_user_id
-        # The ID of the file. The ID is a unique identifier for the file.
+        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The group ID.
+        # The ID of the team space.
         self.group_id = group_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -17136,51 +17240,25 @@ class DeleteCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The operation result. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
         # Indicates whether the data is returned.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.data = data
-        # The returned message.
+        # Error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation was successful.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -18228,7 +18306,9 @@ class DeleteDriveRequest(TeaModel):
         drive_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the user-level storage resource.
         self.drive_id = drive_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -18264,10 +18344,15 @@ class DeleteDriveResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The value 200 indicates that the request was successful.
         self.code = code
+        # Indicates whether the delete operation was successful.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -20245,10 +20330,10 @@ class DescribeAutoSnapshotPolicyRequest(TeaModel):
         policy_name: str = None,
         region_id: str = None,
     ):
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # *   Maximum value: 100
-        # *   Default value: 20
+        # *   Maximum value: 50.
+        # *   Default value: 50.
         self.max_results = max_results
         # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
@@ -22523,7 +22608,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.no_operation_disconnect_time = no_operation_disconnect_time
         # The policy ID.
         self.policy_group_id = policy_group_id
-        # The policy type.
+        # The type of the policy.
         self.policy_group_type = policy_group_type
         # The status of the cloud computer policy.
         self.policy_status = policy_status
@@ -23155,7 +23240,7 @@ class DescribeCenterPolicyListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The cloud computer policies.
+        # The details about the cloud computer policies.
         self.describe_policy_groups = describe_policy_groups
         # The request ID.
         self.request_id = request_id
@@ -23778,6 +23863,462 @@ class DescribeClientEventsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeClientEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudDiskGroupDrivesRequest(TeaModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        group_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.cds_id = cds_id
+        self.group_name = group_name
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        directory_id: str = None,
+        drive_id: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        org_id: str = None,
+        status: str = None,
+        total_size: int = None,
+        used_size: str = None,
+    ):
+        self.create_time = create_time
+        self.directory_id = directory_id
+        self.drive_id = drive_id
+        self.group_id = group_id
+        self.group_name = group_name
+        self.org_id = org_id
+        self.status = status
+        self.total_size = total_size
+        self.used_size = used_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.drive_id is not None:
+            result['DriveId'] = self.drive_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        if self.used_size is not None:
+            result['UsedSize'] = self.used_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('DriveId') is not None:
+            self.drive_id = m.get('DriveId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        if m.get('UsedSize') is not None:
+            self.used_size = m.get('UsedSize')
+        return self
+
+
+class DescribeCloudDiskGroupDrivesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cloud_drive_groups: List[DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups] = None,
+        count: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.cloud_drive_groups = cloud_drive_groups
+        self.count = count
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.cloud_drive_groups:
+            for k in self.cloud_drive_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CloudDriveGroups'] = []
+        if self.cloud_drive_groups is not None:
+            for k in self.cloud_drive_groups:
+                result['CloudDriveGroups'].append(k.to_map() if k else None)
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cloud_drive_groups = []
+        if m.get('CloudDriveGroups') is not None:
+            for k in m.get('CloudDriveGroups'):
+                temp_model = DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups()
+                self.cloud_drive_groups.append(temp_model.from_map(k))
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCloudDiskGroupDrivesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudDiskGroupDrivesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudDiskGroupDrivesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudDiskGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        group_id: List[str] = None,
+        group_name: str = None,
+        parent_org_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.cds_id = cds_id
+        self.group_id = group_id
+        self.group_name = group_name
+        self.parent_org_id = parent_org_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.parent_org_id is not None:
+            result['ParentOrgId'] = self.parent_org_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('ParentOrgId') is not None:
+            self.parent_org_id = m.get('ParentOrgId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCloudDiskGroupsResponseBodyCloudDriveGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        directory_id: str = None,
+        drive_id: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        org_id: str = None,
+        status: str = None,
+        total_size: int = None,
+        used_size: str = None,
+    ):
+        self.create_time = create_time
+        self.directory_id = directory_id
+        self.drive_id = drive_id
+        self.group_id = group_id
+        self.group_name = group_name
+        self.org_id = org_id
+        self.status = status
+        self.total_size = total_size
+        self.used_size = used_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.drive_id is not None:
+            result['DriveId'] = self.drive_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        if self.used_size is not None:
+            result['UsedSize'] = self.used_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('DriveId') is not None:
+            self.drive_id = m.get('DriveId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        if m.get('UsedSize') is not None:
+            self.used_size = m.get('UsedSize')
+        return self
+
+
+class DescribeCloudDiskGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        cloud_drive_groups: List[DescribeCloudDiskGroupsResponseBodyCloudDriveGroups] = None,
+        count: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.cloud_drive_groups = cloud_drive_groups
+        self.count = count
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.cloud_drive_groups:
+            for k in self.cloud_drive_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CloudDriveGroups'] = []
+        if self.cloud_drive_groups is not None:
+            for k in self.cloud_drive_groups:
+                result['CloudDriveGroups'].append(k.to_map() if k else None)
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cloud_drive_groups = []
+        if m.get('CloudDriveGroups') is not None:
+            for k in m.get('CloudDriveGroups'):
+                temp_model = DescribeCloudDiskGroupsResponseBodyCloudDriveGroups()
+                self.cloud_drive_groups.append(temp_model.from_map(k))
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCloudDiskGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudDiskGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudDiskGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25013,17 +25554,21 @@ class DescribeDesktopGroupSessionsRequest(TeaModel):
         session_status: str = None,
         start_time: str = None,
     ):
+        # The IDs of shared desktop groups.
         self.desktop_group_ids = desktop_group_ids
+        # The name of the shared desktop.
         self.desktop_group_name = desktop_group_name
         # The end of the time range to query.
         self.end_time = end_time
-        # The ID of the end user.
+        # The user ID of the terminal that connects to the session.
         self.end_user_id = end_user_id
+        # Whether to supplement terminal information.
         self.fill_terminal_info = fill_terminal_info
+        # The language of the response.
         self.language = language
         # The number of entries per page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The type of the session.
         # 
@@ -25032,7 +25577,7 @@ class DescribeDesktopGroupSessionsRequest(TeaModel):
         # *   0: single-session
         # *   1: multi-session
         self.own_type = own_type
-        # The region ID.
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
         # The status of the session.
         # 
@@ -25129,9 +25674,13 @@ class DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo(TeaModel):
         serial_number: str = None,
         uuid: str = None,
     ):
+        # The type of the terminal.
         self.model = model
+        # The terminal type.
         self.product_name = product_name
+        # Terminal Serial Number
         self.serial_number = serial_number
+        # The terminal UUID.
         self.uuid = uuid
 
     def validate(self):
@@ -25192,38 +25741,42 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         terminal_info: DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_duration: int = None,
     ):
+        # 账号类型
         self.account_type = account_type
         # The IP address of the client.
         self.client_ip = client_ip
-        # The OS that the client runs.
+        # The operating system of the client.
         self.client_os = client_os
         # The version of the client.
         self.client_version = client_version
-        # The ID of the desktop group.
+        # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
-        # If the session is being established, the value of this parameter indicates the ID of the current cloud desktop. If the session is disconnected, the value of this parameter indicates the ID of the cloud desktop that was most recently connected.
+        # If the session status is Connected, it indicates the ID of the cloud computer that is currently connected. If the session status is Disconnected, it indicates the ID of the cloud computer that was last connected.
         self.desktop_id = desktop_id
+        # 办公网络类型
         self.directory_type = directory_type
         # The point in time when the end user applies for administrator assistance.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
-        # The ID of the end user.
+        # The user ID of the terminal that connects to the session.
         self.end_user_id = end_user_id
         # The end time of the most recent connection.
         self.last_session_end_time = last_session_end_time
         # The start time of the most recent connection.
         self.last_session_start_time = last_session_start_time
-        # The duration of the most recent session.
+        # The duration of the most recent session. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The ID of the workspace.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The name of the workspace.
+        # The office network name.
         self.office_site_name = office_site_name
-        # The OS. Valid values:
+        # The operating system type of the cloud computer.
         # 
-        # *   Windows
-        # *   Linux
+        # Valid values:
+        # 
+        # *   linux.
+        # *   Windows.
         self.os_type = os_type
         # The type of the session.
         # 
@@ -25232,9 +25785,14 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         # *   0: single-session
         # *   1: multi-session
         self.own_type = own_type
-        # The type of the protocol.
+        # The protocol type supported by the rule.
+        # 
+        # Valid value:
+        # 
+        # *   High-definition Experience (HDX).
+        # *   ASP.
         self.protocol_type = protocol_type
-        # The duration during which the cloud desktop stays in the Idle state.
+        # The idle duration of the cloud computer. Unit: seconds.
         self.session_idle_time = session_idle_time
         # The state of the session.
         # 
@@ -25256,8 +25814,9 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         # 
         #     <!-- -->
         self.session_status = session_status
+        # Terminal Info
         self.terminal_info = terminal_info
-        # The total duration of the sessions.
+        # The total duration of the sessions. Unit: seconds.
         self.total_connection_duration = total_connection_duration
 
     def validate(self):
@@ -31806,11 +32365,25 @@ class DescribeDrivesRequest(TeaModel):
         resource_type: str = None,
         user_id: str = None,
     ):
+        # The IDs of the storage resources.
         self.domain_ids = domain_ids
+        # The number of entries per page.
+        # 
+        # *   Maximum value: 500.
+        # *   Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
+        # The type of the storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   NAS: NAS storage
+        # *   PDS: PDS storage
         self.resource_type = resource_type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -31859,7 +32432,9 @@ class DescribeDrivesResponseBodyDrivesDesktopGroups(TeaModel):
         desktop_group_id: str = None,
         desktop_group_name: str = None,
     ):
+        # The ID of the cloud computer pool.
         self.desktop_group_id = desktop_group_id
+        # The name of the cloud computer pool.
         self.desktop_group_name = desktop_group_name
 
     def validate(self):
@@ -31910,25 +32485,72 @@ class DescribeDrivesResponseBodyDrives(TeaModel):
         used_size: int = None,
         user_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The introduction to the storage resource.
         self.description = description
+        # The number of associated cloud computer pools.
+        # 
+        # >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
         self.desktop_group_count = desktop_group_count
+        # The details of the associated cloud computers.
+        # 
+        # >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
         self.desktop_groups = desktop_groups
+        # The ID of the storage resource.
         self.domain_id = domain_id
+        # The ID of the user-level storage resource.
         self.drive_id = drive_id
+        # Indicates whether the UPM feature is enabled.
         self.enable_profile_management = enable_profile_management
+        # The ID of the external storage resource.
+        # 
+        # *   If ResourceType is set to NAS, the NAS ID is returned for this parameter.
+        # *   If ResourceType is set to PDS, the PDS ID is returned for this parameter.
         self.external_domain_id = external_domain_id
+        # The ID of the storage resource at the external user level.
+        # 
+        # >  This parameter is returned only if ResourceType is set to PDS.
         self.external_drive_id = external_drive_id
+        # The ID of the external user.
+        # 
+        # >  This parameter is returned only if ResourceType is set to PDS.
         self.external_user_id = external_user_id
+        # The time when the storage resource was created.
         self.gmt_create = gmt_create
+        # The time when the storage resource was modified.
         self.gmt_modified = gmt_modified
+        # The user ID.
+        # 
+        # >  You can ignore this parameter.
         self.id = id
+        # The name of the storage resource.
         self.name = name
+        # >  This parameter is deprecated.
         self.profile_roaming = profile_roaming
+        # The status of the user-level storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   INIT: initializing
+        # *   MAINTAIN: maintaining
+        # *   DELETING: deleting
+        # *   INVALID: invalid
+        # *   NORMAL: normal
+        # *   FAIL: failed
         self.status = status
+        # The total amount of user-level storage capacity.
         self.total_size = total_size
+        # The usage of the storage resource.
+        # 
+        # Valid values:
+        # 
+        # *   DESKTOP: data disk space
+        # *   USER_PROFILE: personal data space
         self.type = type
+        # The amount of user-level storage capacity used.
         self.used_size = used_size
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -32046,12 +32668,19 @@ class DescribeDrivesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The value 200 indicates that the request was successful.
         self.code = code
+        # The total number of storage resources.
         self.count = count
+        # The user-level storage resources.
         self.drives = drives
+        # The returned message.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -32157,11 +32786,33 @@ class DescribeEcdReportTasksRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_num = page_num
+        # The number of entries returned per page. Maximum value: 200.
         self.page_size = page_size
+        # The task status.
+        # 
+        # Valid values:
+        # 
+        # *   INIT: initializing
+        # *   FAILED
+        # *   RUNNING
+        # *   EXPIRED
+        # *   FINISHED
         self.status = status
+        # The sub-type of the report export task.
+        # 
+        # Valid value:
+        # 
+        # *   DESKTOP: cloud computer
         self.sub_type = sub_type
+        # The ID of the report export task.
         self.task_id = task_id
+        # The type of the report.
+        # 
+        # Valid value:
+        # 
+        # *   RESOURCE_REPORT
         self.task_type = task_type
 
     def validate(self):
@@ -32219,16 +32870,35 @@ class DescribeEcdReportTasksResponseBodyExportTaskList(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The download URL of the report file.
         self.download_url = download_url
+        # The error code returned.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The time when the task was created.
         self.gmt_create = gmt_create
+        # The time when the task was last modified.
         self.gmt_modified = gmt_modified
+        # The progress of the report export task. Unit: %.
         self.progress = progress
+        # The name of the report file.
         self.report_file_name = report_file_name
+        # The task status.
         self.status = status
+        # The sub-type of the report export task.
+        # 
+        # Valid value:
+        # 
+        # *   DESKTOP: cloud computer
         self.sub_type = sub_type
+        # The ID of the report export task.
         self.task_id = task_id
+        # The type of the report.
+        # 
+        # Valid value:
+        # 
+        # *   RESOURCE_REPORT
         self.task_type = task_type
 
     def validate(self):
@@ -32298,8 +32968,11 @@ class DescribeEcdReportTasksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The report export tasks.
         self.export_task_list = export_task_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -33567,21 +34240,56 @@ class DescribeGlobalDesktopRecordsRequest(TeaModel):
         start_time: str = None,
         sub_pay_type: str = None,
     ):
+        # The cloud computer IDs. You can specify 1 to 100 office network IDs.
         self.desktop_id = desktop_id
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
+        # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by the cloud computer.
         self.desktop_type = desktop_type
+        # The end time. The interval between the start time and end time can be up to 30 days. Supported formats:
+        # 
+        # *   Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The end user ID.
         self.end_user_id = end_user_id
+        # The office network IDs.
         self.office_site_id = office_site_id
+        # The sorting field. If this parameter is not provided, results are sorted by creation time in descending order. Valid values:
+        # 
+        # *   uptime: indicates that the cloud computers are sorted by startup duration.
         self.order_by = order_by
+        # The page number of the current page.\\
+        # Default value: 1
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # *   China (Shanghai)
+        # *   Singapore
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The query range. This parameter is empty by default. Optional values are:
+        # 
+        # *   ADVANCED: indicates that statistics such as the connection duration are queried.
         self.scope = scope
+        # The sorting method. Default value: ascending. Valid value:
+        # 
+        # *   Asc: ascending order
+        # *   Desc: descending.
         self.sort_type = sort_type
+        # The start time. Supported formats:
+        # 
+        # *   Format: YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The way to purchase cloud computers. Valid values:
+        # 
+        # *   prePaid: The monthly purchase is unlimited.
+        # *   postPaid: pay-as-you-go
+        # *   monthPackage: monthly duration.
         self.sub_pay_type = sub_pay_type
 
     def validate(self):
@@ -33666,7 +34374,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups(TeaModel):
         resource_group_id: str = None,
         resource_group_name: str = None,
     ):
+        # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
+        # The queried resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -33699,7 +34409,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(TeaModel):
         end_user_id: str = None,
         establishment_time: str = None,
     ):
+        # The end user ID.
         self.end_user_id = end_user_id
+        # The time when the session was created.
         self.establishment_time = establishment_time
 
     def validate(self):
@@ -33755,30 +34467,65 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(TeaModel):
         total_connection_time: int = None,
         up_time: int = None,
     ):
+        # The connection status of the cloud desktop.
         self.connection_status = connection_status
+        # The number of vCPUs.
         self.cpu = cpu
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
+        # The cloud computer IDs.
         self.desktop_id = desktop_id
+        # The cloud computer name.
         self.desktop_name = desktop_name
+        # 桌面状态
         self.desktop_status = desktop_status
+        # The end user ID.
         self.end_user_id = end_user_id
+        # The list of assigned terminal user IDs.
         self.end_user_ids = end_user_ids
+        # The size of the GPU memory.
         self.gpu_spec = gpu_spec
+        # The duration of the last connection to the cloud computer. Unit: seconds
         self.latest_connection_time = latest_connection_time
+        # The memory of the cloud computer. Unit: MiB.
         self.memory = memory
+        # The office network ID.
         self.office_site_id = office_site_id
+        # The office network name.
         self.office_site_name = office_site_name
+        # The OS type. Valid values:
+        # 
+        # *   Windows
+        # *   Linux
         self.os_type = os_type
+        # The specific model of the operating system.
         self.platform = platform
+        # Protocol type.
+        # 
+        # *   HDX
+        # *   ASP
         self.protocol_type = protocol_type
+        # The ID of the region where the instance resides.
         self.region_id = region_id
+        # The name of the enterprise resource group.
         self.resource_groups = resource_groups
+        # The idle duration of the session. Unit: minutes.
         self.session_idle_time = session_idle_time
+        # The session details.
         self.sessions = sessions
+        # The time when the status of the cloud computer was changed.
         self.status_change_time = status_change_time
+        # The billing method of the cloud computer. Valid values:
+        # 
+        # *   prePaid: The monthly purchase is unlimited.
+        # *   postPaid: pay-as-you-go
+        # *   monthPackage: monthly duration.
         self.sub_pay_type = sub_pay_type
+        # The total connection duration. Unit: seconds
         self.total_connection_time = total_connection_time
+        # The startup duration of the cloud computer. Unit: seconds
         self.up_time = up_time
 
     def validate(self):
@@ -33921,8 +34668,11 @@ class DescribeGlobalDesktopRecordsResponseBody(TeaModel):
         sessions: List[DescribeGlobalDesktopRecordsResponseBodySessions] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The session details.
         self.sessions = sessions
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -35918,7 +36668,7 @@ class DescribeKmsKeysRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
 
     def validate(self):
@@ -35999,10 +36749,20 @@ class DescribeKmsKeysResponseBody(TeaModel):
         request_id: str = None,
     ):
         # The authorization status.
+        # 
+        # Valid value:
+        # 
+        # *   not_authorized
+        # *   authorized
         self.authorize_status = authorize_status
-        # Details about the customer master keys (CMKs).
+        # Customer master key (CMK)
         self.keys = keys
         # Indicates whether KMS is activated.
+        # 
+        # Valid value:
+        # 
+        # *   disabled
+        # *   enabled
         self.kms_service_status = kms_service_status
         # The ID of the request.
         self.request_id = request_id
@@ -39187,7 +39947,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels(TeaM
         event_level: str = None,
         event_type: str = None,
     ):
+        # The event severity.
         self.event_level = event_level
+        # The event type.
         self.event_type = event_type
 
     def validate(self):
@@ -39432,6 +40194,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
+        # The automatic client connection recovery configurations.
         self.auto_reconnect = auto_reconnect
         # Indicates whether the webcam redirection feature is enabled.
         # 
@@ -39601,6 +40364,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # - off: not provided.
         # - on: provided.
         self.mobile_restart = mobile_restart
+        # Indicates whether the Windows security control is enabled for mobile clients.
         self.mobile_safe_menu = mobile_safe_menu
         # Specifies whether to display the shut down button in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace mobile clients (including the Android client and the iOS client).
         # 
@@ -39611,7 +40375,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # - off: not provided.
         # - on: provided.
         self.mobile_shutdown = mobile_shutdown
+        # Indicates whether the Cloud Computer Manager is enabled for mobile clients.
         self.mobile_wuying_keeper = mobile_wuying_keeper
+        # Indicates whether the Xiaoying AI Assistant is enabled for mobile clients.
         self.mobile_wy_assistant = mobile_wy_assistant
         # The name of the cloud computer policy.
         self.name = name
@@ -39679,9 +40445,11 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.record_content_expires = record_content_expires
         # The recording duration since a target event is detected by the screen recording audit policy. Unit: Minute. Valid values: 10-60.
         self.record_event_duration = record_event_duration
+        # The screen recording file suffix.
         self.record_event_file_exts = record_event_file_exts
         # The array of absolute paths of the monitored files in the screen recording audit policy.
         self.record_event_file_paths = record_event_file_paths
+        # Indicates whether the screen recording event severity is enabled.
         self.record_event_levels = record_event_levels
         # The array of absolute paths of the monitored registry entries in the screen recording audit policy.
         self.record_event_registers = record_event_registers
@@ -40492,7 +41260,7 @@ class DescribePolicyGroupsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.count = count
-        # The cloud computer policies.
+        # The details of the cloud computer policies.
         self.describe_policy_groups = describe_policy_groups
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
@@ -45164,6 +45932,7 @@ class DescribeTemplatesResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.code = code
+        # The templates.
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
@@ -45547,7 +46316,7 @@ class DescribeTimerGroupResponseBodyData(TeaModel):
         self.bind_count = bind_count
         # The number of bound resources.
         self.bind_count_map = bind_count_map
-        # The scheduled task configurations.
+        # The scheduled tasks.
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
@@ -45643,7 +46412,7 @@ class DescribeTimerGroupResponseBody(TeaModel):
         data: DescribeTimerGroupResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the scheduled task group.
+        # The configuration group.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -51305,150 +52074,43 @@ class ListCdsFilesRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the cloud disk.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the user to whom the cloud disk is allocated.
+        # The ID of the user to which the network disk is assigned.
         self.end_user_id = end_user_id
         # The IDs of the files to be queried.
         self.file_ids = file_ids
+        # The ID of the team space.
         self.group_id = group_id
         # The number of entries to return on each page. Default value: 100.
         self.max_results = max_results
-        # The token used for the next query. If this parameter is empty, all results are returned.
+        # The query token. Set the value to the value of the `NextToken` parameter returned in the last call to the operation. You do not need to set this parameter when you call the operation for the first time.
         self.next_token = next_token
         # The sorting method of the files.
         # 
         # Valid values:
         # 
-        # *   CreateTimeDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on the time when they are created.
-        # 
-        #     <!-- -->
-        # 
-        # *   ModifiedTimeAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on the time when they are modified.
-        # 
-        #     <!-- -->
-        # 
-        # *   NameDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on their names.
-        # 
-        #     <!-- -->
-        # 
-        # *   SizeAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on their sizes.
-        # 
-        #     <!-- -->
-        # 
-        # *   ModifiedTimeDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on the time when they are modified.
-        # 
-        #     <!-- -->
-        # 
-        # *   CreateTimeAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on the time when they are created.
-        # 
-        #     <!-- -->
-        # 
-        # *   SizeDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on their sizes.
-        # 
-        #     <!-- -->
-        # 
-        # *   NameAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on their names.
-        # 
-        #     <!-- -->
+        # *   CreateTimeDesc: sorts the by creation time in descending order.
+        # *   ModifiedTimeAsc: sort the by modification time in ascending order.
+        # *   NameDesc: sorts the by file name in descending order.
+        # *   SizeAsc: sorts by file size in ascending order.
+        # *   ModifiedTimeDesc: sort the by modification time in descending order.
+        # *   CreateTimeAsc: sorts the by creation time in ascending order.
+        # *   SizeDesc: sorts by file size in descending order.
+        # *   NameAsc: sorts by file name in ascending order.
         self.order_type = order_type
-        # The ID of the parent file.
+        # The parent folder ID. You can obtain the value by using the response parameter `FileId` of this operation.
         self.parent_file_id = parent_file_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the logon region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by cloud computers.
         self.region_id = region_id
         # The file status.
         # 
         # Valid values:
         # 
-        # *   available
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     returns only normal files.
-        # 
-        #     <!-- -->
-        # 
-        # *   uploading
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     returns only the files that are being uploaded.
-        # 
-        #     <!-- -->
+        # *   available: returns only normal file.
+        # *   uploading: returns only the of objects that are being uploaded.
         self.status = status
 
     def validate(self):
@@ -51521,150 +52183,43 @@ class ListCdsFilesShrinkRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the cloud disk.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the user to whom the cloud disk is allocated.
+        # The ID of the user to which the network disk is assigned.
         self.end_user_id = end_user_id
         # The IDs of the files to be queried.
         self.file_ids_shrink = file_ids_shrink
+        # The ID of the team space.
         self.group_id = group_id
         # The number of entries to return on each page. Default value: 100.
         self.max_results = max_results
-        # The token used for the next query. If this parameter is empty, all results are returned.
+        # The query token. Set the value to the value of the `NextToken` parameter returned in the last call to the operation. You do not need to set this parameter when you call the operation for the first time.
         self.next_token = next_token
         # The sorting method of the files.
         # 
         # Valid values:
         # 
-        # *   CreateTimeDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on the time when they are created.
-        # 
-        #     <!-- -->
-        # 
-        # *   ModifiedTimeAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on the time when they are modified.
-        # 
-        #     <!-- -->
-        # 
-        # *   NameDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on their names.
-        # 
-        #     <!-- -->
-        # 
-        # *   SizeAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on their sizes.
-        # 
-        #     <!-- -->
-        # 
-        # *   ModifiedTimeDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on the time when they are modified.
-        # 
-        #     <!-- -->
-        # 
-        # *   CreateTimeAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on the time when they are created.
-        # 
-        #     <!-- -->
-        # 
-        # *   SizeDesc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in descending order based on their sizes.
-        # 
-        #     <!-- -->
-        # 
-        # *   NameAsc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts files in ascending order based on their names.
-        # 
-        #     <!-- -->
+        # *   CreateTimeDesc: sorts the by creation time in descending order.
+        # *   ModifiedTimeAsc: sort the by modification time in ascending order.
+        # *   NameDesc: sorts the by file name in descending order.
+        # *   SizeAsc: sorts by file size in ascending order.
+        # *   ModifiedTimeDesc: sort the by modification time in descending order.
+        # *   CreateTimeAsc: sorts the by creation time in ascending order.
+        # *   SizeDesc: sorts by file size in descending order.
+        # *   NameAsc: sorts by file name in ascending order.
         self.order_type = order_type
-        # The ID of the parent file.
+        # The parent folder ID. You can obtain the value by using the response parameter `FileId` of this operation.
         self.parent_file_id = parent_file_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the logon region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by cloud computers.
         self.region_id = region_id
         # The file status.
         # 
         # Valid values:
         # 
-        # *   available
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     returns only normal files.
-        # 
-        #     <!-- -->
-        # 
-        # *   uploading
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     returns only the files that are being uploaded.
-        # 
-        #     <!-- -->
+        # *   available: returns only normal file.
+        # *   uploading: returns only the of objects that are being uploaded.
         self.status = status
 
     def validate(self):
@@ -51748,7 +52303,7 @@ class ListCdsFilesResponseBodyFileModels(TeaModel):
         size: int = None,
         thumbnail: str = None,
     ):
-        # The file category. PDS categorizes files based on their suffixes and MIME types. The following major categories are included: doc, image, audio, and video.
+        # File type classification. The network disk will classify files according to their suffix and MIME Type. The main categories are `doc`, `image`, `audio` and `video`.
         self.category = category
         # The content type of the file.
         self.content_type = content_type
@@ -51758,7 +52313,7 @@ class ListCdsFilesResponseBodyFileModels(TeaModel):
         self.creator = creator
         # The file description.
         self.description = description
-        # The URL that is used to download the file. The download URL is valid for only 15 minutes. If the URL is expired, you can call the GetFile operation to obtain the file.
+        # The download link. The default validity period is 15 minutes.
         self.download_url = download_url
         # The filename extension.
         self.file_extension = file_extension
@@ -51767,14 +52322,19 @@ class ListCdsFilesResponseBodyFileModels(TeaModel):
         # The file path.
         self.file_path = file_path
         # The file type.
+        # 
+        # Valid value:
+        # 
+        # *   file
+        # *   folder
         self.file_type = file_type
-        # The MD5 value of the file.
+        # The MD5 hash of the object.
         self.md_5 = md_5
         # The time when the file was last modified.
         self.modified_time = modified_time
-        # The user who modified the file.
+        # Modifier.
         self.modifier = modifier
-        # The file name.
+        # The name of the file.
         self.name = name
         # The time when the file was last opened.
         self.open_time = open_time
@@ -51782,11 +52342,11 @@ class ListCdsFilesResponseBodyFileModels(TeaModel):
         self.open_time_stamp = open_time_stamp
         # The ID of the parent folder.
         self.parent_id = parent_id
-        # The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by cloud computers.
         self.region_id = region_id
-        # The SHA 1 file.
+        # The SHA1 hash of the data file.
         self.sha_1 = sha_1
-        # The file size. Unit: bits.
+        # The size of the file. Unit: bytes.
         self.size = size
         # The URL of the thumbnail.
         self.thumbnail = thumbnail
@@ -51902,37 +52462,24 @@ class ListCdsFilesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of the operation. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+        # The response parameters. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
-        # The total number of entries.
+        # The total number of file list entries.
         self.count = count
         # The files.
         self.file_models = file_models
-        # The error message returned if the request failed. This parameter is empty if the value of Code is success.
+        # Error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
-        # The token used for the next query. If this parameter is empty, all results have been returned.
+        # The token used to start the next query. If the `NextToken` is empty, the next query does not exist.
         self.next_token = next_token
-        # The request ID. An ID is the unique identifier of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the operation was successful.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   false
         self.success = success
 
     def validate(self):
@@ -52293,19 +52840,19 @@ class ListFilePermissionRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the end user who uses the cloud disk.
+        # The ID of the user who uses the drive.
         self.end_user_id = end_user_id
-        # The ID of the shared file.
+        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to get the file ID.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The group ID.
+        # The ID of the team space.
         self.group_id = group_id
-        # The region ID of the cloud disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -52426,6 +52973,167 @@ class ListFilePermissionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFilePermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInstalledAppsRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.desktop_id = desktop_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListInstalledAppsResponseBodyApps(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        app_version: str = None,
+    ):
+        self.app_name = app_name
+        self.app_version = app_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        return self
+
+
+class ListInstalledAppsResponseBody(TeaModel):
+    def __init__(
+        self,
+        apps: List[ListInstalledAppsResponseBodyApps] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.apps = apps
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.apps:
+            for k in self.apps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Apps'] = []
+        if self.apps is not None:
+            for k in self.apps:
+                result['Apps'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.apps = []
+        if m.get('Apps') is not None:
+            for k in m.get('Apps'):
+                temp_model = ListInstalledAppsResponseBodyApps()
+                self.apps.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListInstalledAppsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstalledAppsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstalledAppsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -53297,8 +54005,15 @@ class ListTransferFilesRequest(TeaModel):
         next_token: str = None,
         task_id: str = None,
     ):
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the transmission task.
         self.task_id = task_id
 
     def validate(self):
@@ -53341,13 +54056,41 @@ class ListTransferFilesResponseBodyFiles(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The URL of the file icon.
+        # 
+        # > 
+        # 
+        # *   For image file types (.png, .jpg, .jpeg, .gif, .webp, and .svg), the URL of the specific image is returned.
+        # 
+        # *   For other file types, the URL of the default image is returned.
         self.icon_url = icon_url
+        # The file ID.
         self.id = id
+        # The file name.
         self.name = name
+        # The name of the object stored in OSS.
+        # 
+        # > 
+        # 
+        # *   A value is returned for this parameter only when the object is stored in a custom OSS bucket.
         self.oss_file_name = oss_file_name
+        # The path of the object in the OSS bucket.
+        # 
+        # > 
+        # 
+        # *   A value is returned for this parameter only when the object is stored in a custom OSS bucket.
         self.oss_file_path = oss_file_path
+        # The file size.
         self.size = size
+        # The file status.
+        # 
+        # Valid values:
+        # 
+        # *   DELETING
+        # *   DELETED
+        # *   UPLOADED
         self.status = status
+        # The file type.
         self.type = type
 
     def validate(self):
@@ -53406,9 +54149,17 @@ class ListTransferFilesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The files.
         self.files = files
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The returned value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54878,63 +55629,32 @@ class ModifyCdsFileRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The cloud disk ID.
+        # The enterprise drive ID.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The processing mode of files that have the same name.
+        # The processing policy when a file with the same name appears.
         # 
         # Valid values:
         # 
-        # *   refuse
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     refuses to create a file that has the same name as the file in the cloud.
-        # 
-        #     <!-- -->
-        # 
-        # *   auto_rename
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     automatically renames a file if the file has the same name as another file. By default, the current point in time is appended. Example: xxx20060102_150405.
-        # 
-        #     <!-- -->
-        # 
-        # *   ignore
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     allows files with the same name.
-        # 
-        #     <!-- -->
+        # *   refuse: If you want to create a file that uses the same name as an existing file in the cloud, the system denies your request and returns the details of the existing file.
+        # *   auto_rename: automatically renames a file if the file has the same name as an existing file in the cloud. By default, the current point in time is appended to the end of the original file name. Example: xxx20240102_150405.
+        # *   ignore: allows the file to be with the same name.
+        # *   over_write: After you create a file that uses the same name as an existing file in the cloud, the new file overwrites the existing file.
         self.conflict_policy = conflict_policy
-        # The ID of the end user who uses the cloud disk.
+        # The ID of the user who uses the network disk.
         self.end_user_id = end_user_id
-        # The file ID.
+        # The ID of the file. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The file name.
+        # The name of the file.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # The group ID.
+        # The ID of the team space.
         self.group_id = group_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -54992,7 +55712,7 @@ class ModifyCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The modification result. The value success indicates that the modification is successful. If the modification failed, an error message is returned.
+        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
         # Specifies whether data is returned.
         # 
@@ -55016,29 +55736,16 @@ class ModifyCdsFileResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.data = data
-        # The error message returned if the request failed.
+        # The returned error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation was successful.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   true: The request is successful.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false: The request fails.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -61092,11 +61799,11 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
-        # The bandwidth provided by the premium bandwidth plan. Unit: Mbit/s.
+        # The maximum bandwidth of the premium bandwidth plan, in Mbit/s. Valid range: The allowed range depends on the billing method:
         # 
-        # *   Valid values if the premium bandwidth plan is a subscription plan: 2 to 1000.
-        # *   Valid values if the premium bandwidth plan is a pay-as-you-go plan that charges by data transfer (PayByTraffic): 2 to 200.
-        # *   Valid values if the premium bandwidth plan is a pay-as-you-go plan that charges by fixed bandwidth (PayByBandwidth): 2 to 1000.
+        # *   Subscription: 2 to 1000
+        # *   Pay-as-you-go, by data transfer (PayByTraffic): 2 to 200
+        # *   Pay-as-you-go, by fixed bandwidth (PayByBandwidth): 2 to 1000
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
@@ -61672,9 +62379,14 @@ class ModifyOfficeSiteDnsInfoRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
+        # The IP addresses of the custom DNS servers. Up to 2 IP addresses can be specified.
         self.dns_address = dns_address
+        # The office network ID.
+        # 
         # This parameter is required.
         self.office_site_id = office_site_id
+        # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -61711,6 +62423,7 @@ class ModifyOfficeSiteDnsInfoResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63962,7 +64675,15 @@ class ModifyTemplateRequestDataDiskList(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The PL of the data disk. Default value: `AutoPL`.
+        # 
+        # Valid values:
+        # 
+        # *   PL1: a PL1 ESSD
+        # *   PL0: a PL0 ESSD
+        # *   AutoPL: an AutoPL ESSD
         self.performance_level = performance_level
+        # The size of the data disk. Unit: GiB. Valid range: 40 to 2040 GiB with an increment of 10 GiB.
         self.size = size
 
     def validate(self):
@@ -64636,7 +65357,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Specifies whether to allow end users to configure scheduled tasks.
+        # Specifies whether to allow end users to configure the scheduled task.
         self.allow_client_setting = allow_client_setting
         # The cron expression specified in the scheduled task.
         # 
@@ -64654,18 +65375,18 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         # *   Hibernate: scheduled hibernation.
         # *   Shutdown: scheduled shutdown.
         self.operation_type = operation_type
-        # The process whitelist. If whitelisted processes are running, the scheduled task does not take effect upon inactivity.
+        # The process whitelist. If whitelisted processes are running, the scheduled task does not take effect.
         self.process_whitelist = process_whitelist
         # The reset option.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   RESET_TYPE_SYSTEM: resets the system disk.
         # *   RESET_TYPE_USER_DISK: resets the data disk.
         # *   RESET_TYPE_BOTH: resets the system disk and data disk.
         self.reset_type = reset_type
         self.segment_timers = segment_timers
-        # The scheduled task type.
+        # The type of the scheduled task.
         # 
         # Valid value:
         # 
@@ -64677,7 +65398,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         # *   NoOperationHibernate: scheduled hibernation upon inactivity.
         # *   TimerShutdown: scheduled shutdown.
         # *   NoOperationReboot: scheduled restart upon inactivity.
-        # *   TimerReboot: scheduled restart.
+        # *   TimerReboot: Restarts the cloud computers on schedule.
         self.timer_type = timer_type
         # The method to trigger the scheduled task upon inactivity.
         # 
@@ -64764,7 +65485,7 @@ class ModifyTimerGroupRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The scheduled task groups.
+        # The scheduled tasks.
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
@@ -65881,29 +66602,8 @@ class RemoveFilePermissionRequestMemberListCdsIdentity(TeaModel):
         # 
         # Valid values:
         # 
-        # *   IT_Group
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     group
-        # 
-        #     <!-- -->
-        # 
-        # *   IT_User
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     user
-        # 
-        #     <!-- -->
+        # *   IT_Group: group.
+        # *   IT_User: user.
         # 
         # This parameter is required.
         self.type = type
@@ -65942,165 +66642,23 @@ class RemoveFilePermissionRequestMemberList(TeaModel):
         # 
         # This parameter is required.
         self.cds_identity = cds_identity
-        # The role ID. You can configure permissions on roles or actions. This parameter is used to specify the permissions on roles, which conflicts with the ActionList parameter. When you configure both the parameters, this parameter shall prevail.
+        # You can set permissions by specifying roles or by customizing operation permissions. This field is used to set permissions by specifying roles. This field is mutually exclusive with `ActionList`.
         # 
         # Valid values:
         # 
-        # *   SystemFileEditorWithoutShareLink
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to edit files but cannot share files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileUploaderAndDownloaderWithShareLink
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to upload, download, and share files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileDownloader
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to download files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileEditorWithoutDelete
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to edit files but cannot delete files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileOwner
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to collaborate with others
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileDownloaderWithShareLink
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to download and share files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileUploaderAndViewer
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to preview or upload files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileViewer
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to preview files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileEditor
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to edit files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileUploaderWithShareLink
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to upload or share files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileUploader
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permission to upload files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileUploaderAndDownloader
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to upload or download files
-        # 
-        #     <!-- -->
-        # 
-        # *   SystemFileMetaViewer
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the role that has the permissions to view files
-        # 
-        #     <!-- -->
+        # *   SystemFileEditorWithoutShareLink: the role that has the permissions to edit files but cannot share files.
+        # *   SystemFileUploaderAndDownloaderWithShareLink: the role that has the permissions to upload, download, and share files.
+        # *   SystemFileDownloader: the role that has the permissions to download files.
+        # *   SystemFileEditorWithoutDelete: the role that has the permissions to edit files but cannot delete files.
+        # *   SystemFileOwner: the role that has the permissions to collaborate with others.
+        # *   SystemFileDownloaderWithShareLink: the role that has the permissions to download and share files
+        # *   SystemFileUploaderAndViewer: the role that has the permissions to preview or upload files.
+        # *   SystemFileViewer: the role that has the permissions to preview files.
+        # *   SystemFileEditor: the role that has the permissions to edit files
+        # *   SystemFileUploaderWithShareLink: the role that has the permissions to upload or share files.
+        # *   SystemFileUploader: the role that has the permission to upload files.
+        # *   SystemFileUploaderAndDownloader: the role that has the permissions to upload or download files.
+        # *   SystemFileMetaViewer: the role that has the permissions to view files
         # 
         # This parameter is required.
         self.role_id = role_id
@@ -66141,23 +66699,23 @@ class RemoveFilePermissionRequest(TeaModel):
         member_list: List[RemoveFilePermissionRequestMemberList] = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk in Cloud Drive Service.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The file ID. The ID is a unique identifier for the file.
+        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The group ID.
+        # The ID of the team space.
         self.group_id = group_id
-        # The users that you want to authorize.
+        # The users that you want to authorize to use the cloud disk.
         # 
         # This parameter is required.
         self.member_list = member_list
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -66220,23 +66778,23 @@ class RemoveFilePermissionShrinkRequest(TeaModel):
         member_list_shrink: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk in Cloud Drive Service.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The file ID. The ID is a unique identifier for the file.
+        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The group ID.
+        # The ID of the team space.
         self.group_id = group_id
-        # The users that you want to authorize.
+        # The users that you want to authorize to use the cloud disk.
         # 
         # This parameter is required.
         self.member_list_shrink = member_list_shrink
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -68667,10 +69225,21 @@ class SetDesktopMaintenanceRequest(TeaModel):
         mode: str = None,
         region_id: str = None,
     ):
+        # A list of cloud computer IDs for which you want to set maintenance mode. A maximum of 100 cloud computer IDs are supported.
+        # 
         # This parameter is required.
         self.desktop_ids = desktop_ids
+        # Enter or exit cloud computer maintenance mode.
+        # 
+        # Enumerated values:
+        # 
+        # *   ENTER: The enters the maintenance mode.
+        # *   EXIT: The exits the maintenance mode.
+        # 
         # This parameter is required.
         self.mode = mode
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -68707,6 +69276,7 @@ class SetDesktopMaintenanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69543,7 +70113,7 @@ class StartDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
@@ -69653,10 +70223,11 @@ class StopDesktopsRequest(TeaModel):
         region_id: str = None,
         stopped_mode: str = None,
     ):
-        # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        # Whether to perform a patch update when the update is ready. A value of true indicates that a patch update is performed.
         self.os_update = os_update
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
@@ -70080,9 +70651,18 @@ class TransferTaskApprovalCallbackRequest(TeaModel):
         result: str = None,
         task_id: str = None,
     ):
+        # The name of the OSS bucket where the file resides.
         self.oss_bucket_name = oss_bucket_name
+        # The region where the OSS bucket storing the file resides.
         self.oss_bucket_region_id = oss_bucket_region_id
+        # The approval result.
+        # 
+        # Valid values:
+        # 
+        # *   Approved
+        # *   Rejected
         self.result = result
+        # The ID of the transmission task.
         self.task_id = task_id
 
     def validate(self):
@@ -70122,6 +70702,7 @@ class TransferTaskApprovalCallbackResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

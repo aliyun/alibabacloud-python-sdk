@@ -379,7 +379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        @summary Shares a folder of a cloud disk with other users.
+        @summary Adds a shared folder to the network disk.
         
         @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
@@ -430,7 +430,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        @summary Shares a folder of a cloud disk with other users.
+        @summary Adds a shared folder to the network disk.
         
         @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
@@ -480,7 +480,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddFilePermissionRequest,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        @summary Shares a folder of a cloud disk with other users.
+        @summary Adds a shared folder to the network disk.
         
         @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
@@ -495,7 +495,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddFilePermissionRequest,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        @summary Shares a folder of a cloud disk with other users.
+        @summary Adds a shared folder to the network disk.
         
         @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
@@ -2607,7 +2607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
         """
-        @summary Completes a file uploading task.
+        @summary After you create an object upload task, call this operation to upload the object.
         
         @param request: CompleteCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2652,7 +2652,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
         """
-        @summary Completes a file uploading task.
+        @summary After you create an object upload task, call this operation to upload the object.
         
         @param request: CompleteCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2696,7 +2696,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CompleteCdsFileRequest,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
         """
-        @summary Completes a file uploading task.
+        @summary After you create an object upload task, call this operation to upload the object.
         
         @param request: CompleteCdsFileRequest
         @return: CompleteCdsFileResponse
@@ -2709,7 +2709,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CompleteCdsFileRequest,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
         """
-        @summary Completes a file uploading task.
+        @summary After you create an object upload task, call this operation to upload the object.
         
         @param request: CompleteCdsFileRequest
         @return: CompleteCdsFileResponse
@@ -6299,7 +6299,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDriveResponse:
         """
-        @summary 创建网盘
+        @summary Creates a user-level storage resource.
         
         @param request: CreateDriveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6352,7 +6352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDriveResponse:
         """
-        @summary 创建网盘
+        @summary Creates a user-level storage resource.
         
         @param request: CreateDriveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6404,7 +6404,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDriveRequest,
     ) -> ecd_20200930_models.CreateDriveResponse:
         """
-        @summary 创建网盘
+        @summary Creates a user-level storage resource.
         
         @param request: CreateDriveRequest
         @return: CreateDriveResponse
@@ -6417,7 +6417,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDriveRequest,
     ) -> ecd_20200930_models.CreateDriveResponse:
         """
-        @summary 创建网盘
+        @summary Creates a user-level storage resource.
         
         @param request: CreateDriveRequest
         @return: CreateDriveResponse
@@ -6431,7 +6431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
         """
-        @summary 创建无影数据报表导出任务
+        @summary Creates a data report export task.
         
         @param request: CreateEcdReportTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6474,7 +6474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
         """
-        @summary 创建无影数据报表导出任务
+        @summary Creates a data report export task.
         
         @param request: CreateEcdReportTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6516,7 +6516,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateEcdReportTaskRequest,
     ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
         """
-        @summary 创建无影数据报表导出任务
+        @summary Creates a data report export task.
         
         @param request: CreateEcdReportTaskRequest
         @return: CreateEcdReportTaskResponse
@@ -6529,7 +6529,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateEcdReportTaskRequest,
     ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
         """
-        @summary 创建无影数据报表导出任务
+        @summary Creates a data report export task.
         
         @param request: CreateEcdReportTaskRequest
         @return: CreateEcdReportTaskResponse
@@ -8415,7 +8415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateTemplateResponse:
         """
-        @summary 创建模板
+        @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
         @param request: CreateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8495,7 +8495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateTemplateResponse:
         """
-        @summary 创建模板
+        @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
         @param request: CreateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8574,7 +8574,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateTemplateRequest,
     ) -> ecd_20200930_models.CreateTemplateResponse:
         """
-        @summary 创建模板
+        @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
         @param request: CreateTemplateRequest
         @return: CreateTemplateResponse
@@ -8587,7 +8587,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateTemplateRequest,
     ) -> ecd_20200930_models.CreateTemplateResponse:
         """
-        @summary 创建模板
+        @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
         @param request: CreateTemplateRequest
         @return: CreateTemplateResponse
@@ -8801,7 +8801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
         """
-        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        @summary Delete files or folders from the network disk.
         
         @param request: DeleteCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8844,7 +8844,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
         """
-        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        @summary Delete files or folders from the network disk.
         
         @param request: DeleteCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8886,7 +8886,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCdsFileRequest,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
         """
-        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        @summary Delete files or folders from the network disk.
         
         @param request: DeleteCdsFileRequest
         @return: DeleteCdsFileResponse
@@ -8899,7 +8899,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCdsFileRequest,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
         """
-        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        @summary Delete files or folders from the network disk.
         
         @param request: DeleteCdsFileRequest
         @return: DeleteCdsFileResponse
@@ -9777,7 +9777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDriveResponse:
         """
-        @summary 删除网盘
+        @summary Deletes a drive.
         
         @param request: DeleteDriveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9814,7 +9814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDriveResponse:
         """
-        @summary 删除网盘
+        @summary Deletes a drive.
         
         @param request: DeleteDriveRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9850,7 +9850,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDriveRequest,
     ) -> ecd_20200930_models.DeleteDriveResponse:
         """
-        @summary 删除网盘
+        @summary Deletes a drive.
         
         @param request: DeleteDriveRequest
         @return: DeleteDriveResponse
@@ -9863,7 +9863,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDriveRequest,
     ) -> ecd_20200930_models.DeleteDriveResponse:
         """
-        @summary 删除网盘
+        @summary Deletes a drive.
         
         @param request: DeleteDriveRequest
         @return: DeleteDriveResponse
@@ -12387,6 +12387,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_client_events_with_options_async(request, runtime)
 
+    def describe_cloud_disk_group_drives_with_options(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupDrivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupDrivesResponse:
+        """
+        @summary 查询云盘团队空间列表
+        
+        @param request: DescribeCloudDiskGroupDrivesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskGroupDrivesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudDiskGroupDrives',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeCloudDiskGroupDrivesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_disk_group_drives_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupDrivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupDrivesResponse:
+        """
+        @summary 查询云盘团队空间列表
+        
+        @param request: DescribeCloudDiskGroupDrivesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskGroupDrivesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudDiskGroupDrives',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeCloudDiskGroupDrivesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_disk_group_drives(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupDrivesRequest,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupDrivesResponse:
+        """
+        @summary 查询云盘团队空间列表
+        
+        @param request: DescribeCloudDiskGroupDrivesRequest
+        @return: DescribeCloudDiskGroupDrivesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_disk_group_drives_with_options(request, runtime)
+
+    async def describe_cloud_disk_group_drives_async(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupDrivesRequest,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupDrivesResponse:
+        """
+        @summary 查询云盘团队空间列表
+        
+        @param request: DescribeCloudDiskGroupDrivesRequest
+        @return: DescribeCloudDiskGroupDrivesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_disk_group_drives_with_options_async(request, runtime)
+
+    def describe_cloud_disk_groups_with_options(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupsResponse:
+        """
+        @summary 查询云盘团队列表
+        
+        @param request: DescribeCloudDiskGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.parent_org_id):
+            query['ParentOrgId'] = request.parent_org_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudDiskGroups',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeCloudDiskGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_disk_groups_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupsResponse:
+        """
+        @summary 查询云盘团队列表
+        
+        @param request: DescribeCloudDiskGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.parent_org_id):
+            query['ParentOrgId'] = request.parent_org_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudDiskGroups',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeCloudDiskGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_disk_groups(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupsRequest,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupsResponse:
+        """
+        @summary 查询云盘团队列表
+        
+        @param request: DescribeCloudDiskGroupsRequest
+        @return: DescribeCloudDiskGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_disk_groups_with_options(request, runtime)
+
+    async def describe_cloud_disk_groups_async(
+        self,
+        request: ecd_20200930_models.DescribeCloudDiskGroupsRequest,
+    ) -> ecd_20200930_models.DescribeCloudDiskGroupsResponse:
+        """
+        @summary 查询云盘团队列表
+        
+        @param request: DescribeCloudDiskGroupsRequest
+        @return: DescribeCloudDiskGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_disk_groups_with_options_async(request, runtime)
+
     def describe_cloud_drive_groups_with_options(
         self,
         request: ecd_20200930_models.DescribeCloudDriveGroupsRequest,
@@ -12969,7 +13193,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
         """
-        @summary Queries sessions in a desktop group.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupSessionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13026,7 +13250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
         """
-        @summary Queries sessions in a desktop group.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupSessionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13082,7 +13306,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
         """
-        @summary Queries sessions in a desktop group.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupSessionsRequest
         @return: DescribeDesktopGroupSessionsResponse
@@ -13095,7 +13319,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
         """
-        @summary Queries sessions in a desktop group.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupSessionsRequest
         @return: DescribeDesktopGroupSessionsResponse
@@ -14669,7 +14893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDrivesResponse:
         """
-        @summary 查询网盘列表
+        @summary Queries user-level storage resources.
         
         @param request: DescribeDrivesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14714,7 +14938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDrivesResponse:
         """
-        @summary 查询网盘列表
+        @summary Queries user-level storage resources.
         
         @param request: DescribeDrivesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14758,7 +14982,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDrivesRequest,
     ) -> ecd_20200930_models.DescribeDrivesResponse:
         """
-        @summary 查询网盘列表
+        @summary Queries user-level storage resources.
         
         @param request: DescribeDrivesRequest
         @return: DescribeDrivesResponse
@@ -14771,7 +14995,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDrivesRequest,
     ) -> ecd_20200930_models.DescribeDrivesResponse:
         """
-        @summary 查询网盘列表
+        @summary Queries user-level storage resources.
         
         @param request: DescribeDrivesRequest
         @return: DescribeDrivesResponse
@@ -14785,7 +15009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
         """
-        @summary 查询数据报表导出任务列表
+        @summary Queries data report export tasks.
         
         @param request: DescribeEcdReportTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14830,7 +15054,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
         """
-        @summary 查询数据报表导出任务列表
+        @summary Queries data report export tasks.
         
         @param request: DescribeEcdReportTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14874,7 +15098,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeEcdReportTasksRequest,
     ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
         """
-        @summary 查询数据报表导出任务列表
+        @summary Queries data report export tasks.
         
         @param request: DescribeEcdReportTasksRequest
         @return: DescribeEcdReportTasksResponse
@@ -14887,7 +15111,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeEcdReportTasksRequest,
     ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
         """
-        @summary 查询数据报表导出任务列表
+        @summary Queries data report export tasks.
         
         @param request: DescribeEcdReportTasksRequest
         @return: DescribeEcdReportTasksResponse
@@ -15501,7 +15725,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
         """
-        @summary 查询全局桌面记录
+        @summary Queries the basic information of all cloud computers and the corresponding usage duration records.
+        
+        @description    Domestic site users query site selection Shanghai, international site users choose Singapore.
+        By default, you can query all cloud computers that are deleted or not deleted.
+        Deleted cloud computers can be queried only if the deletion time is less than three months.
+        Sort criteria cannot be shared with other criteria.
         
         @param request: DescribeGlobalDesktopRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15564,7 +15793,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
         """
-        @summary 查询全局桌面记录
+        @summary Queries the basic information of all cloud computers and the corresponding usage duration records.
+        
+        @description    Domestic site users query site selection Shanghai, international site users choose Singapore.
+        By default, you can query all cloud computers that are deleted or not deleted.
+        Deleted cloud computers can be queried only if the deletion time is less than three months.
+        Sort criteria cannot be shared with other criteria.
         
         @param request: DescribeGlobalDesktopRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15626,7 +15860,12 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeGlobalDesktopRecordsRequest,
     ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
         """
-        @summary 查询全局桌面记录
+        @summary Queries the basic information of all cloud computers and the corresponding usage duration records.
+        
+        @description    Domestic site users query site selection Shanghai, international site users choose Singapore.
+        By default, you can query all cloud computers that are deleted or not deleted.
+        Deleted cloud computers can be queried only if the deletion time is less than three months.
+        Sort criteria cannot be shared with other criteria.
         
         @param request: DescribeGlobalDesktopRecordsRequest
         @return: DescribeGlobalDesktopRecordsResponse
@@ -15639,7 +15878,12 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeGlobalDesktopRecordsRequest,
     ) -> ecd_20200930_models.DescribeGlobalDesktopRecordsResponse:
         """
-        @summary 查询全局桌面记录
+        @summary Queries the basic information of all cloud computers and the corresponding usage duration records.
+        
+        @description    Domestic site users query site selection Shanghai, international site users choose Singapore.
+        By default, you can query all cloud computers that are deleted or not deleted.
+        Deleted cloud computers can be queried only if the deletion time is less than three months.
+        Sort criteria cannot be shared with other criteria.
         
         @param request: DescribeGlobalDesktopRecordsRequest
         @return: DescribeGlobalDesktopRecordsResponse
@@ -19133,7 +19377,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeTemplatesResponse:
         """
-        @summary 查询模板列表
+        @summary Queries the details of cloud computer templates.
         
         @param request: DescribeTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19186,7 +19430,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeTemplatesResponse:
         """
-        @summary 查询模板列表
+        @summary Queries the details of cloud computer templates.
         
         @param request: DescribeTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19238,7 +19482,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeTemplatesRequest,
     ) -> ecd_20200930_models.DescribeTemplatesResponse:
         """
-        @summary 查询模板列表
+        @summary Queries the details of cloud computer templates.
         
         @param request: DescribeTemplatesRequest
         @return: DescribeTemplatesResponse
@@ -19251,7 +19495,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeTemplatesRequest,
     ) -> ecd_20200930_models.DescribeTemplatesResponse:
         """
-        @summary 查询模板列表
+        @summary Queries the details of cloud computer templates.
         
         @param request: DescribeTemplatesRequest
         @return: DescribeTemplatesResponse
@@ -22193,7 +22437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
         """
-        @summary Queries the files in a cloud disk.
+        @summary Queries the list of files in the network disk and obtain the download link of the file.
         
         @param tmp_req: ListCdsFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22250,7 +22494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
         """
-        @summary Queries the files in a cloud disk.
+        @summary Queries the list of files in the network disk and obtain the download link of the file.
         
         @param tmp_req: ListCdsFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22306,7 +22550,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListCdsFilesRequest,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
         """
-        @summary Queries the files in a cloud disk.
+        @summary Queries the list of files in the network disk and obtain the download link of the file.
         
         @param request: ListCdsFilesRequest
         @return: ListCdsFilesResponse
@@ -22319,7 +22563,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListCdsFilesRequest,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
         """
-        @summary Queries the files in a cloud disk.
+        @summary Queries the list of files in the network disk and obtain the download link of the file.
         
         @param request: ListCdsFilesRequest
         @return: ListCdsFilesResponse
@@ -22469,7 +22713,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
         """
-        @summary Queries the information about shared files of cloud disks.
+        @summary Queries the permissions on a shared file on a drive.
         
         @param request: ListFilePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22512,7 +22756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
         """
-        @summary Queries the information about shared files of cloud disks.
+        @summary Queries the permissions on a shared file on a drive.
         
         @param request: ListFilePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22554,7 +22798,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListFilePermissionRequest,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
         """
-        @summary Queries the information about shared files of cloud disks.
+        @summary Queries the permissions on a shared file on a drive.
         
         @param request: ListFilePermissionRequest
         @return: ListFilePermissionResponse
@@ -22567,13 +22811,117 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListFilePermissionRequest,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
         """
-        @summary Queries the information about shared files of cloud disks.
+        @summary Queries the permissions on a shared file on a drive.
         
         @param request: ListFilePermissionRequest
         @return: ListFilePermissionResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_file_permission_with_options_async(request, runtime)
+
+    def list_installed_apps_with_options(
+        self,
+        request: ecd_20200930_models.ListInstalledAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ListInstalledAppsResponse:
+        """
+        @summary 查询桌面内安装的应用
+        
+        @param request: ListInstalledAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstalledAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstalledApps',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ListInstalledAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_installed_apps_with_options_async(
+        self,
+        request: ecd_20200930_models.ListInstalledAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ListInstalledAppsResponse:
+        """
+        @summary 查询桌面内安装的应用
+        
+        @param request: ListInstalledAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstalledAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstalledApps',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ListInstalledAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_installed_apps(
+        self,
+        request: ecd_20200930_models.ListInstalledAppsRequest,
+    ) -> ecd_20200930_models.ListInstalledAppsResponse:
+        """
+        @summary 查询桌面内安装的应用
+        
+        @param request: ListInstalledAppsRequest
+        @return: ListInstalledAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_installed_apps_with_options(request, runtime)
+
+    async def list_installed_apps_async(
+        self,
+        request: ecd_20200930_models.ListInstalledAppsRequest,
+    ) -> ecd_20200930_models.ListInstalledAppsResponse:
+        """
+        @summary 查询桌面内安装的应用
+        
+        @param request: ListInstalledAppsRequest
+        @return: ListInstalledAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_installed_apps_with_options_async(request, runtime)
 
     def list_office_site_overview_with_options(
         self,
@@ -22949,7 +23297,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListTransferFilesResponse:
         """
-        @summary 获取文件下载地址
+        @summary Queries the file information of a file transmission task.
         
         @param request: ListTransferFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22988,7 +23336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListTransferFilesResponse:
         """
-        @summary 获取文件下载地址
+        @summary Queries the file information of a file transmission task.
         
         @param request: ListTransferFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23026,7 +23374,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListTransferFilesRequest,
     ) -> ecd_20200930_models.ListTransferFilesResponse:
         """
-        @summary 获取文件下载地址
+        @summary Queries the file information of a file transmission task.
         
         @param request: ListTransferFilesRequest
         @return: ListTransferFilesResponse
@@ -23039,7 +23387,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListTransferFilesRequest,
     ) -> ecd_20200930_models.ListTransferFilesResponse:
         """
-        @summary 获取文件下载地址
+        @summary Queries the file information of a file transmission task.
         
         @param request: ListTransferFilesRequest
         @return: ListTransferFilesResponse
@@ -24141,7 +24489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
         """
-        @summary Modifies the files in a cloud disk.
+        @summary Modifies the attributes of a disk file or folder, such as the file name.
         
         @param request: ModifyCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24188,7 +24536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
         """
-        @summary Modifies the files in a cloud disk.
+        @summary Modifies the attributes of a disk file or folder, such as the file name.
         
         @param request: ModifyCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24234,7 +24582,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCdsFileRequest,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
         """
-        @summary Modifies the files in a cloud disk.
+        @summary Modifies the attributes of a disk file or folder, such as the file name.
         
         @param request: ModifyCdsFileRequest
         @return: ModifyCdsFileResponse
@@ -24247,7 +24595,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCdsFileRequest,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
         """
-        @summary Modifies the files in a cloud disk.
+        @summary Modifies the attributes of a disk file or folder, such as the file name.
         
         @param request: ModifyCdsFileRequest
         @return: ModifyCdsFileResponse
@@ -27985,7 +28333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
         """
-        @summary 修改工作区DNS信息
+        @summary Modifies the DNS information of an office network.
         
         @param request: ModifyOfficeSiteDnsInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28024,7 +28372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
         """
-        @summary 修改工作区DNS信息
+        @summary Modifies the DNS information of an office network.
         
         @param request: ModifyOfficeSiteDnsInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28062,7 +28410,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteDnsInfoRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
         """
-        @summary 修改工作区DNS信息
+        @summary Modifies the DNS information of an office network.
         
         @param request: ModifyOfficeSiteDnsInfoRequest
         @return: ModifyOfficeSiteDnsInfoResponse
@@ -28075,7 +28423,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteDnsInfoRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
         """
-        @summary 修改工作区DNS信息
+        @summary Modifies the DNS information of an office network.
         
         @param request: ModifyOfficeSiteDnsInfoRequest
         @return: ModifyOfficeSiteDnsInfoResponse
@@ -28749,7 +29097,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyTemplateResponse:
         """
-        @summary 模板全量更新
+        @summary Modifies a custom cloud computer template.
         
         @param request: ModifyTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28827,7 +29175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyTemplateResponse:
         """
-        @summary 模板全量更新
+        @summary Modifies a custom cloud computer template.
         
         @param request: ModifyTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28904,7 +29252,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyTemplateRequest,
     ) -> ecd_20200930_models.ModifyTemplateResponse:
         """
-        @summary 模板全量更新
+        @summary Modifies a custom cloud computer template.
         
         @param request: ModifyTemplateRequest
         @return: ModifyTemplateResponse
@@ -28917,7 +29265,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyTemplateRequest,
     ) -> ecd_20200930_models.ModifyTemplateResponse:
         """
-        @summary 模板全量更新
+        @summary Modifies a custom cloud computer template.
         
         @param request: ModifyTemplateRequest
         @return: ModifyTemplateResponse
@@ -28933,7 +29281,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+        @description This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28974,7 +29322,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+        @description This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29014,7 +29362,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+        @description This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @return: ModifyTemplateBaseInfoResponse
@@ -29029,7 +29377,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+        @description This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @return: ModifyTemplateBaseInfoResponse
@@ -29855,7 +30203,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
         """
-        @summary Removes the file sharing feature of a folder in a cloud disk.
+        @summary Unshare a folder on the network disk.
         
         @param tmp_req: RemoveFilePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29904,7 +30252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
         """
-        @summary Removes the file sharing feature of a folder in a cloud disk.
+        @summary Unshare a folder on the network disk.
         
         @param tmp_req: RemoveFilePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29952,7 +30300,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveFilePermissionRequest,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
         """
-        @summary Removes the file sharing feature of a folder in a cloud disk.
+        @summary Unshare a folder on the network disk.
         
         @param request: RemoveFilePermissionRequest
         @return: RemoveFilePermissionResponse
@@ -29965,7 +30313,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveFilePermissionRequest,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
         """
-        @summary Removes the file sharing feature of a folder in a cloud disk.
+        @summary Unshare a folder on the network disk.
         
         @param request: RemoveFilePermissionRequest
         @return: RemoveFilePermissionResponse
@@ -31735,7 +32083,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
         """
-        @summary 设置桌面维护模式
+        @summary Set the cloud computer maintenance mode.
+        
+        @description If you need to perform some maintenance operations on the cloud computer and want to prohibit end user from connecting and using the cloud computer during this period, you can switch it to maintenance mode.
         
         @param request: SetDesktopMaintenanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31774,7 +32124,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
         """
-        @summary 设置桌面维护模式
+        @summary Set the cloud computer maintenance mode.
+        
+        @description If you need to perform some maintenance operations on the cloud computer and want to prohibit end user from connecting and using the cloud computer during this period, you can switch it to maintenance mode.
         
         @param request: SetDesktopMaintenanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31812,7 +32164,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopMaintenanceRequest,
     ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
         """
-        @summary 设置桌面维护模式
+        @summary Set the cloud computer maintenance mode.
+        
+        @description If you need to perform some maintenance operations on the cloud computer and want to prohibit end user from connecting and using the cloud computer during this period, you can switch it to maintenance mode.
         
         @param request: SetDesktopMaintenanceRequest
         @return: SetDesktopMaintenanceResponse
@@ -31825,7 +32179,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopMaintenanceRequest,
     ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
         """
-        @summary 设置桌面维护模式
+        @summary Set the cloud computer maintenance mode.
+        
+        @description If you need to perform some maintenance operations on the cloud computer and want to prohibit end user from connecting and using the cloud computer during this period, you can switch it to maintenance mode.
         
         @param request: SetDesktopMaintenanceRequest
         @return: SetDesktopMaintenanceResponse
@@ -32739,7 +33095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
         """
-        @summary 文件传输审批回调
+        @summary Queries the transmission and approval result for a submitted file.
         
         @param request: TransferTaskApprovalCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32780,7 +33136,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
         """
-        @summary 文件传输审批回调
+        @summary Queries the transmission and approval result for a submitted file.
         
         @param request: TransferTaskApprovalCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32820,7 +33176,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.TransferTaskApprovalCallbackRequest,
     ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
         """
-        @summary 文件传输审批回调
+        @summary Queries the transmission and approval result for a submitted file.
         
         @param request: TransferTaskApprovalCallbackRequest
         @return: TransferTaskApprovalCallbackResponse
@@ -32833,7 +33189,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.TransferTaskApprovalCallbackRequest,
     ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
         """
-        @summary 文件传输审批回调
+        @summary Queries the transmission and approval result for a submitted file.
         
         @param request: TransferTaskApprovalCallbackRequest
         @return: TransferTaskApprovalCallbackResponse

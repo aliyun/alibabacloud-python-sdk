@@ -1,3 +1,9 @@
+2025-11-03 Version: 4.16.0
+- Support API DescribeCloudDiskGroupDrives.
+- Support API DescribeCloudDiskGroups.
+- Support API ListInstalledApps.
+
+
 2025-10-28 Version: 4.15.0
 - Support API DescribeSecurityGroupAttribute.
 
