@@ -1,3 +1,8 @@
+2025-11-03 Version: 1.10.16
+- Update API CreateEnterpriseAcceleratePolicy: add response parameters Body.EapId.
+- Update API ListConnectors: add response parameters Body.Connectors.$.AccelerateStatus.
+
+
 2025-10-30 Version: 1.10.15
 - Generated python 2023-01-20 for csas.
 

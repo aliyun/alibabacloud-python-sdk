@@ -3922,8 +3922,10 @@ class CreateEnterpriseAcceleratePolicyRequest(TeaModel):
 class CreateEnterpriseAcceleratePolicyResponseBody(TeaModel):
     def __init__(
         self,
+        eap_id: str = None,
         request_id: str = None,
     ):
+        self.eap_id = eap_id
         self.request_id = request_id
 
     def validate(self):
@@ -3935,12 +3937,16 @@ class CreateEnterpriseAcceleratePolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -17448,6 +17454,7 @@ class ListConnectorsResponseBodyConnectorsUpgradeTime(TeaModel):
 class ListConnectorsResponseBodyConnectors(TeaModel):
     def __init__(
         self,
+        accelerate_status: str = None,
         applications: List[ListConnectorsResponseBodyConnectorsApplications] = None,
         cluster_ip: str = None,
         cluster_port: str = None,
@@ -17460,6 +17467,7 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         switch_status: str = None,
         upgrade_time: ListConnectorsResponseBodyConnectorsUpgradeTime = None,
     ):
+        self.accelerate_status = accelerate_status
         # Collection of associated internal network access applications.
         self.applications = applications
         # Cluster IP.
@@ -17505,6 +17513,8 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
             return _map
 
         result = dict()
+        if self.accelerate_status is not None:
+            result['AccelerateStatus'] = self.accelerate_status
         result['Applications'] = []
         if self.applications is not None:
             for k in self.applications:
@@ -17535,6 +17545,8 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccelerateStatus') is not None:
+            self.accelerate_status = m.get('AccelerateStatus')
         self.applications = []
         if m.get('Applications') is not None:
             for k in m.get('Applications'):
