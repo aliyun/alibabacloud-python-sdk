@@ -1,3 +1,12 @@
+2025-11-03 Version: 6.13.0
+- Support API DeleteExpressConnect.
+- Support API DescribeGrantRulesToEcr.
+- Support API ListBusinessRegions.
+- Support API ListPhysicalConnectionFeatures.
+- Update API CreateNatIp: add response parameters Body.NatIps.
+- Update API ListNatIps: add request parameters IpOrigin.
+
+
 2025-09-02 Version: 6.12.1
 - Update API CreatePhysicalConnectionOccupancyOrder: add request parameters AutoRenew.
 - Update API CreatePhysicalConnectionOccupancyOrder: add request parameters AutoRenewDuration.

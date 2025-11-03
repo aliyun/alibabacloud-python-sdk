@@ -4121,6 +4121,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse:
         """
+        @summary 将DHCP选项集与VPC关联
+        
         @description    The **AttachDhcpOptionsSetToVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
         If the DHCP options set is in the **Pending** state, the DHCP options set is being associated.
         If the DHCP options set is in the **InUse** state, the DHCP options set is associated.
@@ -4175,6 +4177,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse:
         """
+        @summary 将DHCP选项集与VPC关联
+        
         @description    The **AttachDhcpOptionsSetToVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
         If the DHCP options set is in the **Pending** state, the DHCP options set is being associated.
         If the DHCP options set is in the **InUse** state, the DHCP options set is associated.
@@ -4228,6 +4232,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AttachDhcpOptionsSetToVpcRequest,
     ) -> vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse:
         """
+        @summary 将DHCP选项集与VPC关联
+        
         @description    The **AttachDhcpOptionsSetToVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
         If the DHCP options set is in the **Pending** state, the DHCP options set is being associated.
         If the DHCP options set is in the **InUse** state, the DHCP options set is associated.
@@ -4244,6 +4250,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AttachDhcpOptionsSetToVpcRequest,
     ) -> vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse:
         """
+        @summary 将DHCP选项集与VPC关联
+        
         @description    The **AttachDhcpOptionsSetToVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
         If the DHCP options set is in the **Pending** state, the DHCP options set is being associated.
         If the DHCP options set is in the **InUse** state, the DHCP options set is associated.
@@ -12259,8 +12267,8 @@ class Client(OpenApiClient):
         If the VPN gateway is in the **updating** state, the SSL server is being created.
         If the VPN gateway is in the **active** state, the SSL server is created.
         You cannot repeatedly call the **CreateSslVpnServer** operation within the specified period of time.
-        ### [](#)Prerequisite
-        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+        ### [](#prerequisite)[](#)Prerequisite
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html) .
         If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
         
         @param request: CreateSslVpnServerRequest
@@ -12338,8 +12346,8 @@ class Client(OpenApiClient):
         If the VPN gateway is in the **updating** state, the SSL server is being created.
         If the VPN gateway is in the **active** state, the SSL server is created.
         You cannot repeatedly call the **CreateSslVpnServer** operation within the specified period of time.
-        ### [](#)Prerequisite
-        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+        ### [](#prerequisite)[](#)Prerequisite
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html) .
         If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
         
         @param request: CreateSslVpnServerRequest
@@ -12416,8 +12424,8 @@ class Client(OpenApiClient):
         If the VPN gateway is in the **updating** state, the SSL server is being created.
         If the VPN gateway is in the **active** state, the SSL server is created.
         You cannot repeatedly call the **CreateSslVpnServer** operation within the specified period of time.
-        ### [](#)Prerequisite
-        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+        ### [](#prerequisite)[](#)Prerequisite
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html) .
         If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
         
         @param request: CreateSslVpnServerRequest
@@ -12437,8 +12445,8 @@ class Client(OpenApiClient):
         If the VPN gateway is in the **updating** state, the SSL server is being created.
         If the VPN gateway is in the **active** state, the SSL server is created.
         You cannot repeatedly call the **CreateSslVpnServer** operation within the specified period of time.
-        ### [](#)Prerequisite
-        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+        ### [](#prerequisite)[](#)Prerequisite
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html) .
         If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
         
         @param request: CreateSslVpnServerRequest
@@ -16694,6 +16702,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dhcp_options_set_with_options_async(request, runtime)
+
+    def delete_express_connect_with_options(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectResponse:
+        """
+        @summary Deletes a Express Connect instance, including the initiator and acceptor.
+        
+        @param request: DeleteExpressConnectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExpressConnectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.router_interface_id):
+            query['RouterInterfaceId'] = request.router_interface_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_express_connect_with_options_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectResponse:
+        """
+        @summary Deletes a Express Connect instance, including the initiator and acceptor.
+        
+        @param request: DeleteExpressConnectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExpressConnectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.router_interface_id):
+            query['RouterInterfaceId'] = request.router_interface_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_express_connect(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectResponse:
+        """
+        @summary Deletes a Express Connect instance, including the initiator and acceptor.
+        
+        @param request: DeleteExpressConnectRequest
+        @return: DeleteExpressConnectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_express_connect_with_options(request, runtime)
+
+    async def delete_express_connect_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectResponse:
+        """
+        @summary Deletes a Express Connect instance, including the initiator and acceptor.
+        
+        @param request: DeleteExpressConnectRequest
+        @return: DeleteExpressConnectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_express_connect_with_options_async(request, runtime)
 
     def delete_express_connect_traffic_qos_with_options(
         self,
@@ -26535,6 +26667,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_grant_rules_to_cen_with_options_async(request, runtime)
 
+    def describe_grant_rules_to_ecr_with_options(
+        self,
+        request: vpc_20160428_models.DescribeGrantRulesToEcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeGrantRulesToEcrResponse:
+        """
+        @summary Queries the cross-account authorization list of an Express Connect Router (ECR).
+        
+        @param request: DescribeGrantRulesToEcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGrantRulesToEcrResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGrantRulesToEcr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeGrantRulesToEcrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_grant_rules_to_ecr_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeGrantRulesToEcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeGrantRulesToEcrResponse:
+        """
+        @summary Queries the cross-account authorization list of an Express Connect Router (ECR).
+        
+        @param request: DescribeGrantRulesToEcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGrantRulesToEcrResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGrantRulesToEcr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeGrantRulesToEcrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_grant_rules_to_ecr(
+        self,
+        request: vpc_20160428_models.DescribeGrantRulesToEcrRequest,
+    ) -> vpc_20160428_models.DescribeGrantRulesToEcrResponse:
+        """
+        @summary Queries the cross-account authorization list of an Express Connect Router (ECR).
+        
+        @param request: DescribeGrantRulesToEcrRequest
+        @return: DescribeGrantRulesToEcrResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_grant_rules_to_ecr_with_options(request, runtime)
+
+    async def describe_grant_rules_to_ecr_async(
+        self,
+        request: vpc_20160428_models.DescribeGrantRulesToEcrRequest,
+    ) -> vpc_20160428_models.DescribeGrantRulesToEcrResponse:
+        """
+        @summary Queries the cross-account authorization list of an Express Connect Router (ECR).
+        
+        @param request: DescribeGrantRulesToEcrRequest
+        @return: DescribeGrantRulesToEcrResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_grant_rules_to_ecr_with_options_async(request, runtime)
+
     def describe_ha_vips_with_options(
         self,
         request: vpc_20160428_models.DescribeHaVipsRequest,
@@ -27989,7 +28237,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
         """
-        @summary 查询NAT已绑定ENI信息
+        @summary Queries elastic network interfaces (ENIs) associated with a virtual private cloud (VPC) NAT gateway when the VPC NAT gateway serves as a PrivateLink service resource. This feature is not publicly available.
         
         @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28048,7 +28296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
         """
-        @summary 查询NAT已绑定ENI信息
+        @summary Queries elastic network interfaces (ENIs) associated with a virtual private cloud (VPC) NAT gateway when the VPC NAT gateway serves as a PrivateLink service resource. This feature is not publicly available.
         
         @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28106,7 +28354,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesRequest,
     ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
         """
-        @summary 查询NAT已绑定ENI信息
+        @summary Queries elastic network interfaces (ENIs) associated with a virtual private cloud (VPC) NAT gateway when the VPC NAT gateway serves as a PrivateLink service resource. This feature is not publicly available.
         
         @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
         @return: DescribeNatGatewayAssociateNetworkInterfacesResponse
@@ -28119,7 +28367,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesRequest,
     ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
         """
-        @summary 查询NAT已绑定ENI信息
+        @summary Queries elastic network interfaces (ENIs) associated with a virtual private cloud (VPC) NAT gateway when the VPC NAT gateway serves as a PrivateLink service resource. This feature is not publicly available.
         
         @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
         @return: DescribeNatGatewayAssociateNetworkInterfacesResponse
@@ -32097,7 +32345,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
         """
-        @summary 查询VPC跨账号授权给ECR
+        @summary Queries the cross-account authorization information of an ECR for a specified network instance.
         
         @param request: DescribeVpcGrantRulesToEcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32156,7 +32404,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
         """
-        @summary 查询VPC跨账号授权给ECR
+        @summary Queries the cross-account authorization information of an ECR for a specified network instance.
         
         @param request: DescribeVpcGrantRulesToEcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32214,7 +32462,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVpcGrantRulesToEcrRequest,
     ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
         """
-        @summary 查询VPC跨账号授权给ECR
+        @summary Queries the cross-account authorization information of an ECR for a specified network instance.
         
         @param request: DescribeVpcGrantRulesToEcrRequest
         @return: DescribeVpcGrantRulesToEcrResponse
@@ -32227,7 +32475,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVpcGrantRulesToEcrRequest,
     ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
         """
-        @summary 查询VPC跨账号授权给ECR
+        @summary Queries the cross-account authorization information of an ECR for a specified network instance.
         
         @param request: DescribeVpcGrantRulesToEcrRequest
         @return: DescribeVpcGrantRulesToEcrResponse
@@ -37571,6 +37819,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_business_access_points_with_options_async(request, runtime)
 
+    def list_business_regions_with_options(
+        self,
+        request: vpc_20160428_models.ListBusinessRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListBusinessRegionsResponse:
+        """
+        @summary Query the list of regions available for an Express Connect circuit.
+        
+        @param request: ListBusinessRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBusinessRegions',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListBusinessRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_business_regions_with_options_async(
+        self,
+        request: vpc_20160428_models.ListBusinessRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListBusinessRegionsResponse:
+        """
+        @summary Query the list of regions available for an Express Connect circuit.
+        
+        @param request: ListBusinessRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBusinessRegions',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListBusinessRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_business_regions(
+        self,
+        request: vpc_20160428_models.ListBusinessRegionsRequest,
+    ) -> vpc_20160428_models.ListBusinessRegionsResponse:
+        """
+        @summary Query the list of regions available for an Express Connect circuit.
+        
+        @param request: ListBusinessRegionsRequest
+        @return: ListBusinessRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_business_regions_with_options(request, runtime)
+
+    async def list_business_regions_async(
+        self,
+        request: vpc_20160428_models.ListBusinessRegionsRequest,
+    ) -> vpc_20160428_models.ListBusinessRegionsResponse:
+        """
+        @summary Query the list of regions available for an Express Connect circuit.
+        
+        @param request: ListBusinessRegionsRequest
+        @return: ListBusinessRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_business_regions_with_options_async(request, runtime)
+
     def list_dhcp_options_sets_with_options(
         self,
         request: vpc_20160428_models.ListDhcpOptionsSetsRequest,
@@ -38759,6 +39103,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ip_origin):
+            query['IpOrigin'] = request.ip_origin
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -38822,6 +39168,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ip_origin):
+            query['IpOrigin'] = request.ip_origin
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -38892,6 +39240,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_nat_ips_with_options_async(request, runtime)
+
+    def list_physical_connection_features_with_options(
+        self,
+        request: vpc_20160428_models.ListPhysicalConnectionFeaturesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListPhysicalConnectionFeaturesResponse:
+        """
+        @summary Querying the connection features supported by a Express Connect circuit.
+        
+        @param request: ListPhysicalConnectionFeaturesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPhysicalConnectionFeaturesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.physical_connection_id):
+            query['PhysicalConnectionId'] = request.physical_connection_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPhysicalConnectionFeatures',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListPhysicalConnectionFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_physical_connection_features_with_options_async(
+        self,
+        request: vpc_20160428_models.ListPhysicalConnectionFeaturesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListPhysicalConnectionFeaturesResponse:
+        """
+        @summary Querying the connection features supported by a Express Connect circuit.
+        
+        @param request: ListPhysicalConnectionFeaturesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPhysicalConnectionFeaturesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.physical_connection_id):
+            query['PhysicalConnectionId'] = request.physical_connection_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPhysicalConnectionFeatures',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListPhysicalConnectionFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_physical_connection_features(
+        self,
+        request: vpc_20160428_models.ListPhysicalConnectionFeaturesRequest,
+    ) -> vpc_20160428_models.ListPhysicalConnectionFeaturesResponse:
+        """
+        @summary Querying the connection features supported by a Express Connect circuit.
+        
+        @param request: ListPhysicalConnectionFeaturesRequest
+        @return: ListPhysicalConnectionFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_physical_connection_features_with_options(request, runtime)
+
+    async def list_physical_connection_features_async(
+        self,
+        request: vpc_20160428_models.ListPhysicalConnectionFeaturesRequest,
+    ) -> vpc_20160428_models.ListPhysicalConnectionFeaturesResponse:
+        """
+        @summary Querying the connection features supported by a Express Connect circuit.
+        
+        @param request: ListPhysicalConnectionFeaturesRequest
+        @return: ListPhysicalConnectionFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_physical_connection_features_with_options_async(request, runtime)
 
     def list_prefix_lists_with_options(
         self,
@@ -49623,7 +50091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
         """
-        @summary 开通IP地址池功能。
+        @summary Enables the IP address pool feature.
         
         @param request: OpenPublicIpAddressPoolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49670,7 +50138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
         """
-        @summary 开通IP地址池功能。
+        @summary Enables the IP address pool feature.
         
         @param request: OpenPublicIpAddressPoolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49716,7 +50184,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.OpenPublicIpAddressPoolServiceRequest,
     ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
         """
-        @summary 开通IP地址池功能。
+        @summary Enables the IP address pool feature.
         
         @param request: OpenPublicIpAddressPoolServiceRequest
         @return: OpenPublicIpAddressPoolServiceResponse
@@ -49729,7 +50197,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.OpenPublicIpAddressPoolServiceRequest,
     ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
         """
-        @summary 开通IP地址池功能。
+        @summary Enables the IP address pool feature.
         
         @param request: OpenPublicIpAddressPoolServiceRequest
         @return: OpenPublicIpAddressPoolServiceResponse
@@ -53035,7 +53503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
+        @summary Migrate a contiguous EIP group to an IP address pool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53080,7 +53548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
+        @summary Migrate a contiguous EIP group to an IP address pool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53124,7 +53592,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
+        @summary Migrate a contiguous EIP group to an IP address pool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @return: TransformEipSegmentToPublicIpAddressPoolResponse
@@ -53137,7 +53605,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
+        @summary Migrate a contiguous EIP group to an IP address pool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @return: TransformEipSegmentToPublicIpAddressPoolResponse
