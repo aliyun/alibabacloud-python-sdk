@@ -1,7 +1,459 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Any, Dict, List
+from typing import List, Any, Dict
+
+
+class BaiLianAgentTransformParametersPrompt(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class BaiLianAgentTransformParameters(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        application_id: str = None,
+        prompt: BaiLianAgentTransformParametersPrompt = None,
+        request_per_minute: int = None,
+        token_per_minute: int = None,
+    ):
+        self.api_key = api_key
+        self.application_id = application_id
+        self.prompt = prompt
+        self.request_per_minute = request_per_minute
+        self.token_per_minute = token_per_minute
+
+    def validate(self):
+        if self.prompt:
+            self.prompt.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt.to_map()
+        if self.request_per_minute is not None:
+            result['RequestPerMinute'] = self.request_per_minute
+        if self.token_per_minute is not None:
+            result['TokenPerMinute'] = self.token_per_minute
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Prompt') is not None:
+            temp_model = BaiLianAgentTransformParametersPrompt()
+            self.prompt = temp_model.from_map(m['Prompt'])
+        if m.get('RequestPerMinute') is not None:
+            self.request_per_minute = m.get('RequestPerMinute')
+        if m.get('TokenPerMinute') is not None:
+            self.token_per_minute = m.get('TokenPerMinute')
+        return self
+
+
+class DashScopeTransformParametersMessages(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        role: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.role = role
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DashScopeTransformParameters(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        messages: List[DashScopeTransformParametersMessages] = None,
+        model: str = None,
+        request_per_minute: int = None,
+        structured_output_json_schema: str = None,
+        token_per_minute: int = None,
+    ):
+        self.api_key = api_key
+        self.messages = messages
+        self.model = model
+        self.request_per_minute = request_per_minute
+        self.structured_output_json_schema = structured_output_json_schema
+        self.token_per_minute = token_per_minute
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_per_minute is not None:
+            result['RequestPerMinute'] = self.request_per_minute
+        if self.structured_output_json_schema is not None:
+            result['StructuredOutputJsonSchema'] = self.structured_output_json_schema
+        if self.token_per_minute is not None:
+            result['TokenPerMinute'] = self.token_per_minute
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = DashScopeTransformParametersMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestPerMinute') is not None:
+            self.request_per_minute = m.get('RequestPerMinute')
+        if m.get('StructuredOutputJsonSchema') is not None:
+            self.structured_output_json_schema = m.get('StructuredOutputJsonSchema')
+        if m.get('TokenPerMinute') is not None:
+            self.token_per_minute = m.get('TokenPerMinute')
+        return self
+
+
+class EmbeddingTransformParametersEmbeddingData(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class EmbeddingTransformParameters(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        embedding_data: EmbeddingTransformParametersEmbeddingData = None,
+        embedding_model: str = None,
+    ):
+        self.api_key = api_key
+        self.embedding_data = embedding_data
+        self.embedding_model = embedding_model
+
+    def validate(self):
+        if self.embedding_data:
+            self.embedding_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.embedding_data is not None:
+            result['EmbeddingData'] = self.embedding_data.to_map()
+        if self.embedding_model is not None:
+            result['EmbeddingModel'] = self.embedding_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('EmbeddingData') is not None:
+            temp_model = EmbeddingTransformParametersEmbeddingData()
+            self.embedding_data = temp_model.from_map(m['EmbeddingData'])
+        if m.get('EmbeddingModel') is not None:
+            self.embedding_model = m.get('EmbeddingModel')
+        return self
+
+
+class SinkApiDestinationParametersBodyParameters(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkApiDestinationParametersHeaderParameters(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkApiDestinationParametersQueryStringParameters(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkApiDestinationParameters(TeaModel):
+    def __init__(
+        self,
+        body_parameters: SinkApiDestinationParametersBodyParameters = None,
+        header_parameters: SinkApiDestinationParametersHeaderParameters = None,
+        name: str = None,
+        query_string_parameters: SinkApiDestinationParametersQueryStringParameters = None,
+    ):
+        self.body_parameters = body_parameters
+        self.header_parameters = header_parameters
+        self.name = name
+        self.query_string_parameters = query_string_parameters
+
+    def validate(self):
+        if self.body_parameters:
+            self.body_parameters.validate()
+        if self.header_parameters:
+            self.header_parameters.validate()
+        if self.query_string_parameters:
+            self.query_string_parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body_parameters is not None:
+            result['BodyParameters'] = self.body_parameters.to_map()
+        if self.header_parameters is not None:
+            result['HeaderParameters'] = self.header_parameters.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.query_string_parameters is not None:
+            result['QueryStringParameters'] = self.query_string_parameters.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BodyParameters') is not None:
+            temp_model = SinkApiDestinationParametersBodyParameters()
+            self.body_parameters = temp_model.from_map(m['BodyParameters'])
+        if m.get('HeaderParameters') is not None:
+            temp_model = SinkApiDestinationParametersHeaderParameters()
+            self.header_parameters = temp_model.from_map(m['HeaderParameters'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QueryStringParameters') is not None:
+            temp_model = SinkApiDestinationParametersQueryStringParameters()
+            self.query_string_parameters = temp_model.from_map(m['QueryStringParameters'])
+        return self
 
 
 class SinkBaiLianParametersAfter(TeaModel):
@@ -312,6 +764,158 @@ class SinkDataWorksTriggerParameters(TeaModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        return self
+
+
+class SinkHttpsParametersBody(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkHttpsParametersURL(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkHttpsParameters(TeaModel):
+    def __init__(
+        self,
+        body: SinkHttpsParametersBody = None,
+        method: str = None,
+        network_type: str = None,
+        security_group_id: str = None,
+        token: str = None,
+        url: SinkHttpsParametersURL = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
+    ):
+        self.body = body
+        self.method = method
+        self.network_type = network_type
+        self.security_group_id = security_group_id
+        self.token = token
+        self.url = url
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+        if self.url:
+            self.url.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body.to_map()
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.url is not None:
+            result['URL'] = self.url.to_map()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            temp_model = SinkHttpsParametersBody()
+            self.body = temp_model.from_map(m['Body'])
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('URL') is not None:
+            temp_model = SinkHttpsParametersURL()
+            self.url = temp_model.from_map(m['URL'])
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -3661,7 +4265,7 @@ class CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters(TeaModel):
         return self
 
 
-class CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+class CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName(TeaModel):
     def __init__(
         self,
         form: str = None,
@@ -3697,6 +4301,131 @@ class CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPar
             self.template = m.get('Template')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+    def __init__(
+        self,
+        name: CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName = None,
+        type: CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType = None,
+        value: CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue = None,
+    ):
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        if self.name:
+            self.name.validate()
+        if self.type:
+            self.type.validate()
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name.to_map()
+        if self.type is not None:
+            result['Type'] = self.type.to_map()
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            temp_model = CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName()
+            self.name = temp_model.from_map(m['Name'])
+        if m.get('Type') is not None:
+            temp_model = CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType()
+            self.type = temp_model.from_map(m['Type'])
+        if m.get('Value') is not None:
+            temp_model = CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue()
+            self.value = temp_model.from_map(m['Value'])
         return self
 
 
@@ -3822,7 +4551,7 @@ class CreateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
         self,
         api_key: str = None,
         collection: str = None,
-        dash_vector_schema_parameters: CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters = None,
+        dash_vector_schema_parameters: List[CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters] = None,
         instance_id: str = None,
         network: str = None,
         operation: str = None,
@@ -3842,7 +4571,9 @@ class CreateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
 
     def validate(self):
         if self.dash_vector_schema_parameters:
-            self.dash_vector_schema_parameters.validate()
+            for k in self.dash_vector_schema_parameters:
+                if k:
+                    k.validate()
         if self.partition:
             self.partition.validate()
         if self.primary_key_id:
@@ -3860,8 +4591,10 @@ class CreateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
             result['ApiKey'] = self.api_key
         if self.collection is not None:
             result['Collection'] = self.collection
+        result['DashVectorSchemaParameters'] = []
         if self.dash_vector_schema_parameters is not None:
-            result['DashVectorSchemaParameters'] = self.dash_vector_schema_parameters.to_map()
+            for k in self.dash_vector_schema_parameters:
+                result['DashVectorSchemaParameters'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.network is not None:
@@ -3882,9 +4615,11 @@ class CreateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
             self.api_key = m.get('ApiKey')
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
+        self.dash_vector_schema_parameters = []
         if m.get('DashVectorSchemaParameters') is not None:
-            temp_model = CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters()
-            self.dash_vector_schema_parameters = temp_model.from_map(m['DashVectorSchemaParameters'])
+            for k in m.get('DashVectorSchemaParameters'):
+                temp_model = CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters()
+                self.dash_vector_schema_parameters.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Network') is not None:
@@ -8675,6 +9410,7 @@ class CreateEventStreamingRequestSink(TeaModel):
         self,
         sink_apache_kafka_parameters: CreateEventStreamingRequestSinkSinkApacheKafkaParameters = None,
         sink_apache_rocket_mqcheckpoint_parameters: CreateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_api_destination_parameters: SinkApiDestinationParameters = None,
         sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters = None,
@@ -8684,6 +9420,7 @@ class CreateEventStreamingRequestSink(TeaModel):
         sink_doris_parameters: CreateEventStreamingRequestSinkSinkDorisParameters = None,
         sink_fc_parameters: CreateEventStreamingRequestSinkSinkFcParameters = None,
         sink_fnf_parameters: CreateEventStreamingRequestSinkSinkFnfParameters = None,
+        sink_https_parameters: SinkHttpsParameters = None,
         sink_kafka_parameters: CreateEventStreamingRequestSinkSinkKafkaParameters = None,
         sink_mnsparameters: CreateEventStreamingRequestSinkSinkMNSParameters = None,
         sink_open_source_rabbit_mqparameters: CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters = None,
@@ -8695,6 +9432,7 @@ class CreateEventStreamingRequestSink(TeaModel):
     ):
         self.sink_apache_kafka_parameters = sink_apache_kafka_parameters
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_api_destination_parameters = sink_api_destination_parameters
         self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
@@ -8707,6 +9445,7 @@ class CreateEventStreamingRequestSink(TeaModel):
         self.sink_fc_parameters = sink_fc_parameters
         # The parameters that are configured if you specify CloudFlow as the event target.
         self.sink_fnf_parameters = sink_fnf_parameters
+        self.sink_https_parameters = sink_https_parameters
         # The parameters that are configured if you specify ApsaraMQ for Kafka as the event target.
         self.sink_kafka_parameters = sink_kafka_parameters
         # The parameters that are configured if you specify MNS as the event target.
@@ -8727,6 +9466,8 @@ class CreateEventStreamingRequestSink(TeaModel):
             self.sink_apache_kafka_parameters.validate()
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_api_destination_parameters:
+            self.sink_api_destination_parameters.validate()
         if self.sink_bai_lian_parameters:
             self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
@@ -8745,6 +9486,8 @@ class CreateEventStreamingRequestSink(TeaModel):
             self.sink_fc_parameters.validate()
         if self.sink_fnf_parameters:
             self.sink_fnf_parameters.validate()
+        if self.sink_https_parameters:
+            self.sink_https_parameters.validate()
         if self.sink_kafka_parameters:
             self.sink_kafka_parameters.validate()
         if self.sink_mnsparameters:
@@ -8772,6 +9515,8 @@ class CreateEventStreamingRequestSink(TeaModel):
             result['SinkApacheKafkaParameters'] = self.sink_apache_kafka_parameters.to_map()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_api_destination_parameters is not None:
+            result['SinkApiDestinationParameters'] = self.sink_api_destination_parameters.to_map()
         if self.sink_bai_lian_parameters is not None:
             result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
@@ -8790,6 +9535,8 @@ class CreateEventStreamingRequestSink(TeaModel):
             result['SinkFcParameters'] = self.sink_fc_parameters.to_map()
         if self.sink_fnf_parameters is not None:
             result['SinkFnfParameters'] = self.sink_fnf_parameters.to_map()
+        if self.sink_https_parameters is not None:
+            result['SinkHttpsParameters'] = self.sink_https_parameters.to_map()
         if self.sink_kafka_parameters is not None:
             result['SinkKafkaParameters'] = self.sink_kafka_parameters.to_map()
         if self.sink_mnsparameters is not None:
@@ -8816,6 +9563,9 @@ class CreateEventStreamingRequestSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkApiDestinationParameters') is not None:
+            temp_model = SinkApiDestinationParameters()
+            self.sink_api_destination_parameters = temp_model.from_map(m['SinkApiDestinationParameters'])
         if m.get('SinkBaiLianParameters') is not None:
             temp_model = SinkBaiLianParameters()
             self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
@@ -8843,6 +9593,9 @@ class CreateEventStreamingRequestSink(TeaModel):
         if m.get('SinkFnfParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkFnfParameters()
             self.sink_fnf_parameters = temp_model.from_map(m['SinkFnfParameters'])
+        if m.get('SinkHttpsParameters') is not None:
+            temp_model = SinkHttpsParameters()
+            self.sink_https_parameters = temp_model.from_map(m['SinkHttpsParameters'])
         if m.get('SinkKafkaParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkKafkaParameters()
             self.sink_kafka_parameters = temp_model.from_map(m['SinkKafkaParameters'])
@@ -10183,11 +10936,22 @@ class CreateEventStreamingRequestTransforms(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        bai_lian_agent_transform_parameters: BaiLianAgentTransformParameters = None,
+        dash_scope_transform_parameters: DashScopeTransformParameters = None,
+        embedding_transform_parameters: EmbeddingTransformParameters = None,
     ):
         self.arn = arn
+        self.bai_lian_agent_transform_parameters = bai_lian_agent_transform_parameters
+        self.dash_scope_transform_parameters = dash_scope_transform_parameters
+        self.embedding_transform_parameters = embedding_transform_parameters
 
     def validate(self):
-        pass
+        if self.bai_lian_agent_transform_parameters:
+            self.bai_lian_agent_transform_parameters.validate()
+        if self.dash_scope_transform_parameters:
+            self.dash_scope_transform_parameters.validate()
+        if self.embedding_transform_parameters:
+            self.embedding_transform_parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10197,12 +10961,27 @@ class CreateEventStreamingRequestTransforms(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.bai_lian_agent_transform_parameters is not None:
+            result['BaiLianAgentTransformParameters'] = self.bai_lian_agent_transform_parameters.to_map()
+        if self.dash_scope_transform_parameters is not None:
+            result['DashScopeTransformParameters'] = self.dash_scope_transform_parameters.to_map()
+        if self.embedding_transform_parameters is not None:
+            result['EmbeddingTransformParameters'] = self.embedding_transform_parameters.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('BaiLianAgentTransformParameters') is not None:
+            temp_model = BaiLianAgentTransformParameters()
+            self.bai_lian_agent_transform_parameters = temp_model.from_map(m['BaiLianAgentTransformParameters'])
+        if m.get('DashScopeTransformParameters') is not None:
+            temp_model = DashScopeTransformParameters()
+            self.dash_scope_transform_parameters = temp_model.from_map(m['DashScopeTransformParameters'])
+        if m.get('EmbeddingTransformParameters') is not None:
+            temp_model = EmbeddingTransformParameters()
+            self.embedding_transform_parameters = temp_model.from_map(m['EmbeddingTransformParameters'])
         return self
 
 
@@ -15722,7 +16501,7 @@ class GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters(TeaMode
         return self
 
 
-class GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+class GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersName(TeaModel):
     def __init__(
         self,
         form: str = None,
@@ -15758,6 +16537,131 @@ class GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSch
             self.template = m.get('Template')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersType(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersValue(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+    def __init__(
+        self,
+        name: GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersName = None,
+        type: GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersType = None,
+        value: GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersValue = None,
+    ):
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        if self.name:
+            self.name.validate()
+        if self.type:
+            self.type.validate()
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name.to_map()
+        if self.type is not None:
+            result['Type'] = self.type.to_map()
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            temp_model = GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersName()
+            self.name = temp_model.from_map(m['Name'])
+        if m.get('Type') is not None:
+            temp_model = GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersType()
+            self.type = temp_model.from_map(m['Type'])
+        if m.get('Value') is not None:
+            temp_model = GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParametersValue()
+            self.value = temp_model.from_map(m['Value'])
         return self
 
 
@@ -15883,7 +16787,7 @@ class GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters(TeaModel):
         self,
         api_key: str = None,
         collection: str = None,
-        dash_vector_schema_parameters: GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters = None,
+        dash_vector_schema_parameters: List[GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters] = None,
         instance_id: str = None,
         network: str = None,
         operation: str = None,
@@ -15903,7 +16807,9 @@ class GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters(TeaModel):
 
     def validate(self):
         if self.dash_vector_schema_parameters:
-            self.dash_vector_schema_parameters.validate()
+            for k in self.dash_vector_schema_parameters:
+                if k:
+                    k.validate()
         if self.partition:
             self.partition.validate()
         if self.primary_key_id:
@@ -15921,8 +16827,10 @@ class GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters(TeaModel):
             result['ApiKey'] = self.api_key
         if self.collection is not None:
             result['Collection'] = self.collection
+        result['DashVectorSchemaParameters'] = []
         if self.dash_vector_schema_parameters is not None:
-            result['DashVectorSchemaParameters'] = self.dash_vector_schema_parameters.to_map()
+            for k in self.dash_vector_schema_parameters:
+                result['DashVectorSchemaParameters'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.network is not None:
@@ -15943,9 +16851,11 @@ class GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters(TeaModel):
             self.api_key = m.get('ApiKey')
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
+        self.dash_vector_schema_parameters = []
         if m.get('DashVectorSchemaParameters') is not None:
-            temp_model = GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters()
-            self.dash_vector_schema_parameters = temp_model.from_map(m['DashVectorSchemaParameters'])
+            for k in m.get('DashVectorSchemaParameters'):
+                temp_model = GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters()
+                self.dash_vector_schema_parameters.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Network') is not None:
@@ -20122,6 +21032,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         self,
         sink_apache_kafka_parameters: GetEventStreamingResponseBodyDataSinkSinkApacheKafkaParameters = None,
         sink_apache_rocket_mqcheckpoint_parameters: GetEventStreamingResponseBodyDataSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_api_destination_parameters: SinkApiDestinationParameters = None,
         sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters = None,
@@ -20131,6 +21042,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         sink_doris_parameters: GetEventStreamingResponseBodyDataSinkSinkDorisParameters = None,
         sink_fc_parameters: GetEventStreamingResponseBodyDataSinkSinkFcParameters = None,
         sink_fnf_parameters: GetEventStreamingResponseBodyDataSinkSinkFnfParameters = None,
+        sink_https_parameters: SinkHttpsParameters = None,
         sink_kafka_parameters: GetEventStreamingResponseBodyDataSinkSinkKafkaParameters = None,
         sink_mnsparameters: GetEventStreamingResponseBodyDataSinkSinkMNSParameters = None,
         sink_open_source_rabbit_mqparameters: GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters = None,
@@ -20142,6 +21054,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         self.sink_apache_kafka_parameters = sink_apache_kafka_parameters
         # Sink Apache RocketMQ Checkpoint Parameters
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_api_destination_parameters = sink_api_destination_parameters
         # Sink BaiLian Parameters
         self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
@@ -20154,6 +21067,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         self.sink_fc_parameters = sink_fc_parameters
         # The Sink Fnf parameters.
         self.sink_fnf_parameters = sink_fnf_parameters
+        self.sink_https_parameters = sink_https_parameters
         # The parameters that are returned if the event target is Message Queue for Apache Kafka.
         self.sink_kafka_parameters = sink_kafka_parameters
         # The parameters that are returned if the event target is Message Service (MNS).
@@ -20174,6 +21088,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
             self.sink_apache_kafka_parameters.validate()
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_api_destination_parameters:
+            self.sink_api_destination_parameters.validate()
         if self.sink_bai_lian_parameters:
             self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
@@ -20192,6 +21108,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
             self.sink_fc_parameters.validate()
         if self.sink_fnf_parameters:
             self.sink_fnf_parameters.validate()
+        if self.sink_https_parameters:
+            self.sink_https_parameters.validate()
         if self.sink_kafka_parameters:
             self.sink_kafka_parameters.validate()
         if self.sink_mnsparameters:
@@ -20217,6 +21135,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
             result['SinkApacheKafkaParameters'] = self.sink_apache_kafka_parameters.to_map()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_api_destination_parameters is not None:
+            result['SinkApiDestinationParameters'] = self.sink_api_destination_parameters.to_map()
         if self.sink_bai_lian_parameters is not None:
             result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
@@ -20235,6 +21155,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
             result['SinkFcParameters'] = self.sink_fc_parameters.to_map()
         if self.sink_fnf_parameters is not None:
             result['SinkFnfParameters'] = self.sink_fnf_parameters.to_map()
+        if self.sink_https_parameters is not None:
+            result['SinkHttpsParameters'] = self.sink_https_parameters.to_map()
         if self.sink_kafka_parameters is not None:
             result['SinkKafkaParameters'] = self.sink_kafka_parameters.to_map()
         if self.sink_mnsparameters is not None:
@@ -20259,6 +21181,9 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkApiDestinationParameters') is not None:
+            temp_model = SinkApiDestinationParameters()
+            self.sink_api_destination_parameters = temp_model.from_map(m['SinkApiDestinationParameters'])
         if m.get('SinkBaiLianParameters') is not None:
             temp_model = SinkBaiLianParameters()
             self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
@@ -20286,6 +21211,9 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         if m.get('SinkFnfParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkFnfParameters()
             self.sink_fnf_parameters = temp_model.from_map(m['SinkFnfParameters'])
+        if m.get('SinkHttpsParameters') is not None:
+            temp_model = SinkHttpsParameters()
+            self.sink_https_parameters = temp_model.from_map(m['SinkHttpsParameters'])
         if m.get('SinkKafkaParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkKafkaParameters()
             self.sink_kafka_parameters = temp_model.from_map(m['SinkKafkaParameters'])
@@ -21579,12 +22507,19 @@ class GetEventStreamingResponseBodyDataTransforms(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        bai_lian_agent_transform_parameters: BaiLianAgentTransformParameters = None,
+        dash_scope_transform_parameters: DashScopeTransformParameters = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the cloud service, such as the ARN of a Function Compute function.
         self.arn = arn
+        self.bai_lian_agent_transform_parameters = bai_lian_agent_transform_parameters
+        self.dash_scope_transform_parameters = dash_scope_transform_parameters
 
     def validate(self):
-        pass
+        if self.bai_lian_agent_transform_parameters:
+            self.bai_lian_agent_transform_parameters.validate()
+        if self.dash_scope_transform_parameters:
+            self.dash_scope_transform_parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21594,12 +22529,22 @@ class GetEventStreamingResponseBodyDataTransforms(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.bai_lian_agent_transform_parameters is not None:
+            result['BaiLianAgentTransformParameters'] = self.bai_lian_agent_transform_parameters.to_map()
+        if self.dash_scope_transform_parameters is not None:
+            result['DashScopeTransformParameters'] = self.dash_scope_transform_parameters.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('BaiLianAgentTransformParameters') is not None:
+            temp_model = BaiLianAgentTransformParameters()
+            self.bai_lian_agent_transform_parameters = temp_model.from_map(m['BaiLianAgentTransformParameters'])
+        if m.get('DashScopeTransformParameters') is not None:
+            temp_model = DashScopeTransformParameters()
+            self.dash_scope_transform_parameters = temp_model.from_map(m['DashScopeTransformParameters'])
         return self
 
 
@@ -24158,356 +25103,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptions(TeaModel):
         return self
 
 
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey(TeaModel):
-    def __init__(
-        self,
-        form: str = None,
-        template: str = None,
-        value: str = None,
-    ):
-        self.form = form
-        self.template = template
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.form is not None:
-            result['Form'] = self.form
-        if self.template is not None:
-            result['Template'] = self.template
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Form') is not None:
-            self.form = m.get('Form')
-        if m.get('Template') is not None:
-            self.template = m.get('Template')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType(TeaModel):
-    def __init__(
-        self,
-        form: str = None,
-        template: str = None,
-        value: str = None,
-    ):
-        self.form = form
-        self.template = template
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.form is not None:
-            result['Form'] = self.form
-        if self.template is not None:
-            result['Template'] = self.template
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Form') is not None:
-            self.form = m.get('Form')
-        if m.get('Template') is not None:
-            self.template = m.get('Template')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId(TeaModel):
-    def __init__(
-        self,
-        form: str = None,
-        template: str = None,
-        value: str = None,
-    ):
-        self.form = form
-        self.template = template
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.form is not None:
-            result['Form'] = self.form
-        if self.template is not None:
-            result['Template'] = self.template
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Form') is not None:
-            self.form = m.get('Form')
-        if m.get('Template') is not None:
-            self.template = m.get('Template')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds(TeaModel):
-    def __init__(
-        self,
-        form: str = None,
-        template: str = None,
-        value: str = None,
-    ):
-        self.form = form
-        self.template = template
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.form is not None:
-            result['Form'] = self.form
-        if self.template is not None:
-            result['Template'] = self.template
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Form') is not None:
-            self.form = m.get('Form')
-        if m.get('Template') is not None:
-            self.template = m.get('Template')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue(TeaModel):
-    def __init__(
-        self,
-        form: str = None,
-        template: str = None,
-        value: str = None,
-    ):
-        self.form = form
-        self.template = template
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.form is not None:
-            result['Form'] = self.form
-        if self.template is not None:
-            result['Template'] = self.template
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Form') is not None:
-            self.form = m.get('Form')
-        if m.get('Template') is not None:
-            self.template = m.get('Template')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId(TeaModel):
-    def __init__(
-        self,
-        form: str = None,
-        template: str = None,
-        value: str = None,
-    ):
-        self.form = form
-        self.template = template
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.form is not None:
-            result['Form'] = self.form
-        if self.template is not None:
-            result['Template'] = self.template
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Form') is not None:
-            self.form = m.get('Form')
-        if m.get('Template') is not None:
-            self.template = m.get('Template')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters(TeaModel):
-    def __init__(
-        self,
-        acks: str = None,
-        bootstraps: str = None,
-        key: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey = None,
-        network_type: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType = None,
-        sasl_mechanism: str = None,
-        sasl_password: str = None,
-        sasl_user: str = None,
-        security_group_id: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId = None,
-        security_protocol: str = None,
-        topic: str = None,
-        v_switch_ids: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds = None,
-        value: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue = None,
-        vpc_id: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId = None,
-    ):
-        self.acks = acks
-        self.bootstraps = bootstraps
-        self.key = key
-        self.network_type = network_type
-        self.sasl_mechanism = sasl_mechanism
-        self.sasl_password = sasl_password
-        self.sasl_user = sasl_user
-        self.security_group_id = security_group_id
-        self.security_protocol = security_protocol
-        self.topic = topic
-        self.v_switch_ids = v_switch_ids
-        self.value = value
-        self.vpc_id = vpc_id
-
-    def validate(self):
-        if self.key:
-            self.key.validate()
-        if self.network_type:
-            self.network_type.validate()
-        if self.security_group_id:
-            self.security_group_id.validate()
-        if self.v_switch_ids:
-            self.v_switch_ids.validate()
-        if self.value:
-            self.value.validate()
-        if self.vpc_id:
-            self.vpc_id.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.acks is not None:
-            result['Acks'] = self.acks
-        if self.bootstraps is not None:
-            result['Bootstraps'] = self.bootstraps
-        if self.key is not None:
-            result['Key'] = self.key.to_map()
-        if self.network_type is not None:
-            result['NetworkType'] = self.network_type.to_map()
-        if self.sasl_mechanism is not None:
-            result['SaslMechanism'] = self.sasl_mechanism
-        if self.sasl_password is not None:
-            result['SaslPassword'] = self.sasl_password
-        if self.sasl_user is not None:
-            result['SaslUser'] = self.sasl_user
-        if self.security_group_id is not None:
-            result['SecurityGroupId'] = self.security_group_id.to_map()
-        if self.security_protocol is not None:
-            result['SecurityProtocol'] = self.security_protocol
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.v_switch_ids is not None:
-            result['VSwitchIds'] = self.v_switch_ids.to_map()
-        if self.value is not None:
-            result['Value'] = self.value.to_map()
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Acks') is not None:
-            self.acks = m.get('Acks')
-        if m.get('Bootstraps') is not None:
-            self.bootstraps = m.get('Bootstraps')
-        if m.get('Key') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey()
-            self.key = temp_model.from_map(m['Key'])
-        if m.get('NetworkType') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType()
-            self.network_type = temp_model.from_map(m['NetworkType'])
-        if m.get('SaslMechanism') is not None:
-            self.sasl_mechanism = m.get('SaslMechanism')
-        if m.get('SaslPassword') is not None:
-            self.sasl_password = m.get('SaslPassword')
-        if m.get('SaslUser') is not None:
-            self.sasl_user = m.get('SaslUser')
-        if m.get('SecurityGroupId') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId()
-            self.security_group_id = temp_model.from_map(m['SecurityGroupId'])
-        if m.get('SecurityProtocol') is not None:
-            self.security_protocol = m.get('SecurityProtocol')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('VSwitchIds') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds()
-            self.v_switch_ids = temp_model.from_map(m['VSwitchIds'])
-        if m.get('Value') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue()
-            self.value = temp_model.from_map(m['Value'])
-        if m.get('VpcId') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId()
-            self.vpc_id = temp_model.from_map(m['VpcId'])
-        return self
-
-
 class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParametersConsumeTimestamp(TeaModel):
     def __init__(
         self,
@@ -24816,7 +25411,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaP
         return self
 
 
-class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName(TeaModel):
     def __init__(
         self,
         form: str = None,
@@ -24852,6 +25447,131 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
             self.template = m.get('Template')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+    def __init__(
+        self,
+        name: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName = None,
+        type: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType = None,
+        value: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue = None,
+    ):
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        if self.name:
+            self.name.validate()
+        if self.type:
+            self.type.validate()
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name.to_map()
+        if self.type is not None:
+            result['Type'] = self.type.to_map()
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName()
+            self.name = temp_model.from_map(m['Name'])
+        if m.get('Type') is not None:
+            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType()
+            self.type = temp_model.from_map(m['Type'])
+        if m.get('Value') is not None:
+            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue()
+            self.value = temp_model.from_map(m['Value'])
         return self
 
 
@@ -24977,7 +25697,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         self,
         api_key: str = None,
         collection: str = None,
-        dash_vector_schema_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters = None,
+        dash_vector_schema_parameters: List[ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters] = None,
         instance_id: str = None,
         network: str = None,
         operation: str = None,
@@ -24997,7 +25717,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
 
     def validate(self):
         if self.dash_vector_schema_parameters:
-            self.dash_vector_schema_parameters.validate()
+            for k in self.dash_vector_schema_parameters:
+                if k:
+                    k.validate()
         if self.partition:
             self.partition.validate()
         if self.primary_key_id:
@@ -25015,8 +25737,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
             result['ApiKey'] = self.api_key
         if self.collection is not None:
             result['Collection'] = self.collection
+        result['DashVectorSchemaParameters'] = []
         if self.dash_vector_schema_parameters is not None:
-            result['DashVectorSchemaParameters'] = self.dash_vector_schema_parameters.to_map()
+            for k in self.dash_vector_schema_parameters:
+                result['DashVectorSchemaParameters'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.network is not None:
@@ -25037,9 +25761,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
             self.api_key = m.get('ApiKey')
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
+        self.dash_vector_schema_parameters = []
         if m.get('DashVectorSchemaParameters') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters()
-            self.dash_vector_schema_parameters = temp_model.from_map(m['DashVectorSchemaParameters'])
+            for k in m.get('DashVectorSchemaParameters'):
+                temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters()
+                self.dash_vector_schema_parameters.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Network') is not None:
@@ -29180,17 +29906,17 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters(Te
 class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
     def __init__(
         self,
-        sink_apache_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters = None,
         sink_apache_rocket_mqcheckpoint_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_api_destination_parameters: SinkApiDestinationParameters = None,
         sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters = None,
         sink_data_hub_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters = None,
-        sink_data_works_trigger_parameters: SinkDataWorksTriggerParameters = None,
         sink_doris_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters = None,
         sink_fc_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters = None,
         sink_fnf_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters = None,
+        sink_https_parameters: SinkHttpsParameters = None,
         sink_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters = None,
         sink_mnsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters = None,
         sink_open_source_rabbit_mqparameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters = None,
@@ -29199,19 +29925,19 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         sink_rocket_mqparameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters = None,
         sink_slsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters = None,
     ):
-        self.sink_apache_kafka_parameters = sink_apache_kafka_parameters
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_api_destination_parameters = sink_api_destination_parameters
         self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         self.sink_data_hub_parameters = sink_data_hub_parameters
-        self.sink_data_works_trigger_parameters = sink_data_works_trigger_parameters
         self.sink_doris_parameters = sink_doris_parameters
         # The parameters that are returned if Function Compute is specified as the event target.
         self.sink_fc_parameters = sink_fc_parameters
         # The parameters that are returned if CloudFlow is specified as the event target.
         self.sink_fnf_parameters = sink_fnf_parameters
+        self.sink_https_parameters = sink_https_parameters
         # The parameters that are returned if ApsaraMQ for Kafka is specified as the event target.
         self.sink_kafka_parameters = sink_kafka_parameters
         # The parameters that are returned if MNS is specified as the event target.
@@ -29226,10 +29952,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         self.sink_slsparameters = sink_slsparameters
 
     def validate(self):
-        if self.sink_apache_kafka_parameters:
-            self.sink_apache_kafka_parameters.validate()
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_api_destination_parameters:
+            self.sink_api_destination_parameters.validate()
         if self.sink_bai_lian_parameters:
             self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
@@ -29240,14 +29966,14 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
             self.sink_dash_vector_parameters.validate()
         if self.sink_data_hub_parameters:
             self.sink_data_hub_parameters.validate()
-        if self.sink_data_works_trigger_parameters:
-            self.sink_data_works_trigger_parameters.validate()
         if self.sink_doris_parameters:
             self.sink_doris_parameters.validate()
         if self.sink_fc_parameters:
             self.sink_fc_parameters.validate()
         if self.sink_fnf_parameters:
             self.sink_fnf_parameters.validate()
+        if self.sink_https_parameters:
+            self.sink_https_parameters.validate()
         if self.sink_kafka_parameters:
             self.sink_kafka_parameters.validate()
         if self.sink_mnsparameters:
@@ -29269,10 +29995,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
             return _map
 
         result = dict()
-        if self.sink_apache_kafka_parameters is not None:
-            result['SinkApacheKafkaParameters'] = self.sink_apache_kafka_parameters.to_map()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_api_destination_parameters is not None:
+            result['SinkApiDestinationParameters'] = self.sink_api_destination_parameters.to_map()
         if self.sink_bai_lian_parameters is not None:
             result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
@@ -29283,14 +30009,14 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
             result['SinkDashVectorParameters'] = self.sink_dash_vector_parameters.to_map()
         if self.sink_data_hub_parameters is not None:
             result['SinkDataHubParameters'] = self.sink_data_hub_parameters.to_map()
-        if self.sink_data_works_trigger_parameters is not None:
-            result['SinkDataWorksTriggerParameters'] = self.sink_data_works_trigger_parameters.to_map()
         if self.sink_doris_parameters is not None:
             result['SinkDorisParameters'] = self.sink_doris_parameters.to_map()
         if self.sink_fc_parameters is not None:
             result['SinkFcParameters'] = self.sink_fc_parameters.to_map()
         if self.sink_fnf_parameters is not None:
             result['SinkFnfParameters'] = self.sink_fnf_parameters.to_map()
+        if self.sink_https_parameters is not None:
+            result['SinkHttpsParameters'] = self.sink_https_parameters.to_map()
         if self.sink_kafka_parameters is not None:
             result['SinkKafkaParameters'] = self.sink_kafka_parameters.to_map()
         if self.sink_mnsparameters is not None:
@@ -29309,12 +30035,12 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SinkApacheKafkaParameters') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters()
-            self.sink_apache_kafka_parameters = temp_model.from_map(m['SinkApacheKafkaParameters'])
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkApiDestinationParameters') is not None:
+            temp_model = SinkApiDestinationParameters()
+            self.sink_api_destination_parameters = temp_model.from_map(m['SinkApiDestinationParameters'])
         if m.get('SinkBaiLianParameters') is not None:
             temp_model = SinkBaiLianParameters()
             self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
@@ -29330,9 +30056,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         if m.get('SinkDataHubParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters()
             self.sink_data_hub_parameters = temp_model.from_map(m['SinkDataHubParameters'])
-        if m.get('SinkDataWorksTriggerParameters') is not None:
-            temp_model = SinkDataWorksTriggerParameters()
-            self.sink_data_works_trigger_parameters = temp_model.from_map(m['SinkDataWorksTriggerParameters'])
         if m.get('SinkDorisParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters()
             self.sink_doris_parameters = temp_model.from_map(m['SinkDorisParameters'])
@@ -29342,6 +30065,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         if m.get('SinkFnfParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters()
             self.sink_fnf_parameters = temp_model.from_map(m['SinkFnfParameters'])
+        if m.get('SinkHttpsParameters') is not None:
+            temp_model = SinkHttpsParameters()
+            self.sink_https_parameters = temp_model.from_map(m['SinkHttpsParameters'])
         if m.get('SinkKafkaParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters()
             self.sink_kafka_parameters = temp_model.from_map(m['SinkKafkaParameters'])
@@ -29363,105 +30089,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         if m.get('SinkSLSParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters()
             self.sink_slsparameters = temp_model.from_map(m['SinkSLSParameters'])
-        return self
-
-
-class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters(TeaModel):
-    def __init__(
-        self,
-        bootstraps: str = None,
-        consumer_group: str = None,
-        network_type: str = None,
-        offset_reset: str = None,
-        sasl_mechanism: str = None,
-        sasl_password: str = None,
-        sasl_user: str = None,
-        security_group_id: str = None,
-        security_protocol: str = None,
-        topic: str = None,
-        v_switch_ids: str = None,
-        value_data_type: str = None,
-        vpc_id: str = None,
-    ):
-        self.bootstraps = bootstraps
-        self.consumer_group = consumer_group
-        self.network_type = network_type
-        self.offset_reset = offset_reset
-        self.sasl_mechanism = sasl_mechanism
-        self.sasl_password = sasl_password
-        self.sasl_user = sasl_user
-        self.security_group_id = security_group_id
-        self.security_protocol = security_protocol
-        self.topic = topic
-        self.v_switch_ids = v_switch_ids
-        self.value_data_type = value_data_type
-        self.vpc_id = vpc_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bootstraps is not None:
-            result['Bootstraps'] = self.bootstraps
-        if self.consumer_group is not None:
-            result['ConsumerGroup'] = self.consumer_group
-        if self.network_type is not None:
-            result['NetworkType'] = self.network_type
-        if self.offset_reset is not None:
-            result['OffsetReset'] = self.offset_reset
-        if self.sasl_mechanism is not None:
-            result['SaslMechanism'] = self.sasl_mechanism
-        if self.sasl_password is not None:
-            result['SaslPassword'] = self.sasl_password
-        if self.sasl_user is not None:
-            result['SaslUser'] = self.sasl_user
-        if self.security_group_id is not None:
-            result['SecurityGroupId'] = self.security_group_id
-        if self.security_protocol is not None:
-            result['SecurityProtocol'] = self.security_protocol
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.v_switch_ids is not None:
-            result['VSwitchIds'] = self.v_switch_ids
-        if self.value_data_type is not None:
-            result['ValueDataType'] = self.value_data_type
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bootstraps') is not None:
-            self.bootstraps = m.get('Bootstraps')
-        if m.get('ConsumerGroup') is not None:
-            self.consumer_group = m.get('ConsumerGroup')
-        if m.get('NetworkType') is not None:
-            self.network_type = m.get('NetworkType')
-        if m.get('OffsetReset') is not None:
-            self.offset_reset = m.get('OffsetReset')
-        if m.get('SaslMechanism') is not None:
-            self.sasl_mechanism = m.get('SaslMechanism')
-        if m.get('SaslPassword') is not None:
-            self.sasl_password = m.get('SaslPassword')
-        if m.get('SaslUser') is not None:
-            self.sasl_user = m.get('SaslUser')
-        if m.get('SecurityGroupId') is not None:
-            self.security_group_id = m.get('SecurityGroupId')
-        if m.get('SecurityProtocol') is not None:
-            self.security_protocol = m.get('SecurityProtocol')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('VSwitchIds') is not None:
-            self.v_switch_ids = m.get('VSwitchIds')
-        if m.get('ValueDataType') is not None:
-            self.value_data_type = m.get('ValueDataType')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -30458,7 +31085,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameter
 class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
     def __init__(
         self,
-        source_apache_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters = None,
         source_apache_rocket_mqcheckpoint_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters = None,
         source_customized_kafka_connector_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters = None,
         source_customized_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters = None,
@@ -30476,7 +31102,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         source_rocket_mqparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters = None,
         source_slsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters = None,
     ):
-        self.source_apache_kafka_parameters = source_apache_kafka_parameters
         self.source_apache_rocket_mqcheckpoint_parameters = source_apache_rocket_mqcheckpoint_parameters
         self.source_customized_kafka_connector_parameters = source_customized_kafka_connector_parameters
         self.source_customized_kafka_parameters = source_customized_kafka_parameters
@@ -30502,8 +31127,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
-        if self.source_apache_kafka_parameters:
-            self.source_apache_kafka_parameters.validate()
         if self.source_apache_rocket_mqcheckpoint_parameters:
             self.source_apache_rocket_mqcheckpoint_parameters.validate()
         if self.source_customized_kafka_connector_parameters:
@@ -30543,8 +31166,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
             return _map
 
         result = dict()
-        if self.source_apache_kafka_parameters is not None:
-            result['SourceApacheKafkaParameters'] = self.source_apache_kafka_parameters.to_map()
         if self.source_apache_rocket_mqcheckpoint_parameters is not None:
             result['SourceApacheRocketMQCheckpointParameters'] = self.source_apache_rocket_mqcheckpoint_parameters.to_map()
         if self.source_customized_kafka_connector_parameters is not None:
@@ -30581,9 +31202,6 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceApacheKafkaParameters') is not None:
-            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters()
-            self.source_apache_kafka_parameters = temp_model.from_map(m['SourceApacheKafkaParameters'])
         if m.get('SourceApacheRocketMQCheckpointParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters()
             self.source_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SourceApacheRocketMQCheckpointParameters'])
@@ -30639,12 +31257,19 @@ class ListEventStreamingsResponseBodyDataEventStreamingsTransforms(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        bai_lian_agent_transform_parameters: BaiLianAgentTransformParameters = None,
+        dash_scope_transform_parameters: DashScopeTransformParameters = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the cloud service, such as the ARN of a Function Compute function.
         self.arn = arn
+        self.bai_lian_agent_transform_parameters = bai_lian_agent_transform_parameters
+        self.dash_scope_transform_parameters = dash_scope_transform_parameters
 
     def validate(self):
-        pass
+        if self.bai_lian_agent_transform_parameters:
+            self.bai_lian_agent_transform_parameters.validate()
+        if self.dash_scope_transform_parameters:
+            self.dash_scope_transform_parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -30654,12 +31279,22 @@ class ListEventStreamingsResponseBodyDataEventStreamingsTransforms(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.bai_lian_agent_transform_parameters is not None:
+            result['BaiLianAgentTransformParameters'] = self.bai_lian_agent_transform_parameters.to_map()
+        if self.dash_scope_transform_parameters is not None:
+            result['DashScopeTransformParameters'] = self.dash_scope_transform_parameters.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('BaiLianAgentTransformParameters') is not None:
+            temp_model = BaiLianAgentTransformParameters()
+            self.bai_lian_agent_transform_parameters = temp_model.from_map(m['BaiLianAgentTransformParameters'])
+        if m.get('DashScopeTransformParameters') is not None:
+            temp_model = DashScopeTransformParameters()
+            self.dash_scope_transform_parameters = temp_model.from_map(m['DashScopeTransformParameters'])
         return self
 
 
@@ -34429,6 +35064,7 @@ class TestEventPatternResponse(TeaModel):
 class TestEventSourceConfigRequestSourceMySQLParameters(TeaModel):
     def __init__(
         self,
+        allowed_cidrs: str = None,
         database_name: str = None,
         host_name: str = None,
         network_type: str = None,
@@ -34441,6 +35077,7 @@ class TestEventSourceConfigRequestSourceMySQLParameters(TeaModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
+        self.allowed_cidrs = allowed_cidrs
         # The database name.
         self.database_name = database_name
         # The endpoint of the database.
@@ -34478,6 +35115,8 @@ class TestEventSourceConfigRequestSourceMySQLParameters(TeaModel):
             return _map
 
         result = dict()
+        if self.allowed_cidrs is not None:
+            result['AllowedCIDRs'] = self.allowed_cidrs
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
         if self.host_name is not None:
@@ -34504,6 +35143,8 @@ class TestEventSourceConfigRequestSourceMySQLParameters(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowedCIDRs') is not None:
+            self.allowed_cidrs = m.get('AllowedCIDRs')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
         if m.get('HostName') is not None:
@@ -37718,26 +38359,15 @@ class UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters(TeaModel):
         return self
 
 
-class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName(TeaModel):
     def __init__(
         self,
         form: str = None,
         template: str = None,
         value: str = None,
     ):
-        # The method that you want to use to transform events. Valid values:
-        # 
-        # *   JSONPATH
-        # *   CONSTANT
-        # *   TEMPLATE
         self.form = form
-        # The schema template. This parameter is required only if you set Form to TEMPLATE. After the event content is transformed, the data must be an array in the JSON format. Each schema corresponds to a JSON object. The properties include only the name, type, and value fields. The value of the type field can be only of the INT, FLOAT, STRING, or BOOL type.
         self.template = template
-        # *   If you set Form to CONSTANT, specify a constant.
-        # *   If you set Form to JSONPATH, specify a JSONPath rule.
-        # *   If you set Form to TEMPLATE, specify variables for the template.
-        # 
-        # >  The value of this parameter cannot exceed 10,240 characters in length.
         self.value = value
 
     def validate(self):
@@ -37765,6 +38395,131 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPar
             self.template = m.get('Template')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters(TeaModel):
+    def __init__(
+        self,
+        name: UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName = None,
+        type: UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType = None,
+        value: UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue = None,
+    ):
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        if self.name:
+            self.name.validate()
+        if self.type:
+            self.type.validate()
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name.to_map()
+        if self.type is not None:
+            result['Type'] = self.type.to_map()
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            temp_model = UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName()
+            self.name = temp_model.from_map(m['Name'])
+        if m.get('Type') is not None:
+            temp_model = UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType()
+            self.type = temp_model.from_map(m['Type'])
+        if m.get('Value') is not None:
+            temp_model = UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue()
+            self.value = temp_model.from_map(m['Value'])
         return self
 
 
@@ -37912,7 +38667,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
         self,
         api_key: str = None,
         collection: str = None,
-        dash_vector_schema_parameters: UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters = None,
+        dash_vector_schema_parameters: List[UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters] = None,
         instance_id: str = None,
         network: str = None,
         operation: str = None,
@@ -37947,7 +38702,9 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
 
     def validate(self):
         if self.dash_vector_schema_parameters:
-            self.dash_vector_schema_parameters.validate()
+            for k in self.dash_vector_schema_parameters:
+                if k:
+                    k.validate()
         if self.partition:
             self.partition.validate()
         if self.primary_key_id:
@@ -37965,8 +38722,10 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
             result['ApiKey'] = self.api_key
         if self.collection is not None:
             result['Collection'] = self.collection
+        result['DashVectorSchemaParameters'] = []
         if self.dash_vector_schema_parameters is not None:
-            result['DashVectorSchemaParameters'] = self.dash_vector_schema_parameters.to_map()
+            for k in self.dash_vector_schema_parameters:
+                result['DashVectorSchemaParameters'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.network is not None:
@@ -37987,9 +38746,11 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(TeaModel):
             self.api_key = m.get('ApiKey')
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
+        self.dash_vector_schema_parameters = []
         if m.get('DashVectorSchemaParameters') is not None:
-            temp_model = UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters()
-            self.dash_vector_schema_parameters = temp_model.from_map(m['DashVectorSchemaParameters'])
+            for k in m.get('DashVectorSchemaParameters'):
+                temp_model = UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters()
+                self.dash_vector_schema_parameters.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Network') is not None:
@@ -43004,6 +43765,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         self,
         sink_apache_kafka_parameters: UpdateEventStreamingRequestSinkSinkApacheKafkaParameters = None,
         sink_apache_rocket_mqcheckpoint_parameters: UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_api_destination_parameters: SinkApiDestinationParameters = None,
         sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters = None,
@@ -43013,6 +43775,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         sink_doris_parameters: UpdateEventStreamingRequestSinkSinkDorisParameters = None,
         sink_fc_parameters: UpdateEventStreamingRequestSinkSinkFcParameters = None,
         sink_fnf_parameters: UpdateEventStreamingRequestSinkSinkFnfParameters = None,
+        sink_https_parameters: SinkHttpsParameters = None,
         sink_kafka_parameters: UpdateEventStreamingRequestSinkSinkKafkaParameters = None,
         sink_mnsparameters: UpdateEventStreamingRequestSinkSinkMNSParameters = None,
         sink_open_source_rabbit_mqparameters: UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters = None,
@@ -43025,6 +43788,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         self.sink_apache_kafka_parameters = sink_apache_kafka_parameters
         # The parameters that are configured if you specify Apache RocketMQ (Offset Data) as the event target.
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_api_destination_parameters = sink_api_destination_parameters
         # The parameters that are configured if you specify BaiLian as the event target.
         self.sink_bai_lian_parameters = sink_bai_lian_parameters
         # The parameters that are configured if you specify Kafka Sink Connect as the event target.
@@ -43042,6 +43806,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         self.sink_fc_parameters = sink_fc_parameters
         # The parameters that are configured if you specify CloudFlow as the event target.
         self.sink_fnf_parameters = sink_fnf_parameters
+        self.sink_https_parameters = sink_https_parameters
         # The parameters that are configured if you specify ApsaraMQ for Kafka as the event target.
         self.sink_kafka_parameters = sink_kafka_parameters
         # The parameters that are configured if you specify Simple Message Queue (SMQ, formerly MNS) as the event target.
@@ -43064,6 +43829,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
             self.sink_apache_kafka_parameters.validate()
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_api_destination_parameters:
+            self.sink_api_destination_parameters.validate()
         if self.sink_bai_lian_parameters:
             self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
@@ -43082,6 +43849,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
             self.sink_fc_parameters.validate()
         if self.sink_fnf_parameters:
             self.sink_fnf_parameters.validate()
+        if self.sink_https_parameters:
+            self.sink_https_parameters.validate()
         if self.sink_kafka_parameters:
             self.sink_kafka_parameters.validate()
         if self.sink_mnsparameters:
@@ -43109,6 +43878,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
             result['SinkApacheKafkaParameters'] = self.sink_apache_kafka_parameters.to_map()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_api_destination_parameters is not None:
+            result['SinkApiDestinationParameters'] = self.sink_api_destination_parameters.to_map()
         if self.sink_bai_lian_parameters is not None:
             result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
@@ -43127,6 +43898,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
             result['SinkFcParameters'] = self.sink_fc_parameters.to_map()
         if self.sink_fnf_parameters is not None:
             result['SinkFnfParameters'] = self.sink_fnf_parameters.to_map()
+        if self.sink_https_parameters is not None:
+            result['SinkHttpsParameters'] = self.sink_https_parameters.to_map()
         if self.sink_kafka_parameters is not None:
             result['SinkKafkaParameters'] = self.sink_kafka_parameters.to_map()
         if self.sink_mnsparameters is not None:
@@ -43153,6 +43926,9 @@ class UpdateEventStreamingRequestSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkApiDestinationParameters') is not None:
+            temp_model = SinkApiDestinationParameters()
+            self.sink_api_destination_parameters = temp_model.from_map(m['SinkApiDestinationParameters'])
         if m.get('SinkBaiLianParameters') is not None:
             temp_model = SinkBaiLianParameters()
             self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
@@ -43180,6 +43956,9 @@ class UpdateEventStreamingRequestSink(TeaModel):
         if m.get('SinkFnfParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkFnfParameters()
             self.sink_fnf_parameters = temp_model.from_map(m['SinkFnfParameters'])
+        if m.get('SinkHttpsParameters') is not None:
+            temp_model = SinkHttpsParameters()
+            self.sink_https_parameters = temp_model.from_map(m['SinkHttpsParameters'])
         if m.get('SinkKafkaParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkKafkaParameters()
             self.sink_kafka_parameters = temp_model.from_map(m['SinkKafkaParameters'])
@@ -44462,11 +45241,18 @@ class UpdateEventStreamingRequestTransforms(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        bai_lian_agent_transform_parameters: BaiLianAgentTransformParameters = None,
+        dash_scope_transform_parameters: DashScopeTransformParameters = None,
     ):
         self.arn = arn
+        self.bai_lian_agent_transform_parameters = bai_lian_agent_transform_parameters
+        self.dash_scope_transform_parameters = dash_scope_transform_parameters
 
     def validate(self):
-        pass
+        if self.bai_lian_agent_transform_parameters:
+            self.bai_lian_agent_transform_parameters.validate()
+        if self.dash_scope_transform_parameters:
+            self.dash_scope_transform_parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -44476,12 +45262,22 @@ class UpdateEventStreamingRequestTransforms(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.bai_lian_agent_transform_parameters is not None:
+            result['BaiLianAgentTransformParameters'] = self.bai_lian_agent_transform_parameters.to_map()
+        if self.dash_scope_transform_parameters is not None:
+            result['DashScopeTransformParameters'] = self.dash_scope_transform_parameters.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('BaiLianAgentTransformParameters') is not None:
+            temp_model = BaiLianAgentTransformParameters()
+            self.bai_lian_agent_transform_parameters = temp_model.from_map(m['BaiLianAgentTransformParameters'])
+        if m.get('DashScopeTransformParameters') is not None:
+            temp_model = DashScopeTransformParameters()
+            self.dash_scope_transform_parameters = temp_model.from_map(m['DashScopeTransformParameters'])
         return self
 
 
