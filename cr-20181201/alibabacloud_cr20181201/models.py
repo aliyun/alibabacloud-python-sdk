@@ -185,6 +185,48 @@ class RepoConfiguration(TeaModel):
         return self
 
 
+class RouteItem(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        instance_domain: str = None,
+        storage_domain: str = None,
+    ):
+        # This parameter is required.
+        self.endpoint_type = endpoint_type
+        # This parameter is required.
+        self.instance_domain = instance_domain
+        # This parameter is required.
+        self.storage_domain = storage_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.instance_domain is not None:
+            result['InstanceDomain'] = self.instance_domain
+        if self.storage_domain is not None:
+            result['StorageDomain'] = self.storage_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('InstanceDomain') is not None:
+            self.instance_domain = m.get('InstanceDomain')
+        if m.get('StorageDomain') is not None:
+            self.storage_domain = m.get('StorageDomain')
+        return self
+
+
 class CancelArtifactBuildTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6254,11 +6296,23 @@ class GetArtifactBuildRuleRequest(TeaModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
+        # The type of the artifact.
+        # 
+        # *   `ACCELERATED_IMAGE`: accelerated images.
         self.artifact_type = artifact_type
+        # The ID of the artifact building rule.
         self.build_rule_id = build_rule_id
+        # The ID of the Container Registry instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the effective range of the artifact building rule.
+        # 
+        # *   Set the value to the ID of the image repository.
         self.scope_id = scope_id
+        # The effective range of the artifact building rule. Valid values:
+        # 
+        # *   `REPOSITORY`: The artifact building rule is effective in the repository level.
         self.scope_type = scope_type
 
     def validate(self):
@@ -6303,7 +6357,9 @@ class GetArtifactBuildRuleResponseBodyParameters(TeaModel):
         image_index_only: bool = None,
         priority_file: str = None,
     ):
+        # Indicates whether the index-only mode is enabled.
         self.image_index_only = image_index_only
+        # The list of files that you want to prefetch when you use the image acceleration feature. Each entry contains the Base64-encoded absolute path of a file.
         self.priority_file = priority_file
 
     def validate(self):
@@ -6342,13 +6398,29 @@ class GetArtifactBuildRuleResponseBody(TeaModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
+        # The type of the artifact. Valid values:
+        # 
+        # *   `ACCELERATED_IMAGE`: accelerated images.
         self.artifact_type = artifact_type
+        # The ID of the artifact building rule.
         self.build_rule_id = build_rule_id
         self.code = code
+        # Indicates whether the API request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # Additional parameters.
         self.parameters = parameters
+        # The request ID.
         self.request_id = request_id
+        # The ID of the effective range of the artifact building rule.
+        # 
+        # *   The parameter value is the ID of the image repository.
         self.scope_id = scope_id
+        # The effective range of the artifact building rule. Valid values:
+        # 
+        # *   `REPOSITORY`: The artifact building rule is effective in the repository level.
         self.scope_type = scope_type
 
     def validate(self):
@@ -7110,6 +7182,7 @@ class GetArtifactSubscriptionRuleResponseBody(TeaModel):
         repo_name: str = None,
         request_id: str = None,
         rule_id: str = None,
+        source_domain: str = None,
         source_namespace_name: str = None,
         source_provider: str = None,
         source_repo_name: str = None,
@@ -7143,6 +7216,7 @@ class GetArtifactSubscriptionRuleResponseBody(TeaModel):
         self.request_id = request_id
         # The rule ID.
         self.rule_id = rule_id
+        self.source_domain = source_domain
         # The name of the source namespace.
         self.source_namespace_name = source_namespace_name
         # The source of the artifact.
@@ -7193,6 +7267,8 @@ class GetArtifactSubscriptionRuleResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
+        if self.source_domain is not None:
+            result['SourceDomain'] = self.source_domain
         if self.source_namespace_name is not None:
             result['SourceNamespaceName'] = self.source_namespace_name
         if self.source_provider is not None:
@@ -7231,6 +7307,8 @@ class GetArtifactSubscriptionRuleResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+        if m.get('SourceDomain') is not None:
+            self.source_domain = m.get('SourceDomain')
         if m.get('SourceNamespaceName') is not None:
             self.source_namespace_name = m.get('SourceNamespaceName')
         if m.get('SourceProvider') is not None:
@@ -9629,6 +9707,7 @@ class GetInstanceVpcEndpointResponseBodyLinkedVpcs(TeaModel):
         self.default_access = default_access
         # IP address.
         self.ip = ip
+        # The error message detected in the linked VPC access control.
         self.issue = issue
         # The status of the VPC. Valid values:
         # 
@@ -9705,7 +9784,7 @@ class GetInstanceVpcEndpointResponseBody(TeaModel):
         # *   `true`: The request is successful.
         # *   `false`: The request fails.
         self.is_success = is_success
-        # The VPCs that are added to the access control list.
+        # List of linked VPCs
         self.linked_vpcs = linked_vpcs
         # The name of the modules that can be accessed. Valid values:
         # 
@@ -12374,6 +12453,7 @@ class ListArtifactSubscriptionRuleResponseBodyRules(TeaModel):
         platform: List[str] = None,
         repo_name: str = None,
         rule_id: str = None,
+        source_domain: str = None,
         source_namespace_name: str = None,
         source_provider: str = None,
         source_repo_name: str = None,
@@ -12398,6 +12478,7 @@ class ListArtifactSubscriptionRuleResponseBodyRules(TeaModel):
         self.repo_name = repo_name
         # The rule ID.
         self.rule_id = rule_id
+        self.source_domain = source_domain
         # The source namespace.
         self.source_namespace_name = source_namespace_name
         # The source of the artifact.
@@ -12442,6 +12523,8 @@ class ListArtifactSubscriptionRuleResponseBodyRules(TeaModel):
             result['RepoName'] = self.repo_name
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
+        if self.source_domain is not None:
+            result['SourceDomain'] = self.source_domain
         if self.source_namespace_name is not None:
             result['SourceNamespaceName'] = self.source_namespace_name
         if self.source_provider is not None:
@@ -12474,6 +12557,8 @@ class ListArtifactSubscriptionRuleResponseBodyRules(TeaModel):
             self.repo_name = m.get('RepoName')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+        if m.get('SourceDomain') is not None:
+            self.source_domain = m.get('SourceDomain')
         if m.get('SourceNamespaceName') is not None:
             self.source_namespace_name = m.get('SourceNamespaceName')
         if m.get('SourceProvider') is not None:

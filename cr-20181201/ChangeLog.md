@@ -1,3 +1,8 @@
+2025-11-03 Version: 2.0.6
+- Update API GetArtifactSubscriptionRule: add response parameters Body.SourceDomain.
+- Update API ListArtifactSubscriptionRule: add response parameters Body.Rules.$.SourceDomain.
+
+
 2025-09-17 Version: 2.0.5
 - Update API GetInstanceVpcEndpoint: add response parameters Body.LinkedVpcs.$.Issue.
 

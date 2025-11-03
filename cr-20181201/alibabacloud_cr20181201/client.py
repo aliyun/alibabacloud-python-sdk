@@ -5167,6 +5167,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetChainResponse:
         """
+        @summary 获取交付链
+        
         @param request: GetChainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetChainResponse
@@ -5202,6 +5204,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetChainResponse:
         """
+        @summary 获取交付链
+        
         @param request: GetChainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetChainResponse
@@ -5236,6 +5240,8 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetChainRequest,
     ) -> cr_20181201_models.GetChainResponse:
         """
+        @summary 获取交付链
+        
         @param request: GetChainRequest
         @return: GetChainResponse
         """
@@ -5247,6 +5253,8 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetChainRequest,
     ) -> cr_20181201_models.GetChainResponse:
         """
+        @summary 获取交付链
+        
         @param request: GetChainRequest
         @return: GetChainResponse
         """
