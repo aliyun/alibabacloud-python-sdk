@@ -1,3 +1,43 @@
+2025-11-04 Version: 7.0.0
+- Support API CreateLogDeliveryConfig.
+- Support API CreatePocFunction.
+- Support API DeleteHybridCloudGroup.
+- Support API DeleteLogDeliveryConfig.
+- Support API DescribeApisecEventDetail.
+- Support API DescribeChargeModule.
+- Support API DescribeChargeResult.
+- Support API DescribeHybridCloudProtectableCount.
+- Support API DescribeLogDeliveryConfig.
+- Support API DescribeLogDeliveryConfigs.
+- Support API DescribePocFunctions.
+- Support API DescribeResourceLogDeliveryStatus.
+- Support API DescribeResourceLogFieldConfig.
+- Support API DescribeRoleAuthStatus.
+- Support API DescribeVerifyContent.
+- Support API InitializeWafOperationRole.
+- Support API ModifyCloudResourceCert.
+- Support API ModifyDomainCert.
+- Support API ModifyLogDeliveryConfig.
+- Support API ModifyResourceLogDeliveryStatus.
+- Support API ModifyResourceLogFieldConfig.
+- Support API VerifyDomainOwner.
+- Update API DeleteApisecEvents: add request parameters EventScope.
+- Update API DescribeApisecApiResources: add response parameters Body.Data.$.AccountEventNum.
+- Update API DescribeApisecEvents: add request parameters Account.
+- Update API DescribeApisecEvents: add request parameters EventScope.
+- Update API DescribeApisecEvents: add response parameters Body.Data.$.AttackerList.
+- Update API DescribeApisecStatistics: add response parameters Body.Data.Account.
+- Update API DescribeInstance: add response parameters Body.Details.ElasticQps.
+- Update API DescribeInstance: add response parameters Body.Details.ExtendQps.
+- Update API DescribeInstance: add response parameters Body.Details.FreeQps.
+- Update API DescribeInstance: add response parameters Body.Details.QpsBillingCap.
+- Update API DescribeSensitiveRequestLog: add request parameters Account.
+- Update API DescribeSensitiveRequestLog: add response parameters Body.Data.$.Account.
+- Update API DescribeUserEventTrend: add request parameters EventScope.
+- Update API DescribeUserEventType: add request parameters EventScope.
+- Update API ModifyApisecEvents: add request parameters EventScope.
+
+
 2025-09-22 Version: 6.5.2
 - Update API DescribeTemplateResourceCount: add response parameters Body.ResourceCount.$.AssetCount.
 - Update API DescribeTemplateResources: add request parameters AssetApi.

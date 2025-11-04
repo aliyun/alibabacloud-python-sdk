@@ -3688,6 +3688,163 @@ class CreateHybridCloudGroupResponse(TeaModel):
         return self
 
 
+class CreateLogDeliveryConfigRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_detail: str = None,
+        delivery_name: str = None,
+        delivery_type: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The content of the log delivery configuration. Set the value to a JSON string that contains multiple parameters.
+        # 
+        # >  The parameters vary based on the type of the **log delivery configuration** specified by **DeliveryType**. For more information, see **Parameter description for log delivery configuration**.
+        # 
+        # This parameter is required.
+        self.delivery_detail = delivery_detail
+        # The name of the log delivery configuration.
+        # 
+        # This parameter is required.
+        self.delivery_name = delivery_name
+        # The type of the log delivery configuration. Valid values:
+        # 
+        # *   **syslog**: Logs are delivered to a syslog service.
+        # *   **kafka**: Logs are delivered to a Kafka service.
+        # 
+        # This parameter is required.
+        self.delivery_type = delivery_type
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_detail is not None:
+            result['DeliveryDetail'] = self.delivery_detail
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryDetail') is not None:
+            self.delivery_detail = m.get('DeliveryDetail')
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class CreateLogDeliveryConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        request_id: str = None,
+    ):
+        # The name of the log delivery configuration.
+        self.delivery_name = delivery_name
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateLogDeliveryConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLogDeliveryConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLogDeliveryConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateMajorProtectionBlackIpRequest(TeaModel):
     def __init__(
         self,
@@ -3979,6 +4136,121 @@ class CreateMemberAccountsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMemberAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePocFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreatePocFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePocFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePocFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePocFunctionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4397,6 +4669,7 @@ class DeleteApisecEventsRequest(TeaModel):
         self,
         cluster_id: str = None,
         event_ids: List[str] = None,
+        event_scope: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -4408,6 +4681,7 @@ class DeleteApisecEventsRequest(TeaModel):
         # 
         # This parameter is required.
         self.event_ids = event_ids
+        self.event_scope = event_scope
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -4435,6 +4709,8 @@ class DeleteApisecEventsRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.event_ids is not None:
             result['EventIds'] = self.event_ids
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4449,6 +4725,8 @@ class DeleteApisecEventsRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('EventIds') is not None:
             self.event_ids = m.get('EventIds')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5563,6 +5841,243 @@ class DeleteHybridCloudClusterRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteHybridCloudClusterRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHybridCloudGroupRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: int = None,
+        group_id: int = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DeleteHybridCloudGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteHybridCloudGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHybridCloudGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHybridCloudGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLogDeliveryConfigRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_name = delivery_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DeleteLogDeliveryConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLogDeliveryConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLogDeliveryConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLogDeliveryConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7434,6 +7949,7 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
     def __init__(
         self,
         abnormal_num: int = None,
+        account_event_num: int = None,
         all_cnt: int = None,
         api_format: str = None,
         api_id: str = None,
@@ -7459,6 +7975,7 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
     ):
         # The number of API-related risks.
         self.abnormal_num = abnormal_num
+        self.account_event_num = account_event_num
         # The total number of calls to this API in the previous 30 days.
         self.all_cnt = all_cnt
         # The API.
@@ -7554,6 +8071,8 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         result = dict()
         if self.abnormal_num is not None:
             result['AbnormalNum'] = self.abnormal_num
+        if self.account_event_num is not None:
+            result['AccountEventNum'] = self.account_event_num
         if self.all_cnt is not None:
             result['AllCnt'] = self.all_cnt
         if self.api_format is not None:
@@ -7604,6 +8123,8 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AbnormalNum') is not None:
             self.abnormal_num = m.get('AbnormalNum')
+        if m.get('AccountEventNum') is not None:
+            self.account_event_num = m.get('AccountEventNum')
         if m.get('AllCnt') is not None:
             self.all_cnt = m.get('AllCnt')
         if m.get('ApiFormat') is not None:
@@ -7945,6 +8466,211 @@ class DescribeApisecAssetTrendResponse(TeaModel):
         return self
 
 
+class DescribeApisecEventDetailRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        detail_type: str = None,
+        event_id: str = None,
+        event_scope: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.detail_type = detail_type
+        # This parameter is required.
+        self.event_id = event_id
+        self.event_scope = event_scope
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.detail_type is not None:
+            result['DetailType'] = self.detail_type
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DetailType') is not None:
+            self.detail_type = m.get('DetailType')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeApisecEventDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        attack_cnt: str = None,
+        attacker_list: List[str] = None,
+        detail_value: str = None,
+        end_ts: str = None,
+        event_id: str = None,
+        event_level: str = None,
+        event_scope: str = None,
+        event_tag: str = None,
+        note: str = None,
+        origin: str = None,
+        request_id: str = None,
+        start_ts: str = None,
+        user_status: str = None,
+    ):
+        self.attack_cnt = attack_cnt
+        self.attacker_list = attacker_list
+        self.detail_value = detail_value
+        self.end_ts = end_ts
+        self.event_id = event_id
+        self.event_level = event_level
+        self.event_scope = event_scope
+        self.event_tag = event_tag
+        self.note = note
+        self.origin = origin
+        self.request_id = request_id
+        self.start_ts = start_ts
+        self.user_status = user_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attack_cnt is not None:
+            result['AttackCnt'] = self.attack_cnt
+        if self.attacker_list is not None:
+            result['AttackerList'] = self.attacker_list
+        if self.detail_value is not None:
+            result['DetailValue'] = self.detail_value
+        if self.end_ts is not None:
+            result['EndTs'] = self.end_ts
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
+        if self.event_tag is not None:
+            result['EventTag'] = self.event_tag
+        if self.note is not None:
+            result['Note'] = self.note
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_ts is not None:
+            result['StartTs'] = self.start_ts
+        if self.user_status is not None:
+            result['UserStatus'] = self.user_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttackCnt') is not None:
+            self.attack_cnt = m.get('AttackCnt')
+        if m.get('AttackerList') is not None:
+            self.attacker_list = m.get('AttackerList')
+        if m.get('DetailValue') is not None:
+            self.detail_value = m.get('DetailValue')
+        if m.get('EndTs') is not None:
+            self.end_ts = m.get('EndTs')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
+        if m.get('EventTag') is not None:
+            self.event_tag = m.get('EventTag')
+        if m.get('Note') is not None:
+            self.note = m.get('Note')
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTs') is not None:
+            self.start_ts = m.get('StartTs')
+        if m.get('UserStatus') is not None:
+            self.user_status = m.get('UserStatus')
+        return self
+
+
+class DescribeApisecEventDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApisecEventDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApisecEventDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeApisecEventDomainStatisticRequest(TeaModel):
     def __init__(
         self,
@@ -8190,6 +8916,7 @@ class DescribeApisecEventDomainStatisticResponse(TeaModel):
 class DescribeApisecEventsRequest(TeaModel):
     def __init__(
         self,
+        account: str = None,
         api_format: str = None,
         api_id: str = None,
         api_tag: str = None,
@@ -8198,6 +8925,7 @@ class DescribeApisecEventsRequest(TeaModel):
         end_ts: int = None,
         event_id: str = None,
         event_level: str = None,
+        event_scope: str = None,
         event_tag: str = None,
         instance_id: str = None,
         matched_host: str = None,
@@ -8211,6 +8939,7 @@ class DescribeApisecEventsRequest(TeaModel):
         start_ts: int = None,
         user_status: str = None,
     ):
+        self.account = account
         # The API.
         self.api_format = api_format
         # The ID of the event-related API.
@@ -8235,6 +8964,7 @@ class DescribeApisecEventsRequest(TeaModel):
         # *   **medium**\
         # *   **low**\
         self.event_level = event_level
+        self.event_scope = event_scope
         # The type of the event.
         # 
         # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
@@ -8292,6 +9022,8 @@ class DescribeApisecEventsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
         if self.api_format is not None:
             result['ApiFormat'] = self.api_format
         if self.api_id is not None:
@@ -8308,6 +9040,8 @@ class DescribeApisecEventsRequest(TeaModel):
             result['EventId'] = self.event_id
         if self.event_level is not None:
             result['EventLevel'] = self.event_level
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
         if self.event_tag is not None:
             result['EventTag'] = self.event_tag
         if self.instance_id is not None:
@@ -8336,6 +9070,8 @@ class DescribeApisecEventsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
         if m.get('ApiFormat') is not None:
             self.api_format = m.get('ApiFormat')
         if m.get('ApiId') is not None:
@@ -8352,6 +9088,8 @@ class DescribeApisecEventsRequest(TeaModel):
             self.event_id = m.get('EventId')
         if m.get('EventLevel') is not None:
             self.event_level = m.get('EventLevel')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
         if m.get('EventTag') is not None:
             self.event_tag = m.get('EventTag')
         if m.get('InstanceId') is not None:
@@ -8391,6 +9129,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         attack_ip: str = None,
         attack_ip_info: str = None,
         attack_ips: List[str] = None,
+        attacker_list: List[str] = None,
         end_ts: int = None,
         event_id: str = None,
         event_info: str = None,
@@ -8433,6 +9172,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         self.attack_ip_info = attack_ip_info
         # The source IP addresses of the attacks.
         self.attack_ips = attack_ips
+        self.attacker_list = attacker_list
         # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
         # The ID of the event.
@@ -8511,6 +9251,8 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
             result['AttackIpInfo'] = self.attack_ip_info
         if self.attack_ips is not None:
             result['AttackIps'] = self.attack_ips
+        if self.attacker_list is not None:
+            result['AttackerList'] = self.attacker_list
         if self.end_ts is not None:
             result['EndTs'] = self.end_ts
         if self.event_id is not None:
@@ -8563,6 +9305,8 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
             self.attack_ip_info = m.get('AttackIpInfo')
         if m.get('AttackIps') is not None:
             self.attack_ips = m.get('AttackIps')
+        if m.get('AttackerList') is not None:
+            self.attacker_list = m.get('AttackerList')
         if m.get('EndTs') is not None:
             self.end_ts = m.get('EndTs')
         if m.get('EventId') is not None:
@@ -10454,6 +11198,7 @@ class DescribeApisecStatisticsRequest(TeaModel):
 class DescribeApisecStatisticsResponseBodyData(TeaModel):
     def __init__(
         self,
+        account: int = None,
         actioned: int = None,
         api: int = None,
         confirmed: int = None,
@@ -10474,6 +11219,7 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
         today_total: str = None,
         total: int = None,
     ):
+        self.account = account
         # The number of handled events.
         self.actioned = actioned
         # The number of APIs.
@@ -10519,6 +11265,8 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
         if self.actioned is not None:
             result['Actioned'] = self.actioned
         if self.api is not None:
@@ -10561,6 +11309,8 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
         if m.get('Actioned') is not None:
             self.actioned = m.get('Actioned')
         if m.get('Api') is not None:
@@ -11880,6 +12630,400 @@ class DescribeCertsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCertsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeChargeModuleRequest(TeaModel):
+    def __init__(
+        self,
+        pay_type: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.pay_type = pay_type
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeChargeModuleResponseBodyChargeModules(TeaModel):
+    def __init__(
+        self,
+        charge_mode: str = None,
+        charge_mode_details: List[str] = None,
+        module_code: str = None,
+        period_type: str = None,
+        usage_type: str = None,
+        usage_unit_factor: int = None,
+    ):
+        self.charge_mode = charge_mode
+        self.charge_mode_details = charge_mode_details
+        self.module_code = module_code
+        self.period_type = period_type
+        self.usage_type = usage_type
+        self.usage_unit_factor = usage_unit_factor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_mode is not None:
+            result['ChargeMode'] = self.charge_mode
+        if self.charge_mode_details is not None:
+            result['ChargeModeDetails'] = self.charge_mode_details
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.usage_type is not None:
+            result['UsageType'] = self.usage_type
+        if self.usage_unit_factor is not None:
+            result['UsageUnitFactor'] = self.usage_unit_factor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeMode') is not None:
+            self.charge_mode = m.get('ChargeMode')
+        if m.get('ChargeModeDetails') is not None:
+            self.charge_mode_details = m.get('ChargeModeDetails')
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('UsageType') is not None:
+            self.usage_type = m.get('UsageType')
+        if m.get('UsageUnitFactor') is not None:
+            self.usage_unit_factor = m.get('UsageUnitFactor')
+        return self
+
+
+class DescribeChargeModuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        charge_modules: List[DescribeChargeModuleResponseBodyChargeModules] = None,
+        request_id: str = None,
+    ):
+        self.charge_modules = charge_modules
+        self.request_id = request_id
+
+    def validate(self):
+        if self.charge_modules:
+            for k in self.charge_modules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ChargeModules'] = []
+        if self.charge_modules is not None:
+            for k in self.charge_modules:
+                result['ChargeModules'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.charge_modules = []
+        if m.get('ChargeModules') is not None:
+            for k in m.get('ChargeModules'):
+                temp_model = DescribeChargeModuleResponseBodyChargeModules()
+                self.charge_modules.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeChargeModuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeChargeModuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeChargeModuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeChargeResultRequestChargeModules(TeaModel):
+    def __init__(
+        self,
+        module_code: str = None,
+        usage: int = None,
+    ):
+        self.module_code = module_code
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
+class DescribeChargeResultRequest(TeaModel):
+    def __init__(
+        self,
+        charge_cycle: str = None,
+        charge_modules: List[DescribeChargeResultRequestChargeModules] = None,
+        pay_type: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.charge_cycle = charge_cycle
+        # This parameter is required.
+        self.charge_modules = charge_modules
+        # This parameter is required.
+        self.pay_type = pay_type
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        if self.charge_modules:
+            for k in self.charge_modules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_cycle is not None:
+            result['ChargeCycle'] = self.charge_cycle
+        result['ChargeModules'] = []
+        if self.charge_modules is not None:
+            for k in self.charge_modules:
+                result['ChargeModules'].append(k.to_map() if k else None)
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeCycle') is not None:
+            self.charge_cycle = m.get('ChargeCycle')
+        self.charge_modules = []
+        if m.get('ChargeModules') is not None:
+            for k in m.get('ChargeModules'):
+                temp_model = DescribeChargeResultRequestChargeModules()
+                self.charge_modules.append(temp_model.from_map(k))
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeChargeResultResponseBodyModuleDetails(TeaModel):
+    def __init__(
+        self,
+        module_code: str = None,
+        se_cu: float = None,
+    ):
+        self.module_code = module_code
+        self.se_cu = se_cu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.se_cu is not None:
+            result['SeCu'] = self.se_cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('SeCu') is not None:
+            self.se_cu = m.get('SeCu')
+        return self
+
+
+class DescribeChargeResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        module_details: List[DescribeChargeResultResponseBodyModuleDetails] = None,
+        request_id: str = None,
+        total_se_cu: float = None,
+    ):
+        self.module_details = module_details
+        self.request_id = request_id
+        self.total_se_cu = total_se_cu
+
+    def validate(self):
+        if self.module_details:
+            for k in self.module_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ModuleDetails'] = []
+        if self.module_details is not None:
+            for k in self.module_details:
+                result['ModuleDetails'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_se_cu is not None:
+            result['TotalSeCu'] = self.total_se_cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.module_details = []
+        if m.get('ModuleDetails') is not None:
+            for k in m.get('ModuleDetails'):
+                temp_model = DescribeChargeResultResponseBodyModuleDetails()
+                self.module_details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalSeCu') is not None:
+            self.total_se_cu = m.get('TotalSeCu')
+        return self
+
+
+class DescribeChargeResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeChargeResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeChargeResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22425,6 +23569,131 @@ class DescribeHybridCloudProcessMonitorResponse(TeaModel):
         return self
 
 
+class DescribeHybridCloudProtectableCountRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # 阿里云资源组ID。
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudProtectableCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        protectable_count: int = None,
+        request_id: str = None,
+    ):
+        # The number of protection nodes that can be added to the hybrid cloud cluster.
+        self.protectable_count = protectable_count
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.protectable_count is not None:
+            result['ProtectableCount'] = self.protectable_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProtectableCount') is not None:
+            self.protectable_count = m.get('ProtectableCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHybridCloudProtectableCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudProtectableCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudProtectableCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeHybridCloudResourceDetailRequest(TeaModel):
     def __init__(
         self,
@@ -24678,7 +25947,10 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
         dlp: bool = None,
         dlp_rule_in_template_max_count: int = None,
         dlp_template_max_count: int = None,
+        elastic_qps: int = None,
         exclusive_ip: bool = None,
+        extend_qps: int = None,
+        free_qps: int = None,
         gslb: bool = None,
         http_ports: str = None,
         https_ports: str = None,
@@ -24690,6 +25962,7 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
         log_service: bool = None,
         major_protection: bool = None,
         major_protection_template_max_count: int = None,
+        qps_billing_cap: int = None,
         tamperproof: bool = None,
         tamperproof_rule_in_template_max_count: int = None,
         tamperproof_template_max_count: int = None,
@@ -24782,11 +26055,14 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
         self.dlp_rule_in_template_max_count = dlp_rule_in_template_max_count
         # The maximum number of data leakage prevention rule templates that can be configured.
         self.dlp_template_max_count = dlp_template_max_count
+        self.elastic_qps = elastic_qps
         # Indicates whether exclusive IP addresses are supported. Valid values:
         # 
         # *   **true:** Exclusive IP addresses are supported.
         # *   **false:** Exclusive IP addresses are not supported.
         self.exclusive_ip = exclusive_ip
+        self.extend_qps = extend_qps
+        self.free_qps = free_qps
         # Indicates whether global server load balancing (GSLB) is supported. Valid values:
         # 
         # *   **true:** GSLB is supported.
@@ -24824,6 +26100,7 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
         self.major_protection = major_protection
         # The maximum number of major event protection rule templates that can be configured.
         self.major_protection_template_max_count = major_protection_template_max_count
+        self.qps_billing_cap = qps_billing_cap
         # Indicates whether the website tamper-proofing module is supported. Valid values:
         # 
         # *   **true:** The website tamper-proofing module is supported.
@@ -24918,8 +26195,14 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
             result['DlpRuleInTemplateMaxCount'] = self.dlp_rule_in_template_max_count
         if self.dlp_template_max_count is not None:
             result['DlpTemplateMaxCount'] = self.dlp_template_max_count
+        if self.elastic_qps is not None:
+            result['ElasticQps'] = self.elastic_qps
         if self.exclusive_ip is not None:
             result['ExclusiveIp'] = self.exclusive_ip
+        if self.extend_qps is not None:
+            result['ExtendQps'] = self.extend_qps
+        if self.free_qps is not None:
+            result['FreeQps'] = self.free_qps
         if self.gslb is not None:
             result['Gslb'] = self.gslb
         if self.http_ports is not None:
@@ -24942,6 +26225,8 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
             result['MajorProtection'] = self.major_protection
         if self.major_protection_template_max_count is not None:
             result['MajorProtectionTemplateMaxCount'] = self.major_protection_template_max_count
+        if self.qps_billing_cap is not None:
+            result['QpsBillingCap'] = self.qps_billing_cap
         if self.tamperproof is not None:
             result['Tamperproof'] = self.tamperproof
         if self.tamperproof_rule_in_template_max_count is not None:
@@ -25024,8 +26309,14 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
             self.dlp_rule_in_template_max_count = m.get('DlpRuleInTemplateMaxCount')
         if m.get('DlpTemplateMaxCount') is not None:
             self.dlp_template_max_count = m.get('DlpTemplateMaxCount')
+        if m.get('ElasticQps') is not None:
+            self.elastic_qps = m.get('ElasticQps')
         if m.get('ExclusiveIp') is not None:
             self.exclusive_ip = m.get('ExclusiveIp')
+        if m.get('ExtendQps') is not None:
+            self.extend_qps = m.get('ExtendQps')
+        if m.get('FreeQps') is not None:
+            self.free_qps = m.get('FreeQps')
         if m.get('Gslb') is not None:
             self.gslb = m.get('Gslb')
         if m.get('HttpPorts') is not None:
@@ -25048,6 +26339,8 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
             self.major_protection = m.get('MajorProtection')
         if m.get('MajorProtectionTemplateMaxCount') is not None:
             self.major_protection_template_max_count = m.get('MajorProtectionTemplateMaxCount')
+        if m.get('QpsBillingCap') is not None:
+            self.qps_billing_cap = m.get('QpsBillingCap')
         if m.get('Tamperproof') is not None:
             self.tamperproof = m.get('Tamperproof')
         if m.get('TamperproofRuleInTemplateMaxCount') is not None:
@@ -25472,6 +26765,416 @@ class DescribeIpAbroadCountryInfosResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeIpAbroadCountryInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLogDeliveryConfigRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The name of the log delivery configuration.
+        # 
+        # This parameter is required.
+        self.delivery_name = delivery_name
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeLogDeliveryConfigResponseBodyDeliveryConfig(TeaModel):
+    def __init__(
+        self,
+        delivery_detail: str = None,
+        delivery_name: str = None,
+        delivery_type: str = None,
+    ):
+        # The content of the log delivery configuration. The value is a JSON string that contains multiple parameters.
+        # 
+        # >  This parameter is the same as the **DeliveryDetail** parameter of the **CreateLogDeliveryConfig** operation. For more information, see **Parameter description for log delivery configuration** of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
+        self.delivery_detail = delivery_detail
+        # The name of the log delivery configuration.
+        self.delivery_name = delivery_name
+        # The type of the log delivery configuration. Valid values:
+        # 
+        # *   **syslog**: Logs are delivered to a syslog service.
+        # *   **kafka**: Logs are delivered to a Kafka service.
+        self.delivery_type = delivery_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_detail is not None:
+            result['DeliveryDetail'] = self.delivery_detail
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryDetail') is not None:
+            self.delivery_detail = m.get('DeliveryDetail')
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        return self
+
+
+class DescribeLogDeliveryConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_config: DescribeLogDeliveryConfigResponseBodyDeliveryConfig = None,
+        request_id: str = None,
+    ):
+        # The information about the log delivery configuration.
+        self.delivery_config = delivery_config
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_config:
+            self.delivery_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_config is not None:
+            result['DeliveryConfig'] = self.delivery_config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryConfig') is not None:
+            temp_model = DescribeLogDeliveryConfigResponseBodyDeliveryConfig()
+            self.delivery_config = temp_model.from_map(m['DeliveryConfig'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeLogDeliveryConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLogDeliveryConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLogDeliveryConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLogDeliveryConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_name_like: str = None,
+        delivery_type: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The name of the log delivery configuration. Fuzzy queries are supported.
+        self.delivery_name_like = delivery_name_like
+        # The type of the log delivery configuration that you want to query. Valid values:
+        # 
+        # *   **syslog**: Logs are delivered to a syslog service.
+        # *   **kafka**: Logs are delivered to a Kafka service.
+        self.delivery_type = delivery_type
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name_like is not None:
+            result['DeliveryNameLike'] = self.delivery_name_like
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryNameLike') is not None:
+            self.delivery_name_like = m.get('DeliveryNameLike')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs(TeaModel):
+    def __init__(
+        self,
+        delivery_detail: str = None,
+        delivery_name: str = None,
+        delivery_type: str = None,
+    ):
+        # The content of the log delivery configuration. The value is a JSON string that contains multiple parameters.
+        # 
+        # >  This parameter is the same as the **DeliveryDetail** parameter of the **CreateLogDeliveryConfig** operation. For more information, see **Parameter description for log delivery configuration** of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
+        self.delivery_detail = delivery_detail
+        # The name of the log delivery configuration.
+        self.delivery_name = delivery_name
+        # The type of the log delivery configuration. Valid values:
+        # 
+        # *   **syslog**: Logs are delivered to a syslog service.
+        # *   **kafka**: Logs are delivered to a Kafka service.
+        self.delivery_type = delivery_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_detail is not None:
+            result['DeliveryDetail'] = self.delivery_detail
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryDetail') is not None:
+            self.delivery_detail = m.get('DeliveryDetail')
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        return self
+
+
+class DescribeLogDeliveryConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_configs: List[DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The information about the log delivery configuration.
+        self.delivery_configs = delivery_configs
+        self.max_results = max_results
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.delivery_configs:
+            for k in self.delivery_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeliveryConfigs'] = []
+        if self.delivery_configs is not None:
+            for k in self.delivery_configs:
+                result['DeliveryConfigs'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delivery_configs = []
+        if m.get('DeliveryConfigs') is not None:
+            for k in m.get('DeliveryConfigs'):
+                temp_model = DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs()
+                self.delivery_configs.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeLogDeliveryConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLogDeliveryConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLogDeliveryConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27304,6 +29007,161 @@ class DescribePeakTrendResponse(TeaModel):
         return self
 
 
+class DescribePocFunctionsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribePocFunctionsResponseBodyFunctions(TeaModel):
+    def __init__(
+        self,
+        expire_time: int = None,
+        type: str = None,
+    ):
+        self.expire_time = expire_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribePocFunctionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        functions: List[DescribePocFunctionsResponseBodyFunctions] = None,
+        request_id: str = None,
+    ):
+        self.functions = functions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.functions:
+            for k in self.functions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Functions'] = []
+        if self.functions is not None:
+            for k in self.functions:
+                result['Functions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.functions = []
+        if m.get('Functions') is not None:
+            for k in m.get('Functions'):
+                temp_model = DescribePocFunctionsResponseBodyFunctions()
+                self.functions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePocFunctionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePocFunctionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePocFunctionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeProductInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -28193,6 +30051,338 @@ class DescribeResourceInstanceCertsResponse(TeaModel):
         return self
 
 
+class DescribeResourceLogDeliveryStatusRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        resources: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # This parameter is required.
+        self.resources = resources
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        return self
+
+
+class DescribeResourceLogDeliveryStatusResponseBodyLogConfigs(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        delivery_type: str = None,
+        resource: str = None,
+        status: bool = None,
+    ):
+        self.delivery_name = delivery_name
+        self.delivery_type = delivery_type
+        self.resource = resource
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeResourceLogDeliveryStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_configs: List[DescribeResourceLogDeliveryStatusResponseBodyLogConfigs] = None,
+        request_id: str = None,
+    ):
+        self.log_configs = log_configs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.log_configs:
+            for k in self.log_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LogConfigs'] = []
+        if self.log_configs is not None:
+            for k in self.log_configs:
+                result['LogConfigs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.log_configs = []
+        if m.get('LogConfigs') is not None:
+            for k in m.get('LogConfigs'):
+                temp_model = DescribeResourceLogDeliveryStatusResponseBodyLogConfigs()
+                self.log_configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeResourceLogDeliveryStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResourceLogDeliveryStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceLogDeliveryStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceLogFieldConfigRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_type: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_type = delivery_type
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource = resource
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeResourceLogFieldConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        add_list: str = None,
+        del_list: str = None,
+        delivery_type: str = None,
+        extend_config: str = None,
+        field_list: str = None,
+        log_delivery_strategy: str = None,
+        request_id: str = None,
+    ):
+        self.add_list = add_list
+        self.del_list = del_list
+        self.delivery_type = delivery_type
+        self.extend_config = extend_config
+        self.field_list = field_list
+        self.log_delivery_strategy = log_delivery_strategy
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_list is not None:
+            result['AddList'] = self.add_list
+        if self.del_list is not None:
+            result['DelList'] = self.del_list
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config
+        if self.field_list is not None:
+            result['FieldList'] = self.field_list
+        if self.log_delivery_strategy is not None:
+            result['LogDeliveryStrategy'] = self.log_delivery_strategy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddList') is not None:
+            self.add_list = m.get('AddList')
+        if m.get('DelList') is not None:
+            self.del_list = m.get('DelList')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('ExtendConfig') is not None:
+            self.extend_config = m.get('ExtendConfig')
+        if m.get('FieldList') is not None:
+            self.field_list = m.get('FieldList')
+        if m.get('LogDeliveryStrategy') is not None:
+            self.log_delivery_strategy = m.get('LogDeliveryStrategy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeResourceLogFieldConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResourceLogFieldConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceLogFieldConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeResourceLogStatusRequest(TeaModel):
     def __init__(
         self,
@@ -29004,6 +31194,113 @@ class DescribeResponseCodeTrendGraphResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeResponseCodeTrendGraphResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRoleAuthStatusRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeRoleAuthStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        auth_status: bool = None,
+        request_id: str = None,
+    ):
+        self.auth_status = auth_status
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_status is not None:
+            result['AuthStatus'] = self.auth_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthStatus') is not None:
+            self.auth_status = m.get('AuthStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRoleAuthStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRoleAuthStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRoleAuthStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33300,6 +35597,7 @@ class DescribeSensitiveOutboundTrendResponse(TeaModel):
 class DescribeSensitiveRequestLogRequest(TeaModel):
     def __init__(
         self,
+        account: str = None,
         api_format: str = None,
         client_ip: str = None,
         cluster_id: str = None,
@@ -33314,6 +35612,7 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
         sensitive_data: str = None,
         start_time: int = None,
     ):
+        self.account = account
         # The API.
         self.api_format = api_format
         # The IP address.
@@ -33360,6 +35659,8 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
         if self.api_format is not None:
             result['ApiFormat'] = self.api_format
         if self.client_ip is not None:
@@ -33390,6 +35691,8 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
         if m.get('ApiFormat') is not None:
             self.api_format = m.get('ApiFormat')
         if m.get('ClientIP') is not None:
@@ -33422,6 +35725,7 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
 class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
     def __init__(
         self,
+        account: str = None,
         api_format: str = None,
         api_id: str = None,
         client_ip: str = None,
@@ -33432,6 +35736,7 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
         sensitive_list: str = None,
         trace_id: str = None,
     ):
+        self.account = account
         # The API.
         self.api_format = api_format
         # The ID of the API.
@@ -33462,6 +35767,8 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
         if self.api_format is not None:
             result['ApiFormat'] = self.api_format
         if self.api_id is not None:
@@ -33484,6 +35791,8 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
         if m.get('ApiFormat') is not None:
             self.api_format = m.get('ApiFormat')
         if m.get('ApiId') is not None:
@@ -35798,6 +38107,7 @@ class DescribeUserEventTrendRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        event_scope: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -35805,6 +38115,7 @@ class DescribeUserEventTrendRequest(TeaModel):
         # The ID of the hybrid cloud cluster.
         # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
+        self.event_scope = event_scope
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -35830,6 +38141,8 @@ class DescribeUserEventTrendRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -35842,6 +38155,8 @@ class DescribeUserEventTrendRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -35997,6 +38312,7 @@ class DescribeUserEventTypeRequest(TeaModel):
         self,
         cluster_id: str = None,
         end_time: int = None,
+        event_scope: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -36008,6 +38324,7 @@ class DescribeUserEventTypeRequest(TeaModel):
         self.cluster_id = cluster_id
         # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.end_time = end_time
+        self.event_scope = event_scope
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -36038,6 +38355,8 @@ class DescribeUserEventTypeRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -36056,6 +38375,8 @@ class DescribeUserEventTypeRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -36651,6 +38972,229 @@ class DescribeUserWafLogStatusResponse(TeaModel):
         return self
 
 
+class DescribeVerifyContentRequest(TeaModel):
+    def __init__(
+        self,
+        access_origin: str = None,
+        domain_name: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.access_origin = access_origin
+        # This parameter is required.
+        self.domain_name = domain_name
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_origin is not None:
+            result['AccessOrigin'] = self.access_origin
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessOrigin') is not None:
+            self.access_origin = m.get('AccessOrigin')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeVerifyContentResponseBodyDnsContent(TeaModel):
+    def __init__(
+        self,
+        rr: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.rr = rr
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rr is not None:
+            result['RR'] = self.rr
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RR') is not None:
+            self.rr = m.get('RR')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVerifyContentResponseBodyFileContent(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+        file_name: str = None,
+        top_domain: str = None,
+        value: str = None,
+        verify_path: str = None,
+    ):
+        self.download_url = download_url
+        self.file_name = file_name
+        self.top_domain = top_domain
+        self.value = value
+        self.verify_path = verify_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.top_domain is not None:
+            result['TopDomain'] = self.top_domain
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.verify_path is not None:
+            result['VerifyPath'] = self.verify_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('TopDomain') is not None:
+            self.top_domain = m.get('TopDomain')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('VerifyPath') is not None:
+            self.verify_path = m.get('VerifyPath')
+        return self
+
+
+class DescribeVerifyContentResponseBody(TeaModel):
+    def __init__(
+        self,
+        dns_content: DescribeVerifyContentResponseBodyDnsContent = None,
+        file_content: DescribeVerifyContentResponseBodyFileContent = None,
+        request_id: str = None,
+        verify_result: bool = None,
+    ):
+        self.dns_content = dns_content
+        self.file_content = file_content
+        self.request_id = request_id
+        self.verify_result = verify_result
+
+    def validate(self):
+        if self.dns_content:
+            self.dns_content.validate()
+        if self.file_content:
+            self.file_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_content is not None:
+            result['DnsContent'] = self.dns_content.to_map()
+        if self.file_content is not None:
+            result['FileContent'] = self.file_content.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.verify_result is not None:
+            result['VerifyResult'] = self.verify_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsContent') is not None:
+            temp_model = DescribeVerifyContentResponseBodyDnsContent()
+            self.dns_content = temp_model.from_map(m['DnsContent'])
+        if m.get('FileContent') is not None:
+            temp_model = DescribeVerifyContentResponseBodyFileContent()
+            self.file_content = temp_model.from_map(m['FileContent'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VerifyResult') is not None:
+            self.verify_result = m.get('VerifyResult')
+        return self
+
+
+class DescribeVerifyContentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyContentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyContentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVisitTopIpRequest(TeaModel):
     def __init__(
         self,
@@ -37205,6 +39749,114 @@ class DescribeWafSourceIpSegmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeWafSourceIpSegmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InitializeWafOperationRoleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class InitializeWafOperationRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InitializeWafOperationRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitializeWafOperationRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitializeWafOperationRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38118,6 +40770,7 @@ class ModifyApisecEventsRequest(TeaModel):
         self,
         cluster_id: str = None,
         event_ids: List[str] = None,
+        event_scope: str = None,
         instance_id: str = None,
         note: str = None,
         region_id: str = None,
@@ -38131,6 +40784,7 @@ class ModifyApisecEventsRequest(TeaModel):
         # 
         # This parameter is required.
         self.event_ids = event_ids
+        self.event_scope = event_scope
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -38168,6 +40822,8 @@ class ModifyApisecEventsRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.event_ids is not None:
             result['EventIds'] = self.event_ids
+        if self.event_scope is not None:
+            result['EventScope'] = self.event_scope
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.note is not None:
@@ -38186,6 +40842,8 @@ class ModifyApisecEventsRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('EventIds') is not None:
             self.event_ids = m.get('EventIds')
+        if m.get('EventScope') is not None:
+            self.event_scope = m.get('EventScope')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Note') is not None:
@@ -39392,6 +42050,181 @@ class ModifyCloudResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyCloudResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCloudResourceCertRequestCertificates(TeaModel):
+    def __init__(
+        self,
+        applied_type: str = None,
+        certificate_id: str = None,
+    ):
+        # This parameter is required.
+        self.applied_type = applied_type
+        # This parameter is required.
+        self.certificate_id = certificate_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applied_type is not None:
+            result['AppliedType'] = self.applied_type
+        if self.certificate_id is not None:
+            result['CertificateId'] = self.certificate_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppliedType') is not None:
+            self.applied_type = m.get('AppliedType')
+        if m.get('CertificateId') is not None:
+            self.certificate_id = m.get('CertificateId')
+        return self
+
+
+class ModifyCloudResourceCertRequest(TeaModel):
+    def __init__(
+        self,
+        certificates: List[ModifyCloudResourceCertRequestCertificates] = None,
+        instance_id: str = None,
+        port: int = None,
+        region_id: str = None,
+        resource_instance_id: str = None,
+        resource_product: str = None,
+    ):
+        # This parameter is required.
+        self.certificates = certificates
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.port = port
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_instance_id = resource_instance_id
+        # This parameter is required.
+        self.resource_product = resource_product
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_product is not None:
+            result['ResourceProduct'] = self.resource_product
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ModifyCloudResourceCertRequestCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceProduct') is not None:
+            self.resource_product = m.get('ResourceProduct')
+        return self
+
+
+class ModifyCloudResourceCertResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCloudResourceCertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCloudResourceCertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCloudResourceCertResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -41558,6 +44391,148 @@ class ModifyDomainResponse(TeaModel):
         return self
 
 
+class ModifyDomainCertRequest(TeaModel):
+    def __init__(
+        self,
+        cert_id: str = None,
+        cipher_suite: str = None,
+        custom_ciphers: List[str] = None,
+        domain: str = None,
+        enable_tlsv_3: bool = None,
+        instance_id: str = None,
+        region_id: str = None,
+        tlsversion: str = None,
+    ):
+        # This parameter is required.
+        self.cert_id = cert_id
+        self.cipher_suite = cipher_suite
+        self.custom_ciphers = custom_ciphers
+        # This parameter is required.
+        self.domain = domain
+        self.enable_tlsv_3 = enable_tlsv_3
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.tlsversion = tlsversion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
+        if self.cipher_suite is not None:
+            result['CipherSuite'] = self.cipher_suite
+        if self.custom_ciphers is not None:
+            result['CustomCiphers'] = self.custom_ciphers
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enable_tlsv_3 is not None:
+            result['EnableTLSv3'] = self.enable_tlsv_3
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.tlsversion is not None:
+            result['TLSVersion'] = self.tlsversion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
+        if m.get('CipherSuite') is not None:
+            self.cipher_suite = m.get('CipherSuite')
+        if m.get('CustomCiphers') is not None:
+            self.custom_ciphers = m.get('CustomCiphers')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EnableTLSv3') is not None:
+            self.enable_tlsv_3 = m.get('EnableTLSv3')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TLSVersion') is not None:
+            self.tlsversion = m.get('TLSVersion')
+        return self
+
+
+class ModifyDomainCertResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDomainCertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDomainCertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDomainCertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDomainPunishStatusRequest(TeaModel):
     def __init__(
         self,
@@ -42928,6 +45903,163 @@ class ModifyHybridCloudServerResponse(TeaModel):
         return self
 
 
+class ModifyLogDeliveryConfigRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_detail: str = None,
+        delivery_name: str = None,
+        delivery_type: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The content of the log delivery configuration. Set the value to a JSON string that contains multiple parameters.
+        # 
+        # >  This parameter is the same as the **DeliveryDetail** parameter of the **CreateLogDeliveryConfig** operation. For more information, see **Parameter description for log delivery configuration** of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
+        # 
+        # This parameter is required.
+        self.delivery_detail = delivery_detail
+        # The name of the log delivery configuration that you want to modify.
+        # 
+        # This parameter is required.
+        self.delivery_name = delivery_name
+        # The type of the log delivery configuration that you want to modify. Valid values:
+        # 
+        # *   **syslog**: Logs are delivered to a syslog service.
+        # *   **kafka**: Logs are delivered to a Kafka service.
+        # 
+        # This parameter is required.
+        self.delivery_type = delivery_type
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_detail is not None:
+            result['DeliveryDetail'] = self.delivery_detail
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryDetail') is not None:
+            self.delivery_detail = m.get('DeliveryDetail')
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class ModifyLogDeliveryConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        request_id: str = None,
+    ):
+        # The name of the log delivery configuration.
+        self.delivery_name = delivery_name
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyLogDeliveryConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyLogDeliveryConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyLogDeliveryConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyMajorProtectionBlackIpRequest(TeaModel):
     def __init__(
         self,
@@ -43360,6 +46492,293 @@ class ModifyPauseProtectionStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyPauseProtectionStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyResourceLogDeliveryStatusRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource: str = None,
+        resource_manager_resource_group_id: str = None,
+        status: bool = None,
+    ):
+        self.delivery_name = delivery_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource = resource
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyResourceLogDeliveryStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_name: str = None,
+        delivery_type: str = None,
+        request_id: str = None,
+        status: bool = None,
+    ):
+        self.delivery_name = delivery_name
+        self.delivery_type = delivery_type
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_name is not None:
+            result['DeliveryName'] = self.delivery_name
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryName') is not None:
+            self.delivery_name = m.get('DeliveryName')
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyResourceLogDeliveryStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyResourceLogDeliveryStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyResourceLogDeliveryStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyResourceLogFieldConfigRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_type: str = None,
+        extend_config: str = None,
+        field_list: str = None,
+        instance_id: str = None,
+        log_delivery_strategy: str = None,
+        region_id: str = None,
+        resource: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_type = delivery_type
+        self.extend_config = extend_config
+        # This parameter is required.
+        self.field_list = field_list
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.log_delivery_strategy = log_delivery_strategy
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource = resource
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_type is not None:
+            result['DeliveryType'] = self.delivery_type
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config
+        if self.field_list is not None:
+            result['FieldList'] = self.field_list
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.log_delivery_strategy is not None:
+            result['LogDeliveryStrategy'] = self.log_delivery_strategy
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryType') is not None:
+            self.delivery_type = m.get('DeliveryType')
+        if m.get('ExtendConfig') is not None:
+            self.extend_config = m.get('ExtendConfig')
+        if m.get('FieldList') is not None:
+            self.field_list = m.get('FieldList')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LogDeliveryStrategy') is not None:
+            self.log_delivery_strategy = m.get('LogDeliveryStrategy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class ModifyResourceLogFieldConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyResourceLogFieldConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyResourceLogFieldConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyResourceLogFieldConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -44619,6 +48038,193 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VerifyDomainOwnerRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        instance_id: str = None,
+        protocol: str = None,
+        verify_type: str = None,
+    ):
+        # The domain name of which you want to verify the ownership.
+        # 
+        # You can specify this parameter to check whether a domain name is added to WAF. Fuzzy match is supported.
+        # 
+        # This parameter is required.
+        self.domain_name = domain_name
+        # The ID of the WAF instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The protocol type that is used for file verification. Specify this parameter when you set VerifyType to fileCheck. Valid values:
+        # 
+        # *   **HTTP**\
+        # *   **HTTPS**\
+        self.protocol = protocol
+        # The verification method. Valid values:
+        # 
+        # *   **dnsCheck**: DNS verification
+        # *   **fileCheck**: file verification
+        # 
+        # This parameter is required.
+        self.verify_type = verify_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.verify_type is not None:
+            result['VerifyType'] = self.verify_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('VerifyType') is not None:
+            self.verify_type = m.get('VerifyType')
+        return self
+
+
+class VerifyDomainOwnerResponseBodyVerifyResult(TeaModel):
+    def __init__(
+        self,
+        fail_code: str = None,
+        result: bool = None,
+    ):
+        # The reasons why the verification fails. Valid values:
+        # 
+        # *   DnsTxtVerifyFailed: The DNS TXT record and the domain name do not match.
+        # *   DnsServerError: The DNS server is abnormal.
+        # *   VerifyFileNotExist: The verification file does not exist.
+        # *   VerifyDomainNotAccess: The access to the domain name failed.
+        # *   FileContentVerifyFailed: The content of the verification file and the domain name do not match.
+        self.fail_code = fail_code
+        # The verification result. Valid values:
+        # 
+        # *   **true**: The verification succeeds.
+        # *   **false**: The verification fails.
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_code is not None:
+            result['FailCode'] = self.fail_code
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailCode') is not None:
+            self.fail_code = m.get('FailCode')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class VerifyDomainOwnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        verify_result: VerifyDomainOwnerResponseBodyVerifyResult = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The verification result.
+        self.verify_result = verify_result
+
+    def validate(self):
+        if self.verify_result:
+            self.verify_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.verify_result is not None:
+            result['VerifyResult'] = self.verify_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VerifyResult') is not None:
+            temp_model = VerifyDomainOwnerResponseBodyVerifyResult()
+            self.verify_result = temp_model.from_map(m['VerifyResult'])
+        return self
+
+
+class VerifyDomainOwnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VerifyDomainOwnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VerifyDomainOwnerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

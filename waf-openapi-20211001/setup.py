@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_waf-openapi20211001.
+setup module for alibabacloud_waf_openapi20211001.
 
-Created on 22/09/2025
+Created on 04/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_waf_openapi20211001"
-NAME = "alibabacloud_waf-openapi20211001" or "alibabacloud-package"
+NAME = "alibabacloud_waf_openapi20211001" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud waf-openapi (20211001) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
