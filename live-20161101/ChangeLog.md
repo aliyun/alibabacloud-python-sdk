@@ -1,3 +1,13 @@
+2025-11-04 Version: 2.3.1
+- Update API AddLiveRecordNotifyConfig: add request parameters NotifyAuthKey.
+- Update API AddLiveRecordNotifyConfig: add request parameters NotifyReqAuth.
+- Update API DescribeLiveRecordNotifyConfig: add response parameters Body.LiveRecordNotifyConfig.NotifyAuthKey.
+- Update API DescribeLiveRecordNotifyConfig: add response parameters Body.LiveRecordNotifyConfig.NotifyReqAuth.
+- Update API DescribeLiveRecordNotifyRecords: add response parameters Body.CallbackList.$.NotifyHeader.
+- Update API UpdateLiveRecordNotifyConfig: add request parameters NotifyAuthKey.
+- Update API UpdateLiveRecordNotifyConfig: add request parameters NotifyReqAuth.
+
+
 2025-10-29 Version: 2.3.0
 - Support API PutRecordStorageLifeCycle.
 - Update API AddCustomLiveStreamTranscode: add request parameters DeInterlaced.

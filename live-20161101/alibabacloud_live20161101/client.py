@@ -3494,6 +3494,10 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.need_status_notify):
             query['NeedStatusNotify'] = request.need_status_notify
+        if not UtilClient.is_unset(request.notify_auth_key):
+            query['NotifyAuthKey'] = request.notify_auth_key
+        if not UtilClient.is_unset(request.notify_req_auth):
+            query['NotifyReqAuth'] = request.notify_req_auth
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.on_demand_url):
@@ -3543,6 +3547,10 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.need_status_notify):
             query['NeedStatusNotify'] = request.need_status_notify
+        if not UtilClient.is_unset(request.notify_auth_key):
+            query['NotifyAuthKey'] = request.notify_auth_key
+        if not UtilClient.is_unset(request.notify_req_auth):
+            query['NotifyReqAuth'] = request.notify_req_auth
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.on_demand_url):
@@ -55129,6 +55137,10 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.need_status_notify):
             query['NeedStatusNotify'] = request.need_status_notify
+        if not UtilClient.is_unset(request.notify_auth_key):
+            query['NotifyAuthKey'] = request.notify_auth_key
+        if not UtilClient.is_unset(request.notify_req_auth):
+            query['NotifyReqAuth'] = request.notify_req_auth
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.on_demand_url):
@@ -55181,6 +55193,10 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.need_status_notify):
             query['NeedStatusNotify'] = request.need_status_notify
+        if not UtilClient.is_unset(request.notify_auth_key):
+            query['NotifyAuthKey'] = request.notify_auth_key
+        if not UtilClient.is_unset(request.notify_req_auth):
+            query['NotifyReqAuth'] = request.notify_req_auth
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.on_demand_url):

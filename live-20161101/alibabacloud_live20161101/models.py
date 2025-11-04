@@ -5200,6 +5200,8 @@ class AddLiveRecordNotifyConfigRequest(TeaModel):
         self,
         domain_name: str = None,
         need_status_notify: bool = None,
+        notify_auth_key: str = None,
+        notify_req_auth: bool = None,
         notify_url: str = None,
         on_demand_url: str = None,
         owner_id: int = None,
@@ -5214,6 +5216,8 @@ class AddLiveRecordNotifyConfigRequest(TeaModel):
         # *   true: enables callbacks for recording status. If you set this parameter to **true**, an example of recording status callback is returned.
         # *   false (default): disables callbacks for recording status.
         self.need_status_notify = need_status_notify
+        self.notify_auth_key = notify_auth_key
+        self.notify_req_auth = notify_req_auth
         # The callback URL that is used to receive notifications about recording events and status.
         # 
         # >  The URL must start with `http://` or `https://`. For more information, see [Callbacks for live stream recording](https://help.aliyun.com/document_detail/55016.html).
@@ -5240,6 +5244,10 @@ class AddLiveRecordNotifyConfigRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.need_status_notify is not None:
             result['NeedStatusNotify'] = self.need_status_notify
+        if self.notify_auth_key is not None:
+            result['NotifyAuthKey'] = self.notify_auth_key
+        if self.notify_req_auth is not None:
+            result['NotifyReqAuth'] = self.notify_req_auth
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.on_demand_url is not None:
@@ -5256,6 +5264,10 @@ class AddLiveRecordNotifyConfigRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('NeedStatusNotify') is not None:
             self.need_status_notify = m.get('NeedStatusNotify')
+        if m.get('NotifyAuthKey') is not None:
+            self.notify_auth_key = m.get('NotifyAuthKey')
+        if m.get('NotifyReqAuth') is not None:
+            self.notify_req_auth = m.get('NotifyReqAuth')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('OnDemandUrl') is not None:
@@ -44136,6 +44148,8 @@ class DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig(TeaModel)
         self,
         domain_name: str = None,
         need_status_notify: bool = None,
+        notify_auth_key: str = None,
+        notify_req_auth: bool = None,
         notify_url: str = None,
         on_demand_url: str = None,
     ):
@@ -44146,6 +44160,8 @@ class DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig(TeaModel)
         # *   **true**\
         # *   **false** (default)
         self.need_status_notify = need_status_notify
+        self.notify_auth_key = notify_auth_key
+        self.notify_req_auth = notify_req_auth
         # The recording callback URL.
         self.notify_url = notify_url
         # The callback URL for on-demand recording.
@@ -44164,6 +44180,10 @@ class DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig(TeaModel)
             result['DomainName'] = self.domain_name
         if self.need_status_notify is not None:
             result['NeedStatusNotify'] = self.need_status_notify
+        if self.notify_auth_key is not None:
+            result['NotifyAuthKey'] = self.notify_auth_key
+        if self.notify_req_auth is not None:
+            result['NotifyReqAuth'] = self.notify_req_auth
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.on_demand_url is not None:
@@ -44176,6 +44196,10 @@ class DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig(TeaModel)
             self.domain_name = m.get('DomainName')
         if m.get('NeedStatusNotify') is not None:
             self.need_status_notify = m.get('NeedStatusNotify')
+        if m.get('NotifyAuthKey') is not None:
+            self.notify_auth_key = m.get('NotifyAuthKey')
+        if m.get('NotifyReqAuth') is not None:
+            self.notify_req_auth = m.get('NotifyReqAuth')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('OnDemandUrl') is not None:
@@ -44372,6 +44396,7 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
         description: str = None,
         domain_name: str = None,
         notify_content: str = None,
+        notify_header: str = None,
         notify_response: str = None,
         notify_result: str = None,
         notify_time: str = None,
@@ -44387,6 +44412,7 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
         self.domain_name = domain_name
         # The callback content.
         self.notify_content = notify_content
+        self.notify_header = notify_header
         self.notify_response = notify_response
         # The callback result. Valid values:
         # 
@@ -44427,6 +44453,8 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
             result['DomainName'] = self.domain_name
         if self.notify_content is not None:
             result['NotifyContent'] = self.notify_content
+        if self.notify_header is not None:
+            result['NotifyHeader'] = self.notify_header
         if self.notify_response is not None:
             result['NotifyResponse'] = self.notify_response
         if self.notify_result is not None:
@@ -44451,6 +44479,8 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('NotifyContent') is not None:
             self.notify_content = m.get('NotifyContent')
+        if m.get('NotifyHeader') is not None:
+            self.notify_header = m.get('NotifyHeader')
         if m.get('NotifyResponse') is not None:
             self.notify_response = m.get('NotifyResponse')
         if m.get('NotifyResult') is not None:
@@ -92725,6 +92755,8 @@ class UpdateLiveRecordNotifyConfigRequest(TeaModel):
         self,
         domain_name: str = None,
         need_status_notify: bool = None,
+        notify_auth_key: str = None,
+        notify_req_auth: bool = None,
         notify_url: str = None,
         on_demand_url: str = None,
         owner_id: int = None,
@@ -92739,6 +92771,8 @@ class UpdateLiveRecordNotifyConfigRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.need_status_notify = need_status_notify
+        self.notify_auth_key = notify_auth_key
+        self.notify_req_auth = notify_req_auth
         # The callback URL that is used to receive notifications about recording events and status.
         # 
         # > 
@@ -92773,6 +92807,10 @@ class UpdateLiveRecordNotifyConfigRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.need_status_notify is not None:
             result['NeedStatusNotify'] = self.need_status_notify
+        if self.notify_auth_key is not None:
+            result['NotifyAuthKey'] = self.notify_auth_key
+        if self.notify_req_auth is not None:
+            result['NotifyReqAuth'] = self.notify_req_auth
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.on_demand_url is not None:
@@ -92789,6 +92827,10 @@ class UpdateLiveRecordNotifyConfigRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('NeedStatusNotify') is not None:
             self.need_status_notify = m.get('NeedStatusNotify')
+        if m.get('NotifyAuthKey') is not None:
+            self.notify_auth_key = m.get('NotifyAuthKey')
+        if m.get('NotifyReqAuth') is not None:
+            self.notify_req_auth = m.get('NotifyReqAuth')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('OnDemandUrl') is not None:
