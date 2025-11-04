@@ -772,10 +772,12 @@ class NodeSpec(TeaModel):
         self,
         binding_policy: BindingPolicy = None,
         count: int = None,
+        hyper_type: str = None,
         type: str = None,
     ):
         self.binding_policy = binding_policy
         self.count = count
+        self.hyper_type = hyper_type
         self.type = type
 
     def validate(self):
@@ -792,6 +794,8 @@ class NodeSpec(TeaModel):
             result['BindingPolicy'] = self.binding_policy.to_map()
         if self.count is not None:
             result['Count'] = self.count
+        if self.hyper_type is not None:
+            result['HyperType'] = self.hyper_type
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -803,6 +807,8 @@ class NodeSpec(TeaModel):
             self.binding_policy = temp_model.from_map(m['BindingPolicy'])
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('HyperType') is not None:
+            self.hyper_type = m.get('HyperType')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2125,6 +2131,8 @@ class Node(TeaModel):
         cpu: str = None,
         creator_id: str = None,
         descendant_quota_workload_num: int = None,
+        disk_capacity: int = None,
+        disk_pl: str = None,
         gpu: str = None,
         gpumemory: str = None,
         gputype: str = None,
@@ -2165,6 +2173,8 @@ class Node(TeaModel):
         self.cpu = cpu
         self.creator_id = creator_id
         self.descendant_quota_workload_num = descendant_quota_workload_num
+        self.disk_capacity = disk_capacity
+        self.disk_pl = disk_pl
         self.gpu = gpu
         self.gpumemory = gpumemory
         self.gputype = gputype
@@ -2232,6 +2242,10 @@ class Node(TeaModel):
             result['CreatorId'] = self.creator_id
         if self.descendant_quota_workload_num is not None:
             result['DescendantQuotaWorkloadNum'] = self.descendant_quota_workload_num
+        if self.disk_capacity is not None:
+            result['DiskCapacity'] = self.disk_capacity
+        if self.disk_pl is not None:
+            result['DiskPL'] = self.disk_pl
         if self.gpu is not None:
             result['GPU'] = self.gpu
         if self.gpumemory is not None:
@@ -2319,6 +2333,10 @@ class Node(TeaModel):
             self.creator_id = m.get('CreatorId')
         if m.get('DescendantQuotaWorkloadNum') is not None:
             self.descendant_quota_workload_num = m.get('DescendantQuotaWorkloadNum')
+        if m.get('DiskCapacity') is not None:
+            self.disk_capacity = m.get('DiskCapacity')
+        if m.get('DiskPL') is not None:
+            self.disk_pl = m.get('DiskPL')
         if m.get('GPU') is not None:
             self.gpu = m.get('GPU')
         if m.get('GPUMemory') is not None:
@@ -11798,6 +11816,7 @@ class ListNodesRequest(TeaModel):
         resource_group_ids: str = None,
         sort_by: str = None,
         verbose: bool = None,
+        workspace_id: str = None,
     ):
         self.accelerator_type = accelerator_type
         self.availability_zone = availability_zone
@@ -11822,6 +11841,7 @@ class ListNodesRequest(TeaModel):
         self.resource_group_ids = resource_group_ids
         self.sort_by = sort_by
         self.verbose = verbose
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -11878,6 +11898,8 @@ class ListNodesRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.verbose is not None:
             result['Verbose'] = self.verbose
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11928,6 +11950,8 @@ class ListNodesRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
