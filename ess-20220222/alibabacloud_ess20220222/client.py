@@ -3084,8 +3084,12 @@ class Client(OpenApiClient):
             query['AlbServerGroups'] = request.alb_server_groups
         if not UtilClient.is_unset(request.allocation_strategy):
             query['AllocationStrategy'] = request.allocation_strategy
+        if not UtilClient.is_unset(request.auto_rebalance):
+            query['AutoRebalance'] = request.auto_rebalance
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.balance_mode):
+            query['BalanceMode'] = request.balance_mode
         if not UtilClient.is_unset(request.capacity_options):
             query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.client_token):
@@ -3234,8 +3238,12 @@ class Client(OpenApiClient):
             query['AlbServerGroups'] = request.alb_server_groups
         if not UtilClient.is_unset(request.allocation_strategy):
             query['AllocationStrategy'] = request.allocation_strategy
+        if not UtilClient.is_unset(request.auto_rebalance):
+            query['AutoRebalance'] = request.auto_rebalance
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.balance_mode):
+            query['BalanceMode'] = request.balance_mode
         if not UtilClient.is_unset(request.capacity_options):
             query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.client_token):
@@ -11335,8 +11343,12 @@ class Client(OpenApiClient):
             query['ActiveScalingConfigurationId'] = request.active_scaling_configuration_id
         if not UtilClient.is_unset(request.allocation_strategy):
             query['AllocationStrategy'] = request.allocation_strategy
+        if not UtilClient.is_unset(request.auto_rebalance):
+            query['AutoRebalance'] = request.auto_rebalance
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.balance_mode):
+            query['BalanceMode'] = request.balance_mode
         if not UtilClient.is_unset(request.capacity_options):
             query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.compensate_with_on_demand):
@@ -11450,8 +11462,12 @@ class Client(OpenApiClient):
             query['ActiveScalingConfigurationId'] = request.active_scaling_configuration_id
         if not UtilClient.is_unset(request.allocation_strategy):
             query['AllocationStrategy'] = request.allocation_strategy
+        if not UtilClient.is_unset(request.auto_rebalance):
+            query['AutoRebalance'] = request.auto_rebalance
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.balance_mode):
+            query['BalanceMode'] = request.balance_mode
         if not UtilClient.is_unset(request.capacity_options):
             query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.compensate_with_on_demand):
@@ -13091,7 +13107,7 @@ class Client(OpenApiClient):
         """
         @summary Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\&M hurdles efficiently.
         
-        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from the corresponding scaling groups. If you want to retain a specific instance in the corresponding scaling group, you can put the instance into the Standby or Protected state. For more information, see [EnterStandby](~~EnterStandby~~) and [SetInstancesProtection](~~SetInstancesProtection~~).
+        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from their scaling groups. To prevent a specific instance from being removed, you can put it in either the Standby or Protected state. For more information, see [EnterStandby](https://help.aliyun.com/document_detail/459345.html) and [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: SetInstanceHealthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13134,7 +13150,7 @@ class Client(OpenApiClient):
         """
         @summary Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\&M hurdles efficiently.
         
-        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from the corresponding scaling groups. If you want to retain a specific instance in the corresponding scaling group, you can put the instance into the Standby or Protected state. For more information, see [EnterStandby](~~EnterStandby~~) and [SetInstancesProtection](~~SetInstancesProtection~~).
+        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from their scaling groups. To prevent a specific instance from being removed, you can put it in either the Standby or Protected state. For more information, see [EnterStandby](https://help.aliyun.com/document_detail/459345.html) and [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: SetInstanceHealthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13176,7 +13192,7 @@ class Client(OpenApiClient):
         """
         @summary Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\&M hurdles efficiently.
         
-        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from the corresponding scaling groups. If you want to retain a specific instance in the corresponding scaling group, you can put the instance into the Standby or Protected state. For more information, see [EnterStandby](~~EnterStandby~~) and [SetInstancesProtection](~~SetInstancesProtection~~).
+        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from their scaling groups. To prevent a specific instance from being removed, you can put it in either the Standby or Protected state. For more information, see [EnterStandby](https://help.aliyun.com/document_detail/459345.html) and [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: SetInstanceHealthRequest
         @return: SetInstanceHealthResponse
@@ -13191,7 +13207,7 @@ class Client(OpenApiClient):
         """
         @summary Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\&M hurdles efficiently.
         
-        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from the corresponding scaling groups. If you want to retain a specific instance in the corresponding scaling group, you can put the instance into the Standby or Protected state. For more information, see [EnterStandby](~~EnterStandby~~) and [SetInstancesProtection](~~SetInstancesProtection~~).
+        @description Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from their scaling groups. To prevent a specific instance from being removed, you can put it in either the Standby or Protected state. For more information, see [EnterStandby](https://help.aliyun.com/document_detail/459345.html) and [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: SetInstanceHealthRequest
         @return: SetInstanceHealthResponse

@@ -8945,7 +8945,9 @@ class CreateScalingGroupRequest(TeaModel):
         self,
         alb_server_groups: List[CreateScalingGroupRequestAlbServerGroups] = None,
         allocation_strategy: str = None,
+        auto_rebalance: bool = None,
         az_balance: bool = None,
+        balance_mode: str = None,
         capacity_options: CreateScalingGroupRequestCapacityOptions = None,
         client_token: str = None,
         compensate_with_on_demand: bool = None,
@@ -9000,6 +9002,7 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: priority.
         self.allocation_strategy = allocation_strategy
+        self.auto_rebalance = auto_rebalance
         # Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
         # *   true
@@ -9009,6 +9012,7 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
         # The client token that is used to ensure the idempotence of the request.
@@ -9274,8 +9278,12 @@ class CreateScalingGroupRequest(TeaModel):
                 result['AlbServerGroups'].append(k.to_map() if k else None)
         if self.allocation_strategy is not None:
             result['AllocationStrategy'] = self.allocation_strategy
+        if self.auto_rebalance is not None:
+            result['AutoRebalance'] = self.auto_rebalance
         if self.az_balance is not None:
             result['AzBalance'] = self.az_balance
+        if self.balance_mode is not None:
+            result['BalanceMode'] = self.balance_mode
         if self.capacity_options is not None:
             result['CapacityOptions'] = self.capacity_options.to_map()
         if self.client_token is not None:
@@ -9389,8 +9397,12 @@ class CreateScalingGroupRequest(TeaModel):
                 self.alb_server_groups.append(temp_model.from_map(k))
         if m.get('AllocationStrategy') is not None:
             self.allocation_strategy = m.get('AllocationStrategy')
+        if m.get('AutoRebalance') is not None:
+            self.auto_rebalance = m.get('AutoRebalance')
         if m.get('AzBalance') is not None:
             self.az_balance = m.get('AzBalance')
+        if m.get('BalanceMode') is not None:
+            self.balance_mode = m.get('BalanceMode')
         if m.get('CapacityOptions') is not None:
             temp_model = CreateScalingGroupRequestCapacityOptions()
             self.capacity_options = temp_model.from_map(m['CapacityOptions'])
@@ -23648,7 +23660,9 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         active_scaling_configuration_id: str = None,
         alb_server_groups: List[DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups] = None,
         allocation_strategy: str = None,
+        auto_rebalance: bool = None,
         az_balance: bool = None,
+        balance_mode: str = None,
         capacity_options: DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions = None,
         compensate_with_on_demand: bool = None,
         creation_time: str = None,
@@ -23719,11 +23733,13 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   priority: Auto Scaling adopts the predefined instance type sequence to create the required number of preemptible instances.
         # *   lowestPrice: Auto Scaling selects instance types that have the most economical vCPU pricing to create the required number of instances.
         self.allocation_strategy = allocation_strategy
+        self.auto_rebalance = auto_rebalance
         # Indicates whether instances in the scaling group are evenly distributed across the specified zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
         # *   true
         # *   false
         self.az_balance = az_balance
+        self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
         # Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
@@ -23952,8 +23968,12 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
                 result['AlbServerGroups'].append(k.to_map() if k else None)
         if self.allocation_strategy is not None:
             result['AllocationStrategy'] = self.allocation_strategy
+        if self.auto_rebalance is not None:
+            result['AutoRebalance'] = self.auto_rebalance
         if self.az_balance is not None:
             result['AzBalance'] = self.az_balance
+        if self.balance_mode is not None:
+            result['BalanceMode'] = self.balance_mode
         if self.capacity_options is not None:
             result['CapacityOptions'] = self.capacity_options.to_map()
         if self.compensate_with_on_demand is not None:
@@ -24097,8 +24117,12 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
                 self.alb_server_groups.append(temp_model.from_map(k))
         if m.get('AllocationStrategy') is not None:
             self.allocation_strategy = m.get('AllocationStrategy')
+        if m.get('AutoRebalance') is not None:
+            self.auto_rebalance = m.get('AutoRebalance')
         if m.get('AzBalance') is not None:
             self.az_balance = m.get('AzBalance')
+        if m.get('BalanceMode') is not None:
+            self.balance_mode = m.get('BalanceMode')
         if m.get('CapacityOptions') is not None:
             temp_model = DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions()
             self.capacity_options = temp_model.from_map(m['CapacityOptions'])
@@ -35580,7 +35604,9 @@ class ModifyScalingGroupRequest(TeaModel):
         self,
         active_scaling_configuration_id: str = None,
         allocation_strategy: str = None,
+        auto_rebalance: bool = None,
         az_balance: bool = None,
+        balance_mode: str = None,
         capacity_options: ModifyScalingGroupRequestCapacityOptions = None,
         compensate_with_on_demand: bool = None,
         custom_policy_arn: str = None,
@@ -35622,6 +35648,7 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: priority.
         self.allocation_strategy = allocation_strategy
+        self.auto_rebalance = auto_rebalance
         # Specifies whether to evenly distribute instances in the scaling group across zones. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
         # *   true
@@ -35629,6 +35656,7 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
         # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
@@ -35794,8 +35822,12 @@ class ModifyScalingGroupRequest(TeaModel):
             result['ActiveScalingConfigurationId'] = self.active_scaling_configuration_id
         if self.allocation_strategy is not None:
             result['AllocationStrategy'] = self.allocation_strategy
+        if self.auto_rebalance is not None:
+            result['AutoRebalance'] = self.auto_rebalance
         if self.az_balance is not None:
             result['AzBalance'] = self.az_balance
+        if self.balance_mode is not None:
+            result['BalanceMode'] = self.balance_mode
         if self.capacity_options is not None:
             result['CapacityOptions'] = self.capacity_options.to_map()
         if self.compensate_with_on_demand is not None:
@@ -35868,8 +35900,12 @@ class ModifyScalingGroupRequest(TeaModel):
             self.active_scaling_configuration_id = m.get('ActiveScalingConfigurationId')
         if m.get('AllocationStrategy') is not None:
             self.allocation_strategy = m.get('AllocationStrategy')
+        if m.get('AutoRebalance') is not None:
+            self.auto_rebalance = m.get('AutoRebalance')
         if m.get('AzBalance') is not None:
             self.az_balance = m.get('AzBalance')
+        if m.get('BalanceMode') is not None:
+            self.balance_mode = m.get('BalanceMode')
         if m.get('CapacityOptions') is not None:
             temp_model = ModifyScalingGroupRequestCapacityOptions()
             self.capacity_options = temp_model.from_map(m['CapacityOptions'])

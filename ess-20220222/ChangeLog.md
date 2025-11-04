@@ -1,3 +1,12 @@
+2025-11-04 Version: 1.10.20
+- Update API CreateScalingGroup: add request parameters AutoRebalance.
+- Update API CreateScalingGroup: add request parameters BalanceMode.
+- Update API DescribeScalingGroups: add response parameters Body.ScalingGroups.$.AutoRebalance.
+- Update API DescribeScalingGroups: add response parameters Body.ScalingGroups.$.BalanceMode.
+- Update API ModifyScalingGroup: add request parameters AutoRebalance.
+- Update API ModifyScalingGroup: add request parameters BalanceMode.
+
+
 2025-09-12 Version: 1.10.19
 - Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.CheckpointPauseTime.
 - Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.Checkpoints.
