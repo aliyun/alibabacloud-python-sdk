@@ -1,3 +1,7 @@
+2025-11-04 Version: 9.4.1
+- Update API DescribeInstances: add request parameters EipAddresses.
+
+
 2025-10-29 Version: 9.4.0
 - Support API DeleteAICPublicKey.
 - Support API DescribeSDGSharedDisks.

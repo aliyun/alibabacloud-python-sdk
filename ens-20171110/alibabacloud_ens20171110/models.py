@@ -31726,6 +31726,7 @@ class DescribeInstancesRequestTags(TeaModel):
 class DescribeInstancesRequest(TeaModel):
     def __init__(
         self,
+        eip_addresses: List[str] = None,
         ens_region_id: str = None,
         ens_region_ids: str = None,
         ens_service_id: str = None,
@@ -31747,6 +31748,7 @@ class DescribeInstancesRequest(TeaModel):
         tags: List[DescribeInstancesRequestTags] = None,
         v_switch_id: str = None,
     ):
+        self.eip_addresses = eip_addresses
         # The region ID.
         self.ens_region_id = ens_region_id
         # The IDs of the regions. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
@@ -31815,6 +31817,8 @@ class DescribeInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.eip_addresses is not None:
+            result['EipAddresses'] = self.eip_addresses
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.ens_region_ids is not None:
@@ -31861,6 +31865,8 @@ class DescribeInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipAddresses') is not None:
+            self.eip_addresses = m.get('EipAddresses')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('EnsRegionIds') is not None:
@@ -31910,6 +31916,7 @@ class DescribeInstancesRequest(TeaModel):
 class DescribeInstancesShrinkRequest(TeaModel):
     def __init__(
         self,
+        eip_addresses_shrink: str = None,
         ens_region_id: str = None,
         ens_region_ids: str = None,
         ens_service_id: str = None,
@@ -31931,6 +31938,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         tags_shrink: str = None,
         v_switch_id: str = None,
     ):
+        self.eip_addresses_shrink = eip_addresses_shrink
         # The region ID.
         self.ens_region_id = ens_region_id
         # The IDs of the regions. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
@@ -31996,6 +32004,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.eip_addresses_shrink is not None:
+            result['EipAddresses'] = self.eip_addresses_shrink
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.ens_region_ids is not None:
@@ -32040,6 +32050,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipAddresses') is not None:
+            self.eip_addresses_shrink = m.get('EipAddresses')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('EnsRegionIds') is not None:

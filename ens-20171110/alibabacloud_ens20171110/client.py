@@ -15936,11 +15936,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.eip_addresses):
+            request.eip_addresses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.eip_addresses, 'EipAddresses', 'json')
         if not UtilClient.is_unset(tmp_req.service_status):
             request.service_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_status, 'ServiceStatus', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.eip_addresses_shrink):
+            query['EipAddresses'] = request.eip_addresses_shrink
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.ens_region_ids):
@@ -16019,11 +16023,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.eip_addresses):
+            request.eip_addresses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.eip_addresses, 'EipAddresses', 'json')
         if not UtilClient.is_unset(tmp_req.service_status):
             request.service_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_status, 'ServiceStatus', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.eip_addresses_shrink):
+            query['EipAddresses'] = request.eip_addresses_shrink
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.ens_region_ids):
