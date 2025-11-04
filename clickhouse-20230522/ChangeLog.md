@@ -1,3 +1,7 @@
+2025-11-04 Version: 2.1.2
+- Update API DescribeEndpoints: add response parameters Body.Data.Endpoints.$.ComputingGroupId.
+
+
 2025-10-30 Version: 2.1.1
 - Update API CreateDBInstance: add request parameters DBTimeZone.
 

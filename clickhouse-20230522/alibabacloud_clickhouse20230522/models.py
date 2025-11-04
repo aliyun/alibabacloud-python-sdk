@@ -4732,6 +4732,7 @@ class DescribeEndpointsResponseBodyDataEndpointsPorts(TeaModel):
 class DescribeEndpointsResponseBodyDataEndpoints(TeaModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         connection_string: str = None,
         ipaddress: str = None,
         net_type: str = None,
@@ -4741,6 +4742,7 @@ class DescribeEndpointsResponseBodyDataEndpoints(TeaModel):
         vpc_id: str = None,
         vpc_instance_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The endpoint of the cluster.
         self.connection_string = connection_string
         # The IP address.
@@ -4773,6 +4775,8 @@ class DescribeEndpointsResponseBodyDataEndpoints(TeaModel):
             return _map
 
         result = dict()
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
         if self.ipaddress is not None:
@@ -4795,6 +4799,8 @@ class DescribeEndpointsResponseBodyDataEndpoints(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
         if m.get('IPAddress') is not None:
