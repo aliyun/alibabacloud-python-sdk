@@ -1,3 +1,18 @@
+2025-11-04 Version: 2.2.0
+- Support API AddRegisterLineage.
+- Support API CreatePipeline.
+- Support API CreatePipelineByAsync.
+- Support API DeleteRegisterLineage.
+- Support API GetPipelineAsyncResult.
+- Support API GetPipelineById.
+- Support API OfflinePipeline.
+- Support API OfflinePipelineByAsync.
+- Support API UpdatePipeline.
+- Support API UpdatePipelineByAsync.
+- Update API GrantDataServiceApi: add request parameters GrantCommand.ApplyDev.
+- Update API GrantDataServiceApi: add request parameters GrantCommand.ApplyProd.
+
+
 2025-09-12 Version: 2.1.1
 - Generated python 2023-06-30 for dataphin-public.
 

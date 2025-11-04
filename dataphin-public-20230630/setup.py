@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_dataphin-public20230630.
+setup module for alibabacloud_dataphin_public20230630.
 
-Created on 12/09/2025
+Created on 04/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_dataphin_public20230630"
-NAME = "alibabacloud_dataphin-public20230630" or "alibabacloud-package"
+NAME = "alibabacloud_dataphin_public20230630" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud dataphin-public (20230630) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

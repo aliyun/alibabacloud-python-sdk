@@ -596,6 +596,600 @@ class AddProjectMemberResponse(TeaModel):
         return self
 
 
+class AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        parent_guid: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_type = metadata_type
+        self.name = name
+        self.parent_guid = parent_guid
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_guid is not None:
+            result['ParentGuid'] = self.parent_guid
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentGuid') is not None:
+            self.parent_guid = m.get('ParentGuid')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        parent_guid: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_type = metadata_type
+        self.name = name
+        self.parent_guid = parent_guid
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_guid is not None:
+            result['ParentGuid'] = self.parent_guid
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentGuid') is not None:
+            self.parent_guid = m.get('ParentGuid')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages(TeaModel):
+    def __init__(
+        self,
+        is_direct: bool = None,
+        source: AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource = None,
+        target: AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget = None,
+    ):
+        self.is_direct = is_direct
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_direct is not None:
+            result['IsDirect'] = self.is_direct
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDirect') is not None:
+            self.is_direct = m.get('IsDirect')
+        if m.get('Source') is not None:
+            temp_model = AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Target') is not None:
+            temp_model = AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
+
+
+class AddRegisterLineageRequestAddRegisterLineageCommandSource(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_sub_type: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_sub_type = metadata_sub_type
+        # This parameter is required.
+        self.metadata_type = metadata_type
+        self.name = name
+        # This parameter is required.
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_sub_type is not None:
+            result['MetadataSubType'] = self.metadata_sub_type
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataSubType') is not None:
+            self.metadata_sub_type = m.get('MetadataSubType')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class AddRegisterLineageRequestAddRegisterLineageCommandTarget(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_sub_type: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_sub_type = metadata_sub_type
+        # This parameter is required.
+        self.metadata_type = metadata_type
+        self.name = name
+        # This parameter is required.
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_sub_type is not None:
+            result['MetadataSubType'] = self.metadata_sub_type
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataSubType') is not None:
+            self.metadata_sub_type = m.get('MetadataSubType')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class AddRegisterLineageRequestAddRegisterLineageCommand(TeaModel):
+    def __init__(
+        self,
+        check_asset_exist: bool = None,
+        detailed_lineages: List[AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages] = None,
+        relation_properties: Dict[str, Any] = None,
+        source: AddRegisterLineageRequestAddRegisterLineageCommandSource = None,
+        target: AddRegisterLineageRequestAddRegisterLineageCommandTarget = None,
+        tenant_id: int = None,
+        user_id: str = None,
+    ):
+        self.check_asset_exist = check_asset_exist
+        self.detailed_lineages = detailed_lineages
+        self.relation_properties = relation_properties
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+        self.tenant_id = tenant_id
+        self.user_id = user_id
+
+    def validate(self):
+        if self.detailed_lineages:
+            for k in self.detailed_lineages:
+                if k:
+                    k.validate()
+        if self.source:
+            self.source.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_asset_exist is not None:
+            result['CheckAssetExist'] = self.check_asset_exist
+        result['DetailedLineages'] = []
+        if self.detailed_lineages is not None:
+            for k in self.detailed_lineages:
+                result['DetailedLineages'].append(k.to_map() if k else None)
+        if self.relation_properties is not None:
+            result['RelationProperties'] = self.relation_properties
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckAssetExist') is not None:
+            self.check_asset_exist = m.get('CheckAssetExist')
+        self.detailed_lineages = []
+        if m.get('DetailedLineages') is not None:
+            for k in m.get('DetailedLineages'):
+                temp_model = AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages()
+                self.detailed_lineages.append(temp_model.from_map(k))
+        if m.get('RelationProperties') is not None:
+            self.relation_properties = m.get('RelationProperties')
+        if m.get('Source') is not None:
+            temp_model = AddRegisterLineageRequestAddRegisterLineageCommandSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Target') is not None:
+            temp_model = AddRegisterLineageRequestAddRegisterLineageCommandTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AddRegisterLineageRequest(TeaModel):
+    def __init__(
+        self,
+        add_register_lineage_command: AddRegisterLineageRequestAddRegisterLineageCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.add_register_lineage_command = add_register_lineage_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.add_register_lineage_command:
+            self.add_register_lineage_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_register_lineage_command is not None:
+            result['AddRegisterLineageCommand'] = self.add_register_lineage_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddRegisterLineageCommand') is not None:
+            temp_model = AddRegisterLineageRequestAddRegisterLineageCommand()
+            self.add_register_lineage_command = temp_model.from_map(m['AddRegisterLineageCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class AddRegisterLineageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        add_register_lineage_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.add_register_lineage_command_shrink = add_register_lineage_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_register_lineage_command_shrink is not None:
+            result['AddRegisterLineageCommand'] = self.add_register_lineage_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddRegisterLineageCommand') is not None:
+            self.add_register_lineage_command_shrink = m.get('AddRegisterLineageCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class AddRegisterLineageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddRegisterLineageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddRegisterLineageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddRegisterLineageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddTenantMembersRequestAddCommandUserList(TeaModel):
     def __init__(
         self,
@@ -6519,6 +7113,1071 @@ class CreateNodeSupplementResponse(TeaModel):
         return self
 
 
+class CreatePipelineRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class CreatePipelineRequestCreateCommandNodeInfo(TeaModel):
+    def __init__(
+        self,
+        directory: str = None,
+        file_id: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        pipeline_id: int = None,
+    ):
+        self.directory = directory
+        self.file_id = file_id
+        self.node_id = node_id
+        # This parameter is required.
+        self.node_name = node_name
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory is not None:
+            result['Directory'] = self.directory
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class CreatePipelineRequestCreateCommandPipelineConfigHops(TeaModel):
+    def __init__(
+        self,
+        send_to: bool = None,
+        source: str = None,
+        target: str = None,
+    ):
+        self.send_to = send_to
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.send_to is not None:
+            result['SendTo'] = self.send_to
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SendTo') is not None:
+            self.send_to = m.get('SendTo')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class CreatePipelineRequestCreateCommandPipelineConfigSteps(TeaModel):
+    def __init__(
+        self,
+        is_distribute: bool = None,
+        key: str = None,
+        plugin_config: str = None,
+        step_name: str = None,
+        step_type: str = None,
+    ):
+        self.is_distribute = is_distribute
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.plugin_config = plugin_config
+        # This parameter is required.
+        self.step_name = step_name
+        # This parameter is required.
+        self.step_type = step_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_distribute is not None:
+            result['IsDistribute'] = self.is_distribute
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.plugin_config is not None:
+            result['PluginConfig'] = self.plugin_config
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_type is not None:
+            result['StepType'] = self.step_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDistribute') is not None:
+            self.is_distribute = m.get('IsDistribute')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('PluginConfig') is not None:
+            self.plugin_config = m.get('PluginConfig')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepType') is not None:
+            self.step_type = m.get('StepType')
+        return self
+
+
+class CreatePipelineRequestCreateCommandPipelineConfig(TeaModel):
+    def __init__(
+        self,
+        hops: List[CreatePipelineRequestCreateCommandPipelineConfigHops] = None,
+        steps: List[CreatePipelineRequestCreateCommandPipelineConfigSteps] = None,
+    ):
+        # This parameter is required.
+        self.hops = hops
+        # This parameter is required.
+        self.steps = steps
+
+    def validate(self):
+        if self.hops:
+            for k in self.hops:
+                if k:
+                    k.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hops'] = []
+        if self.hops is not None:
+            for k in self.hops:
+                result['Hops'].append(k.to_map() if k else None)
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hops = []
+        if m.get('Hops') is not None:
+            for k in m.get('Hops'):
+                temp_model = CreatePipelineRequestCreateCommandPipelineConfigHops()
+                self.hops.append(temp_model.from_map(k))
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = CreatePipelineRequestCreateCommandPipelineConfigSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePipelineRequestCreateCommand(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        mode: str = None,
+        node_info: CreatePipelineRequestCreateCommandNodeInfo = None,
+        pipeline_config: CreatePipelineRequestCreateCommandPipelineConfig = None,
+        pipeline_json: str = None,
+        pipeline_type: int = None,
+        schedule_config: str = None,
+        settings: str = None,
+        submit: bool = None,
+    ):
+        self.comment = comment
+        self.mode = mode
+        # This parameter is required.
+        self.node_info = node_info
+        # This parameter is required.
+        self.pipeline_config = pipeline_config
+        self.pipeline_json = pipeline_json
+        self.pipeline_type = pipeline_type
+        # This parameter is required.
+        self.schedule_config = schedule_config
+        self.settings = settings
+        self.submit = submit
+
+    def validate(self):
+        if self.node_info:
+            self.node_info.validate()
+        if self.pipeline_config:
+            self.pipeline_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.node_info is not None:
+            result['NodeInfo'] = self.node_info.to_map()
+        if self.pipeline_config is not None:
+            result['PipelineConfig'] = self.pipeline_config.to_map()
+        if self.pipeline_json is not None:
+            result['PipelineJson'] = self.pipeline_json
+        if self.pipeline_type is not None:
+            result['PipelineType'] = self.pipeline_type
+        if self.schedule_config is not None:
+            result['ScheduleConfig'] = self.schedule_config
+        if self.settings is not None:
+            result['Settings'] = self.settings
+        if self.submit is not None:
+            result['Submit'] = self.submit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('NodeInfo') is not None:
+            temp_model = CreatePipelineRequestCreateCommandNodeInfo()
+            self.node_info = temp_model.from_map(m['NodeInfo'])
+        if m.get('PipelineConfig') is not None:
+            temp_model = CreatePipelineRequestCreateCommandPipelineConfig()
+            self.pipeline_config = temp_model.from_map(m['PipelineConfig'])
+        if m.get('PipelineJson') is not None:
+            self.pipeline_json = m.get('PipelineJson')
+        if m.get('PipelineType') is not None:
+            self.pipeline_type = m.get('PipelineType')
+        if m.get('ScheduleConfig') is not None:
+            self.schedule_config = m.get('ScheduleConfig')
+        if m.get('Settings') is not None:
+            self.settings = m.get('Settings')
+        if m.get('Submit') is not None:
+            self.submit = m.get('Submit')
+        return self
+
+
+class CreatePipelineRequest(TeaModel):
+    def __init__(
+        self,
+        context: CreatePipelineRequestContext = None,
+        create_command: CreatePipelineRequestCreateCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.create_command = create_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.create_command:
+            self.create_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.create_command is not None:
+            result['CreateCommand'] = self.create_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = CreatePipelineRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('CreateCommand') is not None:
+            temp_model = CreatePipelineRequestCreateCommand()
+            self.create_command = temp_model.from_map(m['CreateCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreatePipelineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        create_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.create_command_shrink = create_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.create_command_shrink is not None:
+            result['CreateCommand'] = self.create_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('CreateCommand') is not None:
+            self.create_command_shrink = m.get('CreateCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreatePipelineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_machine: str = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+        submit_id: int = None,
+        version: str = None,
+    ):
+        self.host_machine = host_machine
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+        self.submit_id = submit_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_machine is not None:
+            result['HostMachine'] = self.host_machine
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.submit_id is not None:
+            result['SubmitId'] = self.submit_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostMachine') is not None:
+            self.host_machine = m.get('HostMachine')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('SubmitId') is not None:
+            self.submit_id = m.get('SubmitId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CreatePipelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreatePipelineResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreatePipelineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePipelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePipelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePipelineByAsyncRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class CreatePipelineByAsyncRequestCreateCommandNodeInfo(TeaModel):
+    def __init__(
+        self,
+        directory: str = None,
+        file_id: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        pipeline_id: int = None,
+    ):
+        self.directory = directory
+        self.file_id = file_id
+        self.node_id = node_id
+        # This parameter is required.
+        self.node_name = node_name
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory is not None:
+            result['Directory'] = self.directory
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class CreatePipelineByAsyncRequestCreateCommandPipelineConfigHops(TeaModel):
+    def __init__(
+        self,
+        send_to: bool = None,
+        source: str = None,
+        target: str = None,
+    ):
+        self.send_to = send_to
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.send_to is not None:
+            result['SendTo'] = self.send_to
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SendTo') is not None:
+            self.send_to = m.get('SendTo')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class CreatePipelineByAsyncRequestCreateCommandPipelineConfigSteps(TeaModel):
+    def __init__(
+        self,
+        is_distribute: bool = None,
+        key: str = None,
+        plugin_config: str = None,
+        step_name: str = None,
+        step_type: str = None,
+    ):
+        self.is_distribute = is_distribute
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.plugin_config = plugin_config
+        # This parameter is required.
+        self.step_name = step_name
+        # This parameter is required.
+        self.step_type = step_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_distribute is not None:
+            result['IsDistribute'] = self.is_distribute
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.plugin_config is not None:
+            result['PluginConfig'] = self.plugin_config
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_type is not None:
+            result['StepType'] = self.step_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDistribute') is not None:
+            self.is_distribute = m.get('IsDistribute')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('PluginConfig') is not None:
+            self.plugin_config = m.get('PluginConfig')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepType') is not None:
+            self.step_type = m.get('StepType')
+        return self
+
+
+class CreatePipelineByAsyncRequestCreateCommandPipelineConfig(TeaModel):
+    def __init__(
+        self,
+        hops: List[CreatePipelineByAsyncRequestCreateCommandPipelineConfigHops] = None,
+        steps: List[CreatePipelineByAsyncRequestCreateCommandPipelineConfigSteps] = None,
+    ):
+        # This parameter is required.
+        self.hops = hops
+        # This parameter is required.
+        self.steps = steps
+
+    def validate(self):
+        if self.hops:
+            for k in self.hops:
+                if k:
+                    k.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hops'] = []
+        if self.hops is not None:
+            for k in self.hops:
+                result['Hops'].append(k.to_map() if k else None)
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hops = []
+        if m.get('Hops') is not None:
+            for k in m.get('Hops'):
+                temp_model = CreatePipelineByAsyncRequestCreateCommandPipelineConfigHops()
+                self.hops.append(temp_model.from_map(k))
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = CreatePipelineByAsyncRequestCreateCommandPipelineConfigSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePipelineByAsyncRequestCreateCommand(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        mode: str = None,
+        node_info: CreatePipelineByAsyncRequestCreateCommandNodeInfo = None,
+        pipeline_config: CreatePipelineByAsyncRequestCreateCommandPipelineConfig = None,
+        pipeline_json: str = None,
+        pipeline_type: int = None,
+        schedule_config: str = None,
+        settings: str = None,
+        submit: bool = None,
+    ):
+        self.comment = comment
+        self.mode = mode
+        # This parameter is required.
+        self.node_info = node_info
+        # This parameter is required.
+        self.pipeline_config = pipeline_config
+        self.pipeline_json = pipeline_json
+        self.pipeline_type = pipeline_type
+        # This parameter is required.
+        self.schedule_config = schedule_config
+        self.settings = settings
+        self.submit = submit
+
+    def validate(self):
+        if self.node_info:
+            self.node_info.validate()
+        if self.pipeline_config:
+            self.pipeline_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.node_info is not None:
+            result['NodeInfo'] = self.node_info.to_map()
+        if self.pipeline_config is not None:
+            result['PipelineConfig'] = self.pipeline_config.to_map()
+        if self.pipeline_json is not None:
+            result['PipelineJson'] = self.pipeline_json
+        if self.pipeline_type is not None:
+            result['PipelineType'] = self.pipeline_type
+        if self.schedule_config is not None:
+            result['ScheduleConfig'] = self.schedule_config
+        if self.settings is not None:
+            result['Settings'] = self.settings
+        if self.submit is not None:
+            result['Submit'] = self.submit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('NodeInfo') is not None:
+            temp_model = CreatePipelineByAsyncRequestCreateCommandNodeInfo()
+            self.node_info = temp_model.from_map(m['NodeInfo'])
+        if m.get('PipelineConfig') is not None:
+            temp_model = CreatePipelineByAsyncRequestCreateCommandPipelineConfig()
+            self.pipeline_config = temp_model.from_map(m['PipelineConfig'])
+        if m.get('PipelineJson') is not None:
+            self.pipeline_json = m.get('PipelineJson')
+        if m.get('PipelineType') is not None:
+            self.pipeline_type = m.get('PipelineType')
+        if m.get('ScheduleConfig') is not None:
+            self.schedule_config = m.get('ScheduleConfig')
+        if m.get('Settings') is not None:
+            self.settings = m.get('Settings')
+        if m.get('Submit') is not None:
+            self.submit = m.get('Submit')
+        return self
+
+
+class CreatePipelineByAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        context: CreatePipelineByAsyncRequestContext = None,
+        create_command: CreatePipelineByAsyncRequestCreateCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.create_command = create_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.create_command:
+            self.create_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.create_command is not None:
+            result['CreateCommand'] = self.create_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = CreatePipelineByAsyncRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('CreateCommand') is not None:
+            temp_model = CreatePipelineByAsyncRequestCreateCommand()
+            self.create_command = temp_model.from_map(m['CreateCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreatePipelineByAsyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        create_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.create_command_shrink = create_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.create_command_shrink is not None:
+            result['CreateCommand'] = self.create_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('CreateCommand') is not None:
+            self.create_command_shrink = m.get('CreateCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreatePipelineByAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePipelineByAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePipelineByAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePipelineByAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo(TeaModel):
     def __init__(
         self,
@@ -9592,6 +11251,594 @@ class DeleteDirectoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDirectoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesSource(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        parent_guid: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_type = metadata_type
+        self.name = name
+        self.parent_guid = parent_guid
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_guid is not None:
+            result['ParentGuid'] = self.parent_guid
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentGuid') is not None:
+            self.parent_guid = m.get('ParentGuid')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesTarget(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        parent_guid: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_type = metadata_type
+        self.name = name
+        self.parent_guid = parent_guid
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_guid is not None:
+            result['ParentGuid'] = self.parent_guid
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentGuid') is not None:
+            self.parent_guid = m.get('ParentGuid')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineages(TeaModel):
+    def __init__(
+        self,
+        is_direct: bool = None,
+        source: DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesSource = None,
+        target: DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesTarget = None,
+    ):
+        self.is_direct = is_direct
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_direct is not None:
+            result['IsDirect'] = self.is_direct
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDirect') is not None:
+            self.is_direct = m.get('IsDirect')
+        if m.get('Source') is not None:
+            temp_model = DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Target') is not None:
+            temp_model = DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
+
+
+class DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_sub_type: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_sub_type = metadata_sub_type
+        # This parameter is required.
+        self.metadata_type = metadata_type
+        self.name = name
+        # This parameter is required.
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_sub_type is not None:
+            result['MetadataSubType'] = self.metadata_sub_type
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataSubType') is not None:
+            self.metadata_sub_type = m.get('MetadataSubType')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        env: str = None,
+        ext_properties: Dict[str, Any] = None,
+        guid: str = None,
+        metadata_sub_type: str = None,
+        metadata_type: str = None,
+        name: str = None,
+        reference_type: str = None,
+        schema: str = None,
+    ):
+        self.catalog = catalog
+        self.env = env
+        self.ext_properties = ext_properties
+        self.guid = guid
+        self.metadata_sub_type = metadata_sub_type
+        # This parameter is required.
+        self.metadata_type = metadata_type
+        self.name = name
+        # This parameter is required.
+        self.reference_type = reference_type
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.ext_properties is not None:
+            result['ExtProperties'] = self.ext_properties
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.metadata_sub_type is not None:
+            result['MetadataSubType'] = self.metadata_sub_type
+        if self.metadata_type is not None:
+            result['MetadataType'] = self.metadata_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.reference_type is not None:
+            result['ReferenceType'] = self.reference_type
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExtProperties') is not None:
+            self.ext_properties = m.get('ExtProperties')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('MetadataSubType') is not None:
+            self.metadata_sub_type = m.get('MetadataSubType')
+        if m.get('MetadataType') is not None:
+            self.metadata_type = m.get('MetadataType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ReferenceType') is not None:
+            self.reference_type = m.get('ReferenceType')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class DeleteRegisterLineageRequestDeleteRegisterLineageCommand(TeaModel):
+    def __init__(
+        self,
+        cascade_delete_lineage: bool = None,
+        detailed_lineages: List[DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineages] = None,
+        source: DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource = None,
+        target: DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget = None,
+        tenant_id: int = None,
+        user_id: str = None,
+    ):
+        self.cascade_delete_lineage = cascade_delete_lineage
+        self.detailed_lineages = detailed_lineages
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+        self.tenant_id = tenant_id
+        self.user_id = user_id
+
+    def validate(self):
+        if self.detailed_lineages:
+            for k in self.detailed_lineages:
+                if k:
+                    k.validate()
+        if self.source:
+            self.source.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cascade_delete_lineage is not None:
+            result['CascadeDeleteLineage'] = self.cascade_delete_lineage
+        result['DetailedLineages'] = []
+        if self.detailed_lineages is not None:
+            for k in self.detailed_lineages:
+                result['DetailedLineages'].append(k.to_map() if k else None)
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CascadeDeleteLineage') is not None:
+            self.cascade_delete_lineage = m.get('CascadeDeleteLineage')
+        self.detailed_lineages = []
+        if m.get('DetailedLineages') is not None:
+            for k in m.get('DetailedLineages'):
+                temp_model = DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineages()
+                self.detailed_lineages.append(temp_model.from_map(k))
+        if m.get('Source') is not None:
+            temp_model = DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Target') is not None:
+            temp_model = DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteRegisterLineageRequest(TeaModel):
+    def __init__(
+        self,
+        delete_register_lineage_command: DeleteRegisterLineageRequestDeleteRegisterLineageCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.delete_register_lineage_command = delete_register_lineage_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.delete_register_lineage_command:
+            self.delete_register_lineage_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_register_lineage_command is not None:
+            result['DeleteRegisterLineageCommand'] = self.delete_register_lineage_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteRegisterLineageCommand') is not None:
+            temp_model = DeleteRegisterLineageRequestDeleteRegisterLineageCommand()
+            self.delete_register_lineage_command = temp_model.from_map(m['DeleteRegisterLineageCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class DeleteRegisterLineageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        delete_register_lineage_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.delete_register_lineage_command_shrink = delete_register_lineage_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_register_lineage_command_shrink is not None:
+            result['DeleteRegisterLineageCommand'] = self.delete_register_lineage_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteRegisterLineageCommand') is not None:
+            self.delete_register_lineage_command_shrink = m.get('DeleteRegisterLineageCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class DeleteRegisterLineageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteRegisterLineageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRegisterLineageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRegisterLineageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25155,6 +27402,832 @@ class GetPhysicalNodeOperationLogResponse(TeaModel):
         return self
 
 
+class GetPipelineAsyncResultRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetPipelineAsyncResultRequest(TeaModel):
+    def __init__(
+        self,
+        async_id: int = None,
+        context: GetPipelineAsyncResultRequestContext = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.async_id = async_id
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_id is not None:
+            result['AsyncId'] = self.async_id
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncId') is not None:
+            self.async_id = m.get('AsyncId')
+        if m.get('Context') is not None:
+            temp_model = GetPipelineAsyncResultRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class GetPipelineAsyncResultShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        async_id: int = None,
+        context_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.async_id = async_id
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_id is not None:
+            result['AsyncId'] = self.async_id
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncId') is not None:
+            self.async_id = m.get('AsyncId')
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class GetPipelineAsyncResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        async_id: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        host_machine: str = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+        status: str = None,
+        submit_id: int = None,
+        version: str = None,
+    ):
+        self.async_id = async_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.host_machine = host_machine
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+        self.status = status
+        self.submit_id = submit_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_id is not None:
+            result['AsyncId'] = self.async_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.host_machine is not None:
+            result['HostMachine'] = self.host_machine
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.submit_id is not None:
+            result['SubmitId'] = self.submit_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncId') is not None:
+            self.async_id = m.get('AsyncId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HostMachine') is not None:
+            self.host_machine = m.get('HostMachine')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubmitId') is not None:
+            self.submit_id = m.get('SubmitId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetPipelineAsyncResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPipelineAsyncResultResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPipelineAsyncResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPipelineAsyncResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPipelineAsyncResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPipelineAsyncResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPipelineByIdRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetPipelineByIdRequestQueryId(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+    ):
+        self.file_id = file_id
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class GetPipelineByIdRequest(TeaModel):
+    def __init__(
+        self,
+        context: GetPipelineByIdRequestContext = None,
+        op_tenant_id: int = None,
+        query_id: GetPipelineByIdRequestQueryId = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.query_id = query_id
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.query_id:
+            self.query_id.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = GetPipelineByIdRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('QueryId') is not None:
+            temp_model = GetPipelineByIdRequestQueryId()
+            self.query_id = temp_model.from_map(m['QueryId'])
+        return self
+
+
+class GetPipelineByIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        op_tenant_id: int = None,
+        query_id_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.query_id_shrink = query_id_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.query_id_shrink is not None:
+            result['QueryId'] = self.query_id_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('QueryId') is not None:
+            self.query_id_shrink = m.get('QueryId')
+        return self
+
+
+class GetPipelineByIdResponseBodyDataNodeInfo(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        directory: str = None,
+        file_id: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        pipeline_id: int = None,
+    ):
+        self.desc = desc
+        self.directory = directory
+        self.file_id = file_id
+        self.node_id = node_id
+        self.node_name = node_name
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.directory is not None:
+            result['Directory'] = self.directory
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class GetPipelineByIdResponseBodyDataPipelineConfigHops(TeaModel):
+    def __init__(
+        self,
+        send_to: bool = None,
+        source: str = None,
+        target: str = None,
+    ):
+        self.send_to = send_to
+        self.source = source
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.send_to is not None:
+            result['SendTo'] = self.send_to
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SendTo') is not None:
+            self.send_to = m.get('SendTo')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class GetPipelineByIdResponseBodyDataPipelineConfigSteps(TeaModel):
+    def __init__(
+        self,
+        is_distribute: bool = None,
+        key: str = None,
+        plugin_config: str = None,
+        step_name: str = None,
+        step_type: str = None,
+    ):
+        self.is_distribute = is_distribute
+        self.key = key
+        self.plugin_config = plugin_config
+        self.step_name = step_name
+        self.step_type = step_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_distribute is not None:
+            result['IsDistribute'] = self.is_distribute
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.plugin_config is not None:
+            result['PluginConfig'] = self.plugin_config
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_type is not None:
+            result['StepType'] = self.step_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDistribute') is not None:
+            self.is_distribute = m.get('IsDistribute')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('PluginConfig') is not None:
+            self.plugin_config = m.get('PluginConfig')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepType') is not None:
+            self.step_type = m.get('StepType')
+        return self
+
+
+class GetPipelineByIdResponseBodyDataPipelineConfig(TeaModel):
+    def __init__(
+        self,
+        hops: List[GetPipelineByIdResponseBodyDataPipelineConfigHops] = None,
+        steps: List[GetPipelineByIdResponseBodyDataPipelineConfigSteps] = None,
+    ):
+        self.hops = hops
+        self.steps = steps
+
+    def validate(self):
+        if self.hops:
+            for k in self.hops:
+                if k:
+                    k.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hops'] = []
+        if self.hops is not None:
+            for k in self.hops:
+                result['Hops'].append(k.to_map() if k else None)
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hops = []
+        if m.get('Hops') is not None:
+            for k in m.get('Hops'):
+                temp_model = GetPipelineByIdResponseBodyDataPipelineConfigHops()
+                self.hops.append(temp_model.from_map(k))
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = GetPipelineByIdResponseBodyDataPipelineConfigSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class GetPipelineByIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        mode: str = None,
+        node_info: GetPipelineByIdResponseBodyDataNodeInfo = None,
+        pipeline_config: GetPipelineByIdResponseBodyDataPipelineConfig = None,
+        pipeline_json: str = None,
+        pipeline_type: int = None,
+        schedule_config: str = None,
+        settings: str = None,
+    ):
+        self.mode = mode
+        self.node_info = node_info
+        self.pipeline_config = pipeline_config
+        self.pipeline_json = pipeline_json
+        self.pipeline_type = pipeline_type
+        self.schedule_config = schedule_config
+        self.settings = settings
+
+    def validate(self):
+        if self.node_info:
+            self.node_info.validate()
+        if self.pipeline_config:
+            self.pipeline_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.node_info is not None:
+            result['NodeInfo'] = self.node_info.to_map()
+        if self.pipeline_config is not None:
+            result['PipelineConfig'] = self.pipeline_config.to_map()
+        if self.pipeline_json is not None:
+            result['PipelineJson'] = self.pipeline_json
+        if self.pipeline_type is not None:
+            result['PipelineType'] = self.pipeline_type
+        if self.schedule_config is not None:
+            result['ScheduleConfig'] = self.schedule_config
+        if self.settings is not None:
+            result['Settings'] = self.settings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('NodeInfo') is not None:
+            temp_model = GetPipelineByIdResponseBodyDataNodeInfo()
+            self.node_info = temp_model.from_map(m['NodeInfo'])
+        if m.get('PipelineConfig') is not None:
+            temp_model = GetPipelineByIdResponseBodyDataPipelineConfig()
+            self.pipeline_config = temp_model.from_map(m['PipelineConfig'])
+        if m.get('PipelineJson') is not None:
+            self.pipeline_json = m.get('PipelineJson')
+        if m.get('PipelineType') is not None:
+            self.pipeline_type = m.get('PipelineType')
+        if m.get('ScheduleConfig') is not None:
+            self.schedule_config = m.get('ScheduleConfig')
+        if m.get('Settings') is not None:
+            self.settings = m.get('Settings')
+        return self
+
+
+class GetPipelineByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPipelineByIdResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPipelineByIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPipelineByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPipelineByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPipelineByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetProjectRequest(TeaModel):
     def __init__(
         self,
@@ -30363,6 +33436,8 @@ class GrantDataServiceApiRequestGrantCommand(TeaModel):
         self,
         api_id: int = None,
         app_id: int = None,
+        apply_dev: bool = None,
+        apply_prod: bool = None,
         dev_field_list: List[GrantDataServiceApiRequestGrantCommandDevFieldList] = None,
         expire_date: str = None,
         prod_field_list: List[GrantDataServiceApiRequestGrantCommandProdFieldList] = None,
@@ -30374,6 +33449,8 @@ class GrantDataServiceApiRequestGrantCommand(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        self.apply_dev = apply_dev
+        self.apply_prod = apply_prod
         self.dev_field_list = dev_field_list
         # This parameter is required.
         self.expire_date = expire_date
@@ -30401,6 +33478,10 @@ class GrantDataServiceApiRequestGrantCommand(TeaModel):
             result['ApiId'] = self.api_id
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.apply_dev is not None:
+            result['ApplyDev'] = self.apply_dev
+        if self.apply_prod is not None:
+            result['ApplyProd'] = self.apply_prod
         result['DevFieldList'] = []
         if self.dev_field_list is not None:
             for k in self.dev_field_list:
@@ -30421,6 +33502,10 @@ class GrantDataServiceApiRequestGrantCommand(TeaModel):
             self.api_id = m.get('ApiId')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('ApplyDev') is not None:
+            self.apply_dev = m.get('ApplyDev')
+        if m.get('ApplyProd') is not None:
+            self.apply_prod = m.get('ApplyProd')
         self.dev_field_list = []
         if m.get('DevFieldList') is not None:
             for k in m.get('DevFieldList'):
@@ -47146,6 +50231,609 @@ class OfflineBizEntityResponse(TeaModel):
         return self
 
 
+class OfflinePipelineRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class OfflinePipelineRequestOfflineCommand(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        delete: bool = None,
+        file_id: int = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.delete = delete
+        self.file_id = file_id
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class OfflinePipelineRequest(TeaModel):
+    def __init__(
+        self,
+        context: OfflinePipelineRequestContext = None,
+        offline_command: OfflinePipelineRequestOfflineCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.offline_command = offline_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.offline_command:
+            self.offline_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.offline_command is not None:
+            result['OfflineCommand'] = self.offline_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = OfflinePipelineRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('OfflineCommand') is not None:
+            temp_model = OfflinePipelineRequestOfflineCommand()
+            self.offline_command = temp_model.from_map(m['OfflineCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class OfflinePipelineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        offline_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.offline_command_shrink = offline_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.offline_command_shrink is not None:
+            result['OfflineCommand'] = self.offline_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('OfflineCommand') is not None:
+            self.offline_command_shrink = m.get('OfflineCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class OfflinePipelineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_machine: str = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+        submit_id: int = None,
+        version: str = None,
+    ):
+        self.host_machine = host_machine
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+        self.submit_id = submit_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_machine is not None:
+            result['HostMachine'] = self.host_machine
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.submit_id is not None:
+            result['SubmitId'] = self.submit_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostMachine') is not None:
+            self.host_machine = m.get('HostMachine')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('SubmitId') is not None:
+            self.submit_id = m.get('SubmitId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class OfflinePipelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: OfflinePipelineResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = OfflinePipelineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OfflinePipelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OfflinePipelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OfflinePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OfflinePipelineByAsyncRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class OfflinePipelineByAsyncRequestOfflineCommand(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        delete: bool = None,
+        file_id: int = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.delete = delete
+        self.file_id = file_id
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class OfflinePipelineByAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        context: OfflinePipelineByAsyncRequestContext = None,
+        offline_command: OfflinePipelineByAsyncRequestOfflineCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.offline_command = offline_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.offline_command:
+            self.offline_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.offline_command is not None:
+            result['OfflineCommand'] = self.offline_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = OfflinePipelineByAsyncRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('OfflineCommand') is not None:
+            temp_model = OfflinePipelineByAsyncRequestOfflineCommand()
+            self.offline_command = temp_model.from_map(m['OfflineCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class OfflinePipelineByAsyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        offline_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.offline_command_shrink = offline_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.offline_command_shrink is not None:
+            result['OfflineCommand'] = self.offline_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('OfflineCommand') is not None:
+            self.offline_command_shrink = m.get('OfflineCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class OfflinePipelineByAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OfflinePipelineByAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OfflinePipelineByAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OfflinePipelineByAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OnlineBizEntityRequestOnlineCommand(TeaModel):
     def __init__(
         self,
@@ -54493,6 +58181,1071 @@ class UpdateFileNameResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFileNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePipelineRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class UpdatePipelineRequestUpdateCommandNodeInfo(TeaModel):
+    def __init__(
+        self,
+        directory: str = None,
+        file_id: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        pipeline_id: int = None,
+    ):
+        self.directory = directory
+        self.file_id = file_id
+        self.node_id = node_id
+        # This parameter is required.
+        self.node_name = node_name
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory is not None:
+            result['Directory'] = self.directory
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class UpdatePipelineRequestUpdateCommandPipelineConfigHops(TeaModel):
+    def __init__(
+        self,
+        send_to: bool = None,
+        source: str = None,
+        target: str = None,
+    ):
+        self.send_to = send_to
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.send_to is not None:
+            result['SendTo'] = self.send_to
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SendTo') is not None:
+            self.send_to = m.get('SendTo')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class UpdatePipelineRequestUpdateCommandPipelineConfigSteps(TeaModel):
+    def __init__(
+        self,
+        is_distribute: bool = None,
+        key: str = None,
+        plugin_config: str = None,
+        step_name: str = None,
+        step_type: str = None,
+    ):
+        self.is_distribute = is_distribute
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.plugin_config = plugin_config
+        # This parameter is required.
+        self.step_name = step_name
+        # This parameter is required.
+        self.step_type = step_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_distribute is not None:
+            result['IsDistribute'] = self.is_distribute
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.plugin_config is not None:
+            result['PluginConfig'] = self.plugin_config
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_type is not None:
+            result['StepType'] = self.step_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDistribute') is not None:
+            self.is_distribute = m.get('IsDistribute')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('PluginConfig') is not None:
+            self.plugin_config = m.get('PluginConfig')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepType') is not None:
+            self.step_type = m.get('StepType')
+        return self
+
+
+class UpdatePipelineRequestUpdateCommandPipelineConfig(TeaModel):
+    def __init__(
+        self,
+        hops: List[UpdatePipelineRequestUpdateCommandPipelineConfigHops] = None,
+        steps: List[UpdatePipelineRequestUpdateCommandPipelineConfigSteps] = None,
+    ):
+        # This parameter is required.
+        self.hops = hops
+        # This parameter is required.
+        self.steps = steps
+
+    def validate(self):
+        if self.hops:
+            for k in self.hops:
+                if k:
+                    k.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hops'] = []
+        if self.hops is not None:
+            for k in self.hops:
+                result['Hops'].append(k.to_map() if k else None)
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hops = []
+        if m.get('Hops') is not None:
+            for k in m.get('Hops'):
+                temp_model = UpdatePipelineRequestUpdateCommandPipelineConfigHops()
+                self.hops.append(temp_model.from_map(k))
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = UpdatePipelineRequestUpdateCommandPipelineConfigSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class UpdatePipelineRequestUpdateCommand(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        mode: str = None,
+        node_info: UpdatePipelineRequestUpdateCommandNodeInfo = None,
+        pipeline_config: UpdatePipelineRequestUpdateCommandPipelineConfig = None,
+        pipeline_json: str = None,
+        pipeline_type: int = None,
+        schedule_config: str = None,
+        settings: str = None,
+        submit: bool = None,
+    ):
+        self.comment = comment
+        self.mode = mode
+        # This parameter is required.
+        self.node_info = node_info
+        # This parameter is required.
+        self.pipeline_config = pipeline_config
+        self.pipeline_json = pipeline_json
+        self.pipeline_type = pipeline_type
+        # This parameter is required.
+        self.schedule_config = schedule_config
+        self.settings = settings
+        self.submit = submit
+
+    def validate(self):
+        if self.node_info:
+            self.node_info.validate()
+        if self.pipeline_config:
+            self.pipeline_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.node_info is not None:
+            result['NodeInfo'] = self.node_info.to_map()
+        if self.pipeline_config is not None:
+            result['PipelineConfig'] = self.pipeline_config.to_map()
+        if self.pipeline_json is not None:
+            result['PipelineJson'] = self.pipeline_json
+        if self.pipeline_type is not None:
+            result['PipelineType'] = self.pipeline_type
+        if self.schedule_config is not None:
+            result['ScheduleConfig'] = self.schedule_config
+        if self.settings is not None:
+            result['Settings'] = self.settings
+        if self.submit is not None:
+            result['Submit'] = self.submit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('NodeInfo') is not None:
+            temp_model = UpdatePipelineRequestUpdateCommandNodeInfo()
+            self.node_info = temp_model.from_map(m['NodeInfo'])
+        if m.get('PipelineConfig') is not None:
+            temp_model = UpdatePipelineRequestUpdateCommandPipelineConfig()
+            self.pipeline_config = temp_model.from_map(m['PipelineConfig'])
+        if m.get('PipelineJson') is not None:
+            self.pipeline_json = m.get('PipelineJson')
+        if m.get('PipelineType') is not None:
+            self.pipeline_type = m.get('PipelineType')
+        if m.get('ScheduleConfig') is not None:
+            self.schedule_config = m.get('ScheduleConfig')
+        if m.get('Settings') is not None:
+            self.settings = m.get('Settings')
+        if m.get('Submit') is not None:
+            self.submit = m.get('Submit')
+        return self
+
+
+class UpdatePipelineRequest(TeaModel):
+    def __init__(
+        self,
+        context: UpdatePipelineRequestContext = None,
+        op_tenant_id: int = None,
+        update_command: UpdatePipelineRequestUpdateCommand = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.update_command = update_command
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.update_command:
+            self.update_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.update_command is not None:
+            result['UpdateCommand'] = self.update_command.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = UpdatePipelineRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('UpdateCommand') is not None:
+            temp_model = UpdatePipelineRequestUpdateCommand()
+            self.update_command = temp_model.from_map(m['UpdateCommand'])
+        return self
+
+
+class UpdatePipelineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        op_tenant_id: int = None,
+        update_command_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.update_command_shrink = update_command_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.update_command_shrink is not None:
+            result['UpdateCommand'] = self.update_command_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('UpdateCommand') is not None:
+            self.update_command_shrink = m.get('UpdateCommand')
+        return self
+
+
+class UpdatePipelineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_machine: str = None,
+        node_id: str = None,
+        pipeline_id: int = None,
+        submit_id: int = None,
+        version: str = None,
+    ):
+        self.host_machine = host_machine
+        self.node_id = node_id
+        self.pipeline_id = pipeline_id
+        self.submit_id = submit_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_machine is not None:
+            result['HostMachine'] = self.host_machine
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.submit_id is not None:
+            result['SubmitId'] = self.submit_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostMachine') is not None:
+            self.host_machine = m.get('HostMachine')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('SubmitId') is not None:
+            self.submit_id = m.get('SubmitId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class UpdatePipelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdatePipelineResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdatePipelineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdatePipelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePipelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePipelineByAsyncRequestContext(TeaModel):
+    def __init__(
+        self,
+        env: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class UpdatePipelineByAsyncRequestUpdateCommandNodeInfo(TeaModel):
+    def __init__(
+        self,
+        directory: str = None,
+        file_id: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        pipeline_id: int = None,
+    ):
+        self.directory = directory
+        self.file_id = file_id
+        self.node_id = node_id
+        # This parameter is required.
+        self.node_name = node_name
+        self.pipeline_id = pipeline_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory is not None:
+            result['Directory'] = self.directory
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        return self
+
+
+class UpdatePipelineByAsyncRequestUpdateCommandPipelineConfigHops(TeaModel):
+    def __init__(
+        self,
+        send_to: bool = None,
+        source: str = None,
+        target: str = None,
+    ):
+        self.send_to = send_to
+        # This parameter is required.
+        self.source = source
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.send_to is not None:
+            result['SendTo'] = self.send_to
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SendTo') is not None:
+            self.send_to = m.get('SendTo')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class UpdatePipelineByAsyncRequestUpdateCommandPipelineConfigSteps(TeaModel):
+    def __init__(
+        self,
+        is_distribute: bool = None,
+        key: str = None,
+        plugin_config: str = None,
+        step_name: str = None,
+        step_type: str = None,
+    ):
+        self.is_distribute = is_distribute
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.plugin_config = plugin_config
+        # This parameter is required.
+        self.step_name = step_name
+        # This parameter is required.
+        self.step_type = step_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_distribute is not None:
+            result['IsDistribute'] = self.is_distribute
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.plugin_config is not None:
+            result['PluginConfig'] = self.plugin_config
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_type is not None:
+            result['StepType'] = self.step_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDistribute') is not None:
+            self.is_distribute = m.get('IsDistribute')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('PluginConfig') is not None:
+            self.plugin_config = m.get('PluginConfig')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepType') is not None:
+            self.step_type = m.get('StepType')
+        return self
+
+
+class UpdatePipelineByAsyncRequestUpdateCommandPipelineConfig(TeaModel):
+    def __init__(
+        self,
+        hops: List[UpdatePipelineByAsyncRequestUpdateCommandPipelineConfigHops] = None,
+        steps: List[UpdatePipelineByAsyncRequestUpdateCommandPipelineConfigSteps] = None,
+    ):
+        # This parameter is required.
+        self.hops = hops
+        # This parameter is required.
+        self.steps = steps
+
+    def validate(self):
+        if self.hops:
+            for k in self.hops:
+                if k:
+                    k.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hops'] = []
+        if self.hops is not None:
+            for k in self.hops:
+                result['Hops'].append(k.to_map() if k else None)
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hops = []
+        if m.get('Hops') is not None:
+            for k in m.get('Hops'):
+                temp_model = UpdatePipelineByAsyncRequestUpdateCommandPipelineConfigHops()
+                self.hops.append(temp_model.from_map(k))
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = UpdatePipelineByAsyncRequestUpdateCommandPipelineConfigSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class UpdatePipelineByAsyncRequestUpdateCommand(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        mode: str = None,
+        node_info: UpdatePipelineByAsyncRequestUpdateCommandNodeInfo = None,
+        pipeline_config: UpdatePipelineByAsyncRequestUpdateCommandPipelineConfig = None,
+        pipeline_json: str = None,
+        pipeline_type: int = None,
+        schedule_config: str = None,
+        settings: str = None,
+        submit: bool = None,
+    ):
+        self.comment = comment
+        self.mode = mode
+        # This parameter is required.
+        self.node_info = node_info
+        # This parameter is required.
+        self.pipeline_config = pipeline_config
+        self.pipeline_json = pipeline_json
+        self.pipeline_type = pipeline_type
+        # This parameter is required.
+        self.schedule_config = schedule_config
+        self.settings = settings
+        self.submit = submit
+
+    def validate(self):
+        if self.node_info:
+            self.node_info.validate()
+        if self.pipeline_config:
+            self.pipeline_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.node_info is not None:
+            result['NodeInfo'] = self.node_info.to_map()
+        if self.pipeline_config is not None:
+            result['PipelineConfig'] = self.pipeline_config.to_map()
+        if self.pipeline_json is not None:
+            result['PipelineJson'] = self.pipeline_json
+        if self.pipeline_type is not None:
+            result['PipelineType'] = self.pipeline_type
+        if self.schedule_config is not None:
+            result['ScheduleConfig'] = self.schedule_config
+        if self.settings is not None:
+            result['Settings'] = self.settings
+        if self.submit is not None:
+            result['Submit'] = self.submit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('NodeInfo') is not None:
+            temp_model = UpdatePipelineByAsyncRequestUpdateCommandNodeInfo()
+            self.node_info = temp_model.from_map(m['NodeInfo'])
+        if m.get('PipelineConfig') is not None:
+            temp_model = UpdatePipelineByAsyncRequestUpdateCommandPipelineConfig()
+            self.pipeline_config = temp_model.from_map(m['PipelineConfig'])
+        if m.get('PipelineJson') is not None:
+            self.pipeline_json = m.get('PipelineJson')
+        if m.get('PipelineType') is not None:
+            self.pipeline_type = m.get('PipelineType')
+        if m.get('ScheduleConfig') is not None:
+            self.schedule_config = m.get('ScheduleConfig')
+        if m.get('Settings') is not None:
+            self.settings = m.get('Settings')
+        if m.get('Submit') is not None:
+            self.submit = m.get('Submit')
+        return self
+
+
+class UpdatePipelineByAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        context: UpdatePipelineByAsyncRequestContext = None,
+        op_tenant_id: int = None,
+        update_command: UpdatePipelineByAsyncRequestUpdateCommand = None,
+    ):
+        # This parameter is required.
+        self.context = context
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.update_command = update_command
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+        if self.update_command:
+            self.update_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.update_command is not None:
+            result['UpdateCommand'] = self.update_command.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = UpdatePipelineByAsyncRequestContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('UpdateCommand') is not None:
+            temp_model = UpdatePipelineByAsyncRequestUpdateCommand()
+            self.update_command = temp_model.from_map(m['UpdateCommand'])
+        return self
+
+
+class UpdatePipelineByAsyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        context_shrink: str = None,
+        op_tenant_id: int = None,
+        update_command_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.context_shrink = context_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.update_command_shrink = update_command_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.update_command_shrink is not None:
+            result['UpdateCommand'] = self.update_command_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('UpdateCommand') is not None:
+            self.update_command_shrink = m.get('UpdateCommand')
+        return self
+
+
+class UpdatePipelineByAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdatePipelineByAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePipelineByAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePipelineByAsyncResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
