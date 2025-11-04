@@ -18547,6 +18547,191 @@ class GetDBInstanceConnectivityDiagnosisResponse(TeaModel):
         return self
 
 
+class GetDasAgentSSERequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        instance_id: str = None,
+        query: str = None,
+        session_id: str = None,
+    ):
+        self.agent_id = agent_id
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.query = query
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class GetDasAgentSSEResponseBodyMetadata(TeaModel):
+    def __init__(
+        self,
+        char_count: int = None,
+        code: int = None,
+        request_id: str = None,
+        tool_name: str = None,
+        tool_params: List[str] = None,
+    ):
+        self.char_count = char_count
+        self.code = code
+        self.request_id = request_id
+        self.tool_name = tool_name
+        self.tool_params = tool_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.char_count is not None:
+            result['CharCount'] = self.char_count
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tool_name is not None:
+            result['ToolName'] = self.tool_name
+        if self.tool_params is not None:
+            result['ToolParams'] = self.tool_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CharCount') is not None:
+            self.char_count = m.get('CharCount')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ToolName') is not None:
+            self.tool_name = m.get('ToolName')
+        if m.get('ToolParams') is not None:
+            self.tool_params = m.get('ToolParams')
+        return self
+
+
+class GetDasAgentSSEResponseBody(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        event: str = None,
+        id: str = None,
+        metadata: GetDasAgentSSEResponseBodyMetadata = None,
+    ):
+        self.answer = answer
+        self.event = event
+        self.id = id
+        self.metadata = metadata
+
+    def validate(self):
+        if self.metadata:
+            self.metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['Answer'] = self.answer
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answer') is not None:
+            self.answer = m.get('Answer')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Metadata') is not None:
+            temp_model = GetDasAgentSSEResponseBodyMetadata()
+            self.metadata = temp_model.from_map(m['Metadata'])
+        return self
+
+
+class GetDasAgentSSEResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDasAgentSSEResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDasAgentSSEResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDasProServiceUsageRequest(TeaModel):
     def __init__(
         self,

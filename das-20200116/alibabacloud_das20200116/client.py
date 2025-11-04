@@ -6956,6 +6956,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dbinstance_connectivity_diagnosis_with_options_async(request, runtime)
 
+    def get_das_agent_ssewith_options(
+        self,
+        request: das20200116_models.GetDasAgentSSERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDasAgentSSEResponse:
+        """
+        @summary DAS大模型能力异步逻辑接口
+        
+        @param request: GetDasAgentSSERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDasAgentSSEResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDasAgentSSE',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDasAgentSSEResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_das_agent_ssewith_options_async(
+        self,
+        request: das20200116_models.GetDasAgentSSERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDasAgentSSEResponse:
+        """
+        @summary DAS大模型能力异步逻辑接口
+        
+        @param request: GetDasAgentSSERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDasAgentSSEResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDasAgentSSE',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDasAgentSSEResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_das_agent_sse(
+        self,
+        request: das20200116_models.GetDasAgentSSERequest,
+    ) -> das20200116_models.GetDasAgentSSEResponse:
+        """
+        @summary DAS大模型能力异步逻辑接口
+        
+        @param request: GetDasAgentSSERequest
+        @return: GetDasAgentSSEResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_das_agent_ssewith_options(request, runtime)
+
+    async def get_das_agent_sse_async(
+        self,
+        request: das20200116_models.GetDasAgentSSERequest,
+    ) -> das20200116_models.GetDasAgentSSEResponse:
+        """
+        @summary DAS大模型能力异步逻辑接口
+        
+        @param request: GetDasAgentSSERequest
+        @return: GetDasAgentSSEResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_das_agent_ssewith_options_async(request, runtime)
+
     def get_das_pro_service_usage_with_options(
         self,
         request: das20200116_models.GetDasProServiceUsageRequest,
