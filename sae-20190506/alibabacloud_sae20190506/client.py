@@ -957,6 +957,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
+        if not UtilClient.is_unset(request.agent_version):
+            query['AgentVersion'] = request.agent_version
         if not UtilClient.is_unset(request.app_description):
             query['AppDescription'] = request.app_description
         if not UtilClient.is_unset(request.app_name):
@@ -987,6 +989,10 @@ class Client(OpenApiClient):
             query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_ebpf):
             query['EnableEbpf'] = request.enable_ebpf
+        if not UtilClient.is_unset(request.enable_namespace_agent_version):
+            query['EnableNamespaceAgentVersion'] = request.enable_namespace_agent_version
+        if not UtilClient.is_unset(request.enable_namespace_sls_config):
+            query['EnableNamespaceSlsConfig'] = request.enable_namespace_sls_config
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.enable_prometheus):
@@ -1163,6 +1169,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
+        if not UtilClient.is_unset(request.agent_version):
+            query['AgentVersion'] = request.agent_version
         if not UtilClient.is_unset(request.app_description):
             query['AppDescription'] = request.app_description
         if not UtilClient.is_unset(request.app_name):
@@ -1193,6 +1201,10 @@ class Client(OpenApiClient):
             query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_ebpf):
             query['EnableEbpf'] = request.enable_ebpf
+        if not UtilClient.is_unset(request.enable_namespace_agent_version):
+            query['EnableNamespaceAgentVersion'] = request.enable_namespace_agent_version
+        if not UtilClient.is_unset(request.enable_namespace_sls_config):
+            query['EnableNamespaceSlsConfig'] = request.enable_namespace_sls_config
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.enable_prometheus):
@@ -1380,13 +1392,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        @summary Null
+        @summary Creates an auto scaling policy for an application.
         
-        @description The HTTP status code. Take note of the following rules:
-        **2xx**: The call was successful.
-        **3xx**: The call was redirected.
-        **4xx**: The call failed.
-        **5xx**: A server error occurred.
+        @description ## [](#)Precautions
+        You can create up to five auto scaling policies for one application.
+        You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
+        If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
+        If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+        If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
         
         @param request: CreateApplicationScalingRuleRequest
         @param headers: map
@@ -1440,13 +1453,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        @summary Null
+        @summary Creates an auto scaling policy for an application.
         
-        @description The HTTP status code. Take note of the following rules:
-        **2xx**: The call was successful.
-        **3xx**: The call was redirected.
-        **4xx**: The call failed.
-        **5xx**: A server error occurred.
+        @description ## [](#)Precautions
+        You can create up to five auto scaling policies for one application.
+        You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
+        If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
+        If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+        If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
         
         @param request: CreateApplicationScalingRuleRequest
         @param headers: map
@@ -1498,13 +1512,14 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        @summary Null
+        @summary Creates an auto scaling policy for an application.
         
-        @description The HTTP status code. Take note of the following rules:
-        **2xx**: The call was successful.
-        **3xx**: The call was redirected.
-        **4xx**: The call failed.
-        **5xx**: A server error occurred.
+        @description ## [](#)Precautions
+        You can create up to five auto scaling policies for one application.
+        You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
+        If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
+        If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+        If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
         
         @param request: CreateApplicationScalingRuleRequest
         @return: CreateApplicationScalingRuleResponse
@@ -1518,13 +1533,14 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        @summary Null
+        @summary Creates an auto scaling policy for an application.
         
-        @description The HTTP status code. Take note of the following rules:
-        **2xx**: The call was successful.
-        **3xx**: The call was redirected.
-        **4xx**: The call failed.
-        **5xx**: A server error occurred.
+        @description ## [](#)Precautions
+        You can create up to five auto scaling policies for one application.
+        You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
+        If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
+        If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+        If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
         
         @param request: CreateApplicationScalingRuleRequest
         @return: CreateApplicationScalingRuleResponse
@@ -4609,6 +4625,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
+        if not UtilClient.is_unset(request.agent_version):
+            query['AgentVersion'] = request.agent_version
         if not UtilClient.is_unset(request.alb_ingress_readiness_gate):
             query['AlbIngressReadinessGate'] = request.alb_ingress_readiness_gate
         if not UtilClient.is_unset(request.app_id):
@@ -4641,6 +4659,8 @@ class Client(OpenApiClient):
             query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_grey_tag_route):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
+        if not UtilClient.is_unset(request.enable_namespace_agent_version):
+            query['EnableNamespaceAgentVersion'] = request.enable_namespace_agent_version
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.enable_prometheus):
@@ -4813,6 +4833,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
+        if not UtilClient.is_unset(request.agent_version):
+            query['AgentVersion'] = request.agent_version
         if not UtilClient.is_unset(request.alb_ingress_readiness_gate):
             query['AlbIngressReadinessGate'] = request.alb_ingress_readiness_gate
         if not UtilClient.is_unset(request.app_id):
@@ -4845,6 +4867,8 @@ class Client(OpenApiClient):
             query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_grey_tag_route):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
+        if not UtilClient.is_unset(request.enable_namespace_agent_version):
+            query['EnableNamespaceAgentVersion'] = request.enable_namespace_agent_version
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.enable_prometheus):
@@ -17916,7 +17940,7 @@ class Client(OpenApiClient):
         """
         @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
         
-        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/arms/application-monitoring/product-overview/billing-overview-1).
         
         @param request: UpgradeApplicationApmServiceRequest
         @param headers: map
@@ -17956,7 +17980,7 @@ class Client(OpenApiClient):
         """
         @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
         
-        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/arms/application-monitoring/product-overview/billing-overview-1).
         
         @param request: UpgradeApplicationApmServiceRequest
         @param headers: map
@@ -17994,7 +18018,7 @@ class Client(OpenApiClient):
         """
         @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
         
-        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/arms/application-monitoring/product-overview/billing-overview-1).
         
         @param request: UpgradeApplicationApmServiceRequest
         @return: UpgradeApplicationApmServiceResponse
@@ -18010,7 +18034,7 @@ class Client(OpenApiClient):
         """
         @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
         
-        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/arms/application-monitoring/product-overview/billing-overview-1).
         
         @param request: UpgradeApplicationApmServiceRequest
         @return: UpgradeApplicationApmServiceResponse

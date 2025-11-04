@@ -12557,6 +12557,7 @@ class CreateApplicationRequest(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        agent_version: str = None,
         app_description: str = None,
         app_name: str = None,
         app_source: str = None,
@@ -12576,6 +12577,8 @@ class CreateApplicationRequest(TeaModel):
         empty_dir_desc: str = None,
         enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
+        enable_namespace_agent_version: bool = None,
+        enable_namespace_sls_config: bool = None,
         enable_new_arms: bool = None,
         enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
@@ -12641,6 +12644,7 @@ class CreateApplicationRequest(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.agent_version = agent_version
         # The description of the template. The description cannot exceed 1,024 characters in length.
         self.app_description = app_description
         # The name of the application. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). It cannot exceed 36 characters in length.
@@ -12737,6 +12741,8 @@ class CreateApplicationRequest(TeaModel):
         # - true: Enable.
         # - false: Disable (default).
         self.enable_ebpf = enable_ebpf
+        self.enable_namespace_agent_version = enable_namespace_agent_version
+        self.enable_namespace_sls_config = enable_namespace_sls_config
         # Indicates whether to enable the new ARMS feature:
         # 
         # *   true: enables this parameter.
@@ -13052,6 +13058,8 @@ class CreateApplicationRequest(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_name is not None:
@@ -13090,6 +13098,10 @@ class CreateApplicationRequest(TeaModel):
             result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_ebpf is not None:
             result['EnableEbpf'] = self.enable_ebpf
+        if self.enable_namespace_agent_version is not None:
+            result['EnableNamespaceAgentVersion'] = self.enable_namespace_agent_version
+        if self.enable_namespace_sls_config is not None:
+            result['EnableNamespaceSlsConfig'] = self.enable_namespace_sls_config
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
         if self.enable_prometheus is not None:
@@ -13222,6 +13234,8 @@ class CreateApplicationRequest(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppName') is not None:
@@ -13260,6 +13274,10 @@ class CreateApplicationRequest(TeaModel):
             self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableEbpf') is not None:
             self.enable_ebpf = m.get('EnableEbpf')
+        if m.get('EnableNamespaceAgentVersion') is not None:
+            self.enable_namespace_agent_version = m.get('EnableNamespaceAgentVersion')
+        if m.get('EnableNamespaceSlsConfig') is not None:
+            self.enable_namespace_sls_config = m.get('EnableNamespaceSlsConfig')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
         if m.get('EnablePrometheus') is not None:
@@ -13394,6 +13412,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        agent_version: str = None,
         app_description: str = None,
         app_name: str = None,
         app_source: str = None,
@@ -13413,6 +13432,8 @@ class CreateApplicationShrinkRequest(TeaModel):
         empty_dir_desc: str = None,
         enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
+        enable_namespace_agent_version: bool = None,
+        enable_namespace_sls_config: bool = None,
         enable_new_arms: bool = None,
         enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
@@ -13478,6 +13499,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.agent_version = agent_version
         # The description of the template. The description cannot exceed 1,024 characters in length.
         self.app_description = app_description
         # The name of the application. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). It cannot exceed 36 characters in length.
@@ -13574,6 +13596,8 @@ class CreateApplicationShrinkRequest(TeaModel):
         # - true: Enable.
         # - false: Disable (default).
         self.enable_ebpf = enable_ebpf
+        self.enable_namespace_agent_version = enable_namespace_agent_version
+        self.enable_namespace_sls_config = enable_namespace_sls_config
         # Indicates whether to enable the new ARMS feature:
         # 
         # *   true: enables this parameter.
@@ -13882,6 +13906,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_name is not None:
@@ -13920,6 +13946,10 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_ebpf is not None:
             result['EnableEbpf'] = self.enable_ebpf
+        if self.enable_namespace_agent_version is not None:
+            result['EnableNamespaceAgentVersion'] = self.enable_namespace_agent_version
+        if self.enable_namespace_sls_config is not None:
+            result['EnableNamespaceSlsConfig'] = self.enable_namespace_sls_config
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
         if self.enable_prometheus is not None:
@@ -14048,6 +14078,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppName') is not None:
@@ -14086,6 +14118,10 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableEbpf') is not None:
             self.enable_ebpf = m.get('EnableEbpf')
+        if m.get('EnableNamespaceAgentVersion') is not None:
+            self.enable_namespace_agent_version = m.get('EnableNamespaceAgentVersion')
+        if m.get('EnableNamespaceSlsConfig') is not None:
+            self.enable_namespace_sls_config = m.get('EnableNamespaceSlsConfig')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
         if m.get('EnablePrometheus') is not None:
@@ -14384,16 +14420,140 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         scaling_rule_timer: str = None,
         scaling_rule_type: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.enable_idle = enable_idle
+        # The percentage of the minimum number of available instances. Valid values:
+        # 
+        # *   **-1** (default value): The minimum number of available instances is not determined based on this parameter.
+        # *   **0 to 100**: The minimum number of available instances is calculated by using the following formula: Number of existing instances × Value of MinReadyInstanceRatio × 100%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5 and MinReadyInstanceRatio is set to 50, the minimum number of available instances is 3.
+        # 
+        # >  When **MinReadyInstance** and **MinReadyInstanceRatio** are passed at the same time and the **MinReadyInstanceRatio** value is not \\*\\*-1\\*\\*, the **MinReadyInstanceRatio** parameter takes precedence. **Note**When both **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of **MinReadyInstanceRatio** takes precedence.
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # The minimum number of available instances. Special values:
+        # 
+        # *   If you set the value to **0**, business is interrupted when the application is updated.
+        # *   If you set this property to -1, the system calculates a recommended value as the minimum number of available instances by using the following formula: Recommended value = Number of existing instances × 25%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5, the recommended value is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # >  To ensure business continuity, make sure that at least one instance is available during application deployment and rollback.
         self.min_ready_instances = min_ready_instances
+        # Specifies whether to enable the auto scaling policy. Valid values:
+        # 
+        # *   **true**: The auto scaling policy is enabled.
+        # *   **false**: The auto scaling policy is disabled.
         self.scaling_rule_enable = scaling_rule_enable
+        # The configurations of the metric-based auto scaling policy. This parameter is required if you set the ScalingRuleType parameter to metric.
+        # 
+        # The following list describes the involved parameters:
+        # 
+        # *   **maxReplicas**: the maximum number of instances in the application.
+        # 
+        # *   **minReplicas**: the minimum number of instances in the application.
+        # 
+        # *   **metricType**: the metric that is used to trigger the auto scaling policy.
+        # 
+        #     *   **CPU**: the CPU utilization.
+        #     *   **MEMORY**: the memory usage.
+        #     *   **QPS**: the average QPS within 1 minute per Java application instance.
+        #     *   **RT**: the average response time of all API operations within 1 minute in the Java application.
+        #     *   **tcpActiveConn**: the average number of active TCP connections within 30 seconds per instance.
+        #     *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance within 15 seconds per instance.
+        #     *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+        #     *   **INTRANET_SLB_QPS**: the average QPS of the internal-facing SLB instance within 15 seconds per instance.
+        #     *   **INTRANET_SLB_RT**: the average response time of the internal-facing SLB instance within 15 seconds.
+        # 
+        # *   **metricTargetAverageUtilization**: the limit on the metric that is specified by **metricType**. You can specify following limits:
+        # 
+        #     *   The limit on the CPU utilization. Unit: percentage.
+        #     *   The limit on the memory usage. Unit: percentage.
+        #     *   The limit on the QPS.
+        #     *   The limit on the response time. Unit: milliseconds.
+        #     *   The limit on the average number of active TCP connections per second.
+        #     *   The limit on the QPS of the Internet-facing SLB instance.
+        #     *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+        #     *   The limit on the QPS of the internal-facing SLB instance.
+        #     *   The limit on the response time of the internal-facing SLB instance. Unit: milliseconds.
+        # 
+        # *   **slbId**: the ID of the SLB instance.
+        # 
+        # *   **slbProject**: the Simple Log Service (SLS) project.
+        # 
+        # *   **slbLogstore**: the SLS Logstore.
+        # 
+        # *   **vport**: the listener port of the SLB instance. HTTP and HTTPS are supported.
+        # 
+        # *   **scaleUpRules**: the scale-out rules.
+        # 
+        # *   **scaleDownRules**: the scale-in rule.
+        # 
+        # *   **step**: the scale-out or scale-in step size. This parameter specifies the maximum number of instances that can be added or removed per unit time.
+        # 
+        # *   **disabled**: specifies whether to disable the application scale-in. If you set this parameter to true, the application instances are never reduced. This prevents business risks during peak hours.
+        # 
+        #     *   **true**: disables the application scale-in.
+        #     *   **false**: enables the application scale-in. Default value: false.
+        # 
+        # *   **stabilizationWindowSeconds**: the cooldown period during which the system is stable and does not perform scale-out or scale-in operations. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+        # 
+        # >  NoteYou can specify one or more metrics as the trigger conditions of the auto scaling policy. If one of the values of the specified metrics is greater than or equal to the specified limit, the application is scaled out. The number of instances after the scale-out operation is less than or equal to the value of the specified maximum application instances. If the values of all specified metrics are less than the limits, the application is scaled in. The number of instances after the scale-in operation is greater than or equal to the value of the specified minimum application instances.
         self.scaling_rule_metric = scaling_rule_metric
+        # The name of the auto scaling policy. The name must be unique in an application, and can be up to 32 characters in length. It must start with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-).
+        # 
+        # >  You cannot change the names of created auto scaling policies.
+        # 
         # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
+        # The configuration of the scheduled elasticity policy. This parameter is required if you select Scheduled Scaling Policy or Use SDK to Set.
+        # 
+        # The following table describes the parameters.
+        # 
+        # *   **beginDate** and **endDate**: **beginDate** is the start date and **endDate** is the end date, which is used to configure the timing Auto Scaling policy. Valid values:
+        # 
+        #     *   If both values are **null**, long-term execution is performed. This is the default value.
+        #     *   If the value is a specific date, for example, the **beginDate** is **2021-03-25** and the **endDate** is **2021-04-25**, the validity period is one month.
+        # 
+        # *   **period**: The period during which the timed Auto Scaling policy is executed. Valid values:
+        # 
+        #     *   **\\* \\* \\***: The scheduled policy is executed at a specified time every day.
+        # 
+        #     *   **\\* \\* Fri,Mon**: The scheduled policy is executed at the specified time on the specified number of days per week. You can select multiple time zones. The time zone is GMT +8. Valid values:
+        # 
+        #         *   **Sun**: Sunday
+        #         *   **Mon**: Monday
+        #         *   **Tue**: Tuesday
+        #         *   **Wed**: Wednesday
+        #         *   **Thu**: Thursday
+        #         *   **Fri**: Friday
+        #         *   **Sat**: Saturday
+        # 
+        #     *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more dates of each month. Valid values: 1 to 31. If a month does not have the 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
+        # 
+        # *   **schedules**: the points in time at which the scheduled auto scaling policy is triggered and the number of application instances that are retained during the time periods. You can specify up to 20 points in time. The following list describes the involved parameters:
+        # 
+        #     *   **atTime**: the point in time at which the policy is triggered. **targetReplicas**: the number of application instances that you want to retain during the corresponding time period or the minimum number of available instances required for each deployment.****\
+        # 
+        #     *   **Valid values: 1 to 50.** Valid values: 1 to 50.
+        # 
+        #         **\
+        # 
+        #         **Note**Make sure that at least one instance is available during the application deployment and rollback to prevent your business from being interrupted. If you set the value to **0**, business interruptions occur when the application is updated. If you set the value to **0**, business interruptions occur when the application is updated.
         self.scaling_rule_timer = scaling_rule_timer
+        # The type of the auto scaling policy. Take note of the following rules:
+        # 
+        # *   **timing**: a scheduled auto scaling policy.
+        # *   **metric**: a metric-based auto scaling policy.
+        # *   **mix**: a hybrid auto scaling policy.
+        # 
+        # > 
+        # 
+        # *   If you set this parameter to timing, the ScalingRuleTimer parameter must be specified.
+        # 
+        # *   If you set this parameter to metric, the ScalingRuleMetric parameter must be specified.
+        # 
+        # *   If you set this parameter to mix, the ScalingRuleMetric parameter must be specified. You can specify the ScalingRuleTimer parameter based on your business requirements.
+        # 
         # This parameter is required.
         self.scaling_rule_type = scaling_rule_type
 
@@ -14459,11 +14619,37 @@ class CreateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         slb_project: str = None,
         vport: str = None,
     ):
+        # The limit on the metric.
+        # 
+        # *   The limit on the CPU utilization. Unit: percentage.
+        # *   The limit on the memory usage. Unit: percentage.
+        # *   The limit on the queries per second (QPS). Unit: seconds.
+        # *   The limit on the response time. Unit: milliseconds.
+        # *   The limit on the average number of active TCP connections per second.
+        # *   The limit on the QPS of the Internet-facing SLB instance.
+        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+        # *   The limit on the QPS of the internal-facing SLB instance.
+        # *   The limit on the response time of the internal-facing SLB instance. Unit: milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
+        # The metric that is used to trigger the auto scaling policy. Valid values:
+        # 
+        # *   **CPU**: the CPU utilization.
+        # *   **MEMORY**: the memory usage.
+        # *   **QPS**: the average QPS within 1 minute per Java application instance.
+        # *   **RT**: the average response time of all API operations within 1 minute in the Java application.
+        # *   **tcpActiveConn**: the average number of active TCP connections within 30 seconds per instance.
+        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance within 15 seconds per instance.
+        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+        # *   **INTRANET_SLB_QPS**: the average QPS of the internal-facing SLB instance within 15 seconds per instance.
+        # *   **INTRANET_SLB_RT**: the average response time of the internal-facing SLB instance within 15 seconds.
         self.metric_type = metric_type
+        # The ID of the SLB instance.
         self.slb_id = slb_id
+        # The Logstore that stores the SLB access logs.
         self.slb_logstore = slb_logstore
+        # The project that stores the SLB access logs.
         self.slb_project = slb_project
+        # The port number of the SLB instance.
         self.vport = vport
 
     def validate(self):
@@ -14513,8 +14699,11 @@ class CreateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
         metrics: List[CreateApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
         min_replicas: int = None,
     ):
+        # The maximum number of Elastic Compute Service (ECS) instances supported by the node pool.
         self.max_replicas = max_replicas
+        # The metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
+        # The minimum number of instances.
         self.min_replicas = min_replicas
 
     def validate(self):
@@ -14561,9 +14750,13 @@ class CreateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         min_replicas: int = None,
         target_replicas: int = None,
     ):
+        # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The minimum number of instances.
         self.min_replicas = min_replicas
+        # The expected number of instances.
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -14606,9 +14799,33 @@ class CreateApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         period: str = None,
         schedules: List[CreateApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
     ):
+        # The start date of the validity period of the scheduled auto scaling policy.
+        # 
+        # *   **null** (default): If you set **BeginDate** and **EndDate** to null, the scheduled auto scaling policy can always be triggered.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
+        # The end date of the validity period of the scheduled auto scaling policy.
+        # 
+        # *   **null** (default): If you set **BeginDate** and **EndDate** to null, the scheduled auto scaling policy can always be triggered.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
         self.end_date = end_date
+        # The days on which the scheduled auto scaling policy takes effect. Valid values:
+        # 
+        # *   **\\* \\* \\***: The scheduled auto scaling policy is executed at a specified point in time every day.
+        # 
+        # *   **\\* \\* Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more days every week. The time must be in GMT+8. Valid values:
+        # 
+        #     *   **Sun**: Sunday
+        #     *   **Mon**: Monday
+        #     *   **Tue**: Tuesday
+        #     *   **Wed**: Wednesday
+        #     *   **Thu**: Thursday
+        #     *   **Fri**: Friday
+        #     *   **Sat**: Saturday
+        # 
+        # *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more dates of each month. Valid values: 1 to 31. If a month does not have the 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
         self.period = period
+        # The points in time at which the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -14665,15 +14882,31 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
         timer: CreateApplicationScalingRuleResponseBodyDataTimer = None,
         update_time: int = None,
     ):
+        # null
         self.app_id = app_id
+        # null null
         self.create_time = create_time
         self.enable_idle = enable_idle
+        # null
         self.last_disable_time = last_disable_time
+        # The details of the metric-based auto scaling policy.
         self.metric = metric
+        # null null
+        # 
+        # *   **null**\
+        # *   **null**\
         self.scale_rule_enabled = scale_rule_enabled
+        # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
+        # null null
+        # 
+        # *   **null**\
+        # *   **metric**: a metric-based auto scaling policy.
+        # *   **mix**: a hybrid auto scaling policy.
         self.scale_rule_type = scale_rule_type
+        # The details of the scheduled auto scaling policy.
         self.timer = timer
+        # null null
         self.update_time = update_time
 
     def validate(self):
@@ -14748,12 +14981,33 @@ class CreateApplicationScalingRuleResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The message returned. The following limits are imposed on the ID:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   An error code is returned when a request failed.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the application instances were restarted. Valid values:
+        # 
+        # *   **true**: The application instances were restarted.
+        # *   **false**: The application instances failed to be restarted.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -15295,25 +15549,28 @@ class CreateIngressRequest(TeaModel):
         zone_mappings: str = None,
     ):
         self.address_type = address_type
-        # The ID of the certificate that is associated with the **CLB** instance.
+        # The ID of the **CLB** certificate. Valid values:
         # 
         # *   If you set **LoadBalanceType** to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
         # 
-        # For more information about how to manage the SSL certificate IDs that are used by CLB instances, see [Overview](https://help.aliyun.com/document_detail/90792.html).
+        # For more information about how to use SSL certificate IDs for CLB, see [Manage certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
         self.cert_id = cert_id
-        # The IDs of the certificates that are associated with the **ALB** instance.
+        # The ID of the multi-certificate **ALB**. Valid values:
         # 
-        # *   If you set **LoadBalanceType** to **alb**, you can use CertIds to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
-        # *   The ID of the SSL certificate that is used by an ALB instance can be obtained from Certificate Management Service. For example, if you specify `756***-cn-hangzhou`, `756***` is the certificate ID that is obtained from the service page, and `-cn-hangzhou` is the fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
+        # *   If the **LoadBalanceType** is **alb**, use this field to configure multiple certificates for HTTPS listeners. Separate multiple certificate IDs with commas (,).
+        # *   The ID of the SSL certificate used by ALB must be obtained from the digital certificate product. For example, in the configuration `756***-cn-hangzhou`, the `756***` is the certificate ID obtained from the product page, and the `-cn-hangzhou` is a fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
         self.cert_ids = cert_ids
         self.cors_config = cors_config
-        # Default forwarding rule. Traffic is forwarded to the specified application through a designated port based on the IP address. Parameter descriptions are as follows:
-        # - **appId**: Application ID. - **containerPort**: Application instance port.
-        # > All requests that do not match or do not meet the **Rules** for forwarding will be directed to this specified application.
+        # The default forwarding rule. Forwards traffic to a specified application through a specified port based on the IP address. The following table describes the parameters.
+        # 
+        # *   **appId**: the ID of the application.
+        # *   **containerPort**: The port of the application instance.
+        # 
+        # >  All requests that do not match or satisfy **Rules** forwarding rules are forwarded to the specified application.
         # 
         # This parameter is required.
         self.default_rule = default_rule
-        # Route rule name.
+        # The name of the routing rule.
         self.description = description
         self.enable_gzip = enable_gzip
         self.enable_xforwarded_for = enable_xforwarded_for
@@ -15321,46 +15578,47 @@ class CreateIngressRequest(TeaModel):
         self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
         self.enable_xforwarded_for_slb_id = enable_xforwarded_for_slb_id
         self.enable_xforwarded_for_slb_port = enable_xforwarded_for_slb_port
-        # The timeout period of an idle connection. Unit: seconds Valid values: 1 to 60. If no requests are received within the specified timeout period, ALB closes the current connection. When a new request is received, ALB establishes a new connection.
+        # Specifies the connection idle timeout period. Unit: seconds. Valid values: 1 to 60. If there is no access request within the timeout period, the SLB will temporarily interrupt the current connection until the next request comes to re-establish a new connection.
         self.idle_timeout = idle_timeout
-        # SThe frontend port that is used by the ALB instance.
-        # Valid values: 1 to 65535.
+        # The SLB listening port. This port cannot be occupied.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # Request forwarding protocol. The value description is as follows:
-        # - **HTTP**: Suitable for applications that need to identify data content. - **HTTPS**: Suitable for applications that require encrypted transmission.
-        self.listener_protocol = listener_protocol
-        # The type of the SLB instance. The instance type can be specified only when you create a routing rule. You cannot change the instance type when you update the routing rule. Valid values:
+        # The request forwarding protocol. Valid values:
         # 
-        # *   **clb**\
-        # *   **alb**\
+        # *   **HTTP**: suitable for applications that need to identify data content.
+        # *   **HTTPS**: suitable for applications that require encrypted transmission.
+        self.listener_protocol = listener_protocol
+        # SLB the type of the SLB instance. It depends on the type that you entered when you created the routing rule and cannot be changed when you update it. Valid values:
+        # 
+        # *   **clb**: traditional SLB CLB (formerly SLB).
+        # *   **alb**: Applied SLB ALB.
         self.load_balance_type = load_balance_type
         self.load_balancer_edition = load_balancer_edition
-        # The ID of the namespace where the application is located. Currently, cross-namespace applications are not supported.
+        # The ID of the namespace where the application resides. Currently, cross-namespace applications are not supported.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # The timeout period of a request. Unit: seconds. Valid values: 1 to 180. If no response is received from the backend server within the specified timeout period, ALB stops waiting for the response and returns an HTTP 504 error code to the client.
+        # Specifies the request timeout period. Unit: seconds. Valid values: 1 to 180. If the backend server does not respond within the timeout period, the SLB abandons the wait and returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
+        # The forwarding rule. Forwards traffic to a specified application through a specified port based on the domain name and request path. The following table describes the parameters.
         # 
         # *   **appId**: the ID of the application.
-        # *   **containerPort**: the container port of the application.
+        # *   **containerPort**: The port of the application instance.
         # *   **domain**: the domain name.
         # *   **path**: the request path.
-        # *   **backendProtocol**: the backend service protocol. Valid values: http, https, and grpc. Default value: http.
-        # *   **rewritePath**: the rewrite path.
+        # *   **backendProtocol**: The backend service protocol. Valid values: http, https, and grpc. Default value: http.
+        # *   **rewritePath**: Rewrite the path.
         # 
-        # >  The path rewrite feature is supported only by ALB instances.
+        # >  Only ALB allows you to set the RewritePath feature. CLB does not support this feature.
         # 
         # This parameter is required.
         self.rules = rules
-        # The ID of a security policy.
+        # The ID of the security policy instance.
         self.security_policy_id = security_policy_id
         # The Server Load Balancer (SLB) instance that is used by the routing rule.
         # 
-        # >  The SLB instance can be a Classic Load Balancer (CLB) instance or an Application Load Balancer (ALB) instance.
+        # >  SLB SLB instances include CLB instances and ALB instances.
         self.slb_id = slb_id
         self.zone_mappings = zone_mappings
 
@@ -15511,33 +15769,33 @@ class CreateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or the error code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
         # *   **5xx**: A server error occurred.
         self.code = code
-        # The response.
+        # Responses.
         self.data = data
-        # The error code returned. Take note of the following rules:
+        # Error code. Valid values:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # *   If the request is successful, no **ErrorCode** fields are returned.
+        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
         self.error_code = error_code
-        # The additional information that is returned. Valid values:
+        # Additional information. Valid values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the Secret is successfully deleted. Valid values:
+        # Indicates whether the routing rule was created. Valid values:
         # 
-        # *   **true**: The instance was deleted.
-        # *   **false**: The instance failed to be deleted.
+        # *   **true**: The ConfigMap was created.
+        # *   **false**: The ConfigMap failed to be created.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The ID of the trace. This parameter is used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -17545,8 +17803,20 @@ class CreateSecretRequest(TeaModel):
         # 
         # This parameter is required.
         self.secret_data = secret_data
+        # The Secret name. The name can contain digits, letters, and underscores (_). The name must start with a letter.
+        # 
         # This parameter is required.
         self.secret_name = secret_name
+        # The supported Secret type. Valid values:
+        # 
+        # *   **kubernetes.io/dockerconfigjson**: the Secret for the username and password of the image repository. The Secret is used for authentication when images are pulled during application deployment.
+        # 
+        # Valid values:
+        # 
+        # *   Opaque
+        # *   kubernetes.io/dockerconfigjson
+        # *   kubernetes.io/tls
+        # 
         # This parameter is required.
         self.secret_type = secret_type
 
@@ -17600,8 +17870,20 @@ class CreateSecretShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.secret_data_shrink = secret_data_shrink
+        # The Secret name. The name can contain digits, letters, and underscores (_). The name must start with a letter.
+        # 
         # This parameter is required.
         self.secret_name = secret_name
+        # The supported Secret type. Valid values:
+        # 
+        # *   **kubernetes.io/dockerconfigjson**: the Secret for the username and password of the image repository. The Secret is used for authentication when images are pulled during application deployment.
+        # 
+        # Valid values:
+        # 
+        # *   Opaque
+        # *   kubernetes.io/dockerconfigjson
+        # *   kubernetes.io/tls
+        # 
         # This parameter is required.
         self.secret_type = secret_type
 
@@ -17642,6 +17924,7 @@ class CreateSecretResponseBodyData(TeaModel):
         self,
         secret_id: int = None,
     ):
+        # The ID of the created Secret.
         self.secret_id = secret_id
 
     def validate(self):
@@ -17675,12 +17958,30 @@ class CreateSecretResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The message returned for the operation.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the Secret was created. Valid values:
+        # 
+        # *   **true**: The ConfigMap was created.
+        # *   **false**: The ConfigMap failed to be created.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -20053,6 +20354,7 @@ class DeployApplicationRequest(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        agent_version: str = None,
         alb_ingress_readiness_gate: str = None,
         app_id: str = None,
         associate_eip: bool = None,
@@ -20072,6 +20374,7 @@ class DeployApplicationRequest(TeaModel):
         enable_ahas: str = None,
         enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
+        enable_namespace_agent_version: bool = None,
         enable_new_arms: bool = None,
         enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
@@ -20136,6 +20439,7 @@ class DeployApplicationRequest(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.agent_version = agent_version
         self.alb_ingress_readiness_gate = alb_ingress_readiness_gate
         # The ID of the application.
         # 
@@ -20234,6 +20538,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        self.enable_namespace_agent_version = enable_namespace_agent_version
         # Enable new ARMS features.
         # 
         # - true: enable
@@ -20600,6 +20905,8 @@ class DeployApplicationRequest(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
         if self.alb_ingress_readiness_gate is not None:
             result['AlbIngressReadinessGate'] = self.alb_ingress_readiness_gate
         if self.app_id is not None:
@@ -20638,6 +20945,8 @@ class DeployApplicationRequest(TeaModel):
             result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_grey_tag_route is not None:
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
+        if self.enable_namespace_agent_version is not None:
+            result['EnableNamespaceAgentVersion'] = self.enable_namespace_agent_version
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
         if self.enable_prometheus is not None:
@@ -20768,6 +21077,8 @@ class DeployApplicationRequest(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
         if m.get('AlbIngressReadinessGate') is not None:
             self.alb_ingress_readiness_gate = m.get('AlbIngressReadinessGate')
         if m.get('AppId') is not None:
@@ -20806,6 +21117,8 @@ class DeployApplicationRequest(TeaModel):
             self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableGreyTagRoute') is not None:
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
+        if m.get('EnableNamespaceAgentVersion') is not None:
+            self.enable_namespace_agent_version = m.get('EnableNamespaceAgentVersion')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
         if m.get('EnablePrometheus') is not None:
@@ -20938,6 +21251,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        agent_version: str = None,
         alb_ingress_readiness_gate: str = None,
         app_id: str = None,
         associate_eip: bool = None,
@@ -20957,6 +21271,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         enable_ahas: str = None,
         enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
+        enable_namespace_agent_version: bool = None,
         enable_new_arms: bool = None,
         enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
@@ -21021,6 +21336,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.agent_version = agent_version
         self.alb_ingress_readiness_gate = alb_ingress_readiness_gate
         # The ID of the application.
         # 
@@ -21119,6 +21435,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        self.enable_namespace_agent_version = enable_namespace_agent_version
         # Enable new ARMS features.
         # 
         # - true: enable
@@ -21478,6 +21795,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
         if self.alb_ingress_readiness_gate is not None:
             result['AlbIngressReadinessGate'] = self.alb_ingress_readiness_gate
         if self.app_id is not None:
@@ -21516,6 +21835,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_grey_tag_route is not None:
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
+        if self.enable_namespace_agent_version is not None:
+            result['EnableNamespaceAgentVersion'] = self.enable_namespace_agent_version
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
         if self.enable_prometheus is not None:
@@ -21642,6 +21963,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
         if m.get('AlbIngressReadinessGate') is not None:
             self.alb_ingress_readiness_gate = m.get('AlbIngressReadinessGate')
         if m.get('AppId') is not None:
@@ -21680,6 +22003,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableGreyTagRoute') is not None:
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
+        if m.get('EnableNamespaceAgentVersion') is not None:
+            self.enable_namespace_agent_version = m.get('EnableNamespaceAgentVersion')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
         if m.get('EnablePrometheus') is not None:
@@ -23141,6 +23466,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self,
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
+        agent_version: str = None,
         alb_ingress_readiness_gate: str = None,
         app_description: str = None,
         app_id: str = None,
@@ -23166,6 +23492,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_cpu_burst: str = None,
         enable_grey_tag_route: bool = None,
         enable_idle: bool = None,
+        enable_namespace_agent_version: bool = None,
         enable_new_arms: bool = None,
         enable_prometheus: bool = None,
         envs: str = None,
@@ -23240,6 +23567,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of the Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        self.agent_version = agent_version
         self.alb_ingress_readiness_gate = alb_ingress_readiness_gate
         # The description of the application.
         self.app_description = app_description
@@ -23343,6 +23671,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # 
         # - false: disable
         self.enable_idle = enable_idle
+        self.enable_namespace_agent_version = enable_namespace_agent_version
         # Enable new ARMS feature.
         # 
         # - true: enable
@@ -23682,6 +24011,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
         if self.acr_instance_id is not None:
             result['AcrInstanceId'] = self.acr_instance_id
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
         if self.alb_ingress_readiness_gate is not None:
             result['AlbIngressReadinessGate'] = self.alb_ingress_readiness_gate
         if self.app_description is not None:
@@ -23736,6 +24067,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.enable_idle is not None:
             result['EnableIdle'] = self.enable_idle
+        if self.enable_namespace_agent_version is not None:
+            result['EnableNamespaceAgentVersion'] = self.enable_namespace_agent_version
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
         if self.enable_prometheus is not None:
@@ -23894,6 +24227,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
         if m.get('AcrInstanceId') is not None:
             self.acr_instance_id = m.get('AcrInstanceId')
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
         if m.get('AlbIngressReadinessGate') is not None:
             self.alb_ingress_readiness_gate = m.get('AlbIngressReadinessGate')
         if m.get('AppDescription') is not None:
@@ -23950,6 +24285,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('EnableIdle') is not None:
             self.enable_idle = m.get('EnableIdle')
+        if m.get('EnableNamespaceAgentVersion') is not None:
+            self.enable_namespace_agent_version = m.get('EnableNamespaceAgentVersion')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
         if m.get('EnablePrometheus') is not None:
@@ -33730,6 +34067,7 @@ class DescribeNamespaceResourcesRequest(TeaModel):
 class DescribeNamespaceResourcesResponseBodyData(TeaModel):
     def __init__(
         self,
+        apm_java_agent_version: str = None,
         app_count: int = None,
         belong_region: str = None,
         description: str = None,
@@ -33751,6 +34089,7 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        self.apm_java_agent_version = apm_java_agent_version
         # The number of applications.
         self.app_count = app_count
         # The region to which the namespace belongs.
@@ -33816,6 +34155,8 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.apm_java_agent_version is not None:
+            result['ApmJavaAgentVersion'] = self.apm_java_agent_version
         if self.app_count is not None:
             result['AppCount'] = self.app_count
         if self.belong_region is not None:
@@ -33860,6 +34201,8 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApmJavaAgentVersion') is not None:
+            self.apm_java_agent_version = m.get('ApmJavaAgentVersion')
         if m.get('AppCount') is not None:
             self.app_count = m.get('AppCount')
         if m.get('BelongRegion') is not None:
@@ -36665,6 +37008,8 @@ class DowngradeApplicationApmServiceRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The ID of the interactive messaging application.
+        # 
         # This parameter is required.
         self.app_id = app_id
 
@@ -36693,6 +37038,10 @@ class DowngradeApplicationApmServiceResponseBodyData(TeaModel):
         self,
         status: bool = None,
     ):
+        # Indicates whether ARMS advanced monitoring is disabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.status = status
 
     def validate(self):
@@ -36726,12 +37075,27 @@ class DowngradeApplicationApmServiceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The status code.
         self.error_code = error_code
+        # The message that is returned.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether ARMS advanced monitoring is disabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -38793,13 +39157,15 @@ class GetWebshellTokenRequest(TeaModel):
         container_name: str = None,
         pod_name: str = None,
     ):
+        # The ID of the interactive messaging application.
+        # 
         # This parameter is required.
         self.app_id = app_id
-        # The name of the container.
+        # The name of the init container.
         # 
         # Note:
         # 
-        # *   If this parameter is specified, Cloud Assistant runs the command in the specified container of the instance.
+        # *   If you specify this parameter, Cloud Assistant runs the command in the specified container of the instances.
         # 
         # *   If this parameter is specified, the command can run only on Linux instances on which Cloud Assistant Agent 2.2.3.344 or later is installed.
         # 
@@ -38810,6 +39176,8 @@ class GetWebshellTokenRequest(TeaModel):
         # 
         # *   If this parameter is specified, only shell scripts can be run in Linux containers. You cannot add a command in the format similar to `#!/usr/bin/python` at the beginning of a script to specify a script interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
         self.container_name = container_name
+        # The name of the pod.
+        # 
         # This parameter is required.
         self.pod_name = pod_name
 
@@ -38848,8 +39216,11 @@ class GetWebshellTokenResponseBodyData(TeaModel):
         token: str = None,
         web_socket_url: str = None,
     ):
+        # Webshell page address
         self.http_url = http_url
+        # The information about the token.
         self.token = token
+        # The WebSocket address.
         self.web_socket_url = web_socket_url
 
     def validate(self):
@@ -38891,13 +39262,30 @@ class GetWebshellTokenResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # Response
+        # The returned result.
         self.data = data
+        # The error code returned if the call failed. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, the **ErrorCode** parameter is returned. For more information, see **Error codes** section in this topic.
         self.error_code = error_code
+        # The returned message. Value description:
+        # 
+        # *   If the request was successful, a success message is returned.
+        # *   An error code is returned if the request failed.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -51437,8 +51825,12 @@ class UpdateApplicationDescriptionRequest(TeaModel):
         app_description: str = None,
         app_id: str = None,
     ):
+        # The new description of the application. The description can be up to 1,024 characters in length.
+        # 
         # This parameter is required.
         self.app_description = app_description
+        # The ID of the application that you want to update.
+        # 
         # This parameter is required.
         self.app_id = app_id
 
@@ -51476,11 +51868,31 @@ class UpdateApplicationDescriptionResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The error code returned if the call failed. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The message returned. The following limits are imposed on the ID:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   An error code is returned when a request failed.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the application was deployed. Valid values:
+        # 
+        # *   **true**: The application was deployed.
+        # *   **false**: The application failed to be deployed.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -52783,19 +53195,19 @@ class UpdateIngressRequest(TeaModel):
         rules: str = None,
         security_policy_id: str = None,
     ):
-        # The ID of the certificate that is associated with the Classic Load Balancer (**CLB**) instance.
+        # The ID of the **CLB** certificate. Valid values:
         # 
-        # *   If you set **LoadBalanceType** to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
+        # *   If the **LoadBalanceType** is **clb**, use this field to configure the HTTPS listener certificate.
         # 
-        # For more information about how to manage the SSL certificate IDs that are used by CLB instances, see [Overview](https://help.aliyun.com/document_detail/90792.html).
+        # For more information about how to use SSL certificate IDs for CLB, see [Manage certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
         self.cert_id = cert_id
-        # The IDs of the certificates that are associated with the Application Load Balancer (**ALB**) instance.
+        # The ID of the multi-certificate **ALB**. Valid values:
         # 
-        # *   If you set **LoadBalanceType** to **alb**, you can use CertIds to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
-        # *   The ID of the SSL certificate that is used by an ALB instance can be obtained from Certificate Management Service. For example, if you specify `756***-cn-hangzhou`, `756***` is the certificate ID that is obtained from the service page, and `-cn-hangzhou` is the fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
+        # *   If the **LoadBalanceType** is **alb**, use this field to configure multiple certificates for HTTPS listeners. Separate multiple certificate IDs with commas (,).
+        # *   The ID of the SSL certificate used by ALB must be obtained from the digital certificate product. For example, in the configuration `756***-cn-hangzhou`, the `756***` is the certificate ID obtained from the product page, and the `-cn-hangzhou` is a fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
         self.cert_ids = cert_ids
         self.cors_config = cors_config
-        # The default forwarding rule. You can specify a port and an application in the default forwarding rule to forward traffic based on the IP address. The following list describes the involved parameters:
+        # The default forwarding rule. Forwards traffic to a specified application through a specified port based on the IP address. The following table describes the parameters.
         # 
         # *   **appId**: the ID of the application.
         # *   **containerPort**: the container port of the application.
@@ -52818,21 +53230,21 @@ class UpdateIngressRequest(TeaModel):
         # 
         # This parameter is required.
         self.ingress_id = ingress_id
-        # The port specified for the Server Load Balancer (SLB) listener. You must specify a vacant port.
+        # The SLB listening port. This port cannot be occupied.
         self.listener_port = listener_port
         # The protocol that is used to forward requests. Valid values:
         # 
-        # *   **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
+        # *   **HTTP**: HTTP is suitable for applications that need to identify transmitted data.
         # *   **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
         self.listener_protocol = listener_protocol
-        # This parameter is discontinued.
+        # The parameter is deprecated and cannot be updated.
         self.load_balance_type = load_balance_type
         # The request timed out. Unit: seconds.
         self.request_timeout = request_timeout
-        # The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
+        # The forwarding rule. Forwards traffic to a specified application through a specified port based on the domain name and request path. The following table describes the parameters.
         # 
         # *   **appId**: the ID of the application.
-        # *   **containerPort**: the container port of the application.
+        # *   **containerPort**: The port of the application instance.
         # *   **domain**: the domain name.
         # *   **path**: the request path.
         self.rules = rules
@@ -52970,33 +53382,33 @@ class UpdateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or the error code. Valid values:
         # 
         # *   **2xx**: The request was successful.
         # *   **3xx**: The request was redirected.
         # *   **4xx**: The request failed.
         # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned result.
+        # Responses.
         self.data = data
-        # The error code.
+        # The status code. Value values:
         # 
         # *   If the request was successful, **ErrorCode** is not returned.
         # *   If the request failed, **ErrorCode** is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned information.
+        # Additional information. Valid values:
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   If the request failed, an error code is returned.
+        # *   The error message returned because the request is normal and **success** is returned.
+        # *   If the request is abnormal, the specific exception error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the configurations of the routing rule were updated. Valid values:
+        # Whether the configuration of the Ingress instance is updated. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: The update was successful.
+        # *   **false**: Update failed.
         self.success = success
-        # The trace ID.
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -54995,6 +55407,8 @@ class UpgradeApplicationApmServiceRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
 
@@ -55023,6 +55437,10 @@ class UpgradeApplicationApmServiceResponseBodyData(TeaModel):
         self,
         status: bool = None,
     ):
+        # Indicates whether ARMS advanced monitoring is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.status = status
 
     def validate(self):
@@ -55056,12 +55474,33 @@ class UpgradeApplicationApmServiceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code or the error code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The message returned. The following limits are imposed on the ID:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   An error code is returned when a request failed.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):

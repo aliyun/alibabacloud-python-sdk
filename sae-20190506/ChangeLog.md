@@ -1,3 +1,14 @@
+2025-11-04 Version: 2.9.1
+- Update API CreateApplication: add request parameters AgentVersion.
+- Update API CreateApplication: add request parameters EnableNamespaceAgentVersion.
+- Update API CreateApplication: add request parameters EnableNamespaceSlsConfig.
+- Update API DeployApplication: add request parameters AgentVersion.
+- Update API DeployApplication: add request parameters EnableNamespaceAgentVersion.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.AgentVersion.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.EnableNamespaceAgentVersion.
+- Update API DescribeNamespaceResources: add response parameters Body.Data.ApmJavaAgentVersion.
+
+
 2025-10-30 Version: 2.9.0
 - Support API UpdateNamespaceSlsConfigs.
 - Update API DescribeInstanceLog: add request parameters Previous.
