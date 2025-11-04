@@ -43669,6 +43669,7 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         dbname: str = None,
         dbnode_id: str = None,
         max_execution_time: int = None,
+        max_execution_time_ms: str = None,
         max_lock_time: int = None,
         parse_max_row_count: int = None,
         parse_total_row_counts: int = None,
@@ -43688,6 +43689,7 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         self.dbnode_id = dbnode_id
         # The longest execution duration of a specific SQL statement in the query. Unit: seconds.
         self.max_execution_time = max_execution_time
+        self.max_execution_time_ms = max_execution_time_ms
         # The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
         self.max_lock_time = max_lock_time
         # The largest number of rows that were parsed by a specific SQL statement in the query.
@@ -43726,6 +43728,8 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
             result['DBNodeId'] = self.dbnode_id
         if self.max_execution_time is not None:
             result['MaxExecutionTime'] = self.max_execution_time
+        if self.max_execution_time_ms is not None:
+            result['MaxExecutionTimeMs'] = self.max_execution_time_ms
         if self.max_lock_time is not None:
             result['MaxLockTime'] = self.max_lock_time
         if self.parse_max_row_count is not None:
@@ -43758,6 +43762,8 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
             self.dbnode_id = m.get('DBNodeId')
         if m.get('MaxExecutionTime') is not None:
             self.max_execution_time = m.get('MaxExecutionTime')
+        if m.get('MaxExecutionTimeMs') is not None:
+            self.max_execution_time_ms = m.get('MaxExecutionTimeMs')
         if m.get('MaxLockTime') is not None:
             self.max_lock_time = m.get('MaxLockTime')
         if m.get('ParseMaxRowCount') is not None:

@@ -1,3 +1,7 @@
+2025-11-04 Version: 6.1.3
+- Update API DescribeSlowLogs: add response parameters Body.Items.$.MaxExecutionTimeMs.
+
+
 2025-10-30 Version: 6.1.2
 - Update API DescribeMetaList: add response parameters Body.Items.$.Size.
 - Update API ModifyLogBackupPolicy: add request parameters AdvancedLogPolicies.
