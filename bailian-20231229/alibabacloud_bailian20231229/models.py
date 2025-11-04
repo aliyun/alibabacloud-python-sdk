@@ -1090,13 +1090,229 @@ class ApplyFileUploadLeaseResponse(TeaModel):
         return self
 
 
+class ApplyTempStorageLeaseRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        size_in_bytes: int = None,
+    ):
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.size_in_bytes = size_in_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.size_in_bytes is not None:
+            result['SizeInBytes'] = self.size_in_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('SizeInBytes') is not None:
+            self.size_in_bytes = m.get('SizeInBytes')
+        return self
+
+
+class ApplyTempStorageLeaseResponseBodyDataParam(TeaModel):
+    def __init__(
+        self,
+        headers: Any = None,
+        method: str = None,
+        url: str = None,
+    ):
+        self.headers = headers
+        self.method = method
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['Headers'] = self.headers
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ApplyTempStorageLeaseResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        param: ApplyTempStorageLeaseResponseBodyDataParam = None,
+        temp_storage_lease_id: str = None,
+    ):
+        self.param = param
+        self.temp_storage_lease_id = temp_storage_lease_id
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.temp_storage_lease_id is not None:
+            result['TempStorageLeaseId'] = self.temp_storage_lease_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Param') is not None:
+            temp_model = ApplyTempStorageLeaseResponseBodyDataParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('TempStorageLeaseId') is not None:
+            self.temp_storage_lease_id = m.get('TempStorageLeaseId')
+        return self
+
+
+class ApplyTempStorageLeaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ApplyTempStorageLeaseResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ApplyTempStorageLeaseResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ApplyTempStorageLeaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyTempStorageLeaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyTempStorageLeaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ChangeParseSettingRequestParserConfig(TeaModel):
     def __init__(
         self,
         model_name: str = None,
         model_prompt: str = None,
     ):
+        # The model name.
+        # 
+        # Valid values:
+        # 
+        # *   qwen-vl-max
+        # *   qwen-vl-plus
         self.model_name = model_name
+        # The prompt used for parsing.
         self.model_prompt = model_prompt
 
     def validate(self):
@@ -1131,12 +1347,24 @@ class ChangeParseSettingRequest(TeaModel):
         parser: str = None,
         parser_config: ChangeParseSettingRequestParserConfig = None,
     ):
+        # The category ID, which is the `CategoryId` returned by **AddCategory**. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) page.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The file type. Valid values: pdf, docx, and doc.
+        # 
         # This parameter is required.
         self.file_type = file_type
+        # The parser code. Valid values:
+        # 
+        # *   DOCMIND (Intelligent parsing)
+        # *   DOCMIND_DIGITAL (Digital parsing)
+        # *   DOCMIND_LLM_VERSION (LLM parsing)
+        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # 
         # This parameter is required.
         self.parser = parser
+        # The parser configuration. Currently, this is available only for Qwen VL parsing.
         self.parser_config = parser_config
 
     def validate(self):
@@ -1181,12 +1409,24 @@ class ChangeParseSettingShrinkRequest(TeaModel):
         parser: str = None,
         parser_config_shrink: str = None,
     ):
+        # The category ID, which is the `CategoryId` returned by **AddCategory**. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) page.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The file type. Valid values: pdf, docx, and doc.
+        # 
         # This parameter is required.
         self.file_type = file_type
+        # The parser code. Valid values:
+        # 
+        # *   DOCMIND (Intelligent parsing)
+        # *   DOCMIND_DIGITAL (Digital parsing)
+        # *   DOCMIND_LLM_VERSION (LLM parsing)
+        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # 
         # This parameter is required.
         self.parser = parser
+        # The parser configuration. Currently, this is available only for Qwen VL parsing.
         self.parser_config_shrink = parser_config_shrink
 
     def validate(self):
@@ -1226,6 +1466,7 @@ class ChangeParseSettingResponseBodyData(TeaModel):
         self,
         change_result: bool = None,
     ):
+        # The result of the modification.
         self.change_result = change_result
 
     def validate(self):
@@ -1258,11 +1499,20 @@ class ChangeParseSettingResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data fields.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2136,11 +2386,41 @@ class CreateIndexRequestMetaExtractColumns(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The description of the metadata field. The description must be 0 to 1,000 characters in length, and can contain Chinese characters, letters, digits, underscores (_), hyphens (-), periods (.), and colons (:). This parameter is left empty by default.
         self.desc = desc
+        # When set to true, the key and value of this metadata filed will participate in the generation process of the model, together with the chunk. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.enable_llm = enable_llm
+        # When set to true, the key and value of this metadata filed will participate in the knowledge base retrieval, together with the chunk. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.enable_search = enable_search
+        # The metadata key. It must be 1 to 50 characters in length and must be English letters or underscores. If you specify this parameter, the `Value` and `Type` parameters are required.
         self.key = key
+        # The type of the metadata field. Valid values:
+        # 
+        # *   constant
+        # *   variable
+        # *   custom_prompt
+        # *   regular
+        # *   keywords
+        # 
+        # Enumerated value:
+        # 
+        # *   constant: constant extraction.
+        # *   keywords: keyword extraction.
+        # *   custom_prompt: LLM.
+        # *   variable: variable extraction.
+        # *   regular: regular expression.
         self.type = type
+        # The metadata value.
         self.value = value
 
     def validate(self):
@@ -2210,99 +2490,109 @@ class CreateIndexRequest(TeaModel):
         enable_headers: bool = None,
         meta_extract_columns: List[CreateIndexRequestMetaExtractColumns] = None,
     ):
-        # The list of primary key IDs of the categories to be imported into the knowledge base.
+        # The files to imported to the knowledge base. Specify the category IDs. All files under the categories will be imported (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.category_ids = category_ids
-        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+        # The chunk size, which is the maximum number of characters in each chunk. Text exceeding this length may be truncated.
         # 
-        # The default value is empty, which means using the intelligent splitting method.
+        # Valid values: 1 to 6000. Default value: 500.
         # 
-        # >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
+        # > If `ChunkSize` is set to a value less than 100, `OverlapSize` is required. Or, if you do not pass these two parameters, the system uses the default values of the two.
         self.chunk_size = chunk_size
         self.columns = columns
+        # > This parameter is not available. Do not specify this parameter.
         self.create_index_type = create_index_type
         # >  This parameter is not available. Do not specify this parameter.
         self.data_source = data_source
         # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
         self.description = description
-        # The list of primary key IDs of the documents to be imported into the knowledge base.
+        # The files to imported to the knowledge base. Specify the file IDs to import (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.document_ids = document_ids
-        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The embedding model used in the knowledge base. The embedding model converts the original input prompt and knowledge text into numerical embeddings for similarity comparison. The default and only model available is text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the embedding results. For more information, see [Embedding](https://help.aliyun.com/document_detail/2842587.html). Valid values:
         # 
         # *   text-embedding-v2
         # 
-        # The default value is null, which means using the text-embedding-v2 model.
+        # The default value is null, which means using text-embedding-v2.
         self.embedding_model_name = embedding_model_name
+        # Whether to enable rewriting for multi-turn conversations. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.enable_rewrite = enable_rewrite
-        # The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the knowledge base. The name must be 1 to 20 characters in length, and can contain Chinese characters, letters, digits, underscores (_), hyphens (-), periods (.), and colons (:).
         # 
         # This parameter is required.
         self.name = name
-        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+        # The overlap size, which is the number of overlapping characters between two consecutive chunks. Valid values: 0 to 1024.
         # 
-        # The default value is empty, which means using the intelligent splitting method.
+        # Default value: 100.
+        # 
+        # > `OverlapSize` must be less than `ChunkSize`. Otherwise, chunking errors may occur.
         self.overlap_size = overlap_size
-        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+        # The similarity threshold. Only chunks with a similarity score higher than this value can be recalled. This parameter is used to filter chunks returned by the re-rank model. Valid values: 0.01 to 1.00.
         # 
-        # Default value: 0.20.
+        # Default value: 0.01.
         self.rerank_min_score = rerank_min_score
-        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The re-ranking model used in the knowledge base. The re-rank model is a scoring system outside the knowledge base. It calculates the similarity score of the query and text chunks in the knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. Valid values:
         # 
         # *   gte-rerank-hybrid
         # *   gte-rerank
         # 
-        # The default value is empty, which means using the official gte-rerank-hybrid model.
+        # The default value is empty, which means using gte-rerank-hybrid.
         # 
-        # >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
+        # > If you need only semantic ranking, we recommend gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend gte-rerank-hybrid.
         self.rerank_model_name = rerank_model_name
-        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
-        # 
-        # *   \\n: line break
-        # *   ，: Chinese comma
-        # *   ,: English comma
-        # *   。 : Chinese full stop
-        # *   .: English full stop
-        # *   ！ : Chinese exclamation point
-        # *   ! : English exclamation point
-        # *   ；: Chinese semicolon
-        # *   ;: English semicolon
-        # *   ？: Chinese question mark
-        # *   ?: English question mark
-        # 
-        # The default value is empty, which means using the intelligent splitting method.
+        # > This parameter is not available. Do not specify this parameter.
         self.separator = separator
-        # The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
+        # The ID of the AnalyticDB for PostgreSQL instance. Required only when `SinkType` is set to ADB. Get the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
         self.sink_instance_id = sink_instance_id
-        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
+        # The region of the AnalyticDB for PostgreSQL instance. Required only when `SinkType` is set to ADB. Call [DescribeRegions](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions?spm=a2c63.p38356.0.i3) to obtain the region list.
         self.sink_region = sink_region
-        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The vector storage type of the knowledge base. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values:
         # 
-        # *   DEFAULT: The built-in vector database.
-        # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
+        # *   BUILT_IN: The vector data is hosted by Alibaba Cloud Model Studio.
+        # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend ADB.
         # 
-        # >  If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, you must also specify the `SinkInstanceId` and `SinkRegion` parameters.
+        # > If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.alibabacloud.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, the `SinkInstanceId` and `SinkRegion` parameters are required.
         # 
         # This parameter is required.
         self.sink_type = sink_type
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # > This parameter is required in the latest version of the SDK. Otherwise, when you call SubmitIndexJob, an error will occur: Required parameter(data_sources) missing or invalid.
         # 
-        # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
-        # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+        # The source of the imported data. Valid values:
         # 
-        # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # *   DATA_CENTER_CATEGORY: The category type, that is to import all files in one or more specified categories in [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
+        # *   DATA_CENTER_FILE: The file type, that is to import one or more specified files in [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
         # 
-        # >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
+        # > If set to DATA_CENTER_CATEGORY, `CategoryIds` is required. If set to DATA_CENTER_FILE, `DocumentIds` is required.
+        # 
+        # > To create an empty knowledge base, you can use an empty category with no files: Set this parameter to DATA_CENTER_CATEGORY, and `CategoryIds` to the ID of an empty category.
         self.source_type = source_type
-        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The type of the knowledge base. Valid values:
         # 
-        # *   unstructured
+        # *   unstructured: The document search type.
         # 
-        # >  After a knowledge base is created, its data type cannot be changed. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        # > After you create a knowledge base, its type cannot be changed. This operation does not support data query and image Q\\&A types. Use the console instead.
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        # > This parameter is not available. Do not specify this parameter.
         self.table_ids = table_ids
+        # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
+        # Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
+        # 
+        # > Enable this feature only when all imported files are in .xlsx or .xls format and contain headers. Otherwise, leave it disabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.enable_headers = enable_headers
+        # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns = meta_extract_columns
 
     def validate(self):
@@ -2460,99 +2750,109 @@ class CreateIndexShrinkRequest(TeaModel):
         enable_headers: bool = None,
         meta_extract_columns_shrink: str = None,
     ):
-        # The list of primary key IDs of the categories to be imported into the knowledge base.
+        # The files to imported to the knowledge base. Specify the category IDs. All files under the categories will be imported (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.category_ids_shrink = category_ids_shrink
-        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+        # The chunk size, which is the maximum number of characters in each chunk. Text exceeding this length may be truncated.
         # 
-        # The default value is empty, which means using the intelligent splitting method.
+        # Valid values: 1 to 6000. Default value: 500.
         # 
-        # >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
+        # > If `ChunkSize` is set to a value less than 100, `OverlapSize` is required. Or, if you do not pass these two parameters, the system uses the default values of the two.
         self.chunk_size = chunk_size
         self.columns_shrink = columns_shrink
+        # > This parameter is not available. Do not specify this parameter.
         self.create_index_type = create_index_type
         # >  This parameter is not available. Do not specify this parameter.
         self.data_source_shrink = data_source_shrink
         # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
         self.description = description
-        # The list of primary key IDs of the documents to be imported into the knowledge base.
+        # The files to imported to the knowledge base. Specify the file IDs to import (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.document_ids_shrink = document_ids_shrink
-        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The embedding model used in the knowledge base. The embedding model converts the original input prompt and knowledge text into numerical embeddings for similarity comparison. The default and only model available is text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the embedding results. For more information, see [Embedding](https://help.aliyun.com/document_detail/2842587.html). Valid values:
         # 
         # *   text-embedding-v2
         # 
-        # The default value is null, which means using the text-embedding-v2 model.
+        # The default value is null, which means using text-embedding-v2.
         self.embedding_model_name = embedding_model_name
+        # Whether to enable rewriting for multi-turn conversations. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.enable_rewrite = enable_rewrite
-        # The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the knowledge base. The name must be 1 to 20 characters in length, and can contain Chinese characters, letters, digits, underscores (_), hyphens (-), periods (.), and colons (:).
         # 
         # This parameter is required.
         self.name = name
-        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+        # The overlap size, which is the number of overlapping characters between two consecutive chunks. Valid values: 0 to 1024.
         # 
-        # The default value is empty, which means using the intelligent splitting method.
+        # Default value: 100.
+        # 
+        # > `OverlapSize` must be less than `ChunkSize`. Otherwise, chunking errors may occur.
         self.overlap_size = overlap_size
-        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+        # The similarity threshold. Only chunks with a similarity score higher than this value can be recalled. This parameter is used to filter chunks returned by the re-rank model. Valid values: 0.01 to 1.00.
         # 
-        # Default value: 0.20.
+        # Default value: 0.01.
         self.rerank_min_score = rerank_min_score
-        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The re-ranking model used in the knowledge base. The re-rank model is a scoring system outside the knowledge base. It calculates the similarity score of the query and text chunks in the knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. Valid values:
         # 
         # *   gte-rerank-hybrid
         # *   gte-rerank
         # 
-        # The default value is empty, which means using the official gte-rerank-hybrid model.
+        # The default value is empty, which means using gte-rerank-hybrid.
         # 
-        # >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
+        # > If you need only semantic ranking, we recommend gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend gte-rerank-hybrid.
         self.rerank_model_name = rerank_model_name
-        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
-        # 
-        # *   \\n: line break
-        # *   ，: Chinese comma
-        # *   ,: English comma
-        # *   。 : Chinese full stop
-        # *   .: English full stop
-        # *   ！ : Chinese exclamation point
-        # *   ! : English exclamation point
-        # *   ；: Chinese semicolon
-        # *   ;: English semicolon
-        # *   ？: Chinese question mark
-        # *   ?: English question mark
-        # 
-        # The default value is empty, which means using the intelligent splitting method.
+        # > This parameter is not available. Do not specify this parameter.
         self.separator = separator
-        # The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
+        # The ID of the AnalyticDB for PostgreSQL instance. Required only when `SinkType` is set to ADB. Get the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
         self.sink_instance_id = sink_instance_id
-        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
+        # The region of the AnalyticDB for PostgreSQL instance. Required only when `SinkType` is set to ADB. Call [DescribeRegions](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions?spm=a2c63.p38356.0.i3) to obtain the region list.
         self.sink_region = sink_region
-        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The vector storage type of the knowledge base. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values:
         # 
-        # *   DEFAULT: The built-in vector database.
-        # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
+        # *   BUILT_IN: The vector data is hosted by Alibaba Cloud Model Studio.
+        # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend ADB.
         # 
-        # >  If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, you must also specify the `SinkInstanceId` and `SinkRegion` parameters.
+        # > If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.alibabacloud.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, the `SinkInstanceId` and `SinkRegion` parameters are required.
         # 
         # This parameter is required.
         self.sink_type = sink_type
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # > This parameter is required in the latest version of the SDK. Otherwise, when you call SubmitIndexJob, an error will occur: Required parameter(data_sources) missing or invalid.
         # 
-        # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
-        # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+        # The source of the imported data. Valid values:
         # 
-        # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # *   DATA_CENTER_CATEGORY: The category type, that is to import all files in one or more specified categories in [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
+        # *   DATA_CENTER_FILE: The file type, that is to import one or more specified files in [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
         # 
-        # >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
+        # > If set to DATA_CENTER_CATEGORY, `CategoryIds` is required. If set to DATA_CENTER_FILE, `DocumentIds` is required.
+        # 
+        # > To create an empty knowledge base, you can use an empty category with no files: Set this parameter to DATA_CENTER_CATEGORY, and `CategoryIds` to the ID of an empty category.
         self.source_type = source_type
-        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The type of the knowledge base. Valid values:
         # 
-        # *   unstructured
+        # *   unstructured: The document search type.
         # 
-        # >  After a knowledge base is created, its data type cannot be changed. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        # > After you create a knowledge base, its type cannot be changed. This operation does not support data query and image Q\\&A types. Use the console instead.
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        # > This parameter is not available. Do not specify this parameter.
         self.table_ids_shrink = table_ids_shrink
+        # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
+        # Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
+        # 
+        # > Enable this feature only when all imported files are in .xlsx or .xls format and contain headers. Otherwise, leave it disabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.enable_headers = enable_headers
+        # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
 
     def validate(self):
@@ -2668,9 +2968,9 @@ class CreateIndexResponseBodyData(TeaModel):
         self,
         id: str = None,
     ):
-        # The primary key ID of the knowledge base, `IndexId`.
+        # The knowledge base ID, or `IndexId`, is a unique identifier for the knowledge base created.
         # 
-        # >  We recommend that you store this ID. It is required for all subsequent API operations related to this knowledge base.
+        # > Keep this ID. It is required for all subsequent API operations related to this knowledge base.
         self.id = id
 
     def validate(self):
@@ -2703,9 +3003,9 @@ class CreateIndexResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error code.
         self.code = code
-        # The returned data.
+        # The data returned if the request is successful.
         self.data = data
         # The error message.
         self.message = message
@@ -2713,7 +3013,7 @@ class CreateIndexResponseBody(TeaModel):
         self.request_id = request_id
         # The status code.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
+        # Indications whether the request is successful. Valid values:
         # 
         # *   true
         # *   false
@@ -3347,8 +3647,12 @@ class DeleteChunkRequest(TeaModel):
         chunk_ids: List[str] = None,
         pipeline_id: str = None,
     ):
+        # The list of text chunks to be deleted. You can specify up to 10 chunk IDs at a time.
+        # 
         # This parameter is required.
         self.chunk_ids = chunk_ids
+        # The knowledge base ID, which is the `Data.Id` parameter returned by **CreateIndex**.
+        # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
 
@@ -3382,8 +3686,12 @@ class DeleteChunkShrinkRequest(TeaModel):
         chunk_ids_shrink: str = None,
         pipeline_id: str = None,
     ):
+        # The list of text chunks to be deleted. You can specify up to 10 chunk IDs at a time.
+        # 
         # This parameter is required.
         self.chunk_ids_shrink = chunk_ids_shrink
+        # The knowledge base ID, which is the `Data.Id` parameter returned by **CreateIndex**.
+        # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
 
@@ -3421,12 +3729,20 @@ class DeleteChunkResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned if the request is successful.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4743,6 +5059,8 @@ class GetAvailableParserTypesRequest(TeaModel):
         self,
         file_type: str = None,
     ):
+        # The file type. Valid values: pdf, docx, and doc.
+        # 
         # This parameter is required.
         self.file_type = file_type
 
@@ -4772,7 +5090,14 @@ class GetAvailableParserTypesResponseBodyDataParserList(TeaModel):
         display_name: str = None,
         parser: str = None,
     ):
+        # The display name of the parsing method.
         self.display_name = display_name
+        # The parser code. Valid values:
+        # 
+        # *   DOCMIND (Intelligent parsing)
+        # *   DOCMIND_DIGITAL (Digital parsing)
+        # *   DOCMIND_LLM_VERSION (LLM parsing)
+        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
         self.parser = parser
 
     def validate(self):
@@ -4805,7 +5130,9 @@ class GetAvailableParserTypesResponseBodyData(TeaModel):
         file_type: str = None,
         parser_list: List[GetAvailableParserTypesResponseBodyDataParserList] = None,
     ):
+        # The file type, which is the same as the FileType in the input parameter.
         self.file_type = file_type
+        # The list of supported parsers
         self.parser_list = parser_list
 
     def validate(self):
@@ -4850,11 +5177,20 @@ class GetAvailableParserTypesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message that is returned if the request failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5407,6 +5743,7 @@ class GetParseSettingsRequest(TeaModel):
         self,
         category_id: str = None,
     ):
+        # The category ID, which is the `CategoryId` returned by **AddCategory**. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) page.
         self.category_id = category_id
 
     def validate(self):
@@ -5435,7 +5772,9 @@ class GetParseSettingsResponseBodyDataParserConfig(TeaModel):
         model_name: str = None,
         model_prompt: str = None,
     ):
+        # The model name.
         self.model_name = model_name
+        # The prompt used for parsing.
         self.model_prompt = model_prompt
 
     def validate(self):
@@ -5470,9 +5809,18 @@ class GetParseSettingsResponseBodyData(TeaModel):
         parser_config: GetParseSettingsResponseBodyDataParserConfig = None,
         parser_display_name: str = None,
     ):
+        # The file type. Valid values are: pdf, docx, doc, etc. All supported file types in the category are listed here.
         self.file_type = file_type
+        # The parser used for files of the current type. Valid values:
+        # 
+        # *   DOCMIND (Intelligent parsing)
+        # *   DOCMIND_DIGITAL (Digital parsing)
+        # *   DOCMIND_LLM_VERSION (LLM parsing)
+        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
         self.parser = parser
+        # The parser configuration. Currently, this is available only for Qwen VL parsing.
         self.parser_config = parser_config
+        # The display name of the parsing method.
         self.parser_display_name = parser_display_name
 
     def validate(self):
@@ -5519,11 +5867,20 @@ class GetParseSettingsResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data fields.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6882,6 +7239,8 @@ class ListFileRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The category ID, which is the `CategoryId` returned by the [AddCategory](~~AddCategory~~) operation. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
+        # 
         # This parameter is required.
         self.category_id = category_id
         self.file_name = file_name
@@ -6935,6 +7294,7 @@ class ListFileResponseBodyDataFileList(TeaModel):
     ):
         self.category_id = category_id
         self.create_time = create_time
+        # The document ID, which is the `FileId` parameter returned by the [AddFile](~~AddFile~~) operation. To view the ID, click the icon next to the file name on the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
         self.file_id = file_id
         self.file_name = file_name
         self.file_type = file_type
@@ -7004,6 +7364,7 @@ class ListFileResponseBodyData(TeaModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The list of documents in the category.
         self.file_list = file_list
         self.has_next = has_next
         self.max_results = max_results
@@ -7065,6 +7426,7 @@ class ListFileResponseBody(TeaModel):
         success: bool = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.message = message
         # Id of the request
@@ -11679,16 +12041,32 @@ class UpdateChunkRequest(TeaModel):
         content: str = None,
         title: str = None,
     ):
+        # The ID of the text chunk to be modified. You can find it in the Node.Metadata._id field returned by **ListChunks**.
+        # 
         # This parameter is required.
         self.chunk_id = chunk_id
+        # The file ID, which is the `FileId` returned by **AddFile**. You can also go to the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page. Click the ID icon next to your file to get its ID.
+        # 
         # This parameter is required.
         self.data_id = data_id
+        # Specifies whether this text chunk participates in knowledge base retrieval. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
+        # 
         # This parameter is required.
         self.is_displayed_chunk_content = is_displayed_chunk_content
+        # The knowledge base ID, which is the `Data.Id` returned by **CreateIndex**. You can also get it on the [Knowledge Base](https://modelstudio.console.alibabacloud.com/?tab=app#/knowledge-base) page.
+        # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
+        # The new content of the chunk. The content must be between 10 and 6,000 characters in length and cannot exceed the maximum chunk length set when the knowledge base was created.
+        # 
         # This parameter is required.
         self.content = content
+        # The new title of the chunk. The title must be 0 to 50 characters in length and can be an empty string. If you specify an empty string, the existing title is cleared. If you do not pass this parameter, the original title remains unchanged.
         self.title = title
 
     def validate(self):
@@ -11741,12 +12119,20 @@ class UpdateChunkResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned if the request is successful.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):

@@ -609,6 +609,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.apply_file_upload_lease_with_options_async(category_id, workspace_id, request, headers, runtime)
 
+    def apply_temp_storage_lease_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ApplyTempStorageLeaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ApplyTempStorageLeaseResponse:
+        """
+        @summary 申请临时文件存储上传许可
+        
+        @param request: ApplyTempStorageLeaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyTempStorageLeaseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.size_in_bytes):
+            body['SizeInBytes'] = request.size_in_bytes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyTempStorageLease',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ApplyTempStorageLeaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_temp_storage_lease_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ApplyTempStorageLeaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ApplyTempStorageLeaseResponse:
+        """
+        @summary 申请临时文件存储上传许可
+        
+        @param request: ApplyTempStorageLeaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyTempStorageLeaseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.size_in_bytes):
+            body['SizeInBytes'] = request.size_in_bytes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyTempStorageLease',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ApplyTempStorageLeaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_temp_storage_lease(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ApplyTempStorageLeaseRequest,
+    ) -> bailian_20231229_models.ApplyTempStorageLeaseResponse:
+        """
+        @summary 申请临时文件存储上传许可
+        
+        @param request: ApplyTempStorageLeaseRequest
+        @return: ApplyTempStorageLeaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.apply_temp_storage_lease_with_options(workspace_id, request, headers, runtime)
+
+    async def apply_temp_storage_lease_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ApplyTempStorageLeaseRequest,
+    ) -> bailian_20231229_models.ApplyTempStorageLeaseResponse:
+        """
+        @summary 申请临时文件存储上传许可
+        
+        @param request: ApplyTempStorageLeaseRequest
+        @return: ApplyTempStorageLeaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.apply_temp_storage_lease_with_options_async(workspace_id, request, headers, runtime)
+
     def change_parse_setting_with_options(
         self,
         workspace_id: str,
@@ -617,7 +729,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ChangeParseSettingResponse:
         """
-        @summary 修改类目解析配置
+        @summary Configure the parsing method for a specific file type. For example, use LLM parsing for .pdf files, or use Qwen VL parsing for .jpg files.
         
         @param tmp_req: ChangeParseSettingRequest
         @param headers: map
@@ -666,7 +778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ChangeParseSettingResponse:
         """
-        @summary 修改类目解析配置
+        @summary Configure the parsing method for a specific file type. For example, use LLM parsing for .pdf files, or use Qwen VL parsing for .jpg files.
         
         @param tmp_req: ChangeParseSettingRequest
         @param headers: map
@@ -713,7 +825,7 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ChangeParseSettingRequest,
     ) -> bailian_20231229_models.ChangeParseSettingResponse:
         """
-        @summary 修改类目解析配置
+        @summary Configure the parsing method for a specific file type. For example, use LLM parsing for .pdf files, or use Qwen VL parsing for .jpg files.
         
         @param request: ChangeParseSettingRequest
         @return: ChangeParseSettingResponse
@@ -728,7 +840,7 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ChangeParseSettingRequest,
     ) -> bailian_20231229_models.ChangeParseSettingResponse:
         """
-        @summary 修改类目解析配置
+        @summary Configure the parsing method for a specific file type. For example, use LLM parsing for .pdf files, or use Qwen VL parsing for .jpg files.
         
         @param request: ChangeParseSettingRequest
         @return: ChangeParseSettingResponse
@@ -881,11 +993,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        @summary Create a knowledge base of the document search type.
         
-        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
-        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
-        3.  This interface is not idempotent.
+        @description    **Limits**: This operation can create only knowledge base of the document search type. Data query and image Q\\&A types are not supported. Use the console instead.
+        **Required permissions**\
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:CreateIndex permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **What to do next**: This operation only initializes knowledge base creation job. After that, call **SubmitIndexJob** to complete the creation. Otherwise, you will get an empty knowledge base. For more information about the sample code, see [Knowledge base API guide](https://help.aliyun.com/document_detail/2852772.html).
+        **Idempotence**: This operation is not idempotent. If you call the operation for multiple times, you may create several knowledge bases with the same name. We recommend following a "query first, then create" logic.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param tmp_req: CreateIndexRequest
         @param headers: map
@@ -982,11 +1099,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        @summary Create a knowledge base of the document search type.
         
-        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
-        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
-        3.  This interface is not idempotent.
+        @description    **Limits**: This operation can create only knowledge base of the document search type. Data query and image Q\\&A types are not supported. Use the console instead.
+        **Required permissions**\
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:CreateIndex permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **What to do next**: This operation only initializes knowledge base creation job. After that, call **SubmitIndexJob** to complete the creation. Otherwise, you will get an empty knowledge base. For more information about the sample code, see [Knowledge base API guide](https://help.aliyun.com/document_detail/2852772.html).
+        **Idempotence**: This operation is not idempotent. If you call the operation for multiple times, you may create several knowledge bases with the same name. We recommend following a "query first, then create" logic.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param tmp_req: CreateIndexRequest
         @param headers: map
@@ -1081,11 +1203,16 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.CreateIndexRequest,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        @summary Create a knowledge base of the document search type.
         
-        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
-        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
-        3.  This interface is not idempotent.
+        @description    **Limits**: This operation can create only knowledge base of the document search type. Data query and image Q\\&A types are not supported. Use the console instead.
+        **Required permissions**\
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:CreateIndex permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **What to do next**: This operation only initializes knowledge base creation job. After that, call **SubmitIndexJob** to complete the creation. Otherwise, you will get an empty knowledge base. For more information about the sample code, see [Knowledge base API guide](https://help.aliyun.com/document_detail/2852772.html).
+        **Idempotence**: This operation is not idempotent. If you call the operation for multiple times, you may create several knowledge bases with the same name. We recommend following a "query first, then create" logic.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: CreateIndexRequest
         @return: CreateIndexResponse
@@ -1100,11 +1227,16 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.CreateIndexRequest,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        @summary Create a knowledge base of the document search type.
         
-        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
-        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
-        3.  This interface is not idempotent.
+        @description    **Limits**: This operation can create only knowledge base of the document search type. Data query and image Q\\&A types are not supported. Use the console instead.
+        **Required permissions**\
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:CreateIndex permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **What to do next**: This operation only initializes knowledge base creation job. After that, call **SubmitIndexJob** to complete the creation. Otherwise, you will get an empty knowledge base. For more information about the sample code, see [Knowledge base API guide](https://help.aliyun.com/document_detail/2852772.html).
+        **Idempotence**: This operation is not idempotent. If you call the operation for multiple times, you may create several knowledge bases with the same name. We recommend following a "query first, then create" logic.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: CreateIndexRequest
         @return: CreateIndexResponse
@@ -1641,7 +1773,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DeleteChunkResponse:
         """
-        @summary 删除切片信息
+        @summary Deletes a specified text chunk from a knowledge base. The deleted chunk cannot be retrieved or recalled.
+        
+        @description *\
+        *Warning** After a text chunk is deleted, it cannot be restored. Proceed with caution.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:DeleteChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been deleted, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param tmp_req: DeleteChunkRequest
         @param headers: map
@@ -1686,7 +1828,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DeleteChunkResponse:
         """
-        @summary 删除切片信息
+        @summary Deletes a specified text chunk from a knowledge base. The deleted chunk cannot be retrieved or recalled.
+        
+        @description *\
+        *Warning** After a text chunk is deleted, it cannot be restored. Proceed with caution.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:DeleteChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been deleted, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param tmp_req: DeleteChunkRequest
         @param headers: map
@@ -1729,7 +1881,17 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.DeleteChunkRequest,
     ) -> bailian_20231229_models.DeleteChunkResponse:
         """
-        @summary 删除切片信息
+        @summary Deletes a specified text chunk from a knowledge base. The deleted chunk cannot be retrieved or recalled.
+        
+        @description *\
+        *Warning** After a text chunk is deleted, it cannot be restored. Proceed with caution.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:DeleteChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been deleted, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: DeleteChunkRequest
         @return: DeleteChunkResponse
@@ -1744,7 +1906,17 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.DeleteChunkRequest,
     ) -> bailian_20231229_models.DeleteChunkResponse:
         """
-        @summary 删除切片信息
+        @summary Deletes a specified text chunk from a knowledge base. The deleted chunk cannot be retrieved or recalled.
+        
+        @description *\
+        *Warning** After a text chunk is deleted, it cannot be restored. Proceed with caution.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:DeleteChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been deleted, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: DeleteChunkRequest
         @return: DeleteChunkResponse
@@ -2747,7 +2919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
         """
-        @summary 获取文件支持的解析器类型
+        @summary Lists all supported parser types based on the input file type (file extension).
         
         @param request: GetAvailableParserTypesRequest
         @param headers: map
@@ -2786,7 +2958,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
         """
-        @summary 获取文件支持的解析器类型
+        @summary Lists all supported parser types based on the input file type (file extension).
         
         @param request: GetAvailableParserTypesRequest
         @param headers: map
@@ -2823,7 +2995,7 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.GetAvailableParserTypesRequest,
     ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
         """
-        @summary 获取文件支持的解析器类型
+        @summary Lists all supported parser types based on the input file type (file extension).
         
         @param request: GetAvailableParserTypesRequest
         @return: GetAvailableParserTypesResponse
@@ -2838,7 +3010,7 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.GetAvailableParserTypesRequest,
     ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
         """
-        @summary 获取文件支持的解析器类型
+        @summary Lists all supported parser types based on the input file type (file extension).
         
         @param request: GetAvailableParserTypesRequest
         @return: GetAvailableParserTypesResponse
@@ -3183,7 +3355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.GetParseSettingsResponse:
         """
-        @summary 获取类目解析配置
+        @summary Queries the data parsing settings in a specified category.
         
         @param request: GetParseSettingsRequest
         @param headers: map
@@ -3222,7 +3394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.GetParseSettingsResponse:
         """
-        @summary 获取类目解析配置
+        @summary Queries the data parsing settings in a specified category.
         
         @param request: GetParseSettingsRequest
         @param headers: map
@@ -3259,7 +3431,7 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.GetParseSettingsRequest,
     ) -> bailian_20231229_models.GetParseSettingsResponse:
         """
-        @summary 获取类目解析配置
+        @summary Queries the data parsing settings in a specified category.
         
         @param request: GetParseSettingsRequest
         @return: GetParseSettingsResponse
@@ -3274,7 +3446,7 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.GetParseSettingsRequest,
     ) -> bailian_20231229_models.GetParseSettingsResponse:
         """
-        @summary 获取类目解析配置
+        @summary Queries the data parsing settings in a specified category.
         
         @param request: GetParseSettingsRequest
         @return: GetParseSettingsResponse
@@ -3871,7 +4043,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListFileResponse:
         """
-        @summary 获取文档列表
+        @summary Queries the details of one or more documents in a specified category.
+        
+        @description    If you are using a RAM user, you must first obtain the OpenAPI management permissions (namely sfm:ListFile) of Model Studio. For more information, see [Grant OpenAPI permissions to a RAM user](https://help.aliyun.com/document_detail/2848578.html). If you are using the Alibaba Cloud account, you do not need permissions. We recommend that you use [the latest version of the SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
+        During a paged query, set `MaxResults` to specify the maximum number of entries to return. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you query subsequent pages, set the `NextToken` parameter to the `NextToken` obtained in the last returned result. You can also set the `MaxResults` parameter to limit the number of entries to be returned. If no `NextToken` is returned, the result is completely returned and no more requests are required.
+        This operation is idempotent.
+        *Throttling:** Throttling will be triggered if you call this operation frequently. Do not exceed 5 times per second. If throttling is triggered, try again later.
         
         @param request: ListFileRequest
         @param headers: map
@@ -3916,7 +4093,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListFileResponse:
         """
-        @summary 获取文档列表
+        @summary Queries the details of one or more documents in a specified category.
+        
+        @description    If you are using a RAM user, you must first obtain the OpenAPI management permissions (namely sfm:ListFile) of Model Studio. For more information, see [Grant OpenAPI permissions to a RAM user](https://help.aliyun.com/document_detail/2848578.html). If you are using the Alibaba Cloud account, you do not need permissions. We recommend that you use [the latest version of the SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
+        During a paged query, set `MaxResults` to specify the maximum number of entries to return. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you query subsequent pages, set the `NextToken` parameter to the `NextToken` obtained in the last returned result. You can also set the `MaxResults` parameter to limit the number of entries to be returned. If no `NextToken` is returned, the result is completely returned and no more requests are required.
+        This operation is idempotent.
+        *Throttling:** Throttling will be triggered if you call this operation frequently. Do not exceed 5 times per second. If throttling is triggered, try again later.
         
         @param request: ListFileRequest
         @param headers: map
@@ -3959,7 +4141,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListFileRequest,
     ) -> bailian_20231229_models.ListFileResponse:
         """
-        @summary 获取文档列表
+        @summary Queries the details of one or more documents in a specified category.
+        
+        @description    If you are using a RAM user, you must first obtain the OpenAPI management permissions (namely sfm:ListFile) of Model Studio. For more information, see [Grant OpenAPI permissions to a RAM user](https://help.aliyun.com/document_detail/2848578.html). If you are using the Alibaba Cloud account, you do not need permissions. We recommend that you use [the latest version of the SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
+        During a paged query, set `MaxResults` to specify the maximum number of entries to return. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you query subsequent pages, set the `NextToken` parameter to the `NextToken` obtained in the last returned result. You can also set the `MaxResults` parameter to limit the number of entries to be returned. If no `NextToken` is returned, the result is completely returned and no more requests are required.
+        This operation is idempotent.
+        *Throttling:** Throttling will be triggered if you call this operation frequently. Do not exceed 5 times per second. If throttling is triggered, try again later.
         
         @param request: ListFileRequest
         @return: ListFileResponse
@@ -3974,7 +4161,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListFileRequest,
     ) -> bailian_20231229_models.ListFileResponse:
         """
-        @summary 获取文档列表
+        @summary Queries the details of one or more documents in a specified category.
+        
+        @description    If you are using a RAM user, you must first obtain the OpenAPI management permissions (namely sfm:ListFile) of Model Studio. For more information, see [Grant OpenAPI permissions to a RAM user](https://help.aliyun.com/document_detail/2848578.html). If you are using the Alibaba Cloud account, you do not need permissions. We recommend that you use [the latest version of the SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
+        During a paged query, set `MaxResults` to specify the maximum number of entries to return. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you query subsequent pages, set the `NextToken` parameter to the `NextToken` obtained in the last returned result. You can also set the `MaxResults` parameter to limit the number of entries to be returned. If no `NextToken` is returned, the result is completely returned and no more requests are required.
+        This operation is idempotent.
+        *Throttling:** Throttling will be triggered if you call this operation frequently. Do not exceed 5 times per second. If throttling is triggered, try again later.
         
         @param request: ListFileRequest
         @return: ListFileResponse
@@ -5623,7 +5815,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.UpdateChunkResponse:
         """
-        @summary 更新切片信息
+        @summary Modifies the content and title of a specified text chunk in the knowledge base, and sets whether the chunk participates in knowledge base retrieval.
+        
+        @description    **Limits**: This operation supports only knowledge base of the document search type. Data query and image Q\\&A types are not supported.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:UpdateChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been updated, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: UpdateChunkRequest
         @param headers: map
@@ -5672,7 +5873,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.UpdateChunkResponse:
         """
-        @summary 更新切片信息
+        @summary Modifies the content and title of a specified text chunk in the knowledge base, and sets whether the chunk participates in knowledge base retrieval.
+        
+        @description    **Limits**: This operation supports only knowledge base of the document search type. Data query and image Q\\&A types are not supported.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:UpdateChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been updated, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: UpdateChunkRequest
         @param headers: map
@@ -5719,7 +5929,16 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.UpdateChunkRequest,
     ) -> bailian_20231229_models.UpdateChunkResponse:
         """
-        @summary 更新切片信息
+        @summary Modifies the content and title of a specified text chunk in the knowledge base, and sets whether the chunk participates in knowledge base retrieval.
+        
+        @description    **Limits**: This operation supports only knowledge base of the document search type. Data query and image Q\\&A types are not supported.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:UpdateChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been updated, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: UpdateChunkRequest
         @return: UpdateChunkResponse
@@ -5734,7 +5953,16 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.UpdateChunkRequest,
     ) -> bailian_20231229_models.UpdateChunkResponse:
         """
-        @summary 更新切片信息
+        @summary Modifies the content and title of a specified text chunk in the knowledge base, and sets whether the chunk participates in knowledge base retrieval.
+        
+        @description    **Limits**: This operation supports only knowledge base of the document search type. Data query and image Q\\&A types are not supported.
+        **Required permissions**:
+        **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:UpdateChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+        **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+        **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+        **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+        **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been updated, the interface returns a success.
+        *Rate limit:** Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
         
         @param request: UpdateChunkRequest
         @return: UpdateChunkResponse

@@ -1,3 +1,7 @@
+2025-11-04 Version: 2.6.0
+- Support API ApplyTempStorageLease.
+
+
 2025-09-20 Version: 2.5.0
 - Support API ChangeParseSetting.
 - Support API GetAvailableParserTypes.
