@@ -1,3 +1,6 @@
+2025-11-04 Version: 5.0.10
+- Generated python 2019-03-15 for adb.
+
 2025-10-29 Version: 5.0.9
 - Update API DescribeConnectionCountRecords: add request parameters RegionId.
 
