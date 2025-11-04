@@ -832,6 +832,8 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         phone_count: int = None,
         phone_data_volume: int = None,
         promotion_id: str = None,
+        share_data_volume: int = None,
+        swap_size: int = None,
         up_bandwidth_limit: int = None,
     ):
         self.auto_pay = auto_pay
@@ -842,6 +844,8 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         self.phone_count = phone_count
         self.phone_data_volume = phone_data_volume
         self.promotion_id = promotion_id
+        self.share_data_volume = share_data_volume
+        self.swap_size = swap_size
         self.up_bandwidth_limit = up_bandwidth_limit
 
     def validate(self):
@@ -869,6 +873,10 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
             result['PhoneDataVolume'] = self.phone_data_volume
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+        if self.share_data_volume is not None:
+            result['ShareDataVolume'] = self.share_data_volume
+        if self.swap_size is not None:
+            result['SwapSize'] = self.swap_size
         if self.up_bandwidth_limit is not None:
             result['UpBandwidthLimit'] = self.up_bandwidth_limit
         return result
@@ -891,6 +899,10 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
             self.phone_data_volume = m.get('PhoneDataVolume')
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+        if m.get('ShareDataVolume') is not None:
+            self.share_data_volume = m.get('ShareDataVolume')
+        if m.get('SwapSize') is not None:
+            self.swap_size = m.get('SwapSize')
         if m.get('UpBandwidthLimit') is not None:
             self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         return self
@@ -2639,6 +2651,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         server_share_data_volume: int = None,
         server_type: str = None,
         stream_mode: int = None,
+        swap_size: int = None,
         tag: List[CreateCloudPhoneNodeRequestTag] = None,
         up_bandwidth_limit: int = None,
         use_template: str = None,
@@ -2716,6 +2729,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # This parameter is required.
         self.server_type = server_type
         self.stream_mode = stream_mode
+        self.swap_size = swap_size
         # The resource tags.
         self.tag = tag
         self.up_bandwidth_limit = up_bandwidth_limit
@@ -2789,6 +2803,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['ServerType'] = self.server_type
         if self.stream_mode is not None:
             result['StreamMode'] = self.stream_mode
+        if self.swap_size is not None:
+            result['SwapSize'] = self.swap_size
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -2855,6 +2871,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             self.server_type = m.get('ServerType')
         if m.get('StreamMode') is not None:
             self.stream_mode = m.get('StreamMode')
+        if m.get('SwapSize') is not None:
+            self.swap_size = m.get('SwapSize')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2932,6 +2950,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         server_share_data_volume: int = None,
         server_type: str = None,
         stream_mode: int = None,
+        swap_size: int = None,
         tag: List[CreateCloudPhoneNodeShrinkRequestTag] = None,
         up_bandwidth_limit: int = None,
         use_template: str = None,
@@ -3009,6 +3028,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # This parameter is required.
         self.server_type = server_type
         self.stream_mode = stream_mode
+        self.swap_size = swap_size
         # The resource tags.
         self.tag = tag
         self.up_bandwidth_limit = up_bandwidth_limit
@@ -3078,6 +3098,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['ServerType'] = self.server_type
         if self.stream_mode is not None:
             result['StreamMode'] = self.stream_mode
+        if self.swap_size is not None:
+            result['SwapSize'] = self.swap_size
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -3142,6 +3164,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.server_type = m.get('ServerType')
         if m.get('StreamMode') is not None:
             self.stream_mode = m.get('StreamMode')
+        if m.get('SwapSize') is not None:
+            self.swap_size = m.get('SwapSize')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -4142,6 +4166,7 @@ class CreateScreenshotRequest(TeaModel):
         self,
         android_instance_id_list: List[str] = None,
         oss_bucket_name: str = None,
+        screenshot_id: str = None,
         skip_check_policy_config: str = None,
     ):
         # The IDs of the cloud phone instances. You can create multiple snapshots simultaneously.
@@ -4150,6 +4175,7 @@ class CreateScreenshotRequest(TeaModel):
         self.android_instance_id_list = android_instance_id_list
         # The name of the OSS bucket. The name must start with "cloudphone-saved-bucket-". The OSS bucket and the cloud phone instance must be in the same region. If you leave this parameter empty, the system will create a default OSS bucket named “cloudphone-saved-bucket-{Region of the cloud phone instance}-{AliUid}.”
         self.oss_bucket_name = oss_bucket_name
+        self.screenshot_id = screenshot_id
         # Specifies whether to bypass the snapshot policy control. Default value: false.
         self.skip_check_policy_config = skip_check_policy_config
 
@@ -4166,6 +4192,8 @@ class CreateScreenshotRequest(TeaModel):
             result['AndroidInstanceIdList'] = self.android_instance_id_list
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
+        if self.screenshot_id is not None:
+            result['ScreenshotId'] = self.screenshot_id
         if self.skip_check_policy_config is not None:
             result['SkipCheckPolicyConfig'] = self.skip_check_policy_config
         return result
@@ -4176,6 +4204,8 @@ class CreateScreenshotRequest(TeaModel):
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('ScreenshotId') is not None:
+            self.screenshot_id = m.get('ScreenshotId')
         if m.get('SkipCheckPolicyConfig') is not None:
             self.skip_check_policy_config = m.get('SkipCheckPolicyConfig')
         return self
@@ -4185,10 +4215,12 @@ class CreateScreenshotResponseBodyTasks(TeaModel):
     def __init__(
         self,
         android_instance_id: str = None,
+        screenshot_id: str = None,
         task_id: str = None,
     ):
         # The ID of the cloud phone instance.
         self.android_instance_id = android_instance_id
+        self.screenshot_id = screenshot_id
         # The ID of the task. You can use the task ID with the DescribeTasks operation to get the download link for the screenshot.
         self.task_id = task_id
 
@@ -4203,6 +4235,8 @@ class CreateScreenshotResponseBodyTasks(TeaModel):
         result = dict()
         if self.android_instance_id is not None:
             result['AndroidInstanceId'] = self.android_instance_id
+        if self.screenshot_id is not None:
+            result['ScreenshotId'] = self.screenshot_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -4211,6 +4245,8 @@ class CreateScreenshotResponseBodyTasks(TeaModel):
         m = m or dict()
         if m.get('AndroidInstanceId') is not None:
             self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('ScreenshotId') is not None:
+            self.screenshot_id = m.get('ScreenshotId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -5648,6 +5684,80 @@ class DescribeAndroidInstanceGroupsRequest(TeaModel):
         return self
 
 
+class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        qos_rule_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.qos_rule_id = qos_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
+        return self
+
+
+class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules(TeaModel):
+    def __init__(
+        self,
+        instance_qos_rule: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule] = None,
+        total_count: int = None,
+    ):
+        self.instance_qos_rule = instance_qos_rule
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_qos_rule:
+            for k in self.instance_qos_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceQosRule'] = []
+        if self.instance_qos_rule is not None:
+            for k in self.instance_qos_rule:
+                result['InstanceQosRule'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_qos_rule = []
+        if m.get('InstanceQosRule') is not None:
+            for k in m.get('InstanceQosRule'):
+                temp_model = DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule()
+                self.instance_qos_rule.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
 class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks(TeaModel):
     def __init__(
         self,
@@ -5725,6 +5835,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         bandwidth_package_id: str = None,
         bandwidth_package_status: str = None,
         bandwidth_package_type: str = None,
+        bind_qos_rules: DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks] = None,
@@ -5755,6 +5866,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         system_version: str = None,
         tags: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags] = None,
         v_switch_id: str = None,
+        zone_id: str = None,
     ):
         # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
@@ -5767,6 +5879,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.bandwidth_package_id = bandwidth_package_id
         self.bandwidth_package_status = bandwidth_package_status
         self.bandwidth_package_type = bandwidth_package_type
+        self.bind_qos_rules = bind_qos_rules
         # The billing method.
         self.charge_type = charge_type
         # The number of vCPUs.
@@ -5828,8 +5941,11 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
 
     def validate(self):
+        if self.bind_qos_rules:
+            self.bind_qos_rules.validate()
         if self.disks:
             for k in self.disks:
                 if k:
@@ -5857,6 +5973,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['BandwidthPackageStatus'] = self.bandwidth_package_status
         if self.bandwidth_package_type is not None:
             result['BandwidthPackageType'] = self.bandwidth_package_type
+        if self.bind_qos_rules is not None:
+            result['BindQosRules'] = self.bind_qos_rules.to_map()
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cpu is not None:
@@ -5921,6 +6039,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5937,6 +6057,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.bandwidth_package_status = m.get('BandwidthPackageStatus')
         if m.get('BandwidthPackageType') is not None:
             self.bandwidth_package_type = m.get('BandwidthPackageType')
+        if m.get('BindQosRules') is not None:
+            temp_model = DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules()
+            self.bind_qos_rules = temp_model.from_map(m['BindQosRules'])
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('Cpu') is not None:
@@ -6003,6 +6126,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -7769,6 +7894,320 @@ class DescribeBackupFilesResponse(TeaModel):
         return self
 
 
+class DescribeBucketsRequest(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+    ):
+        self.file_type = file_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        return self
+
+
+class DescribeBucketsResponseBodyDataOssObjectListOwner(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        id: str = None,
+    ):
+        self.display_name = display_name
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeBucketsResponseBodyDataOssObjectList(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        etag: str = None,
+        key: str = None,
+        last_modified: str = None,
+        owner: DescribeBucketsResponseBodyDataOssObjectListOwner = None,
+        restore_info: str = None,
+        size: int = None,
+        storage_class: str = None,
+        type: str = None,
+    ):
+        self.bucket_name = bucket_name
+        self.etag = etag
+        self.key = key
+        self.last_modified = last_modified
+        self.owner = owner
+        self.restore_info = restore_info
+        self.size = size
+        self.storage_class = storage_class
+        self.type = type
+
+    def validate(self):
+        if self.owner:
+            self.owner.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.etag is not None:
+            result['ETag'] = self.etag
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.owner is not None:
+            result['Owner'] = self.owner.to_map()
+        if self.restore_info is not None:
+            result['RestoreInfo'] = self.restore_info
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('ETag') is not None:
+            self.etag = m.get('ETag')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('Owner') is not None:
+            temp_model = DescribeBucketsResponseBodyDataOssObjectListOwner()
+            self.owner = temp_model.from_map(m['Owner'])
+        if m.get('RestoreInfo') is not None:
+            self.restore_info = m.get('RestoreInfo')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeBucketsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        extranet_endpoint: str = None,
+        gmt_created: str = None,
+        intranet_endpoint: str = None,
+        location: str = None,
+        oss_object_list: List[DescribeBucketsResponseBodyDataOssObjectList] = None,
+        region_id: str = None,
+    ):
+        self.bucket_name = bucket_name
+        self.extranet_endpoint = extranet_endpoint
+        self.gmt_created = gmt_created
+        self.intranet_endpoint = intranet_endpoint
+        self.location = location
+        self.oss_object_list = oss_object_list
+        self.region_id = region_id
+
+    def validate(self):
+        if self.oss_object_list:
+            for k in self.oss_object_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.extranet_endpoint is not None:
+            result['ExtranetEndpoint'] = self.extranet_endpoint
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.intranet_endpoint is not None:
+            result['IntranetEndpoint'] = self.intranet_endpoint
+        if self.location is not None:
+            result['Location'] = self.location
+        result['OssObjectList'] = []
+        if self.oss_object_list is not None:
+            for k in self.oss_object_list:
+                result['OssObjectList'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('ExtranetEndpoint') is not None:
+            self.extranet_endpoint = m.get('ExtranetEndpoint')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('IntranetEndpoint') is not None:
+            self.intranet_endpoint = m.get('IntranetEndpoint')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        self.oss_object_list = []
+        if m.get('OssObjectList') is not None:
+            for k in m.get('OssObjectList'):
+                temp_model = DescribeBucketsResponseBodyDataOssObjectList()
+                self.oss_object_list.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeBucketsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[DescribeBucketsResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeBucketsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeBucketsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBucketsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBucketsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCloudPhoneNodesRequest(TeaModel):
     def __init__(
         self,
@@ -8009,6 +8448,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         server_type: str = None,
         share_data_volume: int = None,
         status: str = None,
+        swap_size: int = None,
         v_switch_id: str = None,
     ):
         self.bandwidth_package_id = bandwidth_package_id
@@ -8051,6 +8491,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         self.share_data_volume = share_data_volume
         # The matrix status.
         self.status = status
+        self.swap_size = swap_size
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
@@ -8124,6 +8565,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             result['ShareDataVolume'] = self.share_data_volume
         if self.status is not None:
             result['Status'] = self.status
+        if self.swap_size is not None:
+            result['SwapSize'] = self.swap_size
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -8185,6 +8628,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             self.share_data_volume = m.get('ShareDataVolume')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SwapSize') is not None:
+            self.swap_size = m.get('SwapSize')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -8509,6 +8954,7 @@ class DescribeImageListRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         status: str = None,
+        system_type: str = None,
     ):
         self.image_biz_tags = image_biz_tags
         # The ID of the image.
@@ -8541,6 +8987,7 @@ class DescribeImageListRequest(TeaModel):
         # *   CREATE_FAILED: The image failed to be created.
         # *   CREATING: The image is being created.
         self.status = status
+        self.system_type = system_type
 
     def validate(self):
         if self.image_biz_tags:
@@ -8574,6 +9021,8 @@ class DescribeImageListRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.status is not None:
             result['Status'] = self.status
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
         return result
 
     def from_map(self, m: dict = None):
@@ -8599,6 +9048,8 @@ class DescribeImageListRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
         return self
 
 
@@ -9295,6 +9746,7 @@ class DescribeMetricLastRequest(TeaModel):
         self,
         android_instance_ids: List[str] = None,
         end_time: str = None,
+        instance_ids: List[str] = None,
         length: str = None,
         metric_names: List[str] = None,
         next_token: str = None,
@@ -9303,6 +9755,7 @@ class DescribeMetricLastRequest(TeaModel):
     ):
         self.android_instance_ids = android_instance_ids
         self.end_time = end_time
+        self.instance_ids = instance_ids
         self.length = length
         # This parameter is required.
         self.metric_names = metric_names
@@ -9323,6 +9776,8 @@ class DescribeMetricLastRequest(TeaModel):
             result['AndroidInstanceIds'] = self.android_instance_ids
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
         if self.length is not None:
             result['Length'] = self.length
         if self.metric_names is not None:
@@ -9341,6 +9796,8 @@ class DescribeMetricLastRequest(TeaModel):
             self.android_instance_ids = m.get('AndroidInstanceIds')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
         if m.get('Length') is not None:
             self.length = m.get('Length')
         if m.get('MetricNames') is not None:
@@ -12441,6 +12898,149 @@ class InstallMonitorAgentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InstallMonitorAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InstanceHealerRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id_list: List[str] = None,
+        strategy: str = None,
+        timeout: int = None,
+    ):
+        # This parameter is required.
+        self.instance_id_list = instance_id_list
+        self.strategy = strategy
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class InstanceHealerResponseBodyInstanceHealerModel(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class InstanceHealerResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_healer_model: InstanceHealerResponseBodyInstanceHealerModel = None,
+        request_id: str = None,
+    ):
+        self.instance_healer_model = instance_healer_model
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_healer_model:
+            self.instance_healer_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_healer_model is not None:
+            result['InstanceHealerModel'] = self.instance_healer_model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceHealerModel') is not None:
+            temp_model = InstanceHealerResponseBodyInstanceHealerModel()
+            self.instance_healer_model = temp_model.from_map(m['InstanceHealerModel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InstanceHealerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InstanceHealerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InstanceHealerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

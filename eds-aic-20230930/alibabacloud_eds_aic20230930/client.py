@@ -547,6 +547,10 @@ class Client(OpenApiClient):
             query['PhoneDataVolume'] = request.phone_data_volume
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.share_data_volume):
+            query['ShareDataVolume'] = request.share_data_volume
+        if not UtilClient.is_unset(request.swap_size):
+            query['SwapSize'] = request.swap_size
         if not UtilClient.is_unset(request.up_bandwidth_limit):
             query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
@@ -598,6 +602,10 @@ class Client(OpenApiClient):
             query['PhoneDataVolume'] = request.phone_data_volume
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.share_data_volume):
+            query['ShareDataVolume'] = request.share_data_volume
+        if not UtilClient.is_unset(request.swap_size):
+            query['SwapSize'] = request.swap_size
         if not UtilClient.is_unset(request.up_bandwidth_limit):
             query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
@@ -1229,6 +1237,8 @@ class Client(OpenApiClient):
             query['ServerType'] = request.server_type
         if not UtilClient.is_unset(request.stream_mode):
             query['StreamMode'] = request.stream_mode
+        if not UtilClient.is_unset(request.swap_size):
+            query['SwapSize'] = request.swap_size
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.up_bandwidth_limit):
@@ -1328,6 +1338,8 @@ class Client(OpenApiClient):
             query['ServerType'] = request.server_type
         if not UtilClient.is_unset(request.stream_mode):
             query['StreamMode'] = request.stream_mode
+        if not UtilClient.is_unset(request.swap_size):
+            query['SwapSize'] = request.swap_size
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.up_bandwidth_limit):
@@ -1769,6 +1781,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.screenshot_id):
+            query['ScreenshotId'] = request.screenshot_id
         if not UtilClient.is_unset(request.skip_check_policy_config):
             query['SkipCheckPolicyConfig'] = request.skip_check_policy_config
         req = open_api_models.OpenApiRequest(
@@ -1810,6 +1824,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.screenshot_id):
+            query['ScreenshotId'] = request.screenshot_id
         if not UtilClient.is_unset(request.skip_check_policy_config):
             query['SkipCheckPolicyConfig'] = request.skip_check_policy_config
         req = open_api_models.OpenApiRequest(
@@ -3381,6 +3397,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_files_with_options_async(request, runtime)
 
+    def describe_buckets_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeBucketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeBucketsResponse:
+        """
+        @summary 查询bucket信息
+        
+        @param request: DescribeBucketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBucketsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBuckets',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeBucketsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_buckets_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeBucketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeBucketsResponse:
+        """
+        @summary 查询bucket信息
+        
+        @param request: DescribeBucketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBucketsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBuckets',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeBucketsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_buckets(
+        self,
+        request: eds_aic_20230930_models.DescribeBucketsRequest,
+    ) -> eds_aic_20230930_models.DescribeBucketsResponse:
+        """
+        @summary 查询bucket信息
+        
+        @param request: DescribeBucketsRequest
+        @return: DescribeBucketsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_buckets_with_options(request, runtime)
+
+    async def describe_buckets_async(
+        self,
+        request: eds_aic_20230930_models.DescribeBucketsRequest,
+    ) -> eds_aic_20230930_models.DescribeBucketsResponse:
+        """
+        @summary 查询bucket信息
+        
+        @param request: DescribeBucketsRequest
+        @return: DescribeBucketsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_buckets_with_options_async(request, runtime)
+
     def describe_cloud_phone_nodes_with_options(
         self,
         request: eds_aic_20230930_models.DescribeCloudPhoneNodesRequest,
@@ -3625,6 +3737,8 @@ class Client(OpenApiClient):
             query['ImagePackageType'] = request.image_package_type
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.system_type):
+            query['SystemType'] = request.system_type
         body = {}
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
@@ -3678,6 +3792,8 @@ class Client(OpenApiClient):
             query['ImagePackageType'] = request.image_package_type
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.system_type):
+            query['SystemType'] = request.system_type
         body = {}
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
@@ -3958,6 +4074,9 @@ class Client(OpenApiClient):
         @return: DescribeMetricLastResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         body = {}
         if not UtilClient.is_unset(request.android_instance_ids):
             body['AndroidInstanceIds'] = request.android_instance_ids
@@ -3974,6 +4093,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4005,6 +4125,9 @@ class Client(OpenApiClient):
         @return: DescribeMetricLastResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         body = {}
         if not UtilClient.is_unset(request.android_instance_ids):
             body['AndroidInstanceIds'] = request.android_instance_ids
@@ -4021,6 +4144,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5972,6 +6096,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.install_monitor_agent_with_options_async(request, runtime)
+
+    def instance_healer_with_options(
+        self,
+        request: eds_aic_20230930_models.InstanceHealerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.InstanceHealerResponse:
+        """
+        @summary 实例诊断
+        
+        @param request: InstanceHealerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstanceHealerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstanceHealer',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.InstanceHealerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def instance_healer_with_options_async(
+        self,
+        request: eds_aic_20230930_models.InstanceHealerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.InstanceHealerResponse:
+        """
+        @summary 实例诊断
+        
+        @param request: InstanceHealerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstanceHealerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstanceHealer',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.InstanceHealerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def instance_healer(
+        self,
+        request: eds_aic_20230930_models.InstanceHealerRequest,
+    ) -> eds_aic_20230930_models.InstanceHealerResponse:
+        """
+        @summary 实例诊断
+        
+        @param request: InstanceHealerRequest
+        @return: InstanceHealerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.instance_healer_with_options(request, runtime)
+
+    async def instance_healer_async(
+        self,
+        request: eds_aic_20230930_models.InstanceHealerRequest,
+    ) -> eds_aic_20230930_models.InstanceHealerResponse:
+        """
+        @summary 实例诊断
+        
+        @param request: InstanceHealerRequest
+        @return: InstanceHealerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.instance_healer_with_options_async(request, runtime)
 
     def list_policy_groups_with_options(
         self,

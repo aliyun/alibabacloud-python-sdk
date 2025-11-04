@@ -1,3 +1,18 @@
+2025-11-04 Version: 4.14.0
+- Support API DescribeBuckets.
+- Support API InstanceHealer.
+- Update API ChangeCloudPhoneNode: add request parameters ShareDataVolume.
+- Update API ChangeCloudPhoneNode: add request parameters SwapSize.
+- Update API CreateCloudPhoneNode: add request parameters SwapSize.
+- Update API CreateScreenshot: add request parameters ScreenshotId.
+- Update API CreateScreenshot: add response parameters Body.Tasks.$.ScreenshotId.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.BindQosRules.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.ZoneId.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.SwapSize.
+- Update API DescribeImageList: add request parameters SystemType.
+- Update API DescribeMetricLast: add request parameters InstanceIds.
+
+
 2025-09-29 Version: 4.13.1
 - Update API BackupFile: add request parameters ExcludeSourceFilePathList.
 - Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.ImageVersion.
