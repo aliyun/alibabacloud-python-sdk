@@ -17130,8 +17130,10 @@ class UpdateServiceCronScalerResponse(TeaModel):
 class UpdateServiceInstanceRequest(TeaModel):
     def __init__(
         self,
+        hibernate: bool = None,
         isolate: bool = None,
     ):
+        self.hibernate = hibernate
         # Specifies whether to isolate the service instance. Valid values:
         # 
         # *   true
@@ -17147,12 +17149,16 @@ class UpdateServiceInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.hibernate is not None:
+            result['Hibernate'] = self.hibernate
         if self.isolate is not None:
             result['Isolate'] = self.isolate
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Hibernate') is not None:
+            self.hibernate = m.get('Hibernate')
         if m.get('Isolate') is not None:
             self.isolate = m.get('Isolate')
         return self

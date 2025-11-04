@@ -10723,6 +10723,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.hibernate):
+            body['Hibernate'] = request.hibernate
         if not UtilClient.is_unset(request.isolate):
             body['Isolate'] = request.isolate
         req = open_api_models.OpenApiRequest(
@@ -10764,6 +10766,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.hibernate):
+            body['Hibernate'] = request.hibernate
         if not UtilClient.is_unset(request.isolate):
             body['Isolate'] = request.isolate
         req = open_api_models.OpenApiRequest(
