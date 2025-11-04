@@ -1,3 +1,20 @@
+2025-11-04 Version: 6.7.0
+- Support API GetAIWorkflowTask.
+- Support API StartAIWorkflow.
+- Support API StopAIWorkflowTask.
+- Support API SubmitSceneMediaSelectionJob.
+- Update API SearchMedia: add request parameters CustomFilters.
+- Update API SearchMedia: add response parameters Body.MediaInfoList.$.CustomFields.
+- Update API SearchMediaByAILabel: add request parameters CustomFilters.
+- Update API SearchMediaByAILabel: add request parameters UtcCreate.
+- Update API SearchMediaByFace: add request parameters CustomFilters.
+- Update API SearchMediaByFace: add request parameters UtcCreate.
+- Update API SearchMediaByHybrid: add request parameters CustomFilters.
+- Update API SearchMediaByHybrid: add request parameters UtcCreate.
+- Update API SearchMediaByMultimodal: add request parameters CustomFilters.
+- Update API SearchMediaByMultimodal: add request parameters UtcCreate.
+
+
 2025-09-23 Version: 6.6.1
 - Update API ListSmartVoiceGroups: add response parameters Body.VoiceGroups.$.VoiceList.$.VoiceSource.
 

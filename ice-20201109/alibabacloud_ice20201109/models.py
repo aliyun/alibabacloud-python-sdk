@@ -1357,6 +1357,7 @@ class AIAgentOutboundCallConfig(TeaModel):
         ambient_sound_config: AIAgentOutboundCallConfigAmbientSoundConfig = None,
         asr_config: AIAgentOutboundCallConfigAsrConfig = None,
         enable_intelligent_segment: bool = None,
+        experimental_config: str = None,
         greeting: str = None,
         greeting_delay: int = None,
         interrupt_config: AIAgentOutboundCallConfigInterruptConfig = None,
@@ -1367,6 +1368,7 @@ class AIAgentOutboundCallConfig(TeaModel):
         self.ambient_sound_config = ambient_sound_config
         self.asr_config = asr_config
         self.enable_intelligent_segment = enable_intelligent_segment
+        self.experimental_config = experimental_config
         self.greeting = greeting
         self.greeting_delay = greeting_delay
         self.interrupt_config = interrupt_config
@@ -1400,6 +1402,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             result['AsrConfig'] = self.asr_config.to_map()
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
+        if self.experimental_config is not None:
+            result['ExperimentalConfig'] = self.experimental_config
         if self.greeting is not None:
             result['Greeting'] = self.greeting
         if self.greeting_delay is not None:
@@ -1424,6 +1428,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             self.asr_config = temp_model.from_map(m['AsrConfig'])
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
+        if m.get('ExperimentalConfig') is not None:
+            self.experimental_config = m.get('ExperimentalConfig')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
         if m.get('GreetingDelay') is not None:
@@ -3209,6 +3215,75 @@ class ChannelAssemblySourceLocation(TeaModel):
             self.source_location_name = m.get('SourceLocationName')
         if m.get('State') is not None:
             self.state = m.get('State')
+        return self
+
+
+class EntityMediaBasicInfo(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        biz: str = None,
+        create_time: str = None,
+        entity_id: str = None,
+        entity_media_id: str = None,
+        modified_time: str = None,
+        status: str = None,
+        user_data: str = None,
+    ):
+        self.app_id = app_id
+        self.biz = biz
+        self.create_time = create_time
+        self.entity_id = entity_id
+        self.entity_media_id = entity_media_id
+        self.modified_time = modified_time
+        self.status = status
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.biz is not None:
+            result['Biz'] = self.biz
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.entity_media_id is not None:
+            result['EntityMediaId'] = self.entity_media_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Biz') is not None:
+            self.biz = m.get('Biz')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('EntityMediaId') is not None:
+            self.entity_media_id = m.get('EntityMediaId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -7870,9 +7945,13 @@ class AddStreamTagToSearchLibRequest(TeaModel):
         namespace: str = None,
         search_lib_name: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The message body.
         self.msg_body = msg_body
+        # The namespace.
         self.namespace = namespace
+        # The search library.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -7915,10 +7994,16 @@ class AddStreamTagToSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The return code.
         self.code = code
+        # The ID of the media asset.
         self.media_id = media_id
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful. Default value: true. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9434,6 +9519,8 @@ class CancelIProductionJobRequest(TeaModel):
         job_id: str = None,
     ):
         self.client_token = client_token
+        # The ID of the intelligent production job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -9472,12 +9559,36 @@ class CancelIProductionJobResponseBodyAccessDeniedDetail(TeaModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The operation that failed the permission check.
         self.auth_action = auth_action
+        # The identity. Values:
+        # 
+        # *   RAM user: a UID
+        # *   RAM role: RoleName:RoleSessionName
+        # *   Federated user: ProviderType/ProviderName
         self.auth_principal_display_name = auth_principal_display_name
+        # The account to which the principal belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of identity that made the request. Valid values:
+        # 
+        # *   SubUser: RAM user
+        # *   AssumedRoleUser: RAM role
+        # *   Federated: SSO federated user
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The type of policy that resulted in the denial. Valid values:
+        # 
+        # *   **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
+        # *   **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
         self.no_permission_type = no_permission_type
+        # The type of policy that triggered the permission failure.
+        # 
+        # *   **ControlPolicy**: control policy
+        # *   **SessionPolicy**: an additional policy attached to a temporary token.
+        # *   **AssumeRolePolicy**: the trust policy of a RAM role.
+        # *   **AccountLevelIdentityBasedPolicy**: an identity-based policy at the account level (custom or system).
+        # *   **ResourceGroupLevelIdentityBasedPolicy**: an identity-based policy scoped to a resource group.
         self.policy_type = policy_type
 
     def validate(self):
@@ -9531,8 +9642,11 @@ class CancelIProductionJobResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
+        # The message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9611,6 +9725,7 @@ class ClearAIAgentVoiceprintRequest(TeaModel):
         self,
         voiceprint_id: str = None,
     ):
+        # The unique identifier for the voiceprint.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):
@@ -9638,6 +9753,7 @@ class ClearAIAgentVoiceprintResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9706,6 +9822,7 @@ class CloseMediaConnectFlowFailoverRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
+        # The ID of the MediaConnect flow.
         self.flow_id = flow_id
 
     def validate(self):
@@ -9736,9 +9853,13 @@ class CloseMediaConnectFlowFailoverResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
+        # The response body.
         self.content = content
+        # The call description.
         self.description = description
+        # The ID of the request.
         self.request_id = request_id
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -9821,8 +9942,11 @@ class CloseStreamToSearchLibRequest(TeaModel):
         namespace: str = None,
         search_lib_name: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The namespace.
         self.namespace = namespace
+        # The search library.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -9861,10 +9985,16 @@ class CloseStreamToSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The return code.
         self.code = code
+        # The ID of the media asset.
         self.media_id = media_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11448,11 +11578,26 @@ class CreateHotwordLibraryRequest(TeaModel):
         name: str = None,
         usage_scenario: str = None,
     ):
+        # The description of the hotword library. It can be up to 200 characters in length.
         self.description = description
+        # The hotword list. You can add up to 300 hotword entries to a single library.
+        # 
         # This parameter is required.
         self.hotwords = hotwords
+        # The name of the hotword library. It can be up to 100 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The usage scenario of the hotword library. Valid values:
+        # 
+        # · ASR: Automatic Speech Recognition
+        # 
+        # · StructuredMediaAssets: structured media analysis
+        # 
+        # · VideoTranslation: Video translation.
+        # 
+        # This field cannot be modified after the hotword library is created.
+        # 
         # This parameter is required.
         self.usage_scenario = usage_scenario
 
@@ -11504,11 +11649,26 @@ class CreateHotwordLibraryShrinkRequest(TeaModel):
         name: str = None,
         usage_scenario: str = None,
     ):
+        # The description of the hotword library. It can be up to 200 characters in length.
         self.description = description
+        # The hotword list. You can add up to 300 hotword entries to a single library.
+        # 
         # This parameter is required.
         self.hotwords_shrink = hotwords_shrink
+        # The name of the hotword library. It can be up to 100 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The usage scenario of the hotword library. Valid values:
+        # 
+        # · ASR: Automatic Speech Recognition
+        # 
+        # · StructuredMediaAssets: structured media analysis
+        # 
+        # · VideoTranslation: Video translation.
+        # 
+        # This field cannot be modified after the hotword library is created.
+        # 
         # This parameter is required.
         self.usage_scenario = usage_scenario
 
@@ -11550,8 +11710,9 @@ class CreateHotwordLibraryResponseBody(TeaModel):
         hotword_library_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the hotword library.
         self.hotword_library_id = hotword_library_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15312,11 +15473,24 @@ class CreateRecognitionEntityRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The extra information about the custom entity, provided as a JSON string. Max length: 256 bytes.
         self.entity_info = entity_info
+        # The name of the custom entity. Max length: 64 bytes.
+        # 
         # This parameter is required.
         self.entity_name = entity_name
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
@@ -15378,7 +15552,9 @@ class CreateRecognitionEntityResponseBody(TeaModel):
         entity_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the created entity.
         self.entity_id = entity_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15457,9 +15633,20 @@ class CreateRecognitionLibRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The description of the recognition library. Max length: 128 bytes.
         self.lib_description = lib_description
+        # The name of the recognition library. Max length: 64 bytes.
+        # 
         # This parameter is required.
         self.lib_name = lib_name
         self.owner_account = owner_account
@@ -15517,7 +15704,9 @@ class CreateRecognitionLibResponseBody(TeaModel):
         lib_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the recognition library created.
         self.lib_id = lib_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15598,12 +15787,26 @@ class CreateRecognitionSampleRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition this sample is for.
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The ID of the specific entity within the library.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The URL of the sample image.
         self.image_url = image_url
+        # The custom text label.
         self.label_prompt = label_prompt
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
@@ -15669,7 +15872,9 @@ class CreateRecognitionSampleResponseBody(TeaModel):
         request_id: str = None,
         sample_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the sample.
         self.sample_id = sample_id
 
     def validate(self):
@@ -16268,8 +16473,11 @@ class CreateStreamToSearchLibRequest(TeaModel):
         namespace: str = None,
         search_lib_name: str = None,
     ):
+        # The URL of the live stream to be ingested and analyzed.
         self.input = input
+        # The namespace.
         self.namespace = namespace
+        # The search library.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -16308,10 +16516,16 @@ class CreateStreamToSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The ID of the media asset.
         self.media_id = media_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: succeeded.
+        # *   false: failed.
         self.success = success
 
     def validate(self):
@@ -17634,9 +17848,13 @@ class DeleteAIAgentDialogueRequest(TeaModel):
         node_id: str = None,
         session_id: str = None,
     ):
+        # The ID of the dialog that you want to delete.
+        # 
         # This parameter is required.
         self.dialogue_id = dialogue_id
         self.node_id = node_id
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
 
@@ -17673,6 +17891,7 @@ class DeleteAIAgentDialogueResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18892,6 +19111,7 @@ class DeleteHotwordLibraryRequest(TeaModel):
         self,
         hotword_library_id: str = None,
     ):
+        # The ID of the hotword library that you want to delete.
         self.hotword_library_id = hotword_library_id
 
     def validate(self):
@@ -18920,8 +19140,9 @@ class DeleteHotwordLibraryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -21526,10 +21747,22 @@ class DeleteRecognitionEntityRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm associated with the entity. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The ID of the entity to be deleted.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
@@ -21586,6 +21819,7 @@ class DeleteRecognitionEntityResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21659,8 +21893,18 @@ class DeleteRecognitionLibRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
@@ -21713,6 +21957,7 @@ class DeleteRecognitionLibResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21788,16 +22033,30 @@ class DeleteRecognitionSampleRequest(TeaModel):
         resource_owner_id: int = None,
         sample_id: str = None,
     ):
+        # The type of recognition algorithm. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The ID of the entity.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the sample that you want to delete.
+        # 
         # This parameter is required.
         self.sample_id = sample_id
 
@@ -21854,6 +22113,7 @@ class DeleteRecognitionSampleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23929,18 +24189,45 @@ class DescribePlayListRequest(TeaModel):
         status: str = None,
         trace_id: str = None,
     ):
+        # The beginning of the time range to query. By default, the system queries data of the current day.
+        # 
         # This parameter is required.
         self.begin_ts = begin_ts
+        # The end of the time range to query. The time range cannot exceed 24 hours.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # The criteria by which the sorting is performed. Valid values:
+        # 
+        # - FirstFrameDuration
+        # - PlayDuration
+        # - VideoDuration
+        # - StuckDuration
         self.order_name = order_name
+        # The sort order. Valid values:
+        # 
+        # - DESC: descending order.
+        # - ASC: ascending order.
         self.order_type = order_type
+        # The page number. Default value: 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The playback type. Valid value: 
+        # 
+        # - vod
         self.play_type = play_type
+        # The playback status. Valid values:
+        # 
+        # - complete
+        # - playing
+        # - unusual: A playback error occurs.
         self.status = status
+        # The TraceId of the player.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24009,15 +24296,25 @@ class DescribePlayListResponseBodyPlayList(TeaModel):
         video_duration: str = None,
         video_id: str = None,
     ):
+        # Time to first frame.
         self.first_frame_duration = first_frame_duration
+        # The playback duration.
         self.play_duration = play_duration
+        # The timestamp when the playback started.
         self.play_ts = play_ts
+        # The playback type.
         self.play_type = play_type
+        # The ID of the player session.
         self.session_id = session_id
+        # The playback status.
         self.status = status
+        # The stuttering duration.
         self.stuck_duration = stuck_duration
+        # The TraceId of the player.
         self.trace_id = trace_id
+        # The duration of the video.
         self.video_duration = video_duration
+        # The ID of the video.
         self.video_id = video_id
 
     def validate(self):
@@ -24085,11 +24382,15 @@ class DescribePlayListResponseBody(TeaModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The playback records.
         self.play_list = play_list
-        # Id
+        # The ID of the request.
         self.request_id = request_id
+        # The total playback count.
         self.total_num = total_num
 
     def validate(self):
@@ -24777,7 +25078,9 @@ class ForbidMediaConnectFlowOutputRequest(TeaModel):
         flow_id: str = None,
         output_name: str = None,
     ):
+        # The ID of the MediaConnect flow.
         self.flow_id = flow_id
+        # The name of the output.
         self.output_name = output_name
 
     def validate(self):
@@ -24812,9 +25115,13 @@ class ForbidMediaConnectFlowOutputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
+        # The response body.
         self.content = content
+        # The call description.
         self.description = description
+        # The request ID.
         self.request_id = request_id
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -25414,10 +25721,16 @@ class GenerateMessageChatTokenRequest(TeaModel):
         role: str = None,
         user_id: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The validity period. Unit: seconds. Default value: 3600.
         self.expire = expire
+        # The role. A value of admin indicates that the user can perform management operations. This parameter is empty by default.
         self.role = role
+        # The ID of the user to sign in. It can be up to 64 characters in length and can contain only letters, digits, and underscores (_).
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -25465,13 +25778,21 @@ class GenerateMessageChatTokenResponseBody(TeaModel):
         token: str = None,
         user_id: str = None,
     ):
+        # The AppID of the user.
         self.app_id = app_id
+        # The application signature.
         self.app_sign = app_sign
+        # The nonce used to generate the token.
         self.nonce = nonce
+        # The request ID.
         self.request_id = request_id
+        # The role used to generate the token.
         self.role = role
+        # The expiration time. Unit: seconds. Expiration time = Current time + Validity period.
         self.time_stamp = time_stamp
+        # The generated token.
         self.token = token
+        # The ID of the user for joining the channel.
         self.user_id = user_id
 
     def validate(self):
@@ -25559,6 +25880,294 @@ class GenerateMessageChatTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateMessageChatTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAIWorkflowTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # The ID of the workflow task.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetAIWorkflowTaskResponseBodyWorkflowTaskWorkflow(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        graph: str = None,
+        modified_time: str = None,
+        name: str = None,
+        status: str = None,
+        type: str = None,
+        version: str = None,
+        workflow_id: str = None,
+    ):
+        # The time when the template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The workflow\\"s topological structure.
+        self.graph = graph
+        # The time when the template was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.modified_time = modified_time
+        # The name of the workflow template.
+        self.name = name
+        # Workflow template status. Valid values:
+        # 
+        # *   Draft
+        # *   Published
+        # *   Editing
+        self.status = status
+        # The scenario type of the template.
+        self.type = type
+        # The template version.
+        self.version = version
+        # The ID of the workflow template.
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.graph is not None:
+            result['Graph'] = self.graph
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Graph') is not None:
+            self.graph = m.get('Graph')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class GetAIWorkflowTaskResponseBodyWorkflowTask(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        finish_time: str = None,
+        inputs: str = None,
+        node_results: str = None,
+        outputs: str = None,
+        status: str = None,
+        task_id: str = None,
+        user_data: str = None,
+        version: str = None,
+        workflow: GetAIWorkflowTaskResponseBodyWorkflowTaskWorkflow = None,
+    ):
+        # The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The time when the task was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.finish_time = finish_time
+        # The input parameters of the workflow task.
+        self.inputs = inputs
+        # The results of the workflow nodes. The structure of this JSON varies based on the workflow\\"s configuration.
+        self.node_results = node_results
+        # The node output.
+        self.outputs = outputs
+        # The task state.
+        # 
+        # Valid values:
+        # 
+        # *   running
+        # *   stopped
+        # *   failed
+        # *   partial-succeeded
+        # *   succeeded
+        self.status = status
+        # The ID of the workflow task.
+        self.task_id = task_id
+        # The user-defined data.
+        self.user_data = user_data
+        # The version of the workflow template that was executed.
+        self.version = version
+        # The workflow template information.
+        self.workflow = workflow
+
+    def validate(self):
+        if self.workflow:
+            self.workflow.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.inputs is not None:
+            result['Inputs'] = self.inputs
+        if self.node_results is not None:
+            result['NodeResults'] = self.node_results
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.workflow is not None:
+            result['Workflow'] = self.workflow.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Inputs') is not None:
+            self.inputs = m.get('Inputs')
+        if m.get('NodeResults') is not None:
+            self.node_results = m.get('NodeResults')
+        if m.get('Outputs') is not None:
+            self.outputs = m.get('Outputs')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Workflow') is not None:
+            temp_model = GetAIWorkflowTaskResponseBodyWorkflowTaskWorkflow()
+            self.workflow = temp_model.from_map(m['Workflow'])
+        return self
+
+
+class GetAIWorkflowTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        workflow_task: GetAIWorkflowTaskResponseBodyWorkflowTask = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The information about the workflow task.
+        self.workflow_task = workflow_task
+
+    def validate(self):
+        if self.workflow_task:
+            self.workflow_task.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.workflow_task is not None:
+            result['WorkflowTask'] = self.workflow_task.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WorkflowTask') is not None:
+            temp_model = GetAIWorkflowTaskResponseBodyWorkflowTask()
+            self.workflow_task = temp_model.from_map(m['WorkflowTask'])
+        return self
+
+
+class GetAIWorkflowTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAIWorkflowTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAIWorkflowTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29692,6 +30301,8 @@ class GetHotwordLibraryRequest(TeaModel):
         self,
         hotword_library_id: str = None,
     ):
+        # The ID of the hotword library.
+        # 
         # This parameter is required.
         self.hotword_library_id = hotword_library_id
 
@@ -29726,13 +30337,19 @@ class GetHotwordLibraryResponseBody(TeaModel):
         request_id: str = None,
         usage_scenario: str = None,
     ):
+        # The time when the hotword library was created.
         self.creation_time = creation_time
+        # The description of the hotword library.
         self.description = description
+        # The ID of the hotword library.
         self.hotword_library_id = hotword_library_id
+        # The hotword list.
         self.hotwords = hotwords
+        # The name of the hotword library.
         self.name = name
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The usage scenario of the hotword library.
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -32639,7 +33256,9 @@ class GetMediaConnectAvailableRegionResponseBodyContent(TeaModel):
         default_region: str = None,
         region_list: List[str] = None,
     ):
+        # The default region. You can ignore the parameter.
         self.default_region = default_region
+        # The supported regions.
         self.region_list = region_list
 
     def validate(self):
@@ -32674,9 +33293,13 @@ class GetMediaConnectAvailableRegionResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
+        # The rsponse body.
         self.content = content
+        # The call description.
         self.description = description
+        # The ID of the request.
         self.request_id = request_id
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -32949,6 +33572,8 @@ class GetMediaConnectFlowAllOutputNameRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
+        # The ID of the MediaConnect flow.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
 
@@ -32980,9 +33605,13 @@ class GetMediaConnectFlowAllOutputNameResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
+        # The response body, as an array of strings.
         self.content = content
+        # The call description.
         self.description = description
+        # The request ID.
         self.request_id = request_id
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -38908,6 +39537,8 @@ class GetProjectExportJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the project export task.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -38937,7 +39568,9 @@ class GetProjectExportJobResponseBodyProjectExportJobExportResult(TeaModel):
         project_url: str = None,
         timeline: str = None,
     ):
+        # The URL of the exported project, which is typically a signed OSS URL. This field is returned when ExportType is AdobePremierePro.
         self.project_url = project_url
+        # The timeline of the online editing job. This field is returned when ExportType is BaseTimeline. For data structure, see [Timeline](https://help.aliyun.com/document_detail/198823.html).
         self.timeline = timeline
 
     def validate(self):
@@ -38976,13 +39609,31 @@ class GetProjectExportJobResponseBodyProjectExportJob(TeaModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The error code for the failed export task.
+        # >Notice: Use the error code for troubleshooting.
         self.code = code
+        # The exported data.
         self.export_result = export_result
+        # The export type. Valid values:
+        # 
+        # *   **BaseTimeline**: exports the timeline.
+        # *   **AdobePremierePro**: exports an Adobe Premiere Pro project.
         self.export_type = export_type
+        # The ID of the project export task.
         self.job_id = job_id
+        # The error message for the failed export task.
+        # >Notice: Use the error message for troubleshooting.
         self.message = message
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The status of the project export task. Valid values:
+        # 
+        # - Init: Initializing
+        # - Processing
+        # - Success
+        # - Failed
         self.status = status
+        # The user-defined data in the JSON format.
         self.user_data = user_data
 
     def validate(self):
@@ -39041,7 +39692,9 @@ class GetProjectExportJobResponseBody(TeaModel):
         project_export_job: GetProjectExportJobResponseBodyProjectExportJob = None,
         request_id: str = None,
     ):
+        # The project export task.
         self.project_export_job = project_export_job
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41175,8 +41828,11 @@ class GetStorageListRequest(TeaModel):
         status: str = None,
         storage_type: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The OSS storage status.
         self.status = status
+        # The storage type.
         self.storage_type = storage_type
 
     def validate(self):
@@ -41220,14 +41876,23 @@ class GetStorageListResponseBodyStorageInfoList(TeaModel):
         storage_location: str = None,
         storage_type: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The time when the configuration was created.
         self.creation_time = creation_time
+        # Indicates whether it is the default storage location.
         self.default_storage = default_storage
+        # Indicates whether temporary files created during editing processes are stored in this location.
         self.editing_temp_file_storage = editing_temp_file_storage
+        # The time when the configuration was last modified.
         self.modified_time = modified_time
+        # The file path.
         self.path = path
+        # The OSS storage status.
         self.status = status
+        # The bucket.
         self.storage_location = storage_location
+        # The storage type.
         self.storage_type = storage_type
 
     def validate(self):
@@ -41288,8 +41953,9 @@ class GetStorageListResponseBody(TeaModel):
         request_id: str = None,
         storage_info_list: List[GetStorageListResponseBodyStorageInfoList] = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The storage configurations.
         self.storage_info_list = storage_info_list
 
     def validate(self):
@@ -41378,14 +42044,26 @@ class GetStreamTagListRequest(TeaModel):
         sort_by: str = None,
         start_time: str = None,
     ):
+        # The end of the query time range, based on the tagging timestamp. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The ID of the media asset.
         self.media_id = media_id
+        # The namespace.
         self.namespace = namespace
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The name of the search library.
         self.search_lib_name = search_lib_name
+        # The sorting order for the results. Valid values:
+        # 
+        # *   StartTime:Desc (default): Sort by creation time in descending order.
+        # *   StartTime:Asc: Sort by creation time in ascending order.
         self.sort_by = sort_by
+        # The start of the query time range, based on the tagging timestamp. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -41447,8 +42125,11 @@ class GetStreamTagListResponseBodyStreamTagList(TeaModel):
         start_time: str = None,
         user_data: str = None,
     ):
+        # The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -41489,12 +42170,20 @@ class GetStreamTagListResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The return code.
         self.code = code
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The tag information.
         self.stream_tag_list = stream_tag_list
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of entries that are returned.
         self.total = total
 
     def validate(self):
@@ -47590,14 +48279,26 @@ class ListAIAgentDialoguesRequest(TeaModel):
         session_id: str = None,
         start_time: int = None,
     ):
+        # Specify the end of the time range to query using a UNIX timestamp accurate to milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The sorting order. Valid values: 
+        # 
+        # - DESC: descending order (default)
+        # - ASC: ascending order
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
         self.round_limit = round_limit
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Specify the start of the time range to query using a UNIX timestamp accurate to milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -47712,15 +48413,42 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
         type: str = None,
     ):
         self.attached_file_list = attached_file_list
+        # The unique ID of the dialog.
         self.dialogue_id = dialogue_id
         self.extend = extend
         self.node_id = node_id
+        # The speaker. Valid values: 
+        # 
+        # - user
+        # - agent
         self.producer = producer
+        # The reasoning trace.
         self.reasoning_text = reasoning_text
+        # The ID of the conversational turn.
         self.round_id = round_id
+        # The source of the message. Valid values:
+        # 
+        # chat: messaging conversations.
+        # 
+        # call: voice calls.
         self.source = source
+        # The specific content.
         self.text = text
+        # The UNIX timestamp, measured in milliseconds, which indicates the time when the message was generated.
         self.time = time
+        # The message type. Valid values:
+        # 
+        # Voice calls:
+        # 
+        # 1.  greeting: the welcome message.
+        # 2.  normal: the voice response.
+        # 3.  speech: the proactive message.
+        # 
+        # Messaging conversations:
+        # 
+        # 1.  normal: the text reply.
+        # 2.  announcement: the proactive text message.
+        # 3.  custom: the custom message.
         self.type = type
 
     def validate(self):
@@ -47797,7 +48525,9 @@ class ListAIAgentDialoguesResponseBody(TeaModel):
         dialogues: List[ListAIAgentDialoguesResponseBodyDialogues] = None,
         request_id: str = None,
     ):
+        # The dialog records.
         self.dialogues = dialogues
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48273,8 +49003,11 @@ class ListAIAgentVoiceprintsRequest(TeaModel):
         page_size: int = None,
         voiceprint_id: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Value values: [1,100].
         self.page_size = page_size
+        # A unique identifier for the voiceprint. This parameter is optional. If provided, only the information for that ID is returned. If not specified, all voiceprints under the account are returned.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):
@@ -48312,8 +49045,11 @@ class ListAIAgentVoiceprintsResponseBodyVoiceprints(TeaModel):
         gmt_modified: str = None,
         voiceprint_id: str = None,
     ):
+        # The creation time of the voiceprint.
         self.gmt_create = gmt_create
+        # The last modification time of the voiceprint.
         self.gmt_modified = gmt_modified
+        # The unique identifier for the voiceprint.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):
@@ -48351,8 +49087,11 @@ class ListAIAgentVoiceprintsResponseBody(TeaModel):
         total_count: int = None,
         voiceprints: List[ListAIAgentVoiceprintsResponseBodyVoiceprints] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total number of voiceprints that match the query criteria.
         self.total_count = total_count
+        # The voiceprints.
         self.voiceprints = voiceprints
 
     def validate(self):
@@ -52628,14 +53367,29 @@ class ListHotwordLibrariesRequest(TeaModel):
         start_time: str = None,
         usage_scenario: str = None,
     ):
+        # The end of the time range to query.
         self.end_time = end_time
+        # The maximum number of entries to return.
+        # 
+        # Default value: 10. Valid values: 1 to 100.
         self.max_results = max_results
+        # The name of the hotword library.
         self.name = name
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # The sorting order. By default, the query results are sorted by creation time in descending order.
         self.sort_by = sort_by
+        # The beginning of the time range to query.
         self.start_time = start_time
+        # The usage scenario of the hotword library. Valid values:
+        # 
+        # *   ASR: Automatic Speech Recognition
+        # *   StructuredMediaAssets: structured media analysis
+        # *   VideoTranslation: Video translation. This field cannot be modified after the hotword library is created.
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -52700,11 +53454,21 @@ class ListHotwordLibrariesResponseBodyHotwordLibraryList(TeaModel):
         name: str = None,
         usage_scenario: str = None,
     ):
+        # The time when the hotword library was created.
         self.creation_time = creation_time
+        # The description of the hotword library. It can be up to 200 characters in length.
         self.description = description
+        # The ID of the hotword library.
         self.hotword_library_id = hotword_library_id
+        # The time when the hotword library was last modified.
         self.modified_time = modified_time
+        # The name of the hotword library.
         self.name = name
+        # The usage scenario of the hotword library. Valid values:
+        # 
+        # *   ASR: Automatic Speech Recognition
+        # *   StructuredMediaAssets: structured media analysis
+        # *   VideoTranslation: Video translation This field cannot be modified after the hotword library is created.
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -52756,10 +53520,15 @@ class ListHotwordLibrariesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The hotword libraries.
         self.hotword_library_list = hotword_library_list
+        # The maximum number of hotword libraries that can be returned.
         self.max_results = max_results
+        # A pagination token that can be used in the next request to retrieve a new page of results. If it is empty, all results are returned.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of hotword libraries.
         self.total_count = total_count
 
     def validate(self):
@@ -56883,12 +57652,24 @@ class ListMediaConvertJobsRequest(TeaModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_of_create_time = end_of_create_time
+        # The task ID.
         self.job_id = job_id
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_page_token = next_page_token
+        # The sorting order. Valid values: CreateTimeDesc: sorts by create time in descending order. CreateTimeAsc: sorts by create time in ascending order.
         self.order_by = order_by
+        # The number of entries per page. Valid values: 0 to 100. Default value: 20.
         self.page_size = page_size
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_of_create_time = start_of_create_time
+        # The task status.
+        # 
+        # *   Inited: submitted
+        # *   Running
+        # *   Complete
+        # *   Error
         self.status = status
 
     def validate(self):
@@ -56942,10 +57723,13 @@ class ListMediaConvertJobsResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The tasks.
         self.jobs = jobs
+        # Indicates the read position returned by the current call. An empty value means all data has been read.
+        # 
         # This parameter is required.
         self.next_page_token = next_page_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -61333,14 +62117,28 @@ class ListRecognitionEntitiesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm associated with the entity. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 50.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
@@ -61401,8 +62199,11 @@ class ListRecognitionEntitiesResponseBodyEntitiesEntity(TeaModel):
         entity_info: str = None,
         entity_name: str = None,
     ):
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The additional information of the entity, in JSON format.
         self.entity_info = entity_info
+        # The name of the entity.
         self.entity_name = entity_name
 
     def validate(self):
@@ -61477,10 +62278,15 @@ class ListRecognitionEntitiesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The entities.
         self.entities = entities
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # **Request ID**\
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -61573,12 +62379,24 @@ class ListRecognitionLibsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # *   label
+        # 
         # This parameter is required.
         self.algorithm = algorithm
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 50.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
@@ -61635,8 +62453,11 @@ class ListRecognitionLibsResponseBodyLibsLib(TeaModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
+        # The description of the recognition library.
         self.lib_description = lib_description
+        # The ID of the recognition library.
         self.lib_id = lib_id
+        # The name of the recognition library.
         self.lib_name = lib_name
 
     def validate(self):
@@ -61711,10 +62532,15 @@ class ListRecognitionLibsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The recognition libraries.
         self.libs = libs
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -61809,16 +62635,31 @@ class ListRecognitionSamplesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of recognition algorithm. Valid values:
+        # 
+        # *   landmark
+        # *   object
+        # *   logo
+        # *   face
+        # 
         # This parameter is required.
         self.algorithm = algorithm
+        # The ID of the entity.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The ID of the recognition library.
+        # 
         # This parameter is required.
         self.lib_id = lib_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
@@ -61882,7 +62723,9 @@ class ListRecognitionSamplesResponseBodySamplesSample(TeaModel):
         image_url: str = None,
         sample_id: str = None,
     ):
+        # The URL of the image sample.
         self.image_url = image_url
+        # The sample ID.
         self.sample_id = sample_id
 
     def validate(self):
@@ -61953,10 +62796,15 @@ class ListRecognitionSamplesResponseBody(TeaModel):
         samples: ListRecognitionSamplesResponseBodySamples = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The samples.
         self.samples = samples
+        # The total number of samples.
         self.total_count = total_count
 
     def validate(self):
@@ -66847,12 +67695,19 @@ class ListWorkflowTasksRequest(TeaModel):
         workflow_id: str = None,
         workflow_name: str = None,
     ):
+        # The end of the time range for filtering tasks by their creation time. Supports querying data from the last 90 days only.
         self.end_of_create_time = end_of_create_time
+        # A keyword for fuzzy matching against the TaskInput, such as a file name or Media ID. Max length: 32 characters.
         self.key_text = key_text
+        # The maximum number of media workflow instances to return. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The start of the time range for filtering tasks by their creation time. Supports querying data from the last 90 days only.
         self.start_of_create_time = start_of_create_time
+        # The ID of the workflow template.[](https://ims.console.aliyun.com/settings/workflow/list)
         self.workflow_id = workflow_id
+        # The name of the workflow template.
         self.workflow_name = workflow_name
 
     def validate(self):
@@ -66910,12 +67765,22 @@ class ListWorkflowTasksResponseBodyTaskListWorkflow(TeaModel):
         type: str = None,
         workflow_id: str = None,
     ):
+        # The creation time of the workflow template.
         self.create_time = create_time
+        # The source of the media file. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.media_type = media_type
+        # The last modification time of the workflow template.
         self.modified_time = modified_time
+        # The name of the workflow template.
         self.name = name
+        # The status of the workflow template.
         self.status = status
+        # The type of the workflow template.
         self.type = type
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -66973,12 +67838,27 @@ class ListWorkflowTasksResponseBodyTaskList(TeaModel):
         user_data: str = None,
         workflow: ListWorkflowTasksResponseBodyTaskListWorkflow = None,
     ):
+        # The time the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time the task was completed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The task state.
+        # 
+        # **Valid values**:
+        # 
+        # *   Init: Initializing
+        # *   Failed
+        # *   Canceled
+        # *   Processing
+        # *   Succeed
         self.status = status
+        # The ID of the workflow task.
         self.task_id = task_id
+        # The input data for the workflow task.
         self.task_input = task_input
+        # The custom data that was passed when the task was submitted.
         self.user_data = user_data
+        # The information about the workflow template.
         self.workflow = workflow
 
     def validate(self):
@@ -67036,11 +67916,17 @@ class ListWorkflowTasksResponseBody(TeaModel):
         task_list: List[ListWorkflowTasksResponseBodyTaskList] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned in this response.
         self.max_results = max_results
+        # A pagination token.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The media workflow tasks.
         self.task_list = task_list
+        # The total number of entries returned. By default, this parameter is not returned.
         self.total_count = total_count
 
     def validate(self):
@@ -67133,6 +68019,7 @@ class OpenMediaConnectFlowFailoverRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
+        # The ID of the MediaConnect flow.
         self.flow_id = flow_id
 
     def validate(self):
@@ -67163,9 +68050,13 @@ class OpenMediaConnectFlowFailoverResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
+        # The response body.
         self.content = content
+        # The call description.
         self.description = description
+        # The request ID.
         self.request_id = request_id
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -67246,6 +68137,8 @@ class QueryCopyrightExtractJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID. You can obtain the value of this parameter from the response of the SubmitCopyrightExtractJob operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -67274,6 +68167,7 @@ class QueryCopyrightExtractJobResponseBodyData(TeaModel):
         self,
         message: str = None,
     ):
+        # The copyright watermark information.
         self.message = message
 
     def validate(self):
@@ -67304,10 +68198,13 @@ class QueryCopyrightExtractJobResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -67395,11 +68292,17 @@ class QueryCopyrightJobListRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The end of the creation time range for the query, in UNIX timestamp format.
         self.create_time_end = create_time_end
+        # The start of the creation time range for the query, in UNIX timestamp format.
         self.create_time_start = create_time_start
+        # The job ID.
         self.job_id = job_id
+        # The watermark level, indicating the color channel for embedding. 0: U. 1: UV. 2: YUV.
         self.level = level
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -67448,7 +68351,12 @@ class QueryCopyrightJobListResponseBodyDataInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The specific input information.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -67481,7 +68389,12 @@ class QueryCopyrightJobListResponseBodyDataOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The specific output information.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -67523,16 +68436,27 @@ class QueryCopyrightJobListResponseBodyData(TeaModel):
         user_data: str = None,
         user_id: int = None,
     ):
+        # The creation time of the job.
         self.gmt_create = gmt_create
+        # The last modification time of the job.
         self.gmt_modified = gmt_modified
+        # Information about the input video for watermarking.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The watermark level.
         self.level = level
+        # The content of the embedded watermark.
         self.message = message
+        # Information about the watermarked output video.
         self.output = output
+        # The job result.
         self.result = result
+        # The status of the job.
         self.status = status
+        # The user-defined data.
         self.user_data = user_data
+        # The ID of the user who initiated the job.
         self.user_id = user_id
 
     def validate(self):
@@ -67608,10 +68532,13 @@ class QueryCopyrightJobListResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -71803,11 +72730,17 @@ class QueryTraceAbJobListRequest(TeaModel):
         page_size: int = None,
         trace_media_id: str = None,
     ):
+        # The end of the creation time range for the query, in UNIX timestamp format.
         self.create_time_end = create_time_end
+        # The start of the creation time range for the query, in UNIX timestamp format.
         self.create_time_start = create_time_start
+        # The job ID. You can obtain the value of this parameter from the response of the SubmitTraceAbJob operation.
         self.job_id = job_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The media ID for the trace watermark. You can obtain this from the response of the SubmitTraceAbJob operation.
         self.trace_media_id = trace_media_id
 
     def validate(self):
@@ -71856,7 +72789,12 @@ class QueryTraceAbJobListResponseBodyDataInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The specific input file information.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -71889,7 +72827,12 @@ class QueryTraceAbJobListResponseBodyDataOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output directory.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -71931,16 +72874,27 @@ class QueryTraceAbJobListResponseBodyData(TeaModel):
         user_data: str = None,
         user_id: int = None,
     ):
+        # The creation time of the job.
         self.gmt_create = gmt_create
+        # The last modification time of the job.
         self.gmt_modified = gmt_modified
+        # Information about the input video for watermarking.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The watermark level.
         self.level = level
+        # Information about the output path for the A/B stream.
         self.output = output
+        # The job result.
         self.result = result
+        # The status of the job.
         self.status = status
+        # The media ID for the trace watermark.
         self.trace_media_id = trace_media_id
+        # The user-defined data.
         self.user_data = user_data
+        # The ID of the user who initiated the job.
         self.user_id = user_id
 
     def validate(self):
@@ -72016,10 +72970,13 @@ class QueryTraceAbJobListResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -72108,6 +73065,8 @@ class QueryTraceExtractJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID. You can obtain the value of this parameter from the response of the SubmitTraceExtractJob operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -72136,6 +73095,7 @@ class QueryTraceExtractJobResponseBodyData(TeaModel):
         self,
         trace: str = None,
     ):
+        # The trace watermark information.
         self.trace = trace
 
     def validate(self):
@@ -72166,10 +73126,13 @@ class QueryTraceExtractJobResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -72256,10 +73219,15 @@ class QueryTraceM3u8JobListRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The end of the creation time range for the query, in UNIX timestamp format.
         self.create_time_end = create_time_end
+        # The start of the creation time range for the query, in UNIX timestamp format.
         self.create_time_start = create_time_start
+        # The job ID. You can obtain the value of this parameter from the response of the SubmitTraceM3u8Job operation.
         self.job_id = job_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -72304,7 +73272,12 @@ class QueryTraceM3u8JobListResponseBodyDataOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The specific output information.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -72344,14 +73317,23 @@ class QueryTraceM3u8JobListResponseBodyData(TeaModel):
         user_data: str = None,
         user_id: int = None,
     ):
+        # The creation time of the job.
         self.gmt_create = gmt_create
+        # The last modification time of the job.
         self.gmt_modified = gmt_modified
+        # The job ID.
         self.job_id = job_id
+        # The output video.
         self.output = output
+        # The current status of the job.
         self.status = status
+        # The watermark information.
         self.trace = trace
+        # The media ID for the trace watermark.
         self.trace_media_id = trace_media_id
+        # The user-defined data.
         self.user_data = user_data
+        # The ID of the user who initiated the job.
         self.user_id = user_id
 
     def validate(self):
@@ -72416,10 +73398,13 @@ class QueryTraceM3u8JobListResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -72510,8 +73495,11 @@ class QueryVideoCognitionJobRequestIncludeResults(TeaModel):
         need_ocr: bool = None,
         need_process: bool = None,
     ):
+        # Specifies whether to include Automatic Speech Recognition (ASR) results.
         self.need_asr = need_asr
+        # Specifies whether to include Optical Character Recognition (OCR) results.
         self.need_ocr = need_ocr
+        # Specifies whether to include the URL to the raw output of the algorithm.
         self.need_process = need_process
 
     def validate(self):
@@ -72549,9 +73537,13 @@ class QueryVideoCognitionJobRequest(TeaModel):
         job_id: str = None,
         params: str = None,
     ):
+        # Specifies whether to include the full algorithm results in the response.
         self.include_results = include_results
+        # The ID of the task to query. It is returned when you call the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Additional request parameters, provided as a JSON string.
         self.params = params
 
     def validate(self):
@@ -72591,9 +73583,13 @@ class QueryVideoCognitionJobShrinkRequest(TeaModel):
         job_id: str = None,
         params: str = None,
     ):
+        # Specifies whether to include the full algorithm results in the response.
         self.include_results_shrink = include_results_shrink
+        # The ID of the task to query. It is returned when you call the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Additional request parameters, provided as a JSON string.
         self.params = params
 
     def validate(self):
@@ -72630,7 +73626,16 @@ class QueryVideoCognitionJobResponseBodyResultsResult(TeaModel):
         data: str = None,
         type: str = None,
     ):
+        # A JSON string containing the detailed analysis data. The structure of this data depends on the Type field. For details, see the Result parameters section below.
         self.data = data
+        # The type of analysis result. Valid values:
+        # 
+        # 1.  TextLabel: Tags from text content.
+        # 2.  VideoLabel: Tags from video content.
+        # 3.  ASR: Raw speech recognition results. Not returned by default.
+        # 4.  OCR: Raw text recognition results. Not returned by default.
+        # 5.  NLP: Natural Language Processing results. Not returned by default.
+        # 6.  Process: URL to the raw algorithm output. Not returned by default.
         self.type = type
 
     def validate(self):
@@ -72700,9 +73705,18 @@ class QueryVideoCognitionJobResponseBody(TeaModel):
         results: QueryVideoCognitionJobResponseBodyResults = None,
         user_data: str = None,
     ):
+        # The status of the task. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Fail**\
+        # *   **Processing**\
+        # *   **Submitted**\
         self.job_status = job_status
+        # The request ID.
         self.request_id = request_id
+        # An array of analysis result objects.
         self.results = results
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -73298,7 +74312,9 @@ class ResumeMediaConnectFlowOutputRequest(TeaModel):
         flow_id: str = None,
         output_name: str = None,
     ):
+        # The ID of the MediaConnect flow.
         self.flow_id = flow_id
+        # The name of the output.
         self.output_name = output_name
 
     def validate(self):
@@ -73333,9 +74349,13 @@ class ResumeMediaConnectFlowOutputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
+        # The response body.
         self.content = content
+        # The call description.
         self.description = description
+        # The request ID.
         self.request_id = request_id
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -74006,6 +75026,7 @@ class SearchIndexJobRerunResponse(TeaModel):
 class SearchMediaRequest(TeaModel):
     def __init__(
         self,
+        custom_filters: str = None,
         entity_id: str = None,
         match: str = None,
         page_no: int = None,
@@ -74014,6 +75035,7 @@ class SearchMediaRequest(TeaModel):
         search_lib_name: str = None,
         sort_by: str = None,
     ):
+        self.custom_filters = custom_filters
         # The ID of the entity.
         self.entity_id = entity_id
         # The filter conditions. For more information about the parameter syntax
@@ -74039,6 +75061,8 @@ class SearchMediaRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_filters is not None:
+            result['CustomFilters'] = self.custom_filters
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.match is not None:
@@ -74057,6 +75081,8 @@ class SearchMediaRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomFilters') is not None:
+            self.custom_filters = m.get('CustomFilters')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('Match') is not None:
@@ -74915,6 +75941,7 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
         self,
         ai_data: SearchMediaResponseBodyMediaInfoListAiData = None,
         ai_rough_data: SearchMediaResponseBodyMediaInfoListAiRoughData = None,
+        custom_fields: str = None,
         file_info_list: List[SearchMediaResponseBodyMediaInfoListFileInfoList] = None,
         index_status_list: List[SearchMediaResponseBodyMediaInfoListIndexStatusList] = None,
         media_basic_info: SearchMediaResponseBodyMediaInfoListMediaBasicInfo = None,
@@ -74924,6 +75951,7 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
         self.ai_data = ai_data
         # The description of the AI job.
         self.ai_rough_data = ai_rough_data
+        self.custom_fields = custom_fields
         # The information about the files.
         self.file_info_list = file_info_list
         self.index_status_list = index_status_list
@@ -74958,6 +75986,8 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
             result['AiData'] = self.ai_data.to_map()
         if self.ai_rough_data is not None:
             result['AiRoughData'] = self.ai_rough_data.to_map()
+        if self.custom_fields is not None:
+            result['CustomFields'] = self.custom_fields
         result['FileInfoList'] = []
         if self.file_info_list is not None:
             for k in self.file_info_list:
@@ -74980,6 +76010,8 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
         if m.get('AiRoughData') is not None:
             temp_model = SearchMediaResponseBodyMediaInfoListAiRoughData()
             self.ai_rough_data = temp_model.from_map(m['AiRoughData'])
+        if m.get('CustomFields') is not None:
+            self.custom_fields = m.get('CustomFields')
         self.file_info_list = []
         if m.get('FileInfoList') is not None:
             for k in m.get('FileInfoList'):
@@ -75113,6 +76145,7 @@ class SearchMediaResponse(TeaModel):
 class SearchMediaByAILabelRequest(TeaModel):
     def __init__(
         self,
+        custom_filters: str = None,
         matching_mode: str = None,
         media_id: str = None,
         media_type: str = None,
@@ -75124,7 +76157,9 @@ class SearchMediaByAILabelRequest(TeaModel):
         sort_by: str = None,
         specific_search: bool = None,
         text: str = None,
+        utc_create: str = None,
     ):
+        self.custom_filters = custom_filters
         self.matching_mode = matching_mode
         # The ID of the media asset. This parameter is required if you want to query media asset clips.
         self.media_id = media_id
@@ -75160,6 +76195,7 @@ class SearchMediaByAILabelRequest(TeaModel):
         self.specific_search = specific_search
         # The content that you want to query.
         self.text = text
+        self.utc_create = utc_create
 
     def validate(self):
         pass
@@ -75170,6 +76206,8 @@ class SearchMediaByAILabelRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_filters is not None:
+            result['CustomFilters'] = self.custom_filters
         if self.matching_mode is not None:
             result['MatchingMode'] = self.matching_mode
         if self.media_id is not None:
@@ -75192,10 +76230,14 @@ class SearchMediaByAILabelRequest(TeaModel):
             result['SpecificSearch'] = self.specific_search
         if self.text is not None:
             result['Text'] = self.text
+        if self.utc_create is not None:
+            result['UtcCreate'] = self.utc_create
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomFilters') is not None:
+            self.custom_filters = m.get('CustomFilters')
         if m.get('MatchingMode') is not None:
             self.matching_mode = m.get('MatchingMode')
         if m.get('MediaId') is not None:
@@ -75218,6 +76260,8 @@ class SearchMediaByAILabelRequest(TeaModel):
             self.specific_search = m.get('SpecificSearch')
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('UtcCreate') is not None:
+            self.utc_create = m.get('UtcCreate')
         return self
 
 
@@ -75864,6 +76908,7 @@ class SearchMediaByAILabelResponse(TeaModel):
 class SearchMediaByFaceRequest(TeaModel):
     def __init__(
         self,
+        custom_filters: str = None,
         entity_id: str = None,
         face_search_token: str = None,
         media_type: str = None,
@@ -75872,7 +76917,9 @@ class SearchMediaByFaceRequest(TeaModel):
         page_size: int = None,
         person_image_url: str = None,
         search_lib_name: str = None,
+        utc_create: str = None,
     ):
+        self.custom_filters = custom_filters
         # The ID of the entity.
         self.entity_id = entity_id
         # The token that is used to identify the query. You can use this parameter in the SearchMediaClipByFace operation to specify the same query conditions.
@@ -75895,6 +76942,7 @@ class SearchMediaByFaceRequest(TeaModel):
         self.person_image_url = person_image_url
         # The name of the search library.
         self.search_lib_name = search_lib_name
+        self.utc_create = utc_create
 
     def validate(self):
         pass
@@ -75905,6 +76953,8 @@ class SearchMediaByFaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_filters is not None:
+            result['CustomFilters'] = self.custom_filters
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.face_search_token is not None:
@@ -75921,10 +76971,14 @@ class SearchMediaByFaceRequest(TeaModel):
             result['PersonImageUrl'] = self.person_image_url
         if self.search_lib_name is not None:
             result['SearchLibName'] = self.search_lib_name
+        if self.utc_create is not None:
+            result['UtcCreate'] = self.utc_create
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomFilters') is not None:
+            self.custom_filters = m.get('CustomFilters')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('FaceSearchToken') is not None:
@@ -75941,6 +76995,8 @@ class SearchMediaByFaceRequest(TeaModel):
             self.person_image_url = m.get('PersonImageUrl')
         if m.get('SearchLibName') is not None:
             self.search_lib_name = m.get('SearchLibName')
+        if m.get('UtcCreate') is not None:
+            self.utc_create = m.get('UtcCreate')
         return self
 
 
@@ -76080,6 +77136,7 @@ class SearchMediaByFaceResponse(TeaModel):
 class SearchMediaByHybridRequest(TeaModel):
     def __init__(
         self,
+        custom_filters: str = None,
         media_id: str = None,
         media_type: str = None,
         namespace: str = None,
@@ -76087,15 +77144,26 @@ class SearchMediaByHybridRequest(TeaModel):
         page_size: int = None,
         search_lib_name: str = None,
         text: str = None,
+        utc_create: str = None,
     ):
-        # The ID of the media asset. The details of the media asset are returned.
+        self.custom_filters = custom_filters
+        # The ID of the media asset. If provided, the details of the media asset are returned.
         self.media_id = media_id
+        # The type of media assets. Valid values:
+        # - image
+        # - video
         self.media_type = media_type
+        # The namespace.
         self.namespace = namespace
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Valid values: 1 to 50. Default value: 10.
         self.page_size = page_size
+        # The name of the search library
         self.search_lib_name = search_lib_name
+        # The natural language search query.
         self.text = text
+        self.utc_create = utc_create
 
     def validate(self):
         pass
@@ -76106,6 +77174,8 @@ class SearchMediaByHybridRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_filters is not None:
+            result['CustomFilters'] = self.custom_filters
         if self.media_id is not None:
             result['MediaId'] = self.media_id
         if self.media_type is not None:
@@ -76120,10 +77190,14 @@ class SearchMediaByHybridRequest(TeaModel):
             result['SearchLibName'] = self.search_lib_name
         if self.text is not None:
             result['Text'] = self.text
+        if self.utc_create is not None:
+            result['UtcCreate'] = self.utc_create
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomFilters') is not None:
+            self.custom_filters = m.get('CustomFilters')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
         if m.get('MediaType') is not None:
@@ -76138,6 +77212,8 @@ class SearchMediaByHybridRequest(TeaModel):
             self.search_lib_name = m.get('SearchLibName')
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('UtcCreate') is not None:
+            self.utc_create = m.get('UtcCreate')
         return self
 
 
@@ -76148,8 +77224,11 @@ class SearchMediaByHybridResponseBodyMediaListClipInfo(TeaModel):
         score: float = None,
         to: float = None,
     ):
+        # The start time of the relevant clip.
         self.from_ = from_
+        # The relevance score of the clip for the query.
         self.score = score
+        # The end time of the relevant clip.
         self.to = to
 
     def validate(self):
@@ -76186,7 +77265,9 @@ class SearchMediaByHybridResponseBodyMediaList(TeaModel):
         clip_info: List[SearchMediaByHybridResponseBodyMediaListClipInfo] = None,
         media_id: str = None,
     ):
+        # The information about the relevant clips.
         self.clip_info = clip_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -76230,10 +77311,15 @@ class SearchMediaByHybridResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The status code returned.
         self.code = code
+        # The media assets that match the search query.
         self.media_list = media_list
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
+        # The total number of media assets that match the search criteria.
         self.total = total
 
     def validate(self):
@@ -76324,13 +77410,16 @@ class SearchMediaByHybridResponse(TeaModel):
 class SearchMediaByMultimodalRequest(TeaModel):
     def __init__(
         self,
+        custom_filters: str = None,
         media_type: str = None,
         namespace: str = None,
         page_no: int = None,
         page_size: int = None,
         search_lib_name: str = None,
         text: str = None,
+        utc_create: str = None,
     ):
+        self.custom_filters = custom_filters
         # The type of the media assets.
         # 
         # Valid values:
@@ -76347,6 +77436,7 @@ class SearchMediaByMultimodalRequest(TeaModel):
         self.search_lib_name = search_lib_name
         # The content that you want to query. You can describe the content in natural language.
         self.text = text
+        self.utc_create = utc_create
 
     def validate(self):
         pass
@@ -76357,6 +77447,8 @@ class SearchMediaByMultimodalRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_filters is not None:
+            result['CustomFilters'] = self.custom_filters
         if self.media_type is not None:
             result['MediaType'] = self.media_type
         if self.namespace is not None:
@@ -76369,10 +77461,14 @@ class SearchMediaByMultimodalRequest(TeaModel):
             result['SearchLibName'] = self.search_lib_name
         if self.text is not None:
             result['Text'] = self.text
+        if self.utc_create is not None:
+            result['UtcCreate'] = self.utc_create
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomFilters') is not None:
+            self.custom_filters = m.get('CustomFilters')
         if m.get('MediaType') is not None:
             self.media_type = m.get('MediaType')
         if m.get('Namespace') is not None:
@@ -76385,6 +77481,8 @@ class SearchMediaByMultimodalRequest(TeaModel):
             self.search_lib_name = m.get('SearchLibName')
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('UtcCreate') is not None:
+            self.utc_create = m.get('UtcCreate')
         return self
 
 
@@ -77580,8 +78678,14 @@ class SendAIAgentTextRequest(TeaModel):
         instance_id: str = None,
         text: str = None,
     ):
+        # The ID of the AI agent instance.
+        # 
+        # > InstanceId is a unique identifier that is returned when the AI agent is started. To start an AI agent, call [StartAIAgentInstance ](https://help.aliyun.com/document_detail/2846201.html) or [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The input to the LLM.
+        # 
         # This parameter is required.
         self.text = text
 
@@ -77614,6 +78718,7 @@ class SendAIAgentTextResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77910,16 +79015,35 @@ class SendMessageChatTextRequest(TeaModel):
         text: str = None,
         type: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The mode of message sending. Valid values:
+        # - online
+        # - offline
+        # 
+        # Default value: offline.
         self.mode = mode
+        # Specifies whether to archive chat records. Default value: true.
         self.need_archiving = need_archiving
+        # The ID of the user who receives the message. The ID can be up to 64 bytes in length and can contain letters and digits.
+        # 
         # This parameter is required.
         self.receiver_id = receiver_id
+        # The ID of the session.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The content of the message.
+        # 
         # This parameter is required.
         self.text = text
+        # The type of the message. Valid values:
+        # 
+        # - announcement: notification.
+        # - custom: custom message.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -77972,6 +79096,7 @@ class SendMessageChatTextResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -78042,8 +79167,25 @@ class SetAIAgentVoiceprintRequestInput(TeaModel):
         format: str = None,
         type: str = None,
     ):
+        # The media access link.
         self.data = data
+        # The audio file format. Only WAV is supported.
         self.format = format
+        # Specifies the access type for the audio file. The system will verify file accessibility via HEAD or GET requests. Valid values:
+        # 
+        # *   url: An HTTP(S) link to the audio file.
+        # 
+        # *   oss: An OSS object. Supports the following formats:
+        # 
+        #     1.  OSS URI: oss://bucket-name/object-key
+        # 
+        #         Example: oss://my-bucket/audio/sample.wav
+        # 
+        #     2.  OSS public URL: http(s)://${bucket}.oss-${region}.aliyuncs.com/${object}
+        # 
+        #         Example: https://my-bucket.oss-cn-hangzhou.aliyuncs.com/audio/sample.wav
+        # 
+        # >  The OSS bucket must be in the same region as the service. Otherwise, the access fails.
         self.type = type
 
     def validate(self):
@@ -78080,7 +79222,9 @@ class SetAIAgentVoiceprintRequest(TeaModel):
         input: SetAIAgentVoiceprintRequestInput = None,
         voiceprint_id: str = None,
     ):
+        # The input file.
         self.input = input
+        # A unique identifier for the voiceprint. Generate this ID based on your own business rules. Requirement: 1 to 127 characters in length.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):
@@ -78115,7 +79259,9 @@ class SetAIAgentVoiceprintShrinkRequest(TeaModel):
         input_shrink: str = None,
         voiceprint_id: str = None,
     ):
+        # The input file.
         self.input_shrink = input_shrink
+        # A unique identifier for the voiceprint. Generate this ID based on your own business rules. Requirement: 1 to 127 characters in length.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):
@@ -78148,7 +79294,9 @@ class SetAIAgentVoiceprintResponseBody(TeaModel):
         request_id: str = None,
         voiceprint_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the registered voiceprint.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):
@@ -79302,6 +80450,131 @@ class StartAIAgentOutboundCallResponse(TeaModel):
         return self
 
 
+class StartAIWorkflowRequest(TeaModel):
+    def __init__(
+        self,
+        dispatch_tag: str = None,
+        inputs: str = None,
+        user_data: str = None,
+        workflow_id: str = None,
+    ):
+        # The tag for the task.
+        self.dispatch_tag = dispatch_tag
+        # A JSON string containing the specific input parameters, such as information about the media assets, standard live streams, or RTC streams.
+        self.inputs = inputs
+        # A user-defined parameter for passing custom metadata.
+        self.user_data = user_data
+        # The ID of the workflow template.
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dispatch_tag is not None:
+            result['DispatchTag'] = self.dispatch_tag
+        if self.inputs is not None:
+            result['Inputs'] = self.inputs
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DispatchTag') is not None:
+            self.dispatch_tag = m.get('DispatchTag')
+        if m.get('Inputs') is not None:
+            self.inputs = m.get('Inputs')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class StartAIWorkflowResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The ID of the workflow task.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StartAIWorkflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartAIWorkflowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartAIWorkflowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartChannelRequest(TeaModel):
     def __init__(
         self,
@@ -80001,6 +81274,110 @@ class StopAIAgentInstanceResponse(TeaModel):
         return self
 
 
+class StopAIWorkflowTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # The ID of the workflow task.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopAIWorkflowTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The ID of the workflow task.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopAIWorkflowTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopAIWorkflowTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopAIWorkflowTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopChannelRequest(TeaModel):
     def __init__(
         self,
@@ -80312,7 +81689,9 @@ class SubmitAIAgentVideoAuditTaskRequestCallbackConfig(TeaModel):
         token: str = None,
         url: str = None,
     ):
+        # The authentication token for callback.
         self.token = token
+        # The URL for receiving callback notifications.
         self.url = url
 
     def validate(self):
@@ -80347,9 +81726,13 @@ class SubmitAIAgentVideoAuditTaskRequestCapturePolicies(TeaModel):
         prompt: str = None,
         start_time: int = None,
     ):
+        # The duration over which to capture the specified number of frames. Unit: seconds.
         self.duration = duration
+        # The number of frames to capture.
         self.frame_count = frame_count
+        # The text prompt to send to the MLLM along with the captured frames.
         self.prompt = prompt
+        # The timestamp in the video at which to start capturing frames. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -80390,7 +81773,13 @@ class SubmitAIAgentVideoAuditTaskRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The OSS URL of the input file. Format:
+        # 
+        # http(s)://{BucketName}.{Endpoint}/{ObjectName}
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # *   OSS: an OSS object.
         self.type = type
 
     def validate(self):
@@ -80427,14 +81816,23 @@ class SubmitAIAgentVideoAuditTaskRequest(TeaModel):
         input: SubmitAIAgentVideoAuditTaskRequestInput = None,
         user_data: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The interval, in milliseconds, at which to submit captured frames to the AI agent. Valid values: 0 to 5000. Default value: 3000. If it is set to 0, all captured frames are sent to the model in a single batch request. Otherwise, frames are sent sequentially with the specified interval between each request.
         self.audit_interval = audit_interval
+        # Callback configurations.
         self.callback_config = callback_config
+        # An array of frame-capturing policies. Each policy defines a set of frames to be analyzed and will generate a separate result from the model.
+        # 
         # This parameter is required.
         self.capture_policies = capture_policies
+        # The details of the input file.
+        # 
         # This parameter is required.
         self.input = input
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -80501,14 +81899,23 @@ class SubmitAIAgentVideoAuditTaskShrinkRequest(TeaModel):
         input_shrink: str = None,
         user_data: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The interval, in milliseconds, at which to submit captured frames to the AI agent. Valid values: 0 to 5000. Default value: 3000. If it is set to 0, all captured frames are sent to the model in a single batch request. Otherwise, frames are sent sequentially with the specified interval between each request.
         self.audit_interval = audit_interval
+        # Callback configurations.
         self.callback_config_shrink = callback_config_shrink
+        # An array of frame-capturing policies. Each policy defines a set of frames to be analyzed and will generate a separate result from the model.
+        # 
         # This parameter is required.
         self.capture_policies_shrink = capture_policies_shrink
+        # The details of the input file.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -80557,7 +81964,9 @@ class SubmitAIAgentVideoAuditTaskResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81121,14 +82530,19 @@ class SubmitAvatarVideoJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The task description. Max length: 128 bytes.
         self.description = description
+        # The avatar configurations, including the avatar ID, voice, and speech rate.
         self.editing_config = editing_config
-        # The input configurations of the video rendering job for an avatar. You can specify text, the Object Storage Service (OSS) URL of an audio file, or the ID of a media asset. The audio file must be in the MP3 or WAV format.
+        # The input configurations of the video rendering task for an avatar. You can specify text, the Object Storage Service (OSS) URL of an audio file, or the ID of a media asset. The audio file must be in the MP3 or WAV format.
         # 
-        # >  The text must be at least five words in length.
+        # >Notice: The text must be at least five characters in length.
         self.input_config = input_config
+        # The output configurations, including the destination URL for the rendered video.
         self.output_config = output_config
+        # The task name. Max length: 128 bytes.
         self.title = title
+        # A user-defined JSON string for passing custom business information, such as environment details or task metadata.
         self.user_data = user_data
 
     def validate(self):
@@ -81178,9 +82592,11 @@ class SubmitAvatarVideoJobResponseBody(TeaModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # The task ID.
         self.job_id = job_id
+        # The media asset ID of the output file.
         self.media_id = media_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -81396,8 +82812,21 @@ class SubmitCopyrightExtractJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The specific information for the input file, which can be an OSS URL or a media asset ID. OSS URL formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the source file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -81432,9 +82861,20 @@ class SubmitCopyrightExtractJobRequest(TeaModel):
         params: str = None,
         user_data: str = None,
     ):
+        # The source video file from which to extract the watermark.
+        # 
+        # > The OSS object or media asset must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.input = input
+        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # 
+        # *   algoType: The algorithm type. Defaults to v1. The extraction algorithm must match the one used for embedding.
+        # 
+        #     *   v1: Copyright watermark extraction algorithm for long videos.
+        #     *   v2: Copyright watermark extraction algorithm for short videos.
         self.params = params
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -81474,9 +82914,20 @@ class SubmitCopyrightExtractJobShrinkRequest(TeaModel):
         params: str = None,
         user_data: str = None,
     ):
+        # The source video file from which to extract the watermark.
+        # 
+        # > The OSS object or media asset must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # 
+        # *   algoType: The algorithm type. Defaults to v1. The extraction algorithm must match the one used for embedding.
+        # 
+        #     *   v1: Copyright watermark extraction algorithm for long videos.
+        #     *   v2: Copyright watermark extraction algorithm for short videos.
         self.params = params
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -81512,6 +82963,7 @@ class SubmitCopyrightExtractJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -81542,10 +82994,13 @@ class SubmitCopyrightExtractJobResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -81706,17 +83161,38 @@ class SubmitCopyrightJobRequest(TeaModel):
         total_time: int = None,
         user_data: str = None,
     ):
+        # The description of the watermark.
         self.description = description
+        # The source video file that you want to add a watermark to.
+        # 
+        # > The OSS object or media asset must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.input = input
+        # The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
         self.level = level
+        # The information about the watermark to be added.
+        # 
         # This parameter is required.
         self.message = message
+        # The URL of the output file.
+        # 
+        # > The OSS bucket must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.output = output
+        # The parameters related to watermark jobs. The value is a JSON string. Supported parameter:
+        # 
+        # *   algoType: the algorithm type. Default value: v1.
+        # 
+        #     *   v1: watermarking for long videos that last at least 3 minutes.
+        #     *   v2: watermarking for videos shorter than 3 minutes.
         self.params = params
+        # The start time of the watermark. Unit: seconds. If you do not specify this parameter, the default value 0 is used.
         self.start_time = start_time
+        # The end time of the watermark. Unit: seconds. If you do not specify this parameter, the default value is the video duration.
         self.total_time = total_time
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -81789,17 +83265,38 @@ class SubmitCopyrightJobShrinkRequest(TeaModel):
         total_time: int = None,
         user_data: str = None,
     ):
+        # The description of the watermark.
         self.description = description
+        # The source video file that you want to add a watermark to.
+        # 
+        # > The OSS object or media asset must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
         self.level = level
+        # The information about the watermark to be added.
+        # 
         # This parameter is required.
         self.message = message
+        # The URL of the output file.
+        # 
+        # > The OSS bucket must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The parameters related to watermark jobs. The value is a JSON string. Supported parameter:
+        # 
+        # *   algoType: the algorithm type. Default value: v1.
+        # 
+        #     *   v1: watermarking for long videos that last at least 3 minutes.
+        #     *   v2: watermarking for videos shorter than 3 minutes.
         self.params = params
+        # The start time of the watermark. Unit: seconds. If you do not specify this parameter, the default value 0 is used.
         self.start_time = start_time
+        # The end time of the watermark. Unit: seconds. If you do not specify this parameter, the default value is the video duration.
         self.total_time = total_time
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -81859,6 +83356,7 @@ class SubmitCopyrightJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -81889,10 +83387,13 @@ class SubmitCopyrightJobResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -87230,11 +88731,27 @@ class SubmitProjectExportJobRequest(TeaModel):
         timeline: str = None,
         user_data: str = None,
     ):
+        # The export type. Valid values:
+        # 
+        # *   **BaseTimeline**: exports the timeline.
+        # *   **AdobePremierePro**: exports an Adobe Premiere Pro project.
         self.export_type = export_type
+        # The output path for the exported project and generated intermediate files, in JSON format. The export destination only supports OSS. Path fields:
+        # 
+        # *   **Bucket**: Required. The OSS bucket name.
+        # *   **Prefix**: Optional. The path prefix. If not specified, it defaults to the root directory.
+        # *   **Width**: Optional. The width of the output. The value must be a positive integer. If not provided, the system automatically calculates the value based on the input project or timeline.
+        # *   **Height**: Optional. The height of the output. The value must be a positive integer. If not provided, the system automatically calculates the value based on the input project or timeline.
+        # 
         # This parameter is required.
         self.output_media_config = output_media_config
+        # The ID of the online editing project.
+        # >Notice: Either ProjectId or Timeline must be provided.
         self.project_id = project_id
+        # The timeline of the online editing job. For data structure, see [Timeline](https://help.aliyun.com/document_detail/198823.html).
+        # >Notice: Either ProjectId or Timeline must be provided.
         self.timeline = timeline
+        # The user-defined data in the JSON format.
         self.user_data = user_data
 
     def validate(self):
@@ -87279,7 +88796,9 @@ class SubmitProjectExportJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the project export task.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -87343,6 +88862,161 @@ class SubmitProjectExportJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitProjectExportJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitSceneMediaSelectionJobRequest(TeaModel):
+    def __init__(
+        self,
+        editing_config: str = None,
+        input_config: str = None,
+        job_type: str = None,
+        output_config: str = None,
+        user_data: str = None,
+    ):
+        # The editing configuration. Its structure depends on the value of JobType.
+        # 
+        # *   When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+        # *   When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+        self.editing_config = editing_config
+        # The input configuration. Its structure and required fields depend on the value of JobType.
+        # 
+        # *   When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+        # *   When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+        # 
+        # This parameter is required.
+        self.input_config = input_config
+        # The job type. Valid values:
+        # 
+        # *   Smart_Mix_Media_Select
+        # *   Screen_Media_Highlights_Media_Select
+        # 
+        # Differences:
+        # 
+        # *   Smart_Mix_Media_Select: Matches voiceover scripts with provided video/image materials to select the most relevant clips and returns the matching results. Two options are available: Common mode, which is suitable for general-purpose materials like lifestyle vlogs, travel videos, and marketing content; Movie collections, which is optimized for materials with a coherent plot and specific characters, such as TV series and movies.
+        # *   Screen_Media_Highlights_Media_Select: Automatically identifies and selects clips that are exciting or represent key story points from longer video materials.
+        # 
+        # This parameter is required.
+        self.job_type = job_type
+        # The output configuration. Its structure and required fields depend on the value of JobType.
+        # 
+        # *   When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+        # *   When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+        # 
+        # This parameter is required.
+        self.output_config = output_config
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EditingConfig') is not None:
+            self.editing_config = m.get('EditingConfig')
+        if m.get('InputConfig') is not None:
+            self.input_config = m.get('InputConfig')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitSceneMediaSelectionJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # The job ID.
+        self.job_id = job_id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitSceneMediaSelectionJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitSceneMediaSelectionJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitSceneMediaSelectionJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -87481,10 +89155,15 @@ class SubmitSegmentationJobRequest(TeaModel):
         output_config: str = None,
         user_data: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The input configuration. For detailed parameters, see [InputConfig](~~2874121#cc59ad3082jbx~~).
         self.input_config = input_config
+        # The task parameters. For details, see [JobParams](~~2874121#a60357f2d5iix~~).
         self.job_params = job_params
+        # The output configuration. For detailed parameters, see [OutputConfig](~~2874121#cef23186a8d6w~~).
         self.output_config = output_config
+        # The user-defined data in the JSON format, which can be up to 512 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -87529,7 +89208,9 @@ class SubmitSegmentationJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The task ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89914,8 +91595,21 @@ class SubmitTraceAbJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The source file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the source file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -89949,8 +91643,21 @@ class SubmitTraceAbJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output file. The file can be an OSS object or a media asset. OSS URL formats:
+        # 
+        # 1\\. oss://bucket/dir/\
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/dir/\
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and dir specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -89989,14 +91696,25 @@ class SubmitTraceAbJobRequest(TeaModel):
         total_time: int = None,
         user_data: str = None,
     ):
+        # The key that is encoded by using the Base64 algorithm.
         self.cipher_base_64ed = cipher_base_64ed
+        # The source video file for A/B watermarking.
+        # 
+        # > OSS object or media asset must reside in the same region as the IMS service region. This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
+        # 
         # This parameter is required.
         self.input = input
+        # The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
         self.level = level
+        # The output directory path.
+        # 
         # This parameter is required.
         self.output = output
+        # The start point of watermark embedding. Unit: seconds.
         self.start_time = start_time
+        # The duration of the watermark embedding. Unit: seconds.
         self.total_time = total_time
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -90059,14 +91777,25 @@ class SubmitTraceAbJobShrinkRequest(TeaModel):
         total_time: int = None,
         user_data: str = None,
     ):
+        # The key that is encoded by using the Base64 algorithm.
         self.cipher_base_64ed = cipher_base_64ed
+        # The source video file for A/B watermarking.
+        # 
+        # > OSS object or media asset must reside in the same region as the IMS service region. This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
         self.level = level
+        # The output directory path.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The start point of watermark embedding. Unit: seconds.
         self.start_time = start_time
+        # The duration of the watermark embedding. Unit: seconds.
         self.total_time = total_time
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -90119,7 +91848,9 @@ class SubmitTraceAbJobResponseBodyData(TeaModel):
         job_id: str = None,
         trace_media_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The media ID.
         self.trace_media_id = trace_media_id
 
     def validate(self):
@@ -90154,10 +91885,13 @@ class SubmitTraceAbJobResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -90241,8 +91975,21 @@ class SubmitTraceExtractJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The specific information for the source file, which can be an OSS URL or a media asset ID. OSS URL formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the source file. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -90277,9 +92024,20 @@ class SubmitTraceExtractJobRequest(TeaModel):
         params: str = None,
         user_data: str = None,
     ):
+        # The source video file from which to extract the watermark.
+        # 
+        # > The OSS object or media asset must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.input = input
+        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # 
+        # *   m3u8Type: The extraction algorithm type. Defaults to v1.
+        # 
+        #     *   v1: Extracts from an M3U8 with absolute paths.
+        #     *   v2: Extracts from an M3U8 with relative paths.
         self.params = params
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -90319,9 +92077,20 @@ class SubmitTraceExtractJobShrinkRequest(TeaModel):
         params: str = None,
         user_data: str = None,
     ):
+        # The source video file from which to extract the watermark.
+        # 
+        # > The OSS object or media asset must reside in the same region as the IMS service region.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # 
+        # *   m3u8Type: The extraction algorithm type. Defaults to v1.
+        # 
+        #     *   v1: Extracts from an M3U8 with absolute paths.
+        #     *   v2: Extracts from an M3U8 with relative paths.
         self.params = params
+        # The custom data, which can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -90357,6 +92126,7 @@ class SubmitTraceExtractJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -90387,10 +92157,13 @@ class SubmitTraceExtractJobResponseBody(TeaModel):
         request_id: str = None,
         status_code: int = None,
     ):
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code.
         self.status_code = status_code
 
     def validate(self):
@@ -90474,8 +92247,18 @@ class SubmitTraceM3u8JobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The OSS path where the output file is saved. You can specify the path in one of the following formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the output file. Valid value:
+        # 
+        # 1.  OSS: an OSS object.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -90512,11 +92295,24 @@ class SubmitTraceM3u8JobRequest(TeaModel):
         trace: str = None,
         trace_media_id: str = None,
     ):
+        # The URI of the key server.
         self.key_uri = key_uri
+        # The OSS URL of the output M3U8 file.
+        # 
+        # > The OSS bucket must reside in the same region as the service region.
+        # 
         # This parameter is required.
         self.output = output
+        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # 
+        # *   m3u8Type: The type of M3U8 to generate. Defaults to v1.
+        # 
+        #     *   v1: Generates an M3U8 with absolute paths, playable directly. The signed URL for access is valid for 24 hours. If you need to use it after expiration, you must call this API again.
+        #     *   v2: Generates an M3U8 with relative paths. It must be placed in the same directory as the TS segment files to be playable.
         self.params = params
+        # The specific trace watermark information.
         self.trace = trace
+        # The media ID for the trace watermark. You can obtain this from the response of the SubmitTraceAbJob operation.
         self.trace_media_id = trace_media_id
 
     def validate(self):
@@ -90566,11 +92362,24 @@ class SubmitTraceM3u8JobShrinkRequest(TeaModel):
         trace: str = None,
         trace_media_id: str = None,
     ):
+        # The URI of the key server.
         self.key_uri = key_uri
+        # The OSS URL of the output M3U8 file.
+        # 
+        # > The OSS bucket must reside in the same region as the service region.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # 
+        # *   m3u8Type: The type of M3U8 to generate. Defaults to v1.
+        # 
+        #     *   v1: Generates an M3U8 with absolute paths, playable directly. The signed URL for access is valid for 24 hours. If you need to use it after expiration, you must call this API again.
+        #     *   v2: Generates an M3U8 with relative paths. It must be placed in the same directory as the TS segment files to be playable.
         self.params = params
+        # The specific trace watermark information.
         self.trace = trace
+        # The media ID for the trace watermark. You can obtain this from the response of the SubmitTraceAbJob operation.
         self.trace_media_id = trace_media_id
 
     def validate(self):
@@ -90614,6 +92423,7 @@ class SubmitTraceM3u8JobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -90643,7 +92453,9 @@ class SubmitTraceM3u8JobResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -96276,7 +98088,17 @@ class SubmitVideoCognitionJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # If Type is set to OSS, specify an OSS path. Example: OSS://test-bucket/video/202208/test.mp4.
+        # 
+        # If Type is set to Media, specify a media asset ID. Example: c5c62d8f0361337cab312dce8e77dc6d.
+        # 
+        # If Type is set to URL, specify an HTTP URL. Example: https://zc-test.oss-cn-shanghai.aliyuncs.com/test/unknowFace.mp4.
         self.media = media
+        # The type of media input. Valid values:
+        # 
+        # *   OSS
+        # *   Media
+        # *   URL
         self.type = type
 
     def validate(self):
@@ -96312,10 +98134,15 @@ class SubmitVideoCognitionJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The media input object.
         self.input = input
+        # Additional request parameters, provided as a JSON string. This is used to pass specific settings for various AI analysis modules, such as Natural Language Processing (NLP), shot segmentation, tagging, and action recognition.
         self.params = params
+        # The ID of the template that specifies the analysis algorithms to be used. For details, see [CreateCustomTemplate](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-createcustomtemplate?spm=a2c4g.11186623.help-menu-193643.d_5_0_3_3_0_0.17b66afamjKySv) and [smart tagging template](https://help.aliyun.com/zh/ims/user-guide/smart-tagging-template?spm=a2c4g.11186623.0.i15).
         self.template_id = template_id
+        # The video title. It supports letters, digits, and hyphens (-), and cannot start with a special character. Max length: 256 bytes.
         self.title = title
+        # The user-defined data that is passed through and returned as-is in the response. Max length: 1,024 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -96365,10 +98192,15 @@ class SubmitVideoCognitionJobShrinkRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The media input object.
         self.input_shrink = input_shrink
+        # Additional request parameters, provided as a JSON string. This is used to pass specific settings for various AI analysis modules, such as Natural Language Processing (NLP), shot segmentation, tagging, and action recognition.
         self.params = params
+        # The ID of the template that specifies the analysis algorithms to be used. For details, see [CreateCustomTemplate](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-createcustomtemplate?spm=a2c4g.11186623.help-menu-193643.d_5_0_3_3_0_0.17b66afamjKySv) and [smart tagging template](https://help.aliyun.com/zh/ims/user-guide/smart-tagging-template?spm=a2c4g.11186623.0.i15).
         self.template_id = template_id
+        # The video title. It supports letters, digits, and hyphens (-), and cannot start with a special character. Max length: 256 bytes.
         self.title = title
+        # The user-defined data that is passed through and returned as-is in the response. Max length: 1,024 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -96413,7 +98245,9 @@ class SubmitVideoCognitionJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The task ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -98210,10 +100044,15 @@ class UpdateHotwordLibraryRequest(TeaModel):
         hotwords: List[Hotword] = None,
         name: str = None,
     ):
+        # The description of the hotword library. It can be up to 200 characters in length.
         self.description = description
+        # The ID of the hotword library.
+        # 
         # This parameter is required.
         self.hotword_library_id = hotword_library_id
+        # The hotword list. You can add up to 300 hotword entries to a single library.
         self.hotwords = hotwords
+        # The name of the hotword library. It can be up to 100 characters in length.
         self.name = name
 
     def validate(self):
@@ -98264,10 +100103,15 @@ class UpdateHotwordLibraryShrinkRequest(TeaModel):
         hotwords_shrink: str = None,
         name: str = None,
     ):
+        # The description of the hotword library. It can be up to 200 characters in length.
         self.description = description
+        # The ID of the hotword library.
+        # 
         # This parameter is required.
         self.hotword_library_id = hotword_library_id
+        # The hotword list. You can add up to 300 hotword entries to a single library.
         self.hotwords_shrink = hotwords_shrink
+        # The name of the hotword library. It can be up to 100 characters in length.
         self.name = name
 
     def validate(self):
@@ -98308,7 +100152,9 @@ class UpdateHotwordLibraryResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the hotword library.
         self.success = success
 
     def validate(self):

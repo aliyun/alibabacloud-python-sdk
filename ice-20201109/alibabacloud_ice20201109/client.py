@@ -997,7 +997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
         """
-        @summary 打标流媒资
+        @summary Adds tags for a specific live stream media asset.
         
         @param request: AddStreamTagToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1038,7 +1038,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
         """
-        @summary 打标流媒资
+        @summary Adds tags for a specific live stream media asset.
         
         @param request: AddStreamTagToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1078,7 +1078,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddStreamTagToSearchLibRequest,
     ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
         """
-        @summary 打标流媒资
+        @summary Adds tags for a specific live stream media asset.
         
         @param request: AddStreamTagToSearchLibRequest
         @return: AddStreamTagToSearchLibResponse
@@ -1091,7 +1091,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddStreamTagToSearchLibRequest,
     ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
         """
-        @summary 打标流媒资
+        @summary Adds tags for a specific live stream media asset.
         
         @param request: AddStreamTagToSearchLibRequest
         @return: AddStreamTagToSearchLibResponse
@@ -1789,7 +1789,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelIProductionJobResponse:
         """
-        @summary 取消智能生产任务
+        @summary Cancels an intelligent production job.
         
         @param request: CancelIProductionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1826,7 +1826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelIProductionJobResponse:
         """
-        @summary 取消智能生产任务
+        @summary Cancels an intelligent production job.
         
         @param request: CancelIProductionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1862,7 +1862,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelIProductionJobRequest,
     ) -> ice20201109_models.CancelIProductionJobResponse:
         """
-        @summary 取消智能生产任务
+        @summary Cancels an intelligent production job.
         
         @param request: CancelIProductionJobRequest
         @return: CancelIProductionJobResponse
@@ -1875,7 +1875,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelIProductionJobRequest,
     ) -> ice20201109_models.CancelIProductionJobResponse:
         """
-        @summary 取消智能生产任务
+        @summary Cancels an intelligent production job.
         
         @param request: CancelIProductionJobRequest
         @return: CancelIProductionJobResponse
@@ -1889,7 +1889,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
         """
-        @summary 清除声纹ID对应的声纹
+        @summary Deletes a voiceprint based on its ID.
+        
+        @description ## [](#)
+        ``````````
         
         @param request: ClearAIAgentVoiceprintRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,7 +1927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
         """
-        @summary 清除声纹ID对应的声纹
+        @summary Deletes a voiceprint based on its ID.
+        
+        @description ## [](#)
+        ``````````
         
         @param request: ClearAIAgentVoiceprintRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1958,7 +1964,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ClearAIAgentVoiceprintRequest,
     ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
         """
-        @summary 清除声纹ID对应的声纹
+        @summary Deletes a voiceprint based on its ID.
+        
+        @description ## [](#)
+        ``````````
         
         @param request: ClearAIAgentVoiceprintRequest
         @return: ClearAIAgentVoiceprintResponse
@@ -1971,7 +1980,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ClearAIAgentVoiceprintRequest,
     ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
         """
-        @summary 清除声纹ID对应的声纹
+        @summary Deletes a voiceprint based on its ID.
+        
+        @description ## [](#)
+        ``````````
         
         @param request: ClearAIAgentVoiceprintRequest
         @return: ClearAIAgentVoiceprintResponse
@@ -1985,7 +1997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
         """
-        @summary 关闭MediaConnect实例的双流灾备功能
+        @summary Disables Source Failover for a MediaConnect flow.
+        
+        @description    If a flow has two sources, you cannot disable Source Failover. Delete one of them before this operation.
         
         @param request: CloseMediaConnectFlowFailoverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2020,7 +2034,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
         """
-        @summary 关闭MediaConnect实例的双流灾备功能
+        @summary Disables Source Failover for a MediaConnect flow.
+        
+        @description    If a flow has two sources, you cannot disable Source Failover. Delete one of them before this operation.
         
         @param request: CloseMediaConnectFlowFailoverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2054,7 +2070,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CloseMediaConnectFlowFailoverRequest,
     ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
         """
-        @summary 关闭MediaConnect实例的双流灾备功能
+        @summary Disables Source Failover for a MediaConnect flow.
+        
+        @description    If a flow has two sources, you cannot disable Source Failover. Delete one of them before this operation.
         
         @param request: CloseMediaConnectFlowFailoverRequest
         @return: CloseMediaConnectFlowFailoverResponse
@@ -2067,7 +2085,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CloseMediaConnectFlowFailoverRequest,
     ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
         """
-        @summary 关闭MediaConnect实例的双流灾备功能
+        @summary Disables Source Failover for a MediaConnect flow.
+        
+        @description    If a flow has two sources, you cannot disable Source Failover. Delete one of them before this operation.
         
         @param request: CloseMediaConnectFlowFailoverRequest
         @return: CloseMediaConnectFlowFailoverResponse
@@ -2081,7 +2101,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CloseStreamToSearchLibResponse:
         """
-        @summary 关闭流媒资
+        @summary Stops the tagging and analysis process for a live stream media asset.
         
         @param request: CloseStreamToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2120,7 +2140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CloseStreamToSearchLibResponse:
         """
-        @summary 关闭流媒资
+        @summary Stops the tagging and analysis process for a live stream media asset.
         
         @param request: CloseStreamToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2158,7 +2178,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CloseStreamToSearchLibRequest,
     ) -> ice20201109_models.CloseStreamToSearchLibResponse:
         """
-        @summary 关闭流媒资
+        @summary Stops the tagging and analysis process for a live stream media asset.
         
         @param request: CloseStreamToSearchLibRequest
         @return: CloseStreamToSearchLibResponse
@@ -2171,7 +2191,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CloseStreamToSearchLibRequest,
     ) -> ice20201109_models.CloseStreamToSearchLibResponse:
         """
-        @summary 关闭流媒资
+        @summary Stops the tagging and analysis process for a live stream media asset.
         
         @param request: CloseStreamToSearchLibRequest
         @return: CloseStreamToSearchLibResponse
@@ -3009,7 +3029,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateHotwordLibraryResponse:
         """
-        @summary 创建热词库
+        @summary Creates a hotword library.
         
         @param tmp_req: CreateHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3054,7 +3074,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateHotwordLibraryResponse:
         """
-        @summary 创建热词库
+        @summary Creates a hotword library.
         
         @param tmp_req: CreateHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3098,7 +3118,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateHotwordLibraryRequest,
     ) -> ice20201109_models.CreateHotwordLibraryResponse:
         """
-        @summary 创建热词库
+        @summary Creates a hotword library.
         
         @param request: CreateHotwordLibraryRequest
         @return: CreateHotwordLibraryResponse
@@ -3111,7 +3131,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateHotwordLibraryRequest,
     ) -> ice20201109_models.CreateHotwordLibraryResponse:
         """
-        @summary 创建热词库
+        @summary Creates a hotword library.
         
         @param request: CreateHotwordLibraryRequest
         @return: CreateHotwordLibraryResponse
@@ -4637,7 +4657,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateRecognitionEntityResponse:
         """
-        @summary 创建自定义实体
+        @summary Creates an entity to be recognized in a custom recognition library. The entity can be a landmark, object, logo, or person.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4686,7 +4709,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateRecognitionEntityResponse:
         """
-        @summary 创建自定义实体
+        @summary Creates an entity to be recognized in a custom recognition library. The entity can be a landmark, object, logo, or person.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4734,7 +4760,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateRecognitionEntityRequest,
     ) -> ice20201109_models.CreateRecognitionEntityResponse:
         """
-        @summary 创建自定义实体
+        @summary Creates an entity to be recognized in a custom recognition library. The entity can be a landmark, object, logo, or person.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionEntityRequest
         @return: CreateRecognitionEntityResponse
@@ -4747,7 +4776,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateRecognitionEntityRequest,
     ) -> ice20201109_models.CreateRecognitionEntityResponse:
         """
-        @summary 创建自定义实体
+        @summary Creates an entity to be recognized in a custom recognition library. The entity can be a landmark, object, logo, or person.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionEntityRequest
         @return: CreateRecognitionEntityResponse
@@ -4761,7 +4793,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateRecognitionLibResponse:
         """
-        @summary 创建自定义库。
+        @summary Creates a custom library to store the entity information for recognition.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        Workflow for using a custom recognition library: Create a library, create a custom object entity within the library, register sample images for the entity, create an analysis template that uses your custom library, and then submit an analysis task using the template.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4808,7 +4844,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateRecognitionLibResponse:
         """
-        @summary 创建自定义库。
+        @summary Creates a custom library to store the entity information for recognition.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        Workflow for using a custom recognition library: Create a library, create a custom object entity within the library, register sample images for the entity, create an analysis template that uses your custom library, and then submit an analysis task using the template.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4854,7 +4894,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateRecognitionLibRequest,
     ) -> ice20201109_models.CreateRecognitionLibResponse:
         """
-        @summary 创建自定义库。
+        @summary Creates a custom library to store the entity information for recognition.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        Workflow for using a custom recognition library: Create a library, create a custom object entity within the library, register sample images for the entity, create an analysis template that uses your custom library, and then submit an analysis task using the template.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionLibRequest
         @return: CreateRecognitionLibResponse
@@ -4867,7 +4911,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateRecognitionLibRequest,
     ) -> ice20201109_models.CreateRecognitionLibResponse:
         """
-        @summary 创建自定义库。
+        @summary Creates a custom library to store the entity information for recognition.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        Workflow for using a custom recognition library: Create a library, create a custom object entity within the library, register sample images for the entity, create an analysis template that uses your custom library, and then submit an analysis task using the template.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionLibRequest
         @return: CreateRecognitionLibResponse
@@ -4881,7 +4929,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateRecognitionSampleResponse:
         """
-        @summary 注册自定义实体照片
+        @summary Adds a sample image or a text label to a specific entity within a recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionSampleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4932,7 +4983,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateRecognitionSampleResponse:
         """
-        @summary 注册自定义实体照片
+        @summary Adds a sample image or a text label to a specific entity within a recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionSampleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4982,7 +5036,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateRecognitionSampleRequest,
     ) -> ice20201109_models.CreateRecognitionSampleResponse:
         """
-        @summary 注册自定义实体照片
+        @summary Adds a sample image or a text label to a specific entity within a recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionSampleRequest
         @return: CreateRecognitionSampleResponse
@@ -4995,7 +5052,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateRecognitionSampleRequest,
     ) -> ice20201109_models.CreateRecognitionSampleResponse:
         """
-        @summary 注册自定义实体照片
+        @summary Adds a sample image or a text label to a specific entity within a recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: CreateRecognitionSampleRequest
         @return: CreateRecognitionSampleResponse
@@ -5437,7 +5497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateStreamToSearchLibResponse:
         """
-        @summary 创建流媒资
+        @summary Registers a live stream as a media asset.
         
         @param request: CreateStreamToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5476,7 +5536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateStreamToSearchLibResponse:
         """
-        @summary 创建流媒资
+        @summary Registers a live stream as a media asset.
         
         @param request: CreateStreamToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5514,7 +5574,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateStreamToSearchLibRequest,
     ) -> ice20201109_models.CreateStreamToSearchLibResponse:
         """
-        @summary 创建流媒资
+        @summary Registers a live stream as a media asset.
         
         @param request: CreateStreamToSearchLibRequest
         @return: CreateStreamToSearchLibResponse
@@ -5527,7 +5587,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateStreamToSearchLibRequest,
     ) -> ice20201109_models.CreateStreamToSearchLibResponse:
         """
-        @summary 创建流媒资
+        @summary Registers a live stream as a media asset.
         
         @param request: CreateStreamToSearchLibRequest
         @return: CreateStreamToSearchLibResponse
@@ -6257,7 +6317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAIAgentDialogueResponse:
         """
-        @summary 删除智能体的对话历史记录。
+        @summary Deletes dialog records of an AI agent.
         
         @param request: DeleteAIAgentDialogueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6296,7 +6356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAIAgentDialogueResponse:
         """
-        @summary 删除智能体的对话历史记录。
+        @summary Deletes dialog records of an AI agent.
         
         @param request: DeleteAIAgentDialogueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6334,7 +6394,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAIAgentDialogueRequest,
     ) -> ice20201109_models.DeleteAIAgentDialogueResponse:
         """
-        @summary 删除智能体的对话历史记录。
+        @summary Deletes dialog records of an AI agent.
         
         @param request: DeleteAIAgentDialogueRequest
         @return: DeleteAIAgentDialogueResponse
@@ -6347,7 +6407,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAIAgentDialogueRequest,
     ) -> ice20201109_models.DeleteAIAgentDialogueResponse:
         """
-        @summary 删除智能体的对话历史记录。
+        @summary Deletes dialog records of an AI agent.
         
         @param request: DeleteAIAgentDialogueRequest
         @return: DeleteAIAgentDialogueResponse
@@ -7373,7 +7433,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteHotwordLibraryResponse:
         """
-        @summary 删除热词词库
+        @summary Deletes a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to delete a specified hotword library.
+        The delete operation is irreversible.
+        You can create up to 100 hotword libraries in an account.
         
         @param request: DeleteHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7408,7 +7473,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteHotwordLibraryResponse:
         """
-        @summary 删除热词词库
+        @summary Deletes a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to delete a specified hotword library.
+        The delete operation is irreversible.
+        You can create up to 100 hotword libraries in an account.
         
         @param request: DeleteHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7442,7 +7512,12 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteHotwordLibraryRequest,
     ) -> ice20201109_models.DeleteHotwordLibraryResponse:
         """
-        @summary 删除热词词库
+        @summary Deletes a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to delete a specified hotword library.
+        The delete operation is irreversible.
+        You can create up to 100 hotword libraries in an account.
         
         @param request: DeleteHotwordLibraryRequest
         @return: DeleteHotwordLibraryResponse
@@ -7455,7 +7530,12 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteHotwordLibraryRequest,
     ) -> ice20201109_models.DeleteHotwordLibraryResponse:
         """
-        @summary 删除热词词库
+        @summary Deletes a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to delete a specified hotword library.
+        The delete operation is irreversible.
+        You can create up to 100 hotword libraries in an account.
         
         @param request: DeleteHotwordLibraryRequest
         @return: DeleteHotwordLibraryResponse
@@ -9697,7 +9777,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteRecognitionEntityResponse:
         """
-        @summary 删除自定义库实体
+        @summary Deletes an entity from the specified custom recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9744,7 +9827,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteRecognitionEntityResponse:
         """
-        @summary 删除自定义库实体
+        @summary Deletes an entity from the specified custom recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9790,7 +9876,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteRecognitionEntityRequest,
     ) -> ice20201109_models.DeleteRecognitionEntityResponse:
         """
-        @summary 删除自定义库实体
+        @summary Deletes an entity from the specified custom recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionEntityRequest
         @return: DeleteRecognitionEntityResponse
@@ -9803,7 +9892,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteRecognitionEntityRequest,
     ) -> ice20201109_models.DeleteRecognitionEntityResponse:
         """
-        @summary 删除自定义库实体
+        @summary Deletes an entity from the specified custom recognition library.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionEntityRequest
         @return: DeleteRecognitionEntityResponse
@@ -9817,7 +9909,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteRecognitionLibResponse:
         """
-        @summary 删除自定义库
+        @summary Deletes a custom recognition library, including all entities and samples within it.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9862,7 +9957,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteRecognitionLibResponse:
         """
-        @summary 删除自定义库
+        @summary Deletes a custom recognition library, including all entities and samples within it.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9906,7 +10004,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteRecognitionLibRequest,
     ) -> ice20201109_models.DeleteRecognitionLibResponse:
         """
-        @summary 删除自定义库
+        @summary Deletes a custom recognition library, including all entities and samples within it.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionLibRequest
         @return: DeleteRecognitionLibResponse
@@ -9919,7 +10020,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteRecognitionLibRequest,
     ) -> ice20201109_models.DeleteRecognitionLibResponse:
         """
-        @summary 删除自定义库
+        @summary Deletes a custom recognition library, including all entities and samples within it.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionLibRequest
         @return: DeleteRecognitionLibResponse
@@ -9933,7 +10037,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteRecognitionSampleResponse:
         """
-        @summary 删除自定义实体照片
+        @summary Deletes a sample for a custom entity.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionSampleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9982,7 +10089,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteRecognitionSampleResponse:
         """
-        @summary 删除自定义实体照片
+        @summary Deletes a sample for a custom entity.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionSampleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10030,7 +10140,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteRecognitionSampleRequest,
     ) -> ice20201109_models.DeleteRecognitionSampleResponse:
         """
-        @summary 删除自定义实体照片
+        @summary Deletes a sample for a custom entity.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionSampleRequest
         @return: DeleteRecognitionSampleResponse
@@ -10043,7 +10156,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteRecognitionSampleRequest,
     ) -> ice20201109_models.DeleteRecognitionSampleResponse:
         """
-        @summary 删除自定义实体照片
+        @summary Deletes a sample for a custom entity.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: DeleteRecognitionSampleRequest
         @return: DeleteRecognitionSampleResponse
@@ -11509,6 +11625,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayListResponse:
         """
+        @summary Retrieves playback records based on the player\\"s TraceId. This API supports pagination.
+        
         @param request: DescribePlayListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePlayListResponse
@@ -11558,6 +11676,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayListResponse:
         """
+        @summary Retrieves playback records based on the player\\"s TraceId. This API supports pagination.
+        
         @param request: DescribePlayListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePlayListResponse
@@ -11606,6 +11726,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribePlayListRequest,
     ) -> ice20201109_models.DescribePlayListResponse:
         """
+        @summary Retrieves playback records based on the player\\"s TraceId. This API supports pagination.
+        
         @param request: DescribePlayListRequest
         @return: DescribePlayListResponse
         """
@@ -11617,6 +11739,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribePlayListRequest,
     ) -> ice20201109_models.DescribePlayListResponse:
         """
+        @summary Retrieves playback records based on the player\\"s TraceId. This API supports pagination.
+        
         @param request: DescribePlayListRequest
         @return: DescribePlayListResponse
         """
@@ -12025,7 +12149,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
         """
-        @summary 禁用某个MediaConnect实例的某个输出
+        @summary Disables an output of a MediaConnect flow. When disabled, the output retains its configuration, but no live stream is delivered to the destination.
         
         @param request: ForbidMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12062,7 +12186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
         """
-        @summary 禁用某个MediaConnect实例的某个输出
+        @summary Disables an output of a MediaConnect flow. When disabled, the output retains its configuration, but no live stream is delivered to the destination.
         
         @param request: ForbidMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12098,7 +12222,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ForbidMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
         """
-        @summary 禁用某个MediaConnect实例的某个输出
+        @summary Disables an output of a MediaConnect flow. When disabled, the output retains its configuration, but no live stream is delivered to the destination.
         
         @param request: ForbidMediaConnectFlowOutputRequest
         @return: ForbidMediaConnectFlowOutputResponse
@@ -12111,7 +12235,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ForbidMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
         """
-        @summary 禁用某个MediaConnect实例的某个输出
+        @summary Disables an output of a MediaConnect flow. When disabled, the output retains its configuration, but no live stream is delivered to the destination.
         
         @param request: ForbidMediaConnectFlowOutputRequest
         @return: ForbidMediaConnectFlowOutputResponse
@@ -12455,7 +12579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateMessageChatTokenResponse:
         """
-        @summary 生成直播互动消息所需的token
+        @summary Generates the token required for interactive messaging.
         
         @param request: GenerateMessageChatTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12496,7 +12620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateMessageChatTokenResponse:
         """
-        @summary 生成直播互动消息所需的token
+        @summary Generates the token required for interactive messaging.
         
         @param request: GenerateMessageChatTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12536,7 +12660,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GenerateMessageChatTokenRequest,
     ) -> ice20201109_models.GenerateMessageChatTokenResponse:
         """
-        @summary 生成直播互动消息所需的token
+        @summary Generates the token required for interactive messaging.
         
         @param request: GenerateMessageChatTokenRequest
         @return: GenerateMessageChatTokenResponse
@@ -12549,13 +12673,109 @@ class Client(OpenApiClient):
         request: ice20201109_models.GenerateMessageChatTokenRequest,
     ) -> ice20201109_models.GenerateMessageChatTokenResponse:
         """
-        @summary 生成直播互动消息所需的token
+        @summary Generates the token required for interactive messaging.
         
         @param request: GenerateMessageChatTokenRequest
         @return: GenerateMessageChatTokenResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.generate_message_chat_token_with_options_async(request, runtime)
+
+    def get_aiworkflow_task_with_options(
+        self,
+        request: ice20201109_models.GetAIWorkflowTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAIWorkflowTaskResponse:
+        """
+        @summary Retrieves the details of a workflow task.
+        
+        @param request: GetAIWorkflowTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAIWorkflowTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAIWorkflowTask',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAIWorkflowTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aiworkflow_task_with_options_async(
+        self,
+        request: ice20201109_models.GetAIWorkflowTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAIWorkflowTaskResponse:
+        """
+        @summary Retrieves the details of a workflow task.
+        
+        @param request: GetAIWorkflowTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAIWorkflowTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAIWorkflowTask',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAIWorkflowTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aiworkflow_task(
+        self,
+        request: ice20201109_models.GetAIWorkflowTaskRequest,
+    ) -> ice20201109_models.GetAIWorkflowTaskResponse:
+        """
+        @summary Retrieves the details of a workflow task.
+        
+        @param request: GetAIWorkflowTaskRequest
+        @return: GetAIWorkflowTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_aiworkflow_task_with_options(request, runtime)
+
+    async def get_aiworkflow_task_async(
+        self,
+        request: ice20201109_models.GetAIWorkflowTaskRequest,
+    ) -> ice20201109_models.GetAIWorkflowTaskResponse:
+        """
+        @summary Retrieves the details of a workflow task.
+        
+        @param request: GetAIWorkflowTaskRequest
+        @return: GetAIWorkflowTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aiworkflow_task_with_options_async(request, runtime)
 
     def get_ad_insertion_with_options(
         self,
@@ -14185,7 +14405,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetHotwordLibraryResponse:
         """
-        @summary 查询热词词库
+        @summary Queries the information about a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to retrieve details of a specified hotword library based on the ID, including the library name, description, and content and attributes of all hotwords in it.
         
         @param request: GetHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14220,7 +14443,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetHotwordLibraryResponse:
         """
-        @summary 查询热词词库
+        @summary Queries the information about a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to retrieve details of a specified hotword library based on the ID, including the library name, description, and content and attributes of all hotwords in it.
         
         @param request: GetHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14254,7 +14480,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetHotwordLibraryRequest,
     ) -> ice20201109_models.GetHotwordLibraryResponse:
         """
-        @summary 查询热词词库
+        @summary Queries the information about a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to retrieve details of a specified hotword library based on the ID, including the library name, description, and content and attributes of all hotwords in it.
         
         @param request: GetHotwordLibraryRequest
         @return: GetHotwordLibraryResponse
@@ -14267,7 +14496,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetHotwordLibraryRequest,
     ) -> ice20201109_models.GetHotwordLibraryResponse:
         """
-        @summary 查询热词词库
+        @summary Queries the information about a specified hotword library based on the ID.
+        
+        @description ## [](#)
+        You can call this operation to retrieve details of a specified hotword library based on the ID, including the library name, description, and content and attributes of all hotwords in it.
         
         @param request: GetHotwordLibraryRequest
         @return: GetHotwordLibraryResponse
@@ -15376,7 +15608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
         """
-        @summary 获取MediaConnect可用的区域
+        @summary Retrieves all regions where MediaConnect is available.
         
         @param request: GetMediaConnectAvailableRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15404,7 +15636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
         """
-        @summary 获取MediaConnect可用的区域
+        @summary Retrieves all regions where MediaConnect is available.
         
         @param request: GetMediaConnectAvailableRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15429,7 +15661,7 @@ class Client(OpenApiClient):
 
     def get_media_connect_available_region(self) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
         """
-        @summary 获取MediaConnect可用的区域
+        @summary Retrieves all regions where MediaConnect is available.
         
         @return: GetMediaConnectAvailableRegionResponse
         """
@@ -15438,7 +15670,7 @@ class Client(OpenApiClient):
 
     async def get_media_connect_available_region_async(self) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
         """
-        @summary 获取MediaConnect可用的区域
+        @summary Retrieves all regions where MediaConnect is available.
         
         @return: GetMediaConnectAvailableRegionResponse
         """
@@ -15559,7 +15791,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
         """
-        @summary 获取某个MediaConnect实例下的所有output的名字
+        @summary Retrieves the names of all outputs for a MediaConnect flow.
         
         @param request: GetMediaConnectFlowAllOutputNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15594,7 +15826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
         """
-        @summary 获取某个MediaConnect实例下的所有output的名字
+        @summary Retrieves the names of all outputs for a MediaConnect flow.
         
         @param request: GetMediaConnectFlowAllOutputNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15628,7 +15860,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowAllOutputNameRequest,
     ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
         """
-        @summary 获取某个MediaConnect实例下的所有output的名字
+        @summary Retrieves the names of all outputs for a MediaConnect flow.
         
         @param request: GetMediaConnectFlowAllOutputNameRequest
         @return: GetMediaConnectFlowAllOutputNameResponse
@@ -15641,7 +15873,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowAllOutputNameRequest,
     ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
         """
-        @summary 获取某个MediaConnect实例下的所有output的名字
+        @summary Retrieves the names of all outputs for a MediaConnect flow.
         
         @param request: GetMediaConnectFlowAllOutputNameRequest
         @return: GetMediaConnectFlowAllOutputNameResponse
@@ -17099,7 +17331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetProjectExportJobResponse:
         """
-        @summary 查询工程导出任务
+        @summary Queries the information of a project export task.
         
         @param request: GetProjectExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17134,7 +17366,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetProjectExportJobResponse:
         """
-        @summary 查询工程导出任务
+        @summary Queries the information of a project export task.
         
         @param request: GetProjectExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17168,7 +17400,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetProjectExportJobRequest,
     ) -> ice20201109_models.GetProjectExportJobResponse:
         """
-        @summary 查询工程导出任务
+        @summary Queries the information of a project export task.
         
         @param request: GetProjectExportJobRequest
         @return: GetProjectExportJobResponse
@@ -17181,7 +17413,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetProjectExportJobRequest,
     ) -> ice20201109_models.GetProjectExportJobResponse:
         """
-        @summary 查询工程导出任务
+        @summary Queries the information of a project export task.
         
         @param request: GetProjectExportJobRequest
         @return: GetProjectExportJobResponse
@@ -17795,7 +18027,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetStorageListResponse:
         """
-        @summary 获取存储地址列表
+        @summary Obtains storage configurations.
         
         @param request: GetStorageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17834,7 +18066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetStorageListResponse:
         """
-        @summary 获取存储地址列表
+        @summary Obtains storage configurations.
         
         @param request: GetStorageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17872,7 +18104,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetStorageListRequest,
     ) -> ice20201109_models.GetStorageListResponse:
         """
-        @summary 获取存储地址列表
+        @summary Obtains storage configurations.
         
         @param request: GetStorageListRequest
         @return: GetStorageListResponse
@@ -17885,7 +18117,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetStorageListRequest,
     ) -> ice20201109_models.GetStorageListResponse:
         """
-        @summary 获取存储地址列表
+        @summary Obtains storage configurations.
         
         @param request: GetStorageListRequest
         @return: GetStorageListResponse
@@ -17899,7 +18131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetStreamTagListResponse:
         """
-        @summary 查询流媒资打标
+        @summary Retrieves tags of a live stream media asset.
         
         @param request: GetStreamTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17950,7 +18182,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetStreamTagListResponse:
         """
-        @summary 查询流媒资打标
+        @summary Retrieves tags of a live stream media asset.
         
         @param request: GetStreamTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18000,7 +18232,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetStreamTagListRequest,
     ) -> ice20201109_models.GetStreamTagListResponse:
         """
-        @summary 查询流媒资打标
+        @summary Retrieves tags of a live stream media asset.
         
         @param request: GetStreamTagListRequest
         @return: GetStreamTagListResponse
@@ -18013,7 +18245,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetStreamTagListRequest,
     ) -> ice20201109_models.GetStreamTagListResponse:
         """
-        @summary 查询流媒资打标
+        @summary Retrieves tags of a live stream media asset.
         
         @param request: GetStreamTagListRequest
         @return: GetStreamTagListResponse
@@ -19271,7 +19503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAIAgentDialoguesResponse:
         """
-        @summary 列出智能体的对话历史记录。
+        @summary Lists the dialog records of an AI agent.
         
         @param request: ListAIAgentDialoguesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19318,7 +19550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAIAgentDialoguesResponse:
         """
-        @summary 列出智能体的对话历史记录。
+        @summary Lists the dialog records of an AI agent.
         
         @param request: ListAIAgentDialoguesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19364,7 +19596,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAIAgentDialoguesRequest,
     ) -> ice20201109_models.ListAIAgentDialoguesResponse:
         """
-        @summary 列出智能体的对话历史记录。
+        @summary Lists the dialog records of an AI agent.
         
         @param request: ListAIAgentDialoguesRequest
         @return: ListAIAgentDialoguesResponse
@@ -19377,7 +19609,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAIAgentDialoguesRequest,
     ) -> ice20201109_models.ListAIAgentDialoguesResponse:
         """
-        @summary 列出智能体的对话历史记录。
+        @summary Lists the dialog records of an AI agent.
         
         @param request: ListAIAgentDialoguesRequest
         @return: ListAIAgentDialoguesResponse
@@ -19631,7 +19863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
         """
-        @summary 更新回调配置
+        @summary Lists the registered voiceprints.
         
         @param request: ListAIAgentVoiceprintsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19670,7 +19902,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
         """
-        @summary 更新回调配置
+        @summary Lists the registered voiceprints.
         
         @param request: ListAIAgentVoiceprintsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19708,7 +19940,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAIAgentVoiceprintsRequest,
     ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
         """
-        @summary 更新回调配置
+        @summary Lists the registered voiceprints.
         
         @param request: ListAIAgentVoiceprintsRequest
         @return: ListAIAgentVoiceprintsResponse
@@ -19721,7 +19953,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAIAgentVoiceprintsRequest,
     ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
         """
-        @summary 更新回调配置
+        @summary Lists the registered voiceprints.
         
         @param request: ListAIAgentVoiceprintsRequest
         @return: ListAIAgentVoiceprintsResponse
@@ -21471,7 +21703,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListHotwordLibrariesResponse:
         """
-        @summary 查询所有热词库的列表
+        @summary Queries hotword libraries that meet specific search conditions.
+        
+        @description ## [](#)
+        You can call this operation to get information about all hotword libraries that you created.
+        The API supports fuzzy search by `Name`, filtering by creation time range, and pagination.
+        By default, the results are sorted by creation time in descending order. You can set `SortBy` to change the sorting order.
+        The maximum number of entries returned for each request is 100. Default value: 10.
+        Use `NextToken` for pagination.
         
         @param request: ListHotwordLibrariesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21522,7 +21761,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListHotwordLibrariesResponse:
         """
-        @summary 查询所有热词库的列表
+        @summary Queries hotword libraries that meet specific search conditions.
+        
+        @description ## [](#)
+        You can call this operation to get information about all hotword libraries that you created.
+        The API supports fuzzy search by `Name`, filtering by creation time range, and pagination.
+        By default, the results are sorted by creation time in descending order. You can set `SortBy` to change the sorting order.
+        The maximum number of entries returned for each request is 100. Default value: 10.
+        Use `NextToken` for pagination.
         
         @param request: ListHotwordLibrariesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21572,7 +21818,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListHotwordLibrariesRequest,
     ) -> ice20201109_models.ListHotwordLibrariesResponse:
         """
-        @summary 查询所有热词库的列表
+        @summary Queries hotword libraries that meet specific search conditions.
+        
+        @description ## [](#)
+        You can call this operation to get information about all hotword libraries that you created.
+        The API supports fuzzy search by `Name`, filtering by creation time range, and pagination.
+        By default, the results are sorted by creation time in descending order. You can set `SortBy` to change the sorting order.
+        The maximum number of entries returned for each request is 100. Default value: 10.
+        Use `NextToken` for pagination.
         
         @param request: ListHotwordLibrariesRequest
         @return: ListHotwordLibrariesResponse
@@ -21585,7 +21838,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListHotwordLibrariesRequest,
     ) -> ice20201109_models.ListHotwordLibrariesResponse:
         """
-        @summary 查询所有热词库的列表
+        @summary Queries hotword libraries that meet specific search conditions.
+        
+        @description ## [](#)
+        You can call this operation to get information about all hotword libraries that you created.
+        The API supports fuzzy search by `Name`, filtering by creation time range, and pagination.
+        By default, the results are sorted by creation time in descending order. You can set `SortBy` to change the sorting order.
+        The maximum number of entries returned for each request is 100. Default value: 10.
+        Use `NextToken` for pagination.
         
         @param request: ListHotwordLibrariesRequest
         @return: ListHotwordLibrariesResponse
@@ -22927,7 +23187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaConvertJobsResponse:
         """
-        @summary 查询 MediaConvertJob 列表
+        @summary Retrieves MediaConvert tasks.
         
         @param request: ListMediaConvertJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22974,7 +23234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaConvertJobsResponse:
         """
-        @summary 查询 MediaConvertJob 列表
+        @summary Retrieves MediaConvert tasks.
         
         @param request: ListMediaConvertJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23020,7 +23280,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaConvertJobsRequest,
     ) -> ice20201109_models.ListMediaConvertJobsResponse:
         """
-        @summary 查询 MediaConvertJob 列表
+        @summary Retrieves MediaConvert tasks.
         
         @param request: ListMediaConvertJobsRequest
         @return: ListMediaConvertJobsResponse
@@ -23033,7 +23293,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaConvertJobsRequest,
     ) -> ice20201109_models.ListMediaConvertJobsResponse:
         """
-        @summary 查询 MediaConvertJob 列表
+        @summary Retrieves MediaConvert tasks.
         
         @param request: ListMediaConvertJobsRequest
         @return: ListMediaConvertJobsResponse
@@ -24227,7 +24487,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListRecognitionEntitiesResponse:
         """
-        @summary 获取自定义库下实体列表
+        @summary Retrieves all entities in a specified recognition library. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionEntitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24276,7 +24539,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListRecognitionEntitiesResponse:
         """
-        @summary 获取自定义库下实体列表
+        @summary Retrieves all entities in a specified recognition library. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionEntitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24324,7 +24590,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListRecognitionEntitiesRequest,
     ) -> ice20201109_models.ListRecognitionEntitiesResponse:
         """
-        @summary 获取自定义库下实体列表
+        @summary Retrieves all entities in a specified recognition library. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionEntitiesRequest
         @return: ListRecognitionEntitiesResponse
@@ -24337,7 +24606,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListRecognitionEntitiesRequest,
     ) -> ice20201109_models.ListRecognitionEntitiesResponse:
         """
-        @summary 获取自定义库下实体列表
+        @summary Retrieves all entities in a specified recognition library. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionEntitiesRequest
         @return: ListRecognitionEntitiesResponse
@@ -24351,7 +24623,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListRecognitionLibsResponse:
         """
-        @summary 获取自定义库列表
+        @summary Retrieves all custom recognition libraries. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionLibsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24398,7 +24673,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListRecognitionLibsResponse:
         """
-        @summary 获取自定义库列表
+        @summary Retrieves all custom recognition libraries. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionLibsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24444,7 +24722,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListRecognitionLibsRequest,
     ) -> ice20201109_models.ListRecognitionLibsResponse:
         """
-        @summary 获取自定义库列表
+        @summary Retrieves all custom recognition libraries. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionLibsRequest
         @return: ListRecognitionLibsResponse
@@ -24457,7 +24738,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListRecognitionLibsRequest,
     ) -> ice20201109_models.ListRecognitionLibsResponse:
         """
-        @summary 获取自定义库列表
+        @summary Retrieves all custom recognition libraries. Pagination is supported.
+        
+        @description    This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
         
         @param request: ListRecognitionLibsRequest
         @return: ListRecognitionLibsResponse
@@ -24471,7 +24755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListRecognitionSamplesResponse:
         """
-        @summary 获取自定义库实体的图片列表
+        @summary Retrieves all samples of a custom entity. Pagination is supported.
         
         @param request: ListRecognitionSamplesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24522,7 +24806,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListRecognitionSamplesResponse:
         """
-        @summary 获取自定义库实体的图片列表
+        @summary Retrieves all samples of a custom entity. Pagination is supported.
         
         @param request: ListRecognitionSamplesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24572,7 +24856,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListRecognitionSamplesRequest,
     ) -> ice20201109_models.ListRecognitionSamplesResponse:
         """
-        @summary 获取自定义库实体的图片列表
+        @summary Retrieves all samples of a custom entity. Pagination is supported.
         
         @param request: ListRecognitionSamplesRequest
         @return: ListRecognitionSamplesResponse
@@ -24585,7 +24869,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListRecognitionSamplesRequest,
     ) -> ice20201109_models.ListRecognitionSamplesResponse:
         """
-        @summary 获取自定义库实体的图片列表
+        @summary Retrieves all samples of a custom entity. Pagination is supported.
         
         @param request: ListRecognitionSamplesRequest
         @return: ListRecognitionSamplesResponse
@@ -26275,7 +26559,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListWorkflowTasksResponse:
         """
-        @summary 工作流任务实例列表
+        @summary Retrieves workflow tasks.
+        
+        @description This API only returns data from the last 90 days.
         
         @param request: ListWorkflowTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26322,7 +26608,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListWorkflowTasksResponse:
         """
-        @summary 工作流任务实例列表
+        @summary Retrieves workflow tasks.
+        
+        @description This API only returns data from the last 90 days.
         
         @param request: ListWorkflowTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26368,7 +26656,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListWorkflowTasksRequest,
     ) -> ice20201109_models.ListWorkflowTasksResponse:
         """
-        @summary 工作流任务实例列表
+        @summary Retrieves workflow tasks.
+        
+        @description This API only returns data from the last 90 days.
         
         @param request: ListWorkflowTasksRequest
         @return: ListWorkflowTasksResponse
@@ -26381,7 +26671,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListWorkflowTasksRequest,
     ) -> ice20201109_models.ListWorkflowTasksResponse:
         """
-        @summary 工作流任务实例列表
+        @summary Retrieves workflow tasks.
+        
+        @description This API only returns data from the last 90 days.
         
         @param request: ListWorkflowTasksRequest
         @return: ListWorkflowTasksResponse
@@ -26395,7 +26687,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
         """
-        @summary 开启MediaConnect双流灾备
+        @summary Enables Source Failover for a MediaConnect flow.
+        
+        @description    Before this operation, you must add a source to the flow.
+        After Source Failover is enabled, you can add an additional source. The input type of the two sources must be identical.
         
         @param request: OpenMediaConnectFlowFailoverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26430,7 +26725,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
         """
-        @summary 开启MediaConnect双流灾备
+        @summary Enables Source Failover for a MediaConnect flow.
+        
+        @description    Before this operation, you must add a source to the flow.
+        After Source Failover is enabled, you can add an additional source. The input type of the two sources must be identical.
         
         @param request: OpenMediaConnectFlowFailoverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26464,7 +26762,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.OpenMediaConnectFlowFailoverRequest,
     ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
         """
-        @summary 开启MediaConnect双流灾备
+        @summary Enables Source Failover for a MediaConnect flow.
+        
+        @description    Before this operation, you must add a source to the flow.
+        After Source Failover is enabled, you can add an additional source. The input type of the two sources must be identical.
         
         @param request: OpenMediaConnectFlowFailoverRequest
         @return: OpenMediaConnectFlowFailoverResponse
@@ -26477,7 +26778,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.OpenMediaConnectFlowFailoverRequest,
     ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
         """
-        @summary 开启MediaConnect双流灾备
+        @summary Enables Source Failover for a MediaConnect flow.
+        
+        @description    Before this operation, you must add a source to the flow.
+        After Source Failover is enabled, you can add an additional source. The input type of the two sources must be identical.
         
         @param request: OpenMediaConnectFlowFailoverRequest
         @return: OpenMediaConnectFlowFailoverResponse
@@ -26491,7 +26795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
         """
-        @summary 查询版权水印提取任务
+        @summary Queries a job for extracting a copyright watermark.
         
         @param request: QueryCopyrightExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26526,7 +26830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
         """
-        @summary 查询版权水印提取任务
+        @summary Queries a job for extracting a copyright watermark.
         
         @param request: QueryCopyrightExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26560,7 +26864,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryCopyrightExtractJobRequest,
     ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
         """
-        @summary 查询版权水印提取任务
+        @summary Queries a job for extracting a copyright watermark.
         
         @param request: QueryCopyrightExtractJobRequest
         @return: QueryCopyrightExtractJobResponse
@@ -26573,7 +26877,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryCopyrightExtractJobRequest,
     ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
         """
-        @summary 查询版权水印提取任务
+        @summary Queries a job for extracting a copyright watermark.
         
         @param request: QueryCopyrightExtractJobRequest
         @return: QueryCopyrightExtractJobResponse
@@ -26587,7 +26891,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryCopyrightJobListResponse:
         """
-        @summary 查询视频版权水印任务列表
+        @summary Queries copyright watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryCopyrightJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26632,7 +26938,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryCopyrightJobListResponse:
         """
-        @summary 查询视频版权水印任务列表
+        @summary Queries copyright watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryCopyrightJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26676,7 +26984,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryCopyrightJobListRequest,
     ) -> ice20201109_models.QueryCopyrightJobListResponse:
         """
-        @summary 查询视频版权水印任务列表
+        @summary Queries copyright watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryCopyrightJobListRequest
         @return: QueryCopyrightJobListResponse
@@ -26689,7 +26999,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryCopyrightJobListRequest,
     ) -> ice20201109_models.QueryCopyrightJobListResponse:
         """
-        @summary 查询视频版权水印任务列表
+        @summary Queries copyright watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryCopyrightJobListRequest
         @return: QueryCopyrightJobListResponse
@@ -27583,7 +27895,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryTraceAbJobListResponse:
         """
-        @summary 查询视频溯源水印ab流任务
+        @summary Queries A/B watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceAbJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27628,7 +27942,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryTraceAbJobListResponse:
         """
-        @summary 查询视频溯源水印ab流任务
+        @summary Queries A/B watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceAbJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27672,7 +27988,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryTraceAbJobListRequest,
     ) -> ice20201109_models.QueryTraceAbJobListResponse:
         """
-        @summary 查询视频溯源水印ab流任务
+        @summary Queries A/B watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceAbJobListRequest
         @return: QueryTraceAbJobListResponse
@@ -27685,7 +28003,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryTraceAbJobListRequest,
     ) -> ice20201109_models.QueryTraceAbJobListResponse:
         """
-        @summary 查询视频溯源水印ab流任务
+        @summary Queries A/B watermarking jobs.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceAbJobListRequest
         @return: QueryTraceAbJobListResponse
@@ -27699,7 +28019,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryTraceExtractJobResponse:
         """
-        @summary 查询溯源水印提取任务
+        @summary Queries a job for extracting a trace watermark.
+        
+        @description This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27734,7 +28056,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryTraceExtractJobResponse:
         """
-        @summary 查询溯源水印提取任务
+        @summary Queries a job for extracting a trace watermark.
+        
+        @description This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27768,7 +28092,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryTraceExtractJobRequest,
     ) -> ice20201109_models.QueryTraceExtractJobResponse:
         """
-        @summary 查询溯源水印提取任务
+        @summary Queries a job for extracting a trace watermark.
+        
+        @description This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceExtractJobRequest
         @return: QueryTraceExtractJobResponse
@@ -27781,7 +28107,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryTraceExtractJobRequest,
     ) -> ice20201109_models.QueryTraceExtractJobResponse:
         """
-        @summary 查询溯源水印提取任务
+        @summary Queries a job for extracting a trace watermark.
+        
+        @description This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: QueryTraceExtractJobRequest
         @return: QueryTraceExtractJobResponse
@@ -27795,7 +28123,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
         """
-        @summary 查询视频溯源水印m3u8任务
+        @summary Queries jobs for generating M3U8 files containing specific trace watermark information.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file with absolute paths generated by the SubmitTraceM3u8Job API has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. After the signature expires, the M3U8 file will become inaccessible. You must submit a new M3U8 generation job.
         
         @param request: QueryTraceM3u8JobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27838,7 +28169,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
         """
-        @summary 查询视频溯源水印m3u8任务
+        @summary Queries jobs for generating M3U8 files containing specific trace watermark information.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file with absolute paths generated by the SubmitTraceM3u8Job API has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. After the signature expires, the M3U8 file will become inaccessible. You must submit a new M3U8 generation job.
         
         @param request: QueryTraceM3u8JobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27880,7 +28214,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryTraceM3u8JobListRequest,
     ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
         """
-        @summary 查询视频溯源水印m3u8任务
+        @summary Queries jobs for generating M3U8 files containing specific trace watermark information.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file with absolute paths generated by the SubmitTraceM3u8Job API has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. After the signature expires, the M3U8 file will become inaccessible. You must submit a new M3U8 generation job.
         
         @param request: QueryTraceM3u8JobListRequest
         @return: QueryTraceM3u8JobListResponse
@@ -27893,7 +28230,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryTraceM3u8JobListRequest,
     ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
         """
-        @summary 查询视频溯源水印m3u8任务
+        @summary Queries jobs for generating M3U8 files containing specific trace watermark information.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file with absolute paths generated by the SubmitTraceM3u8Job API has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. After the signature expires, the M3U8 file will become inaccessible. You must submit a new M3U8 generation job.
         
         @param request: QueryTraceM3u8JobListRequest
         @return: QueryTraceM3u8JobListResponse
@@ -27907,7 +28247,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryVideoCognitionJobResponse:
         """
-        @summary 查询视频理解任务结果
+        @summary Retrieves the results of an AI analysis and processing task.
         
         @param tmp_req: QueryVideoCognitionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27950,7 +28290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryVideoCognitionJobResponse:
         """
-        @summary 查询视频理解任务结果
+        @summary Retrieves the results of an AI analysis and processing task.
         
         @param tmp_req: QueryVideoCognitionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27992,7 +28332,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryVideoCognitionJobRequest,
     ) -> ice20201109_models.QueryVideoCognitionJobResponse:
         """
-        @summary 查询视频理解任务结果
+        @summary Retrieves the results of an AI analysis and processing task.
         
         @param request: QueryVideoCognitionJobRequest
         @return: QueryVideoCognitionJobResponse
@@ -28005,7 +28345,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryVideoCognitionJobRequest,
     ) -> ice20201109_models.QueryVideoCognitionJobResponse:
         """
-        @summary 查询视频理解任务结果
+        @summary Retrieves the results of an AI analysis and processing task.
         
         @param request: QueryVideoCognitionJobRequest
         @return: QueryVideoCognitionJobResponse
@@ -28399,7 +28739,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
         """
-        @summary 恢复某个MediaConnect实例的某个输出
+        @summary Resumes an output of a MediaConnect flow. When resumed, the output can deliver the live stream to the destination.
         
         @param request: ResumeMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28436,7 +28776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
         """
-        @summary 恢复某个MediaConnect实例的某个输出
+        @summary Resumes an output of a MediaConnect flow. When resumed, the output can deliver the live stream to the destination.
         
         @param request: ResumeMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28472,7 +28812,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ResumeMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
         """
-        @summary 恢复某个MediaConnect实例的某个输出
+        @summary Resumes an output of a MediaConnect flow. When resumed, the output can deliver the live stream to the destination.
         
         @param request: ResumeMediaConnectFlowOutputRequest
         @return: ResumeMediaConnectFlowOutputResponse
@@ -28485,7 +28825,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ResumeMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
         """
-        @summary 恢复某个MediaConnect实例的某个输出
+        @summary Resumes an output of a MediaConnect flow. When resumed, the output can deliver the live stream to the destination.
         
         @param request: ResumeMediaConnectFlowOutputRequest
         @return: ResumeMediaConnectFlowOutputResponse
@@ -28745,6 +29085,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.match):
@@ -28794,6 +29136,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.match):
@@ -28873,6 +29217,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.matching_mode):
             query['MatchingMode'] = request.matching_mode
         if not UtilClient.is_unset(request.media_id):
@@ -28895,6 +29241,8 @@ class Client(OpenApiClient):
             query['SpecificSearch'] = request.specific_search
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -28930,6 +29278,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.matching_mode):
             query['MatchingMode'] = request.matching_mode
         if not UtilClient.is_unset(request.media_id):
@@ -28952,6 +29302,8 @@ class Client(OpenApiClient):
             query['SpecificSearch'] = request.specific_search
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29017,6 +29369,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.face_search_token):
@@ -29033,6 +29387,8 @@ class Client(OpenApiClient):
             query['PersonImageUrl'] = request.person_image_url
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29068,6 +29424,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.face_search_token):
@@ -29084,6 +29442,8 @@ class Client(OpenApiClient):
             query['PersonImageUrl'] = request.person_image_url
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29139,7 +29499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
+        @summary Performs a hybrid search for media assets. This API combines multiple recall strategies, including tag-based text search and large language model (LLM) search. You can locate media assets using natural language descriptions.
         
         @param request: SearchMediaByHybridRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29147,6 +29507,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.media_type):
@@ -29161,6 +29523,8 @@ class Client(OpenApiClient):
             query['SearchLibName'] = request.search_lib_name
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29186,7 +29550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
+        @summary Performs a hybrid search for media assets. This API combines multiple recall strategies, including tag-based text search and large language model (LLM) search. You can locate media assets using natural language descriptions.
         
         @param request: SearchMediaByHybridRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29194,6 +29558,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.media_type):
@@ -29208,6 +29574,8 @@ class Client(OpenApiClient):
             query['SearchLibName'] = request.search_lib_name
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29232,7 +29600,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByHybridRequest,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
+        @summary Performs a hybrid search for media assets. This API combines multiple recall strategies, including tag-based text search and large language model (LLM) search. You can locate media assets using natural language descriptions.
         
         @param request: SearchMediaByHybridRequest
         @return: SearchMediaByHybridResponse
@@ -29245,7 +29613,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByHybridRequest,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
+        @summary Performs a hybrid search for media assets. This API combines multiple recall strategies, including tag-based text search and large language model (LLM) search. You can locate media assets using natural language descriptions.
         
         @param request: SearchMediaByHybridRequest
         @return: SearchMediaByHybridResponse
@@ -29269,6 +29637,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.namespace):
@@ -29281,6 +29651,8 @@ class Client(OpenApiClient):
             query['SearchLibName'] = request.search_lib_name
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29316,6 +29688,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_filters):
+            query['CustomFilters'] = request.custom_filters
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.namespace):
@@ -29328,6 +29702,8 @@ class Client(OpenApiClient):
             query['SearchLibName'] = request.search_lib_name
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.utc_create):
+            query['UtcCreate'] = request.utc_create
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29863,7 +30239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendAIAgentTextResponse:
         """
-        @summary 传入消息作为LLM输入。
+        @summary Sends a message as input to the large language model (LLM).
         
         @param request: SendAIAgentTextRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29900,7 +30276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendAIAgentTextResponse:
         """
-        @summary 传入消息作为LLM输入。
+        @summary Sends a message as input to the large language model (LLM).
         
         @param request: SendAIAgentTextRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29936,7 +30312,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendAIAgentTextRequest,
     ) -> ice20201109_models.SendAIAgentTextResponse:
         """
-        @summary 传入消息作为LLM输入。
+        @summary Sends a message as input to the large language model (LLM).
         
         @param request: SendAIAgentTextRequest
         @return: SendAIAgentTextResponse
@@ -29949,7 +30325,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendAIAgentTextRequest,
     ) -> ice20201109_models.SendAIAgentTextResponse:
         """
-        @summary 传入消息作为LLM输入。
+        @summary Sends a message as input to the large language model (LLM).
         
         @param request: SendAIAgentTextRequest
         @return: SendAIAgentTextResponse
@@ -30163,7 +30539,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendMessageChatTextResponse:
         """
-        @summary 向IM客户端发送消息。
+        @summary Sends a message to the client.
         
         @param request: SendMessageChatTextRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30210,7 +30586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendMessageChatTextResponse:
         """
-        @summary 向IM客户端发送消息。
+        @summary Sends a message to the client.
         
         @param request: SendMessageChatTextRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30256,7 +30632,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendMessageChatTextRequest,
     ) -> ice20201109_models.SendMessageChatTextResponse:
         """
-        @summary 向IM客户端发送消息。
+        @summary Sends a message to the client.
         
         @param request: SendMessageChatTextRequest
         @return: SendMessageChatTextResponse
@@ -30269,7 +30645,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendMessageChatTextRequest,
     ) -> ice20201109_models.SendMessageChatTextResponse:
         """
-        @summary 向IM客户端发送消息。
+        @summary Sends a message to the client.
         
         @param request: SendMessageChatTextRequest
         @return: SendMessageChatTextResponse
@@ -30283,7 +30659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
         """
-        @summary 设置声纹
+        @summary Registers a voiceprint.
         
         @param tmp_req: SetAIAgentVoiceprintRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30324,7 +30700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
         """
-        @summary 设置声纹
+        @summary Registers a voiceprint.
         
         @param tmp_req: SetAIAgentVoiceprintRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30364,7 +30740,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetAIAgentVoiceprintRequest,
     ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
         """
-        @summary 设置声纹
+        @summary Registers a voiceprint.
         
         @param request: SetAIAgentVoiceprintRequest
         @return: SetAIAgentVoiceprintResponse
@@ -30377,7 +30753,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetAIAgentVoiceprintRequest,
     ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
         """
-        @summary 设置声纹
+        @summary Registers a voiceprint.
         
         @param request: SetAIAgentVoiceprintRequest
         @return: SetAIAgentVoiceprintResponse
@@ -31213,6 +31589,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_aiagent_outbound_call_with_options_async(request, runtime)
 
+    def start_aiworkflow_with_options(
+        self,
+        request: ice20201109_models.StartAIWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartAIWorkflowResponse:
+        """
+        @summary Initiates a workflow task for automated media processing based on a workflow template.
+        
+        @description    You must specify a workflow template. To create one, go to the [Intelligent Media Services (IMS)](https://ims.console.aliyun.com/ai-workflow/template) console.
+        
+        @param request: StartAIWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIWorkflowResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dispatch_tag):
+            query['DispatchTag'] = request.dispatch_tag
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAIWorkflow',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartAIWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_aiworkflow_with_options_async(
+        self,
+        request: ice20201109_models.StartAIWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartAIWorkflowResponse:
+        """
+        @summary Initiates a workflow task for automated media processing based on a workflow template.
+        
+        @description    You must specify a workflow template. To create one, go to the [Intelligent Media Services (IMS)](https://ims.console.aliyun.com/ai-workflow/template) console.
+        
+        @param request: StartAIWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIWorkflowResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dispatch_tag):
+            query['DispatchTag'] = request.dispatch_tag
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAIWorkflow',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartAIWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_aiworkflow(
+        self,
+        request: ice20201109_models.StartAIWorkflowRequest,
+    ) -> ice20201109_models.StartAIWorkflowResponse:
+        """
+        @summary Initiates a workflow task for automated media processing based on a workflow template.
+        
+        @description    You must specify a workflow template. To create one, go to the [Intelligent Media Services (IMS)](https://ims.console.aliyun.com/ai-workflow/template) console.
+        
+        @param request: StartAIWorkflowRequest
+        @return: StartAIWorkflowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_aiworkflow_with_options(request, runtime)
+
+    async def start_aiworkflow_async(
+        self,
+        request: ice20201109_models.StartAIWorkflowRequest,
+    ) -> ice20201109_models.StartAIWorkflowResponse:
+        """
+        @summary Initiates a workflow task for automated media processing based on a workflow template.
+        
+        @description    You must specify a workflow template. To create one, go to the [Intelligent Media Services (IMS)](https://ims.console.aliyun.com/ai-workflow/template) console.
+        
+        @param request: StartAIWorkflowRequest
+        @return: StartAIWorkflowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_aiworkflow_with_options_async(request, runtime)
+
     def start_channel_with_options(
         self,
         request: ice20201109_models.StartChannelRequest,
@@ -31777,6 +32269,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_aiagent_instance_with_options_async(request, runtime)
 
+    def stop_aiworkflow_task_with_options(
+        self,
+        request: ice20201109_models.StopAIWorkflowTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopAIWorkflowTaskResponse:
+        """
+        @summary Manually stops a workflow task.
+        
+        @description This operation is only used to stop workflow tasks in real-time scenarios such as live streaming and RTC. It cannot be used to stop tasks in offline scenarios.
+        
+        @param request: StopAIWorkflowTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAIWorkflowTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAIWorkflowTask',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StopAIWorkflowTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_aiworkflow_task_with_options_async(
+        self,
+        request: ice20201109_models.StopAIWorkflowTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopAIWorkflowTaskResponse:
+        """
+        @summary Manually stops a workflow task.
+        
+        @description This operation is only used to stop workflow tasks in real-time scenarios such as live streaming and RTC. It cannot be used to stop tasks in offline scenarios.
+        
+        @param request: StopAIWorkflowTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAIWorkflowTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAIWorkflowTask',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StopAIWorkflowTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_aiworkflow_task(
+        self,
+        request: ice20201109_models.StopAIWorkflowTaskRequest,
+    ) -> ice20201109_models.StopAIWorkflowTaskResponse:
+        """
+        @summary Manually stops a workflow task.
+        
+        @description This operation is only used to stop workflow tasks in real-time scenarios such as live streaming and RTC. It cannot be used to stop tasks in offline scenarios.
+        
+        @param request: StopAIWorkflowTaskRequest
+        @return: StopAIWorkflowTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_aiworkflow_task_with_options(request, runtime)
+
+    async def stop_aiworkflow_task_async(
+        self,
+        request: ice20201109_models.StopAIWorkflowTaskRequest,
+    ) -> ice20201109_models.StopAIWorkflowTaskResponse:
+        """
+        @summary Manually stops a workflow task.
+        
+        @description This operation is only used to stop workflow tasks in real-time scenarios such as live streaming and RTC. It cannot be used to stop tasks in offline scenarios.
+        
+        @param request: StopAIWorkflowTaskRequest
+        @return: StopAIWorkflowTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_aiworkflow_task_with_options_async(request, runtime)
+
     def stop_channel_with_options(
         self,
         request: ice20201109_models.StopChannelRequest,
@@ -32083,7 +32679,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
         """
-        @summary 提交视频送审任务
+        @summary Submits a video to a specified AI agent for content moderation. This operation supports video input from OSS and delivers the results asynchronously via callbacks. You can define custom frame-capturing policies and moderation prompts.
+        
+        @description Call SubmitAIAgentVideoAuditTask to submit a video moderation task with configurations such as a video URL, frame-capturing policies, and review interval. The system returns a unique JobId for tracking. When the task is complete, the service will push the results, including the moderation status and AI-generated analysis, to the configured callback URL. Only OSS URLs are supported as input. The underlying multi-modal large language model (MLLM) only supports interaction via the non-streaming OpenAI protocol.
         
         @param tmp_req: SubmitAIAgentVideoAuditTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32136,7 +32734,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
         """
-        @summary 提交视频送审任务
+        @summary Submits a video to a specified AI agent for content moderation. This operation supports video input from OSS and delivers the results asynchronously via callbacks. You can define custom frame-capturing policies and moderation prompts.
+        
+        @description Call SubmitAIAgentVideoAuditTask to submit a video moderation task with configurations such as a video URL, frame-capturing policies, and review interval. The system returns a unique JobId for tracking. When the task is complete, the service will push the results, including the moderation status and AI-generated analysis, to the configured callback URL. Only OSS URLs are supported as input. The underlying multi-modal large language model (MLLM) only supports interaction via the non-streaming OpenAI protocol.
         
         @param tmp_req: SubmitAIAgentVideoAuditTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32188,7 +32788,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAIAgentVideoAuditTaskRequest,
     ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
         """
-        @summary 提交视频送审任务
+        @summary Submits a video to a specified AI agent for content moderation. This operation supports video input from OSS and delivers the results asynchronously via callbacks. You can define custom frame-capturing policies and moderation prompts.
+        
+        @description Call SubmitAIAgentVideoAuditTask to submit a video moderation task with configurations such as a video URL, frame-capturing policies, and review interval. The system returns a unique JobId for tracking. When the task is complete, the service will push the results, including the moderation status and AI-generated analysis, to the configured callback URL. Only OSS URLs are supported as input. The underlying multi-modal large language model (MLLM) only supports interaction via the non-streaming OpenAI protocol.
         
         @param request: SubmitAIAgentVideoAuditTaskRequest
         @return: SubmitAIAgentVideoAuditTaskResponse
@@ -32201,7 +32803,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAIAgentVideoAuditTaskRequest,
     ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
         """
-        @summary 提交视频送审任务
+        @summary Submits a video to a specified AI agent for content moderation. This operation supports video input from OSS and delivers the results asynchronously via callbacks. You can define custom frame-capturing policies and moderation prompts.
+        
+        @description Call SubmitAIAgentVideoAuditTask to submit a video moderation task with configurations such as a video URL, frame-capturing policies, and review interval. The system returns a unique JobId for tracking. When the task is complete, the service will push the results, including the moderation status and AI-generated analysis, to the configured callback URL. Only OSS URLs are supported as input. The underlying multi-modal large language model (MLLM) only supports interaction via the non-streaming OpenAI protocol.
         
         @param request: SubmitAIAgentVideoAuditTaskRequest
         @return: SubmitAIAgentVideoAuditTaskResponse
@@ -32551,7 +33155,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
+        @summary Submits a task to render a video of an avatar speaking the content of the specified text or a human voice audio file.
+        
+        @description - The input supports only text or a human voice audio file in MP3 or WAV format.
+        - The output supports MP4 and WebM formats. For the MP4 format, the task produces two videos: one with the avatar on a green screen background and a separate alpha mask video. This is ideal for post-production. For the WebM format, the task produces a single video with a transparent alpha channel, suitable for direct web front-end display. Rendering WebM is slower due to encoding complexity.
+        - The final output includes sentence-level timestamps, which are useful for subsequent video editing.
         
         @param request: SubmitAvatarVideoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32596,7 +33204,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
+        @summary Submits a task to render a video of an avatar speaking the content of the specified text or a human voice audio file.
+        
+        @description - The input supports only text or a human voice audio file in MP3 or WAV format.
+        - The output supports MP4 and WebM formats. For the MP4 format, the task produces two videos: one with the avatar on a green screen background and a separate alpha mask video. This is ideal for post-production. For the WebM format, the task produces a single video with a transparent alpha channel, suitable for direct web front-end display. Rendering WebM is slower due to encoding complexity.
+        - The final output includes sentence-level timestamps, which are useful for subsequent video editing.
         
         @param request: SubmitAvatarVideoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32640,7 +33252,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
+        @summary Submits a task to render a video of an avatar speaking the content of the specified text or a human voice audio file.
+        
+        @description - The input supports only text or a human voice audio file in MP3 or WAV format.
+        - The output supports MP4 and WebM formats. For the MP4 format, the task produces two videos: one with the avatar on a green screen background and a separate alpha mask video. This is ideal for post-production. For the WebM format, the task produces a single video with a transparent alpha channel, suitable for direct web front-end display. Rendering WebM is slower due to encoding complexity.
+        - The final output includes sentence-level timestamps, which are useful for subsequent video editing.
         
         @param request: SubmitAvatarVideoJobRequest
         @return: SubmitAvatarVideoJobResponse
@@ -32653,7 +33269,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
+        @summary Submits a task to render a video of an avatar speaking the content of the specified text or a human voice audio file.
+        
+        @description - The input supports only text or a human voice audio file in MP3 or WAV format.
+        - The output supports MP4 and WebM formats. For the MP4 format, the task produces two videos: one with the avatar on a green screen background and a separate alpha mask video. This is ideal for post-production. For the WebM format, the task produces a single video with a transparent alpha channel, suitable for direct web front-end display. Rendering WebM is slower due to encoding complexity.
+        - The final output includes sentence-level timestamps, which are useful for subsequent video editing.
         
         @param request: SubmitAvatarVideoJobRequest
         @return: SubmitAvatarVideoJobResponse
@@ -32787,7 +33407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
         """
-        @summary 提交版权水印提取作业
+        @summary Submits a job that extracts a copyright watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param tmp_req: SubmitCopyrightExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32830,7 +33452,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
         """
-        @summary 提交版权水印提取作业
+        @summary Submits a job that extracts a copyright watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param tmp_req: SubmitCopyrightExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32872,7 +33496,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCopyrightExtractJobRequest,
     ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
         """
-        @summary 提交版权水印提取作业
+        @summary Submits a job that extracts a copyright watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: SubmitCopyrightExtractJobRequest
         @return: SubmitCopyrightExtractJobResponse
@@ -32885,7 +33511,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCopyrightExtractJobRequest,
     ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
         """
-        @summary 提交版权水印提取作业
+        @summary Submits a job that extracts a copyright watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: SubmitCopyrightExtractJobRequest
         @return: SubmitCopyrightExtractJobResponse
@@ -32899,7 +33527,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCopyrightJobResponse:
         """
-        @summary 提交版权水印任务
+        @summary Submits a job for adding a copyright watermark to a video.
+        
+        @description    You can call this operation to add a copyright watermark to a video that lasts at least 3 minutes. If the video is too short, the call may fail, or no output may be returned. To add a copyright watermark to a video shorter than 3 minutes, specify the Params parameter to change the algorithm.
+        Each API call supports processing only one video.
+        This API is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param tmp_req: SubmitCopyrightJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32956,7 +33588,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCopyrightJobResponse:
         """
-        @summary 提交版权水印任务
+        @summary Submits a job for adding a copyright watermark to a video.
+        
+        @description    You can call this operation to add a copyright watermark to a video that lasts at least 3 minutes. If the video is too short, the call may fail, or no output may be returned. To add a copyright watermark to a video shorter than 3 minutes, specify the Params parameter to change the algorithm.
+        Each API call supports processing only one video.
+        This API is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param tmp_req: SubmitCopyrightJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33012,7 +33648,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCopyrightJobRequest,
     ) -> ice20201109_models.SubmitCopyrightJobResponse:
         """
-        @summary 提交版权水印任务
+        @summary Submits a job for adding a copyright watermark to a video.
+        
+        @description    You can call this operation to add a copyright watermark to a video that lasts at least 3 minutes. If the video is too short, the call may fail, or no output may be returned. To add a copyright watermark to a video shorter than 3 minutes, specify the Params parameter to change the algorithm.
+        Each API call supports processing only one video.
+        This API is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: SubmitCopyrightJobRequest
         @return: SubmitCopyrightJobResponse
@@ -33025,7 +33665,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCopyrightJobRequest,
     ) -> ice20201109_models.SubmitCopyrightJobResponse:
         """
-        @summary 提交版权水印任务
+        @summary Submits a job for adding a copyright watermark to a video.
+        
+        @description    You can call this operation to add a copyright watermark to a video that lasts at least 3 minutes. If the video is too short, the call may fail, or no output may be returned. To add a copyright watermark to a video shorter than 3 minutes, specify the Params parameter to change the algorithm.
+        Each API call supports processing only one video.
+        This API is supported only in the China (Shanghai) and China (Beijing) regions.
         
         @param request: SubmitCopyrightJobRequest
         @return: SubmitCopyrightJobResponse
@@ -35255,7 +35899,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitProjectExportJobResponse:
         """
-        @summary 提交工程导出任务
+        @summary Submits a project export task.
         
         @param request: SubmitProjectExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35300,7 +35944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitProjectExportJobResponse:
         """
-        @summary 提交工程导出任务
+        @summary Submits a project export task.
         
         @param request: SubmitProjectExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35344,7 +35988,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitProjectExportJobRequest,
     ) -> ice20201109_models.SubmitProjectExportJobResponse:
         """
-        @summary 提交工程导出任务
+        @summary Submits a project export task.
         
         @param request: SubmitProjectExportJobRequest
         @return: SubmitProjectExportJobResponse
@@ -35357,13 +36001,141 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitProjectExportJobRequest,
     ) -> ice20201109_models.SubmitProjectExportJobResponse:
         """
-        @summary 提交工程导出任务
+        @summary Submits a project export task.
         
         @param request: SubmitProjectExportJobRequest
         @return: SubmitProjectExportJobResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_project_export_job_with_options_async(request, runtime)
+
+    def submit_scene_media_selection_job_with_options(
+        self,
+        request: ice20201109_models.SubmitSceneMediaSelectionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSceneMediaSelectionJobResponse:
+        """
+        @summary Selects suitable clips based on the submitted videos, images, and voiceovers, and returns the selection results. Two scenarios are supported: image-text matching and highlight mashup.
+        
+        @description    After a job is submitted, you can call [ListBatchMediaProducingJob](https://help.aliyun.com/document_detail/2803751.html) to query submitted jobs, or [GetBatchMediaProducingJob](https://help.aliyun.com/document_detail/2693269.html) to query the job status and results.
+        - The feature is in public preview and charges no fees.
+        
+        @param request: SubmitSceneMediaSelectionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSceneMediaSelectionJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSceneMediaSelectionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSceneMediaSelectionJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_scene_media_selection_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitSceneMediaSelectionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSceneMediaSelectionJobResponse:
+        """
+        @summary Selects suitable clips based on the submitted videos, images, and voiceovers, and returns the selection results. Two scenarios are supported: image-text matching and highlight mashup.
+        
+        @description    After a job is submitted, you can call [ListBatchMediaProducingJob](https://help.aliyun.com/document_detail/2803751.html) to query submitted jobs, or [GetBatchMediaProducingJob](https://help.aliyun.com/document_detail/2693269.html) to query the job status and results.
+        - The feature is in public preview and charges no fees.
+        
+        @param request: SubmitSceneMediaSelectionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSceneMediaSelectionJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSceneMediaSelectionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSceneMediaSelectionJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_scene_media_selection_job(
+        self,
+        request: ice20201109_models.SubmitSceneMediaSelectionJobRequest,
+    ) -> ice20201109_models.SubmitSceneMediaSelectionJobResponse:
+        """
+        @summary Selects suitable clips based on the submitted videos, images, and voiceovers, and returns the selection results. Two scenarios are supported: image-text matching and highlight mashup.
+        
+        @description    After a job is submitted, you can call [ListBatchMediaProducingJob](https://help.aliyun.com/document_detail/2803751.html) to query submitted jobs, or [GetBatchMediaProducingJob](https://help.aliyun.com/document_detail/2693269.html) to query the job status and results.
+        - The feature is in public preview and charges no fees.
+        
+        @param request: SubmitSceneMediaSelectionJobRequest
+        @return: SubmitSceneMediaSelectionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_scene_media_selection_job_with_options(request, runtime)
+
+    async def submit_scene_media_selection_job_async(
+        self,
+        request: ice20201109_models.SubmitSceneMediaSelectionJobRequest,
+    ) -> ice20201109_models.SubmitSceneMediaSelectionJobResponse:
+        """
+        @summary Selects suitable clips based on the submitted videos, images, and voiceovers, and returns the selection results. Two scenarios are supported: image-text matching and highlight mashup.
+        
+        @description    After a job is submitted, you can call [ListBatchMediaProducingJob](https://help.aliyun.com/document_detail/2803751.html) to query submitted jobs, or [GetBatchMediaProducingJob](https://help.aliyun.com/document_detail/2693269.html) to query the job status and results.
+        - The feature is in public preview and charges no fees.
+        
+        @param request: SubmitSceneMediaSelectionJobRequest
+        @return: SubmitSceneMediaSelectionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_scene_media_selection_job_with_options_async(request, runtime)
 
     def submit_screen_media_highlights_job_with_options(
         self,
@@ -35483,7 +36255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSegmentationJobResponse:
         """
-        @summary 提交拆条任务
+        @summary Splits a long video into multiple video clips and outputs as video files or media assets.
         
         @param request: SubmitSegmentationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35528,7 +36300,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSegmentationJobResponse:
         """
-        @summary 提交拆条任务
+        @summary Splits a long video into multiple video clips and outputs as video files or media assets.
         
         @param request: SubmitSegmentationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35572,7 +36344,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSegmentationJobRequest,
     ) -> ice20201109_models.SubmitSegmentationJobResponse:
         """
-        @summary 提交拆条任务
+        @summary Splits a long video into multiple video clips and outputs as video files or media assets.
         
         @param request: SubmitSegmentationJobRequest
         @return: SubmitSegmentationJobResponse
@@ -35585,7 +36357,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSegmentationJobRequest,
     ) -> ice20201109_models.SubmitSegmentationJobResponse:
         """
-        @summary 提交拆条任务
+        @summary Splits a long video into multiple video clips and outputs as video files or media assets.
         
         @param request: SubmitSegmentationJobRequest
         @return: SubmitSegmentationJobResponse
@@ -36351,7 +37123,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTraceAbJobResponse:
         """
-        @summary 提交视频溯源水印ab流任务
+        @summary Submits an A/B watermarking job.
+        
+        @description    This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
         
         @param tmp_req: SubmitTraceAbJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36404,7 +37178,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTraceAbJobResponse:
         """
-        @summary 提交视频溯源水印ab流任务
+        @summary Submits an A/B watermarking job.
+        
+        @description    This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
         
         @param tmp_req: SubmitTraceAbJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36456,7 +37232,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTraceAbJobRequest,
     ) -> ice20201109_models.SubmitTraceAbJobResponse:
         """
-        @summary 提交视频溯源水印ab流任务
+        @summary Submits an A/B watermarking job.
+        
+        @description    This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
         
         @param request: SubmitTraceAbJobRequest
         @return: SubmitTraceAbJobResponse
@@ -36469,7 +37247,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTraceAbJobRequest,
     ) -> ice20201109_models.SubmitTraceAbJobResponse:
         """
-        @summary 提交视频溯源水印ab流任务
+        @summary Submits an A/B watermarking job.
+        
+        @description    This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
         
         @param request: SubmitTraceAbJobRequest
         @return: SubmitTraceAbJobResponse
@@ -36483,7 +37263,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTraceExtractJobResponse:
         """
-        @summary 提交溯源水印提取任务
+        @summary Submits a job to extract the trace watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The input video must be 3 minutes or longer. Jobs submitted with shorter videos will fail.
         
         @param tmp_req: SubmitTraceExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36526,7 +37309,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTraceExtractJobResponse:
         """
-        @summary 提交溯源水印提取任务
+        @summary Submits a job to extract the trace watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The input video must be 3 minutes or longer. Jobs submitted with shorter videos will fail.
         
         @param tmp_req: SubmitTraceExtractJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36568,7 +37354,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTraceExtractJobRequest,
     ) -> ice20201109_models.SubmitTraceExtractJobResponse:
         """
-        @summary 提交溯源水印提取任务
+        @summary Submits a job to extract the trace watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The input video must be 3 minutes or longer. Jobs submitted with shorter videos will fail.
         
         @param request: SubmitTraceExtractJobRequest
         @return: SubmitTraceExtractJobResponse
@@ -36581,7 +37370,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTraceExtractJobRequest,
     ) -> ice20201109_models.SubmitTraceExtractJobResponse:
         """
-        @summary 提交溯源水印提取任务
+        @summary Submits a job to extract the trace watermark.
+        
+        @description    This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The input video must be 3 minutes or longer. Jobs submitted with shorter videos will fail.
         
         @param request: SubmitTraceExtractJobRequest
         @return: SubmitTraceExtractJobResponse
@@ -36595,7 +37387,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
         """
-        @summary 提交视频溯源水印m3u8文件任务
+        @summary Submits a job that generates an M3U8 file containing specific trace watermark information.
+        
+        @description    Before you call this operation, you must call SubmitTraceAbJob to get the TraceMediaId from its response.
+        This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file generated by this job has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. Once the signature expires, you will no longer be able to trace the watermark information using that specific M3U8 file. If you need to use it after expiration, you must call this API again to generate a new M3U8 file.
         
         @param tmp_req: SubmitTraceM3u8JobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36642,7 +37438,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
         """
-        @summary 提交视频溯源水印m3u8文件任务
+        @summary Submits a job that generates an M3U8 file containing specific trace watermark information.
+        
+        @description    Before you call this operation, you must call SubmitTraceAbJob to get the TraceMediaId from its response.
+        This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file generated by this job has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. Once the signature expires, you will no longer be able to trace the watermark information using that specific M3U8 file. If you need to use it after expiration, you must call this API again to generate a new M3U8 file.
         
         @param tmp_req: SubmitTraceM3u8JobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36688,7 +37488,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTraceM3u8JobRequest,
     ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
         """
-        @summary 提交视频溯源水印m3u8文件任务
+        @summary Submits a job that generates an M3U8 file containing specific trace watermark information.
+        
+        @description    Before you call this operation, you must call SubmitTraceAbJob to get the TraceMediaId from its response.
+        This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file generated by this job has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. Once the signature expires, you will no longer be able to trace the watermark information using that specific M3U8 file. If you need to use it after expiration, you must call this API again to generate a new M3U8 file.
         
         @param request: SubmitTraceM3u8JobRequest
         @return: SubmitTraceM3u8JobResponse
@@ -36701,7 +37505,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTraceM3u8JobRequest,
     ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
         """
-        @summary 提交视频溯源水印m3u8文件任务
+        @summary Submits a job that generates an M3U8 file containing specific trace watermark information.
+        
+        @description    Before you call this operation, you must call SubmitTraceAbJob to get the TraceMediaId from its response.
+        This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+        The M3U8 file generated by this job has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. Once the signature expires, you will no longer be able to trace the watermark information using that specific M3U8 file. If you need to use it after expiration, you must call this API again to generate a new M3U8 file.
         
         @param request: SubmitTraceM3u8JobRequest
         @return: SubmitTraceM3u8JobResponse
@@ -36847,7 +37655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
         """
-        @summary 提交视频理解任务
+        @summary Submits a video for AI analysis and processing.
         
         @param tmp_req: SubmitVideoCognitionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36894,7 +37702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
         """
-        @summary 提交视频理解任务
+        @summary Submits a video for AI analysis and processing.
         
         @param tmp_req: SubmitVideoCognitionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36940,7 +37748,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitVideoCognitionJobRequest,
     ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
         """
-        @summary 提交视频理解任务
+        @summary Submits a video for AI analysis and processing.
         
         @param request: SubmitVideoCognitionJobRequest
         @return: SubmitVideoCognitionJobResponse
@@ -36953,7 +37761,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitVideoCognitionJobRequest,
     ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
         """
-        @summary 提交视频理解任务
+        @summary Submits a video for AI analysis and processing.
         
         @param request: SubmitVideoCognitionJobRequest
         @return: SubmitVideoCognitionJobResponse
@@ -38155,7 +38963,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateHotwordLibraryResponse:
         """
-        @summary 更新热词库
+        @summary Modifies a specified hotword library, including its name, description, and hotword list.
+        
+        @description ## [](#)
+        You can call this operation to modify a specified hotword library.
+        The hotword library ID (`HotwordLibraryId`) is required to identify the library that requires modification.
+        You can modify its name (`Name` ), description (`Description` ), and hotword list (`HotWords`).
+        Each hotword in the list can also be modified, including its content (`Text`), weight (`Weight`), language (`Language`), and translation results (`TranspositionResultList`).
+        A single account supports up to 100 hotword libraries, each containing a maximum of 300 hotword entries. In a library, the combination of `language` and `text` of an entry must be unique. The combination of `TranslatedText` and `TargetLanguage` in `TranspositionResultList` must also be unique.
         
         @param tmp_req: UpdateHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38200,7 +39015,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateHotwordLibraryResponse:
         """
-        @summary 更新热词库
+        @summary Modifies a specified hotword library, including its name, description, and hotword list.
+        
+        @description ## [](#)
+        You can call this operation to modify a specified hotword library.
+        The hotword library ID (`HotwordLibraryId`) is required to identify the library that requires modification.
+        You can modify its name (`Name` ), description (`Description` ), and hotword list (`HotWords`).
+        Each hotword in the list can also be modified, including its content (`Text`), weight (`Weight`), language (`Language`), and translation results (`TranspositionResultList`).
+        A single account supports up to 100 hotword libraries, each containing a maximum of 300 hotword entries. In a library, the combination of `language` and `text` of an entry must be unique. The combination of `TranslatedText` and `TargetLanguage` in `TranspositionResultList` must also be unique.
         
         @param tmp_req: UpdateHotwordLibraryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38244,7 +39066,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateHotwordLibraryRequest,
     ) -> ice20201109_models.UpdateHotwordLibraryResponse:
         """
-        @summary 更新热词库
+        @summary Modifies a specified hotword library, including its name, description, and hotword list.
+        
+        @description ## [](#)
+        You can call this operation to modify a specified hotword library.
+        The hotword library ID (`HotwordLibraryId`) is required to identify the library that requires modification.
+        You can modify its name (`Name` ), description (`Description` ), and hotword list (`HotWords`).
+        Each hotword in the list can also be modified, including its content (`Text`), weight (`Weight`), language (`Language`), and translation results (`TranspositionResultList`).
+        A single account supports up to 100 hotword libraries, each containing a maximum of 300 hotword entries. In a library, the combination of `language` and `text` of an entry must be unique. The combination of `TranslatedText` and `TargetLanguage` in `TranspositionResultList` must also be unique.
         
         @param request: UpdateHotwordLibraryRequest
         @return: UpdateHotwordLibraryResponse
@@ -38257,7 +39086,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateHotwordLibraryRequest,
     ) -> ice20201109_models.UpdateHotwordLibraryResponse:
         """
-        @summary 更新热词库
+        @summary Modifies a specified hotword library, including its name, description, and hotword list.
+        
+        @description ## [](#)
+        You can call this operation to modify a specified hotword library.
+        The hotword library ID (`HotwordLibraryId`) is required to identify the library that requires modification.
+        You can modify its name (`Name` ), description (`Description` ), and hotword list (`HotWords`).
+        Each hotword in the list can also be modified, including its content (`Text`), weight (`Weight`), language (`Language`), and translation results (`TranspositionResultList`).
+        A single account supports up to 100 hotword libraries, each containing a maximum of 300 hotword entries. In a library, the combination of `language` and `text` of an entry must be unique. The combination of `TranslatedText` and `TargetLanguage` in `TranspositionResultList` must also be unique.
         
         @param request: UpdateHotwordLibraryRequest
         @return: UpdateHotwordLibraryResponse
