@@ -661,6 +661,10 @@ class Client(OpenApiClient):
             body['DetectionRuleName'] = request.detection_rule_name
         if not UtilClient.is_unset(request.detection_rule_status):
             body['DetectionRuleStatus'] = request.detection_rule_status
+        if not UtilClient.is_unset(request.detection_rule_template_id):
+            body['DetectionRuleTemplateId'] = request.detection_rule_template_id
+        if not UtilClient.is_unset(request.detection_rule_template_version):
+            body['DetectionRuleTemplateVersion'] = request.detection_rule_template_version
         if not UtilClient.is_unset(request.detection_rule_type):
             body['DetectionRuleType'] = request.detection_rule_type
         if not UtilClient.is_unset(request.entity_mappings):
@@ -754,6 +758,10 @@ class Client(OpenApiClient):
             body['DetectionRuleName'] = request.detection_rule_name
         if not UtilClient.is_unset(request.detection_rule_status):
             body['DetectionRuleStatus'] = request.detection_rule_status
+        if not UtilClient.is_unset(request.detection_rule_template_id):
+            body['DetectionRuleTemplateId'] = request.detection_rule_template_id
+        if not UtilClient.is_unset(request.detection_rule_template_version):
+            body['DetectionRuleTemplateVersion'] = request.detection_rule_template_version
         if not UtilClient.is_unset(request.detection_rule_type):
             body['DetectionRuleType'] = request.detection_rule_type
         if not UtilClient.is_unset(request.entity_mappings):

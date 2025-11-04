@@ -1091,6 +1091,8 @@ class CreateDetectionRuleRequest(TeaModel):
         detection_rule_description: str = None,
         detection_rule_name: str = None,
         detection_rule_status: str = None,
+        detection_rule_template_id: str = None,
+        detection_rule_template_version: str = None,
         detection_rule_type: str = None,
         entity_mappings: str = None,
         incident_aggregation_expression: str = None,
@@ -1126,6 +1128,8 @@ class CreateDetectionRuleRequest(TeaModel):
         # This parameter is required.
         self.detection_rule_name = detection_rule_name
         self.detection_rule_status = detection_rule_status
+        self.detection_rule_template_id = detection_rule_template_id
+        self.detection_rule_template_version = detection_rule_template_version
         # This parameter is required.
         self.detection_rule_type = detection_rule_type
         self.entity_mappings = entity_mappings
@@ -1181,6 +1185,10 @@ class CreateDetectionRuleRequest(TeaModel):
             result['DetectionRuleName'] = self.detection_rule_name
         if self.detection_rule_status is not None:
             result['DetectionRuleStatus'] = self.detection_rule_status
+        if self.detection_rule_template_id is not None:
+            result['DetectionRuleTemplateId'] = self.detection_rule_template_id
+        if self.detection_rule_template_version is not None:
+            result['DetectionRuleTemplateVersion'] = self.detection_rule_template_version
         if self.detection_rule_type is not None:
             result['DetectionRuleType'] = self.detection_rule_type
         if self.entity_mappings is not None:
@@ -1245,6 +1253,10 @@ class CreateDetectionRuleRequest(TeaModel):
             self.detection_rule_name = m.get('DetectionRuleName')
         if m.get('DetectionRuleStatus') is not None:
             self.detection_rule_status = m.get('DetectionRuleStatus')
+        if m.get('DetectionRuleTemplateId') is not None:
+            self.detection_rule_template_id = m.get('DetectionRuleTemplateId')
+        if m.get('DetectionRuleTemplateVersion') is not None:
+            self.detection_rule_template_version = m.get('DetectionRuleTemplateVersion')
         if m.get('DetectionRuleType') is not None:
             self.detection_rule_type = m.get('DetectionRuleType')
         if m.get('EntityMappings') is not None:
@@ -9464,6 +9476,7 @@ class ListIncidentsResponseBodyIncidents(TeaModel):
         incident_name: str = None,
         incident_remark: str = None,
         incident_status: int = None,
+        incident_tags: str = None,
         incident_uuid: str = None,
         relate_alert_count: int = None,
         relate_asset_count: int = None,
@@ -9474,6 +9487,7 @@ class ListIncidentsResponseBodyIncidents(TeaModel):
         self.incident_name = incident_name
         self.incident_remark = incident_remark
         self.incident_status = incident_status
+        self.incident_tags = incident_tags
         self.incident_uuid = incident_uuid
         self.relate_alert_count = relate_alert_count
         self.relate_asset_count = relate_asset_count
@@ -9497,6 +9511,8 @@ class ListIncidentsResponseBodyIncidents(TeaModel):
             result['IncidentRemark'] = self.incident_remark
         if self.incident_status is not None:
             result['IncidentStatus'] = self.incident_status
+        if self.incident_tags is not None:
+            result['IncidentTags'] = self.incident_tags
         if self.incident_uuid is not None:
             result['IncidentUuid'] = self.incident_uuid
         if self.relate_alert_count is not None:
@@ -9519,6 +9535,8 @@ class ListIncidentsResponseBodyIncidents(TeaModel):
             self.incident_remark = m.get('IncidentRemark')
         if m.get('IncidentStatus') is not None:
             self.incident_status = m.get('IncidentStatus')
+        if m.get('IncidentTags') is not None:
+            self.incident_tags = m.get('IncidentTags')
         if m.get('IncidentUuid') is not None:
             self.incident_uuid = m.get('IncidentUuid')
         if m.get('RelateAlertCount') is not None:
