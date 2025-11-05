@@ -1,3 +1,12 @@
+2025-11-05 Version: 8.0.0
+- Delete API CdnMigrateRegister.
+- Delete API ChangeCdnDomainToDcdn.
+- Delete API DescribeCdnMigrateRegisterStatus.
+- Update API DescribeCdnDeliverList: update response parameters Body.Content' type has changed.
+- Update API DescribeCdnReportList: update response parameters Body.Content' type has changed.
+- Update API DescribeCdnSubList: update response parameters Body.Content' type has changed.
+
+
 2025-08-21 Version: 7.0.2
 - Generated python 2018-05-10 for Cdn.
 

@@ -1679,254 +1679,6 @@ class BatchUpdateCdnDomainResponse(TeaModel):
         return self
 
 
-class CdnMigrateRegisterRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-    ):
-        # The accelerated domain name for which you want to register the dynamic routing feature. You can specify only one domain name in each request.
-        # 
-        # This parameter is required.
-        self.domain_name = domain_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        return self
-
-
-class CdnMigrateRegisterResponseBody(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        request_id: str = None,
-        status: str = None,
-    ):
-        # The accelerated domain name. You can specify only one domain name.
-        self.domain_name = domain_name
-        # The request ID.
-        self.request_id = request_id
-        # The registration status. Valid values:
-        # 
-        # *   **running**\
-        # *   **succeed**\
-        # *   **failed**\
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class CdnMigrateRegisterResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CdnMigrateRegisterResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CdnMigrateRegisterResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ChangeCdnDomainToDcdnRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        operation: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        security_token: str = None,
-    ):
-        # The accelerated domain name. You can specify only one domain name in each request.
-        # 
-        # This parameter is required.
-        self.domain_name = domain_name
-        # The operation to perform. Set the value to preCheck. Precheck is performed, and the result is returned. If the precheck passes, set the value to enforce to perform the transfer.
-        self.operation = operation
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.security_token = security_token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.operation is not None:
-            result['Operation'] = self.operation
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('Operation') is not None:
-            self.operation = m.get('Operation')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        return self
-
-
-class ChangeCdnDomainToDcdnResponseBody(TeaModel):
-    def __init__(
-        self,
-        content: Dict[str, Any] = None,
-        request_id: str = None,
-    ):
-        # The content of the migration instructions.
-        self.content = content
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ChangeCdnDomainToDcdnResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ChangeCdnDomainToDcdnResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ChangeCdnDomainToDcdnResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CheckCdnDomainExistRequest(TeaModel):
     def __init__(
         self,
@@ -5345,16 +5097,12 @@ class DescribeCdnDeliverListRequest(TeaModel):
         return self
 
 
-class DescribeCdnDeliverListResponseBody(TeaModel):
+class DescribeCdnDeliverListResponseBodyContentDataDeliverEmail(TeaModel):
     def __init__(
         self,
-        content: str = None,
-        request_id: str = None,
+        to: List[str] = None,
     ):
-        # The information about the tracking task.
-        self.content = content
-        # The ID of the request.
-        self.request_id = request_id
+        self.to = to
 
     def validate(self):
         pass
@@ -5365,8 +5113,229 @@ class DescribeCdnDeliverListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.to is not None:
+            result['to'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        return self
+
+
+class DescribeCdnDeliverListResponseBodyContentDataDeliver(TeaModel):
+    def __init__(
+        self,
+        email: DescribeCdnDeliverListResponseBodyContentDataDeliverEmail = None,
+    ):
+        self.email = email
+
+    def validate(self):
+        if self.email:
+            self.email.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['email'] = self.email.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('email') is not None:
+            temp_model = DescribeCdnDeliverListResponseBodyContentDataDeliverEmail()
+            self.email = temp_model.from_map(m['email'])
+        return self
+
+
+class DescribeCdnDeliverListResponseBodyContentDataReports(TeaModel):
+    def __init__(
+        self,
+        report_id: int = None,
+    ):
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['reportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reportId') is not None:
+            self.report_id = m.get('reportId')
+        return self
+
+
+class DescribeCdnDeliverListResponseBodyContentData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        crontab: str = None,
+        deliver: DescribeCdnDeliverListResponseBodyContentDataDeliver = None,
+        deliver_id: int = None,
+        dm_list: List[str] = None,
+        frequency: str = None,
+        name: str = None,
+        reports: List[DescribeCdnDeliverListResponseBodyContentDataReports] = None,
+        status: str = None,
+        time_end_format: str = None,
+        time_from_format: str = None,
+    ):
+        self.create_time = create_time
+        self.crontab = crontab
+        self.deliver = deliver
+        self.deliver_id = deliver_id
+        self.dm_list = dm_list
+        self.frequency = frequency
+        self.name = name
+        self.reports = reports
+        self.status = status
+        self.time_end_format = time_end_format
+        self.time_from_format = time_from_format
+
+    def validate(self):
+        if self.deliver:
+            self.deliver.validate()
+        if self.reports:
+            for k in self.reports:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.crontab is not None:
+            result['crontab'] = self.crontab
+        if self.deliver is not None:
+            result['deliver'] = self.deliver.to_map()
+        if self.deliver_id is not None:
+            result['deliverId'] = self.deliver_id
+        if self.dm_list is not None:
+            result['dmList'] = self.dm_list
+        if self.frequency is not None:
+            result['frequency'] = self.frequency
+        if self.name is not None:
+            result['name'] = self.name
+        result['reports'] = []
+        if self.reports is not None:
+            for k in self.reports:
+                result['reports'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        if self.time_end_format is not None:
+            result['timeEndFormat'] = self.time_end_format
+        if self.time_from_format is not None:
+            result['timeFromFormat'] = self.time_from_format
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('crontab') is not None:
+            self.crontab = m.get('crontab')
+        if m.get('deliver') is not None:
+            temp_model = DescribeCdnDeliverListResponseBodyContentDataDeliver()
+            self.deliver = temp_model.from_map(m['deliver'])
+        if m.get('deliverId') is not None:
+            self.deliver_id = m.get('deliverId')
+        if m.get('dmList') is not None:
+            self.dm_list = m.get('dmList')
+        if m.get('frequency') is not None:
+            self.frequency = m.get('frequency')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.reports = []
+        if m.get('reports') is not None:
+            for k in m.get('reports'):
+                temp_model = DescribeCdnDeliverListResponseBodyContentDataReports()
+                self.reports.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('timeEndFormat') is not None:
+            self.time_end_format = m.get('timeEndFormat')
+        if m.get('timeFromFormat') is not None:
+            self.time_from_format = m.get('timeFromFormat')
+        return self
+
+
+class DescribeCdnDeliverListResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeCdnDeliverListResponseBodyContentData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeCdnDeliverListResponseBodyContentData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCdnDeliverListResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: DescribeCdnDeliverListResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        # The information about the tracking task.
+        self.content = content
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.content is not None:
-            result['Content'] = self.content
+            result['Content'] = self.content.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -5374,7 +5343,8 @@ class DescribeCdnDeliverListResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Content') is not None:
-            self.content = m.get('Content')
+            temp_model = DescribeCdnDeliverListResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -8162,124 +8132,6 @@ class DescribeCdnHttpsDomainListResponse(TeaModel):
         return self
 
 
-class DescribeCdnMigrateRegisterStatusRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-    ):
-        # The accelerated domain name. You can specify only one domain name.
-        # 
-        # This parameter is required.
-        self.domain_name = domain_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        return self
-
-
-class DescribeCdnMigrateRegisterStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        request_id: str = None,
-        status: str = None,
-    ):
-        # The accelerated domain name.
-        self.domain_name = domain_name
-        # The ID of the region.
-        self.request_id = request_id
-        # The registration status. Valid values:
-        # 
-        # *   **not exist**\
-        # *   **running**\
-        # *   **succeed**\
-        # *   **failed**\
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class DescribeCdnMigrateRegisterStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeCdnMigrateRegisterStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeCdnMigrateRegisterStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeCdnOrderCommodityCodeRequest(TeaModel):
     def __init__(
         self,
@@ -8748,16 +8600,22 @@ class DescribeCdnReportRequest(TeaModel):
         return self
 
 
-class DescribeCdnReportResponseBody(TeaModel):
+class DescribeCdnReportResponseBodyContentDataDeliverReport(TeaModel):
     def __init__(
         self,
-        content: Dict[str, Any] = None,
-        request_id: str = None,
+        format: str = None,
+        header: List[str] = None,
+        out_line: int = None,
+        out_size: int = None,
+        shape: str = None,
+        title: str = None,
     ):
-        # The content of the operations report.
-        self.content = content
-        # The ID of the request.
-        self.request_id = request_id
+        self.format = format
+        self.header = header
+        self.out_line = out_line
+        self.out_size = out_size
+        self.shape = shape
+        self.title = title
 
     def validate(self):
         pass
@@ -8768,8 +8626,159 @@ class DescribeCdnReportResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.format is not None:
+            result['format'] = self.format
+        if self.header is not None:
+            result['header'] = self.header
+        if self.out_line is not None:
+            result['outLine'] = self.out_line
+        if self.out_size is not None:
+            result['outSize'] = self.out_size
+        if self.shape is not None:
+            result['shape'] = self.shape
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('header') is not None:
+            self.header = m.get('header')
+        if m.get('outLine') is not None:
+            self.out_line = m.get('outLine')
+        if m.get('outSize') is not None:
+            self.out_size = m.get('outSize')
+        if m.get('shape') is not None:
+            self.shape = m.get('shape')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class DescribeCdnReportResponseBodyContentDataDeliver(TeaModel):
+    def __init__(
+        self,
+        report: DescribeCdnReportResponseBodyContentDataDeliverReport = None,
+    ):
+        self.report = report
+
+    def validate(self):
+        if self.report:
+            self.report.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report is not None:
+            result['report'] = self.report.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('report') is not None:
+            temp_model = DescribeCdnReportResponseBodyContentDataDeliverReport()
+            self.report = temp_model.from_map(m['report'])
+        return self
+
+
+class DescribeCdnReportResponseBodyContentData(TeaModel):
+    def __init__(
+        self,
+        data: List[Dict[str, str]] = None,
+        deliver: DescribeCdnReportResponseBodyContentDataDeliver = None,
+    ):
+        self.data = data
+        self.deliver = deliver
+
+    def validate(self):
+        if self.deliver:
+            self.deliver.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.deliver is not None:
+            result['deliver'] = self.deliver.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('deliver') is not None:
+            temp_model = DescribeCdnReportResponseBodyContentDataDeliver()
+            self.deliver = temp_model.from_map(m['deliver'])
+        return self
+
+
+class DescribeCdnReportResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeCdnReportResponseBodyContentData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeCdnReportResponseBodyContentData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCdnReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: DescribeCdnReportResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        # The content of the operations report.
+        self.content = content
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.content is not None:
-            result['Content'] = self.content
+            result['Content'] = self.content.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -8777,7 +8786,8 @@ class DescribeCdnReportResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Content') is not None:
-            self.content = m.get('Content')
+            temp_model = DescribeCdnReportResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -8852,16 +8862,22 @@ class DescribeCdnReportListRequest(TeaModel):
         return self
 
 
-class DescribeCdnReportListResponseBody(TeaModel):
+class DescribeCdnReportListResponseBodyContentDataDeliverReport(TeaModel):
     def __init__(
         self,
-        content: str = None,
-        request_id: str = None,
+        format: str = None,
+        header: List[str] = None,
+        out_line: int = None,
+        out_size: int = None,
+        shape: str = None,
+        title: str = None,
     ):
-        # The information about the report that is queried.
-        self.content = content
-        # The ID of the request.
-        self.request_id = request_id
+        self.format = format
+        self.header = header
+        self.out_line = out_line
+        self.out_size = out_size
+        self.shape = shape
+        self.title = title
 
     def validate(self):
         pass
@@ -8872,8 +8888,159 @@ class DescribeCdnReportListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.format is not None:
+            result['format'] = self.format
+        if self.header is not None:
+            result['header'] = self.header
+        if self.out_line is not None:
+            result['outLine'] = self.out_line
+        if self.out_size is not None:
+            result['outSize'] = self.out_size
+        if self.shape is not None:
+            result['shape'] = self.shape
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('header') is not None:
+            self.header = m.get('header')
+        if m.get('outLine') is not None:
+            self.out_line = m.get('outLine')
+        if m.get('outSize') is not None:
+            self.out_size = m.get('outSize')
+        if m.get('shape') is not None:
+            self.shape = m.get('shape')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class DescribeCdnReportListResponseBodyContentDataDeliver(TeaModel):
+    def __init__(
+        self,
+        report: DescribeCdnReportListResponseBodyContentDataDeliverReport = None,
+    ):
+        self.report = report
+
+    def validate(self):
+        if self.report:
+            self.report.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report is not None:
+            result['report'] = self.report.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('report') is not None:
+            temp_model = DescribeCdnReportListResponseBodyContentDataDeliverReport()
+            self.report = temp_model.from_map(m['report'])
+        return self
+
+
+class DescribeCdnReportListResponseBodyContentData(TeaModel):
+    def __init__(
+        self,
+        deliver: DescribeCdnReportListResponseBodyContentDataDeliver = None,
+        report_id: int = None,
+    ):
+        self.deliver = deliver
+        self.report_id = report_id
+
+    def validate(self):
+        if self.deliver:
+            self.deliver.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deliver is not None:
+            result['deliver'] = self.deliver.to_map()
+        if self.report_id is not None:
+            result['reportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deliver') is not None:
+            temp_model = DescribeCdnReportListResponseBodyContentDataDeliver()
+            self.deliver = temp_model.from_map(m['deliver'])
+        if m.get('reportId') is not None:
+            self.report_id = m.get('reportId')
+        return self
+
+
+class DescribeCdnReportListResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeCdnReportListResponseBodyContentData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeCdnReportListResponseBodyContentData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCdnReportListResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: DescribeCdnReportListResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        # The information about the report that is queried.
+        self.content = content
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.content is not None:
-            result['Content'] = self.content
+            result['Content'] = self.content.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -8881,7 +9048,8 @@ class DescribeCdnReportListResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Content') is not None:
-            self.content = m.get('Content')
+            temp_model = DescribeCdnReportListResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -10046,16 +10214,24 @@ class DescribeCdnServiceResponse(TeaModel):
         return self
 
 
-class DescribeCdnSubListResponseBody(TeaModel):
+class DescribeCdnSubListResponseBodyContentData(TeaModel):
     def __init__(
         self,
-        content: str = None,
-        request_id: str = None,
+        create_time: str = None,
+        domains: List[str] = None,
+        effective_end: str = None,
+        effective_from: str = None,
+        report_id: List[int] = None,
+        status: str = None,
+        sub_id: int = None,
     ):
-        # The information about the custom report task.
-        self.content = content
-        # The ID of the request.
-        self.request_id = request_id
+        self.create_time = create_time
+        self.domains = domains
+        self.effective_end = effective_end
+        self.effective_from = effective_from
+        self.report_id = report_id
+        self.status = status
+        self.sub_id = sub_id
 
     def validate(self):
         pass
@@ -10066,8 +10242,99 @@ class DescribeCdnSubListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.domains is not None:
+            result['domains'] = self.domains
+        if self.effective_end is not None:
+            result['effectiveEnd'] = self.effective_end
+        if self.effective_from is not None:
+            result['effectiveFrom'] = self.effective_from
+        if self.report_id is not None:
+            result['reportId'] = self.report_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.sub_id is not None:
+            result['subId'] = self.sub_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('domains') is not None:
+            self.domains = m.get('domains')
+        if m.get('effectiveEnd') is not None:
+            self.effective_end = m.get('effectiveEnd')
+        if m.get('effectiveFrom') is not None:
+            self.effective_from = m.get('effectiveFrom')
+        if m.get('reportId') is not None:
+            self.report_id = m.get('reportId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subId') is not None:
+            self.sub_id = m.get('subId')
+        return self
+
+
+class DescribeCdnSubListResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeCdnSubListResponseBodyContentData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeCdnSubListResponseBodyContentData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCdnSubListResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: DescribeCdnSubListResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        # The information about the custom report task.
+        self.content = content
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.content is not None:
-            result['Content'] = self.content
+            result['Content'] = self.content.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -10075,7 +10342,8 @@ class DescribeCdnSubListResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Content') is not None:
-            self.content = m.get('Content')
+            temp_model = DescribeCdnSubListResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
