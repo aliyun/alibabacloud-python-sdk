@@ -2768,6 +2768,444 @@ class GetWarehouseDetailResponse(TeaModel):
         return self
 
 
+class GrantDatabasePermissionRequest(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        privileges: List[str] = None,
+        user_name: str = None,
+    ):
+        self.database_name = database_name
+        self.privileges = privileges
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.privileges is not None:
+            result['privileges'] = self.privileges
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('privileges') is not None:
+            self.privileges = m.get('privileges')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class GrantDatabasePermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GrantDatabasePermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GrantDatabasePermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GrantDatabasePermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GrantSchemaPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        privileges: List[str] = None,
+        schema_name: str = None,
+        user_name: str = None,
+    ):
+        self.database_name = database_name
+        self.privileges = privileges
+        self.schema_name = schema_name
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.privileges is not None:
+            result['privileges'] = self.privileges
+        if self.schema_name is not None:
+            result['schemaName'] = self.schema_name
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('privileges') is not None:
+            self.privileges = m.get('privileges')
+        if m.get('schemaName') is not None:
+            self.schema_name = m.get('schemaName')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class GrantSchemaPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GrantSchemaPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GrantSchemaPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GrantSchemaPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GrantTablePermissionRequest(TeaModel):
+    def __init__(
+        self,
+        all_table: bool = None,
+        database_name: str = None,
+        privileges: List[str] = None,
+        schema_name: str = None,
+        table_name: str = None,
+        user_name: str = None,
+    ):
+        self.all_table = all_table
+        self.database_name = database_name
+        self.privileges = privileges
+        self.schema_name = schema_name
+        self.table_name = table_name
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_table is not None:
+            result['allTable'] = self.all_table
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.privileges is not None:
+            result['privileges'] = self.privileges
+        if self.schema_name is not None:
+            result['schemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allTable') is not None:
+            self.all_table = m.get('allTable')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('privileges') is not None:
+            self.privileges = m.get('privileges')
+        if m.get('schemaName') is not None:
+            self.schema_name = m.get('schemaName')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class GrantTablePermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GrantTablePermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GrantTablePermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GrantTablePermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListBackupDataRequest(TeaModel):
     def __init__(
         self,
@@ -3059,6 +3497,185 @@ class ListBackupDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListBackupDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatabasesRequest(TeaModel):
+    def __init__(
+        self,
+        external: bool = None,
+    ):
+        self.external = external
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external is not None:
+            result['external'] = self.external
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('external') is not None:
+            self.external = m.get('external')
+        return self
+
+
+class ListDatabasesResponseBodyDatabaseList(TeaModel):
+    def __init__(
+        self,
+        external: bool = None,
+        name: str = None,
+        permission_model: str = None,
+        privilege: str = None,
+    ):
+        self.external = external
+        self.name = name
+        self.permission_model = permission_model
+        self.privilege = privilege
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external is not None:
+            result['External'] = self.external
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.privilege is not None:
+            result['Privilege'] = self.privilege
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('External') is not None:
+            self.external = m.get('External')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('Privilege') is not None:
+            self.privilege = m.get('Privilege')
+        return self
+
+
+class ListDatabasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        database_list: List[ListDatabasesResponseBodyDatabaseList] = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.database_list = database_list
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.database_list:
+            for k in self.database_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatabaseList'] = []
+        if self.database_list is not None:
+            for k in self.database_list:
+                result['DatabaseList'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.database_list = []
+        if m.get('DatabaseList') is not None:
+            for k in m.get('DatabaseList'):
+                temp_model = ListDatabasesResponseBodyDatabaseList()
+                self.database_list.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDatabasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatabasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatabasesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4844,6 +5461,372 @@ class ResumeInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResumeInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeDatabasePermissionRequest(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        privileges: List[str] = None,
+        user_name: str = None,
+    ):
+        self.database_name = database_name
+        self.privileges = privileges
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.privileges is not None:
+            result['privileges'] = self.privileges
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('privileges') is not None:
+            self.privileges = m.get('privileges')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class RevokeDatabasePermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RevokeDatabasePermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeDatabasePermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeDatabasePermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeSchemaPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        privileges: List[str] = None,
+        schema_name: str = None,
+        user_name: str = None,
+    ):
+        self.database_name = database_name
+        self.privileges = privileges
+        self.schema_name = schema_name
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.privileges is not None:
+            result['privileges'] = self.privileges
+        if self.schema_name is not None:
+            result['schemaName'] = self.schema_name
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('privileges') is not None:
+            self.privileges = m.get('privileges')
+        if m.get('schemaName') is not None:
+            self.schema_name = m.get('schemaName')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class RevokeSchemaPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RevokeSchemaPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeSchemaPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeSchemaPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeTablePermissionRequest(TeaModel):
+    def __init__(
+        self,
+        all_table: bool = None,
+        database_name: str = None,
+        privileges: List[str] = None,
+        schema_name: str = None,
+        table_name: str = None,
+        user_name: str = None,
+    ):
+        self.all_table = all_table
+        self.database_name = database_name
+        self.privileges = privileges
+        self.schema_name = schema_name
+        self.table_name = table_name
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_table is not None:
+            result['allTable'] = self.all_table
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.privileges is not None:
+            result['privileges'] = self.privileges
+        if self.schema_name is not None:
+            result['schemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allTable') is not None:
+            self.all_table = m.get('allTable')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('privileges') is not None:
+            self.privileges = m.get('privileges')
+        if m.get('schemaName') is not None:
+            self.schema_name = m.get('schemaName')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class RevokeTablePermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RevokeTablePermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeTablePermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeTablePermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1513,6 +1513,370 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_warehouse_detail_with_options_async(instance_id, headers, runtime)
 
+    def grant_database_permission_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantDatabasePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GrantDatabasePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantDatabasePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantDatabasePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantDatabasePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/grantDatabasePermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GrantDatabasePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_database_permission_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantDatabasePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GrantDatabasePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantDatabasePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantDatabasePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantDatabasePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/grantDatabasePermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GrantDatabasePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_database_permission(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantDatabasePermissionRequest,
+    ) -> hologram_20220601_models.GrantDatabasePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantDatabasePermissionRequest
+        @return: GrantDatabasePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.grant_database_permission_with_options(instance_id, request, headers, runtime)
+
+    async def grant_database_permission_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantDatabasePermissionRequest,
+    ) -> hologram_20220601_models.GrantDatabasePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantDatabasePermissionRequest
+        @return: GrantDatabasePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.grant_database_permission_with_options_async(instance_id, request, headers, runtime)
+
+    def grant_schema_permission_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantSchemaPermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GrantSchemaPermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantSchemaPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantSchemaPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantSchemaPermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/grantSchemaPermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GrantSchemaPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_schema_permission_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantSchemaPermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GrantSchemaPermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantSchemaPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantSchemaPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantSchemaPermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/grantSchemaPermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GrantSchemaPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_schema_permission(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantSchemaPermissionRequest,
+    ) -> hologram_20220601_models.GrantSchemaPermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantSchemaPermissionRequest
+        @return: GrantSchemaPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.grant_schema_permission_with_options(instance_id, request, headers, runtime)
+
+    async def grant_schema_permission_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantSchemaPermissionRequest,
+    ) -> hologram_20220601_models.GrantSchemaPermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantSchemaPermissionRequest
+        @return: GrantSchemaPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.grant_schema_permission_with_options_async(instance_id, request, headers, runtime)
+
+    def grant_table_permission_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantTablePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GrantTablePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantTablePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantTablePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.all_table):
+            body['allTable'] = request.all_table
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            body['tableName'] = request.table_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantTablePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/grantTablePermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GrantTablePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_table_permission_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantTablePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GrantTablePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantTablePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantTablePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.all_table):
+            body['allTable'] = request.all_table
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            body['tableName'] = request.table_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantTablePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/grantTablePermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GrantTablePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_table_permission(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantTablePermissionRequest,
+    ) -> hologram_20220601_models.GrantTablePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantTablePermissionRequest
+        @return: GrantTablePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.grant_table_permission_with_options(instance_id, request, headers, runtime)
+
+    async def grant_table_permission_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.GrantTablePermissionRequest,
+    ) -> hologram_20220601_models.GrantTablePermissionResponse:
+        """
+        @summary DB授权
+        
+        @param request: GrantTablePermissionRequest
+        @return: GrantTablePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.grant_table_permission_with_options_async(instance_id, request, headers, runtime)
+
     def list_backup_data_with_options(
         self,
         request: hologram_20220601_models.ListBackupDataRequest,
@@ -1620,6 +1984,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_backup_data_with_options_async(request, headers, runtime)
+
+    def list_databases_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ListDatabasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ListDatabasesResponse:
+        """
+        @summary 获取DB列表
+        
+        @param request: ListDatabasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external):
+            query['external'] = request.external
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/listDatabases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ListDatabasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ListDatabasesResponse:
+        """
+        @summary 获取DB列表
+        
+        @param request: ListDatabasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external):
+            query['external'] = request.external
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/listDatabases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ListDatabasesRequest,
+    ) -> hologram_20220601_models.ListDatabasesResponse:
+        """
+        @summary 获取DB列表
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_databases_with_options(instance_id, request, headers, runtime)
+
+    async def list_databases_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ListDatabasesRequest,
+    ) -> hologram_20220601_models.ListDatabasesResponse:
+        """
+        @summary 获取DB列表
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_databases_with_options_async(instance_id, request, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -2660,6 +3132,370 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_instance_with_options_async(instance_id, headers, runtime)
+
+    def revoke_database_permission_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeDatabasePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RevokeDatabasePermissionResponse:
+        """
+        @summary 取消DB授权
+        
+        @param request: RevokeDatabasePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeDatabasePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeDatabasePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/revokeDatabasePermission',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RevokeDatabasePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_database_permission_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeDatabasePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RevokeDatabasePermissionResponse:
+        """
+        @summary 取消DB授权
+        
+        @param request: RevokeDatabasePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeDatabasePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeDatabasePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/revokeDatabasePermission',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RevokeDatabasePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_database_permission(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeDatabasePermissionRequest,
+    ) -> hologram_20220601_models.RevokeDatabasePermissionResponse:
+        """
+        @summary 取消DB授权
+        
+        @param request: RevokeDatabasePermissionRequest
+        @return: RevokeDatabasePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.revoke_database_permission_with_options(instance_id, request, headers, runtime)
+
+    async def revoke_database_permission_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeDatabasePermissionRequest,
+    ) -> hologram_20220601_models.RevokeDatabasePermissionResponse:
+        """
+        @summary 取消DB授权
+        
+        @param request: RevokeDatabasePermissionRequest
+        @return: RevokeDatabasePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.revoke_database_permission_with_options_async(instance_id, request, headers, runtime)
+
+    def revoke_schema_permission_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeSchemaPermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RevokeSchemaPermissionResponse:
+        """
+        @summary 取消Schema授权
+        
+        @param request: RevokeSchemaPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeSchemaPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeSchemaPermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/revokeSchemaPermission',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RevokeSchemaPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_schema_permission_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeSchemaPermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RevokeSchemaPermissionResponse:
+        """
+        @summary 取消Schema授权
+        
+        @param request: RevokeSchemaPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeSchemaPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeSchemaPermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/revokeSchemaPermission',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RevokeSchemaPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_schema_permission(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeSchemaPermissionRequest,
+    ) -> hologram_20220601_models.RevokeSchemaPermissionResponse:
+        """
+        @summary 取消Schema授权
+        
+        @param request: RevokeSchemaPermissionRequest
+        @return: RevokeSchemaPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.revoke_schema_permission_with_options(instance_id, request, headers, runtime)
+
+    async def revoke_schema_permission_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeSchemaPermissionRequest,
+    ) -> hologram_20220601_models.RevokeSchemaPermissionResponse:
+        """
+        @summary 取消Schema授权
+        
+        @param request: RevokeSchemaPermissionRequest
+        @return: RevokeSchemaPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.revoke_schema_permission_with_options_async(instance_id, request, headers, runtime)
+
+    def revoke_table_permission_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeTablePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RevokeTablePermissionResponse:
+        """
+        @summary 取消表授权
+        
+        @param request: RevokeTablePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeTablePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.all_table):
+            body['allTable'] = request.all_table
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            body['tableName'] = request.table_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeTablePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/revokeTablePermission',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RevokeTablePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_table_permission_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeTablePermissionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RevokeTablePermissionResponse:
+        """
+        @summary 取消表授权
+        
+        @param request: RevokeTablePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeTablePermissionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.all_table):
+            body['allTable'] = request.all_table
+        if not UtilClient.is_unset(request.database_name):
+            body['databaseName'] = request.database_name
+        if not UtilClient.is_unset(request.privileges):
+            body['privileges'] = request.privileges
+        if not UtilClient.is_unset(request.schema_name):
+            body['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            body['tableName'] = request.table_name
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeTablePermission',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/revokeTablePermission',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RevokeTablePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_table_permission(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeTablePermissionRequest,
+    ) -> hologram_20220601_models.RevokeTablePermissionResponse:
+        """
+        @summary 取消表授权
+        
+        @param request: RevokeTablePermissionRequest
+        @return: RevokeTablePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.revoke_table_permission_with_options(instance_id, request, headers, runtime)
+
+    async def revoke_table_permission_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RevokeTablePermissionRequest,
+    ) -> hologram_20220601_models.RevokeTablePermissionResponse:
+        """
+        @summary 取消表授权
+        
+        @param request: RevokeTablePermissionRequest
+        @return: RevokeTablePermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.revoke_table_permission_with_options_async(instance_id, request, headers, runtime)
 
     def scale_holo_warehouse_with_options(
         self,

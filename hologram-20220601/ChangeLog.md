@@ -1,3 +1,13 @@
+2025-11-05 Version: 1.7.0
+- Support API GrantDatabasePermission.
+- Support API GrantSchemaPermission.
+- Support API GrantTablePermission.
+- Support API ListDatabases.
+- Support API RevokeDatabasePermission.
+- Support API RevokeSchemaPermission.
+- Support API RevokeTablePermission.
+
+
 2025-10-14 Version: 1.6.1
 - Update API CreateHoloWarehouse: add request parameters body.clusterCount.
 - Update API GetWarehouseDetail: add response parameters Body.WarehouseDetail.AutoElasticCpu.
