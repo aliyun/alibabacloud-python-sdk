@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_mns-open20220119.
+setup module for alibabacloud_mns_open20220119.
 
-Created on 12/09/2025
+Created on 05/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_mns_open20220119"
-NAME = "alibabacloud_mns-open20220119" or "alibabacloud-package"
+NAME = "alibabacloud_mns_open20220119" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud Mns-open (20220119) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

@@ -3463,8 +3463,10 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         message_count: int = None,
         message_retention_period: int = None,
         tags: List[GetTopicAttributesResponseBodyDataTags] = None,
+        topic_inner_url: str = None,
         topic_name: str = None,
         topic_type: str = None,
+        topic_url: str = None,
     ):
         # The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
@@ -3483,9 +3485,11 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         self.message_retention_period = message_retention_period
         # The tags added to the resources.
         self.tags = tags
+        self.topic_inner_url = topic_inner_url
         # The name of the topic.
         self.topic_name = topic_name
         self.topic_type = topic_type
+        self.topic_url = topic_url
 
     def validate(self):
         if self.tags:
@@ -3515,10 +3519,14 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.topic_inner_url is not None:
+            result['TopicInnerUrl'] = self.topic_inner_url
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         if self.topic_type is not None:
             result['TopicType'] = self.topic_type
+        if self.topic_url is not None:
+            result['TopicUrl'] = self.topic_url
         return result
 
     def from_map(self, m: dict = None):
@@ -3540,10 +3548,14 @@ class GetTopicAttributesResponseBodyData(TeaModel):
             for k in m.get('Tags'):
                 temp_model = GetTopicAttributesResponseBodyDataTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TopicInnerUrl') is not None:
+            self.topic_inner_url = m.get('TopicInnerUrl')
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         if m.get('TopicType') is not None:
             self.topic_type = m.get('TopicType')
+        if m.get('TopicUrl') is not None:
+            self.topic_url = m.get('TopicUrl')
         return self
 
 

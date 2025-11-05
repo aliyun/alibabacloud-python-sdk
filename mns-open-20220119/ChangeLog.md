@@ -1,3 +1,8 @@
+2025-11-05 Version: 1.3.3
+- Update API GetTopicAttributes: add response parameters Body.Data.TopicInnerUrl.
+- Update API GetTopicAttributes: add response parameters Body.Data.TopicUrl.
+
+
 2025-09-12 Version: 1.3.2
 - Update API SetSubscriptionAttributes: add request parameters StsRoleArn.
 
