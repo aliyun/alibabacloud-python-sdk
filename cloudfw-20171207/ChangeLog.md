@@ -1,3 +1,9 @@
+2025-11-05 Version: 7.1.3
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.ProxyNetworkInterfaceId.
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.ProxyRouteTableId.
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.ProxyVSwitchId.
+
+
 2025-10-30 Version: 7.1.2
 - Generated python 2017-12-07 for Cloudfw.
 

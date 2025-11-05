@@ -18941,7 +18941,10 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         nat_route_entry_list: List[DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList] = None,
         proxy_id: str = None,
         proxy_name: str = None,
+        proxy_network_interface_id: str = None,
+        proxy_route_table_id: str = None,
         proxy_status: str = None,
+        proxy_vswitch_id: str = None,
         region_id: str = None,
         strict_mode: int = None,
         vpc_id: str = None,
@@ -18965,6 +18968,8 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         self.proxy_id = proxy_id
         # The name of the NAT firewall.
         self.proxy_name = proxy_name
+        self.proxy_network_interface_id = proxy_network_interface_id
+        self.proxy_route_table_id = proxy_route_table_id
         # The status of the NAT firewall. Valid values:
         # 
         # *   configuring
@@ -18975,6 +18980,7 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         # *   closing
         # *   closed
         self.proxy_status = proxy_status
+        self.proxy_vswitch_id = proxy_vswitch_id
         # The region ID of your Cloud Firewall.
         # 
         # >  For more information about the supported regions of Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
@@ -19016,8 +19022,14 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
             result['ProxyId'] = self.proxy_id
         if self.proxy_name is not None:
             result['ProxyName'] = self.proxy_name
+        if self.proxy_network_interface_id is not None:
+            result['ProxyNetworkInterfaceId'] = self.proxy_network_interface_id
+        if self.proxy_route_table_id is not None:
+            result['ProxyRouteTableId'] = self.proxy_route_table_id
         if self.proxy_status is not None:
             result['ProxyStatus'] = self.proxy_status
+        if self.proxy_vswitch_id is not None:
+            result['ProxyVSwitchId'] = self.proxy_vswitch_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.strict_mode is not None:
@@ -19049,8 +19061,14 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
             self.proxy_id = m.get('ProxyId')
         if m.get('ProxyName') is not None:
             self.proxy_name = m.get('ProxyName')
+        if m.get('ProxyNetworkInterfaceId') is not None:
+            self.proxy_network_interface_id = m.get('ProxyNetworkInterfaceId')
+        if m.get('ProxyRouteTableId') is not None:
+            self.proxy_route_table_id = m.get('ProxyRouteTableId')
         if m.get('ProxyStatus') is not None:
             self.proxy_status = m.get('ProxyStatus')
+        if m.get('ProxyVSwitchId') is not None:
+            self.proxy_vswitch_id = m.get('ProxyVSwitchId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StrictMode') is not None:
@@ -35867,6 +35885,9 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         self.order = order
         # The number of entries to return on each page. Maximum value: 50.
         self.page_size = page_size
+        # 漏洞标签，取值：
+        # 
+        #  - **AI**： AI组件相关漏洞
         self.rule_tag = rule_tag
         # The sorting basis. Set the value to **attackCnt**, which indicates the number of attacks.
         self.sort_key = sort_key
@@ -36169,6 +36190,9 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         self.resource_cnt = resource_cnt
         # The assets on which the vulnerability is detected.
         self.resource_list = resource_list
+        # 漏洞标签，取值：
+        # 
+        # - **AI**： AI相关漏洞
         self.rule_tag = rule_tag
         # The IDs of associated virtual patching policies.
         self.virtual_patche_ids = virtual_patche_ids
