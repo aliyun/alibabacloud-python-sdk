@@ -2193,6 +2193,175 @@ class ExportCustomerQuotaRecordResponse(TeaModel):
         return self
 
 
+class ExportReversedDeductionHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        export_uid: int = None,
+        language: str = None,
+        start_date: str = None,
+    ):
+        # This parameter is required.
+        self.end_date = end_date
+        # This parameter is required.
+        self.export_uid = export_uid
+        self.language = language
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.export_uid is not None:
+            result['ExportUid'] = self.export_uid
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ExportUid') is not None:
+            self.export_uid = m.get('ExportUid')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class ExportReversedDeductionHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        id: int = None,
+    ):
+        self.cost = cost
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ExportReversedDeductionHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ExportReversedDeductionHistoryResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ExportReversedDeductionHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExportReversedDeductionHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportReversedDeductionHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportReversedDeductionHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAccountInfoRequest(TeaModel):
     def __init__(
         self,
@@ -2582,6 +2751,343 @@ class GetAccountInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccountInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCommissionableProductsRequest(TeaModel):
+    def __init__(
+        self,
+        commodity_code_list: str = None,
+        fiscal_year: str = None,
+        list_show_status_list: List[str] = None,
+        page_no: int = None,
+        page_size: int = None,
+        pip_code_list: str = None,
+        real_end_month: str = None,
+        real_start_month: str = None,
+    ):
+        self.commodity_code_list = commodity_code_list
+        self.fiscal_year = fiscal_year
+        self.list_show_status_list = list_show_status_list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.pip_code_list = pip_code_list
+        self.real_end_month = real_end_month
+        self.real_start_month = real_start_month
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code_list is not None:
+            result['CommodityCodeList'] = self.commodity_code_list
+        if self.fiscal_year is not None:
+            result['FiscalYear'] = self.fiscal_year
+        if self.list_show_status_list is not None:
+            result['ListShowStatusList'] = self.list_show_status_list
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pip_code_list is not None:
+            result['PipCodeList'] = self.pip_code_list
+        if self.real_end_month is not None:
+            result['RealEndMonth'] = self.real_end_month
+        if self.real_start_month is not None:
+            result['RealStartMonth'] = self.real_start_month
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCodeList') is not None:
+            self.commodity_code_list = m.get('CommodityCodeList')
+        if m.get('FiscalYear') is not None:
+            self.fiscal_year = m.get('FiscalYear')
+        if m.get('ListShowStatusList') is not None:
+            self.list_show_status_list = m.get('ListShowStatusList')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PipCodeList') is not None:
+            self.pip_code_list = m.get('PipCodeList')
+        if m.get('RealEndMonth') is not None:
+            self.real_end_month = m.get('RealEndMonth')
+        if m.get('RealStartMonth') is not None:
+            self.real_start_month = m.get('RealStartMonth')
+        return self
+
+
+class GetCommissionableProductsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        commodity_code_list: str = None,
+        fiscal_year: str = None,
+        list_show_status_list_shrink: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        pip_code_list: str = None,
+        real_end_month: str = None,
+        real_start_month: str = None,
+    ):
+        self.commodity_code_list = commodity_code_list
+        self.fiscal_year = fiscal_year
+        self.list_show_status_list_shrink = list_show_status_list_shrink
+        self.page_no = page_no
+        self.page_size = page_size
+        self.pip_code_list = pip_code_list
+        self.real_end_month = real_end_month
+        self.real_start_month = real_start_month
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code_list is not None:
+            result['CommodityCodeList'] = self.commodity_code_list
+        if self.fiscal_year is not None:
+            result['FiscalYear'] = self.fiscal_year
+        if self.list_show_status_list_shrink is not None:
+            result['ListShowStatusList'] = self.list_show_status_list_shrink
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pip_code_list is not None:
+            result['PipCodeList'] = self.pip_code_list
+        if self.real_end_month is not None:
+            result['RealEndMonth'] = self.real_end_month
+        if self.real_start_month is not None:
+            result['RealStartMonth'] = self.real_start_month
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCodeList') is not None:
+            self.commodity_code_list = m.get('CommodityCodeList')
+        if m.get('FiscalYear') is not None:
+            self.fiscal_year = m.get('FiscalYear')
+        if m.get('ListShowStatusList') is not None:
+            self.list_show_status_list_shrink = m.get('ListShowStatusList')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PipCodeList') is not None:
+            self.pip_code_list = m.get('PipCodeList')
+        if m.get('RealEndMonth') is not None:
+            self.real_end_month = m.get('RealEndMonth')
+        if m.get('RealStartMonth') is not None:
+            self.real_start_month = m.get('RealStartMonth')
+        return self
+
+
+class GetCommissionableProductsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        actual_start_month: str = None,
+        commodity_code: str = None,
+        commodity_name: str = None,
+        eligible_for_commission: str = None,
+        eligible_for_discount: str = None,
+        end_month: str = None,
+        product_campaign: str = None,
+        product_code: str = None,
+        product_name: str = None,
+        seven_core_products: str = None,
+        status: str = None,
+    ):
+        self.actual_start_month = actual_start_month
+        self.commodity_code = commodity_code
+        self.commodity_name = commodity_name
+        self.eligible_for_commission = eligible_for_commission
+        self.eligible_for_discount = eligible_for_discount
+        self.end_month = end_month
+        self.product_campaign = product_campaign
+        self.product_code = product_code
+        self.product_name = product_name
+        self.seven_core_products = seven_core_products
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_start_month is not None:
+            result['ActualStartMonth'] = self.actual_start_month
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.commodity_name is not None:
+            result['CommodityName'] = self.commodity_name
+        if self.eligible_for_commission is not None:
+            result['EligibleForCommission'] = self.eligible_for_commission
+        if self.eligible_for_discount is not None:
+            result['EligibleForDiscount'] = self.eligible_for_discount
+        if self.end_month is not None:
+            result['EndMonth'] = self.end_month
+        if self.product_campaign is not None:
+            result['ProductCampaign'] = self.product_campaign
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.seven_core_products is not None:
+            result['SevenCoreProducts'] = self.seven_core_products
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualStartMonth') is not None:
+            self.actual_start_month = m.get('ActualStartMonth')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CommodityName') is not None:
+            self.commodity_name = m.get('CommodityName')
+        if m.get('EligibleForCommission') is not None:
+            self.eligible_for_commission = m.get('EligibleForCommission')
+        if m.get('EligibleForDiscount') is not None:
+            self.eligible_for_discount = m.get('EligibleForDiscount')
+        if m.get('EndMonth') is not None:
+            self.end_month = m.get('EndMonth')
+        if m.get('ProductCampaign') is not None:
+            self.product_campaign = m.get('ProductCampaign')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('SevenCoreProducts') is not None:
+            self.seven_core_products = m.get('SevenCoreProducts')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetCommissionableProductsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetCommissionableProductsResponseBodyData] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetCommissionableProductsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetCommissionableProductsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCommissionableProductsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCommissionableProductsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5517,6 +6023,448 @@ class ListCouponUsageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCouponUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListExportTasksRequest(TeaModel):
+    def __init__(
+        self,
+        language: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        scene_code: str = None,
+    ):
+        self.language = language
+        # This parameter is required.
+        self.page_no = page_no
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.scene_code = scene_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        return self
+
+
+class ListExportTasksResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        file_name: str = None,
+        id: int = None,
+        message: str = None,
+        status: str = None,
+        status_code: str = None,
+        url: str = None,
+    ):
+        self.create_time = create_time
+        self.file_name = file_name
+        self.id = id
+        self.message = message
+        self.status = status
+        self.status_code = status_code
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListExportTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListExportTasksResponseBodyData] = None,
+        message: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListExportTasksResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListExportTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListExportTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListExportTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryReversedDeductionHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        language: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_date: str = None,
+        uid: int = None,
+    ):
+        # This parameter is required.
+        self.end_date = end_date
+        self.language = language
+        # This parameter is required.
+        self.page_no = page_no
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.start_date = start_date
+        # This parameter is required.
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class QueryReversedDeductionHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        offset_amount: str = None,
+        operation_submit_type: str = None,
+        operation_time: str = None,
+        operation_uid: str = None,
+    ):
+        self.offset_amount = offset_amount
+        self.operation_submit_type = operation_submit_type
+        self.operation_time = operation_time
+        self.operation_uid = operation_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offset_amount is not None:
+            result['OffsetAmount'] = self.offset_amount
+        if self.operation_submit_type is not None:
+            result['OperationSubmitType'] = self.operation_submit_type
+        if self.operation_time is not None:
+            result['OperationTime'] = self.operation_time
+        if self.operation_uid is not None:
+            result['OperationUid'] = self.operation_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OffsetAmount') is not None:
+            self.offset_amount = m.get('OffsetAmount')
+        if m.get('OperationSubmitType') is not None:
+            self.operation_submit_type = m.get('OperationSubmitType')
+        if m.get('OperationTime') is not None:
+            self.operation_time = m.get('OperationTime')
+        if m.get('OperationUid') is not None:
+            self.operation_uid = m.get('OperationUid')
+        return self
+
+
+class QueryReversedDeductionHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[QueryReversedDeductionHistoryResponseBodyData] = None,
+        message: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryReversedDeductionHistoryResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryReversedDeductionHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryReversedDeductionHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryReversedDeductionHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

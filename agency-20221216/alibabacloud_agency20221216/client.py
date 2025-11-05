@@ -129,16 +129,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CancelCouponResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CancelCouponResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CancelCouponResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_coupon_with_options_async(
         self,
@@ -170,16 +164,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CancelCouponResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CancelCouponResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CancelCouponResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_coupon(
         self,
@@ -242,16 +230,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CancelSubscriptionBillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CancelSubscriptionBillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CancelSubscriptionBillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_subscription_bill_with_options_async(
         self,
@@ -288,16 +270,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CancelSubscriptionBillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CancelSubscriptionBillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CancelSubscriptionBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_subscription_bill(
         self,
@@ -373,16 +349,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CouponApprovalStatusListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CouponApprovalStatusListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CouponApprovalStatusListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def coupon_approval_status_list_with_options_async(
         self,
@@ -422,16 +392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CouponApprovalStatusListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CouponApprovalStatusListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CouponApprovalStatusListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def coupon_approval_status_list(
         self,
@@ -519,16 +483,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCouponTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCouponTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CreateCouponTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_coupon_template_with_options_async(
         self,
@@ -590,16 +548,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCouponTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCouponTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CreateCouponTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_coupon_template(
         self,
@@ -665,16 +617,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCustomerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCustomerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CreateCustomerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_customer_with_options_async(
         self,
@@ -714,16 +660,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCustomerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CreateCustomerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CreateCustomerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_customer(
         self,
@@ -779,16 +719,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CustomerQuotaRecordListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CustomerQuotaRecordListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CustomerQuotaRecordListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def customer_quota_record_list_with_options_async(
         self,
@@ -818,16 +752,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.CustomerQuotaRecordListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.CustomerQuotaRecordListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.CustomerQuotaRecordListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def customer_quota_record_list(
         self,
@@ -890,16 +818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.DeductOutstandingBalanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.DeductOutstandingBalanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.DeductOutstandingBalanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deduct_outstanding_balance_with_options_async(
         self,
@@ -936,16 +858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.DeductOutstandingBalanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.DeductOutstandingBalanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.DeductOutstandingBalanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deduct_outstanding_balance(
         self,
@@ -1009,16 +925,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.DeleteCouponTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.DeleteCouponTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.DeleteCouponTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_coupon_template_with_options_async(
         self,
@@ -1050,16 +960,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.DeleteCouponTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.DeleteCouponTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.DeleteCouponTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_coupon_template(
         self,
@@ -1118,16 +1022,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.EditEndUserStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.EditEndUserStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.EditEndUserStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def edit_end_user_status_with_options_async(
         self,
@@ -1160,16 +1058,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.EditEndUserStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.EditEndUserStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.EditEndUserStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def edit_end_user_status(
         self,
@@ -1238,16 +1130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.EditNewBuyStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.EditNewBuyStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.EditNewBuyStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def edit_new_buy_status_with_options_async(
         self,
@@ -1284,16 +1170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.EditNewBuyStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.EditNewBuyStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.EditNewBuyStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def edit_new_buy_status(
         self,
@@ -1362,16 +1242,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.EditZeroCreditShutdownResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.EditZeroCreditShutdownResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.EditZeroCreditShutdownResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def edit_zero_credit_shutdown_with_options_async(
         self,
@@ -1408,16 +1282,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.EditZeroCreditShutdownResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.EditZeroCreditShutdownResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.EditZeroCreditShutdownResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def edit_zero_credit_shutdown(
         self,
@@ -1491,16 +1359,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ExportCustomerQuotaRecordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ExportCustomerQuotaRecordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ExportCustomerQuotaRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def export_customer_quota_record_with_options_async(
         self,
@@ -1542,16 +1404,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ExportCustomerQuotaRecordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ExportCustomerQuotaRecordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ExportCustomerQuotaRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def export_customer_quota_record(
         self,
@@ -1583,6 +1439,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_customer_quota_record_with_options_async(request, runtime)
 
+    def export_reversed_deduction_history_with_options(
+        self,
+        request: agency_20221216_models.ExportReversedDeductionHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.ExportReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表导出接口
+        
+        @param request: ExportReversedDeductionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportReversedDeductionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.export_uid):
+            query['ExportUid'] = request.export_uid
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportReversedDeductionHistory',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.ExportReversedDeductionHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_reversed_deduction_history_with_options_async(
+        self,
+        request: agency_20221216_models.ExportReversedDeductionHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.ExportReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表导出接口
+        
+        @param request: ExportReversedDeductionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportReversedDeductionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.export_uid):
+            query['ExportUid'] = request.export_uid
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportReversedDeductionHistory',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.ExportReversedDeductionHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_reversed_deduction_history(
+        self,
+        request: agency_20221216_models.ExportReversedDeductionHistoryRequest,
+    ) -> agency_20221216_models.ExportReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表导出接口
+        
+        @param request: ExportReversedDeductionHistoryRequest
+        @return: ExportReversedDeductionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_reversed_deduction_history_with_options(request, runtime)
+
+    async def export_reversed_deduction_history_async(
+        self,
+        request: agency_20221216_models.ExportReversedDeductionHistoryRequest,
+    ) -> agency_20221216_models.ExportReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表导出接口
+        
+        @param request: ExportReversedDeductionHistoryRequest
+        @return: ExportReversedDeductionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_reversed_deduction_history_with_options_async(request, runtime)
+
     def get_account_info_with_options(
         self,
         request: agency_20221216_models.GetAccountInfoRequest,
@@ -1611,16 +1575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetAccountInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetAccountInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetAccountInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_account_info_with_options_async(
         self,
@@ -1650,16 +1608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetAccountInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetAccountInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetAccountInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_account_info(
         self,
@@ -1686,6 +1638,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_info_with_options_async(request, runtime)
+
+    def get_commissionable_products_with_options(
+        self,
+        tmp_req: agency_20221216_models.GetCommissionableProductsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCommissionableProductsResponse:
+        """
+        @summary 提供返佣商品API
+        
+        @param tmp_req: GetCommissionableProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCommissionableProductsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = agency_20221216_models.GetCommissionableProductsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_show_status_list):
+            request.list_show_status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_show_status_list, 'ListShowStatusList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code_list):
+            query['CommodityCodeList'] = request.commodity_code_list
+        if not UtilClient.is_unset(request.fiscal_year):
+            query['FiscalYear'] = request.fiscal_year
+        if not UtilClient.is_unset(request.list_show_status_list_shrink):
+            query['ListShowStatusList'] = request.list_show_status_list_shrink
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pip_code_list):
+            query['PipCodeList'] = request.pip_code_list
+        if not UtilClient.is_unset(request.real_end_month):
+            query['RealEndMonth'] = request.real_end_month
+        if not UtilClient.is_unset(request.real_start_month):
+            query['RealStartMonth'] = request.real_start_month
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCommissionableProducts',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCommissionableProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_commissionable_products_with_options_async(
+        self,
+        tmp_req: agency_20221216_models.GetCommissionableProductsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCommissionableProductsResponse:
+        """
+        @summary 提供返佣商品API
+        
+        @param tmp_req: GetCommissionableProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCommissionableProductsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = agency_20221216_models.GetCommissionableProductsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_show_status_list):
+            request.list_show_status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_show_status_list, 'ListShowStatusList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code_list):
+            query['CommodityCodeList'] = request.commodity_code_list
+        if not UtilClient.is_unset(request.fiscal_year):
+            query['FiscalYear'] = request.fiscal_year
+        if not UtilClient.is_unset(request.list_show_status_list_shrink):
+            query['ListShowStatusList'] = request.list_show_status_list_shrink
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pip_code_list):
+            query['PipCodeList'] = request.pip_code_list
+        if not UtilClient.is_unset(request.real_end_month):
+            query['RealEndMonth'] = request.real_end_month
+        if not UtilClient.is_unset(request.real_start_month):
+            query['RealStartMonth'] = request.real_start_month
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCommissionableProducts',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCommissionableProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_commissionable_products(
+        self,
+        request: agency_20221216_models.GetCommissionableProductsRequest,
+    ) -> agency_20221216_models.GetCommissionableProductsResponse:
+        """
+        @summary 提供返佣商品API
+        
+        @param request: GetCommissionableProductsRequest
+        @return: GetCommissionableProductsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_commissionable_products_with_options(request, runtime)
+
+    async def get_commissionable_products_async(
+        self,
+        request: agency_20221216_models.GetCommissionableProductsRequest,
+    ) -> agency_20221216_models.GetCommissionableProductsResponse:
+        """
+        @summary 提供返佣商品API
+        
+        @param request: GetCommissionableProductsRequest
+        @return: GetCommissionableProductsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_commissionable_products_with_options_async(request, runtime)
 
     def get_coupon_template_detail_with_options(
         self,
@@ -1717,16 +1801,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCouponTemplateDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCouponTemplateDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCouponTemplateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_coupon_template_detail_with_options_async(
         self,
@@ -1758,16 +1836,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCouponTemplateDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCouponTemplateDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCouponTemplateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_coupon_template_detail(
         self,
@@ -1823,16 +1895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCoupondeductProductCodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCoupondeductProductCodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCoupondeductProductCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_coupondeduct_product_code_with_options_async(
         self,
@@ -1862,16 +1928,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCoupondeductProductCodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCoupondeductProductCodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCoupondeductProductCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_coupondeduct_product_code(
         self,
@@ -1927,16 +1987,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCreditInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCreditInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCreditInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_credit_info_with_options_async(
         self,
@@ -1966,16 +2020,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCreditInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCreditInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCreditInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_credit_info(
         self,
@@ -2031,16 +2079,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCustomerOrdersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCustomerOrdersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCustomerOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_customer_orders_with_options_async(
         self,
@@ -2070,16 +2112,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetCustomerOrdersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetCustomerOrdersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCustomerOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_customer_orders(
         self,
@@ -2141,16 +2177,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetDailyBillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetDailyBillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetDailyBillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_daily_bill_with_options_async(
         self,
@@ -2186,16 +2216,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetDailyBillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetDailyBillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetDailyBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_daily_bill(
         self,
@@ -2253,16 +2277,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetInviteStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetInviteStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetInviteStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_invite_status_with_options_async(
         self,
@@ -2294,16 +2312,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetInviteStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetInviteStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetInviteStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_invite_status(
         self,
@@ -2365,16 +2377,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetMonthlyBillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetMonthlyBillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetMonthlyBillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_monthly_bill_with_options_async(
         self,
@@ -2410,16 +2416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetMonthlyBillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetMonthlyBillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetMonthlyBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_monthly_bill(
         self,
@@ -2475,16 +2475,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetUnassociatedCustomerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetUnassociatedCustomerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetUnassociatedCustomerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_unassociated_customer_with_options_async(
         self,
@@ -2514,16 +2508,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.GetUnassociatedCustomerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.GetUnassociatedCustomerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.GetUnassociatedCustomerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_unassociated_customer(
         self,
@@ -2583,16 +2571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.InviteSubAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.InviteSubAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.InviteSubAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def invite_sub_account_with_options_async(
         self,
@@ -2626,16 +2608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.InviteSubAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.InviteSubAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.InviteSubAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def invite_sub_account(
         self,
@@ -2703,16 +2679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.IssueCouponForCustomerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.IssueCouponForCustomerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.IssueCouponForCustomerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def issue_coupon_for_customer_with_options_async(
         self,
@@ -2750,16 +2720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.IssueCouponForCustomerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.IssueCouponForCustomerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.IssueCouponForCustomerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def issue_coupon_for_customer(
         self,
@@ -2812,16 +2776,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ListCountriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ListCountriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ListCountriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_countries_with_options_async(
         self,
@@ -2848,16 +2806,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ListCountriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ListCountriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ListCountriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_countries(self) -> agency_20221216_models.ListCountriesResponse:
         """
@@ -2921,16 +2873,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ListCouponUsageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ListCouponUsageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ListCouponUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_coupon_usage_with_options_async(
         self,
@@ -2972,16 +2918,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ListCouponUsageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ListCouponUsageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ListCouponUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_coupon_usage(
         self,
@@ -3008,6 +2948,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_coupon_usage_with_options_async(request, runtime)
+
+    def list_export_tasks_with_options(
+        self,
+        request: agency_20221216_models.ListExportTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.ListExportTasksResponse:
+        """
+        @summary 通用查询导出任务列表
+        
+        @param request: ListExportTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExportTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExportTasks',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.ListExportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_export_tasks_with_options_async(
+        self,
+        request: agency_20221216_models.ListExportTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.ListExportTasksResponse:
+        """
+        @summary 通用查询导出任务列表
+        
+        @param request: ListExportTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExportTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExportTasks',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.ListExportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_export_tasks(
+        self,
+        request: agency_20221216_models.ListExportTasksRequest,
+    ) -> agency_20221216_models.ListExportTasksResponse:
+        """
+        @summary 通用查询导出任务列表
+        
+        @param request: ListExportTasksRequest
+        @return: ListExportTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_export_tasks_with_options(request, runtime)
+
+    async def list_export_tasks_async(
+        self,
+        request: agency_20221216_models.ListExportTasksRequest,
+    ) -> agency_20221216_models.ListExportTasksResponse:
+        """
+        @summary 通用查询导出任务列表
+        
+        @param request: ListExportTasksRequest
+        @return: ListExportTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_export_tasks_with_options_async(request, runtime)
+
+    def query_reversed_deduction_history_with_options(
+        self,
+        request: agency_20221216_models.QueryReversedDeductionHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.QueryReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表
+        
+        @param request: QueryReversedDeductionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReversedDeductionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReversedDeductionHistory',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.QueryReversedDeductionHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_reversed_deduction_history_with_options_async(
+        self,
+        request: agency_20221216_models.QueryReversedDeductionHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.QueryReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表
+        
+        @param request: QueryReversedDeductionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReversedDeductionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReversedDeductionHistory',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.QueryReversedDeductionHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_reversed_deduction_history(
+        self,
+        request: agency_20221216_models.QueryReversedDeductionHistoryRequest,
+    ) -> agency_20221216_models.QueryReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表
+        
+        @param request: QueryReversedDeductionHistoryRequest
+        @return: QueryReversedDeductionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_reversed_deduction_history_with_options(request, runtime)
+
+    async def query_reversed_deduction_history_async(
+        self,
+        request: agency_20221216_models.QueryReversedDeductionHistoryRequest,
+    ) -> agency_20221216_models.QueryReversedDeductionHistoryResponse:
+        """
+        @summary 额度冲减明细列表
+        
+        @param request: QueryReversedDeductionHistoryRequest
+        @return: QueryReversedDeductionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_reversed_deduction_history_with_options_async(request, runtime)
 
     def quota_list_export_paged_with_options(
         self,
@@ -3039,16 +3203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.QuotaListExportPagedResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.QuotaListExportPagedResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.QuotaListExportPagedResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def quota_list_export_paged_with_options_async(
         self,
@@ -3080,16 +3238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.QuotaListExportPagedResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.QuotaListExportPagedResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.QuotaListExportPagedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def quota_list_export_paged(
         self,
@@ -3151,16 +3303,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ResendEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ResendEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ResendEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resend_email_with_options_async(
         self,
@@ -3192,16 +3338,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.ResendEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.ResendEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.ResendEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resend_email(
         self,
@@ -3265,16 +3405,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SetAccountInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SetAccountInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SetAccountInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_account_info_with_options_async(
         self,
@@ -3312,16 +3446,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SetAccountInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SetAccountInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SetAccountInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_account_info(
         self,
@@ -3381,16 +3509,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SetCreditLineResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SetCreditLineResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SetCreditLineResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_credit_line_with_options_async(
         self,
@@ -3424,16 +3546,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SetCreditLineResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SetCreditLineResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SetCreditLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_credit_line(
         self,
@@ -3493,16 +3609,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SetWarningThresholdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SetWarningThresholdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SetWarningThresholdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_warning_threshold_with_options_async(
         self,
@@ -3536,16 +3646,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SetWarningThresholdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SetWarningThresholdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SetWarningThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_warning_threshold(
         self,
@@ -3640,16 +3744,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SubscriptionBillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SubscriptionBillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SubscriptionBillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def subscription_bill_with_options_async(
         self,
@@ -3718,16 +3816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                agency_20221216_models.SubscriptionBillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                agency_20221216_models.SubscriptionBillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            agency_20221216_models.SubscriptionBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def subscription_bill(
         self,

@@ -1,3 +1,10 @@
+2025-11-05 Version: 1.7.0
+- Support API ExportReversedDeductionHistory.
+- Support API GetCommissionableProducts.
+- Support API ListExportTasks.
+- Support API QueryReversedDeductionHistory.
+
+
 2025-02-20 Version: 1.6.1
 - Update API IssueCouponForCustomer: add param IsUseBenefit.
 
