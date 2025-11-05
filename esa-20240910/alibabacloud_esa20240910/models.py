@@ -27571,6 +27571,173 @@ class ExportRecordsResponse(TeaModel):
         return self
 
 
+class GetApiSchemaUsageRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class GetApiSchemaUsageResponseBodyUsages(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+        usage: int = None,
+    ):
+        self.id = id
+        self.name = name
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
+class GetApiSchemaUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_usage: int = None,
+        request_id: str = None,
+        usages: List[GetApiSchemaUsageResponseBodyUsages] = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_usage = instance_usage
+        # Id of the request
+        self.request_id = request_id
+        self.usages = usages
+
+    def validate(self):
+        if self.usages:
+            for k in self.usages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_usage is not None:
+            result['InstanceUsage'] = self.instance_usage
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Usages'] = []
+        if self.usages is not None:
+            for k in self.usages:
+                result['Usages'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceUsage') is not None:
+            self.instance_usage = m.get('InstanceUsage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.usages = []
+        if m.get('Usages') is not None:
+            for k in m.get('Usages'):
+                temp_model = GetApiSchemaUsageResponseBodyUsages()
+                self.usages.append(temp_model.from_map(k))
+        return self
+
+
+class GetApiSchemaUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApiSchemaUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApiSchemaUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCacheReserveSpecificationResponseBody(TeaModel):
     def __init__(
         self,
@@ -60554,6 +60721,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        plan_type: str = None,
         remaining_expire_days: int = None,
         sort_by: str = None,
         sort_order: str = None,
@@ -60571,6 +60739,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        self.plan_type = plan_type
         self.remaining_expire_days = remaining_expire_days
         # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
         # 
@@ -60608,6 +60777,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
         if self.remaining_expire_days is not None:
             result['RemainingExpireDays'] = self.remaining_expire_days
         if self.sort_by is not None:
@@ -60630,6 +60801,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
         if m.get('RemainingExpireDays') is not None:
             self.remaining_expire_days = m.get('RemainingExpireDays')
         if m.get('SortBy') is not None:

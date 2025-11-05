@@ -1,3 +1,8 @@
+2025-11-05 Version: 2.30.0
+- Support API GetApiSchemaUsage.
+- Update API ListUserRatePlanInstances: add request parameters PlanType.
+
+
 2025-11-03 Version: 2.29.2
 - Update API CreateOriginProtection: add request parameters AutoConfirmIPList.
 - Update API GetOriginProtection: add response parameters Body.AutoConfirmIPList.
