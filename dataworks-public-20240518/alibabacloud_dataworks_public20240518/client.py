@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+import time
+
 from Tea.request import TeaRequest
-from Tea.exceptions import TeaException
+from Tea.exceptions import TeaException, UnretryableException
 from Tea.core import TeaCore
 from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_tea_fileform.client import Client as FileFormClient
 from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dataworks_public20240518 import models as dataworks_public_20240518_models
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_fileform import models as file_form_models
 
@@ -60,77 +62,163 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = TeaCore.do_action(_request)
-        resp_map = None
-        body_str = UtilClient.read_as_string(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                body_str = UtilClient.read_as_string(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await TeaCore.async_do_action(_request)
-        resp_map = None
-        body_str = await UtilClient.read_as_string_async(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                body_str = await UtilClient.read_as_string_async(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     def get_endpoint(
         self,
@@ -1050,7 +1138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateComponentResponse:
         """
-        @summary 创建组件
+        @summary Creates components.
         
         @param request: CreateComponentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1089,7 +1177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateComponentResponse:
         """
-        @summary 创建组件
+        @summary Creates components.
         
         @param request: CreateComponentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1127,7 +1215,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateComponentRequest,
     ) -> dataworks_public_20240518_models.CreateComponentResponse:
         """
-        @summary 创建组件
+        @summary Creates components.
         
         @param request: CreateComponentRequest
         @return: CreateComponentResponse
@@ -1140,7 +1228,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateComponentRequest,
     ) -> dataworks_public_20240518_models.CreateComponentResponse:
         """
-        @summary 创建组件
+        @summary Creates components.
         
         @param request: CreateComponentRequest
         @return: CreateComponentResponse
@@ -4378,7 +4466,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             create_resource_req.resource_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         create_resource_resp = self.create_resource_with_options(create_resource_req, runtime)
         return create_resource_resp
@@ -4461,7 +4549,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             create_resource_req.resource_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         create_resource_resp = await self.create_resource_with_options_async(create_resource_req, runtime)
         return create_resource_resp
@@ -4684,7 +4772,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             create_resource_file_req.resource_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         create_resource_file_resp = self.create_resource_file_with_options(create_resource_file_req, runtime)
         return create_resource_file_resp
@@ -4767,7 +4855,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             create_resource_file_req.resource_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         create_resource_file_resp = await self.create_resource_file_with_options_async(create_resource_file_req, runtime)
         return create_resource_file_resp
@@ -9754,7 +9842,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetComponentResponse:
         """
-        @summary 获取组件信息
+        @summary Gets component information.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
         
         @param request: GetComponentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9791,7 +9881,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetComponentResponse:
         """
-        @summary 获取组件信息
+        @summary Gets component information.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
         
         @param request: GetComponentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9827,7 +9919,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetComponentRequest,
     ) -> dataworks_public_20240518_models.GetComponentResponse:
         """
-        @summary 获取组件信息
+        @summary Gets component information.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
         
         @param request: GetComponentRequest
         @return: GetComponentResponse
@@ -9840,7 +9934,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetComponentRequest,
     ) -> dataworks_public_20240518_models.GetComponentResponse:
         """
-        @summary 获取组件信息
+        @summary Gets component information.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
         
         @param request: GetComponentRequest
         @return: GetComponentResponse
@@ -12334,7 +12430,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetPartitionResponse:
         """
-        @summary 获取数据表的分区详情
+        @summary Retrieves partition details for a data map table. Currently supports MaxCompute and HMS (EMR cluster) types only.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  This operation supports MaxCompute and HMS (EMR cluster) tables only.
         
         @param request: GetPartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12367,7 +12466,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetPartitionResponse:
         """
-        @summary 获取数据表的分区详情
+        @summary Retrieves partition details for a data map table. Currently supports MaxCompute and HMS (EMR cluster) types only.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  This operation supports MaxCompute and HMS (EMR cluster) tables only.
         
         @param request: GetPartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12399,7 +12501,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetPartitionRequest,
     ) -> dataworks_public_20240518_models.GetPartitionResponse:
         """
-        @summary 获取数据表的分区详情
+        @summary Retrieves partition details for a data map table. Currently supports MaxCompute and HMS (EMR cluster) types only.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  This operation supports MaxCompute and HMS (EMR cluster) tables only.
         
         @param request: GetPartitionRequest
         @return: GetPartitionResponse
@@ -12412,7 +12517,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetPartitionRequest,
     ) -> dataworks_public_20240518_models.GetPartitionResponse:
         """
-        @summary 获取数据表的分区详情
+        @summary Retrieves partition details for a data map table. Currently supports MaxCompute and HMS (EMR cluster) types only.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  This operation supports MaxCompute and HMS (EMR cluster) tables only.
         
         @param request: GetPartitionRequest
         @return: GetPartitionResponse
@@ -14302,7 +14410,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             import_certificate_req.certificate_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         import_certificate_resp = self.import_certificate_with_options(import_certificate_req, runtime)
         return import_certificate_resp
@@ -14385,7 +14493,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             import_certificate_req.certificate_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         import_certificate_resp = await self.import_certificate_with_options_async(import_certificate_req, runtime)
         return import_certificate_resp
@@ -15044,7 +15152,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListComponentsResponse:
         """
-        @summary 获取组件列表
+        @summary Retrieves a list of components.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15085,7 +15195,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListComponentsResponse:
         """
-        @summary 获取组件列表
+        @summary Retrieves a list of components.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15125,7 +15237,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListComponentsRequest,
     ) -> dataworks_public_20240518_models.ListComponentsResponse:
         """
-        @summary 获取组件列表
+        @summary Retrieves a list of components.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
@@ -15138,7 +15252,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListComponentsRequest,
     ) -> dataworks_public_20240518_models.ListComponentsResponse:
         """
-        @summary 获取组件列表
+        @summary Retrieves a list of components.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
@@ -17382,7 +17498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages.
         
         @param request: ListDeploymentPackagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17435,7 +17551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages.
         
         @param request: ListDeploymentPackagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17487,7 +17603,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDeploymentPackagesRequest,
     ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages.
         
         @param request: ListDeploymentPackagesRequest
         @return: ListDeploymentPackagesResponse
@@ -17500,7 +17616,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDeploymentPackagesRequest,
     ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages.
         
         @param request: ListDeploymentPackagesRequest
         @return: ListDeploymentPackagesResponse
@@ -18898,7 +19014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
         """
-        @summary 通过发布流程的ID获取发布内容
+        @summary Queries the information about deployment objects by deployment process ID.
         
         @param request: ListPipelineRunItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18931,7 +19047,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
         """
-        @summary 通过发布流程的ID获取发布内容
+        @summary Queries the information about deployment objects by deployment process ID.
         
         @param request: ListPipelineRunItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18963,7 +19079,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListPipelineRunItemsRequest,
     ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
         """
-        @summary 通过发布流程的ID获取发布内容
+        @summary Queries the information about deployment objects by deployment process ID.
         
         @param request: ListPipelineRunItemsRequest
         @return: ListPipelineRunItemsResponse
@@ -18976,7 +19092,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListPipelineRunItemsRequest,
     ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
         """
-        @summary 通过发布流程的ID获取发布内容
+        @summary Queries the information about deployment objects by deployment process ID.
         
         @param request: ListPipelineRunItemsRequest
         @return: ListPipelineRunItemsResponse
@@ -19492,6 +19608,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
+    def list_resource_group_associate_projects_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupAssociateProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListResourceGroupAssociateProjectsResponse:
+        """
+        @summary Query the list of workspaces with which a resource group is associated
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  *Make sure that the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.
+        
+        @param request: ListResourceGroupAssociateProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupAssociateProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupAssociateProjects',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupAssociateProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_group_associate_projects_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupAssociateProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListResourceGroupAssociateProjectsResponse:
+        """
+        @summary Query the list of workspaces with which a resource group is associated
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  *Make sure that the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.
+        
+        @param request: ListResourceGroupAssociateProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupAssociateProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupAssociateProjects',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupAssociateProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_group_associate_projects(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupAssociateProjectsRequest,
+    ) -> dataworks_public_20240518_models.ListResourceGroupAssociateProjectsResponse:
+        """
+        @summary Query the list of workspaces with which a resource group is associated
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  *Make sure that the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.
+        
+        @param request: ListResourceGroupAssociateProjectsRequest
+        @return: ListResourceGroupAssociateProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_group_associate_projects_with_options(request, runtime)
+
+    async def list_resource_group_associate_projects_async(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupAssociateProjectsRequest,
+    ) -> dataworks_public_20240518_models.ListResourceGroupAssociateProjectsResponse:
+        """
+        @summary Query the list of workspaces with which a resource group is associated
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  *Make sure that the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.
+        
+        @param request: ListResourceGroupAssociateProjectsRequest
+        @return: ListResourceGroupAssociateProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_group_associate_projects_with_options_async(request, runtime)
+
+    def list_resource_group_metric_data_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListResourceGroupMetricDataResponse:
+        """
+        @summary 获取指定资源组的监控指标数据
+        
+        @param request: ListResourceGroupMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupMetricDataResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_name):
+            body['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupMetricData',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_group_metric_data_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListResourceGroupMetricDataResponse:
+        """
+        @summary 获取指定资源组的监控指标数据
+        
+        @param request: ListResourceGroupMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupMetricDataResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_name):
+            body['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupMetricData',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_group_metric_data(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupMetricDataRequest,
+    ) -> dataworks_public_20240518_models.ListResourceGroupMetricDataResponse:
+        """
+        @summary 获取指定资源组的监控指标数据
+        
+        @param request: ListResourceGroupMetricDataRequest
+        @return: ListResourceGroupMetricDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_group_metric_data_with_options(request, runtime)
+
+    async def list_resource_group_metric_data_async(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupMetricDataRequest,
+    ) -> dataworks_public_20240518_models.ListResourceGroupMetricDataResponse:
+        """
+        @summary 获取指定资源组的监控指标数据
+        
+        @param request: ListResourceGroupMetricDataRequest
+        @return: ListResourceGroupMetricDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_group_metric_data_with_options_async(request, runtime)
+
     def list_resource_groups_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.ListResourceGroupsRequest,
@@ -19898,7 +20242,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTablesResponse:
         """
-        @summary 查询数据表列表
+        @summary Queries a list of tables in Data Map. For data source types that do not support schemas, you can call this API operation to query a list of tables in a specific database. For data source types that support schemas, you can call this API operation to query a list of tables in a specific database, MaxCompute project, or schema. Only the basic information about tables is returned. The information about technical metadata and business metadata is not returned.
         
         @param tmp_req: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19935,7 +20279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTablesResponse:
         """
-        @summary 查询数据表列表
+        @summary Queries a list of tables in Data Map. For data source types that do not support schemas, you can call this API operation to query a list of tables in a specific database. For data source types that support schemas, you can call this API operation to query a list of tables in a specific database, MaxCompute project, or schema. Only the basic information about tables is returned. The information about technical metadata and business metadata is not returned.
         
         @param tmp_req: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19971,7 +20315,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTablesRequest,
     ) -> dataworks_public_20240518_models.ListTablesResponse:
         """
-        @summary 查询数据表列表
+        @summary Queries a list of tables in Data Map. For data source types that do not support schemas, you can call this API operation to query a list of tables in a specific database. For data source types that support schemas, you can call this API operation to query a list of tables in a specific database, MaxCompute project, or schema. Only the basic information about tables is returned. The information about technical metadata and business metadata is not returned.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -19984,7 +20328,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTablesRequest,
     ) -> dataworks_public_20240518_models.ListTablesResponse:
         """
-        @summary 查询数据表列表
+        @summary Queries a list of tables in Data Map. For data source types that do not support schemas, you can call this API operation to query a list of tables in a specific database. For data source types that support schemas, you can call this API operation to query a list of tables in a specific database, MaxCompute project, or schema. Only the basic information about tables is returned. The information about technical metadata and business metadata is not returned.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -26970,7 +27314,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             update_resource_req.resource_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         update_resource_resp = self.update_resource_with_options(update_resource_req, runtime)
         return update_resource_resp
@@ -27053,7 +27397,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             update_resource_req.resource_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         update_resource_resp = await self.update_resource_with_options_async(update_resource_req, runtime)
         return update_resource_resp

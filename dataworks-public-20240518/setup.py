@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_dataworks-public20240518.
+setup module for alibabacloud_dataworks_public20240518.
 
-Created on 09/10/2025
+Created on 05/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_dataworks_public20240518"
-NAME = "alibabacloud_dataworks-public20240518" or "alibabacloud-package"
+NAME = "alibabacloud_dataworks_public20240518" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud dataworks-public (20240518) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

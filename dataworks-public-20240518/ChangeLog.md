@@ -1,3 +1,13 @@
+2025-11-05 Version: 7.5.0
+- Support API ListResourceGroupAssociateProjects.
+- Support API ListResourceGroupMetricData.
+- Update API GetCreateWorkflowInstancesResult: add response parameters Body.Result.WorkflowTaskInstanceIds.
+- Update API GetWorkflowInstance: add response parameters Body.WorkflowInstance.Owner.
+- Update API GetWorkflowInstance: add response parameters Body.WorkflowInstance.WorkflowTaskInstanceId.
+- Update API ListWorkflowInstances: add response parameters Body.PagingInfo.WorkflowInstances.$.Owner.
+- Update API ListWorkflowInstances: add response parameters Body.PagingInfo.WorkflowInstances.$.WorkflowTaskInstanceId.
+
+
 2025-10-09 Version: 7.4.0
 - Support API CreateComponent.
 - Support API DeleteComponent.

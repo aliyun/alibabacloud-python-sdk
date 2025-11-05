@@ -3057,14 +3057,15 @@ class AddEntityIntoMetaCollectionRequest(TeaModel):
         meta_collection_id: str = None,
         remark: str = None,
     ):
-        # The entity ID. Currently, entities can only be tables. You can call the ListTables operation to query the ID.
+        # The entity ID. Currently, only table entities are supported. You can call the ListTables operation to obtain the ID.
         # 
         # This parameter is required.
         self.id = id
-        # The collection ID. You can call the ListMetaCollections operation to query the ID.
+        # The collection ID. You can refer to the return result of the ListMetaCollections operation.
         # 
         # This parameter is required.
         self.meta_collection_id = meta_collection_id
+        # Remarks added when adding the entity to a collection. This parameter is currently valid only for album collections.
         self.remark = remark
 
     def validate(self):
@@ -3100,7 +3101,7 @@ class AddEntityIntoMetaCollectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3458,7 +3459,7 @@ class BatchUpdateTasksRequestTasksDataSource(TeaModel):
         self,
         name: str = None,
     ):
-        # The name of the data source.
+        # The data source name.
         self.name = name
 
     def validate(self):
@@ -3490,9 +3491,9 @@ class BatchUpdateTasksRequestTasksRuntimeResource(TeaModel):
     ):
         # The default number of compute units (CUs) configured for task running.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The image ID used in the task runtime configuration.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the scheduling resource group used in the task runtime configuration.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3569,9 +3570,9 @@ class BatchUpdateTasksRequestTasksTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The cron expression. Takes effect when type=Scheduler.
         self.cron = cron
-        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss`.
+        # The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
@@ -3579,12 +3580,12 @@ class BatchUpdateTasksRequestTasksTrigger(TeaModel):
         # *   Skip
         # *   Normal
         self.recurrence = recurrence
-        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss`.
+        # The time when periodic triggering takes effect. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # *   Scheduler: periodically triggered
+        # *   Manual
         self.type = type
 
     def validate(self):
@@ -3640,14 +3641,14 @@ class BatchUpdateTasksRequestTasks(TeaModel):
         timeout: int = None,
         trigger: BatchUpdateTasksRequestTasksTrigger = None,
     ):
-        # The information about the associated data source.
+        # Associated data source information.
         self.data_source = data_source
         # The description.
         self.description = description
-        # The environment of the workspace. Valid values:
+        # The project environment.
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod: Production
+        # *   Dev: Development
         self.env_type = env_type
         # The task ID.
         # 
@@ -3657,23 +3658,23 @@ class BatchUpdateTasksRequestTasks(TeaModel):
         self.name = name
         # The account ID of the task owner.
         self.owner = owner
-        # The rerun interval. Unit: seconds.
+        # The retry interval in seconds.
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+        # *   AllDenied: The task cannot be rerun.
+        # *   FailureAllowed: The task can be rerun only after it fails.
+        # *   AllAllowed: The task can always be rerun.
         self.rerun_mode = rerun_mode
-        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+        # The number of retry attempts. Takes effect when the task is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The configurations of the runtime environment, such as the resource group information.
+        # Runtime environment configurations, such as resource group information.
         self.runtime_resource = runtime_resource
-        # The tags.
+        # The list of task tags.
         self.tags = tags
-        # The timeout period of task running. Unit: seconds.
+        # The task execution timeout in seconds. The value should be greater than 3600.
         self.timeout = timeout
-        # The trigger method.
+        # The task trigger configurations.
         self.trigger = trigger
 
     def validate(self):
@@ -3769,7 +3770,7 @@ class BatchUpdateTasksRequest(TeaModel):
     ):
         # The remarks.
         self.comment = comment
-        # The tasks.
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -3812,7 +3813,7 @@ class BatchUpdateTasksShrinkRequest(TeaModel):
     ):
         # The remarks.
         self.comment = comment
-        # The tasks.
+        # The list of tasks.
         self.tasks_shrink = tasks_shrink
 
     def validate(self):
@@ -4838,12 +4839,22 @@ class CreateBusinessRequest(TeaModel):
         project_identifier: str = None,
         use_type: str = None,
     ):
+        # The name of the workflow. Workflow names must be unique within the same workspace.
+        # 
         # This parameter is required.
         self.business_name = business_name
+        # The description of the workflow.
         self.description = description
+        # The Alibaba Cloud account ID of the person responsible for the workflow. You can view the account ID by hovering over the user avatar in the top-right corner of the [DataWorks console](https://workbench.data.aliyun.com/console). If this parameter is not specified, the account ID of the API caller is used by default.
         self.owner = owner
+        # The ID of the DataWorks workspace. You can view the workspace ID on the workspace management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace, This is the identifier shown in the workspace switch at the top of the Data Studio page. Either this parameter or ProjectId must be specified to determine which DataWorks project this API call operates on.
         self.project_identifier = project_identifier
+        # The module to which the workflow belongs. Valid values:
+        # 
+        # *   NORMAL: Data Studio
+        # *   MANUAL_BIZ: Manually triggered workflow
         self.use_type = use_type
 
     def validate(self):
@@ -4896,11 +4907,25 @@ class CreateBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The workflow ID.
         self.business_id = business_id
+        # The error code.
+        # 
+        # *   Request succeeded: The ErrorCode field is not returned.
+        # *   Request failed: The ErrorCode field is returned.
+        # 
+        # For more information, see the error code section.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique ID of this request. You can troubleshoot issues based on the ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4991,9 +5016,14 @@ class CreateComponentRequest(TeaModel):
         project_id: int = None,
         spec: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The DataWorks workspace ID. You can call the [ListProjects](https://help.aliyun.com/document_detail/2852607.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec information for this UDF function. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -5031,6 +5061,7 @@ class CreateComponentResponseBody(TeaModel):
         component_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the dataset acceleration component. To obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
         self.component_id = component_id
         # Id of the request
         self.request_id = request_id
@@ -10790,42 +10821,154 @@ class CreateFileRequest(TeaModel):
         stop: bool = None,
         timeout: int = None,
     ):
+        # The advanced settings of the node.
+        # 
+        # This parameter corresponds to the Advanced Settings section in the right-side navigation pane on the configuration tab of EMR Spark Streaming and EMR Streaming SQL nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # Only EMR Spark Streaming and EMR Streaming SQL nodes support this parameter. The value must be in the JSON format.
         self.advanced_settings = advanced_settings
+        # Specifies whether to apply the scheduling configuration immediately after the file is published.
         self.apply_schedule_immediately = apply_schedule_immediately
+        # Specifies whether to enable automatic parsing for the file. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter corresponds to the Analyze Code setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
+        # The interval at which the node is automatically rerun after a failure. Unit: milliseconds. Maximum value: 1800000 milliseconds (30 minutes).
+        # 
+        # This parameter corresponds to the Rerun interval parameter in Properties > Schedule > Auto Rerun upon Failure for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console). In the console, the unit of the rerun interval is minutes. Convert the time unit when you call this operation.
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
+        # The number of automatic reruns after an error occurs. Maximum value: 10.
         self.auto_rerun_times = auto_rerun_times
+        # The data source used when the task published from the file is run.
+        # 
+        # You can call the [UpdateDataSource](https://help.aliyun.com/document_detail/211432.html) operation to query the available data sources in the workspace.
         self.connection_name = connection_name
+        # The file code content. Different code types (fileType) have different code formats. In Operation Center, you can find a task of the corresponding type, right-click it, and select View Code to view the specific code format.
         self.content = content
+        # Specifies whether to automatically create the directory specified by FileFolderPath if the directory does not exist. Valid values:
+        # 
+        # *   true: If the directory does not exist, automatically create it.
+        # *   false: If the directory does not exist, the call fails.
         self.create_folder_if_not_exists = create_folder_if_not_exists
+        # The cron expression for scheduled execution. This parameter corresponds to the Cron Expression setting in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure Scheduling Cycle and Scheduled Time, DataWorks automatically generates a cron expression.
+        # 
+        # Examples:
+        # 
+        # *   Scheduled at 05:30 every day: `00 30 05 * * ?`
+        # *   Scheduled at the 15th minute of every hour: `00 15 00-23/1 * * ?`
+        # *   Scheduled every 10 minutes: `00 00/10 * * * ?`
+        # *   Scheduled every 10 minutes between 08:00 and 17:00 every day: `00 00-59/10 8-17 * * * ?`
+        # *   Scheduled at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
+        # *   Scheduled every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
+        # *   Scheduled at 00:05 on every Tuesday and Friday: `00 05 00 * * 2,5`
+        # 
+        # Due to the rules of the DataWorks scheduling system, cron expressions have the following restrictions:
+        # 
+        # *   The minimum scheduling interval is 5 minutes.
+        # *   The earliest scheduling time each day is 00:05.
         self.cron_express = cron_express
+        # The type of scheduling cycle. Valid values: NOT_DAY (minute, hour) and DAY (day, week, month).
+        # 
+        # This parameter corresponds to the Scheduling Cycle setting in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.cycle_type = cycle_type
+        # The IDs of the nodes on which the current node depends. This parameter takes effect only when the DependentType parameter is set to USER_DEFINE. Separate multiple node IDs with commas (,).
+        # 
+        # This parameter corresponds to the Other Nodes option in Properties > Dependencies > Cross-cycle Dependency (Original Previous-cycle Dependency) for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.dependent_node_id_list = dependent_node_id_list
+        # The dependency mode on the previous cycle. Valid values:
+        # 
+        # *   SELF: Depends on the current node.
+        # *   CHILD: Depends on the child nodes.
+        # *   USER_DEFINE: Depends on other nodes.
+        # *   NONE: No dependencies. Does not depend on the previous cycle.
+        # *   USER_DEFINE_AND_SELF: Depends on both the current node and other nodes in the previous cycle.
+        # *   CHILD_AND_SELF: Depends on both the current node and its child nodes in the previous cycle.
         self.dependent_type = dependent_type
+        # The timestamp (in milliseconds) when automatic scheduling stops.
+        # 
+        # This parameter corresponds to the end time of Effective Period in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.end_effect_date = end_effect_date
+        # The description of the file.
         self.file_description = file_description
+        # The file path.
         self.file_folder_path = file_folder_path
+        # The file name.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The code type of the file. Different file types have different code. For more information, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html). You can call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) operation to query the code types of files.
+        # 
         # This parameter is required.
         self.file_type = file_type
+        # Specifies whether to inherit the dry-run status from the previous cycle. Valid values:
+        # 
+        # *   true: Inherit the dry-run status from the previous cycle.
+        # *   false: Do not inherit the dry-run status from the previous cycle.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        # The custom image ID.
         self.image_id = image_id
+        # The output names of the ancestor nodes on which the current node depends. Separate multiple output names with commas (,).
+        # 
+        # This parameter corresponds to the Output Name of Ancestor Node setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input_list = input_list
+        # The input context parameters of the node. The value must be in the JSON format. For more information about the parameter structure, see the InputContextParameterList parameter in the response parameters of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
+        # 
+        # This parameter corresponds to the Input Parameters setting in Properties > Input and Output Parameters for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input_parameters = input_parameters
+        # The output context parameters of the node. The value must be in the JSON format. For more information about the parameter structure, see the OutputContextParameterList parameter in the response parameters of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
+        # 
+        # This parameter corresponds to the Output Parameters setting in Properties > Input and Output Parameters for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output_parameters = output_parameters
+        # The Alibaba Cloud account ID of the file owner. If this parameter is not specified, the Alibaba Cloud account ID of the caller is used by default.
         self.owner = owner
+        # The scheduling parameters of the node. Separate multiple parameters with spaces.
+        # 
+        # This parameter corresponds to the Scheduling Parameter setting in Properties for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
         self.para_value = para_value
+        # The DataWorks workspace ID. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
+        # The DataWorks workspace name. To obtain the workspace name, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+        # 
+        # You must specify either this parameter or ProjectId to identify the target DataWorks workspace for this API call.
         self.project_identifier = project_identifier
+        # The rerun policy. Valid values:
+        # 
+        # *   ALL_ALLOWED: Reruns are allowed regardless of whether the task succeeds or fails.
+        # *   FAILURE_ALLOWED: Reruns are allowed only when the task fails.
+        # *   ALL_DENIED: Reruns are not allowed regardless of whether the task succeeds or fails.
+        # 
+        # This parameter corresponds to the Support for Rerun setting in Scheduling > Scheduling Policies for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
+        # This parameter is deprecated.
         self.resource_group_id = resource_group_id
-        # The resource group for the task deployed from the file. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page. In the left-side navigation pane, click **Resource Group** to obtain the ID of the resource group associated with the current workspace.
+        # The resource group for the task published from the file. To obtain the ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console), navigate to the workspace configuration page, and click Resource Groups in the left-side navigation pane to view the IDs of resource groups bound to the current workspace.
         self.resource_group_identifier = resource_group_identifier
+        # The scheduling type. Valid values:
+        # 
+        # *   NORMAL: Normal scheduled task.
+        # *   MANUAL: Manually triggered node. Not scheduled for daily execution. Corresponds to nodes in manually triggered workflows.
+        # *   PAUSE: Paused task.
+        # *   SKIP: Dry-run task. Scheduled for daily execution but is directly marked as successful when scheduling starts.
         self.scheduler_type = scheduler_type
+        # The timestamp (in milliseconds) when automatic scheduling starts.
+        # 
+        # This parameter corresponds to the start time of Effective Period in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_effect_date = start_effect_date
+        # Specifies whether to immediately run the node after the node is deployed.
+        # 
+        # This parameter corresponds to the Start Method setting in Settings > Schedule in the right-side navigation pane on the configuration tab of EMR Spark Streaming and EMR Streaming SQL nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_immediately = start_immediately
+        # Specifies whether to skip execution. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter corresponds to the Skip Execution option in Properties > Schedule > Recurrence for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
+        # The timeout settings for scheduling configuration.
         self.timeout = timeout
 
     def validate(self):
@@ -10990,11 +11133,20 @@ class CreateFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The file ID.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # *   true: The call succeeded.
+        # *   false: The call failed.
         self.success = success
 
     def validate(self):
@@ -11085,9 +11237,13 @@ class CreateFolderRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The path of the folder.
+        # 
         # This parameter is required.
         self.folder_path = folder_path
+        # The ID of the DataWorks workspace. You can obtain the workspace ID from the workspace configuration page in the DataWorks console. Either this parameter or **ProjectIdentifier** must be specified to determine which DataWorks workspace this API call operates on.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can obtain the workspace name from the workspace configuration page in the DataWorks console. Either this parameter or **ProjectId** must be specified to determine which DataWorks workspace this API call operates on.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -11128,11 +11284,21 @@ class CreateFolderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The unique identifier of the newly created folder.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used for troubleshooting when errors occur.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # true
+        # 
+        # false
         self.success = success
 
     def validate(self):
@@ -11338,7 +11504,9 @@ class CreateLineageRelationshipRequest(TeaModel):
         src_entity: LineageEntity = None,
         task: LineageTask = None,
     ):
+        # The destination entity.
         self.dst_entity = dst_entity
+        # The source entity.
         self.src_entity = src_entity
         # The task information.
         self.task = task
@@ -11386,7 +11554,9 @@ class CreateLineageRelationshipShrinkRequest(TeaModel):
         src_entity_shrink: str = None,
         task_shrink: str = None,
     ):
+        # The destination entity.
         self.dst_entity_shrink = dst_entity_shrink
+        # The source entity.
         self.src_entity_shrink = src_entity_shrink
         # The task information.
         self.task_shrink = task_shrink
@@ -11428,7 +11598,9 @@ class CreateLineageRelationshipResponseBody(TeaModel):
     ):
         # The lineage ID.
         self.id = id
+        # The request ID. The unique identifier of a request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -11508,11 +11680,20 @@ class CreateMetaCollectionRequest(TeaModel):
         parent_id: str = None,
         type: str = None,
     ):
+        # The collection description.
         self.description = description
+        # The ID of the collection.
+        # 
         # This parameter is required.
         self.name = name
-        # The ID of the collection of an ancestor node.
+        # The parent collection ID.
         self.parent_id = parent_id
+        # The collection name.
+        # 
+        # *   Category
+        # *   Album
+        # *   AlbumCategory: Album subcategory.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -11554,9 +11735,9 @@ class CreateMetaCollectionResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The ID of the created collection.
+        # The collection ID returned after a successful creation.
         self.id = id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13628,23 +13809,44 @@ class CreateUdfFileRequest(TeaModel):
         return_value: str = None,
         udf_description: str = None,
     ):
+        # The class name where the function is defined, corresponding to the class name field in the Create Function form.
+        # 
         # This parameter is required.
         self.class_name = class_name
+        # The command format for invoking the function, corresponding to the command format field in the Create Function form.
         self.cmd_description = cmd_description
+        # Specifies whether to automatically create the directory if the specified path (FileFolderPath) does not exist. Valid values:
+        # 
+        # *   true: Automatically creates the directory if it does not exist.
+        # *   false: The call fails if the directory does not exist.
         self.create_folder_if_not_exists = create_folder_if_not_exists
+        # An example demonstrating how to call the function, corresponding to the example field in the Create Function form.
         self.example = example
+        # The path to the folder containing the function file.
+        # 
         # This parameter is required.
         self.file_folder_path = file_folder_path
+        # The function name.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The function category, corresponding to the function type field in the Create Function form. Valid values: MATH (mathematical functions), AGGREGATE (aggregate functions), STRING (string processing functions), DATE (date processing functions), ANALYTIC (window functions), and OTHER (other functions).
+        # 
         # This parameter is required.
         self.function_type = function_type
+        # The function parameter description, corresponding to the parameter description field in the Create Function form.
         self.parameter_description = parameter_description
+        # The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces.
         self.project_identifier = project_identifier
+        # A comma-separated list of resource names referenced by the function, corresponding to the resource list field in the Create Function form.
+        # 
         # This parameter is required.
         self.resources = resources
+        # The return value description, corresponding to the return value field in the Create Function form.
         self.return_value = return_value
+        # The function purpose description, corresponding to the description field in the Create Function form.
         self.udf_description = udf_description
 
     def validate(self):
@@ -13725,11 +13927,20 @@ class CreateUdfFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The file ID after successful creation.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique ID for this request. Use this ID for troubleshooting if an error occurs.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -13937,7 +14148,7 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAlert(TeaModel):
         # The alert notification method. Valid values:
         # 
         # *   Sms: SMS only.
-        # *   Mail: mail only.
+        # *   Mail: Mail only.
         # *   SmsMail: SMS and mail.
         self.notice_type = notice_type
         # The alerting policy. Valid values:
@@ -13977,9 +14188,9 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis(TeaModel):
         blocked: bool = None,
         enabled: bool = None,
     ):
-        # Specifies whether to block execution if the analysis fails. Required when Type is set to SupplementData.
+        # Specifies whether to block execution if the analysis fails. Required when Type = SupplementData.
         self.blocked = blocked
-        # Specifies whether to enable the analysis feature. Required when Type is set to SupplementData.
+        # Specifies whether to enable the analysis feature. Required when Type = SupplementData.
         self.enabled = enabled
 
     def validate(self):
@@ -14014,7 +14225,7 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The end time of running. Configure this parameter in the `hh:mm:ss` format (24-hour clock). This parameter is required if you configure the RunPolicy parameter.
+        # The end time of running. Configure this parameter in the `hh:mm:ss` format (24-hour clock). This parameter is required if you configure the RunPolicy parameter. Valid values:
         self.end_time = end_time
         # Specifies whether a task whose scheduled run time is in the future can be run immediately. Default value: false.
         self.immediately = immediately
@@ -14078,7 +14289,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
     ):
         # The alert settings.
         self.alert = alert
-        # The analysis configuration. Required when Type is set to SupplementData.
+        # The analysis configuration. Required when Type = SupplementData.
         self.analysis = analysis
         # The IDs of the projects not to run.
         self.exclude_project_ids = exclude_project_ids
@@ -14118,7 +14329,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         self.root_task_ids = root_task_ids
         # The run policy. If the parameter is left empty, the task configuration is used.
         self.run_policy = run_policy
-        # Custom scheduling resource group ID. If left empty, the task configuration is used.
+        # The custom scheduling resource group ID. If left empty, the task configuration is used.
         self.runtime_resource = runtime_resource
 
     def validate(self):
@@ -14354,7 +14565,7 @@ class CreateWorkflowInstancesRequest(TeaModel):
         self.comment = comment
         # The runtime configuration.
         self.default_run_properties = default_run_properties
-        # The project environment.
+        # The project environment. Valid values:
         # 
         # *   Prod
         # *   Dev
@@ -14381,9 +14592,10 @@ class CreateWorkflowInstancesRequest(TeaModel):
         # The type of the workflow instance. Valid values:
         # 
         # *   SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
-        # *   ManualWorkflow: Manual workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
+        # *   ManualWorkflow: Manually triggered workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
         # *   Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
         # *   SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
+        # *   TriggerWorkflow: Triggered Workflow You must specify the WorkflowId of the triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow runs.
         # 
         # This parameter is required.
         self.type = type
@@ -14391,7 +14603,7 @@ class CreateWorkflowInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The workflow parameters. This parameter takes effect only when you set the `WorkflowId` parameter to a value other than 1. If your workflow is an auto triggered workflow, configure this parameter in the key=value format. The parameters that you configure in this parameter have a lower priority than task parameters. If your workflow is a manually triggered workflow, configure this parameter in the JSON format. The parameters that you configure in this parameter have a higher priority than task parameters.
+        # The workflow parameters. This parameter takes effect when a specific workflow is specified (`WorkflowId != 1`). For scheduled workflows and triggered workflows, the format is key=value, and these parameters have lower priority than task parameters. For manual workflows, the format is JSON, and these parameters have higher priority than task parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -14499,7 +14711,7 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         self.comment = comment
         # The runtime configuration.
         self.default_run_properties_shrink = default_run_properties_shrink
-        # The project environment.
+        # The project environment. Valid values:
         # 
         # *   Prod
         # *   Dev
@@ -14526,9 +14738,10 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         # The type of the workflow instance. Valid values:
         # 
         # *   SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
-        # *   ManualWorkflow: Manual workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
+        # *   ManualWorkflow: Manually triggered workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
         # *   Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
         # *   SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
+        # *   TriggerWorkflow: Triggered Workflow You must specify the WorkflowId of the triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow runs.
         # 
         # This parameter is required.
         self.type = type
@@ -14536,7 +14749,7 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The workflow parameters. This parameter takes effect only when you set the `WorkflowId` parameter to a value other than 1. If your workflow is an auto triggered workflow, configure this parameter in the key=value format. The parameters that you configure in this parameter have a lower priority than task parameters. If your workflow is a manually triggered workflow, configure this parameter in the JSON format. The parameters that you configure in this parameter have a higher priority than task parameters.
+        # The workflow parameters. This parameter takes effect when a specific workflow is specified (`WorkflowId != 1`). For scheduled workflows and triggered workflows, the format is key=value, and these parameters have lower priority than task parameters. For manual workflows, the format is JSON, and these parameters have higher priority than task parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -14794,9 +15007,13 @@ class DeleteBusinessRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID of a workflow by name.
+        # 
         # This parameter is required.
         self.business_id = business_id
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -14836,10 +15053,18 @@ class DeleteBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used to troubleshoot issues when an error occurs.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -16421,9 +16646,17 @@ class DeleteFileRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The file ID. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain the folder ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
+        # 
+        # You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the name.
+        # 
+        # You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -16464,11 +16697,22 @@ class DeleteFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # If the file has already been submitted, the DeleteFile operation also triggers an asynchronous deletion process in the scheduling system. You must use the DeploymentId returned by the DeleteFile operation to call GetDeployment and poll the status of the triggered asynchronous deletion process.
+        # 
+        # If this field is empty, the file has been deleted and no further polling is required.
         self.deployment_id = deployment_id
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used for troubleshooting when an error occurs.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -16559,9 +16803,13 @@ class DeleteFolderRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The folder ID. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
+        # 
         # This parameter is required.
         self.folder_id = folder_id
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -16601,10 +16849,18 @@ class DeleteFolderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used for troubleshooting when an error occurs.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -16807,7 +17063,7 @@ class DeleteLineageRelationshipRequest(TeaModel):
         self,
         id: str = None,
     ):
-        # The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+        # The lineage ID. You can refer to the ListLineageRelationships operation.
         # 
         # This parameter is required.
         self.id = id
@@ -16838,7 +17094,12 @@ class DeleteLineageRelationshipResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -18138,10 +18399,15 @@ class DeployFileRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The description of the deployment.
         self.comment = comment
+        # The file ID. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain the ID. You need to configure either this parameter or the NodeId parameter.
         self.file_id = file_id
+        # The task ID of the file to be deployed in the scheduling system. You need to configure either this parameter or the FileId parameter.
         self.node_id = node_id
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -18190,11 +18456,20 @@ class DeployFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The deployment package ID. You must specify this ID as a parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -18576,11 +18851,20 @@ class EstablishRelationTableToBusinessRequest(TeaModel):
         project_identifier: str = None,
         table_guid: str = None,
     ):
+        # The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to obtain the workflow ID.
+        # 
         # This parameter is required.
         self.business_id = business_id
+        # The ID of the folder. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) or [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
         self.folder_id = folder_id
+        # The ID of the DataWorks workspace. You can click the wrench icon in the top-right corner to access the workspace management page and view the ID.
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace. This is the identifier shown in the workspace switcher at the top of the Data Studio page.
+        # 
+        # Either this parameter or ProjectId must be specified to determine which DataWorks workspace this API call operates on.
         self.project_identifier = project_identifier
+        # The UUID of the table. You can call the [SearchMetaTables](https://help.aliyun.com/document_detail/173919.html) operation to obtain the table UUID.
+        # 
         # This parameter is required.
         self.table_guid = table_guid
 
@@ -18629,10 +18913,18 @@ class EstablishRelationTableToBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique ID of this request. You can use this ID to troubleshoot issues if errors occur.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -20298,9 +20590,13 @@ class GetBusinessRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to obtain the folder ID.
+        # 
         # This parameter is required.
         self.business_id = business_id
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -20341,11 +20637,17 @@ class GetBusinessResponseBodyData(TeaModel):
         project_id: str = None,
         use_type: str = None,
     ):
+        # The workflow ID.
         self.business_id = business_id
+        # The name of the workflow. Workflow names must be unique within the same workspace.
         self.business_name = business_name
+        # The description of the workflow.
         self.description = description
+        # The Alibaba Cloud account ID of the workflow owner.
         self.owner = owner
+        # The ID of the workspace where the workflow resides.
         self.project_id = project_id
+        # The functional module to which the workflow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manually Triggered Workflow)
         self.use_type = use_type
 
     def validate(self):
@@ -20398,11 +20700,20 @@ class GetBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details of the workflow.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used for troubleshooting when an error occurs.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -20493,15 +20804,15 @@ class GetCatalogRequest(TeaModel):
         self,
         id: str = None,
     ):
-        # Data catalog entity ID. Currently, only DLF and StarRocks types are supported. You can refer to the response of the ListCatalogs operation and [the description of metadata entity concepts.](https://help.aliyun.com/document_detail/2880092.html)
+        # The catalog entity ID. Currently supports dlf and starrocks types. You can refer to the results returned by the ListCatalogs operation and the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # *   For the DLF type, the format is `dlf-catalog::catalog_id`.
         # *   For the StarRocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
         # 
-        # >  Parameter descriptions:\\
-        # `catalog_id`: The DLF catalog ID.\\
-        # `instance_id`: The instance ID, required for the data source registered in instance mode.\\
-        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+        # > \\
+        # `catalog_id`: The ID of the DLF catalog.\\
+        # `instance_id`: The instance ID, required if the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. Required if the data source is registered in connection string mode.\\
         # `catalog_name`: The name of the StarRocks catalog.
         # 
         # This parameter is required.
@@ -20534,8 +20845,11 @@ class GetCatalogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Catalog information.
         self.catalog = catalog
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -20801,11 +21115,11 @@ class GetColumnRequest(TeaModel):
     ):
         # The ID. You can refer to the response of the ListColumns operation and the [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
         # 
-        # The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog name}:${Database name}`. Use empty strings as placeholders for levels that do not exist.
+        # The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use empty strings as placeholders for levels that do not exist.
         # 
-        # >  For the MaxCompute and DLF types, the instance ID level must be left empty. For the MaxCompute type, the instance ID level is represented by an empty string. The database name is the name of the MaxCompute project with schema enabled.
+        # >  For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
         # 
-        # >  The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support catalog levels and can use empty strings as placeholders.
+        # >  The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support catalog levels. Use empty strings as placeholders.
         # 
         # Examples of common ID formats
         # 
@@ -20821,7 +21135,7 @@ class GetColumnRequest(TeaModel):
         # 
         # > \\
         # `instance_id`: the ID of the instance, which is required when the data source is registered in instance mode.\\
-        # `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
         # `catalog_id`: The DLF catalog ID.\\
         # `project_name`: The MaxCompute project name.\\
         # `database_name`: The database name.\\
@@ -20859,8 +21173,11 @@ class GetColumnResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The columns in the table.
         self.column = column
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -20940,8 +21257,11 @@ class GetComponentRequest(TeaModel):
         component_id: str = None,
         project_id: int = None,
     ):
+        # The component ID.
+        # 
         # This parameter is required.
         self.component_id = component_id
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
 
     def validate(self):
@@ -20981,16 +21301,27 @@ class GetComponentResponseBodyComponent(TeaModel):
         region_id: str = None,
         spec: str = None,
     ):
+        # The ID of the dataset acceleration component. For information on how to obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
         self.component_id = component_id
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The modification time (millisecond-level timestamp).
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.modify_time = modify_time
+        # Parameter
         self.name = name
+        # The ID of the task owner.
         self.owner = owner
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The region ID, such as ap-southeast-1. The region ID is automatically parsed from your endpoint.
         self.region_id = region_id
+        # The FlowSpec information for this workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         self.spec = spec
 
     def validate(self):
@@ -21051,6 +21382,7 @@ class GetComponentResponseBody(TeaModel):
         component: GetComponentResponseBodyComponent = None,
         request_id: str = None,
     ):
+        # JSON serialization of the component module.
         self.component = component
         # Id of the request
         self.request_id = request_id
@@ -21158,6 +21490,7 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
         failure_message: str = None,
         status: str = None,
         workflow_instance_ids: List[int] = None,
+        workflow_task_instance_ids: List[int] = None,
     ):
         # The error message. This parameter is returned only if the creation fails.
         self.failure_message = failure_message
@@ -21169,6 +21502,7 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
         self.status = status
         # The workflow instance IDs. This parameter is returned only if the creation is successful.
         self.workflow_instance_ids = workflow_instance_ids
+        self.workflow_task_instance_ids = workflow_task_instance_ids
 
     def validate(self):
         pass
@@ -21185,6 +21519,8 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
             result['Status'] = self.status
         if self.workflow_instance_ids is not None:
             result['WorkflowInstanceIds'] = self.workflow_instance_ids
+        if self.workflow_task_instance_ids is not None:
+            result['WorkflowTaskInstanceIds'] = self.workflow_task_instance_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -21195,6 +21531,8 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
             self.status = m.get('Status')
         if m.get('WorkflowInstanceIds') is not None:
             self.workflow_instance_ids = m.get('WorkflowInstanceIds')
+        if m.get('WorkflowTaskInstanceIds') is not None:
+            self.workflow_task_instance_ids = m.get('WorkflowTaskInstanceIds')
         return self
 
 
@@ -21206,7 +21544,7 @@ class GetCreateWorkflowInstancesResultResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of asynchronously creating a workflow instance.
+        # The creation result of the workflow instance.
         self.result = result
 
     def validate(self):
@@ -27250,25 +27588,27 @@ class GetDatabaseRequest(TeaModel):
         self,
         id: str = None,
     ):
-        # Database entity ID. You can refer to the response of the ListDatabases operation and [the description of metadata entity concepts.](https://help.aliyun.com/document_detail/2880092.html)
+        # Database entity ID. You can refer to the response of the ListDatabases operation and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format is `${EntityType}:${Instance ID or encoded URL}:${Catalog identifier}:${Database name}`. Use empty strings as placeholders for non-existent levels.
+        # The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}`. Use empty strings as placeholders for levels that do not exist.
         # 
-        # >  For StarRocks, the catalog identifier is the catalog name. For DLF, the catalog identifier is the catalog ID. For other types, catalog hierarchy is not supported, and an empty string can be used as a placeholder.
+        # >  For StarRocks, the catalog identifier is the catalog name. For DLF, the catalog identifier is the catalog ID. For other types, the catalog-level hierarchy is not supported, and an empty string can be used as a placeholder.
         # 
         # Examples of common ID formats
         # 
-        # `dlf-database::catalog_id:database_name`
+        # *   `dlf-database::catalog_id:database_name`
+        # *   `holo-database:instance_id::database_name`
+        # *   `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
-        # `holo-database:instance_id::database_name`
+        # > 
         # 
-        # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # *   `catalog_id`: The ID of the DLF catalog.
         # 
-        # >  Parameter descriptions\\
-        # `catalog_id`: The DLF catalog ID.\\
-        # `instance_id`: The instance ID, required for a data source registered in instance mode.\\
-        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded. This parameter is required for the data source registered via a connection string.\\
-        # `database_name`: The database name.
+        # *   `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
+        # 
+        # *   `encoded_jdbc_url`: The encoded JDBC connection string, which is required when the data source is registered in connection-string mode.
+        # 
+        # *   `database_name`: The database name.
         # 
         # This parameter is required.
         self.id = id
@@ -27300,8 +27640,11 @@ class GetDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The database details.
         self.database = database
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -27382,9 +27725,15 @@ class GetDeploymentPackageRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The deployment package ID. This ID is generated when you call [SubmitFile](https://help.aliyun.com/document_detail/173944.html) or [DeployFile](https://help.aliyun.com/document_detail/173956.html).
+        # 
         # This parameter is required.
         self.deployment_id = deployment_id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. This parameter identifies the DataWorks workspace for this API call.
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace. This is the identifier shown in the workspace switcher at the top of the Data Studio page.
+        # 
+        # Either this parameter or ProjectId must be specified to determine which DataWorks workspace this API call operates on.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -27422,8 +27771,17 @@ class GetDeploymentPackageResponseBodyDataDeployedItems(TeaModel):
         file_version: int = None,
         status: int = None,
     ):
+        # The file ID.
         self.file_id = file_id
+        # The file version.
         self.file_version = file_version
+        # *   UNPUBLISHED(0)
+        # *   SUCCESS(1)
+        # *   ERROR(2)
+        # *   CLONED(3)
+        # *   DEPLOY_ERROR(4)
+        # *   CLONING(5)
+        # *   REJECT(6)
         self.status = status
 
     def validate(self):
@@ -27468,15 +27826,28 @@ class GetDeploymentPackageResponseBodyDataDeployment(TeaModel):
         status: int = None,
         to_environment: int = None,
     ):
+        # The validation status of nodes in the deployment package. For packages deployed to the development environment (toEnviroment=1), you can only proceed to deploy to production if the package Status is 1 (succeeded) and CheckingStatus is empty (validation complete).
+        # 
+        # *   7: Validation failed
+        # *   8: Validation in progress
         self.checking_status = checking_status
+        # The timestamp (in milliseconds) when the deployment package was created.
         self.create_time = create_time
+        # The Alibaba Cloud account ID of the user who created the deployment package.
         self.creator_id = creator_id
+        # The detailed error message when the deployment package fails (status is 2).
         self.error_message = error_message
+        # The timestamp (in milliseconds) when the deployment started.
         self.execute_time = execute_time
+        # The environment where the deployment is executed. Valid values: 0 (local) and 1 (development).
         self.from_environment = from_environment
+        # The Alibaba Cloud account ID of the user who executed the deployment.
         self.handler_id = handler_id
+        # The deployment package name, displayed on the Deploy Center > Deployment Packages page.
         self.name = name
+        # The current status of the deployment package. Valid values: 0 (ready), 1 (succeeded), and 2 (failed).
         self.status = status
+        # The target environment for the deployment. Valid values: 1 (development) and 2 (production).
         self.to_environment = to_environment
 
     def validate(self):
@@ -27541,7 +27912,9 @@ class GetDeploymentPackageResponseBodyData(TeaModel):
         deployed_items: List[GetDeploymentPackageResponseBodyDataDeployedItems] = None,
         deployment: GetDeploymentPackageResponseBodyDataDeployment = None,
     ):
+        # The deployment item details.
         self.deployed_items = deployed_items
+        # The deployment package details.
         self.deployment = deployment
 
     def validate(self):
@@ -27589,11 +27962,20 @@ class GetDeploymentPackageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The deployment package details.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -28846,9 +29228,13 @@ class GetFolderRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The folder ID. Either this parameter or FolderPath must be specified. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
         self.folder_id = folder_id
+        # The folder path. Either this parameter or FolderId must be specified. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder path.
         self.folder_path = folder_path
+        # The ID of the DataWorks workspace. You can obtain the workspace ID from the workspace configuration page in the DataWorks console. Either this parameter or ProjectIdentifier must be specified to determine which DataWorks workspace this API call operates on.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can obtain the workspace name from the workspace configuration page in the DataWorks console. Either this parameter or ProjectId must be specified to determine which DataWorks workspace this API call operates on.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -28889,7 +29275,9 @@ class GetFolderResponseBodyData(TeaModel):
         folder_id: str = None,
         folder_path: str = None,
     ):
+        # The ID of the folder.
         self.folder_id = folder_id
+        # The path of the folder.
         self.folder_path = folder_path
 
     def validate(self):
@@ -28926,11 +29314,20 @@ class GetFolderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the folder.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used for troubleshooting when errors occur.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -30259,7 +30656,7 @@ class GetLineageRelationshipRequest(TeaModel):
         self,
         id: str = None,
     ):
-        # The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+        # The lineage ID. You can refer to the return result of the ListLineageRelationships operation.
         # 
         # This parameter is required.
         self.id = id
@@ -30290,7 +30687,9 @@ class GetLineageRelationshipResponseBody(TeaModel):
         lineage_relationship: LineageRelationship = None,
         request_id: str = None,
     ):
+        # The lineage structure.
         self.lineage_relationship = lineage_relationship
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30403,16 +30802,27 @@ class GetMetaCollectionResponseBodyMetaCollection(TeaModel):
         parent_id: str = None,
         type: str = None,
     ):
+        # The list of administrator IDs. Valid only for the album type. The IDs must belong to users in the same tenant. Multiple IDs can be specified.
         self.administrators = administrators
+        # The creation time in milliseconds.
         self.create_time = create_time
+        # The ID of the creator.
         self.create_user = create_user
+        # The collection description.
         self.description = description
         # The collection ID.
         self.id = id
+        # The last modified time in milliseconds.
         self.modify_time = modify_time
+        # The collection name.
         self.name = name
-        # The ID of the collection of the ancestor node. This parameter can be left empty.
+        # The parent collection ID. This parameter can be empty.
         self.parent_id = parent_id
+        # The collection type. Valid values:
+        # 
+        # *   Category
+        # *   Album
+        # *   AlbumCategory: Album subcategory.
         self.type = type
 
     def validate(self):
@@ -30473,9 +30883,9 @@ class GetMetaCollectionResponseBody(TeaModel):
         meta_collection: GetMetaCollectionResponseBodyMetaCollection = None,
         request_id: str = None,
     ):
-        # The information about the collection.
+        # The collection details.
         self.meta_collection = meta_collection
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30943,9 +31353,11 @@ class GetPartitionRequest(TeaModel):
         name: str = None,
         table_id: str = None,
     ):
+        # The partition name.
+        # 
         # This parameter is required.
         self.name = name
-        # The table ID. For more details, refer to the response of the ListTables operation and [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # The table ID. You can refer to the result returned by the ListTables operation and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id
@@ -30981,8 +31393,11 @@ class GetPartitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Partition details.
         self.partition = partition
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -32900,23 +33315,23 @@ class GetSchemaRequest(TeaModel):
         self,
         id: str = None,
     ):
-        # The schema ID. You can call the ListSchemas operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. You can refer to the ListSchemas operation and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}`. If a level does not exist, specify an empty string as a placeholder.
+        # The format is `${EntityType}:${Instance ID or escaped URL}:${Catalog ID}:${Database name}:${Schema name}</code>`. Use empty strings as placeholders for missing levels.
         # 
-        # >  For MaxCompute tables, specify an empty string at the Instance ID level and a MaxCompute project name at the Database name level. Make sure that the three-layer model is enabled for the MaxCompute project.
+        # >  For the MaxCompute type, use an empty string as the placeholder for the instance ID level. The database name is the MaxCompute project name, and the project must have the three-level model enabled.
         # 
-        # You can configure this parameter in one of the following formats based on your data source type:
+        # Examples:
         # 
-        # `maxcompute-schema:::project_name:schema_name` (Three-layer model is enabled for the MaxCompute project.)
+        # `maxcompute-schema:::project_name:schema_name` (The three-level model is enabled for the MaxCompute project.)
         # 
         # `holo-schema:instance_id::database_name:schema_name`
         # 
         # > \\
-        # `instance_id`: the ID of a Hologres instance\\
-        # `database_name`: the name of a database\\
-        # `project_name`: the name of a MaxCompute project\\
-        # `schema_name`: the name of a schema
+        # `instance_id`: The Hologres instance ID\\
+        # . `database_name`: The database name\\
+        # . `database_name`: The MaxCompute project name\\
+        # . `schema_name`: The schema name.
         # 
         # This parameter is required.
         self.id = id
@@ -32948,8 +33363,11 @@ class GetSchemaResponseBody(TeaModel):
         schema: Schema = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The schema information.
         self.schema = schema
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -33029,17 +33447,17 @@ class GetTableRequest(TeaModel):
         id: str = None,
         include_business_metadata: bool = None,
     ):
-        # The table ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. You can refer to the response of the ListTables operation and the [concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
         # 
-        # The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}`. If a level does not exist, specify an empty string as a placeholder.
+        # The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Table name}`. Use empty strings as placeholders for levels that do not exist.
         # 
-        # >  For MaxCompute and DLF data sources, specify an empty string at the Instance ID level.
+        # >  For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID.
         # 
-        # >  For StarRocks data sources, specify a catalog name at the Catalog identifier level. For DLF data sources, specify a catalog ID at the Catalog identifier level. Other types of data sources do not support the Catalog identifier level. You can specify an empty string as a placeholder.
+        # >  The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
         # 
-        # >  For MaxCompute data sources, specify a MaxCompute project name at the Database name level. If the three-layer model is enabled for your MaxCompute project, you must specify a schema name at the Schema name level. Otherwise, you can specify an empty string as a placeholder.
+        # >  For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
         # 
-        # You can configure this parameter in one of the following formats based on your data source type:
+        # Examples of common ID formats
         # 
         # `maxcompute-table:::project_name:[schema_name]:table_name`
         # 
@@ -33052,16 +33470,17 @@ class GetTableRequest(TeaModel):
         # `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
         # 
         # > \\
-        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
-        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
-        # `catalog_id`: the ID of a DLF catalog.\\
-        # `project_name`: the name of a MaxCompute project.\\
-        # `database_name`: the name of a database.\\
-        # `schema_name`: the name of a schema. For a MaxCompute table, if the three-layer model is enabled for the MaxCompute project to which the table belongs, you must configure this parameter. Otherwise, you can specify an empty string for schema_name as a placeholder.\\
-        # `table_name`: the name of a table.
+        # `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `project_name`: The MaxCompute project name.\\
+        # `database_name`: The database name.\\
+        # `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema. Otherwise, use an empty string as a placeholder.\\
+        # `table_name`: The table name.
         # 
         # This parameter is required.
         self.id = id
+        # Specifies whether to include metadata. Default: false.
         self.include_business_metadata = include_business_metadata
 
     def validate(self):
@@ -33095,8 +33514,11 @@ class GetTableResponseBody(TeaModel):
         success: bool = None,
         table: Table = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # Detailed information about the table.
         self.table = table
 
     def validate(self):
@@ -36345,7 +36767,9 @@ class GetWorkflowInstanceResponseBodyWorkflowInstanceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag.
         self.key = key
+        # The value of a tag.
         self.value = value
 
     def validate(self):
@@ -36384,6 +36808,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         modify_time: int = None,
         modify_user: str = None,
         name: str = None,
+        owner: str = None,
         project_id: int = None,
         started_time: int = None,
         status: str = None,
@@ -36391,6 +36816,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         type: str = None,
         workflow_id: int = None,
         workflow_parameters: str = None,
+        workflow_task_instance_id: int = None,
     ):
         # The data timestamp.
         self.biz_date = biz_date
@@ -36413,6 +36839,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         self.modify_user = modify_user
         # The name of the workflow instance.
         self.name = name
+        self.owner = owner
         # The workspace ID.
         self.project_id = project_id
         # The time when the instance started to run.
@@ -36428,18 +36855,22 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         # *   Success: The instance is successfully run.
         # *   Checking: Data quality is being checked for the instance.
         self.status = status
+        # The task tag.
         self.tags = tags
         # The type of the workflow instance. Valid values:
         # 
-        # *   Normal
-        # *   Manual
-        # *   SmokeTest
-        # *   SupplementData
-        # *   ManualWorkflow
+        # *   Normal: Scheduled execution
+        # *   Manual: Manually triggered node
+        # *   SmokeTest: Testing
+        # *   SupplementData: Data backfill
+        # *   ManualWorkflow: Manually triggered workflow
+        # *   TriggerWorkflow: Triggered Workflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
+        # The workflow parameters.
         self.workflow_parameters = workflow_parameters
+        self.workflow_task_instance_id = workflow_task_instance_id
 
     def validate(self):
         if self.tags:
@@ -36471,6 +36902,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
             result['ModifyUser'] = self.modify_user
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.started_time is not None:
@@ -36487,6 +36920,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
             result['WorkflowId'] = self.workflow_id
         if self.workflow_parameters is not None:
             result['WorkflowParameters'] = self.workflow_parameters
+        if self.workflow_task_instance_id is not None:
+            result['WorkflowTaskInstanceId'] = self.workflow_task_instance_id
         return result
 
     def from_map(self, m: dict = None):
@@ -36509,6 +36944,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
             self.modify_user = m.get('ModifyUser')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('StartedTime') is not None:
@@ -36526,6 +36963,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowParameters') is not None:
             self.workflow_parameters = m.get('WorkflowParameters')
+        if m.get('WorkflowTaskInstanceId') is not None:
+            self.workflow_task_instance_id = m.get('WorkflowTaskInstanceId')
         return self
 
 
@@ -36784,11 +37223,18 @@ class ImportCertificateRequest(TeaModel):
         name: str = None,
         project_id: int = None,
     ):
+        # The certificate file to upload. Upload method: Upload the file by creating an InputStream.
+        # 
         # This parameter is required.
         self.certificate_file = certificate_file
+        # The description of the task.
         self.description = description
+        # The certificate file name. In a project workspace, certificate file names must be unique.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the workspace to which the certificate file belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -36832,11 +37278,18 @@ class ImportCertificateAdvanceRequest(TeaModel):
         name: str = None,
         project_id: int = None,
     ):
+        # The certificate file to upload. Upload method: Upload the file by creating an InputStream.
+        # 
         # This parameter is required.
         self.certificate_file_object = certificate_file_object
+        # The description of the task.
         self.description = description
+        # The certificate file name. In a project workspace, certificate file names must be unique.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the workspace to which the certificate file belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -36878,7 +37331,9 @@ class ImportCertificateResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the certificate file, which is the unique identifier of the certificate file.
         self.id = id
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -37961,12 +38416,19 @@ class ListBusinessRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The keyword, used for fuzzy match of workflow names.
         self.keyword = keyword
+        # The requested page number, used for pagination.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of records per page. Default: 10. Maximum: 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -38015,11 +38477,17 @@ class ListBusinessResponseBodyDataBusiness(TeaModel):
         project_id: int = None,
         use_type: str = None,
     ):
+        # The workflow ID.
         self.business_id = business_id
+        # The name of the workflow.
         self.business_name = business_name
+        # The description of the workflow.
         self.description = description
+        # The owner of the workflow.
         self.owner = owner
+        # The ID of the workspace to which the workflow belongs.
         self.project_id = project_id
+        # The module to which the workflow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manually Triggered Workflow).
         self.use_type = use_type
 
     def validate(self):
@@ -38070,9 +38538,13 @@ class ListBusinessResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Information about the workflow list.
         self.business = business
+        # The current page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_size = page_size
+        # The total number of records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -38125,11 +38597,17 @@ class ListBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details of workflows.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used for troubleshooting when an error occurs.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -38227,25 +38705,40 @@ class ListCatalogsRequest(TeaModel):
         sort_by: str = None,
         types: List[str] = None,
     ):
+        # The comment. Supports token-based matching.
         self.comment = comment
+        # The name. Supports fuzzy matching.
         self.name = name
+        # The order in which the tables are sorted. Default value: Asc. Valid values:
+        # 
+        # *   Asc: ascending order.
+        # *   Desc: descending order.
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # Only DLF and StarRocks data sources support this parameter.
+        # Currently, only the DLF and StarRocks types are supported.
         # 
-        # *   For DLF data sources, you can call this API operation to query all catalogs. In this case, you must set the `ParentMetaEntityId` parameter to `dlf`.
-        # *   For StarRocks data sources, you can call this API operation to query the catalogs in a specific instance. In this case, you can configure the `ParentMetaEntityId` parameter in the `starrocks:(instance_id|encoded_jdbc_url)` format.
+        # *   For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
+        # *   For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
         # 
         # > \\
-        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
-        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.
+        # `instance_id`: The instance ID. Required if the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The sort field. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
+        # *   Type
         self.sort_by = sort_by
+        # The type. Supports exact match. If left empty, all types are queried.
         self.types = types
 
     def validate(self):
@@ -38308,25 +38801,40 @@ class ListCatalogsShrinkRequest(TeaModel):
         sort_by: str = None,
         types_shrink: str = None,
     ):
+        # The comment. Supports token-based matching.
         self.comment = comment
+        # The name. Supports fuzzy matching.
         self.name = name
+        # The order in which the tables are sorted. Default value: Asc. Valid values:
+        # 
+        # *   Asc: ascending order.
+        # *   Desc: descending order.
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # Only DLF and StarRocks data sources support this parameter.
+        # Currently, only the DLF and StarRocks types are supported.
         # 
-        # *   For DLF data sources, you can call this API operation to query all catalogs. In this case, you must set the `ParentMetaEntityId` parameter to `dlf`.
-        # *   For StarRocks data sources, you can call this API operation to query the catalogs in a specific instance. In this case, you can configure the `ParentMetaEntityId` parameter in the `starrocks:(instance_id|encoded_jdbc_url)` format.
+        # *   For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
+        # *   For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
         # 
         # > \\
-        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
-        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.
+        # `instance_id`: The instance ID. Required if the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The sort field. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
+        # *   Type
         self.sort_by = sort_by
+        # The type. Supports exact match. If left empty, all types are queried.
         self.types_shrink = types_shrink
 
     def validate(self):
@@ -38385,9 +38893,13 @@ class ListCatalogsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The catalog.
         self.catalogs = catalogs
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -38437,8 +38949,11 @@ class ListCatalogsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination result.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -38807,13 +39322,25 @@ class ListColumnsRequest(TeaModel):
         sort_by: str = None,
         table_id: str = None,
     ):
+        # The comment. Fuzzy match is supported.
         self.comment = comment
+        # The name. Fuzzy match is supported.
         self.name = name
+        # The sort order. Default value: Asc. Valid values:
+        # 
+        # *   Asc
+        # *   Desc
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The sort field. Default value: Position. Valid values:
+        # 
+        # *   Name
+        # *   Position
         self.sort_by = sort_by
-        # The ID of the table to which the columns belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The table ID. You can refer to the return result of the ListTables operation. and the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id
@@ -38870,9 +39397,13 @@ class ListColumnsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The columns in the table.
         self.columns = columns
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -38922,8 +39453,11 @@ class ListColumnsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination result.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -39005,9 +39539,13 @@ class ListComponentsRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
     ):
+        # The name of the data source.
         self.name = name
+        # The page number for pagination.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The ID of the workspace associated with the data source. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to obtain the workspace ID.
         self.project_id = project_id
 
     def validate(self):
@@ -39050,13 +39588,13 @@ class ListComponentsResponseBodyPagingInfoComponentsInputs(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # 输入参数的默认值
+        # The default value of the variable.
         self.default_value = default_value
-        # 输入参数的描述信息
+        # The parameter description.
         self.description = description
-        # 输入参数的名称
+        # The parameter name.
         self.name = name
-        # 输入参数的数据类型
+        # The parameter type.
         self.type = type
 
     def validate(self):
@@ -39099,13 +39637,13 @@ class ListComponentsResponseBodyPagingInfoComponentsOutputs(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # 输出参数的默认值
+        # The default value.
         self.default_value = default_value
-        # 输出参数的描述信息
+        # The parameter description.
         self.description = description
-        # 输出参数的名称
+        # The parameter name.
         self.name = name
-        # 输出参数的数据类型
+        # The parameter type.
         self.type = type
 
     def validate(self):
@@ -39145,7 +39683,7 @@ class ListComponentsResponseBodyPagingInfoComponentsScriptRuntime(TeaModel):
         self,
         command: str = None,
     ):
-        # 脚本所属类型
+        # The command.
         self.command = command
 
     def validate(self):
@@ -39177,9 +39715,9 @@ class ListComponentsResponseBodyPagingInfoComponentsScript(TeaModel):
     ):
         # ID
         self.id = id
-        # 脚本路径
+        # The script path.
         self.path = path
-        # 脚本的运行时信息
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -39226,23 +39764,29 @@ class ListComponentsResponseBodyPagingInfoComponents(TeaModel):
         project_id: int = None,
         script: ListComponentsResponseBodyPagingInfoComponentsScript = None,
     ):
+        # The component ID. This parameter can be used in requests to query, modify, or delete director components.
         self.component_id = component_id
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.create_time = create_time
-        # 对组件的描述
+        # The description.
         self.description = description
-        # 组件的输入参数列表
+        # The input parameters.
         self.inputs = inputs
+        # The timestamp when the publishing process was modified.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.modify_time = modify_time
-        # 代表资源名称的资源属性字段
+        # The resource name.
         self.name = name
-        # 组件的输出参数列表
+        # The output parameters.
         self.outputs = outputs
-        # 组件责任人
+        # The owner.
         self.owner = owner
+        # The DataWorks workspace ID. To obtain the workspace ID, log on to the DataWorks console and navigate to the workspace configuration page. You must specify either this parameter or ProjectIdentifier to identify the target DataWorks workspace for this API call.
         self.project_id = project_id
-        # 工作流的脚本信息
+        # The script information.
         self.script = script
 
     def validate(self):
@@ -39329,9 +39873,13 @@ class ListComponentsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The UID of the user who created the dataset acceleration component. In Alibaba Cloud, this is the RAM user ID (or the Alibaba Cloud account ID if created by the account itself).
         self.components = components
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -39380,7 +39928,9 @@ class ListComponentsResponseBody(TeaModel):
         paging_info: ListComponentsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID. Use this ID for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -39457,8 +40007,11 @@ class ListCrawlerTypesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of metadata crawler types.
         self.crawler_types = crawler_types
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -47723,33 +48276,45 @@ class ListDatabasesRequest(TeaModel):
         parent_meta_entity_id: str = None,
         sort_by: str = None,
     ):
+        # The comment. Supports fuzzy match.
         self.comment = comment
+        # The name. Supports fuzzy match.
         self.name = name
-        self.order = order
-        self.page_number = page_number
-        self.page_size = page_size
-        # The parent entity ID. For more information, see [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # The sort order. Default value: Asc. Valid values:
         # 
-        # The type of the parent entity can be found in the response of the ListCrawlerTypes operation.
+        # *   Asc: ascending.
+        # *   Desc: descending.
+        self.order = order
+        # The page number. Default value: 1.
+        self.page_number = page_number
+        # The number of records per page. Default: 10. Maximum: 100.
+        self.page_size = page_size
+        # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
+        # You can refer to the ListCrawlerTypes operation for the parent entity type.
         # 
         # *   If the parent entity is a catalog, the format of `ParentMetaEntityId` follows the response of the ListCatalogs API.
-        # *   If the parent entity is a metadata crawler, the format of `ParentMetaEntityId` is `${CrawlerType}:${Instance ID or encoded URL}.`
+        # *   If the parent entity is a metadata crawler, the format of `ParentMetaEntityId` is `${CrawlerType}:${Instance ID or encoded URL}`.
         # 
         # ParentMetaEntityId format examples
         # 
-        # `dlf-catalog::catalog_id`
+        # *   `dlf-catalog::catalog_id`
+        # *   `holo:instance_id`
+        # *   `mysql:(instance_id|encoded_jdbc_url)`
         # 
-        # `holo:instance_id`
+        # > 
         # 
-        # `mysql:(instance_id|encoded_jdbc_url)`
-        # 
-        # > \\
-        # `catalog_id`: The DLF catalog ID.\\
-        # `instance_id`: The instance ID, required for the data source registered in instance mode.\\
-        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.
+        # *   `catalog_id`: The ID of the DLF catalog.
+        # *   `instance_id`: The instance ID. Required when the data source is registered in instance mode.
+        # *   `encoded_jdbc_url`: The URL-encoded JDBC connection string. Required when the data source is registered by connection string.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The sort field. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
         self.sort_by = sort_by
 
     def validate(self):
@@ -47804,9 +48369,13 @@ class ListDatabasesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The database list.
         self.databases = databases
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -47856,8 +48425,11 @@ class ListDatabasesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination result.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -48479,15 +49051,30 @@ class ListDeploymentPackagesRequest(TeaModel):
         project_identifier: str = None,
         status: int = None,
     ):
+        # The Alibaba Cloud account ID of the deployment package creator.
         self.creator = creator
+        # The maximum millisecond timestamp for when the deployment package was created.
         self.end_create_time = end_create_time
+        # The maximum millisecond timestamp for when the deployment package started executing.
         self.end_execute_time = end_execute_time
+        # The Alibaba Cloud account ID of the deployment package executor.
         self.executor = executor
+        # The keyword in the deployment package name. DataWorks supports fuzzy matching, meaning you can enter a keyword to query for deployment packages that contain it.
         self.keyword = keyword
+        # The page number.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces. Either this parameter or ProjectId must be specified to determine which DataWorks workspace this API call operates on.
         self.project_identifier = project_identifier
+        # The status of the deployment package. Valid values:
+        # 
+        # *   0: It is ready.
+        # *   1: It was successfully deployed.
+        # *   2: It failed to be deployed.
+        # *   6: It was rejected.
         self.status = status
 
     def validate(self):
@@ -48558,13 +49145,26 @@ class ListDeploymentPackagesResponseBodyDataDeployments(TeaModel):
         name: str = None,
         status: int = None,
     ):
+        # The timestamp when the deployment package was created.
         self.create_time = create_time
+        # The Alibaba Cloud account ID of the deployment package creator.
         self.creator = creator
+        # When the deployment package fails to execute, this parameter is used to record the error message.
         self.error_message = error_message
+        # The timestamp when the deployment package was executed.
         self.execute_time = execute_time
+        # The Alibaba Cloud account ID of the deployment package executor.
         self.executor = executor
+        # The ID of the deployment package. You can use this ID to call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to get the deployment package details.
         self.id = id
+        # The name of the deployment package.
         self.name = name
+        # The status of the deployment package. Valid values:
+        # 
+        # *   0: It is ready.
+        # *   1: It was successfully deployed.
+        # *   2: It failed to be deployed.
+        # *   6: It was rejected.
         self.status = status
 
     def validate(self):
@@ -48623,9 +49223,13 @@ class ListDeploymentPackagesResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The returned list of deployment packages.
         self.deployments = deployments
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -48674,7 +49278,9 @@ class ListDeploymentPackagesResponseBody(TeaModel):
         data: ListDeploymentPackagesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The list of deployment packages that meet the query conditions.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50734,16 +51340,29 @@ class ListEntitiesInMetaCollectionRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The description specified when the entity was added to the collection. Supports fuzzy matching. Valid only for the album type.
         self.entity_description = entity_description
+        # The entity name. Supports fuzzy matching.
         self.entity_name = entity_name
+        # The entity type.
         self.entity_type = entity_type
         # The collection ID.
         # 
         # This parameter is required.
         self.id = id
+        # The sort order. Valid values:
+        # 
+        # *   Asc (default): ascending order.
+        # *   Desc
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The sort field. Valid values:
+        # 
+        # *   Name (default)
+        # *   CreateTime
         self.sort_by = sort_by
 
     def validate(self):
@@ -50805,14 +51424,19 @@ class ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The entity comment.
         self.comment = comment
+        # The creation time in milliseconds.
         self.create_time = create_time
+        # The description specified when the entity was added to the collection. Valid only for albums.
         self.description = description
-        # The entity ID. Entities can only be tables. This parameter is left empty if the entity is deleted.
+        # The ID of the entity. Currently, only the Table type is supported. If the entity is deleted, this field is empty.
         self.id = id
+        # The last modified time in milliseconds.
         self.modify_time = modify_time
+        # The entity name.
         self.name = name
-        # The type of the entity.
+        # The entity type.
         self.type = type
 
     def validate(self):
@@ -50867,10 +51491,13 @@ class ListEntitiesInMetaCollectionResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The entities in the collection.
+        # The list of entities in the collection.
         self.entities = entities
+        # The current page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -50919,9 +51546,9 @@ class ListEntitiesInMetaCollectionResponseBody(TeaModel):
         paging_info: ListEntitiesInMetaCollectionResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The pagination result.
         self.paging_info = paging_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51000,11 +51627,19 @@ class ListFileVersionsRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The file ID. You can call [ListFiles](https://help.aliyun.com/document_detail/173942.html) to query the file ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The page number for pagination.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces.
+        # 
+        # Either this parameter or ProjectId must be specified to identify the target DataWorks workspace for this API call.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -51060,18 +51695,34 @@ class ListFileVersionsResponseBodyDataFileVersions(TeaModel):
         status: str = None,
         use_type: str = None,
     ):
+        # The change type for this file version. Valid values: CREATE, UPDATE, and DELETE.
         self.change_type = change_type
+        # The description of this file version.
         self.comment = comment
+        # The timestamp (in milliseconds) when the file version was created.
         self.commit_time = commit_time
+        # The Alibaba Cloud account ID of the user who created this file version.
         self.commit_user = commit_user
+        # The file code for this version.
         self.file_content = file_content
+        # The file name for this file version.
         self.file_name = file_name
+        # The text information for this file version.
         self.file_property_content = file_property_content
+        # The file version.
         self.file_version = file_version
+        # Indicates whether this file version is the latest version in the production environment.
+        # 
+        # *   true
+        # *   false
         self.is_current_prod = is_current_prod
+        # The scheduling configuration for this file version.
         self.node_content = node_content
+        # The scheduling task ID associated with this file version.
         self.node_id = node_id
+        # The current status of the file version. Valid values: COMMITTING (committing), COMMITTED or CHECK_OK (committed), PACKAGED (ready for deployment), DEPLOYING (deploying), DEPLOYED (deployed), and CANCELLED (deployment canceled).
         self.status = status
+        # The functional module to which the file belongs. Valid values: NORMAL (Data Studio), MANUAL (manual task), MANUAL_BIZ (manual workflow), SKIP (dry-run scheduling in Data Studio), ADHOCQUERY (ad hoc query), and COMPONENT (component management).
         self.use_type = use_type
 
     def validate(self):
@@ -51150,9 +51801,13 @@ class ListFileVersionsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of file version details.
         self.file_versions = file_versions
+        # The current page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -51205,11 +51860,20 @@ class ListFileVersionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of file versions.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -51315,21 +51979,50 @@ class ListFilesRequest(TeaModel):
         project_identifier: str = None,
         use_type: str = None,
     ):
+        # The current commit status of the file. Valid values: 0 (the latest code is not committed) and 1 (the latest code is committed).
         self.commit_status = commit_status
+        # The exact file name. The file name in the query result must exactly match this parameter.
         self.exact_file_name = exact_file_name
+        # The path to the folder where the file is located.
         self.file_folder_path = file_folder_path
+        # The list of file IDs. The file IDs in the query result must be a subset of this list. You can specify up to 50 file IDs at a time.
         self.file_id_in = file_id_in
+        # The code type of the file.
+        # 
+        # The code type of the file. Common code types and their corresponding file types include: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 97 (PAI), 98 (Combined node), 99 (Virtual node), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (Real-time sync), 1002 (PAI internal node), 1089 (Cross-tenant node), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (Assignment node), 1106 (ForEach node), 1221 (PyODPS 3).
         self.file_types = file_types
+        # The keyword for the file name. Fuzzy match is supported. You can enter a keyword to query all files that contain the keyword.
         self.keyword = keyword
+        # The Alibaba Cloud account ID of the user who last updated the file.
         self.last_edit_user = last_edit_user
+        # Specifies whether the query result includes the path to the folder where the file is located.
         self.need_absolute_folder_path = need_absolute_folder_path
+        # Specifies whether the query result includes the file content. For files with large content, network transmission delays may occur.
         self.need_content = need_content
+        # The ID of the scheduling node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to obtain the node ID.
         self.node_id = node_id
+        # The ID of the file owner.
         self.owner = owner
+        # The page number for pagination.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
+        # 
+        # You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
+        # The DataWorks workspace name. To obtain the workspace name, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+        # 
+        # You must specify either this parameter or ProjectId to identify the target DataWorks workspace for this API call.
         self.project_identifier = project_identifier
+        # The functional module to which the file belongs. Valid values:
+        # 
+        # *   NORMAL: Data Studio
+        # *   MANUAL: Manually triggered node
+        # *   MANUAL_BIZ: Manually triggered workflow
+        # *   SKIP: Dry-run scheduling in Data Studio
+        # *   ADHOCQUERY: Ad hoc query
+        # *   COMPONENT: Component management
         self.use_type = use_type
 
     def validate(self):
@@ -51438,27 +52131,63 @@ class ListFilesResponseBodyDataFiles(TeaModel):
         parent_id: int = None,
         use_type: str = None,
     ):
+        # The path to the folder where the file is located.
         self.absolute_folder_path = absolute_folder_path
+        # Specifies whether automatic parsing is enabled for the file. Valid values:
+        # 
+        # *   true: The file automatically parses code.
+        # *   false: The file does not automatically parse code.
+        # 
+        # This parameter corresponds to Analyze Code when you set Dependencies to Same Cycle in the scheduling configuration of a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
+        # The ID of the workflow to which the file belongs. This parameter is deprecated. Use the BusinessId parameter instead.
         self.biz_id = biz_id
+        # The ID of the workflow to which the file belongs.
         self.business_id = business_id
+        # The current commit status of the file. Valid values: 0 (the latest code is not committed) and 1 (the latest code is committed).
         self.commit_status = commit_status
+        # The data source name used by the task.
         self.connection_name = connection_name
+        # This parameter is deprecated. You can call the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation to query this information.
         self.content = content
+        # The timestamp (in milliseconds) when the file was created.
         self.create_time = create_time
+        # The Alibaba Cloud account ID of the file creator.
         self.create_user = create_user
+        # The latest version of the file.
         self.current_version = current_version
+        # The description of the file.
         self.file_description = file_description
+        # The ID of the folder where the file is located.
         self.file_folder_id = file_folder_id
+        # The file ID.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The file type. Different file types have different code. For more information, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
+        # If the current file is a MaxCompute resource file, this parameter specifies whether the resource file needs to be uploaded to MaxCompute.
+        # 
+        # You only need to configure this parameter when the file is a MaxCompute resource file.
         self.is_max_compute = is_max_compute
+        # The timestamp (in milliseconds) when the file was last modified.
         self.last_edit_time = last_edit_time
+        # The Alibaba Cloud account ID of the user who last updated the file.
         self.last_edit_user = last_edit_user
+        # The ID of the scheduling task generated in the scheduling system after the file is committed.
         self.node_id = node_id
+        # The Alibaba Cloud account ID of the file owner.
         self.owner = owner
+        # If the current file is an internal file of a combined node, this parameter specifies the ID of the corresponding combined node file.
         self.parent_id = parent_id
+        # The functional module to which the file belongs. Valid values:
+        # 
+        # *   NORMAL: Data Studio
+        # *   MANUAL: Manually triggered node
+        # *   MANUAL_BIZ: Manually triggered workflow
+        # *   SKIP: Dry-run scheduling in Data Studio
+        # *   ADHOCQUERY: Ad hoc query
+        # *   COMPONENT: Component management
         self.use_type = use_type
 
     def validate(self):
@@ -51573,9 +52302,13 @@ class ListFilesResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The file details.
         self.files = files
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -51628,11 +52361,20 @@ class ListFilesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response details.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -51727,13 +52469,21 @@ class ListFoldersRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The page number of the request. Used for pagination.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The path of the parent folder.
+        # 
         # This parameter is required.
         self.parent_folder_path = parent_folder_path
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -51778,7 +52528,9 @@ class ListFoldersResponseBodyDataFolders(TeaModel):
         folder_id: str = None,
         folder_path: str = None,
     ):
+        # The folder ID.
         self.folder_id = folder_id
+        # The folder path.
         self.folder_path = folder_path
 
     def validate(self):
@@ -51813,9 +52565,13 @@ class ListFoldersResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of folders.
         self.folders = folders
+        # The current page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_size = page_size
+        # The total number of records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -51868,11 +52624,20 @@ class ListFoldersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of folders that meet the conditions.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Used to troubleshoot errors.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -52747,16 +53512,26 @@ class ListLineagesRequest(TeaModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
-        # The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+        # The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         self.dst_entity_id = dst_entity_id
+        # The destination entity name. Supports fuzzy matching.
         self.dst_entity_name = dst_entity_name
+        # Specifies whether to return lineage information.
         self.need_attach_relationship = need_attach_relationship
+        # The sort order. Default value: Asc. Valid values:
+        # 
+        # *   Asc
+        # *   Desc
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The sort field. Default value: Name.
         self.sort_by = sort_by
-        # The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+        # The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         self.src_entity_id = src_entity_id
+        # The source entity name. Supports fuzzy matching.
         self.src_entity_name = src_entity_name
 
     def validate(self):
@@ -52818,8 +53593,11 @@ class ListLineagesResponseBodyPagingInfoLineages(TeaModel):
         relationships: List[LineageRelationship] = None,
         src_entity: LineageEntity = None,
     ):
+        # The destination entity.
         self.dst_entity = dst_entity
+        # The lineage details.
         self.relationships = relationships
+        # The source entity.
         self.src_entity = src_entity
 
     def validate(self):
@@ -52872,9 +53650,13 @@ class ListLineagesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The lineage information list.
         self.lineages = lineages
+        # The requested page number for pagination.
         self.page_number = page_number
+        # The page size. Default value: 10.
         self.page_size = page_size
+        # Total record count.
         self.total_count = total_count
 
     def validate(self):
@@ -52924,8 +53706,11 @@ class ListLineagesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination result.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -53013,21 +53798,38 @@ class ListMetaCollectionsRequest(TeaModel):
         sort_by: str = None,
         type: str = None,
     ):
+        # The administrator ID. Valid only for album types. Default: The current user ID.
         self.administrator = administrator
+        # The creator user ID. Valid only for album types. Default: The current user ID.
         self.create_user = create_user
+        # The collection description. Supports fuzzy matching.
         self.description = description
+        # The collection name. Supports fuzzy matching.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # *   Asc (default): Ascending order
+        # *   Desc
         self.order = order
+        # The page number. Default: 1.
         self.page_number = page_number
+        # The number of entries per page. Default: 10. Maximum: 100.
         self.page_size = page_size
-        # The ID of the collection of an ancestor node.
+        # The ID of the parent collection.
         self.parent_id = parent_id
+        # The sort field. Valid values:
+        # 
+        # *   Id (default)
+        # *   Name
+        # *   CreateUser: Creator ID
+        # *   CreateTime: Creation time
+        # *   ModifyTime: Modification time
         self.sort_by = sort_by
-        # The type of the collection. Valid values:
+        # The collection type. Valid values:
         # 
         # *   Category
         # *   Album
-        # *   AlbumCategory
+        # *   AlbumCategory: Album subcategory
         # 
         # This parameter is required.
         self.type = type
@@ -53101,18 +53903,27 @@ class ListMetaCollectionsResponseBodyDataMetaCollections(TeaModel):
         parent_id: str = None,
         type: str = None,
     ):
+        # The list of administrator IDs. Supported only for album types. Administrators must be users within the same tenant. Multiple administrators can be specified.
         self.administrators = administrators
-        # The time when the collection was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time in milliseconds (timestamp).
         self.create_time = create_time
+        # The creator user ID.
         self.create_user = create_user
+        # The collection description.
         self.description = description
-        # The ID of the collection.
+        # The collection name.
         self.id = id
-        # The time when the collection was modified. The value is a UNIX timestamp. Unit: milliseconds.
+        # The modification time in milliseconds (timestamp).
         self.modify_time = modify_time
+        # The collection name.
         self.name = name
-        # The ID of the collection of the ancestor node. This parameter can be left empty.
+        # The ID of the parent collection. Can be empty.
         self.parent_id = parent_id
+        # The collection type. Valid values:
+        # 
+        # *   Category
+        # *   Album
+        # *   AlbumCategory: Album subcategory
         self.type = type
 
     def validate(self):
@@ -53175,10 +53986,13 @@ class ListMetaCollectionsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The collections.
+        # The list of collections.
         self.meta_collections = meta_collections
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -53227,9 +54041,9 @@ class ListMetaCollectionsResponseBody(TeaModel):
         data: ListMetaCollectionsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data.
+        # Pagination information.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55903,12 +56717,26 @@ class ListPartitionsRequest(TeaModel):
         sort_by: str = None,
         table_id: str = None,
     ):
+        # The partition name.
         self.name = name
+        # The sort order. Default: Asc. Valid values:
+        # 
+        # *   Asc: Ascending order.
+        # *   Desc: Descending order.
         self.order = order
+        # The page number. Default: 1.
         self.page_number = page_number
+        # The number of entries per page. Default: 10. Maximum: 100.
         self.page_size = page_size
+        # The sort field. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime: Creation time. Supported only for MaxCompute tables.
+        # *   ModifyTime: Modification time. Supported only for MaxCompute tables.
+        # *   Name: Name. Used for HMS-type tables.
+        # *   RecordCount: Record count. Supported only for MaxCompute tables.
+        # *   DataSize: Storage size. Supported only for MaxCompute tables.
         self.sort_by = sort_by
-        # The ID of the table to which the partitions belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the data table.You can refer to the ListTables API response and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id
@@ -55961,9 +56789,13 @@ class ListPartitionsResponseBodyPagingInfo(TeaModel):
         partition_list: List[Partition] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of table partitions.
         self.partition_list = partition_list
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -56013,8 +56845,11 @@ class ListPartitionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -56096,10 +56931,16 @@ class ListPipelineRunItemsRequest(TeaModel):
         pipeline_run_id: str = None,
         project_id: int = None,
     ):
+        # The page number, for pagination.
         self.page_number = page_number
+        # The number of entries per page. The number of entries per page. Default: 10. Maximum: 100.
         self.page_size = page_size
+        # The workflow task ID. To obtain the ID, see [ListPipelineRuns](https://help.aliyun.com/document_detail/438042.html).
+        # 
         # This parameter is required.
         self.pipeline_run_id = pipeline_run_id
+        # The ID of the DataWorks workspace. You can obtain the workspace ID from the workspace configuration page in the DataWorks console.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -56148,19 +56989,34 @@ class ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems(TeaModel):
         type: str = None,
         version: int = None,
     ):
-        # 发布包创建时间戳
+        # The deployment creation time.
         self.create_time = create_time
+        # The unique identifier of the deployment.
         self.id = id
-        # 创建人
+        # The error message if the deployment failed.
         self.message = message
-        # 修改时间
+        # The time when the deployment was last modified.
         self.modify_time = modify_time
+        # The deployment name.
         self.name = name
+        # The FlowSpec information describing this deployment. For detailed specifications, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
         self.spec = spec
-        # 发布流程状态
+        # The deployment status. Valid values:
+        # 
+        # *   Init: Initializing
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
         self.status = status
+        # The deployment type. Valid values:
+        # 
+        # *   Node
+        # *   WorkflowDefinition: Workflow definition.
+        # *   Resource
+        # *   Function: The object is a function.
         self.type = type
-        # 项目Id
+        # The deployment version.
         self.version = version
 
     def validate(self):
@@ -56223,9 +57079,13 @@ class ListPipelineRunItemsResponseBodyPagingInfo(TeaModel):
         pipeline_run_items: List[ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of deployments.
         self.pipeline_run_items = pipeline_run_items
+        # The total number of entries that match the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -56274,7 +57134,9 @@ class ListPipelineRunItemsResponseBody(TeaModel):
         paging_info: ListPipelineRunItemsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # Pagination information.
         self.paging_info = paging_info
+        # The request ID. You can use this ID to troubleshoot issues if errors occur.
         self.request_id = request_id
 
     def validate(self):
@@ -57988,6 +58850,352 @@ class ListProjectsResponse(TeaModel):
         return self
 
 
+class ListResourceGroupAssociateProjectsRequest(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+    ):
+        # The ID of the serverless resource group.
+        # 
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListResourceGroupAssociateProjectsResponseBody(TeaModel):
+    def __init__(
+        self,
+        project_id_list: List[int] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The list of workspace IDs.
+        self.project_id_list = project_id_list
+        # The request ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id_list is not None:
+            result['ProjectIdList'] = self.project_id_list
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectIdList') is not None:
+            self.project_id_list = m.get('ProjectIdList')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListResourceGroupAssociateProjectsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceGroupAssociateProjectsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceGroupAssociateProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListResourceGroupMetricDataRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        end_time: int = None,
+        length: int = None,
+        metric_name: str = None,
+        next_token: str = None,
+        period: str = None,
+        resource_group_id: str = None,
+    ):
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.length = length
+        # This parameter is required.
+        self.metric_name = metric_name
+        self.next_token = next_token
+        self.period = period
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListResourceGroupMetricDataResponseBodyMetricDataMetrics(TeaModel):
+    def __init__(
+        self,
+        timestamp: int = None,
+        value: float = None,
+    ):
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListResourceGroupMetricDataResponseBodyMetricData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        metric_name: str = None,
+        metrics: List[ListResourceGroupMetricDataResponseBodyMetricDataMetrics] = None,
+        next_token: str = None,
+    ):
+        self.id = id
+        self.metric_name = metric_name
+        self.metrics = metrics
+        self.next_token = next_token
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = ListResourceGroupMetricDataResponseBodyMetricDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListResourceGroupMetricDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        metric_data: ListResourceGroupMetricDataResponseBodyMetricData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.metric_data = metric_data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.metric_data:
+            self.metric_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_data is not None:
+            result['MetricData'] = self.metric_data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricData') is not None:
+            temp_model = ListResourceGroupMetricDataResponseBodyMetricData()
+            self.metric_data = temp_model.from_map(m['MetricData'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListResourceGroupMetricDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceGroupMetricDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceGroupMetricDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourceGroupsRequestAliyunResourceTags(TeaModel):
     def __init__(
         self,
@@ -59654,47 +60862,65 @@ class ListTablesRequest(TeaModel):
         sort_by: str = None,
         table_types: List[str] = None,
     ):
+        # The comment. Supports fuzzy matching.
         self.comment = comment
+        # The name. Supports fuzzy matching.
         self.name = name
+        # The order in which the tables are sorted. Default value: Asc. Valid values:
+        # 
+        # *   Asc
+        # *   Desc
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
         # 
         # *   The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
-        # *   The parent metadata entity is a database schema:. The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # *   The parent metadata entity is a database schema: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
         # 
-        # >  The schema level in `ParentMetaEntityId` is supported only for database types that support schemas, such as MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle.``
+        # > 
         # 
-        # >  For MaxCompute and DLF types, use empty strings as the instance ID. For MaxCompute, the database name is the same as the project name.
+        # *   The schema level in `ParentMetaEntityId` is supported only for database services, such as `MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle`.
         # 
-        # >  For the StarRocks type, the catalog identifier is the catalog name. For the DLF type, it refers to the catalog ID. Other types do not support a catalog-level hierarchy and the catalog identifier must be replaced with an empty string as a placeholder.
+        # *   For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name is the same as the project name.
+        # 
+        # *   For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
         # 
         # Examples of common ParentMetaEntityId formats
         # 
-        # `maxcompute-project:::project_name`
+        # *   `maxcompute-project:::project_name`
+        # *   `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+        # *   `dlf-database::catalog_id:database_name`
+        # *   `hms-database:instance_id::database_name`
+        # *   `holo-schema:instance_id::database_name:schema_name`
+        # *   `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
-        # `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+        # > 
         # 
-        # `dlf-database::catalog_id:database_name`
+        # *   `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
         # 
-        # `hms-database:instance_id::database_name`
+        # *   `encoded_jdbc_url`: The URLEncoded JDBC connection string, which is requiredwhen the data source is registered using a connection string.
         # 
-        # `holo-schema:instance_id::database_name:schema_name`
+        # *   `catalog_id`: The DLF catalog ID.
         # 
-        # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # *   `project_name`: The MaxCompute project name.
         # 
-        # > \\
-        # `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
-        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
-        # `catalog_id`: The DLF catalog ID.\\
-        # `project_name`: The MaxCompute project name.\\
-        # `database_name`: The database name.\\
-        # `schema_name`: The schema name.
+        # *   `database_name`: The database name.
+        # 
+        # *   `schema_name`: The schema name.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The sort field. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
+        # *   TableType
         self.sort_by = sort_by
+        # The list of table types to query. If it\\"s left empty, all types will be queried.
         self.table_types = table_types
 
     def validate(self):
@@ -59757,47 +60983,65 @@ class ListTablesShrinkRequest(TeaModel):
         sort_by: str = None,
         table_types_shrink: str = None,
     ):
+        # The comment. Supports fuzzy matching.
         self.comment = comment
+        # The name. Supports fuzzy matching.
         self.name = name
+        # The order in which the tables are sorted. Default value: Asc. Valid values:
+        # 
+        # *   Asc
+        # *   Desc
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
         # 
         # *   The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
-        # *   The parent metadata entity is a database schema:. The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # *   The parent metadata entity is a database schema: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
         # 
-        # >  The schema level in `ParentMetaEntityId` is supported only for database types that support schemas, such as MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle.``
+        # > 
         # 
-        # >  For MaxCompute and DLF types, use empty strings as the instance ID. For MaxCompute, the database name is the same as the project name.
+        # *   The schema level in `ParentMetaEntityId` is supported only for database services, such as `MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle`.
         # 
-        # >  For the StarRocks type, the catalog identifier is the catalog name. For the DLF type, it refers to the catalog ID. Other types do not support a catalog-level hierarchy and the catalog identifier must be replaced with an empty string as a placeholder.
+        # *   For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name is the same as the project name.
+        # 
+        # *   For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
         # 
         # Examples of common ParentMetaEntityId formats
         # 
-        # `maxcompute-project:::project_name`
+        # *   `maxcompute-project:::project_name`
+        # *   `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+        # *   `dlf-database::catalog_id:database_name`
+        # *   `hms-database:instance_id::database_name`
+        # *   `holo-schema:instance_id::database_name:schema_name`
+        # *   `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
-        # `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+        # > 
         # 
-        # `dlf-database::catalog_id:database_name`
+        # *   `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
         # 
-        # `hms-database:instance_id::database_name`
+        # *   `encoded_jdbc_url`: The URLEncoded JDBC connection string, which is requiredwhen the data source is registered using a connection string.
         # 
-        # `holo-schema:instance_id::database_name:schema_name`
+        # *   `catalog_id`: The DLF catalog ID.
         # 
-        # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # *   `project_name`: The MaxCompute project name.
         # 
-        # > \\
-        # `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
-        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
-        # `catalog_id`: The DLF catalog ID.\\
-        # `project_name`: The MaxCompute project name.\\
-        # `database_name`: The database name.\\
-        # `schema_name`: The schema name.
+        # *   `database_name`: The database name.
+        # 
+        # *   `schema_name`: The schema name.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The sort field. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
+        # *   TableType
         self.sort_by = sort_by
+        # The list of table types to query. If it\\"s left empty, all types will be queried.
         self.table_types_shrink = table_types_shrink
 
     def validate(self):
@@ -59856,9 +61100,13 @@ class ListTablesResponseBodyPagingInfo(TeaModel):
         tables: List[Table] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The list of data tables.
         self.tables = tables
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -59908,8 +61156,11 @@ class ListTablesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination result.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -60288,6 +61539,14 @@ class ListTaskInstancesRequest(TeaModel):
         # 
         #     Default value: `Id Desc`.
         self.sort_by = sort_by
+        # The status of the task instance.
+        # 
+        # *   `NotRun`: Not started
+        # *   `Running`
+        # *   `Failure`
+        # *   `Success`
+        # *   `WaitTime`: Awaiting scheduled time
+        # *   `WaitResource`: Awaiting resources
         self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -60314,11 +61573,11 @@ class ListTaskInstancesRequest(TeaModel):
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance. Valid values:
         # 
-        # *   SmokeTest
-        # *   Manual
-        # *   SupplementData
-        # *   ManualWorkflow
-        # *   Normal
+        # *   SmokeTest: Testing
+        # *   Manual: Manually triggered node
+        # *   SupplementData: Data backfill
+        # *   ManualWorkflow: Manually triggered workflow
+        # *   Normal: Scheduled execution
         self.workflow_instance_type = workflow_instance_type
 
     def validate(self):
@@ -60480,6 +61739,14 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         # 
         #     Default value: `Id Desc`.
         self.sort_by = sort_by
+        # The status of the task instance.
+        # 
+        # *   `NotRun`: Not started
+        # *   `Running`
+        # *   `Failure`
+        # *   `Success`
+        # *   `WaitTime`: Awaiting scheduled time
+        # *   `WaitResource`: Awaiting resources
         self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -60506,11 +61773,11 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance. Valid values:
         # 
-        # *   SmokeTest
-        # *   Manual
-        # *   SupplementData
-        # *   ManualWorkflow
-        # *   Normal
+        # *   SmokeTest: Testing
+        # *   Manual: Manually triggered node
+        # *   SupplementData: Data backfill
+        # *   ManualWorkflow: Manually triggered workflow
+        # *   Normal: Scheduled execution
         self.workflow_instance_type = workflow_instance_type
 
     def validate(self):
@@ -60802,6 +62069,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.runtime = runtime
         # The information about the resource group with which the instance is associated.
         self.runtime_resource = runtime_resource
+        # The script parameter list.
         self.script_parameters = script_parameters
         # The time when the instance started to run.
         self.started_time = started_time
@@ -60845,7 +62113,9 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        # The timestamp for when it started waiting for resources.
         self.waiting_resource_time = waiting_resource_time
+        # The timestamp for when it started waiting for the scheduled time.
         self.waiting_trigger_time = waiting_trigger_time
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -61092,7 +62362,7 @@ class ListTaskInstancesResponseBody(TeaModel):
         paging_info: ListTaskInstancesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination details.
+        # The pagination information.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -64593,11 +65863,12 @@ class ListWorkflowInstancesRequest(TeaModel):
         self.sort_by = sort_by
         # The type of the workflow instance. Valid values:
         # 
-        # *   Normal
-        # *   Manual
-        # *   SmokeTest
-        # *   SupplementData
-        # *   ManualWorkflow
+        # *   Normal: Scheduled execution
+        # *   Manual: Manually triggered node
+        # *   SmokeTest: Smoke test
+        # *   SupplementData: Data backfill
+        # *   ManualWorkflow: Manually triggered workflow
+        # *   TriggerWorkflow: Triggered Workflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -64702,11 +65973,12 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         self.sort_by = sort_by
         # The type of the workflow instance. Valid values:
         # 
-        # *   Normal
-        # *   Manual
-        # *   SmokeTest
-        # *   SupplementData
-        # *   ManualWorkflow
+        # *   Normal: Scheduled execution
+        # *   Manual: Manually triggered node
+        # *   SmokeTest: Smoke test
+        # *   SupplementData: Data backfill
+        # *   ManualWorkflow: Manually triggered workflow
+        # *   TriggerWorkflow: Triggered Workflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -64773,7 +66045,9 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags(TeaModel)
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag.
         self.key = key
+        # The value of a tag.
         self.value = value
 
     def validate(self):
@@ -64812,6 +66086,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         modify_time: int = None,
         modify_user: str = None,
         name: str = None,
+        owner: str = None,
         project_id: int = None,
         started_time: int = None,
         status: str = None,
@@ -64819,6 +66094,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         type: str = None,
         workflow_id: int = None,
         workflow_parameters: str = None,
+        workflow_task_instance_id: int = None,
     ):
         self.biz_date = biz_date
         # The creation time.
@@ -64840,6 +66116,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         self.modify_user = modify_user
         # The name of the workflow instance.
         self.name = name
+        self.owner = owner
         # The workspace ID.
         self.project_id = project_id
         # The time when the instance started to run.
@@ -64855,11 +66132,22 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         # *   Success: The instance is successfully run.
         # *   Checking: Data quality is being checked for the instance.
         self.status = status
+        # The task tag.
         self.tags = tags
+        # The type of the workflow instance. Valid values:
+        # 
+        # *   Normal: Scheduled execution
+        # *   Manual: Manually triggered node
+        # *   SmokeTest: Smoke test
+        # *   SupplementData: Data backfill
+        # *   ManualWorkflow: Manually triggered workflow
+        # *   TriggerWorkflow: Triggered Workflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
+        # The workflow parameters.
         self.workflow_parameters = workflow_parameters
+        self.workflow_task_instance_id = workflow_task_instance_id
 
     def validate(self):
         if self.tags:
@@ -64891,6 +66179,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
             result['ModifyUser'] = self.modify_user
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.started_time is not None:
@@ -64907,6 +66197,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
             result['WorkflowId'] = self.workflow_id
         if self.workflow_parameters is not None:
             result['WorkflowParameters'] = self.workflow_parameters
+        if self.workflow_task_instance_id is not None:
+            result['WorkflowTaskInstanceId'] = self.workflow_task_instance_id
         return result
 
     def from_map(self, m: dict = None):
@@ -64929,6 +66221,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
             self.modify_user = m.get('ModifyUser')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('StartedTime') is not None:
@@ -64946,6 +66240,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowParameters') is not None:
             self.workflow_parameters = m.get('WorkflowParameters')
+        if m.get('WorkflowTaskInstanceId') is not None:
+            self.workflow_task_instance_id = m.get('WorkflowTaskInstanceId')
         return self
 
 
@@ -65124,7 +66420,7 @@ class ListWorkflowsRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
-        # The trigger type. Valid values:
+        # The trigger type.
         # 
         # *   Scheduler
         # *   Manual
@@ -65222,7 +66518,7 @@ class ListWorkflowsShrinkRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
-        # The trigger type. Valid values:
+        # The trigger type.
         # 
         # *   Scheduler
         # *   Manual
@@ -65421,6 +66717,7 @@ class ListWorkflowsResponseBodyPagingInfoWorkflows(TeaModel):
         self.parameters = parameters
         # The workspace ID.
         self.project_id = project_id
+        # The task tag.
         self.tags = tags
         # The trigger method.
         self.trigger = trigger
@@ -68799,11 +70096,20 @@ class SubmitFileRequest(TeaModel):
         project_identifier: str = None,
         skip_all_deploy_file_extensions: bool = None,
     ):
+        # The description of the submission.
         self.comment = comment
+        # The file ID. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
+        # Whether to skip the pre-deployment check after the file is submitted:
+        # 
+        # *   false: Do not skip. After the file is submitted, the system automatically triggers the pre-deployment check. The file becomes available for deployment only after the check is passed.
+        # *   true: Skip. After the file is submitted, the system does not trigger the pre-deployment check. The file can proceed directly to deployment.
         self.skip_all_deploy_file_extensions = skip_all_deploy_file_extensions
 
     def validate(self):
@@ -68852,11 +70158,20 @@ class SubmitFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The deployment package ID. You must specify this ID as a parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # *   true: success.
+        # *   false: failure.
         self.success = success
 
     def validate(self):
@@ -70939,8 +72254,9 @@ class UpdateColumnBusinessMetadataRequest(TeaModel):
         description: str = None,
         id: str = None,
     ):
+        # The field business description.
         self.description = description
-        # The column ID. You can call the ListColumns operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The field ID. You can refer to the response from the ListColumns operation. You can also refer to the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.id = id
@@ -70975,7 +72291,9 @@ class UpdateColumnBusinessMetadataResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -71050,6 +72368,8 @@ class UpdateComponentRequest(TeaModel):
         project_id: int = None,
         spec: str = None,
     ):
+        # The component ID.
+        # 
         # This parameter is required.
         self.component_id = component_id
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
@@ -71095,7 +72415,7 @@ class UpdateComponentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -75844,39 +77164,154 @@ class UpdateFileRequest(TeaModel):
         stop: bool = None,
         timeout: int = None,
     ):
+        # The advanced settings for the task.
+        # 
+        # This parameter corresponds to the Advanced Settings in the right-side navigation pane on the editing page for EMR Spark Streaming and EMR Streaming SQL tasks in Data Studio in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # Currently, only EMR Spark Streaming and EMR Streaming SQL tasks support this parameter, and the parameter must be in JSON format.
         self.advanced_settings = advanced_settings
+        # Specifies whether to apply the scheduling configuration immediately after the file is published.
         self.apply_schedule_immediately = apply_schedule_immediately
+        # Specifies whether to enable automatic parsing for the file. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter corresponds to the Analyze Code setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
+        # The interval at which the node is automatically rerun after a failure. Unit: milliseconds. Maximum value: 1800000 milliseconds (30 minutes).
+        # 
+        # This parameter corresponds to the Rerun interval parameter in Properties > Schedule > Auto Rerun upon Failure for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console). In the console, the unit of the rerun interval is minutes. Convert the time unit when you call this operation.
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
+        # The number of automatic reruns after the file execution fails.
         self.auto_rerun_times = auto_rerun_times
+        # The name of the data source that is used to run the node. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the available data sources.
         self.connection_name = connection_name
+        # The file code content. Different code types (fileType) have different code formats. In Operation Center, you can right-click a task of the corresponding type and select View Code to view the specific code format.
         self.content = content
+        # The cron expression for scheduled execution. This parameter corresponds to the Cron Expression setting in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure Scheduling Cycle and Scheduled Time, DataWorks automatically generates a cron expression.
+        # 
+        # Examples:
+        # 
+        # *   Scheduled at 05:30 every day: `00 30 05 * * ?`
+        # *   Scheduled at the 15th minute of every hour: `00 15 * * * ?`
+        # *   Scheduled every 10 minutes: `00 00/10 * * * ?`
+        # *   Scheduled every 10 minutes between 08:00 and 23:00 every day: `00 00-59/10 8-23 * * * ?`
+        # *   Scheduled at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
+        # *   Scheduled every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
+        # *   Scheduled at 00:05 on every Tuesday and Friday: `00 05 00 * * 2,5`
+        # 
+        # Due to the rules of the DataWorks scheduling system, cron expressions have the following restrictions:
+        # 
+        # *   The minimum scheduling interval is 5 minutes.
+        # *   The earliest scheduling time each day is 00:05.
         self.cron_express = cron_express
+        # The type of scheduling cycle. Valid values: NOT_DAY (minute, hour) and DAY (day, week, month).
+        # 
+        # This parameter corresponds to the Scheduling Cycle setting in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.cycle_type = cycle_type
+        # The IDs of the nodes on which the current node depends. This parameter takes effect only when the DependentType parameter is set to USER_DEFINE. Separate multiple node IDs with commas (,).
+        # 
+        # This parameter corresponds to the Other Nodes option in Properties > Dependencies > Cross-cycle Dependency (Original Previous-cycle Dependency) for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.dependent_node_id_list = dependent_node_id_list
+        # The dependency mode on the previous cycle. Valid values:
+        # 
+        # *   SELF: Depends on the current node.
+        # *   CHILD: Depends on the child nodes.
+        # *   USER_DEFINE: Depends on other nodes.
+        # *   NONE: No dependencies. Does not depend on the previous cycle.
         self.dependent_type = dependent_type
+        # The timestamp (in milliseconds) when automatic scheduling stops.
+        # 
+        # This parameter corresponds to the end time of Effective Period in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.end_effect_date = end_effect_date
+        # The file description.
         self.file_description = file_description
+        # The path to the folder where the file is located.
         self.file_folder_path = file_folder_path
+        # The file ID. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain the file ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The file name. You can modify the file name by setting a new value for FileName. For example, you can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the file ID in the target directory, and then call the [UpdateFile](https://help.aliyun.com/document_detail/173951.html) operation with the file ID specified in the FileId parameter and a new value specified in the FileName parameter to modify the file name.
         self.file_name = file_name
+        # This parameter corresponds to the Skip The Dry-Run Property Of The Ancestor Node option in Properties > Dependencies > Cross-cycle Dependency (Original Previous-cycle Dependency) when Instances of Current Node or Level-1 Child Node is selected for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        # The custom image ID.
         self.image_id = image_id
+        # The output names of the ancestor nodes on which the current node depends. Separate multiple output names with commas (,).
+        # 
+        # This parameter corresponds to the Output Name of Ancestor Node setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # > This parameter is required when you call the CreateDISyncTask or UpdateFile operation to create a batch synchronization node.
         self.input_list = input_list
+        # The input context parameters of the node. The value must be in the JSON format. For more information about the parameter structure, see the InputContextParameterList parameter in the response parameters of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
+        # 
+        # This parameter corresponds to the Input Parameters setting in Properties > Input and Output Parameters for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input_parameters = input_parameters
+        # The outputs of the node.
+        # 
+        # This parameter corresponds to the Output Name setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output_list = output_list
+        # The output context parameters of the node. The value must be in the JSON format. For more information about the parameter structure, see the OutputContextParameterList parameter in the response parameters of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
+        # 
+        # This parameter corresponds to the Output Parameters setting in Properties > Input and Output Parameters for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output_parameters = output_parameters
+        # The file owner ID.
         self.owner = owner
+        # The scheduling parameters of the node.
+        # 
+        # This parameter corresponds to the Scheduling Parameter setting in Properties for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
         self.para_value = para_value
+        # The DataWorks workspace ID. To obtain the ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace management page.
         self.project_id = project_id
+        # The DataWorks workspace name. To obtain the workspace name, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+        # 
+        # You must specify either this parameter or ProjectId to identify the target DataWorks workspace for this API call.
         self.project_identifier = project_identifier
+        # The rerun policy. Valid values:
+        # 
+        # *   ALL_ALLOWED: Reruns are allowed regardless of whether the task succeeds or fails.
+        # *   FAILURE_ALLOWED: Reruns are allowed only when the task fails.
+        # *   ALL_DENIED: Reruns are not allowed regardless of whether the task succeeds or fails.
+        # 
+        # This parameter corresponds to the Support for Rerun setting in Scheduling > Scheduling Policies for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # Valid values:
+        # 
+        # *   ALL_ALLOWD
+        # *   FAILURE_ALLOWED
+        # *   ALL_DENIED
+        # *   ALL_ALLOWED
         self.rerun_mode = rerun_mode
+        # The resource group for the task published from the file. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the available resource groups in the workspace.
         self.resource_group_identifier = resource_group_identifier
+        # The scheduling type. Valid values:
+        # 
+        # *   NORMAL: Normal scheduled task.
+        # *   MANUAL: Manually triggered node. Not scheduled for daily execution. Corresponds to nodes in manually triggered workflows.
+        # *   PAUSE: Paused task.
+        # *   SKIP: Dry-run task. Scheduled for daily execution but is directly marked as successful when scheduling starts.
         self.scheduler_type = scheduler_type
+        # The timestamp (in milliseconds) when automatic scheduling starts.
+        # 
+        # This parameter corresponds to the start time of Effective Period in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_effect_date = start_effect_date
+        # Specifies whether to start the task immediately after it is published. Valid values:
+        # 
+        # *   true: Start the task immediately after it is published.
+        # *   false: Do not start the task immediately after it is published.
+        # 
+        # This parameter corresponds to the Start Method setting in Configuration > Scheduling Policies in the right-side navigation pane on the editing page for EMR Spark Streaming and EMR Streaming SQL tasks in Data Studio in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_immediately = start_immediately
+        # Specifies whether to skip execution. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter corresponds to the Skip Execution option in Properties > Schedule > Recurrence for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
+        # The timeout settings for scheduling configuration.
         self.timeout = timeout
 
     def validate(self):
@@ -76036,10 +77471,18 @@ class UpdateFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # *   true: The call succeeded.
+        # *   false: The call failed.
         self.success = success
 
     def validate(self):
@@ -76127,11 +77570,17 @@ class UpdateFolderRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The folder ID. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
+        # 
         # This parameter is required.
         self.folder_id = folder_id
+        # The folder name.
+        # 
         # This parameter is required.
         self.folder_name = folder_name
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -76175,10 +77624,15 @@ class UpdateFolderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful
         self.success = success
 
     def validate(self):
@@ -76394,10 +77848,17 @@ class UpdateIDEEventResultRequest(TeaModel):
         extension_code: str = None,
         message_id: str = None,
     ):
+        # The check status of the extension for this extension point event. Valid values:
+        # 
+        # *   OK: The extension passed the check for this event.
+        # *   FAIL: The extension failed the check for this event. You need to review and resolve the error promptly to avoid affecting subsequent program execution.
+        # *   WARN: The extension passed the check for this event, but with warnings.
         self.check_result = check_result
+        # A summary of the check result for this extension point event. This message is displayed on your current development page. When the check fails or has warnings, you can use this summary to quickly identify the cause.
         self.check_result_tip = check_result_tip
+        # The unique identifier of the extension. You can obtain the identifier from the Extensions tab on Open Platform in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.extension_code = extension_code
-        # 扩展点消息UUID
+        # The OpenEvent message ID from DataWorks. When an extension point event is triggered, you can obtain the message ID from the event message.
         self.message_id = message_id
 
     def validate(self):
@@ -76437,6 +77898,7 @@ class UpdateIDEEventResultResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID. Used for troubleshooting errors.
         self.request_id = request_id
 
     def validate(self):
@@ -77386,10 +78848,11 @@ class UpdateTableBusinessMetadataRequest(TeaModel):
         id: str = None,
         readme: str = None,
     ):
-        # The data table ID. You can call the ListTables operation to query the ID.
+        # The table ID. You can refer to the format of the table ID returned by the ListTables operation.
         # 
         # This parameter is required.
         self.id = id
+        # The usage notes. The rich text format is supported.
         self.readme = readme
 
     def validate(self):
@@ -77422,7 +78885,9 @@ class UpdateTableBusinessMetadataResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -77578,7 +79043,7 @@ class UpdateTaskRequestInputsVariables(TeaModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant.
+        # *   Constant: constant value.
         # *   PassThrough: node output.
         # *   System: variable.
         # *   NodeOutput: script output.
@@ -77691,7 +79156,7 @@ class UpdateTaskRequestOutputsVariables(TeaModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant.
+        # *   Constant: constant value.
         # *   PassThrough: node output.
         # *   System: variable.
         # *   NodeOutput: script output.
@@ -77907,6 +79372,10 @@ class UpdateTaskRequestTrigger(TeaModel):
     ):
         # The Cron expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
+        # Cycle type. This parameter takes effect only when Type is set to Scheduler and the cron expression specifies hourly scheduling. Default value: Daily
+        # 
+        # *   Daily: Schedules jobs on a daily basis.
+        # *   NotDaily: Schedules jobs on an hourly basis.
         self.cycle_type = cycle_type
         # The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
         self.end_time = end_time
@@ -78006,7 +79475,7 @@ class UpdateTaskRequest(TeaModel):
         self.id = id
         # The input information.
         self.inputs = inputs
-        # The instance generation mode. Valid values:
+        # The instance generation mode.
         # 
         # *   T+1: the next day
         # *   Immediately
@@ -78017,7 +79486,7 @@ class UpdateTaskRequest(TeaModel):
         self.outputs = outputs
         # The account ID of the task owner.
         self.owner = owner
-        # The rerun interval. Unit: seconds.
+        # The rerun interval. Unit: milliseconds. Must not exceed 1800000.
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
@@ -78033,7 +79502,7 @@ class UpdateTaskRequest(TeaModel):
         self.script = script
         # The tags.
         self.tags = tags
-        # The timeout period of task running. Unit: seconds.
+        # Task execution timeout in seconds. Must be greater than 3600.
         self.timeout = timeout
         # The triggering method.
         self.trigger = trigger
@@ -78207,7 +79676,7 @@ class UpdateTaskShrinkRequest(TeaModel):
         self.id = id
         # The input information.
         self.inputs_shrink = inputs_shrink
-        # The instance generation mode. Valid values:
+        # The instance generation mode.
         # 
         # *   T+1: the next day
         # *   Immediately
@@ -78218,7 +79687,7 @@ class UpdateTaskShrinkRequest(TeaModel):
         self.outputs_shrink = outputs_shrink
         # The account ID of the task owner.
         self.owner = owner
-        # The rerun interval. Unit: seconds.
+        # The rerun interval. Unit: milliseconds. Must not exceed 1800000.
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
@@ -78234,7 +79703,7 @@ class UpdateTaskShrinkRequest(TeaModel):
         self.script_shrink = script_shrink
         # The tags.
         self.tags_shrink = tags_shrink
-        # The timeout period of task running. Unit: seconds.
+        # Task execution timeout in seconds. Must be greater than 3600.
         self.timeout = timeout
         # The triggering method.
         self.trigger_shrink = trigger_shrink
@@ -78668,21 +80137,45 @@ class UpdateUdfFileRequest(TeaModel):
         return_value: str = None,
         udf_description: str = None,
     ):
+        # The class name where the function is defined, corresponding to the class name field in the Create Function form.
+        # 
         # This parameter is required.
         self.class_name = class_name
+        # The command format for invoking the function, corresponding to the command format field in the Create Function form.
         self.cmd_description = cmd_description
+        # An example demonstrating how to call the function, corresponding to the example field in the Create Function form.
         self.example = example
+        # The path to the folder containing the function file.
         self.file_folder_path = file_folder_path
+        # The file ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The function category, corresponding to the function type field in the Create Function form. Valid values: MATH (mathematical functions), AGGREGATE (aggregate functions), STRING (string processing functions), DATE (date processing functions), ANALYTIC (window functions), and OTHER (other functions).
+        # 
         # This parameter is required.
         self.function_type = function_type
+        # The function parameter description, corresponding to the parameter description field in the Create Function form.
+        # 
+        # Valid values:
+        # 
+        # *   ALL_ALLOWD
+        # *   FAILURE_ALLOWED
+        # *   ALL_DENIED
         self.parameter_description = parameter_description
+        # The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
         self.project_id = project_id
+        # The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces.
+        # 
+        # Either this parameter or ProjectId must be specified to identify the target DataWorks workspace for this API call.
         self.project_identifier = project_identifier
+        # A comma-separated list of resource names referenced by the function, corresponding to the resource list field in the Create Function form.
+        # 
         # This parameter is required.
         self.resources = resources
+        # The return value description, corresponding to the return value field in the Create Function form.
         self.return_value = return_value
+        # The function purpose description, corresponding to the description field in the Create Function form.
         self.udf_description = udf_description
 
     def validate(self):
@@ -78758,10 +80251,18 @@ class UpdateUdfFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique ID for this request. Use this ID for troubleshooting if an error occurs.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
