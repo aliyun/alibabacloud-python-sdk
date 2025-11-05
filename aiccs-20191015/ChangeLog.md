@@ -1,3 +1,9 @@
+2025-11-05 Version: 3.3.0
+- Support API ImportOneTaskPhoneNumber.
+- Update API QueryAiCallDetailPage: add request parameters DetailIds.
+- Update API UpdateAiCallTask: add request parameters TaskCps.
+
+
 2025-10-29 Version: 3.2.0
 - Support API PageQueryAgentList.
 - Support API QueryAiVoiceAgentDetail.

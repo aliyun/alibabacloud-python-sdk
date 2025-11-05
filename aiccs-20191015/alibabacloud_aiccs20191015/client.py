@@ -10509,6 +10509,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.hotline_session_query_with_options_async(request, runtime)
 
+    def import_one_task_phone_number_with_options(
+        self,
+        tmp_req: aiccs_20191015_models.ImportOneTaskPhoneNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.ImportOneTaskPhoneNumberResponse:
+        """
+        @summary 语音智能体外呼任务导入单条数据
+        
+        @param tmp_req: ImportOneTaskPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportOneTaskPhoneNumberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aiccs_20191015_models.ImportOneTaskPhoneNumberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.variables_shrink):
+            query['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportOneTaskPhoneNumber',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.ImportOneTaskPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_one_task_phone_number_with_options_async(
+        self,
+        tmp_req: aiccs_20191015_models.ImportOneTaskPhoneNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.ImportOneTaskPhoneNumberResponse:
+        """
+        @summary 语音智能体外呼任务导入单条数据
+        
+        @param tmp_req: ImportOneTaskPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportOneTaskPhoneNumberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aiccs_20191015_models.ImportOneTaskPhoneNumberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.variables_shrink):
+            query['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportOneTaskPhoneNumber',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.ImportOneTaskPhoneNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_one_task_phone_number(
+        self,
+        request: aiccs_20191015_models.ImportOneTaskPhoneNumberRequest,
+    ) -> aiccs_20191015_models.ImportOneTaskPhoneNumberResponse:
+        """
+        @summary 语音智能体外呼任务导入单条数据
+        
+        @param request: ImportOneTaskPhoneNumberRequest
+        @return: ImportOneTaskPhoneNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_one_task_phone_number_with_options(request, runtime)
+
+    async def import_one_task_phone_number_async(
+        self,
+        request: aiccs_20191015_models.ImportOneTaskPhoneNumberRequest,
+    ) -> aiccs_20191015_models.ImportOneTaskPhoneNumberResponse:
+        """
+        @summary 语音智能体外呼任务导入单条数据
+        
+        @param request: ImportOneTaskPhoneNumberRequest
+        @return: ImportOneTaskPhoneNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_one_task_phone_number_with_options_async(request, runtime)
+
     def import_task_number_datas_with_options(
         self,
         tmp_req: aiccs_20191015_models.ImportTaskNumberDatasRequest,
@@ -13143,17 +13271,21 @@ class Client(OpenApiClient):
 
     def query_ai_call_detail_page_with_options(
         self,
-        request: aiccs_20191015_models.QueryAiCallDetailPageRequest,
+        tmp_req: aiccs_20191015_models.QueryAiCallDetailPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20191015_models.QueryAiCallDetailPageResponse:
         """
         @summary 查询明细记录
         
-        @param request: QueryAiCallDetailPageRequest
+        @param tmp_req: QueryAiCallDetailPageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryAiCallDetailPageResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = aiccs_20191015_models.QueryAiCallDetailPageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.detail_ids):
+            request.detail_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detail_ids, 'DetailIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.batch_id):
             query['BatchId'] = request.batch_id
@@ -13161,6 +13293,8 @@ class Client(OpenApiClient):
             query['CallResult'] = request.call_result
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.detail_ids_shrink):
+            query['DetailIds'] = request.detail_ids_shrink
         if not UtilClient.is_unset(request.end_calling_time):
             query['EndCallingTime'] = request.end_calling_time
         if not UtilClient.is_unset(request.end_imported_time):
@@ -13212,17 +13346,21 @@ class Client(OpenApiClient):
 
     async def query_ai_call_detail_page_with_options_async(
         self,
-        request: aiccs_20191015_models.QueryAiCallDetailPageRequest,
+        tmp_req: aiccs_20191015_models.QueryAiCallDetailPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20191015_models.QueryAiCallDetailPageResponse:
         """
         @summary 查询明细记录
         
-        @param request: QueryAiCallDetailPageRequest
+        @param tmp_req: QueryAiCallDetailPageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryAiCallDetailPageResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = aiccs_20191015_models.QueryAiCallDetailPageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.detail_ids):
+            request.detail_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detail_ids, 'DetailIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.batch_id):
             query['BatchId'] = request.batch_id
@@ -13230,6 +13368,8 @@ class Client(OpenApiClient):
             query['CallResult'] = request.call_result
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.detail_ids_shrink):
+            query['DetailIds'] = request.detail_ids_shrink
         if not UtilClient.is_unset(request.end_calling_time):
             query['EndCallingTime'] = request.end_calling_time
         if not UtilClient.is_unset(request.end_imported_time):
@@ -17379,6 +17519,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_type):
             query['StartType'] = request.start_type
+        if not UtilClient.is_unset(request.task_cps):
+            query['TaskCps'] = request.task_cps
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_name):
@@ -17448,6 +17590,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_type):
             query['StartType'] = request.start_type
+        if not UtilClient.is_unset(request.task_cps):
+            query['TaskCps'] = request.task_cps
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_name):
