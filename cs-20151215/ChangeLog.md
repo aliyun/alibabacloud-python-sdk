@@ -1,3 +1,10 @@
+2025-11-05 Version: 6.1.0
+- Support API ListOperationPlansForRegion.
+- Update API CreateClusterNodePool: add request parameters body.node_components.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.node_components.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.node_components.
+
+
 2025-10-30 Version: 6.0.0
 - Update API DescribePolicyGovernanceInCluster: add response parameters Body.Violation.
 - Update API DescribePolicyGovernanceInCluster: add response parameters Body.admit_log.log_project.

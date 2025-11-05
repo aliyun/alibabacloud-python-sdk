@@ -136,10 +136,20 @@ class Addon(TeaModel):
 class ContainerdConfig(TeaModel):
     def __init__(
         self,
+        ignore_image_defined_volume: bool = None,
         insecure_registries: List[str] = None,
+        limit_core: int = None,
+        limit_mem_lock: int = None,
+        limit_no_file: int = None,
+        max_concurrent_downloads: int = None,
         registry_mirrors: List[str] = None,
     ):
+        self.ignore_image_defined_volume = ignore_image_defined_volume
         self.insecure_registries = insecure_registries
+        self.limit_core = limit_core
+        self.limit_mem_lock = limit_mem_lock
+        self.limit_no_file = limit_no_file
+        self.max_concurrent_downloads = max_concurrent_downloads
         self.registry_mirrors = registry_mirrors
 
     def validate(self):
@@ -151,16 +161,36 @@ class ContainerdConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.ignore_image_defined_volume is not None:
+            result['ignoreImageDefinedVolume'] = self.ignore_image_defined_volume
         if self.insecure_registries is not None:
             result['insecureRegistries'] = self.insecure_registries
+        if self.limit_core is not None:
+            result['limitCore'] = self.limit_core
+        if self.limit_mem_lock is not None:
+            result['limitMemLock'] = self.limit_mem_lock
+        if self.limit_no_file is not None:
+            result['limitNoFile'] = self.limit_no_file
+        if self.max_concurrent_downloads is not None:
+            result['maxConcurrentDownloads'] = self.max_concurrent_downloads
         if self.registry_mirrors is not None:
             result['registryMirrors'] = self.registry_mirrors
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ignoreImageDefinedVolume') is not None:
+            self.ignore_image_defined_volume = m.get('ignoreImageDefinedVolume')
         if m.get('insecureRegistries') is not None:
             self.insecure_registries = m.get('insecureRegistries')
+        if m.get('limitCore') is not None:
+            self.limit_core = m.get('limitCore')
+        if m.get('limitMemLock') is not None:
+            self.limit_mem_lock = m.get('limitMemLock')
+        if m.get('limitNoFile') is not None:
+            self.limit_no_file = m.get('limitNoFile')
+        if m.get('maxConcurrentDownloads') is not None:
+            self.max_concurrent_downloads = m.get('maxConcurrentDownloads')
         if m.get('registryMirrors') is not None:
             self.registry_mirrors = m.get('registryMirrors')
         return self
@@ -1236,6 +1266,74 @@ class NodepoolManagement(TeaModel):
         return self
 
 
+class NodepoolNodeComponentsConfig(TeaModel):
+    def __init__(
+        self,
+        custom_config: Dict[str, str] = None,
+    ):
+        self.custom_config = custom_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_config is not None:
+            result['custom_config'] = self.custom_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('custom_config') is not None:
+            self.custom_config = m.get('custom_config')
+        return self
+
+
+class NodepoolNodeComponents(TeaModel):
+    def __init__(
+        self,
+        config: NodepoolNodeComponentsConfig = None,
+        name: str = None,
+        version: str = None,
+    ):
+        self.config = config
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            temp_model = NodepoolNodeComponentsConfig()
+            self.config = temp_model.from_map(m['config'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class NodepoolNodeConfig(TeaModel):
     def __init__(
         self,
@@ -1798,6 +1896,7 @@ class Nodepool(TeaModel):
         kubernetes_config: NodepoolKubernetesConfig = None,
         management: NodepoolManagement = None,
         max_nodes: int = None,
+        node_components: List[NodepoolNodeComponents] = None,
         node_config: NodepoolNodeConfig = None,
         nodepool_info: NodepoolNodepoolInfo = None,
         scaling_group: NodepoolScalingGroup = None,
@@ -1810,6 +1909,7 @@ class Nodepool(TeaModel):
         self.kubernetes_config = kubernetes_config
         self.management = management
         self.max_nodes = max_nodes
+        self.node_components = node_components
         self.node_config = node_config
         self.nodepool_info = nodepool_info
         self.scaling_group = scaling_group
@@ -1824,6 +1924,10 @@ class Nodepool(TeaModel):
             self.kubernetes_config.validate()
         if self.management:
             self.management.validate()
+        if self.node_components:
+            for k in self.node_components:
+                if k:
+                    k.validate()
         if self.node_config:
             self.node_config.validate()
         if self.nodepool_info:
@@ -1853,6 +1957,10 @@ class Nodepool(TeaModel):
             result['management'] = self.management.to_map()
         if self.max_nodes is not None:
             result['max_nodes'] = self.max_nodes
+        result['node_components'] = []
+        if self.node_components is not None:
+            for k in self.node_components:
+                result['node_components'].append(k.to_map() if k else None)
         if self.node_config is not None:
             result['node_config'] = self.node_config.to_map()
         if self.nodepool_info is not None:
@@ -1883,6 +1991,11 @@ class Nodepool(TeaModel):
             self.management = temp_model.from_map(m['management'])
         if m.get('max_nodes') is not None:
             self.max_nodes = m.get('max_nodes')
+        self.node_components = []
+        if m.get('node_components') is not None:
+            for k in m.get('node_components'):
+                temp_model = NodepoolNodeComponents()
+                self.node_components.append(temp_model.from_map(k))
         if m.get('node_config') is not None:
             temp_model = NodepoolNodeConfig()
             self.node_config = temp_model.from_map(m['node_config'])
@@ -6045,6 +6158,74 @@ class CreateClusterNodePoolRequestManagement(TeaModel):
         return self
 
 
+class CreateClusterNodePoolRequestNodeComponentsConfig(TeaModel):
+    def __init__(
+        self,
+        custom_config: Dict[str, str] = None,
+    ):
+        self.custom_config = custom_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_config is not None:
+            result['custom_config'] = self.custom_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('custom_config') is not None:
+            self.custom_config = m.get('custom_config')
+        return self
+
+
+class CreateClusterNodePoolRequestNodeComponents(TeaModel):
+    def __init__(
+        self,
+        config: CreateClusterNodePoolRequestNodeComponentsConfig = None,
+        name: str = None,
+        version: str = None,
+    ):
+        self.config = config
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            temp_model = CreateClusterNodePoolRequestNodeComponentsConfig()
+            self.config = temp_model.from_map(m['config'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class CreateClusterNodePoolRequestNodeConfig(TeaModel):
     def __init__(
         self,
@@ -6835,6 +7016,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         kubernetes_config: CreateClusterNodePoolRequestKubernetesConfig = None,
         management: CreateClusterNodePoolRequestManagement = None,
         max_nodes: int = None,
+        node_components: List[CreateClusterNodePoolRequestNodeComponents] = None,
         node_config: CreateClusterNodePoolRequestNodeConfig = None,
         nodepool_info: CreateClusterNodePoolRequestNodepoolInfo = None,
         scaling_group: CreateClusterNodePoolRequestScalingGroup = None,
@@ -6875,6 +7057,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         # 
         # The maximum number of nodes that can be contained in the edge node pool.
         self.max_nodes = max_nodes
+        self.node_components = node_components
         # The node configurations.
         self.node_config = node_config
         # The configurations of the node pool.
@@ -6897,6 +7080,10 @@ class CreateClusterNodePoolRequest(TeaModel):
             self.kubernetes_config.validate()
         if self.management:
             self.management.validate()
+        if self.node_components:
+            for k in self.node_components:
+                if k:
+                    k.validate()
         if self.node_config:
             self.node_config.validate()
         if self.nodepool_info:
@@ -6934,6 +7121,10 @@ class CreateClusterNodePoolRequest(TeaModel):
             result['management'] = self.management.to_map()
         if self.max_nodes is not None:
             result['max_nodes'] = self.max_nodes
+        result['node_components'] = []
+        if self.node_components is not None:
+            for k in self.node_components:
+                result['node_components'].append(k.to_map() if k else None)
         if self.node_config is not None:
             result['node_config'] = self.node_config.to_map()
         if self.nodepool_info is not None:
@@ -6974,6 +7165,11 @@ class CreateClusterNodePoolRequest(TeaModel):
             self.management = temp_model.from_map(m['management'])
         if m.get('max_nodes') is not None:
             self.max_nodes = m.get('max_nodes')
+        self.node_components = []
+        if m.get('node_components') is not None:
+            for k in m.get('node_components'):
+                temp_model = CreateClusterNodePoolRequestNodeComponents()
+                self.node_components.append(temp_model.from_map(k))
         if m.get('node_config') is not None:
             temp_model = CreateClusterNodePoolRequestNodeConfig()
             self.node_config = temp_model.from_map(m['node_config'])
@@ -11482,6 +11678,74 @@ class DescribeClusterNodePoolDetailResponseBodyManagement(TeaModel):
         return self
 
 
+class DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig(TeaModel):
+    def __init__(
+        self,
+        custom_config: Dict[str, str] = None,
+    ):
+        self.custom_config = custom_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_config is not None:
+            result['custom_config'] = self.custom_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('custom_config') is not None:
+            self.custom_config = m.get('custom_config')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyNodeComponents(TeaModel):
+    def __init__(
+        self,
+        config: DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig = None,
+        name: str = None,
+        version: str = None,
+    ):
+        self.config = config
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig()
+            self.config = temp_model.from_map(m['config'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig(TeaModel):
     def __init__(
         self,
@@ -12359,6 +12623,7 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
         kubernetes_config: DescribeClusterNodePoolDetailResponseBodyKubernetesConfig = None,
         management: DescribeClusterNodePoolDetailResponseBodyManagement = None,
         max_nodes: int = None,
+        node_components: List[DescribeClusterNodePoolDetailResponseBodyNodeComponents] = None,
         node_config: DescribeClusterNodePoolDetailResponseBodyNodeConfig = None,
         nodepool_info: DescribeClusterNodePoolDetailResponseBodyNodepoolInfo = None,
         scaling_group: DescribeClusterNodePoolDetailResponseBodyScalingGroup = None,
@@ -12396,6 +12661,7 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
         # 
         # The maximum number of nodes allowed in an edge node pool.
         self.max_nodes = max_nodes
+        self.node_components = node_components
         # The node configurations.
         self.node_config = node_config
         # The configuration of the node pool.
@@ -12418,6 +12684,10 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
             self.kubernetes_config.validate()
         if self.management:
             self.management.validate()
+        if self.node_components:
+            for k in self.node_components:
+                if k:
+                    k.validate()
         if self.node_config:
             self.node_config.validate()
         if self.nodepool_info:
@@ -12453,6 +12723,10 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
             result['management'] = self.management.to_map()
         if self.max_nodes is not None:
             result['max_nodes'] = self.max_nodes
+        result['node_components'] = []
+        if self.node_components is not None:
+            for k in self.node_components:
+                result['node_components'].append(k.to_map() if k else None)
         if self.node_config is not None:
             result['node_config'] = self.node_config.to_map()
         if self.nodepool_info is not None:
@@ -12490,6 +12764,11 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
             self.management = temp_model.from_map(m['management'])
         if m.get('max_nodes') is not None:
             self.max_nodes = m.get('max_nodes')
+        self.node_components = []
+        if m.get('node_components') is not None:
+            for k in m.get('node_components'):
+                temp_model = DescribeClusterNodePoolDetailResponseBodyNodeComponents()
+                self.node_components.append(temp_model.from_map(k))
         if m.get('node_config') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBodyNodeConfig()
             self.node_config = temp_model.from_map(m['node_config'])
@@ -13155,6 +13434,74 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagement(TeaModel):
         if m.get('upgrade_config') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig()
             self.upgrade_config = temp_model.from_map(m['upgrade_config'])
+        return self
+
+
+class DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfig(TeaModel):
+    def __init__(
+        self,
+        custom_config: Dict[str, str] = None,
+    ):
+        self.custom_config = custom_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_config is not None:
+            result['custom_config'] = self.custom_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('custom_config') is not None:
+            self.custom_config = m.get('custom_config')
+        return self
+
+
+class DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponents(TeaModel):
+    def __init__(
+        self,
+        config: DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfig = None,
+        name: str = None,
+        version: str = None,
+    ):
+        self.config = config
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfig()
+            self.config = temp_model.from_map(m['config'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
         return self
 
 
@@ -14045,6 +14392,7 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
         kubernetes_config: DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig = None,
         management: DescribeClusterNodePoolsResponseBodyNodepoolsManagement = None,
         max_nodes: int = None,
+        node_components: List[DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponents] = None,
         node_config: DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig = None,
         nodepool_info: DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo = None,
         scaling_group: DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup = None,
@@ -14069,6 +14417,7 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
         self.management = management
         # The maximum number of nodes that can be created in the edge node pool. The value of this parameter must be greater than or equal to 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools whose types are ess or default edge node pools.
         self.max_nodes = max_nodes
+        self.node_components = node_components
         # The configurations of nodes.
         self.node_config = node_config
         # The information about the node pool.
@@ -14091,6 +14440,10 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
             self.kubernetes_config.validate()
         if self.management:
             self.management.validate()
+        if self.node_components:
+            for k in self.node_components:
+                if k:
+                    k.validate()
         if self.node_config:
             self.node_config.validate()
         if self.nodepool_info:
@@ -14122,6 +14475,10 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
             result['management'] = self.management.to_map()
         if self.max_nodes is not None:
             result['max_nodes'] = self.max_nodes
+        result['node_components'] = []
+        if self.node_components is not None:
+            for k in self.node_components:
+                result['node_components'].append(k.to_map() if k else None)
         if self.node_config is not None:
             result['node_config'] = self.node_config.to_map()
         if self.nodepool_info is not None:
@@ -14155,6 +14512,11 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
             self.management = temp_model.from_map(m['management'])
         if m.get('max_nodes') is not None:
             self.max_nodes = m.get('max_nodes')
+        self.node_components = []
+        if m.get('node_components') is not None:
+            for k in m.get('node_components'):
+                temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponents()
+                self.node_components.append(temp_model.from_map(k))
         if m.get('node_config') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig()
             self.node_config = temp_model.from_map(m['node_config'])
@@ -24388,6 +24750,202 @@ class ListOperationPlansResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListOperationPlansResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOperationPlansForRegionRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        state: str = None,
+        type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.state = state
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.state is not None:
+            result['state'] = self.state
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListOperationPlansForRegionResponseBodyPlans(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        created: str = None,
+        end_time: str = None,
+        plan_id: str = None,
+        start_time: str = None,
+        state: str = None,
+        target_id: str = None,
+        target_type: str = None,
+        task_id: str = None,
+        type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.created = created
+        self.end_time = end_time
+        self.plan_id = plan_id
+        self.start_time = start_time
+        self.state = state
+        self.target_id = target_id
+        self.target_type = target_type
+        self.task_id = task_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.created is not None:
+            result['created'] = self.created
+        if self.end_time is not None:
+            result['end_time'] = self.end_time
+        if self.plan_id is not None:
+            result['plan_id'] = self.plan_id
+        if self.start_time is not None:
+            result['start_time'] = self.start_time
+        if self.state is not None:
+            result['state'] = self.state
+        if self.target_id is not None:
+            result['target_id'] = self.target_id
+        if self.target_type is not None:
+            result['target_type'] = self.target_type
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('end_time') is not None:
+            self.end_time = m.get('end_time')
+        if m.get('plan_id') is not None:
+            self.plan_id = m.get('plan_id')
+        if m.get('start_time') is not None:
+            self.start_time = m.get('start_time')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('target_id') is not None:
+            self.target_id = m.get('target_id')
+        if m.get('target_type') is not None:
+            self.target_type = m.get('target_type')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListOperationPlansForRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        plans: List[ListOperationPlansForRegionResponseBodyPlans] = None,
+    ):
+        self.plans = plans
+
+    def validate(self):
+        if self.plans:
+            for k in self.plans:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['plans'] = []
+        if self.plans is not None:
+            for k in self.plans:
+                result['plans'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.plans = []
+        if m.get('plans') is not None:
+            for k in m.get('plans'):
+                temp_model = ListOperationPlansForRegionResponseBodyPlans()
+                self.plans.append(temp_model.from_map(k))
+        return self
+
+
+class ListOperationPlansForRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOperationPlansForRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOperationPlansForRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

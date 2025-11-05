@@ -2178,6 +2178,8 @@ class Client(OpenApiClient):
             body['management'] = request.management
         if not UtilClient.is_unset(request.max_nodes):
             body['max_nodes'] = request.max_nodes
+        if not UtilClient.is_unset(request.node_components):
+            body['node_components'] = request.node_components
         if not UtilClient.is_unset(request.node_config):
             body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
@@ -2245,6 +2247,8 @@ class Client(OpenApiClient):
             body['management'] = request.management
         if not UtilClient.is_unset(request.max_nodes):
             body['max_nodes'] = request.max_nodes
+        if not UtilClient.is_unset(request.node_components):
+            body['node_components'] = request.node_components
         if not UtilClient.is_unset(request.node_config):
             body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
@@ -10452,6 +10456,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_operation_plans_with_options_async(request, headers, runtime)
+
+    def list_operation_plans_for_region_with_options(
+        self,
+        region_id: str,
+        request: cs20151215_models.ListOperationPlansForRegionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListOperationPlansForRegionResponse:
+        """
+        @summary 获取单个地域的自动运维执行计划列表
+        
+        @param request: ListOperationPlansForRegionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationPlansForRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.state):
+            query['state'] = request.state
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationPlansForRegion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/regions/{OpenApiUtilClient.get_encode_param(region_id)}/operation/plans',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListOperationPlansForRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_plans_for_region_with_options_async(
+        self,
+        region_id: str,
+        request: cs20151215_models.ListOperationPlansForRegionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListOperationPlansForRegionResponse:
+        """
+        @summary 获取单个地域的自动运维执行计划列表
+        
+        @param request: ListOperationPlansForRegionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationPlansForRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.state):
+            query['state'] = request.state
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationPlansForRegion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/regions/{OpenApiUtilClient.get_encode_param(region_id)}/operation/plans',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListOperationPlansForRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_plans_for_region(
+        self,
+        region_id: str,
+        request: cs20151215_models.ListOperationPlansForRegionRequest,
+    ) -> cs20151215_models.ListOperationPlansForRegionResponse:
+        """
+        @summary 获取单个地域的自动运维执行计划列表
+        
+        @param request: ListOperationPlansForRegionRequest
+        @return: ListOperationPlansForRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_operation_plans_for_region_with_options(region_id, request, headers, runtime)
+
+    async def list_operation_plans_for_region_async(
+        self,
+        region_id: str,
+        request: cs20151215_models.ListOperationPlansForRegionRequest,
+    ) -> cs20151215_models.ListOperationPlansForRegionResponse:
+        """
+        @summary 获取单个地域的自动运维执行计划列表
+        
+        @param request: ListOperationPlansForRegionRequest
+        @return: ListOperationPlansForRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_operation_plans_for_region_with_options_async(region_id, request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
