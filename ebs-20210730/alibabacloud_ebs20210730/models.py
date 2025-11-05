@@ -1066,6 +1066,7 @@ class CreateDiskReplicaGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_zone_id = destination_zone_id
+        # Whether to enable replication time control. By default, this parameter is disabled.
         self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
@@ -1238,9 +1239,9 @@ class CreateDiskReplicaPairRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        # The key of the tag.
         self.key = key
-        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -1288,16 +1289,14 @@ class CreateDiskReplicaPairRequest(TeaModel):
         source_zone_id: str = None,
         tag: List[CreateDiskReplicaPairRequestTag] = None,
     ):
-        # The bandwidth to use to asynchronously replicate data between the primary disk and secondary disk. Unit: Kbit/s. Valid values:
+        # The bandwidth to use to asynchronously replicate data from the primary disk to the secondary disk. Unit: Kbit/s. Valid values:
         # 
-        # *   10240 : equal to 10 Mbit/s
-        # *   20480 : equal to 20 Mbit/s
-        # *   51200 : equal to 50 Mbit/s
-        # *   102400 : equal to 100 Mbit/s
+        # *   10240
+        # *   20480
+        # *   51200
+        # *   102400
         # 
-        # Default value: 10240.
-        # 
-        # When you set the ChargeType parameter to POSTPAY, the Bandwidth parameter is automatically set to 0 and cannot be modified. The value 0 indicates that bandwidth is dynamically allocated based on the volume of data that is asynchronously replicated from the primary disk to the secondary disk.
+        # Default value: 10240. When you set the ChargeType parameter to POSTPAY, the Bandwidth parameter is automatically set to 0 and cannot be modified. The value 0 indicates that bandwidth is dynamically allocated based on the volume of data that is asynchronously replicated from the primary disk to the secondary disk.
         self.bandwidth = bandwidth
         # The billing method of the replication pair. Valid values:
         # 
@@ -1306,7 +1305,7 @@ class CreateDiskReplicaPairRequest(TeaModel):
         # 
         # Default value: POSTPAY.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
@@ -1326,34 +1325,27 @@ class CreateDiskReplicaPairRequest(TeaModel):
         # 
         # This parameter is required.
         self.disk_id = disk_id
+        # Whether to enable replication time control. By default, this parameter is disabled.
         self.enable_rtc = enable_rtc
-        # The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the replication pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.pair_name = pair_name
-        # The subscription duration of the replication pair. This parameter is required when the `ChargeType` parameter is set to PREPAY. The unit of the subscription duration is specified by the `PeriodUnit` parameter.
-        # 
-        # *   Valid values when the `PeriodUnit` parameter is set to Week: 1, 2, 3, and 4.
-        # *   Valid values when the `PeriodUnit` parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+        # The subscription duration of the replication pair. When `ChargeType` is set to PREPAY, this parameter must be specified. Valid values: 1, 2, 3, 6, 12, 24, 36, and 60. The subscription duration unit is specified by `PeriodUnit`.
         self.period = period
-        # The unit of the subscription duration of the replication pair. Valid values:
-        # 
-        # *   Week.
-        # *   Month
-        # 
-        # Default value: Month.
+        # The unit of the subscription duration of the replication pair. Set the value to Month. Valid value: Month
         self.period_unit = period_unit
-        # The recovery point objective (RPO) of the replication pair. Unit: seconds. Set the value to 900.
+        # The recovery point objective (RPO) of the replication pair. Unit: seconds. Valid value: 900.
         self.rpo = rpo
         # The ID of the region in which to create the replication pair.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the replication group.
+        # The ID of the resource group to which the replication pair belongs.
         self.resource_group_id = resource_group_id
         # The zone ID of the primary disk.
         # 
         # This parameter is required.
         self.source_zone_id = source_zone_id
-        # The resource tags. You can specify up to 20 tags.
+        # The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -1455,11 +1447,11 @@ class CreateDiskReplicaPairResponseBody(TeaModel):
         replica_pair_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
         # The ID of the replication pair.
         self.replica_pair_id = replica_pair_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4698,6 +4690,7 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         self.destination_region_id = destination_region_id
         # The ID of the zone in which the secondary site is deployed.
         self.destination_zone_id = destination_zone_id
+        # Indicates whether to enable replication time control.
         self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group.
         self.group_name = group_name
@@ -5337,6 +5330,7 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         self.destination_region = destination_region
         # The zone ID of the secondary disk.
         self.destination_zone_id = destination_zone_id
+        # Whether the replication time control is enabled. If the replication pair has been added to a replication group, it is consistent with the attributes of the replication group.
         self.enable_rtc = enable_rtc
         # The time when the replication pair expires. The value of this parameter is a timestamp. Unit: seconds.
         self.expired_time = expired_time
@@ -5555,7 +5549,7 @@ class DescribeDiskReplicaPairsResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # Details about the replication pairs.
+        # Details of the replication pairs.
         self.replica_pairs = replica_pairs
         # The ID of the request.
         self.request_id = request_id
@@ -7224,16 +7218,19 @@ class DescribeMetricDataRequest(TeaModel):
         # - MAX: Maximum
         # - MIN: Minimum
         self.aggre_over_line_ops = aggre_over_line_ops
-        # Dimension map, in JSON format, representing the dimensions being queried. The currently available keys are:
-        # - DiskId: Cloud disk name, e.g., d-xxx.
-        # - DeviceType: Type of cloud disk, system indicates system disk, data indicates data disk.
-        # - DeviceCategory: Category of cloud disk, e.g., cloud_essd.
-        # - EcsInstanceId: Name of the ECS instance where the disk is located, e.g., i-xxx.
+        # The dimension map, in the JSON format. Valid values:
         # 
-        # The returned results are the intersection of all dimension filter conditions.
+        # *   DiskId: the disk name. Example: d-xxx.
+        # *   DeviceType: the disk type. system indicates the system disk, and data indicates the data disk.
+        # *   DeviceCategory: the disk category. Example: cloud_essd.
+        # *   EcsInstanceId: the ECS instance name. Example: i-xxx.
+        # *   Azone: the zone, such as cn-hangzhou-a.
+        # 
+        # The returned result is the intersection of all dimension filtering conditions.
         self.dimensions = dimensions
         # The end time point for obtaining metric data. It should not be later than the current moment. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # The list of fields used for grouping and aggregation.
         self.group_by_labels = group_by_labels
         # Metric name. Possible values include:
         #    
@@ -7248,16 +7245,18 @@ class DescribeMetricDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The interval for obtaining metric data. Unit: seconds. The default value is 5 seconds. Possible values include:
+        # The granularity at which data is collected for the metric. Unit: seconds. Default value: 5. Valid values:
         # 
-        # - 5: 5s precision query, can query up to 12 hours of data
-        # - 10: 10s precision query, can query up to 24 hours of data
-        # - 60: 60s precision query, can query up to 7 days of data
-        # - 3600: 3600s precision query, can query up to 30 days of data
+        # *   5: 5 seconds. The query time range can be up to 12 hours.
+        # *   10: 10 seconds. The query time range can be up to 24 hours.
+        # *   60: 60 seconds. The query time range can be up to 7 days.
+        # *   300: 300 seconds. The query time range can be up to 30 days.
+        # *   600: 600 seconds. The query time range can be up to 30 days.
+        # *   3600: 3,600 seconds. The query time range can be up to 30 days.
         self.period = period
         # Region ID.
         self.region_id = region_id
-        # The start time point for obtaining metric data. The earliest selectable time is one year before the current moment. When both StartTime and EndTime parameters are empty, it defaults to querying the most recent period\\"s monitoring metrics. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # The beginning of the time range to query. You can specify a point in time that is up to 30 days before the current time. If both StartTime and EndTime are left empty, the monitoring metric data of the most recent statistical period is queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -7345,16 +7344,19 @@ class DescribeMetricDataShrinkRequest(TeaModel):
         # - MAX: Maximum
         # - MIN: Minimum
         self.aggre_over_line_ops = aggre_over_line_ops
-        # Dimension map, in JSON format, representing the dimensions being queried. The currently available keys are:
-        # - DiskId: Cloud disk name, e.g., d-xxx.
-        # - DeviceType: Type of cloud disk, system indicates system disk, data indicates data disk.
-        # - DeviceCategory: Category of cloud disk, e.g., cloud_essd.
-        # - EcsInstanceId: Name of the ECS instance where the disk is located, e.g., i-xxx.
+        # The dimension map, in the JSON format. Valid values:
         # 
-        # The returned results are the intersection of all dimension filter conditions.
+        # *   DiskId: the disk name. Example: d-xxx.
+        # *   DeviceType: the disk type. system indicates the system disk, and data indicates the data disk.
+        # *   DeviceCategory: the disk category. Example: cloud_essd.
+        # *   EcsInstanceId: the ECS instance name. Example: i-xxx.
+        # *   Azone: the zone, such as cn-hangzhou-a.
+        # 
+        # The returned result is the intersection of all dimension filtering conditions.
         self.dimensions = dimensions
         # The end time point for obtaining metric data. It should not be later than the current moment. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # The list of fields used for grouping and aggregation.
         self.group_by_labels_shrink = group_by_labels_shrink
         # Metric name. Possible values include:
         #    
@@ -7369,16 +7371,18 @@ class DescribeMetricDataShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The interval for obtaining metric data. Unit: seconds. The default value is 5 seconds. Possible values include:
+        # The granularity at which data is collected for the metric. Unit: seconds. Default value: 5. Valid values:
         # 
-        # - 5: 5s precision query, can query up to 12 hours of data
-        # - 10: 10s precision query, can query up to 24 hours of data
-        # - 60: 60s precision query, can query up to 7 days of data
-        # - 3600: 3600s precision query, can query up to 30 days of data
+        # *   5: 5 seconds. The query time range can be up to 12 hours.
+        # *   10: 10 seconds. The query time range can be up to 24 hours.
+        # *   60: 60 seconds. The query time range can be up to 7 days.
+        # *   300: 300 seconds. The query time range can be up to 30 days.
+        # *   600: 600 seconds. The query time range can be up to 30 days.
+        # *   3600: 3,600 seconds. The query time range can be up to 30 days.
         self.period = period
         # Region ID.
         self.region_id = region_id
-        # The start time point for obtaining metric data. The earliest selectable time is one year before the current moment. When both StartTime and EndTime parameters are empty, it defaults to querying the most recent period\\"s monitoring metrics. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # The beginning of the time range to query. You can specify a point in time that is up to 30 days before the current time. If both StartTime and EndTime are left empty, the monitoring metric data of the most recent statistical period is queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -9329,6 +9333,215 @@ class GetReportResponse(TeaModel):
         return self
 
 
+class ListReplicaEdgeSupportedRequest(TeaModel):
+    def __init__(
+        self,
+        azone: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.azone = azone
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.azone is not None:
+            result['Azone'] = self.azone
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Azone') is not None:
+            self.azone = m.get('Azone')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListReplicaEdgeSupportedResponseBodySupportedRegionsZones(TeaModel):
+    def __init__(
+        self,
+        zone_id: str = None,
+    ):
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListReplicaEdgeSupportedResponseBodySupportedRegions(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        zones: List[ListReplicaEdgeSupportedResponseBodySupportedRegionsZones] = None,
+    ):
+        self.region_id = region_id
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            for k in self.zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['Zones'] = []
+        if self.zones is not None:
+            for k in self.zones:
+                result['Zones'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.zones = []
+        if m.get('Zones') is not None:
+            for k in m.get('Zones'):
+                temp_model = ListReplicaEdgeSupportedResponseBodySupportedRegionsZones()
+                self.zones.append(temp_model.from_map(k))
+        return self
+
+
+class ListReplicaEdgeSupportedResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        supported_regions: List[ListReplicaEdgeSupportedResponseBodySupportedRegions] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.supported_regions = supported_regions
+
+    def validate(self):
+        if self.supported_regions:
+            for k in self.supported_regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SupportedRegions'] = []
+        if self.supported_regions is not None:
+            for k in self.supported_regions:
+                result['SupportedRegions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.supported_regions = []
+        if m.get('SupportedRegions') is not None:
+            for k in m.get('SupportedRegions'):
+                temp_model = ListReplicaEdgeSupportedResponseBodySupportedRegions()
+                self.supported_regions.append(temp_model.from_map(k))
+        return self
+
+
+class ListReplicaEdgeSupportedResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListReplicaEdgeSupportedResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListReplicaEdgeSupportedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListReportsRequest(TeaModel):
     def __init__(
         self,
@@ -9339,6 +9552,7 @@ class ListReportsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
         # Maximum number of items for Token-based pagination.
         self.max_results = max_results
@@ -9978,6 +10192,7 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
         self.client_token = client_token
         # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # Whether to enable replication time control.
         self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
@@ -10129,6 +10344,7 @@ class ModifyDiskReplicaPairRequest(TeaModel):
         self.client_token = client_token
         # The description of the replication pair.
         self.description = description
+        # Whether to enable replication time control.
         self.enable_rtc = enable_rtc
         # The name of the replication pair.
         self.pair_name = pair_name

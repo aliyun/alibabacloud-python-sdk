@@ -1,3 +1,7 @@
+2025-11-05 Version: 4.1.0
+- Support API ListReplicaEdgeSupported.
+
+
 2025-07-07 Version: 4.0.1
 - Update API CreateDiskReplicaGroup: add request parameters EnableRtc.
 - Update API CreateDiskReplicaPair: add request parameters EnableRtc.
