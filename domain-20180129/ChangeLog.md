@@ -1,3 +1,20 @@
+2025-11-06 Version: 5.0.0
+- Support API QueryDomainRealTimePrice.
+- Update API QueryChangeLogList: add response parameters Body.Data.$.Remark.
+- Update API QueryDomainByInstanceId: add response parameters Body.DomainLifecycleStatus.
+- Update API QueryDomainByInstanceId: add response parameters Body.PrivacyServiceStatus.
+- Update API QueryDomainList: add request parameters Registrar.
+- Update API QueryDomainList: add response parameters Body.Data.$.Registrar.
+- Update API QueryRegistrantProfiles: add response parameters Body.RegistrantProfiles.$.Params.
+- Update API QueryTaskList: add response parameters Body.Data.$.TaskBizType.
+- Update API QueryTaskList: add response parameters Body.Data.$.TaskResult.
+- Update API QueryTaskList: add response parameters Body.Data.$.TaskTypeCode.
+- Update API SaveBatchTaskForTransferOutByAuthorizationCode: delete request parameters Long.
+- Update API SaveBatchTaskForTransferOutByAuthorizationCode: delete request parameters UserClientIp.
+- Update API SaveSingleTaskForTransferOutByAuthorizationCode: delete request parameters Lang.
+- Update API SaveSingleTaskForTransferOutByAuthorizationCode: delete request parameters UserClientIp.
+
+
 2024-10-21 Version: 4.0.0
 - Support API CheckIntlFixPriceDomainStatus.
 - Support API CreateIntlFixedPriceDomainOrder.

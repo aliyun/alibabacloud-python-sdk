@@ -6126,6 +6126,7 @@ class QueryChangeLogListResponseBodyDataChangeLog(TeaModel):
         domain_name: str = None,
         operation: str = None,
         operation_ipaddress: str = None,
+        remark: str = None,
         result: str = None,
         time: str = None,
     ):
@@ -6133,6 +6134,7 @@ class QueryChangeLogListResponseBodyDataChangeLog(TeaModel):
         self.domain_name = domain_name
         self.operation = operation
         self.operation_ipaddress = operation_ipaddress
+        self.remark = remark
         self.result = result
         self.time = time
 
@@ -6153,6 +6155,8 @@ class QueryChangeLogListResponseBodyDataChangeLog(TeaModel):
             result['Operation'] = self.operation
         if self.operation_ipaddress is not None:
             result['OperationIPAddress'] = self.operation_ipaddress
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.result is not None:
             result['Result'] = self.result
         if self.time is not None:
@@ -6169,6 +6173,8 @@ class QueryChangeLogListResponseBodyDataChangeLog(TeaModel):
             self.operation = m.get('Operation')
         if m.get('OperationIPAddress') is not None:
             self.operation_ipaddress = m.get('OperationIPAddress')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Result') is not None:
             self.result = m.get('Result')
         if m.get('Time') is not None:
@@ -7742,6 +7748,7 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         dns_list: QueryDomainByInstanceIdResponseBodyDnsList = None,
         domain_group_id: int = None,
         domain_group_name: str = None,
+        domain_lifecycle_status: str = None,
         domain_name: str = None,
         domain_name_proxy_service: bool = None,
         domain_name_verification_status: str = None,
@@ -7756,6 +7763,7 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         expiration_date_status: str = None,
         instance_id: str = None,
         premium: bool = None,
+        privacy_service_status: str = None,
         real_name_status: str = None,
         registrant_name: str = None,
         registrant_organization: str = None,
@@ -7777,6 +7785,7 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         self.dns_list = dns_list
         self.domain_group_id = domain_group_id
         self.domain_group_name = domain_group_name
+        self.domain_lifecycle_status = domain_lifecycle_status
         self.domain_name = domain_name
         self.domain_name_proxy_service = domain_name_proxy_service
         self.domain_name_verification_status = domain_name_verification_status
@@ -7791,6 +7800,7 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         self.expiration_date_status = expiration_date_status
         self.instance_id = instance_id
         self.premium = premium
+        self.privacy_service_status = privacy_service_status
         self.real_name_status = real_name_status
         self.registrant_name = registrant_name
         self.registrant_organization = registrant_organization
@@ -7827,6 +7837,8 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
             result['DomainGroupId'] = self.domain_group_id
         if self.domain_group_name is not None:
             result['DomainGroupName'] = self.domain_group_name
+        if self.domain_lifecycle_status is not None:
+            result['DomainLifecycleStatus'] = self.domain_lifecycle_status
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.domain_name_proxy_service is not None:
@@ -7855,6 +7867,8 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.premium is not None:
             result['Premium'] = self.premium
+        if self.privacy_service_status is not None:
+            result['PrivacyServiceStatus'] = self.privacy_service_status
         if self.real_name_status is not None:
             result['RealNameStatus'] = self.real_name_status
         if self.registrant_name is not None:
@@ -7900,6 +7914,8 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
             self.domain_group_id = m.get('DomainGroupId')
         if m.get('DomainGroupName') is not None:
             self.domain_group_name = m.get('DomainGroupName')
+        if m.get('DomainLifecycleStatus') is not None:
+            self.domain_lifecycle_status = m.get('DomainLifecycleStatus')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('DomainNameProxyService') is not None:
@@ -7928,6 +7944,8 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Premium') is not None:
             self.premium = m.get('Premium')
+        if m.get('PrivacyServiceStatus') is not None:
+            self.privacy_service_status = m.get('PrivacyServiceStatus')
         if m.get('RealNameStatus') is not None:
             self.real_name_status = m.get('RealNameStatus')
         if m.get('RegistrantName') is not None:
@@ -8276,6 +8294,7 @@ class QueryDomainListRequest(TeaModel):
         page_size: int = None,
         product_domain_type: str = None,
         query_type: str = None,
+        registrar: str = None,
         resource_group_id: str = None,
         start_expiration_date: int = None,
         start_registration_date: int = None,
@@ -8286,9 +8305,9 @@ class QueryDomainListRequest(TeaModel):
         self.ccompany = ccompany
         # The ID of the domain name group.
         self.domain_group_id = domain_group_id
-        # The domain name that you want to search for.
+        # The domain name. You can search for the domain name in the domain name list.
         self.domain_name = domain_name
-        # The end of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+        # The end of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed from January 1, 1970, 00:00:00 UTC to the time you perform the query. Only queries by day are supported.
         self.end_expiration_date = end_expiration_date
         # The end of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
         self.end_registration_date = end_registration_date
@@ -8332,9 +8351,10 @@ class QueryDomainListRequest(TeaModel):
         # *   **1**: the domain names that need to be renewed
         # *   **2**: the domain names that need to be redeemed
         self.query_type = query_type
+        self.registrar = registrar
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+        # The beginning of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed from January 1, 1970, 00:00:00 UTC to the time you perform the query. Only queries by day are supported.
         self.start_expiration_date = start_expiration_date
         # The beginning of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
         self.start_registration_date = start_registration_date
@@ -8379,6 +8399,8 @@ class QueryDomainListRequest(TeaModel):
             result['ProductDomainType'] = self.product_domain_type
         if self.query_type is not None:
             result['QueryType'] = self.query_type
+        if self.registrar is not None:
+            result['Registrar'] = self.registrar
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.start_expiration_date is not None:
@@ -8419,6 +8441,8 @@ class QueryDomainListRequest(TeaModel):
             self.product_domain_type = m.get('ProductDomainType')
         if m.get('QueryType') is not None:
             self.query_type = m.get('QueryType')
+        if m.get('Registrar') is not None:
+            self.registrar = m.get('Registrar')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartExpirationDate') is not None:
@@ -8524,6 +8548,7 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
         premium: bool = None,
         product_id: str = None,
         registrant_type: str = None,
+        registrar: str = None,
         registration_date: str = None,
         registration_date_long: int = None,
         remark: str = None,
@@ -8532,6 +8557,10 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
     ):
         # The name of the domain name registrant.
         self.ccompany = ccompany
+        # domain transfer status. value:
+        # - 0: domain status normal.
+        # - 1: domain is pending change holder.
+        # - 2: change holder failed.
         self.chgholder_status = chgholder_status
         # The state of real-name verification for the domain name. Valid values:
         # 
@@ -8580,6 +8609,7 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
         # *   **1**: individual
         # *   **2**: enterprise
         self.registrant_type = registrant_type
+        self.registrar = registrar
         # The time when the domain name was registered.
         self.registration_date = registration_date
         # Indicates how long the domain name has been registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -8633,6 +8663,8 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
             result['ProductId'] = self.product_id
         if self.registrant_type is not None:
             result['RegistrantType'] = self.registrant_type
+        if self.registrar is not None:
+            result['Registrar'] = self.registrar
         if self.registration_date is not None:
             result['RegistrationDate'] = self.registration_date
         if self.registration_date_long is not None:
@@ -8679,6 +8711,8 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
             self.product_id = m.get('ProductId')
         if m.get('RegistrantType') is not None:
             self.registrant_type = m.get('RegistrantType')
+        if m.get('Registrar') is not None:
+            self.registrar = m.get('Registrar')
         if m.get('RegistrationDate') is not None:
             self.registration_date = m.get('RegistrationDate')
         if m.get('RegistrationDateLong') is not None:
@@ -9000,6 +9034,353 @@ class QueryDomainRealNameVerificationInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryDomainRealNameVerificationInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDomainRealTimePriceRequestDomainItem(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        domain_name: str = None,
+        period: int = None,
+        suffix: str = None,
+    ):
+        # This parameter is required.
+        self.action = action
+        # This parameter is required.
+        self.domain_name = domain_name
+        self.period = period
+        self.suffix = suffix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.suffix is not None:
+            result['Suffix'] = self.suffix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('Suffix') is not None:
+            self.suffix = m.get('Suffix')
+        return self
+
+
+class QueryDomainRealTimePriceRequest(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        domain_item: List[QueryDomainRealTimePriceRequestDomainItem] = None,
+    ):
+        # This parameter is required.
+        self.currency = currency
+        # This parameter is required.
+        self.domain_item = domain_item
+
+    def validate(self):
+        if self.domain_item:
+            for k in self.domain_item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        result['DomainItem'] = []
+        if self.domain_item is not None:
+            for k in self.domain_item:
+                result['DomainItem'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        self.domain_item = []
+        if m.get('DomainItem') is not None:
+            for k in m.get('DomainItem'):
+                temp_model = QueryDomainRealTimePriceRequestDomainItem()
+                self.domain_item.append(temp_model.from_map(k))
+        return self
+
+
+class QueryDomainRealTimePriceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        domain_item_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.currency = currency
+        # This parameter is required.
+        self.domain_item_shrink = domain_item_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.domain_item_shrink is not None:
+            result['DomainItem'] = self.domain_item_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DomainItem') is not None:
+            self.domain_item_shrink = m.get('DomainItem')
+        return self
+
+
+class QueryDomainRealTimePriceResponseBodyModuleDomainPrices(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        avail: int = None,
+        currency: str = None,
+        domain_name: str = None,
+        period: int = None,
+        premium: bool = None,
+        price: float = None,
+        reason: str = None,
+    ):
+        self.action = action
+        self.avail = avail
+        self.currency = currency
+        self.domain_name = domain_name
+        self.period = period
+        self.premium = premium
+        self.price = price
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.avail is not None:
+            result['Avail'] = self.avail
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.premium is not None:
+            result['Premium'] = self.premium
+        if self.price is not None:
+            result['Price'] = self.price
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Avail') is not None:
+            self.avail = m.get('Avail')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('Premium') is not None:
+            self.premium = m.get('Premium')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
+class QueryDomainRealTimePriceResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        domain_prices: List[QueryDomainRealTimePriceResponseBodyModuleDomainPrices] = None,
+    ):
+        self.domain_prices = domain_prices
+
+    def validate(self):
+        if self.domain_prices:
+            for k in self.domain_prices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainPrices'] = []
+        if self.domain_prices is not None:
+            for k in self.domain_prices:
+                result['DomainPrices'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_prices = []
+        if m.get('DomainPrices') is not None:
+            for k in m.get('DomainPrices'):
+                temp_model = QueryDomainRealTimePriceResponseBodyModuleDomainPrices()
+                self.domain_prices.append(temp_model.from_map(k))
+        return self
+
+
+class QueryDomainRealTimePriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_status_code: int = None,
+        module: QueryDomainRealTimePriceResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        synchro: bool = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_status_code = http_status_code
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Module') is not None:
+            temp_model = QueryDomainRealTimePriceResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class QueryDomainRealTimePriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDomainRealTimePriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDomainRealTimePriceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12401,18 +12782,56 @@ class QueryRegistrantProfilesRequest(TeaModel):
         user_client_ip: str = None,
         zh_registrant_organization: str = None,
     ):
+        # Specifies whether to query the default profile. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # Default value: **false**.
         self.default_registrant_profile = default_registrant_profile
+        # The email address of the domain name registrant.
         self.email = email
+        # The language of the error message to return if the request fails. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The number of the page to return. Default value: **0**.
         self.page_num = page_num
+        # The number of entries per page. Default value: **0**. Maximum value: **5000**.
         self.page_size = page_size
+        # The state of real-name verification for the domain name registrant. Valid values:
+        # 
+        # *   **FAILED**: Real-name verification for the domain name fails.
+        # *   **SUCCEED**: Real-name verification for the domain name is successful.
+        # *   **NONAUDIT**: Real-name verification for the domain name is not performed.
+        # *   **AUDITING**: Real-name verification for the domain name is in progress.
         self.real_name_status = real_name_status
+        # The name of the domain name registrant.
         self.registrant_organization = registrant_organization
+        # The ID of the registrant profile that you want to query. The system generates an ID after you create a registrant profile.
         self.registrant_profile_id = registrant_profile_id
+        # The type of the registrant profile. Valid values:
+        # 
+        # *   **common**: common profile.
+        # *   **cnnic**: China Internet Network Information Center (CNNIC) profile.
+        # 
+        # >  Only the Alibaba Cloud international site (alibabacloud.com) supports CNNIC profiles. To register domain names provided by CNNIC such as the .cn and . domain names on the Alibaba Cloud international site, you must use a CNNIC profile. To register other domain names, use a common profile.
         self.registrant_profile_type = registrant_profile_type
+        # The type of the domain name registrant. Valid values:
+        # 
+        # *   **1**: individual.
+        # *   **2**: enterprise.
+        # 
+        # Default value: **1**.
         self.registrant_type = registrant_type
+        # The remarks.
         self.remark = remark
+        # The IP address of the client. Set the value to 127.0.0.1.
         self.user_client_ip = user_client_ip
+        # The Chinese name of the domain name registrant.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
@@ -12495,6 +12914,7 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
         default_registrant_profile: bool = None,
         email: str = None,
         email_verification_status: int = None,
+        params: str = None,
         postal_code: str = None,
         province: str = None,
         real_name_status: str = None,
@@ -12514,32 +12934,83 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # The address of the domain name registrant.
         self.address = address
+        # The city where the domain name registrant is located, in English.
         self.city = city
+        # The code of the country or region where the domain name registrant is located, such as **CN** or **US**.
         self.country = country
+        # The time when the registrant profile was created.
         self.create_time = create_time
+        # The certificate number.
         self.credential_no = credential_no
+        # The certificate type.
         self.credential_type = credential_type
+        # Indicates whether the template is the default template. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # Default value: **false**.
         self.default_registrant_profile = default_registrant_profile
+        # The email address of the domain name registrant.
         self.email = email
+        # The status of the verification for the email address. Valid values:
+        # 
+        # *   **0**: not verified
+        # *   **1**: verified
         self.email_verification_status = email_verification_status
+        self.params = params
+        # The postal code of the region where the domain name registrant is located.
         self.postal_code = postal_code
+        # The province where the domain name registrant is located.
         self.province = province
+        # The state of real-name verification for the domain name registrant. Valid values:
+        # 
+        # *   **FAILED**: Real-name verification for the domain name fails.
+        # *   **SUCCEED**: Real-name verification for the domain name is successful.
+        # *   **NONAUDIT**: Real-name verification for the domain name is not performed.
+        # *   **AUDITING**: Real-name verification for the domain name is in progress.
         self.real_name_status = real_name_status
+        # The name of the domain name contact.
         self.registrant_name = registrant_name
+        # The name of the domain name registrant.
         self.registrant_organization = registrant_organization
+        # The ID of the registrant profile.
         self.registrant_profile_id = registrant_profile_id
+        # The type of the registrant profile. Valid values:
+        # 
+        # *   **common**: common profile.
+        # *   **cnnic**: CNNIC profile.
+        # 
+        # >  Only the Alibaba Cloud international site (alibabacloud.com) supports CNNIC profiles. To register domain names provided by CNNIC such as the .cn and . domain names on the Alibaba Cloud international site, you must use a CNNIC profile. To register other domain names, use a common profile.
         self.registrant_profile_type = registrant_profile_type
+        # The type of the domain name registrant. Valid values:
+        # 
+        # *   **1**: individual.
+        # *   **2**: enterprise.
+        # 
+        # Default value: **1**.
         self.registrant_type = registrant_type
+        # The remarks.
         self.remark = remark
+        # The international dialing code of the country or region where the domain name contact is located. For example, the international dialing code of China is **86**.
         self.tel_area = tel_area
+        # The extension of the phone number.
         self.tel_ext = tel_ext
+        # The phone number.
         self.telephone = telephone
+        # The time when the registrant profile was updated.
         self.update_time = update_time
+        # The address of the domain name registrant, in Chinese.
         self.zh_address = zh_address
+        # The city where the domain name registrant is located, in Chinese.
         self.zh_city = zh_city
+        # The province where the domain name registrant is located, in Chinese.
         self.zh_province = zh_province
+        # The Chinese name of the domain name contact.
         self.zh_registrant_name = zh_registrant_name
+        # The Chinese name of the domain name registrant.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
@@ -12569,6 +13040,8 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
             result['Email'] = self.email
         if self.email_verification_status is not None:
             result['EmailVerificationStatus'] = self.email_verification_status
+        if self.params is not None:
+            result['Params'] = self.params
         if self.postal_code is not None:
             result['PostalCode'] = self.postal_code
         if self.province is not None:
@@ -12627,6 +13100,8 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
             self.email = m.get('Email')
         if m.get('EmailVerificationStatus') is not None:
             self.email_verification_status = m.get('EmailVerificationStatus')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('PostalCode') is not None:
             self.postal_code = m.get('PostalCode')
         if m.get('Province') is not None:
@@ -12713,13 +13188,29 @@ class QueryRegistrantProfilesResponseBody(TeaModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The page number returned.
         self.current_page_num = current_page_num
+        # Indicates whether the current page is followed by a page. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.next_page = next_page
+        # The number of entries returned on each page. Default value: **0**. Maximum value: **5000**.
         self.page_size = page_size
+        # Indicates whether the current page is preceded by a page. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.pre_page = pre_page
+        # The list of registrant profiles.
         self.registrant_profiles = registrant_profiles
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
+        # 
+        # >  This parameter indicates the total number of queried registrant profiles. If multiple registrant profiles are queried, the information about these profiles is returned in sequence by profile.
         self.total_item_num = total_item_num
+        # The total number of returned pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -13550,16 +14041,37 @@ class QueryTaskDetailListRequest(TeaModel):
         task_status: int = None,
         user_client_ip: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The instance ID of the domain name.
         self.instance_id = instance_id
+        # The language of the error message to return if the request fails. Valid value:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The page number.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # The number of entries to return on each page. Maximum value: **1000**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_no = task_no
+        # The task status. Valid value:
+        # 
+        # *   **0**: waiting for execution
+        # *   **1**: being executed
+        # *   **2**: successful
+        # *   **3**: failed
         self.task_status = task_status
+        # The IP address of the client. Set the value to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -13628,19 +14140,58 @@ class QueryTaskDetailListResponseBodyDataTaskDetail(TeaModel):
         try_count: int = None,
         update_time: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The domain name.
         self.domain_name = domain_name
+        # The error message returned when the task failed.
         self.error_msg = error_msg
+        # The cause of a domain name task failure.
         self.fail_reason = fail_reason
+        # The instance ID of the domain name.
         self.instance_id = instance_id
+        # The ID of the task details.
         self.task_detail_no = task_detail_no
+        # The task ID.
         self.task_no = task_no
+        # The result of the task.
         self.task_result = task_result
+        # The task status. Valid values:
+        # 
+        # *   **WAITING_EXECUTE**: To be executed
+        # *   **EXECUTING**: being executed
+        # *   **EXECUTE_SUCCESS**: successful
+        # *   **EXECUTE_FAILURE**: failed
         self.task_status = task_status
+        # The status code of the task. Valid values:
+        # 
+        # *   **0**: waiting for execution
+        # *   **1**: being executed
+        # *   **2**: successful
+        # *   **3**: failed
         self.task_status_code = task_status_code
+        # The task type. Valid values:
+        # 
+        # *   **CHG_HOLDER**: The task is run to modify the domain name registrant.
+        # *   **CHG_DNS**: The task is run to change the Domain Name System (DNS) servers.
+        # *   **SET_WHOIS_PROTECT**: The task is run to configure privacy protection for the domain name.
+        # *   **UPDATE_ADMIN_CONTACT**: The task is run to modify the information about the administrator of the domain name.
+        # *   **UPDATE_BILLING_CONTACT**: The task is run to modify the information about the payer for the domain name.
+        # *   **UPDATE_TECH_CONTACT**: The task is run to modify the information about the technical support for the domain name.
+        # *   **SET_UPDATE_PROHIBITED**: The task is run to configure the security lock for the domain name.
+        # *   **SET_TRANSFER_PROHIBITED**: The task is run to configure the transfer lock for the domain name.
+        # *   **ORDER_ACTIVATE**: The task is run to create a registration order for the domain name.
+        # *   **ORDER_RENEW**: The task is run to create a renewal order for the domain name.
+        # *   **ORDER_REDEEM**: The task is run to create a redemption order for the domain name.
+        # *   **CREATE_DNSHOST**: The task is run to create a DNS server for the domain name.
+        # *   **UPDATE_DNSHOST**: The task is run to update the information about a DNS server for the domain name.
+        # *   **SYNC_DNSHOST**: The task is run to synchronize a DNS server for the domain name.
         self.task_type = task_type
+        # The description of the task type.
         self.task_type_description = task_type_description
+        # The number of times the task was retried.
         self.try_count = try_count
+        # The last time when the task was run.
         self.update_time = update_time
 
     def validate(self):
@@ -13762,13 +14313,21 @@ class QueryTaskDetailListResponseBody(TeaModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The page number returned.
         self.current_page_num = current_page_num
+        # The tasks.
         self.data = data
+        # Indicates whether the current page is followed by a page.
         self.next_page = next_page
+        # The number of entries per page.
         self.page_size = page_size
+        # Indicates whether the current page is preceded by a page.
         self.pre_page = pre_page
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -14405,24 +14964,30 @@ class QueryTaskListResponseBodyDataTaskInfo(TeaModel):
         self,
         clientip: str = None,
         create_time: str = None,
+        task_biz_type: str = None,
         task_cancel_status: str = None,
         task_cancel_status_code: int = None,
         task_no: str = None,
         task_num: int = None,
+        task_result: str = None,
         task_status: str = None,
         task_status_code: int = None,
         task_type: str = None,
+        task_type_code: int = None,
         task_type_description: str = None,
     ):
         self.clientip = clientip
         self.create_time = create_time
+        self.task_biz_type = task_biz_type
         self.task_cancel_status = task_cancel_status
         self.task_cancel_status_code = task_cancel_status_code
         self.task_no = task_no
         self.task_num = task_num
+        self.task_result = task_result
         self.task_status = task_status
         self.task_status_code = task_status_code
         self.task_type = task_type
+        self.task_type_code = task_type_code
         self.task_type_description = task_type_description
 
     def validate(self):
@@ -14438,6 +15003,8 @@ class QueryTaskListResponseBodyDataTaskInfo(TeaModel):
             result['Clientip'] = self.clientip
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.task_biz_type is not None:
+            result['TaskBizType'] = self.task_biz_type
         if self.task_cancel_status is not None:
             result['TaskCancelStatus'] = self.task_cancel_status
         if self.task_cancel_status_code is not None:
@@ -14446,12 +15013,16 @@ class QueryTaskListResponseBodyDataTaskInfo(TeaModel):
             result['TaskNo'] = self.task_no
         if self.task_num is not None:
             result['TaskNum'] = self.task_num
+        if self.task_result is not None:
+            result['TaskResult'] = self.task_result
         if self.task_status is not None:
             result['TaskStatus'] = self.task_status
         if self.task_status_code is not None:
             result['TaskStatusCode'] = self.task_status_code
         if self.task_type is not None:
             result['TaskType'] = self.task_type
+        if self.task_type_code is not None:
+            result['TaskTypeCode'] = self.task_type_code
         if self.task_type_description is not None:
             result['TaskTypeDescription'] = self.task_type_description
         return result
@@ -14462,6 +15033,8 @@ class QueryTaskListResponseBodyDataTaskInfo(TeaModel):
             self.clientip = m.get('Clientip')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('TaskBizType') is not None:
+            self.task_biz_type = m.get('TaskBizType')
         if m.get('TaskCancelStatus') is not None:
             self.task_cancel_status = m.get('TaskCancelStatus')
         if m.get('TaskCancelStatusCode') is not None:
@@ -14470,12 +15043,16 @@ class QueryTaskListResponseBodyDataTaskInfo(TeaModel):
             self.task_no = m.get('TaskNo')
         if m.get('TaskNum') is not None:
             self.task_num = m.get('TaskNum')
+        if m.get('TaskResult') is not None:
+            self.task_result = m.get('TaskResult')
         if m.get('TaskStatus') is not None:
             self.task_status = m.get('TaskStatus')
         if m.get('TaskStatusCode') is not None:
             self.task_status_code = m.get('TaskStatusCode')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
+        if m.get('TaskTypeCode') is not None:
+            self.task_type_code = m.get('TaskTypeCode')
         if m.get('TaskTypeDescription') is not None:
             self.task_type_description = m.get('TaskTypeDescription')
         return self
@@ -17556,14 +18133,10 @@ class SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList(
 class SaveBatchTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
     def __init__(
         self,
-        long: str = None,
         transfer_out_param_list: List[SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList] = None,
-        user_client_ip: str = None,
     ):
-        self.long = long
         # This parameter is required.
         self.transfer_out_param_list = transfer_out_param_list
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         if self.transfer_out_param_list:
@@ -17577,27 +18150,19 @@ class SaveBatchTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.long is not None:
-            result['Long'] = self.long
         result['TransferOutParamList'] = []
         if self.transfer_out_param_list is not None:
             for k in self.transfer_out_param_list:
                 result['TransferOutParamList'].append(k.to_map() if k else None)
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Long') is not None:
-            self.long = m.get('Long')
         self.transfer_out_param_list = []
         if m.get('TransferOutParamList') is not None:
             for k in m.get('TransferOutParamList'):
                 temp_model = SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList()
                 self.transfer_out_param_list.append(temp_model.from_map(k))
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -22007,15 +22572,15 @@ class SaveSingleTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
         self,
         authorization_code: str = None,
         domain_name: str = None,
-        lang: str = None,
-        user_client_ip: str = None,
     ):
+        # Schema of Response
+        # 
         # This parameter is required.
         self.authorization_code = authorization_code
+        # The transfer key.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
-        self.lang = lang
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
@@ -22030,10 +22595,6 @@ class SaveSingleTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
             result['AuthorizationCode'] = self.authorization_code
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -22042,10 +22603,6 @@ class SaveSingleTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
             self.authorization_code = m.get('AuthorizationCode')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -22055,7 +22612,9 @@ class SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody(TeaModel):
         request_id: str = None,
         task_no: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_no = task_no
 
     def validate(self):

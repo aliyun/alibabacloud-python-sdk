@@ -3355,6 +3355,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryChangeLogListResponse:
         """
+        @summary 查询操作记录
+        
         @param request: QueryChangeLogListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryChangeLogListResponse
@@ -3400,6 +3402,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryChangeLogListResponse:
         """
+        @summary 查询操作记录
+        
         @param request: QueryChangeLogListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryChangeLogListResponse
@@ -3444,6 +3448,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryChangeLogListRequest,
     ) -> domain_20180129_models.QueryChangeLogListResponse:
         """
+        @summary 查询操作记录
+        
         @param request: QueryChangeLogListRequest
         @return: QueryChangeLogListResponse
         """
@@ -3455,6 +3461,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryChangeLogListRequest,
     ) -> domain_20180129_models.QueryChangeLogListResponse:
         """
+        @summary 查询操作记录
+        
         @param request: QueryChangeLogListRequest
         @return: QueryChangeLogListResponse
         """
@@ -4191,6 +4199,8 @@ class Client(OpenApiClient):
             query['ProductDomainType'] = request.product_domain_type
         if not UtilClient.is_unset(request.query_type):
             query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.registrar):
+            query['Registrar'] = request.registrar
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_expiration_date):
@@ -4258,6 +4268,8 @@ class Client(OpenApiClient):
             query['ProductDomainType'] = request.product_domain_type
         if not UtilClient.is_unset(request.query_type):
             query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.registrar):
+            query['Registrar'] = request.registrar
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_expiration_date):
@@ -4412,6 +4424,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_domain_real_name_verification_info_with_options_async(request, runtime)
+
+    def query_domain_real_time_price_with_options(
+        self,
+        tmp_req: domain_20180129_models.QueryDomainRealTimePriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryDomainRealTimePriceResponse:
+        """
+        @summary 实时查询域名价格
+        
+        @param tmp_req: QueryDomainRealTimePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDomainRealTimePriceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180129_models.QueryDomainRealTimePriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_item):
+            request.domain_item_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_item, 'DomainItem', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.currency):
+            query['Currency'] = request.currency
+        if not UtilClient.is_unset(request.domain_item_shrink):
+            query['DomainItem'] = request.domain_item_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDomainRealTimePrice',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryDomainRealTimePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_domain_real_time_price_with_options_async(
+        self,
+        tmp_req: domain_20180129_models.QueryDomainRealTimePriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryDomainRealTimePriceResponse:
+        """
+        @summary 实时查询域名价格
+        
+        @param tmp_req: QueryDomainRealTimePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDomainRealTimePriceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180129_models.QueryDomainRealTimePriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_item):
+            request.domain_item_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_item, 'DomainItem', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.currency):
+            query['Currency'] = request.currency
+        if not UtilClient.is_unset(request.domain_item_shrink):
+            query['DomainItem'] = request.domain_item_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDomainRealTimePrice',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryDomainRealTimePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_domain_real_time_price(
+        self,
+        request: domain_20180129_models.QueryDomainRealTimePriceRequest,
+    ) -> domain_20180129_models.QueryDomainRealTimePriceResponse:
+        """
+        @summary 实时查询域名价格
+        
+        @param request: QueryDomainRealTimePriceRequest
+        @return: QueryDomainRealTimePriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_domain_real_time_price_with_options(request, runtime)
+
+    async def query_domain_real_time_price_async(
+        self,
+        request: domain_20180129_models.QueryDomainRealTimePriceRequest,
+    ) -> domain_20180129_models.QueryDomainRealTimePriceResponse:
+        """
+        @summary 实时查询域名价格
+        
+        @param request: QueryDomainRealTimePriceRequest
+        @return: QueryDomainRealTimePriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_domain_real_time_price_with_options_async(request, runtime)
 
     def query_domain_special_biz_detail_with_options(
         self,
@@ -5827,6 +5947,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryRegistrantProfilesResponse:
         """
+        @summary Queries the registrant profiles that belong to your Alibaba Cloud account.
+        
+        @description You can use optional request parameters to specify specific query criteria to query registrant profiles as required. For example:
+        If you know the ID of the profile that you want to query, you can use the registrant profile ID parameter to query the detailed information about the profile.
+        If you do not know the ID of the profile that you want to query, you can use parameters such as the registrant name parameter to query the detailed information about the profile.
+        
         @param request: QueryRegistrantProfilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryRegistrantProfilesResponse
@@ -5884,6 +6010,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryRegistrantProfilesResponse:
         """
+        @summary Queries the registrant profiles that belong to your Alibaba Cloud account.
+        
+        @description You can use optional request parameters to specify specific query criteria to query registrant profiles as required. For example:
+        If you know the ID of the profile that you want to query, you can use the registrant profile ID parameter to query the detailed information about the profile.
+        If you do not know the ID of the profile that you want to query, you can use parameters such as the registrant name parameter to query the detailed information about the profile.
+        
         @param request: QueryRegistrantProfilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryRegistrantProfilesResponse
@@ -5940,6 +6072,12 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryRegistrantProfilesRequest,
     ) -> domain_20180129_models.QueryRegistrantProfilesResponse:
         """
+        @summary Queries the registrant profiles that belong to your Alibaba Cloud account.
+        
+        @description You can use optional request parameters to specify specific query criteria to query registrant profiles as required. For example:
+        If you know the ID of the profile that you want to query, you can use the registrant profile ID parameter to query the detailed information about the profile.
+        If you do not know the ID of the profile that you want to query, you can use parameters such as the registrant name parameter to query the detailed information about the profile.
+        
         @param request: QueryRegistrantProfilesRequest
         @return: QueryRegistrantProfilesResponse
         """
@@ -5951,6 +6089,12 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryRegistrantProfilesRequest,
     ) -> domain_20180129_models.QueryRegistrantProfilesResponse:
         """
+        @summary Queries the registrant profiles that belong to your Alibaba Cloud account.
+        
+        @description You can use optional request parameters to specify specific query criteria to query registrant profiles as required. For example:
+        If you know the ID of the profile that you want to query, you can use the registrant profile ID parameter to query the detailed information about the profile.
+        If you do not know the ID of the profile that you want to query, you can use parameters such as the registrant name parameter to query the detailed information about the profile.
+        
         @param request: QueryRegistrantProfilesRequest
         @return: QueryRegistrantProfilesResponse
         """
@@ -6175,6 +6319,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryTaskDetailListResponse:
         """
+        @summary Queries the details of a specific domain name task by page.
+        
         @param request: QueryTaskDetailListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTaskDetailListResponse
@@ -6222,6 +6368,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryTaskDetailListResponse:
         """
+        @summary Queries the details of a specific domain name task by page.
+        
         @param request: QueryTaskDetailListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTaskDetailListResponse
@@ -6268,6 +6416,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryTaskDetailListRequest,
     ) -> domain_20180129_models.QueryTaskDetailListResponse:
         """
+        @summary Queries the details of a specific domain name task by page.
+        
         @param request: QueryTaskDetailListRequest
         @return: QueryTaskDetailListResponse
         """
@@ -6279,6 +6429,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryTaskDetailListRequest,
     ) -> domain_20180129_models.QueryTaskDetailListResponse:
         """
+        @summary Queries the details of a specific domain name task by page.
+        
         @param request: QueryTaskDetailListRequest
         @return: QueryTaskDetailListResponse
         """
@@ -6403,6 +6555,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryTaskListResponse:
         """
+        @summary 查询任务列表
+        
         @param request: QueryTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTaskListResponse
@@ -6446,6 +6600,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.QueryTaskListResponse:
         """
+        @summary 查询任务列表
+        
         @param request: QueryTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTaskListResponse
@@ -6488,6 +6644,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryTaskListRequest,
     ) -> domain_20180129_models.QueryTaskListResponse:
         """
+        @summary 查询任务列表
+        
         @param request: QueryTaskListRequest
         @return: QueryTaskListResponse
         """
@@ -6499,6 +6657,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.QueryTaskListRequest,
     ) -> domain_20180129_models.QueryTaskListResponse:
         """
+        @summary 查询任务列表
+        
         @param request: QueryTaskListRequest
         @return: QueryTaskListResponse
         """
@@ -8155,6 +8315,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
         """
+        @summary 提交批量预定删除抢注域名任务
+        
         @param request: SaveBatchTaskForReserveDropListDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveBatchTaskForReserveDropListDomainResponse
@@ -8190,6 +8352,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
         """
+        @summary 提交批量预定删除抢注域名任务
+        
         @param request: SaveBatchTaskForReserveDropListDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveBatchTaskForReserveDropListDomainResponse
@@ -8224,6 +8388,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.SaveBatchTaskForReserveDropListDomainRequest,
     ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
         """
+        @summary 提交批量预定删除抢注域名任务
+        
         @param request: SaveBatchTaskForReserveDropListDomainRequest
         @return: SaveBatchTaskForReserveDropListDomainResponse
         """
@@ -8235,6 +8401,8 @@ class Client(OpenApiClient):
         request: domain_20180129_models.SaveBatchTaskForReserveDropListDomainRequest,
     ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
         """
+        @summary 提交批量预定删除抢注域名任务
+        
         @param request: SaveBatchTaskForReserveDropListDomainRequest
         @return: SaveBatchTaskForReserveDropListDomainResponse
         """
@@ -8255,12 +8423,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.long):
-            query['Long'] = request.long
         if not UtilClient.is_unset(request.transfer_out_param_list):
             query['TransferOutParamList'] = request.transfer_out_param_list
-        if not UtilClient.is_unset(request.user_client_ip):
-            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8294,12 +8458,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.long):
-            query['Long'] = request.long
         if not UtilClient.is_unset(request.transfer_out_param_list):
             query['TransferOutParamList'] = request.transfer_out_param_list
-        if not UtilClient.is_unset(request.user_client_ip):
-            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11979,7 +12139,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
         """
-        @summary 基于转移码的单个转出任务提交
+        @summary Submit a single transfer-out task based on the transfer key of domain names.
+        
+        @description The task ID.
         
         @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11991,10 +12153,6 @@ class Client(OpenApiClient):
             query['AuthorizationCode'] = request.authorization_code
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
-            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12020,7 +12178,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
         """
-        @summary 基于转移码的单个转出任务提交
+        @summary Submit a single transfer-out task based on the transfer key of domain names.
+        
+        @description The task ID.
         
         @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12032,10 +12192,6 @@ class Client(OpenApiClient):
             query['AuthorizationCode'] = request.authorization_code
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
-            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12060,7 +12216,9 @@ class Client(OpenApiClient):
         request: domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeRequest,
     ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
         """
-        @summary 基于转移码的单个转出任务提交
+        @summary Submit a single transfer-out task based on the transfer key of domain names.
+        
+        @description The task ID.
         
         @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
         @return: SaveSingleTaskForTransferOutByAuthorizationCodeResponse
@@ -12073,7 +12231,9 @@ class Client(OpenApiClient):
         request: domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeRequest,
     ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
         """
-        @summary 基于转移码的单个转出任务提交
+        @summary Submit a single transfer-out task based on the transfer key of domain names.
+        
+        @description The task ID.
         
         @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
         @return: SaveSingleTaskForTransferOutByAuthorizationCodeResponse
