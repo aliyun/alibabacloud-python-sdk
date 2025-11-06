@@ -1,3 +1,7 @@
+2025-11-06 Version: 2.2.0
+- Support API DeleteMdsCubeTemplate.
+
+
 2025-11-06 Version: 2.1.0
 - Support API ChangeMdsCubeTaskStatus.
 - Support API CreateMdsCubeResource.

@@ -4365,6 +4365,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcube_whitelist_with_options_async(request, runtime)
 
+    def delete_mds_cube_template_with_options(
+        self,
+        request: m_paa_s20201028_models.DeleteMdsCubeTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.DeleteMdsCubeTemplateResponse:
+        """
+        @param request: DeleteMdsCubeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMdsCubeTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMdsCubeTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.DeleteMdsCubeTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mds_cube_template_with_options_async(
+        self,
+        request: m_paa_s20201028_models.DeleteMdsCubeTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.DeleteMdsCubeTemplateResponse:
+        """
+        @param request: DeleteMdsCubeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMdsCubeTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMdsCubeTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.DeleteMdsCubeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mds_cube_template(
+        self,
+        request: m_paa_s20201028_models.DeleteMdsCubeTemplateRequest,
+    ) -> m_paa_s20201028_models.DeleteMdsCubeTemplateResponse:
+        """
+        @param request: DeleteMdsCubeTemplateRequest
+        @return: DeleteMdsCubeTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_mds_cube_template_with_options(request, runtime)
+
+    async def delete_mds_cube_template_async(
+        self,
+        request: m_paa_s20201028_models.DeleteMdsCubeTemplateRequest,
+    ) -> m_paa_s20201028_models.DeleteMdsCubeTemplateResponse:
+        """
+        @param request: DeleteMdsCubeTemplateRequest
+        @return: DeleteMdsCubeTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_mds_cube_template_with_options_async(request, runtime)
+
     def delete_mds_whitelist_content_with_options(
         self,
         request: m_paa_s20201028_models.DeleteMdsWhitelistContentRequest,
