@@ -2,6 +2,10 @@
 - Update API GetNacosMcpServer: add response parameters Body.Data.ToolSpec.ToolDecryptStatus.
 
 
+2025-11-06 Version: 6.21.3
+- Update API GetNacosMcpServer: add response parameters Body.Data.ToolSpec.ToolDecryptStatus.
+
+
 2025-10-09 Version: 6.21.2
 - Update API CreateNacosMcpServer: add request parameters EncryptToolSpec.
 - Update API GetNacosMcpServer: add response parameters Body.Data.ToolSpec.SecuritySchemes.
