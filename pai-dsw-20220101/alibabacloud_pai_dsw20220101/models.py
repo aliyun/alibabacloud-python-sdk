@@ -647,6 +647,172 @@ class ForwardInfoResponse(TeaModel):
         return self
 
 
+class ServiceConfig(TeaModel):
+    def __init__(
+        self,
+        code_server_auth: str = None,
+        code_server_password: str = None,
+        jupyter_server_auth: str = None,
+        jupyter_server_password: str = None,
+    ):
+        self.code_server_auth = code_server_auth
+        self.code_server_password = code_server_password
+        self.jupyter_server_auth = jupyter_server_auth
+        self.jupyter_server_password = jupyter_server_password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_server_auth is not None:
+            result['CodeServerAuth'] = self.code_server_auth
+        if self.code_server_password is not None:
+            result['CodeServerPassword'] = self.code_server_password
+        if self.jupyter_server_auth is not None:
+            result['JupyterServerAuth'] = self.jupyter_server_auth
+        if self.jupyter_server_password is not None:
+            result['JupyterServerPassword'] = self.jupyter_server_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeServerAuth') is not None:
+            self.code_server_auth = m.get('CodeServerAuth')
+        if m.get('CodeServerPassword') is not None:
+            self.code_server_password = m.get('CodeServerPassword')
+        if m.get('JupyterServerAuth') is not None:
+            self.jupyter_server_auth = m.get('JupyterServerAuth')
+        if m.get('JupyterServerPassword') is not None:
+            self.jupyter_server_password = m.get('JupyterServerPassword')
+        return self
+
+
+class CreateDiagnosisRequest(TeaModel):
+    def __init__(
+        self,
+        gmt_failure_time: str = None,
+        instance_id: str = None,
+        problem_category: str = None,
+    ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+        self.gmt_failure_time = gmt_failure_time
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.problem_category = problem_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_failure_time is not None:
+            result['GmtFailureTime'] = self.gmt_failure_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.problem_category is not None:
+            result['ProblemCategory'] = self.problem_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtFailureTime') is not None:
+            self.gmt_failure_time = m.get('GmtFailureTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProblemCategory') is not None:
+            self.problem_category = m.get('ProblemCategory')
+        return self
+
+
+class CreateDiagnosisResponseBody(TeaModel):
+    def __init__(
+        self,
+        reason_code: str = None,
+        reason_message: str = None,
+        solution_message: str = None,
+    ):
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.solution_message = solution_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.solution_message is not None:
+            result['SolutionMessage'] = self.solution_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('SolutionMessage') is not None:
+            self.solution_message = m.get('SolutionMessage')
+        return self
+
+
+class CreateDiagnosisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDiagnosisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDiagnosisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateIdleInstanceCullerRequest(TeaModel):
     def __init__(
         self,
@@ -3053,12 +3219,52 @@ class GetInstanceResponseBodyAffinity(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyCloudDisksStatus(TeaModel):
+    def __init__(
+        self,
+        available: int = None,
+        capacity: int = None,
+        usage: int = None,
+    ):
+        self.available = available
+        self.capacity = capacity
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available is not None:
+            result['Available'] = self.available
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
 class GetInstanceResponseBodyCloudDisks(TeaModel):
     def __init__(
         self,
         capacity: str = None,
         mount_path: str = None,
         path: str = None,
+        status: GetInstanceResponseBodyCloudDisksStatus = None,
         sub_type: str = None,
     ):
         # Disk Capacity
@@ -3067,11 +3273,13 @@ class GetInstanceResponseBodyCloudDisks(TeaModel):
         self.mount_path = mount_path
         # The directory on the cloud disk that is mounted to the container.
         self.path = path
+        self.status = status
         # The usage mode of the cloud disk. The value rootfs indicates that the cloud disk is used as the root file system.
         self.sub_type = sub_type
 
     def validate(self):
-        pass
+        if self.status:
+            self.status.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3085,6 +3293,8 @@ class GetInstanceResponseBodyCloudDisks(TeaModel):
             result['MountPath'] = self.mount_path
         if self.path is not None:
             result['Path'] = self.path
+        if self.status is not None:
+            result['Status'] = self.status.to_map()
         if self.sub_type is not None:
             result['SubType'] = self.sub_type
         return result
@@ -3097,6 +3307,9 @@ class GetInstanceResponseBodyCloudDisks(TeaModel):
             self.mount_path = m.get('MountPath')
         if m.get('Path') is not None:
             self.path = m.get('Path')
+        if m.get('Status') is not None:
+            temp_model = GetInstanceResponseBodyCloudDisksStatus()
+            self.status = temp_model.from_map(m['Status'])
         if m.get('SubType') is not None:
             self.sub_type = m.get('SubType')
         return self
@@ -3647,6 +3860,7 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
         default_route: str = None,
         extended_cidrs: List[str] = None,
         forward_infos: List[ForwardInfoResponse] = None,
+        ip: str = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -3661,6 +3875,7 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
         self.extended_cidrs = extended_cidrs
         # The forward information.
         self.forward_infos = forward_infos
+        self.ip = ip
         # The security group ID.
         self.security_group_id = security_group_id
         # The vSwitch ID.
@@ -3692,6 +3907,8 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
         if self.forward_infos is not None:
             for k in self.forward_infos:
                 result['ForwardInfos'].append(k.to_map() if k else None)
+        if self.ip is not None:
+            result['Ip'] = self.ip
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -3714,6 +3931,8 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
             for k in m.get('ForwardInfos'):
                 temp_model = ForwardInfoResponse()
                 self.forward_infos.append(temp_model.from_map(k))
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -3765,6 +3984,7 @@ class GetInstanceResponseBody(TeaModel):
         requested_resource: GetInstanceResponseBodyRequestedResource = None,
         resource_id: str = None,
         resource_name: str = None,
+        service_config: ServiceConfig = None,
         status: str = None,
         success: bool = None,
         tags: List[GetInstanceResponseBodyTags] = None,
@@ -3879,6 +4099,7 @@ class GetInstanceResponseBody(TeaModel):
         # *   For subscription, this is the requested CPU and memory size.
         # *   For pay-as-you-go, this is the selected ECS instance type.
         self.resource_name = resource_name
+        self.service_config = service_config
         # The instance status.
         # 
         # Valid values:
@@ -3957,6 +4178,8 @@ class GetInstanceResponseBody(TeaModel):
             self.node_error_recovery.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.service_config:
+            self.service_config.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -4056,6 +4279,8 @@ class GetInstanceResponseBody(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.service_config is not None:
+            result['ServiceConfig'] = self.service_config.to_map()
         if self.status is not None:
             result['Status'] = self.status
         if self.success is not None:
@@ -4184,6 +4409,9 @@ class GetInstanceResponseBody(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ServiceConfig') is not None:
+            temp_model = ServiceConfig()
+            self.service_config = temp_model.from_map(m['ServiceConfig'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Success') is not None:
@@ -8050,6 +8278,7 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
         default_route: str = None,
         extended_cidrs: List[str] = None,
         forward_infos: List[ForwardInfoResponse] = None,
+        ip: str = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -8061,6 +8290,7 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
         self.extended_cidrs = extended_cidrs
         # The forward information.
         self.forward_infos = forward_infos
+        self.ip = ip
         # The security group ID.
         self.security_group_id = security_group_id
         # The vSwitch ID.
@@ -8092,6 +8322,8 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
         if self.forward_infos is not None:
             for k in self.forward_infos:
                 result['ForwardInfos'].append(k.to_map() if k else None)
+        if self.ip is not None:
+            result['Ip'] = self.ip
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -8114,6 +8346,8 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
             for k in m.get('ForwardInfos'):
                 temp_model = ForwardInfoResponse()
                 self.forward_infos.append(temp_model.from_map(k))
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -8161,6 +8395,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         requested_resource: ListInstancesResponseBodyInstancesRequestedResource = None,
         resource_id: str = None,
         resource_name: str = None,
+        service_config: ServiceConfig = None,
         status: str = None,
         tags: List[ListInstancesResponseBodyInstancesTags] = None,
         terminal_url: str = None,
@@ -8252,6 +8487,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         # *   In pay-as-you-go scenarios, the value is the specifications of the purchased ECS instance type.
         # *   In subscription scenarios, the value is the requested number of CPU cores and memory size.
         self.resource_name = resource_name
+        self.service_config = service_config
         # The instance status.
         self.status = status
         # The tags.
@@ -8304,6 +8540,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.latest_snapshot.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.service_config:
+            self.service_config.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -8395,6 +8633,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.service_config is not None:
+            result['ServiceConfig'] = self.service_config.to_map()
         if self.status is not None:
             result['Status'] = self.status
         result['Tags'] = []
@@ -8510,6 +8750,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ServiceConfig') is not None:
+            temp_model = ServiceConfig()
+            self.service_config = temp_model.from_map(m['ServiceConfig'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tags = []

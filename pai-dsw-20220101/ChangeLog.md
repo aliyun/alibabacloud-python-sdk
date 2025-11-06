@@ -1,3 +1,12 @@
+2025-11-06 Version: 2.2.0
+- Support API CreateDiagnosis.
+- Update API GetInstance: add response parameters Body.ServiceConfig.
+- Update API GetInstance: add response parameters Body.CloudDisks.$.Status.
+- Update API GetInstance: add response parameters Body.UserVpc.Ip.
+- Update API ListInstances: add response parameters Body.Instances.$.ServiceConfig.
+- Update API ListInstances: add response parameters Body.Instances.$.UserVpc.Ip.
+
+
 2025-10-14 Version: 2.1.0
 - Support API DeleteInstances.
 - Support API StopInstances.

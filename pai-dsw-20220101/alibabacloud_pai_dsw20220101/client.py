@@ -21,7 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('pai-dsw', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -40,6 +40,118 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def create_diagnosis_with_options(
+        self,
+        request: pai_dsw_20220101_models.CreateDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.CreateDiagnosisResponse:
+        """
+        @summary 诊断问题
+        
+        @param request: CreateDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiagnosisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gmt_failure_time):
+            body['GmtFailureTime'] = request.gmt_failure_time
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.problem_category):
+            body['ProblemCategory'] = request.problem_category
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosis',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/diagnoses',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnosis_with_options_async(
+        self,
+        request: pai_dsw_20220101_models.CreateDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.CreateDiagnosisResponse:
+        """
+        @summary 诊断问题
+        
+        @param request: CreateDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiagnosisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gmt_failure_time):
+            body['GmtFailureTime'] = request.gmt_failure_time
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.problem_category):
+            body['ProblemCategory'] = request.problem_category
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosis',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/diagnoses',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnosis(
+        self,
+        request: pai_dsw_20220101_models.CreateDiagnosisRequest,
+    ) -> pai_dsw_20220101_models.CreateDiagnosisResponse:
+        """
+        @summary 诊断问题
+        
+        @param request: CreateDiagnosisRequest
+        @return: CreateDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_diagnosis_with_options(request, headers, runtime)
+
+    async def create_diagnosis_async(
+        self,
+        request: pai_dsw_20220101_models.CreateDiagnosisRequest,
+    ) -> pai_dsw_20220101_models.CreateDiagnosisResponse:
+        """
+        @summary 诊断问题
+        
+        @param request: CreateDiagnosisRequest
+        @return: CreateDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_diagnosis_with_options_async(request, headers, runtime)
 
     def create_idle_instance_culler_with_options(
         self,
