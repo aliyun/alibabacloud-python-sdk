@@ -4,6 +4,12 @@
 - Update API ListQuotas: add request parameters ClusterType.
 
 
+2025-11-06 Version: 2.1.14
+- Update API CreateQuota: add request parameters body.ClusterSpec.
+- Update API GetQuota: add response parameters Body.QuotaCluster.
+- Update API ListQuotas: add request parameters ClusterType.
+
+
 2025-11-04 Version: 2.1.13
 - Update API ListNodes: add request parameters WorkspaceId.
 
