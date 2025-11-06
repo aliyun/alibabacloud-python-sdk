@@ -31126,11 +31126,13 @@ class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
         self,
         security_schemes: Any = None,
         specification_type: str = None,
+        tool_decrypt_status: str = None,
         tools: List[GetNacosMcpServerResponseBodyDataToolSpecTools] = None,
         tools_meta: Dict[str, DataToolSpecToolsMetaValue] = None,
     ):
         self.security_schemes = security_schemes
         self.specification_type = specification_type
+        self.tool_decrypt_status = tool_decrypt_status
         self.tools = tools
         self.tools_meta = tools_meta
 
@@ -31154,6 +31156,8 @@ class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
             result['SecuritySchemes'] = self.security_schemes
         if self.specification_type is not None:
             result['SpecificationType'] = self.specification_type
+        if self.tool_decrypt_status is not None:
+            result['ToolDecryptStatus'] = self.tool_decrypt_status
         result['Tools'] = []
         if self.tools is not None:
             for k in self.tools:
@@ -31170,6 +31174,8 @@ class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
             self.security_schemes = m.get('SecuritySchemes')
         if m.get('SpecificationType') is not None:
             self.specification_type = m.get('SpecificationType')
+        if m.get('ToolDecryptStatus') is not None:
+            self.tool_decrypt_status = m.get('ToolDecryptStatus')
         self.tools = []
         if m.get('Tools') is not None:
             for k in m.get('Tools'):
