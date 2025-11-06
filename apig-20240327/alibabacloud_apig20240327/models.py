@@ -2790,6 +2790,7 @@ class HttpApiVersionInfo(TeaModel):
 class HttpApiApiInfo(TeaModel):
     def __init__(
         self,
+        agent_protocols: List[str] = None,
         ai_protocols: List[str] = None,
         auth_config: AuthConfig = None,
         base_path: str = None,
@@ -2808,6 +2809,7 @@ class HttpApiApiInfo(TeaModel):
         type: str = None,
         version_info: HttpApiVersionInfo = None,
     ):
+        self.agent_protocols = agent_protocols
         self.ai_protocols = ai_protocols
         self.auth_config = auth_config
         self.base_path = base_path
@@ -2852,6 +2854,8 @@ class HttpApiApiInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_protocols is not None:
+            result['agentProtocols'] = self.agent_protocols
         if self.ai_protocols is not None:
             result['aiProtocols'] = self.ai_protocols
         if self.auth_config is not None:
@@ -2896,6 +2900,8 @@ class HttpApiApiInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentProtocols') is not None:
+            self.agent_protocols = m.get('agentProtocols')
         if m.get('aiProtocols') is not None:
             self.ai_protocols = m.get('aiProtocols')
         if m.get('authConfig') is not None:
@@ -9030,6 +9036,7 @@ class CreateMcpServerRequest(TeaModel):
         self,
         assembled_sources: List[CreateMcpServerRequestAssembledSources] = None,
         backend_config: CreateMcpServerRequestBackendConfig = None,
+        create_from_type: str = None,
         description: str = None,
         domain_ids: List[str] = None,
         exposed_uri_path: str = None,
@@ -9042,6 +9049,7 @@ class CreateMcpServerRequest(TeaModel):
     ):
         self.assembled_sources = assembled_sources
         self.backend_config = backend_config
+        self.create_from_type = create_from_type
         self.description = description
         self.domain_ids = domain_ids
         self.exposed_uri_path = exposed_uri_path
@@ -9077,6 +9085,8 @@ class CreateMcpServerRequest(TeaModel):
                 result['assembledSources'].append(k.to_map() if k else None)
         if self.backend_config is not None:
             result['backendConfig'] = self.backend_config.to_map()
+        if self.create_from_type is not None:
+            result['createFromType'] = self.create_from_type
         if self.description is not None:
             result['description'] = self.description
         if self.domain_ids is not None:
@@ -9107,6 +9117,8 @@ class CreateMcpServerRequest(TeaModel):
         if m.get('backendConfig') is not None:
             temp_model = CreateMcpServerRequestBackendConfig()
             self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('createFromType') is not None:
+            self.create_from_type = m.get('createFromType')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domainIds') is not None:
@@ -23638,6 +23650,7 @@ class UpdateMcpServerRequest(TeaModel):
         self,
         assembled_sources: List[UpdateMcpServerRequestAssembledSources] = None,
         backend_config: UpdateMcpServerRequestBackendConfig = None,
+        create_from_type: str = None,
         description: str = None,
         domain_ids: List[str] = None,
         exposed_uri_path: str = None,
@@ -23648,6 +23661,7 @@ class UpdateMcpServerRequest(TeaModel):
     ):
         self.assembled_sources = assembled_sources
         self.backend_config = backend_config
+        self.create_from_type = create_from_type
         self.description = description
         self.domain_ids = domain_ids
         self.exposed_uri_path = exposed_uri_path
@@ -23680,6 +23694,8 @@ class UpdateMcpServerRequest(TeaModel):
                 result['assembledSources'].append(k.to_map() if k else None)
         if self.backend_config is not None:
             result['backendConfig'] = self.backend_config.to_map()
+        if self.create_from_type is not None:
+            result['createFromType'] = self.create_from_type
         if self.description is not None:
             result['description'] = self.description
         if self.domain_ids is not None:
@@ -23706,6 +23722,8 @@ class UpdateMcpServerRequest(TeaModel):
         if m.get('backendConfig') is not None:
             temp_model = UpdateMcpServerRequestBackendConfig()
             self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('createFromType') is not None:
+            self.create_from_type = m.get('createFromType')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domainIds') is not None:

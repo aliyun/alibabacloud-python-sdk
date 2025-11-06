@@ -1737,6 +1737,8 @@ class Client(OpenApiClient):
             body['assembledSources'] = request.assembled_sources
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.create_from_type):
+            body['createFromType'] = request.create_from_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -1795,6 +1797,8 @@ class Client(OpenApiClient):
             body['assembledSources'] = request.assembled_sources
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.create_from_type):
+            body['createFromType'] = request.create_from_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -9712,6 +9716,8 @@ class Client(OpenApiClient):
             body['assembledSources'] = request.assembled_sources
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.create_from_type):
+            body['createFromType'] = request.create_from_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -9767,6 +9773,8 @@ class Client(OpenApiClient):
             body['assembledSources'] = request.assembled_sources
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.create_from_type):
+            body['createFromType'] = request.create_from_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
