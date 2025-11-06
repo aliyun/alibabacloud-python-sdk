@@ -1,3 +1,8 @@
+2025-11-06 Version: 2.6.0
+- Support API DispatchConsoleAPIForPartner.
+- Support API GetUserAccessTokenForPartner.
+
+
 2025-09-19 Version: 2.5.0
 - Support API BindAppDomain.
 - Support API DeleteAppDomainCertificate.

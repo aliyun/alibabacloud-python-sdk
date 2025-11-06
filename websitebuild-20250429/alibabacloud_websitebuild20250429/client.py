@@ -561,6 +561,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_domain_dns_record_with_options_async(request, runtime)
 
+    def dispatch_console_apifor_partner_with_options(
+        self,
+        request: website_build_20250429_models.DispatchConsoleAPIForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DispatchConsoleAPIForPartnerResponse:
+        """
+        @summary DispatchConsoleAPIForPartner
+        
+        @param request: DispatchConsoleAPIForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DispatchConsoleAPIForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.live_token):
+            query['LiveToken'] = request.live_token
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.site_host):
+            query['SiteHost'] = request.site_host
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DispatchConsoleAPIForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DispatchConsoleAPIForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dispatch_console_apifor_partner_with_options_async(
+        self,
+        request: website_build_20250429_models.DispatchConsoleAPIForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DispatchConsoleAPIForPartnerResponse:
+        """
+        @summary DispatchConsoleAPIForPartner
+        
+        @param request: DispatchConsoleAPIForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DispatchConsoleAPIForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.live_token):
+            query['LiveToken'] = request.live_token
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.site_host):
+            query['SiteHost'] = request.site_host
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DispatchConsoleAPIForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DispatchConsoleAPIForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dispatch_console_apifor_partner(
+        self,
+        request: website_build_20250429_models.DispatchConsoleAPIForPartnerRequest,
+    ) -> website_build_20250429_models.DispatchConsoleAPIForPartnerResponse:
+        """
+        @summary DispatchConsoleAPIForPartner
+        
+        @param request: DispatchConsoleAPIForPartnerRequest
+        @return: DispatchConsoleAPIForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dispatch_console_apifor_partner_with_options(request, runtime)
+
+    async def dispatch_console_apifor_partner_async(
+        self,
+        request: website_build_20250429_models.DispatchConsoleAPIForPartnerRequest,
+    ) -> website_build_20250429_models.DispatchConsoleAPIForPartnerResponse:
+        """
+        @summary DispatchConsoleAPIForPartner
+        
+        @param request: DispatchConsoleAPIForPartnerRequest
+        @return: DispatchConsoleAPIForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dispatch_console_apifor_partner_with_options_async(request, runtime)
+
     def get_create_logo_task_with_options(
         self,
         request: website_build_20250429_models.GetCreateLogoTaskRequest,
@@ -860,6 +972,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_icp_filing_info_for_partner_with_options_async(request, runtime)
+
+    def get_user_access_token_for_partner_with_options(
+        self,
+        request: website_build_20250429_models.GetUserAccessTokenForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetUserAccessTokenForPartnerResponse:
+        """
+        @summary 通过授权码得到accessToken
+        
+        @param request: GetUserAccessTokenForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAccessTokenForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_host):
+            query['SiteHost'] = request.site_host
+        if not UtilClient.is_unset(request.ticket):
+            query['Ticket'] = request.ticket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserAccessTokenForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetUserAccessTokenForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_access_token_for_partner_with_options_async(
+        self,
+        request: website_build_20250429_models.GetUserAccessTokenForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetUserAccessTokenForPartnerResponse:
+        """
+        @summary 通过授权码得到accessToken
+        
+        @param request: GetUserAccessTokenForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAccessTokenForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_host):
+            query['SiteHost'] = request.site_host
+        if not UtilClient.is_unset(request.ticket):
+            query['Ticket'] = request.ticket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserAccessTokenForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetUserAccessTokenForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_access_token_for_partner(
+        self,
+        request: website_build_20250429_models.GetUserAccessTokenForPartnerRequest,
+    ) -> website_build_20250429_models.GetUserAccessTokenForPartnerResponse:
+        """
+        @summary 通过授权码得到accessToken
+        
+        @param request: GetUserAccessTokenForPartnerRequest
+        @return: GetUserAccessTokenForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_access_token_for_partner_with_options(request, runtime)
+
+    async def get_user_access_token_for_partner_async(
+        self,
+        request: website_build_20250429_models.GetUserAccessTokenForPartnerRequest,
+    ) -> website_build_20250429_models.GetUserAccessTokenForPartnerResponse:
+        """
+        @summary 通过授权码得到accessToken
+        
+        @param request: GetUserAccessTokenForPartnerRequest
+        @return: GetUserAccessTokenForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_access_token_for_partner_with_options_async(request, runtime)
 
     def get_user_tmp_identity_for_partner_with_options(
         self,

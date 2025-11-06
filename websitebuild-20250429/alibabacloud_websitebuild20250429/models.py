@@ -936,6 +936,176 @@ class DescribeAppDomainDnsRecordResponse(TeaModel):
         return self
 
 
+class DispatchConsoleAPIForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        live_token: str = None,
+        operation: str = None,
+        params: str = None,
+        product: str = None,
+        site_host: str = None,
+    ):
+        # This parameter is required.
+        self.live_token = live_token
+        # This parameter is required.
+        self.operation = operation
+        self.params = params
+        # This parameter is required.
+        self.product = product
+        self.site_host = site_host
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_token is not None:
+            result['LiveToken'] = self.live_token
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.site_host is not None:
+            result['SiteHost'] = self.site_host
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiveToken') is not None:
+            self.live_token = m.get('LiveToken')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('SiteHost') is not None:
+            self.site_host = m.get('SiteHost')
+        return self
+
+
+class DispatchConsoleAPIForPartnerResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class DispatchConsoleAPIForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        module: DispatchConsoleAPIForPartnerResponseBodyModule = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Module') is not None:
+            temp_model = DispatchConsoleAPIForPartnerResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DispatchConsoleAPIForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DispatchConsoleAPIForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DispatchConsoleAPIForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCreateLogoTaskRequest(TeaModel):
     def __init__(
         self,
@@ -1441,6 +1611,156 @@ class GetIcpFilingInfoForPartnerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetIcpFilingInfoForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserAccessTokenForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        site_host: str = None,
+        ticket: str = None,
+    ):
+        self.site_host = site_host
+        # This parameter is required.
+        self.ticket = ticket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_host is not None:
+            result['SiteHost'] = self.site_host
+        if self.ticket is not None:
+            result['Ticket'] = self.ticket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteHost') is not None:
+            self.site_host = m.get('SiteHost')
+        if m.get('Ticket') is not None:
+            self.ticket = m.get('Ticket')
+        return self
+
+
+class GetUserAccessTokenForPartnerResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        token_value: str = None,
+    ):
+        self.token_value = token_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.token_value is not None:
+            result['TokenValue'] = self.token_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TokenValue') is not None:
+            self.token_value = m.get('TokenValue')
+        return self
+
+
+class GetUserAccessTokenForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        module: GetUserAccessTokenForPartnerResponseBodyModule = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Module') is not None:
+            temp_model = GetUserAccessTokenForPartnerResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetUserAccessTokenForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserAccessTokenForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserAccessTokenForPartnerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
