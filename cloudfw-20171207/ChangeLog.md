@@ -1,3 +1,7 @@
+2025-11-06 Version: 7.1.4
+- Update API DescribeAssetStatistic: add response parameters Body.GeneralInstanceSpecStatistic.CfwTotalGeneralInstanceRegionStatistic.
+
+
 2025-11-05 Version: 7.1.3
 - Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.ProxyNetworkInterfaceId.
 - Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.ProxyRouteTableId.

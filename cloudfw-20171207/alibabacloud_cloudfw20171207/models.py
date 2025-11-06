@@ -11921,10 +11921,44 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralIn
         return self
 
 
+class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGeneralInstanceRegionStatistic(TeaModel):
+    def __init__(
+        self,
+        member_list: List[str] = None,
+        region_no: str = None,
+    ):
+        self.member_list = member_list
+        self.region_no = region_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_list is not None:
+            result['MemberList'] = self.member_list
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberList') is not None:
+            self.member_list = m.get('MemberList')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        return self
+
+
 class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(TeaModel):
     def __init__(
         self,
         cfw_general_instance_region_statistic: List[DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic] = None,
+        cfw_total_general_instance_region_statistic: List[DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGeneralInstanceRegionStatistic] = None,
         total_cfw_general_instance_cnt: int = None,
         total_cfw_general_instance_used_cnt: int = None,
         total_general_instance_used_cnt: int = None,
@@ -11933,6 +11967,7 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(TeaModel):
         total_vfw_general_instance_used_cnt: int = None,
     ):
         self.cfw_general_instance_region_statistic = cfw_general_instance_region_statistic
+        self.cfw_total_general_instance_region_statistic = cfw_total_general_instance_region_statistic
         self.total_cfw_general_instance_cnt = total_cfw_general_instance_cnt
         self.total_cfw_general_instance_used_cnt = total_cfw_general_instance_used_cnt
         self.total_general_instance_used_cnt = total_general_instance_used_cnt
@@ -11943,6 +11978,10 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(TeaModel):
     def validate(self):
         if self.cfw_general_instance_region_statistic:
             for k in self.cfw_general_instance_region_statistic:
+                if k:
+                    k.validate()
+        if self.cfw_total_general_instance_region_statistic:
+            for k in self.cfw_total_general_instance_region_statistic:
                 if k:
                     k.validate()
 
@@ -11956,6 +11995,10 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(TeaModel):
         if self.cfw_general_instance_region_statistic is not None:
             for k in self.cfw_general_instance_region_statistic:
                 result['CfwGeneralInstanceRegionStatistic'].append(k.to_map() if k else None)
+        result['CfwTotalGeneralInstanceRegionStatistic'] = []
+        if self.cfw_total_general_instance_region_statistic is not None:
+            for k in self.cfw_total_general_instance_region_statistic:
+                result['CfwTotalGeneralInstanceRegionStatistic'].append(k.to_map() if k else None)
         if self.total_cfw_general_instance_cnt is not None:
             result['TotalCfwGeneralInstanceCnt'] = self.total_cfw_general_instance_cnt
         if self.total_cfw_general_instance_used_cnt is not None:
@@ -11977,6 +12020,11 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(TeaModel):
             for k in m.get('CfwGeneralInstanceRegionStatistic'):
                 temp_model = DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic()
                 self.cfw_general_instance_region_statistic.append(temp_model.from_map(k))
+        self.cfw_total_general_instance_region_statistic = []
+        if m.get('CfwTotalGeneralInstanceRegionStatistic') is not None:
+            for k in m.get('CfwTotalGeneralInstanceRegionStatistic'):
+                temp_model = DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGeneralInstanceRegionStatistic()
+                self.cfw_total_general_instance_region_statistic.append(temp_model.from_map(k))
         if m.get('TotalCfwGeneralInstanceCnt') is not None:
             self.total_cfw_general_instance_cnt = m.get('TotalCfwGeneralInstanceCnt')
         if m.get('TotalCfwGeneralInstanceUsedCnt') is not None:
