@@ -1248,6 +1248,92 @@ class ChannelProperty(TeaModel):
         return self
 
 
+class DataSource(TeaModel):
+    def __init__(
+        self,
+        data_source_id: str = None,
+        mount_path: str = None,
+        uri: str = None,
+    ):
+        self.data_source_id = data_source_id
+        self.mount_path = mount_path
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class ClusterSpec(TeaModel):
+    def __init__(
+        self,
+        cluster_type: str = None,
+        data_sources: List[DataSource] = None,
+        image: str = None,
+    ):
+        self.cluster_type = cluster_type
+        self.data_sources = data_sources
+        self.image = image
+
+    def validate(self):
+        if self.data_sources:
+            for k in self.data_sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        result['DataSources'] = []
+        if self.data_sources is not None:
+            for k in self.data_sources:
+                result['DataSources'].append(k.to_map() if k else None)
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        self.data_sources = []
+        if m.get('DataSources') is not None:
+            for k in m.get('DataSources'):
+                temp_model = DataSource()
+                self.data_sources.append(temp_model.from_map(k))
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
 class ComponentSpec(TeaModel):
     def __init__(
         self,
@@ -3345,6 +3431,65 @@ class ResourceSpec(TeaModel):
         return self
 
 
+class QuotaCluster(TeaModel):
+    def __init__(
+        self,
+        cluster_type: str = None,
+        data_sources: List[DataSource] = None,
+        endpoints: Dict[str, str] = None,
+        image: str = None,
+        status: str = None,
+    ):
+        self.cluster_type = cluster_type
+        self.data_sources = data_sources
+        self.endpoints = endpoints
+        self.image = image
+        self.status = status
+
+    def validate(self):
+        if self.data_sources:
+            for k in self.data_sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        result['DataSources'] = []
+        if self.data_sources is not None:
+            for k in self.data_sources:
+                result['DataSources'].append(k.to_map() if k else None)
+        if self.endpoints is not None:
+            result['Endpoints'] = self.endpoints
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        self.data_sources = []
+        if m.get('DataSources') is not None:
+            for k in m.get('DataSources'):
+                temp_model = DataSource()
+                self.data_sources.append(temp_model.from_map(k))
+        if m.get('Endpoints') is not None:
+            self.endpoints = m.get('Endpoints')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class WorkspaceSpec(TeaModel):
     def __init__(
         self,
@@ -3862,6 +4007,7 @@ class Quota(TeaModel):
         min: ResourceSpec = None,
         parent_quota_id: str = None,
         queue_strategy: str = None,
+        quota_cluster: QuotaCluster = None,
         quota_config: QuotaConfig = None,
         quota_details: QuotaDetails = None,
         quota_id: str = None,
@@ -3886,6 +4032,7 @@ class Quota(TeaModel):
         self.min = min
         self.parent_quota_id = parent_quota_id
         self.queue_strategy = queue_strategy
+        self.quota_cluster = quota_cluster
         self.quota_config = quota_config
         self.quota_details = quota_details
         self.quota_id = quota_id
@@ -3906,6 +4053,8 @@ class Quota(TeaModel):
                     k.validate()
         if self.min:
             self.min.validate()
+        if self.quota_cluster:
+            self.quota_cluster.validate()
         if self.quota_config:
             self.quota_config.validate()
         if self.quota_details:
@@ -3949,6 +4098,8 @@ class Quota(TeaModel):
             result['ParentQuotaId'] = self.parent_quota_id
         if self.queue_strategy is not None:
             result['QueueStrategy'] = self.queue_strategy
+        if self.quota_cluster is not None:
+            result['QuotaCluster'] = self.quota_cluster.to_map()
         if self.quota_config is not None:
             result['QuotaConfig'] = self.quota_config.to_map()
         if self.quota_details is not None:
@@ -4007,6 +4158,9 @@ class Quota(TeaModel):
             self.parent_quota_id = m.get('ParentQuotaId')
         if m.get('QueueStrategy') is not None:
             self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaCluster') is not None:
+            temp_model = QuotaCluster()
+            self.quota_cluster = temp_model.from_map(m['QuotaCluster'])
         if m.get('QuotaConfig') is not None:
             temp_model = QuotaConfig()
             self.quota_config = temp_model.from_map(m['QuotaConfig'])
@@ -6253,6 +6407,7 @@ class CreateQuotaRequest(TeaModel):
     def __init__(
         self,
         allocate_strategy: str = None,
+        cluster_spec: ClusterSpec = None,
         description: str = None,
         labels: List[Label] = None,
         min: ResourceSpec = None,
@@ -6264,6 +6419,7 @@ class CreateQuotaRequest(TeaModel):
         resource_type: str = None,
     ):
         self.allocate_strategy = allocate_strategy
+        self.cluster_spec = cluster_spec
         self.description = description
         self.labels = labels
         self.min = min
@@ -6275,6 +6431,8 @@ class CreateQuotaRequest(TeaModel):
         self.resource_type = resource_type
 
     def validate(self):
+        if self.cluster_spec:
+            self.cluster_spec.validate()
         if self.labels:
             for k in self.labels:
                 if k:
@@ -6292,6 +6450,8 @@ class CreateQuotaRequest(TeaModel):
         result = dict()
         if self.allocate_strategy is not None:
             result['AllocateStrategy'] = self.allocate_strategy
+        if self.cluster_spec is not None:
+            result['ClusterSpec'] = self.cluster_spec.to_map()
         if self.description is not None:
             result['Description'] = self.description
         result['Labels'] = []
@@ -6318,6 +6478,9 @@ class CreateQuotaRequest(TeaModel):
         m = m or dict()
         if m.get('AllocateStrategy') is not None:
             self.allocate_strategy = m.get('AllocateStrategy')
+        if m.get('ClusterSpec') is not None:
+            temp_model = ClusterSpec()
+            self.cluster_spec = temp_model.from_map(m['ClusterSpec'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
         self.labels = []
@@ -8499,6 +8662,7 @@ class GetQuotaResponseBody(TeaModel):
         min: ResourceSpec = None,
         parent_quota_id: str = None,
         queue_strategy: str = None,
+        quota_cluster: QuotaCluster = None,
         quota_config: QuotaConfig = None,
         quota_details: QuotaDetails = None,
         quota_id: str = None,
@@ -8524,6 +8688,7 @@ class GetQuotaResponseBody(TeaModel):
         self.min = min
         self.parent_quota_id = parent_quota_id
         self.queue_strategy = queue_strategy
+        self.quota_cluster = quota_cluster
         self.quota_config = quota_config
         self.quota_details = quota_details
         # Quota Id
@@ -8546,6 +8711,8 @@ class GetQuotaResponseBody(TeaModel):
                     k.validate()
         if self.min:
             self.min.validate()
+        if self.quota_cluster:
+            self.quota_cluster.validate()
         if self.quota_config:
             self.quota_config.validate()
         if self.quota_details:
@@ -8589,6 +8756,8 @@ class GetQuotaResponseBody(TeaModel):
             result['ParentQuotaId'] = self.parent_quota_id
         if self.queue_strategy is not None:
             result['QueueStrategy'] = self.queue_strategy
+        if self.quota_cluster is not None:
+            result['QuotaCluster'] = self.quota_cluster.to_map()
         if self.quota_config is not None:
             result['QuotaConfig'] = self.quota_config.to_map()
         if self.quota_details is not None:
@@ -8649,6 +8818,9 @@ class GetQuotaResponseBody(TeaModel):
             self.parent_quota_id = m.get('ParentQuotaId')
         if m.get('QueueStrategy') is not None:
             self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaCluster') is not None:
+            temp_model = QuotaCluster()
+            self.quota_cluster = temp_model.from_map(m['QuotaCluster'])
         if m.get('QuotaConfig') is not None:
             temp_model = QuotaConfig()
             self.quota_config = temp_model.from_map(m['QuotaConfig'])
@@ -12281,6 +12453,7 @@ class ListQuotaWorkloadsResponse(TeaModel):
 class ListQuotasRequest(TeaModel):
     def __init__(
         self,
+        cluster_type: str = None,
         has_resource: str = None,
         labels: str = None,
         layout_mode: str = None,
@@ -12298,6 +12471,7 @@ class ListQuotasRequest(TeaModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
+        self.cluster_type = cluster_type
         self.has_resource = has_resource
         self.labels = labels
         self.layout_mode = layout_mode
@@ -12324,6 +12498,8 @@ class ListQuotasRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
         if self.has_resource is not None:
             result['HasResource'] = self.has_resource
         if self.labels is not None:
@@ -12360,6 +12536,8 @@ class ListQuotasRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
         if m.get('HasResource') is not None:
             self.has_resource = m.get('HasResource')
         if m.get('Labels') is not None:

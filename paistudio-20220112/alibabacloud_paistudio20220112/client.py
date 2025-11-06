@@ -522,6 +522,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allocate_strategy):
             body['AllocateStrategy'] = request.allocate_strategy
+        if not UtilClient.is_unset(request.cluster_spec):
+            body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.labels):
@@ -578,6 +580,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allocate_strategy):
             body['AllocateStrategy'] = request.allocate_strategy
+        if not UtilClient.is_unset(request.cluster_spec):
+            body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.labels):
@@ -4024,6 +4028,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.has_resource):
             query['HasResource'] = request.has_resource
         if not UtilClient.is_unset(request.labels):
@@ -4092,6 +4098,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.has_resource):
             query['HasResource'] = request.has_resource
         if not UtilClient.is_unset(request.labels):
