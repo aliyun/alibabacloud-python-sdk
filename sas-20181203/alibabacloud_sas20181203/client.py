@@ -27766,6 +27766,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
@@ -27778,6 +27780,8 @@ class Client(OpenApiClient):
             query['StatisticsTypeGatewayType'] = request.statistics_type_gateway_type
         if not UtilClient.is_unset(request.statistics_type_instance_value):
             query['StatisticsTypeInstanceValue'] = request.statistics_type_instance_value
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -27811,6 +27815,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
@@ -27823,6 +27829,8 @@ class Client(OpenApiClient):
             query['StatisticsTypeGatewayType'] = request.statistics_type_gateway_type
         if not UtilClient.is_unset(request.statistics_type_instance_value):
             query['StatisticsTypeInstanceValue'] = request.statistics_type_instance_value
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -52922,6 +52930,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.event_id):
             query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
@@ -52959,6 +52969,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.event_id):
             query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(

@@ -1,3 +1,12 @@
+2025-11-06 Version: 6.0.4
+- Update API DescribeExposedStatisticsDetail: add request parameters Criteria.
+- Update API DescribeExposedStatisticsDetail: add request parameters Uuid.
+- Update API DescribeExposedStatisticsDetail: add response parameters Body.StatisticsDetails.$.ForwardPort.
+- Update API GetAttackPathEventDetail: add request parameters EventSource.
+- Update API GetAttackPathEventDetail: add response parameters Body.AttackPathEvent.PathEventNodeList.$.AiAssetFlag.
+- Update API ListCheckItemWarningMachine: add response parameters Body.List.$.AssetType.
+
+
 2025-11-03 Version: 6.0.3
 - Update API CreateMaliciousFileWhitelistConfig: add request parameters Remark.
 - Update API GetOssBucketScanStatistic: add response parameters Body.Data.PostPayInvokeCount.
