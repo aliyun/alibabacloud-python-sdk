@@ -1,3 +1,15 @@
+2025-11-06 Version: 5.0.1
+- Update API Enrich: add request parameters journey_param_list.$.segment_param_list.$.departure_date.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_length.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_width.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_height.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_sum_of_length_width_height.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.length.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.width.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.height.
+- Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.sum_of_length_width_height.
+
+
 2025-10-24 Version: 5.0.0
 - Update API Enrich: add response parameters Body.data.solution_list.$.solution_attribute.issue_time_info.
 - Update API Enrich: delete response parameters Body.data.solution_list.$.product_type_description.

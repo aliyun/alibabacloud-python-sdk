@@ -15,6 +15,14 @@ class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
         carry_on_weight: int = None,
         carry_on_weight_unit: str = None,
         is_all_carry_on_weight: bool = None,
+        carry_length: int = None,
+        carry_width: int = None,
+        carry_height: int = None,
+        carry_sum_of_length_width_height: int = None,
+        length: int = None,
+        width: int = None,
+        height: int = None,
+        sum_of_length_width_height: int = None,
     ):
         # checked baggage quantity
         self.baggage_amount = baggage_amount
@@ -32,6 +40,14 @@ class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
         self.carry_on_weight_unit = carry_on_weight_unit
         # Whether the weight is for all baggages
         self.is_all_carry_on_weight = is_all_carry_on_weight
+        self.carry_length = carry_length
+        self.carry_width = carry_width
+        self.carry_height = carry_height
+        self.carry_sum_of_length_width_height = carry_sum_of_length_width_height
+        self.length = length
+        self.width = width
+        self.height = height
+        self.sum_of_length_width_height = sum_of_length_width_height
 
     def validate(self):
         pass
@@ -58,6 +74,22 @@ class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
             result['carry_on_weight_unit'] = self.carry_on_weight_unit
         if self.is_all_carry_on_weight is not None:
             result['is_all_carry_on_weight'] = self.is_all_carry_on_weight
+        if self.carry_length is not None:
+            result['carry_length'] = self.carry_length
+        if self.carry_width is not None:
+            result['carry_width'] = self.carry_width
+        if self.carry_height is not None:
+            result['carry_height'] = self.carry_height
+        if self.carry_sum_of_length_width_height is not None:
+            result['carry_sum_of_length_width_height'] = self.carry_sum_of_length_width_height
+        if self.length is not None:
+            result['length'] = self.length
+        if self.width is not None:
+            result['width'] = self.width
+        if self.height is not None:
+            result['height'] = self.height
+        if self.sum_of_length_width_height is not None:
+            result['sum_of_length_width_height'] = self.sum_of_length_width_height
         return result
 
     def from_map(self, m: dict = None):
@@ -78,6 +110,22 @@ class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
             self.carry_on_weight_unit = m.get('carry_on_weight_unit')
         if m.get('is_all_carry_on_weight') is not None:
             self.is_all_carry_on_weight = m.get('is_all_carry_on_weight')
+        if m.get('carry_length') is not None:
+            self.carry_length = m.get('carry_length')
+        if m.get('carry_width') is not None:
+            self.carry_width = m.get('carry_width')
+        if m.get('carry_height') is not None:
+            self.carry_height = m.get('carry_height')
+        if m.get('carry_sum_of_length_width_height') is not None:
+            self.carry_sum_of_length_width_height = m.get('carry_sum_of_length_width_height')
+        if m.get('length') is not None:
+            self.length = m.get('length')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('sum_of_length_width_height') is not None:
+            self.sum_of_length_width_height = m.get('sum_of_length_width_height')
         return self
 
 
@@ -7401,6 +7449,7 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         child_cabin: str = None,
         departure_airport: str = None,
         departure_city: str = None,
+        departure_date: str = None,
         departure_time: str = None,
         marketing_flight_no: str = None,
     ):
@@ -7416,9 +7465,8 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         self.departure_airport = departure_airport
         # departure city code
         self.departure_city = departure_city
+        self.departure_date = departure_date
         # departure time in string format (yyyy-MM-dd HH:mm:ss)
-        # 
-        # This parameter is required.
         self.departure_time = departure_time
         # marketing flight no. (eg: KA5809)
         # 
@@ -7446,6 +7494,8 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
             result['departure_airport'] = self.departure_airport
         if self.departure_city is not None:
             result['departure_city'] = self.departure_city
+        if self.departure_date is not None:
+            result['departure_date'] = self.departure_date
         if self.departure_time is not None:
             result['departure_time'] = self.departure_time
         if self.marketing_flight_no is not None:
@@ -7466,6 +7516,8 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
             self.departure_airport = m.get('departure_airport')
         if m.get('departure_city') is not None:
             self.departure_city = m.get('departure_city')
+        if m.get('departure_date') is not None:
+            self.departure_date = m.get('departure_date')
         if m.get('departure_time') is not None:
             self.departure_time = m.get('departure_time')
         if m.get('marketing_flight_no') is not None:
