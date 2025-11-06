@@ -1,3 +1,19 @@
+2025-11-06 Version: 5.3.0
+- Support API CreateAppViewTemplate.
+- Support API DeleteAppViewTemplate.
+- Support API DescribeAppViewStatus.
+- Support API DescribeAppViewTemplates.
+- Support API ModifyAppViewStatus.
+- Support API ModifyAppViewTemplate.
+- Support API ModifyStreamingProperty.
+- Support API ModifyViewLayout.
+- Support API RtcCancelSipInvite.
+- Support API RtcSipInviteMember.
+- Support API RtcSipMute.
+- Support API StartView.
+- Support API StopView.
+
+
 2025-10-17 Version: 5.2.5
 - Update API StartCloudRecord: add request parameters SingleStreamingRecord.AvMerge.
 

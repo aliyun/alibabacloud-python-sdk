@@ -1821,6 +1821,195 @@ class CreateAppStreamingOutTemplateResponse(TeaModel):
         return self
 
 
+class CreateAppViewTemplateRequestTemplate(TeaModel):
+    def __init__(
+        self,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.layout_ids = layout_ids
+        # This parameter is required.
+        self.media_encode = media_encode
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateAppViewTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        template: CreateAppViewTemplateRequestTemplate = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.template is not None:
+            result['Template'] = self.template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Template') is not None:
+            temp_model = CreateAppViewTemplateRequestTemplate()
+            self.template = temp_model.from_map(m['Template'])
+        return self
+
+
+class CreateAppViewTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        template_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.template_shrink = template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.template_shrink is not None:
+            result['Template'] = self.template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Template') is not None:
+            self.template_shrink = m.get('Template')
+        return self
+
+
+class CreateAppViewTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateAppViewTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppViewTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppViewTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAutoLiveStreamRuleRequest(TeaModel):
     def __init__(
         self,
@@ -3184,6 +3373,175 @@ class DeleteAppStreamingOutTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAppStreamingOutTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAppViewTemplateRequestTemplate(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteAppViewTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        template: DeleteAppViewTemplateRequestTemplate = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.template is not None:
+            result['Template'] = self.template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Template') is not None:
+            temp_model = DeleteAppViewTemplateRequestTemplate()
+            self.template = temp_model.from_map(m['Template'])
+        return self
+
+
+class DeleteAppViewTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        template_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.template_shrink = template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.template_shrink is not None:
+            result['Template'] = self.template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Template') is not None:
+            self.template_shrink = m.get('Template')
+        return self
+
+
+class DeleteAppViewTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAppViewTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAppViewTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAppViewTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6625,6 +6983,382 @@ class DescribeAppStreamingOutTemplatesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAppStreamingOutTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppViewStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeAppViewStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeAppViewStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppViewStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppViewStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppViewTemplatesRequestCondition(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeAppViewTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition: DescribeAppViewTemplatesRequestCondition = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.condition = condition
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            temp_model = DescribeAppViewTemplatesRequestCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppViewTemplatesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition_shrink: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.condition_shrink = condition_shrink
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition_shrink is not None:
+            result['Condition'] = self.condition_shrink
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            self.condition_shrink = m.get('Condition')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppViewTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.create_time = create_time
+        self.layout_ids = layout_ids
+        self.media_encode = media_encode
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeAppViewTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        templates: List[DescribeAppViewTemplatesResponseBodyTemplates] = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.templates = templates
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = DescribeAppViewTemplatesResponseBodyTemplates()
+                self.templates.append(temp_model.from_map(k))
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeAppViewTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppViewTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppViewTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20670,6 +21404,298 @@ class ModifyAppStreamingOutTemplateResponse(TeaModel):
         return self
 
 
+class ModifyAppViewStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class ModifyAppViewStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppViewStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppViewStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppViewStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppViewTemplateRequestTemplate(TeaModel):
+    def __init__(
+        self,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.layout_ids = layout_ids
+        # This parameter is required.
+        self.media_encode = media_encode
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifyAppViewTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        template: ModifyAppViewTemplateRequestTemplate = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.template is not None:
+            result['Template'] = self.template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Template') is not None:
+            temp_model = ModifyAppViewTemplateRequestTemplate()
+            self.template = temp_model.from_map(m['Template'])
+        return self
+
+
+class ModifyAppViewTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        template_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.template_shrink = template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.template_shrink is not None:
+            result['Template'] = self.template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Template') is not None:
+            self.template_shrink = m.get('Template')
+        return self
+
+
+class ModifyAppViewTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifyAppViewTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppViewTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppViewTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyCallbackMetaRequestCallback(TeaModel):
     def __init__(
         self,
@@ -21328,6 +22354,2256 @@ class ModifyMPULayoutResponse(TeaModel):
         return self
 
 
+class ModifyStreamingPropertyRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+        view_content: str = None,
+        view_subscribers: List[str] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+        self.view_content = view_content
+        # ViewSubscribers。
+        self.view_subscribers = view_subscribers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.view_content is not None:
+            result['ViewContent'] = self.view_content
+        if self.view_subscribers is not None:
+            result['ViewSubscribers'] = self.view_subscribers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('ViewContent') is not None:
+            self.view_content = m.get('ViewContent')
+        if m.get('ViewSubscribers') is not None:
+            self.view_subscribers = m.get('ViewSubscribers')
+        return self
+
+
+class ModifyStreamingPropertyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+        view_content: str = None,
+        view_subscribers_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+        self.view_content = view_content
+        # ViewSubscribers。
+        self.view_subscribers_shrink = view_subscribers_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.view_content is not None:
+            result['ViewContent'] = self.view_content
+        if self.view_subscribers_shrink is not None:
+            result['ViewSubscribers'] = self.view_subscribers_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('ViewContent') is not None:
+            self.view_content = m.get('ViewContent')
+        if m.get('ViewSubscribers') is not None:
+            self.view_subscribers_shrink = m.get('ViewSubscribers')
+        return self
+
+
+class ModifyStreamingPropertyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyStreamingPropertyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyStreamingPropertyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyStreamingPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyViewLayoutRequestBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        background_crop_mode: int = None,
+        height: float = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.background_crop_mode = background_crop_mode
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.background_crop_mode is not None:
+            result['BackgroundCropMode'] = self.background_crop_mode
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BackgroundCropMode') is not None:
+            self.background_crop_mode = m.get('BackgroundCropMode')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutRequestClockWidgetsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutRequestClockWidgetsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutRequestClockWidgets(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: ModifyViewLayoutRequestClockWidgetsBoxColor = None,
+        font: int = None,
+        font_color: ModifyViewLayoutRequestClockWidgetsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        x: float = None,
+        y: float = None,
+        zone: int = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+        self.zone = zone
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = ModifyViewLayoutRequestClockWidgetsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = ModifyViewLayoutRequestClockWidgetsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class ModifyViewLayoutRequestImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        image_crop_mode: int = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.image_crop_mode = image_crop_mode
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_crop_mode is not None:
+            result['ImageCropMode'] = self.image_crop_mode
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageCropMode') is not None:
+            self.image_crop_mode = m.get('ImageCropMode')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutRequestLayoutSpecifiedUsers(TeaModel):
+    def __init__(
+        self,
+        ids: List[str] = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyViewLayoutRequestPanesImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        layer: int = None,
+        pane_image_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_image_crop_mode = pane_image_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_image_crop_mode is not None:
+            result['PaneImageCropMode'] = self.pane_image_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneImageCropMode') is not None:
+            self.pane_image_crop_mode = m.get('PaneImageCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutRequestPanesTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutRequestPanesTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutRequestPanesTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: ModifyViewLayoutRequestPanesTextsBoxColor = None,
+        font: int = None,
+        font_color: ModifyViewLayoutRequestPanesTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = ModifyViewLayoutRequestPanesTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = ModifyViewLayoutRequestPanesTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutRequestPanes(TeaModel):
+    def __init__(
+        self,
+        images: List[ModifyViewLayoutRequestPanesImages] = None,
+        pane_crop_mode: int = None,
+        pane_id: str = None,
+        source: str = None,
+        source_type: str = None,
+        texts: List[ModifyViewLayoutRequestPanesTexts] = None,
+    ):
+        self.images = images
+        self.pane_crop_mode = pane_crop_mode
+        # This parameter is required.
+        self.pane_id = pane_id
+        self.source = source
+        self.source_type = source_type
+        self.texts = texts
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.pane_crop_mode is not None:
+            result['PaneCropMode'] = self.pane_crop_mode
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = ModifyViewLayoutRequestPanesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('PaneCropMode') is not None:
+            self.pane_crop_mode = m.get('PaneCropMode')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = ModifyViewLayoutRequestPanesTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyViewLayoutRequestTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutRequestTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutRequestTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: ModifyViewLayoutRequestTextsBoxColor = None,
+        font: int = None,
+        font_color: ModifyViewLayoutRequestTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = ModifyViewLayoutRequestTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = ModifyViewLayoutRequestTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        backgrounds: List[ModifyViewLayoutRequestBackgrounds] = None,
+        channel_id: str = None,
+        clock_widgets: List[ModifyViewLayoutRequestClockWidgets] = None,
+        images: List[ModifyViewLayoutRequestImages] = None,
+        layout_specified_users: ModifyViewLayoutRequestLayoutSpecifiedUsers = None,
+        panes: List[ModifyViewLayoutRequestPanes] = None,
+        task_id: str = None,
+        template_id: str = None,
+        texts: List[ModifyViewLayoutRequestTexts] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.backgrounds = backgrounds
+        # This parameter is required.
+        self.channel_id = channel_id
+        self.clock_widgets = clock_widgets
+        self.images = images
+        self.layout_specified_users = layout_specified_users
+        self.panes = panes
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.texts = texts
+
+    def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
+        if self.clock_widgets:
+            for k in self.clock_widgets:
+                if k:
+                    k.validate()
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.layout_specified_users:
+            self.layout_specified_users.validate()
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        result['ClockWidgets'] = []
+        if self.clock_widgets is not None:
+            for k in self.clock_widgets:
+                result['ClockWidgets'].append(k.to_map() if k else None)
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.layout_specified_users is not None:
+            result['LayoutSpecifiedUsers'] = self.layout_specified_users.to_map()
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = ModifyViewLayoutRequestBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        self.clock_widgets = []
+        if m.get('ClockWidgets') is not None:
+            for k in m.get('ClockWidgets'):
+                temp_model = ModifyViewLayoutRequestClockWidgets()
+                self.clock_widgets.append(temp_model.from_map(k))
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = ModifyViewLayoutRequestImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('LayoutSpecifiedUsers') is not None:
+            temp_model = ModifyViewLayoutRequestLayoutSpecifiedUsers()
+            self.layout_specified_users = temp_model.from_map(m['LayoutSpecifiedUsers'])
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = ModifyViewLayoutRequestPanes()
+                self.panes.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = ModifyViewLayoutRequestTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyViewLayoutShrinkRequestBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        background_crop_mode: int = None,
+        height: float = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.background_crop_mode = background_crop_mode
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.background_crop_mode is not None:
+            result['BackgroundCropMode'] = self.background_crop_mode
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BackgroundCropMode') is not None:
+            self.background_crop_mode = m.get('BackgroundCropMode')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestClockWidgetsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestClockWidgetsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestClockWidgets(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: ModifyViewLayoutShrinkRequestClockWidgetsBoxColor = None,
+        font: int = None,
+        font_color: ModifyViewLayoutShrinkRequestClockWidgetsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        x: float = None,
+        y: float = None,
+        zone: int = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+        self.zone = zone
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = ModifyViewLayoutShrinkRequestClockWidgetsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = ModifyViewLayoutShrinkRequestClockWidgetsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        image_crop_mode: int = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.image_crop_mode = image_crop_mode
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_crop_mode is not None:
+            result['ImageCropMode'] = self.image_crop_mode
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageCropMode') is not None:
+            self.image_crop_mode = m.get('ImageCropMode')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestPanesImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        layer: int = None,
+        pane_image_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_image_crop_mode = pane_image_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_image_crop_mode is not None:
+            result['PaneImageCropMode'] = self.pane_image_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneImageCropMode') is not None:
+            self.pane_image_crop_mode = m.get('PaneImageCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestPanesTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestPanesTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestPanesTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: ModifyViewLayoutShrinkRequestPanesTextsBoxColor = None,
+        font: int = None,
+        font_color: ModifyViewLayoutShrinkRequestPanesTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = ModifyViewLayoutShrinkRequestPanesTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = ModifyViewLayoutShrinkRequestPanesTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestPanes(TeaModel):
+    def __init__(
+        self,
+        images: List[ModifyViewLayoutShrinkRequestPanesImages] = None,
+        pane_crop_mode: int = None,
+        pane_id: str = None,
+        source: str = None,
+        source_type: str = None,
+        texts: List[ModifyViewLayoutShrinkRequestPanesTexts] = None,
+    ):
+        self.images = images
+        self.pane_crop_mode = pane_crop_mode
+        # This parameter is required.
+        self.pane_id = pane_id
+        self.source = source
+        self.source_type = source_type
+        self.texts = texts
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.pane_crop_mode is not None:
+            result['PaneCropMode'] = self.pane_crop_mode
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = ModifyViewLayoutShrinkRequestPanesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('PaneCropMode') is not None:
+            self.pane_crop_mode = m.get('PaneCropMode')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = ModifyViewLayoutShrinkRequestPanesTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyViewLayoutShrinkRequestTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class ModifyViewLayoutShrinkRequestTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: ModifyViewLayoutShrinkRequestTextsBoxColor = None,
+        font: int = None,
+        font_color: ModifyViewLayoutShrinkRequestTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = ModifyViewLayoutShrinkRequestTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = ModifyViewLayoutShrinkRequestTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ModifyViewLayoutShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        backgrounds: List[ModifyViewLayoutShrinkRequestBackgrounds] = None,
+        channel_id: str = None,
+        clock_widgets: List[ModifyViewLayoutShrinkRequestClockWidgets] = None,
+        images: List[ModifyViewLayoutShrinkRequestImages] = None,
+        layout_specified_users_shrink: str = None,
+        panes: List[ModifyViewLayoutShrinkRequestPanes] = None,
+        task_id: str = None,
+        template_id: str = None,
+        texts: List[ModifyViewLayoutShrinkRequestTexts] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.backgrounds = backgrounds
+        # This parameter is required.
+        self.channel_id = channel_id
+        self.clock_widgets = clock_widgets
+        self.images = images
+        self.layout_specified_users_shrink = layout_specified_users_shrink
+        self.panes = panes
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.texts = texts
+
+    def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
+        if self.clock_widgets:
+            for k in self.clock_widgets:
+                if k:
+                    k.validate()
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        result['ClockWidgets'] = []
+        if self.clock_widgets is not None:
+            for k in self.clock_widgets:
+                result['ClockWidgets'].append(k.to_map() if k else None)
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.layout_specified_users_shrink is not None:
+            result['LayoutSpecifiedUsers'] = self.layout_specified_users_shrink
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = ModifyViewLayoutShrinkRequestBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        self.clock_widgets = []
+        if m.get('ClockWidgets') is not None:
+            for k in m.get('ClockWidgets'):
+                temp_model = ModifyViewLayoutShrinkRequestClockWidgets()
+                self.clock_widgets.append(temp_model.from_map(k))
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = ModifyViewLayoutShrinkRequestImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('LayoutSpecifiedUsers') is not None:
+            self.layout_specified_users_shrink = m.get('LayoutSpecifiedUsers')
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = ModifyViewLayoutShrinkRequestPanes()
+                self.panes.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = ModifyViewLayoutShrinkRequestTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyViewLayoutResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ModifyViewLayoutResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyViewLayoutResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyViewLayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class NotifyAgentRequestBackgroundMusic(TeaModel):
     def __init__(
         self,
@@ -21963,6 +25239,563 @@ class RemoveUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RtcCancelSipInviteRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        device_type: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.device_type = device_type
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class RtcCancelSipInviteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RtcCancelSipInviteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RtcCancelSipInviteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RtcCancelSipInviteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RtcSipInviteMemberRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_token: str = None,
+        call_number: str = None,
+        channel_id: str = None,
+        device_type: str = None,
+        registered: bool = None,
+        server_address: str = None,
+        sip_display_name: str = None,
+        sip_room_id: str = None,
+        sip_uri: str = None,
+        sip_user_agent: str = None,
+        sip_user_id: str = None,
+        sip_user_password: str = None,
+        uid: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.app_token = app_token
+        self.call_number = call_number
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.device_type = device_type
+        # This parameter is required.
+        self.registered = registered
+        self.server_address = server_address
+        # This parameter is required.
+        self.sip_display_name = sip_display_name
+        # This parameter is required.
+        self.sip_room_id = sip_room_id
+        self.sip_uri = sip_uri
+        self.sip_user_agent = sip_user_agent
+        # This parameter is required.
+        self.sip_user_id = sip_user_id
+        self.sip_user_password = sip_user_password
+        # This parameter is required.
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_token is not None:
+            result['AppToken'] = self.app_token
+        if self.call_number is not None:
+            result['CallNumber'] = self.call_number
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.registered is not None:
+            result['Registered'] = self.registered
+        if self.server_address is not None:
+            result['ServerAddress'] = self.server_address
+        if self.sip_display_name is not None:
+            result['SipDisplayName'] = self.sip_display_name
+        if self.sip_room_id is not None:
+            result['SipRoomId'] = self.sip_room_id
+        if self.sip_uri is not None:
+            result['SipUri'] = self.sip_uri
+        if self.sip_user_agent is not None:
+            result['SipUserAgent'] = self.sip_user_agent
+        if self.sip_user_id is not None:
+            result['SipUserId'] = self.sip_user_id
+        if self.sip_user_password is not None:
+            result['SipUserPassword'] = self.sip_user_password
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppToken') is not None:
+            self.app_token = m.get('AppToken')
+        if m.get('CallNumber') is not None:
+            self.call_number = m.get('CallNumber')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Registered') is not None:
+            self.registered = m.get('Registered')
+        if m.get('ServerAddress') is not None:
+            self.server_address = m.get('ServerAddress')
+        if m.get('SipDisplayName') is not None:
+            self.sip_display_name = m.get('SipDisplayName')
+        if m.get('SipRoomId') is not None:
+            self.sip_room_id = m.get('SipRoomId')
+        if m.get('SipUri') is not None:
+            self.sip_uri = m.get('SipUri')
+        if m.get('SipUserAgent') is not None:
+            self.sip_user_agent = m.get('SipUserAgent')
+        if m.get('SipUserId') is not None:
+            self.sip_user_id = m.get('SipUserId')
+        if m.get('SipUserPassword') is not None:
+            self.sip_user_password = m.get('SipUserPassword')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class RtcSipInviteMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RtcSipInviteMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RtcSipInviteMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RtcSipInviteMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RtcSipMuteRequestOperationsValue(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class RtcSipMuteRequestOperations(TeaModel):
+    def __init__(
+        self,
+        ids: List[str] = None,
+        op: str = None,
+        operation_id: str = None,
+        path: str = None,
+        value: RtcSipMuteRequestOperationsValue = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+        # This parameter is required.
+        self.op = op
+        # This parameter is required.
+        self.operation_id = operation_id
+        # This parameter is required.
+        self.path = path
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.op is not None:
+            result['Op'] = self.op
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Op') is not None:
+            self.op = m.get('Op')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Value') is not None:
+            temp_model = RtcSipMuteRequestOperationsValue()
+            self.value = temp_model.from_map(m['Value'])
+        return self
+
+
+class RtcSipMuteRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        operations: List[RtcSipMuteRequestOperations] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.operations = operations
+
+    def validate(self):
+        if self.operations:
+            for k in self.operations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        result['Operations'] = []
+        if self.operations is not None:
+            for k in self.operations:
+                result['Operations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        self.operations = []
+        if m.get('Operations') is not None:
+            for k in m.get('Operations'):
+                temp_model = RtcSipMuteRequestOperations()
+                self.operations.append(temp_model.from_map(k))
+        return self
+
+
+class RtcSipMuteResponseBodyErrTracks(TeaModel):
+    def __init__(
+        self,
+        err_msg: str = None,
+        id: str = None,
+        operation_id: str = None,
+    ):
+        # ErrMsg。
+        self.err_msg = err_msg
+        self.id = id
+        # OperationId。
+        self.operation_id = operation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        return self
+
+
+class RtcSipMuteResponseBody(TeaModel):
+    def __init__(
+        self,
+        err_tracks: List[RtcSipMuteResponseBodyErrTracks] = None,
+        request_id: str = None,
+    ):
+        self.err_tracks = err_tracks
+        self.request_id = request_id
+
+    def validate(self):
+        if self.err_tracks:
+            for k in self.err_tracks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ErrTracks'] = []
+        if self.err_tracks is not None:
+            for k in self.err_tracks:
+                result['ErrTracks'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.err_tracks = []
+        if m.get('ErrTracks') is not None:
+            for k in m.get('ErrTracks'):
+                temp_model = RtcSipMuteResponseBodyErrTracks()
+                self.err_tracks.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RtcSipMuteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RtcSipMuteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RtcSipMuteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30570,6 +34403,440 @@ class StartStreamingOutResponse(TeaModel):
         return self
 
 
+class StartViewRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartViewRequestRegionColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartViewRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        bg_color: StartViewRequestBgColor = None,
+        channel_id: str = None,
+        crop_mode: int = None,
+        region_color: StartViewRequestRegionColor = None,
+        start_without_channel: bool = None,
+        start_without_channel_wait_time: int = None,
+        task_id: str = None,
+        template_id: str = None,
+        view_content: str = None,
+        view_subscribers: List[str] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.bg_color = bg_color
+        # This parameter is required.
+        self.channel_id = channel_id
+        self.crop_mode = crop_mode
+        self.region_color = region_color
+        self.start_without_channel = start_without_channel
+        self.start_without_channel_wait_time = start_without_channel_wait_time
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.view_content = view_content
+        self.view_subscribers = view_subscribers
+
+    def validate(self):
+        if self.bg_color:
+            self.bg_color.validate()
+        if self.region_color:
+            self.region_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.crop_mode is not None:
+            result['CropMode'] = self.crop_mode
+        if self.region_color is not None:
+            result['RegionColor'] = self.region_color.to_map()
+        if self.start_without_channel is not None:
+            result['StartWithoutChannel'] = self.start_without_channel
+        if self.start_without_channel_wait_time is not None:
+            result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.view_content is not None:
+            result['ViewContent'] = self.view_content
+        if self.view_subscribers is not None:
+            result['ViewSubscribers'] = self.view_subscribers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BgColor') is not None:
+            temp_model = StartViewRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CropMode') is not None:
+            self.crop_mode = m.get('CropMode')
+        if m.get('RegionColor') is not None:
+            temp_model = StartViewRequestRegionColor()
+            self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('StartWithoutChannel') is not None:
+            self.start_without_channel = m.get('StartWithoutChannel')
+        if m.get('StartWithoutChannelWaitTime') is not None:
+            self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('ViewContent') is not None:
+            self.view_content = m.get('ViewContent')
+        if m.get('ViewSubscribers') is not None:
+            self.view_subscribers = m.get('ViewSubscribers')
+        return self
+
+
+class StartViewShrinkRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartViewShrinkRequestRegionColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        # B。
+        self.b = b
+        # G。
+        self.g = g
+        # R。
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartViewShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        bg_color: StartViewShrinkRequestBgColor = None,
+        channel_id: str = None,
+        crop_mode: int = None,
+        region_color: StartViewShrinkRequestRegionColor = None,
+        start_without_channel: bool = None,
+        start_without_channel_wait_time: int = None,
+        task_id: str = None,
+        template_id: str = None,
+        view_content: str = None,
+        view_subscribers_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.bg_color = bg_color
+        # This parameter is required.
+        self.channel_id = channel_id
+        self.crop_mode = crop_mode
+        self.region_color = region_color
+        self.start_without_channel = start_without_channel
+        self.start_without_channel_wait_time = start_without_channel_wait_time
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.view_content = view_content
+        self.view_subscribers_shrink = view_subscribers_shrink
+
+    def validate(self):
+        if self.bg_color:
+            self.bg_color.validate()
+        if self.region_color:
+            self.region_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.crop_mode is not None:
+            result['CropMode'] = self.crop_mode
+        if self.region_color is not None:
+            result['RegionColor'] = self.region_color.to_map()
+        if self.start_without_channel is not None:
+            result['StartWithoutChannel'] = self.start_without_channel
+        if self.start_without_channel_wait_time is not None:
+            result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.view_content is not None:
+            result['ViewContent'] = self.view_content
+        if self.view_subscribers_shrink is not None:
+            result['ViewSubscribers'] = self.view_subscribers_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BgColor') is not None:
+            temp_model = StartViewShrinkRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CropMode') is not None:
+            self.crop_mode = m.get('CropMode')
+        if m.get('RegionColor') is not None:
+            temp_model = StartViewShrinkRequestRegionColor()
+            self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('StartWithoutChannel') is not None:
+            self.start_without_channel = m.get('StartWithoutChannel')
+        if m.get('StartWithoutChannelWaitTime') is not None:
+            self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('ViewContent') is not None:
+            self.view_content = m.get('ViewContent')
+        if m.get('ViewSubscribers') is not None:
+            self.view_subscribers_shrink = m.get('ViewSubscribers')
+        return self
+
+
+class StartViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StartViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopAgentRequest(TeaModel):
     def __init__(
         self,
@@ -31521,6 +35788,122 @@ class StopStreamingOutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopStreamingOutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopViewRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopViewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
