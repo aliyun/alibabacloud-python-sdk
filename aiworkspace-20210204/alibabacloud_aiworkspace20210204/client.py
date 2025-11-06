@@ -1997,6 +1997,154 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_experiment_with_options_async(request, headers, runtime)
 
+    def create_image_build_with_options(
+        self,
+        request: aiwork_space_20210204_models.CreateImageBuildRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateImageBuildResponse:
+        """
+        @summary 创建镜像构建任务
+        
+        @param request: CreateImageBuildRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageBuildResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.build_config):
+            body['BuildConfig'] = request.build_config
+        if not UtilClient.is_unset(request.image):
+            body['Image'] = request.image
+        if not UtilClient.is_unset(request.image_build_job_name):
+            body['ImageBuildJobName'] = request.image_build_job_name
+        if not UtilClient.is_unset(request.overwrite_image_tag):
+            body['OverwriteImageTag'] = request.overwrite_image_tag
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            body['Resource'] = request.resource
+        if not UtilClient.is_unset(request.target_registry):
+            body['TargetRegistry'] = request.target_registry
+        if not UtilClient.is_unset(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageBuild',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/imagebuilds',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateImageBuildResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_build_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.CreateImageBuildRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateImageBuildResponse:
+        """
+        @summary 创建镜像构建任务
+        
+        @param request: CreateImageBuildRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageBuildResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.build_config):
+            body['BuildConfig'] = request.build_config
+        if not UtilClient.is_unset(request.image):
+            body['Image'] = request.image
+        if not UtilClient.is_unset(request.image_build_job_name):
+            body['ImageBuildJobName'] = request.image_build_job_name
+        if not UtilClient.is_unset(request.overwrite_image_tag):
+            body['OverwriteImageTag'] = request.overwrite_image_tag
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            body['Resource'] = request.resource
+        if not UtilClient.is_unset(request.target_registry):
+            body['TargetRegistry'] = request.target_registry
+        if not UtilClient.is_unset(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageBuild',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/imagebuilds',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateImageBuildResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_build(
+        self,
+        request: aiwork_space_20210204_models.CreateImageBuildRequest,
+    ) -> aiwork_space_20210204_models.CreateImageBuildResponse:
+        """
+        @summary 创建镜像构建任务
+        
+        @param request: CreateImageBuildRequest
+        @return: CreateImageBuildResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_image_build_with_options(request, headers, runtime)
+
+    async def create_image_build_async(
+        self,
+        request: aiwork_space_20210204_models.CreateImageBuildRequest,
+    ) -> aiwork_space_20210204_models.CreateImageBuildResponse:
+        """
+        @summary 创建镜像构建任务
+        
+        @param request: CreateImageBuildRequest
+        @return: CreateImageBuildResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_image_build_with_options_async(request, headers, runtime)
+
     def create_member_with_options(
         self,
         workspace_id: str,
