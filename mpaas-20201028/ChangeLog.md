@@ -1,3 +1,35 @@
+2025-11-06 Version: 2.1.0
+- Support API ChangeMdsCubeTaskStatus.
+- Support API CreateMdsCubeResource.
+- Support API CreateMdsCubeTask.
+- Support API CreateMdsCubeTemplate.
+- Support API CreateTemplate.
+- Support API DeleteTemplate.
+- Support API GetTemplate.
+- Support API ListAnalysisCoreIndex.
+- Support API ListCubecardApps.
+- Support API ListMdsCubeResources.
+- Support API ListMdsCubeTasks.
+- Support API ListMdsCubeTemplates.
+- Support API ListTemplatePage.
+- Support API PushQueryDeviceState.
+- Support API QueryCubecardFiletoken.
+- Support API UpdateMdsCubeResource.
+- Update API CreateMcubeUpgradePackage: add request parameters HarmonyLabel.
+- Update API CreateMcubeUpgradePackage: add request parameters LargeIconUrl.
+- Update API CreateMdsMiniprogramTask: add request parameters H5Id.
+- Update API PushBroadcast: add request parameters BindEndTime.
+- Update API PushBroadcast: add request parameters BindStartTime.
+- Update API PushBroadcast: add request parameters NotifyLevel.
+- Update API PushBroadcast: add request parameters TimeMode.
+- Update API PushBroadcast: add request parameters UnBindEndTime.
+- Update API PushBroadcast: add request parameters UnBindStartTime.
+- Update API PushMultiple: add request parameters NotifyLevel.
+- Update API PushSimple: add request parameters NotifyLevel.
+- Update API PushTemplate: add request parameters NotifyLevel.
+- Update API UploadUserAppToMsa: add request parameters FileName.
+
+
 2025-08-08 Version: 2.0.0
 - Support API UpdateLink.
 - Delete API CreateMasCrowd.

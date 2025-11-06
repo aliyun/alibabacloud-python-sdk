@@ -629,6 +629,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_mcube_public_task_status_with_options_async(request, runtime)
 
+    def change_mds_cube_task_status_with_options(
+        self,
+        request: m_paa_s20201028_models.ChangeMdsCubeTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ChangeMdsCubeTaskStatusResponse:
+        """
+        @param request: ChangeMdsCubeTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMdsCubeTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.task_status):
+            body['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.template_task_id):
+            body['TemplateTaskId'] = request.template_task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeMdsCubeTaskStatus',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ChangeMdsCubeTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_mds_cube_task_status_with_options_async(
+        self,
+        request: m_paa_s20201028_models.ChangeMdsCubeTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ChangeMdsCubeTaskStatusResponse:
+        """
+        @param request: ChangeMdsCubeTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMdsCubeTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.task_status):
+            body['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.template_task_id):
+            body['TemplateTaskId'] = request.template_task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeMdsCubeTaskStatus',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ChangeMdsCubeTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_mds_cube_task_status(
+        self,
+        request: m_paa_s20201028_models.ChangeMdsCubeTaskStatusRequest,
+    ) -> m_paa_s20201028_models.ChangeMdsCubeTaskStatusResponse:
+        """
+        @param request: ChangeMdsCubeTaskStatusRequest
+        @return: ChangeMdsCubeTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_mds_cube_task_status_with_options(request, runtime)
+
+    async def change_mds_cube_task_status_async(
+        self,
+        request: m_paa_s20201028_models.ChangeMdsCubeTaskStatusRequest,
+    ) -> m_paa_s20201028_models.ChangeMdsCubeTaskStatusResponse:
+        """
+        @param request: ChangeMdsCubeTaskStatusRequest
+        @return: ChangeMdsCubeTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_mds_cube_task_status_with_options_async(request, runtime)
+
     def copy_mcdp_group_with_options(
         self,
         request: m_paa_s20201028_models.CopyMcdpGroupRequest,
@@ -1909,6 +2017,8 @@ class Client(OpenApiClient):
             body['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.file_url):
             body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.harmony_label):
+            body['HarmonyLabel'] = request.harmony_label
         if not UtilClient.is_unset(request.icon_file_url):
             body['IconFileUrl'] = request.icon_file_url
         if not UtilClient.is_unset(request.install_amount):
@@ -1917,6 +2027,8 @@ class Client(OpenApiClient):
             body['IosSymbolfileUrl'] = request.ios_symbolfile_url
         if not UtilClient.is_unset(request.is_enterprise):
             body['IsEnterprise'] = request.is_enterprise
+        if not UtilClient.is_unset(request.large_icon_url):
+            body['LargeIconUrl'] = request.large_icon_url
         if not UtilClient.is_unset(request.need_check):
             body['NeedCheck'] = request.need_check
         if not UtilClient.is_unset(request.onex_flag):
@@ -1976,6 +2088,8 @@ class Client(OpenApiClient):
             body['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.file_url):
             body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.harmony_label):
+            body['HarmonyLabel'] = request.harmony_label
         if not UtilClient.is_unset(request.icon_file_url):
             body['IconFileUrl'] = request.icon_file_url
         if not UtilClient.is_unset(request.install_amount):
@@ -1984,6 +2098,8 @@ class Client(OpenApiClient):
             body['IosSymbolfileUrl'] = request.ios_symbolfile_url
         if not UtilClient.is_unset(request.is_enterprise):
             body['IsEnterprise'] = request.is_enterprise
+        if not UtilClient.is_unset(request.large_icon_url):
+            body['LargeIconUrl'] = request.large_icon_url
         if not UtilClient.is_unset(request.need_check):
             body['NeedCheck'] = request.need_check
         if not UtilClient.is_unset(request.onex_flag):
@@ -2485,6 +2601,390 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_whitelist_for_ide_with_options_async(request, runtime)
 
+    def create_mds_cube_resource_with_options(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateMdsCubeResourceResponse:
+        """
+        @param request: CreateMdsCubeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsCubeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_max_version):
+            body['AndroidMaxVersion'] = request.android_max_version
+        if not UtilClient.is_unset(request.android_min_version):
+            body['AndroidMinVersion'] = request.android_min_version
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.extend_info):
+            body['ExtendInfo'] = request.extend_info
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.ios_max_version):
+            body['IosMaxVersion'] = request.ios_max_version
+        if not UtilClient.is_unset(request.ios_min_version):
+            body['IosMinVersion'] = request.ios_min_version
+        if not UtilClient.is_unset(request.mock_data_url):
+            body['MockDataUrl'] = request.mock_data_url
+        if not UtilClient.is_unset(request.onex_flag):
+            body['OnexFlag'] = request.onex_flag
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.preview_picture_url):
+            body['PreviewPictureUrl'] = request.preview_picture_url
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_resource_desc):
+            body['TemplateResourceDesc'] = request.template_resource_desc
+        if not UtilClient.is_unset(request.template_resource_version):
+            body['TemplateResourceVersion'] = request.template_resource_version
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMdsCubeResource',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateMdsCubeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mds_cube_resource_with_options_async(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateMdsCubeResourceResponse:
+        """
+        @param request: CreateMdsCubeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsCubeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_max_version):
+            body['AndroidMaxVersion'] = request.android_max_version
+        if not UtilClient.is_unset(request.android_min_version):
+            body['AndroidMinVersion'] = request.android_min_version
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.extend_info):
+            body['ExtendInfo'] = request.extend_info
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.ios_max_version):
+            body['IosMaxVersion'] = request.ios_max_version
+        if not UtilClient.is_unset(request.ios_min_version):
+            body['IosMinVersion'] = request.ios_min_version
+        if not UtilClient.is_unset(request.mock_data_url):
+            body['MockDataUrl'] = request.mock_data_url
+        if not UtilClient.is_unset(request.onex_flag):
+            body['OnexFlag'] = request.onex_flag
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.preview_picture_url):
+            body['PreviewPictureUrl'] = request.preview_picture_url
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_resource_desc):
+            body['TemplateResourceDesc'] = request.template_resource_desc
+        if not UtilClient.is_unset(request.template_resource_version):
+            body['TemplateResourceVersion'] = request.template_resource_version
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMdsCubeResource',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateMdsCubeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mds_cube_resource(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeResourceRequest,
+    ) -> m_paa_s20201028_models.CreateMdsCubeResourceResponse:
+        """
+        @param request: CreateMdsCubeResourceRequest
+        @return: CreateMdsCubeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_mds_cube_resource_with_options(request, runtime)
+
+    async def create_mds_cube_resource_async(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeResourceRequest,
+    ) -> m_paa_s20201028_models.CreateMdsCubeResourceResponse:
+        """
+        @param request: CreateMdsCubeResourceRequest
+        @return: CreateMdsCubeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_mds_cube_resource_with_options_async(request, runtime)
+
+    def create_mds_cube_task_with_options(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTaskResponse:
+        """
+        @param request: CreateMdsCubeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsCubeTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.grey_config_info):
+            body['GreyConfigInfo'] = request.grey_config_info
+        if not UtilClient.is_unset(request.grey_endtime_data):
+            body['GreyEndtimeData'] = request.grey_endtime_data
+        if not UtilClient.is_unset(request.grey_num):
+            body['GreyNum'] = request.grey_num
+        if not UtilClient.is_unset(request.publish_mode):
+            body['PublishMode'] = request.publish_mode
+        if not UtilClient.is_unset(request.publish_type):
+            body['PublishType'] = request.publish_type
+        if not UtilClient.is_unset(request.task_desc):
+            body['TaskDesc'] = request.task_desc
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.whitelist_ids):
+            body['WhitelistIds'] = request.whitelist_ids
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMdsCubeTask',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateMdsCubeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mds_cube_task_with_options_async(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTaskResponse:
+        """
+        @param request: CreateMdsCubeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsCubeTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.grey_config_info):
+            body['GreyConfigInfo'] = request.grey_config_info
+        if not UtilClient.is_unset(request.grey_endtime_data):
+            body['GreyEndtimeData'] = request.grey_endtime_data
+        if not UtilClient.is_unset(request.grey_num):
+            body['GreyNum'] = request.grey_num
+        if not UtilClient.is_unset(request.publish_mode):
+            body['PublishMode'] = request.publish_mode
+        if not UtilClient.is_unset(request.publish_type):
+            body['PublishType'] = request.publish_type
+        if not UtilClient.is_unset(request.task_desc):
+            body['TaskDesc'] = request.task_desc
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.whitelist_ids):
+            body['WhitelistIds'] = request.whitelist_ids
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMdsCubeTask',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateMdsCubeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mds_cube_task(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTaskRequest,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTaskResponse:
+        """
+        @param request: CreateMdsCubeTaskRequest
+        @return: CreateMdsCubeTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_mds_cube_task_with_options(request, runtime)
+
+    async def create_mds_cube_task_async(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTaskRequest,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTaskResponse:
+        """
+        @param request: CreateMdsCubeTaskRequest
+        @return: CreateMdsCubeTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_mds_cube_task_with_options_async(request, runtime)
+
+    def create_mds_cube_template_with_options(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTemplateResponse:
+        """
+        @param request: CreateMdsCubeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsCubeTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_desc):
+            body['TemplateDesc'] = request.template_desc
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMdsCubeTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateMdsCubeTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mds_cube_template_with_options_async(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTemplateResponse:
+        """
+        @param request: CreateMdsCubeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsCubeTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_desc):
+            body['TemplateDesc'] = request.template_desc
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMdsCubeTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateMdsCubeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mds_cube_template(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTemplateRequest,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTemplateResponse:
+        """
+        @param request: CreateMdsCubeTemplateRequest
+        @return: CreateMdsCubeTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_mds_cube_template_with_options(request, runtime)
+
+    async def create_mds_cube_template_async(
+        self,
+        request: m_paa_s20201028_models.CreateMdsCubeTemplateRequest,
+    ) -> m_paa_s20201028_models.CreateMdsCubeTemplateResponse:
+        """
+        @param request: CreateMdsCubeTemplateRequest
+        @return: CreateMdsCubeTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_mds_cube_template_with_options_async(request, runtime)
+
     def create_mds_miniprogram_task_with_options(
         self,
         request: m_paa_s20201028_models.CreateMdsMiniprogramTaskRequest,
@@ -2505,6 +3005,8 @@ class Client(OpenApiClient):
             body['GreyEndtimeData'] = request.grey_endtime_data
         if not UtilClient.is_unset(request.grey_num):
             body['GreyNum'] = request.grey_num
+        if not UtilClient.is_unset(request.h_5id):
+            body['H5Id'] = request.h_5id
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.memo):
@@ -2562,6 +3064,8 @@ class Client(OpenApiClient):
             body['GreyEndtimeData'] = request.grey_endtime_data
         if not UtilClient.is_unset(request.grey_num):
             body['GreyNum'] = request.grey_num
+        if not UtilClient.is_unset(request.h_5id):
+            body['H5Id'] = request.h_5id
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.memo):
@@ -2904,6 +3408,154 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_open_single_data_with_options_async(request, runtime)
+
+    def create_template_with_options(
+        self,
+        request: m_paa_s20201028_models.CreateTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateTemplateResponse:
+        """
+        @summary 创建模版
+        
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.desc_info):
+            body['DescInfo'] = request.desc_info
+        if not UtilClient.is_unset(request.icon_urls):
+            body['IconUrls'] = request.icon_urls
+        if not UtilClient.is_unset(request.image_urls):
+            body['ImageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.jump_action):
+            body['JumpAction'] = request.jump_action
+        if not UtilClient.is_unset(request.push_style):
+            body['PushStyle'] = request.push_style
+        if not UtilClient.is_unset(request.show_style):
+            body['ShowStyle'] = request.show_style
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        if not UtilClient.is_unset(request.variables):
+            body['Variables'] = request.variables
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_template_with_options_async(
+        self,
+        request: m_paa_s20201028_models.CreateTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateTemplateResponse:
+        """
+        @summary 创建模版
+        
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.desc_info):
+            body['DescInfo'] = request.desc_info
+        if not UtilClient.is_unset(request.icon_urls):
+            body['IconUrls'] = request.icon_urls
+        if not UtilClient.is_unset(request.image_urls):
+            body['ImageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.jump_action):
+            body['JumpAction'] = request.jump_action
+        if not UtilClient.is_unset(request.push_style):
+            body['PushStyle'] = request.push_style
+        if not UtilClient.is_unset(request.show_style):
+            body['ShowStyle'] = request.show_style
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        if not UtilClient.is_unset(request.variables):
+            body['Variables'] = request.variables
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_template(
+        self,
+        request: m_paa_s20201028_models.CreateTemplateRequest,
+    ) -> m_paa_s20201028_models.CreateTemplateResponse:
+        """
+        @summary 创建模版
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_template_with_options(request, runtime)
+
+    async def create_template_async(
+        self,
+        request: m_paa_s20201028_models.CreateTemplateRequest,
+    ) -> m_paa_s20201028_models.CreateTemplateResponse:
+        """
+        @summary 创建模版
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_template_with_options_async(request, runtime)
 
     def delete_cubecard_whitelist_content_with_options(
         self,
@@ -3816,6 +4468,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mds_whitelist_content_with_options_async(request, runtime)
+
+    def delete_template_with_options(
+        self,
+        request: m_paa_s20201028_models.DeleteTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.DeleteTemplateResponse:
+        """
+        @summary 删除模版
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.DeleteTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_template_with_options_async(
+        self,
+        request: m_paa_s20201028_models.DeleteTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.DeleteTemplateResponse:
+        """
+        @summary 删除模版
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.DeleteTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_template(
+        self,
+        request: m_paa_s20201028_models.DeleteTemplateRequest,
+    ) -> m_paa_s20201028_models.DeleteTemplateResponse:
+        """
+        @summary 删除模版
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_template_with_options(request, runtime)
+
+    async def delete_template_async(
+        self,
+        request: m_paa_s20201028_models.DeleteTemplateRequest,
+    ) -> m_paa_s20201028_models.DeleteTemplateResponse:
+        """
+        @summary 删除模版
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_template_with_options_async(request, runtime)
 
     def exist_mcube_rsa_key_with_options(
         self,
@@ -4825,6 +5589,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_mds_mini_config_with_options_async(request, runtime)
 
+    def get_template_with_options(
+        self,
+        request: m_paa_s20201028_models.GetTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.GetTemplateResponse:
+        """
+        @summary 获取模版
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.GetTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_template_with_options_async(
+        self,
+        request: m_paa_s20201028_models.GetTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.GetTemplateResponse:
+        """
+        @summary 获取模版
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.GetTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_template(
+        self,
+        request: m_paa_s20201028_models.GetTemplateRequest,
+    ) -> m_paa_s20201028_models.GetTemplateResponse:
+        """
+        @summary 获取模版
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_template_with_options(request, runtime)
+
+    async def get_template_async(
+        self,
+        request: m_paa_s20201028_models.GetTemplateRequest,
+    ) -> m_paa_s20201028_models.GetTemplateResponse:
+        """
+        @summary 获取模版
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_template_with_options_async(request, runtime)
+
     def get_user_app_donwload_url_in_msa_with_options(
         self,
         request: m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaRequest,
@@ -5124,6 +6000,200 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_app_upload_process_in_msa_with_options_async(request, runtime)
+
+    def list_analysis_core_index_with_options(
+        self,
+        request: m_paa_s20201028_models.ListAnalysisCoreIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListAnalysisCoreIndexResponse:
+        """
+        @summary 查询报表
+        
+        @param request: ListAnalysisCoreIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnalysisCoreIndexResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel):
+            body['Channel'] = request.channel
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAnalysisCoreIndex',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListAnalysisCoreIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_analysis_core_index_with_options_async(
+        self,
+        request: m_paa_s20201028_models.ListAnalysisCoreIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListAnalysisCoreIndexResponse:
+        """
+        @summary 查询报表
+        
+        @param request: ListAnalysisCoreIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnalysisCoreIndexResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel):
+            body['Channel'] = request.channel
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAnalysisCoreIndex',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListAnalysisCoreIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_analysis_core_index(
+        self,
+        request: m_paa_s20201028_models.ListAnalysisCoreIndexRequest,
+    ) -> m_paa_s20201028_models.ListAnalysisCoreIndexResponse:
+        """
+        @summary 查询报表
+        
+        @param request: ListAnalysisCoreIndexRequest
+        @return: ListAnalysisCoreIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_analysis_core_index_with_options(request, runtime)
+
+    async def list_analysis_core_index_async(
+        self,
+        request: m_paa_s20201028_models.ListAnalysisCoreIndexRequest,
+    ) -> m_paa_s20201028_models.ListAnalysisCoreIndexResponse:
+        """
+        @summary 查询报表
+        
+        @param request: ListAnalysisCoreIndexRequest
+        @return: ListAnalysisCoreIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_analysis_core_index_with_options_async(request, runtime)
+
+    def list_cubecard_apps_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListCubecardAppsResponse:
+        """
+        @param request: ListCubecardAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCubecardAppsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListCubecardApps',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListCubecardAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cubecard_apps_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListCubecardAppsResponse:
+        """
+        @param request: ListCubecardAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCubecardAppsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListCubecardApps',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListCubecardAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cubecard_apps(self) -> m_paa_s20201028_models.ListCubecardAppsResponse:
+        """
+        @return: ListCubecardAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cubecard_apps_with_options(runtime)
+
+    async def list_cubecard_apps_async(self) -> m_paa_s20201028_models.ListCubecardAppsResponse:
+        """
+        @return: ListCubecardAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cubecard_apps_with_options_async(runtime)
 
     def list_mapp_center_apps_with_options(
         self,
@@ -6333,6 +7403,334 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_whitelists_with_options_async(request, runtime)
 
+    def list_mds_cube_resources_with_options(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListMdsCubeResourcesResponse:
+        """
+        @param request: ListMdsCubeResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMdsCubeResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.test):
+            body['test'] = request.test
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMdsCubeResources',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListMdsCubeResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mds_cube_resources_with_options_async(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListMdsCubeResourcesResponse:
+        """
+        @param request: ListMdsCubeResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMdsCubeResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.test):
+            body['test'] = request.test
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMdsCubeResources',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListMdsCubeResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mds_cube_resources(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeResourcesRequest,
+    ) -> m_paa_s20201028_models.ListMdsCubeResourcesResponse:
+        """
+        @param request: ListMdsCubeResourcesRequest
+        @return: ListMdsCubeResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_mds_cube_resources_with_options(request, runtime)
+
+    async def list_mds_cube_resources_async(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeResourcesRequest,
+    ) -> m_paa_s20201028_models.ListMdsCubeResourcesResponse:
+        """
+        @param request: ListMdsCubeResourcesRequest
+        @return: ListMdsCubeResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_mds_cube_resources_with_options_async(request, runtime)
+
+    def list_mds_cube_tasks_with_options(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListMdsCubeTasksResponse:
+        """
+        @param request: ListMdsCubeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMdsCubeTasksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMdsCubeTasks',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListMdsCubeTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mds_cube_tasks_with_options_async(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListMdsCubeTasksResponse:
+        """
+        @param request: ListMdsCubeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMdsCubeTasksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMdsCubeTasks',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListMdsCubeTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mds_cube_tasks(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTasksRequest,
+    ) -> m_paa_s20201028_models.ListMdsCubeTasksResponse:
+        """
+        @param request: ListMdsCubeTasksRequest
+        @return: ListMdsCubeTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_mds_cube_tasks_with_options(request, runtime)
+
+    async def list_mds_cube_tasks_async(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTasksRequest,
+    ) -> m_paa_s20201028_models.ListMdsCubeTasksResponse:
+        """
+        @param request: ListMdsCubeTasksRequest
+        @return: ListMdsCubeTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_mds_cube_tasks_with_options_async(request, runtime)
+
+    def list_mds_cube_templates_with_options(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListMdsCubeTemplatesResponse:
+        """
+        @param request: ListMdsCubeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMdsCubeTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMdsCubeTemplates',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListMdsCubeTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mds_cube_templates_with_options_async(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListMdsCubeTemplatesResponse:
+        """
+        @param request: ListMdsCubeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMdsCubeTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMdsCubeTemplates',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListMdsCubeTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mds_cube_templates(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTemplatesRequest,
+    ) -> m_paa_s20201028_models.ListMdsCubeTemplatesResponse:
+        """
+        @param request: ListMdsCubeTemplatesRequest
+        @return: ListMdsCubeTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_mds_cube_templates_with_options(request, runtime)
+
+    async def list_mds_cube_templates_async(
+        self,
+        request: m_paa_s20201028_models.ListMdsCubeTemplatesRequest,
+    ) -> m_paa_s20201028_models.ListMdsCubeTemplatesResponse:
+        """
+        @param request: ListMdsCubeTemplatesRequest
+        @return: ListMdsCubeTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_mds_cube_templates_with_options_async(request, runtime)
+
     def list_mgs_api_with_options(
         self,
         request: m_paa_s20201028_models.ListMgsApiRequest,
@@ -6480,6 +7878,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_mgs_api_with_options_async(request, runtime)
+
+    def list_template_page_with_options(
+        self,
+        request: m_paa_s20201028_models.ListTemplatePageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListTemplatePageResponse:
+        """
+        @summary 分页查询模版列表
+        
+        @param request: ListTemplatePageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatePageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplatePage',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListTemplatePageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_template_page_with_options_async(
+        self,
+        request: m_paa_s20201028_models.ListTemplatePageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.ListTemplatePageResponse:
+        """
+        @summary 分页查询模版列表
+        
+        @param request: ListTemplatePageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatePageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplatePage',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.ListTemplatePageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_template_page(
+        self,
+        request: m_paa_s20201028_models.ListTemplatePageRequest,
+    ) -> m_paa_s20201028_models.ListTemplatePageResponse:
+        """
+        @summary 分页查询模版列表
+        
+        @param request: ListTemplatePageRequest
+        @return: ListTemplatePageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_template_page_with_options(request, runtime)
+
+    async def list_template_page_async(
+        self,
+        request: m_paa_s20201028_models.ListTemplatePageRequest,
+    ) -> m_paa_s20201028_models.ListTemplatePageResponse:
+        """
+        @summary 分页查询模版列表
+        
+        @param request: ListTemplatePageRequest
+        @return: ListTemplatePageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_template_page_with_options_async(request, runtime)
 
     def m_trsocrservice_with_options(
         self,
@@ -6722,6 +8232,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushBroadcastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -6729,8 +8241,12 @@ class Client(OpenApiClient):
             body['AndroidChannel'] = request.android_channel
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.bind_end_time):
+            body['BindEndTime'] = request.bind_end_time
         if not UtilClient.is_unset(request.bind_period):
             body['BindPeriod'] = request.bind_period
+        if not UtilClient.is_unset(request.bind_start_time):
+            body['BindStartTime'] = request.bind_start_time
         if not UtilClient.is_unset(request.channel_id):
             body['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.classification):
@@ -6745,6 +8261,8 @@ class Client(OpenApiClient):
             body['MiChannelId'] = request.mi_channel_id
         if not UtilClient.is_unset(request.msgkey):
             body['Msgkey'] = request.msgkey
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -6767,12 +8285,18 @@ class Client(OpenApiClient):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.time_mode):
+            body['TimeMode'] = request.time_mode
         if not UtilClient.is_unset(request.transparent_message_payload):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not UtilClient.is_unset(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not UtilClient.is_unset(request.un_bind_end_time):
+            body['UnBindEndTime'] = request.un_bind_end_time
         if not UtilClient.is_unset(request.un_bind_period):
             body['UnBindPeriod'] = request.un_bind_period
+        if not UtilClient.is_unset(request.un_bind_start_time):
+            body['UnBindStartTime'] = request.un_bind_start_time
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -6807,6 +8331,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushBroadcastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -6814,8 +8340,12 @@ class Client(OpenApiClient):
             body['AndroidChannel'] = request.android_channel
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.bind_end_time):
+            body['BindEndTime'] = request.bind_end_time
         if not UtilClient.is_unset(request.bind_period):
             body['BindPeriod'] = request.bind_period
+        if not UtilClient.is_unset(request.bind_start_time):
+            body['BindStartTime'] = request.bind_start_time
         if not UtilClient.is_unset(request.channel_id):
             body['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.classification):
@@ -6830,6 +8360,8 @@ class Client(OpenApiClient):
             body['MiChannelId'] = request.mi_channel_id
         if not UtilClient.is_unset(request.msgkey):
             body['Msgkey'] = request.msgkey
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -6852,12 +8384,18 @@ class Client(OpenApiClient):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.time_mode):
+            body['TimeMode'] = request.time_mode
         if not UtilClient.is_unset(request.transparent_message_payload):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not UtilClient.is_unset(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not UtilClient.is_unset(request.un_bind_end_time):
+            body['UnBindEndTime'] = request.un_bind_end_time
         if not UtilClient.is_unset(request.un_bind_period):
             body['UnBindPeriod'] = request.un_bind_period
+        if not UtilClient.is_unset(request.un_bind_start_time):
+            body['UnBindStartTime'] = request.un_bind_start_time
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -6914,6 +8452,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushMultipleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -6937,6 +8477,8 @@ class Client(OpenApiClient):
             body['ExtendedParams'] = request.extended_params
         if not UtilClient.is_unset(request.mi_channel_id):
             body['MiChannelId'] = request.mi_channel_id
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -6995,6 +8537,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushMultipleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -7018,6 +8562,8 @@ class Client(OpenApiClient):
             body['ExtendedParams'] = request.extended_params
         if not UtilClient.is_unset(request.mi_channel_id):
             body['MiChannelId'] = request.mi_channel_id
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -7084,6 +8630,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.push_multiple_with_options_async(request, runtime)
+
+    def push_query_device_state_with_options(
+        self,
+        request: m_paa_s20201028_models.PushQueryDeviceStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.PushQueryDeviceStateResponse:
+        """
+        @summary 查询设备状态信息
+        
+        @param request: PushQueryDeviceStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushQueryDeviceStateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.target):
+            body['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushQueryDeviceState',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.PushQueryDeviceStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_query_device_state_with_options_async(
+        self,
+        request: m_paa_s20201028_models.PushQueryDeviceStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.PushQueryDeviceStateResponse:
+        """
+        @summary 查询设备状态信息
+        
+        @param request: PushQueryDeviceStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushQueryDeviceStateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.target):
+            body['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushQueryDeviceState',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.PushQueryDeviceStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_query_device_state(
+        self,
+        request: m_paa_s20201028_models.PushQueryDeviceStateRequest,
+    ) -> m_paa_s20201028_models.PushQueryDeviceStateResponse:
+        """
+        @summary 查询设备状态信息
+        
+        @param request: PushQueryDeviceStateRequest
+        @return: PushQueryDeviceStateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.push_query_device_state_with_options(request, runtime)
+
+    async def push_query_device_state_async(
+        self,
+        request: m_paa_s20201028_models.PushQueryDeviceStateRequest,
+    ) -> m_paa_s20201028_models.PushQueryDeviceStateResponse:
+        """
+        @summary 查询设备状态信息
+        
+        @param request: PushQueryDeviceStateRequest
+        @return: PushQueryDeviceStateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.push_query_device_state_with_options_async(request, runtime)
 
     def push_report_with_options(
         self,
@@ -7240,6 +8898,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushSimpleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -7269,6 +8929,8 @@ class Client(OpenApiClient):
             body['ImageUrls'] = request.image_urls
         if not UtilClient.is_unset(request.mi_channel_id):
             body['MiChannelId'] = request.mi_channel_id
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -7341,6 +9003,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushSimpleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -7370,6 +9034,8 @@ class Client(OpenApiClient):
             body['ImageUrls'] = request.image_urls
         if not UtilClient.is_unset(request.mi_channel_id):
             body['MiChannelId'] = request.mi_channel_id
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -7466,6 +9132,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -7489,6 +9157,8 @@ class Client(OpenApiClient):
             body['ExtendedParams'] = request.extended_params
         if not UtilClient.is_unset(request.mi_channel_id):
             body['MiChannelId'] = request.mi_channel_id
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -7557,6 +9227,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notify_level):
+            request.notify_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_level, 'NotifyLevel', 'json')
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
@@ -7580,6 +9252,8 @@ class Client(OpenApiClient):
             body['ExtendedParams'] = request.extended_params
         if not UtilClient.is_unset(request.mi_channel_id):
             body['MiChannelId'] = request.mi_channel_id
+        if not UtilClient.is_unset(request.notify_level_shrink):
+            body['NotifyLevel'] = request.notify_level_shrink
         if not UtilClient.is_unset(request.notify_type):
             body['NotifyType'] = request.notify_type
         if not UtilClient.is_unset(request.push_action):
@@ -7760,6 +9434,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.push_un_bind_with_options_async(request, runtime)
+
+    def query_cubecard_filetoken_with_options(
+        self,
+        request: m_paa_s20201028_models.QueryCubecardFiletokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.QueryCubecardFiletokenResponse:
+        """
+        @param request: QueryCubecardFiletokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCubecardFiletokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.onex_flag):
+            body['OnexFlag'] = request.onex_flag
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCubecardFiletoken',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.QueryCubecardFiletokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cubecard_filetoken_with_options_async(
+        self,
+        request: m_paa_s20201028_models.QueryCubecardFiletokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.QueryCubecardFiletokenResponse:
+        """
+        @param request: QueryCubecardFiletokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCubecardFiletokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.onex_flag):
+            body['OnexFlag'] = request.onex_flag
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCubecardFiletoken',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.QueryCubecardFiletokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cubecard_filetoken(
+        self,
+        request: m_paa_s20201028_models.QueryCubecardFiletokenRequest,
+    ) -> m_paa_s20201028_models.QueryCubecardFiletokenResponse:
+        """
+        @param request: QueryCubecardFiletokenRequest
+        @return: QueryCubecardFiletokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_cubecard_filetoken_with_options(request, runtime)
+
+    async def query_cubecard_filetoken_async(
+        self,
+        request: m_paa_s20201028_models.QueryCubecardFiletokenRequest,
+    ) -> m_paa_s20201028_models.QueryCubecardFiletokenResponse:
+        """
+        @param request: QueryCubecardFiletokenRequest
+        @return: QueryCubecardFiletokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cubecard_filetoken_with_options_async(request, runtime)
 
     def query_info_from_mdp_with_options(
         self,
@@ -10409,6 +12183,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_mcube_whitelist_with_options_async(request, runtime)
 
+    def update_mds_cube_resource_with_options(
+        self,
+        request: m_paa_s20201028_models.UpdateMdsCubeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.UpdateMdsCubeResourceResponse:
+        """
+        @param request: UpdateMdsCubeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMdsCubeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.mock_data_url):
+            body['MockDataUrl'] = request.mock_data_url
+        if not UtilClient.is_unset(request.onex_flag):
+            body['OnexFlag'] = request.onex_flag
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMdsCubeResource',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.UpdateMdsCubeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mds_cube_resource_with_options_async(
+        self,
+        request: m_paa_s20201028_models.UpdateMdsCubeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.UpdateMdsCubeResourceResponse:
+        """
+        @param request: UpdateMdsCubeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMdsCubeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.mock_data_url):
+            body['MockDataUrl'] = request.mock_data_url
+        if not UtilClient.is_unset(request.onex_flag):
+            body['OnexFlag'] = request.onex_flag
+        if not UtilClient.is_unset(request.template_resource_id):
+            body['TemplateResourceId'] = request.template_resource_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMdsCubeResource',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.UpdateMdsCubeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mds_cube_resource(
+        self,
+        request: m_paa_s20201028_models.UpdateMdsCubeResourceRequest,
+    ) -> m_paa_s20201028_models.UpdateMdsCubeResourceResponse:
+        """
+        @param request: UpdateMdsCubeResourceRequest
+        @return: UpdateMdsCubeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_mds_cube_resource_with_options(request, runtime)
+
+    async def update_mds_cube_resource_async(
+        self,
+        request: m_paa_s20201028_models.UpdateMdsCubeResourceRequest,
+    ) -> m_paa_s20201028_models.UpdateMdsCubeResourceResponse:
+        """
+        @param request: UpdateMdsCubeResourceRequest
+        @return: UpdateMdsCubeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_mds_cube_resource_with_options_async(request, runtime)
+
     def update_mpaas_app_info_with_options(
         self,
         request: m_paa_s20201028_models.UpdateMpaasAppInfoRequest,
@@ -10943,6 +12825,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.tenant_id):
@@ -10982,6 +12866,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.tenant_id):
