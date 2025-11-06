@@ -1,3 +1,9 @@
+2025-11-06 Version: 5.10.1
+- Update API CreateDocParserJob: add request parameters RagInstanceId.
+- Update API DescribeDocParserJobResult: add request parameters RagInstanceId.
+- Update API DescribeDocParserJobStatus: add request parameters RagInstanceId.
+
+
 2025-10-17 Version: 5.10.0
 - Support API ListJobStep.
 - Support API ModifyJobStepCheckpoint.

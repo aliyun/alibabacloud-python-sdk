@@ -5404,12 +5404,14 @@ class CreateDocParserJobRequest(TeaModel):
         self,
         file_name: str = None,
         file_url: str = None,
+        rag_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         result_type: str = None,
     ):
         self.file_name = file_name
         self.file_url = file_url
+        self.rag_instance_id = rag_instance_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.result_type = result_type
@@ -5427,6 +5429,8 @@ class CreateDocParserJobRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.rag_instance_id is not None:
+            result['RagInstanceId'] = self.rag_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -5441,6 +5445,8 @@ class CreateDocParserJobRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('RagInstanceId') is not None:
+            self.rag_instance_id = m.get('RagInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -5455,12 +5461,14 @@ class CreateDocParserJobAdvanceRequest(TeaModel):
         self,
         file_name: str = None,
         file_url_object: BinaryIO = None,
+        rag_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         result_type: str = None,
     ):
         self.file_name = file_name
         self.file_url_object = file_url_object
+        self.rag_instance_id = rag_instance_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.result_type = result_type
@@ -5478,6 +5486,8 @@ class CreateDocParserJobAdvanceRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url_object is not None:
             result['FileUrl'] = self.file_url_object
+        if self.rag_instance_id is not None:
+            result['RagInstanceId'] = self.rag_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -5492,6 +5502,8 @@ class CreateDocParserJobAdvanceRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url_object = m.get('FileUrl')
+        if m.get('RagInstanceId') is not None:
+            self.rag_instance_id = m.get('RagInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -11798,10 +11810,12 @@ class DescribeDocParserJobResultRequest(TeaModel):
     def __init__(
         self,
         dts_job_id: str = None,
+        rag_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
     ):
         self.dts_job_id = dts_job_id
+        self.rag_instance_id = rag_instance_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -11816,6 +11830,8 @@ class DescribeDocParserJobResultRequest(TeaModel):
         result = dict()
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.rag_instance_id is not None:
+            result['RagInstanceId'] = self.rag_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -11826,6 +11842,8 @@ class DescribeDocParserJobResultRequest(TeaModel):
         m = m or dict()
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('RagInstanceId') is not None:
+            self.rag_instance_id = m.get('RagInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -11994,10 +12012,12 @@ class DescribeDocParserJobStatusRequest(TeaModel):
     def __init__(
         self,
         dts_job_id: str = None,
+        rag_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
     ):
         self.dts_job_id = dts_job_id
+        self.rag_instance_id = rag_instance_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -12012,6 +12032,8 @@ class DescribeDocParserJobStatusRequest(TeaModel):
         result = dict()
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.rag_instance_id is not None:
+            result['RagInstanceId'] = self.rag_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -12022,6 +12044,8 @@ class DescribeDocParserJobStatusRequest(TeaModel):
         m = m or dict()
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('RagInstanceId') is not None:
+            self.rag_instance_id = m.get('RagInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
