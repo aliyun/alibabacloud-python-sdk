@@ -1,3 +1,14 @@
+2025-11-06 Version: 6.9.0
+- Support API CreateFaultInjection.
+- Support API DeleteFaultInjection.
+- Support API ListServiceInstanceFaultInjectionInfo.
+- Update API DeleteServiceInstances: add request parameters IsReplica.
+- Update API ListServiceInstances: add request parameters ListReplica.
+- Update API ListServiceInstances: add request parameters ReplicaName.
+- Update API UpdateServiceInstance: add request parameters IsReplica.
+- Update API UpdateServiceInstance: add request parameters body.Detach.
+
+
 2025-11-04 Version: 6.8.11
 - Update API UpdateServiceInstance: add request parameters body.Hibernate.
 

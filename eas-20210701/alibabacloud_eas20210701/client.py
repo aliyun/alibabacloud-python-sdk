@@ -752,6 +752,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_benchmark_task_with_options_async(request, headers, runtime)
 
+    def create_fault_injection_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: eas_20210701_models.CreateFaultInjectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateFaultInjectionResponse:
+        """
+        @summary 创建故障注入任务
+        
+        @param request: CreateFaultInjectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFaultInjectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.fault_args):
+            body['FaultArgs'] = request.fault_args
+        if not UtilClient.is_unset(request.fault_type):
+            body['FaultType'] = request.fault_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFaultInjection',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/faults',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateFaultInjectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_fault_injection_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: eas_20210701_models.CreateFaultInjectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateFaultInjectionResponse:
+        """
+        @summary 创建故障注入任务
+        
+        @param request: CreateFaultInjectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFaultInjectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.fault_args):
+            body['FaultArgs'] = request.fault_args
+        if not UtilClient.is_unset(request.fault_type):
+            body['FaultType'] = request.fault_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFaultInjection',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/faults',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateFaultInjectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_fault_injection(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: eas_20210701_models.CreateFaultInjectionRequest,
+    ) -> eas_20210701_models.CreateFaultInjectionResponse:
+        """
+        @summary 创建故障注入任务
+        
+        @param request: CreateFaultInjectionRequest
+        @return: CreateFaultInjectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_fault_injection_with_options(cluster_id, service_name, instance_name, request, headers, runtime)
+
+    async def create_fault_injection_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        request: eas_20210701_models.CreateFaultInjectionRequest,
+    ) -> eas_20210701_models.CreateFaultInjectionResponse:
+        """
+        @summary 创建故障注入任务
+        
+        @param request: CreateFaultInjectionRequest
+        @return: CreateFaultInjectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_fault_injection_with_options_async(cluster_id, service_name, instance_name, request, headers, runtime)
+
     def create_gateway_with_options(
         self,
         request: eas_20210701_models.CreateGatewayRequest,
@@ -2360,6 +2480,108 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
 
+    def delete_fault_injection_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        fault_type: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteFaultInjectionResponse:
+        """
+        @summary 删除故障注入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaultInjectionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFaultInjection',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/faults/{OpenApiUtilClient.get_encode_param(fault_type)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteFaultInjectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_fault_injection_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        fault_type: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteFaultInjectionResponse:
+        """
+        @summary 删除故障注入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaultInjectionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFaultInjection',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/faults/{OpenApiUtilClient.get_encode_param(fault_type)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteFaultInjectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_fault_injection(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        fault_type: str,
+    ) -> eas_20210701_models.DeleteFaultInjectionResponse:
+        """
+        @summary 删除故障注入任务
+        
+        @return: DeleteFaultInjectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_fault_injection_with_options(cluster_id, service_name, instance_name, fault_type, headers, runtime)
+
+    async def delete_fault_injection_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        fault_type: str,
+    ) -> eas_20210701_models.DeleteFaultInjectionResponse:
+        """
+        @summary 删除故障注入任务
+        
+        @return: DeleteFaultInjectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_fault_injection_with_options_async(cluster_id, service_name, instance_name, fault_type, headers, runtime)
+
     def delete_gateway_with_options(
         self,
         cluster_id: str,
@@ -3536,6 +3758,8 @@ class Client(OpenApiClient):
             query['Container'] = request.container
         if not UtilClient.is_unset(request.instance_list):
             query['InstanceList'] = request.instance_list
+        if not UtilClient.is_unset(request.is_replica):
+            query['IsReplica'] = request.is_replica
         if not UtilClient.is_unset(request.soft_restart):
             query['SoftRestart'] = request.soft_restart
         req = open_api_models.OpenApiRequest(
@@ -3580,6 +3804,8 @@ class Client(OpenApiClient):
             query['Container'] = request.container
         if not UtilClient.is_unset(request.instance_list):
             query['InstanceList'] = request.instance_list
+        if not UtilClient.is_unset(request.is_replica):
+            query['IsReplica'] = request.is_replica
         if not UtilClient.is_unset(request.soft_restart):
             query['SoftRestart'] = request.soft_restart
         req = open_api_models.OpenApiRequest(
@@ -7982,6 +8208,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_service_containers_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
 
+    def list_service_instance_fault_injection_info_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListServiceInstanceFaultInjectionInfoResponse:
+        """
+        @summary 获取故障注入信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceFaultInjectionInfoResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListServiceInstanceFaultInjectionInfo',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/faults',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceInstanceFaultInjectionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_instance_fault_injection_info_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListServiceInstanceFaultInjectionInfoResponse:
+        """
+        @summary 获取故障注入信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceFaultInjectionInfoResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListServiceInstanceFaultInjectionInfo',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/faults',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceInstanceFaultInjectionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_instance_fault_injection_info(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+    ) -> eas_20210701_models.ListServiceInstanceFaultInjectionInfoResponse:
+        """
+        @summary 获取故障注入信息
+        
+        @return: ListServiceInstanceFaultInjectionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_service_instance_fault_injection_info_with_options(cluster_id, service_name, instance_name, headers, runtime)
+
+    async def list_service_instance_fault_injection_info_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        instance_name: str,
+    ) -> eas_20210701_models.ListServiceInstanceFaultInjectionInfoResponse:
+        """
+        @summary 获取故障注入信息
+        
+        @return: ListServiceInstanceFaultInjectionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_service_instance_fault_injection_info_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
+
     def list_service_instances_with_options(
         self,
         cluster_id: str,
@@ -8014,6 +8338,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.is_spot):
             query['IsSpot'] = request.is_spot
+        if not UtilClient.is_unset(request.list_replica):
+            query['ListReplica'] = request.list_replica
         if not UtilClient.is_unset(request.member_type):
             query['MemberType'] = request.member_type
         if not UtilClient.is_unset(request.order):
@@ -8022,6 +8348,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.replica_name):
+            query['ReplicaName'] = request.replica_name
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.role):
@@ -8080,6 +8408,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.is_spot):
             query['IsSpot'] = request.is_spot
+        if not UtilClient.is_unset(request.list_replica):
+            query['ListReplica'] = request.list_replica
         if not UtilClient.is_unset(request.member_type):
             query['MemberType'] = request.member_type
         if not UtilClient.is_unset(request.order):
@@ -8088,6 +8418,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.replica_name):
+            query['ReplicaName'] = request.replica_name
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.role):
@@ -10722,13 +11054,19 @@ class Client(OpenApiClient):
         @return: UpdateServiceInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_replica):
+            query['IsReplica'] = request.is_replica
         body = {}
+        if not UtilClient.is_unset(request.detach):
+            body['Detach'] = request.detach
         if not UtilClient.is_unset(request.hibernate):
             body['Hibernate'] = request.hibernate
         if not UtilClient.is_unset(request.isolate):
             body['Isolate'] = request.isolate
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -10765,13 +11103,19 @@ class Client(OpenApiClient):
         @return: UpdateServiceInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_replica):
+            query['IsReplica'] = request.is_replica
         body = {}
+        if not UtilClient.is_unset(request.detach):
+            body['Detach'] = request.detach
         if not UtilClient.is_unset(request.hibernate):
             body['Hibernate'] = request.hibernate
         if not UtilClient.is_unset(request.isolate):
             body['Isolate'] = request.isolate
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(

@@ -170,6 +170,7 @@ class Instance(TeaModel):
     def __init__(
         self,
         current_amount: float = None,
+        detached: bool = None,
         external_ip: str = None,
         external_instance_port: int = None,
         host_ip: str = None,
@@ -179,6 +180,7 @@ class Instance(TeaModel):
         instance_port: int = None,
         instance_type: str = None,
         is_latest: bool = None,
+        is_replica: bool = None,
         is_spot: bool = None,
         isolated: bool = None,
         last_state: List[Dict[str, Any]] = None,
@@ -186,6 +188,7 @@ class Instance(TeaModel):
         original_amount: float = None,
         ready_processes: int = None,
         reason: str = None,
+        replica_name: str = None,
         resource_type: str = None,
         restart_count: int = None,
         role: str = None,
@@ -198,6 +201,7 @@ class Instance(TeaModel):
         zone: str = None,
     ):
         self.current_amount = current_amount
+        self.detached = detached
         self.external_ip = external_ip
         self.external_instance_port = external_instance_port
         self.host_ip = host_ip
@@ -207,6 +211,7 @@ class Instance(TeaModel):
         self.instance_port = instance_port
         self.instance_type = instance_type
         self.is_latest = is_latest
+        self.is_replica = is_replica
         self.is_spot = is_spot
         self.isolated = isolated
         self.last_state = last_state
@@ -214,6 +219,7 @@ class Instance(TeaModel):
         self.original_amount = original_amount
         self.ready_processes = ready_processes
         self.reason = reason
+        self.replica_name = replica_name
         self.resource_type = resource_type
         self.restart_count = restart_count
         self.role = role
@@ -236,6 +242,8 @@ class Instance(TeaModel):
         result = dict()
         if self.current_amount is not None:
             result['CurrentAmount'] = self.current_amount
+        if self.detached is not None:
+            result['Detached'] = self.detached
         if self.external_ip is not None:
             result['ExternalIP'] = self.external_ip
         if self.external_instance_port is not None:
@@ -254,6 +262,8 @@ class Instance(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.is_latest is not None:
             result['IsLatest'] = self.is_latest
+        if self.is_replica is not None:
+            result['IsReplica'] = self.is_replica
         if self.is_spot is not None:
             result['IsSpot'] = self.is_spot
         if self.isolated is not None:
@@ -268,6 +278,8 @@ class Instance(TeaModel):
             result['ReadyProcesses'] = self.ready_processes
         if self.reason is not None:
             result['Reason'] = self.reason
+        if self.replica_name is not None:
+            result['ReplicaName'] = self.replica_name
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.restart_count is not None:
@@ -294,6 +306,8 @@ class Instance(TeaModel):
         m = m or dict()
         if m.get('CurrentAmount') is not None:
             self.current_amount = m.get('CurrentAmount')
+        if m.get('Detached') is not None:
+            self.detached = m.get('Detached')
         if m.get('ExternalIP') is not None:
             self.external_ip = m.get('ExternalIP')
         if m.get('ExternalInstancePort') is not None:
@@ -312,6 +326,8 @@ class Instance(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('IsLatest') is not None:
             self.is_latest = m.get('IsLatest')
+        if m.get('IsReplica') is not None:
+            self.is_replica = m.get('IsReplica')
         if m.get('IsSpot') is not None:
             self.is_spot = m.get('IsSpot')
         if m.get('Isolated') is not None:
@@ -326,6 +342,8 @@ class Instance(TeaModel):
             self.ready_processes = m.get('ReadyProcesses')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+        if m.get('ReplicaName') is not None:
+            self.replica_name = m.get('ReplicaName')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('RestartCount') is not None:
@@ -2202,6 +2220,114 @@ class CreateBenchmarkTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateBenchmarkTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFaultInjectionRequest(TeaModel):
+    def __init__(
+        self,
+        fault_args: Any = None,
+        fault_type: str = None,
+    ):
+        self.fault_args = fault_args
+        self.fault_type = fault_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fault_args is not None:
+            result['FaultArgs'] = self.fault_args
+        if self.fault_type is not None:
+            result['FaultType'] = self.fault_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaultArgs') is not None:
+            self.fault_args = m.get('FaultArgs')
+        if m.get('FaultType') is not None:
+            self.fault_type = m.get('FaultType')
+        return self
+
+
+class CreateFaultInjectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFaultInjectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFaultInjectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFaultInjectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4685,6 +4811,81 @@ class DeleteBenchmarkTaskResponse(TeaModel):
         return self
 
 
+class DeleteFaultInjectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFaultInjectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFaultInjectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFaultInjectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteGatewayResponseBody(TeaModel):
     def __init__(
         self,
@@ -5829,14 +6030,14 @@ class DeleteServiceInstancesRequest(TeaModel):
         self,
         container: str = None,
         instance_list: str = None,
+        is_replica: bool = None,
         soft_restart: bool = None,
     ):
         # The name of the container whose process needs to be restarted. This parameter takes effect only if the SoftRestart parameter is set to true.
         self.container = container
         # The instances that you want to restart. Separate multiple instance names with commas (,). For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
-        # 
-        # This parameter is required.
         self.instance_list = instance_list
+        self.is_replica = is_replica
         # Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
         self.soft_restart = soft_restart
 
@@ -5853,6 +6054,8 @@ class DeleteServiceInstancesRequest(TeaModel):
             result['Container'] = self.container
         if self.instance_list is not None:
             result['InstanceList'] = self.instance_list
+        if self.is_replica is not None:
+            result['IsReplica'] = self.is_replica
         if self.soft_restart is not None:
             result['SoftRestart'] = self.soft_restart
         return result
@@ -5863,6 +6066,8 @@ class DeleteServiceInstancesRequest(TeaModel):
             self.container = m.get('Container')
         if m.get('InstanceList') is not None:
             self.instance_list = m.get('InstanceList')
+        if m.get('IsReplica') is not None:
+            self.is_replica = m.get('IsReplica')
         if m.get('SoftRestart') is not None:
             self.soft_restart = m.get('SoftRestart')
         return self
@@ -12986,6 +13191,163 @@ class ListServiceContainersResponse(TeaModel):
         return self
 
 
+class ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus(TeaModel):
+    def __init__(
+        self,
+        fault_status: str = None,
+        fault_status_message: str = None,
+    ):
+        self.fault_status = fault_status
+        self.fault_status_message = fault_status_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fault_status is not None:
+            result['FaultStatus'] = self.fault_status
+        if self.fault_status_message is not None:
+            result['FaultStatusMessage'] = self.fault_status_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaultStatus') is not None:
+            self.fault_status = m.get('FaultStatus')
+        if m.get('FaultStatusMessage') is not None:
+            self.fault_status_message = m.get('FaultStatusMessage')
+        return self
+
+
+class ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList(TeaModel):
+    def __init__(
+        self,
+        fault_args: Any = None,
+        fault_status: ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus = None,
+        fault_type: str = None,
+    ):
+        self.fault_args = fault_args
+        self.fault_status = fault_status
+        self.fault_type = fault_type
+
+    def validate(self):
+        if self.fault_status:
+            self.fault_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fault_args is not None:
+            result['FaultArgs'] = self.fault_args
+        if self.fault_status is not None:
+            result['FaultStatus'] = self.fault_status.to_map()
+        if self.fault_type is not None:
+            result['FaultType'] = self.fault_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaultArgs') is not None:
+            self.fault_args = m.get('FaultArgs')
+        if m.get('FaultStatus') is not None:
+            temp_model = ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus()
+            self.fault_status = temp_model.from_map(m['FaultStatus'])
+        if m.get('FaultType') is not None:
+            self.fault_type = m.get('FaultType')
+        return self
+
+
+class ListServiceInstanceFaultInjectionInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        fault_info_list: List[ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList] = None,
+        request_id: str = None,
+    ):
+        self.fault_info_list = fault_info_list
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.fault_info_list:
+            for k in self.fault_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FaultInfoList'] = []
+        if self.fault_info_list is not None:
+            for k in self.fault_info_list:
+                result['FaultInfoList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.fault_info_list = []
+        if m.get('FaultInfoList') is not None:
+            for k in m.get('FaultInfoList'):
+                temp_model = ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList()
+                self.fault_info_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListServiceInstanceFaultInjectionInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListServiceInstanceFaultInjectionInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListServiceInstanceFaultInjectionInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServiceInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -12996,10 +13358,12 @@ class ListServiceInstancesRequest(TeaModel):
         instance_status: str = None,
         instance_type: str = None,
         is_spot: bool = None,
+        list_replica: bool = None,
         member_type: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        replica_name: str = None,
         resource_type: str = None,
         role: str = None,
         sort: str = None,
@@ -13018,6 +13382,7 @@ class ListServiceInstancesRequest(TeaModel):
         self.instance_type = instance_type
         # Specifies whether the instance is a preemptible instance.
         self.is_spot = is_spot
+        self.list_replica = list_replica
         self.member_type = member_type
         # The sorting order.
         # 
@@ -13051,6 +13416,7 @@ class ListServiceInstancesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        self.replica_name = replica_name
         # The type of the resource group to which the instance belongs.
         # 
         # Valid values:
@@ -13169,6 +13535,8 @@ class ListServiceInstancesRequest(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.is_spot is not None:
             result['IsSpot'] = self.is_spot
+        if self.list_replica is not None:
+            result['ListReplica'] = self.list_replica
         if self.member_type is not None:
             result['MemberType'] = self.member_type
         if self.order is not None:
@@ -13177,6 +13545,8 @@ class ListServiceInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.replica_name is not None:
+            result['ReplicaName'] = self.replica_name
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.role is not None:
@@ -13201,6 +13571,8 @@ class ListServiceInstancesRequest(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('IsSpot') is not None:
             self.is_spot = m.get('IsSpot')
+        if m.get('ListReplica') is not None:
+            self.list_replica = m.get('ListReplica')
         if m.get('MemberType') is not None:
             self.member_type = m.get('MemberType')
         if m.get('Order') is not None:
@@ -13209,6 +13581,8 @@ class ListServiceInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ReplicaName') is not None:
+            self.replica_name = m.get('ReplicaName')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Role') is not None:
@@ -17130,9 +17504,13 @@ class UpdateServiceCronScalerResponse(TeaModel):
 class UpdateServiceInstanceRequest(TeaModel):
     def __init__(
         self,
+        is_replica: bool = None,
+        detach: bool = None,
         hibernate: bool = None,
         isolate: bool = None,
     ):
+        self.is_replica = is_replica
+        self.detach = detach
         self.hibernate = hibernate
         # Specifies whether to isolate the service instance. Valid values:
         # 
@@ -17149,6 +17527,10 @@ class UpdateServiceInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.is_replica is not None:
+            result['IsReplica'] = self.is_replica
+        if self.detach is not None:
+            result['Detach'] = self.detach
         if self.hibernate is not None:
             result['Hibernate'] = self.hibernate
         if self.isolate is not None:
@@ -17157,6 +17539,10 @@ class UpdateServiceInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IsReplica') is not None:
+            self.is_replica = m.get('IsReplica')
+        if m.get('Detach') is not None:
+            self.detach = m.get('Detach')
         if m.get('Hibernate') is not None:
             self.hibernate = m.get('Hibernate')
         if m.get('Isolate') is not None:
