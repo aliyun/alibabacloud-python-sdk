@@ -1427,6 +1427,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_mms_job_with_options_async(source_id, job_id, headers, runtime)
 
+    def delete_project_with_options(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.DeleteProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteProjectResponse:
+        """
+        @summary Deletes a MaxCompute project.
+        
+        @param request: DeleteProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_logical):
+            query['isLogical'] = request.is_logical
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.DeleteProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteProjectResponse:
+        """
+        @summary Deletes a MaxCompute project.
+        
+        @param request: DeleteProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_logical):
+            query['isLogical'] = request.is_logical
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.DeleteProjectRequest,
+    ) -> max_compute_20220104_models.DeleteProjectResponse:
+        """
+        @summary Deletes a MaxCompute project.
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_project_with_options(project_name, request, headers, runtime)
+
+    async def delete_project_async(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.DeleteProjectRequest,
+    ) -> max_compute_20220104_models.DeleteProjectResponse:
+        """
+        @summary Deletes a MaxCompute project.
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_project_with_options_async(project_name, request, headers, runtime)
+
     def delete_quota_plan_with_options(
         self,
         nickname: str,

@@ -1,3 +1,7 @@
+2025-11-06 Version: 5.1.0
+- Support API DeleteProject.
+
+
 2025-10-31 Version: 5.0.2
 - Update API GetProject: add request parameters withQuotaProductType.
 - Update API GetProject: add request parameters withStorageTierInfo.
