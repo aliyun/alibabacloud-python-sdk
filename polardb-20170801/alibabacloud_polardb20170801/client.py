@@ -20441,6 +20441,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeRdsVpcsResponse:
         """
+        @summary 查询vpc
+        
         @param request: DescribeRdsVpcsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRdsVpcsResponse
@@ -20488,6 +20490,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeRdsVpcsResponse:
         """
+        @summary 查询vpc
+        
         @param request: DescribeRdsVpcsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRdsVpcsResponse
@@ -20534,6 +20538,8 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeRdsVpcsRequest,
     ) -> polardb_20170801_models.DescribeRdsVpcsResponse:
         """
+        @summary 查询vpc
+        
         @param request: DescribeRdsVpcsRequest
         @return: DescribeRdsVpcsResponse
         """
@@ -20545,6 +20551,8 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeRdsVpcsRequest,
     ) -> polardb_20170801_models.DescribeRdsVpcsResponse:
         """
+        @summary 查询vpc
+        
         @param request: DescribeRdsVpcsRequest
         @return: DescribeRdsVpcsResponse
         """

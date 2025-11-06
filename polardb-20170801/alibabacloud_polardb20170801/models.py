@@ -12236,6 +12236,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
         self,
         child_volumes: List[DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes] = None,
         cpu_cores: str = None,
+        creation_time: str = None,
         dbnode_class: str = None,
         dbnode_description: str = None,
         dbnode_id: str = None,
@@ -12251,6 +12252,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
     ):
         self.child_volumes = child_volumes
         self.cpu_cores = cpu_cores
+        self.creation_time = creation_time
         self.dbnode_class = dbnode_class
         self.dbnode_description = dbnode_description
         self.dbnode_id = dbnode_id
@@ -12282,6 +12284,8 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
                 result['ChildVolumes'].append(k.to_map() if k else None)
         if self.cpu_cores is not None:
             result['CpuCores'] = self.cpu_cores
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
         if self.dbnode_class is not None:
             result['DBNodeClass'] = self.dbnode_class
         if self.dbnode_description is not None:
@@ -12317,6 +12321,8 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(TeaModel):
                 self.child_volumes.append(temp_model.from_map(k))
         if m.get('CpuCores') is not None:
             self.cpu_cores = m.get('CpuCores')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
         if m.get('DBNodeClass') is not None:
             self.dbnode_class = m.get('DBNodeClass')
         if m.get('DBNodeDescription') is not None:

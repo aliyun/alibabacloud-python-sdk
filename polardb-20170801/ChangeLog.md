@@ -1,3 +1,7 @@
+2025-11-06 Version: 6.1.4
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.CreationTime.
+
+
 2025-11-04 Version: 6.1.3
 - Update API DescribeSlowLogs: add response parameters Body.Items.$.MaxExecutionTimeMs.
 
