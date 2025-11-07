@@ -1,3 +1,7 @@
+2025-11-07 Version: 6.0.5
+- Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.Namespace.
+
+
 2025-11-06 Version: 6.0.4
 - Update API DescribeExposedStatisticsDetail: add request parameters Criteria.
 - Update API DescribeExposedStatisticsDetail: add request parameters Uuid.
