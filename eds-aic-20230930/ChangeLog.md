@@ -1,3 +1,7 @@
+2025-11-07 Version: 4.17.2
+- Update API DescribeMetricLast: add response parameters Body.MetricTotalModel.$.MetricModelList.$.DataPoints.$.GpuId.
+
+
 2025-11-06 Version: 4.17.1
 - Generated python 2023-09-30 for eds-aic.
 

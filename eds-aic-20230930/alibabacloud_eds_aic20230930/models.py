@@ -9815,11 +9815,13 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints(Te
     def __init__(
         self,
         average: float = None,
+        gpu_id: str = None,
         maximum: float = None,
         minimum: float = None,
         timestamp: int = None,
     ):
         self.average = average
+        self.gpu_id = gpu_id
         self.maximum = maximum
         self.minimum = minimum
         self.timestamp = timestamp
@@ -9835,6 +9837,8 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints(Te
         result = dict()
         if self.average is not None:
             result['Average'] = self.average
+        if self.gpu_id is not None:
+            result['GpuId'] = self.gpu_id
         if self.maximum is not None:
             result['Maximum'] = self.maximum
         if self.minimum is not None:
@@ -9847,6 +9851,8 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints(Te
         m = m or dict()
         if m.get('Average') is not None:
             self.average = m.get('Average')
+        if m.get('GpuId') is not None:
+            self.gpu_id = m.get('GpuId')
         if m.get('Maximum') is not None:
             self.maximum = m.get('Maximum')
         if m.get('Minimum') is not None:
