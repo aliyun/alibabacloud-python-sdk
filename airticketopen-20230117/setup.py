@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_airticketopen20230117.
 
-Created on 06/11/2025
+Created on 07/11/2025
 
 @author: Alibaba Cloud SDK
 """

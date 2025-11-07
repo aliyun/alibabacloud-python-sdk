@@ -1,3 +1,6 @@
+2025-11-07 Version: 5.0.2
+- Generated python 2023-01-17 for airticketOpen.
+
 2025-11-06 Version: 5.0.1
 - Update API Enrich: add request parameters journey_param_list.$.segment_param_list.$.departure_date.
 - Update API Enrich: add response parameters Body.data.solution_list.$.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_length.
