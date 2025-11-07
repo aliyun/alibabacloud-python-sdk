@@ -1,3 +1,7 @@
+2025-11-07 Version: 1.2.0
+- Support API ModelTypeDetermine.
+
+
 2025-10-24 Version: 1.1.0
 - Support API ActiveInteractionCreate.
 

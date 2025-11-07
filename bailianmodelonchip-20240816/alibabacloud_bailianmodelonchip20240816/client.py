@@ -388,3 +388,119 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
+
+    def model_type_determine_with_options(
+        self,
+        tmp_req: bailian_model_on_chip_20240816_models.ModelTypeDetermineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.ModelTypeDetermineResponse:
+        """
+        @summary 模型类型识别
+        
+        @param tmp_req: ModelTypeDetermineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelTypeDetermineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_model_on_chip_20240816_models.ModelTypeDetermineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.history):
+            request.history_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history, 'history', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.history_shrink):
+            body['history'] = request.history_shrink
+        if not UtilClient.is_unset(request.input_text):
+            body['inputText'] = request.input_text
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelTypeDetermine',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/v1/model/type/determine',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.ModelTypeDetermineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_type_determine_with_options_async(
+        self,
+        tmp_req: bailian_model_on_chip_20240816_models.ModelTypeDetermineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.ModelTypeDetermineResponse:
+        """
+        @summary 模型类型识别
+        
+        @param tmp_req: ModelTypeDetermineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelTypeDetermineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_model_on_chip_20240816_models.ModelTypeDetermineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.history):
+            request.history_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history, 'history', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.history_shrink):
+            body['history'] = request.history_shrink
+        if not UtilClient.is_unset(request.input_text):
+            body['inputText'] = request.input_text
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelTypeDetermine',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/v1/model/type/determine',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.ModelTypeDetermineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_type_determine(
+        self,
+        request: bailian_model_on_chip_20240816_models.ModelTypeDetermineRequest,
+    ) -> bailian_model_on_chip_20240816_models.ModelTypeDetermineResponse:
+        """
+        @summary 模型类型识别
+        
+        @param request: ModelTypeDetermineRequest
+        @return: ModelTypeDetermineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.model_type_determine_with_options(request, headers, runtime)
+
+    async def model_type_determine_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.ModelTypeDetermineRequest,
+    ) -> bailian_model_on_chip_20240816_models.ModelTypeDetermineResponse:
+        """
+        @summary 模型类型识别
+        
+        @param request: ModelTypeDetermineRequest
+        @return: ModelTypeDetermineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.model_type_determine_with_options_async(request, headers, runtime)
