@@ -1632,6 +1632,7 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList(TeaModel):
         check_item_name: str = None,
         check_result_list: List[DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList] = None,
         description: str = None,
+        description_code: str = None,
         recommendation_list: List[DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList] = None,
         resource_type: str = None,
     ):
@@ -1640,6 +1641,7 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList(TeaModel):
         self.check_item_name = check_item_name
         self.check_result_list = check_result_list
         self.description = description
+        self.description_code = description_code
         self.recommendation_list = recommendation_list
         self.resource_type = resource_type
 
@@ -1671,6 +1673,8 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList(TeaModel):
                 result['CheckResultList'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.description_code is not None:
+            result['DescriptionCode'] = self.description_code
         result['RecommendationList'] = []
         if self.recommendation_list is not None:
             for k in self.recommendation_list:
@@ -1694,6 +1698,8 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList(TeaModel):
                 self.check_result_list.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DescriptionCode') is not None:
+            self.description_code = m.get('DescriptionCode')
         self.recommendation_list = []
         if m.get('RecommendationList') is not None:
             for k in m.get('RecommendationList'):
