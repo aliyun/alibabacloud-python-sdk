@@ -2,6 +2,10 @@
 - Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.DescriptionCode.
 
 
+2025-11-07 Version: 2.2.3
+- Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.DescriptionCode.
+
+
 2025-06-27 Version: 2.2.2
 - Update API GetNisNetworkMetrics: add request parameters StepMinutes.
 
