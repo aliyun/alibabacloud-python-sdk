@@ -1,3 +1,7 @@
+2025-11-07 Version: 1.1.5
+- Update API GetInstance: add response parameters Body.Instance.TpsEnabled.
+
+
 2025-10-31 Version: 1.1.4
 - Update API GetInstance: add response parameters Body.Instance.Certification.
 - Update API GetInstance: add response parameters Body.Instance.CertificationUrl.

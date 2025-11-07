@@ -3419,6 +3419,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         remark: str = None,
         status: str = None,
         tenant_isolation_type: str = None,
+        tps_enabled: int = None,
         v_switch_id: str = None,
         vendor: str = None,
         vpc_id: str = None,
@@ -3473,6 +3474,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         # - vsm: Virtual security modules (VSMs)
         # - hostedHsm: Dedicated HSMs.
         self.tenant_isolation_type = tenant_isolation_type
+        self.tps_enabled = tps_enabled
         # The ID of the vSwitch that is configured for the HSM.
         self.v_switch_id = v_switch_id
         # The information about the vendor.
@@ -3527,6 +3529,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['Status'] = self.status
         if self.tenant_isolation_type is not None:
             result['TenantIsolationType'] = self.tenant_isolation_type
+        if self.tps_enabled is not None:
+            result['TpsEnabled'] = self.tps_enabled
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vendor is not None:
@@ -3575,6 +3579,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.status = m.get('Status')
         if m.get('TenantIsolationType') is not None:
             self.tenant_isolation_type = m.get('TenantIsolationType')
+        if m.get('TpsEnabled') is not None:
+            self.tps_enabled = m.get('TpsEnabled')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('Vendor') is not None:
