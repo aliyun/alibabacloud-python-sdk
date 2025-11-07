@@ -1,3 +1,10 @@
+2025-11-07 Version: 2.30.1
+- Update API CreateOriginPool: add request parameters Origins.$.IpVersionPolicy.
+- Update API GetOriginPool: add response parameters Body.Origins.$.IpVersionPolicy.
+- Update API ListOriginPools: add response parameters Body.OriginPools.$.Origins.$.IpVersionPolicy.
+- Update API UpdateOriginPool: add request parameters Origins.$.IpVersionPolicy.
+
+
 2025-11-05 Version: 2.30.0
 - Support API GetApiSchemaUsage.
 - Update API ListUserRatePlanInstances: add request parameters PlanType.

@@ -10730,6 +10730,7 @@ class CreateOriginPoolRequestOrigins(TeaModel):
         auth_conf: CreateOriginPoolRequestOriginsAuthConf = None,
         enabled: bool = None,
         header: Any = None,
+        ip_version_policy: str = None,
         name: str = None,
         type: str = None,
         weight: int = None,
@@ -10745,6 +10746,7 @@ class CreateOriginPoolRequestOrigins(TeaModel):
         self.enabled = enabled
         # The request header to be included when fetching from the origin, only Host is supported.
         self.header = header
+        self.ip_version_policy = ip_version_policy
         # The name of the origin, which must be unique within an origin address.
         self.name = name
         # The type of the origin:
@@ -10774,6 +10776,8 @@ class CreateOriginPoolRequestOrigins(TeaModel):
             result['Enabled'] = self.enabled
         if self.header is not None:
             result['Header'] = self.header
+        if self.ip_version_policy is not None:
+            result['IpVersionPolicy'] = self.ip_version_policy
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -10793,6 +10797,8 @@ class CreateOriginPoolRequestOrigins(TeaModel):
             self.enabled = m.get('Enabled')
         if m.get('Header') is not None:
             self.header = m.get('Header')
+        if m.get('IpVersionPolicy') is not None:
+            self.ip_version_policy = m.get('IpVersionPolicy')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
@@ -27577,7 +27583,9 @@ class GetApiSchemaUsageRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -27611,8 +27619,11 @@ class GetApiSchemaUsageResponseBodyUsages(TeaModel):
         name: str = None,
         usage: int = None,
     ):
+        # The website ID.
         self.id = id
+        # The website name.
         self.name = name
+        # The number of files uploaded for the website.
         self.usage = usage
 
     def validate(self):
@@ -27651,10 +27662,13 @@ class GetApiSchemaUsageResponseBody(TeaModel):
         request_id: str = None,
         usages: List[GetApiSchemaUsageResponseBodyUsages] = None,
     ):
+        # The plan ID.
         self.instance_id = instance_id
+        # The number of files uploaded for schema verification in the plan instance of the website.
         self.instance_usage = instance_usage
         # Id of the request
         self.request_id = request_id
+        # Usage details for websites.
         self.usages = usages
 
     def validate(self):
@@ -36500,6 +36514,7 @@ class GetOriginPoolResponseBodyOrigins(TeaModel):
         enabled: bool = None,
         header: Any = None,
         id: int = None,
+        ip_version_policy: str = None,
         name: str = None,
         type: str = None,
         weight: int = None,
@@ -36517,6 +36532,7 @@ class GetOriginPoolResponseBodyOrigins(TeaModel):
         self.header = header
         # The ID of the origin.
         self.id = id
+        self.ip_version_policy = ip_version_policy
         # The name of the origin.
         self.name = name
         # The type of the origin:
@@ -36548,6 +36564,8 @@ class GetOriginPoolResponseBodyOrigins(TeaModel):
             result['Header'] = self.header
         if self.id is not None:
             result['Id'] = self.id
+        if self.ip_version_policy is not None:
+            result['IpVersionPolicy'] = self.ip_version_policy
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -36569,6 +36587,8 @@ class GetOriginPoolResponseBodyOrigins(TeaModel):
             self.header = m.get('Header')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IpVersionPolicy') is not None:
+            self.ip_version_policy = m.get('IpVersionPolicy')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
@@ -54716,6 +54736,7 @@ class ListOriginPoolsResponseBodyOriginPoolsOrigins(TeaModel):
         enabled: bool = None,
         header: Any = None,
         id: int = None,
+        ip_version_policy: str = None,
         name: str = None,
         type: str = None,
         weight: int = None,
@@ -54733,6 +54754,7 @@ class ListOriginPoolsResponseBodyOriginPoolsOrigins(TeaModel):
         self.header = header
         # Origin ID.
         self.id = id
+        self.ip_version_policy = ip_version_policy
         # Origin name.
         self.name = name
         # Origin type:
@@ -54763,6 +54785,8 @@ class ListOriginPoolsResponseBodyOriginPoolsOrigins(TeaModel):
             result['Header'] = self.header
         if self.id is not None:
             result['Id'] = self.id
+        if self.ip_version_policy is not None:
+            result['IpVersionPolicy'] = self.ip_version_policy
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -54784,6 +54808,8 @@ class ListOriginPoolsResponseBodyOriginPoolsOrigins(TeaModel):
             self.header = m.get('Header')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IpVersionPolicy') is not None:
+            self.ip_version_policy = m.get('IpVersionPolicy')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
@@ -73240,6 +73266,7 @@ class UpdateOriginPoolRequestOrigins(TeaModel):
         auth_conf: UpdateOriginPoolRequestOriginsAuthConf = None,
         enabled: bool = None,
         header: Any = None,
+        ip_version_policy: str = None,
         name: str = None,
         type: str = None,
         weight: int = None,
@@ -73255,6 +73282,7 @@ class UpdateOriginPoolRequestOrigins(TeaModel):
         self.enabled = enabled
         # The request header to be included when fetching from the origin, supporting only Host.
         self.header = header
+        self.ip_version_policy = ip_version_policy
         # The name of the origin, which must be unique under one origin pool.
         self.name = name
         # The type of the origin:
@@ -73284,6 +73312,8 @@ class UpdateOriginPoolRequestOrigins(TeaModel):
             result['Enabled'] = self.enabled
         if self.header is not None:
             result['Header'] = self.header
+        if self.ip_version_policy is not None:
+            result['IpVersionPolicy'] = self.ip_version_policy
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -73303,6 +73333,8 @@ class UpdateOriginPoolRequestOrigins(TeaModel):
             self.enabled = m.get('Enabled')
         if m.get('Header') is not None:
             self.header = m.get('Header')
+        if m.get('IpVersionPolicy') is not None:
+            self.ip_version_policy = m.get('IpVersionPolicy')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:

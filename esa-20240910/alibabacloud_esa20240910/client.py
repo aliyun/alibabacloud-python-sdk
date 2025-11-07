@@ -15458,7 +15458,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetApiSchemaUsageResponse:
         """
-        @summary 获取架构文件套餐使用情况
+        @summary Queries the usage of the upload file quota for API security schema verification.
         
         @param request: GetApiSchemaUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15495,7 +15495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetApiSchemaUsageResponse:
         """
-        @summary 获取架构文件套餐使用情况
+        @summary Queries the usage of the upload file quota for API security schema verification.
         
         @param request: GetApiSchemaUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15531,7 +15531,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetApiSchemaUsageRequest,
     ) -> esa20240910_models.GetApiSchemaUsageResponse:
         """
-        @summary 获取架构文件套餐使用情况
+        @summary Queries the usage of the upload file quota for API security schema verification.
         
         @param request: GetApiSchemaUsageRequest
         @return: GetApiSchemaUsageResponse
@@ -15544,7 +15544,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetApiSchemaUsageRequest,
     ) -> esa20240910_models.GetApiSchemaUsageResponse:
         """
-        @summary 获取架构文件套餐使用情况
+        @summary Queries the usage of the upload file quota for API security schema verification.
         
         @param request: GetApiSchemaUsageRequest
         @return: GetApiSchemaUsageResponse
