@@ -373,6 +373,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def check_git_repo_file_exists_with_options(
+        self,
+        request: oos_20190601_models.CheckGitRepoFileExistsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CheckGitRepoFileExistsResponse:
+        """
+        @summary 检测仓库中文件是否存在
+        
+        @param request: CheckGitRepoFileExistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckGitRepoFileExistsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.branch):
+            query['Branch'] = request.branch
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckGitRepoFileExists',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CheckGitRepoFileExistsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_git_repo_file_exists_with_options_async(
+        self,
+        request: oos_20190601_models.CheckGitRepoFileExistsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CheckGitRepoFileExistsResponse:
+        """
+        @summary 检测仓库中文件是否存在
+        
+        @param request: CheckGitRepoFileExistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckGitRepoFileExistsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.branch):
+            query['Branch'] = request.branch
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckGitRepoFileExists',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CheckGitRepoFileExistsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_git_repo_file_exists(
+        self,
+        request: oos_20190601_models.CheckGitRepoFileExistsRequest,
+    ) -> oos_20190601_models.CheckGitRepoFileExistsResponse:
+        """
+        @summary 检测仓库中文件是否存在
+        
+        @param request: CheckGitRepoFileExistsRequest
+        @return: CheckGitRepoFileExistsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_git_repo_file_exists_with_options(request, runtime)
+
+    async def check_git_repo_file_exists_async(
+        self,
+        request: oos_20190601_models.CheckGitRepoFileExistsRequest,
+    ) -> oos_20190601_models.CheckGitRepoFileExistsResponse:
+        """
+        @summary 检测仓库中文件是否存在
+        
+        @param request: CheckGitRepoFileExistsRequest
+        @return: CheckGitRepoFileExistsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_git_repo_file_exists_with_options_async(request, runtime)
+
+    def check_git_repository_exists_with_options(
+        self,
+        request: oos_20190601_models.CheckGitRepositoryExistsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CheckGitRepositoryExistsResponse:
+        """
+        @summary 检测仓库是否存在
+        
+        @param request: CheckGitRepositoryExistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckGitRepositoryExistsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckGitRepositoryExists',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CheckGitRepositoryExistsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_git_repository_exists_with_options_async(
+        self,
+        request: oos_20190601_models.CheckGitRepositoryExistsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CheckGitRepositoryExistsResponse:
+        """
+        @summary 检测仓库是否存在
+        
+        @param request: CheckGitRepositoryExistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckGitRepositoryExistsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckGitRepositoryExists',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CheckGitRepositoryExistsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_git_repository_exists(
+        self,
+        request: oos_20190601_models.CheckGitRepositoryExistsRequest,
+    ) -> oos_20190601_models.CheckGitRepositoryExistsResponse:
+        """
+        @summary 检测仓库是否存在
+        
+        @param request: CheckGitRepositoryExistsRequest
+        @return: CheckGitRepositoryExistsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_git_repository_exists_with_options(request, runtime)
+
+    async def check_git_repository_exists_async(
+        self,
+        request: oos_20190601_models.CheckGitRepositoryExistsRequest,
+    ) -> oos_20190601_models.CheckGitRepositoryExistsResponse:
+        """
+        @summary 检测仓库是否存在
+        
+        @param request: CheckGitRepositoryExistsRequest
+        @return: CheckGitRepositoryExistsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_git_repository_exists_with_options_async(request, runtime)
+
     def continue_deploy_application_group_with_options(
         self,
         request: oos_20190601_models.ContinueDeployApplicationGroupRequest,
@@ -748,6 +996,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_group_with_options_async(request, runtime)
+
+    def create_git_repository_with_options(
+        self,
+        request: oos_20190601_models.CreateGitRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateGitRepositoryResponse:
+        """
+        @summary 创建仓库
+        
+        @param request: CreateGitRepositoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGitRepositoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.is_private):
+            query['IsPrivate'] = request.is_private
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_repo_branch):
+            query['SourceRepoBranch'] = request.source_repo_branch
+        if not UtilClient.is_unset(request.source_repo_name):
+            query['SourceRepoName'] = request.source_repo_name
+        if not UtilClient.is_unset(request.source_repo_owner):
+            query['SourceRepoOwner'] = request.source_repo_owner
+        if not UtilClient.is_unset(request.target_repo_name):
+            query['TargetRepoName'] = request.target_repo_name
+        if not UtilClient.is_unset(request.target_repo_owner):
+            query['TargetRepoOwner'] = request.target_repo_owner
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGitRepository',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateGitRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_git_repository_with_options_async(
+        self,
+        request: oos_20190601_models.CreateGitRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateGitRepositoryResponse:
+        """
+        @summary 创建仓库
+        
+        @param request: CreateGitRepositoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGitRepositoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.is_private):
+            query['IsPrivate'] = request.is_private
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_repo_branch):
+            query['SourceRepoBranch'] = request.source_repo_branch
+        if not UtilClient.is_unset(request.source_repo_name):
+            query['SourceRepoName'] = request.source_repo_name
+        if not UtilClient.is_unset(request.source_repo_owner):
+            query['SourceRepoOwner'] = request.source_repo_owner
+        if not UtilClient.is_unset(request.target_repo_name):
+            query['TargetRepoName'] = request.target_repo_name
+        if not UtilClient.is_unset(request.target_repo_owner):
+            query['TargetRepoOwner'] = request.target_repo_owner
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGitRepository',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateGitRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_git_repository(
+        self,
+        request: oos_20190601_models.CreateGitRepositoryRequest,
+    ) -> oos_20190601_models.CreateGitRepositoryResponse:
+        """
+        @summary 创建仓库
+        
+        @param request: CreateGitRepositoryRequest
+        @return: CreateGitRepositoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_git_repository_with_options(request, runtime)
+
+    async def create_git_repository_async(
+        self,
+        request: oos_20190601_models.CreateGitRepositoryRequest,
+    ) -> oos_20190601_models.CreateGitRepositoryResponse:
+        """
+        @summary 创建仓库
+        
+        @param request: CreateGitRepositoryRequest
+        @return: CreateGitRepositoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_git_repository_with_options_async(request, runtime)
 
     def create_ops_item_with_options(
         self,
@@ -2671,6 +3055,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.revision_id):
+            query['RevisionId'] = request.revision_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2712,6 +3098,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.revision_id):
+            query['RevisionId'] = request.revision_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3504,6 +3892,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_execution_template_with_options_async(request, runtime)
+
+    def get_git_branch_with_options(
+        self,
+        request: oos_20190601_models.GetGitBranchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetGitBranchResponse:
+        """
+        @summary 查询Git分支详情
+        
+        @param request: GetGitBranchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGitBranchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.branch):
+            query['Branch'] = request.branch
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGitBranch',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetGitBranchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_git_branch_with_options_async(
+        self,
+        request: oos_20190601_models.GetGitBranchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetGitBranchResponse:
+        """
+        @summary 查询Git分支详情
+        
+        @param request: GetGitBranchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGitBranchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.branch):
+            query['Branch'] = request.branch
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGitBranch',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetGitBranchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_git_branch(
+        self,
+        request: oos_20190601_models.GetGitBranchRequest,
+    ) -> oos_20190601_models.GetGitBranchResponse:
+        """
+        @summary 查询Git分支详情
+        
+        @param request: GetGitBranchRequest
+        @return: GetGitBranchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_git_branch_with_options(request, runtime)
+
+    async def get_git_branch_async(
+        self,
+        request: oos_20190601_models.GetGitBranchRequest,
+    ) -> oos_20190601_models.GetGitBranchResponse:
+        """
+        @summary 查询Git分支详情
+        
+        @param request: GetGitBranchRequest
+        @return: GetGitBranchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_git_branch_with_options_async(request, runtime)
+
+    def get_git_repository_with_options(
+        self,
+        request: oos_20190601_models.GetGitRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetGitRepositoryResponse:
+        """
+        @summary 查询Git仓库详情
+        
+        @param request: GetGitRepositoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGitRepositoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGitRepository',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetGitRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_git_repository_with_options_async(
+        self,
+        request: oos_20190601_models.GetGitRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetGitRepositoryResponse:
+        """
+        @summary 查询Git仓库详情
+        
+        @param request: GetGitRepositoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGitRepositoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGitRepository',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetGitRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_git_repository(
+        self,
+        request: oos_20190601_models.GetGitRepositoryRequest,
+    ) -> oos_20190601_models.GetGitRepositoryResponse:
+        """
+        @summary 查询Git仓库详情
+        
+        @param request: GetGitRepositoryRequest
+        @return: GetGitRepositoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_git_repository_with_options(request, runtime)
+
+    async def get_git_repository_async(
+        self,
+        request: oos_20190601_models.GetGitRepositoryRequest,
+    ) -> oos_20190601_models.GetGitRepositoryResponse:
+        """
+        @summary 查询Git仓库详情
+        
+        @param request: GetGitRepositoryRequest
+        @return: GetGitRepositoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_git_repository_with_options_async(request, runtime)
 
     def get_inventory_schema_with_options(
         self,
@@ -5560,6 +6184,598 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_executions_with_options_async(request, runtime)
+
+    def list_git_accounts_with_options(
+        self,
+        request: oos_20190601_models.ListGitAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitAccountsResponse:
+        """
+        @summary 获取当前阿里云用户已授权在应用管理的托管平台账户
+        
+        @param request: ListGitAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitAccounts',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_git_accounts_with_options_async(
+        self,
+        request: oos_20190601_models.ListGitAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitAccountsResponse:
+        """
+        @summary 获取当前阿里云用户已授权在应用管理的托管平台账户
+        
+        @param request: ListGitAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitAccounts',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_git_accounts(
+        self,
+        request: oos_20190601_models.ListGitAccountsRequest,
+    ) -> oos_20190601_models.ListGitAccountsResponse:
+        """
+        @summary 获取当前阿里云用户已授权在应用管理的托管平台账户
+        
+        @param request: ListGitAccountsRequest
+        @return: ListGitAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_git_accounts_with_options(request, runtime)
+
+    async def list_git_accounts_async(
+        self,
+        request: oos_20190601_models.ListGitAccountsRequest,
+    ) -> oos_20190601_models.ListGitAccountsResponse:
+        """
+        @summary 获取当前阿里云用户已授权在应用管理的托管平台账户
+        
+        @param request: ListGitAccountsRequest
+        @return: ListGitAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_git_accounts_with_options_async(request, runtime)
+
+    def list_git_branches_with_options(
+        self,
+        request: oos_20190601_models.ListGitBranchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitBranchesResponse:
+        """
+        @summary 获取指定Git仓库的所有分支
+        
+        @param request: ListGitBranchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitBranchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitBranches',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitBranchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_git_branches_with_options_async(
+        self,
+        request: oos_20190601_models.ListGitBranchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitBranchesResponse:
+        """
+        @summary 获取指定Git仓库的所有分支
+        
+        @param request: ListGitBranchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitBranchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitBranches',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitBranchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_git_branches(
+        self,
+        request: oos_20190601_models.ListGitBranchesRequest,
+    ) -> oos_20190601_models.ListGitBranchesResponse:
+        """
+        @summary 获取指定Git仓库的所有分支
+        
+        @param request: ListGitBranchesRequest
+        @return: ListGitBranchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_git_branches_with_options(request, runtime)
+
+    async def list_git_branches_async(
+        self,
+        request: oos_20190601_models.ListGitBranchesRequest,
+    ) -> oos_20190601_models.ListGitBranchesResponse:
+        """
+        @summary 获取指定Git仓库的所有分支
+        
+        @param request: ListGitBranchesRequest
+        @return: ListGitBranchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_git_branches_with_options_async(request, runtime)
+
+    def list_git_organizations_with_options(
+        self,
+        request: oos_20190601_models.ListGitOrganizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitOrganizationsResponse:
+        """
+        @summary 获取已授权用户的组织
+        
+        @param request: ListGitOrganizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitOrganizationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitOrganizations',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitOrganizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_git_organizations_with_options_async(
+        self,
+        request: oos_20190601_models.ListGitOrganizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitOrganizationsResponse:
+        """
+        @summary 获取已授权用户的组织
+        
+        @param request: ListGitOrganizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitOrganizationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitOrganizations',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitOrganizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_git_organizations(
+        self,
+        request: oos_20190601_models.ListGitOrganizationsRequest,
+    ) -> oos_20190601_models.ListGitOrganizationsResponse:
+        """
+        @summary 获取已授权用户的组织
+        
+        @param request: ListGitOrganizationsRequest
+        @return: ListGitOrganizationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_git_organizations_with_options(request, runtime)
+
+    async def list_git_organizations_async(
+        self,
+        request: oos_20190601_models.ListGitOrganizationsRequest,
+    ) -> oos_20190601_models.ListGitOrganizationsResponse:
+        """
+        @summary 获取已授权用户的组织
+        
+        @param request: ListGitOrganizationsRequest
+        @return: ListGitOrganizationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_git_organizations_with_options_async(request, runtime)
+
+    def list_git_repositories_with_options(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 查询Git仓库列表
+        
+        @param request: ListGitRepositoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitRepositoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            query['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitRepositories',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_git_repositories_with_options_async(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 查询Git仓库列表
+        
+        @param request: ListGitRepositoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitRepositoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            query['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitRepositories',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_git_repositories(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 查询Git仓库列表
+        
+        @param request: ListGitRepositoriesRequest
+        @return: ListGitRepositoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_git_repositories_with_options(request, runtime)
+
+    async def list_git_repositories_async(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 查询Git仓库列表
+        
+        @param request: ListGitRepositoriesRequest
+        @return: ListGitRepositoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_git_repositories_with_options_async(request, runtime)
+
+    def list_git_repository_contents_with_options(
+        self,
+        request: oos_20190601_models.ListGitRepositoryContentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitRepositoryContentsResponse:
+        """
+        @summary 获取仓库文件与目录信息
+        
+        @param request: ListGitRepositoryContentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitRepositoryContentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.branch):
+            query['Branch'] = request.branch
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitRepositoryContents',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitRepositoryContentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_git_repository_contents_with_options_async(
+        self,
+        request: oos_20190601_models.ListGitRepositoryContentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitRepositoryContentsResponse:
+        """
+        @summary 获取仓库文件与目录信息
+        
+        @param request: ListGitRepositoryContentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitRepositoryContentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.branch):
+            query['Branch'] = request.branch
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_full_name):
+            query['RepoFullName'] = request.repo_full_name
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitRepositoryContents',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitRepositoryContentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_git_repository_contents(
+        self,
+        request: oos_20190601_models.ListGitRepositoryContentsRequest,
+    ) -> oos_20190601_models.ListGitRepositoryContentsResponse:
+        """
+        @summary 获取仓库文件与目录信息
+        
+        @param request: ListGitRepositoryContentsRequest
+        @return: ListGitRepositoryContentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_git_repository_contents_with_options(request, runtime)
+
+    async def list_git_repository_contents_async(
+        self,
+        request: oos_20190601_models.ListGitRepositoryContentsRequest,
+    ) -> oos_20190601_models.ListGitRepositoryContentsResponse:
+        """
+        @summary 获取仓库文件与目录信息
+        
+        @param request: ListGitRepositoryContentsRequest
+        @return: ListGitRepositoryContentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_git_repository_contents_with_options_async(request, runtime)
 
     def list_instance_package_states_with_options(
         self,
@@ -9227,6 +10443,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not UtilClient.is_unset(request.configuration_info):
+            query['ConfigurationInfo'] = request.configuration_info
         if not UtilClient.is_unset(request.configure_action):
             query['ConfigureAction'] = request.configure_action
         if not UtilClient.is_unset(request.instance_id):
@@ -9276,6 +10494,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not UtilClient.is_unset(request.configuration_info):
+            query['ConfigurationInfo'] = request.configuration_info
         if not UtilClient.is_unset(request.configure_action):
             query['ConfigureAction'] = request.configure_action
         if not UtilClient.is_unset(request.instance_id):
