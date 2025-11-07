@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+import time
+
 from Tea.request import TeaRequest
-from Tea.exceptions import TeaException
+from Tea.exceptions import TeaException, UnretryableException
 from Tea.core import TeaCore
 from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_tea_fileform.client import Client as FileFormClient
 from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cloudauth20190307 import models as cloudauth_20190307_models
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_fileform import models as file_form_models
 
@@ -34,77 +36,163 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = TeaCore.do_action(_request)
-        resp_map = None
-        body_str = UtilClient.read_as_string(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                body_str = UtilClient.read_as_string(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await TeaCore.async_do_action(_request)
-        resp_map = None
-        body_str = await UtilClient.read_as_string_async(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                body_str = await UtilClient.read_as_string_async(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     def get_endpoint(
         self,
@@ -1056,7 +1144,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             contrast_face_verify_req.face_contrast_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         contrast_face_verify_resp = self.contrast_face_verify_with_options(contrast_face_verify_req, runtime)
         return contrast_face_verify_resp
@@ -1139,10 +1227,142 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             contrast_face_verify_req.face_contrast_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         contrast_face_verify_resp = await self.contrast_face_verify_with_options_async(contrast_face_verify_req, runtime)
         return contrast_face_verify_resp
+
+    def create_ant_cloud_auth_scene_with_options(
+        self,
+        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
+        """
+        @summary Create a financial-grade authentication scenario
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateAntCloudAuthSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntCloudAuthSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bind_mini_program):
+            query['BindMiniProgram'] = request.bind_mini_program
+        if not UtilClient.is_unset(request.check_file_body):
+            query['CheckFileBody'] = request.check_file_body
+        if not UtilClient.is_unset(request.check_file_name):
+            query['CheckFileName'] = request.check_file_name
+        if not UtilClient.is_unset(request.mini_program_name):
+            query['MiniProgramName'] = request.mini_program_name
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.store_image):
+            query['StoreImage'] = request.store_image
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAntCloudAuthScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateAntCloudAuthSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ant_cloud_auth_scene_with_options_async(
+        self,
+        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
+        """
+        @summary Create a financial-grade authentication scenario
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateAntCloudAuthSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntCloudAuthSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bind_mini_program):
+            query['BindMiniProgram'] = request.bind_mini_program
+        if not UtilClient.is_unset(request.check_file_body):
+            query['CheckFileBody'] = request.check_file_body
+        if not UtilClient.is_unset(request.check_file_name):
+            query['CheckFileName'] = request.check_file_name
+        if not UtilClient.is_unset(request.mini_program_name):
+            query['MiniProgramName'] = request.mini_program_name
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.store_image):
+            query['StoreImage'] = request.store_image
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAntCloudAuthScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateAntCloudAuthSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ant_cloud_auth_scene(
+        self,
+        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
+    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
+        """
+        @summary Create a financial-grade authentication scenario
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateAntCloudAuthSceneRequest
+        @return: CreateAntCloudAuthSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ant_cloud_auth_scene_with_options(request, runtime)
+
+    async def create_ant_cloud_auth_scene_async(
+        self,
+        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
+    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
+        """
+        @summary Create a financial-grade authentication scenario
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateAntCloudAuthSceneRequest
+        @return: CreateAntCloudAuthSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ant_cloud_auth_scene_with_options_async(request, runtime)
 
     def create_auth_key_with_options(
         self,
@@ -1263,6 +1483,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_auth_key_with_options_async(request, runtime)
+
+    def create_cloudauthst_scene_with_options(
+        self,
+        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
+        """
+        @summary Create Cloud Scene
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateCloudauthstSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudauthstSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.store_image):
+            query['StoreImage'] = request.store_image
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudauthstScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateCloudauthstSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloudauthst_scene_with_options_async(
+        self,
+        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
+        """
+        @summary Create Cloud Scene
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateCloudauthstSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudauthstSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.store_image):
+            query['StoreImage'] = request.store_image
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudauthstScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateCloudauthstSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloudauthst_scene(
+        self,
+        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
+    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
+        """
+        @summary Create Cloud Scene
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateCloudauthstSceneRequest
+        @return: CreateCloudauthstSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloudauthst_scene_with_options(request, runtime)
+
+    async def create_cloudauthst_scene_async(
+        self,
+        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
+    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
+        """
+        @summary Create Cloud Scene
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateCloudauthstSceneRequest
+        @return: CreateCloudauthstSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloudauthst_scene_with_options_async(request, runtime)
+
+    def create_scene_config_with_options(
+        self,
+        request: cloudauth_20190307_models.CreateSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
+        """
+        @summary Create Scene Configuration
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request Address: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.scene_id):
+            body['sceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSceneConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateSceneConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scene_config_with_options_async(
+        self,
+        request: cloudauth_20190307_models.CreateSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
+        """
+        @summary Create Scene Configuration
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request Address: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.scene_id):
+            body['sceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSceneConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateSceneConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scene_config(
+        self,
+        request: cloudauth_20190307_models.CreateSceneConfigRequest,
+    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
+        """
+        @summary Create Scene Configuration
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request Address: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateSceneConfigRequest
+        @return: CreateSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_scene_config_with_options(request, runtime)
+
+    async def create_scene_config_async(
+        self,
+        request: cloudauth_20190307_models.CreateSceneConfigRequest,
+    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
+        """
+        @summary Create Scene Configuration
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request Address: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: CreateSceneConfigRequest
+        @return: CreateSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_scene_config_with_options_async(request, runtime)
 
     def create_verify_setting_with_options(
         self,
@@ -1387,6 +1843,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_verify_setting_with_options_async(request, runtime)
+
+    def create_whitelist_setting_with_options(
+        self,
+        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
+        """
+        @summary Create Whitelist
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        
+        @param request: CreateWhitelistSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWhitelistSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.valid_day):
+            query['ValidDay'] = request.valid_day
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWhitelistSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateWhitelistSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_whitelist_setting_with_options_async(
+        self,
+        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
+        """
+        @summary Create Whitelist
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        
+        @param request: CreateWhitelistSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWhitelistSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.valid_day):
+            query['ValidDay'] = request.valid_day
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWhitelistSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateWhitelistSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_whitelist_setting(
+        self,
+        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
+    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
+        """
+        @summary Create Whitelist
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        
+        @param request: CreateWhitelistSettingRequest
+        @return: CreateWhitelistSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_whitelist_setting_with_options(request, runtime)
+
+    async def create_whitelist_setting_async(
+        self,
+        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
+    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
+        """
+        @summary Create Whitelist
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        
+        @param request: CreateWhitelistSettingRequest
+        @return: CreateWhitelistSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_whitelist_setting_with_options_async(request, runtime)
 
     def credential_product_verify_v2with_options(
         self,
@@ -1594,7 +2182,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             credential_product_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_product_verify_v2resp = self.credential_product_verify_v2with_options(credential_product_verify_v2req, runtime)
         return credential_product_verify_v2resp
@@ -1677,7 +2265,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             credential_product_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_product_verify_v2resp = await self.credential_product_verify_v2with_options_async(credential_product_verify_v2req, runtime)
         return credential_product_verify_v2resp
@@ -2092,7 +2680,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             credential_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_verify_v2resp = self.credential_verify_v2with_options(credential_verify_v2req, runtime)
         return credential_verify_v2resp
@@ -2175,7 +2763,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             credential_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_verify_v2resp = await self.credential_verify_v2with_options_async(credential_verify_v2req, runtime)
         return credential_verify_v2resp
@@ -2312,6 +2900,690 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.deepfake_detect_with_options_async(request, runtime)
 
+    def delete_all_customize_flow_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
+        """
+        @summary Delete All Custom Flow Control Strategies
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteAllCustomizeFlowStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAllCustomizeFlowStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAllCustomizeFlowStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_all_customize_flow_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
+        """
+        @summary Delete All Custom Flow Control Strategies
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteAllCustomizeFlowStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAllCustomizeFlowStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAllCustomizeFlowStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_all_customize_flow_strategy(
+        self,
+        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
+        """
+        @summary Delete All Custom Flow Control Strategies
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteAllCustomizeFlowStrategyRequest
+        @return: DeleteAllCustomizeFlowStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_all_customize_flow_strategy_with_options(request, runtime)
+
+    async def delete_all_customize_flow_strategy_async(
+        self,
+        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
+        """
+        @summary Delete All Custom Flow Control Strategies
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteAllCustomizeFlowStrategyRequest
+        @return: DeleteAllCustomizeFlowStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_all_customize_flow_strategy_with_options_async(request, runtime)
+
+    def delete_ant_cloud_auth_scene_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
+        """
+        @summary Delete Watermark Scene
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DeleteAntCloudAuthSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntCloudAuthSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAntCloudAuthScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ant_cloud_auth_scene_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
+        """
+        @summary Delete Watermark Scene
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DeleteAntCloudAuthSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntCloudAuthSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAntCloudAuthScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ant_cloud_auth_scene(
+        self,
+        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
+    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
+        """
+        @summary Delete Watermark Scene
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DeleteAntCloudAuthSceneRequest
+        @return: DeleteAntCloudAuthSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ant_cloud_auth_scene_with_options(request, runtime)
+
+    async def delete_ant_cloud_auth_scene_async(
+        self,
+        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
+    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
+        """
+        @summary Delete Watermark Scene
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DeleteAntCloudAuthSceneRequest
+        @return: DeleteAntCloudAuthSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ant_cloud_auth_scene_with_options_async(request, runtime)
+
+    def delete_black_list_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
+        """
+        @summary Delete Black and White List Policy
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteBlackListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBlackListStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBlackListStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteBlackListStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_black_list_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
+        """
+        @summary Delete Black and White List Policy
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteBlackListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBlackListStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBlackListStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteBlackListStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_black_list_strategy(
+        self,
+        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
+        """
+        @summary Delete Black and White List Policy
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteBlackListStrategyRequest
+        @return: DeleteBlackListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_black_list_strategy_with_options(request, runtime)
+
+    async def delete_black_list_strategy_async(
+        self,
+        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
+        """
+        @summary Delete Black and White List Policy
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteBlackListStrategyRequest
+        @return: DeleteBlackListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_black_list_strategy_with_options_async(request, runtime)
+
+    def delete_cloudauthst_scene_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
+        """
+        @summary Delete Cloud Scene
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteCloudauthstSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudauthstSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudauthstScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteCloudauthstSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloudauthst_scene_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
+        """
+        @summary Delete Cloud Scene
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteCloudauthstSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudauthstSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudauthstScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteCloudauthstSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloudauthst_scene(
+        self,
+        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
+    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
+        """
+        @summary Delete Cloud Scene
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteCloudauthstSceneRequest
+        @return: DeleteCloudauthstSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloudauthst_scene_with_options(request, runtime)
+
+    async def delete_cloudauthst_scene_async(
+        self,
+        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
+    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
+        """
+        @summary Delete Cloud Scene
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteCloudauthstSceneRequest
+        @return: DeleteCloudauthstSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloudauthst_scene_with_options_async(request, runtime)
+
+    def delete_control_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
+        """
+        @summary Delete Security Control Strategy
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: DeleteControlStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteControlStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteControlStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteControlStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_control_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
+        """
+        @summary Delete Security Control Strategy
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: DeleteControlStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteControlStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteControlStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteControlStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_control_strategy(
+        self,
+        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
+        """
+        @summary Delete Security Control Strategy
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: DeleteControlStrategyRequest
+        @return: DeleteControlStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_control_strategy_with_options(request, runtime)
+
+    async def delete_control_strategy_async(
+        self,
+        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
+        """
+        @summary Delete Security Control Strategy
+        
+        @description Request Method: Supports sending requests via HTTPS POST.
+        Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: DeleteControlStrategyRequest
+        @return: DeleteControlStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_control_strategy_with_options_async(request, runtime)
+
+    def delete_customize_flow_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
+        """
+        @summary Delete Customized Flow Control Strategy
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteCustomizeFlowStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizeFlowStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizeFlowStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_customize_flow_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
+        """
+        @summary Delete Customized Flow Control Strategy
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteCustomizeFlowStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizeFlowStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizeFlowStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_customize_flow_strategy(
+        self,
+        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
+        """
+        @summary Delete Customized Flow Control Strategy
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteCustomizeFlowStrategyRequest
+        @return: DeleteCustomizeFlowStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_customize_flow_strategy_with_options(request, runtime)
+
+    async def delete_customize_flow_strategy_async(
+        self,
+        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
+    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
+        """
+        @summary Delete Customized Flow Control Strategy
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DeleteCustomizeFlowStrategyRequest
+        @return: DeleteCustomizeFlowStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_customize_flow_strategy_with_options_async(request, runtime)
+
     def delete_face_verify_result_with_options(
         self,
         request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
@@ -2420,6 +3692,320 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_face_verify_result_with_options_async(request, runtime)
 
+    def delete_scene_config_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
+        """
+        @summary Delete Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request URL: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.scene_config_id):
+            body['sceneConfigId'] = request.scene_config_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSceneConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteSceneConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scene_config_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
+        """
+        @summary Delete Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request URL: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.scene_config_id):
+            body['sceneConfigId'] = request.scene_config_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSceneConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteSceneConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scene_config(
+        self,
+        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
+    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
+        """
+        @summary Delete Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request URL: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteSceneConfigRequest
+        @return: DeleteSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_scene_config_with_options(request, runtime)
+
+    async def delete_scene_config_async(
+        self,
+        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
+    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
+        """
+        @summary Delete Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request URL: cloudauth.aliyuncs.com.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DeleteSceneConfigRequest
+        @return: DeleteSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_scene_config_with_options_async(request, runtime)
+
+    def delete_whitelist_setting_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
+        """
+        @summary Delete Whitelist Configuration
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteWhitelistSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWhitelistSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWhitelistSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteWhitelistSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_whitelist_setting_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
+        """
+        @summary Delete Whitelist Configuration
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteWhitelistSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWhitelistSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWhitelistSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteWhitelistSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_whitelist_setting(
+        self,
+        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
+    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
+        """
+        @summary Delete Whitelist Configuration
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteWhitelistSettingRequest
+        @return: DeleteWhitelistSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_whitelist_setting_with_options(request, runtime)
+
+    async def delete_whitelist_setting_async(
+        self,
+        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
+    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
+        """
+        @summary Delete Whitelist Configuration
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DeleteWhitelistSettingRequest
+        @return: DeleteWhitelistSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_whitelist_setting_with_options_async(request, runtime)
+
+    def describe_ant_and_cloud_auth_user_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
+        """
+        @summary Query the User Status of Ant Blockchain
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DescribeAntAndCloudAuthUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntAndCloudAuthUserStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeAntAndCloudAuthUserStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_and_cloud_auth_user_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
+        """
+        @summary Query the User Status of Ant Blockchain
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DescribeAntAndCloudAuthUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntAndCloudAuthUserStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeAntAndCloudAuthUserStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_and_cloud_auth_user_status(self) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
+        """
+        @summary Query the User Status of Ant Blockchain
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @return: DescribeAntAndCloudAuthUserStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_and_cloud_auth_user_status_with_options(runtime)
+
+    async def describe_ant_and_cloud_auth_user_status_async(self) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
+        """
+        @summary Query the User Status of Ant Blockchain
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @return: DescribeAntAndCloudAuthUserStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_and_cloud_auth_user_status_with_options_async(runtime)
+
     def describe_card_verify_with_options(
         self,
         request: cloudauth_20190307_models.DescribeCardVerifyRequest,
@@ -2523,6 +4109,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_card_verify_with_options_async(request, runtime)
+
+    def describe_cloudauthst_scene_list_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
+        """
+        @summary Query Dashboard Data
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DescribeCloudauthstSceneListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudauthstSceneListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudauthstSceneList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeCloudauthstSceneListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloudauthst_scene_list_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
+        """
+        @summary Query Dashboard Data
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DescribeCloudauthstSceneListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudauthstSceneListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudauthstSceneList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeCloudauthstSceneListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloudauthst_scene_list(
+        self,
+        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
+    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
+        """
+        @summary Query Dashboard Data
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DescribeCloudauthstSceneListRequest
+        @return: DescribeCloudauthstSceneListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloudauthst_scene_list_with_options(request, runtime)
+
+    async def describe_cloudauthst_scene_list_async(
+        self,
+        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
+    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
+        """
+        @summary Query Dashboard Data
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+        
+        @param request: DescribeCloudauthstSceneListRequest
+        @return: DescribeCloudauthstSceneListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloudauthst_scene_list_with_options_async(request, runtime)
 
     def describe_device_info_with_options(
         self,
@@ -2876,6 +4570,1062 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_face_verify_with_options_async(request, runtime)
 
+    def describe_info_check_export_record_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
+        """
+        @summary 查询任务导出记录
+        
+        @param request: DescribeInfoCheckExportRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInfoCheckExportRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInfoCheckExportRecord',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_info_check_export_record_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
+        """
+        @summary 查询任务导出记录
+        
+        @param request: DescribeInfoCheckExportRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInfoCheckExportRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInfoCheckExportRecord',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_info_check_export_record(
+        self,
+        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
+    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
+        """
+        @summary 查询任务导出记录
+        
+        @param request: DescribeInfoCheckExportRecordRequest
+        @return: DescribeInfoCheckExportRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_info_check_export_record_with_options(request, runtime)
+
+    async def describe_info_check_export_record_async(
+        self,
+        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
+    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
+        """
+        @summary 查询任务导出记录
+        
+        @param request: DescribeInfoCheckExportRecordRequest
+        @return: DescribeInfoCheckExportRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_info_check_export_record_with_options_async(request, runtime)
+
+    def describe_list_ant_cloud_auth_scenes_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
+        """
+        @summary Query the cloud scenario authentication records of a specific region
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DescribeListAntCloudAuthScenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListAntCloudAuthScenesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListAntCloudAuthScenes',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_list_ant_cloud_auth_scenes_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
+        """
+        @summary Query the cloud scenario authentication records of a specific region
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DescribeListAntCloudAuthScenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListAntCloudAuthScenesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListAntCloudAuthScenes',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_list_ant_cloud_auth_scenes(
+        self,
+        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
+    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
+        """
+        @summary Query the cloud scenario authentication records of a specific region
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DescribeListAntCloudAuthScenesRequest
+        @return: DescribeListAntCloudAuthScenesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_list_ant_cloud_auth_scenes_with_options(request, runtime)
+
+    async def describe_list_ant_cloud_auth_scenes_async(
+        self,
+        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
+    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
+        """
+        @summary Query the cloud scenario authentication records of a specific region
+        
+        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
+        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        
+        @param request: DescribeListAntCloudAuthScenesRequest
+        @return: DescribeListAntCloudAuthScenesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_list_ant_cloud_auth_scenes_with_options_async(request, runtime)
+
+    def describe_list_face_verify_data_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
+        """
+        @summary Query Face Verification Data
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListFaceVerifyDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gmt_end):
+            query['GmtEnd'] = request.gmt_end
+        if not UtilClient.is_unset(request.gmt_start):
+            query['GmtStart'] = request.gmt_start
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListFaceVerifyData',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeListFaceVerifyDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_list_face_verify_data_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
+        """
+        @summary Query Face Verification Data
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListFaceVerifyDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gmt_end):
+            query['GmtEnd'] = request.gmt_end
+        if not UtilClient.is_unset(request.gmt_start):
+            query['GmtStart'] = request.gmt_start
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListFaceVerifyData',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeListFaceVerifyDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_list_face_verify_data(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
+        """
+        @summary Query Face Verification Data
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyDataRequest
+        @return: DescribeListFaceVerifyDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_list_face_verify_data_with_options(request, runtime)
+
+    async def describe_list_face_verify_data_async(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
+        """
+        @summary Query Face Verification Data
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyDataRequest
+        @return: DescribeListFaceVerifyDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_list_face_verify_data_with_options_async(request, runtime)
+
+    def describe_list_face_verify_infos_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
+        """
+        @summary Get Face Verification Information
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListFaceVerifyInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.gmt_end):
+            query['GmtEnd'] = request.gmt_end
+        if not UtilClient.is_unset(request.gmt_start):
+            query['GmtStart'] = request.gmt_start
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListFaceVerifyInfos',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_list_face_verify_infos_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
+        """
+        @summary Get Face Verification Information
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListFaceVerifyInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.gmt_end):
+            query['GmtEnd'] = request.gmt_end
+        if not UtilClient.is_unset(request.gmt_start):
+            query['GmtStart'] = request.gmt_start
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListFaceVerifyInfos',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_list_face_verify_infos(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
+        """
+        @summary Get Face Verification Information
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyInfosRequest
+        @return: DescribeListFaceVerifyInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_list_face_verify_infos_with_options(request, runtime)
+
+    async def describe_list_face_verify_infos_async(
+        self,
+        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
+    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
+        """
+        @summary Get Face Verification Information
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeListFaceVerifyInfosRequest
+        @return: DescribeListFaceVerifyInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_list_face_verify_infos_with_options_async(request, runtime)
+
+    def describe_meta_search_page_list_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
+        """
+        @summary 查询页面元数据
+        
+        @param request: DescribeMetaSearchPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetaSearchPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.bank_card):
+            query['BankCard'] = request.bank_card
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.isp_name):
+            query['IspName'] = request.isp_name
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_code):
+            query['SubCode'] = request.sub_code
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaSearchPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeMetaSearchPageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meta_search_page_list_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
+        """
+        @summary 查询页面元数据
+        
+        @param request: DescribeMetaSearchPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetaSearchPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.bank_card):
+            query['BankCard'] = request.bank_card
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.isp_name):
+            query['IspName'] = request.isp_name
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_code):
+            query['SubCode'] = request.sub_code
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaSearchPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeMetaSearchPageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meta_search_page_list(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
+        """
+        @summary 查询页面元数据
+        
+        @param request: DescribeMetaSearchPageListRequest
+        @return: DescribeMetaSearchPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meta_search_page_list_with_options(request, runtime)
+
+    async def describe_meta_search_page_list_async(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
+        """
+        @summary 查询页面元数据
+        
+        @param request: DescribeMetaSearchPageListRequest
+        @return: DescribeMetaSearchPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meta_search_page_list_with_options_async(request, runtime)
+
+    def describe_meta_statistics_list_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
+        """
+        @summary 查询认证统计信息
+        
+        @param request: DescribeMetaStatisticsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetaStatisticsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaStatisticsList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeMetaStatisticsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meta_statistics_list_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
+        """
+        @summary 查询认证统计信息
+        
+        @param request: DescribeMetaStatisticsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetaStatisticsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaStatisticsList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeMetaStatisticsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meta_statistics_list(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
+        """
+        @summary 查询认证统计信息
+        
+        @param request: DescribeMetaStatisticsListRequest
+        @return: DescribeMetaStatisticsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meta_statistics_list_with_options(request, runtime)
+
+    async def describe_meta_statistics_list_async(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
+        """
+        @summary 查询认证统计信息
+        
+        @param request: DescribeMetaStatisticsListRequest
+        @return: DescribeMetaStatisticsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meta_statistics_list_with_options_async(request, runtime)
+
+    def describe_meta_statistics_page_list_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
+        """
+        @summary 查询认证统计页面
+        
+        @param request: DescribeMetaStatisticsPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetaStatisticsPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaStatisticsPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meta_statistics_page_list_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
+        """
+        @summary 查询认证统计页面
+        
+        @param request: DescribeMetaStatisticsPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetaStatisticsPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaStatisticsPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meta_statistics_page_list(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
+        """
+        @summary 查询认证统计页面
+        
+        @param request: DescribeMetaStatisticsPageListRequest
+        @return: DescribeMetaStatisticsPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meta_statistics_page_list_with_options(request, runtime)
+
+    async def describe_meta_statistics_page_list_async(
+        self,
+        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
+        """
+        @summary 查询认证统计页面
+        
+        @param request: DescribeMetaStatisticsPageListRequest
+        @return: DescribeMetaStatisticsPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meta_statistics_page_list_with_options_async(request, runtime)
+
+    def describe_oss_status_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
+        """
+        @summary Query OSS status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOssStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeOssStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_oss_status_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
+        """
+        @summary Query OSS status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOssStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeOssStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_oss_status(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusRequest,
+    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
+        """
+        @summary Query OSS status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusRequest
+        @return: DescribeOssStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_oss_status_with_options(request, runtime)
+
+    async def describe_oss_status_async(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusRequest,
+    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
+        """
+        @summary Query OSS status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusRequest
+        @return: DescribeOssStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_oss_status_with_options_async(request, runtime)
+
+    def describe_oss_status_v2with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
+        """
+        @summary Get OSS Activation Status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssStatusV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOssStatusV2',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeOssStatusV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_oss_status_v2with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
+        """
+        @summary Get OSS Activation Status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssStatusV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOssStatusV2',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeOssStatusV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_oss_status_v2(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
+    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
+        """
+        @summary Get OSS Activation Status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusV2Request
+        @return: DescribeOssStatusV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_oss_status_v2with_options(request, runtime)
+
+    async def describe_oss_status_v2_async(
+        self,
+        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
+    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
+        """
+        @summary Get OSS Activation Status
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeOssStatusV2Request
+        @return: DescribeOssStatusV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_oss_status_v2with_options_async(request, runtime)
+
     def describe_oss_upload_token_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -3066,6 +5816,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_page_face_verify_data_with_options_async(request, runtime)
 
+    def describe_page_setting_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribePageSettingResponse:
+        """
+        @summary Query Page Settings
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DescribePageSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePageSettingResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribePageSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribePageSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_page_setting_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribePageSettingResponse:
+        """
+        @summary Query Page Settings
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DescribePageSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePageSettingResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribePageSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribePageSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_page_setting(self) -> cloudauth_20190307_models.DescribePageSettingResponse:
+        """
+        @summary Query Page Settings
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @return: DescribePageSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_page_setting_with_options(runtime)
+
+    async def describe_page_setting_async(self) -> cloudauth_20190307_models.DescribePageSettingResponse:
+        """
+        @summary Query Page Settings
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @return: DescribePageSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_page_setting_with_options_async(runtime)
+
+    def describe_product_code_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeProductCodeResponse:
+        """
+        @summary Get Product Code
+        
+        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
+        
+        @param request: DescribeProductCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductCodeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeProductCode',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeProductCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_product_code_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeProductCodeResponse:
+        """
+        @summary Get Product Code
+        
+        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
+        
+        @param request: DescribeProductCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductCodeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeProductCode',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeProductCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_product_code(self) -> cloudauth_20190307_models.DescribeProductCodeResponse:
+        """
+        @summary Get Product Code
+        
+        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
+        
+        @return: DescribeProductCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_product_code_with_options(runtime)
+
+    async def describe_product_code_async(self) -> cloudauth_20190307_models.DescribeProductCodeResponse:
+        """
+        @summary Get Product Code
+        
+        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
+        
+        @return: DescribeProductCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_product_code_with_options_async(runtime)
+
     def describe_smart_statistics_page_list_with_options(
         self,
         request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
@@ -3181,6 +6095,742 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_smart_statistics_page_list_with_options_async(request, runtime)
+
+    def describe_verify_device_risk_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        """
+        @summary Get Verification Device Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyDeviceRiskStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyDeviceRiskStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyDeviceRiskStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_device_risk_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        """
+        @summary Get Verification Device Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyDeviceRiskStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyDeviceRiskStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyDeviceRiskStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_device_risk_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        """
+        @summary Get Verification Device Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyDeviceRiskStatisticsRequest
+        @return: DescribeVerifyDeviceRiskStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_device_risk_statistics_with_options(request, runtime)
+
+    async def describe_verify_device_risk_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        """
+        @summary Get Verification Device Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyDeviceRiskStatisticsRequest
+        @return: DescribeVerifyDeviceRiskStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_device_risk_statistics_with_options_async(request, runtime)
+
+    def describe_verify_fail_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
+        """
+        @summary Overview of authentication request statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyFailStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyFailStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.age_gt):
+            query['AgeGt'] = request.age_gt
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyFailStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_fail_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
+        """
+        @summary Overview of authentication request statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyFailStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyFailStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.age_gt):
+            query['AgeGt'] = request.age_gt
+        if not UtilClient.is_unset(request.api):
+            query['Api'] = request.api
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyFailStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_fail_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
+        """
+        @summary Overview of authentication request statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyFailStatisticsRequest
+        @return: DescribeVerifyFailStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_fail_statistics_with_options(request, runtime)
+
+    async def describe_verify_fail_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
+        """
+        @summary Overview of authentication request statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyFailStatisticsRequest
+        @return: DescribeVerifyFailStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_fail_statistics_with_options_async(request, runtime)
+
+    def describe_verify_personas_device_model_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        """
+        @summary Query Statistics on Device Face Comparison
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasDeviceModelStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_personas_device_model_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        """
+        @summary Query Statistics on Device Face Comparison
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasDeviceModelStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_personas_device_model_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        """
+        @summary Query Statistics on Device Face Comparison
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
+        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_personas_device_model_statistics_with_options(request, runtime)
+
+    async def describe_verify_personas_device_model_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        """
+        @summary Query Statistics on Device Face Comparison
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
+        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_personas_device_model_statistics_with_options_async(request, runtime)
+
+    def describe_verify_personas_os_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
+        """
+        @summary Query Authentication Personnel Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasOsStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasOsStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasOsStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_personas_os_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
+        """
+        @summary Query Authentication Personnel Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasOsStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasOsStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasOsStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_personas_os_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
+        """
+        @summary Query Authentication Personnel Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasOsStatisticsRequest
+        @return: DescribeVerifyPersonasOsStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_personas_os_statistics_with_options(request, runtime)
+
+    async def describe_verify_personas_os_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
+        """
+        @summary Query Authentication Personnel Statistics
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasOsStatisticsRequest
+        @return: DescribeVerifyPersonasOsStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_personas_os_statistics_with_options_async(request, runtime)
+
+    def describe_verify_personas_province_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        """
+        @summary Obtain statistical information on the location of authenticated individuals
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasProvinceStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasProvinceStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_personas_province_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        """
+        @summary Obtain statistical information on the location of authenticated individuals
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasProvinceStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasProvinceStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_personas_province_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        """
+        @summary Obtain statistical information on the location of authenticated individuals
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
+        @return: DescribeVerifyPersonasProvinceStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_personas_province_statistics_with_options(request, runtime)
+
+    async def describe_verify_personas_province_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        """
+        @summary Obtain statistical information on the location of authenticated individuals
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
+        @return: DescribeVerifyPersonasProvinceStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_personas_province_statistics_with_options_async(request, runtime)
+
+    def describe_verify_personas_sex_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
+        """
+        @summary Query gender statistics of authentication
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasSexStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasSexStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasSexStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_personas_sex_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
+        """
+        @summary Query gender statistics of authentication
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasSexStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyPersonasSexStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyPersonasSexStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_personas_sex_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
+        """
+        @summary Query gender statistics of authentication
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasSexStatisticsRequest
+        @return: DescribeVerifyPersonasSexStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_personas_sex_statistics_with_options(request, runtime)
+
+    async def describe_verify_personas_sex_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
+        """
+        @summary Query gender statistics of authentication
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifyPersonasSexStatisticsRequest
+        @return: DescribeVerifyPersonasSexStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_personas_sex_statistics_with_options_async(request, runtime)
 
     def describe_verify_result_with_options(
         self,
@@ -3414,6 +7064,302 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_verify_sdkwith_options_async(request, runtime)
 
+    def describe_verify_search_page_list_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
+        """
+        @summary Query the list of authentication schemes
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifySearchPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifySearchPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.has_device_risk):
+            query['HasDeviceRisk'] = request.has_device_risk
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.outer_order_no):
+            query['OuterOrderNo'] = request.outer_order_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.passed):
+            query['Passed'] = request.passed
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.root):
+            query['Root'] = request.root
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.simulator):
+            query['Simulator'] = request.simulator
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_code):
+            query['SubCode'] = request.sub_code
+        if not UtilClient.is_unset(request.sub_codes):
+            query['SubCodes'] = request.sub_codes
+        if not UtilClient.is_unset(request.virtual_video):
+            query['VirtualVideo'] = request.virtual_video
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifySearchPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifySearchPageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_search_page_list_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
+        """
+        @summary Query the list of authentication schemes
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifySearchPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifySearchPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.has_device_risk):
+            query['HasDeviceRisk'] = request.has_device_risk
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.outer_order_no):
+            query['OuterOrderNo'] = request.outer_order_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.passed):
+            query['Passed'] = request.passed
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.root):
+            query['Root'] = request.root
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.simulator):
+            query['Simulator'] = request.simulator
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_code):
+            query['SubCode'] = request.sub_code
+        if not UtilClient.is_unset(request.sub_codes):
+            query['SubCodes'] = request.sub_codes
+        if not UtilClient.is_unset(request.virtual_video):
+            query['VirtualVideo'] = request.virtual_video
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifySearchPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifySearchPageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_search_page_list(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
+        """
+        @summary Query the list of authentication schemes
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifySearchPageListRequest
+        @return: DescribeVerifySearchPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_search_page_list_with_options(request, runtime)
+
+    async def describe_verify_search_page_list_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
+        """
+        @summary Query the list of authentication schemes
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        
+        @param request: DescribeVerifySearchPageListRequest
+        @return: DescribeVerifySearchPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_search_page_list_with_options_async(request, runtime)
+
+    def describe_verify_statistics_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
+        """
+        @summary Query Authentication Statistics
+        
+        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeVerifyStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.age_gt):
+            query['AgeGt'] = request.age_gt
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_verify_statistics_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
+        """
+        @summary Query Authentication Statistics
+        
+        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeVerifyStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifyStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.age_gt):
+            query['AgeGt'] = request.age_gt
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyStatistics',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_verify_statistics(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
+        """
+        @summary Query Authentication Statistics
+        
+        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeVerifyStatisticsRequest
+        @return: DescribeVerifyStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_statistics_with_options(request, runtime)
+
+    async def describe_verify_statistics_async(
+        self,
+        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
+    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
+        """
+        @summary Query Authentication Statistics
+        
+        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: DescribeVerifyStatisticsRequest
+        @return: DescribeVerifyStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_statistics_with_options_async(request, runtime)
+
     def describe_verify_token_with_options(
         self,
         request: cloudauth_20190307_models.DescribeVerifyTokenRequest,
@@ -3610,6 +7556,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_verify_token_with_options_async(request, runtime)
 
+    def describe_whitelist_setting_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
+        """
+        @summary Get Whitelist Collection Get Whitelist Collection
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DescribeWhitelistSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhitelistSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.valid_end_date):
+            query['ValidEndDate'] = request.valid_end_date
+        if not UtilClient.is_unset(request.valid_start_date):
+            query['ValidStartDate'] = request.valid_start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhitelistSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeWhitelistSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_whitelist_setting_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
+        """
+        @summary Get Whitelist Collection Get Whitelist Collection
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DescribeWhitelistSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhitelistSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.valid_end_date):
+            query['ValidEndDate'] = request.valid_end_date
+        if not UtilClient.is_unset(request.valid_start_date):
+            query['ValidStartDate'] = request.valid_start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhitelistSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeWhitelistSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_whitelist_setting(
+        self,
+        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
+    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
+        """
+        @summary Get Whitelist Collection Get Whitelist Collection
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DescribeWhitelistSettingRequest
+        @return: DescribeWhitelistSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_whitelist_setting_with_options(request, runtime)
+
+    async def describe_whitelist_setting_async(
+        self,
+        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
+    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
+        """
+        @summary Get Whitelist Collection Get Whitelist Collection
+        
+        @description Request Method: Only supports sending requests via HTTPS POST method.
+        
+        @param request: DescribeWhitelistSettingRequest
+        @return: DescribeWhitelistSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_whitelist_setting_with_options_async(request, runtime)
+
     def detect_face_attributes_with_options(
         self,
         request: cloudauth_20190307_models.DetectFaceAttributesRequest,
@@ -3753,6 +7843,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detect_face_attributes_with_options_async(request, runtime)
+
+    def download_verify_records_with_options(
+        self,
+        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
+        """
+        @summary Real-person Authentication Record Download
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: DownloadVerifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadVerifyRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_param):
+            query['BizParam'] = request.biz_param
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadVerifyRecords',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DownloadVerifyRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_verify_records_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
+        """
+        @summary Real-person Authentication Record Download
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: DownloadVerifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadVerifyRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_param):
+            query['BizParam'] = request.biz_param
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadVerifyRecords',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DownloadVerifyRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_verify_records(
+        self,
+        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
+    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
+        """
+        @summary Real-person Authentication Record Download
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: DownloadVerifyRecordsRequest
+        @return: DownloadVerifyRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_verify_records_with_options(request, runtime)
+
+    async def download_verify_records_async(
+        self,
+        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
+    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
+        """
+        @summary Real-person Authentication Record Download
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: DownloadVerifyRecordsRequest
+        @return: DownloadVerifyRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_verify_records_with_options_async(request, runtime)
 
     def id_2meta_period_verify_with_options(
         self,
@@ -4284,7 +8494,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             id_2meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.cert_national_file_object):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -4306,7 +8516,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             id_2meta_verify_with_ocrreq.cert_national_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         id_2meta_verify_with_ocrresp = self.id_2meta_verify_with_ocrwith_options(id_2meta_verify_with_ocrreq, runtime)
         return id_2meta_verify_with_ocrresp
@@ -4389,7 +8599,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             id_2meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.cert_national_file_object):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -4411,7 +8621,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             id_2meta_verify_with_ocrreq.cert_national_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         id_2meta_verify_with_ocrresp = await self.id_2meta_verify_with_ocrwith_options_async(id_2meta_verify_with_ocrreq, runtime)
         return id_2meta_verify_with_ocrresp
@@ -4618,7 +8828,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             id_3meta_verify_req.face_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         id_3meta_verify_resp = self.id_3meta_verify_with_options(id_3meta_verify_req, runtime)
         return id_3meta_verify_resp
@@ -4701,10 +8911,336 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             id_3meta_verify_req.face_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         id_3meta_verify_resp = await self.id_3meta_verify_with_options_async(id_3meta_verify_req, runtime)
         return id_3meta_verify_resp
+
+    def id_3meta_verify_with_ocrwith_options(
+        self,
+        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        """
+        @summary Identity Three Elements Image Verification
+        
+        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
+        
+        @param request: Id3MetaVerifyWithOCRRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id3MetaVerifyWithOCRResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cert_file):
+            body['CertFile'] = request.cert_file
+        if not UtilClient.is_unset(request.cert_national_file):
+            body['CertNationalFile'] = request.cert_national_file
+        if not UtilClient.is_unset(request.cert_national_url):
+            body['CertNationalUrl'] = request.cert_national_url
+        if not UtilClient.is_unset(request.cert_url):
+            body['CertUrl'] = request.cert_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id3MetaVerifyWithOCR',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_3meta_verify_with_ocrwith_options_async(
+        self,
+        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        """
+        @summary Identity Three Elements Image Verification
+        
+        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
+        
+        @param request: Id3MetaVerifyWithOCRRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id3MetaVerifyWithOCRResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cert_file):
+            body['CertFile'] = request.cert_file
+        if not UtilClient.is_unset(request.cert_national_file):
+            body['CertNationalFile'] = request.cert_national_file
+        if not UtilClient.is_unset(request.cert_national_url):
+            body['CertNationalUrl'] = request.cert_national_url
+        if not UtilClient.is_unset(request.cert_url):
+            body['CertUrl'] = request.cert_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id3MetaVerifyWithOCR',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_3meta_verify_with_ocr(
+        self,
+        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
+    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        """
+        @summary Identity Three Elements Image Verification
+        
+        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
+        
+        @param request: Id3MetaVerifyWithOCRRequest
+        @return: Id3MetaVerifyWithOCRResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.id_3meta_verify_with_ocrwith_options(request, runtime)
+
+    async def id_3meta_verify_with_ocr_async(
+        self,
+        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
+    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        """
+        @summary Identity Three Elements Image Verification
+        
+        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
+        
+        @param request: Id3MetaVerifyWithOCRRequest
+        @return: Id3MetaVerifyWithOCRResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.id_3meta_verify_with_ocrwith_options_async(request, runtime)
+
+    def id_3meta_verify_with_ocradvance(
+        self,
+        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        # Step 0: init client
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
+        )
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        auth_response = {}
+        file_obj = file_form_models.FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        id_3meta_verify_with_ocrreq = cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest()
+        OpenApiUtilClient.convert(request, id_3meta_verify_with_ocrreq)
+        if not UtilClient.is_unset(request.cert_file_object):
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.cert_file_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            id_3meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        if not UtilClient.is_unset(request.cert_national_file_object):
+            tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_1)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.cert_national_file_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            id_3meta_verify_with_ocrreq.cert_national_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        id_3meta_verify_with_ocrresp = self.id_3meta_verify_with_ocrwith_options(id_3meta_verify_with_ocrreq, runtime)
+        return id_3meta_verify_with_ocrresp
+
+    async def id_3meta_verify_with_ocradvance_async(
+        self,
+        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        # Step 0: init client
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
+        )
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        auth_response = {}
+        file_obj = file_form_models.FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        id_3meta_verify_with_ocrreq = cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest()
+        OpenApiUtilClient.convert(request, id_3meta_verify_with_ocrreq)
+        if not UtilClient.is_unset(request.cert_file_object):
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.cert_file_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            id_3meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        if not UtilClient.is_unset(request.cert_national_file_object):
+            tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_1)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
+            file_obj = file_form_models.FileField(
+                filename=auth_response_body.get('ObjectKey'),
+                content=request.cert_national_file_object,
+                content_type=''
+            )
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            id_3meta_verify_with_ocrreq.cert_national_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        id_3meta_verify_with_ocrresp = await self.id_3meta_verify_with_ocrwith_options_async(id_3meta_verify_with_ocrreq, runtime)
+        return id_3meta_verify_with_ocrresp
 
     def init_card_verify_with_options(
         self,
@@ -4899,6 +9435,8 @@ class Client(OpenApiClient):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
         if not UtilClient.is_unset(request.face_guard_output):
             query['FaceGuardOutput'] = request.face_guard_output
+        if not UtilClient.is_unset(request.h_5degrade_confirm_btn):
+            query['H5DegradeConfirmBtn'] = request.h_5degrade_confirm_btn
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
         if not UtilClient.is_unset(request.meta_info):
@@ -5021,6 +9559,8 @@ class Client(OpenApiClient):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
         if not UtilClient.is_unset(request.face_guard_output):
             query['FaceGuardOutput'] = request.face_guard_output
+        if not UtilClient.is_unset(request.h_5degrade_confirm_btn):
+            query['H5DegradeConfirmBtn'] = request.h_5degrade_confirm_btn
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
         if not UtilClient.is_unset(request.meta_info):
@@ -6306,6 +10846,374 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.mobile_online_time_with_options_async(request, runtime)
 
+    def modify_black_list_strategy_with_options(
+        self,
+        tmp_req: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
+        """
+        @summary Modify Black and White List Policy
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - Interface Description: Add or modify blacklist rule.
+        
+        @param tmp_req: ModifyBlackListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBlackListStrategyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.ModifyBlackListStrategyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.black_list_strategy):
+            request.black_list_strategy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.black_list_strategy, 'BlackListStrategy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.black_list_strategy_shrink):
+            query['BlackListStrategy'] = request.black_list_strategy_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBlackListStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyBlackListStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_black_list_strategy_with_options_async(
+        self,
+        tmp_req: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
+        """
+        @summary Modify Black and White List Policy
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - Interface Description: Add or modify blacklist rule.
+        
+        @param tmp_req: ModifyBlackListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBlackListStrategyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.ModifyBlackListStrategyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.black_list_strategy):
+            request.black_list_strategy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.black_list_strategy, 'BlackListStrategy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.black_list_strategy_shrink):
+            query['BlackListStrategy'] = request.black_list_strategy_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBlackListStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyBlackListStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_black_list_strategy(
+        self,
+        request: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
+    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
+        """
+        @summary Modify Black and White List Policy
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - Interface Description: Add or modify blacklist rule.
+        
+        @param request: ModifyBlackListStrategyRequest
+        @return: ModifyBlackListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_black_list_strategy_with_options(request, runtime)
+
+    async def modify_black_list_strategy_async(
+        self,
+        request: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
+    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
+        """
+        @summary Modify Black and White List Policy
+        
+        @description - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - Interface Description: Add or modify blacklist rule.
+        
+        @param request: ModifyBlackListStrategyRequest
+        @return: ModifyBlackListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_black_list_strategy_with_options_async(request, runtime)
+
+    def modify_control_strategy_with_options(
+        self,
+        tmp_req: cloudauth_20190307_models.ModifyControlStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
+        """
+        @summary Modify Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST method.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param tmp_req: ModifyControlStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyControlStrategyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.ModifyControlStrategyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.control_strategy_list):
+            request.control_strategy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_strategy_list, 'ControlStrategyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.control_strategy_list_shrink):
+            query['ControlStrategyList'] = request.control_strategy_list_shrink
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyControlStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyControlStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_control_strategy_with_options_async(
+        self,
+        tmp_req: cloudauth_20190307_models.ModifyControlStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
+        """
+        @summary Modify Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST method.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param tmp_req: ModifyControlStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyControlStrategyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.ModifyControlStrategyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.control_strategy_list):
+            request.control_strategy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_strategy_list, 'ControlStrategyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.control_strategy_list_shrink):
+            query['ControlStrategyList'] = request.control_strategy_list_shrink
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyControlStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyControlStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_control_strategy(
+        self,
+        request: cloudauth_20190307_models.ModifyControlStrategyRequest,
+    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
+        """
+        @summary Modify Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST method.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param request: ModifyControlStrategyRequest
+        @return: ModifyControlStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_control_strategy_with_options(request, runtime)
+
+    async def modify_control_strategy_async(
+        self,
+        request: cloudauth_20190307_models.ModifyControlStrategyRequest,
+    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
+        """
+        @summary Modify Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST method.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param request: ModifyControlStrategyRequest
+        @return: ModifyControlStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_control_strategy_with_options_async(request, runtime)
+
+    def modify_customize_flow_strategy_list_with_options(
+        self,
+        tmp_req: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
+        """
+        @summary Information Verification Security Management
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param tmp_req: ModifyCustomizeFlowStrategyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomizeFlowStrategyListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.ModifyCustomizeFlowStrategyListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.strategy_object):
+            request.strategy_object_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.strategy_object, 'StrategyObject', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.strategy_object_shrink):
+            query['StrategyObject'] = request.strategy_object_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCustomizeFlowStrategyList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_customize_flow_strategy_list_with_options_async(
+        self,
+        tmp_req: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
+        """
+        @summary Information Verification Security Management
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param tmp_req: ModifyCustomizeFlowStrategyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomizeFlowStrategyListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.ModifyCustomizeFlowStrategyListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.strategy_object):
+            request.strategy_object_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.strategy_object, 'StrategyObject', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.strategy_object_shrink):
+            query['StrategyObject'] = request.strategy_object_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCustomizeFlowStrategyList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_customize_flow_strategy_list(
+        self,
+        request: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
+    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
+        """
+        @summary Information Verification Security Management
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: ModifyCustomizeFlowStrategyListRequest
+        @return: ModifyCustomizeFlowStrategyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_customize_flow_strategy_list_with_options(request, runtime)
+
+    async def modify_customize_flow_strategy_list_async(
+        self,
+        request: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
+    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
+        """
+        @summary Information Verification Security Management
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Service Address: cloudauth.aliyuncs.com.
+        
+        @param request: ModifyCustomizeFlowStrategyListRequest
+        @return: ModifyCustomizeFlowStrategyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_customize_flow_strategy_list_with_options_async(request, runtime)
+
     def modify_device_info_with_options(
         self,
         request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
@@ -6554,6 +11462,826 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.page_query_white_list_setting_with_options_async(request, runtime)
 
+    def query_black_list_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
+        """
+        @summary Query Blacklist and Whitelist Policies
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        
+        @param request: QueryBlackListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBlackListStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBlackListStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryBlackListStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_black_list_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
+        """
+        @summary Query Blacklist and Whitelist Policies
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        
+        @param request: QueryBlackListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBlackListStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBlackListStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryBlackListStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_black_list_strategy(
+        self,
+        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
+    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
+        """
+        @summary Query Blacklist and Whitelist Policies
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        
+        @param request: QueryBlackListStrategyRequest
+        @return: QueryBlackListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_black_list_strategy_with_options(request, runtime)
+
+    async def query_black_list_strategy_async(
+        self,
+        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
+    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
+        """
+        @summary Query Blacklist and Whitelist Policies
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+        
+        @param request: QueryBlackListStrategyRequest
+        @return: QueryBlackListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_black_list_strategy_with_options_async(request, runtime)
+
+    def query_control_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.QueryControlStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
+        """
+        @summary Query Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param request: QueryControlStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryControlStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryControlStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryControlStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_control_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QueryControlStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
+        """
+        @summary Query Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param request: QueryControlStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryControlStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryControlStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryControlStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_control_strategy(
+        self,
+        request: cloudauth_20190307_models.QueryControlStrategyRequest,
+    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
+        """
+        @summary Query Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param request: QueryControlStrategyRequest
+        @return: QueryControlStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_control_strategy_with_options(request, runtime)
+
+    async def query_control_strategy_async(
+        self,
+        request: cloudauth_20190307_models.QueryControlStrategyRequest,
+    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
+        """
+        @summary Query Security Control Strategy
+        
+        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
+        - Request Address: cloudauth.aliyuncs.com.
+        
+        @param request: QueryControlStrategyRequest
+        @return: QueryControlStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_control_strategy_with_options_async(request, runtime)
+
+    def query_customize_flow_strategy_with_options(
+        self,
+        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
+        """
+        @summary Query Custom Flow Control Strategy
+        
+        @description - Service Address: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
+        
+        @param request: QueryCustomizeFlowStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCustomizeFlowStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCustomizeFlowStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_customize_flow_strategy_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
+        """
+        @summary Query Custom Flow Control Strategy
+        
+        @description - Service Address: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
+        
+        @param request: QueryCustomizeFlowStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCustomizeFlowStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCustomizeFlowStrategy',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_customize_flow_strategy(
+        self,
+        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
+    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
+        """
+        @summary Query Custom Flow Control Strategy
+        
+        @description - Service Address: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
+        
+        @param request: QueryCustomizeFlowStrategyRequest
+        @return: QueryCustomizeFlowStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_customize_flow_strategy_with_options(request, runtime)
+
+    async def query_customize_flow_strategy_async(
+        self,
+        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
+    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
+        """
+        @summary Query Custom Flow Control Strategy
+        
+        @description - Service Address: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
+        
+        @param request: QueryCustomizeFlowStrategyRequest
+        @return: QueryCustomizeFlowStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_customize_flow_strategy_with_options_async(request, runtime)
+
+    def query_scene_configs_with_options(
+        self,
+        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
+        """
+        @summary Query Scene Configuration
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: QuerySceneConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySceneConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySceneConfigs',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QuerySceneConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_scene_configs_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
+        """
+        @summary Query Scene Configuration
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: QuerySceneConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySceneConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySceneConfigs',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QuerySceneConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_scene_configs(
+        self,
+        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
+    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
+        """
+        @summary Query Scene Configuration
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: QuerySceneConfigsRequest
+        @return: QuerySceneConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_scene_configs_with_options(request, runtime)
+
+    async def query_scene_configs_async(
+        self,
+        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
+    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
+        """
+        @summary Query Scene Configuration
+        
+        @description - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST and GET.
+        
+        @param request: QuerySceneConfigsRequest
+        @return: QuerySceneConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_scene_configs_with_options_async(request, runtime)
+
+    def query_verify_download_task_with_options(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
+        """
+        @summary Query Real-Person Download Task
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVerifyDownloadTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVerifyDownloadTask',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryVerifyDownloadTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_verify_download_task_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
+        """
+        @summary Query Real-Person Download Task
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVerifyDownloadTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVerifyDownloadTask',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryVerifyDownloadTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_verify_download_task(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
+    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
+        """
+        @summary Query Real-Person Download Task
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyDownloadTaskRequest
+        @return: QueryVerifyDownloadTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_verify_download_task_with_options(request, runtime)
+
+    async def query_verify_download_task_async(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
+    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
+        """
+        @summary Query Real-Person Download Task
+        
+        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
+        - Method: HTTPS POST
+        - Service Address: cloudauth.aliyuncs.com
+        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyDownloadTaskRequest
+        @return: QueryVerifyDownloadTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_verify_download_task_with_options_async(request, runtime)
+
+    def query_verify_flow_package_with_options(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
+        """
+        @summary Query Flow Package
+        
+        @description - Service address: cloudauth.aliyuncs.com
+        - Request method: HTTPS POST and GET.
+        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+        
+        @param request: QueryVerifyFlowPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVerifyFlowPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVerifyFlowPackage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryVerifyFlowPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_verify_flow_package_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
+        """
+        @summary Query Flow Package
+        
+        @description - Service address: cloudauth.aliyuncs.com
+        - Request method: HTTPS POST and GET.
+        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+        
+        @param request: QueryVerifyFlowPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVerifyFlowPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVerifyFlowPackage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryVerifyFlowPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_verify_flow_package(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
+    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
+        """
+        @summary Query Flow Package
+        
+        @description - Service address: cloudauth.aliyuncs.com
+        - Request method: HTTPS POST and GET.
+        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+        
+        @param request: QueryVerifyFlowPackageRequest
+        @return: QueryVerifyFlowPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_verify_flow_package_with_options(request, runtime)
+
+    async def query_verify_flow_package_async(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
+    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
+        """
+        @summary Query Flow Package
+        
+        @description - Service address: cloudauth.aliyuncs.com
+        - Request method: HTTPS POST and GET.
+        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+        
+        @param request: QueryVerifyFlowPackageRequest
+        @return: QueryVerifyFlowPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_verify_flow_package_with_options_async(request, runtime)
+
+    def query_verify_invoke_satistic_with_options(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
+        """
+        @summary Call Volume Statistics
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyInvokeSatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVerifyInvokeSatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_program_list):
+            query['ProductProgramList'] = request.product_program_list
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.scene_id_list):
+            query['SceneIdList'] = request.scene_id_list
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.statistics_type):
+            query['StatisticsType'] = request.statistics_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVerifyInvokeSatistic',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_verify_invoke_satistic_with_options_async(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
+        """
+        @summary Call Volume Statistics
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyInvokeSatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVerifyInvokeSatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_program_list):
+            query['ProductProgramList'] = request.product_program_list
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.scene_id_list):
+            query['SceneIdList'] = request.scene_id_list
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.statistics_type):
+            query['StatisticsType'] = request.statistics_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVerifyInvokeSatistic',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_verify_invoke_satistic(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
+    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
+        """
+        @summary Call Volume Statistics
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyInvokeSatisticRequest
+        @return: QueryVerifyInvokeSatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_verify_invoke_satistic_with_options(request, runtime)
+
+    async def query_verify_invoke_satistic_async(
+        self,
+        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
+    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
+        """
+        @summary Call Volume Statistics
+        
+        @description - Request URL: cloudauth.aliyuncs.com
+        - Request Method: HTTPS POST and GET.
+        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
+        
+        @param request: QueryVerifyInvokeSatisticRequest
+        @return: QueryVerifyInvokeSatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_verify_invoke_satistic_with_options_async(request, runtime)
+
     def remove_white_list_setting_with_options(
         self,
         tmp_req: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
@@ -6661,6 +12389,266 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_white_list_setting_with_options_async(request, runtime)
+
+    def update_ant_cloud_auth_scene_with_options(
+        self,
+        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
+        """
+        @summary Update Ant Blockchain Transaction Scenario
+        
+        @description Update the information of a financial-level authentication scenario based on the scenario ID.
+        - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST.
+        
+        @param request: UpdateAntCloudAuthSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntCloudAuthSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bind_mini_program):
+            query['BindMiniProgram'] = request.bind_mini_program
+        if not UtilClient.is_unset(request.check_file_body):
+            query['CheckFileBody'] = request.check_file_body
+        if not UtilClient.is_unset(request.check_file_name):
+            query['CheckFileName'] = request.check_file_name
+        if not UtilClient.is_unset(request.mini_program_name):
+            query['MiniProgramName'] = request.mini_program_name
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.store_image):
+            query['StoreImage'] = request.store_image
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAntCloudAuthScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ant_cloud_auth_scene_with_options_async(
+        self,
+        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
+        """
+        @summary Update Ant Blockchain Transaction Scenario
+        
+        @description Update the information of a financial-level authentication scenario based on the scenario ID.
+        - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST.
+        
+        @param request: UpdateAntCloudAuthSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntCloudAuthSceneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bind_mini_program):
+            query['BindMiniProgram'] = request.bind_mini_program
+        if not UtilClient.is_unset(request.check_file_body):
+            query['CheckFileBody'] = request.check_file_body
+        if not UtilClient.is_unset(request.check_file_name):
+            query['CheckFileName'] = request.check_file_name
+        if not UtilClient.is_unset(request.mini_program_name):
+            query['MiniProgramName'] = request.mini_program_name
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.store_image):
+            query['StoreImage'] = request.store_image
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAntCloudAuthScene',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ant_cloud_auth_scene(
+        self,
+        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
+    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
+        """
+        @summary Update Ant Blockchain Transaction Scenario
+        
+        @description Update the information of a financial-level authentication scenario based on the scenario ID.
+        - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST.
+        
+        @param request: UpdateAntCloudAuthSceneRequest
+        @return: UpdateAntCloudAuthSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ant_cloud_auth_scene_with_options(request, runtime)
+
+    async def update_ant_cloud_auth_scene_async(
+        self,
+        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
+    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
+        """
+        @summary Update Ant Blockchain Transaction Scenario
+        
+        @description Update the information of a financial-level authentication scenario based on the scenario ID.
+        - Service address: cloudauth.aliyuncs.com.
+        - Request method: HTTPS POST.
+        
+        @param request: UpdateAntCloudAuthSceneRequest
+        @return: UpdateAntCloudAuthSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ant_cloud_auth_scene_with_options_async(request, runtime)
+
+    def update_scene_config_with_options(
+        self,
+        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
+        """
+        @summary Update Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST.
+        - Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: UpdateSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.scene_id):
+            body['sceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSceneConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateSceneConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_scene_config_with_options_async(
+        self,
+        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
+        """
+        @summary Update Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST.
+        - Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: UpdateSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.scene_id):
+            body['sceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSceneConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateSceneConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_scene_config(
+        self,
+        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
+    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
+        """
+        @summary Update Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST.
+        - Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: UpdateSceneConfigRequest
+        @return: UpdateSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_scene_config_with_options(request, runtime)
+
+    async def update_scene_config_async(
+        self,
+        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
+    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
+        """
+        @summary Update Scene Configuration
+        
+        @description - Request Method: Supports sending requests via HTTPS POST.
+        - Request URL: cloudauth.aliyuncs.com.
+        
+        @param request: UpdateSceneConfigRequest
+        @return: UpdateSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_scene_config_with_options_async(request, runtime)
 
     def vehicle_5item_query_with_options(
         self,

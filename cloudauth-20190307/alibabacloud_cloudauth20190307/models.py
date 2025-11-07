@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, BinaryIO, List
+from typing import Dict, BinaryIO, List, Any
 
 
 class AIGCFaceVerifyRequest(TeaModel):
@@ -1429,6 +1429,161 @@ class ContrastFaceVerifyResponse(TeaModel):
         return self
 
 
+class CreateAntCloudAuthSceneRequest(TeaModel):
+    def __init__(
+        self,
+        bind_mini_program: str = None,
+        check_file_body: str = None,
+        check_file_name: str = None,
+        mini_program_name: str = None,
+        platform: str = None,
+        scene_name: str = None,
+        store_image: str = None,
+    ):
+        # Whether to enable binding of the mini program:
+        # - **Y**: Enable
+        # - **N (default)**: Not enabled
+        self.bind_mini_program = bind_mini_program
+        # Content of the uploaded verification file.
+        self.check_file_body = check_file_body
+        # Name of the uploaded verification file.
+        self.check_file_name = check_file_name
+        # Mini program name.
+        self.mini_program_name = mini_program_name
+        # Binding platform for the mini program:
+        # - **WECHAT**: WeChat
+        # - **ALIPAY**: Alipay
+        # - **TIKTOK**: TikTok
+        self.platform = platform
+        # Scene name.
+        # 
+        # This parameter is required.
+        self.scene_name = scene_name
+        # Whether to deliver the files generated from the authentication to the customer\\"s OSS:
+        # - **Y**: Yes
+        # - **N**: No
+        self.store_image = store_image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_mini_program is not None:
+            result['BindMiniProgram'] = self.bind_mini_program
+        if self.check_file_body is not None:
+            result['CheckFileBody'] = self.check_file_body
+        if self.check_file_name is not None:
+            result['CheckFileName'] = self.check_file_name
+        if self.mini_program_name is not None:
+            result['MiniProgramName'] = self.mini_program_name
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.store_image is not None:
+            result['StoreImage'] = self.store_image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindMiniProgram') is not None:
+            self.bind_mini_program = m.get('BindMiniProgram')
+        if m.get('CheckFileBody') is not None:
+            self.check_file_body = m.get('CheckFileBody')
+        if m.get('CheckFileName') is not None:
+            self.check_file_name = m.get('CheckFileName')
+        if m.get('MiniProgramName') is not None:
+            self.mini_program_name = m.get('MiniProgramName')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StoreImage') is not None:
+            self.store_image = m.get('StoreImage')
+        return self
+
+
+class CreateAntCloudAuthSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        scene_id: int = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Instance ID.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class CreateAntCloudAuthSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAntCloudAuthSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAntCloudAuthSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAuthKeyRequest(TeaModel):
     def __init__(
         self,
@@ -1550,6 +1705,247 @@ class CreateAuthKeyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAuthKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCloudauthstSceneRequest(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        scene_name: str = None,
+        store_image: str = None,
+    ):
+        # Product code.
+        # 
+        # This parameter is required.
+        self.product_code = product_code
+        # Scene name.
+        # 
+        # This parameter is required.
+        self.scene_name = scene_name
+        # Whether to deliver the files generated from the authentication to the customer\\"s OSS:
+        # - **Y**: Enable
+        # - **N**: Disable
+        self.store_image = store_image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.store_image is not None:
+            result['StoreImage'] = self.store_image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StoreImage') is not None:
+            self.store_image = m.get('StoreImage')
+        return self
+
+
+class CreateCloudauthstSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # ID of this request
+        self.request_id = request_id
+        # The result, indicating whether the operation was successful.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class CreateCloudauthstSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudauthstSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudauthstSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSceneConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        scene_id: int = None,
+        type: str = None,
+    ):
+        # Intention authentication configuration, as a JSON string.
+        # 
+        # This parameter is required.
+        self.config = config
+        # Scene ID.
+        # 
+        # This parameter is required.
+        self.scene_id = scene_id
+        # Configuration type.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.scene_id is not None:
+            result['sceneId'] = self.scene_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('sceneId') is not None:
+            self.scene_id = m.get('sceneId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateSceneConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSceneConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSceneConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSceneConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1716,6 +2112,167 @@ class CreateVerifySettingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateVerifySettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWhitelistSettingRequest(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        lang: str = None,
+        remark: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        source_ip: str = None,
+        valid_day: int = None,
+    ):
+        # ID number to be whitelisted.
+        self.cert_no = cert_no
+        # Certificate ID, used for whitelisting this specific authenticated user.
+        self.certify_id = certify_id
+        # User language.
+        self.lang = lang
+        # Whitelist remarks.
+        self.remark = remark
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Visitor\\"s source IP address. No need to fill in, the system will automatically obtain it.
+        self.source_ip = source_ip
+        # Number of valid days after creating the whitelist.
+        # 
+        # This parameter is required.
+        self.valid_day = valid_day
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.valid_day is not None:
+            result['ValidDay'] = self.valid_day
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('ValidDay') is not None:
+            self.valid_day = m.get('ValidDay')
+        return self
+
+
+class CreateWhitelistSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # The ID of this request.
+        self.request_id = request_id
+        # Return result, whether the creation was successful:
+        # - true: Success
+        # - false: Failure
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class CreateWhitelistSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWhitelistSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWhitelistSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3633,6 +4190,802 @@ class DeepfakeDetectResponse(TeaModel):
         return self
 
 
+class DeleteAllCustomizeFlowStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        user_id: int = None,
+    ):
+        # Region ID
+        self.region_id = region_id
+        # User ID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteAllCustomizeFlowStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Return code: 200 indicates success, others indicate failure.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # ID of this request.
+        self.request_id = request_id
+        # Indicates whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAllCustomizeFlowStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAllCustomizeFlowStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAllCustomizeFlowStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAntCloudAuthSceneRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: int = None,
+    ):
+        # ID of the scene to be deleted.
+        # 
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DeleteAntCloudAuthSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAntCloudAuthSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAntCloudAuthSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAntCloudAuthSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBlackListStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        product_name: str = None,
+        region_id: str = None,
+    ):
+        # Rule ID.
+        self.id = id
+        # Product Name:
+        # - **id2meta**: ID card two-factor verification
+        # - **mobile3Meta**: Mobile phone number factor verification
+        # - **bankcardMeta**: Bank card factor verification
+        self.product_name = product_name
+        # Region ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteBlackListStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # HTTP status code.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteBlackListStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBlackListStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBlackListStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudauthstSceneRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+    ):
+        # ID of the scene to be deleted.
+        # 
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DeleteCloudauthstSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Return result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class DeleteCloudauthstSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudauthstSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudauthstSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteControlStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        api_name: str = None,
+        id: int = None,
+        product_type: str = None,
+        region_id: str = None,
+    ):
+        # API name, same as **ProductCode**.
+        self.api_name = api_name
+        # Security rule ID.
+        self.id = id
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others have been phased out.
+        self.product_type = product_type
+        # Region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteControlStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Return code, **200** indicates successful API response.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteControlStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteControlStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteControlStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomizeFlowStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        api_name: str = None,
+        id: int = None,
+        product_type: str = None,
+        region_id: str = None,
+        user_id: int = None,
+    ):
+        # API name, same as **ProductCode**.
+        self.api_name = api_name
+        # Policy ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others have been phased out.
+        self.product_type = product_type
+        # regionId
+        self.region_id = region_id
+        # User ID
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteCustomizeFlowStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # HTTP status code.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # ID of this request.
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomizeFlowStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomizeFlowStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomizeFlowStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFaceVerifyResultRequest(TeaModel):
     def __init__(
         self,
@@ -3807,6 +5160,339 @@ class DeleteFaceVerifyResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFaceVerifyResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSceneConfigRequest(TeaModel):
+    def __init__(
+        self,
+        scene_config_id: int = None,
+    ):
+        # ID of the intent authentication configuration.
+        # 
+        # This parameter is required.
+        self.scene_config_id = scene_config_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_config_id is not None:
+            result['sceneConfigId'] = self.scene_config_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sceneConfigId') is not None:
+            self.scene_config_id = m.get('sceneConfigId')
+        return self
+
+
+class DeleteSceneConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSceneConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSceneConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSceneConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWhitelistSettingRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        lang: str = None,
+        service_code: str = None,
+        source_ip: str = None,
+    ):
+        # List of rule IDs to be deleted.
+        # 
+        # This parameter is required.
+        self.ids = ids
+        # Specify the language of the user information to be deleted. Values: -**zh**: Chinese. -**en**: English.
+        self.lang = lang
+        # ServiceCode for the real-person cloud product, only takes the value: **antcloudauth**.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Set the source IP address of the visitor. Supports IP addresses in CIDR and IPv4 formats. Example: 10.0.3.0/24.
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DeleteWhitelistSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Return result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class DeleteWhitelistSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWhitelistSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWhitelistSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAntAndCloudAuthUserStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        antcloudauth_enabled: bool = None,
+        cloudauth_enabled: bool = None,
+        cloudauthst_enabled: bool = None,
+        inforverify_enabled: bool = None,
+        request_id: str = None,
+    ):
+        # Indicates whether financial-grade real-person authentication is activated. Values:
+        # - **true**: Activated
+        # - **false**: Not activated
+        self.antcloudauth_enabled = antcloudauth_enabled
+        # Indicates whether real-person authentication is activated. Values:
+        # - **true**: Activated
+        # - **false**: Not activated
+        self.cloudauth_enabled = cloudauth_enabled
+        # Indicates whether the enhanced version of real-person authentication is activated. Values:
+        # - **true**: Activated
+        # - **false**: Not activated
+        self.cloudauthst_enabled = cloudauthst_enabled
+        # Indicates whether information verification is activated. Values:
+        # - **true**: Activated
+        # - **false**: Not activated
+        self.inforverify_enabled = inforverify_enabled
+        # The ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.antcloudauth_enabled is not None:
+            result['AntcloudauthEnabled'] = self.antcloudauth_enabled
+        if self.cloudauth_enabled is not None:
+            result['CloudauthEnabled'] = self.cloudauth_enabled
+        if self.cloudauthst_enabled is not None:
+            result['CloudauthstEnabled'] = self.cloudauthst_enabled
+        if self.inforverify_enabled is not None:
+            result['InforverifyEnabled'] = self.inforverify_enabled
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AntcloudauthEnabled') is not None:
+            self.antcloudauth_enabled = m.get('AntcloudauthEnabled')
+        if m.get('CloudauthEnabled') is not None:
+            self.cloudauth_enabled = m.get('CloudauthEnabled')
+        if m.get('CloudauthstEnabled') is not None:
+            self.cloudauthst_enabled = m.get('CloudauthstEnabled')
+        if m.get('InforverifyEnabled') is not None:
+            self.inforverify_enabled = m.get('InforverifyEnabled')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAntAndCloudAuthUserStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAntAndCloudAuthUserStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAntAndCloudAuthUserStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3996,6 +5682,190 @@ class DescribeCardVerifyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCardVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudauthstSceneListRequest(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+    ):
+        # Product Code
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class DescribeCloudauthstSceneListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        product_code: str = None,
+        product_name: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
+        store_image: str = None,
+    ):
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Cloud marketplace product code.
+        self.product_code = product_code
+        # Product name
+        self.product_name = product_name
+        # Scene ID.
+        self.scene_id = scene_id
+        # Scene name.
+        self.scene_name = scene_name
+        # Whether to deliver the files generated by the authentication to the customer\\"s OSS:
+        # - **Y**: Enabled
+        # - **N**: Disabled
+        self.store_image = store_image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.store_image is not None:
+            result['StoreImage'] = self.store_image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StoreImage') is not None:
+            self.store_image = m.get('StoreImage')
+        return self
+
+
+class DescribeCloudauthstSceneListResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeCloudauthstSceneListResponseBodyItems] = None,
+        request_id: str = None,
+    ):
+        # Scene list
+        self.items = items
+        # The ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeCloudauthstSceneListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudauthstSceneListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudauthstSceneListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudauthstSceneListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4666,6 +6536,2384 @@ class DescribeFaceVerifyResponse(TeaModel):
         return self
 
 
+class DescribeInfoCheckExportRecordRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        end_date: str = None,
+        page_size: int = None,
+        product_type: str = None,
+        start_date: str = None,
+    ):
+        self.current_page = current_page
+        self.end_date = end_date
+        self.page_size = page_size
+        self.product_type = product_type
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeInfoCheckExportRecordResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        download_date: str = None,
+        download_task_id: str = None,
+        error_code: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        product_type: str = None,
+        status: int = None,
+        url: str = None,
+    ):
+        self.download_date = download_date
+        self.download_task_id = download_task_id
+        self.error_code = error_code
+        self.file_name = file_name
+        self.file_type = file_type
+        self.product_type = product_type
+        self.status = status
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_date is not None:
+            result['DownloadDate'] = self.download_date
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadDate') is not None:
+            self.download_date = m.get('DownloadDate')
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeInfoCheckExportRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current_page: int = None,
+        items: List[DescribeInfoCheckExportRecordResponseBodyItems] = None,
+        message: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.code = code
+        self.current_page = current_page
+        self.items = items
+        self.message = message
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeInfoCheckExportRecordResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeInfoCheckExportRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInfoCheckExportRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInfoCheckExportRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeListAntCloudAuthScenesRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: int = None,
+    ):
+        # Scenario ID.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DescribeListAntCloudAuthScenesResponseBodyScenes(TeaModel):
+    def __init__(
+        self,
+        app_id: int = None,
+        bind_mini_program: str = None,
+        create_time: str = None,
+        creator: str = None,
+        domain: str = None,
+        mini_program_name: str = None,
+        modifier: str = None,
+        platform: str = None,
+        scene_id: int = None,
+        scene_name: str = None,
+        status: int = None,
+        store_image: str = None,
+        update_time: str = None,
+    ):
+        # Application ID.
+        self.app_id = app_id
+        # Whether to enable binding to a mini program:
+        # - **Y**: Enabled
+        # - **N (default)**: Not enabled
+        self.bind_mini_program = bind_mini_program
+        # Creation time.
+        self.create_time = create_time
+        # Creator.
+        self.creator = creator
+        # Bound domain.
+        self.domain = domain
+        # Mini program name.
+        self.mini_program_name = mini_program_name
+        # Modifier.
+        self.modifier = modifier
+        # Platform for binding the mini program:
+        # - **WECHAT**: WeChat
+        # - **ALIPAY**: Alipay
+        # - **TIKTOK**: TikTok
+        self.platform = platform
+        # Scenario ID.
+        self.scene_id = scene_id
+        # Scenario name.
+        self.scene_name = scene_name
+        # Whether it is enabled, with 1 indicating yes.
+        self.status = status
+        # Whether to deliver the files generated by the authentication to the customer\\"s OSS:
+        # - **Y**: Enabled
+        # - **N**: Disabled
+        self.store_image = store_image
+        # The last update time of the instance.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.bind_mini_program is not None:
+            result['BindMiniProgram'] = self.bind_mini_program
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.mini_program_name is not None:
+            result['MiniProgramName'] = self.mini_program_name
+        if self.modifier is not None:
+            result['Modifier'] = self.modifier
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.store_image is not None:
+            result['StoreImage'] = self.store_image
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BindMiniProgram') is not None:
+            self.bind_mini_program = m.get('BindMiniProgram')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('MiniProgramName') is not None:
+            self.mini_program_name = m.get('MiniProgramName')
+        if m.get('Modifier') is not None:
+            self.modifier = m.get('Modifier')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StoreImage') is not None:
+            self.store_image = m.get('StoreImage')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeListAntCloudAuthScenesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        scenes: List[DescribeListAntCloudAuthScenesResponseBodyScenes] = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # List of scenarios.
+        self.scenes = scenes
+
+    def validate(self):
+        if self.scenes:
+            for k in self.scenes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Scenes'] = []
+        if self.scenes is not None:
+            for k in self.scenes:
+                result['Scenes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scenes = []
+        if m.get('Scenes') is not None:
+            for k in m.get('Scenes'):
+                temp_model = DescribeListAntCloudAuthScenesResponseBodyScenes()
+                self.scenes.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeListAntCloudAuthScenesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeListAntCloudAuthScenesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeListAntCloudAuthScenesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeListFaceVerifyDataRequest(TeaModel):
+    def __init__(
+        self,
+        gmt_end: int = None,
+        gmt_start: int = None,
+        name: str = None,
+        scene_id: int = None,
+    ):
+        # End time of the query.
+        self.gmt_end = gmt_end
+        # Start time of the query.
+        self.gmt_start = gmt_start
+        # Product Code, currently deprecated.
+        self.name = name
+        # Scene ID.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_end is not None:
+            result['GmtEnd'] = self.gmt_end
+        if self.gmt_start is not None:
+            result['GmtStart'] = self.gmt_start
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtEnd') is not None:
+            self.gmt_end = m.get('GmtEnd')
+        if m.get('GmtStart') is not None:
+            self.gmt_start = m.get('GmtStart')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData(TeaModel):
+    def __init__(
+        self,
+        con_date: str = None,
+        fail_cnt: str = None,
+        name: str = None,
+        scene_id: str = None,
+        succ_cnt: str = None,
+        total_cnt: str = None,
+    ):
+        # Verification statistics time.
+        self.con_date = con_date
+        # Number of failed verifications.
+        self.fail_cnt = fail_cnt
+        # Verification scheme.
+        self.name = name
+        # Scene ID.
+        self.scene_id = scene_id
+        # Number of successful verifications.
+        self.succ_cnt = succ_cnt
+        # Total number of verifications.
+        self.total_cnt = total_cnt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.con_date is not None:
+            result['ConDate'] = self.con_date
+        if self.fail_cnt is not None:
+            result['FailCnt'] = self.fail_cnt
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.succ_cnt is not None:
+            result['SuccCnt'] = self.succ_cnt
+        if self.total_cnt is not None:
+            result['TotalCnt'] = self.total_cnt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConDate') is not None:
+            self.con_date = m.get('ConDate')
+        if m.get('FailCnt') is not None:
+            self.fail_cnt = m.get('FailCnt')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SuccCnt') is not None:
+            self.succ_cnt = m.get('SuccCnt')
+        if m.get('TotalCnt') is not None:
+            self.total_cnt = m.get('TotalCnt')
+        return self
+
+
+class DescribeListFaceVerifyDataResponseBodyMonitorData(TeaModel):
+    def __init__(
+        self,
+        face_verify_data: List[DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData] = None,
+    ):
+        # Face verification data.
+        self.face_verify_data = face_verify_data
+
+    def validate(self):
+        if self.face_verify_data:
+            for k in self.face_verify_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FaceVerifyData'] = []
+        if self.face_verify_data is not None:
+            for k in self.face_verify_data:
+                result['FaceVerifyData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.face_verify_data = []
+        if m.get('FaceVerifyData') is not None:
+            for k in m.get('FaceVerifyData'):
+                temp_model = DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData()
+                self.face_verify_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeListFaceVerifyDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        monitor_data: DescribeListFaceVerifyDataResponseBodyMonitorData = None,
+        request_id: str = None,
+    ):
+        # Returned data.
+        self.monitor_data = monitor_data
+        # ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.monitor_data:
+            self.monitor_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_data is not None:
+            result['MonitorData'] = self.monitor_data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonitorData') is not None:
+            temp_model = DescribeListFaceVerifyDataResponseBodyMonitorData()
+            self.monitor_data = temp_model.from_map(m['MonitorData'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeListFaceVerifyDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeListFaceVerifyDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeListFaceVerifyDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeListFaceVerifyInfosRequest(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+        gmt_end: int = None,
+        gmt_start: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        scene_id: int = None,
+        status: int = None,
+    ):
+        # Verification ID.
+        self.certify_id = certify_id
+        # Query the end time of the verification.
+        self.gmt_end = gmt_end
+        # Query the start time of the verification.
+        self.gmt_start = gmt_start
+        # Pagination parameter: current page number.
+        self.page_number = page_number
+        # Number of items per page for paginated queries. Maximum value: 100, default value: 10.
+        self.page_size = page_size
+        # Scene ID.
+        self.scene_id = scene_id
+        # Verification status:
+        # - **1**: Verification passed.
+        # - **2**: Verification failed.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.gmt_end is not None:
+            result['GmtEnd'] = self.gmt_end
+        if self.gmt_start is not None:
+            result['GmtStart'] = self.gmt_start
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('GmtEnd') is not None:
+            self.gmt_end = m.get('GmtEnd')
+        if m.get('GmtStart') is not None:
+            self.gmt_start = m.get('GmtStart')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        cert_name: str = None,
+        cert_no: str = None,
+        certify_id: str = None,
+        create_time: str = None,
+        scene_id: int = None,
+        status: int = None,
+    ):
+        # Business code.
+        self.biz_code = biz_code
+        # Name.
+        self.cert_name = cert_name
+        # ID number.
+        self.cert_no = cert_no
+        # ID of the certificate.
+        self.certify_id = certify_id
+        # Creation time of the face recognition record.
+        self.create_time = create_time
+        # Scene ID.
+        self.scene_id = scene_id
+        # Verification status:
+        # - **1**: Verification passed.
+        # - **2**: Verification failed.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeListFaceVerifyInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        face_verify_infos: List[DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos] = None,
+        items_per_page: int = None,
+        page_number: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_pages: int = None,
+    ):
+        # List of face verification records.
+        self.face_verify_infos = face_verify_infos
+        # Number of items per page.
+        self.items_per_page = items_per_page
+        # Pagination parameter: current page number.
+        self.page_number = page_number
+        # ID of the current request.
+        self.request_id = request_id
+        # Total number of verifications.
+        self.total_count = total_count
+        # Total number of pages.
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.face_verify_infos:
+            for k in self.face_verify_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FaceVerifyInfos'] = []
+        if self.face_verify_infos is not None:
+            for k in self.face_verify_infos:
+                result['FaceVerifyInfos'].append(k.to_map() if k else None)
+        if self.items_per_page is not None:
+            result['ItemsPerPage'] = self.items_per_page
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.face_verify_infos = []
+        if m.get('FaceVerifyInfos') is not None:
+            for k in m.get('FaceVerifyInfos'):
+                temp_model = DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos()
+                self.face_verify_infos.append(temp_model.from_map(k))
+        if m.get('ItemsPerPage') is not None:
+            self.items_per_page = m.get('ItemsPerPage')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class DescribeListFaceVerifyInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeListFaceVerifyInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeListFaceVerifyInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMetaSearchPageListRequest(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        bank_card: str = None,
+        biz_code: str = None,
+        current_page: int = None,
+        end_date: int = None,
+        identify_num: str = None,
+        isp_name: str = None,
+        mobile: str = None,
+        page_size: int = None,
+        req_id: str = None,
+        start_date: int = None,
+        sub_code: str = None,
+        user_name: str = None,
+        vehicle_num: str = None,
+    ):
+        # This parameter is required.
+        self.api = api
+        self.bank_card = bank_card
+        self.biz_code = biz_code
+        # This parameter is required.
+        self.current_page = current_page
+        # This parameter is required.
+        self.end_date = end_date
+        self.identify_num = identify_num
+        self.isp_name = isp_name
+        self.mobile = mobile
+        # This parameter is required.
+        self.page_size = page_size
+        self.req_id = req_id
+        # This parameter is required.
+        self.start_date = start_date
+        self.sub_code = sub_code
+        self.user_name = user_name
+        self.vehicle_num = vehicle_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.bank_card is not None:
+            result['BankCard'] = self.bank_card
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('BankCard') is not None:
+            self.bank_card = m.get('BankCard')
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        return self
+
+
+class DescribeMetaSearchPageListResponseBodyItemsRequest(TeaModel):
+    def __init__(
+        self,
+        vehicle_num: str = None,
+        vehicle_type: str = None,
+        vehicle_type_name: str = None,
+    ):
+        self.vehicle_num = vehicle_num
+        self.vehicle_type = vehicle_type
+        self.vehicle_type_name = vehicle_type_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        if self.vehicle_type is not None:
+            result['VehicleType'] = self.vehicle_type
+        if self.vehicle_type_name is not None:
+            result['VehicleTypeName'] = self.vehicle_type_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        if m.get('VehicleType') is not None:
+            self.vehicle_type = m.get('VehicleType')
+        if m.get('VehicleTypeName') is not None:
+            self.vehicle_type_name = m.get('VehicleTypeName')
+        return self
+
+
+class DescribeMetaSearchPageListResponseBodyItemsResponseData(TeaModel):
+    def __init__(
+        self,
+        approved_count: str = None,
+        approved_load: str = None,
+        axle_count: str = None,
+        back_wheel_distance: str = None,
+        bank_card: str = None,
+        biz_code: str = None,
+        brand: str = None,
+        color: str = None,
+        displacement: str = None,
+        engine_num: str = None,
+        engine_type: str = None,
+        front_wheel_distance: str = None,
+        fuel_type: str = None,
+        inspection_date: str = None,
+        model_num: str = None,
+        power: str = None,
+        registration_date: str = None,
+        release_date: str = None,
+        retirement_date: str = None,
+        total_mass: str = None,
+        type: str = None,
+        unladen_mass: str = None,
+        use_property: str = None,
+        vehicle_state: str = None,
+        vin: str = None,
+        wheel_base: str = None,
+    ):
+        self.approved_count = approved_count
+        self.approved_load = approved_load
+        self.axle_count = axle_count
+        self.back_wheel_distance = back_wheel_distance
+        self.bank_card = bank_card
+        self.biz_code = biz_code
+        self.brand = brand
+        self.color = color
+        self.displacement = displacement
+        self.engine_num = engine_num
+        self.engine_type = engine_type
+        self.front_wheel_distance = front_wheel_distance
+        self.fuel_type = fuel_type
+        self.inspection_date = inspection_date
+        self.model_num = model_num
+        self.power = power
+        self.registration_date = registration_date
+        self.release_date = release_date
+        self.retirement_date = retirement_date
+        self.total_mass = total_mass
+        self.type = type
+        self.unladen_mass = unladen_mass
+        self.use_property = use_property
+        self.vehicle_state = vehicle_state
+        self.vin = vin
+        self.wheel_base = wheel_base
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.approved_count is not None:
+            result['ApprovedCount'] = self.approved_count
+        if self.approved_load is not None:
+            result['ApprovedLoad'] = self.approved_load
+        if self.axle_count is not None:
+            result['AxleCount'] = self.axle_count
+        if self.back_wheel_distance is not None:
+            result['BackWheelDistance'] = self.back_wheel_distance
+        if self.bank_card is not None:
+            result['BankCard'] = self.bank_card
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.brand is not None:
+            result['Brand'] = self.brand
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.displacement is not None:
+            result['Displacement'] = self.displacement
+        if self.engine_num is not None:
+            result['EngineNum'] = self.engine_num
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.front_wheel_distance is not None:
+            result['FrontWheelDistance'] = self.front_wheel_distance
+        if self.fuel_type is not None:
+            result['FuelType'] = self.fuel_type
+        if self.inspection_date is not None:
+            result['InspectionDate'] = self.inspection_date
+        if self.model_num is not None:
+            result['ModelNum'] = self.model_num
+        if self.power is not None:
+            result['Power'] = self.power
+        if self.registration_date is not None:
+            result['RegistrationDate'] = self.registration_date
+        if self.release_date is not None:
+            result['ReleaseDate'] = self.release_date
+        if self.retirement_date is not None:
+            result['RetirementDate'] = self.retirement_date
+        if self.total_mass is not None:
+            result['TotalMass'] = self.total_mass
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.unladen_mass is not None:
+            result['UnladenMass'] = self.unladen_mass
+        if self.use_property is not None:
+            result['UseProperty'] = self.use_property
+        if self.vehicle_state is not None:
+            result['VehicleState'] = self.vehicle_state
+        if self.vin is not None:
+            result['Vin'] = self.vin
+        if self.wheel_base is not None:
+            result['WheelBase'] = self.wheel_base
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApprovedCount') is not None:
+            self.approved_count = m.get('ApprovedCount')
+        if m.get('ApprovedLoad') is not None:
+            self.approved_load = m.get('ApprovedLoad')
+        if m.get('AxleCount') is not None:
+            self.axle_count = m.get('AxleCount')
+        if m.get('BackWheelDistance') is not None:
+            self.back_wheel_distance = m.get('BackWheelDistance')
+        if m.get('BankCard') is not None:
+            self.bank_card = m.get('BankCard')
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('Brand') is not None:
+            self.brand = m.get('Brand')
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Displacement') is not None:
+            self.displacement = m.get('Displacement')
+        if m.get('EngineNum') is not None:
+            self.engine_num = m.get('EngineNum')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('FrontWheelDistance') is not None:
+            self.front_wheel_distance = m.get('FrontWheelDistance')
+        if m.get('FuelType') is not None:
+            self.fuel_type = m.get('FuelType')
+        if m.get('InspectionDate') is not None:
+            self.inspection_date = m.get('InspectionDate')
+        if m.get('ModelNum') is not None:
+            self.model_num = m.get('ModelNum')
+        if m.get('Power') is not None:
+            self.power = m.get('Power')
+        if m.get('RegistrationDate') is not None:
+            self.registration_date = m.get('RegistrationDate')
+        if m.get('ReleaseDate') is not None:
+            self.release_date = m.get('ReleaseDate')
+        if m.get('RetirementDate') is not None:
+            self.retirement_date = m.get('RetirementDate')
+        if m.get('TotalMass') is not None:
+            self.total_mass = m.get('TotalMass')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UnladenMass') is not None:
+            self.unladen_mass = m.get('UnladenMass')
+        if m.get('UseProperty') is not None:
+            self.use_property = m.get('UseProperty')
+        if m.get('VehicleState') is not None:
+            self.vehicle_state = m.get('VehicleState')
+        if m.get('Vin') is not None:
+            self.vin = m.get('Vin')
+        if m.get('WheelBase') is not None:
+            self.wheel_base = m.get('WheelBase')
+        return self
+
+
+class DescribeMetaSearchPageListResponseBodyItemsResponse(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeMetaSearchPageListResponseBodyItemsResponseData = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeMetaSearchPageListResponseBodyItemsResponseData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class DescribeMetaSearchPageListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        api_name: str = None,
+        bank_card: str = None,
+        biz_code: str = None,
+        date: str = None,
+        identify_num: str = None,
+        isp_name: str = None,
+        mobile: str = None,
+        request: DescribeMetaSearchPageListResponseBodyItemsRequest = None,
+        request_id: str = None,
+        request_json: str = None,
+        response: DescribeMetaSearchPageListResponseBodyItemsResponse = None,
+        response_json: str = None,
+        sub_code: str = None,
+        user_name: str = None,
+        vehicle_num: str = None,
+    ):
+        self.api = api
+        self.api_name = api_name
+        self.bank_card = bank_card
+        self.biz_code = biz_code
+        self.date = date
+        self.identify_num = identify_num
+        self.isp_name = isp_name
+        self.mobile = mobile
+        self.request = request
+        self.request_id = request_id
+        self.request_json = request_json
+        self.response = response
+        self.response_json = response_json
+        self.sub_code = sub_code
+        self.user_name = user_name
+        self.vehicle_num = vehicle_num
+
+    def validate(self):
+        if self.request:
+            self.request.validate()
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.bank_card is not None:
+            result['BankCard'] = self.bank_card
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.request is not None:
+            result['Request'] = self.request.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.request_json is not None:
+            result['RequestJson'] = self.request_json
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.response_json is not None:
+            result['ResponseJson'] = self.response_json
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('BankCard') is not None:
+            self.bank_card = m.get('BankCard')
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Request') is not None:
+            temp_model = DescribeMetaSearchPageListResponseBodyItemsRequest()
+            self.request = temp_model.from_map(m['Request'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RequestJson') is not None:
+            self.request_json = m.get('RequestJson')
+        if m.get('Response') is not None:
+            temp_model = DescribeMetaSearchPageListResponseBodyItemsResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('ResponseJson') is not None:
+            self.response_json = m.get('ResponseJson')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        return self
+
+
+class DescribeMetaSearchPageListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeMetaSearchPageListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeMetaSearchPageListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeMetaSearchPageListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetaSearchPageListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetaSearchPageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMetaStatisticsListRequest(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # This parameter is required.
+        self.api = api
+        # This parameter is required.
+        self.end_date = end_date
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeMetaStatisticsListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        api_name: str = None,
+        bill_count: int = None,
+        bill_rate: str = None,
+        charge_count: int = None,
+        date: str = None,
+        isp_name: str = None,
+        no_record_count: int = None,
+        passed_count: int = None,
+        passed_rate: str = None,
+        success_count: int = None,
+        success_rate: str = None,
+        total_count: int = None,
+        unpassed_count: int = None,
+    ):
+        self.api = api
+        self.api_name = api_name
+        self.bill_count = bill_count
+        self.bill_rate = bill_rate
+        self.charge_count = charge_count
+        self.date = date
+        self.isp_name = isp_name
+        self.no_record_count = no_record_count
+        self.passed_count = passed_count
+        self.passed_rate = passed_rate
+        self.success_count = success_count
+        self.success_rate = success_rate
+        self.total_count = total_count
+        self.unpassed_count = unpassed_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.bill_count is not None:
+            result['BillCount'] = self.bill_count
+        if self.bill_rate is not None:
+            result['BillRate'] = self.bill_rate
+        if self.charge_count is not None:
+            result['ChargeCount'] = self.charge_count
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.no_record_count is not None:
+            result['NoRecordCount'] = self.no_record_count
+        if self.passed_count is not None:
+            result['PassedCount'] = self.passed_count
+        if self.passed_rate is not None:
+            result['PassedRate'] = self.passed_rate
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.success_rate is not None:
+            result['SuccessRate'] = self.success_rate
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.unpassed_count is not None:
+            result['UnpassedCount'] = self.unpassed_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('BillCount') is not None:
+            self.bill_count = m.get('BillCount')
+        if m.get('BillRate') is not None:
+            self.bill_rate = m.get('BillRate')
+        if m.get('ChargeCount') is not None:
+            self.charge_count = m.get('ChargeCount')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('NoRecordCount') is not None:
+            self.no_record_count = m.get('NoRecordCount')
+        if m.get('PassedCount') is not None:
+            self.passed_count = m.get('PassedCount')
+        if m.get('PassedRate') is not None:
+            self.passed_rate = m.get('PassedRate')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('SuccessRate') is not None:
+            self.success_rate = m.get('SuccessRate')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UnpassedCount') is not None:
+            self.unpassed_count = m.get('UnpassedCount')
+        return self
+
+
+class DescribeMetaStatisticsListResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeMetaStatisticsListResponseBodyItems] = None,
+        request_id: str = None,
+    ):
+        self.items = items
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeMetaStatisticsListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMetaStatisticsListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetaStatisticsListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetaStatisticsListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMetaStatisticsPageListRequest(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        current_page: int = None,
+        end_date: int = None,
+        page_size: int = None,
+        start_date: int = None,
+    ):
+        # This parameter is required.
+        self.api = api
+        # This parameter is required.
+        self.current_page = current_page
+        # This parameter is required.
+        self.end_date = end_date
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeMetaStatisticsPageListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        api_name: str = None,
+        bill_count: int = None,
+        bill_rate: str = None,
+        charge_count: int = None,
+        date: str = None,
+        isp_name: str = None,
+        no_record_count: int = None,
+        passed_count: int = None,
+        passed_rate: str = None,
+        success_count: int = None,
+        success_rate: str = None,
+        total_count: int = None,
+        unpassed_count: int = None,
+    ):
+        # Api。
+        self.api = api
+        self.api_name = api_name
+        self.bill_count = bill_count
+        self.bill_rate = bill_rate
+        self.charge_count = charge_count
+        self.date = date
+        self.isp_name = isp_name
+        self.no_record_count = no_record_count
+        self.passed_count = passed_count
+        self.passed_rate = passed_rate
+        self.success_count = success_count
+        self.success_rate = success_rate
+        self.total_count = total_count
+        self.unpassed_count = unpassed_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.bill_count is not None:
+            result['BillCount'] = self.bill_count
+        if self.bill_rate is not None:
+            result['BillRate'] = self.bill_rate
+        if self.charge_count is not None:
+            result['ChargeCount'] = self.charge_count
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.no_record_count is not None:
+            result['NoRecordCount'] = self.no_record_count
+        if self.passed_count is not None:
+            result['PassedCount'] = self.passed_count
+        if self.passed_rate is not None:
+            result['PassedRate'] = self.passed_rate
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.success_rate is not None:
+            result['SuccessRate'] = self.success_rate
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.unpassed_count is not None:
+            result['UnpassedCount'] = self.unpassed_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('BillCount') is not None:
+            self.bill_count = m.get('BillCount')
+        if m.get('BillRate') is not None:
+            self.bill_rate = m.get('BillRate')
+        if m.get('ChargeCount') is not None:
+            self.charge_count = m.get('ChargeCount')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('NoRecordCount') is not None:
+            self.no_record_count = m.get('NoRecordCount')
+        if m.get('PassedCount') is not None:
+            self.passed_count = m.get('PassedCount')
+        if m.get('PassedRate') is not None:
+            self.passed_rate = m.get('PassedRate')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('SuccessRate') is not None:
+            self.success_rate = m.get('SuccessRate')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UnpassedCount') is not None:
+            self.unpassed_count = m.get('UnpassedCount')
+        return self
+
+
+class DescribeMetaStatisticsPageListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeMetaStatisticsPageListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeMetaStatisticsPageListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeMetaStatisticsPageListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetaStatisticsPageListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetaStatisticsPageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOssStatusRequest(TeaModel):
+    def __init__(
+        self,
+        service_code: str = None,
+    ):
+        # Service code:
+        # - antcloudauth: Financial-grade real-person authentication
+        # - cloudauthst (discontinued): Enhanced real-person authentication
+        self.service_code = service_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        return self
+
+
+class DescribeOssStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        user_status: str = None,
+    ):
+        # The name of the OSS bucket for delivering authentication information.
+        self.bucket_name = bucket_name
+        # User activation status, SUCCESS indicates activated.
+        self.user_status = user_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.user_status is not None:
+            result['UserStatus'] = self.user_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('UserStatus') is not None:
+            self.user_status = m.get('UserStatus')
+        return self
+
+
+class DescribeOssStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeOssStatusResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data.
+        self.data = data
+        # The ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeOssStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeOssStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOssStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOssStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOssStatusV2Request(TeaModel):
+    def __init__(
+        self,
+        service_code: str = None,
+        source_ip: str = None,
+    ):
+        # ServiceCode for Real Person Cloud products:
+        # - **antcloudauth**: Financial-grade real person authentication
+        # - **cloudauthst (discontinued)**: Enhanced real person authentication
+        self.service_code = service_code
+        # Visitor\\"s source IP address.
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribeOssStatusV2ResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        region: str = None,
+        user_status: str = None,
+    ):
+        # Bucket name.
+        self.bucket_name = bucket_name
+        # Region.
+        self.region = region
+        # User activation status, **SUCCESS** indicates activated.
+        self.user_status = user_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.user_status is not None:
+            result['UserStatus'] = self.user_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('UserStatus') is not None:
+            self.user_status = m.get('UserStatus')
+        return self
+
+
+class DescribeOssStatusV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: DescribeOssStatusV2ResponseBodyResultObject = None,
+        success: bool = None,
+    ):
+        # Return code
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Returned result information.
+        self.result_object = result_object
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeOssStatusV2ResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeOssStatusV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOssStatusV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOssStatusV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeOssUploadTokenResponseBodyOssUploadToken(TeaModel):
     def __init__(
         self,
@@ -5073,6 +9321,229 @@ class DescribePageFaceVerifyDataResponse(TeaModel):
         return self
 
 
+class DescribePageSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        fail_reasons: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        # Failure reasons.
+        self.fail_reasons = fail_reasons
+        # The ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_reasons is not None:
+            result['FailReasons'] = self.fail_reasons
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailReasons') is not None:
+            self.fail_reasons = m.get('FailReasons')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePageSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePageSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePageSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProductCodeResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        product_name: str = None,
+    ):
+        # Product code.
+        self.product_code = product_code
+        # Name corresponding to the product code.
+        self.product_name = product_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        return self
+
+
+class DescribeProductCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeProductCodeResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        # Current query page number.
+        self.current_page = current_page
+        # List of product code information.
+        self.items = items
+        # Number of products per page.
+        self.page_size = page_size
+        # ID of this request.
+        self.request_id = request_id
+        # Total number of returned results.
+        self.total_count = total_count
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeProductCodeResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeProductCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProductCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProductCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSmartStatisticsPageListRequest(TeaModel):
     def __init__(
         self,
@@ -5324,6 +9795,1582 @@ class DescribeSmartStatisticsPageListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSmartStatisticsPageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyDeviceRiskStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        product_code: str = None,
+        scene_id: str = None,
+        service_code: str = None,
+        start_date: int = None,
+    ):
+        # End time.
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # Cloud product code.
+        self.product_code = product_code
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # - **cloudauth** (discontinued): Real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Start time of the query, in Unix timestamp format, in milliseconds.
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems(TeaModel):
+    def __init__(
+        self,
+        daily_call_count: int = None,
+        date: str = None,
+        device_risk_rate: str = None,
+        identity_risk_rate: str = None,
+    ):
+        # Daily call count.
+        self.daily_call_count = daily_call_count
+        # Date.
+        self.date = date
+        # Abnormal device risk ratio.
+        self.device_risk_rate = device_risk_rate
+        # Abnormal identity risk ratio.
+        self.identity_risk_rate = identity_risk_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.daily_call_count is not None:
+            result['DailyCallCount'] = self.daily_call_count
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.device_risk_rate is not None:
+            result['DeviceRiskRate'] = self.device_risk_rate
+        if self.identity_risk_rate is not None:
+            result['IdentityRiskRate'] = self.identity_risk_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DailyCallCount') is not None:
+            self.daily_call_count = m.get('DailyCallCount')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('DeviceRiskRate') is not None:
+            self.device_risk_rate = m.get('DeviceRiskRate')
+        if m.get('IdentityRiskRate') is not None:
+            self.identity_risk_rate = m.get('IdentityRiskRate')
+        return self
+
+
+class DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        face_attack_rate: str = None,
+        id_fake_rate: str = None,
+        items: List[DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems] = None,
+        risk_count: int = None,
+        root_rate: str = None,
+        simulator_rate: str = None,
+        virtual_video_rate: str = None,
+    ):
+        # Suspected fake face percentage: total number of suspected fake faces / total number of risks.
+        self.face_attack_rate = face_attack_rate
+        # Total number of suspected fake identities.
+        self.id_fake_rate = id_fake_rate
+        # Data items in the response.
+        self.items = items
+        # Number of risks.
+        self.risk_count = risk_count
+        # Root percentage: total number of root / total number of risks.
+        self.root_rate = root_rate
+        # Simulator percentage: total number of simulators / total number of risks.
+        self.simulator_rate = simulator_rate
+        # Virtual video percentage: total number of virtual videos / total number of risks.
+        self.virtual_video_rate = virtual_video_rate
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_attack_rate is not None:
+            result['FaceAttackRate'] = self.face_attack_rate
+        if self.id_fake_rate is not None:
+            result['IdFakeRate'] = self.id_fake_rate
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.risk_count is not None:
+            result['RiskCount'] = self.risk_count
+        if self.root_rate is not None:
+            result['RootRate'] = self.root_rate
+        if self.simulator_rate is not None:
+            result['SimulatorRate'] = self.simulator_rate
+        if self.virtual_video_rate is not None:
+            result['VirtualVideoRate'] = self.virtual_video_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceAttackRate') is not None:
+            self.face_attack_rate = m.get('FaceAttackRate')
+        if m.get('IdFakeRate') is not None:
+            self.id_fake_rate = m.get('IdFakeRate')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RiskCount') is not None:
+            self.risk_count = m.get('RiskCount')
+        if m.get('RootRate') is not None:
+            self.root_rate = m.get('RootRate')
+        if m.get('SimulatorRate') is not None:
+            self.simulator_rate = m.get('SimulatorRate')
+        if m.get('VirtualVideoRate') is not None:
+            self.virtual_video_rate = m.get('VirtualVideoRate')
+        return self
+
+
+class DescribeVerifyDeviceRiskStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Authentication result.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyDeviceRiskStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyDeviceRiskStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyDeviceRiskStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyFailStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        age_gt: str = None,
+        api: str = None,
+        device_type: str = None,
+        end_date: int = None,
+        product_code: str = None,
+        service_code: str = None,
+        start_date: int = None,
+    ):
+        # Age greater than 14 years old:
+        # - **T**: Greater than
+        # - **F**: Less than
+        self.age_gt = age_gt
+        # API code:
+        # - **INIT_SERVICE**: Server-side initialization failure
+        # - **INIT_DEVICE**: Client-side failure
+        # - **VERIFY_DEVICE**: Authentication failed
+        # 
+        # This parameter is required.
+        self.api = api
+        # Device type.
+        # - ios
+        # - android
+        # - websdk
+        self.device_type = device_type
+        # End time of the query.
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # Product code.
+        # 
+        # This parameter is required.
+        self.product_code = product_code
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # - **cloudauth** (discontinued): Real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Start time of the query.
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age_gt is not None:
+            result['AgeGt'] = self.age_gt
+        if self.api is not None:
+            result['Api'] = self.api
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgeGt') is not None:
+            self.age_gt = m.get('AgeGt')
+        if m.get('Api') is not None:
+            self.api = m.get('Api')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: int = None,
+        rate: str = None,
+    ):
+        # Error code.
+        self.code = code
+        # Failure count.
+        self.count = count
+        # Date: Date
+        self.rate = rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBodyResultObjectColumn(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems] = None,
+        total_count: int = None,
+    ):
+        # Column information.
+        self.items = items
+        # Total count.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: int = None,
+        date: str = None,
+    ):
+        # Error code.
+        self.code = code
+        # Count.
+        self.count = count
+        # Date.
+        self.date = date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.date is not None:
+            result['Date'] = self.date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData] = None,
+    ):
+        # Error code.
+        self.code = code
+        # Returned quantity data.
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBodyResultObjectLine(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems] = None,
+        total_count: int = None,
+    ):
+        # Column information.
+        self.items = items
+        # Total count.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        column: DescribeVerifyFailStatisticsResponseBodyResultObjectColumn = None,
+        line: DescribeVerifyFailStatisticsResponseBodyResultObjectLine = None,
+    ):
+        # Line chart of failure reasons.
+        self.column = column
+        # Bar chart of failure reasons.
+        self.line = line
+
+    def validate(self):
+        if self.column:
+            self.column.validate()
+        if self.line:
+            self.line.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['Column'] = self.column.to_map()
+        if self.line is not None:
+            result['Line'] = self.line.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Column') is not None:
+            temp_model = DescribeVerifyFailStatisticsResponseBodyResultObjectColumn()
+            self.column = temp_model.from_map(m['Column'])
+        if m.get('Line') is not None:
+            temp_model = DescribeVerifyFailStatisticsResponseBodyResultObjectLine()
+            self.line = temp_model.from_map(m['Line'])
+        return self
+
+
+class DescribeVerifyFailStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyFailStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Authentication result.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyFailStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyFailStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyFailStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyFailStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyPersonasDeviceModelStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        time_range: str = None,
+    ):
+        # Product Code.
+        self.product_code = product_code
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Time range for the query, indicating how many days back.
+        # 
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        return self
+
+
+class DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems(TeaModel):
+    def __init__(
+        self,
+        device_cnt: int = None,
+        device_model: str = None,
+        device_rate: str = None,
+    ):
+        # Number of devices.
+        self.device_cnt = device_cnt
+        # Device model
+        self.device_model = device_model
+        # The ratio of this device model to the total number of devices.
+        self.device_rate = device_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_cnt is not None:
+            result['DeviceCnt'] = self.device_cnt
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_rate is not None:
+            result['DeviceRate'] = self.device_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceCnt') is not None:
+            self.device_cnt = m.get('DeviceCnt')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceRate') is not None:
+            self.device_rate = m.get('DeviceRate')
+        return self
+
+
+class DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        all_device_cnt: int = None,
+        items: List[DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems] = None,
+    ):
+        # Total number of devices.
+        self.all_device_cnt = all_device_cnt
+        # List of data for different phone models.
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_device_cnt is not None:
+            result['AllDeviceCnt'] = self.all_device_cnt
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllDeviceCnt') is not None:
+            self.all_device_cnt = m.get('AllDeviceCnt')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVerifyPersonasDeviceModelStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Query result.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyPersonasDeviceModelStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyPersonasDeviceModelStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyPersonasDeviceModelStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyPersonasOsStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        time_range: str = None,
+    ):
+        # Product code.
+        self.product_code = product_code
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Time range for the query, indicating how many days ago.
+        # 
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        return self
+
+
+class DescribeVerifyPersonasOsStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        all_device_cnt: int = None,
+        device_android_cnt: int = None,
+        device_android_rate: str = None,
+        device_ios_cnt: int = None,
+        device_ios_rate: str = None,
+    ):
+        # Total number of authenticated devices.
+        self.all_device_cnt = all_device_cnt
+        # Number of authenticated Android devices.
+        self.device_android_cnt = device_android_cnt
+        # Proportion of Android devices.
+        self.device_android_rate = device_android_rate
+        # Number of authenticated iOS devices.
+        self.device_ios_cnt = device_ios_cnt
+        # Proportion of iOS devices.
+        self.device_ios_rate = device_ios_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_device_cnt is not None:
+            result['AllDeviceCnt'] = self.all_device_cnt
+        if self.device_android_cnt is not None:
+            result['DeviceAndroidCnt'] = self.device_android_cnt
+        if self.device_android_rate is not None:
+            result['DeviceAndroidRate'] = self.device_android_rate
+        if self.device_ios_cnt is not None:
+            result['DeviceIosCnt'] = self.device_ios_cnt
+        if self.device_ios_rate is not None:
+            result['DeviceIosRate'] = self.device_ios_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllDeviceCnt') is not None:
+            self.all_device_cnt = m.get('AllDeviceCnt')
+        if m.get('DeviceAndroidCnt') is not None:
+            self.device_android_cnt = m.get('DeviceAndroidCnt')
+        if m.get('DeviceAndroidRate') is not None:
+            self.device_android_rate = m.get('DeviceAndroidRate')
+        if m.get('DeviceIosCnt') is not None:
+            self.device_ios_cnt = m.get('DeviceIosCnt')
+        if m.get('DeviceIosRate') is not None:
+            self.device_ios_rate = m.get('DeviceIosRate')
+        return self
+
+
+class DescribeVerifyPersonasOsStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyPersonasOsStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Processing result.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyPersonasOsStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyPersonasOsStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyPersonasOsStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyPersonasOsStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyPersonasProvinceStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        time_range: str = None,
+    ):
+        # Cloud product code.
+        self.product_code = product_code
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Time range, search range is for the previous N days, TimeRange of 1 indicates the previous 1 day.
+        # 
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        return self
+
+
+class DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems(TeaModel):
+    def __init__(
+        self,
+        province_cnt: int = None,
+        province_name: str = None,
+        province_rate: str = None,
+    ):
+        # Total number of devices in the province.
+        self.province_cnt = province_cnt
+        # Province name.
+        self.province_name = province_name
+        # Percentage of the total for this province.
+        self.province_rate = province_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.province_cnt is not None:
+            result['ProvinceCnt'] = self.province_cnt
+        if self.province_name is not None:
+            result['ProvinceName'] = self.province_name
+        if self.province_rate is not None:
+            result['ProvinceRate'] = self.province_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProvinceCnt') is not None:
+            self.province_cnt = m.get('ProvinceCnt')
+        if m.get('ProvinceName') is not None:
+            self.province_name = m.get('ProvinceName')
+        if m.get('ProvinceRate') is not None:
+            self.province_rate = m.get('ProvinceRate')
+        return self
+
+
+class DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        all_user_cnt: int = None,
+        items: List[DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems] = None,
+    ):
+        # Total number of devices.
+        self.all_user_cnt = all_user_cnt
+        # Data items.
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_user_cnt is not None:
+            result['AllUserCnt'] = self.all_user_cnt
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllUserCnt') is not None:
+            self.all_user_cnt = m.get('AllUserCnt')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVerifyPersonasProvinceStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Query result.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyPersonasProvinceStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyPersonasProvinceStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyPersonasProvinceStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyPersonasSexStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        time_range: str = None,
+    ):
+        # Product Code.
+        self.product_code = product_code
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Time range, the search range is for the previous N days, TimeRange of 1 indicates the previous 1 day.
+        # 
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        return self
+
+
+class DescribeVerifyPersonasSexStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        age_0to_14cnt: int = None,
+        age_0to_14rate: str = None,
+        age_14to_18cnt: int = None,
+        age_14to_18rate: str = None,
+        age_18to_35cnt: int = None,
+        age_18to_35rate: str = None,
+        age_35to_50cnt: int = None,
+        age_35to_50rate: str = None,
+        age_50to_999cnt: int = None,
+        age_50to_999rate: str = None,
+        all_user_cnt: int = None,
+        female_cnt: int = None,
+        female_rate: str = None,
+        male_cnt: int = None,
+        male_rate: str = None,
+    ):
+        # Number of users under 14 years old.
+        self.age_0to_14cnt = age_0to_14cnt
+        # Proportion of users under 14 years old.
+        self.age_0to_14rate = age_0to_14rate
+        # Number of users between 14 and 18 years old.
+        self.age_14to_18cnt = age_14to_18cnt
+        # Proportion of users between 14 and 18 years old.
+        self.age_14to_18rate = age_14to_18rate
+        # Number of authenticated users between 18 and 35 years old.
+        self.age_18to_35cnt = age_18to_35cnt
+        # Proportion of authenticated users between 18 and 35 years old.
+        self.age_18to_35rate = age_18to_35rate
+        # Number of authenticated users between 35 and 50 years old.
+        self.age_35to_50cnt = age_35to_50cnt
+        # Proportion of users between 35 and 50 years old.
+        self.age_35to_50rate = age_35to_50rate
+        # Number of authenticated users over 50 years old.
+        self.age_50to_999cnt = age_50to_999cnt
+        # Proportion of authenticated users over 50 years old.
+        self.age_50to_999rate = age_50to_999rate
+        # Total number of authenticated users.
+        self.all_user_cnt = all_user_cnt
+        # Number of female users.
+        self.female_cnt = female_cnt
+        # Proportion of female authenticated users.
+        self.female_rate = female_rate
+        # Number of male users.
+        self.male_cnt = male_cnt
+        # Proportion of male users.
+        self.male_rate = male_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age_0to_14cnt is not None:
+            result['Age0To14Cnt'] = self.age_0to_14cnt
+        if self.age_0to_14rate is not None:
+            result['Age0To14Rate'] = self.age_0to_14rate
+        if self.age_14to_18cnt is not None:
+            result['Age14To18Cnt'] = self.age_14to_18cnt
+        if self.age_14to_18rate is not None:
+            result['Age14To18Rate'] = self.age_14to_18rate
+        if self.age_18to_35cnt is not None:
+            result['Age18To35Cnt'] = self.age_18to_35cnt
+        if self.age_18to_35rate is not None:
+            result['Age18To35Rate'] = self.age_18to_35rate
+        if self.age_35to_50cnt is not None:
+            result['Age35To50Cnt'] = self.age_35to_50cnt
+        if self.age_35to_50rate is not None:
+            result['Age35To50Rate'] = self.age_35to_50rate
+        if self.age_50to_999cnt is not None:
+            result['Age50To999Cnt'] = self.age_50to_999cnt
+        if self.age_50to_999rate is not None:
+            result['Age50To999Rate'] = self.age_50to_999rate
+        if self.all_user_cnt is not None:
+            result['AllUserCnt'] = self.all_user_cnt
+        if self.female_cnt is not None:
+            result['FemaleCnt'] = self.female_cnt
+        if self.female_rate is not None:
+            result['FemaleRate'] = self.female_rate
+        if self.male_cnt is not None:
+            result['MaleCnt'] = self.male_cnt
+        if self.male_rate is not None:
+            result['MaleRate'] = self.male_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Age0To14Cnt') is not None:
+            self.age_0to_14cnt = m.get('Age0To14Cnt')
+        if m.get('Age0To14Rate') is not None:
+            self.age_0to_14rate = m.get('Age0To14Rate')
+        if m.get('Age14To18Cnt') is not None:
+            self.age_14to_18cnt = m.get('Age14To18Cnt')
+        if m.get('Age14To18Rate') is not None:
+            self.age_14to_18rate = m.get('Age14To18Rate')
+        if m.get('Age18To35Cnt') is not None:
+            self.age_18to_35cnt = m.get('Age18To35Cnt')
+        if m.get('Age18To35Rate') is not None:
+            self.age_18to_35rate = m.get('Age18To35Rate')
+        if m.get('Age35To50Cnt') is not None:
+            self.age_35to_50cnt = m.get('Age35To50Cnt')
+        if m.get('Age35To50Rate') is not None:
+            self.age_35to_50rate = m.get('Age35To50Rate')
+        if m.get('Age50To999Cnt') is not None:
+            self.age_50to_999cnt = m.get('Age50To999Cnt')
+        if m.get('Age50To999Rate') is not None:
+            self.age_50to_999rate = m.get('Age50To999Rate')
+        if m.get('AllUserCnt') is not None:
+            self.all_user_cnt = m.get('AllUserCnt')
+        if m.get('FemaleCnt') is not None:
+            self.female_cnt = m.get('FemaleCnt')
+        if m.get('FemaleRate') is not None:
+            self.female_rate = m.get('FemaleRate')
+        if m.get('MaleCnt') is not None:
+            self.male_cnt = m.get('MaleCnt')
+        if m.get('MaleRate') is not None:
+            self.male_rate = m.get('MaleRate')
+        return self
+
+
+class DescribeVerifyPersonasSexStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyPersonasSexStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Returned data.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyPersonasSexStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyPersonasSexStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyPersonasSexStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyPersonasSexStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5779,6 +11826,857 @@ class DescribeVerifySDKResponse(TeaModel):
         return self
 
 
+class DescribeVerifySearchPageListRequest(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        current_page: str = None,
+        end_date: str = None,
+        has_device_risk: bool = None,
+        model: str = None,
+        outer_order_no: str = None,
+        page_size: str = None,
+        passed: str = None,
+        product_code: str = None,
+        root: int = None,
+        scene_id: str = None,
+        simulator: int = None,
+        start_date: str = None,
+        sub_code: str = None,
+        sub_codes: str = None,
+        virtual_video: int = None,
+    ):
+        # ID number.
+        self.cert_no = cert_no
+        # Authentication ID.
+        self.certify_id = certify_id
+        # Current page number.
+        # 
+        # This parameter is required.
+        self.current_page = current_page
+        # End date of the query. The format is a Unix timestamp, in milliseconds.
+        self.end_date = end_date
+        # Whether there is device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
+        self.has_device_risk = has_device_risk
+        # Liveness detection model.
+        self.model = model
+        # Unique identifier for the customer request.
+        self.outer_order_no = outer_order_no
+        # Number of items per page.
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # Whether the authentication passed:
+        # - **T**: Passed
+        # - **F**: Not passed
+        self.passed = passed
+        # Product code.
+        self.product_code = product_code
+        # Whether it is rooted (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
+        self.root = root
+        # Scene ID.
+        self.scene_id = scene_id
+        # Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
+        self.simulator = simulator
+        # Start date of the query.
+        self.start_date = start_date
+        # Result Code. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+        self.sub_code = sub_code
+        # Comma-separated Result Codes. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+        self.sub_codes = sub_codes
+        # Whether it is a virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+        self.virtual_video = virtual_video
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.has_device_risk is not None:
+            result['HasDeviceRisk'] = self.has_device_risk
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.root is not None:
+            result['Root'] = self.root
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.simulator is not None:
+            result['Simulator'] = self.simulator
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.sub_codes is not None:
+            result['SubCodes'] = self.sub_codes
+        if self.virtual_video is not None:
+            result['VirtualVideo'] = self.virtual_video
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('HasDeviceRisk') is not None:
+            self.has_device_risk = m.get('HasDeviceRisk')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Root') is not None:
+            self.root = m.get('Root')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Simulator') is not None:
+            self.simulator = m.get('Simulator')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('SubCodes') is not None:
+            self.sub_codes = m.get('SubCodes')
+        if m.get('VirtualVideo') is not None:
+            self.virtual_video = m.get('VirtualVideo')
+        return self
+
+
+class DescribeVerifySearchPageListResponseBodyItemsExtInfo(TeaModel):
+    def __init__(
+        self,
+        cert_name: str = None,
+        device_risk: str = None,
+        face_attack: str = None,
+        face_attack_score: float = None,
+        face_occlusion: str = None,
+        id_card_verify_score: float = None,
+        oss_bucket_name: str = None,
+        oss_id_face_object_name: str = None,
+        oss_id_national_emblem_object_name: str = None,
+        oss_object_name: str = None,
+        quality_score: float = None,
+        verify_score: float = None,
+        asr_texts: List[str] = None,
+        screen_video_object_names: List[str] = None,
+        voice_object_names: List[str] = None,
+    ):
+        # Desensitized name.
+        self.cert_name = cert_name
+        # Face guard label.
+        self.device_risk = device_risk
+        # Whether it is a face attack:
+        # - **T**: Yes
+        # - **F**: No
+        self.face_attack = face_attack
+        # Face attack score, with a range of 0~1. A value closer to 1 indicates a higher likelihood of an attack.
+        self.face_attack_score = face_attack_score
+        # Whether the face is occluded, T if yes, F otherwise.
+        self.face_occlusion = face_occlusion
+        # Face-to-ID card comparison score.
+        self.id_card_verify_score = id_card_verify_score
+        # The OSS bucket for the photo.
+        self.oss_bucket_name = oss_bucket_name
+        # OCR ID card face file name.
+        self.oss_id_face_object_name = oss_id_face_object_name
+        # OCR ID card national emblem file name.
+        self.oss_id_national_emblem_object_name = oss_id_national_emblem_object_name
+        # The name of the stored object.
+        self.oss_object_name = oss_object_name
+        # Liveness face quality score.
+        self.quality_score = quality_score
+        # Face comparison score.
+        self.verify_score = verify_score
+        # List of ASR texts.
+        self.asr_texts = asr_texts
+        # List of OSS file names for screen recording files.
+        self.screen_video_object_names = screen_video_object_names
+        # List of OSS file names for audio files.
+        self.voice_object_names = voice_object_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.device_risk is not None:
+            result['DeviceRisk'] = self.device_risk
+        if self.face_attack is not None:
+            result['FaceAttack'] = self.face_attack
+        if self.face_attack_score is not None:
+            result['FaceAttackScore'] = self.face_attack_score
+        if self.face_occlusion is not None:
+            result['FaceOcclusion'] = self.face_occlusion
+        if self.id_card_verify_score is not None:
+            result['IdCardVerifyScore'] = self.id_card_verify_score
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_id_face_object_name is not None:
+            result['OssIdFaceObjectName'] = self.oss_id_face_object_name
+        if self.oss_id_national_emblem_object_name is not None:
+            result['OssIdNationalEmblemObjectName'] = self.oss_id_national_emblem_object_name
+        if self.oss_object_name is not None:
+            result['OssObjectName'] = self.oss_object_name
+        if self.quality_score is not None:
+            result['QualityScore'] = self.quality_score
+        if self.verify_score is not None:
+            result['VerifyScore'] = self.verify_score
+        if self.asr_texts is not None:
+            result['asrTexts'] = self.asr_texts
+        if self.screen_video_object_names is not None:
+            result['screenVideoObjectNames'] = self.screen_video_object_names
+        if self.voice_object_names is not None:
+            result['voiceObjectNames'] = self.voice_object_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('DeviceRisk') is not None:
+            self.device_risk = m.get('DeviceRisk')
+        if m.get('FaceAttack') is not None:
+            self.face_attack = m.get('FaceAttack')
+        if m.get('FaceAttackScore') is not None:
+            self.face_attack_score = m.get('FaceAttackScore')
+        if m.get('FaceOcclusion') is not None:
+            self.face_occlusion = m.get('FaceOcclusion')
+        if m.get('IdCardVerifyScore') is not None:
+            self.id_card_verify_score = m.get('IdCardVerifyScore')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssIdFaceObjectName') is not None:
+            self.oss_id_face_object_name = m.get('OssIdFaceObjectName')
+        if m.get('OssIdNationalEmblemObjectName') is not None:
+            self.oss_id_national_emblem_object_name = m.get('OssIdNationalEmblemObjectName')
+        if m.get('OssObjectName') is not None:
+            self.oss_object_name = m.get('OssObjectName')
+        if m.get('QualityScore') is not None:
+            self.quality_score = m.get('QualityScore')
+        if m.get('VerifyScore') is not None:
+            self.verify_score = m.get('VerifyScore')
+        if m.get('asrTexts') is not None:
+            self.asr_texts = m.get('asrTexts')
+        if m.get('screenVideoObjectNames') is not None:
+            self.screen_video_object_names = m.get('screenVideoObjectNames')
+        if m.get('voiceObjectNames') is not None:
+            self.voice_object_names = m.get('voiceObjectNames')
+        return self
+
+
+class DescribeVerifySearchPageListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        ext_info: DescribeVerifySearchPageListResponseBodyItemsExtInfo = None,
+        gmt_verify: str = None,
+        model: str = None,
+        outer_order_no: str = None,
+        passed: str = None,
+        product_code: str = None,
+        root: int = None,
+        scene_id: int = None,
+        simulator: int = None,
+        sub_code: str = None,
+        user_id: str = None,
+        virtual_video: int = None,
+    ):
+        # Desensitized ID number.
+        self.cert_no = cert_no
+        # Certification ID.
+        self.certify_id = certify_id
+        # Extended information.
+        self.ext_info = ext_info
+        # Verification time of this authentication.
+        self.gmt_verify = gmt_verify
+        # Liveness detection scheme.
+        self.model = model
+        # Unique identifier for the customer request.
+        self.outer_order_no = outer_order_no
+        # Whether the certification passed. Values:
+        # - **T**: Passed.
+        # - **F**: Not passed.
+        self.passed = passed
+        # Product code.
+        self.product_code = product_code
+        # Whether it is root (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
+        self.root = root
+        # Scene ID.
+        self.scene_id = scene_id
+        # Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
+        self.simulator = simulator
+        # System returned error code.
+        self.sub_code = sub_code
+        # User ID.
+        self.user_id = user_id
+        # Whether it is a virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+        self.virtual_video = virtual_video
+
+    def validate(self):
+        if self.ext_info:
+            self.ext_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info.to_map()
+        if self.gmt_verify is not None:
+            result['GmtVerify'] = self.gmt_verify
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.root is not None:
+            result['Root'] = self.root
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.simulator is not None:
+            result['Simulator'] = self.simulator
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.virtual_video is not None:
+            result['VirtualVideo'] = self.virtual_video
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('ExtInfo') is not None:
+            temp_model = DescribeVerifySearchPageListResponseBodyItemsExtInfo()
+            self.ext_info = temp_model.from_map(m['ExtInfo'])
+        if m.get('GmtVerify') is not None:
+            self.gmt_verify = m.get('GmtVerify')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Root') is not None:
+            self.root = m.get('Root')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Simulator') is not None:
+            self.simulator = m.get('Simulator')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('VirtualVideo') is not None:
+            self.virtual_video = m.get('VirtualVideo')
+        return self
+
+
+class DescribeVerifySearchPageListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeVerifySearchPageListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        # Current page number.
+        self.current_page = current_page
+        # Paged list data.
+        self.items = items
+        # Number of items per page.
+        self.page_size = page_size
+        # ID of this request.
+        self.request_id = request_id
+        # Total number of pages.
+        self.total_count = total_count
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifySearchPageListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeVerifySearchPageListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifySearchPageListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifySearchPageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVerifyStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        age_gt: str = None,
+        end_date: int = None,
+        product_code: str = None,
+        service_code: str = None,
+        start_date: int = None,
+    ):
+        # Whether the age is over 14 years old:
+        # - **T**: Over
+        # - **F**: Under
+        self.age_gt = age_gt
+        # End date of the query.
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # Product Code.
+        self.product_code = product_code
+        # Service type:
+        # - **antcloudauth**: Financial-grade real-person authentication.
+        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # - **cloudauth** (discontinued): Real-person authentication.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Start date of the query.
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age_gt is not None:
+            result['AgeGt'] = self.age_gt
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgeGt') is not None:
+            self.age_gt = m.get('AgeGt')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeVerifyStatisticsResponseBodyResultObjectItems(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        init_device_pass_rate: str = None,
+        init_service: int = None,
+        init_service_conversion_rate: str = None,
+        init_service_pass_rate: str = None,
+        pass_rate: str = None,
+    ):
+        # Date.
+        self.date = date
+        # Client initialization pass rate.
+        self.init_device_pass_rate = init_device_pass_rate
+        # Number of server initializations.
+        self.init_service = init_service
+        # Server initialization conversion rate.
+        self.init_service_conversion_rate = init_service_conversion_rate
+        # Server initialization pass rate.
+        self.init_service_pass_rate = init_service_pass_rate
+        # Pass rate.
+        self.pass_rate = pass_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.init_device_pass_rate is not None:
+            result['InitDevicePassRate'] = self.init_device_pass_rate
+        if self.init_service is not None:
+            result['InitService'] = self.init_service
+        if self.init_service_conversion_rate is not None:
+            result['InitServiceConversionRate'] = self.init_service_conversion_rate
+        if self.init_service_pass_rate is not None:
+            result['InitServicePassRate'] = self.init_service_pass_rate
+        if self.pass_rate is not None:
+            result['PassRate'] = self.pass_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('InitDevicePassRate') is not None:
+            self.init_device_pass_rate = m.get('InitDevicePassRate')
+        if m.get('InitService') is not None:
+            self.init_service = m.get('InitService')
+        if m.get('InitServiceConversionRate') is not None:
+            self.init_service_conversion_rate = m.get('InitServiceConversionRate')
+        if m.get('InitServicePassRate') is not None:
+            self.init_service_pass_rate = m.get('InitServicePassRate')
+        if m.get('PassRate') is not None:
+            self.pass_rate = m.get('PassRate')
+        return self
+
+
+class DescribeVerifyStatisticsResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        init_device: int = None,
+        init_device_id: int = None,
+        init_device_id_success: int = None,
+        init_device_success: int = None,
+        init_service: int = None,
+        init_service_id: int = None,
+        init_service_id_success: int = None,
+        init_service_success: int = None,
+        items: List[DescribeVerifyStatisticsResponseBodyResultObjectItems] = None,
+        verify_device: int = None,
+        verify_device_id: int = None,
+        verify_device_id_success: int = None,
+        verify_device_id_success_passed: int = None,
+        verify_device_success: int = None,
+        verify_device_success_passed: int = None,
+    ):
+        # Number of client initializations.
+        self.init_device = init_device
+        # Number of identity deduplication client initializations.
+        self.init_device_id = init_device_id
+        # Number of successful identity deduplication client initializations.
+        self.init_device_id_success = init_device_id_success
+        # Number of client initialization calls.
+        self.init_device_success = init_device_success
+        # Number of service-side initializations.
+        self.init_service = init_service
+        # Total number of identity deduplication server initialization requests.
+        self.init_service_id = init_service_id
+        # Number of successful identity deduplication server initializations.
+        self.init_service_id_success = init_service_id_success
+        # Number of successful service-side initialization authentications.
+        self.init_service_success = init_service_success
+        # Daily pass/conversion rate (PV).
+        self.items = items
+        # Number of client verifications.
+        self.verify_device = verify_device
+        # Number of identity deduplication client authentications.
+        self.verify_device_id = verify_device_id
+        # Number of successful identity deduplication client verifications.
+        self.verify_device_id_success = verify_device_id_success
+        # Number of successful identity deduplication client authentications.
+        self.verify_device_id_success_passed = verify_device_id_success_passed
+        # Number of successful client authentications.
+        self.verify_device_success = verify_device_success
+        # Number of successful client authentications.
+        self.verify_device_success_passed = verify_device_success_passed
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.init_device is not None:
+            result['InitDevice'] = self.init_device
+        if self.init_device_id is not None:
+            result['InitDeviceId'] = self.init_device_id
+        if self.init_device_id_success is not None:
+            result['InitDeviceIdSuccess'] = self.init_device_id_success
+        if self.init_device_success is not None:
+            result['InitDeviceSuccess'] = self.init_device_success
+        if self.init_service is not None:
+            result['InitService'] = self.init_service
+        if self.init_service_id is not None:
+            result['InitServiceId'] = self.init_service_id
+        if self.init_service_id_success is not None:
+            result['InitServiceIdSuccess'] = self.init_service_id_success
+        if self.init_service_success is not None:
+            result['InitServiceSuccess'] = self.init_service_success
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.verify_device is not None:
+            result['VerifyDevice'] = self.verify_device
+        if self.verify_device_id is not None:
+            result['VerifyDeviceId'] = self.verify_device_id
+        if self.verify_device_id_success is not None:
+            result['VerifyDeviceIdSuccess'] = self.verify_device_id_success
+        if self.verify_device_id_success_passed is not None:
+            result['VerifyDeviceIdSuccessPassed'] = self.verify_device_id_success_passed
+        if self.verify_device_success is not None:
+            result['VerifyDeviceSuccess'] = self.verify_device_success
+        if self.verify_device_success_passed is not None:
+            result['VerifyDeviceSuccessPassed'] = self.verify_device_success_passed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InitDevice') is not None:
+            self.init_device = m.get('InitDevice')
+        if m.get('InitDeviceId') is not None:
+            self.init_device_id = m.get('InitDeviceId')
+        if m.get('InitDeviceIdSuccess') is not None:
+            self.init_device_id_success = m.get('InitDeviceIdSuccess')
+        if m.get('InitDeviceSuccess') is not None:
+            self.init_device_success = m.get('InitDeviceSuccess')
+        if m.get('InitService') is not None:
+            self.init_service = m.get('InitService')
+        if m.get('InitServiceId') is not None:
+            self.init_service_id = m.get('InitServiceId')
+        if m.get('InitServiceIdSuccess') is not None:
+            self.init_service_id_success = m.get('InitServiceIdSuccess')
+        if m.get('InitServiceSuccess') is not None:
+            self.init_service_success = m.get('InitServiceSuccess')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeVerifyStatisticsResponseBodyResultObjectItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('VerifyDevice') is not None:
+            self.verify_device = m.get('VerifyDevice')
+        if m.get('VerifyDeviceId') is not None:
+            self.verify_device_id = m.get('VerifyDeviceId')
+        if m.get('VerifyDeviceIdSuccess') is not None:
+            self.verify_device_id_success = m.get('VerifyDeviceIdSuccess')
+        if m.get('VerifyDeviceIdSuccessPassed') is not None:
+            self.verify_device_id_success_passed = m.get('VerifyDeviceIdSuccessPassed')
+        if m.get('VerifyDeviceSuccess') is not None:
+            self.verify_device_success = m.get('VerifyDeviceSuccess')
+        if m.get('VerifyDeviceSuccessPassed') is not None:
+            self.verify_device_success_passed = m.get('VerifyDeviceSuccessPassed')
+        return self
+
+
+class DescribeVerifyStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVerifyStatisticsResponseBodyResultObject = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Statistical results
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeVerifyStatisticsResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeVerifyStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVerifyTokenRequest(TeaModel):
     def __init__(
         self,
@@ -6069,6 +12967,316 @@ class DescribeVerifyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeVerifyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWhitelistSettingRequest(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        current_page: int = None,
+        lang: str = None,
+        page_size: int = None,
+        scene_id: int = None,
+        service_code: str = None,
+        source_ip: str = None,
+        status: str = None,
+        valid_end_date: int = None,
+        valid_start_date: int = None,
+    ):
+        # ID Number
+        self.cert_no = cert_no
+        # Certification ID
+        self.certify_id = certify_id
+        # Pagination parameter: current page number, default value is 1.
+        # 
+        # This parameter is required.
+        self.current_page = current_page
+        # Specify the language to query. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Number of items per page for pagination.
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # Scene ID.
+        self.scene_id = scene_id
+        # Service Code:
+        # - **Enhanced Financial Grade**: cloudauthst
+        # - **Financial Grade**: antcloudauth
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+        # Visitor\\"s source IP address.
+        self.source_ip = source_ip
+        # Whitelist status:
+        # - **VALID**: Valid
+        # - **INVALID**: Invalid
+        # - **DELETED**: Deleted
+        self.status = status
+        # Expiration date.
+        self.valid_end_date = valid_end_date
+        # Effective start time (in seconds timestamp).
+        self.valid_start_date = valid_start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.valid_end_date is not None:
+            result['ValidEndDate'] = self.valid_end_date
+        if self.valid_start_date is not None:
+            result['ValidStartDate'] = self.valid_start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidEndDate') is not None:
+            self.valid_end_date = m.get('ValidEndDate')
+        if m.get('ValidStartDate') is not None:
+            self.valid_start_date = m.get('ValidStartDate')
+        return self
+
+
+class DescribeWhitelistSettingResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        remark: str = None,
+        scene_id: int = None,
+        status: str = None,
+        valid_end_date: str = None,
+        valid_start_date: str = None,
+    ):
+        # Certificate number.
+        self.cert_no = cert_no
+        # Certificate ID.
+        self.certify_id = certify_id
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Whitelist ID.
+        self.id = id
+        # Remark.
+        self.remark = remark
+        # Scene ID.
+        self.scene_id = scene_id
+        # Whitelist status:
+        # - **VALID**: Valid.
+        # - **INVALID**: Invalid.
+        # - **DELETED**: Deleted.
+        self.status = status
+        # Effective end date.
+        self.valid_end_date = valid_end_date
+        # Effective start time.
+        self.valid_start_date = valid_start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.valid_end_date is not None:
+            result['ValidEndDate'] = self.valid_end_date
+        if self.valid_start_date is not None:
+            result['ValidStartDate'] = self.valid_start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidEndDate') is not None:
+            self.valid_end_date = m.get('ValidEndDate')
+        if m.get('ValidStartDate') is not None:
+            self.valid_start_date = m.get('ValidStartDate')
+        return self
+
+
+class DescribeWhitelistSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeWhitelistSettingResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # Pagination parameter: current page number, default value is 1.
+        self.current_page = current_page
+        # List of certification details.
+        self.items = items
+        # Number of items per page for pagination.
+        self.page_size = page_size
+        # ID of this request.
+        self.request_id = request_id
+        # Total count.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeWhitelistSettingResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeWhitelistSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWhitelistSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWhitelistSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6545,6 +13753,150 @@ class DetectFaceAttributesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectFaceAttributesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DownloadVerifyRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        biz_param: str = None,
+        product_type: str = None,
+    ):
+        # Query condition in JSON string format, specifically including fields:
+        # - **DownloadMode (String)**: Download mode,
+        #   - Example value: sync
+        # - **InvokeType (String)**: Product plan, corresponding to **ProductType**\
+        # - **SceneIdList (List<Long>)**: List of scene IDs
+        # - **StatisticsType (String)**: Statistics type
+        #   - day
+        #   - month
+        # - **StartDate (String)**: Start date of the query
+        #   - Example value: 2025-09-17 00:00:00 +0800
+        # - **EndDate (String)**: End date of the query
+        #   - Example value: 2025-10-16 23:59:59 +0800
+        # - **ProductProgramList**: List of product codes under the queried product plan
+        #   - Example value: ["FINANCE_FACE_VERIFY","MFVC"]
+        # - **Code (Information Verification API)**:
+        #   - **ID_CARD_2_META**: ID card two-factor verification
+        #   - **ID_PERIOD**: Validity period of ID card verification
+        #   - **MOBILE_ONLINE_LENGTH**: Mobile online duration
+        #   - **MOBILE_ONLINE_STATUS**: Mobile online status
+        #   - **MOBILE_3_META_SIMPLE**: Simplified mobile three-factor verification
+        #   - **MOBILE_3_META**: Detailed mobile three-factor verification
+        #   - **MOBILE_2_META**: Mobile two-factor verification
+        #   - **BANK_CARD_N_META**: Detailed bank card verification
+        #   - **MOBILE_DETECT**: Number detection 
+        #   - **VEHICLE_N_META**: Enhanced vehicle factor verification
+        #   - **VEHICLE_PENTA_INFO**: Vehicle five-item information recognition
+        #   - **VEHICLE_LICENSE_INFO**: Vehicle information recognition
+        #   - **VEHICLE_INSURE_DATE**: Vehicle insurance date inquiry
+        #   - **VEHICLE_CHECK**: Vehicle factor verification
+        # - **ProductCode** (Information Verification): Same as Code
+        self.biz_param = biz_param
+        # Product type:
+        # - **FINANCE_VERIFY**: Financial-level real-person authentication
+        # - **SMART_VERIFY**: Enhanced real-person authentication (discontinued)
+        # - **FACE_VERIFY**: Real-person authentication (discontinued)
+        # - **INFO_CHECK_STATISTICS**: Information verification
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_param is not None:
+            result['BizParam'] = self.biz_param
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizParam') is not None:
+            self.biz_param = m.get('BizParam')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class DownloadVerifyRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: str = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # OSS link for file download.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class DownloadVerifyRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DownloadVerifyRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DownloadVerifyRecordsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7644,6 +14996,245 @@ class Id3MetaVerifyResponse(TeaModel):
         return self
 
 
+class Id3MetaVerifyWithOCRRequest(TeaModel):
+    def __init__(
+        self,
+        cert_file: str = None,
+        cert_national_file: str = None,
+        cert_national_url: str = None,
+        cert_url: str = None,
+    ):
+        # Input stream for the portrait side of the ID card image. Choose either CertUrl or CertFile.
+        self.cert_file = cert_file
+        # URL for the national emblem side of the ID card image. Choose either CertNationalUrl or CertNationalFile, or omit both.
+        self.cert_national_file = cert_national_file
+        # National emblem side of the ID card image URL. A publicly accessible HTTP or HTTPS link. You can choose either CertNationalUrl or CertNationalFile, or omit both.
+        self.cert_national_url = cert_national_url
+        # Portrait side of the ID card image. A publicly accessible HTTP or HTTPS link. Choose either CertUrl or CertFile.
+        self.cert_url = cert_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_file is not None:
+            result['CertFile'] = self.cert_file
+        if self.cert_national_file is not None:
+            result['CertNationalFile'] = self.cert_national_file
+        if self.cert_national_url is not None:
+            result['CertNationalUrl'] = self.cert_national_url
+        if self.cert_url is not None:
+            result['CertUrl'] = self.cert_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertFile') is not None:
+            self.cert_file = m.get('CertFile')
+        if m.get('CertNationalFile') is not None:
+            self.cert_national_file = m.get('CertNationalFile')
+        if m.get('CertNationalUrl') is not None:
+            self.cert_national_url = m.get('CertNationalUrl')
+        if m.get('CertUrl') is not None:
+            self.cert_url = m.get('CertUrl')
+        return self
+
+
+class Id3MetaVerifyWithOCRAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        cert_file_object: BinaryIO = None,
+        cert_national_file_object: BinaryIO = None,
+        cert_national_url: str = None,
+        cert_url: str = None,
+    ):
+        # Input stream for the portrait side of the ID card image. Choose either CertUrl or CertFile.
+        self.cert_file_object = cert_file_object
+        # URL for the national emblem side of the ID card image. Choose either CertNationalUrl or CertNationalFile, or omit both.
+        self.cert_national_file_object = cert_national_file_object
+        # National emblem side of the ID card image URL. A publicly accessible HTTP or HTTPS link. You can choose either CertNationalUrl or CertNationalFile, or omit both.
+        self.cert_national_url = cert_national_url
+        # Portrait side of the ID card image. A publicly accessible HTTP or HTTPS link. Choose either CertUrl or CertFile.
+        self.cert_url = cert_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_file_object is not None:
+            result['CertFile'] = self.cert_file_object
+        if self.cert_national_file_object is not None:
+            result['CertNationalFile'] = self.cert_national_file_object
+        if self.cert_national_url is not None:
+            result['CertNationalUrl'] = self.cert_national_url
+        if self.cert_url is not None:
+            result['CertUrl'] = self.cert_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertFile') is not None:
+            self.cert_file_object = m.get('CertFile')
+        if m.get('CertNationalFile') is not None:
+            self.cert_national_file_object = m.get('CertNationalFile')
+        if m.get('CertNationalUrl') is not None:
+            self.cert_national_url = m.get('CertNationalUrl')
+        if m.get('CertUrl') is not None:
+            self.cert_url = m.get('CertUrl')
+        return self
+
+
+class Id3MetaVerifyWithOCRResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        card_info: str = None,
+        face_detail: str = None,
+    ):
+        # Identity verification result:
+        # 
+        # - 1: Consistent
+        # - 2: Inconsistent
+        # - 3: No record found
+        self.biz_code = biz_code
+        # Card ocr result.
+        self.card_info = card_info
+        # Face comparison score.
+        self.face_detail = face_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.card_info is not None:
+            result['CardInfo'] = self.card_info
+        if self.face_detail is not None:
+            result['FaceDetail'] = self.face_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CardInfo') is not None:
+            self.card_info = m.get('CardInfo')
+        if m.get('FaceDetail') is not None:
+            self.face_detail = m.get('FaceDetail')
+        return self
+
+
+class Id3MetaVerifyWithOCRResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: Id3MetaVerifyWithOCRResponseBodyResultObject = None,
+    ):
+        # Return code: 200 indicates success, any other value indicates failure. **Important**\
+        # 
+        # - This parameter indicates whether the interface was called correctly. For a detailed explanation of return codes, please refer to the error codes.
+        # - The business verification result can be viewed through the fields in ResultObject.
+        self.code = code
+        # Interface call return message. **Important** This parameter only indicates whether there was an exception with the interface.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Result object.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = Id3MetaVerifyWithOCRResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class Id3MetaVerifyWithOCRResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Id3MetaVerifyWithOCRResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Id3MetaVerifyWithOCRResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitCardVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -7911,6 +15502,7 @@ class InitFaceVerifyRequest(TeaModel):
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
         face_guard_output: str = None,
+        h_5degrade_confirm_btn: str = None,
         ip: str = None,
         meta_info: str = None,
         mobile: str = None,
@@ -8021,6 +15613,7 @@ class InitFaceVerifyRequest(TeaModel):
         # > - Choosing to output the device assistant will incur additional costs. For details, see [Paid Value-Added Services](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/face-guard?spm=a2c4g.11186623.0.0.443e5522rbHsR4).
         # > - If you do not need to output the device assistant label, you can either not pass the parameter or pass an empty value.
         self.face_guard_output = face_guard_output
+        self.h_5degrade_confirm_btn = h_5degrade_confirm_btn
         # User\\"s IP address.
         self.ip = ip
         # Metainfo environment parameter, which needs to be obtained through the client SDK.
@@ -8194,6 +15787,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['FaceContrastPictureUrl'] = self.face_contrast_picture_url
         if self.face_guard_output is not None:
             result['FaceGuardOutput'] = self.face_guard_output
+        if self.h_5degrade_confirm_btn is not None:
+            result['H5DegradeConfirmBtn'] = self.h_5degrade_confirm_btn
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.meta_info is not None:
@@ -8274,6 +15869,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.face_contrast_picture_url = m.get('FaceContrastPictureUrl')
         if m.get('FaceGuardOutput') is not None:
             self.face_guard_output = m.get('FaceGuardOutput')
+        if m.get('H5DegradeConfirmBtn') is not None:
+            self.h_5degrade_confirm_btn = m.get('H5DegradeConfirmBtn')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('MetaInfo') is not None:
@@ -10513,6 +18110,767 @@ class MobileOnlineTimeResponse(TeaModel):
         return self
 
 
+class ModifyBlackListStrategyRequestBlackListStrategy(TeaModel):
+    def __init__(
+        self,
+        biz_content: str = None,
+        biz_key: str = None,
+        id: int = None,
+        product_name: str = None,
+        status: str = None,
+    ):
+        # Blacklist string, with each blacklist entry separated by commas.
+        self.biz_content = biz_content
+        # List Type:
+        # - **mobile**: Mobile number blacklist
+        # - **ip**: IP blacklist
+        # - **identifyNum**: ID number blacklist
+        # - **bankCard**: Bank card blacklist
+        self.biz_key = biz_key
+        # Rule ID:
+        # - **Empty**: Add a new rule
+        # - **Non-empty**: Modify an existing rule
+        self.id = id
+        # Product Name:
+        # - **id2meta**: ID card two-factor verification
+        # - **mobile3Meta**: Mobile number factor verification
+        # - **bankcardMeta**: Bank card factor verification
+        self.product_name = product_name
+        # Verification Status:
+        # - **1**: Verification passed
+        # - **2**: Verification failed
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_content is not None:
+            result['BizContent'] = self.biz_content
+        if self.biz_key is not None:
+            result['BizKey'] = self.biz_key
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizContent') is not None:
+            self.biz_content = m.get('BizContent')
+        if m.get('BizKey') is not None:
+            self.biz_key = m.get('BizKey')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyBlackListStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        black_list_strategy: ModifyBlackListStrategyRequestBlackListStrategy = None,
+        region_id: str = None,
+    ):
+        # Blacklist rule.
+        self.black_list_strategy = black_list_strategy
+        # Region ID
+        self.region_id = region_id
+
+    def validate(self):
+        if self.black_list_strategy:
+            self.black_list_strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.black_list_strategy is not None:
+            result['BlackListStrategy'] = self.black_list_strategy.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackListStrategy') is not None:
+            temp_model = ModifyBlackListStrategyRequestBlackListStrategy()
+            self.black_list_strategy = temp_model.from_map(m['BlackListStrategy'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyBlackListStrategyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        black_list_strategy_shrink: str = None,
+        region_id: str = None,
+    ):
+        # Blacklist rule.
+        self.black_list_strategy_shrink = black_list_strategy_shrink
+        # Region ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.black_list_strategy_shrink is not None:
+            result['BlackListStrategy'] = self.black_list_strategy_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackListStrategy') is not None:
+            self.black_list_strategy_shrink = m.get('BlackListStrategy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyBlackListStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Return code: 200 for success, others for failure.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyBlackListStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBlackListStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBlackListStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyControlStrategyRequestControlStrategyList(TeaModel):
+    def __init__(
+        self,
+        api_name: str = None,
+        biz_type: str = None,
+        id: int = None,
+        status: str = None,
+        threshold: float = None,
+    ):
+        # API name, same as **ProductCode**.
+        self.api_name = api_name
+        # Rule configuration type:
+        # - **QPS**: QPS greater than
+        # - **SUCCESS_RATE_5_MIN**: Success rate in the last 5 minutes less than
+        # - **RESP_TIME_5_MIN**: Average response time in the last 5 minutes greater than
+        # - **AMOUNT_RISE**: Call volume growth ratio greater than
+        # - **AMOUNT_FALL**: Call volume decline ratio less than
+        # - **PASSED_RATE_1_HOUR**: Verification consistency rate in the last hour less than
+        # - **PARAM_ERROR_RATE_1_HOUR**: Parameter error rate in the last hour greater than
+        self.biz_type = biz_type
+        # Rule ID.
+        self.id = id
+        # Status:
+        # - **disabled**: Disabled
+        # - **normal**: Enabled
+        self.status = status
+        # Alarm threshold for the rule.
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class ModifyControlStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        control_strategy_list: List[ModifyControlStrategyRequestControlStrategyList] = None,
+        product_type: str = None,
+        region_id: str = None,
+    ):
+        # List of security alarm rules.
+        self.control_strategy_list = control_strategy_list
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others are phased out.
+        self.product_type = product_type
+        # Region ID of the intelligent access gateway instance.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.control_strategy_list:
+            for k in self.control_strategy_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ControlStrategyList'] = []
+        if self.control_strategy_list is not None:
+            for k in self.control_strategy_list:
+                result['ControlStrategyList'].append(k.to_map() if k else None)
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.control_strategy_list = []
+        if m.get('ControlStrategyList') is not None:
+            for k in m.get('ControlStrategyList'):
+                temp_model = ModifyControlStrategyRequestControlStrategyList()
+                self.control_strategy_list.append(temp_model.from_map(k))
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyControlStrategyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        control_strategy_list_shrink: str = None,
+        product_type: str = None,
+        region_id: str = None,
+    ):
+        # List of security alarm rules.
+        self.control_strategy_list_shrink = control_strategy_list_shrink
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others are phased out.
+        self.product_type = product_type
+        # Region ID of the intelligent access gateway instance.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_strategy_list_shrink is not None:
+            result['ControlStrategyList'] = self.control_strategy_list_shrink
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ControlStrategyList') is not None:
+            self.control_strategy_list_shrink = m.get('ControlStrategyList')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyControlStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Return code
+        self.code = code
+        # Information returned by the API call.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyControlStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyControlStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyControlStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCustomizeFlowStrategyListRequestStrategyObject(TeaModel):
+    def __init__(
+        self,
+        accumulate_key: str = None,
+        accumulate_window: int = None,
+        api_name: str = None,
+        flow_type: str = None,
+        id: int = None,
+        operation: str = None,
+        status: str = None,
+        threshold: int = None,
+        user_id: int = None,
+    ):
+        # AccumulateKey
+        self.accumulate_key = accumulate_key
+        # Flow control statistical window size, in minutes.
+        self.accumulate_window = accumulate_window
+        # API name, same as **ProductCode**.
+        # 
+        # This parameter is required.
+        self.api_name = api_name
+        # Flow type:
+        # - **ACCUMULATE**: Repeated appearance of ID card
+        # - **PASSED_RATE**: Pass rate less than
+        # - **SUB_CODE_205**: Authentication failed and liveness attack 205 ratio greater than
+        # - **SUB_CODE_206**: Authentication failed and liveness attack 206 ratio greater than
+        self.flow_type = flow_type
+        # Rule ID.
+        self.id = id
+        # Operation.
+        self.operation = operation
+        # Status:
+        # - **disabled**: Disabled
+        # - **normal**: Enabled
+        # 
+        # This parameter is required.
+        self.status = status
+        # Flow control threshold.
+        # 
+        # This parameter is required.
+        self.threshold = threshold
+        # User ID.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accumulate_key is not None:
+            result['AccumulateKey'] = self.accumulate_key
+        if self.accumulate_window is not None:
+            result['AccumulateWindow'] = self.accumulate_window
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.flow_type is not None:
+            result['FlowType'] = self.flow_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccumulateKey') is not None:
+            self.accumulate_key = m.get('AccumulateKey')
+        if m.get('AccumulateWindow') is not None:
+            self.accumulate_window = m.get('AccumulateWindow')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('FlowType') is not None:
+            self.flow_type = m.get('FlowType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ModifyCustomizeFlowStrategyListRequest(TeaModel):
+    def __init__(
+        self,
+        product_type: str = None,
+        strategy_object: List[ModifyCustomizeFlowStrategyListRequestStrategyObject] = None,
+    ):
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade real person), all others have been phased out.
+        self.product_type = product_type
+        # Strategy list.
+        self.strategy_object = strategy_object
+
+    def validate(self):
+        if self.strategy_object:
+            for k in self.strategy_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        result['StrategyObject'] = []
+        if self.strategy_object is not None:
+            for k in self.strategy_object:
+                result['StrategyObject'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        self.strategy_object = []
+        if m.get('StrategyObject') is not None:
+            for k in m.get('StrategyObject'):
+                temp_model = ModifyCustomizeFlowStrategyListRequestStrategyObject()
+                self.strategy_object.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyCustomizeFlowStrategyListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        product_type: str = None,
+        strategy_object_shrink: str = None,
+    ):
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade real person), all others have been phased out.
+        self.product_type = product_type
+        # Strategy list.
+        self.strategy_object_shrink = strategy_object_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.strategy_object_shrink is not None:
+            result['StrategyObject'] = self.strategy_object_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('StrategyObject') is not None:
+            self.strategy_object_shrink = m.get('StrategyObject')
+        return self
+
+
+class ModifyCustomizeFlowStrategyListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Return code, **200** indicates the interface responded successfully.
+        self.code = code
+        # Result data.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyCustomizeFlowStrategyListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCustomizeFlowStrategyListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCustomizeFlowStrategyListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDeviceInfoRequest(TeaModel):
     def __init__(
         self,
@@ -10999,6 +19357,1555 @@ class PageQueryWhiteListSettingResponse(TeaModel):
         return self
 
 
+class QueryBlackListStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        # Region ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class QueryBlackListStrategyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_content: str = None,
+        biz_key: str = None,
+        gmt_modified: int = None,
+        id: int = None,
+        product_name: str = None,
+        status: str = None,
+        user_id: int = None,
+    ):
+        # Blacklist string, separated by **commas**.
+        self.biz_content = biz_content
+        # List type:
+        # - mobile: Phone number blacklist
+        # - ip: IP blacklist
+        # - identifyNum: ID number blacklist
+        # - bankCard: Bank card blacklist
+        self.biz_key = biz_key
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Rule ID.
+        self.id = id
+        # Product name:
+        # - id2meta: ID number two-factor verification
+        # - mobile3Meta: Phone number factor verification
+        # - bankcardMeta: Bank card factor verification
+        self.product_name = product_name
+        # Status:
+        # - **disabled**: Disabled
+        # - **normal**: Enabled
+        self.status = status
+        # User ID.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_content is not None:
+            result['BizContent'] = self.biz_content
+        if self.biz_key is not None:
+            result['BizKey'] = self.biz_key
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizContent') is not None:
+            self.biz_content = m.get('BizContent')
+        if m.get('BizKey') is not None:
+            self.biz_key = m.get('BizKey')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryBlackListStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: List[QueryBlackListStrategyResponseBodyResultObject] = None,
+    ):
+        # Return code, **200** indicates successful API response.
+        self.code = code
+        # Error message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Returned result information.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['ResultObject'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_object = []
+        if m.get('ResultObject') is not None:
+            for k in m.get('ResultObject'):
+                temp_model = QueryBlackListStrategyResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        return self
+
+
+class QueryBlackListStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryBlackListStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryBlackListStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryControlStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        product_type: str = None,
+        region_id: str = None,
+    ):
+        # Product type, currently only supports ANT_CLOUD_AUTH (financial-grade real person), all others have been phased out.
+        self.product_type = product_type
+        # Region ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class QueryControlStrategyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        api_name: str = None,
+        biz_type: str = None,
+        id: int = None,
+        status: str = None,
+        threshold: float = None,
+        user_id: int = None,
+    ):
+        # API name, same as the **ProductCode** of the authentication interface.
+        self.api_name = api_name
+        # Rule configuration type:
+        # - **QPS**: QPS greater than
+        # - **SUCCESS_RATE_5_MIN**: Success rate in the last 5 minutes less than
+        # - **RESP_TIME_5_MIN**: Average response time in the last 5 minutes greater than
+        # - **AMOUNT_RISE**: Call volume growth ratio greater than
+        # - **AMOUNT_FALL**: Call volume decline ratio less than
+        # - **PASSED_RATE_1_HOUR**: Verification consistency rate in the last hour less than
+        # - **PARAM_ERROR_RATE_1_HOUR**: Parameter error rate in the last hour greater than
+        self.biz_type = biz_type
+        # Rule ID.
+        self.id = id
+        # Status:
+        # - **disabled**: Disabled
+        # - **normal**: Enabled
+        self.status = status
+        # Alarm threshold for rule configuration.
+        self.threshold = threshold
+        # User ID.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryControlStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: List[QueryControlStrategyResponseBodyResultObject] = None,
+    ):
+        # Return code: 200 for success, others for failure.
+        self.code = code
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Processing result.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['ResultObject'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_object = []
+        if m.get('ResultObject') is not None:
+            for k in m.get('ResultObject'):
+                temp_model = QueryControlStrategyResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        return self
+
+
+class QueryControlStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryControlStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryControlStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCustomizeFlowStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        product_type: str = None,
+        region_id: str = None,
+        user_id: int = None,
+    ):
+        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others have been phased out.
+        self.product_type = product_type
+        # regionId
+        self.region_id = region_id
+        # User ID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryCustomizeFlowStrategyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        accumulate_key: str = None,
+        accumulate_window: str = None,
+        api_name: str = None,
+        flow_type: str = None,
+        id: str = None,
+        operation: str = None,
+        status: str = None,
+        threshold: str = None,
+        user_id: str = None,
+    ):
+        # AccumulateKey
+        self.accumulate_key = accumulate_key
+        # Flow control statistical window, unit: **minutes**.
+        self.accumulate_window = accumulate_window
+        # API name, same as **ProductCode**.
+        self.api_name = api_name
+        # Flow type:
+        # - **ACCUMULATE**: ID card reappears
+        # - **PASSED_RATE**: Pass rate less than
+        # - **SUB_CODE_205**: Authentication failed and liveness attack 205 ratio greater than
+        # - **SUB_CODE_206**: Authentication failed and liveness attack 206 ratio greater than
+        self.flow_type = flow_type
+        # Rule ID.
+        self.id = id
+        # Operation.
+        self.operation = operation
+        # Status:
+        # - **disabled**: Disabled
+        # - **normal**: Enabled
+        self.status = status
+        # Threshold.
+        self.threshold = threshold
+        # User ID.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accumulate_key is not None:
+            result['AccumulateKey'] = self.accumulate_key
+        if self.accumulate_window is not None:
+            result['AccumulateWindow'] = self.accumulate_window
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.flow_type is not None:
+            result['FlowType'] = self.flow_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccumulateKey') is not None:
+            self.accumulate_key = m.get('AccumulateKey')
+        if m.get('AccumulateWindow') is not None:
+            self.accumulate_window = m.get('AccumulateWindow')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('FlowType') is not None:
+            self.flow_type = m.get('FlowType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryCustomizeFlowStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: List[QueryCustomizeFlowStrategyResponseBodyResultObject] = None,
+        success: bool = None,
+    ):
+        # Return code: 200 for success, others for failure.
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Error message.
+        self.message = message
+        # ID of this request.
+        self.request_id = request_id
+        # Processing result.
+        self.result_object = result_object
+        # Whether the response was successful.
+        self.success = success
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['ResultObject'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_object = []
+        if m.get('ResultObject') is not None:
+            for k in m.get('ResultObject'):
+                temp_model = QueryCustomizeFlowStrategyResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCustomizeFlowStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCustomizeFlowStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCustomizeFlowStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySceneConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        # Scene type.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class QuerySceneConfigsResponseBodySceneConfigs(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        scene_id: int = None,
+        type: str = None,
+        version: int = None,
+    ):
+        # Specific configuration content, in JSON string format.
+        self.config = config
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Configuration ID.
+        self.id = id
+        # Scene ID.
+        self.scene_id = scene_id
+        # Configuration type.
+        self.type = type
+        # Scene configuration version number.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.scene_id is not None:
+            result['sceneId'] = self.scene_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('sceneId') is not None:
+            self.scene_id = m.get('sceneId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class QuerySceneConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        scene_configs: List[QuerySceneConfigsResponseBodySceneConfigs] = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+        # Willingness configuration list.
+        self.scene_configs = scene_configs
+
+    def validate(self):
+        if self.scene_configs:
+            for k in self.scene_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['sceneConfigs'] = []
+        if self.scene_configs is not None:
+            for k in self.scene_configs:
+                result['sceneConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scene_configs = []
+        if m.get('sceneConfigs') is not None:
+            for k in m.get('sceneConfigs'):
+                temp_model = QuerySceneConfigsResponseBodySceneConfigs()
+                self.scene_configs.append(temp_model.from_map(k))
+        return self
+
+
+class QuerySceneConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySceneConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySceneConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryVerifyDownloadTaskRequest(TeaModel):
+    def __init__(
+        self,
+        download_task_id: str = None,
+    ):
+        # Download task ID.
+        self.download_task_id = download_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        return self
+
+
+class QueryVerifyDownloadTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        finish: bool = None,
+        request_id: str = None,
+        status: int = None,
+        url: str = None,
+    ):
+        # Error code.
+        self.error_code = error_code
+        # Whether the download task is completed:
+        # - **true**: Completed
+        # - **false**: Not completed
+        self.finish = finish
+        # ID of the request
+        self.request_id = request_id
+        # Task status:
+        # - **1**: File generation in progress
+        # - **2**: File generation completed
+        # - **3**: File generation failed
+        self.status = status
+        # Download URL.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.finish is not None:
+            result['Finish'] = self.finish
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Finish') is not None:
+            self.finish = m.get('Finish')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class QueryVerifyDownloadTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryVerifyDownloadTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryVerifyDownloadTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryVerifyFlowPackageRequest(TeaModel):
+    def __init__(
+        self,
+        product_type: str = None,
+    ):
+        # Product type:
+        # - **FINANCE_VERIFY**: Financial Grade Real Person Verification
+        # - **SMART_VERIFY**: Enhanced Real Person Verification (discontinued)
+        # - **FACE_VERIFY**: Real Person Verification (discontinued)
+        # 
+        # This parameter is required.
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class QueryVerifyFlowPackageResponseBodyItemsFlowDetails(TeaModel):
+    def __init__(
+        self,
+        capacity: float = None,
+        commodity_name: str = None,
+        curr_capacity: float = None,
+        curr_proportion: str = None,
+        expire_date: str = None,
+        instance_name: str = None,
+        status: str = None,
+        take_effect_date: str = None,
+    ):
+        # Total amount.
+        self.capacity = capacity
+        # Name of the flow package.
+        self.commodity_name = commodity_name
+        # Remaining amount.
+        self.curr_capacity = curr_capacity
+        # Proportion of remaining amount.
+        self.curr_proportion = curr_proportion
+        # Expiration date.
+        self.expire_date = expire_date
+        # Instance name
+        self.instance_name = instance_name
+        # Status.
+        self.status = status
+        # Effective date.
+        self.take_effect_date = take_effect_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.commodity_name is not None:
+            result['CommodityName'] = self.commodity_name
+        if self.curr_capacity is not None:
+            result['CurrCapacity'] = self.curr_capacity
+        if self.curr_proportion is not None:
+            result['CurrProportion'] = self.curr_proportion
+        if self.expire_date is not None:
+            result['ExpireDate'] = self.expire_date
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.take_effect_date is not None:
+            result['TakeEffectDate'] = self.take_effect_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('CommodityName') is not None:
+            self.commodity_name = m.get('CommodityName')
+        if m.get('CurrCapacity') is not None:
+            self.curr_capacity = m.get('CurrCapacity')
+        if m.get('CurrProportion') is not None:
+            self.curr_proportion = m.get('CurrProportion')
+        if m.get('ExpireDate') is not None:
+            self.expire_date = m.get('ExpireDate')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TakeEffectDate') is not None:
+            self.take_effect_date = m.get('TakeEffectDate')
+        return self
+
+
+class QueryVerifyFlowPackageResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        commodity_name: str = None,
+        curr_capacity: float = None,
+        curr_proportion: str = None,
+        flow_details: List[QueryVerifyFlowPackageResponseBodyItemsFlowDetails] = None,
+        total_capacity: float = None,
+        used_capacity: float = None,
+    ):
+        # Name of the resource package.
+        self.commodity_name = commodity_name
+        # Current available capacity.
+        self.curr_capacity = curr_capacity
+        # Proportion of current remaining capacity to total capacity.
+        self.curr_proportion = curr_proportion
+        # Details of the flow package.
+        self.flow_details = flow_details
+        # Total quota.
+        self.total_capacity = total_capacity
+        # Used capacity.
+        self.used_capacity = used_capacity
+
+    def validate(self):
+        if self.flow_details:
+            for k in self.flow_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_name is not None:
+            result['CommodityName'] = self.commodity_name
+        if self.curr_capacity is not None:
+            result['CurrCapacity'] = self.curr_capacity
+        if self.curr_proportion is not None:
+            result['CurrProportion'] = self.curr_proportion
+        result['FlowDetails'] = []
+        if self.flow_details is not None:
+            for k in self.flow_details:
+                result['FlowDetails'].append(k.to_map() if k else None)
+        if self.total_capacity is not None:
+            result['TotalCapacity'] = self.total_capacity
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityName') is not None:
+            self.commodity_name = m.get('CommodityName')
+        if m.get('CurrCapacity') is not None:
+            self.curr_capacity = m.get('CurrCapacity')
+        if m.get('CurrProportion') is not None:
+            self.curr_proportion = m.get('CurrProportion')
+        self.flow_details = []
+        if m.get('FlowDetails') is not None:
+            for k in m.get('FlowDetails'):
+                temp_model = QueryVerifyFlowPackageResponseBodyItemsFlowDetails()
+                self.flow_details.append(temp_model.from_map(k))
+        if m.get('TotalCapacity') is not None:
+            self.total_capacity = m.get('TotalCapacity')
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
+        return self
+
+
+class QueryVerifyFlowPackageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[QueryVerifyFlowPackageResponseBodyItems] = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: str = None,
+    ):
+        # Return code
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # List of returned data.
+        self.items = items
+        # ID of the request
+        self.request_id = request_id
+        # Indicates whether the response was successful.
+        self.success = success
+        # Total count.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = QueryVerifyFlowPackageResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class QueryVerifyFlowPackageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryVerifyFlowPackageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryVerifyFlowPackageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryVerifyInvokeSatisticRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        end_date: int = None,
+        page_size: int = None,
+        product_program_list: str = None,
+        product_type: str = None,
+        scene_id_list: str = None,
+        start_date: int = None,
+        statistics_type: str = None,
+    ):
+        # Current page number.
+        self.current_page = current_page
+        # End date of the query.
+        self.end_date = end_date
+        # Number of items per page.
+        self.page_size = page_size
+        # List of product codes to query. Please refer to the productCode under the corresponding ProductType.
+        self.product_program_list = product_program_list
+        # Product type:
+        # - **FINANCE_VERIFY**: Financial-grade real-person verification
+        # - **SMART_VERIFY**: Enhanced real-person verification (discontinued)
+        # - **FACE_VERIFY**: Real-person verification (discontinued)
+        self.product_type = product_type
+        # List of application scenarios.
+        self.scene_id_list = scene_id_list
+        # Start date of the query.
+        self.start_date = start_date
+        # Statistics dimension:
+        # - **day**: daily
+        # - **month**: monthly
+        self.statistics_type = statistics_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_program_list is not None:
+            result['ProductProgramList'] = self.product_program_list
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.scene_id_list is not None:
+            result['SceneIdList'] = self.scene_id_list
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.statistics_type is not None:
+            result['StatisticsType'] = self.statistics_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductProgramList') is not None:
+            self.product_program_list = m.get('ProductProgramList')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('SceneIdList') is not None:
+            self.scene_id_list = m.get('SceneIdList')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('StatisticsType') is not None:
+            self.statistics_type = m.get('StatisticsType')
+        return self
+
+
+class QueryVerifyInvokeSatisticResponseBodyItemsData(TeaModel):
+    def __init__(
+        self,
+        statistics_count: str = None,
+        statistics_type: str = None,
+    ):
+        # Number of occurrences of the statistic.
+        self.statistics_count = statistics_count
+        # ProductCode。
+        self.statistics_type = statistics_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.statistics_count is not None:
+            result['StatisticsCount'] = self.statistics_count
+        if self.statistics_type is not None:
+            result['StatisticsType'] = self.statistics_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StatisticsCount') is not None:
+            self.statistics_count = m.get('StatisticsCount')
+        if m.get('StatisticsType') is not None:
+            self.statistics_type = m.get('StatisticsType')
+        return self
+
+
+class QueryVerifyInvokeSatisticResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        data: List[QueryVerifyInvokeSatisticResponseBodyItemsData] = None,
+        statistics_date: str = None,
+    ):
+        # List of statistical data.
+        self.data = data
+        # Statistics date.
+        self.statistics_date = statistics_date
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.statistics_date is not None:
+            result['StatisticsDate'] = self.statistics_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryVerifyInvokeSatisticResponseBodyItemsData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('StatisticsDate') is not None:
+            self.statistics_date = m.get('StatisticsDate')
+        return self
+
+
+class QueryVerifyInvokeSatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current_page: int = None,
+        items: List[QueryVerifyInvokeSatisticResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        # Response code, **200** indicates a successful response.
+        self.code = code
+        # Current page number.
+        self.current_page = current_page
+        # List of returned data.
+        self.items = items
+        # Number of items per page.
+        self.page_size = page_size
+        # ID of the request
+        self.request_id = request_id
+        # Whether the response was successful.
+        self.success = success
+        # Total count.
+        self.total_count = total_count
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = QueryVerifyInvokeSatisticResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class QueryVerifyInvokeSatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryVerifyInvokeSatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryVerifyInvokeSatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveWhiteListSettingRequest(TeaModel):
     def __init__(
         self,
@@ -11162,6 +21069,286 @@ class RemoveWhiteListSettingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveWhiteListSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAntCloudAuthSceneRequest(TeaModel):
+    def __init__(
+        self,
+        bind_mini_program: str = None,
+        check_file_body: str = None,
+        check_file_name: str = None,
+        mini_program_name: str = None,
+        platform: str = None,
+        scene_id: int = None,
+        scene_name: str = None,
+        status: int = None,
+        store_image: str = None,
+    ):
+        # Whether to enable binding to a mini program:
+        # - **Y**: Enable
+        # - **N (default)**: Do not enable
+        # >Notice: If enabling the binding of a mini program, please ensure all parameters for the mini program are passed.
+        self.bind_mini_program = bind_mini_program
+        # Content of the uploaded verification file.
+        self.check_file_body = check_file_body
+        # Name of the uploaded verification file.
+        self.check_file_name = check_file_name
+        # Mini program name.
+        self.mini_program_name = mini_program_name
+        # Binding mini program platform:
+        # - **WECHAT**: WeChat
+        # - **ALIPAY**: Alipay
+        # - **TIKTOK**: TikTok
+        self.platform = platform
+        # Scenario ID.
+        # 
+        # This parameter is required.
+        self.scene_id = scene_id
+        # Scenario name.
+        self.scene_name = scene_name
+        # Currently meaningless, can be omitted.
+        self.status = status
+        # Whether to enable delivering the authentication files generated during the authentication process to the user\\"s OSS:
+        # - **Y**: Enable
+        # - **N (default)**: Disable
+        self.store_image = store_image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_mini_program is not None:
+            result['BindMiniProgram'] = self.bind_mini_program
+        if self.check_file_body is not None:
+            result['CheckFileBody'] = self.check_file_body
+        if self.check_file_name is not None:
+            result['CheckFileName'] = self.check_file_name
+        if self.mini_program_name is not None:
+            result['MiniProgramName'] = self.mini_program_name
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.store_image is not None:
+            result['StoreImage'] = self.store_image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindMiniProgram') is not None:
+            self.bind_mini_program = m.get('BindMiniProgram')
+        if m.get('CheckFileBody') is not None:
+            self.check_file_body = m.get('CheckFileBody')
+        if m.get('CheckFileName') is not None:
+            self.check_file_name = m.get('CheckFileName')
+        if m.get('MiniProgramName') is not None:
+            self.mini_program_name = m.get('MiniProgramName')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StoreImage') is not None:
+            self.store_image = m.get('StoreImage')
+        return self
+
+
+class UpdateAntCloudAuthSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAntCloudAuthSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAntCloudAuthSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAntCloudAuthSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSceneConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        id: int = None,
+        scene_id: int = None,
+    ):
+        # Scene configuration information, in JSON format. For the specific structure definition, please refer to more information about the configuration.
+        # 
+        # This parameter is required.
+        self.config = config
+        # Willingness configuration ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # Selected authentication scene.
+        # 
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.id is not None:
+            result['id'] = self.id
+        if self.scene_id is not None:
+            result['sceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('sceneId') is not None:
+            self.scene_id = m.get('sceneId')
+        return self
+
+
+class UpdateSceneConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of this request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateSceneConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSceneConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSceneConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

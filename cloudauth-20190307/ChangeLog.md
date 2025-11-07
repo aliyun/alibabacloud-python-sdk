@@ -1,3 +1,55 @@
+2025-11-07 Version: 3.11.0
+- Support API CreateAntCloudAuthScene.
+- Support API CreateCloudauthstScene.
+- Support API CreateSceneConfig.
+- Support API CreateWhitelistSetting.
+- Support API DeleteAllCustomizeFlowStrategy.
+- Support API DeleteAntCloudAuthScene.
+- Support API DeleteBlackListStrategy.
+- Support API DeleteCloudauthstScene.
+- Support API DeleteControlStrategy.
+- Support API DeleteCustomizeFlowStrategy.
+- Support API DeleteSceneConfig.
+- Support API DeleteWhitelistSetting.
+- Support API DescribeAntAndCloudAuthUserStatus.
+- Support API DescribeCloudauthstSceneList.
+- Support API DescribeInfoCheckExportRecord.
+- Support API DescribeListAntCloudAuthScenes.
+- Support API DescribeListFaceVerifyData.
+- Support API DescribeListFaceVerifyInfos.
+- Support API DescribeMetaSearchPageList.
+- Support API DescribeMetaStatisticsList.
+- Support API DescribeMetaStatisticsPageList.
+- Support API DescribeOssStatus.
+- Support API DescribeOssStatusV2.
+- Support API DescribePageSetting.
+- Support API DescribeProductCode.
+- Support API DescribeVerifyDeviceRiskStatistics.
+- Support API DescribeVerifyFailStatistics.
+- Support API DescribeVerifyPersonasDeviceModelStatistics.
+- Support API DescribeVerifyPersonasOsStatistics.
+- Support API DescribeVerifyPersonasProvinceStatistics.
+- Support API DescribeVerifyPersonasSexStatistics.
+- Support API DescribeVerifySearchPageList.
+- Support API DescribeVerifyStatistics.
+- Support API DescribeWhitelistSetting.
+- Support API DownloadVerifyRecords.
+- Support API Id3MetaVerifyWithOCR.
+- Support API ModifyBlackListStrategy.
+- Support API ModifyControlStrategy.
+- Support API ModifyCustomizeFlowStrategyList.
+- Support API QueryBlackListStrategy.
+- Support API QueryControlStrategy.
+- Support API QueryCustomizeFlowStrategy.
+- Support API QuerySceneConfigs.
+- Support API QueryVerifyDownloadTask.
+- Support API QueryVerifyFlowPackage.
+- Support API QueryVerifyInvokeSatistic.
+- Support API UpdateAntCloudAuthScene.
+- Support API UpdateSceneConfig.
+- Update API InitFaceVerify: add request parameters H5DegradeConfirmBtn.
+
+
 2025-09-25 Version: 3.10.0
 - Support API Id3MetaVerify.
 

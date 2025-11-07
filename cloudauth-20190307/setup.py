@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_cloudauth20190307.
 
-Created on 25/09/2025
+Created on 07/11/2025
 
 @author: Alibaba Cloud SDK
 """
