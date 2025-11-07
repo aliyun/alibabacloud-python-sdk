@@ -1,3 +1,7 @@
+2025-11-07 Version: 2.3.2
+- Update API DescribeLiveStreamsNotifyRecords: add response parameters Body.NotifyRecordsInfo.$.NotifyHeader.
+
+
 2025-11-04 Version: 2.3.1
 - Update API AddLiveRecordNotifyConfig: add request parameters NotifyAuthKey.
 - Update API AddLiveRecordNotifyConfig: add request parameters NotifyReqAuth.
