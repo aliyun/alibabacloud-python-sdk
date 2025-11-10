@@ -2,6 +2,10 @@
 - Update API GetAccount: add response parameters Body.Account.SecureMobilePhone.
 
 
+2025-11-10 Version: 2.2.2
+- Update API GetAccount: add response parameters Body.Account.SecureMobilePhone.
+
+
 2025-08-19 Version: 2.2.1
 - Generated python 2022-04-19 for ResourceDirectoryMaster.
 
