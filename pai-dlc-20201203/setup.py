@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_pai-dlc20201203.
+setup module for alibabacloud_pai_dlc20201203.
 
-Created on 17/10/2025
+Created on 10/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_pai_dlc20201203"
-NAME = "alibabacloud_pai-dlc20201203" or "alibabacloud-package"
+NAME = "alibabacloud_pai_dlc20201203" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud pai-dlc (20201203) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

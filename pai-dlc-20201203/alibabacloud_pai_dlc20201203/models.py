@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
 
 
 class AIMasterMessage(TeaModel):
@@ -190,12 +190,14 @@ class AssumeUserInfo(TeaModel):
         return self
 
 
-class AutoScalingSpec(TeaModel):
+class AutoscalingMetricSpec(TeaModel):
     def __init__(
         self,
-        scaling_strategy: str = None,
+        metric_name: str = None,
+        target_value: int = None,
     ):
-        self.scaling_strategy = scaling_strategy
+        self.metric_name = metric_name
+        self.target_value = target_value
 
     def validate(self):
         pass
@@ -206,12 +208,69 @@ class AutoScalingSpec(TeaModel):
             return _map
 
         result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.target_value is not None:
+            result['TargetValue'] = self.target_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('TargetValue') is not None:
+            self.target_value = m.get('TargetValue')
+        return self
+
+
+class AutoScalingSpec(TeaModel):
+    def __init__(
+        self,
+        autoscaling_metric_spec: AutoscalingMetricSpec = None,
+        max_replicas: int = None,
+        min_replicas: int = None,
+        pods_to_delete: List[str] = None,
+        scaling_strategy: str = None,
+    ):
+        self.autoscaling_metric_spec = autoscaling_metric_spec
+        self.max_replicas = max_replicas
+        self.min_replicas = min_replicas
+        self.pods_to_delete = pods_to_delete
+        self.scaling_strategy = scaling_strategy
+
+    def validate(self):
+        if self.autoscaling_metric_spec:
+            self.autoscaling_metric_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.autoscaling_metric_spec is not None:
+            result['AutoscalingMetricSpec'] = self.autoscaling_metric_spec.to_map()
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
+        if self.pods_to_delete is not None:
+            result['PodsToDelete'] = self.pods_to_delete
         if self.scaling_strategy is not None:
             result['ScalingStrategy'] = self.scaling_strategy
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoscalingMetricSpec') is not None:
+            temp_model = AutoscalingMetricSpec()
+            self.autoscaling_metric_spec = temp_model.from_map(m['AutoscalingMetricSpec'])
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
+        if m.get('PodsToDelete') is not None:
+            self.pods_to_delete = m.get('PodsToDelete')
         if m.get('ScalingStrategy') is not None:
             self.scaling_strategy = m.get('ScalingStrategy')
         return self
@@ -1991,6 +2050,39 @@ class JobItemUserVpc(TeaModel):
         return self
 
 
+class JobReplicaStatus(TeaModel):
+    def __init__(
+        self,
+        active: int = None,
+        type: str = None,
+    ):
+        self.active = active
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class LocalMountSpec(TeaModel):
     def __init__(
         self,
@@ -2715,6 +2807,7 @@ class JobItem(TeaModel):
         is_deleted: bool = None,
         job_id: str = None,
         job_max_running_time_minutes: int = None,
+        job_replica_statuses: JobReplicaStatus = None,
         job_specs: List[JobSpec] = None,
         job_type: str = None,
         node_count: str = None,
@@ -2772,6 +2865,7 @@ class JobItem(TeaModel):
         self.is_deleted = is_deleted
         self.job_id = job_id
         self.job_max_running_time_minutes = job_max_running_time_minutes
+        self.job_replica_statuses = job_replica_statuses
         self.job_specs = job_specs
         self.job_type = job_type
         self.node_count = node_count
@@ -2818,6 +2912,8 @@ class JobItem(TeaModel):
                     k.validate()
         if self.elastic_spec:
             self.elastic_spec.validate()
+        if self.job_replica_statuses:
+            self.job_replica_statuses.validate()
         if self.job_specs:
             for k in self.job_specs:
                 if k:
@@ -2887,6 +2983,8 @@ class JobItem(TeaModel):
             result['JobId'] = self.job_id
         if self.job_max_running_time_minutes is not None:
             result['JobMaxRunningTimeMinutes'] = self.job_max_running_time_minutes
+        if self.job_replica_statuses is not None:
+            result['JobReplicaStatuses'] = self.job_replica_statuses.to_map()
         result['JobSpecs'] = []
         if self.job_specs is not None:
             for k in self.job_specs:
@@ -3015,6 +3113,9 @@ class JobItem(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('JobMaxRunningTimeMinutes') is not None:
             self.job_max_running_time_minutes = m.get('JobMaxRunningTimeMinutes')
+        if m.get('JobReplicaStatuses') is not None:
+            temp_model = JobReplicaStatus()
+            self.job_replica_statuses = temp_model.from_map(m['JobReplicaStatuses'])
         self.job_specs = []
         if m.get('JobSpecs') is not None:
             for k in m.get('JobSpecs'):
@@ -5326,7 +5427,14 @@ class GetDashboardRequest(TeaModel):
         is_shared: bool = None,
         token: str = None,
     ):
+        # Specifies whether the link is a sharing link. If yes, a token is required.
+        # 
+        # Enumerated values:
+        # 
+        # *   true
+        # *   false
         self.is_shared = is_shared
+        # The token obtained from GetToken
         self.token = token
 
     def validate(self):
@@ -5358,6 +5466,7 @@ class GetDashboardResponseBody(TeaModel):
         self,
         url: str = None,
     ):
+        # The Dashboard URL
         self.url = url
 
     def validate(self):
@@ -5986,6 +6095,7 @@ class GetJobResponseBody(TeaModel):
         gmt_submitted_time: str = None,
         gmt_successed_time: str = None,
         job_id: str = None,
+        job_replica_statuses: List[JobReplicaStatus] = None,
         job_specs: List[JobSpec] = None,
         job_type: str = None,
         pods: List[GetJobResponseBodyPods] = None,
@@ -6050,6 +6160,7 @@ class GetJobResponseBody(TeaModel):
         self.gmt_successed_time = gmt_successed_time
         # The job ID.
         self.job_id = job_id
+        self.job_replica_statuses = job_replica_statuses
         # The node configuration of the job, which is **JobSpecs** in the CreateJob operation.
         self.job_specs = job_specs
         # The job type. Specified by the JobType parameter of the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
@@ -6123,6 +6234,10 @@ class GetJobResponseBody(TeaModel):
                     k.validate()
         if self.elastic_spec:
             self.elastic_spec.validate()
+        if self.job_replica_statuses:
+            for k in self.job_replica_statuses:
+                if k:
+                    k.validate()
         if self.job_specs:
             for k in self.job_specs:
                 if k:
@@ -6188,6 +6303,10 @@ class GetJobResponseBody(TeaModel):
             result['GmtSuccessedTime'] = self.gmt_successed_time
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        result['JobReplicaStatuses'] = []
+        if self.job_replica_statuses is not None:
+            for k in self.job_replica_statuses:
+                result['JobReplicaStatuses'].append(k.to_map() if k else None)
         result['JobSpecs'] = []
         if self.job_specs is not None:
             for k in self.job_specs:
@@ -6290,6 +6409,11 @@ class GetJobResponseBody(TeaModel):
             self.gmt_successed_time = m.get('GmtSuccessedTime')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        self.job_replica_statuses = []
+        if m.get('JobReplicaStatuses') is not None:
+            for k in m.get('JobReplicaStatuses'):
+                temp_model = JobReplicaStatus()
+                self.job_replica_statuses.append(temp_model.from_map(k))
         self.job_specs = []
         if m.get('JobSpecs') is not None:
             for k in m.get('JobSpecs'):
@@ -9143,6 +9267,7 @@ class UpdateJobRequest(TeaModel):
     def __init__(
         self,
         accessibility: str = None,
+        job_specs: List[JobSpec] = None,
         priority: int = None,
     ):
         # The job visibility. Valid values:
@@ -9150,6 +9275,7 @@ class UpdateJobRequest(TeaModel):
         # *   PUBLIC: The job is visible to all members in the workspace.
         # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        self.job_specs = job_specs
         # The job priority. Valid values: 1 to 9.
         # 
         # *   1: the lowest priority.
@@ -9157,7 +9283,10 @@ class UpdateJobRequest(TeaModel):
         self.priority = priority
 
     def validate(self):
-        pass
+        if self.job_specs:
+            for k in self.job_specs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9167,6 +9296,10 @@ class UpdateJobRequest(TeaModel):
         result = dict()
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        result['JobSpecs'] = []
+        if self.job_specs is not None:
+            for k in self.job_specs:
+                result['JobSpecs'].append(k.to_map() if k else None)
         if self.priority is not None:
             result['Priority'] = self.priority
         return result
@@ -9175,6 +9308,11 @@ class UpdateJobRequest(TeaModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        self.job_specs = []
+        if m.get('JobSpecs') is not None:
+            for k in m.get('JobSpecs'):
+                temp_model = JobSpec()
+                self.job_specs.append(temp_model.from_map(k))
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         return self

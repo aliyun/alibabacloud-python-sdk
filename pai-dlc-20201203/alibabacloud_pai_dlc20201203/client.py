@@ -664,7 +664,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetDashboardResponse:
         """
-        @summary 获取 Dashboard 链接
+        @summary Gets the DLC task\\"s Dashboard URL, if one exists.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetDashboardRequest
         @param headers: map
@@ -705,7 +707,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetDashboardResponse:
         """
-        @summary 获取 Dashboard 链接
+        @summary Gets the DLC task\\"s Dashboard URL, if one exists.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetDashboardRequest
         @param headers: map
@@ -744,7 +748,9 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetDashboardRequest,
     ) -> pai_dlc_20201203_models.GetDashboardResponse:
         """
-        @summary 获取 Dashboard 链接
+        @summary Gets the DLC task\\"s Dashboard URL, if one exists.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetDashboardRequest
         @return: GetDashboardResponse
@@ -759,7 +765,9 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetDashboardRequest,
     ) -> pai_dlc_20201203_models.GetDashboardResponse:
         """
-        @summary 获取 Dashboard 链接
+        @summary Gets the DLC task\\"s Dashboard URL, if one exists.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetDashboardRequest
         @return: GetDashboardResponse
@@ -3009,6 +3017,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.job_specs):
+            body['JobSpecs'] = request.job_specs
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         req = open_api_models.OpenApiRequest(
@@ -3050,6 +3060,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.job_specs):
+            body['JobSpecs'] = request.job_specs
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         req = open_api_models.OpenApiRequest(
