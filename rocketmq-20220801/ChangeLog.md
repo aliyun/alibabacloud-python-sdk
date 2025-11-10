@@ -1,3 +1,30 @@
+2025-11-10 Version: 5.0.0
+- Support API GetConsumeTimespan.
+- Support API ListMigrations.
+- Update API CreateConsumerGroup: add request parameters body.messageModel.
+- Update API CreateConsumerGroup: add request parameters body.topicName.
+- Update API CreateTopic: add request parameters body.liteTopicExpiration.
+- Update API GetConsumerGroup: add response parameters Body.data.messageModel.
+- Update API GetConsumerGroup: add response parameters Body.data.topicName.
+- Update API GetConsumerGroupLag: add request parameters liteTopicName.
+- Update API GetConsumerGroupLag: add response parameters Body.data.liteTopicLagMap.
+- Update API GetConsumerGroupLag: add response parameters Body.data.topicName.
+- Update API GetMessageDetail: add response parameters Body.data.liteTopicName.
+- Update API GetTopic: add response parameters Body.data.liteTopicExpiration.
+- Update API GetTrace: add response parameters Body.data.messageInfo.liteTopicName.
+- Update API ListConsumerConnections: add request parameters liteTopicName.
+- Update API ListConsumerConnections: add request parameters topicName.
+- Update API ListConsumerConnections: add request The number of query or body parameters has changed from zero to many.
+- Update API ListConsumerGroups: add response parameters Body.data.list.$.messageModel.
+- Update API ListConsumerGroups: add response parameters Body.data.list.$.topicName.
+- Update API ListMessages: add request parameters liteTopicName.
+- Update API ListMessages: add response parameters Body.data.list.$.liteTopicName.
+- Update API ListTopics: add response parameters Body.data.list.$.liteTopicExpiration.
+- Update API ListTraces: add request parameters liteTopicName.
+- Update API UpdateTopic: add request parameters body.liteTopicExpiration.
+- Update API VerifySendMessage: add request parameters body.liteTopicName.
+
+
 2025-10-10 Version: 4.1.2
 - Update API CreateInstance: add request parameters body.productInfo.capacityType.
 - Update API CreateInstance: add request parameters body.productInfo.provisionedCapacity.

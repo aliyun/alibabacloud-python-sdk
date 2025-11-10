@@ -4,6 +4,39 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class DataLiteTopicLagMapValue(TeaModel):
+    def __init__(
+        self,
+        ready_count: int = None,
+        delivery_duration: int = None,
+    ):
+        self.ready_count = ready_count
+        self.delivery_duration = delivery_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ready_count is not None:
+            result['readyCount'] = self.ready_count
+        if self.delivery_duration is not None:
+            result['deliveryDuration'] = self.delivery_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('readyCount') is not None:
+            self.ready_count = m.get('readyCount')
+        if m.get('deliveryDuration') is not None:
+            self.delivery_duration = m.get('deliveryDuration')
+        return self
+
+
 class DataTopicLagMapValue(TeaModel):
     def __init__(
         self,
@@ -527,7 +560,9 @@ class CreateConsumerGroupRequest(TeaModel):
         consume_retry_policy: CreateConsumerGroupRequestConsumeRetryPolicy = None,
         delivery_order_type: str = None,
         max_receive_tps: int = None,
+        message_model: str = None,
         remark: str = None,
+        topic_name: str = None,
     ):
         # The consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
         # 
@@ -544,8 +579,10 @@ class CreateConsumerGroupRequest(TeaModel):
         self.delivery_order_type = delivery_order_type
         # The maximum number of messages that can be processed by consumers per second.
         self.max_receive_tps = max_receive_tps
+        self.message_model = message_model
         # The description of the consumer group.
         self.remark = remark
+        self.topic_name = topic_name
 
     def validate(self):
         if self.consume_retry_policy:
@@ -563,8 +600,12 @@ class CreateConsumerGroupRequest(TeaModel):
             result['deliveryOrderType'] = self.delivery_order_type
         if self.max_receive_tps is not None:
             result['maxReceiveTps'] = self.max_receive_tps
+        if self.message_model is not None:
+            result['messageModel'] = self.message_model
         if self.remark is not None:
             result['remark'] = self.remark
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
         return result
 
     def from_map(self, m: dict = None):
@@ -576,8 +617,12 @@ class CreateConsumerGroupRequest(TeaModel):
             self.delivery_order_type = m.get('deliveryOrderType')
         if m.get('maxReceiveTps') is not None:
             self.max_receive_tps = m.get('maxReceiveTps')
+        if m.get('messageModel') is not None:
+            self.message_model = m.get('messageModel')
         if m.get('remark') is not None:
             self.remark = m.get('remark')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
         return self
 
 
@@ -2291,10 +2336,12 @@ class CreateInstanceIpWhitelistResponse(TeaModel):
 class CreateTopicRequest(TeaModel):
     def __init__(
         self,
+        lite_topic_expiration: int = None,
         max_send_tps: int = None,
         message_type: str = None,
         remark: str = None,
     ):
+        self.lite_topic_expiration = lite_topic_expiration
         # The maximum TPS for message sending.
         self.max_send_tps = max_send_tps
         # The type of messages in the topic that you want to create.
@@ -2322,6 +2369,8 @@ class CreateTopicRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lite_topic_expiration is not None:
+            result['liteTopicExpiration'] = self.lite_topic_expiration
         if self.max_send_tps is not None:
             result['maxSendTps'] = self.max_send_tps
         if self.message_type is not None:
@@ -2332,6 +2381,8 @@ class CreateTopicRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('liteTopicExpiration') is not None:
+            self.lite_topic_expiration = m.get('liteTopicExpiration')
         if m.get('maxSendTps') is not None:
             self.max_send_tps = m.get('maxSendTps')
         if m.get('messageType') is not None:
@@ -4185,6 +4236,175 @@ class FinishMigrationStageResponse(TeaModel):
         return self
 
 
+class GetConsumeTimespanResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        consume_timestamp: int = None,
+        consumer_group_id: str = None,
+        instance_id: str = None,
+        max_timestamp: int = None,
+        min_timestamp: int = None,
+        topic_name: str = None,
+    ):
+        self.consume_timestamp = consume_timestamp
+        self.consumer_group_id = consumer_group_id
+        self.instance_id = instance_id
+        self.max_timestamp = max_timestamp
+        self.min_timestamp = min_timestamp
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consume_timestamp is not None:
+            result['consumeTimestamp'] = self.consume_timestamp
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.max_timestamp is not None:
+            result['maxTimestamp'] = self.max_timestamp
+        if self.min_timestamp is not None:
+            result['minTimestamp'] = self.min_timestamp
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumeTimestamp') is not None:
+            self.consume_timestamp = m.get('consumeTimestamp')
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('maxTimestamp') is not None:
+            self.max_timestamp = m.get('maxTimestamp')
+        if m.get('minTimestamp') is not None:
+            self.min_timestamp = m.get('minTimestamp')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class GetConsumeTimespanResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetConsumeTimespanResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetConsumeTimespanResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetConsumeTimespanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConsumeTimespanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConsumeTimespanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
     def __init__(
         self,
@@ -4252,9 +4472,11 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         delivery_order_type: str = None,
         instance_id: str = None,
         max_receive_tps: int = None,
+        message_model: str = None,
         region_id: str = None,
         remark: str = None,
         status: str = None,
+        topic_name: str = None,
         update_time: str = None,
     ):
         # The consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
@@ -4274,6 +4496,7 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         self.instance_id = instance_id
         # Maximum received message tps
         self.max_receive_tps = max_receive_tps
+        self.message_model = message_model
         # The ID of the region in which the instance resides.
         self.region_id = region_id
         # The remarks on the consumer group.
@@ -4285,6 +4508,7 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         # *   RUNNING
         # *   CREATING
         self.status = status
+        self.topic_name = topic_name
         # The time when the consumer group was last updated.
         self.update_time = update_time
 
@@ -4310,12 +4534,16 @@ class GetConsumerGroupResponseBodyData(TeaModel):
             result['instanceId'] = self.instance_id
         if self.max_receive_tps is not None:
             result['maxReceiveTps'] = self.max_receive_tps
+        if self.message_model is not None:
+            result['messageModel'] = self.message_model
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.remark is not None:
             result['remark'] = self.remark
         if self.status is not None:
             result['status'] = self.status
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
         if self.update_time is not None:
             result['updateTime'] = self.update_time
         return result
@@ -4335,12 +4563,16 @@ class GetConsumerGroupResponseBodyData(TeaModel):
             self.instance_id = m.get('instanceId')
         if m.get('maxReceiveTps') is not None:
             self.max_receive_tps = m.get('maxReceiveTps')
+        if m.get('messageModel') is not None:
+            self.message_model = m.get('messageModel')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('remark') is not None:
             self.remark = m.get('remark')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
         return self
@@ -4469,8 +4701,10 @@ class GetConsumerGroupResponse(TeaModel):
 class GetConsumerGroupLagRequest(TeaModel):
     def __init__(
         self,
+        lite_topic_name: str = None,
         topic_name: str = None,
     ):
+        self.lite_topic_name = lite_topic_name
         # The topic name.
         self.topic_name = topic_name
 
@@ -4483,12 +4717,16 @@ class GetConsumerGroupLagRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.topic_name is not None:
             result['topicName'] = self.topic_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('topicName') is not None:
             self.topic_name = m.get('topicName')
         return self
@@ -4548,22 +4786,30 @@ class GetConsumerGroupLagResponseBodyData(TeaModel):
         self,
         consumer_group_id: str = None,
         instance_id: str = None,
+        lite_topic_lag_map: Dict[str, DataLiteTopicLagMapValue] = None,
         region_id: str = None,
         topic_lag_map: Dict[str, DataTopicLagMapValue] = None,
+        topic_name: str = None,
         total_lag: GetConsumerGroupLagResponseBodyDataTotalLag = None,
     ):
         # Consumer Group ID
         self.consumer_group_id = consumer_group_id
         # Instance ID
         self.instance_id = instance_id
+        self.lite_topic_lag_map = lite_topic_lag_map
         # Region ID
         self.region_id = region_id
         # Backlog for each topic
         self.topic_lag_map = topic_lag_map
+        self.topic_name = topic_name
         # Total lag count
         self.total_lag = total_lag
 
     def validate(self):
+        if self.lite_topic_lag_map:
+            for v in self.lite_topic_lag_map.values():
+                if v:
+                    v.validate()
         if self.topic_lag_map:
             for v in self.topic_lag_map.values():
                 if v:
@@ -4581,12 +4827,18 @@ class GetConsumerGroupLagResponseBodyData(TeaModel):
             result['consumerGroupId'] = self.consumer_group_id
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        result['liteTopicLagMap'] = {}
+        if self.lite_topic_lag_map is not None:
+            for k, v in self.lite_topic_lag_map.items():
+                result['liteTopicLagMap'][k] = v.to_map()
         if self.region_id is not None:
             result['regionId'] = self.region_id
         result['topicLagMap'] = {}
         if self.topic_lag_map is not None:
             for k, v in self.topic_lag_map.items():
                 result['topicLagMap'][k] = v.to_map()
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
         if self.total_lag is not None:
             result['totalLag'] = self.total_lag.to_map()
         return result
@@ -4597,6 +4849,11 @@ class GetConsumerGroupLagResponseBodyData(TeaModel):
             self.consumer_group_id = m.get('consumerGroupId')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        self.lite_topic_lag_map = {}
+        if m.get('liteTopicLagMap') is not None:
+            for k, v in m.get('liteTopicLagMap').items():
+                temp_model = DataLiteTopicLagMapValue()
+                self.lite_topic_lag_map[k] = temp_model.from_map(v)
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         self.topic_lag_map = {}
@@ -4604,6 +4861,8 @@ class GetConsumerGroupLagResponseBodyData(TeaModel):
             for k, v in m.get('topicLagMap').items():
                 temp_model = DataTopicLagMapValue()
                 self.topic_lag_map[k] = temp_model.from_map(v)
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
         if m.get('totalLag') is not None:
             temp_model = GetConsumerGroupLagResponseBodyDataTotalLag()
             self.total_lag = temp_model.from_map(m['totalLag'])
@@ -7757,6 +8016,7 @@ class GetMessageDetailResponseBodyData(TeaModel):
         born_host: str = None,
         born_time: str = None,
         instance_id: str = None,
+        lite_topic_name: str = None,
         message_group: str = None,
         message_id: str = None,
         message_keys: List[str] = None,
@@ -7779,6 +8039,7 @@ class GetMessageDetailResponseBodyData(TeaModel):
         self.born_time = born_time
         # The instance ID.
         self.instance_id = instance_id
+        self.lite_topic_name = lite_topic_name
         # The sharding key. This parameter is returned only for ordered messages.
         self.message_group = message_group
         # The message ID.
@@ -7821,6 +8082,8 @@ class GetMessageDetailResponseBodyData(TeaModel):
             result['bornTime'] = self.born_time
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.message_group is not None:
             result['messageGroup'] = self.message_group
         if self.message_id is not None:
@@ -7857,6 +8120,8 @@ class GetMessageDetailResponseBodyData(TeaModel):
             self.born_time = m.get('bornTime')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('messageGroup') is not None:
             self.message_group = m.get('messageGroup')
         if m.get('messageId') is not None:
@@ -8007,6 +8272,7 @@ class GetTopicResponseBodyData(TeaModel):
         self,
         create_time: str = None,
         instance_id: str = None,
+        lite_topic_expiration: int = None,
         max_send_tps: int = None,
         message_type: str = None,
         region_id: str = None,
@@ -8019,6 +8285,7 @@ class GetTopicResponseBodyData(TeaModel):
         self.create_time = create_time
         # The ID of the instance to which the topic belongs.
         self.instance_id = instance_id
+        self.lite_topic_expiration = lite_topic_expiration
         # The maximum TPS for message sending.
         self.max_send_tps = max_send_tps
         # The type of messages in the topic.
@@ -8066,6 +8333,8 @@ class GetTopicResponseBodyData(TeaModel):
             result['createTime'] = self.create_time
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.lite_topic_expiration is not None:
+            result['liteTopicExpiration'] = self.lite_topic_expiration
         if self.max_send_tps is not None:
             result['maxSendTps'] = self.max_send_tps
         if self.message_type is not None:
@@ -8088,6 +8357,8 @@ class GetTopicResponseBodyData(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('liteTopicExpiration') is not None:
+            self.lite_topic_expiration = m.get('liteTopicExpiration')
         if m.get('maxSendTps') is not None:
             self.max_send_tps = m.get('maxSendTps')
         if m.get('messageType') is not None:
@@ -8586,6 +8857,7 @@ class GetTraceResponseBodyDataMessageInfo(TeaModel):
         born_host: str = None,
         born_time: str = None,
         instance_id: str = None,
+        lite_topic_name: str = None,
         message_group: str = None,
         message_id: str = None,
         message_keys: List[str] = None,
@@ -8606,6 +8878,7 @@ class GetTraceResponseBodyDataMessageInfo(TeaModel):
         self.born_time = born_time
         # The instance ID.
         self.instance_id = instance_id
+        self.lite_topic_name = lite_topic_name
         # Message grpup.
         self.message_group = message_group
         # The message ID.
@@ -8646,6 +8919,8 @@ class GetTraceResponseBodyDataMessageInfo(TeaModel):
             result['bornTime'] = self.born_time
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.message_group is not None:
             result['messageGroup'] = self.message_group
         if self.message_id is not None:
@@ -8680,6 +8955,8 @@ class GetTraceResponseBodyDataMessageInfo(TeaModel):
             self.born_time = m.get('bornTime')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('messageGroup') is not None:
             self.message_group = m.get('messageGroup')
         if m.get('messageId') is not None:
@@ -9211,6 +9488,39 @@ class ListAvailableZonesResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ListAvailableZonesResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConsumerConnectionsRequest(TeaModel):
+    def __init__(
+        self,
+        lite_topic_name: str = None,
+        topic_name: str = None,
+    ):
+        self.lite_topic_name = lite_topic_name
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
         return self
 
 
@@ -9750,9 +10060,11 @@ class ListConsumerGroupsResponseBodyDataList(TeaModel):
         create_time: str = None,
         instance_id: str = None,
         max_receive_tps: int = None,
+        message_model: str = None,
         region_id: str = None,
         remark: str = None,
         status: str = None,
+        topic_name: str = None,
         update_time: str = None,
     ):
         # Consumer group ID.
@@ -9763,12 +10075,14 @@ class ListConsumerGroupsResponseBodyDataList(TeaModel):
         self.instance_id = instance_id
         # The maximum TPS for message sending.
         self.max_receive_tps = max_receive_tps
+        self.message_model = message_model
         # The region ID to which the instance belongs.
         self.region_id = region_id
         # Remark information of the consumer group.
         self.remark = remark
         # Status of the consumer group.
         self.status = status
+        self.topic_name = topic_name
         # Last update time of the consumer group.
         self.update_time = update_time
 
@@ -9789,12 +10103,16 @@ class ListConsumerGroupsResponseBodyDataList(TeaModel):
             result['instanceId'] = self.instance_id
         if self.max_receive_tps is not None:
             result['maxReceiveTps'] = self.max_receive_tps
+        if self.message_model is not None:
+            result['messageModel'] = self.message_model
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.remark is not None:
             result['remark'] = self.remark
         if self.status is not None:
             result['status'] = self.status
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
         if self.update_time is not None:
             result['updateTime'] = self.update_time
         return result
@@ -9809,12 +10127,16 @@ class ListConsumerGroupsResponseBodyDataList(TeaModel):
             self.instance_id = m.get('instanceId')
         if m.get('maxReceiveTps') is not None:
             self.max_receive_tps = m.get('maxReceiveTps')
+        if m.get('messageModel') is not None:
+            self.message_model = m.get('messageModel')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('remark') is not None:
             self.remark = m.get('remark')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
         return self
@@ -12874,6 +13196,7 @@ class ListMessagesRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        lite_topic_name: str = None,
         message_id: str = None,
         message_key: str = None,
         page_number: int = None,
@@ -12883,6 +13206,7 @@ class ListMessagesRequest(TeaModel):
     ):
         # The end of the time range to query.
         self.end_time = end_time
+        self.lite_topic_name = lite_topic_name
         # Message Id.
         self.message_id = message_id
         # Message key.
@@ -12909,6 +13233,8 @@ class ListMessagesRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.message_id is not None:
             result['messageId'] = self.message_id
         if self.message_key is not None:
@@ -12927,6 +13253,8 @@ class ListMessagesRequest(TeaModel):
         m = m or dict()
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('messageId') is not None:
             self.message_id = m.get('messageId')
         if m.get('messageKey') is not None:
@@ -12950,6 +13278,7 @@ class ListMessagesResponseBodyDataList(TeaModel):
         born_host: str = None,
         born_time: str = None,
         instance_id: str = None,
+        lite_topic_name: str = None,
         message_group: str = None,
         message_id: str = None,
         message_keys: List[str] = None,
@@ -12971,6 +13300,7 @@ class ListMessagesResponseBodyDataList(TeaModel):
         self.born_time = born_time
         # The instance ID.
         self.instance_id = instance_id
+        self.lite_topic_name = lite_topic_name
         # The message group. This parameter is returned only for ordered messages.
         self.message_group = message_group
         # Message Id.
@@ -13011,6 +13341,8 @@ class ListMessagesResponseBodyDataList(TeaModel):
             result['bornTime'] = self.born_time
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.message_group is not None:
             result['messageGroup'] = self.message_group
         if self.message_id is not None:
@@ -13045,6 +13377,8 @@ class ListMessagesResponseBodyDataList(TeaModel):
             self.born_time = m.get('bornTime')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('messageGroup') is not None:
             self.message_group = m.get('messageGroup')
         if m.get('messageId') is not None:
@@ -13873,6 +14207,419 @@ class ListMigrationOperationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListMigrationOperationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMigrationsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        migration_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_group_id: str = None,
+    ):
+        self.filter = filter
+        # This parameter is required.
+        self.migration_type = migration_type
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['filter'] = self.filter
+        if self.migration_type is not None:
+            result['migrationType'] = self.migration_type
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('migrationType') is not None:
+            self.migration_type = m.get('migrationType')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        return self
+
+
+class ListMigrationsResponseBodyDataListCurrentStage(TeaModel):
+    def __init__(
+        self,
+        stage_data: Any = None,
+        stage_status: str = None,
+        stage_type: str = None,
+    ):
+        self.stage_data = stage_data
+        self.stage_status = stage_status
+        self.stage_type = stage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.stage_data is not None:
+            result['stageData'] = self.stage_data
+        if self.stage_status is not None:
+            result['stageStatus'] = self.stage_status
+        if self.stage_type is not None:
+            result['stageType'] = self.stage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('stageData') is not None:
+            self.stage_data = m.get('stageData')
+        if m.get('stageStatus') is not None:
+            self.stage_status = m.get('stageStatus')
+        if m.get('stageType') is not None:
+            self.stage_type = m.get('stageType')
+        return self
+
+
+class ListMigrationsResponseBodyDataListMigrationSource(TeaModel):
+    def __init__(
+        self,
+        source_data: Any = None,
+        source_type: str = None,
+    ):
+        self.source_data = source_data
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_data is not None:
+            result['sourceData'] = self.source_data
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sourceData') is not None:
+            self.source_data = m.get('sourceData')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        return self
+
+
+class ListMigrationsResponseBodyDataListMigrationTarget(TeaModel):
+    def __init__(
+        self,
+        target_data: Any = None,
+        target_type: str = None,
+    ):
+        self.target_data = target_data
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.target_data is not None:
+            result['targetData'] = self.target_data
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('targetData') is not None:
+            self.target_data = m.get('targetData')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        return self
+
+
+class ListMigrationsResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        current_stage: ListMigrationsResponseBodyDataListCurrentStage = None,
+        migration_id: int = None,
+        migration_name: str = None,
+        migration_source: ListMigrationsResponseBodyDataListMigrationSource = None,
+        migration_status: str = None,
+        migration_target: ListMigrationsResponseBodyDataListMigrationTarget = None,
+        migration_type: str = None,
+        update_time: str = None,
+        user_id: str = None,
+    ):
+        self.create_time = create_time
+        self.current_stage = current_stage
+        self.migration_id = migration_id
+        self.migration_name = migration_name
+        self.migration_source = migration_source
+        self.migration_status = migration_status
+        self.migration_target = migration_target
+        self.migration_type = migration_type
+        self.update_time = update_time
+        self.user_id = user_id
+
+    def validate(self):
+        if self.current_stage:
+            self.current_stage.validate()
+        if self.migration_source:
+            self.migration_source.validate()
+        if self.migration_target:
+            self.migration_target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.current_stage is not None:
+            result['currentStage'] = self.current_stage.to_map()
+        if self.migration_id is not None:
+            result['migrationId'] = self.migration_id
+        if self.migration_name is not None:
+            result['migrationName'] = self.migration_name
+        if self.migration_source is not None:
+            result['migrationSource'] = self.migration_source.to_map()
+        if self.migration_status is not None:
+            result['migrationStatus'] = self.migration_status
+        if self.migration_target is not None:
+            result['migrationTarget'] = self.migration_target.to_map()
+        if self.migration_type is not None:
+            result['migrationType'] = self.migration_type
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('currentStage') is not None:
+            temp_model = ListMigrationsResponseBodyDataListCurrentStage()
+            self.current_stage = temp_model.from_map(m['currentStage'])
+        if m.get('migrationId') is not None:
+            self.migration_id = m.get('migrationId')
+        if m.get('migrationName') is not None:
+            self.migration_name = m.get('migrationName')
+        if m.get('migrationSource') is not None:
+            temp_model = ListMigrationsResponseBodyDataListMigrationSource()
+            self.migration_source = temp_model.from_map(m['migrationSource'])
+        if m.get('migrationStatus') is not None:
+            self.migration_status = m.get('migrationStatus')
+        if m.get('migrationTarget') is not None:
+            temp_model = ListMigrationsResponseBodyDataListMigrationTarget()
+            self.migration_target = temp_model.from_map(m['migrationTarget'])
+        if m.get('migrationType') is not None:
+            self.migration_type = m.get('migrationType')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ListMigrationsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListMigrationsResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListMigrationsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListMigrationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListMigrationsResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListMigrationsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListMigrationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMigrationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMigrationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14725,6 +15472,7 @@ class ListTopicsResponseBodyDataList(TeaModel):
         self,
         create_time: str = None,
         instance_id: str = None,
+        lite_topic_expiration: int = None,
         max_send_tps: int = None,
         message_type: str = None,
         region_id: str = None,
@@ -14737,6 +15485,7 @@ class ListTopicsResponseBodyDataList(TeaModel):
         self.create_time = create_time
         # Instance ID.
         self.instance_id = instance_id
+        self.lite_topic_expiration = lite_topic_expiration
         # The maximum TPS for message sending.
         self.max_send_tps = max_send_tps
         # The type of messages in the topic.
@@ -14777,6 +15526,8 @@ class ListTopicsResponseBodyDataList(TeaModel):
             result['createTime'] = self.create_time
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.lite_topic_expiration is not None:
+            result['liteTopicExpiration'] = self.lite_topic_expiration
         if self.max_send_tps is not None:
             result['maxSendTps'] = self.max_send_tps
         if self.message_type is not None:
@@ -14799,6 +15550,8 @@ class ListTopicsResponseBodyDataList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('liteTopicExpiration') is not None:
+            self.lite_topic_expiration = m.get('liteTopicExpiration')
         if m.get('maxSendTps') is not None:
             self.max_send_tps = m.get('maxSendTps')
         if m.get('messageType') is not None:
@@ -14997,6 +15750,7 @@ class ListTracesRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        lite_topic_name: str = None,
         message_id: str = None,
         message_key: str = None,
         page_number: int = None,
@@ -15008,6 +15762,7 @@ class ListTracesRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.lite_topic_name = lite_topic_name
         # The message ID.
         # 
         # This parameter is required if you set queryType to MESSAGE_ID.
@@ -15050,6 +15805,8 @@ class ListTracesRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.message_id is not None:
             result['messageId'] = self.message_id
         if self.message_key is not None:
@@ -15068,6 +15825,8 @@ class ListTracesRequest(TeaModel):
         m = m or dict()
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('messageId') is not None:
             self.message_id = m.get('messageId')
         if m.get('messageKey') is not None:
@@ -17773,9 +18532,11 @@ class UpdateInstanceAclResponse(TeaModel):
 class UpdateTopicRequest(TeaModel):
     def __init__(
         self,
+        lite_topic_expiration: int = None,
         max_send_tps: int = None,
         remark: str = None,
     ):
+        self.lite_topic_expiration = lite_topic_expiration
         # Maximum send message tps
         self.max_send_tps = max_send_tps
         # Updated remarks for the topic.
@@ -17790,6 +18551,8 @@ class UpdateTopicRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lite_topic_expiration is not None:
+            result['liteTopicExpiration'] = self.lite_topic_expiration
         if self.max_send_tps is not None:
             result['maxSendTps'] = self.max_send_tps
         if self.remark is not None:
@@ -17798,6 +18561,8 @@ class UpdateTopicRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('liteTopicExpiration') is not None:
+            self.lite_topic_expiration = m.get('liteTopicExpiration')
         if m.get('maxSendTps') is not None:
             self.max_send_tps = m.get('maxSendTps')
         if m.get('remark') is not None:
@@ -18083,10 +18848,12 @@ class VerifyConsumeMessageResponse(TeaModel):
 class VerifySendMessageRequest(TeaModel):
     def __init__(
         self,
+        lite_topic_name: str = None,
         message: str = None,
         message_key: str = None,
         message_tag: str = None,
     ):
+        self.lite_topic_name = lite_topic_name
         # The message body.
         self.message = message
         # The message key.
@@ -18103,6 +18870,8 @@ class VerifySendMessageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lite_topic_name is not None:
+            result['liteTopicName'] = self.lite_topic_name
         if self.message is not None:
             result['message'] = self.message
         if self.message_key is not None:
@@ -18113,6 +18882,8 @@ class VerifySendMessageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('liteTopicName') is not None:
+            self.lite_topic_name = m.get('liteTopicName')
         if m.get('message') is not None:
             self.message = m.get('message')
         if m.get('messageKey') is not None:

@@ -295,8 +295,12 @@ class Client(OpenApiClient):
             body['deliveryOrderType'] = request.delivery_order_type
         if not UtilClient.is_unset(request.max_receive_tps):
             body['maxReceiveTps'] = request.max_receive_tps
+        if not UtilClient.is_unset(request.message_model):
+            body['messageModel'] = request.message_model
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
+        if not UtilClient.is_unset(request.topic_name):
+            body['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -347,8 +351,12 @@ class Client(OpenApiClient):
             body['deliveryOrderType'] = request.delivery_order_type
         if not UtilClient.is_unset(request.max_receive_tps):
             body['maxReceiveTps'] = request.max_receive_tps
+        if not UtilClient.is_unset(request.message_model):
+            body['messageModel'] = request.message_model
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
+        if not UtilClient.is_unset(request.topic_name):
+            body['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1079,6 +1087,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.lite_topic_expiration):
+            body['liteTopicExpiration'] = request.lite_topic_expiration
         if not UtilClient.is_unset(request.max_send_tps):
             body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.message_type):
@@ -1123,6 +1133,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.lite_topic_expiration):
+            body['liteTopicExpiration'] = request.lite_topic_expiration
         if not UtilClient.is_unset(request.max_send_tps):
             body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.message_type):
@@ -2365,6 +2377,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.finish_migration_stage_with_options_async(migration_id, stage_type, request, headers, runtime)
 
+    def get_consume_timespan_with_options(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumeTimespanResponse:
+        """
+        @summary 查询topic可重置时间范围
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumeTimespanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumeTimespan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/consumeTimespan/{OpenApiUtilClient.get_encode_param(topic_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumeTimespanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consume_timespan_with_options_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumeTimespanResponse:
+        """
+        @summary 查询topic可重置时间范围
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumeTimespanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumeTimespan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/consumeTimespan/{OpenApiUtilClient.get_encode_param(topic_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumeTimespanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consume_timespan(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+    ) -> rocket_mq20220801_models.GetConsumeTimespanResponse:
+        """
+        @summary 查询topic可重置时间范围
+        
+        @return: GetConsumeTimespanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consume_timespan_with_options(instance_id, consumer_group_id, topic_name, headers, runtime)
+
+    async def get_consume_timespan_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+    ) -> rocket_mq20220801_models.GetConsumeTimespanResponse:
+        """
+        @summary 查询topic可重置时间范围
+        
+        @return: GetConsumeTimespanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consume_timespan_with_options_async(instance_id, consumer_group_id, topic_name, headers, runtime)
+
     def get_consumer_group_with_options(
         self,
         instance_id: str,
@@ -2485,6 +2595,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.topic_name):
             query['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -2525,6 +2637,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.topic_name):
             query['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -3809,18 +3923,27 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerConnectionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
         """
         @summary 查询消费者客户端连接信息
         
+        @param request: ListConsumerConnectionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListConsumerConnectionsResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListConsumerConnections',
@@ -3842,18 +3965,27 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerConnectionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
         """
         @summary 查询消费者客户端连接信息
         
+        @param request: ListConsumerConnectionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListConsumerConnectionsResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListConsumerConnections',
@@ -3875,29 +4007,33 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerConnectionsRequest,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
         """
         @summary 查询消费者客户端连接信息
         
+        @param request: ListConsumerConnectionsRequest
         @return: ListConsumerConnectionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_consumer_connections_with_options(instance_id, consumer_group_id, headers, runtime)
+        return self.list_consumer_connections_with_options(instance_id, consumer_group_id, request, headers, runtime)
 
     async def list_consumer_connections_async(
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerConnectionsRequest,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
         """
         @summary 查询消费者客户端连接信息
         
+        @param request: ListConsumerConnectionsRequest
         @return: ListConsumerConnectionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_consumer_connections_with_options_async(instance_id, consumer_group_id, headers, runtime)
+        return await self.list_consumer_connections_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
 
     def list_consumer_group_subscriptions_with_options(
         self,
@@ -5015,6 +5151,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.message_id):
             query['messageId'] = request.message_id
         if not UtilClient.is_unset(request.message_key):
@@ -5067,6 +5205,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.message_id):
             query['messageId'] = request.message_id
         if not UtilClient.is_unset(request.message_key):
@@ -5366,6 +5506,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_migration_operations_with_options_async(migration_id, stage_type, request, headers, runtime)
+
+    def list_migrations_with_options(
+        self,
+        request: rocket_mq20220801_models.ListMigrationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMigrationsResponse:
+        """
+        @summary 查询迁移列表
+        
+        @param request: ListMigrationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.migration_type):
+            query['migrationType'] = request.migration_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMigrations',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMigrationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_migrations_with_options_async(
+        self,
+        request: rocket_mq20220801_models.ListMigrationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMigrationsResponse:
+        """
+        @summary 查询迁移列表
+        
+        @param request: ListMigrationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.migration_type):
+            query['migrationType'] = request.migration_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMigrations',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/migrations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMigrationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_migrations(
+        self,
+        request: rocket_mq20220801_models.ListMigrationsRequest,
+    ) -> rocket_mq20220801_models.ListMigrationsResponse:
+        """
+        @summary 查询迁移列表
+        
+        @param request: ListMigrationsRequest
+        @return: ListMigrationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_migrations_with_options(request, headers, runtime)
+
+    async def list_migrations_async(
+        self,
+        request: rocket_mq20220801_models.ListMigrationsRequest,
+    ) -> rocket_mq20220801_models.ListMigrationsResponse:
+        """
+        @summary 查询迁移列表
+        
+        @param request: ListMigrationsRequest
+        @return: ListMigrationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_migrations_with_options_async(request, headers, runtime)
 
     def list_regions_with_options(
         self,
@@ -5815,6 +6075,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.message_id):
             query['messageId'] = request.message_id
         if not UtilClient.is_unset(request.message_key):
@@ -5867,6 +6129,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.lite_topic_name):
+            query['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.message_id):
             query['messageId'] = request.message_id
         if not UtilClient.is_unset(request.message_key):
@@ -7339,6 +7603,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.lite_topic_expiration):
+            body['liteTopicExpiration'] = request.lite_topic_expiration
         if not UtilClient.is_unset(request.max_send_tps):
             body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.remark):
@@ -7381,6 +7647,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.lite_topic_expiration):
+            body['liteTopicExpiration'] = request.lite_topic_expiration
         if not UtilClient.is_unset(request.max_send_tps):
             body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.remark):
@@ -7575,6 +7843,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.lite_topic_name):
+            body['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.message):
             body['message'] = request.message
         if not UtilClient.is_unset(request.message_key):
@@ -7619,6 +7889,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.lite_topic_name):
+            body['liteTopicName'] = request.lite_topic_name
         if not UtilClient.is_unset(request.message):
             body['message'] = request.message
         if not UtilClient.is_unset(request.message_key):
