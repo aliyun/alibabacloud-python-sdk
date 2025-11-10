@@ -6932,12 +6932,13 @@ class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
         self.cluster_entity_type = cluster_entity_type
         # Cluster ID.
         self.cluster_id = cluster_id
-        # Whether to disable unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
+        # Whether to disable the unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
         self.disable_policy_share = disable_policy_share
         # Entity group ID.
         self.entity_group_id = entity_group_id
+        # User ID to which the cluster belongs.
         self.entity_user_id = entity_user_id
-        # VPC (Virtual Private Cloud) ID.
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7168,7 +7169,7 @@ class CreateIntegrationPolicyResponseBody(TeaModel):
         policy: CreateIntegrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # Whether it was created.
+        # Whether it is created.
         self.created = created
         # Uploaded policy.
         self.policy = policy
@@ -8904,6 +8905,102 @@ class DeleteUmodelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUmodelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteUmodelCommonSchemaRefRequest(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+    ):
+        # This parameter is required.
+        self.group = group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        return self
+
+
+class DeleteUmodelCommonSchemaRefResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteUmodelCommonSchemaRefResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUmodelCommonSchemaRefResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUmodelCommonSchemaRefResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12177,6 +12274,115 @@ class GetUmodelResponse(TeaModel):
         return self
 
 
+class GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        version: str = None,
+    ):
+        self.group = group
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetUmodelCommonSchemaRefResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_schema_ref: List[GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef] = None,
+    ):
+        self.common_schema_ref = common_schema_ref
+
+    def validate(self):
+        if self.common_schema_ref:
+            for k in self.common_schema_ref:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['commonSchemaRef'] = []
+        if self.common_schema_ref is not None:
+            for k in self.common_schema_ref:
+                result['commonSchemaRef'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.common_schema_ref = []
+        if m.get('commonSchemaRef') is not None:
+            for k in m.get('commonSchemaRef'):
+                temp_model = GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef()
+                self.common_schema_ref.append(temp_model.from_map(k))
+        return self
+
+
+class GetUmodelCommonSchemaRefResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUmodelCommonSchemaRefResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUmodelCommonSchemaRefResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUmodelDataRequest(TeaModel):
     def __init__(
         self,
@@ -14169,29 +14375,29 @@ class ListIntegrationPoliciesRequest(TeaModel):
         tag: List[ListIntegrationPoliciesRequestTag] = None,
         workspace: str = None,
     ):
-        # Addon Name.
+        # Addon name.
         self.addon_name = addon_name
-        # Bound Resource ID.
+        # Bound resource ID
         self.bind_resource_id = bind_resource_id
-        # Filter for entity IDs, separated by commas.
+        # Filter for entity IDs, separated by commas
         self.entity_group_ids = entity_group_ids
-        # Used for Region query, separated by commas.
+        # Used for Region query, separated by commas
         self.filter_region_ids = filter_region_ids
-        # Maximum number of results to return, default is 30, with a maximum of 100.
+        # Maximum number of results to return. Default is 30, with a maximum of 100.
         self.max_results = max_results
-        # Used to return more results. This parameter is not required for the first query; for subsequent queries, use the Token obtained from the previous response.
+        # Used to return more results. This parameter is not required for the first query. For subsequent queries, use the Token obtained from the response.
         self.next_token = next_token
         # Policy ID.
         self.policy_id = policy_id
-        # Rule Name.
+        # Rule name.
         self.policy_name = policy_name
-        # Policy Type
+        # Policy type
         self.policy_type = policy_type
         # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Used for general queries.
+        # Used for general queries
         self.query = query
-        # Resource Group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # Tag list.
         self.tag = tag
@@ -14296,29 +14502,29 @@ class ListIntegrationPoliciesShrinkRequest(TeaModel):
         tag_shrink: str = None,
         workspace: str = None,
     ):
-        # Addon Name.
+        # Addon name.
         self.addon_name = addon_name
-        # Bound Resource ID.
+        # Bound resource ID
         self.bind_resource_id = bind_resource_id
-        # Filter for entity IDs, separated by commas.
+        # Filter for entity IDs, separated by commas
         self.entity_group_ids = entity_group_ids
-        # Used for Region query, separated by commas.
+        # Used for Region query, separated by commas
         self.filter_region_ids = filter_region_ids
-        # Maximum number of results to return, default is 30, with a maximum of 100.
+        # Maximum number of results to return. Default is 30, with a maximum of 100.
         self.max_results = max_results
-        # Used to return more results. This parameter is not required for the first query; for subsequent queries, use the Token obtained from the previous response.
+        # Used to return more results. This parameter is not required for the first query. For subsequent queries, use the Token obtained from the response.
         self.next_token = next_token
         # Policy ID.
         self.policy_id = policy_id
-        # Rule Name.
+        # Rule name.
         self.policy_name = policy_name
-        # Policy Type
+        # Policy type
         self.policy_type = policy_type
         # Instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Used for general queries.
+        # Used for general queries
         self.query = query
-        # Resource Group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # Tag list.
         self.tag_shrink = tag_shrink
@@ -14455,7 +14661,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotatio
     ):
         # Operation to be performed.
         self.op = op
-        # Tag key
+        # Tag key.
         self.tag_key = tag_key
         # Tag values
         self.tag_values = tag_values
@@ -14497,7 +14703,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
     ):
         # Unique identifier for the field.
         self.field_key = field_key
-        # Field content, multiple values separated by commas.
+        # Field content, multiple values separated by English commas.
         self.field_values = field_values
         # Operation to be performed.
         self.op = op
@@ -14674,7 +14880,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules(TeaModel
         self.ip_match_rule = ip_match_rule
         # Labels
         self.labels = labels
-        # List of region IDs
+        # List of region IDs.
         self.region_ids = region_ids
         # Resource group ID.
         self.resource_group_id = resource_group_id
@@ -14791,7 +14997,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroup(TeaModel):
         self.entity_group_name = entity_group_name
         # Entity group
         self.entity_rules = entity_rules
-        # Search keyword, supports document library name and description
+        # Search keywords, supporting document library name and description
         self.query = query
         # Region ID.
         self.region_id = region_id
@@ -14982,10 +15188,11 @@ class ListIntegrationPoliciesResponseBodyPolicies(TeaModel):
     ):
         # Bound resource information
         self.bind_resource = bind_resource
-        # Cs Umodel Status
+        # Container environment umodel installation status.
         self.cs_umodel_status = cs_umodel_status
         # Entity group
         self.entity_group = entity_group
+        # Billing type.
         self.fee_package = fee_package
         # Policy network management information.
         self.managed_info = managed_info
@@ -15115,7 +15322,7 @@ class ListIntegrationPoliciesResponseBody(TeaModel):
         # Maximum value:
         # 	50
         self.max_results = max_results
-        # Pagination Token
+        # Pagination token
         self.next_token = next_token
         # Access policy list
         self.policies = policies
@@ -19187,6 +19394,116 @@ class UpdateIntegrationPolicyResponse(TeaModel):
         return self
 
 
+class UpdateNotifyStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        body: NotifyStrategyForModify = None,
+        workspace: str = None,
+    ):
+        self.body = body
+        self.workspace = workspace
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = NotifyStrategyForModify()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateNotifyStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        notify_strategy_id: str = None,
+        request_id: str = None,
+    ):
+        self.notify_strategy_id = notify_strategy_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify_strategy_id is not None:
+            result['notifyStrategyId'] = self.notify_strategy_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('notifyStrategyId') is not None:
+            self.notify_strategy_id = m.get('notifyStrategyId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateNotifyStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNotifyStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNotifyStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdatePrometheusInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -19688,6 +20005,116 @@ class UpdateServiceResponse(TeaModel):
         return self
 
 
+class UpdateSubscriptionRequest(TeaModel):
+    def __init__(
+        self,
+        body: SubscriptionForModify = None,
+        workspace: str = None,
+    ):
+        self.body = body
+        self.workspace = workspace
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SubscriptionForModify()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateSubscriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        subscription_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.subscription_id = subscription_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.subscription_id is not None:
+            result['subscriptionId'] = self.subscription_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('subscriptionId') is not None:
+            self.subscription_id = m.get('subscriptionId')
+        return self
+
+
+class UpdateSubscriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSubscriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSubscriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateUmodelRequest(TeaModel):
     def __init__(
         self,
@@ -19788,6 +20215,109 @@ class UpdateUmodelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUmodelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpsertUmodelCommonSchemaRefRequest(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        version: str = None,
+    ):
+        # This parameter is required.
+        self.group = group
+        # This parameter is required.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class UpsertUmodelCommonSchemaRefResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpsertUmodelCommonSchemaRefResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpsertUmodelCommonSchemaRefResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpsertUmodelCommonSchemaRefResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

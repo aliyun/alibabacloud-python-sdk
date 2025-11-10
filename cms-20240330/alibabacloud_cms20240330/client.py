@@ -2151,6 +2151,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_umodel_with_options_async(workspace, headers, runtime)
 
+    def delete_umodel_common_schema_ref_with_options(
+        self,
+        workspace: str,
+        request: cms_20240330_models.DeleteUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteUmodelCommonSchemaRefResponse:
+        """
+        @summary 删除Umodel配置信息
+        
+        @param request: DeleteUmodelCommonSchemaRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUmodelCommonSchemaRefResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group):
+            query['group'] = request.group
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUmodelCommonSchemaRef',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/umodel/common-schema-ref',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteUmodelCommonSchemaRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_umodel_common_schema_ref_with_options_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.DeleteUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteUmodelCommonSchemaRefResponse:
+        """
+        @summary 删除Umodel配置信息
+        
+        @param request: DeleteUmodelCommonSchemaRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUmodelCommonSchemaRefResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group):
+            query['group'] = request.group
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUmodelCommonSchemaRef',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/umodel/common-schema-ref',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteUmodelCommonSchemaRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_umodel_common_schema_ref(
+        self,
+        workspace: str,
+        request: cms_20240330_models.DeleteUmodelCommonSchemaRefRequest,
+    ) -> cms_20240330_models.DeleteUmodelCommonSchemaRefResponse:
+        """
+        @summary 删除Umodel配置信息
+        
+        @param request: DeleteUmodelCommonSchemaRefRequest
+        @return: DeleteUmodelCommonSchemaRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_umodel_common_schema_ref_with_options(workspace, request, headers, runtime)
+
+    async def delete_umodel_common_schema_ref_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.DeleteUmodelCommonSchemaRefRequest,
+    ) -> cms_20240330_models.DeleteUmodelCommonSchemaRefResponse:
+        """
+        @summary 删除Umodel配置信息
+        
+        @param request: DeleteUmodelCommonSchemaRefRequest
+        @return: DeleteUmodelCommonSchemaRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_umodel_common_schema_ref_with_options_async(workspace, request, headers, runtime)
+
     def delete_umodel_data_with_options(
         self,
         workspace: str,
@@ -3385,6 +3493,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_umodel_with_options_async(workspace, headers, runtime)
 
+    def get_umodel_common_schema_ref_with_options(
+        self,
+        workspace: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetUmodelCommonSchemaRefResponse:
+        """
+        @summary 获取Umodel配置信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUmodelCommonSchemaRefResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetUmodelCommonSchemaRef',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/umodel/common-schema-ref',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetUmodelCommonSchemaRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_umodel_common_schema_ref_with_options_async(
+        self,
+        workspace: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetUmodelCommonSchemaRefResponse:
+        """
+        @summary 获取Umodel配置信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUmodelCommonSchemaRefResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetUmodelCommonSchemaRef',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/umodel/common-schema-ref',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetUmodelCommonSchemaRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_umodel_common_schema_ref(
+        self,
+        workspace: str,
+    ) -> cms_20240330_models.GetUmodelCommonSchemaRefResponse:
+        """
+        @summary 获取Umodel配置信息
+        
+        @return: GetUmodelCommonSchemaRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_umodel_common_schema_ref_with_options(workspace, headers, runtime)
+
+    async def get_umodel_common_schema_ref_async(
+        self,
+        workspace: str,
+    ) -> cms_20240330_models.GetUmodelCommonSchemaRefResponse:
+        """
+        @summary 获取Umodel配置信息
+        
+        @return: GetUmodelCommonSchemaRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_umodel_common_schema_ref_with_options_async(workspace, headers, runtime)
+
     def get_umodel_data_with_options(
         self,
         workspace: str,
@@ -4000,7 +4198,7 @@ class Client(OpenApiClient):
         """
         @summary Query Access Center Policy List Information
         
-        @description Query Integration List
+        @description Query integration list
         
         @param tmp_req: ListIntegrationPoliciesRequest
         @param headers: map
@@ -4070,7 +4268,7 @@ class Client(OpenApiClient):
         """
         @summary Query Access Center Policy List Information
         
-        @description Query Integration List
+        @description Query integration list
         
         @param tmp_req: ListIntegrationPoliciesRequest
         @param headers: map
@@ -4138,7 +4336,7 @@ class Client(OpenApiClient):
         """
         @summary Query Access Center Policy List Information
         
-        @description Query Integration List
+        @description Query integration list
         
         @param request: ListIntegrationPoliciesRequest
         @return: ListIntegrationPoliciesResponse
@@ -4154,7 +4352,7 @@ class Client(OpenApiClient):
         """
         @summary Query Access Center Policy List Information
         
-        @description Query Integration List
+        @description Query integration list
         
         @param request: ListIntegrationPoliciesRequest
         @return: ListIntegrationPoliciesResponse
@@ -6087,6 +6285,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_integration_policy_with_options_async(integration_policy_id, request, headers, runtime)
 
+    def update_notify_strategy_with_options(
+        self,
+        notify_strategy_id: str,
+        request: cms_20240330_models.UpdateNotifyStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateNotifyStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNotifyStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateNotifyStrategy',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/notifyStrategies/{OpenApiUtilClient.get_encode_param(notify_strategy_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateNotifyStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_notify_strategy_with_options_async(
+        self,
+        notify_strategy_id: str,
+        request: cms_20240330_models.UpdateNotifyStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateNotifyStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNotifyStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateNotifyStrategy',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/notifyStrategies/{OpenApiUtilClient.get_encode_param(notify_strategy_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateNotifyStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_notify_strategy(
+        self,
+        notify_strategy_id: str,
+        request: cms_20240330_models.UpdateNotifyStrategyRequest,
+    ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateNotifyStrategyRequest
+        @return: UpdateNotifyStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_notify_strategy_with_options(notify_strategy_id, request, headers, runtime)
+
+    async def update_notify_strategy_async(
+        self,
+        notify_strategy_id: str,
+        request: cms_20240330_models.UpdateNotifyStrategyRequest,
+    ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateNotifyStrategyRequest
+        @return: UpdateNotifyStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_notify_strategy_with_options_async(notify_strategy_id, request, headers, runtime)
+
     def update_prometheus_instance_with_options(
         self,
         prometheus_instance_id: str,
@@ -6507,6 +6815,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_service_with_options_async(workspace, service_id, request, headers, runtime)
 
+    def update_subscription_with_options(
+        self,
+        subscription_id: str,
+        request: cms_20240330_models.UpdateSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateSubscriptionResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateSubscriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubscription',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/subscriptions/{OpenApiUtilClient.get_encode_param(subscription_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_subscription_with_options_async(
+        self,
+        subscription_id: str,
+        request: cms_20240330_models.UpdateSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateSubscriptionResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateSubscriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubscription',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/subscriptions/{OpenApiUtilClient.get_encode_param(subscription_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_subscription(
+        self,
+        subscription_id: str,
+        request: cms_20240330_models.UpdateSubscriptionRequest,
+    ) -> cms_20240330_models.UpdateSubscriptionResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateSubscriptionRequest
+        @return: UpdateSubscriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_subscription_with_options(subscription_id, request, headers, runtime)
+
+    async def update_subscription_async(
+        self,
+        subscription_id: str,
+        request: cms_20240330_models.UpdateSubscriptionRequest,
+    ) -> cms_20240330_models.UpdateSubscriptionResponse:
+        """
+        @summary 更新订阅
+        
+        @param request: UpdateSubscriptionRequest
+        @return: UpdateSubscriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_subscription_with_options_async(subscription_id, request, headers, runtime)
+
     def update_umodel_with_options(
         self,
         workspace: str,
@@ -6622,6 +7040,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_umodel_with_options_async(workspace, request, headers, runtime)
+
+    def upsert_umodel_common_schema_ref_with_options(
+        self,
+        workspace: str,
+        request: cms_20240330_models.UpsertUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpsertUmodelCommonSchemaRefResponse:
+        """
+        @summary 更新Umodel配置信息
+        
+        @param request: UpsertUmodelCommonSchemaRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertUmodelCommonSchemaRefResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group):
+            query['group'] = request.group
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpsertUmodelCommonSchemaRef',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/umodel/common-schema-ref',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpsertUmodelCommonSchemaRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upsert_umodel_common_schema_ref_with_options_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.UpsertUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpsertUmodelCommonSchemaRefResponse:
+        """
+        @summary 更新Umodel配置信息
+        
+        @param request: UpsertUmodelCommonSchemaRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertUmodelCommonSchemaRefResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group):
+            query['group'] = request.group
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpsertUmodelCommonSchemaRef',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/umodel/common-schema-ref',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpsertUmodelCommonSchemaRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upsert_umodel_common_schema_ref(
+        self,
+        workspace: str,
+        request: cms_20240330_models.UpsertUmodelCommonSchemaRefRequest,
+    ) -> cms_20240330_models.UpsertUmodelCommonSchemaRefResponse:
+        """
+        @summary 更新Umodel配置信息
+        
+        @param request: UpsertUmodelCommonSchemaRefRequest
+        @return: UpsertUmodelCommonSchemaRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upsert_umodel_common_schema_ref_with_options(workspace, request, headers, runtime)
+
+    async def upsert_umodel_common_schema_ref_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.UpsertUmodelCommonSchemaRefRequest,
+    ) -> cms_20240330_models.UpsertUmodelCommonSchemaRefResponse:
+        """
+        @summary 更新Umodel配置信息
+        
+        @param request: UpsertUmodelCommonSchemaRefRequest
+        @return: UpsertUmodelCommonSchemaRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upsert_umodel_common_schema_ref_with_options_async(workspace, request, headers, runtime)
 
     def upsert_umodel_data_with_options(
         self,

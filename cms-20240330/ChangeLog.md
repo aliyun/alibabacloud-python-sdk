@@ -1,3 +1,11 @@
+2025-11-10 Version: 3.3.0
+- Support API DeleteUmodelCommonSchemaRef.
+- Support API GetUmodelCommonSchemaRef.
+- Support API UpdateNotifyStrategy.
+- Support API UpdateSubscription.
+- Support API UpsertUmodelCommonSchemaRef.
+
+
 2025-10-30 Version: 3.2.5
 - Update API CreateIntegrationPolicy: add request parameters body.entityGroup.entityUserId.
 - Update API GetIntegrationPolicy: add response parameters Body.policy.csUmodelStatus.
