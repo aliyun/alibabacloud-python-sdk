@@ -32656,6 +32656,8 @@ class Client(OpenApiClient):
             query['RepoName'] = request.repo_name
         if not UtilClient.is_unset(request.repo_namespace):
             query['RepoNamespace'] = request.repo_namespace
+        if not UtilClient.is_unset(request.selected):
+            query['Selected'] = request.selected
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.type):
@@ -32707,6 +32709,8 @@ class Client(OpenApiClient):
             query['RepoName'] = request.repo_name
         if not UtilClient.is_unset(request.repo_namespace):
             query['RepoNamespace'] = request.repo_namespace
+        if not UtilClient.is_unset(request.selected):
+            query['Selected'] = request.selected
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.type):
