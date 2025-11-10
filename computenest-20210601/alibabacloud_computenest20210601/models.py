@@ -463,6 +463,7 @@ class CancelServiceUsageRequest(TeaModel):
         self,
         client_token: str = None,
         need_delete: bool = None,
+        region_id: str = None,
         service_id: str = None,
     ):
         # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -471,6 +472,7 @@ class CancelServiceUsageRequest(TeaModel):
         # 
         # >  After you delete the application, you must re-enter the application information the next time you submit an application.
         self.need_delete = need_delete
+        self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
@@ -489,6 +491,8 @@ class CancelServiceUsageRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.need_delete is not None:
             result['NeedDelete'] = self.need_delete
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         return result
@@ -499,6 +503,8 @@ class CancelServiceUsageRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('NeedDelete') is not None:
             self.need_delete = m.get('NeedDelete')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         return self
@@ -2200,11 +2206,13 @@ class CreateServiceUsageRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        region_id: str = None,
         service_id: str = None,
         user_information: Dict[str, str] = None,
     ):
         # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
@@ -2223,6 +2231,8 @@ class CreateServiceUsageRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.user_information is not None:
@@ -2233,6 +2243,8 @@ class CreateServiceUsageRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('UserInformation') is not None:
@@ -2244,11 +2256,13 @@ class CreateServiceUsageShrinkRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        region_id: str = None,
         service_id: str = None,
         user_information_shrink: str = None,
     ):
         # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
@@ -2267,6 +2281,8 @@ class CreateServiceUsageShrinkRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.user_information_shrink is not None:
@@ -2277,6 +2293,8 @@ class CreateServiceUsageShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('UserInformation') is not None:
@@ -4948,6 +4966,39 @@ class GetServiceInstanceRequest(TeaModel):
         return self
 
 
+class GetServiceInstanceResponseBodyGrantedPermission(TeaModel):
+    def __init__(
+        self,
+        operation_end_time: str = None,
+        policy_names: str = None,
+    ):
+        self.operation_end_time = operation_end_time
+        self.policy_names = policy_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_end_time is not None:
+            result['OperationEndTime'] = self.operation_end_time
+        if self.policy_names is not None:
+            result['PolicyNames'] = self.policy_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationEndTime') is not None:
+            self.operation_end_time = m.get('OperationEndTime')
+        if m.get('PolicyNames') is not None:
+            self.policy_names = m.get('PolicyNames')
+        return self
+
+
 class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs(TeaModel):
     def __init__(
         self,
@@ -5509,6 +5560,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         enable_user_prometheus: bool = None,
         end_time: str = None,
         grafana_dash_board_url: str = None,
+        granted_permission: GetServiceInstanceResponseBodyGrantedPermission = None,
         is_operated: bool = None,
         license_end_time: str = None,
         market_instance_id: str = None,
@@ -5520,6 +5572,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         outputs: str = None,
         parameters: str = None,
         pay_type: str = None,
+        policy_names: str = None,
         predefined_parameter_name: str = None,
         progress: int = None,
         request_id: str = None,
@@ -5560,6 +5613,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.end_time = end_time
         # The URL of the Grafana dashboard.
         self.grafana_dash_board_url = grafana_dash_board_url
+        self.granted_permission = granted_permission
         # Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
         # 
         # *   true
@@ -5595,6 +5649,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         # *   PayAsYouGo: Pay-as-you-go.
         # *   CustomFixTime: Merchant custom fixed duration.
         self.pay_type = pay_type
+        self.policy_names = policy_names
         # The package name.
         self.predefined_parameter_name = predefined_parameter_name
         # The deployment progress of the service instance. Unit: percentage.
@@ -5646,6 +5701,8 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.user_id = user_id
 
     def validate(self):
+        if self.granted_permission:
+            self.granted_permission.validate()
         if self.network_config:
             self.network_config.validate()
         if self.service:
@@ -5675,6 +5732,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             result['EndTime'] = self.end_time
         if self.grafana_dash_board_url is not None:
             result['GrafanaDashBoardUrl'] = self.grafana_dash_board_url
+        if self.granted_permission is not None:
+            result['GrantedPermission'] = self.granted_permission.to_map()
         if self.is_operated is not None:
             result['IsOperated'] = self.is_operated
         if self.license_end_time is not None:
@@ -5697,6 +5756,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             result['Parameters'] = self.parameters
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.policy_names is not None:
+            result['PolicyNames'] = self.policy_names
         if self.predefined_parameter_name is not None:
             result['PredefinedParameterName'] = self.predefined_parameter_name
         if self.progress is not None:
@@ -5751,6 +5812,9 @@ class GetServiceInstanceResponseBody(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('GrafanaDashBoardUrl') is not None:
             self.grafana_dash_board_url = m.get('GrafanaDashBoardUrl')
+        if m.get('GrantedPermission') is not None:
+            temp_model = GetServiceInstanceResponseBodyGrantedPermission()
+            self.granted_permission = temp_model.from_map(m['GrantedPermission'])
         if m.get('IsOperated') is not None:
             self.is_operated = m.get('IsOperated')
         if m.get('LicenseEndTime') is not None:
@@ -5774,6 +5838,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('PolicyNames') is not None:
+            self.policy_names = m.get('PolicyNames')
         if m.get('PredefinedParameterName') is not None:
             self.predefined_parameter_name = m.get('PredefinedParameterName')
         if m.get('Progress') is not None:
@@ -9706,6 +9772,39 @@ class ListServiceInstancesRequest(TeaModel):
         return self
 
 
+class ListServiceInstancesResponseBodyServiceInstancesGrantedPermission(TeaModel):
+    def __init__(
+        self,
+        operation_end_time: str = None,
+        policy_names: str = None,
+    ):
+        self.operation_end_time = operation_end_time
+        self.policy_names = policy_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_end_time is not None:
+            result['OperationEndTime'] = self.operation_end_time
+        if self.policy_names is not None:
+            result['PolicyNames'] = self.policy_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationEndTime') is not None:
+            self.operation_end_time = m.get('OperationEndTime')
+        if m.get('PolicyNames') is not None:
+            self.policy_names = m.get('PolicyNames')
+        return self
+
+
 class ListServiceInstancesResponseBodyServiceInstancesServiceCommodity(TeaModel):
     def __init__(
         self,
@@ -9955,6 +10054,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         create_time: str = None,
         enable_instance_ops: bool = None,
         end_time: str = None,
+        granted_permission: ListServiceInstancesResponseBodyServiceInstancesGrantedPermission = None,
         market_instance_id: str = None,
         name: str = None,
         operated_service_instance_id: str = None,
@@ -9964,6 +10064,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         outputs: str = None,
         parameters: str = None,
         pay_type: str = None,
+        policy_names: str = None,
         progress: int = None,
         resource_group_id: str = None,
         resources: str = None,
@@ -9994,6 +10095,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         self.enable_instance_ops = enable_instance_ops
         # The time when the service instance expires.
         self.end_time = end_time
+        self.granted_permission = granted_permission
         # The ID of the Alibaba Cloud Marketplace instance.
         self.market_instance_id = market_instance_id
         # The name of the service instance.
@@ -10017,6 +10119,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
         # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
         self.pay_type = pay_type
+        self.policy_names = policy_names
         # The deployment progress of the service instance, in percentage.
         self.progress = progress
         # The resource group ID.
@@ -10059,6 +10162,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.granted_permission:
+            self.granted_permission.validate()
         if self.service:
             self.service.validate()
         if self.tags:
@@ -10080,6 +10185,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             result['EnableInstanceOps'] = self.enable_instance_ops
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.granted_permission is not None:
+            result['GrantedPermission'] = self.granted_permission.to_map()
         if self.market_instance_id is not None:
             result['MarketInstanceId'] = self.market_instance_id
         if self.name is not None:
@@ -10098,6 +10205,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             result['Parameters'] = self.parameters
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.policy_names is not None:
+            result['PolicyNames'] = self.policy_names
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.resource_group_id is not None:
@@ -10138,6 +10247,9 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             self.enable_instance_ops = m.get('EnableInstanceOps')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('GrantedPermission') is not None:
+            temp_model = ListServiceInstancesResponseBodyServiceInstancesGrantedPermission()
+            self.granted_permission = temp_model.from_map(m['GrantedPermission'])
         if m.get('MarketInstanceId') is not None:
             self.market_instance_id = m.get('MarketInstanceId')
         if m.get('Name') is not None:
@@ -10156,6 +10268,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('PolicyNames') is not None:
+            self.policy_names = m.get('PolicyNames')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('ResourceGroupId') is not None:
@@ -10340,6 +10454,7 @@ class ListServiceUsagesRequest(TeaModel):
         filter: List[ListServiceUsagesRequestFilter] = None,
         max_results: int = None,
         next_token: str = None,
+        region_id: str = None,
     ):
         # The filters.
         self.filter = filter
@@ -10347,6 +10462,7 @@ class ListServiceUsagesRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.region_id = region_id
 
     def validate(self):
         if self.filter:
@@ -10368,6 +10484,8 @@ class ListServiceUsagesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10381,6 +10499,8 @@ class ListServiceUsagesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -12930,15 +13050,50 @@ class UnTagResourcesResponse(TeaModel):
         return self
 
 
+class UpdateServiceInstanceAttributesRequestGrantedPermission(TeaModel):
+    def __init__(
+        self,
+        operation_end_time: str = None,
+        policy_names: str = None,
+    ):
+        self.operation_end_time = operation_end_time
+        self.policy_names = policy_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_end_time is not None:
+            result['OperationEndTime'] = self.operation_end_time
+        if self.policy_names is not None:
+            result['PolicyNames'] = self.policy_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationEndTime') is not None:
+            self.operation_end_time = m.get('OperationEndTime')
+        if m.get('PolicyNames') is not None:
+            self.policy_names = m.get('PolicyNames')
+        return self
+
+
 class UpdateServiceInstanceAttributesRequest(TeaModel):
     def __init__(
         self,
         enable_operation: bool = None,
+        granted_permission: UpdateServiceInstanceAttributesRequestGrantedPermission = None,
         region_id: str = None,
         service_instance_id: str = None,
     ):
         # Specifies whether to authorize the service provider to perform O\\&M operations on the service instance.
         self.enable_operation = enable_operation
+        self.granted_permission = granted_permission
         # The region ID.
         # 
         # This parameter is required.
@@ -12951,7 +13106,8 @@ class UpdateServiceInstanceAttributesRequest(TeaModel):
         self.service_instance_id = service_instance_id
 
     def validate(self):
-        pass
+        if self.granted_permission:
+            self.granted_permission.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12961,6 +13117,8 @@ class UpdateServiceInstanceAttributesRequest(TeaModel):
         result = dict()
         if self.enable_operation is not None:
             result['EnableOperation'] = self.enable_operation
+        if self.granted_permission is not None:
+            result['GrantedPermission'] = self.granted_permission.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.service_instance_id is not None:
@@ -12971,6 +13129,9 @@ class UpdateServiceInstanceAttributesRequest(TeaModel):
         m = m or dict()
         if m.get('EnableOperation') is not None:
             self.enable_operation = m.get('EnableOperation')
+        if m.get('GrantedPermission') is not None:
+            temp_model = UpdateServiceInstanceAttributesRequestGrantedPermission()
+            self.granted_permission = temp_model.from_map(m['GrantedPermission'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ServiceInstanceId') is not None:
@@ -13413,11 +13574,13 @@ class UpdateServiceUsageRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        region_id: str = None,
         service_id: str = None,
         user_information: Dict[str, str] = None,
     ):
         # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
@@ -13436,6 +13599,8 @@ class UpdateServiceUsageRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.user_information is not None:
@@ -13446,6 +13611,8 @@ class UpdateServiceUsageRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('UserInformation') is not None:
@@ -13457,11 +13624,13 @@ class UpdateServiceUsageShrinkRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        region_id: str = None,
         service_id: str = None,
         user_information_shrink: str = None,
     ):
         # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
@@ -13480,6 +13649,8 @@ class UpdateServiceUsageShrinkRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.user_information_shrink is not None:
@@ -13490,6 +13661,8 @@ class UpdateServiceUsageShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('UserInformation') is not None:

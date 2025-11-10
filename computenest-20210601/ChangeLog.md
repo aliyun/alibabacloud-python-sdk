@@ -1,3 +1,15 @@
+2025-11-10 Version: 4.3.2
+- Update API CancelServiceUsage: add request parameters RegionId.
+- Update API CreateServiceUsage: add request parameters RegionId.
+- Update API GetServiceInstance: add response parameters Body.GrantedPermission.
+- Update API GetServiceInstance: add response parameters Body.PolicyNames.
+- Update API ListServiceInstances: add response parameters Body.ServiceInstances.$.GrantedPermission.
+- Update API ListServiceInstances: add response parameters Body.ServiceInstances.$.PolicyNames.
+- Update API ListServiceUsages: add request parameters RegionId.
+- Update API UpdateServiceInstanceAttributes: add request parameters GrantedPermission.
+- Update API UpdateServiceUsage: add request parameters RegionId.
+
+
 2025-09-18 Version: 4.3.1
 - Update API GetService: add response parameters Body.ServiceLocaleConfigs.
 - Update API ListServices: add response parameters Body.Services.$.ServiceLocaleConfigs.
