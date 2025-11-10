@@ -3908,6 +3908,7 @@ class GetAccountResponseBodyAccount(TeaModel):
         modify_time: str = None,
         resource_directory_id: str = None,
         resource_directory_path: str = None,
+        secure_mobile_phone: str = None,
         status: str = None,
         tags: List[GetAccountResponseBodyAccountTags] = None,
         type: str = None,
@@ -3949,6 +3950,7 @@ class GetAccountResponseBodyAccount(TeaModel):
         self.resource_directory_id = resource_directory_id
         # The path of the member in the resource directory.
         self.resource_directory_path = resource_directory_path
+        self.secure_mobile_phone = secure_mobile_phone
         # The status of the member. Valid values:
         # 
         # *   CreateSuccess: The member is created.
@@ -4005,6 +4007,8 @@ class GetAccountResponseBodyAccount(TeaModel):
             result['ResourceDirectoryId'] = self.resource_directory_id
         if self.resource_directory_path is not None:
             result['ResourceDirectoryPath'] = self.resource_directory_path
+        if self.secure_mobile_phone is not None:
+            result['SecureMobilePhone'] = self.secure_mobile_phone
         if self.status is not None:
             result['Status'] = self.status
         result['Tags'] = []
@@ -4043,6 +4047,8 @@ class GetAccountResponseBodyAccount(TeaModel):
             self.resource_directory_id = m.get('ResourceDirectoryId')
         if m.get('ResourceDirectoryPath') is not None:
             self.resource_directory_path = m.get('ResourceDirectoryPath')
+        if m.get('SecureMobilePhone') is not None:
+            self.secure_mobile_phone = m.get('SecureMobilePhone')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tags = []
