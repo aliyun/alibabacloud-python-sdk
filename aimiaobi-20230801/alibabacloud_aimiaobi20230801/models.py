@@ -701,12 +701,14 @@ class AddAuditTermsRequest(TeaModel):
         keyword: str = None,
         suggest_word: str = None,
         terms_desc: str = None,
+        terms_name: str = None,
         workspace_id: str = None,
     ):
         self.exception_word = exception_word
         self.keyword = keyword
         self.suggest_word = suggest_word
         self.terms_desc = terms_desc
+        self.terms_name = terms_name
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -727,6 +729,8 @@ class AddAuditTermsRequest(TeaModel):
             result['SuggestWord'] = self.suggest_word
         if self.terms_desc is not None:
             result['TermsDesc'] = self.terms_desc
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -741,6 +745,8 @@ class AddAuditTermsRequest(TeaModel):
             self.suggest_word = m.get('SuggestWord')
         if m.get('TermsDesc') is not None:
             self.terms_desc = m.get('TermsDesc')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -753,12 +759,14 @@ class AddAuditTermsShrinkRequest(TeaModel):
         keyword: str = None,
         suggest_word: str = None,
         terms_desc: str = None,
+        terms_name: str = None,
         workspace_id: str = None,
     ):
         self.exception_word_shrink = exception_word_shrink
         self.keyword = keyword
         self.suggest_word = suggest_word
         self.terms_desc = terms_desc
+        self.terms_name = terms_name
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -779,6 +787,8 @@ class AddAuditTermsShrinkRequest(TeaModel):
             result['SuggestWord'] = self.suggest_word
         if self.terms_desc is not None:
             result['TermsDesc'] = self.terms_desc
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -793,6 +803,8 @@ class AddAuditTermsShrinkRequest(TeaModel):
             self.suggest_word = m.get('SuggestWord')
         if m.get('TermsDesc') is not None:
             self.terms_desc = m.get('TermsDesc')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -4904,8 +4916,10 @@ class CreateTokenResponse(TeaModel):
 class DeleteAuditNoteRequest(TeaModel):
     def __init__(
         self,
+        note_id: str = None,
         workspace_id: str = None,
     ):
+        self.note_id = note_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -4918,12 +4932,16 @@ class DeleteAuditNoteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.note_id is not None:
+            result['NoteId'] = self.note_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NoteId') is not None:
+            self.note_id = m.get('NoteId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -7011,9 +7029,11 @@ class DocumentExtractionResponse(TeaModel):
 class DownloadAuditNoteRequest(TeaModel):
     def __init__(
         self,
+        note_id: str = None,
         task_id: str = None,
         workspace_id: str = None,
     ):
+        self.note_id = note_id
         self.task_id = task_id
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -7027,6 +7047,8 @@ class DownloadAuditNoteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.note_id is not None:
+            result['NoteId'] = self.note_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.workspace_id is not None:
@@ -7035,6 +7057,8 @@ class DownloadAuditNoteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NoteId') is not None:
+            self.note_id = m.get('NoteId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('WorkspaceId') is not None:
@@ -11615,8 +11639,10 @@ class GetAutoClipsTaskInfoResponse(TeaModel):
 class GetAvailableAuditNotesRequest(TeaModel):
     def __init__(
         self,
+        note_id: str = None,
         workspace_id: str = None,
     ):
+        self.note_id = note_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -11629,12 +11655,16 @@ class GetAvailableAuditNotesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.note_id is not None:
+            result['NoteId'] = self.note_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NoteId') is not None:
+            self.note_id = m.get('NoteId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -23771,10 +23801,12 @@ class ListAuditTermsRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        terms_name: str = None,
         workspace_id: str = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
+        self.terms_name = terms_name
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -23791,6 +23823,8 @@ class ListAuditTermsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -23801,6 +23835,8 @@ class ListAuditTermsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -23814,12 +23850,14 @@ class ListAuditTermsResponseBodyData(TeaModel):
         keyword: str = None,
         suggest_word: str = None,
         terms_desc: str = None,
+        terms_name: str = None,
     ):
         self.exception_word = exception_word
         self.id = id
         self.keyword = keyword
         self.suggest_word = suggest_word
         self.terms_desc = terms_desc
+        self.terms_name = terms_name
 
     def validate(self):
         pass
@@ -23840,6 +23878,8 @@ class ListAuditTermsResponseBodyData(TeaModel):
             result['SuggestWord'] = self.suggest_word
         if self.terms_desc is not None:
             result['TermsDesc'] = self.terms_desc
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         return result
 
     def from_map(self, m: dict = None):
@@ -23854,6 +23894,8 @@ class ListAuditTermsResponseBodyData(TeaModel):
             self.suggest_word = m.get('SuggestWord')
         if m.get('TermsDesc') is not None:
             self.terms_desc = m.get('TermsDesc')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         return self
 
 
@@ -54511,10 +54553,12 @@ class SubmitAuditNoteRequest(TeaModel):
     def __init__(
         self,
         file_key: str = None,
+        note_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.file_key = file_key
+        self.note_id = note_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -54529,6 +54573,8 @@ class SubmitAuditNoteRequest(TeaModel):
         result = dict()
         if self.file_key is not None:
             result['FileKey'] = self.file_key
+        if self.note_id is not None:
+            result['NoteId'] = self.note_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -54537,6 +54583,8 @@ class SubmitAuditNoteRequest(TeaModel):
         m = m or dict()
         if m.get('FileKey') is not None:
             self.file_key = m.get('FileKey')
+        if m.get('NoteId') is not None:
+            self.note_id = m.get('NoteId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -57018,8 +57066,10 @@ class SubmitEnterpriseVocAnalysisTaskResponse(TeaModel):
 class SubmitExportTermsTaskRequest(TeaModel):
     def __init__(
         self,
+        terms_name: str = None,
         workspace_id: str = None,
     ):
+        self.terms_name = terms_name
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -57032,12 +57082,16 @@ class SubmitExportTermsTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -57309,10 +57363,12 @@ class SubmitImportTermsTaskRequest(TeaModel):
     def __init__(
         self,
         file_key: str = None,
+        terms_name: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.file_key = file_key
+        self.terms_name = terms_name
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -57327,6 +57383,8 @@ class SubmitImportTermsTaskRequest(TeaModel):
         result = dict()
         if self.file_key is not None:
             result['FileKey'] = self.file_key
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -57335,6 +57393,8 @@ class SubmitImportTermsTaskRequest(TeaModel):
         m = m or dict()
         if m.get('FileKey') is not None:
             self.file_key = m.get('FileKey')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -57538,13 +57598,17 @@ class SubmitSmartAuditRequest(TeaModel):
     def __init__(
         self,
         image_url_list: List[SubmitSmartAuditRequestImageUrlList] = None,
+        note_id: str = None,
         sub_codes: List[str] = None,
+        terms_name: str = None,
         text: str = None,
         workspace_id: str = None,
         image_urls: List[SubmitSmartAuditRequestImageUrls] = None,
     ):
         self.image_url_list = image_url_list
+        self.note_id = note_id
         self.sub_codes = sub_codes
+        self.terms_name = terms_name
         self.text = text
         self.workspace_id = workspace_id
         self.image_urls = image_urls
@@ -57569,8 +57633,12 @@ class SubmitSmartAuditRequest(TeaModel):
         if self.image_url_list is not None:
             for k in self.image_url_list:
                 result['ImageUrlList'].append(k.to_map() if k else None)
+        if self.note_id is not None:
+            result['NoteId'] = self.note_id
         if self.sub_codes is not None:
             result['SubCodes'] = self.sub_codes
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.text is not None:
             result['Text'] = self.text
         if self.workspace_id is not None:
@@ -57588,8 +57656,12 @@ class SubmitSmartAuditRequest(TeaModel):
             for k in m.get('ImageUrlList'):
                 temp_model = SubmitSmartAuditRequestImageUrlList()
                 self.image_url_list.append(temp_model.from_map(k))
+        if m.get('NoteId') is not None:
+            self.note_id = m.get('NoteId')
         if m.get('SubCodes') is not None:
             self.sub_codes = m.get('SubCodes')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('WorkspaceId') is not None:
@@ -57606,13 +57678,17 @@ class SubmitSmartAuditShrinkRequest(TeaModel):
     def __init__(
         self,
         image_url_list_shrink: str = None,
+        note_id: str = None,
         sub_codes_shrink: str = None,
+        terms_name: str = None,
         text: str = None,
         workspace_id: str = None,
         image_urls_shrink: str = None,
     ):
         self.image_url_list_shrink = image_url_list_shrink
+        self.note_id = note_id
         self.sub_codes_shrink = sub_codes_shrink
+        self.terms_name = terms_name
         self.text = text
         self.workspace_id = workspace_id
         self.image_urls_shrink = image_urls_shrink
@@ -57628,8 +57704,12 @@ class SubmitSmartAuditShrinkRequest(TeaModel):
         result = dict()
         if self.image_url_list_shrink is not None:
             result['ImageUrlList'] = self.image_url_list_shrink
+        if self.note_id is not None:
+            result['NoteId'] = self.note_id
         if self.sub_codes_shrink is not None:
             result['SubCodes'] = self.sub_codes_shrink
+        if self.terms_name is not None:
+            result['TermsName'] = self.terms_name
         if self.text is not None:
             result['Text'] = self.text
         if self.workspace_id is not None:
@@ -57642,8 +57722,12 @@ class SubmitSmartAuditShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ImageUrlList') is not None:
             self.image_url_list_shrink = m.get('ImageUrlList')
+        if m.get('NoteId') is not None:
+            self.note_id = m.get('NoteId')
         if m.get('SubCodes') is not None:
             self.sub_codes_shrink = m.get('SubCodes')
+        if m.get('TermsName') is not None:
+            self.terms_name = m.get('TermsName')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('WorkspaceId') is not None:

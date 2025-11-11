@@ -1,3 +1,17 @@
+2025-11-11 Version: 1.36.4
+- Update API AddAuditTerms: add request parameters TermsName.
+- Update API DeleteAuditNote: add request parameters NoteId.
+- Update API DownloadAuditNote: add request parameters NoteId.
+- Update API GetAvailableAuditNotes: add request parameters NoteId.
+- Update API ListAuditTerms: add request parameters TermsName.
+- Update API ListAuditTerms: add response parameters Body.Data.$.TermsName.
+- Update API SubmitAuditNote: add request parameters NoteId.
+- Update API SubmitExportTermsTask: add request parameters TermsName.
+- Update API SubmitImportTermsTask: add request parameters TermsName.
+- Update API SubmitSmartAudit: add request parameters NoteId.
+- Update API SubmitSmartAudit: add request parameters TermsName.
+
+
 2025-10-11 Version: 1.36.3
 - Update API RunWritingV2: add request parameters OutlineList.
 - Update API RunWritingV2: add request parameters SourceTraceMethod.

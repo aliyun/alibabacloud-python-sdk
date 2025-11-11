@@ -67,6 +67,8 @@ class Client(OpenApiClient):
             body['SuggestWord'] = request.suggest_word
         if not UtilClient.is_unset(request.terms_desc):
             body['TermsDesc'] = request.terms_desc
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -114,6 +116,8 @@ class Client(OpenApiClient):
             body['SuggestWord'] = request.suggest_word
         if not UtilClient.is_unset(request.terms_desc):
             body['TermsDesc'] = request.terms_desc
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1875,6 +1879,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1910,6 +1916,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3347,6 +3355,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -3384,6 +3394,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5843,6 +5855,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -5878,6 +5892,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9895,6 +9911,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9934,6 +9952,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -18793,6 +18813,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_key):
             body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -18830,6 +18852,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_key):
             body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -19775,6 +19799,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -19810,6 +19836,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -19973,6 +20001,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_key):
             body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -20010,6 +20040,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_key):
             body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -20081,8 +20113,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.image_url_list_shrink):
             body['ImageUrlList'] = request.image_url_list_shrink
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.sub_codes_shrink):
             body['SubCodes'] = request.sub_codes_shrink
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.text):
             body['Text'] = request.text
         if not UtilClient.is_unset(request.workspace_id):
@@ -20132,8 +20168,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.image_url_list_shrink):
             body['ImageUrlList'] = request.image_url_list_shrink
+        if not UtilClient.is_unset(request.note_id):
+            body['NoteId'] = request.note_id
         if not UtilClient.is_unset(request.sub_codes_shrink):
             body['SubCodes'] = request.sub_codes_shrink
+        if not UtilClient.is_unset(request.terms_name):
+            body['TermsName'] = request.terms_name
         if not UtilClient.is_unset(request.text):
             body['Text'] = request.text
         if not UtilClient.is_unset(request.workspace_id):
