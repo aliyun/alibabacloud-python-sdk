@@ -836,6 +836,131 @@ class AuthorizeApplicationToUsersResponse(TeaModel):
         return self
 
 
+class BindUserAuthnSourceMappingRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+        user_external_id: str = None,
+        user_id: str = None,
+    ):
+        # 来源Idp Id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 外部关联ID
+        # 
+        # This parameter is required.
+        self.user_external_id = user_external_id
+        # 用户ID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_external_id is not None:
+            result['UserExternalId'] = self.user_external_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserExternalId') is not None:
+            self.user_external_id = m.get('UserExternalId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class BindUserAuthnSourceMappingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BindUserAuthnSourceMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindUserAuthnSourceMappingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindUserAuthnSourceMappingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -32978,6 +33103,259 @@ class ListSynchronizationJobsResponse(TeaModel):
         return self
 
 
+class ListUserAuthnSourceMappingsRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        user_external_id: str = None,
+        user_id: str = None,
+    ):
+        # 来源Idp Id
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        self.previous_token = previous_token
+        # 外部关联ID
+        self.user_external_id = user_external_id
+        # 用户ID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.user_external_id is not None:
+            result['UserExternalId'] = self.user_external_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('UserExternalId') is not None:
+            self.user_external_id = m.get('UserExternalId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(TeaModel):
+    def __init__(
+        self,
+        authn_source_type: str = None,
+        create_time: int = None,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+        update_time: int = None,
+        user_external_id: str = None,
+        user_id: str = None,
+    ):
+        # 来源Idp类型
+        self.authn_source_type = authn_source_type
+        # 创建时间
+        self.create_time = create_time
+        # 来源Idp Id
+        self.identity_provider_id = identity_provider_id
+        # 实例Id
+        self.instance_id = instance_id
+        # 最近一次更新时间
+        self.update_time = update_time
+        # 外部ID
+        self.user_external_id = user_external_id
+        # 用户ID
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_source_type is not None:
+            result['AuthnSourceType'] = self.authn_source_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_external_id is not None:
+            result['UserExternalId'] = self.user_external_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnSourceType') is not None:
+            self.authn_source_type = m.get('AuthnSourceType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserExternalId') is not None:
+            self.user_external_id = m.get('UserExternalId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListUserAuthnSourceMappingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        user_authn_source_mappings: List[ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings] = None,
+    ):
+        # 分页查询时每页行数。
+        self.max_results = max_results
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        self.previous_token = previous_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.user_authn_source_mappings = user_authn_source_mappings
+
+    def validate(self):
+        if self.user_authn_source_mappings:
+            for k in self.user_authn_source_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['UserAuthnSourceMappings'] = []
+        if self.user_authn_source_mappings is not None:
+            for k in self.user_authn_source_mappings:
+                result['UserAuthnSourceMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.user_authn_source_mappings = []
+        if m.get('UserAuthnSourceMappings') is not None:
+            for k in m.get('UserAuthnSourceMappings'):
+                temp_model = ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings()
+                self.user_authn_source_mappings.append(temp_model.from_map(k))
+        return self
+
+
+class ListUserAuthnSourceMappingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserAuthnSourceMappingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserAuthnSourceMappingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUsersRequest(TeaModel):
     def __init__(
         self,
@@ -37927,6 +38305,131 @@ class SetUserPrimaryOrganizationalUnitResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetUserPrimaryOrganizationalUnitResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnbindUserAuthnSourceMappingRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+        user_external_id: str = None,
+        user_id: str = None,
+    ):
+        # 来源ID
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 外部关联ID
+        # 
+        # This parameter is required.
+        self.user_external_id = user_external_id
+        # 用户ID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_external_id is not None:
+            result['UserExternalId'] = self.user_external_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserExternalId') is not None:
+            self.user_external_id = m.get('UserExternalId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class UnbindUserAuthnSourceMappingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnbindUserAuthnSourceMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnbindUserAuthnSourceMappingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnbindUserAuthnSourceMappingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

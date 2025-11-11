@@ -773,6 +773,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.authorize_application_to_users_with_options_async(request, runtime)
 
+    def bind_user_authn_source_mapping_with_options(
+        self,
+        request: eiam_20211201_models.BindUserAuthnSourceMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.BindUserAuthnSourceMappingResponse:
+        """
+        @summary 绑定三方登录账户
+        
+        @param request: BindUserAuthnSourceMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindUserAuthnSourceMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_external_id):
+            query['UserExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindUserAuthnSourceMapping',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.BindUserAuthnSourceMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_user_authn_source_mapping_with_options_async(
+        self,
+        request: eiam_20211201_models.BindUserAuthnSourceMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.BindUserAuthnSourceMappingResponse:
+        """
+        @summary 绑定三方登录账户
+        
+        @param request: BindUserAuthnSourceMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindUserAuthnSourceMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_external_id):
+            query['UserExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindUserAuthnSourceMapping',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.BindUserAuthnSourceMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_user_authn_source_mapping(
+        self,
+        request: eiam_20211201_models.BindUserAuthnSourceMappingRequest,
+    ) -> eiam_20211201_models.BindUserAuthnSourceMappingResponse:
+        """
+        @summary 绑定三方登录账户
+        
+        @param request: BindUserAuthnSourceMappingRequest
+        @return: BindUserAuthnSourceMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_user_authn_source_mapping_with_options(request, runtime)
+
+    async def bind_user_authn_source_mapping_async(
+        self,
+        request: eiam_20211201_models.BindUserAuthnSourceMappingRequest,
+    ) -> eiam_20211201_models.BindUserAuthnSourceMappingResponse:
+        """
+        @summary 绑定三方登录账户
+        
+        @param request: BindUserAuthnSourceMappingRequest
+        @return: BindUserAuthnSourceMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_user_authn_source_mapping_with_options_async(request, runtime)
+
     def create_application_with_options(
         self,
         request: eiam_20211201_models.CreateApplicationRequest,
@@ -15263,6 +15371,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_synchronization_jobs_with_options_async(request, runtime)
 
+    def list_user_authn_source_mappings_with_options(
+        self,
+        request: eiam_20211201_models.ListUserAuthnSourceMappingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListUserAuthnSourceMappingsResponse:
+        """
+        @summary 查询三方登录账户绑定关系
+        
+        @param request: ListUserAuthnSourceMappingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAuthnSourceMappingsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        if not UtilClient.is_unset(request.user_external_id):
+            query['UserExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserAuthnSourceMappings',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUserAuthnSourceMappingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_authn_source_mappings_with_options_async(
+        self,
+        request: eiam_20211201_models.ListUserAuthnSourceMappingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListUserAuthnSourceMappingsResponse:
+        """
+        @summary 查询三方登录账户绑定关系
+        
+        @param request: ListUserAuthnSourceMappingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAuthnSourceMappingsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        if not UtilClient.is_unset(request.user_external_id):
+            query['UserExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserAuthnSourceMappings',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUserAuthnSourceMappingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_authn_source_mappings(
+        self,
+        request: eiam_20211201_models.ListUserAuthnSourceMappingsRequest,
+    ) -> eiam_20211201_models.ListUserAuthnSourceMappingsResponse:
+        """
+        @summary 查询三方登录账户绑定关系
+        
+        @param request: ListUserAuthnSourceMappingsRequest
+        @return: ListUserAuthnSourceMappingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_authn_source_mappings_with_options(request, runtime)
+
+    async def list_user_authn_source_mappings_async(
+        self,
+        request: eiam_20211201_models.ListUserAuthnSourceMappingsRequest,
+    ) -> eiam_20211201_models.ListUserAuthnSourceMappingsResponse:
+        """
+        @summary 查询三方登录账户绑定关系
+        
+        @param request: ListUserAuthnSourceMappingsRequest
+        @return: ListUserAuthnSourceMappingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_authn_source_mappings_with_options_async(request, runtime)
+
     def list_users_with_options(
         self,
         request: eiam_20211201_models.ListUsersRequest,
@@ -18246,6 +18474,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_user_primary_organizational_unit_with_options_async(request, runtime)
+
+    def unbind_user_authn_source_mapping_with_options(
+        self,
+        request: eiam_20211201_models.UnbindUserAuthnSourceMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UnbindUserAuthnSourceMappingResponse:
+        """
+        @summary 解绑三方登录账户
+        
+        @param request: UnbindUserAuthnSourceMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindUserAuthnSourceMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_external_id):
+            query['UserExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindUserAuthnSourceMapping',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UnbindUserAuthnSourceMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_user_authn_source_mapping_with_options_async(
+        self,
+        request: eiam_20211201_models.UnbindUserAuthnSourceMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UnbindUserAuthnSourceMappingResponse:
+        """
+        @summary 解绑三方登录账户
+        
+        @param request: UnbindUserAuthnSourceMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindUserAuthnSourceMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_external_id):
+            query['UserExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindUserAuthnSourceMapping',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UnbindUserAuthnSourceMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_user_authn_source_mapping(
+        self,
+        request: eiam_20211201_models.UnbindUserAuthnSourceMappingRequest,
+    ) -> eiam_20211201_models.UnbindUserAuthnSourceMappingResponse:
+        """
+        @summary 解绑三方登录账户
+        
+        @param request: UnbindUserAuthnSourceMappingRequest
+        @return: UnbindUserAuthnSourceMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_user_authn_source_mapping_with_options(request, runtime)
+
+    async def unbind_user_authn_source_mapping_async(
+        self,
+        request: eiam_20211201_models.UnbindUserAuthnSourceMappingRequest,
+    ) -> eiam_20211201_models.UnbindUserAuthnSourceMappingResponse:
+        """
+        @summary 解绑三方登录账户
+        
+        @param request: UnbindUserAuthnSourceMappingRequest
+        @return: UnbindUserAuthnSourceMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_user_authn_source_mapping_with_options_async(request, runtime)
 
     def unlock_user_with_options(
         self,
