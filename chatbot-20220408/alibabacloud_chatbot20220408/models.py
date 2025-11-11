@@ -7285,6 +7285,7 @@ class DescribeFaqResponseBodySolutions(TeaModel):
         perspective_codes: List[str] = None,
         plain_text: str = None,
         solution_id: int = None,
+        tag_id_list: List[int] = None,
     ):
         self.content = content
         self.content_type = content_type
@@ -7293,6 +7294,7 @@ class DescribeFaqResponseBodySolutions(TeaModel):
         self.perspective_codes = perspective_codes
         self.plain_text = plain_text
         self.solution_id = solution_id
+        self.tag_id_list = tag_id_list
 
     def validate(self):
         pass
@@ -7317,6 +7319,8 @@ class DescribeFaqResponseBodySolutions(TeaModel):
             result['PlainText'] = self.plain_text
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.tag_id_list is not None:
+            result['TagIdList'] = self.tag_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -7335,6 +7339,8 @@ class DescribeFaqResponseBodySolutions(TeaModel):
             self.plain_text = m.get('PlainText')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('TagIdList') is not None:
+            self.tag_id_list = m.get('TagIdList')
         return self
 
 

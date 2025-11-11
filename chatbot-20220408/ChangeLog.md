@@ -1,3 +1,7 @@
+2025-11-11 Version: 2.4.1
+- Update API DescribeFaq: add response parameters Body.Solutions.$.TagIdList.
+
+
 2025-10-24 Version: 2.4.0
 - Support API CreateTag.
 - Support API CreateTagGroup.
