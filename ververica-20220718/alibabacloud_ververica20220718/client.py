@@ -5267,6 +5267,124 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.GetMemberHeaders()
         return await self.get_member_with_options_async(namespace, member, headers, runtime)
 
+    def get_pre_signed_url_for_put_object_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetPreSignedUrlForPutObjectRequest,
+        headers: ververica_20220718_models.GetPreSignedUrlForPutObjectHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetPreSignedUrlForPutObjectResponse:
+        """
+        @summary 获取上传文件URL
+        
+        @param request: GetPreSignedUrlForPutObjectRequest
+        @param headers: GetPreSignedUrlForPutObjectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPreSignedUrlForPutObjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPreSignedUrlForPutObject',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/artifacts/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/getPreSignedUrlForPutObject',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetPreSignedUrlForPutObjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pre_signed_url_for_put_object_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetPreSignedUrlForPutObjectRequest,
+        headers: ververica_20220718_models.GetPreSignedUrlForPutObjectHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetPreSignedUrlForPutObjectResponse:
+        """
+        @summary 获取上传文件URL
+        
+        @param request: GetPreSignedUrlForPutObjectRequest
+        @param headers: GetPreSignedUrlForPutObjectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPreSignedUrlForPutObjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPreSignedUrlForPutObject',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/artifacts/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/getPreSignedUrlForPutObject',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetPreSignedUrlForPutObjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pre_signed_url_for_put_object(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetPreSignedUrlForPutObjectRequest,
+    ) -> ververica_20220718_models.GetPreSignedUrlForPutObjectResponse:
+        """
+        @summary 获取上传文件URL
+        
+        @param request: GetPreSignedUrlForPutObjectRequest
+        @return: GetPreSignedUrlForPutObjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetPreSignedUrlForPutObjectHeaders()
+        return self.get_pre_signed_url_for_put_object_with_options(namespace, request, headers, runtime)
+
+    async def get_pre_signed_url_for_put_object_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetPreSignedUrlForPutObjectRequest,
+    ) -> ververica_20220718_models.GetPreSignedUrlForPutObjectResponse:
+        """
+        @summary 获取上传文件URL
+        
+        @param request: GetPreSignedUrlForPutObjectRequest
+        @return: GetPreSignedUrlForPutObjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetPreSignedUrlForPutObjectHeaders()
+        return await self.get_pre_signed_url_for_put_object_with_options_async(namespace, request, headers, runtime)
+
     def get_savepoint_with_options(
         self,
         namespace: str,

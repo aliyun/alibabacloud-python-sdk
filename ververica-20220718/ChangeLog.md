@@ -1,3 +1,7 @@
+2025-11-12 Version: 1.9.0
+- Support API GetPreSignedUrlForPutObject.
+
+
 2025-10-21 Version: 1.8.0
 - Support API CancelSqlPreview.
 - Support API CreateDeploymentTargetV2.
