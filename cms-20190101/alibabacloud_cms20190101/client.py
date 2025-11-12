@@ -6267,7 +6267,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeContactGroupListResponse:
         """
-        @summary Queries alert groups.
+        @summary Call the DescribeContactGroupList interface to query the list of alarm contact groups.
         
         @param request: DescribeContactGroupListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6304,7 +6304,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeContactGroupListResponse:
         """
-        @summary Queries alert groups.
+        @summary Call the DescribeContactGroupList interface to query the list of alarm contact groups.
         
         @param request: DescribeContactGroupListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6340,7 +6340,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeContactGroupListRequest,
     ) -> cms_20190101_models.DescribeContactGroupListResponse:
         """
-        @summary Queries alert groups.
+        @summary Call the DescribeContactGroupList interface to query the list of alarm contact groups.
         
         @param request: DescribeContactGroupListRequest
         @return: DescribeContactGroupListResponse
@@ -6353,7 +6353,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeContactGroupListRequest,
     ) -> cms_20190101_models.DescribeContactGroupListResponse:
         """
-        @summary Queries alert groups.
+        @summary Call the DescribeContactGroupList interface to query the list of alarm contact groups.
         
         @param request: DescribeContactGroupListRequest
         @return: DescribeContactGroupListResponse
