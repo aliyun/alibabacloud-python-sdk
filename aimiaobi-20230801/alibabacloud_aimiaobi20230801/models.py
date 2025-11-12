@@ -42338,12 +42338,20 @@ class RunSearchGenerationRequestChatConfigSearchParam(TeaModel):
         self,
         end_time: int = None,
         multimodal_search_types: List[str] = None,
+        search_audio_min_score: float = None,
+        search_image_min_score: float = None,
         search_sources: List[RunSearchGenerationRequestChatConfigSearchParamSearchSources] = None,
+        search_text_min_score: float = None,
+        search_video_min_score: float = None,
         start_time: int = None,
     ):
         self.end_time = end_time
         self.multimodal_search_types = multimodal_search_types
+        self.search_audio_min_score = search_audio_min_score
+        self.search_image_min_score = search_image_min_score
         self.search_sources = search_sources
+        self.search_text_min_score = search_text_min_score
+        self.search_video_min_score = search_video_min_score
         self.start_time = start_time
 
     def validate(self):
@@ -42362,10 +42370,18 @@ class RunSearchGenerationRequestChatConfigSearchParam(TeaModel):
             result['EndTime'] = self.end_time
         if self.multimodal_search_types is not None:
             result['MultimodalSearchTypes'] = self.multimodal_search_types
+        if self.search_audio_min_score is not None:
+            result['SearchAudioMinScore'] = self.search_audio_min_score
+        if self.search_image_min_score is not None:
+            result['SearchImageMinScore'] = self.search_image_min_score
         result['SearchSources'] = []
         if self.search_sources is not None:
             for k in self.search_sources:
                 result['SearchSources'].append(k.to_map() if k else None)
+        if self.search_text_min_score is not None:
+            result['SearchTextMinScore'] = self.search_text_min_score
+        if self.search_video_min_score is not None:
+            result['SearchVideoMinScore'] = self.search_video_min_score
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -42376,11 +42392,19 @@ class RunSearchGenerationRequestChatConfigSearchParam(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('MultimodalSearchTypes') is not None:
             self.multimodal_search_types = m.get('MultimodalSearchTypes')
+        if m.get('SearchAudioMinScore') is not None:
+            self.search_audio_min_score = m.get('SearchAudioMinScore')
+        if m.get('SearchImageMinScore') is not None:
+            self.search_image_min_score = m.get('SearchImageMinScore')
         self.search_sources = []
         if m.get('SearchSources') is not None:
             for k in m.get('SearchSources'):
                 temp_model = RunSearchGenerationRequestChatConfigSearchParamSearchSources()
                 self.search_sources.append(temp_model.from_map(k))
+        if m.get('SearchTextMinScore') is not None:
+            self.search_text_min_score = m.get('SearchTextMinScore')
+        if m.get('SearchVideoMinScore') is not None:
+            self.search_video_min_score = m.get('SearchVideoMinScore')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -42393,6 +42417,8 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
         exclude_generate_options: List[str] = None,
         generate_level: str = None,
         generate_technology: str = None,
+        model_custom_prompt_template: str = None,
+        model_custom_vl_prompt_template: str = None,
         search_models: List[str] = None,
         search_param: RunSearchGenerationRequestChatConfigSearchParam = None,
     ):
@@ -42400,6 +42426,8 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
         self.exclude_generate_options = exclude_generate_options
         self.generate_level = generate_level
         self.generate_technology = generate_technology
+        self.model_custom_prompt_template = model_custom_prompt_template
+        self.model_custom_vl_prompt_template = model_custom_vl_prompt_template
         self.search_models = search_models
         self.search_param = search_param
 
@@ -42421,6 +42449,10 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
             result['GenerateLevel'] = self.generate_level
         if self.generate_technology is not None:
             result['GenerateTechnology'] = self.generate_technology
+        if self.model_custom_prompt_template is not None:
+            result['ModelCustomPromptTemplate'] = self.model_custom_prompt_template
+        if self.model_custom_vl_prompt_template is not None:
+            result['ModelCustomVlPromptTemplate'] = self.model_custom_vl_prompt_template
         if self.search_models is not None:
             result['SearchModels'] = self.search_models
         if self.search_param is not None:
@@ -42437,6 +42469,10 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
             self.generate_level = m.get('GenerateLevel')
         if m.get('GenerateTechnology') is not None:
             self.generate_technology = m.get('GenerateTechnology')
+        if m.get('ModelCustomPromptTemplate') is not None:
+            self.model_custom_prompt_template = m.get('ModelCustomPromptTemplate')
+        if m.get('ModelCustomVlPromptTemplate') is not None:
+            self.model_custom_vl_prompt_template = m.get('ModelCustomVlPromptTemplate')
         if m.get('SearchModels') is not None:
             self.search_models = m.get('SearchModels')
         if m.get('SearchParam') is not None:

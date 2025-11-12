@@ -1,3 +1,12 @@
+2025-11-12 Version: 1.36.5
+- Update API RunSearchGeneration: add request parameters ChatConfig.ModelCustomPromptTemplate.
+- Update API RunSearchGeneration: add request parameters ChatConfig.ModelCustomVlPromptTemplate.
+- Update API RunSearchGeneration: add request parameters ChatConfig.SearchParam.SearchAudioMinScore.
+- Update API RunSearchGeneration: add request parameters ChatConfig.SearchParam.SearchImageMinScore.
+- Update API RunSearchGeneration: add request parameters ChatConfig.SearchParam.SearchTextMinScore.
+- Update API RunSearchGeneration: add request parameters ChatConfig.SearchParam.SearchVideoMinScore.
+
+
 2025-11-11 Version: 1.36.4
 - Update API AddAuditTerms: add request parameters TermsName.
 - Update API DeleteAuditNote: add request parameters NoteId.
