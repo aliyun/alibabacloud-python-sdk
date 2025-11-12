@@ -2175,6 +2175,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
+        if not UtilClient.is_unset(request.with_node_meta):
+            query['WithNodeMeta'] = request.with_node_meta
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2214,6 +2216,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
+        if not UtilClient.is_unset(request.with_node_meta):
+            query['WithNodeMeta'] = request.with_node_meta
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

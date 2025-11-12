@@ -849,6 +849,45 @@ class AllocateStrategySpec(TeaModel):
         return self
 
 
+class AssignNodeSpec(TeaModel):
+    def __init__(
+        self,
+        anti_affinity_node_names: str = None,
+        enable_assign_node: bool = None,
+        node_names: str = None,
+    ):
+        self.anti_affinity_node_names = anti_affinity_node_names
+        self.enable_assign_node = enable_assign_node
+        self.node_names = node_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anti_affinity_node_names is not None:
+            result['AntiAffinityNodeNames'] = self.anti_affinity_node_names
+        if self.enable_assign_node is not None:
+            result['EnableAssignNode'] = self.enable_assign_node
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AntiAffinityNodeNames') is not None:
+            self.anti_affinity_node_names = m.get('AntiAffinityNodeNames')
+        if m.get('EnableAssignNode') is not None:
+            self.enable_assign_node = m.get('EnableAssignNode')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        return self
+
+
 class CacheInfo(TeaModel):
     def __init__(
         self,
@@ -8625,8 +8664,10 @@ class GetQuotaRequest(TeaModel):
     def __init__(
         self,
         verbose: bool = None,
+        with_node_meta: bool = None,
     ):
         self.verbose = verbose
+        self.with_node_meta = with_node_meta
 
     def validate(self):
         pass
@@ -8639,12 +8680,16 @@ class GetQuotaRequest(TeaModel):
         result = dict()
         if self.verbose is not None:
             result['Verbose'] = self.verbose
+        if self.with_node_meta is not None:
+            result['WithNodeMeta'] = self.with_node_meta
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
+        if m.get('WithNodeMeta') is not None:
+            self.with_node_meta = m.get('WithNodeMeta')
         return self
 
 
