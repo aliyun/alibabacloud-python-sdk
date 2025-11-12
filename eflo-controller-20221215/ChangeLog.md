@@ -1,3 +1,21 @@
+2025-11-12 Version: 3.0.0
+- Support API ChangeNodeGroup.
+- Support API ChangeNodeTypes.
+- Support API DeleteHyperNode.
+- Support API DescribeHyperNode.
+- Support API DescribeNodeGroup.
+- Support API ListClusterHyperNodes.
+- Support API ListFreeHyperNodes.
+- Support API ListHyperNodes.
+- Support API ListSyslogs.
+- Support API ReportNodesStatus.
+- Update API CreateCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.BurstingEnabled.
+- Update API CreateCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.ProvisionedIops.
+- Update API DescribeNodeType: add response parameters Body.DiskQuantity.
+- Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.BurstingEnabled.
+- Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.ProvisionedIops.
+
+
 2025-10-17 Version: 2.7.7
 - Update API DescribeCluster: add response parameters Body.SecurityGroupId.
 - Update API DescribeCluster: add response parameters Body.VSwitchId.

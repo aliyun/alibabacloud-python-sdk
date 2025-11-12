@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class ApproveOperationRequest(TeaModel):
@@ -115,6 +115,352 @@ class ApproveOperationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ApproveOperationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ChangeNodeGroupRequest(TeaModel):
+    def __init__(
+        self,
+        ignore_failed_node_tasks: bool = None,
+        nodes: List[str] = None,
+        target_node_group_id: str = None,
+    ):
+        self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        self.nodes = nodes
+        self.target_node_group_id = target_node_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ignore_failed_node_tasks is not None:
+            result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
+        if self.nodes is not None:
+            result['Nodes'] = self.nodes
+        if self.target_node_group_id is not None:
+            result['TargetNodeGroupId'] = self.target_node_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IgnoreFailedNodeTasks') is not None:
+            self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
+        if m.get('Nodes') is not None:
+            self.nodes = m.get('Nodes')
+        if m.get('TargetNodeGroupId') is not None:
+            self.target_node_group_id = m.get('TargetNodeGroupId')
+        return self
+
+
+class ChangeNodeGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ignore_failed_node_tasks: bool = None,
+        nodes_shrink: str = None,
+        target_node_group_id: str = None,
+    ):
+        self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        self.nodes_shrink = nodes_shrink
+        self.target_node_group_id = target_node_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ignore_failed_node_tasks is not None:
+            result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
+        if self.nodes_shrink is not None:
+            result['Nodes'] = self.nodes_shrink
+        if self.target_node_group_id is not None:
+            result['TargetNodeGroupId'] = self.target_node_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IgnoreFailedNodeTasks') is not None:
+            self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
+        if m.get('Nodes') is not None:
+            self.nodes_shrink = m.get('Nodes')
+        if m.get('TargetNodeGroupId') is not None:
+            self.target_node_group_id = m.get('TargetNodeGroupId')
+        return self
+
+
+class ChangeNodeGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ChangeNodeGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeNodeGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeNodeGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ChangeNodeTypesRequest(TeaModel):
+    def __init__(
+        self,
+        node_ids: List[str] = None,
+        node_type: str = None,
+    ):
+        self.node_ids = node_ids
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class ChangeNodeTypesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        node_ids_shrink: str = None,
+        node_type: str = None,
+    ):
+        self.node_ids_shrink = node_ids_shrink
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_ids_shrink is not None:
+            result['NodeIds'] = self.node_ids_shrink
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeIds') is not None:
+            self.node_ids_shrink = m.get('NodeIds')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class ChangeNodeTypesResponseBodyNodeResponse(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        node_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class ChangeNodeTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        node_response: List[ChangeNodeTypesResponseBodyNodeResponse] = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.node_response = node_response
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        if self.node_response:
+            for k in self.node_response:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NodeResponse'] = []
+        if self.node_response is not None:
+            for k in self.node_response:
+                result['NodeResponse'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.node_response = []
+        if m.get('NodeResponse') is not None:
+            for k in m.get('NodeResponse'):
+                temp_model = ChangeNodeTypesResponseBodyNodeResponse()
+                self.node_response.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ChangeNodeTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeNodeTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeNodeTypesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -978,14 +1324,18 @@ class CreateClusterRequestNetworks(TeaModel):
 class CreateClusterRequestNodeGroupsHyperNodesDataDisk(TeaModel):
     def __init__(
         self,
+        bursting_enabled: bool = None,
         category: str = None,
         delete_with_node: bool = None,
         performance_level: str = None,
+        provisioned_iops: int = None,
         size: int = None,
     ):
+        self.bursting_enabled = bursting_enabled
         self.category = category
         self.delete_with_node = delete_with_node
         self.performance_level = performance_level
+        self.provisioned_iops = provisioned_iops
         self.size = size
 
     def validate(self):
@@ -997,24 +1347,32 @@ class CreateClusterRequestNodeGroupsHyperNodesDataDisk(TeaModel):
             return _map
 
         result = dict()
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
         if self.delete_with_node is not None:
             result['DeleteWithNode'] = self.delete_with_node
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
         if self.size is not None:
             result['Size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeleteWithNode') is not None:
             self.delete_with_node = m.get('DeleteWithNode')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -3497,6 +3855,102 @@ class DeleteClusterResponse(TeaModel):
         return self
 
 
+class DeleteHyperNodeRequest(TeaModel):
+    def __init__(
+        self,
+        hyper_node_id: str = None,
+    ):
+        # This parameter is required.
+        self.hyper_node_id = hyper_node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        return self
+
+
+class DeleteHyperNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteHyperNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHyperNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHyperNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteNodeRequest(TeaModel):
     def __init__(
         self,
@@ -4262,6 +4716,376 @@ class DescribeDiagnosticResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDiagnosticResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHyperNodeRequest(TeaModel):
+    def __init__(
+        self,
+        hyper_node_id: str = None,
+    ):
+        # This parameter is required.
+        self.hyper_node_id = hyper_node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        return self
+
+
+class DescribeHyperNodeResponseBodyNodesDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        disk_id: str = None,
+        performance_level: str = None,
+        size: int = None,
+        type: str = None,
+    ):
+        self.category = category
+        self.disk_id = disk_id
+        self.performance_level = performance_level
+        self.size = size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeHyperNodeResponseBodyNodesNetworks(TeaModel):
+    def __init__(
+        self,
+        bond_name: str = None,
+        ip: str = None,
+    ):
+        self.bond_name = bond_name
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond_name is not None:
+            result['BondName'] = self.bond_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BondName') is not None:
+            self.bond_name = m.get('BondName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class DescribeHyperNodeResponseBodyNodes(TeaModel):
+    def __init__(
+        self,
+        disks: List[DescribeHyperNodeResponseBodyNodesDisks] = None,
+        hostname: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        networks: DescribeHyperNodeResponseBodyNodesNetworks = None,
+        node_id: str = None,
+        operating_state: str = None,
+        status: str = None,
+        user_data: str = None,
+    ):
+        self.disks = disks
+        self.hostname = hostname
+        self.image_id = image_id
+        self.image_name = image_name
+        self.networks = networks
+        self.node_id = node_id
+        self.operating_state = operating_state
+        self.status = status
+        self.user_data = user_data
+
+    def validate(self):
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
+        if self.networks:
+            self.networks.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.networks is not None:
+            result['Networks'] = self.networks.to_map()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.operating_state is not None:
+            result['OperatingState'] = self.operating_state
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = DescribeHyperNodeResponseBodyNodesDisks()
+                self.disks.append(temp_model.from_map(k))
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('Networks') is not None:
+            temp_model = DescribeHyperNodeResponseBodyNodesNetworks()
+            self.networks = temp_model.from_map(m['Networks'])
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('OperatingState') is not None:
+            self.operating_state = m.get('OperatingState')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class DescribeHyperNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        create_time: str = None,
+        expire_time: str = None,
+        file_system_mount_enabled: bool = None,
+        hostname: str = None,
+        hpn_zone: str = None,
+        hyper_node_id: str = None,
+        machine_type: str = None,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        nodes: List[DescribeHyperNodeResponseBodyNodes] = None,
+        operating_state: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        zone_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.file_system_mount_enabled = file_system_mount_enabled
+        self.hostname = hostname
+        self.hpn_zone = hpn_zone
+        self.hyper_node_id = hyper_node_id
+        self.machine_type = machine_type
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        self.nodes = nodes
+        self.operating_state = operating_state
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.nodes:
+            for k in self.nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        result['Nodes'] = []
+        if self.nodes is not None:
+            for k in self.nodes:
+                result['Nodes'].append(k.to_map() if k else None)
+        if self.operating_state is not None:
+            result['OperatingState'] = self.operating_state
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        self.nodes = []
+        if m.get('Nodes') is not None:
+            for k in m.get('Nodes'):
+                temp_model = DescribeHyperNodeResponseBodyNodes()
+                self.nodes.append(temp_model.from_map(k))
+        if m.get('OperatingState') is not None:
+            self.operating_state = m.get('OperatingState')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeHyperNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHyperNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHyperNodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5821,6 +6645,252 @@ class DescribeNodeResponse(TeaModel):
         return self
 
 
+class DescribeNodeGroupRequest(TeaModel):
+    def __init__(
+        self,
+        node_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.node_group_id = node_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        return self
+
+
+class DescribeNodeGroupResponseBodySystemDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeNodeGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        az: str = None,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        create_time: str = None,
+        file_system_mount_enabled: bool = None,
+        image_id: str = None,
+        image_name: str = None,
+        key_pair_name: str = None,
+        login_type: str = None,
+        machine_type: str = None,
+        node_count: str = None,
+        node_group_description: str = None,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        request_id: str = None,
+        system_disk: DescribeNodeGroupResponseBodySystemDisk = None,
+        update_time: str = None,
+        user_data: str = None,
+        virtual_gpu_enabled: bool = None,
+    ):
+        self.az = az
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.create_time = create_time
+        self.file_system_mount_enabled = file_system_mount_enabled
+        self.image_id = image_id
+        self.image_name = image_name
+        self.key_pair_name = key_pair_name
+        self.login_type = login_type
+        self.machine_type = machine_type
+        self.node_count = node_count
+        self.node_group_description = node_group_description
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        # Id of the request
+        self.request_id = request_id
+        self.system_disk = system_disk
+        self.update_time = update_time
+        self.user_data = user_data
+        self.virtual_gpu_enabled = virtual_gpu_enabled
+
+    def validate(self):
+        if self.system_disk:
+            self.system_disk.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.az is not None:
+            result['Az'] = self.az
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.login_type is not None:
+            result['LoginType'] = self.login_type
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_group_description is not None:
+            result['NodeGroupDescription'] = self.node_group_description
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.virtual_gpu_enabled is not None:
+            result['VirtualGpuEnabled'] = self.virtual_gpu_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Az') is not None:
+            self.az = m.get('Az')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('LoginType') is not None:
+            self.login_type = m.get('LoginType')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeGroupDescription') is not None:
+            self.node_group_description = m.get('NodeGroupDescription')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SystemDisk') is not None:
+            temp_model = DescribeNodeGroupResponseBodySystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('VirtualGpuEnabled') is not None:
+            self.virtual_gpu_enabled = m.get('VirtualGpuEnabled')
+        return self
+
+
+class DescribeNodeGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNodeGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNodeGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeNodeTypeRequest(TeaModel):
     def __init__(
         self,
@@ -5851,12 +6921,14 @@ class DescribeNodeTypeRequest(TeaModel):
 class DescribeNodeTypeResponseBody(TeaModel):
     def __init__(
         self,
+        disk_quantity: int = None,
         eni_high_dense_quantity: int = None,
         eni_ipv_6address_quantity: int = None,
         eni_private_ip_address_quantity: int = None,
         eni_quantity: int = None,
         request_id: str = None,
     ):
+        self.disk_quantity = disk_quantity
         self.eni_high_dense_quantity = eni_high_dense_quantity
         self.eni_ipv_6address_quantity = eni_ipv_6address_quantity
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
@@ -5872,6 +6944,8 @@ class DescribeNodeTypeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.disk_quantity is not None:
+            result['DiskQuantity'] = self.disk_quantity
         if self.eni_high_dense_quantity is not None:
             result['EniHighDenseQuantity'] = self.eni_high_dense_quantity
         if self.eni_ipv_6address_quantity is not None:
@@ -5886,6 +6960,8 @@ class DescribeNodeTypeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DiskQuantity') is not None:
+            self.disk_quantity = m.get('DiskQuantity')
         if m.get('EniHighDenseQuantity') is not None:
             self.eni_high_dense_quantity = m.get('EniHighDenseQuantity')
         if m.get('EniIpv6AddressQuantity') is not None:
@@ -7529,14 +8605,18 @@ class ExtendClusterRequestIpAllocationPolicy(TeaModel):
 class ExtendClusterRequestNodeGroupsHyperNodesDataDisk(TeaModel):
     def __init__(
         self,
+        bursting_enabled: bool = None,
         category: str = None,
         delete_with_node: bool = None,
         performance_level: str = None,
+        provisioned_iops: int = None,
         size: int = None,
     ):
+        self.bursting_enabled = bursting_enabled
         self.category = category
         self.delete_with_node = delete_with_node
         self.performance_level = performance_level
+        self.provisioned_iops = provisioned_iops
         self.size = size
 
     def validate(self):
@@ -7548,24 +8628,32 @@ class ExtendClusterRequestNodeGroupsHyperNodesDataDisk(TeaModel):
             return _map
 
         result = dict()
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
         if self.delete_with_node is not None:
             result['DeleteWithNode'] = self.delete_with_node
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
         if self.size is not None:
             result['Size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeleteWithNode') is not None:
             self.delete_with_node = m.get('DeleteWithNode')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -8162,6 +9250,358 @@ class ExtendClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExtendClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListClusterHyperNodesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListClusterHyperNodesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        node_group_id: str = None,
+        resource_group_id: str = None,
+        tags: List[ListClusterHyperNodesRequestTags] = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.node_group_id = node_group_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListClusterHyperNodesRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListClusterHyperNodesResponseBodyHyperNodesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListClusterHyperNodesResponseBodyHyperNodes(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        create_time: str = None,
+        expire_time: str = None,
+        file_system_mount_enabled: bool = None,
+        hostname: str = None,
+        hpn_zone: str = None,
+        hyper_node_id: str = None,
+        machine_type: str = None,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        operating_state: str = None,
+        status: str = None,
+        tags: List[ListClusterHyperNodesResponseBodyHyperNodesTags] = None,
+        task_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.file_system_mount_enabled = file_system_mount_enabled
+        self.hostname = hostname
+        self.hpn_zone = hpn_zone
+        self.hyper_node_id = hyper_node_id
+        self.machine_type = machine_type
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        self.operating_state = operating_state
+        self.status = status
+        self.tags = tags
+        self.task_id = task_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.operating_state is not None:
+            result['OperatingState'] = self.operating_state
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('OperatingState') is not None:
+            self.operating_state = m.get('OperatingState')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListClusterHyperNodesResponseBodyHyperNodesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListClusterHyperNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hyper_nodes: List[ListClusterHyperNodesResponseBodyHyperNodes] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.hyper_nodes = hyper_nodes
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.hyper_nodes:
+            for k in self.hyper_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HyperNodes'] = []
+        if self.hyper_nodes is not None:
+            for k in self.hyper_nodes:
+                result['HyperNodes'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hyper_nodes = []
+        if m.get('HyperNodes') is not None:
+            for k in m.get('HyperNodes'):
+                temp_model = ListClusterHyperNodesResponseBodyHyperNodes()
+                self.hyper_nodes.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListClusterHyperNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListClusterHyperNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListClusterHyperNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9278,6 +10718,338 @@ class ListDiagnosticResultsResponse(TeaModel):
         return self
 
 
+class ListFreeHyperNodesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListFreeHyperNodesRequest(TeaModel):
+    def __init__(
+        self,
+        hpn_zone: str = None,
+        machine_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_group_id: str = None,
+        status: List[str] = None,
+        tags: List[ListFreeHyperNodesRequestTags] = None,
+    ):
+        self.hpn_zone = hpn_zone
+        self.machine_type = machine_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListFreeHyperNodesRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListFreeHyperNodesResponseBodyHyperNodesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListFreeHyperNodesResponseBodyHyperNodes(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        create_time: str = None,
+        expire_time: str = None,
+        hostname: str = None,
+        hpn_zone: str = None,
+        hyper_node_id: str = None,
+        machine_type: str = None,
+        operating_state: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[ListFreeHyperNodesResponseBodyHyperNodesTags] = None,
+        zone_id: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.hostname = hostname
+        self.hpn_zone = hpn_zone
+        self.hyper_node_id = hyper_node_id
+        self.machine_type = machine_type
+        self.operating_state = operating_state
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.operating_state is not None:
+            result['OperatingState'] = self.operating_state
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('OperatingState') is not None:
+            self.operating_state = m.get('OperatingState')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListFreeHyperNodesResponseBodyHyperNodesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListFreeHyperNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hyper_nodes: List[ListFreeHyperNodesResponseBodyHyperNodes] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.hyper_nodes = hyper_nodes
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.hyper_nodes:
+            for k in self.hyper_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HyperNodes'] = []
+        if self.hyper_nodes is not None:
+            for k in self.hyper_nodes:
+                result['HyperNodes'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hyper_nodes = []
+        if m.get('HyperNodes') is not None:
+            for k in m.get('HyperNodes'):
+                temp_model = ListFreeHyperNodesResponseBodyHyperNodes()
+                self.hyper_nodes.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListFreeHyperNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFreeHyperNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFreeHyperNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFreeNodesRequestTags(TeaModel):
     def __init__(
         self,
@@ -9625,6 +11397,387 @@ class ListFreeNodesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFreeNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHyperNodesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListHyperNodesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        hpn_zone: str = None,
+        hyper_node_id: str = None,
+        machine_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        node_group_name: str = None,
+        resource_group_id: str = None,
+        tags: List[ListHyperNodesRequestTags] = None,
+        zone_id: str = None,
+    ):
+        self.cluster_name = cluster_name
+        self.hpn_zone = hpn_zone
+        self.hyper_node_id = hyper_node_id
+        self.machine_type = machine_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.node_group_name = node_group_name
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListHyperNodesRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListHyperNodesResponseBodyHyperNodesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListHyperNodesResponseBodyHyperNodes(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        commodity_code: str = None,
+        create_time: str = None,
+        expire_time: str = None,
+        hostname: str = None,
+        hpn_zone: str = None,
+        hyper_node_id: str = None,
+        machine_type: str = None,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        operating_state: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[ListHyperNodesResponseBodyHyperNodesTags] = None,
+        task_id: str = None,
+        zone_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.commodity_code = commodity_code
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.hostname = hostname
+        self.hpn_zone = hpn_zone
+        self.hyper_node_id = hyper_node_id
+        self.machine_type = machine_type
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        self.operating_state = operating_state
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+        self.task_id = task_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.operating_state is not None:
+            result['OperatingState'] = self.operating_state
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('OperatingState') is not None:
+            self.operating_state = m.get('OperatingState')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListHyperNodesResponseBodyHyperNodesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListHyperNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hyper_nodes: List[ListHyperNodesResponseBodyHyperNodes] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.hyper_nodes = hyper_nodes
+        self.max_results = max_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.hyper_nodes:
+            for k in self.hyper_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HyperNodes'] = []
+        if self.hyper_nodes is not None:
+            for k in self.hyper_nodes:
+                result['HyperNodes'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hyper_nodes = []
+        if m.get('HyperNodes') is not None:
+            for k in m.get('HyperNodes'):
+                temp_model = ListHyperNodesResponseBodyHyperNodes()
+                self.hyper_nodes.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListHyperNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHyperNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHyperNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11239,6 +13392,284 @@ class ListNodeGroupsResponse(TeaModel):
         return self
 
 
+class ListSyslogsRequest(TeaModel):
+    def __init__(
+        self,
+        from_time: str = None,
+        next_token: str = None,
+        node_id: str = None,
+        query: str = None,
+        reverse: bool = None,
+        to_time: str = None,
+    ):
+        # This parameter is required.
+        self.from_time = from_time
+        self.next_token = next_token
+        # This parameter is required.
+        self.node_id = node_id
+        self.query = query
+        self.reverse = reverse
+        # This parameter is required.
+        self.to_time = to_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_time is not None:
+            result['FromTime'] = self.from_time
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.to_time is not None:
+            result['ToTime'] = self.to_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromTime') is not None:
+            self.from_time = m.get('FromTime')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('ToTime') is not None:
+            self.to_time = m.get('ToTime')
+        return self
+
+
+class ListSyslogsResponseBodyLogs(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        domain: str = None,
+        facility: str = None,
+        hostname: str = None,
+        ip: str = None,
+        msg: str = None,
+        node_id: str = None,
+        severity: str = None,
+        sn: str = None,
+        source: str = None,
+        syslogtag: str = None,
+        tag_hostname: str = None,
+        tag_pack_id: str = None,
+        tag_path: str = None,
+        tag_receive_time: str = None,
+        tag_user_defined_id: str = None,
+        time: str = None,
+        topic: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.domain = domain
+        self.facility = facility
+        self.hostname = hostname
+        self.ip = ip
+        self.msg = msg
+        self.node_id = node_id
+        self.severity = severity
+        self.sn = sn
+        self.source = source
+        self.syslogtag = syslogtag
+        self.tag_hostname = tag_hostname
+        self.tag_pack_id = tag_pack_id
+        self.tag_path = tag_path
+        self.tag_receive_time = tag_receive_time
+        self.tag_user_defined_id = tag_user_defined_id
+        self.time = time
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.facility is not None:
+            result['Facility'] = self.facility
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.syslogtag is not None:
+            result['Syslogtag'] = self.syslogtag
+        if self.tag_hostname is not None:
+            result['TagHostname'] = self.tag_hostname
+        if self.tag_pack_id is not None:
+            result['TagPackId'] = self.tag_pack_id
+        if self.tag_path is not None:
+            result['TagPath'] = self.tag_path
+        if self.tag_receive_time is not None:
+            result['TagReceiveTime'] = self.tag_receive_time
+        if self.tag_user_defined_id is not None:
+            result['TagUserDefinedId'] = self.tag_user_defined_id
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Facility') is not None:
+            self.facility = m.get('Facility')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Syslogtag') is not None:
+            self.syslogtag = m.get('Syslogtag')
+        if m.get('TagHostname') is not None:
+            self.tag_hostname = m.get('TagHostname')
+        if m.get('TagPackId') is not None:
+            self.tag_pack_id = m.get('TagPackId')
+        if m.get('TagPath') is not None:
+            self.tag_path = m.get('TagPath')
+        if m.get('TagReceiveTime') is not None:
+            self.tag_receive_time = m.get('TagReceiveTime')
+        if m.get('TagUserDefinedId') is not None:
+            self.tag_user_defined_id = m.get('TagUserDefinedId')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class ListSyslogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        logs: List[ListSyslogsResponseBodyLogs] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.logs = logs
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['Logs'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.logs = []
+        if m.get('Logs') is not None:
+            for k in m.get('Logs'):
+                temp_model = ListSyslogsResponseBodyLogs()
+                self.logs.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListSyslogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSyslogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSyslogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -12475,6 +14906,195 @@ class ReimageNodesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReimageNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReportNodesStatusRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        end_time: str = None,
+        issue_category: str = None,
+        nodes: List[str] = None,
+        reason: str = None,
+        start_time: str = None,
+    ):
+        self.description = description
+        self.end_time = end_time
+        self.issue_category = issue_category
+        self.nodes = nodes
+        self.reason = reason
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.issue_category is not None:
+            result['IssueCategory'] = self.issue_category
+        if self.nodes is not None:
+            result['Nodes'] = self.nodes
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IssueCategory') is not None:
+            self.issue_category = m.get('IssueCategory')
+        if m.get('Nodes') is not None:
+            self.nodes = m.get('Nodes')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ReportNodesStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        end_time: str = None,
+        issue_category: str = None,
+        nodes_shrink: str = None,
+        reason: str = None,
+        start_time: str = None,
+    ):
+        self.description = description
+        self.end_time = end_time
+        self.issue_category = issue_category
+        self.nodes_shrink = nodes_shrink
+        self.reason = reason
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.issue_category is not None:
+            result['IssueCategory'] = self.issue_category
+        if self.nodes_shrink is not None:
+            result['Nodes'] = self.nodes_shrink
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IssueCategory') is not None:
+            self.issue_category = m.get('IssueCategory')
+        if m.get('Nodes') is not None:
+            self.nodes_shrink = m.get('Nodes')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ReportNodesStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        request_id: str = None,
+    ):
+        # Error Message
+        self.error_message = error_message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReportNodesStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReportNodesStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReportNodesStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

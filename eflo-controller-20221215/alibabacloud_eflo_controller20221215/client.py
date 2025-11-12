@@ -141,6 +141,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_operation_with_options_async(request, runtime)
 
+    def change_node_group_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.ChangeNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ChangeNodeGroupResponse:
+        """
+        @summary 修改节点的节点组
+        
+        @param tmp_req: ChangeNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeNodeGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ChangeNodeGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ignore_failed_node_tasks):
+            query['IgnoreFailedNodeTasks'] = request.ignore_failed_node_tasks
+        if not UtilClient.is_unset(request.target_node_group_id):
+            query['TargetNodeGroupId'] = request.target_node_group_id
+        body = {}
+        if not UtilClient.is_unset(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ChangeNodeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_node_group_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.ChangeNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ChangeNodeGroupResponse:
+        """
+        @summary 修改节点的节点组
+        
+        @param tmp_req: ChangeNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeNodeGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ChangeNodeGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ignore_failed_node_tasks):
+            query['IgnoreFailedNodeTasks'] = request.ignore_failed_node_tasks
+        if not UtilClient.is_unset(request.target_node_group_id):
+            query['TargetNodeGroupId'] = request.target_node_group_id
+        body = {}
+        if not UtilClient.is_unset(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ChangeNodeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_node_group(
+        self,
+        request: eflo_controller_20221215_models.ChangeNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.ChangeNodeGroupResponse:
+        """
+        @summary 修改节点的节点组
+        
+        @param request: ChangeNodeGroupRequest
+        @return: ChangeNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_node_group_with_options(request, runtime)
+
+    async def change_node_group_async(
+        self,
+        request: eflo_controller_20221215_models.ChangeNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.ChangeNodeGroupResponse:
+        """
+        @summary 修改节点的节点组
+        
+        @param request: ChangeNodeGroupRequest
+        @return: ChangeNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_node_group_with_options_async(request, runtime)
+
+    def change_node_types_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.ChangeNodeTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ChangeNodeTypesResponse:
+        """
+        @summary 节点规格变配
+        
+        @param tmp_req: ChangeNodeTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeNodeTypesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ChangeNodeTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_ids):
+            request.node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        if not UtilClient.is_unset(request.node_type):
+            body['NodeType'] = request.node_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeNodeTypes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ChangeNodeTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_node_types_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.ChangeNodeTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ChangeNodeTypesResponse:
+        """
+        @summary 节点规格变配
+        
+        @param tmp_req: ChangeNodeTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeNodeTypesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ChangeNodeTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_ids):
+            request.node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        if not UtilClient.is_unset(request.node_type):
+            body['NodeType'] = request.node_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeNodeTypes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ChangeNodeTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_node_types(
+        self,
+        request: eflo_controller_20221215_models.ChangeNodeTypesRequest,
+    ) -> eflo_controller_20221215_models.ChangeNodeTypesResponse:
+        """
+        @summary 节点规格变配
+        
+        @param request: ChangeNodeTypesRequest
+        @return: ChangeNodeTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_node_types_with_options(request, runtime)
+
+    async def change_node_types_async(
+        self,
+        request: eflo_controller_20221215_models.ChangeNodeTypesRequest,
+    ) -> eflo_controller_20221215_models.ChangeNodeTypesResponse:
+        """
+        @summary 节点规格变配
+        
+        @param request: ChangeNodeTypesRequest
+        @return: ChangeNodeTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_node_types_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
@@ -1225,6 +1449,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
+    def delete_hyper_node_with_options(
+        self,
+        request: eflo_controller_20221215_models.DeleteHyperNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteHyperNodeResponse:
+        """
+        @summary 删除一个未使用超节点
+        
+        @param request: DeleteHyperNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHyperNodeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hyper_node_id):
+            body['HyperNodeId'] = request.hyper_node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteHyperNode',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DeleteHyperNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hyper_node_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteHyperNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteHyperNodeResponse:
+        """
+        @summary 删除一个未使用超节点
+        
+        @param request: DeleteHyperNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHyperNodeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hyper_node_id):
+            body['HyperNodeId'] = request.hyper_node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteHyperNode',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DeleteHyperNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hyper_node(
+        self,
+        request: eflo_controller_20221215_models.DeleteHyperNodeRequest,
+    ) -> eflo_controller_20221215_models.DeleteHyperNodeResponse:
+        """
+        @summary 删除一个未使用超节点
+        
+        @param request: DeleteHyperNodeRequest
+        @return: DeleteHyperNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hyper_node_with_options(request, runtime)
+
+    async def delete_hyper_node_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteHyperNodeRequest,
+    ) -> eflo_controller_20221215_models.DeleteHyperNodeResponse:
+        """
+        @summary 删除一个未使用超节点
+        
+        @param request: DeleteHyperNodeRequest
+        @return: DeleteHyperNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hyper_node_with_options_async(request, runtime)
+
     def delete_node_with_options(
         self,
         request: eflo_controller_20221215_models.DeleteNodeRequest,
@@ -1725,6 +2045,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_diagnostic_result_with_options_async(request, runtime)
 
+    def describe_hyper_node_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeHyperNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeHyperNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeHyperNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHyperNodeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hyper_node_id):
+            body['HyperNodeId'] = request.hyper_node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeHyperNode',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeHyperNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hyper_node_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeHyperNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeHyperNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeHyperNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHyperNodeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hyper_node_id):
+            body['HyperNodeId'] = request.hyper_node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeHyperNode',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeHyperNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hyper_node(
+        self,
+        request: eflo_controller_20221215_models.DescribeHyperNodeRequest,
+    ) -> eflo_controller_20221215_models.DescribeHyperNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeHyperNodeRequest
+        @return: DescribeHyperNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hyper_node_with_options(request, runtime)
+
+    async def describe_hyper_node_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeHyperNodeRequest,
+    ) -> eflo_controller_20221215_models.DescribeHyperNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeHyperNodeRequest
+        @return: DescribeHyperNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hyper_node_with_options_async(request, runtime)
+
     def describe_invocations_with_options(
         self,
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
@@ -2024,6 +2440,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_with_options_async(request, runtime)
+
+    def describe_node_group_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeNodeGroupResponse:
+        """
+        @summary 查询节点分组
+        
+        @param request: DescribeNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeNodeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_node_group_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeNodeGroupResponse:
+        """
+        @summary 查询节点分组
+        
+        @param request: DescribeNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeNodeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_node_group(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.DescribeNodeGroupResponse:
+        """
+        @summary 查询节点分组
+        
+        @param request: DescribeNodeGroupRequest
+        @return: DescribeNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_node_group_with_options(request, runtime)
+
+    async def describe_node_group_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.DescribeNodeGroupResponse:
+        """
+        @summary 查询节点分组
+        
+        @param request: DescribeNodeGroupRequest
+        @return: DescribeNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_node_group_with_options_async(request, runtime)
 
     def describe_node_type_with_options(
         self,
@@ -2737,6 +3249,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.extend_cluster_with_options_async(request, runtime)
 
+    def list_cluster_hyper_nodes_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListClusterHyperNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListClusterHyperNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterHyperNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterHyperNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListClusterHyperNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListClusterHyperNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_hyper_nodes_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListClusterHyperNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListClusterHyperNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterHyperNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterHyperNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListClusterHyperNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListClusterHyperNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_hyper_nodes(
+        self,
+        request: eflo_controller_20221215_models.ListClusterHyperNodesRequest,
+    ) -> eflo_controller_20221215_models.ListClusterHyperNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterHyperNodesRequest
+        @return: ListClusterHyperNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cluster_hyper_nodes_with_options(request, runtime)
+
+    async def list_cluster_hyper_nodes_async(
+        self,
+        request: eflo_controller_20221215_models.ListClusterHyperNodesRequest,
+    ) -> eflo_controller_20221215_models.ListClusterHyperNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterHyperNodesRequest
+        @return: ListClusterHyperNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cluster_hyper_nodes_with_options_async(request, runtime)
+
     def list_cluster_nodes_with_options(
         self,
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
@@ -3081,6 +3713,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_diagnostic_results_with_options_async(request, runtime)
 
+    def list_free_hyper_nodes_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListFreeHyperNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListFreeHyperNodesResponse:
+        """
+        @summary 可用rack物理机列表
+        
+        @param request: ListFreeHyperNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFreeHyperNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hpn_zone):
+            body['HpnZone'] = request.hpn_zone
+        if not UtilClient.is_unset(request.machine_type):
+            body['MachineType'] = request.machine_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFreeHyperNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListFreeHyperNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_free_hyper_nodes_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListFreeHyperNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListFreeHyperNodesResponse:
+        """
+        @summary 可用rack物理机列表
+        
+        @param request: ListFreeHyperNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFreeHyperNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hpn_zone):
+            body['HpnZone'] = request.hpn_zone
+        if not UtilClient.is_unset(request.machine_type):
+            body['MachineType'] = request.machine_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFreeHyperNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListFreeHyperNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_free_hyper_nodes(
+        self,
+        request: eflo_controller_20221215_models.ListFreeHyperNodesRequest,
+    ) -> eflo_controller_20221215_models.ListFreeHyperNodesResponse:
+        """
+        @summary 可用rack物理机列表
+        
+        @param request: ListFreeHyperNodesRequest
+        @return: ListFreeHyperNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_free_hyper_nodes_with_options(request, runtime)
+
+    async def list_free_hyper_nodes_async(
+        self,
+        request: eflo_controller_20221215_models.ListFreeHyperNodesRequest,
+    ) -> eflo_controller_20221215_models.ListFreeHyperNodesResponse:
+        """
+        @summary 可用rack物理机列表
+        
+        @param request: ListFreeHyperNodesRequest
+        @return: ListFreeHyperNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_free_hyper_nodes_with_options_async(request, runtime)
+
     def list_free_nodes_with_options(
         self,
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
@@ -3204,6 +3956,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_free_nodes_with_options_async(request, runtime)
+
+    def list_hyper_nodes_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListHyperNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListHyperNodesResponse:
+        """
+        @summary 机器列表
+        
+        @param request: ListHyperNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHyperNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.hpn_zone):
+            body['HpnZone'] = request.hpn_zone
+        if not UtilClient.is_unset(request.hyper_node_id):
+            body['HyperNodeId'] = request.hyper_node_id
+        if not UtilClient.is_unset(request.machine_type):
+            body['MachineType'] = request.machine_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_name):
+            body['NodeGroupName'] = request.node_group_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHyperNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListHyperNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hyper_nodes_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListHyperNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListHyperNodesResponse:
+        """
+        @summary 机器列表
+        
+        @param request: ListHyperNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHyperNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.hpn_zone):
+            body['HpnZone'] = request.hpn_zone
+        if not UtilClient.is_unset(request.hyper_node_id):
+            body['HyperNodeId'] = request.hyper_node_id
+        if not UtilClient.is_unset(request.machine_type):
+            body['MachineType'] = request.machine_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_name):
+            body['NodeGroupName'] = request.node_group_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHyperNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListHyperNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hyper_nodes(
+        self,
+        request: eflo_controller_20221215_models.ListHyperNodesRequest,
+    ) -> eflo_controller_20221215_models.ListHyperNodesResponse:
+        """
+        @summary 机器列表
+        
+        @param request: ListHyperNodesRequest
+        @return: ListHyperNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_hyper_nodes_with_options(request, runtime)
+
+    async def list_hyper_nodes_async(
+        self,
+        request: eflo_controller_20221215_models.ListHyperNodesRequest,
+    ) -> eflo_controller_20221215_models.ListHyperNodesResponse:
+        """
+        @summary 机器列表
+        
+        @param request: ListHyperNodesRequest
+        @return: ListHyperNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hyper_nodes_with_options_async(request, runtime)
 
     def list_images_with_options(
         self,
@@ -3732,6 +4616,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_node_groups_with_options_async(request, runtime)
+
+    def list_syslogs_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListSyslogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListSyslogsResponse:
+        """
+        @summary 查询系统日志
+        
+        @param request: ListSyslogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSyslogsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_time):
+            body['FromTime'] = request.from_time
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.reverse):
+            body['Reverse'] = request.reverse
+        if not UtilClient.is_unset(request.to_time):
+            body['ToTime'] = request.to_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSyslogs',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListSyslogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_syslogs_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListSyslogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListSyslogsResponse:
+        """
+        @summary 查询系统日志
+        
+        @param request: ListSyslogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSyslogsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_time):
+            body['FromTime'] = request.from_time
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.reverse):
+            body['Reverse'] = request.reverse
+        if not UtilClient.is_unset(request.to_time):
+            body['ToTime'] = request.to_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSyslogs',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListSyslogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_syslogs(
+        self,
+        request: eflo_controller_20221215_models.ListSyslogsRequest,
+    ) -> eflo_controller_20221215_models.ListSyslogsResponse:
+        """
+        @summary 查询系统日志
+        
+        @param request: ListSyslogsRequest
+        @return: ListSyslogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_syslogs_with_options(request, runtime)
+
+    async def list_syslogs_async(
+        self,
+        request: eflo_controller_20221215_models.ListSyslogsRequest,
+    ) -> eflo_controller_20221215_models.ListSyslogsResponse:
+        """
+        @summary 查询系统日志
+        
+        @param request: ListSyslogsRequest
+        @return: ListSyslogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_syslogs_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -4274,6 +5274,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reimage_nodes_with_options_async(request, runtime)
+
+    def report_nodes_status_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.ReportNodesStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ReportNodesStatusResponse:
+        """
+        @summary 节点异常问题上报
+        
+        @param tmp_req: ReportNodesStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportNodesStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ReportNodesStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.issue_category):
+            body['IssueCategory'] = request.issue_category
+        if not UtilClient.is_unset(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        if not UtilClient.is_unset(request.reason):
+            body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReportNodesStatus',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ReportNodesStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def report_nodes_status_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.ReportNodesStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ReportNodesStatusResponse:
+        """
+        @summary 节点异常问题上报
+        
+        @param tmp_req: ReportNodesStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportNodesStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ReportNodesStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.issue_category):
+            body['IssueCategory'] = request.issue_category
+        if not UtilClient.is_unset(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        if not UtilClient.is_unset(request.reason):
+            body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReportNodesStatus',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ReportNodesStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def report_nodes_status(
+        self,
+        request: eflo_controller_20221215_models.ReportNodesStatusRequest,
+    ) -> eflo_controller_20221215_models.ReportNodesStatusResponse:
+        """
+        @summary 节点异常问题上报
+        
+        @param request: ReportNodesStatusRequest
+        @return: ReportNodesStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.report_nodes_status_with_options(request, runtime)
+
+    async def report_nodes_status_async(
+        self,
+        request: eflo_controller_20221215_models.ReportNodesStatusRequest,
+    ) -> eflo_controller_20221215_models.ReportNodesStatusResponse:
+        """
+        @summary 节点异常问题上报
+        
+        @param request: ReportNodesStatusRequest
+        @return: ReportNodesStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.report_nodes_status_with_options_async(request, runtime)
 
     def run_command_with_options(
         self,
