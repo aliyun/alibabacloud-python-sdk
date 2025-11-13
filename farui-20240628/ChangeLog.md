@@ -1,3 +1,9 @@
+2025-11-13 Version: 1.2.3
+- Update API CreateTextFile: add request parameters ContractId.
+- Update API CreateTextFile: add response parameters Body.Data.ContractId.
+- Update API RunContractResultGeneration: add response parameters Body.Output.result.subRisks.$.standardOriginalContent.
+
+
 2025-07-04 Version: 1.2.2
 - Update API RunLegalAdviceConsultation: add request parameters extra.
 - Update API RunLegalAdviceConsultation: add response parameters Body.contents.
