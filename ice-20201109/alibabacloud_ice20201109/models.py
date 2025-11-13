@@ -2332,6 +2332,174 @@ class AIAgentTemplateConfig(TeaModel):
         return self
 
 
+class AiRtcAuthCodeDTO(TeaModel):
+    def __init__(
+        self,
+        activated_time: str = None,
+        auth_code: str = None,
+        creation_time: str = None,
+        device_id: str = None,
+        license: str = None,
+        license_item_id: str = None,
+        modification_time: str = None,
+        status: int = None,
+        type: int = None,
+    ):
+        self.activated_time = activated_time
+        self.auth_code = auth_code
+        self.creation_time = creation_time
+        self.device_id = device_id
+        self.license = license
+        self.license_item_id = license_item_id
+        self.modification_time = modification_time
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activated_time is not None:
+            result['ActivatedTime'] = self.activated_time
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.license is not None:
+            result['License'] = self.license
+        if self.license_item_id is not None:
+            result['LicenseItemId'] = self.license_item_id
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivatedTime') is not None:
+            self.activated_time = m.get('ActivatedTime')
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('License') is not None:
+            self.license = m.get('License')
+        if m.get('LicenseItemId') is not None:
+            self.license_item_id = m.get('LicenseItemId')
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AiRtcLicenseInfoDTO(TeaModel):
+    def __init__(
+        self,
+        available_capacity: int = None,
+        begin_on: str = None,
+        contract_no: str = None,
+        creation_time: str = None,
+        expired_on: str = None,
+        instance_id: str = None,
+        license_count: int = None,
+        license_item_id: str = None,
+        modification_time: str = None,
+        status: int = None,
+        type: int = None,
+        valid_days: int = None,
+    ):
+        self.available_capacity = available_capacity
+        self.begin_on = begin_on
+        self.contract_no = contract_no
+        self.creation_time = creation_time
+        self.expired_on = expired_on
+        self.instance_id = instance_id
+        self.license_count = license_count
+        self.license_item_id = license_item_id
+        self.modification_time = modification_time
+        self.status = status
+        self.type = type
+        self.valid_days = valid_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_capacity is not None:
+            result['AvailableCapacity'] = self.available_capacity
+        if self.begin_on is not None:
+            result['BeginOn'] = self.begin_on
+        if self.contract_no is not None:
+            result['ContractNo'] = self.contract_no
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.expired_on is not None:
+            result['ExpiredOn'] = self.expired_on
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.license_count is not None:
+            result['LicenseCount'] = self.license_count
+        if self.license_item_id is not None:
+            result['LicenseItemId'] = self.license_item_id
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.valid_days is not None:
+            result['ValidDays'] = self.valid_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableCapacity') is not None:
+            self.available_capacity = m.get('AvailableCapacity')
+        if m.get('BeginOn') is not None:
+            self.begin_on = m.get('BeginOn')
+        if m.get('ContractNo') is not None:
+            self.contract_no = m.get('ContractNo')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('ExpiredOn') is not None:
+            self.expired_on = m.get('ExpiredOn')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LicenseCount') is not None:
+            self.license_count = m.get('LicenseCount')
+        if m.get('LicenseItemId') is not None:
+            self.license_item_id = m.get('LicenseItemId')
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ValidDays') is not None:
+            self.valid_days = m.get('ValidDays')
+        return self
+
+
 class AppInfoDTOPlatforms(TeaModel):
     def __init__(
         self,
@@ -6146,6 +6314,143 @@ class VodPackagingGroup(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        return self
+
+
+class ActiveAiRtcLicenseRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+        device_id: str = None,
+        license_item_id: str = None,
+    ):
+        self.auth_code = auth_code
+        self.device_id = device_id
+        self.license_item_id = license_item_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.license_item_id is not None:
+            result['LicenseItemId'] = self.license_item_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('LicenseItemId') is not None:
+            self.license_item_id = m.get('LicenseItemId')
+        return self
+
+
+class ActiveAiRtcLicenseResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        license: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.license = license
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.license is not None:
+            result['License'] = self.license
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('License') is not None:
+            self.license = m.get('License')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ActiveAiRtcLicenseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ActiveAiRtcLicenseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ActiveAiRtcLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -25201,10 +25506,14 @@ class ForwardAIAgentCallRequest(TeaModel):
     def __init__(
         self,
         called_number: str = None,
+        error_prompt: str = None,
         instance_id: str = None,
+        transfer_prompt: str = None,
     ):
         self.called_number = called_number
+        self.error_prompt = error_prompt
         self.instance_id = instance_id
+        self.transfer_prompt = transfer_prompt
 
     def validate(self):
         pass
@@ -25217,16 +25526,24 @@ class ForwardAIAgentCallRequest(TeaModel):
         result = dict()
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+        if self.error_prompt is not None:
+            result['ErrorPrompt'] = self.error_prompt
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.transfer_prompt is not None:
+            result['TransferPrompt'] = self.transfer_prompt
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+        if m.get('ErrorPrompt') is not None:
+            self.error_prompt = m.get('ErrorPrompt')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('TransferPrompt') is not None:
+            self.transfer_prompt = m.get('TransferPrompt')
         return self
 
 
@@ -26449,6 +26766,344 @@ class GetAdInsertionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAdInsertionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAiRtcAuthCodeListRequest(TeaModel):
+    def __init__(
+        self,
+        license_item_id: str = None,
+        need_total_count: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        status: int = None,
+        type: int = None,
+    ):
+        self.license_item_id = license_item_id
+        self.need_total_count = need_total_count
+        self.page_no = page_no
+        self.page_size = page_size
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.license_item_id is not None:
+            result['LicenseItemId'] = self.license_item_id
+        if self.need_total_count is not None:
+            result['NeedTotalCount'] = self.need_total_count
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LicenseItemId') is not None:
+            self.license_item_id = m.get('LicenseItemId')
+        if m.get('NeedTotalCount') is not None:
+            self.need_total_count = m.get('NeedTotalCount')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetAiRtcAuthCodeListResponseBody(TeaModel):
+    def __init__(
+        self,
+        auth_code_list: List[AiRtcAuthCodeDTO] = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.auth_code_list = auth_code_list
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.auth_code_list:
+            for k in self.auth_code_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuthCodeList'] = []
+        if self.auth_code_list is not None:
+            for k in self.auth_code_list:
+                result['AuthCodeList'].append(k.to_map() if k else None)
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auth_code_list = []
+        if m.get('AuthCodeList') is not None:
+            for k in m.get('AuthCodeList'):
+                temp_model = AiRtcAuthCodeDTO()
+                self.auth_code_list.append(temp_model.from_map(k))
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetAiRtcAuthCodeListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAiRtcAuthCodeListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAiRtcAuthCodeListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAiRtcLicenseInfoListRequest(TeaModel):
+    def __init__(
+        self,
+        license_item_id: str = None,
+        need_total_count: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        status: int = None,
+        type: int = None,
+    ):
+        self.license_item_id = license_item_id
+        self.need_total_count = need_total_count
+        self.page_no = page_no
+        self.page_size = page_size
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.license_item_id is not None:
+            result['LicenseItemId'] = self.license_item_id
+        if self.need_total_count is not None:
+            result['NeedTotalCount'] = self.need_total_count
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LicenseItemId') is not None:
+            self.license_item_id = m.get('LicenseItemId')
+        if m.get('NeedTotalCount') is not None:
+            self.need_total_count = m.get('NeedTotalCount')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetAiRtcLicenseInfoListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        license_info_list: List[AiRtcLicenseInfoDTO] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.license_info_list = license_info_list
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.license_info_list:
+            for k in self.license_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['LicenseInfoList'] = []
+        if self.license_info_list is not None:
+            for k in self.license_info_list:
+                result['LicenseInfoList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.license_info_list = []
+        if m.get('LicenseInfoList') is not None:
+            for k in m.get('LicenseInfoList'):
+                temp_model = AiRtcLicenseInfoDTO()
+                self.license_info_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetAiRtcLicenseInfoListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAiRtcLicenseInfoListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAiRtcLicenseInfoListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -88866,6 +89521,121 @@ class SubmitProjectExportJobResponse(TeaModel):
         return self
 
 
+class SubmitSceneBatchEditingJobRequest(TeaModel):
+    def __init__(
+        self,
+        output_config: str = None,
+        project_ids: str = None,
+        user_data: str = None,
+    ):
+        # This parameter is required.
+        self.output_config = output_config
+        # This parameter is required.
+        self.project_ids = project_ids
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.project_ids is not None:
+            result['ProjectIds'] = self.project_ids
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('ProjectIds') is not None:
+            self.project_ids = m.get('ProjectIds')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitSceneBatchEditingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitSceneBatchEditingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitSceneBatchEditingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitSceneBatchEditingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitSceneMediaSelectionJobRequest(TeaModel):
     def __init__(
         self,
@@ -89017,6 +89787,141 @@ class SubmitSceneMediaSelectionJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitSceneMediaSelectionJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitSceneTimelineOrganizationJobRequest(TeaModel):
+    def __init__(
+        self,
+        editing_config: str = None,
+        input_config: str = None,
+        job_type: str = None,
+        media_select_result: str = None,
+        output_config: str = None,
+        user_data: str = None,
+    ):
+        self.editing_config = editing_config
+        # This parameter is required.
+        self.input_config = input_config
+        # This parameter is required.
+        self.job_type = job_type
+        # This parameter is required.
+        self.media_select_result = media_select_result
+        # This parameter is required.
+        self.output_config = output_config
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.media_select_result is not None:
+            result['MediaSelectResult'] = self.media_select_result
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EditingConfig') is not None:
+            self.editing_config = m.get('EditingConfig')
+        if m.get('InputConfig') is not None:
+            self.input_config = m.get('InputConfig')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('MediaSelectResult') is not None:
+            self.media_select_result = m.get('MediaSelectResult')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitSceneTimelineOrganizationJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitSceneTimelineOrganizationJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitSceneTimelineOrganizationJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitSceneTimelineOrganizationJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

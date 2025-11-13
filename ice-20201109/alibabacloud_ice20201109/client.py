@@ -99,6 +99,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def active_ai_rtc_license_with_options(
+        self,
+        request: ice20201109_models.ActiveAiRtcLicenseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ActiveAiRtcLicenseResponse:
+        """
+        @summary 激活AI实时互动授权信息
+        
+        @param request: ActiveAiRtcLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveAiRtcLicenseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.license_item_id):
+            query['LicenseItemId'] = request.license_item_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ActiveAiRtcLicense',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ActiveAiRtcLicenseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def active_ai_rtc_license_with_options_async(
+        self,
+        request: ice20201109_models.ActiveAiRtcLicenseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ActiveAiRtcLicenseResponse:
+        """
+        @summary 激活AI实时互动授权信息
+        
+        @param request: ActiveAiRtcLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveAiRtcLicenseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.license_item_id):
+            query['LicenseItemId'] = request.license_item_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ActiveAiRtcLicense',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ActiveAiRtcLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def active_ai_rtc_license(
+        self,
+        request: ice20201109_models.ActiveAiRtcLicenseRequest,
+    ) -> ice20201109_models.ActiveAiRtcLicenseResponse:
+        """
+        @summary 激活AI实时互动授权信息
+        
+        @param request: ActiveAiRtcLicenseRequest
+        @return: ActiveAiRtcLicenseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.active_ai_rtc_license_with_options(request, runtime)
+
+    async def active_ai_rtc_license_async(
+        self,
+        request: ice20201109_models.ActiveAiRtcLicenseRequest,
+    ) -> ice20201109_models.ActiveAiRtcLicenseResponse:
+        """
+        @summary 激活AI实时互动授权信息
+        
+        @param request: ActiveAiRtcLicenseRequest
+        @return: ActiveAiRtcLicenseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.active_ai_rtc_license_with_options_async(request, runtime)
+
     def add_ad_insertion_with_options(
         self,
         request: ice20201109_models.AddAdInsertionRequest,
@@ -12259,8 +12363,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.error_prompt):
+            query['ErrorPrompt'] = request.error_prompt
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.transfer_prompt):
+            query['TransferPrompt'] = request.transfer_prompt
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12296,8 +12404,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.error_prompt):
+            query['ErrorPrompt'] = request.error_prompt
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.transfer_prompt):
+            query['TransferPrompt'] = request.transfer_prompt
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12872,6 +12984,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_ad_insertion_with_options_async(request, runtime)
+
+    def get_ai_rtc_auth_code_list_with_options(
+        self,
+        request: ice20201109_models.GetAiRtcAuthCodeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAiRtcAuthCodeListResponse:
+        """
+        @summary 获取AI实时互动授权码列表
+        
+        @param request: GetAiRtcAuthCodeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAiRtcAuthCodeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.license_item_id):
+            query['LicenseItemId'] = request.license_item_id
+        if not UtilClient.is_unset(request.need_total_count):
+            query['NeedTotalCount'] = request.need_total_count
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAiRtcAuthCodeList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAiRtcAuthCodeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_rtc_auth_code_list_with_options_async(
+        self,
+        request: ice20201109_models.GetAiRtcAuthCodeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAiRtcAuthCodeListResponse:
+        """
+        @summary 获取AI实时互动授权码列表
+        
+        @param request: GetAiRtcAuthCodeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAiRtcAuthCodeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.license_item_id):
+            query['LicenseItemId'] = request.license_item_id
+        if not UtilClient.is_unset(request.need_total_count):
+            query['NeedTotalCount'] = request.need_total_count
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAiRtcAuthCodeList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAiRtcAuthCodeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_rtc_auth_code_list(
+        self,
+        request: ice20201109_models.GetAiRtcAuthCodeListRequest,
+    ) -> ice20201109_models.GetAiRtcAuthCodeListResponse:
+        """
+        @summary 获取AI实时互动授权码列表
+        
+        @param request: GetAiRtcAuthCodeListRequest
+        @return: GetAiRtcAuthCodeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ai_rtc_auth_code_list_with_options(request, runtime)
+
+    async def get_ai_rtc_auth_code_list_async(
+        self,
+        request: ice20201109_models.GetAiRtcAuthCodeListRequest,
+    ) -> ice20201109_models.GetAiRtcAuthCodeListResponse:
+        """
+        @summary 获取AI实时互动授权码列表
+        
+        @param request: GetAiRtcAuthCodeListRequest
+        @return: GetAiRtcAuthCodeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ai_rtc_auth_code_list_with_options_async(request, runtime)
+
+    def get_ai_rtc_license_info_list_with_options(
+        self,
+        request: ice20201109_models.GetAiRtcLicenseInfoListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAiRtcLicenseInfoListResponse:
+        """
+        @summary 获取AI实时互动授权批次列表
+        
+        @param request: GetAiRtcLicenseInfoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAiRtcLicenseInfoListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.license_item_id):
+            query['LicenseItemId'] = request.license_item_id
+        if not UtilClient.is_unset(request.need_total_count):
+            query['NeedTotalCount'] = request.need_total_count
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAiRtcLicenseInfoList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAiRtcLicenseInfoListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_rtc_license_info_list_with_options_async(
+        self,
+        request: ice20201109_models.GetAiRtcLicenseInfoListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAiRtcLicenseInfoListResponse:
+        """
+        @summary 获取AI实时互动授权批次列表
+        
+        @param request: GetAiRtcLicenseInfoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAiRtcLicenseInfoListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.license_item_id):
+            query['LicenseItemId'] = request.license_item_id
+        if not UtilClient.is_unset(request.need_total_count):
+            query['NeedTotalCount'] = request.need_total_count
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAiRtcLicenseInfoList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAiRtcLicenseInfoListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_rtc_license_info_list(
+        self,
+        request: ice20201109_models.GetAiRtcLicenseInfoListRequest,
+    ) -> ice20201109_models.GetAiRtcLicenseInfoListResponse:
+        """
+        @summary 获取AI实时互动授权批次列表
+        
+        @param request: GetAiRtcLicenseInfoListRequest
+        @return: GetAiRtcLicenseInfoListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ai_rtc_license_info_list_with_options(request, runtime)
+
+    async def get_ai_rtc_license_info_list_async(
+        self,
+        request: ice20201109_models.GetAiRtcLicenseInfoListRequest,
+    ) -> ice20201109_models.GetAiRtcLicenseInfoListResponse:
+        """
+        @summary 获取AI实时互动授权批次列表
+        
+        @param request: GetAiRtcLicenseInfoListRequest
+        @return: GetAiRtcLicenseInfoListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ai_rtc_license_info_list_with_options_async(request, runtime)
 
     def get_avatar_with_options(
         self,
@@ -36009,6 +36353,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_project_export_job_with_options_async(request, runtime)
 
+    def submit_scene_batch_editing_job_with_options(
+        self,
+        request: ice20201109_models.SubmitSceneBatchEditingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSceneBatchEditingJobResponse:
+        """
+        @summary 提交场景化批量合成任务
+        
+        @param request: SubmitSceneBatchEditingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSceneBatchEditingJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitSceneBatchEditingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSceneBatchEditingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_scene_batch_editing_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitSceneBatchEditingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSceneBatchEditingJobResponse:
+        """
+        @summary 提交场景化批量合成任务
+        
+        @param request: SubmitSceneBatchEditingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSceneBatchEditingJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitSceneBatchEditingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSceneBatchEditingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_scene_batch_editing_job(
+        self,
+        request: ice20201109_models.SubmitSceneBatchEditingJobRequest,
+    ) -> ice20201109_models.SubmitSceneBatchEditingJobResponse:
+        """
+        @summary 提交场景化批量合成任务
+        
+        @param request: SubmitSceneBatchEditingJobRequest
+        @return: SubmitSceneBatchEditingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_scene_batch_editing_job_with_options(request, runtime)
+
+    async def submit_scene_batch_editing_job_async(
+        self,
+        request: ice20201109_models.SubmitSceneBatchEditingJobRequest,
+    ) -> ice20201109_models.SubmitSceneBatchEditingJobResponse:
+        """
+        @summary 提交场景化批量合成任务
+        
+        @param request: SubmitSceneBatchEditingJobRequest
+        @return: SubmitSceneBatchEditingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_scene_batch_editing_job_with_options_async(request, runtime)
+
     def submit_scene_media_selection_job_with_options(
         self,
         request: ice20201109_models.SubmitSceneMediaSelectionJobRequest,
@@ -36136,6 +36584,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_scene_media_selection_job_with_options_async(request, runtime)
+
+    def submit_scene_timeline_organization_job_with_options(
+        self,
+        request: ice20201109_models.SubmitSceneTimelineOrganizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSceneTimelineOrganizationJobResponse:
+        """
+        @summary 提交场景化时间线编排任务
+        
+        @param request: SubmitSceneTimelineOrganizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSceneTimelineOrganizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.media_select_result):
+            query['MediaSelectResult'] = request.media_select_result
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSceneTimelineOrganizationJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSceneTimelineOrganizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_scene_timeline_organization_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitSceneTimelineOrganizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSceneTimelineOrganizationJobResponse:
+        """
+        @summary 提交场景化时间线编排任务
+        
+        @param request: SubmitSceneTimelineOrganizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSceneTimelineOrganizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.media_select_result):
+            query['MediaSelectResult'] = request.media_select_result
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSceneTimelineOrganizationJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSceneTimelineOrganizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_scene_timeline_organization_job(
+        self,
+        request: ice20201109_models.SubmitSceneTimelineOrganizationJobRequest,
+    ) -> ice20201109_models.SubmitSceneTimelineOrganizationJobResponse:
+        """
+        @summary 提交场景化时间线编排任务
+        
+        @param request: SubmitSceneTimelineOrganizationJobRequest
+        @return: SubmitSceneTimelineOrganizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_scene_timeline_organization_job_with_options(request, runtime)
+
+    async def submit_scene_timeline_organization_job_async(
+        self,
+        request: ice20201109_models.SubmitSceneTimelineOrganizationJobRequest,
+    ) -> ice20201109_models.SubmitSceneTimelineOrganizationJobResponse:
+        """
+        @summary 提交场景化时间线编排任务
+        
+        @param request: SubmitSceneTimelineOrganizationJobRequest
+        @return: SubmitSceneTimelineOrganizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_scene_timeline_organization_job_with_options_async(request, runtime)
 
     def submit_screen_media_highlights_job_with_options(
         self,
