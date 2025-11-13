@@ -3226,6 +3226,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.case_list):
             request.case_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.case_list, 'CaseList', 'json')
+        if not UtilClient.is_unset(tmp_req.number_list):
+            request.number_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.number_list, 'NumberList', 'json')
         query = {}
         if not UtilClient.is_unset(request.callable_time):
             query['CallableTime'] = request.callable_time
@@ -3239,6 +3241,10 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.executing_until_timeout):
             query['ExecutingUntilTimeout'] = request.executing_until_timeout
+        if not UtilClient.is_unset(request.flash_sms_parameters):
+            query['FlashSmsParameters'] = request.flash_sms_parameters
+        if not UtilClient.is_unset(request.inst_group_id):
+            query['InstGroupId'] = request.inst_group_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.max_attempt_count):
@@ -3247,6 +3253,8 @@ class Client(OpenApiClient):
             query['MinAttemptInterval'] = request.min_attempt_interval
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.number_list_shrink):
+            query['NumberList'] = request.number_list_shrink
         if not UtilClient.is_unset(request.queue_id):
             query['QueueId'] = request.queue_id
         if not UtilClient.is_unset(request.simulation):
@@ -3295,6 +3303,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.case_list):
             request.case_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.case_list, 'CaseList', 'json')
+        if not UtilClient.is_unset(tmp_req.number_list):
+            request.number_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.number_list, 'NumberList', 'json')
         query = {}
         if not UtilClient.is_unset(request.callable_time):
             query['CallableTime'] = request.callable_time
@@ -3308,6 +3318,10 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.executing_until_timeout):
             query['ExecutingUntilTimeout'] = request.executing_until_timeout
+        if not UtilClient.is_unset(request.flash_sms_parameters):
+            query['FlashSmsParameters'] = request.flash_sms_parameters
+        if not UtilClient.is_unset(request.inst_group_id):
+            query['InstGroupId'] = request.inst_group_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.max_attempt_count):
@@ -3316,6 +3330,8 @@ class Client(OpenApiClient):
             query['MinAttemptInterval'] = request.min_attempt_interval
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.number_list_shrink):
+            query['NumberList'] = request.number_list_shrink
         if not UtilClient.is_unset(request.queue_id):
             query['QueueId'] = request.queue_id
         if not UtilClient.is_unset(request.simulation):
@@ -3691,6 +3707,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateInstanceResponse:
         """
+        @summary 创建实例
+        
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateInstanceResponse
@@ -3732,6 +3750,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateInstanceResponse:
         """
+        @summary 创建实例
+        
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateInstanceResponse
@@ -3772,6 +3792,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateInstanceRequest,
     ) -> ccc20200701_models.CreateInstanceResponse:
         """
+        @summary 创建实例
+        
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
         """
@@ -3783,6 +3805,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateInstanceRequest,
     ) -> ccc20200701_models.CreateInstanceResponse:
         """
+        @summary 创建实例
+        
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
         """
@@ -8135,6 +8159,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetInstanceResponse:
         """
+        @summary 获取实例信息
+        
         @param request: GetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
@@ -8168,6 +8194,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetInstanceResponse:
         """
+        @summary 获取实例信息
+        
         @param request: GetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
@@ -8200,6 +8228,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetInstanceRequest,
     ) -> ccc20200701_models.GetInstanceResponse:
         """
+        @summary 获取实例信息
+        
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
@@ -8211,6 +8241,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetInstanceRequest,
     ) -> ccc20200701_models.GetInstanceResponse:
         """
+        @summary 获取实例信息
+        
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
@@ -8323,6 +8355,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetIvrTrackingSummaryResponse:
         """
+        @summary 获取IVR轨迹小结
+        
         @param request: GetIvrTrackingSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetIvrTrackingSummaryResponse
@@ -8358,6 +8392,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetIvrTrackingSummaryResponse:
         """
+        @summary 获取IVR轨迹小结
+        
         @param request: GetIvrTrackingSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetIvrTrackingSummaryResponse
@@ -8392,6 +8428,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetIvrTrackingSummaryRequest,
     ) -> ccc20200701_models.GetIvrTrackingSummaryResponse:
         """
+        @summary 获取IVR轨迹小结
+        
         @param request: GetIvrTrackingSummaryRequest
         @return: GetIvrTrackingSummaryResponse
         """
@@ -8403,6 +8441,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetIvrTrackingSummaryRequest,
     ) -> ccc20200701_models.GetIvrTrackingSummaryResponse:
         """
+        @summary 获取IVR轨迹小结
+        
         @param request: GetIvrTrackingSummaryRequest
         @return: GetIvrTrackingSummaryResponse
         """
@@ -10948,6 +10988,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.import_documents_with_options_async(request, runtime)
+
+    def import_ram_users_with_options(
+        self,
+        request: ccc20200701_models.ImportRamUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportRamUsersResponse:
+        """
+        @param request: ImportRamUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportRamUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ram_id_list):
+            query['RamIdList'] = request.ram_id_list
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.skill_level_list):
+            query['SkillLevelList'] = request.skill_level_list
+        if not UtilClient.is_unset(request.work_mode):
+            query['WorkMode'] = request.work_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportRamUsers',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportRamUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_ram_users_with_options_async(
+        self,
+        request: ccc20200701_models.ImportRamUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportRamUsersResponse:
+        """
+        @param request: ImportRamUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportRamUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ram_id_list):
+            query['RamIdList'] = request.ram_id_list
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.skill_level_list):
+            query['SkillLevelList'] = request.skill_level_list
+        if not UtilClient.is_unset(request.work_mode):
+            query['WorkMode'] = request.work_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportRamUsers',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportRamUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_ram_users(
+        self,
+        request: ccc20200701_models.ImportRamUsersRequest,
+    ) -> ccc20200701_models.ImportRamUsersResponse:
+        """
+        @param request: ImportRamUsersRequest
+        @return: ImportRamUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_ram_users_with_options(request, runtime)
+
+    async def import_ram_users_async(
+        self,
+        request: ccc20200701_models.ImportRamUsersRequest,
+    ) -> ccc20200701_models.ImportRamUsersResponse:
+        """
+        @param request: ImportRamUsersRequest
+        @return: ImportRamUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_ram_users_with_options_async(request, runtime)
 
     def initiate_attended_transfer_with_options(
         self,
@@ -14041,6 +14185,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_flash_sms_applications_with_options_async(request, runtime)
 
+    def list_flash_sms_settings_with_options(
+        self,
+        tmp_req: ccc20200701_models.ListFlashSmsSettingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFlashSmsSettingsResponse:
+        """
+        @param tmp_req: ListFlashSmsSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlashSmsSettingsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ListFlashSmsSettingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.skill_group_id_list):
+            request.skill_group_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.skill_group_id_list, 'SkillGroupIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.skill_group_id_list_shrink):
+            query['SkillGroupIdList'] = request.skill_group_id_list_shrink
+        if not UtilClient.is_unset(request.skill_group_name):
+            query['SkillGroupName'] = request.skill_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlashSmsSettings',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFlashSmsSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flash_sms_settings_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.ListFlashSmsSettingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFlashSmsSettingsResponse:
+        """
+        @param tmp_req: ListFlashSmsSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlashSmsSettingsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ListFlashSmsSettingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.skill_group_id_list):
+            request.skill_group_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.skill_group_id_list, 'SkillGroupIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.skill_group_id_list_shrink):
+            query['SkillGroupIdList'] = request.skill_group_id_list_shrink
+        if not UtilClient.is_unset(request.skill_group_name):
+            query['SkillGroupName'] = request.skill_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlashSmsSettings',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFlashSmsSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flash_sms_settings(
+        self,
+        request: ccc20200701_models.ListFlashSmsSettingsRequest,
+    ) -> ccc20200701_models.ListFlashSmsSettingsResponse:
+        """
+        @param request: ListFlashSmsSettingsRequest
+        @return: ListFlashSmsSettingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_flash_sms_settings_with_options(request, runtime)
+
+    async def list_flash_sms_settings_async(
+        self,
+        request: ccc20200701_models.ListFlashSmsSettingsRequest,
+    ) -> ccc20200701_models.ListFlashSmsSettingsResponse:
+        """
+        @param request: ListFlashSmsSettingsRequest
+        @return: ListFlashSmsSettingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flash_sms_settings_with_options_async(request, runtime)
+
     def list_flash_sms_templates_with_options(
         self,
         request: ccc20200701_models.ListFlashSmsTemplatesRequest,
@@ -14511,6 +14767,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
         """
+        @summary 技能组汇总报表
+        
         @param request: ListHistoricalSkillGroupReportRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListHistoricalSkillGroupReportResponse
@@ -14558,6 +14816,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
         """
+        @summary 技能组汇总报表
+        
         @param request: ListHistoricalSkillGroupReportRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListHistoricalSkillGroupReportResponse
@@ -14604,6 +14864,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
         """
+        @summary 技能组汇总报表
+        
         @param request: ListHistoricalSkillGroupReportRequest
         @return: ListHistoricalSkillGroupReportResponse
         """
@@ -14615,6 +14877,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
         """
+        @summary 技能组汇总报表
+        
         @param request: ListHistoricalSkillGroupReportRequest
         @return: ListHistoricalSkillGroupReportResponse
         """

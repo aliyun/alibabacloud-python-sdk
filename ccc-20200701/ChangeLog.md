@@ -1,3 +1,14 @@
+2025-11-13 Version: 2.30.0
+- Support API ImportRamUsers.
+- Support API ListFlashSmsSettings.
+- Update API AppendCases: add response parameters Body.Data.
+- Update API CreateCampaign: add request parameters FlashSmsParameters.
+- Update API CreateCampaign: add request parameters InstGroupId.
+- Update API CreateCampaign: add request parameters NumberList.
+- Update API GetInstance: add response parameters Body.Data.AgentType.
+- Update API GetInstance: add response parameters Body.Data.ChatbotBusinessUnit.
+
+
 2025-07-15 Version: 2.29.8
 - Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.OffsiteAgentReleaseReason.
 - Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.VoicebotDestinationNumber.

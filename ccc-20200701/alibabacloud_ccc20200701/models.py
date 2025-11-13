@@ -3039,18 +3039,16 @@ class AppendCasesShrinkRequest(TeaModel):
         return self
 
 
-class AppendCasesResponseBody(TeaModel):
+class AppendCasesResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        http_status_code: str = None,
-        message: str = None,
-        request_id: str = None,
+        custom_variables: str = None,
+        phone_number: str = None,
+        reference_id: str = None,
     ):
-        self.code = code
-        self.http_status_code = http_status_code
-        self.message = message
-        self.request_id = request_id
+        self.custom_variables = custom_variables
+        self.phone_number = phone_number
+        self.reference_id = reference_id
 
     def validate(self):
         pass
@@ -3061,8 +3059,58 @@ class AppendCasesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_variables is not None:
+            result['CustomVariables'] = self.custom_variables
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomVariables') is not None:
+            self.custom_variables = m.get('CustomVariables')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
+        return self
+
+
+class AppendCasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[AppendCasesResponseBodyData] = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
@@ -3075,6 +3123,11 @@ class AppendCasesResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = AppendCasesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
@@ -7292,10 +7345,13 @@ class CreateCampaignRequest(TeaModel):
         contact_flow_id: str = None,
         end_time: str = None,
         executing_until_timeout: bool = None,
+        flash_sms_parameters: str = None,
+        inst_group_id: str = None,
         instance_id: str = None,
         max_attempt_count: int = None,
         min_attempt_interval: int = None,
         name: str = None,
+        number_list: List[str] = None,
         queue_id: str = None,
         simulation: bool = None,
         simulation_parameters: str = None,
@@ -7312,6 +7368,8 @@ class CreateCampaignRequest(TeaModel):
         # This parameter is required.
         self.end_time = end_time
         self.executing_until_timeout = executing_until_timeout
+        self.flash_sms_parameters = flash_sms_parameters
+        self.inst_group_id = inst_group_id
         # This parameter is required.
         self.instance_id = instance_id
         # This parameter is required.
@@ -7320,6 +7378,7 @@ class CreateCampaignRequest(TeaModel):
         self.min_attempt_interval = min_attempt_interval
         # This parameter is required.
         self.name = name
+        self.number_list = number_list
         # This parameter is required.
         self.queue_id = queue_id
         self.simulation = simulation
@@ -7357,6 +7416,10 @@ class CreateCampaignRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.executing_until_timeout is not None:
             result['ExecutingUntilTimeout'] = self.executing_until_timeout
+        if self.flash_sms_parameters is not None:
+            result['FlashSmsParameters'] = self.flash_sms_parameters
+        if self.inst_group_id is not None:
+            result['InstGroupId'] = self.inst_group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.max_attempt_count is not None:
@@ -7365,6 +7428,8 @@ class CreateCampaignRequest(TeaModel):
             result['MinAttemptInterval'] = self.min_attempt_interval
         if self.name is not None:
             result['Name'] = self.name
+        if self.number_list is not None:
+            result['NumberList'] = self.number_list
         if self.queue_id is not None:
             result['QueueId'] = self.queue_id
         if self.simulation is not None:
@@ -7396,6 +7461,10 @@ class CreateCampaignRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutingUntilTimeout') is not None:
             self.executing_until_timeout = m.get('ExecutingUntilTimeout')
+        if m.get('FlashSmsParameters') is not None:
+            self.flash_sms_parameters = m.get('FlashSmsParameters')
+        if m.get('InstGroupId') is not None:
+            self.inst_group_id = m.get('InstGroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MaxAttemptCount') is not None:
@@ -7404,6 +7473,8 @@ class CreateCampaignRequest(TeaModel):
             self.min_attempt_interval = m.get('MinAttemptInterval')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('NumberList') is not None:
+            self.number_list = m.get('NumberList')
         if m.get('QueueId') is not None:
             self.queue_id = m.get('QueueId')
         if m.get('Simulation') is not None:
@@ -7428,10 +7499,13 @@ class CreateCampaignShrinkRequest(TeaModel):
         contact_flow_id: str = None,
         end_time: str = None,
         executing_until_timeout: bool = None,
+        flash_sms_parameters: str = None,
+        inst_group_id: str = None,
         instance_id: str = None,
         max_attempt_count: int = None,
         min_attempt_interval: int = None,
         name: str = None,
+        number_list_shrink: str = None,
         queue_id: str = None,
         simulation: bool = None,
         simulation_parameters: str = None,
@@ -7448,6 +7522,8 @@ class CreateCampaignShrinkRequest(TeaModel):
         # This parameter is required.
         self.end_time = end_time
         self.executing_until_timeout = executing_until_timeout
+        self.flash_sms_parameters = flash_sms_parameters
+        self.inst_group_id = inst_group_id
         # This parameter is required.
         self.instance_id = instance_id
         # This parameter is required.
@@ -7456,6 +7532,7 @@ class CreateCampaignShrinkRequest(TeaModel):
         self.min_attempt_interval = min_attempt_interval
         # This parameter is required.
         self.name = name
+        self.number_list_shrink = number_list_shrink
         # This parameter is required.
         self.queue_id = queue_id
         self.simulation = simulation
@@ -7488,6 +7565,10 @@ class CreateCampaignShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.executing_until_timeout is not None:
             result['ExecutingUntilTimeout'] = self.executing_until_timeout
+        if self.flash_sms_parameters is not None:
+            result['FlashSmsParameters'] = self.flash_sms_parameters
+        if self.inst_group_id is not None:
+            result['InstGroupId'] = self.inst_group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.max_attempt_count is not None:
@@ -7496,6 +7577,8 @@ class CreateCampaignShrinkRequest(TeaModel):
             result['MinAttemptInterval'] = self.min_attempt_interval
         if self.name is not None:
             result['Name'] = self.name
+        if self.number_list_shrink is not None:
+            result['NumberList'] = self.number_list_shrink
         if self.queue_id is not None:
             result['QueueId'] = self.queue_id
         if self.simulation is not None:
@@ -7524,6 +7607,10 @@ class CreateCampaignShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutingUntilTimeout') is not None:
             self.executing_until_timeout = m.get('ExecutingUntilTimeout')
+        if m.get('FlashSmsParameters') is not None:
+            self.flash_sms_parameters = m.get('FlashSmsParameters')
+        if m.get('InstGroupId') is not None:
+            self.inst_group_id = m.get('InstGroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MaxAttemptCount') is not None:
@@ -7532,6 +7619,8 @@ class CreateCampaignShrinkRequest(TeaModel):
             self.min_attempt_interval = m.get('MinAttemptInterval')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('NumberList') is not None:
+            self.number_list_shrink = m.get('NumberList')
         if m.get('QueueId') is not None:
             self.queue_id = m.get('QueueId')
         if m.get('Simulation') is not None:
@@ -8147,7 +8236,6 @@ class CreateInstanceRequest(TeaModel):
         self.domain_name = domain_name
         # This parameter is required.
         self.name = name
-        # This parameter is required.
         self.number_list = number_list
 
     def validate(self):
@@ -17489,6 +17577,39 @@ class GetInstanceResponseBodyDataAdminList(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyDataChatbotBusinessUnit(TeaModel):
+    def __init__(
+        self,
+        unit_id: int = None,
+        unit_key: str = None,
+    ):
+        self.unit_id = unit_id
+        self.unit_key = unit_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.unit_id is not None:
+            result['UnitId'] = self.unit_id
+        if self.unit_key is not None:
+            result['UnitKey'] = self.unit_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UnitId') is not None:
+            self.unit_id = m.get('UnitId')
+        if m.get('UnitKey') is not None:
+            self.unit_key = m.get('UnitKey')
+        return self
+
+
 class GetInstanceResponseBodyDataNumberListSkillGroups(TeaModel):
     def __init__(
         self,
@@ -17639,7 +17760,9 @@ class GetInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
         admin_list: List[GetInstanceResponseBodyDataAdminList] = None,
+        agent_type: str = None,
         aliyun_uid: str = None,
+        chatbot_business_unit: GetInstanceResponseBodyDataChatbotBusinessUnit = None,
         console_url: str = None,
         description: str = None,
         domain_name: str = None,
@@ -17649,7 +17772,9 @@ class GetInstanceResponseBodyData(TeaModel):
         status: str = None,
     ):
         self.admin_list = admin_list
+        self.agent_type = agent_type
         self.aliyun_uid = aliyun_uid
+        self.chatbot_business_unit = chatbot_business_unit
         self.console_url = console_url
         self.description = description
         self.domain_name = domain_name
@@ -17663,6 +17788,8 @@ class GetInstanceResponseBodyData(TeaModel):
             for k in self.admin_list:
                 if k:
                     k.validate()
+        if self.chatbot_business_unit:
+            self.chatbot_business_unit.validate()
         if self.number_list:
             for k in self.number_list:
                 if k:
@@ -17678,8 +17805,12 @@ class GetInstanceResponseBodyData(TeaModel):
         if self.admin_list is not None:
             for k in self.admin_list:
                 result['AdminList'].append(k.to_map() if k else None)
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
         if self.aliyun_uid is not None:
             result['AliyunUid'] = self.aliyun_uid
+        if self.chatbot_business_unit is not None:
+            result['ChatbotBusinessUnit'] = self.chatbot_business_unit.to_map()
         if self.console_url is not None:
             result['ConsoleUrl'] = self.console_url
         if self.description is not None:
@@ -17705,8 +17836,13 @@ class GetInstanceResponseBodyData(TeaModel):
             for k in m.get('AdminList'):
                 temp_model = GetInstanceResponseBodyDataAdminList()
                 self.admin_list.append(temp_model.from_map(k))
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
         if m.get('AliyunUid') is not None:
             self.aliyun_uid = m.get('AliyunUid')
+        if m.get('ChatbotBusinessUnit') is not None:
+            temp_model = GetInstanceResponseBodyDataChatbotBusinessUnit()
+            self.chatbot_business_unit = temp_model.from_map(m['ChatbotBusinessUnit'])
         if m.get('ConsoleUrl') is not None:
             self.console_url = m.get('ConsoleUrl')
         if m.get('Description') is not None:
@@ -23786,6 +23922,153 @@ class ImportDocumentsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportDocumentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportRamUsersRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        ram_id_list: str = None,
+        role_id: str = None,
+        skill_level_list: str = None,
+        work_mode: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.ram_id_list = ram_id_list
+        # This parameter is required.
+        self.role_id = role_id
+        self.skill_level_list = skill_level_list
+        # This parameter is required.
+        self.work_mode = work_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ram_id_list is not None:
+            result['RamIdList'] = self.ram_id_list
+        if self.role_id is not None:
+            result['RoleId'] = self.role_id
+        if self.skill_level_list is not None:
+            result['SkillLevelList'] = self.skill_level_list
+        if self.work_mode is not None:
+            result['WorkMode'] = self.work_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RamIdList') is not None:
+            self.ram_id_list = m.get('RamIdList')
+        if m.get('RoleId') is not None:
+            self.role_id = m.get('RoleId')
+        if m.get('SkillLevelList') is not None:
+            self.skill_level_list = m.get('SkillLevelList')
+        if m.get('WorkMode') is not None:
+            self.work_mode = m.get('WorkMode')
+        return self
+
+
+class ImportRamUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportRamUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportRamUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportRamUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33103,6 +33386,312 @@ class ListFlashSmsApplicationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFlashSmsApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFlashSmsSettingsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        skill_group_id_list: List[str] = None,
+        skill_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.skill_group_id_list = skill_group_id_list
+        self.skill_group_name = skill_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.skill_group_id_list is not None:
+            result['SkillGroupIdList'] = self.skill_group_id_list
+        if self.skill_group_name is not None:
+            result['SkillGroupName'] = self.skill_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SkillGroupIdList') is not None:
+            self.skill_group_id_list = m.get('SkillGroupIdList')
+        if m.get('SkillGroupName') is not None:
+            self.skill_group_name = m.get('SkillGroupName')
+        return self
+
+
+class ListFlashSmsSettingsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        skill_group_id_list_shrink: str = None,
+        skill_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.skill_group_id_list_shrink = skill_group_id_list_shrink
+        self.skill_group_name = skill_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.skill_group_id_list_shrink is not None:
+            result['SkillGroupIdList'] = self.skill_group_id_list_shrink
+        if self.skill_group_name is not None:
+            result['SkillGroupName'] = self.skill_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SkillGroupIdList') is not None:
+            self.skill_group_id_list_shrink = m.get('SkillGroupIdList')
+        if m.get('SkillGroupName') is not None:
+            self.skill_group_name = m.get('SkillGroupName')
+        return self
+
+
+class ListFlashSmsSettingsResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        instance_id: str = None,
+        skill_group_id: str = None,
+        skill_group_name: str = None,
+    ):
+        self.enabled = enabled
+        self.instance_id = instance_id
+        self.skill_group_id = skill_group_id
+        self.skill_group_name = skill_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
+        if self.skill_group_name is not None:
+            result['SkillGroupName'] = self.skill_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
+        if m.get('SkillGroupName') is not None:
+            self.skill_group_name = m.get('SkillGroupName')
+        return self
+
+
+class ListFlashSmsSettingsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListFlashSmsSettingsResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListFlashSmsSettingsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFlashSmsSettingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListFlashSmsSettingsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListFlashSmsSettingsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListFlashSmsSettingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFlashSmsSettingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFlashSmsSettingsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
