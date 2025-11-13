@@ -1,3 +1,11 @@
+2025-11-13 Version: 2.5.1
+- Update API CreateIdentityProvider: add request parameters LdapConfig.OrganizationalUnitRdn.
+- Update API CreateIdentityProvider: add request parameters LdapConfig.PasswordSyncStatus.
+- Update API CreateIdentityProvider: add request parameters LdapConfig.UserRdn.
+- Update API CreateIdentityProvider: add request parameters UdPushConfig.PeriodicSyncConfig.
+- Update API ListIdentityProviders: add request parameters Direction.
+
+
 2025-11-11 Version: 2.5.0
 - Support API BindUserAuthnSourceMapping.
 - Support API ListUserAuthnSourceMappings.

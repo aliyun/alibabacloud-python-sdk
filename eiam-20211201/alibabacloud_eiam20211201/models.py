@@ -3615,10 +3615,13 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
         ldap_server_host: str = None,
         ldap_server_port: int = None,
         organization_unit_object_class: str = None,
+        organizational_unit_rdn: str = None,
+        password_sync_status: str = None,
         start_tls_status: str = None,
         user_login_identifier: str = None,
         user_object_class: str = None,
         user_object_class_custom_filter: str = None,
+        user_rdn: str = None,
     ):
         # Administrator password.
         self.administrator_password = administrator_password
@@ -3646,6 +3649,8 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
         self.ldap_server_port = ldap_server_port
         # Organization Unit ObjectClass.
         self.organization_unit_object_class = organization_unit_object_class
+        self.organizational_unit_rdn = organizational_unit_rdn
+        self.password_sync_status = password_sync_status
         # Whether startTLS is enabled. Value range:
         # - Disabled: disabled
         # 
@@ -3657,6 +3662,7 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
         self.user_object_class = user_object_class
         # Custom filter for User ObjectClass.
         self.user_object_class_custom_filter = user_object_class_custom_filter
+        self.user_rdn = user_rdn
 
     def validate(self):
         pass
@@ -3689,6 +3695,10 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
             result['LdapServerPort'] = self.ldap_server_port
         if self.organization_unit_object_class is not None:
             result['OrganizationUnitObjectClass'] = self.organization_unit_object_class
+        if self.organizational_unit_rdn is not None:
+            result['OrganizationalUnitRdn'] = self.organizational_unit_rdn
+        if self.password_sync_status is not None:
+            result['PasswordSyncStatus'] = self.password_sync_status
         if self.start_tls_status is not None:
             result['StartTlsStatus'] = self.start_tls_status
         if self.user_login_identifier is not None:
@@ -3697,6 +3707,8 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
             result['UserObjectClass'] = self.user_object_class
         if self.user_object_class_custom_filter is not None:
             result['UserObjectClassCustomFilter'] = self.user_object_class_custom_filter
+        if self.user_rdn is not None:
+            result['UserRdn'] = self.user_rdn
         return result
 
     def from_map(self, m: dict = None):
@@ -3723,6 +3735,10 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
             self.ldap_server_port = m.get('LdapServerPort')
         if m.get('OrganizationUnitObjectClass') is not None:
             self.organization_unit_object_class = m.get('OrganizationUnitObjectClass')
+        if m.get('OrganizationalUnitRdn') is not None:
+            self.organizational_unit_rdn = m.get('OrganizationalUnitRdn')
+        if m.get('PasswordSyncStatus') is not None:
+            self.password_sync_status = m.get('PasswordSyncStatus')
         if m.get('StartTlsStatus') is not None:
             self.start_tls_status = m.get('StartTlsStatus')
         if m.get('UserLoginIdentifier') is not None:
@@ -3731,6 +3747,8 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
             self.user_object_class = m.get('UserObjectClass')
         if m.get('UserObjectClassCustomFilter') is not None:
             self.user_object_class_custom_filter = m.get('UserObjectClassCustomFilter')
+        if m.get('UserRdn') is not None:
+            self.user_rdn = m.get('UserRdn')
         return self
 
 
@@ -4057,6 +4075,45 @@ class CreateIdentityProviderRequestUdPullConfig(TeaModel):
         return self
 
 
+class CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig(TeaModel):
+    def __init__(
+        self,
+        periodic_sync_cron: str = None,
+        periodic_sync_times: List[int] = None,
+        periodic_sync_type: str = None,
+    ):
+        self.periodic_sync_cron = periodic_sync_cron
+        self.periodic_sync_times = periodic_sync_times
+        self.periodic_sync_type = periodic_sync_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.periodic_sync_cron is not None:
+            result['PeriodicSyncCron'] = self.periodic_sync_cron
+        if self.periodic_sync_times is not None:
+            result['PeriodicSyncTimes'] = self.periodic_sync_times
+        if self.periodic_sync_type is not None:
+            result['PeriodicSyncType'] = self.periodic_sync_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PeriodicSyncCron') is not None:
+            self.periodic_sync_cron = m.get('PeriodicSyncCron')
+        if m.get('PeriodicSyncTimes') is not None:
+            self.periodic_sync_times = m.get('PeriodicSyncTimes')
+        if m.get('PeriodicSyncType') is not None:
+            self.periodic_sync_type = m.get('PeriodicSyncType')
+        return self
+
+
 class CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs(TeaModel):
     def __init__(
         self,
@@ -4096,17 +4153,21 @@ class CreateIdentityProviderRequestUdPushConfig(TeaModel):
     def __init__(
         self,
         incremental_callback_status: str = None,
+        periodic_sync_config: CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig = None,
         periodic_sync_status: str = None,
         ud_sync_scope_configs: List[CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs] = None,
     ):
         # Incremental callback status. This field is reserved and currently not in use; please ignore it.
         self.incremental_callback_status = incremental_callback_status
+        self.periodic_sync_config = periodic_sync_config
         # Periodic check status. This field is currently not in use, please ignore it.
         self.periodic_sync_status = periodic_sync_status
         # Outbound synchronization configuration information.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
+        if self.periodic_sync_config:
+            self.periodic_sync_config.validate()
         if self.ud_sync_scope_configs:
             for k in self.ud_sync_scope_configs:
                 if k:
@@ -4120,6 +4181,8 @@ class CreateIdentityProviderRequestUdPushConfig(TeaModel):
         result = dict()
         if self.incremental_callback_status is not None:
             result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.periodic_sync_config is not None:
+            result['PeriodicSyncConfig'] = self.periodic_sync_config.to_map()
         if self.periodic_sync_status is not None:
             result['PeriodicSyncStatus'] = self.periodic_sync_status
         result['UdSyncScopeConfigs'] = []
@@ -4132,6 +4195,9 @@ class CreateIdentityProviderRequestUdPushConfig(TeaModel):
         m = m or dict()
         if m.get('IncrementalCallbackStatus') is not None:
             self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('PeriodicSyncConfig') is not None:
+            temp_model = CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig()
+            self.periodic_sync_config = temp_model.from_map(m['PeriodicSyncConfig'])
         if m.get('PeriodicSyncStatus') is not None:
             self.periodic_sync_status = m.get('PeriodicSyncStatus')
         self.ud_sync_scope_configs = []
@@ -28689,10 +28755,12 @@ class ListGroupsForUserResponse(TeaModel):
 class ListIdentityProvidersRequest(TeaModel):
     def __init__(
         self,
+        direction: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.direction = direction
         # The instance ID.
         # 
         # This parameter is required.
@@ -28711,6 +28779,8 @@ class ListIdentityProvidersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -28721,6 +28791,8 @@ class ListIdentityProvidersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
