@@ -25383,6 +25383,294 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_recursion_zone_remark_with_options_async(request, runtime)
 
+    def update_rsp_domain_server_hold_status_ote_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainServerHoldStatusOteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRspDomainServerHoldStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainServerHoldStatusOteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRspDomainServerHoldStatusOteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.operator_type):
+            query['OperatorType'] = request.operator_type
+        if not UtilClient.is_unset(request.server_hold_status):
+            query['ServerHoldStatus'] = request.server_hold_status
+        if not UtilClient.is_unset(request.status_msg):
+            query['StatusMsg'] = request.status_msg
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRspDomainServerHoldStatusOte',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRspDomainServerHoldStatusOteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rsp_domain_server_hold_status_ote_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainServerHoldStatusOteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRspDomainServerHoldStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainServerHoldStatusOteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRspDomainServerHoldStatusOteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.operator_type):
+            query['OperatorType'] = request.operator_type
+        if not UtilClient.is_unset(request.server_hold_status):
+            query['ServerHoldStatus'] = request.server_hold_status
+        if not UtilClient.is_unset(request.status_msg):
+            query['StatusMsg'] = request.status_msg
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRspDomainServerHoldStatusOte',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRspDomainServerHoldStatusOteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rsp_domain_server_hold_status_ote(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainServerHoldStatusOteRequest,
+    ) -> alidns_20150109_models.UpdateRspDomainServerHoldStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainServerHoldStatusOteRequest
+        @return: UpdateRspDomainServerHoldStatusOteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_rsp_domain_server_hold_status_ote_with_options(request, runtime)
+
+    async def update_rsp_domain_server_hold_status_ote_async(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainServerHoldStatusOteRequest,
+    ) -> alidns_20150109_models.UpdateRspDomainServerHoldStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainServerHoldStatusOteRequest
+        @return: UpdateRspDomainServerHoldStatusOteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rsp_domain_server_hold_status_ote_with_options_async(request, runtime)
+
+    def update_rsp_domain_status_ote_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainStatusOteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRspDomainStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainStatusOteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRspDomainStatusOteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_status_list):
+            query['AddStatusList'] = request.add_status_list
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_status_list):
+            query['DeleteStatusList'] = request.delete_status_list
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.operator_type):
+            query['OperatorType'] = request.operator_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRspDomainStatusOte',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRspDomainStatusOteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rsp_domain_status_ote_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainStatusOteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRspDomainStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainStatusOteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRspDomainStatusOteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_status_list):
+            query['AddStatusList'] = request.add_status_list
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_status_list):
+            query['DeleteStatusList'] = request.delete_status_list
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.operator_type):
+            query['OperatorType'] = request.operator_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRspDomainStatusOte',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRspDomainStatusOteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rsp_domain_status_ote(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainStatusOteRequest,
+    ) -> alidns_20150109_models.UpdateRspDomainStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainStatusOteRequest
+        @return: UpdateRspDomainStatusOteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_rsp_domain_status_ote_with_options(request, runtime)
+
+    async def update_rsp_domain_status_ote_async(
+        self,
+        request: alidns_20150109_models.UpdateRspDomainStatusOteRequest,
+    ) -> alidns_20150109_models.UpdateRspDomainStatusOteResponse:
+        """
+        @summary 用于更新域名的状态属性
+        
+        @description ## 请求说明
+        - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+        - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+        - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+        - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+        - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+        
+        @param request: UpdateRspDomainStatusOteRequest
+        @return: UpdateRspDomainStatusOteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rsp_domain_status_ote_with_options_async(request, runtime)
+
     def validate_dns_gtm_cname_rr_can_use_with_options(
         self,
         request: alidns_20150109_models.ValidateDnsGtmCnameRrCanUseRequest,

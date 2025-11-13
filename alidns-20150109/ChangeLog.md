@@ -1,3 +1,8 @@
+2025-11-13 Version: 3.7.0
+- Support API UpdateRspDomainServerHoldStatusOte.
+- Support API UpdateRspDomainStatusOte.
+
+
 2025-10-14 Version: 3.6.1
 - Update API CreateCloudGtmInstanceConfig: add request parameters ChargeType.
 - Update API CreateCloudGtmInstanceConfig: add response parameters Body.InstanceId.

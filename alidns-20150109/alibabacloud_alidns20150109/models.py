@@ -54078,6 +54078,644 @@ class UpdateRecursionZoneRemarkResponse(TeaModel):
         return self
 
 
+class UpdateRspDomainServerHoldStatusOteRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        domain_name: str = None,
+        operator_id: str = None,
+        operator_type: str = None,
+        server_hold_status: str = None,
+        status_msg: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.domain_name = domain_name
+        # This parameter is required.
+        self.operator_id = operator_id
+        # This parameter is required.
+        self.operator_type = operator_type
+        # This parameter is required.
+        self.server_hold_status = server_hold_status
+        # This parameter is required.
+        self.status_msg = status_msg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.operator_id is not None:
+            result['OperatorId'] = self.operator_id
+        if self.operator_type is not None:
+            result['OperatorType'] = self.operator_type
+        if self.server_hold_status is not None:
+            result['ServerHoldStatus'] = self.server_hold_status
+        if self.status_msg is not None:
+            result['StatusMsg'] = self.status_msg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('OperatorId') is not None:
+            self.operator_id = m.get('OperatorId')
+        if m.get('OperatorType') is not None:
+            self.operator_type = m.get('OperatorType')
+        if m.get('ServerHoldStatus') is not None:
+            self.server_hold_status = m.get('ServerHoldStatus')
+        if m.get('StatusMsg') is not None:
+            self.status_msg = m.get('StatusMsg')
+        return self
+
+
+class UpdateRspDomainServerHoldStatusOteResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class UpdateRspDomainServerHoldStatusOteResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        server_hold_status: str = None,
+    ):
+        self.domain_name = domain_name
+        self.server_hold_status = server_hold_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.server_hold_status is not None:
+            result['ServerHoldStatus'] = self.server_hold_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('ServerHoldStatus') is not None:
+            self.server_hold_status = m.get('ServerHoldStatus')
+        return self
+
+
+class UpdateRspDomainServerHoldStatusOteResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: UpdateRspDomainServerHoldStatusOteResponseBodyAccessDeniedDetail = None,
+        data: UpdateRspDomainServerHoldStatusOteResponseBodyData = None,
+        recoverable_error: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.recoverable_error = recoverable_error
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.recoverable_error is not None:
+            result['RecoverableError'] = self.recoverable_error
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = UpdateRspDomainServerHoldStatusOteResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Data') is not None:
+            temp_model = UpdateRspDomainServerHoldStatusOteResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RecoverableError') is not None:
+            self.recoverable_error = m.get('RecoverableError')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateRspDomainServerHoldStatusOteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRspDomainServerHoldStatusOteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRspDomainServerHoldStatusOteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRspDomainStatusOteRequestAddStatusList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        status_msg: str = None,
+    ):
+        self.status = status
+        self.status_msg = status_msg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_msg is not None:
+            result['StatusMsg'] = self.status_msg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusMsg') is not None:
+            self.status_msg = m.get('StatusMsg')
+        return self
+
+
+class UpdateRspDomainStatusOteRequestDeleteStatusList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        status_msg: str = None,
+    ):
+        self.status = status
+        self.status_msg = status_msg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_msg is not None:
+            result['StatusMsg'] = self.status_msg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusMsg') is not None:
+            self.status_msg = m.get('StatusMsg')
+        return self
+
+
+class UpdateRspDomainStatusOteRequest(TeaModel):
+    def __init__(
+        self,
+        add_status_list: List[UpdateRspDomainStatusOteRequestAddStatusList] = None,
+        client_token: str = None,
+        delete_status_list: List[UpdateRspDomainStatusOteRequestDeleteStatusList] = None,
+        domain_name: str = None,
+        operator_id: str = None,
+        operator_type: str = None,
+    ):
+        self.add_status_list = add_status_list
+        self.client_token = client_token
+        self.delete_status_list = delete_status_list
+        # This parameter is required.
+        self.domain_name = domain_name
+        # This parameter is required.
+        self.operator_id = operator_id
+        # This parameter is required.
+        self.operator_type = operator_type
+
+    def validate(self):
+        if self.add_status_list:
+            for k in self.add_status_list:
+                if k:
+                    k.validate()
+        if self.delete_status_list:
+            for k in self.delete_status_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddStatusList'] = []
+        if self.add_status_list is not None:
+            for k in self.add_status_list:
+                result['AddStatusList'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['DeleteStatusList'] = []
+        if self.delete_status_list is not None:
+            for k in self.delete_status_list:
+                result['DeleteStatusList'].append(k.to_map() if k else None)
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.operator_id is not None:
+            result['OperatorId'] = self.operator_id
+        if self.operator_type is not None:
+            result['OperatorType'] = self.operator_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.add_status_list = []
+        if m.get('AddStatusList') is not None:
+            for k in m.get('AddStatusList'):
+                temp_model = UpdateRspDomainStatusOteRequestAddStatusList()
+                self.add_status_list.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.delete_status_list = []
+        if m.get('DeleteStatusList') is not None:
+            for k in m.get('DeleteStatusList'):
+                temp_model = UpdateRspDomainStatusOteRequestDeleteStatusList()
+                self.delete_status_list.append(temp_model.from_map(k))
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('OperatorId') is not None:
+            self.operator_id = m.get('OperatorId')
+        if m.get('OperatorType') is not None:
+            self.operator_type = m.get('OperatorType')
+        return self
+
+
+class UpdateRspDomainStatusOteResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class UpdateRspDomainStatusOteResponseBodyDataStatusList(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        status: str = None,
+        status_msg: str = None,
+    ):
+        self.domain_name = domain_name
+        self.status = status
+        self.status_msg = status_msg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_msg is not None:
+            result['StatusMsg'] = self.status_msg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusMsg') is not None:
+            self.status_msg = m.get('StatusMsg')
+        return self
+
+
+class UpdateRspDomainStatusOteResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        status_list: List[UpdateRspDomainStatusOteResponseBodyDataStatusList] = None,
+    ):
+        self.domain_name = domain_name
+        self.status_list = status_list
+
+    def validate(self):
+        if self.status_list:
+            for k in self.status_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        result['StatusList'] = []
+        if self.status_list is not None:
+            for k in self.status_list:
+                result['StatusList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        self.status_list = []
+        if m.get('StatusList') is not None:
+            for k in m.get('StatusList'):
+                temp_model = UpdateRspDomainStatusOteResponseBodyDataStatusList()
+                self.status_list.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRspDomainStatusOteResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: UpdateRspDomainStatusOteResponseBodyAccessDeniedDetail = None,
+        data: UpdateRspDomainStatusOteResponseBodyData = None,
+        recoverable_error: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.recoverable_error = recoverable_error
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.recoverable_error is not None:
+            result['RecoverableError'] = self.recoverable_error
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = UpdateRspDomainStatusOteResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Data') is not None:
+            temp_model = UpdateRspDomainStatusOteResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RecoverableError') is not None:
+            self.recoverable_error = m.get('RecoverableError')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateRspDomainStatusOteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRspDomainStatusOteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRspDomainStatusOteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ValidateDnsGtmCnameRrCanUseRequest(TeaModel):
     def __init__(
         self,
