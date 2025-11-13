@@ -1,3 +1,19 @@
+2025-11-13 Version: 6.1.0
+- Support API CreateCheckItem.
+- Support API DeleteCheckItem.
+- Support API DescribeClusterScannerList.
+- Support API DescribeCustomizedDict.
+- Support API GenerateClusterScannerWebhookYaml.
+- Support API GetAgentlessTaskUsedSizeEstimate.
+- Support API GetClusterScannerYaml.
+- Support API HandleSimilarMaliciousFiles.
+- Support API ListCheckItems.
+- Support API ListCheckPolicies.
+- Support API ListUniBackupRecord.
+- Support API UpdateCheckItem.
+- Update API DescribeVersionConfig: add response parameters Body.CanTryPostPaidPackage.
+
+
 2025-11-10 Version: 6.0.6
 - Update API DescribeImageRepoList: add request parameters Selected.
 - Update API DescribeImageRepoList: add response parameters Body.ImageRepoList.$.ImageCount.
