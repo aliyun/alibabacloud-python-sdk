@@ -4040,6 +4040,75 @@ class DescribeDBInstanceAttributeResponseBodyTags(TeaModel):
         return self
 
 
+class DescribeDBInstanceAttributeResponseBodyVirtualClusterList(TeaModel):
+    def __init__(
+        self,
+        active_cluster_id: str = None,
+        active_cluster_name: str = None,
+        created_time: str = None,
+        db_cluster_id: str = None,
+        db_cluster_name: str = None,
+        standby_cluster_id: str = None,
+        standby_cluster_name: str = None,
+        status: str = None,
+    ):
+        self.active_cluster_id = active_cluster_id
+        self.active_cluster_name = active_cluster_name
+        self.created_time = created_time
+        self.db_cluster_id = db_cluster_id
+        self.db_cluster_name = db_cluster_name
+        self.standby_cluster_id = standby_cluster_id
+        self.standby_cluster_name = standby_cluster_name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_cluster_id is not None:
+            result['ActiveClusterId'] = self.active_cluster_id
+        if self.active_cluster_name is not None:
+            result['ActiveClusterName'] = self.active_cluster_name
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+        if self.db_cluster_name is not None:
+            result['DbClusterName'] = self.db_cluster_name
+        if self.standby_cluster_id is not None:
+            result['StandbyClusterId'] = self.standby_cluster_id
+        if self.standby_cluster_name is not None:
+            result['StandbyClusterName'] = self.standby_cluster_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveClusterId') is not None:
+            self.active_cluster_id = m.get('ActiveClusterId')
+        if m.get('ActiveClusterName') is not None:
+            self.active_cluster_name = m.get('ActiveClusterName')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+        if m.get('DbClusterName') is not None:
+            self.db_cluster_name = m.get('DbClusterName')
+        if m.get('StandbyClusterId') is not None:
+            self.standby_cluster_id = m.get('StandbyClusterId')
+        if m.get('StandbyClusterName') is not None:
+            self.standby_cluster_name = m.get('StandbyClusterName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeDBInstanceAttributeResponseBody(TeaModel):
     def __init__(
         self,
@@ -4072,6 +4141,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         sub_domain: str = None,
         tags: List[DescribeDBInstanceAttributeResponseBodyTags] = None,
         v_switch_id: str = None,
+        virtual_cluster_list: List[DescribeDBInstanceAttributeResponseBodyVirtualClusterList] = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
@@ -4138,6 +4208,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         # The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
         self.tags = tags
         self.v_switch_id = v_switch_id
+        self.virtual_cluster_list = virtual_cluster_list
         # The VPC ID.
         self.vpc_id = vpc_id
         # The Zone ID.
@@ -4154,6 +4225,10 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
                     k.validate()
         if self.tags:
             for k in self.tags:
+                if k:
+                    k.validate()
+        if self.virtual_cluster_list:
+            for k in self.virtual_cluster_list:
                 if k:
                     k.validate()
 
@@ -4227,6 +4302,10 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        result['VirtualClusterList'] = []
+        if self.virtual_cluster_list is not None:
+            for k in self.virtual_cluster_list:
+                result['VirtualClusterList'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -4302,6 +4381,11 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        self.virtual_cluster_list = []
+        if m.get('VirtualClusterList') is not None:
+            for k in m.get('VirtualClusterList'):
+                temp_model = DescribeDBInstanceAttributeResponseBodyVirtualClusterList()
+                self.virtual_cluster_list.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
