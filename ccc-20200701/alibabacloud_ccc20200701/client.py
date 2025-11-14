@@ -19073,6 +19073,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_audio_file_with_options_async(request, runtime)
 
+    def modify_campaign_numbers_with_options(
+        self,
+        tmp_req: ccc20200701_models.ModifyCampaignNumbersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ModifyCampaignNumbersResponse:
+        """
+        @summary 修改活动外呼号码
+        
+        @param tmp_req: ModifyCampaignNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCampaignNumbersResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ModifyCampaignNumbersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.number_list):
+            request.number_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.number_list, 'NumberList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.inst_group_id):
+            query['InstGroupId'] = request.inst_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.number_list_shrink):
+            query['NumberList'] = request.number_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCampaignNumbers',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ModifyCampaignNumbersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_campaign_numbers_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.ModifyCampaignNumbersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ModifyCampaignNumbersResponse:
+        """
+        @summary 修改活动外呼号码
+        
+        @param tmp_req: ModifyCampaignNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCampaignNumbersResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ModifyCampaignNumbersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.number_list):
+            request.number_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.number_list, 'NumberList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.inst_group_id):
+            query['InstGroupId'] = request.inst_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.number_list_shrink):
+            query['NumberList'] = request.number_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCampaignNumbers',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ModifyCampaignNumbersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_campaign_numbers(
+        self,
+        request: ccc20200701_models.ModifyCampaignNumbersRequest,
+    ) -> ccc20200701_models.ModifyCampaignNumbersResponse:
+        """
+        @summary 修改活动外呼号码
+        
+        @param request: ModifyCampaignNumbersRequest
+        @return: ModifyCampaignNumbersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_campaign_numbers_with_options(request, runtime)
+
+    async def modify_campaign_numbers_async(
+        self,
+        request: ccc20200701_models.ModifyCampaignNumbersRequest,
+    ) -> ccc20200701_models.ModifyCampaignNumbersResponse:
+        """
+        @summary 修改活动外呼号码
+        
+        @param request: ModifyCampaignNumbersRequest
+        @return: ModifyCampaignNumbersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_campaign_numbers_with_options_async(request, runtime)
+
     def modify_custom_call_tagging_with_options(
         self,
         request: ccc20200701_models.ModifyCustomCallTaggingRequest,

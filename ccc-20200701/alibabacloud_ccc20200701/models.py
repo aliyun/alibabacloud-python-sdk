@@ -53180,6 +53180,198 @@ class ModifyAudioFileResponse(TeaModel):
         return self
 
 
+class ModifyCampaignNumbersRequest(TeaModel):
+    def __init__(
+        self,
+        campaign_id: str = None,
+        inst_group_id: str = None,
+        instance_id: str = None,
+        number_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.campaign_id = campaign_id
+        self.inst_group_id = inst_group_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.number_list = number_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.campaign_id is not None:
+            result['CampaignId'] = self.campaign_id
+        if self.inst_group_id is not None:
+            result['InstGroupId'] = self.inst_group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.number_list is not None:
+            result['NumberList'] = self.number_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CampaignId') is not None:
+            self.campaign_id = m.get('CampaignId')
+        if m.get('InstGroupId') is not None:
+            self.inst_group_id = m.get('InstGroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NumberList') is not None:
+            self.number_list = m.get('NumberList')
+        return self
+
+
+class ModifyCampaignNumbersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        campaign_id: str = None,
+        inst_group_id: str = None,
+        instance_id: str = None,
+        number_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.campaign_id = campaign_id
+        self.inst_group_id = inst_group_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.number_list_shrink = number_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.campaign_id is not None:
+            result['CampaignId'] = self.campaign_id
+        if self.inst_group_id is not None:
+            result['InstGroupId'] = self.inst_group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.number_list_shrink is not None:
+            result['NumberList'] = self.number_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CampaignId') is not None:
+            self.campaign_id = m.get('CampaignId')
+        if m.get('InstGroupId') is not None:
+            self.inst_group_id = m.get('InstGroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NumberList') is not None:
+            self.number_list_shrink = m.get('NumberList')
+        return self
+
+
+class ModifyCampaignNumbersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCampaignNumbersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCampaignNumbersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCampaignNumbersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyCustomCallTaggingRequest(TeaModel):
     def __init__(
         self,
