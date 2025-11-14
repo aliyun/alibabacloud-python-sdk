@@ -34690,6 +34690,7 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         auto_install: bool = None,
         instance_id: str = None,
         loong_collector_status: str = None,
+        loong_collector_version: str = None,
         os_monitor_config: str = None,
         os_monitor_error_code: str = None,
         os_monitor_error_detail: str = None,
@@ -34714,6 +34715,7 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         # The instance ID.
         self.instance_id = instance_id
         self.loong_collector_status = loong_collector_status
+        self.loong_collector_version = loong_collector_version
         # Indicates whether the SysAK monitoring feature is enabled.`` Valid values:
         # 
         # *   `true`: The SysAK monitoring feature is enabled.
@@ -34772,6 +34774,8 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
             result['InstanceId'] = self.instance_id
         if self.loong_collector_status is not None:
             result['LoongCollectorStatus'] = self.loong_collector_status
+        if self.loong_collector_version is not None:
+            result['LoongCollectorVersion'] = self.loong_collector_version
         if self.os_monitor_config is not None:
             result['OsMonitorConfig'] = self.os_monitor_config
         if self.os_monitor_error_code is not None:
@@ -34796,6 +34800,8 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
             self.instance_id = m.get('InstanceId')
         if m.get('LoongCollectorStatus') is not None:
             self.loong_collector_status = m.get('LoongCollectorStatus')
+        if m.get('LoongCollectorVersion') is not None:
+            self.loong_collector_version = m.get('LoongCollectorVersion')
         if m.get('OsMonitorConfig') is not None:
             self.os_monitor_config = m.get('OsMonitorConfig')
         if m.get('OsMonitorErrorCode') is not None:

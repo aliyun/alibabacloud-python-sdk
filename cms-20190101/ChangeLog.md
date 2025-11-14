@@ -1,3 +1,7 @@
+2025-11-14 Version: 4.0.5
+- Update API DescribeMonitoringAgentStatuses: add response parameters Body.NodeStatusList.$.LoongCollectorVersion.
+
+
 2025-11-12 Version: 4.0.4
 - Update API DescribeMonitoringAgentStatuses: add response parameters Body.NodeStatusList.$.LoongCollectorStatus.
 
