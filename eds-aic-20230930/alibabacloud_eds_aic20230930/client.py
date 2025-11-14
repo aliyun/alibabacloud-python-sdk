@@ -3283,6 +3283,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sale_mode):
+            query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status_list):
@@ -3344,6 +3346,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sale_mode):
+            query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status_list):

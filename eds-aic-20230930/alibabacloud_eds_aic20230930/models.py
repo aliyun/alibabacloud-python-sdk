@@ -7517,6 +7517,7 @@ class DescribeBackupFilesRequest(TeaModel):
         instance_group_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        sale_mode: str = None,
         start_time: str = None,
         status_list: List[str] = None,
     ):
@@ -7547,6 +7548,7 @@ class DescribeBackupFilesRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        self.sale_mode = sale_mode
         # The beginning of the period for querying generated backup files.
         self.start_time = start_time
         # The status of the backup files.
@@ -7583,6 +7585,8 @@ class DescribeBackupFilesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.sale_mode is not None:
+            result['SaleMode'] = self.sale_mode
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status_list is not None:
@@ -7613,6 +7617,8 @@ class DescribeBackupFilesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('SaleMode') is not None:
+            self.sale_mode = m.get('SaleMode')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatusList') is not None:
