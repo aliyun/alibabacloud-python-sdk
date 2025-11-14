@@ -15607,12 +15607,14 @@ class DescribeApplicationAttributeResponseBodyEndpoints(TeaModel):
         ip: str = None,
         net_type: str = None,
         port: str = None,
+        port_description: str = None,
     ):
         self.description = description
         self.endpoint_id = endpoint_id
         self.ip = ip
         self.net_type = net_type
         self.port = port
+        self.port_description = port_description
 
     def validate(self):
         pass
@@ -15633,6 +15635,8 @@ class DescribeApplicationAttributeResponseBodyEndpoints(TeaModel):
             result['NetType'] = self.net_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.port_description is not None:
+            result['PortDescription'] = self.port_description
         return result
 
     def from_map(self, m: dict = None):
@@ -15647,6 +15651,8 @@ class DescribeApplicationAttributeResponseBodyEndpoints(TeaModel):
             self.net_type = m.get('NetType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('PortDescription') is not None:
+            self.port_description = m.get('PortDescription')
         return self
 
 

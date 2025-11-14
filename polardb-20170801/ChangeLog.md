@@ -1,3 +1,7 @@
+2025-11-14 Version: 6.1.5
+- Update API DescribeApplicationAttribute: add response parameters Body.Endpoints.$.PortDescription.
+
+
 2025-11-06 Version: 6.1.4
 - Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.CreationTime.
 
