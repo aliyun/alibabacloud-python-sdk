@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_quickbi-public20220101.
+setup module for alibabacloud_quickbi_public20220101.
 
-Created on 11/09/2025
+Created on 17/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_quickbi_public20220101"
-NAME = "alibabacloud_quickbi-public20220101" or "alibabacloud-package"
+NAME = "alibabacloud_quickbi_public20220101" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud quickbi-public (20220101) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

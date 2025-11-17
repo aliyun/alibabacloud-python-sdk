@@ -1321,7 +1321,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI BatchAddFeishuUsers is deprecated
         
-        @summary 批量添加飞书用户。
+        @summary Batch add Feishu users.
         
         @param request: BatchAddFeishuUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1367,7 +1367,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI BatchAddFeishuUsers is deprecated
         
-        @summary 批量添加飞书用户。
+        @summary Batch add Feishu users.
         
         @param request: BatchAddFeishuUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1412,7 +1412,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI BatchAddFeishuUsers is deprecated
         
-        @summary 批量添加飞书用户。
+        @summary Batch add Feishu users.
         
         @param request: BatchAddFeishuUsersRequest
         @return: BatchAddFeishuUsersResponse
@@ -1428,7 +1428,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI BatchAddFeishuUsers is deprecated
         
-        @summary 批量添加飞书用户。
+        @summary Batch add Feishu users.
         
         @param request: BatchAddFeishuUsersRequest
         @return: BatchAddFeishuUsersResponse
@@ -2732,6 +2732,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
+
+    def create_workspace_with_options(
+        self,
+        request: quickbi_public_20220101_models.CreateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_publish):
+            query['AllowPublish'] = request.allow_publish
+        if not UtilClient.is_unset(request.allow_share):
+            query['AllowShare'] = request.allow_share
+        if not UtilClient.is_unset(request.allow_view_all):
+            query['AllowViewAll'] = request.allow_view_all
+        if not UtilClient.is_unset(request.default_share_to_all):
+            query['DefaultShareToAll'] = request.default_share_to_all
+        if not UtilClient.is_unset(request.only_admin_create_datasource):
+            query['OnlyAdminCreateDatasource'] = request.only_admin_create_datasource
+        if not UtilClient.is_unset(request.use_comment):
+            query['UseComment'] = request.use_comment
+        if not UtilClient.is_unset(request.workspace_description):
+            query['WorkspaceDescription'] = request.workspace_description
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.CreateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_publish):
+            query['AllowPublish'] = request.allow_publish
+        if not UtilClient.is_unset(request.allow_share):
+            query['AllowShare'] = request.allow_share
+        if not UtilClient.is_unset(request.allow_view_all):
+            query['AllowViewAll'] = request.allow_view_all
+        if not UtilClient.is_unset(request.default_share_to_all):
+            query['DefaultShareToAll'] = request.default_share_to_all
+        if not UtilClient.is_unset(request.only_admin_create_datasource):
+            query['OnlyAdminCreateDatasource'] = request.only_admin_create_datasource
+        if not UtilClient.is_unset(request.use_comment):
+            query['UseComment'] = request.use_comment
+        if not UtilClient.is_unset(request.workspace_description):
+            query['WorkspaceDescription'] = request.workspace_description
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: quickbi_public_20220101_models.CreateWorkspaceRequest,
+    ) -> quickbi_public_20220101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_workspace_with_options(request, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: quickbi_public_20220101_models.CreateWorkspaceRequest,
+    ) -> quickbi_public_20220101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_workspace_with_options_async(request, runtime)
 
     def data_interpretation_with_options(
         self,
@@ -4449,6 +4573,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_works_embed_list_with_options_async(request, runtime)
 
+    def list_acceleration_of_workspace_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListAccelerationOfWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListAccelerationOfWorkspaceResponse:
+        """
+        @summary 获取空间下加速引擎管控页任务信息。
+        
+        @param request: ListAccelerationOfWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccelerationOfWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creator_id):
+            query['CreatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.cube_name):
+            query['CubeName'] = request.cube_name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccelerationOfWorkspace',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListAccelerationOfWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_acceleration_of_workspace_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListAccelerationOfWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListAccelerationOfWorkspaceResponse:
+        """
+        @summary 获取空间下加速引擎管控页任务信息。
+        
+        @param request: ListAccelerationOfWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccelerationOfWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creator_id):
+            query['CreatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.cube_name):
+            query['CubeName'] = request.cube_name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccelerationOfWorkspace',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListAccelerationOfWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_acceleration_of_workspace(
+        self,
+        request: quickbi_public_20220101_models.ListAccelerationOfWorkspaceRequest,
+    ) -> quickbi_public_20220101_models.ListAccelerationOfWorkspaceResponse:
+        """
+        @summary 获取空间下加速引擎管控页任务信息。
+        
+        @param request: ListAccelerationOfWorkspaceRequest
+        @return: ListAccelerationOfWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_acceleration_of_workspace_with_options(request, runtime)
+
+    async def list_acceleration_of_workspace_async(
+        self,
+        request: quickbi_public_20220101_models.ListAccelerationOfWorkspaceRequest,
+    ) -> quickbi_public_20220101_models.ListAccelerationOfWorkspaceResponse:
+        """
+        @summary 获取空间下加速引擎管控页任务信息。
+        
+        @param request: ListAccelerationOfWorkspaceRequest
+        @return: ListAccelerationOfWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_acceleration_of_workspace_with_options_async(request, runtime)
+
     def list_api_datasource_with_options(
         self,
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
@@ -4667,7 +4903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
         """
-        @summary The ID of the work.
+        @summary Retrieve the list of works that a user has favorited.
         
         @param request: ListCollectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4702,7 +4938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
         """
-        @summary The ID of the work.
+        @summary Retrieve the list of works that a user has favorited.
         
         @param request: ListCollectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4736,7 +4972,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCollectionsRequest,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
         """
-        @summary The ID of the work.
+        @summary Retrieve the list of works that a user has favorited.
         
         @param request: ListCollectionsRequest
         @return: ListCollectionsResponse
@@ -4749,7 +4985,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCollectionsRequest,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
         """
-        @summary The ID of the work.
+        @summary Retrieve the list of works that a user has favorited.
         
         @param request: ListCollectionsRequest
         @return: ListCollectionsResponse
@@ -6499,6 +6735,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_copilot_embed_config_with_options_async(request, runtime)
 
+    def modify_dashboard_nl_2sql_status_with_options(
+        self,
+        request: quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusResponse:
+        """
+        @summary 批量编辑仪表板的小Q问数状态
+        
+        @param request: ModifyDashboardNl2sqlStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDashboardNl2sqlStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dashboard_ids):
+            query['DashboardIds'] = request.dashboard_ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDashboardNl2sqlStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dashboard_nl_2sql_status_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusResponse:
+        """
+        @summary 批量编辑仪表板的小Q问数状态
+        
+        @param request: ModifyDashboardNl2sqlStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDashboardNl2sqlStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dashboard_ids):
+            query['DashboardIds'] = request.dashboard_ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDashboardNl2sqlStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dashboard_nl_2sql_status(
+        self,
+        request: quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusRequest,
+    ) -> quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusResponse:
+        """
+        @summary 批量编辑仪表板的小Q问数状态
+        
+        @param request: ModifyDashboardNl2sqlStatusRequest
+        @return: ModifyDashboardNl2sqlStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dashboard_nl_2sql_status_with_options(request, runtime)
+
+    async def modify_dashboard_nl_2sql_status_async(
+        self,
+        request: quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusRequest,
+    ) -> quickbi_public_20220101_models.ModifyDashboardNl2sqlStatusResponse:
+        """
+        @summary 批量编辑仪表板的小Q问数状态
+        
+        @param request: ModifyDashboardNl2sqlStatusRequest
+        @return: ModifyDashboardNl2sqlStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dashboard_nl_2sql_status_with_options_async(request, runtime)
+
+    def query_acceleration_log_by_cube_id_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryAccelerationLogByCubeIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryAccelerationLogByCubeIdResponse:
+        """
+        @summary 获取指定数据集的加速任务运行日志
+        
+        @param request: QueryAccelerationLogByCubeIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccelerationLogByCubeIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAccelerationLogByCubeId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryAccelerationLogByCubeIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_acceleration_log_by_cube_id_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryAccelerationLogByCubeIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryAccelerationLogByCubeIdResponse:
+        """
+        @summary 获取指定数据集的加速任务运行日志
+        
+        @param request: QueryAccelerationLogByCubeIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccelerationLogByCubeIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAccelerationLogByCubeId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryAccelerationLogByCubeIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_acceleration_log_by_cube_id(
+        self,
+        request: quickbi_public_20220101_models.QueryAccelerationLogByCubeIdRequest,
+    ) -> quickbi_public_20220101_models.QueryAccelerationLogByCubeIdResponse:
+        """
+        @summary 获取指定数据集的加速任务运行日志
+        
+        @param request: QueryAccelerationLogByCubeIdRequest
+        @return: QueryAccelerationLogByCubeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_acceleration_log_by_cube_id_with_options(request, runtime)
+
+    async def query_acceleration_log_by_cube_id_async(
+        self,
+        request: quickbi_public_20220101_models.QueryAccelerationLogByCubeIdRequest,
+    ) -> quickbi_public_20220101_models.QueryAccelerationLogByCubeIdResponse:
+        """
+        @summary 获取指定数据集的加速任务运行日志
+        
+        @param request: QueryAccelerationLogByCubeIdRequest
+        @return: QueryAccelerationLogByCubeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_acceleration_log_by_cube_id_with_options_async(request, runtime)
+
     def query_approval_info_with_options(
         self,
         request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
@@ -7169,7 +7617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
         """
-        @summary 查询仪表板的问数资源信息
+        @summary Query Dashboard\\"s Question Resource Information
         
         @param request: QueryDashboardNl2sqlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7206,7 +7654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
         """
-        @summary 查询仪表板的问数资源信息
+        @summary Query Dashboard\\"s Question Resource Information
         
         @param request: QueryDashboardNl2sqlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7242,7 +7690,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDashboardNl2sqlRequest,
     ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
         """
-        @summary 查询仪表板的问数资源信息
+        @summary Query Dashboard\\"s Question Resource Information
         
         @param request: QueryDashboardNl2sqlRequest
         @return: QueryDashboardNl2sqlResponse
@@ -7255,7 +7703,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDashboardNl2sqlRequest,
     ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
         """
-        @summary 查询仪表板的问数资源信息
+        @summary Query Dashboard\\"s Question Resource Information
         
         @param request: QueryDashboardNl2sqlRequest
         @return: QueryDashboardNl2sqlResponse
@@ -8177,7 +8625,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
-        @summary 获取指定数据集的行级权限开关状态。
+        @summary Get the row-level permission switch status for a specified dataset.
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: QueryDatasetSwitchInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8212,7 +8662,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
-        @summary 获取指定数据集的行级权限开关状态。
+        @summary Get the row-level permission switch status for a specified dataset.
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: QueryDatasetSwitchInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8246,7 +8698,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
-        @summary 获取指定数据集的行级权限开关状态。
+        @summary Get the row-level permission switch status for a specified dataset.
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: QueryDatasetSwitchInfoRequest
         @return: QueryDatasetSwitchInfoResponse
@@ -8259,7 +8713,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
-        @summary 获取指定数据集的行级权限开关状态。
+        @summary Get the row-level permission switch status for a specified dataset.
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: QueryDatasetSwitchInfoRequest
         @return: QueryDatasetSwitchInfoResponse
@@ -8443,7 +8899,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
         """
-        @summary 通过数据集ID查询最近一次加速任务
+        @summary Query the Most Recent Acceleration Task by Dataset ID
         
         @param request: QueryLastAccelerationEngineJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8478,7 +8934,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
         """
-        @summary 通过数据集ID查询最近一次加速任务
+        @summary Query the Most Recent Acceleration Task by Dataset ID
         
         @param request: QueryLastAccelerationEngineJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8512,7 +8968,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryLastAccelerationEngineJobRequest,
     ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
         """
-        @summary 通过数据集ID查询最近一次加速任务
+        @summary Query the Most Recent Acceleration Task by Dataset ID
         
         @param request: QueryLastAccelerationEngineJobRequest
         @return: QueryLastAccelerationEngineJobResponse
@@ -8525,7 +8981,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryLastAccelerationEngineJobRequest,
     ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
         """
-        @summary 通过数据集ID查询最近一次加速任务
+        @summary Query the Most Recent Acceleration Task by Dataset ID
         
         @param request: QueryLastAccelerationEngineJobRequest
         @return: QueryLastAccelerationEngineJobResponse
@@ -11137,7 +11593,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
-        @summary 设置行列权限的额外配置
+        @summary Set extra configuration for row and column permissions.
+        
+        @description > This interface only supports the new version of Quick BI\\"s row and column permission model. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. The steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionExtraConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11176,7 +11634,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
-        @summary 设置行列权限的额外配置
+        @summary Set extra configuration for row and column permissions.
+        
+        @description > This interface only supports the new version of Quick BI\\"s row and column permission model. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. The steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionExtraConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11214,7 +11674,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
-        @summary 设置行列权限的额外配置
+        @summary Set extra configuration for row and column permissions.
+        
+        @description > This interface only supports the new version of Quick BI\\"s row and column permission model. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. The steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionExtraConfigRequest
         @return: SetDataLevelPermissionExtraConfigResponse
@@ -11227,7 +11689,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
-        @summary 设置行列权限的额外配置
+        @summary Set extra configuration for row and column permissions.
+        
+        @description > This interface only supports the new version of Quick BI\\"s row and column permission model. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. The steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionExtraConfigRequest
         @return: SetDataLevelPermissionExtraConfigResponse
@@ -11241,7 +11705,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
-        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        @summary Set single dataset row and column permission configuration information (addition and update)
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. Steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionRuleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11276,7 +11742,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
-        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        @summary Set single dataset row and column permission configuration information (addition and update)
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. Steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionRuleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11310,7 +11778,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
-        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        @summary Set single dataset row and column permission configuration information (addition and update)
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. Steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionRuleConfigRequest
         @return: SetDataLevelPermissionRuleConfigResponse
@@ -11323,7 +11793,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
-        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        @summary Set single dataset row and column permission configuration information (addition and update)
+        
+        @description > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. Steps to migrate to the new row and column permission model: In Organization Management --> Security Configuration --> Upgrade Row and Column Permissions to New Version, click *One-Click Upgrade** to upgrade to the new row-level permissions.
         
         @param request: SetDataLevelPermissionRuleConfigRequest
         @return: SetDataLevelPermissionRuleConfigResponse
@@ -11677,6 +12149,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cube_id):
             query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.multiple_cube_ids):
+            query['MultipleCubeIds'] = request.multiple_cube_ids
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_question):
@@ -11718,6 +12192,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cube_id):
             query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.multiple_cube_ids):
+            query['MultipleCubeIds'] = request.multiple_cube_ids
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_question):
@@ -12017,7 +12493,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源配置
+        @summary Modify Data Source Configuration
         
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12052,7 +12528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源配置
+        @summary Modify Data Source Configuration
         
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12086,7 +12562,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateDataSourceRequest,
     ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源配置
+        @summary Modify Data Source Configuration
         
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
@@ -12099,7 +12575,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateDataSourceRequest,
     ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源配置
+        @summary Modify Data Source Configuration
         
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse

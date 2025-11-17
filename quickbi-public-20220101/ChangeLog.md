@@ -1,3 +1,12 @@
+2025-11-17 Version: 1.14.0
+- Support API CreateWorkspace.
+- Support API ListAccelerationOfWorkspace.
+- Support API ModifyDashboardNl2sqlStatus.
+- Support API QueryAccelerationLogByCubeId.
+- Update API SmartqQueryAbility: add request parameters MultipleCubeIds.
+- Update API SmartqQueryAbility: add response parameters Body.Result.DataList.
+
+
 2025-09-11 Version: 1.13.0
 - Support API AddDataSource.
 - Support API CheckDatasetExisted.
