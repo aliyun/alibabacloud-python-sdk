@@ -472,12 +472,14 @@ class CreateFeatureEntityRequest(TeaModel):
         self,
         join_id: str = None,
         name: str = None,
+        parent_feature_entity_id: str = None,
         project_id: str = None,
     ):
         # This parameter is required.
         self.join_id = join_id
         # This parameter is required.
         self.name = name
+        self.parent_feature_entity_id = parent_feature_entity_id
         # This parameter is required.
         self.project_id = project_id
 
@@ -494,6 +496,8 @@ class CreateFeatureEntityRequest(TeaModel):
             result['JoinId'] = self.join_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.parent_feature_entity_id is not None:
+            result['ParentFeatureEntityId'] = self.parent_feature_entity_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
@@ -504,6 +508,8 @@ class CreateFeatureEntityRequest(TeaModel):
             self.join_id = m.get('JoinId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ParentFeatureEntityId') is not None:
+            self.parent_feature_entity_id = m.get('ParentFeatureEntityId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -2690,6 +2696,9 @@ class GetFeatureEntityResponseBody(TeaModel):
         join_id: str = None,
         name: str = None,
         owner: str = None,
+        parent_feature_entity_id: str = None,
+        parent_feature_entity_name: str = None,
+        parent_join_id: str = None,
         project_id: str = None,
         project_name: str = None,
         request_id: str = None,
@@ -2698,6 +2707,9 @@ class GetFeatureEntityResponseBody(TeaModel):
         self.join_id = join_id
         self.name = name
         self.owner = owner
+        self.parent_feature_entity_id = parent_feature_entity_id
+        self.parent_feature_entity_name = parent_feature_entity_name
+        self.parent_join_id = parent_join_id
         self.project_id = project_id
         self.project_name = project_name
         self.request_id = request_id
@@ -2719,6 +2731,12 @@ class GetFeatureEntityResponseBody(TeaModel):
             result['Name'] = self.name
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.parent_feature_entity_id is not None:
+            result['ParentFeatureEntityId'] = self.parent_feature_entity_id
+        if self.parent_feature_entity_name is not None:
+            result['ParentFeatureEntityName'] = self.parent_feature_entity_name
+        if self.parent_join_id is not None:
+            result['ParentJoinId'] = self.parent_join_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.project_name is not None:
@@ -2737,6 +2755,12 @@ class GetFeatureEntityResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('ParentFeatureEntityId') is not None:
+            self.parent_feature_entity_id = m.get('ParentFeatureEntityId')
+        if m.get('ParentFeatureEntityName') is not None:
+            self.parent_feature_entity_name = m.get('ParentFeatureEntityName')
+        if m.get('ParentJoinId') is not None:
+            self.parent_join_id = m.get('ParentJoinId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
@@ -5666,6 +5690,7 @@ class ListFeatureEntitiesRequest(TeaModel):
         owner: str = None,
         page_number: int = None,
         page_size: int = None,
+        parent_feature_entity_id: str = None,
         project_id: str = None,
         sort_by: str = None,
     ):
@@ -5675,6 +5700,7 @@ class ListFeatureEntitiesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        self.parent_feature_entity_id = parent_feature_entity_id
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -5699,6 +5725,8 @@ class ListFeatureEntitiesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.parent_feature_entity_id is not None:
+            result['ParentFeatureEntityId'] = self.parent_feature_entity_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.sort_by is not None:
@@ -5719,6 +5747,8 @@ class ListFeatureEntitiesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ParentFeatureEntityId') is not None:
+            self.parent_feature_entity_id = m.get('ParentFeatureEntityId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
@@ -5735,6 +5765,7 @@ class ListFeatureEntitiesShrinkRequest(TeaModel):
         owner: str = None,
         page_number: int = None,
         page_size: int = None,
+        parent_feature_entity_id: str = None,
         project_id: str = None,
         sort_by: str = None,
     ):
@@ -5744,6 +5775,7 @@ class ListFeatureEntitiesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        self.parent_feature_entity_id = parent_feature_entity_id
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -5768,6 +5800,8 @@ class ListFeatureEntitiesShrinkRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.parent_feature_entity_id is not None:
+            result['ParentFeatureEntityId'] = self.parent_feature_entity_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.sort_by is not None:
@@ -5788,6 +5822,8 @@ class ListFeatureEntitiesShrinkRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ParentFeatureEntityId') is not None:
+            self.parent_feature_entity_id = m.get('ParentFeatureEntityId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
@@ -5803,6 +5839,9 @@ class ListFeatureEntitiesResponseBodyFeatureEntities(TeaModel):
         join_id: str = None,
         name: str = None,
         owner: str = None,
+        parent_feature_entity_id: str = None,
+        parent_feature_entity_name: str = None,
+        parent_join_id: str = None,
         project_id: str = None,
         project_name: str = None,
     ):
@@ -5811,6 +5850,9 @@ class ListFeatureEntitiesResponseBodyFeatureEntities(TeaModel):
         self.join_id = join_id
         self.name = name
         self.owner = owner
+        self.parent_feature_entity_id = parent_feature_entity_id
+        self.parent_feature_entity_name = parent_feature_entity_name
+        self.parent_join_id = parent_join_id
         self.project_id = project_id
         self.project_name = project_name
 
@@ -5833,6 +5875,12 @@ class ListFeatureEntitiesResponseBodyFeatureEntities(TeaModel):
             result['Name'] = self.name
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.parent_feature_entity_id is not None:
+            result['ParentFeatureEntityId'] = self.parent_feature_entity_id
+        if self.parent_feature_entity_name is not None:
+            result['ParentFeatureEntityName'] = self.parent_feature_entity_name
+        if self.parent_join_id is not None:
+            result['ParentJoinId'] = self.parent_join_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.project_name is not None:
@@ -5851,6 +5899,12 @@ class ListFeatureEntitiesResponseBodyFeatureEntities(TeaModel):
             self.name = m.get('Name')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('ParentFeatureEntityId') is not None:
+            self.parent_feature_entity_id = m.get('ParentFeatureEntityId')
+        if m.get('ParentFeatureEntityName') is not None:
+            self.parent_feature_entity_name = m.get('ParentFeatureEntityName')
+        if m.get('ParentJoinId') is not None:
+            self.parent_join_id = m.get('ParentJoinId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
@@ -8110,12 +8164,16 @@ class ListProjectFeatureViewsResponseBodyFeatureViews(TeaModel):
         self,
         feature_view_id: str = None,
         features: List[ListProjectFeatureViewsResponseBodyFeatureViewsFeatures] = None,
+        join_id: str = None,
         name: str = None,
+        parent_join_id: str = None,
         type: str = None,
     ):
         self.feature_view_id = feature_view_id
         self.features = features
+        self.join_id = join_id
         self.name = name
+        self.parent_join_id = parent_join_id
         self.type = type
 
     def validate(self):
@@ -8136,8 +8194,12 @@ class ListProjectFeatureViewsResponseBodyFeatureViews(TeaModel):
         if self.features is not None:
             for k in self.features:
                 result['Features'].append(k.to_map() if k else None)
+        if self.join_id is not None:
+            result['JoinId'] = self.join_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.parent_join_id is not None:
+            result['ParentJoinId'] = self.parent_join_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -8151,8 +8213,12 @@ class ListProjectFeatureViewsResponseBodyFeatureViews(TeaModel):
             for k in m.get('Features'):
                 temp_model = ListProjectFeatureViewsResponseBodyFeatureViewsFeatures()
                 self.features.append(temp_model.from_map(k))
+        if m.get('JoinId') is not None:
+            self.join_id = m.get('JoinId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ParentJoinId') is not None:
+            self.parent_join_id = m.get('ParentJoinId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self

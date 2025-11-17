@@ -396,6 +396,8 @@ class Client(OpenApiClient):
             body['JoinId'] = request.join_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_feature_entity_id):
+            body['ParentFeatureEntityId'] = request.parent_feature_entity_id
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
@@ -439,6 +441,8 @@ class Client(OpenApiClient):
             body['JoinId'] = request.join_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_feature_entity_id):
+            body['ParentFeatureEntityId'] = request.parent_feature_entity_id
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
@@ -3914,6 +3918,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_feature_entity_id):
+            query['ParentFeatureEntityId'] = request.parent_feature_entity_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.sort_by):
@@ -3971,6 +3977,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_feature_entity_id):
+            query['ParentFeatureEntityId'] = request.parent_feature_entity_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.sort_by):

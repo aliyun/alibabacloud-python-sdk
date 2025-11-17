@@ -1,3 +1,16 @@
+2025-11-17 Version: 6.0.5
+- Update API CreateFeatureEntity: add request parameters body.ParentFeatureEntityId.
+- Update API GetFeatureEntity: add response parameters Body.ParentFeatureEntityId.
+- Update API GetFeatureEntity: add response parameters Body.ParentFeatureEntityName.
+- Update API GetFeatureEntity: add response parameters Body.ParentJoinId.
+- Update API ListFeatureEntities: add request parameters ParentFeatureEntityId.
+- Update API ListFeatureEntities: add response parameters Body.FeatureEntities.$.ParentFeatureEntityId.
+- Update API ListFeatureEntities: add response parameters Body.FeatureEntities.$.ParentFeatureEntityName.
+- Update API ListFeatureEntities: add response parameters Body.FeatureEntities.$.ParentJoinId.
+- Update API ListProjectFeatureViews: add response parameters Body.FeatureViews.$.JoinId.
+- Update API ListProjectFeatureViews: add response parameters Body.FeatureViews.$.ParentJoinId.
+
+
 2025-09-18 Version: 6.0.4
 - Update API ListDatasourceTables: add request parameters SchemaName.
 
