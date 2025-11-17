@@ -63027,6 +63027,7 @@ class ListRecognitionLibsRequest(TeaModel):
     def __init__(
         self,
         algorithm: str = None,
+        lib_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -63044,6 +63045,7 @@ class ListRecognitionLibsRequest(TeaModel):
         # 
         # This parameter is required.
         self.algorithm = algorithm
+        self.lib_id = lib_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
@@ -63068,6 +63070,8 @@ class ListRecognitionLibsRequest(TeaModel):
         result = dict()
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -63086,6 +63090,8 @@ class ListRecognitionLibsRequest(TeaModel):
         m = m or dict()
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -63282,6 +63288,7 @@ class ListRecognitionSamplesRequest(TeaModel):
         self,
         algorithm: str = None,
         entity_id: str = None,
+        entity_name: str = None,
         lib_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -63303,6 +63310,7 @@ class ListRecognitionSamplesRequest(TeaModel):
         # 
         # This parameter is required.
         self.entity_id = entity_id
+        self.entity_name = entity_name
         # The ID of the recognition library.
         # 
         # This parameter is required.
@@ -63333,6 +63341,8 @@ class ListRecognitionSamplesRequest(TeaModel):
             result['Algorithm'] = self.algorithm
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
+        if self.entity_name is not None:
+            result['EntityName'] = self.entity_name
         if self.lib_id is not None:
             result['LibId'] = self.lib_id
         if self.owner_account is not None:
@@ -63355,6 +63365,8 @@ class ListRecognitionSamplesRequest(TeaModel):
             self.algorithm = m.get('Algorithm')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
+        if m.get('EntityName') is not None:
+            self.entity_name = m.get('EntityName')
         if m.get('LibId') is not None:
             self.lib_id = m.get('LibId')
         if m.get('OwnerAccount') is not None:
@@ -63375,11 +63387,15 @@ class ListRecognitionSamplesRequest(TeaModel):
 class ListRecognitionSamplesResponseBodySamplesSample(TeaModel):
     def __init__(
         self,
+        entity_id: str = None,
         image_url: str = None,
+        lib_id: str = None,
         sample_id: str = None,
     ):
+        self.entity_id = entity_id
         # The URL of the image sample.
         self.image_url = image_url
+        self.lib_id = lib_id
         # The sample ID.
         self.sample_id = sample_id
 
@@ -63392,16 +63408,24 @@ class ListRecognitionSamplesResponseBodySamplesSample(TeaModel):
             return _map
 
         result = dict()
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
         if self.sample_id is not None:
             result['SampleId'] = self.sample_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
         if m.get('SampleId') is not None:
             self.sample_id = m.get('SampleId')
         return self
@@ -90271,6 +90295,7 @@ class SubmitSmarttagJobRequest(TeaModel):
         notify_url: str = None,
         params: str = None,
         schedule_config: SubmitSmarttagJobRequestScheduleConfig = None,
+        template_config: str = None,
         template_id: str = None,
         title: str = None,
         user_data: str = None,
@@ -90294,6 +90319,7 @@ class SubmitSmarttagJobRequest(TeaModel):
         self.params = params
         # The scheduling configurations.
         self.schedule_config = schedule_config
+        self.template_config = template_config
         # The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
         self.template_id = template_id
         # The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
@@ -90327,6 +90353,8 @@ class SubmitSmarttagJobRequest(TeaModel):
             result['Params'] = self.params
         if self.schedule_config is not None:
             result['ScheduleConfig'] = self.schedule_config.to_map()
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.title is not None:
@@ -90353,6 +90381,8 @@ class SubmitSmarttagJobRequest(TeaModel):
         if m.get('ScheduleConfig') is not None:
             temp_model = SubmitSmarttagJobRequestScheduleConfig()
             self.schedule_config = temp_model.from_map(m['ScheduleConfig'])
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Title') is not None:
@@ -90372,6 +90402,7 @@ class SubmitSmarttagJobShrinkRequest(TeaModel):
         notify_url: str = None,
         params: str = None,
         schedule_config_shrink: str = None,
+        template_config: str = None,
         template_id: str = None,
         title: str = None,
         user_data: str = None,
@@ -90395,6 +90426,7 @@ class SubmitSmarttagJobShrinkRequest(TeaModel):
         self.params = params
         # The scheduling configurations.
         self.schedule_config_shrink = schedule_config_shrink
+        self.template_config = template_config
         # The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
         self.template_id = template_id
         # The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
@@ -90425,6 +90457,8 @@ class SubmitSmarttagJobShrinkRequest(TeaModel):
             result['Params'] = self.params
         if self.schedule_config_shrink is not None:
             result['ScheduleConfig'] = self.schedule_config_shrink
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.title is not None:
@@ -90449,6 +90483,8 @@ class SubmitSmarttagJobShrinkRequest(TeaModel):
             self.params = m.get('Params')
         if m.get('ScheduleConfig') is not None:
             self.schedule_config_shrink = m.get('ScheduleConfig')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Title') is not None:
@@ -99035,6 +99071,7 @@ class SubmitVideoCognitionJobRequest(TeaModel):
         self,
         input: SubmitVideoCognitionJobRequestInput = None,
         params: str = None,
+        template_config: str = None,
         template_id: str = None,
         title: str = None,
         user_data: str = None,
@@ -99043,6 +99080,7 @@ class SubmitVideoCognitionJobRequest(TeaModel):
         self.input = input
         # Additional request parameters, provided as a JSON string. This is used to pass specific settings for various AI analysis modules, such as Natural Language Processing (NLP), shot segmentation, tagging, and action recognition.
         self.params = params
+        self.template_config = template_config
         # The ID of the template that specifies the analysis algorithms to be used. For details, see [CreateCustomTemplate](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-createcustomtemplate?spm=a2c4g.11186623.help-menu-193643.d_5_0_3_3_0_0.17b66afamjKySv) and [smart tagging template](https://help.aliyun.com/zh/ims/user-guide/smart-tagging-template?spm=a2c4g.11186623.0.i15).
         self.template_id = template_id
         # The video title. It supports letters, digits, and hyphens (-), and cannot start with a special character. Max length: 256 bytes.
@@ -99064,6 +99102,8 @@ class SubmitVideoCognitionJobRequest(TeaModel):
             result['Input'] = self.input.to_map()
         if self.params is not None:
             result['Params'] = self.params
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.title is not None:
@@ -99079,6 +99119,8 @@ class SubmitVideoCognitionJobRequest(TeaModel):
             self.input = temp_model.from_map(m['Input'])
         if m.get('Params') is not None:
             self.params = m.get('Params')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Title') is not None:
@@ -99093,6 +99135,7 @@ class SubmitVideoCognitionJobShrinkRequest(TeaModel):
         self,
         input_shrink: str = None,
         params: str = None,
+        template_config: str = None,
         template_id: str = None,
         title: str = None,
         user_data: str = None,
@@ -99101,6 +99144,7 @@ class SubmitVideoCognitionJobShrinkRequest(TeaModel):
         self.input_shrink = input_shrink
         # Additional request parameters, provided as a JSON string. This is used to pass specific settings for various AI analysis modules, such as Natural Language Processing (NLP), shot segmentation, tagging, and action recognition.
         self.params = params
+        self.template_config = template_config
         # The ID of the template that specifies the analysis algorithms to be used. For details, see [CreateCustomTemplate](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-createcustomtemplate?spm=a2c4g.11186623.help-menu-193643.d_5_0_3_3_0_0.17b66afamjKySv) and [smart tagging template](https://help.aliyun.com/zh/ims/user-guide/smart-tagging-template?spm=a2c4g.11186623.0.i15).
         self.template_id = template_id
         # The video title. It supports letters, digits, and hyphens (-), and cannot start with a special character. Max length: 256 bytes.
@@ -99121,6 +99165,8 @@ class SubmitVideoCognitionJobShrinkRequest(TeaModel):
             result['Input'] = self.input_shrink
         if self.params is not None:
             result['Params'] = self.params
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.title is not None:
@@ -99135,6 +99181,8 @@ class SubmitVideoCognitionJobShrinkRequest(TeaModel):
             self.input_shrink = m.get('Input')
         if m.get('Params') is not None:
             self.params = m.get('Params')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Title') is not None:

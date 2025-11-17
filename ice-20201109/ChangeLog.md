@@ -1,3 +1,12 @@
+2025-11-17 Version: 6.8.1
+- Update API ListRecognitionLibs: add request parameters LibId.
+- Update API ListRecognitionSamples: add request parameters EntityName.
+- Update API ListRecognitionSamples: add response parameters Body.Samples.$.EntityId.
+- Update API ListRecognitionSamples: add response parameters Body.Samples.$.LibId.
+- Update API SubmitSmarttagJob: add request parameters TemplateConfig.
+- Update API SubmitVideoCognitionJob: add request parameters TemplateConfig.
+
+
 2025-11-13 Version: 6.8.0
 - Support API ActiveAiRtcLicense.
 - Support API GetAiRtcAuthCodeList.

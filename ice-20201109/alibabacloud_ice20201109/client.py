@@ -24980,6 +24980,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -25030,6 +25032,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -25111,6 +25115,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
         if not UtilClient.is_unset(request.lib_id):
             query['LibId'] = request.lib_id
         if not UtilClient.is_unset(request.owner_account):
@@ -25162,6 +25168,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
         if not UtilClient.is_unset(request.lib_id):
             query['LibId'] = request.lib_id
         if not UtilClient.is_unset(request.owner_account):
@@ -36969,6 +36977,8 @@ class Client(OpenApiClient):
             query['Params'] = request.params
         if not UtilClient.is_unset(request.schedule_config_shrink):
             query['ScheduleConfig'] = request.schedule_config_shrink
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.title):
@@ -37030,6 +37040,8 @@ class Client(OpenApiClient):
             query['Params'] = request.params
         if not UtilClient.is_unset(request.schedule_config_shrink):
             query['ScheduleConfig'] = request.schedule_config_shrink
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.title):
@@ -38239,6 +38251,8 @@ class Client(OpenApiClient):
             query['Input'] = request.input_shrink
         if not UtilClient.is_unset(request.params):
             query['Params'] = request.params
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.title):
@@ -38286,6 +38300,8 @@ class Client(OpenApiClient):
             query['Input'] = request.input_shrink
         if not UtilClient.is_unset(request.params):
             query['Params'] = request.params
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.title):
