@@ -2445,6 +2445,39 @@ class JobSpec(TeaModel):
         return self
 
 
+class PodNetworkInterface(TeaModel):
+    def __init__(
+        self,
+        interface_name: str = None,
+        ip: str = None,
+    ):
+        self.interface_name = interface_name
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interface_name is not None:
+            result['InterfaceName'] = self.interface_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InterfaceName') is not None:
+            self.interface_name = m.get('InterfaceName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
 class PodItem(TeaModel):
     def __init__(
         self,
@@ -2456,6 +2489,7 @@ class PodItem(TeaModel):
         node_name: str = None,
         pod_id: str = None,
         pod_ip: str = None,
+        pod_ips: List[PodNetworkInterface] = None,
         pod_uid: str = None,
         status: str = None,
         sub_status: str = None,
@@ -2469,6 +2503,7 @@ class PodItem(TeaModel):
         self.node_name = node_name
         self.pod_id = pod_id
         self.pod_ip = pod_ip
+        self.pod_ips = pod_ips
         self.pod_uid = pod_uid
         self.status = status
         self.sub_status = sub_status
@@ -2477,6 +2512,10 @@ class PodItem(TeaModel):
     def validate(self):
         if self.history_pods:
             for k in self.history_pods:
+                if k:
+                    k.validate()
+        if self.pod_ips:
+            for k in self.pod_ips:
                 if k:
                     k.validate()
 
@@ -2504,6 +2543,10 @@ class PodItem(TeaModel):
             result['PodId'] = self.pod_id
         if self.pod_ip is not None:
             result['PodIp'] = self.pod_ip
+        result['PodIps'] = []
+        if self.pod_ips is not None:
+            for k in self.pod_ips:
+                result['PodIps'].append(k.to_map() if k else None)
         if self.pod_uid is not None:
             result['PodUid'] = self.pod_uid
         if self.status is not None:
@@ -2535,6 +2578,11 @@ class PodItem(TeaModel):
             self.pod_id = m.get('PodId')
         if m.get('PodIp') is not None:
             self.pod_ip = m.get('PodIp')
+        self.pod_ips = []
+        if m.get('PodIps') is not None:
+            for k in m.get('PodIps'):
+                temp_model = PodNetworkInterface()
+                self.pod_ips.append(temp_model.from_map(k))
         if m.get('PodUid') is not None:
             self.pod_uid = m.get('PodUid')
         if m.get('Status') is not None:
