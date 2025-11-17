@@ -4193,6 +4193,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_last_with_options_async(request, runtime)
 
+    def describe_metric_list_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeMetricListResponse:
+        """
+        @summary 查询指定监控项的监控数据
+        
+        @param request: DescribeMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_names):
+            body['MetricNames'] = request.metric_names
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.process_infos):
+            body['ProcessInfos'] = request.process_infos
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricList',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeMetricListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_list_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeMetricListResponse:
+        """
+        @summary 查询指定监控项的监控数据
+        
+        @param request: DescribeMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_names):
+            body['MetricNames'] = request.metric_names
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.process_infos):
+            body['ProcessInfos'] = request.process_infos
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricList',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeMetricListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_list(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricListRequest,
+    ) -> eds_aic_20230930_models.DescribeMetricListResponse:
+        """
+        @summary 查询指定监控项的监控数据
+        
+        @param request: DescribeMetricListRequest
+        @return: DescribeMetricListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metric_list_with_options(request, runtime)
+
+    async def describe_metric_list_async(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricListRequest,
+    ) -> eds_aic_20230930_models.DescribeMetricListResponse:
+        """
+        @summary 查询指定监控项的监控数据
+        
+        @param request: DescribeMetricListRequest
+        @return: DescribeMetricListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metric_list_with_options_async(request, runtime)
+
+    def describe_metric_top_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricTopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeMetricTopResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricTopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricTopResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_names):
+            body['MetricNames'] = request.metric_names
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricTop',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeMetricTopResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_top_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricTopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeMetricTopResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricTopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricTopResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_names):
+            body['MetricNames'] = request.metric_names
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricTop',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeMetricTopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_top(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricTopRequest,
+    ) -> eds_aic_20230930_models.DescribeMetricTopResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricTopRequest
+        @return: DescribeMetricTopResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metric_top_with_options(request, runtime)
+
+    async def describe_metric_top_async(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricTopRequest,
+    ) -> eds_aic_20230930_models.DescribeMetricTopResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricTopRequest
+        @return: DescribeMetricTopResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metric_top_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: eds_aic_20230930_models.DescribeRegionsRequest,
@@ -6204,6 +6456,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.instance_healer_with_options_async(request, runtime)
+
+    def list_instance_adb_attributes_with_options(
+        self,
+        request: eds_aic_20230930_models.ListInstanceAdbAttributesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ListInstanceAdbAttributesResponse:
+        """
+        @summary 查询ADB端口连接信息
+        
+        @param request: ListInstanceAdbAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAdbAttributesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.internal_port):
+            query['InternalPort'] = request.internal_port
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceAdbAttributes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ListInstanceAdbAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_adb_attributes_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ListInstanceAdbAttributesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ListInstanceAdbAttributesResponse:
+        """
+        @summary 查询ADB端口连接信息
+        
+        @param request: ListInstanceAdbAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAdbAttributesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.internal_port):
+            query['InternalPort'] = request.internal_port
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceAdbAttributes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ListInstanceAdbAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_adb_attributes(
+        self,
+        request: eds_aic_20230930_models.ListInstanceAdbAttributesRequest,
+    ) -> eds_aic_20230930_models.ListInstanceAdbAttributesResponse:
+        """
+        @summary 查询ADB端口连接信息
+        
+        @param request: ListInstanceAdbAttributesRequest
+        @return: ListInstanceAdbAttributesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_adb_attributes_with_options(request, runtime)
+
+    async def list_instance_adb_attributes_async(
+        self,
+        request: eds_aic_20230930_models.ListInstanceAdbAttributesRequest,
+    ) -> eds_aic_20230930_models.ListInstanceAdbAttributesResponse:
+        """
+        @summary 查询ADB端口连接信息
+        
+        @param request: ListInstanceAdbAttributesRequest
+        @return: ListInstanceAdbAttributesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_adb_attributes_with_options_async(request, runtime)
 
     def list_policy_groups_with_options(
         self,
@@ -8713,6 +9085,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_android_instance_with_options_async(request, runtime)
 
+    def start_instance_adb_with_options(
+        self,
+        request: eds_aic_20230930_models.StartInstanceAdbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.StartInstanceAdbResponse:
+        """
+        @summary 开启实例ADB端口并创建端口转发条目
+        
+        @param request: StartInstanceAdbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceAdbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartInstanceAdb',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.StartInstanceAdbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_instance_adb_with_options_async(
+        self,
+        request: eds_aic_20230930_models.StartInstanceAdbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.StartInstanceAdbResponse:
+        """
+        @summary 开启实例ADB端口并创建端口转发条目
+        
+        @param request: StartInstanceAdbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceAdbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartInstanceAdb',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.StartInstanceAdbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_instance_adb(
+        self,
+        request: eds_aic_20230930_models.StartInstanceAdbRequest,
+    ) -> eds_aic_20230930_models.StartInstanceAdbResponse:
+        """
+        @summary 开启实例ADB端口并创建端口转发条目
+        
+        @param request: StartInstanceAdbRequest
+        @return: StartInstanceAdbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_instance_adb_with_options(request, runtime)
+
+    async def start_instance_adb_async(
+        self,
+        request: eds_aic_20230930_models.StartInstanceAdbRequest,
+    ) -> eds_aic_20230930_models.StartInstanceAdbResponse:
+        """
+        @summary 开启实例ADB端口并创建端口转发条目
+        
+        @param request: StartInstanceAdbRequest
+        @return: StartInstanceAdbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_instance_adb_with_options_async(request, runtime)
+
     def stop_android_instance_with_options(
         self,
         request: eds_aic_20230930_models.StopAndroidInstanceRequest,
@@ -8824,6 +9292,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_android_instance_with_options_async(request, runtime)
+
+    def stop_instance_adb_with_options(
+        self,
+        request: eds_aic_20230930_models.StopInstanceAdbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.StopInstanceAdbResponse:
+        """
+        @summary 停止实例ADB端口并删除端口转发条目
+        
+        @param request: StopInstanceAdbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceAdbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopInstanceAdb',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.StopInstanceAdbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_instance_adb_with_options_async(
+        self,
+        request: eds_aic_20230930_models.StopInstanceAdbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.StopInstanceAdbResponse:
+        """
+        @summary 停止实例ADB端口并删除端口转发条目
+        
+        @param request: StopInstanceAdbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceAdbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopInstanceAdb',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.StopInstanceAdbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_instance_adb(
+        self,
+        request: eds_aic_20230930_models.StopInstanceAdbRequest,
+    ) -> eds_aic_20230930_models.StopInstanceAdbResponse:
+        """
+        @summary 停止实例ADB端口并删除端口转发条目
+        
+        @param request: StopInstanceAdbRequest
+        @return: StopInstanceAdbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_instance_adb_with_options(request, runtime)
+
+    async def stop_instance_adb_async(
+        self,
+        request: eds_aic_20230930_models.StopInstanceAdbRequest,
+    ) -> eds_aic_20230930_models.StopInstanceAdbResponse:
+        """
+        @summary 停止实例ADB端口并删除端口转发条目
+        
+        @param request: StopInstanceAdbRequest
+        @return: StopInstanceAdbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_instance_adb_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
