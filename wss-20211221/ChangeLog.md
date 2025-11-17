@@ -1,3 +1,9 @@
+2025-11-17 Version: 1.3.4
+- Update API DescribeMultiPrice: add request parameters OrderItems.$.SavingPlanPeriod.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.PriceDetails.$.ModuleDetails.$.SavingPlanDiscountPrice.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.PriceDetails.$.PriceDetail.SavingPlanRecommendPrice.
+
+
 2025-08-08 Version: 1.3.3
 - Update API DescribePackageDeductions: add response parameters Body.Deductions.$.GroupResourceType.
 

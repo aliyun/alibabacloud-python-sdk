@@ -780,6 +780,7 @@ class DescribeMultiPriceRequestOrderItems(TeaModel):
         promotion_id: str = None,
         resource_ids: List[str] = None,
         resource_type: str = None,
+        saving_plan_period: str = None,
     ):
         self.amount = amount
         self.components = components
@@ -789,6 +790,7 @@ class DescribeMultiPriceRequestOrderItems(TeaModel):
         self.promotion_id = promotion_id
         self.resource_ids = resource_ids
         self.resource_type = resource_type
+        self.saving_plan_period = saving_plan_period
 
     def validate(self):
         if self.components:
@@ -820,6 +822,8 @@ class DescribeMultiPriceRequestOrderItems(TeaModel):
             result['ResourceIds'] = self.resource_ids
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.saving_plan_period is not None:
+            result['SavingPlanPeriod'] = self.saving_plan_period
         return result
 
     def from_map(self, m: dict = None):
@@ -843,6 +847,8 @@ class DescribeMultiPriceRequestOrderItems(TeaModel):
             self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('SavingPlanPeriod') is not None:
+            self.saving_plan_period = m.get('SavingPlanPeriod')
         return self
 
 
@@ -907,6 +913,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(TeaM
         module_name: str = None,
         module_value: str = None,
         original_price: float = None,
+        saving_plan_discount_price: float = None,
         trade_price: float = None,
     ):
         self.discount_price = discount_price
@@ -914,6 +921,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(TeaM
         self.module_name = module_name
         self.module_value = module_value
         self.original_price = original_price
+        self.saving_plan_discount_price = saving_plan_discount_price
         self.trade_price = trade_price
 
     def validate(self):
@@ -935,6 +943,8 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(TeaM
             result['ModuleValue'] = self.module_value
         if self.original_price is not None:
             result['OriginalPrice'] = self.original_price
+        if self.saving_plan_discount_price is not None:
+            result['SavingPlanDiscountPrice'] = self.saving_plan_discount_price
         if self.trade_price is not None:
             result['TradePrice'] = self.trade_price
         return result
@@ -951,6 +961,8 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(TeaM
             self.module_value = m.get('ModuleValue')
         if m.get('OriginalPrice') is not None:
             self.original_price = m.get('OriginalPrice')
+        if m.get('SavingPlanDiscountPrice') is not None:
+            self.saving_plan_discount_price = m.get('SavingPlanDiscountPrice')
         if m.get('TradePrice') is not None:
             self.trade_price = m.get('TradePrice')
         return self
@@ -962,11 +974,13 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(TeaMod
         discount_price: float = None,
         original_price: float = None,
         resource_type: str = None,
+        saving_plan_recommend_price: float = None,
         trade_price: float = None,
     ):
         self.discount_price = discount_price
         self.original_price = original_price
         self.resource_type = resource_type
+        self.saving_plan_recommend_price = saving_plan_recommend_price
         self.trade_price = trade_price
 
     def validate(self):
@@ -984,6 +998,8 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(TeaMod
             result['OriginalPrice'] = self.original_price
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.saving_plan_recommend_price is not None:
+            result['SavingPlanRecommendPrice'] = self.saving_plan_recommend_price
         if self.trade_price is not None:
             result['TradePrice'] = self.trade_price
         return result
@@ -996,6 +1012,8 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(TeaMod
             self.original_price = m.get('OriginalPrice')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('SavingPlanRecommendPrice') is not None:
+            self.saving_plan_recommend_price = m.get('SavingPlanRecommendPrice')
         if m.get('TradePrice') is not None:
             self.trade_price = m.get('TradePrice')
         return self
