@@ -1,3 +1,35 @@
+2025-11-18 Version: 6.0.0
+- Support API StandardSearch.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.carry_length.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.carry_width.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.carry_height.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.carry_sum_of_length_width_height.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.length.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.width.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.height.
+- Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.sum_of_length_width_height.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_length.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_width.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_height.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_sum_of_length_width_height.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.length.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.width.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.height.
+- Update API OrderDetail: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.sum_of_length_width_height.
+- Update API OrderDetail: delete response parameters Body.data.solution.product_type_description.
+- Update API OrderDetail: delete response parameters Body.data.solution.refund_ticket_coupon_description.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_length.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_width.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_height.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.carry_sum_of_length_width_height.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.length.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.width.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.height.
+- Update API Pricing: add response parameters Body.data.solution.segment_baggage_mapping_list.$.passenger_baggage_allowance_mapping.sum_of_length_width_height.
+- Update API Pricing: delete response parameters Body.data.solution.product_type_description.
+- Update API Pricing: delete response parameters Body.data.solution.refund_ticket_coupon_description.
+
+
 2025-11-07 Version: 5.0.2
 - Generated python 2023-01-17 for airticketOpen.
 
