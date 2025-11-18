@@ -1,3 +1,9 @@
+2025-11-18 Version: 1.4.0
+- Support API ModifyInstanceConfig.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.EipStatus.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.NatStatus.
+
+
 2025-09-25 Version: 1.3.0
 - Support API DescribeInstanceRAGConfig.
 - Support API DescribeInstanceSSL.

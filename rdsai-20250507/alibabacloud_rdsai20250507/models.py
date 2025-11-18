@@ -469,9 +469,11 @@ class DescribeAppInstanceAttributeResponseBody(TeaModel):
         app_name: str = None,
         app_type: str = None,
         dbinstance_name: str = None,
+        eip_status: str = None,
         instance_class: str = None,
         instance_minor_version: str = None,
         instance_name: str = None,
+        nat_status: str = None,
         public_connection_string: str = None,
         region_id: str = None,
         request_id: str = None,
@@ -483,9 +485,11 @@ class DescribeAppInstanceAttributeResponseBody(TeaModel):
         self.app_name = app_name
         self.app_type = app_type
         self.dbinstance_name = dbinstance_name
+        self.eip_status = eip_status
         self.instance_class = instance_class
         self.instance_minor_version = instance_minor_version
         self.instance_name = instance_name
+        self.nat_status = nat_status
         self.public_connection_string = public_connection_string
         self.region_id = region_id
         self.request_id = request_id
@@ -509,12 +513,16 @@ class DescribeAppInstanceAttributeResponseBody(TeaModel):
             result['AppType'] = self.app_type
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.eip_status is not None:
+            result['EipStatus'] = self.eip_status
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.instance_minor_version is not None:
             result['InstanceMinorVersion'] = self.instance_minor_version
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.nat_status is not None:
+            result['NatStatus'] = self.nat_status
         if self.public_connection_string is not None:
             result['PublicConnectionString'] = self.public_connection_string
         if self.region_id is not None:
@@ -539,12 +547,16 @@ class DescribeAppInstanceAttributeResponseBody(TeaModel):
             self.app_type = m.get('AppType')
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('EipStatus') is not None:
+            self.eip_status = m.get('EipStatus')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceMinorVersion') is not None:
             self.instance_minor_version = m.get('InstanceMinorVersion')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('NatStatus') is not None:
+            self.nat_status = m.get('NatStatus')
         if m.get('PublicConnectionString') is not None:
             self.public_connection_string = m.get('PublicConnectionString')
         if m.get('RegionId') is not None:
@@ -2009,6 +2021,127 @@ class ModifyInstanceAuthConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceAuthConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        config_name: str = None,
+        config_value: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.config_name = config_name
+        self.config_value = config_value
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyInstanceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

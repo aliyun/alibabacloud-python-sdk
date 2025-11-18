@@ -1221,6 +1221,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_auth_config_with_options_async(request, runtime)
 
+    def modify_instance_config_with_options(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyInstanceConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param request: ModifyInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceConfig',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_config_with_options_async(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyInstanceConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param request: ModifyInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceConfig',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_config(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceConfigRequest,
+    ) -> rds_ai_20250507_models.ModifyInstanceConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param request: ModifyInstanceConfigRequest
+        @return: ModifyInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_config_with_options(request, runtime)
+
+    async def modify_instance_config_async(
+        self,
+        request: rds_ai_20250507_models.ModifyInstanceConfigRequest,
+    ) -> rds_ai_20250507_models.ModifyInstanceConfigResponse:
+        """
+        @summary 修改实例RAG配置
+        
+        @param request: ModifyInstanceConfigRequest
+        @return: ModifyInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_config_with_options_async(request, runtime)
+
     def modify_instance_ip_whitelist_with_options(
         self,
         request: rds_ai_20250507_models.ModifyInstanceIpWhitelistRequest,
