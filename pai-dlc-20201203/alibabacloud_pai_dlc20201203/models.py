@@ -5700,17 +5700,21 @@ class GetJobResponseBodyDataSources(TeaModel):
 class GetJobResponseBodyPodsHistoryPods(TeaModel):
     def __init__(
         self,
+        duration: float = None,
         gmt_create_time: str = None,
         gmt_finish_time: str = None,
         gmt_start_time: str = None,
         ip: str = None,
+        node_name: str = None,
         pod_id: str = None,
+        pod_ips: List[PodNetworkInterface] = None,
         pod_uid: str = None,
         resource_type: str = None,
         status: str = None,
         sub_status: str = None,
         type: str = None,
     ):
+        self.duration = duration
         # The time when the node was created (UTC).
         self.gmt_create_time = gmt_create_time
         # The end time of the node (UTC).
@@ -5719,8 +5723,10 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
         self.gmt_start_time = gmt_start_time
         # The IP address of the node.
         self.ip = ip
+        self.node_name = node_name
         # The ID of the node.
         self.pod_id = pod_id
+        self.pod_ips = pod_ips
         # The UID of the node.
         self.pod_uid = pod_uid
         # The resource type of the node.
@@ -5736,7 +5742,10 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.pod_ips:
+            for k in self.pod_ips:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5744,6 +5753,8 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
             return _map
 
         result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_finish_time is not None:
@@ -5752,8 +5763,14 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
             result['GmtStartTime'] = self.gmt_start_time
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         if self.pod_id is not None:
             result['PodId'] = self.pod_id
+        result['PodIps'] = []
+        if self.pod_ips is not None:
+            for k in self.pod_ips:
+                result['PodIps'].append(k.to_map() if k else None)
         if self.pod_uid is not None:
             result['PodUid'] = self.pod_uid
         if self.resource_type is not None:
@@ -5768,6 +5785,8 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtFinishTime') is not None:
@@ -5776,8 +5795,15 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
             self.gmt_start_time = m.get('GmtStartTime')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         if m.get('PodId') is not None:
             self.pod_id = m.get('PodId')
+        self.pod_ips = []
+        if m.get('PodIps') is not None:
+            for k in m.get('PodIps'):
+                temp_model = PodNetworkInterface()
+                self.pod_ips.append(temp_model.from_map(k))
         if m.get('PodUid') is not None:
             self.pod_uid = m.get('PodUid')
         if m.get('ResourceType') is not None:
@@ -5794,18 +5820,22 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
 class GetJobResponseBodyPods(TeaModel):
     def __init__(
         self,
+        duration: float = None,
         gmt_create_time: str = None,
         gmt_finish_time: str = None,
         gmt_start_time: str = None,
         history_pods: List[GetJobResponseBodyPodsHistoryPods] = None,
         ip: str = None,
+        node_name: str = None,
         pod_id: str = None,
+        pod_ips: List[PodNetworkInterface] = None,
         pod_uid: str = None,
         resource_type: str = None,
         status: str = None,
         sub_status: str = None,
         type: str = None,
     ):
+        self.duration = duration
         # The time when the node was created (UTC).
         self.gmt_create_time = gmt_create_time
         # The end time of the node (UTC).
@@ -5816,8 +5846,10 @@ class GetJobResponseBodyPods(TeaModel):
         self.history_pods = history_pods
         # The IP address of the node.
         self.ip = ip
+        self.node_name = node_name
         # The node ID. It can be used in the GetPodLogs and GetPodEvents operations to obtain the detailed logs and events of the node.
         self.pod_id = pod_id
+        self.pod_ips = pod_ips
         # The UID of the node.
         self.pod_uid = pod_uid
         # The resource type of the node.
@@ -5843,6 +5875,10 @@ class GetJobResponseBodyPods(TeaModel):
             for k in self.history_pods:
                 if k:
                     k.validate()
+        if self.pod_ips:
+            for k in self.pod_ips:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5850,6 +5886,8 @@ class GetJobResponseBodyPods(TeaModel):
             return _map
 
         result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_finish_time is not None:
@@ -5862,8 +5900,14 @@ class GetJobResponseBodyPods(TeaModel):
                 result['HistoryPods'].append(k.to_map() if k else None)
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         if self.pod_id is not None:
             result['PodId'] = self.pod_id
+        result['PodIps'] = []
+        if self.pod_ips is not None:
+            for k in self.pod_ips:
+                result['PodIps'].append(k.to_map() if k else None)
         if self.pod_uid is not None:
             result['PodUid'] = self.pod_uid
         if self.resource_type is not None:
@@ -5878,6 +5922,8 @@ class GetJobResponseBodyPods(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtFinishTime') is not None:
@@ -5891,8 +5937,15 @@ class GetJobResponseBodyPods(TeaModel):
                 self.history_pods.append(temp_model.from_map(k))
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         if m.get('PodId') is not None:
             self.pod_id = m.get('PodId')
+        self.pod_ips = []
+        if m.get('PodIps') is not None:
+            for k in m.get('PodIps'):
+                temp_model = PodNetworkInterface()
+                self.pod_ips.append(temp_model.from_map(k))
         if m.get('PodUid') is not None:
             self.pod_uid = m.get('PodUid')
         if m.get('ResourceType') is not None:
