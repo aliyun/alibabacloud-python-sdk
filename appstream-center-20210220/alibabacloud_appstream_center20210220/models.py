@@ -430,6 +430,7 @@ class FindIdpListByLoginIdentifierResponse(TeaModel):
 class GetLoginTokenRequest(TeaModel):
     def __init__(
         self,
+        area_site: str = None,
         authentication_code: str = None,
         available_features: Dict[str, str] = None,
         channel: str = None,
@@ -468,6 +469,7 @@ class GetLoginTokenRequest(TeaModel):
         umid_token: str = None,
         uuid: str = None,
     ):
+        self.area_site = area_site
         self.authentication_code = authentication_code
         self.available_features = available_features
         self.channel = channel
@@ -516,6 +518,8 @@ class GetLoginTokenRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.area_site is not None:
+            result['AreaSite'] = self.area_site
         if self.authentication_code is not None:
             result['AuthenticationCode'] = self.authentication_code
         if self.available_features is not None:
@@ -594,6 +598,8 @@ class GetLoginTokenRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AreaSite') is not None:
+            self.area_site = m.get('AreaSite')
         if m.get('AuthenticationCode') is not None:
             self.authentication_code = m.get('AuthenticationCode')
         if m.get('AvailableFeatures') is not None:
@@ -674,6 +680,7 @@ class GetLoginTokenRequest(TeaModel):
 class GetLoginTokenShrinkRequest(TeaModel):
     def __init__(
         self,
+        area_site: str = None,
         authentication_code: str = None,
         available_features_shrink: str = None,
         channel: str = None,
@@ -712,6 +719,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         umid_token: str = None,
         uuid: str = None,
     ):
+        self.area_site = area_site
         self.authentication_code = authentication_code
         self.available_features_shrink = available_features_shrink
         self.channel = channel
@@ -760,6 +768,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.area_site is not None:
+            result['AreaSite'] = self.area_site
         if self.authentication_code is not None:
             result['AuthenticationCode'] = self.authentication_code
         if self.available_features_shrink is not None:
@@ -838,6 +848,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AreaSite') is not None:
+            self.area_site = m.get('AreaSite')
         if m.get('AuthenticationCode') is not None:
             self.authentication_code = m.get('AuthenticationCode')
         if m.get('AvailableFeatures') is not None:

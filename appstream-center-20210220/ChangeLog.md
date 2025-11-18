@@ -1,3 +1,7 @@
+2025-11-18 Version: 1.2.4
+- Update API GetLoginToken: add request parameters AreaSite.
+
+
 2025-09-17 Version: 1.2.3
 - Update API GetLoginToken: add request parameters Channel.
 

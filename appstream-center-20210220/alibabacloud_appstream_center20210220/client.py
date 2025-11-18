@@ -199,6 +199,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.available_features):
             request.available_features_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.available_features, 'AvailableFeatures', 'json')
         query = {}
+        if not UtilClient.is_unset(request.area_site):
+            query['AreaSite'] = request.area_site
         if not UtilClient.is_unset(request.authentication_code):
             query['AuthenticationCode'] = request.authentication_code
         if not UtilClient.is_unset(request.available_features_shrink):
@@ -310,6 +312,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.available_features):
             request.available_features_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.available_features, 'AvailableFeatures', 'json')
         query = {}
+        if not UtilClient.is_unset(request.area_site):
+            query['AreaSite'] = request.area_site
         if not UtilClient.is_unset(request.authentication_code):
             query['AuthenticationCode'] = request.authentication_code
         if not UtilClient.is_unset(request.available_features_shrink):
