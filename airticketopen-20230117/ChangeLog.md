@@ -1,3 +1,6 @@
+2025-11-18 Version: 6.0.1
+- Generated python 2023-01-17 for airticketOpen.
+
 2025-11-18 Version: 6.0.0
 - Support API StandardSearch.
 - Update API OrderDetail: add response parameters Body.data.baggage_allowance_map.carry_length.
