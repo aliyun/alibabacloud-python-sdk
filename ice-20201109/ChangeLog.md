@@ -1,3 +1,6 @@
+2025-11-18 Version: 6.8.2
+- Generated python 2020-11-09 for ICE.
+
 2025-11-17 Version: 6.8.1
 - Update API ListRecognitionLibs: add request parameters LibId.
 - Update API ListRecognitionSamples: add request parameters EntityName.
