@@ -1,3 +1,9 @@
+2025-11-18 Version: 8.0.0
+- Update API AddImage: update request parameters body.Size' format has changed.
+- Update API GetImage: update response parameters Body.Size' format has changed.
+- Update API ListImages: update response parameters Body.Images.$.Size' format has changed.
+
+
 2025-11-06 Version: 7.1.0
 - Support API CreateImageBuild.
 
