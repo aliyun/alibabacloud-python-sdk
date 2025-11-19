@@ -1348,6 +1348,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_request_diagnosis_with_options_async(request, runtime)
 
+    def create_security_ipgroup_with_options(
+        self,
+        request: das20200116_models.CreateSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateSecurityIPGroupResponse:
+        """
+        @summary 创建用户跨产品白名单模板
+        
+        @param request: CreateSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_security_ipgroup_with_options_async(
+        self,
+        request: das20200116_models.CreateSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateSecurityIPGroupResponse:
+        """
+        @summary 创建用户跨产品白名单模板
+        
+        @param request: CreateSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_security_ipgroup(
+        self,
+        request: das20200116_models.CreateSecurityIPGroupRequest,
+    ) -> das20200116_models.CreateSecurityIPGroupResponse:
+        """
+        @summary 创建用户跨产品白名单模板
+        
+        @param request: CreateSecurityIPGroupRequest
+        @return: CreateSecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_security_ipgroup_with_options(request, runtime)
+
+    async def create_security_ipgroup_async(
+        self,
+        request: das20200116_models.CreateSecurityIPGroupRequest,
+    ) -> das20200116_models.CreateSecurityIPGroupResponse:
+        """
+        @summary 创建用户跨产品白名单模板
+        
+        @param request: CreateSecurityIPGroupRequest
+        @return: CreateSecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_security_ipgroup_with_options_async(request, runtime)
+
     def create_sql_log_task_with_options(
         self,
         request: das20200116_models.CreateSqlLogTaskRequest,
@@ -1727,6 +1831,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cloud_bench_task_with_options_async(request, runtime)
+
+    def delete_security_ipgroup_with_options(
+        self,
+        request: das20200116_models.DeleteSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DeleteSecurityIPGroupResponse:
+        """
+        @summary 删除用户跨产品白名单模板
+        
+        @param request: DeleteSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DeleteSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_security_ipgroup_with_options_async(
+        self,
+        request: das20200116_models.DeleteSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DeleteSecurityIPGroupResponse:
+        """
+        @summary 删除用户跨产品白名单模板
+        
+        @param request: DeleteSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DeleteSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_security_ipgroup(
+        self,
+        request: das20200116_models.DeleteSecurityIPGroupRequest,
+    ) -> das20200116_models.DeleteSecurityIPGroupResponse:
+        """
+        @summary 删除用户跨产品白名单模板
+        
+        @param request: DeleteSecurityIPGroupRequest
+        @return: DeleteSecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_security_ipgroup_with_options(request, runtime)
+
+    async def delete_security_ipgroup_async(
+        self,
+        request: das20200116_models.DeleteSecurityIPGroupRequest,
+    ) -> das20200116_models.DeleteSecurityIPGroupResponse:
+        """
+        @summary 删除用户跨产品白名单模板
+        
+        @param request: DeleteSecurityIPGroupRequest
+        @return: DeleteSecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_security_ipgroup_with_options_async(request, runtime)
 
     def delete_stop_gateway_with_options(
         self,
@@ -3411,6 +3615,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_query_explain_with_options_async(request, runtime)
+
+    def describe_security_ipgroup_with_options(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeSecurityIPGroupResponse:
+        """
+        @summary 展示用户跨产品白名单模板具体信息
+        
+        @param request: DescribeSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_security_ipgroup_with_options_async(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeSecurityIPGroupResponse:
+        """
+        @summary 展示用户跨产品白名单模板具体信息
+        
+        @param request: DescribeSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_security_ipgroup(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRequest,
+    ) -> das20200116_models.DescribeSecurityIPGroupResponse:
+        """
+        @summary 展示用户跨产品白名单模板具体信息
+        
+        @param request: DescribeSecurityIPGroupRequest
+        @return: DescribeSecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_ipgroup_with_options(request, runtime)
+
+    async def describe_security_ipgroup_async(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRequest,
+    ) -> das20200116_models.DescribeSecurityIPGroupResponse:
+        """
+        @summary 展示用户跨产品白名单模板具体信息
+        
+        @param request: DescribeSecurityIPGroupRequest
+        @return: DescribeSecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_ipgroup_with_options_async(request, runtime)
+
+    def describe_security_ipgroup_relation_with_options(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeSecurityIPGroupRelationResponse:
+        """
+        @summary 展示用户跨产品白名单模板与实例绑定信息
+        
+        @param request: DescribeSecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIPGroupRelationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityIPGroupRelation',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_security_ipgroup_relation_with_options_async(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeSecurityIPGroupRelationResponse:
+        """
+        @summary 展示用户跨产品白名单模板与实例绑定信息
+        
+        @param request: DescribeSecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIPGroupRelationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityIPGroupRelation',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_security_ipgroup_relation(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRelationRequest,
+    ) -> das20200116_models.DescribeSecurityIPGroupRelationResponse:
+        """
+        @summary 展示用户跨产品白名单模板与实例绑定信息
+        
+        @param request: DescribeSecurityIPGroupRelationRequest
+        @return: DescribeSecurityIPGroupRelationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_ipgroup_relation_with_options(request, runtime)
+
+    async def describe_security_ipgroup_relation_async(
+        self,
+        request: das20200116_models.DescribeSecurityIPGroupRelationRequest,
+    ) -> das20200116_models.DescribeSecurityIPGroupRelationResponse:
+        """
+        @summary 展示用户跨产品白名单模板与实例绑定信息
+        
+        @param request: DescribeSecurityIPGroupRelationRequest
+        @return: DescribeSecurityIPGroupRelationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_ipgroup_relation_with_options_async(request, runtime)
 
     def describe_slow_log_histogram_async_with_options(
         self,
@@ -12887,6 +13287,218 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_auto_scaling_config_with_options_async(request, runtime)
+
+    def modify_security_ipgroup_with_options(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.ModifySecurityIPGroupResponse:
+        """
+        @summary 修改用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.ModifySecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_security_ipgroup_with_options_async(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.ModifySecurityIPGroupResponse:
+        """
+        @summary 修改用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIPGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityIPGroup',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.ModifySecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_security_ipgroup(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRequest,
+    ) -> das20200116_models.ModifySecurityIPGroupResponse:
+        """
+        @summary 修改用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRequest
+        @return: ModifySecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_security_ipgroup_with_options(request, runtime)
+
+    async def modify_security_ipgroup_async(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRequest,
+    ) -> das20200116_models.ModifySecurityIPGroupResponse:
+        """
+        @summary 修改用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRequest
+        @return: ModifySecurityIPGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_security_ipgroup_with_options_async(request, runtime)
+
+    def modify_security_ipgroup_relation_with_options(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.ModifySecurityIPGroupRelationResponse:
+        """
+        @summary 绑定/解绑用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIPGroupRelationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityIPGroupRelation',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.ModifySecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_security_ipgroup_relation_with_options_async(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.ModifySecurityIPGroupRelationResponse:
+        """
+        @summary 绑定/解绑用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIPGroupRelationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityIPGroupRelation',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.ModifySecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_security_ipgroup_relation(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRelationRequest,
+    ) -> das20200116_models.ModifySecurityIPGroupRelationResponse:
+        """
+        @summary 绑定/解绑用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRelationRequest
+        @return: ModifySecurityIPGroupRelationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_security_ipgroup_relation_with_options(request, runtime)
+
+    async def modify_security_ipgroup_relation_async(
+        self,
+        request: das20200116_models.ModifySecurityIPGroupRelationRequest,
+    ) -> das20200116_models.ModifySecurityIPGroupRelationResponse:
+        """
+        @summary 绑定/解绑用户跨产品白名单模板
+        
+        @param request: ModifySecurityIPGroupRelationRequest
+        @return: ModifySecurityIPGroupRelationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_security_ipgroup_relation_with_options_async(request, runtime)
 
     def modify_sql_log_config_with_options(
         self,
