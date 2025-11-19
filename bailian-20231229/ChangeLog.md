@@ -1,3 +1,6 @@
+2025-11-19 Version: 2.6.1
+- Generated python 2023-12-29 for bailian.
+
 2025-11-04 Version: 2.6.0
 - Support API ApplyTempStorageLease.
 
