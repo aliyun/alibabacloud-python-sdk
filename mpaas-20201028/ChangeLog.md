@@ -1,3 +1,9 @@
+2025-11-19 Version: 2.2.1
+- Update API StartUserAppAsyncEnhanceInMsa: add request parameters NewShieldConfig.
+- Update API StartUserAppAsyncEnhanceInMsa: add request parameters UseYShield.
+- Update API UploadUserAppToMsa: add request parameters UseYShield.
+
+
 2025-11-06 Version: 2.2.0
 - Support API DeleteMdsCubeTemplate.
 

@@ -30717,6 +30717,7 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         memory_dump: int = None,
         native_debugger: int = None,
         native_hook: int = None,
+        new_shield_config: str = None,
         package_tampered: int = None,
         root: int = None,
         run_mode: str = None,
@@ -30725,6 +30726,7 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         tenant_id: str = None,
         total_switch: bool = None,
         use_ashield: bool = None,
+        use_yshield: bool = None,
         workspace_id: str = None,
     ):
         self.apk_protector = apk_protector
@@ -30740,6 +30742,7 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         self.memory_dump = memory_dump
         self.native_debugger = native_debugger
         self.native_hook = native_hook
+        self.new_shield_config = new_shield_config
         self.package_tampered = package_tampered
         self.root = root
         self.run_mode = run_mode
@@ -30749,6 +30752,7 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         self.tenant_id = tenant_id
         self.total_switch = total_switch
         self.use_ashield = use_ashield
+        self.use_yshield = use_yshield
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -30783,6 +30787,8 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
             result['NativeDebugger'] = self.native_debugger
         if self.native_hook is not None:
             result['NativeHook'] = self.native_hook
+        if self.new_shield_config is not None:
+            result['NewShieldConfig'] = self.new_shield_config
         if self.package_tampered is not None:
             result['PackageTampered'] = self.package_tampered
         if self.root is not None:
@@ -30799,6 +30805,8 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
             result['TotalSwitch'] = self.total_switch
         if self.use_ashield is not None:
             result['UseAShield'] = self.use_ashield
+        if self.use_yshield is not None:
+            result['UseYShield'] = self.use_yshield
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -30827,6 +30835,8 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
             self.native_debugger = m.get('NativeDebugger')
         if m.get('NativeHook') is not None:
             self.native_hook = m.get('NativeHook')
+        if m.get('NewShieldConfig') is not None:
+            self.new_shield_config = m.get('NewShieldConfig')
         if m.get('PackageTampered') is not None:
             self.package_tampered = m.get('PackageTampered')
         if m.get('Root') is not None:
@@ -30843,6 +30853,8 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
             self.total_switch = m.get('TotalSwitch')
         if m.get('UseAShield') is not None:
             self.use_ashield = m.get('UseAShield')
+        if m.get('UseYShield') is not None:
+            self.use_yshield = m.get('UseYShield')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -32830,6 +32842,7 @@ class UploadUserAppToMsaRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         tenant_id: str = None,
+        use_yshield: bool = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
@@ -32838,6 +32851,7 @@ class UploadUserAppToMsaRequest(TeaModel):
         self.file_url = file_url
         # This parameter is required.
         self.tenant_id = tenant_id
+        self.use_yshield = use_yshield
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -32858,6 +32872,8 @@ class UploadUserAppToMsaRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.use_yshield is not None:
+            result['UseYShield'] = self.use_yshield
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -32872,6 +32888,8 @@ class UploadUserAppToMsaRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('UseYShield') is not None:
+            self.use_yshield = m.get('UseYShield')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self

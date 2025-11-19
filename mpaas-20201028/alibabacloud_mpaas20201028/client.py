@@ -11898,6 +11898,9 @@ class Client(OpenApiClient):
         @return: StartUserAppAsyncEnhanceInMsaResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_shield_config):
+            query['NewShieldConfig'] = request.new_shield_config
         body = {}
         if not UtilClient.is_unset(request.apk_protector):
             body['ApkProtector'] = request.apk_protector
@@ -11937,9 +11940,12 @@ class Client(OpenApiClient):
             body['TotalSwitch'] = request.total_switch
         if not UtilClient.is_unset(request.use_ashield):
             body['UseAShield'] = request.use_ashield
+        if not UtilClient.is_unset(request.use_yshield):
+            body['UseYShield'] = request.use_yshield
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -11969,6 +11975,9 @@ class Client(OpenApiClient):
         @return: StartUserAppAsyncEnhanceInMsaResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_shield_config):
+            query['NewShieldConfig'] = request.new_shield_config
         body = {}
         if not UtilClient.is_unset(request.apk_protector):
             body['ApkProtector'] = request.apk_protector
@@ -12008,9 +12017,12 @@ class Client(OpenApiClient):
             body['TotalSwitch'] = request.total_switch
         if not UtilClient.is_unset(request.use_ashield):
             body['UseAShield'] = request.use_ashield
+        if not UtilClient.is_unset(request.use_yshield):
+            body['UseYShield'] = request.use_yshield
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -12931,6 +12943,8 @@ class Client(OpenApiClient):
             body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.use_yshield):
+            body['UseYShield'] = request.use_yshield
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -12972,6 +12986,8 @@ class Client(OpenApiClient):
             body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.use_yshield):
+            body['UseYShield'] = request.use_yshield
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
