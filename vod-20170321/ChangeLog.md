@@ -1,3 +1,8 @@
+2025-11-19 Version: 3.9.1
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MezzanineInfo.FileMD5.
+- Update API GetMezzanineInfo: add response parameters Body.Mezzanine.FileMD5.
+
+
 2025-09-22 Version: 3.9.0
 - Support API DescribeVodUserVipsByDomain.
 

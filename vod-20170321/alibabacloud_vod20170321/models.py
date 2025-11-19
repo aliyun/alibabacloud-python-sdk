@@ -2634,6 +2634,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(TeaModel):
         bitrate: str = None,
         creation_time: str = None,
         duration: str = None,
+        file_md5: str = None,
         file_name: str = None,
         file_url: str = None,
         fps: str = None,
@@ -2652,6 +2653,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(TeaModel):
         self.creation_time = creation_time
         # The duration of the file. Unit: seconds.
         self.duration = duration
+        self.file_md5 = file_md5
         # The name of the file.
         self.file_name = file_name
         # The OSS URL of the source file.
@@ -2702,6 +2704,8 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.file_md5 is not None:
+            result['FileMD5'] = self.file_md5
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_url is not None:
@@ -2737,6 +2741,8 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('FileMD5') is not None:
+            self.file_md5 = m.get('FileMD5')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileURL') is not None:
@@ -28564,6 +28570,7 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         bitrate: str = None,
         creation_time: str = None,
         duration: str = None,
+        file_md5: str = None,
         file_name: str = None,
         file_url: str = None,
         fps: str = None,
@@ -28587,6 +28594,7 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         self.creation_time = creation_time
         # The duration of the file. Unit: seconds.
         self.duration = duration
+        self.file_md5 = file_md5
         # The name of the file.
         self.file_name = file_name
         # The URL of the file.
@@ -28666,6 +28674,8 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.file_md5 is not None:
+            result['FileMD5'] = self.file_md5
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_url is not None:
@@ -28711,6 +28721,8 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('FileMD5') is not None:
+            self.file_md5 = m.get('FileMD5')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileURL') is not None:
