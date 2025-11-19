@@ -1,3 +1,7 @@
+2025-11-19 Version: 5.3.1
+- Update API RtcSipInviteMember: add request parameters TaskId.
+
+
 2025-11-06 Version: 5.3.0
 - Support API CreateAppViewTemplate.
 - Support API DeleteAppViewTemplate.

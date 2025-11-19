@@ -11427,6 +11427,8 @@ class Client(OpenApiClient):
             query['SipUserId'] = request.sip_user_id
         if not UtilClient.is_unset(request.sip_user_password):
             query['SipUserPassword'] = request.sip_user_password
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -11488,6 +11490,8 @@ class Client(OpenApiClient):
             query['SipUserId'] = request.sip_user_id
         if not UtilClient.is_unset(request.sip_user_password):
             query['SipUserPassword'] = request.sip_user_password
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(

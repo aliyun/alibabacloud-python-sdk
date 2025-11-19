@@ -25376,6 +25376,7 @@ class RtcSipInviteMemberRequest(TeaModel):
         sip_user_agent: str = None,
         sip_user_id: str = None,
         sip_user_password: str = None,
+        task_id: str = None,
         uid: str = None,
     ):
         # This parameter is required.
@@ -25398,6 +25399,7 @@ class RtcSipInviteMemberRequest(TeaModel):
         # This parameter is required.
         self.sip_user_id = sip_user_id
         self.sip_user_password = sip_user_password
+        self.task_id = task_id
         # This parameter is required.
         self.uid = uid
 
@@ -25436,6 +25438,8 @@ class RtcSipInviteMemberRequest(TeaModel):
             result['SipUserId'] = self.sip_user_id
         if self.sip_user_password is not None:
             result['SipUserPassword'] = self.sip_user_password
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.uid is not None:
             result['Uid'] = self.uid
         return result
@@ -25468,6 +25472,8 @@ class RtcSipInviteMemberRequest(TeaModel):
             self.sip_user_id = m.get('SipUserId')
         if m.get('SipUserPassword') is not None:
             self.sip_user_password = m.get('SipUserPassword')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')
         return self
