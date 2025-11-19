@@ -1,3 +1,12 @@
+2025-11-19 Version: 7.0.1
+- Update API DeleteCloudResource: add request parameters CloudResourceId.
+- Update API DescribeAbnormalCloudResources: add response parameters Body.AbnormalCloudResources.$.CloudResourceId.
+- Update API DescribeCloudResourceAccessPortDetails: add response parameters Body.AccessPortDetails.$.CloudResourceId.
+- Update API ModifyCloudResource: add request parameters CloudResourceId.
+- Update API ModifyCloudResourceCert: add request parameters CloudResourceId.
+- Update API ReCreateCloudResource: add request parameters CloudResourceId.
+
+
 2025-11-04 Version: 7.0.0
 - Support API CreateLogDeliveryConfig.
 - Support API CreatePocFunction.

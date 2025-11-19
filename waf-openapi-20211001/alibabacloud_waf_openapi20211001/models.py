@@ -4808,6 +4808,7 @@ class DeleteApisecEventsResponse(TeaModel):
 class DeleteCloudResourceRequest(TeaModel):
     def __init__(
         self,
+        cloud_resource_id: str = None,
         instance_id: str = None,
         port: int = None,
         region_id: str = None,
@@ -4815,6 +4816,7 @@ class DeleteCloudResourceRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
     ):
+        self.cloud_resource_id = cloud_resource_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -4822,8 +4824,6 @@ class DeleteCloudResourceRequest(TeaModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The port of the resource that is added to WAF.
-        # 
-        # This parameter is required.
         self.port = port
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -4833,8 +4833,6 @@ class DeleteCloudResourceRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         # The ID of the instance.
-        # 
-        # This parameter is required.
         self.resource_instance_id = resource_instance_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -4843,8 +4841,6 @@ class DeleteCloudResourceRequest(TeaModel):
         # *   **clb4**: Layer 4 CLB.
         # *   **clb7**: Layer 7 CLB.
         # *   **ecs**: ECS.
-        # 
-        # This parameter is required.
         self.resource_product = resource_product
 
     def validate(self):
@@ -4856,6 +4852,8 @@ class DeleteCloudResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.port is not None:
@@ -4872,6 +4870,8 @@ class DeleteCloudResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Port') is not None:
@@ -6473,6 +6473,7 @@ class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails(Te
 class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources(TeaModel):
     def __init__(
         self,
+        cloud_resource_id: str = None,
         details: List[DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails] = None,
         reason: str = None,
         resource_instance_id: str = None,
@@ -6480,6 +6481,7 @@ class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources(TeaModel)
         resource_instance_port: int = None,
         resource_product: str = None,
     ):
+        self.cloud_resource_id = cloud_resource_id
         self.details = details
         self.reason = reason
         self.resource_instance_id = resource_instance_id
@@ -6499,6 +6501,8 @@ class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources(TeaModel)
             return _map
 
         result = dict()
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         result['Details'] = []
         if self.details is not None:
             for k in self.details:
@@ -6517,6 +6521,8 @@ class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources(TeaModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         self.details = []
         if m.get('Details') is not None:
             for k in m.get('Details'):
@@ -13288,6 +13294,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         self,
         certificates: List[DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates] = None,
         cipher_suite: int = None,
+        cloud_resource_id: str = None,
         custom_ciphers: List[str] = None,
         enable_tlsv_3: bool = None,
         http_2enabled: bool = None,
@@ -13316,6 +13323,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         # *   **2**: strong cipher suites.
         # *   **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
+        self.cloud_resource_id = cloud_resource_id
         # The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite** to **99**.
         self.custom_ciphers = custom_ciphers
         # Indicates whether to support TLS 1.3. Valid values:
@@ -13415,6 +13423,8 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
                 result['Certificates'].append(k.to_map() if k else None)
         if self.cipher_suite is not None:
             result['CipherSuite'] = self.cipher_suite
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         if self.custom_ciphers is not None:
             result['CustomCiphers'] = self.custom_ciphers
         if self.enable_tlsv_3 is not None:
@@ -13468,6 +13478,8 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
                 self.certificates.append(temp_model.from_map(k))
         if m.get('CipherSuite') is not None:
             self.cipher_suite = m.get('CipherSuite')
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         if m.get('CustomCiphers') is not None:
             self.custom_ciphers = m.get('CustomCiphers')
         if m.get('EnableTLSv3') is not None:
@@ -41602,8 +41614,6 @@ class ModifyCloudResourceRequestListen(TeaModel):
         # *   **false** (default)
         self.http_2enabled = http_2enabled
         # The port of the cloud service instance that is added to WAF.
-        # 
-        # This parameter is required.
         self.port = port
         # The protocol type. Valid values:
         # 
@@ -41613,8 +41623,6 @@ class ModifyCloudResourceRequestListen(TeaModel):
         # This parameter is required.
         self.protocol = protocol
         # The ID of the cloud service instance that is added to WAF.
-        # 
-        # This parameter is required.
         self.resource_instance_id = resource_instance_id
         # The type of the cloud service. Valid values:
         # 
@@ -41622,8 +41630,6 @@ class ModifyCloudResourceRequestListen(TeaModel):
         # *   **clb7**: Layer 7 CLB.
         # *   **ecs**: Elastic Compute Service (ECS).
         # *   **nlb**: Network Load Balancer (NLB).
-        # 
-        # This parameter is required.
         self.resource_product = resource_product
         # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
@@ -41842,12 +41848,14 @@ class ModifyCloudResourceRequestRedirect(TeaModel):
 class ModifyCloudResourceRequest(TeaModel):
     def __init__(
         self,
+        cloud_resource_id: str = None,
         instance_id: str = None,
         listen: ModifyCloudResourceRequestListen = None,
         redirect: ModifyCloudResourceRequestRedirect = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        self.cloud_resource_id = cloud_resource_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -41882,6 +41890,8 @@ class ModifyCloudResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.listen is not None:
@@ -41896,6 +41906,8 @@ class ModifyCloudResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Listen') is not None:
@@ -41914,12 +41926,14 @@ class ModifyCloudResourceRequest(TeaModel):
 class ModifyCloudResourceShrinkRequest(TeaModel):
     def __init__(
         self,
+        cloud_resource_id: str = None,
         instance_id: str = None,
         listen_shrink: str = None,
         redirect_shrink: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        self.cloud_resource_id = cloud_resource_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -41951,6 +41965,8 @@ class ModifyCloudResourceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.listen_shrink is not None:
@@ -41965,6 +41981,8 @@ class ModifyCloudResourceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Listen') is not None:
@@ -42093,6 +42111,7 @@ class ModifyCloudResourceCertRequest(TeaModel):
     def __init__(
         self,
         certificates: List[ModifyCloudResourceCertRequestCertificates] = None,
+        cloud_resource_id: str = None,
         instance_id: str = None,
         port: int = None,
         region_id: str = None,
@@ -42101,15 +42120,13 @@ class ModifyCloudResourceCertRequest(TeaModel):
     ):
         # This parameter is required.
         self.certificates = certificates
+        self.cloud_resource_id = cloud_resource_id
         # This parameter is required.
         self.instance_id = instance_id
-        # This parameter is required.
         self.port = port
         # This parameter is required.
         self.region_id = region_id
-        # This parameter is required.
         self.resource_instance_id = resource_instance_id
-        # This parameter is required.
         self.resource_product = resource_product
 
     def validate(self):
@@ -42128,6 +42145,8 @@ class ModifyCloudResourceCertRequest(TeaModel):
         if self.certificates is not None:
             for k in self.certificates:
                 result['Certificates'].append(k.to_map() if k else None)
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.port is not None:
@@ -42147,6 +42166,8 @@ class ModifyCloudResourceCertRequest(TeaModel):
             for k in m.get('Certificates'):
                 temp_model = ModifyCloudResourceCertRequestCertificates()
                 self.certificates.append(temp_model.from_map(k))
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Port') is not None:
@@ -47368,6 +47389,7 @@ class ModifyUserWafLogStatusResponse(TeaModel):
 class ReCreateCloudResourceRequest(TeaModel):
     def __init__(
         self,
+        cloud_resource_id: str = None,
         instance_id: str = None,
         port: int = None,
         region_id: str = None,
@@ -47375,15 +47397,13 @@ class ReCreateCloudResourceRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
     ):
+        self.cloud_resource_id = cloud_resource_id
         # This parameter is required.
         self.instance_id = instance_id
-        # This parameter is required.
         self.port = port
         self.region_id = region_id
-        # This parameter is required.
         self.resource_instance_id = resource_instance_id
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # This parameter is required.
         self.resource_product = resource_product
 
     def validate(self):
@@ -47395,6 +47415,8 @@ class ReCreateCloudResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cloud_resource_id is not None:
+            result['CloudResourceId'] = self.cloud_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.port is not None:
@@ -47411,6 +47433,8 @@ class ReCreateCloudResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloudResourceId') is not None:
+            self.cloud_resource_id = m.get('CloudResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Port') is not None:

@@ -2785,6 +2785,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.port):
@@ -2830,6 +2832,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.port):
@@ -21407,6 +21411,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.redirect):
             request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect, 'Redirect', 'json')
         query = {}
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.listen_shrink):
@@ -21456,6 +21462,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.redirect):
             request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect, 'Redirect', 'json')
         query = {}
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.listen_shrink):
@@ -21527,6 +21535,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.certificates):
             query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.port):
@@ -21572,6 +21582,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.certificates):
             query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.port):
@@ -25241,6 +25253,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.port):
@@ -25286,6 +25300,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.port):
