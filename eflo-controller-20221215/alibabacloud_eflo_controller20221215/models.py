@@ -9821,6 +9821,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         node_group_id: str = None,
         node_group_name: str = None,
         node_id: str = None,
+        node_type: str = None,
         operating_state: str = None,
         sn: str = None,
         tags: List[ListClusterNodesResponseBodyNodesTags] = None,
@@ -9856,6 +9857,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.node_group_name = node_group_name
         # The node ID.
         self.node_id = node_id
+        self.node_type = node_type
         # The node status.
         # 
         # Valid values:
@@ -9933,6 +9935,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['NodeGroupName'] = self.node_group_name
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.operating_state is not None:
             result['OperatingState'] = self.operating_state
         if self.sn is not None:
@@ -9984,6 +9988,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.node_group_name = m.get('NodeGroupName')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OperatingState') is not None:
             self.operating_state = m.get('OperatingState')
         if m.get('Sn') is not None:

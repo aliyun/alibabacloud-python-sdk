@@ -1,3 +1,7 @@
+2025-11-19 Version: 3.0.1
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.NodeType.
+
+
 2025-11-12 Version: 3.0.0
 - Support API ChangeNodeGroup.
 - Support API ChangeNodeTypes.
